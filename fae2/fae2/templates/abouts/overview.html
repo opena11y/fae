@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+    <h1>Overview</h2>
+    
+    <h2>What is FAE?</h2>
+    
+    <ul>
+        <li>The Functional Accessibility Evaluator (FAE) 2.0 analyzes web pages for requirements
+            defined by the <a href="http://www.w3.org/TR/WCAG/" target="_spec">W3C Web Content 
+            Accessibility Guidelines 2.0</a> Single A and AA Success Criteria.</li>
+        <li>Every rule used in FAE 2.0 references the WCAG 2.0 Success Criterion requirement it is based on.</li>
+        <li>The rules support not only accessibility, but also  
+        usable web design for people with disabilities.</li>
+        <li>The rules support accessible and usable design by enforcing  
+            coding practices that use of the latest accessibility technologies like 
+            the <a href="http://www.w3.org/TR/wai-aria/" target="_spec">W3C Accessible Rich 
+                Internet Application (ARIA) 1.0</a> and <a href="http://www.w3.org/TR/html5" target="_spec">W3C HTML5 Specification</a>
+            specification and coding techniques that support features that improve usability of web resources 
+            by people with disabilities.</li>
+    </ul>
+
+    
+    <h2 tabindex="-1" id="running_the_evaluator">Running the Evaluator</h2>
+    
+    <p>The &ldquo;Run FAE&rdquo; page provides a form for specifying the following analysis parameters:</p>
+    
+    <dl>
+        <dt>URL</dt>
+        <dd>Specifies the URL that will serve as the starting point of the analysis. Depending on the &ldquo;Depth of Evaluation&rdquo; and &ldquo;Follow Links in&rdquo; settings (described below), additional pages linked from the starting URL may also be included in the analysis.</dd>
+        
+        <dt>Report Title</dt>
+        <dd>The title to be displayed at the top of each report page. If no title is specified, then &ldquo;Untitled Report&rdquo; is displayed.</dd>
+        
+        <dt>Depth of Evaluation</dt>
+        <dd>When &ldquo;Top-level page only&rdquo; is selected, only the page specified by the URL will be analyzed.</dd>
+        <dd>&ldquo;Include second-level pages&rdquo; will cause all pages linked from the top-level page (with domain restrictions as explained below) to be included in the analysis.</dd>
+        <dd>&ldquo;Include third-level pages&rdquo; will cause all pages linked from the top- and second-level pages (with domain restrictions as explained below) to be included in the analysis.</dd>
+        
+        <dt>Follow Links in</dt>
+        <dd>In cases where &ldquo;Depth of Evaluation&rdquo; is set to either &ldquo;Include second-level pages&rdquo; or &ldquo;Include third-level pages&rdquo; the web crawler used by FAE can follow links in two different ways:</dd>
+        <dd>When &ldquo;Specified domain only&rdquo; is selected, link following is restricted to the same domain as the specified URL.</dd>
+        <dd>When &ldquo;Next-level subdomains&rdquo; is selected, links that are in subdomains of the next-level domain (relative to the domain specified by the URL) will also be followed.</dd>
+        
+        <dt>Ruleset</dt>
+        <dd><em>Landmarks Recommended</em> ruleset recommends that ARIA landmarks be used in the design of the web page
+            and that a failure of one of the landmark rules will result in a "warning".</dd>
+        <dd><em>Landmarks Required</em> ruleset requires that ARIA landmarks be used in the design of the web page
+        and that a failure of one of the landmark rules will result in a "violation".</dd>
+        
+    </dl>
+    
+    <p>After successfully completing the analysis, FAE displays the Summary Report, which provides a high-level view of the evaluation results, and places a link to this report in the Archived Reports list. This list includes additional report information such as the analysis date/time, the number of pages analyzed, the report title, the starting URL and the depth of evaluation.</p>
+    
+    <h2>Rule Categories</h2>
+    
+    <p>FAE organizes the analysis of documents based on the following rule categories:</p>
+    
+    <dl>
+        {% for rule_category in rule_categories %}
+        <dt>{{rule_category.title}}</dt>
+        <dd>{{rule_category.description}}</dd>
+        {% endfor %} 
+    </dl>
+    
+    
+    <p>The report header indicates the ruleset version that was in use by FAE when the report was generated. If that version corresponds to the current ruleset, this is indicated by "(current)". If it does not, this is indicated by "(outdated: current ruleset is 1011-1)".</p>
+    
+    
+    <h2>Announcements and Discussion E-mail Lists</h2>
+    
+    <dl>
+    <dt>Announcements</dt>  
+    <dd>The <a href="https://lists.illinois.edu/lists/subscribe/oaa-tools-announcements">Open Accessibility Alliance Tools announcements list</a> is for people who would like learn about the latest releases of FAE 2.0.  It is a one way low volume e-mail list announcing major changes to the tools or training opportunities to learn more about accessibility.</dd>
+
+    <dt>Discussion</dt>  
+    <dd>The <a href="https://lists.illinois.edu/lists/subscribe/oaa-tools-discussions">Open Accessibility Alliance Tools discussion list</a> is for people who would like to have more direct participation in setting the direction for development of FAE 2.0 and discuss issues with the development team.  The group also holds a monthly teleconference to discuss user and development issues.</dd>
+    </dl>
+    
+    
+    <h2>Report an Issue</h2>
+    
+    <dl>
+      <dt><a href="https://github.com/opena11y/oaa-rules/issues">OpenAjax Evaluation Library Rulesets and Rules Issues List</a></dt>
+      <dd>Request a new rule</dd>
+      <dd>Report a bug or enhancement to an existing rule (<em>note:</em> Please include the rule title)</dd> 
+      
+      <dt><a href="https://github.com/opena11y/fae-ainspector/issues">FAE 2.0 Issues List</a></dt>
+      <dd>Request a new feature for FAE 2.0</dd>
+      <dd>Report a bug or enhancement to an existing feature of FAE 2.0</dd>
+      <dd><em>note:</em> Please include URLs to websites or to FAE 2.0 reports when possible to help clarify an issue.</dd>
+    </dl>
+
+    <h2>Linking Directly to FAE</h2>
+    
+    <p>It is now possible to place a link to FAE on a web page that, when selected, causes FAE to evaluate the page and display the resulting Summary Report. The following HTML snippet should be used:</p>
+    
+    <p><code>&lt;a href="{{site.domain}}/evaluate/link/"&gt;Check with FAE&lt;/a&gt;</code></p>
+    
+
+{% endblock %}
+
+
