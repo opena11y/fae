@@ -1,3 +1,22 @@
 #skipToMenu {
     z-index: 1050;
 }
+
+main h1 { font-size: 250%; }
+main h2 { font-size: 150%; }
+main h3 { font-size: 125%; }
+
+.navbar-inverse .navbar-nav > li > a:focus,
+.navbar-inverse .navbar-nav > li > a:hover {
+    text-decoration: underline;
+}
+
+button[aria-controls="top-navbar"] {
+    outline: solid 2px transparent;
+    z-index: 1050;
+}
+
+button[aria-controls="top-navbar"]:focus,
+button[aria-controls="top-navbar"]:hover {
+    outline-color: white;
+}

@@ -1,0 +1,12 @@
+#skipToMenu {
+    z-index: 1050;
+}
+
+main h1 { font-size: 250%}
+main h2 { font-size: 150%}
+main h3 { font-size: 125%}
+
+#top-navbar a:hover,
+#top-navbar a:focus {
+    text-docoration: underline;
+}
