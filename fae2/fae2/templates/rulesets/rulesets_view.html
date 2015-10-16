@@ -5,11 +5,44 @@
 
  <h1>Rulesets</h1>    
 
- <ul>
-    {% for rs in rulesets %}
-    <li><a href="{% url 'ruleset' rs.slug %}">{{ rs.title }}</a></li>
-    {% endfor %}
- </ul>   
+ {% for rg in rule_groupings %}
+    <h2 id="#{ rg.slug }}" >{{ rg.title }}</h2>
+
+    <table aria-labeledby="{ rg.slug }}" class="table table-striped sortable">
+        <thead>
+            <tr>
+                <th>Rule ID</th>
+                <th>Summary</th>
+                <th><abbr title"WCAG 2.0 Level">Level</a></th>
+                <th><abbr title"WCAG 2.0 Success Criteria">SC</a></th>
+                {% for rs in rulesets %}
+                <th>{{ rs.title }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for r in rg.rules.all %}
+            <tr>
+                <td>{{ r.nls_rule_id }}</td>
+                <td>{{ r.summary_html | safe }}</td>
+                <td>{{ r.wcag_primary.show_level_html | safe}}</td>
+                <td>{{ r.wcag_primary.show_number_html | safe }}</td>
+                {% for rm in r.get_rule_mappings %}
+                {% if rm == '1' %}
+                <td>Required</td>
+                {% else %}
+                  {% if rm == '2' %}
+                  <td>Recommended</td>
+                  {% else %}
+                  <td>-</td>
+                  {% endif %}
+                {% endif %}
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>    
+ {% endfor %}
 
 {% endblock %}
 

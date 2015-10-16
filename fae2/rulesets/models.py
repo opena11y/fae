@@ -2,13 +2,12 @@ from django.db import models
 
 # Ruleset models
 
-import CONST
-from utilities import OAAMarkupToHTML, OAAMarkupToText
+import utils.CONST
+from utils.utilities import OAAMarkupToHTML, OAAMarkupToText
 import textile
 
 
 from ruleCategories.models import RuleCategory
-from rules.models          import Rule, Updated
 
 ## Rule Sets (e.g. WCAG20_ARIA_STRICT)
 class Ruleset(models.Model):
@@ -112,18 +111,5 @@ class Ruleset(models.Model):
     return rcs  
 
 
-class RuleMapping(models.Model):
-  id             = models.AutoField(primary_key=True)
-  
-  ruleset  = models.ForeignKey(Ruleset, related_name='rule_mappings')  
-  rule     = models.ForeignKey(Rule, related_name='rule_mappings')   
-  required = models.BooleanField(default=True)      
-  enabled  = models.BooleanField(default=True)      
 
-  class Meta:
-    ordering = ['ruleset', 'rule__wcag_primary']
 
-  def __str__(self):
-    return str(self.ruleset) + "-" + str(self.rule) + ": " + str(seld.required)
-
-def compare_rulesets(rulesets, option)   

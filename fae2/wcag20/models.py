@@ -153,19 +153,21 @@ class WCAG20_SuccessCriterion(models.Model):
           if shortp == self.level:
               return longp
 
-  def show_level_html_code(self):
+  def show_level_html(self):
       for shortp, longp in WCAG20_LEVEL_HTML_CODE:
           if shortp == self.level:
               return longp
 
-  def show_number_html_code(self):
+  def show_number_html(self):
     return '<a href="' + self.url + '" target="_wcag20" title="' + self.title + '">' + self.number + '</a>'
               
-  def show_success_criterion_html_code(self):
+  def show_success_criterion_html(self):
     html = '<a href="' + self.url + '" target="_wcag20">'
     html += str(self.guideline.principle.num) + '.' + str(self.guideline.num) + '.' + str(self.num) + ' ' + self.title
     html += '</a>'
     return html
+
+             
              
   @staticmethod
   def get_by_wcag_number(num):

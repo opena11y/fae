@@ -6,12 +6,12 @@ from django.core import urlresolvers
 
 # Create your models here.
 
-import CONST
-from utilities import OAAMarkupToHTML, OAAMarkupToText 
+import utils.CONST
+from utils.utilities import OAAMarkupToHTML, OAAMarkupToText 
 import textile
 
 
-from rules.models import Rule, Updated
+from rules.models import Rule
 
 ## Manual check of rule
 class ManualCheck(models.Model):

@@ -1,8 +1,9 @@
 from django.contrib import admin
-from rules.models import Rule 
-from rules.models import RuleScope 
-from rules.models import RuleGroup 
-from rules.models import InformationalLink, NodeResultMessage
+from .models import Rule 
+from .models import RuleScope 
+from .models import RuleGroup 
+from .models import RuleMapping 
+from .models import InformationalLink, NodeResultMessage
 
 class RuleAdmin(admin.ModelAdmin):
     list_display = ('nls_rule_id', 'summary', 'wcag_primary', 'category', 'scope', 'group')
@@ -32,5 +33,12 @@ class InformationalLinkAdmin(admin.ModelAdmin):
     list_filter = ('rule', 'type')
 
 admin.site.register(InformationalLink, InformationalLinkAdmin)
+
+
+class RuleMappingAdmin(admin.ModelAdmin):
+    list_display = ('ruleset', 'rule', 'required', 'enabled')
+    list_filter  = ('ruleset', 'rule', 'required', 'enabled')
+
+admin.site.register(RuleMapping, RuleMappingAdmin)
 
 

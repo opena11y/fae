@@ -2,21 +2,23 @@ from django.db import models
 from django.contrib.auth.models import User
 
 import re
-import CONST
-from utilities import OAAMarkupToText, OAAMarkupToHTML
+import utils.CONST
+from utils.utilities import OAAMarkupToText, OAAMarkupToHTML
 import textile
+
+from django.core.exceptions import ObjectDoesNotExist
 
 
 from markup.models          import ElementDefinition
 from ruleCategories.models  import RuleCategory
 from wcag20.models          import WCAG20_SuccessCriterion
+from rulesets.models        import Ruleset
+
 
 ## Helper class that includes the updated date and creator
 class Updated(models.Model):
   updated_date   = models.DateTimeField(auto_now=True, editable=False)
   updated_editor = models.ForeignKey(User, editable=True)
-
-
 
 
 ## Rule 
@@ -126,6 +128,7 @@ class Rule(models.Model):
   
   definition      = models.CharField('Rule Definition', max_length=512)
   definition_html = models.CharField(max_length=512, default="")
+
   summary         = models.CharField('Rule Summary (shorter version of definition)', max_length=128)
   summary_html    = models.CharField(max_length=256, default="")
   summary_text    = models.CharField(max_length=128, default="")
@@ -182,56 +185,35 @@ class Rule(models.Model):
 
   def show_scope(self):
     return self.get_scope()
-  
+ 
   def get_wcag_primary(self):
     return "%s %s (Level %s)"%(self.wcag_primary.number(), self.wcag_primary.title, self.wcag_primary.show_level_html_code())
-   
+
+  def get_wcag_primary_short_html(self):
+    return '<a href="">Test</a>'
+  
   def wcag20_requirements(self):
     return "%s - %s"%(self.wcag_primary.number(),self.wcag_related_list())
 
-  def get_previous_rule_by_wcag_success_criteria(self):
-    rules = Rule.objects.order_by('wcag_primary','category',)
-    pr = 0
-    for r in rules:
-      if r == self:
-        return pr
-      else: 
-        pr = r
-   
-    return pr
+  def get_rule_mappings(self):
+    mappings = []
+    rulesets = Ruleset.objects.all()
 
-  def natural_key(self):
-      return (self.rule_id, self.definition, self.summary, self.purpose_1, self.purpose_2, self.purpose_3, self.purpose_4)
-
-  def basic_mapping(self):
-      rm = self.rule_mappings.get(ruleset__ruleset_id='BASIC')
-      if rm:
+    for rs in rulesets:
+      try:
+        rm = RuleMapping.objects.get(rule=self, ruleset=rs)
         if rm.required:
-          return 2
+          mappings.append('1')
         else:
-          return 1  
-      return 0
+          mappings.append('2')
+      except ObjectDoesNotExist:
+          mappings.append('3')    
 
-  def aria_trans_mapping(self):
-      rm = self.rule_mappings.get(ruleset__ruleset_id='ARIA_TRANS')
-      if rm:
-        if rm.required:
-          return 2
-        else:
-          return 1  
-      return 0
+    return mappings
 
   def definition_text(self):  
     return OAAMarkupToText(self.definition)
 
-  def aria_strict_mapping(self):
-      rm = self.rule_mappings.get(ruleset__ruleset_id='ARIA_STRICT')
-      if rm:
-        if rm.required:
-          return 2
-        else:
-          return 1  
-      return 0
 
 
 ## Information link
@@ -334,3 +316,18 @@ class InformationalLink(models.Model):
   def save(self):
     self.title_html = OAAMarkupToHTML(self.title)
     super(InformationalLink, self).save() # Call the "real" save() method.
+
+
+class RuleMapping(models.Model):
+  id             = models.AutoField(primary_key=True)
+  
+  ruleset  = models.ForeignKey(Ruleset, related_name='rule_mappings')  
+  rule     = models.ForeignKey(Rule, related_name='rule_mappings')   
+  required = models.BooleanField(default=True)      
+  enabled  = models.BooleanField(default=True)      
+
+  class Meta:
+    ordering = ['ruleset', 'rule__wcag_primary']
+
+  def __str__(self):
+    return str(self.ruleset) + "-" + str(self.rule) + ": " + str(self.required)

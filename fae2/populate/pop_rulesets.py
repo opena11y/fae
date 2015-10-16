@@ -14,8 +14,8 @@ import json
 I empty it. Run as a standalone script!"""
 
 from django.core.exceptions import ObjectDoesNotExist
-from rulesets.models import Ruleset, RuleMapping
-from rules.models import Rule
+from rulesets.models import Ruleset
+from rules.models import Rule, RuleMapping
 
 from django.contrib.auth.models import User
 
@@ -30,6 +30,11 @@ u = User.objects.all()[0]
 RuleMapping.objects.all().delete()
 
 def create_ruleset(ruleset_id, version, title, tooltip, desc, author, author_url, date, editor):
+
+  # ignore test ruleset
+  if ruleset_id.lower().find('test') > -1:
+    return False
+
   try:
     ruleset = Ruleset.objects.get(ruleset_id=ruleset_id)
     print("  Updating Ruleset: " + ruleset_id)
@@ -72,7 +77,8 @@ for rs in data['rulesets']:
    
    rs2 = create_ruleset(rs['ruleset_id'], rs['ruleset_version'], rs['ruleset_title'], rs['ruleset_tooltip'], rs['ruleset_description'], rs['ruleset_author_name'], rs['ruleset_author_url'], rs['ruleset_updated'], u)
    
-   for rm in rs['rule_mappings']:
+   if rs2:
+     for rm in rs['rule_mappings']:
        print("\n    " + rm)
        create_rule_mapping(rs2, rm, rs['rule_mappings'][rm]['required'], rs['rule_mappings'][rm]['enabled'])
       

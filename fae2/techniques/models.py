@@ -6,8 +6,8 @@ from django.core import urlresolvers
 
 # Create your models here.
 
-import CONST
-from utilities import OAAMarkupToHTML, OAAMarkupToText
+import utils.CONST
+from utils.utilities import OAAMarkupToHTML, OAAMarkupToText
 import textile
 
 
