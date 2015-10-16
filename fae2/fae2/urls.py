@@ -21,6 +21,7 @@ from reports import views
 urlpatterns = [
     url(r'^admin/',   include(admin.site.urls)),
     # fae2 specific 
-    url(r'^',         include('reports.urls')),
-    url(r'^abouts/',  include('abouts.urls')),
+    url(r'^',           include('reports.urls')),
+    url(r'^abouts/',    include('abouts.urls')),
+    url(r'^rulesets/',  include('rulesets.urls')),
 ]

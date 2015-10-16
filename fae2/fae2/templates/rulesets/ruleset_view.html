@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+ <h1>Ruleset: {{ruleset.title}}</h1>    
+
+ {% for rc_item in ruleset.get_rules_by_rule_categories %}
+ <h2 id="rc{{rc_item.rule_category.id}}">{{ rc_item.rule_category.title }}</h2>
+ <table class="table table-striped sortable" 
+        aria-labelledby="#rc{{rc_item.rule_category.id}}">
+   <thead>
+    <tr>
+        <th>Rule ID</th>
+        <th>Summary</th>
+        <th>Level</th>
+        <th><abbr title="Success Criterion">SC</abbr></th>
+        <th>Required</th>
+    </tr>
+   </thead>
+   <tbody>
+ {% for rule_item in rc_item.rules %}
+    <tr>
+        <td>{{rule_item.rule.nls_rule_id}}</td>
+        <td>{{rule_item.rule.summary_html|safe}}</td>
+        <td>{{rule_item.rule.wcag_primary.show_level_html_code|safe}}</td>
+        <td>{{rule_item.rule.wcag_primary.show_number_html_code|safe}}</td>
+        {% if rule_item.required %}
+        <td>Yes</td>
+        {% else %}
+        <td>no</td>
+        {% endif %}
+    </tr>    
+ {% endfor %}
+   </tbody>
+
+</table>
+ {% endfor %}
+
+{% endblock %}
+
+

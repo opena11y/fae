@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+ <h1>Rulesets</h1>    
+
+ <ul>
+    {% for rs in rulesets %}
+    <li><a href="{% url 'ruleset' rs.slug %}">{{ rs.title }}</a></li>
+    {% endfor %}
+ </ul>   
+
+{% endblock %}
+
+

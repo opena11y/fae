@@ -16,8 +16,20 @@ import json
 from django.core.exceptions import ImproperlyConfigured
 from os.path import join, abspath, dirname
 
+SITE_ID = 1
+
+here = lambda *dirs: join(abspath(dirname(__file__)), *dirs)
+root = lambda *dirs: join(abspath(here("..","..")), *dirs)
+
+BASE_DIR = here("", "")
+print("BASE_DIR: " + BASE_DIR)
+
+APP_DIR  = root("")
+print(" APP_DIR: " + APP_DIR)
+
+
 # JSON-based secrets module
-with open("fae2/secrets.json") as f:
+with open(join(BASE_DIR,"secrets.json")) as f:
     secrets = json.loads(f.read())
 
 
@@ -29,15 +41,6 @@ def get_secret(setting, secrets=secrets):
         error_msg = "Set the {0} enviroment variable".format(setting)
         raise ImproperlyConfigured
 
-
-here = lambda *dirs: join(abspath(dirname(__file__)), *dirs)
-root = lambda *dirs: join(abspath(here("..","..")), *dirs)
-
-BASE_DIR = here("", "")
-print("BASE_DIR: " + BASE_DIR)
-
-APP_DIR  = root("")
-print(" APP_DIR: " + APP_DIR)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
@@ -60,6 +63,15 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites', 
+    'markup',
+    'ruleCategories',
+    'manualChecks',
+    'techniques',
+    'rules',
+    'rulesets',
+    'wcag20',
+    'reports',
 )
 
 MIDDLEWARE_CLASSES = (

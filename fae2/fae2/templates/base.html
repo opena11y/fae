@@ -29,7 +29,7 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-inverse" aria-labelledby="top-navbar-label">
+    <nav id="top-navbar-container" class="navbar navbar-inverse" aria-labelledby="top-navbar-label">
       <h2 id="top-navbar-label" class="sr-only">Main Navigation</h2>
       <div class="container">
 
@@ -48,7 +48,7 @@
           <ul class="nav navbar-nav">
             <li><a href="{% url 'run_report' %}">Run FAE</a></li>
             <li><a href="#">Reports</a></li>
-            <li><a href="#">Rulesets</a></li>
+            <li><a href="{% url 'rulesets' %}">Rulesets</a></li>
           </ul>  
 
           <ul class="nav navbar-nav navbar-right">

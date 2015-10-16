@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+echo Running java org.fae.util.FaeUtil $@
+
+[ -z "$FAE_HOME" ] && FAE_HOME="."
+
+if env | grep -q ^FAE_HOME=
+then
+  echo env FAE_HOME is already exported
+else
+  echo env FAE_HOME was not exported, but now it is
+  export FAE_HOME
+fi
+
+. $FAE_HOME/org/fae/util/classpath
+java org.fae.util.FaeUtil $@
