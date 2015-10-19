@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block breadcrumb %}
+    <li>Rulesets</li>
+{% endblock %}
+
+
+{% block content %}
+
+<h1>Rulesets</h1>    
+
+{% for rs in rulesets %}
+<h2>
+    {% if guidelines %}
+    <a href="{% url 'ruleset_wcag' rs.slug %}">
+    {% else %}
+    <a href="{% url 'ruleset' rs.slug %}">
+    {% endif %}
+    {{ rs.title }}
+    </a>
+</h2>
+
+<p>{{rs.tooltip}}</p>
+
+<p>
+{{rs.description_html|safe}}
+</p>            
+
+<ul>
+    <li class="text"><strong>Version:</strong> {{rs.version}}</li>            
+    <li class="num"><strong>Total Rules:</strong> {{rs.get_number_of_rules}}</li>            
+    <li class="num"><strong>Required Rules:</strong> {{rs.get_number_of_required_rules}}</li>            
+    <li class="num"><strong>Recommended Rules:</strong> {{rs.get_number_of_recommended_rules}}</li>            
+</ul>  
+{% endfor %}
+
+<h2 id="rsc">Ruleset Comparison</h2>  
+
+<nav aria-label="Ruleset Comparison Options">
+    <ul class="nav nav-tabs">
+          <li><a id="rsc_rc"   href="{% url 'rulesets' %}#rsc">by Rule Categories</a></li>
+          <li><a id="rsc_wcag" href="{% url 'rulesets_wcag' %}#rsc">by WCAG 2.0 Success Criteria</a></li>
+    </ul>
+</nav>
+
+
+
+
+{% block rulesets_comparison %}
+
+{% endblock %}
+
+{% endblock %}
+
+

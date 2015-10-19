@@ -2,28 +2,31 @@
 
 {% block rulesets_comparison %}
 
-{% for rg in rule_categories %}
-    <h3 id="{{ rg.slug }}" >{{ rg.title }}</h3>
+{% for rg in guidelines %}
+    <h3 id="{{ rg.id }}" >Guideline {{ rg }}</h3>
 
-    <table aria-labelledby="{{ rg.slug }}" class="table table-striped sortable">
+    {% for sc in rg.success_criteria.all %}    
+
+    {% if sc.rules.count %}
+    <h4 id="{{ sc.id }}" >{{ sc }} ({{ sc.show_level }})</h4>
+
+    <table aria-labelledby="{{ sc.id }}" class="table table-striped sortable">
         <thead>
             <tr>
                 <th>Rule ID</th>
                 <th>Summary</th>
-                <th><abbr title"WCAG 2.0 Level">Level</a></th>
-                <th><abbr title"WCAG 2.0 Success Criteria">SC</a></th>
+                <th>Rule Category</th>
                 {% for rs in rulesets %}
                 <th>{{ rs.title }}</th>
                 {% endfor %}
             </tr>
         </thead>
         <tbody>
-            {% for r in rg.rules.all %}
+            {% for r in sc.rules.all %}
             <tr>
                 <td>{{ r.nls_rule_id }}</td>
                 <td>{{ r.summary_html | safe }}</td>
-                <td>{{ r.wcag_primary.show_level_html | safe}}</td>
-                <td>{{ r.wcag_primary.show_number_html | safe }}</td>
+                <td>{{ r.category}}</td>
                 {% for rm in r.get_rule_mappings %}
                 {% if rm == '1' %}
                 <td>Required</td>
@@ -39,6 +42,8 @@
             {% endfor %}
         </tbody>
     </table>    
+    {% endif %}
+    {% endfor %}
 {% endfor %}
 
 {% endblock %}

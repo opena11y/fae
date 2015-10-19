@@ -89,11 +89,10 @@ class Ruleset(models.Model):
   def get_rules_by_rule_categories(self):
 
     class RuleCategoryItem(object):
-      rule_category = False
-      rules = []
 
       def __init__(self, rc):
         self.rule_category = rc
+        self.rule_mappings = []
 
 
     rcs = []
@@ -101,14 +100,55 @@ class Ruleset(models.Model):
     rule_categories = RuleCategory.objects.all()
 
     for rc in rule_categories:
-      print(str(rc))
 
       rc_item = RuleCategoryItem(rc)
-      rc_item.rules = RuleMapping.objects.filter(ruleset=self,rule__category=rc).order_by('rule__nls_rule_id')
+
+      for rm in self.rule_mappings.all():
+        if rm.rule.category == rc:
+          rc_item.rule_mappings.append(rm)
 
       rcs.append(rc_item)
 
     return rcs  
+
+
+  def get_rules_by_wcag(self):
+
+    class GuidelineItem(object):
+
+      def __init__(self, g):
+        self.guideline = g
+        self.success_criteria = []
+
+
+    class SuccessCriteriaItem(object):
+
+      def __init__(self, sc):
+        self.success_criterion = sc
+        self.rule_mappings = []
+
+
+    gs = []
+
+    guidelines = WCAG20_Guideline.objects.all()
+
+    for g in guidelines:
+
+      g_item = GuidelineItem(g)
+
+      for sc in g.success_criteria.all():
+
+        sc_item = GuidelineItem(g)
+
+        for rm in self.rule_mappings.all():
+          if rm.wcag_primary == sc:
+            sc_item.rule_mappings.append(rm)
+
+        g_item.success_criteria.append(sc_item)
+
+      gs.append(g_item)
+
+    return gs  
 
 
 

@@ -40,18 +40,15 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#" ttitl="Functional Accessibility Evaluator 2.0">FAE 2.0</a>
+          <a class="navbar-brand" href="{% url 'run_report' %}" aria-label="Run Report">Functional Accessibility Evaluator 2.0</a>
         </div>
 
         <div id="top-navbar" class="navbar-collapse collapse">
 
-          <ul class="nav navbar-nav">
-            <li><a href="{% url 'run_report' %}">Run FAE</a></li>
-            <li><a href="#">Reports</a></li>
-            <li><a href="{% url 'rulesets' %}">Rulesets</a></li>
-          </ul>  
+
 
           <ul class="nav navbar-nav navbar-right">
+            <li><a href="{% url 'rulesets' %}">Rulesets</a></li>
 
             <li class="dropdown">
               <a  href="#" 
@@ -91,8 +88,10 @@
     <nav id="breadcrumb-nav" aria-labelledby="breadcrumb-nav-label">
       <h2 id="breadcrumb-nav-label" class="sr-only">Breadcrumb Navigation</h2>
       <div class="container">
-        <ul class="nav navbar-nav">
-          <li><a href="#">Summary</a></li>
+        <ul class="breadcrumb">
+          <li><a href="{% url 'run_report' %}">Run</a></li>
+          {% block breadcrumb %}
+          {% endblock %}
         </ul>  
       </div>  
     </nav>  <!-- /container --> 
@@ -100,20 +99,40 @@
     <main>
       <div class="container">
 
-        {% if messages %}
-        <section aria-labelledby="messages-label">
-            <h2 id="messages-label" class="sr-only">Important Messages</h2>
-            {% for message in messages %}
-                <div class="alert {% if message.tags %}alert-{{ message.tags }}"{% endif %}>{{ message }}</div>
-            {% endfor %}
-        </section>    
-        {% endif %}
+        <div class="row">
 
-        <section id="content">
-        {% block content %}
+          <div class="col-xs-2 col-sm-2 col-md-3 col-lg-2">
 
-        {% endblock content %}
-        </section>
+            <nav>
+
+               <ul class="nav nav-pills nav-stacked">
+                  <li><a href="{% url 'run_report' %}">Run FAE</a></li>
+                  <li><a href="#">Report Processing</a></li>
+                  <li><a href="#">Archived Reports</a></li>
+                  <li><a href="#">Manage Reports</a></li>
+                </ul>  
+
+            </nav>
+          </div>
+
+          <div class="col-xs-10 col-sm-10 col-md-9 col-lg-10">
+          {% if messages %}
+            <section aria-labelledby="messages-label">
+                <h2 id="messages-label" class="sr-only">Important Messages</h2>
+                {% for message in messages %}
+                  <div class="alert {% if message.tags %}alert-{{ message.tags }}"{% endif %}>{{ message }}</div>
+                {% endfor %}
+            </section>    
+          {% endif %}
+
+            <section id="content">
+            {% block content %}
+
+            {% endblock content %}
+            </section>
+          </div>
+        </div>  
+
       </div>  
 
     </main> <!-- /container -->
@@ -179,6 +198,38 @@
       </script>
 
       <script type="text/javascript" src="{% static 'js/SkipTo.min.js' %}"></script>
+
+      <script type="text/javascript">
+
+        window.addEventListener('load', function() {
+
+          var url = window.location.href;
+
+          var links = document.querySelectorAll('li > a[href]');
+
+          for (var i = 0; i < links.length; i++) {
+            var link = links[i];
+
+            if (url === link.href ) {
+              link.parentNode.className = "active"
+            }
+          }
+
+        });
+
+        window.addEventListener('load', function() {
+
+          var tablist = document.querySelectorAll('[role=tablist]');
+
+          for (var i = 0; i < tablist.length; i++) {
+            tablist[i].removeAttribute('role');
+
+          }
+
+        });
+
+
+</script>
 
     {% endblock javascript %}
   </body>

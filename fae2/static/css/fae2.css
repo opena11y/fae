@@ -3,8 +3,12 @@
 }
 
 main h1 { font-size: 250%; }
-main h2 { font-size: 150%; }
-main h3 { font-size: 125%; }
+main h2 { font-size: 175%; }
+main h3 { font-size: 150%; }
+main h4 { 
+    margin-top: 1.5em;
+    font-size: 125%; 
+}
 
 .navbar-inverse .navbar-nav > li > a:focus,
 .navbar-inverse .navbar-nav > li > a:hover {
@@ -26,8 +30,3 @@ button[aria-controls="top-navbar"]:hover {
     margin-bottom: 0.5em;
 }
 
-#breadcrumb-nav .navbar-nav > li > a {
-    line-height: 1em;
-    padding-top: 2px;
-    padding-bottom: 2px;
-}

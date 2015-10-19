@@ -5,10 +5,13 @@
 
  <h1>Ruleset: {{ruleset.title}}</h1>    
 
- {% for rc_item in ruleset.get_rules_by_rule_categories %}
- <h2 id="rc{{rc_item.rule_category.id}}">{{ rc_item.rule_category.title }}</h2>
+ {% for g_item in ruleset.get_rules_by_wcag %}
+ <h2 id="g{{g_item.guideline.id}}">{{ g_item.guideline.title }}</h2>
+
+ {% for sc_item in g_item.success_criteria %}
+ <h3 id="sc{{sc_item.success_criterion.id}}">{{ sc_item.success_criterion.title }}</h3>
  <table class="table table-striped sortable" 
-        aria-labelledby="#rc{{rc_item.rule_category.id}}">
+        aria-labelledby="#sc{{sc_item.success_criterion.id}}">
    <thead>
     <tr>
         <th>Rule ID</th>
@@ -19,7 +22,7 @@
     </tr>
    </thead>
    <tbody>
- {% for rm in rc_item.rule_mappings %}
+ {% for rm in sc_item.rule_mappings %}
     <tr>
         <td>{{rm.rule.nls_rule_id}}</td>
         <td>{{rm.rule.summary_html|safe}}</td>
