@@ -2,12 +2,15 @@ from django.db import models
 
 # Ruleset models
 
-import utils.CONST
+from utils.CONST import *
 from utils.utilities import OAAMarkupToHTML, OAAMarkupToText
 import textile
 
 
 from ruleCategories.models import RuleCategory
+from wcag20.models import Guideline
+
+
 
 ## Rule Sets (e.g. WCAG20_ARIA_STRICT)
 class Ruleset(models.Model):
@@ -36,7 +39,7 @@ class Ruleset(models.Model):
     ordering = ['title_text']
     
   def __str__(self):
-      return self.title_text 
+      return self.title_text
 
   def save(self):
     if not self.slug:
@@ -86,70 +89,4 @@ class Ruleset(models.Model):
     
     return False
 
-  def get_rules_by_rule_categories(self):
-
-    class RuleCategoryItem(object):
-
-      def __init__(self, rc):
-        self.rule_category = rc
-        self.rule_mappings = []
-
-
-    rcs = []
-
-    rule_categories = RuleCategory.objects.all()
-
-    for rc in rule_categories:
-
-      rc_item = RuleCategoryItem(rc)
-
-      for rm in self.rule_mappings.all():
-        if rm.rule.category == rc:
-          rc_item.rule_mappings.append(rm)
-
-      rcs.append(rc_item)
-
-    return rcs  
-
-
-  def get_rules_by_wcag(self):
-
-    class GuidelineItem(object):
-
-      def __init__(self, g):
-        self.guideline = g
-        self.success_criteria = []
-
-
-    class SuccessCriteriaItem(object):
-
-      def __init__(self, sc):
-        self.success_criterion = sc
-        self.rule_mappings = []
-
-
-    gs = []
-
-    guidelines = WCAG20_Guideline.objects.all()
-
-    for g in guidelines:
-
-      g_item = GuidelineItem(g)
-
-      for sc in g.success_criteria.all():
-
-        sc_item = GuidelineItem(g)
-
-        for rm in self.rule_mappings.all():
-          if rm.wcag_primary == sc:
-            sc_item.rule_mappings.append(rm)
-
-        g_item.success_criteria.append(sc_item)
-
-      gs.append(g_item)
-
-    return gs  
-
-
-
-
+ 

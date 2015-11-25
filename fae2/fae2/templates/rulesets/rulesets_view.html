@@ -21,7 +21,7 @@
             {% for r in rg.rules.all %}
             <tr>
                 <td>{{ r.nls_rule_id }}</td>
-                <td>{{ r.summary_html | safe }}</td>
+                <td><a href="{% url 'rulesets_rule' r.rule_id %}">{{ r.summary_html | safe }}</a></td>
                 <td>{{ r.wcag_primary.show_level_html | safe}}</td>
                 <td>{{ r.wcag_primary.show_number_html | safe }}</td>
                 {% for rm in r.get_rule_mappings %}

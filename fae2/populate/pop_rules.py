@@ -14,12 +14,10 @@ from rules.models           import Rule
 from rules.models           import RuleScope
 from rules.models           import RuleGroup
 from rules.models           import NodeResultMessage
-from rules.models           import InformationalLink
 from ruleCategories.models  import RuleCategory
-from techniques.models      import Technique
-from manualChecks.models    import ManualCheck
-from wcag20.models          import WCAG20_SuccessCriterion
+from wcag20.models          import SuccessCriterion
 from markup.models          import ElementDefinition
+from utils.utilities        import OAAMarkupToHTML
 
 from django.contrib.auth.models import User
 
@@ -30,25 +28,8 @@ data = json.load(json_data)
 json_data.close()
 
 # Rule.objects.all().delete()
-# ManualCheck.objects.all().delete()
-# Technique.objects.all().delete()
 # InformationalLink.objects.all().delete()
 
-def addTechnique(rule, id, title, url, date):
-  if title != "":
-    if url != "":
-      tech = Technique(rule=rule, technique_id=id, title=title, url=url, updated_date=date)
-    else:  
-      tech = Technique(rule=rule, technique_id=id, title=title, updated_date=date)
-    tech.save()
-
-def addManualCheck(rule, title, url, date):
-  if title != "": 
-    if url != "":
-      mc = ManualCheck(rule=rule, title=title, url=url, updated_date=date)
-    else:  
-      mc = ManualCheck(rule=rule, title=title, updated_date=date)
-    mc.save()
 
 def addInformationalLink(rule, type, title, url, date):
   print("  Information link title: " + title)
@@ -172,11 +153,9 @@ for r in data['rules']:
      rule.primary_property=r['primary_property']
      rule.resource_properties=resource_properties
      rule.validation=r['validate']
-     rule.wcag_primary = WCAG20_SuccessCriterion.get_by_wcag_number(r['wcag_primary'])
+     rule.wcag_primary = SuccessCriterion.get_by_wcag_number(r['wcag_primary'])
      rule.updated_date=r['last_updated']
      
-     Technique.objects.filter(rule=rule).delete()  
-     ManualCheck.objects.filter(rule=rule).delete()  
      InformationalLink.objects.filter(rule=rule).delete()
      NodeResultMessage.objects.filter(rule=rule).delete()  
      
@@ -184,14 +163,14 @@ for r in data['rules']:
      print("  Creating Rule: " + r['nls_rule_id'])
      resource_properties = ",".join(r['resource_properties'])
      rule = Rule(rule_id=r['rule_id'],scope=scope,group=group,language_dependancy=r['language_dependency'],primary_property=r['primary_property'],resource_properties=resource_properties,validation=r['validate'],updated_date=r['last_updated'])
-     rule.wcag_primary = WCAG20_SuccessCriterion.get_by_wcag_number(r['wcag_primary'])
+     rule.wcag_primary = SuccessCriterion.get_by_wcag_number(r['wcag_primary'])
      rule.category = RuleCategory.objects.get(rule_category_code=r['rule_category'])
      
    rule.save()
 
    rule.wcag_related.clear();  
    for related in r['wcag_related']:
-      rule.wcag_related.add(WCAG20_SuccessCriterion.get_by_wcag_number(related)) 
+      rule.wcag_related.add(SuccessCriterion.get_by_wcag_number(related)) 
 
    rule.target_resources.clear();  
    for m in r['target_resources']:
@@ -208,47 +187,25 @@ for r in data['rules']:
    
    rule.target_resource_desc = r['target_resource_desc']
 
-   p = r['purpose']
+   rule.purpose = ""
+   for p in r['purpose']:
+     print("PURPOSE: " + p)
+     rule.purpose += '* ' + OAAMarkupToHTML(p) + '\n'
 
-   print("TYPE: " + str(type(p)))
+   rule.techniques = ""
+   for t in r['techniques']:
+     print("TECHNIQUE: " + t)
+     rule.techniques += '* ' + OAAMarkupToHTML(t) + '\n'
 
-   l = len(p)
-
-   if l > 0:
-     rule.purpose_1 = r['purpose'][0]
-   else:  
-     rule.purpose_1 = ""
-     
-   if l > 1:
-     rule.purpose_2 = r['purpose'][1]
-   else:  
-     rule.purpose_2 = ""
-          
-   if l > 2:
-     rule.purpose_3 = r['purpose'][2]
-   else:  
-     rule.purpose_3 = ""
-     
-   if l > 3:
-     rule.purpose_4 = r['purpose'][3]
-   else:  
-     rule.purpose_4 = ""
+   rule.manual_checks = ""
+   for mc in r['manual_checks']:
+     print("MC: " + mc)
+     rule.manual_checks += '* ' + OAAMarkupToHTML(mc) + '\n'
 
    rule.save()
      
-   i = 1
-   for tech in r['techniques']:
-     tech_id = r['rule_id'] + "_T" + str(i)
-     i += 1
-     addTechnique(rule, tech_id, tech, '', r['last_updated'])
-
-   for mc in r['manual_checks']:
-     addManualCheck(rule, mc, '', r['last_updated'])
-
-   informational_links = r['informational_links']
-   
    for info in r['informational_links']:
-     addInformationalLink(rule, info['type'], info['title'], info['url'], r['last_updated'])
+      rule.informational_links += '* [' + OAAMarkupToHTML(info['title']) + '](' + info['url'] + ')\n'    
 
    for message in r['rule_result_messages']:
      addRuleResultMessage(rule, message, r['rule_result_messages'][message], r['last_updated'])

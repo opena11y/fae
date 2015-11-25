@@ -63,15 +63,17 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites', 
+    'django.contrib.sites',
+    'accounts',
     'markup',
+    'markupInfo',
+    'pageResults',
+    'reports',
     'ruleCategories',
-    'manualChecks',
-    'techniques',
     'rules',
     'rulesets',
     'wcag20',
-    'reports',
+    'websiteResults',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -98,6 +100,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'fae2.context_processors.site'
             ],
         },
     },
@@ -145,3 +148,5 @@ STATIC_ROOT = join(BASE_DIR, STATIC_URL)
 STATICFILES_DIRS = (
   join(APP_DIR, "fae2/static"),
 )
+
+LOGIN_REDIRECT_URL='/'

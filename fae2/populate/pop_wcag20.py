@@ -10,18 +10,18 @@ django.setup()
 
 """This file is for populating the database with WCAG 2.0 References"""
 
-from wcag20.models import WCAG20_Principle, WCAG20_Guideline, WCAG20_SuccessCriterion
+from wcag20.models import Principle, Guideline, SuccessCriterion
 
-# WCAG20_Principle.objects.all().delete()
-# WCAG20_Guideline.objects.all().delete()
-# WCAG20_SuccessCriterion.objects.all().delete()
+# Principle.objects.all().delete()
+# Guideline.objects.all().delete()
+# SuccessCriterion.objects.all().delete()
 
 def create_wcag20(wcag20):
     print("wcag 2.0")
     for principle in wcag20:
         principle_url = 'http://www.w3.org/TR/WCAG20/#' + principle[2]
         try:
-          wcag20_principle = WCAG20_Principle.objects.get(num=principle[0])
+          wcag20_principle = Principle.objects.get(num=principle[0])
           print("  " +  wcag20_principle.title + " (found)")
           
           wcag20_principle.title = principle[1]
@@ -29,7 +29,7 @@ def create_wcag20(wcag20):
           print(principle[1] + " (updated)")
         
         except:
-          wcag20_principle = WCAG20_Principle(num=principle[0], title=principle[1], url=principle_url)
+          wcag20_principle = Principle(num=principle[0], title=principle[1], url=principle_url)
           print(principle[1] + " (CREATED)")
           
         wcag20_principle.save()
@@ -37,14 +37,14 @@ def create_wcag20(wcag20):
         for guideline in principle[3]:
             guideline_url = 'http://www.w3.org/TR/WCAG20/#' + guideline[2]
             try:
-              wcag20_guideline       = WCAG20_Guideline.objects.get(principle=wcag20_principle, num=guideline[0])
+              wcag20_guideline       = Guideline.objects.get(principle=wcag20_principle, num=guideline[0])
               print("  " +  wcag20_guideline.title + " (found)")
               wcag20_guideline.title = guideline[1]
               wcag20_guideline.url   = guideline_url
               print("  " + guideline[1] + " (updated)")
               
             except:  
-              wcag20_guideline = WCAG20_Guideline(principle=wcag20_principle, num=guideline[0], title=guideline[1], url=guideline_url)
+              wcag20_guideline = Guideline(principle=wcag20_principle, num=guideline[0], title=guideline[1], url=guideline_url)
               print("  " + guideline[1] + " (CREATED)")
               
             wcag20_guideline.save()
@@ -55,7 +55,7 @@ def create_wcag20(wcag20):
                 understand_url  = 'http://www.w3.org/TR/WCAG20/' + requirement[2] + '.html'
                 
                 try: 
-                  wcag20_requirement = WCAG20_SuccessCriterion.objects.get(guideline=wcag20_guideline, num=requirement[0])
+                  wcag20_requirement = SuccessCriterion.objects.get(guideline=wcag20_guideline, num=requirement[0])
                   print("  " +  wcag20_requirement.title + " (found)")
                   wcag20_requirement.title = requirement[1]
                   wcag20_requirement.url = requirement_url
@@ -64,7 +64,7 @@ def create_wcag20(wcag20):
                   wcag20_requirement.level = requirement[3]
                   print("    " + requirement[1] + " (updated)")
                 except:
-                  wcag20_requirement = WCAG20_SuccessCriterion(guideline=wcag20_guideline, num=requirement[0], title=requirement[1], url=requirement_url, url_meet=meet_url, url_understand=understand_url, level=requirement[3])
+                  wcag20_requirement = SuccessCriterion(guideline=wcag20_guideline, num=requirement[0], title=requirement[1], url=requirement_url, url_meet=meet_url, url_understand=understand_url, level=requirement[3])
                   print("    " + requirement[1]  + " (CREATED)")
                   
                 wcag20_requirement.save()

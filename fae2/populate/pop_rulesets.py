@@ -15,7 +15,11 @@ I empty it. Run as a standalone script!"""
 
 from django.core.exceptions import ObjectDoesNotExist
 from rulesets.models import Ruleset
-from rules.models import Rule, RuleMapping
+from rules.models import Rule
+from rules.models import RuleMapping
+from rules.models import RuleCategoryRuleMapping
+from rules.models import GuidelineRuleMapping
+from rules.models import SuccessCriterionRuleMapping
 
 from django.contrib.auth.models import User
 
@@ -28,6 +32,10 @@ json_data.close()
 u = User.objects.all()[0]
 
 RuleMapping.objects.all().delete()
+RuleCategoryRuleMapping.objects.all().delete()
+GuidelineRuleMapping.objects.all().delete()
+SuccessCriterionRuleMapping.objects.all().delete()
+
 
 def create_ruleset(ruleset_id, version, title, tooltip, desc, author, author_url, date, editor):
 
@@ -67,6 +75,33 @@ def create_rule_mapping(ruleset, rule_id, required, enabled):
       print("  Creating Rule Mapping for " + ruleset.ruleset_id + " and rule " + rule.nls_rule_id)
       rm = RuleMapping(ruleset=ruleset, rule=rule, required=required, enabled=enabled)
     rm.save()
+
+    # Update rule category mapping
+
+    try:
+      rcrm = RuleCategoryRuleMapping.objects.get(ruleset=ruleset, rule_category=rule.category)
+    except ObjectDoesNotExist:
+      rcrm = RuleCategoryRuleMapping(ruleset=ruleset, rule_category=rule.category)
+      rcrm.save()  
+    rcrm.rule_mappings.add(rm)
+    rcrm.save()  
+
+    try:
+      grm = GuidelineRuleMapping.objects.get(ruleset=ruleset, guideline=rule.wcag_primary.guideline)
+    except ObjectDoesNotExist:
+      grm = GuidelineRuleMapping(ruleset=ruleset, guideline=rule.wcag_primary.guideline)
+      grm.save()  
+    grm.rule_mappings.add(rm)
+    grm.save()  
+
+    try:
+      scrm = SuccessCriterionRuleMapping.objects.get(guideline_rule_mapping=grm, success_criterion=rule.wcag_primary)
+    except ObjectDoesNotExist:
+      scrm = SuccessCriterionRuleMapping(guideline_rule_mapping=grm, success_criterion=rule.wcag_primary)
+      scrm.save()  
+    scrm.primary_mappings.add(rm)
+    scrm.save()  
+
     return rm
   except ObjectDoesNotExist:
     print("  Could not find rule with id: " + rule_id)

@@ -2,8 +2,11 @@ from django.contrib import admin
 from .models import Rule 
 from .models import RuleScope 
 from .models import RuleGroup 
-from .models import RuleMapping 
-from .models import InformationalLink, NodeResultMessage
+from .models import RuleMapping
+from .models import RuleCategoryRuleMapping 
+from .models import GuidelineRuleMapping 
+from .models import SuccessCriterionRuleMapping 
+from .models import NodeResultMessage
 
 class RuleAdmin(admin.ModelAdmin):
     list_display = ('nls_rule_id', 'summary', 'wcag_primary', 'category', 'scope', 'group')
@@ -28,17 +31,27 @@ class NodeResultMessageAdmin(admin.ModelAdmin):
 
 admin.site.register(NodeResultMessage, NodeResultMessageAdmin)
 
-class InformationalLinkAdmin(admin.ModelAdmin):
-    list_display = ('rule', 'title', 'type', 'url')
-    list_filter = ('rule', 'type')
-
-admin.site.register(InformationalLink, InformationalLinkAdmin)
-
-
 class RuleMappingAdmin(admin.ModelAdmin):
     list_display = ('ruleset', 'rule', 'required', 'enabled')
     list_filter  = ('ruleset', 'rule', 'required', 'enabled')
 
 admin.site.register(RuleMapping, RuleMappingAdmin)
 
+class RuleCategoryRuleMappingAdmin(admin.ModelAdmin):
+    list_display = ('ruleset', 'rule_category')
+    list_filter  = ('ruleset', 'rule_category')
+
+admin.site.register(RuleCategoryRuleMapping, RuleCategoryRuleMappingAdmin)
+
+class GuidelineRuleMappingAdmin(admin.ModelAdmin):
+    list_display = ('ruleset', 'guideline')
+    list_filter  = ('ruleset', 'guideline')
+
+admin.site.register(GuidelineRuleMapping, GuidelineRuleMappingAdmin)
+
+class SuccessCriterionRuleMappingAdmin(admin.ModelAdmin):
+    list_display = ('guideline_rule_mapping', 'success_criterion')
+    list_filter  = ('guideline_rule_mapping__ruleset', 'success_criterion')
+
+admin.site.register(SuccessCriterionRuleMapping, SuccessCriterionRuleMappingAdmin)
 

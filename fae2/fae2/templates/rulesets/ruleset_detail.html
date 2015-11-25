@@ -1,0 +1,12 @@
+<p>{{ruleset.tooltip}}</p>
+
+<p>
+{{ruleset.description_html|safe}}
+</p>            
+
+<ul>
+    <li class="text"><strong>Version:</strong> {{ruleset.version}}</li>            
+    <li class="num"><strong>Total Rules:</strong> {{ruleset.get_number_of_rules}}</li>            
+    <li class="num"><strong>Required Rules:</strong> {{ruleset.get_number_of_required_rules}}</li>            
+    <li class="num"><strong>Recommended Rules:</strong> {{ruleset.get_number_of_recommended_rules}}</li>            
+</ul>   

@@ -1,33 +1,43 @@
 {% extends "base.html" %}
 
+{% block breadcrumb %}
+    <li><a href="{{ rulesets_url }}">Rulesets</a></li>
+    <li>Ruleset</li>
+{% endblock %}
+
 
 {% block content %}
 
- <h1>Ruleset: {{ruleset.title}}</h1>    
+ <h1>Ruleset: {{ruleset.title}}</h1>   
 
- {% for g_item in ruleset.get_rules_by_wcag %}
- <h2 id="g{{g_item.guideline.id}}">{{ g_item.guideline.title }}</h2>
+ {% include "rulesets/ruleset_detail.html" %}
 
- {% for sc_item in g_item.success_criteria %}
- <h3 id="sc{{sc_item.success_criterion.id}}">{{ sc_item.success_criterion.title }}</h3>
+<nav aria-label="Ruleset Comparison Options">
+    <ul class="nav nav-tabs">
+          <li><a id="rsc_rc"   href="{% url 'ruleset' ruleset.slug %}">by Rule Categories</a></li>
+          <li class="active"><a id="rsc_wcag" href="{% url 'ruleset_wcag' ruleset.slug %}">by WCAG 2.0 Success Criteria</a></li>
+    </ul>
+</nav>
+
+ {% for g_item in ruleset.gl_mappings.all %}
+ <h2 id="g{{g_item.guideline.id}}">Guideline {{ g_item.guideline }}</h2>
+
+ {% for sc_item in g_item.sc_mappings.all %}
+ <h3 id="sc{{sc_item.success_criterion.id}}">Success Criterion {{ sc_item.success_criterion}} ({{ sc_item.success_criterion.show_level }})</h3>
  <table class="table table-striped sortable" 
         aria-labelledby="#sc{{sc_item.success_criterion.id}}">
    <thead>
     <tr>
         <th>Rule ID</th>
         <th>Summary</th>
-        <th>Level</th>
-        <th><abbr title="Success Criterion">SC</abbr></th>
         <th>Required</th>
     </tr>
    </thead>
    <tbody>
- {% for rm in sc_item.rule_mappings %}
+ {% for rm in sc_item.primary_mappings.all %}
     <tr>
         <td>{{rm.rule.nls_rule_id}}</td>
-        <td>{{rm.rule.summary_html|safe}}</td>
-        <td>{{rm.rule.wcag_primary.show_level_html_code|safe}}</td>
-        <td>{{rm.rule.wcag_primary.show_number_html_code|safe}}</td>
+        <td><a href="{% url 'ruleset_rule_wcag' ruleset.slug rm.rule.rule_id %}">{{rm.rule.summary_html|safe}}</a></td>
         {% if rm.required %}
         <td>Yes</td>
         {% else %}
@@ -38,6 +48,7 @@
    </tbody>
 
 </table>
+ {% endfor %}
  {% endfor %}
 
 {% endblock %}

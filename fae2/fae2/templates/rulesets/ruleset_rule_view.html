@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block breadcrumb %}
+    <li><a href="{{ rulesets_url }}">Rulesets</a></li>
+    <li><a href="{{ ruleset_url }}">Ruleset</a></li>
+    <li>Rule</li>
+{% endblock %}
+
+{% block content %}
+
+<h1>Rule: {{rule.summary_html|safe}}</h1>    
+
+{% include "rulesets/rule_detail.html" %}
+
+{% endblock %}
+
+

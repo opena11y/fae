@@ -4,14 +4,15 @@ from django.contrib.auth.models import User
 import re
 import utils.CONST
 from utils.utilities import OAAMarkupToText, OAAMarkupToHTML
-import textile
+import markdown
 
 from django.core.exceptions import ObjectDoesNotExist
 
 
 from markup.models          import ElementDefinition
 from ruleCategories.models  import RuleCategory
-from wcag20.models          import WCAG20_SuccessCriterion
+from wcag20.models          import Guideline
+from wcag20.models          import SuccessCriterion
 from rulesets.models        import Ruleset
 
 
@@ -116,8 +117,8 @@ class Rule(models.Model):
   scope               = models.ForeignKey(RuleScope, related_name='rules')
   group               = models.ForeignKey(RuleGroup, related_name='rules')
   category            = models.ForeignKey(RuleCategory, related_name='rules') 
-  wcag_primary        = models.ForeignKey(WCAG20_SuccessCriterion, related_name='rules')
-  wcag_related        = models.ManyToManyField(WCAG20_SuccessCriterion, related_name='related_rules')  
+  wcag_primary        = models.ForeignKey(SuccessCriterion, related_name='rules')
+  wcag_related        = models.ManyToManyField(SuccessCriterion, related_name='related_rules')  
   target_resources    = models.ManyToManyField(ElementDefinition, related_name='rules') 
   primary_property    = models.CharField('primary attribute or property used by the rule', max_length=64, default='')
   resource_properties = models.CharField('Comma separated list of cache properties and attributes used by the rule', max_length=250)
@@ -136,14 +137,18 @@ class Rule(models.Model):
   target_resource_desc      = models.CharField('Summary of the types of element definitions this rule tests', max_length=512)
   target_resource_desc_html = models.CharField(max_length=512)
   
-  purpose_1      = models.CharField('Purpose 1 (i.e how does the rule help people with disabilites)', max_length=512)
-  purpose_1_html = models.CharField(max_length=512, default="")
-  purpose_2      = models.CharField('Purpose 2', null=True, blank=True, max_length=512)
-  purpose_2_html = models.CharField(max_length=512, default="")
-  purpose_3      = models.CharField('Purpose 3', null=True, blank=True, max_length=512)
-  purpose_3_html = models.CharField(max_length=512, default="")
-  purpose_4      = models.CharField('Purpose 4', null=True, blank=True, max_length=512)
-  purpose_4_html = models.CharField(max_length=512, default="")
+  purpose        = models.TextField('Purpose (i.e how does the rule help people with disabilites)', default="")
+  purpose_html   = models.TextField(default="")
+
+  techniques      = models.TextField('Techniques', default="")
+  techniques_html = models.TextField(default="")
+  
+  manual_checks      = models.TextField('Manual Checks', default="")
+  manual_checks_html = models.TextField(default="")
+
+  informational_links       = models.TextField('Informational Links', default="")
+  informational_links_html  = models.TextField(default="")
+  
   
   rule_result_mc_s     = models.CharField('Rule Result Message: One manual check'            , null=True, blank=True, max_length=512)
   rule_result_mc_p     = models.CharField('Rule Result Message: More than one manual check'  , null=True, blank=True, max_length=512)
@@ -168,14 +173,20 @@ class Rule(models.Model):
     self.summary_text                 = OAAMarkupToText(self.summary)
     if self.target_resource_desc:
       self.target_resource_desc_html    = OAAMarkupToHTML(self.target_resource_desc)
-    if self.purpose_1:
-      self.purpose_1_html               = OAAMarkupToHTML(self.purpose_1)
-    if self.purpose_2:
-      self.purpose_2_html               = OAAMarkupToHTML(self.purpose_2)
-    if self.purpose_2:
-      self.purpose_3_html               = OAAMarkupToHTML(self.purpose_3)
-    if self.purpose_2:
-      self.purpose_4_html               = OAAMarkupToHTML(self.purpose_4)
+
+    if self.purpose:
+      self.purpose_html = markdown.markdown(self.purpose)
+
+    if self.techniques:
+      self.techniques_html = markdown.markdown(self.techniques)
+
+    if self.manual_checks:
+      self.manual_checks_html = markdown.markdown(self.manual_checks)
+
+    if self.informational_links:
+      self.informational_links_html = markdown.markdown(self.informational_links)
+
+
     super(Rule, self).save() # Call the "real" save() method.
 
   def get_scope(self):
@@ -283,41 +294,6 @@ class NodeResultMessage(models.Model):
 
 
 
-## Information link
-INFORMATIONAL_LINK_TYPE = (
-    ('0', 'Unknown'),
-    ('1', 'W3C Specification'),
-    ('2', 'WCAG 2.0 Technique'),
-    ('3', 'Technique'),
-    ('4', 'Example'),
-    ('5', 'Manual Check Proceedure'),
-    ('6', 'Authoring Tool'),
-    ('7', 'Code Library or Product Documentation'),
-    ('8', 'Other Resource'),
-)
-
-
-class InformationalLink(models.Model):
-  id = models.AutoField(primary_key=True)
-  
-  updated_date   = models.DateTimeField(editable=False)
-
-  rule         = models.ForeignKey(Rule, related_name="informational_links")
-  title        = models.CharField('Information Link Title', max_length=512)
-  title_html   = models.CharField(max_length=512)
-  type         = models.CharField('Type of Information Link',choices=INFORMATIONAL_LINK_TYPE, default='0', max_length=8)  
-  url          = models.URLField('Information Link URL', max_length=512);
-
-  class Meta:
-        ordering = ['rule', 'title', 'type', 'url']
-        verbose_name="Informational Link"
-        verbose_name_plural="Informational Links"
-
-  def save(self):
-    self.title_html = OAAMarkupToHTML(self.title)
-    super(InformationalLink, self).save() # Call the "real" save() method.
-
-
 class RuleMapping(models.Model):
   id             = models.AutoField(primary_key=True)
   
@@ -327,7 +303,53 @@ class RuleMapping(models.Model):
   enabled  = models.BooleanField(default=True)      
 
   class Meta:
-    ordering = ['ruleset', 'rule__wcag_primary']
+    ordering = ['rule__nls_rule_id']
 
   def __str__(self):
     return str(self.ruleset) + "-" + str(self.rule) + ": " + str(self.required)
+
+
+class RuleCategoryRuleMapping(models.Model):
+  id             = models.AutoField(primary_key=True)
+  
+  ruleset        = models.ForeignKey(Ruleset, related_name='rc_mappings')  
+  rule_category  = models.ForeignKey(RuleCategory)  
+  rule_mappings  = models.ManyToManyField(RuleMapping)
+
+  class Meta:
+    ordering = ['rule_category',]
+
+  def __str__(self):
+    return str(self.ruleset) + ": " + str(self.rule_category)
+ 
+
+class GuidelineRuleMapping(models.Model):
+  id             = models.AutoField(primary_key=True)
+  
+  ruleset        = models.ForeignKey(Ruleset, related_name='gl_mappings')  
+  guideline      = models.ForeignKey(Guideline)  
+  rule_mappings  = models.ManyToManyField(RuleMapping)
+
+  class Meta:
+    ordering = ['guideline',]
+
+  def __str__(self):
+    return str(self.ruleset) + ": " + str(self.guideline)
+ 
+
+class SuccessCriterionRuleMapping(models.Model):
+  id             = models.AutoField(primary_key=True)
+  
+  guideline_rule_mapping = models.ForeignKey(GuidelineRuleMapping, related_name='sc_mappings')  
+  success_criterion      = models.ForeignKey(SuccessCriterion)  
+  primary_mappings       = models.ManyToManyField(RuleMapping, related_name='primary_mappings')
+  related_mappings       = models.ManyToManyField(RuleMapping, related_name='related_mappings')
+
+  class Meta:
+    ordering = ['success_criterion',]
+
+  def __str__(self):
+    return str(self.guideline_rule_mapping.ruleset) + ": " + str(self.success_criterion)
+
+
+

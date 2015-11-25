@@ -18,10 +18,15 @@ from django.contrib import admin
 
 from reports import views
 
+from accounts.views import Logout
+
 urlpatterns = [
     url(r'^admin/',   include(admin.site.urls)),
+    url(r'^registration/', include('django.contrib.auth.urls')),
+    url(r'^logout/$', Logout.as_view(), name='logout'),
     # fae2 specific 
     url(r'^',           include('reports.urls')),
     url(r'^abouts/',    include('abouts.urls')),
+    url(r'^accounts/',  include('accounts.urls')),
     url(r'^rulesets/',  include('rulesets.urls')),
 ]

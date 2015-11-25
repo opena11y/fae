@@ -1,9 +1,143 @@
 {% extends "base.html" %}
-
-
+{% load staticfiles i18n %}
 {% block content %}
   <h1>Run Report</h1>
 
+<form action="{% url 'run_report' %}" method="post">
+    {% csrf_token %}
+
+    <input type="button" 
+           onclick="getLastReport()" 
+           {% if report_nav.wser.url == '' %}disabled{% endif %} 
+           value="Get Last Report Settings" 
+           title="You can import a previous report settings into this form by visiting the archived report just before you come to this form"/>
+
+    <div class="input">
+        <label for="id_input_url">URL</label>
+        <div class="error">
+        <input 
+            id="id_input_url"
+            onkeyup="enableSubmit()"
+            onblur="enableSubmit()"
+            name="url"
+            required
+            value="{{form.url.value}}"
+            {% if form.url.errors|length %}aria-invalid="true"{% endif %}
+            size="60"
+            title="URL must start with http:// or https://, example: http://www.somewhere.org"/> 
+        {% if form.url.errors|length %}
+        <label class="error" for="id_input_url">{% for error in form.url.errors %}{{error}}{% endfor %}</label>
+        {% endif %}
+        </div>
+    </div>
+
+    <div class="input">
+        <label for="id_input_title">Title</label>
+        <div class="error">
+        <input 
+            id="id_input_title"
+            onkeyup="enableSubmit()"
+            onblur="enableSubmit()"
+            name="title"
+            required
+            {% if form.title.errors|length %}aria-invalid="true"{% endif %}
+            value="{{form.title.value}}"
+            size="80"/>
+        {% if form.title.errors|length %}
+        <label class="error" for="id_input_title">{% for error in form.title.errors %}{{error}}{% endfor %}</label>
+        {% endif %}
+        </div>
+    </div>
+    
+    <fieldset>
+        {% if form.depth.errors|length %}
+        <legend class="error">{{form.depth.label}}: {% for error in form.depth.errors %}{{error}}{% endfor %}</legend>)
+        {% else %}
+        <legend>{{form.depth.label}}</legend>
+        {% endif %}
+        {% for choice in form.depth.field.choices %}
+         <div class="fae20_radio">
+            <input
+                id="depth_{{ forloop.counter }}"
+                type="radio"
+                name="depth"
+                value="{{choice.0}}"
+                {% ifequal form.depth.value choice.0 %}
+                checked="checked"
+                {% endifequal %}
+                onclick="updateFollow()"
+            />
+            <label for="depth_{{ forloop.counter }}">{{choice.1}}</label>
+        </div>
+        {% endfor %}
+    </fieldset>
+
+    <fieldset id="id_following">
+        {% if form.follow.errors|length %}
+        <legend class="error">{{form.follow.label}}: {% for error in form.follow.errors %}{{error}}{% endfor %}</legend>
+        {% else %}
+        <legend>{{form.follow.label}}</legend>
+        {% endif %}
+        
+        {% for choice in form.follow.field.choices %}
+        <div class="fae20_radio">
+            <input
+                id="follow_{{ forloop.counter }}"
+                type="radio"
+                name="follow"
+                value="{{choice.0}}"
+                {% ifequal form.follow.value choice.0 %}
+                checked
+                {% endifequal %}
+            />
+            <label for="follow_{{ forloop.counter }}">{{choice.1}}</label>
+        </div>
+        {% endfor %}
+        </ul>
+    </fieldset>    
+
+
+    <fieldset>
+        
+        {% if form.ruleset.errors|length %}
+        <legend class="error">{{form.ruleset.label}}: {% for error in form.ruleset.errors %}{{error}}{% endfor %}</legend>
+        {% else %}
+        <legend>{{form.ruleset.label}}</legend>
+        {% endif %}
+
+
+        {% for choice in form.ruleset.field.choices %}
+        <div class="fae20_radio">
+            <input
+                id="ruleset_{{ forloop.counter }}"
+                type="radio"
+                name="ruleset"
+                value="{{choice.0}}"
+                {% ifequal form.ruleset.value choice.0 %}
+                checked
+                {% endifequal %}
+            />
+            <label for="ruleset_{{ forloop.counter }}" {% ifequal 'ARIA_STRICT' choice.0 %}
+            title="WCAG 2.0 Level A and AA requirements using ARIA and HTML5 accessibility features."
+            {% else %}
+            title="WCAG 2.0 Level A and AA requirements using legacy HTML4 features, but allowing the use of ARIA and HTML5 accessibility features."
+            {% endifequal %}>{{choice.1}}</label>
+        </div>
+        {% endfor %}
+    </fieldset>
+    
+    <input id="id_submit" name="submit" type="submit" value="Evaluate"  title="You must enter a valid URL and a title before you can request a report"/>
+    
+
+</form>
+
+<script src="{% static 'js/url-validation.js' %}" type="text/javascript"></script>
+
+<script type="text/javascript">
+    
+   window.addEventListener('load', enableSubmit)
+
+</script>
 
 
 {% endblock %}

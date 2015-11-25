@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 ## WCAG Principal
-class WCAG20_Principle(models.Model):
+class Principle(models.Model):
   id      = models.AutoField(primary_key=True)
 
   title   = models.CharField(max_length=200)
@@ -27,7 +27,7 @@ class WCAG20_Principle(models.Model):
   
     self.number = str(self.num) + "."
       
-    super(WCAG20_Principle, self).save() # Call the "real" save() method. 
+    super(Principle, self).save() # Call the "real" save() method. 
 
   def number(self):
     return "%s."%(self.num)
@@ -42,10 +42,10 @@ import re
 
 ## WCAG Guideline
 
-class WCAG20_Guideline(models.Model):
+class Guideline(models.Model):
   id      = models.AutoField(primary_key=True)
   
-  principle = models.ForeignKey(WCAG20_Principle,related_name='guidelines')
+  principle = models.ForeignKey(Principle,related_name='guidelines')
   title     = models.CharField(max_length=200)
   num       = models.IntegerField()
   number    = models.CharField(max_length=8,default="none")
@@ -63,7 +63,7 @@ class WCAG20_Guideline(models.Model):
   
     self.number = str(self.principle.num) + "." + str(self.num)
       
-    super(WCAG20_Guideline, self).save() # Call the "real" save() method. 
+    super(Guideline, self).save() # Call the "real" save() method. 
      
   def requirements_set(self):
     return self.requirements.all()
@@ -103,10 +103,10 @@ WCAG20_LEVEL_HTML_CODE = (
     ('3', '<abbr title="WCAG 2.0 Level AAA">AAA</abbr>'),
 )
 
-class WCAG20_SuccessCriterion(models.Model):
+class SuccessCriterion(models.Model):
   id             = models.AutoField(primary_key=True)
 
-  guideline      = models.ForeignKey(WCAG20_Guideline,related_name='success_criteria')
+  guideline      = models.ForeignKey(Guideline,related_name='success_criteria')
   title          = models.TextField()
   level          = models.CharField(max_length=2,choices=WCAG20_LEVEL)  
   num            = models.IntegerField()
@@ -128,7 +128,7 @@ class WCAG20_SuccessCriterion(models.Model):
   
     self.number = str(self.guideline.principle.num) + "." + str(self.guideline.num) + "." + str(self.num)
       
-    super(WCAG20_SuccessCriterion, self).save() # Call the "real" save() method.  
+    super(SuccessCriterion, self).save() # Call the "real" save() method.  
          
   def get_rules(self):
 
@@ -172,5 +172,5 @@ class WCAG20_SuccessCriterion(models.Model):
   @staticmethod
   def get_by_wcag_number(num):
     parts = num.split('.')
-    return WCAG20_SuccessCriterion.objects.get(num=parts[2],guideline__num=parts[1],guideline__principle__num=parts[0])
+    return SuccessCriterion.objects.get(num=parts[2],guideline__num=parts[1],guideline__principle__num=parts[0])
 
