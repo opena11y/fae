@@ -33,7 +33,7 @@ class PageRuleScopeResultAdmin(admin.ModelAdmin):
 admin.site.register(PageRuleScopeResult, PageRuleScopeResultAdmin)
 
 class PageRuleResultAdmin(admin.ModelAdmin):
-    list_display = ('page_result', 'rule', 'result_value', 'elements_violation', 'elements_warning', 'elements_manual_check', 'elements_passed', 'implementation_score', 'implementation_status')
+    list_display = ('page_result', 'rule', 'result_value', 'elements_violation', 'elements_warning', 'elements_mc_identified', 'elements_mc_failed', 'elements_mc_passed', 'elements_mc_na', 'elements_passed', 'implementation_score', 'implementation_status')
     list_filter  = ('page_result', 'rule')
 
 admin.site.register(PageRuleResult, PageRuleResultAdmin)

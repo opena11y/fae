@@ -158,26 +158,63 @@ class PageRuleResult(RuleResult):
   page_gl_result  = models.ForeignKey(PageGuidelineResult,    related_name="page_rule_results")
   page_rs_result  = models.ForeignKey(PageRuleScopeResult,    related_name="page_rule_results")
 
-  message                = models.CharField("Rule Result Message", max_length=4096, default="none")
+  result_message  = models.CharField("Rule Result Message", max_length=4096, default="none")
 
   elements_passed        = models.IntegerField(default=0)
   elements_violation     = models.IntegerField(default=0)
   elements_warning       = models.IntegerField(default=0)
-  elements_manual_check  = models.IntegerField(default=0)
   elements_hidden        = models.IntegerField(default=0)
+
+  elements_mc_identified  = models.IntegerField(default=0)
+  elements_mc_passed      = models.IntegerField(default=0)
+  elements_mc_failed      = models.IntegerField(default=0)
+  elements_mc_na          = models.IntegerField(default=0)
 
   element_results_json   = models.TextField(default="", blank=True)
 
   class Meta:
     verbose_name        = "Page Rule Result"
     verbose_name_plural = "Page Rule Results"
-    ordering = ['-elements_violation', '-elements_warning', '-elements_manual_check', '-elements_passed', '-elements_hidden' ]
+    ordering = ['-elements_violation', '-elements_warning', '-elements_mc_identified', '-elements_passed', '-elements_hidden' ]
+
+  def calculate_implementation(self):
+    self.implementation_pass_fail_score  = -1  
+    self.implementation_score       = -1  
+    self.implementation_status      = "U"  
+
+#    debug('V: ' + str(self.elements_violation) + ' W: ' + str(self.elements_warning) + ' MC: ' + str(self.elements_manual_check) + ' P: ' + str(self.elements_passed))
+
+    total_pass_fail = self.elements_violation + self.elements_warning + self.elements_passed + self.elements_mc_passed + self.elements_mc_failed
+    total = self.elements_mc_identified - self.elements_mc_passed - self.elements_mc_failed - self.elements_mc_na
+    if total > 0:
+      total = total_pass_fail + total
+    else:
+      total = total_pass_fail
+      
+
+#    debug('TOTAL: ' + str(total))
+
+    passed = self.elements_passed+self.elements_mc_passed
+
+    if total:
+      self.implementation_pass_fail_score  =  (100 * passed) / total_pass_fail
+      self.implementation_score            =  (100 * passed) / total
+      self.implementation_status = "NI"  
+      if self.implementation_score > 50:
+        self.implementation_status = "PI"  
+      if self.implementation_score > 95:
+        self.implementation_status = "AC"  
+      if self.elements_passed == total:
+        self.implementation_status = "C"  
+    else:
+      self.implementation_status = "NA"  
+
+    self.save()  
+
 
   def __str__(self):
     return "Page Rule Result: " + self.message
 
-  def get_title(self):
-    return self.rule.summary_text   
 
   def get_id(self):
     return 'prr_' + self.id   

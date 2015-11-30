@@ -77,15 +77,15 @@ ERROR=True
 
 def debug(s):
   if DEBUG:
-    print ("[SAVE WEBSITE][DEBUG]: " + str(s))
+    print ("[SAVE WEBSITE][debug  ]: " + str(s))
 
 def info(s):
   if INFO:
-    print ("[SAVE WEBSITE][INFO]: " + str(s))
+    print ("[SAVE WEBSITE][info   ]: " + str(s))
 
 def error(s):
   if ERROR:
-    print ("[SAVE WEBSITE][ERROR]: " + str(s))
+    print ("[SAVE WEBSITE][**ERROR]: " + str(s))
 
 # ---------------------------------------------------------------
 #
@@ -228,13 +228,83 @@ rule_scope_refs = RuleScopeRefs()
 
 # ---------------------------------------------------------------
 #
+# DataResult (Abstract)
+#
+# ---------------------------------------------------------------
+
+class DataResult:
+
+  def __init__(self):
+
+    self.result_value = RULE_RESULT.NOT_APPLICABLE
+
+    self.implementation_pass_fail_score  = -1  
+    self.implementation_pass_fail_status = "U"      
+
+    self.implementation_score  = -1  
+    self.implementation_status = "U"  
+
+    self.manual_check_status = "NC"
+
+    self.cols = []
+    self.values = []
+
+  def addColumnValue(self,c,v):
+#    debug("[DataResult][addColumnValue] " + c + " " + str(v)) 
+    self.cols.append(c)
+    self.values.append(v)
+
+  def saveToDjango(self, table):
+
+    debug("[DataResult][saveToDjango] " + table + " " + str(len(self.cols)) + " " + str(len(self.values))) 
+
+    insert_str = "INSERT INTO \"" + table + "\" ( "
+    for col in self.cols:
+      insert_str += col + ", "
+    insert_str += "result_value, "
+    insert_str += "implementation_pass_fail_score, "
+    insert_str += "implementation_pass_fail_status, "
+    insert_str += "implementation_score, "
+    insert_str += "implementation_status, "
+    insert_str += "manual_check_status"
+    insert_str += ") VALUES ( "
+    for v in self.values:
+      v = str(v)
+#      debug("[DataResult][saveToDjango] " +  v + " " + str(v.isdigit())) 
+      if v.isdigit():
+        insert_str += v + ", "
+      else:
+        insert_str += "'" + v + "', "
+    insert_str +=  str(self.result_value) + ", "
+    insert_str +=  str(self.implementation_pass_fail_score) + ", "
+    insert_str +=  "'" + self.implementation_pass_fail_status + "', "
+    insert_str +=  str(self.implementation_score) + ", "
+    insert_str +=  "'" + self.implementation_status + "', "
+    insert_str +=  "'" + self.manual_check_status + "'"
+    insert_str +=  ")"
+
+ #   debug("[DataResult][saveToDjango] " + insert_str) 
+    
+    cursor = connection.cursor()
+    try:
+      cursor.execute(insert_str, [])
+    except:
+      error("[DataResult][saveToDjango] SQL insert error")
+      error("[DataResult][saveToDjango] " + insert_str)
+   
+   
+
+# ---------------------------------------------------------------
+#
 # DataRuleResult (Abstract)
 #
 # ---------------------------------------------------------------
 
-class DataRuleResult:
+class DataRuleResult(DataResult):
 
   def __init__(self):
+
+    super(DataRuleResult,self).__init__()
 
     self.sql_id = False
   
@@ -248,15 +318,26 @@ class DataRuleResult:
 
     self.rule_results = []
 
-    self.result_value = RULE_RESULT.NOT_APPLICABLE
+  def saveToDjango(self, table):
 
-    self.implementation_score  = -1  
-    self.implementation_status = "U"      
+    debug("DataRuleResult][saveToDjango] " + table + " " + str(len(self.cols)) + " " + str(len(self.values))) 
+
+    self.addColumnValue('rules_na', self.rules_na)  
+    self.addColumnValue('rules_passed', self.rules_passed)  
+    self.addColumnValue('rules_manual_check', self.rules_manual_check)  
+    self.addColumnValue('rules_warning', self.rules_warning)  
+    self.addColumnValue('rules_violation', self.rules_violation)  
+    self.addColumnValue('rules_with_hidden_content', self.rules_with_hidden_content)
+
+    super(DataRuleResult, self).saveToDjango(table)
+
 
   def __str__(self):
-    return "ID: %6d V: %6d W: %6d MC: %6d P: %6d NA: %6d RV: %2d Score: %3d Status: %s " % (self.sql_id, self.rules_violation, self.rules_warning, self.rules_manual_check, self.rules_passed, self.rules_na, self.result_value, self.implementation_score, self.implementation_status)
+    return "ID: %6d V: %6d W: %6d MC: %6d P: %6d NA: %6d RV: %2d Score: %3d Status: %s " % (self.sql_id, self.rules_violation, self.rules_warning, self.rules_mc_indentified, self.rules_passed, self.rules_na, self.result_value, self.implementation_score, self.implementation_status)
 
   def addPageRuleResult(self, prr):
+
+    debug("[DataRuleResult][addPageRuleResult] " + str(prr.result_value))
 
     if prr.elements_hidden > 0:
       self.rules_with_hidden_content += 1
@@ -269,6 +350,7 @@ class DataRuleResult:
     self.calculateImplementation()  
 
   def addRuleResult(self, r):
+
     if r.result_value == RULE_RESULT.NOT_APPLICABLE:
       self.rules_na += 1
     elif r.result_value == RULE_RESULT.PASS:
@@ -294,7 +376,9 @@ class DataRuleResult:
 
     self.result_value = RULE_RESULT.NOT_APPLICABLE
 
+    self.implementation_pass_fail_score  = -1  
     self.implementation_score  = -1  
+    self.implementation_pass_fail_status = "U"      
     self.implementation_status = "U"      
 
     for r in self.rule_results:
@@ -304,11 +388,23 @@ class DataRuleResult:
 
   def calculateImplementation(self):
 
+#    debug("[DataRuleResult][calculateImplementation] 1")
+
+    pass_fail_total = 0
+    pass_fail_count = 0
+    pass_fail_count_complete = 0
+
     total = 0
     count = 0
     count_complete = 0
 
     for r in self.rule_results:
+      if r.implementation_pass_fail_score >= 0:
+        pass_fail_total += r.implementation_pass_fail_score
+        pass_fail_count += 1
+        if r.implementation_pass_fail_status == "C":
+          pass_fail_count_complete += 1
+
       if r.implementation_score >= 0:
         total += r.implementation_score
         count += 1
@@ -318,6 +414,20 @@ class DataRuleResult:
       if r.result_value > self.result_value:
         self.result_value = r.result_value
 
+#    debug("[DataRuleResult][calculateImplementation] 2")
+    if pass_fail_count > 0:
+      self.implementation_pass_fail_score = int(round(pass_fail_total / pass_fail_count))   
+      self.implementation_pass_fail_status = "NI"  
+      if self.implementation_pass_fail_score > 50:
+        self.implementation_pass_fail_status = "PI"  
+      if self.implementation_pass_fail_score > 95:
+        self.implementation_pass_fail_status = "AC"  
+      if pass_fail_count_complete == pass_fail_count:
+        self.implementation_pass_fail_status = "C"        
+    else:
+      self.implementation_status = "NA"
+
+#    debug("[DataRuleResult][calculateImplementation] 3")
     if count > 0:
       self.implementation_score = int(round(total / count))   
       self.implementation_status = "NI"  
@@ -330,7 +440,7 @@ class DataRuleResult:
     else:
       self.implementation_status = "NA"      
 
-
+#    debug("[DataRuleResult][calculateImplementation] 4")
 
 
 # ---------------------------------------------------------------
@@ -339,11 +449,12 @@ class DataRuleResult:
 #
 # ---------------------------------------------------------------
    
-class DataPageRuleResult:
+class DataPageRuleResult(DataResult):
 
   def __init__(self, rr):
-  
-#    debug("      Creating Data Page Rule Result: " + rr["rule_id"])
+    super(DataPageRuleResult, self).__init__()
+
+#    debug("[DataPageRuleResult][__init__] 1") 
     
     self.rule_id               = rr["rule_id"]
 
@@ -353,118 +464,123 @@ class DataPageRuleResult:
     self.rule_scope_code       = rr["rule_scope_code"]
     self.guideline_number      = rr["guideline_code"]
     
-    self.result_message        = rr["result_message"]
-    self.result_value_nls      = rr["result_value_nls"]
-    self.result_value          = rr["result_value"]
-        
-    self.elements_violation    = rr["elements_violation"]
-    self.elements_warning      = rr["elements_warning"]
-    self.elements_manual_check = rr["elements_manual_check"]
-    self.elements_hidden       = rr["elements_hidden"]
-    self.elements_passed       = rr["elements_passed"]
+    self.result_value            = rr["result_value"]
+    self.result_message          = rr["result_message"]
+
+    self.elements_violation      = rr["elements_violation"]
+    self.elements_warning        = rr["elements_warning"]
+    self.elements_mc_identified  = rr["elements_manual_check"]
+    self.elements_mc_passed      = 0
+    self.elements_mc_failed      = 0
+    self.elements_mc_na          = 0
+    self.elements_hidden         = rr["elements_hidden"]
+    self.elements_passed         = rr["elements_passed"]
+
 
     self.element_results_json  = ""
     if rr["element_results"]:
       self.element_results_json  = rr["element_results"]
 
-    self.implementation_score  = -1  
-    self.implementation_status = "U"  
+
+#    debug("[DataPageRuleResult][__init__] 2") 
 
   def __str__(self):
     return "Page Rule Result: " + self.result_value_nls + " (" + self.rule_id + ")"
 
   def calculate_implementation(self):
 
+    self.implementation_pass_fail_score  = -1  
+    self.implementation_score       = -1  
+    self.implementation_status      = "U"  
 
-    self.implementation_score  = -1  
-    self.implementation_status = "U"  
+#    debug("[DataPageRuleResult][calaculate_implementation] 1") 
+#    debug("[DataPageRuleResult][calaculate_implementation]   mc_identified: " + str(self.elements_mc_identified)) 
+#    debug("[DataPageRuleResult][calaculate_implementation]       mc_passed: " + str(self.elements_mc_passed)) 
+#    debug("[DataPageRuleResult][calaculate_implementation]       mc_failed: " + str(self.elements_mc_failed)) 
+#    debug("[DataPageRuleResult][calaculate_implementation]           mc_na: " + str(self.elements_mc_na)) 
 
-#    debug('V: ' + str(self.elements_violation) + ' W: ' + str(self.elements_warning) + ' MC: ' + str(self.elements_manual_check) + ' P: ' + str(self.elements_passed))
+    pass_fail_total = self.elements_violation + self.elements_warning + self.elements_passed + self.elements_mc_passed + self.elements_mc_failed
 
-    total = self.elements_violation + self.elements_warning + self.elements_manual_check + self.elements_passed
+#    debug("[DataPageRuleResult][calaculate_implementation] pass_fail_total: " + str(pass_fail_total)) 
+    total = self.elements_mc_identified - self.elements_mc_passed - self.elements_mc_failed - self.elements_mc_na
+    if total > 0:
+      total = pass_fail_total + total
+    else:
+      total = pass_fail_total
 
-#    debug('TOTAL: ' + str(total))
+#    debug("[DataPageRuleResult][calaculate_implementation]           total: " + str(total)) 
+      
+    passed = self.elements_passed + self.elements_mc_passed
+
+    if pass_fail_total:
+      self.implementation_pass_fail_score =  (100 * passed) / pass_fail_total
+      self.implementation_pass_fail_status = "NI"  
+      if self.implementation_pass_fail_score > 50:
+        self.implementation_pass_fail_status = "PI"  
+      if self.implementation_pass_fail_score > 95:
+        self.implementation_pass_fail_status = "AC"  
+      if passed == pass_fail_total:
+        self.implementation_status = "C"  
+    else:
+      self.implementation_status = "NA"  
+
+#    debug("[DataPageRuleResult][calaculate_implementation] pass_fail_score: " + str(self.implementation_pass_fail_score)) 
 
     if total:
-      self.implementation_score  =  (100 *self.elements_passed) / total
+      self.implementation_score =  (100 * passed) / total
       self.implementation_status = "NI"  
       if self.implementation_score > 50:
         self.implementation_status = "PI"  
       if self.implementation_score > 95:
         self.implementation_status = "AC"  
-      if self.elements_passed == total:
+      if passed == total:
         self.implementation_status = "C"  
     else:
       self.implementation_status = "NA"  
 
-#    debug('Implementation: ' + self.implementation_status + ' (' + str(self.implementation_score) + ')')
-    return
+#    debug("[DataPageRuleResult][calaculate_implementation]           score: " + str(self.implementation_score)) 
 
 
   def saveToDjango(self, data_page_result, page_result):
   
     r = rule_refs.getRule(self.rule_id)
 
-#    debug("DataPageRuleResult][saveToDjango] " + str(r)) 
+    debug("[DataPageRuleResult][saveToDjango] " + str(r.rule_id)) 
     
     prcr = data_page_result.getPageRuleCategoryResult(self.rule_category_code)
-#    debug("DataPageRuleResult][saveToDjango] " + str(prcr.sql_id)) 
+#    debug("[DataPageRuleResult][saveToDjango] " + str(prcr.sql_id)) 
     
     pglr  = data_page_result.getPageGuidelineResult(self.guideline_number)
-#    debug("DataPageRuleResult][saveToDjango] " + str(pglr.sql_id)) 
+#    debug("[DataPageRuleResult][saveToDjango] " + str(pglr.sql_id)) 
     
     prsr = data_page_result.getPageRuleScopeResult(self.rule_scope_code)
-#    debug("DataPageRuleResult][saveToDjango] " + str(prsr.sql_id)) 
+ #   debug("[DataPageRuleResult][saveToDjango] " + str(prsr.sql_id)) 
 
+    debug("[DataPageRuleResult][saveToDjango] A") 
 
-    insert_str = "INSERT INTO \"pageResults_pageruleresult\" ( "
-    insert_str += "rule_id"
-    insert_str += ", rule_required"
-    insert_str += ", page_result_id"
-    insert_str += ", page_rc_result_id"
-    insert_str += ", page_gl_result_id"
-    insert_str += ", page_rs_result_id"
-    insert_str += ", elements_passed" 
-    insert_str += ", elements_violation" 
-    insert_str += ", elements_warning" 
-    insert_str += ", elements_manual_check" 
-    insert_str += ", elements_hidden" 
-    insert_str += ", element_results_json" 
-    insert_str += ", message" 
-    insert_str += ", result_value"
-    insert_str += ", implementation_score"
-    insert_str += ", implementation_status"
-    insert_str += ", manual_check_status"
-    insert_str += ") VALUES ( "
-    insert_str +=  str(r.id)
-    insert_str +=  ", "  + str(self.rule_required) 
-    insert_str +=  ", "  + str(page_result.id) 
-    insert_str +=  ", "  + prcr.sql_id 
-    insert_str +=  ", "  + pglr.sql_id 
-    insert_str +=  ", "  + prsr.sql_id 
-    insert_str +=  ", "  + str(self.elements_passed) 
-    insert_str +=  ", "  + str(self.elements_violation)
-    insert_str +=  ", "  + str(self.elements_warning)
-    insert_str +=  ", "  + str(self.elements_manual_check)
-    insert_str +=  ", "  + str(self.elements_hidden)
-    insert_str +=  ", '" + escapeSingleQuotes(str(self.element_results_json)) + "'"
-    insert_str +=  ", '" + escapeSingleQuotes(self.result_message) + "'"
-    insert_str +=  ", "  + str(self.result_value)
-    insert_str +=  ", "  + str(self.implementation_score)
-    insert_str +=  ", '" + self.implementation_status + "'"
-    insert_str +=  ", 'NC'"
-    insert_str +=  ")"
- 
-#    debug("DataPageRuleResult][saveToDjango] " + str(self.element_results_json)) 
-    
- #   debug("DataPageRuleResult][saveToDjango] " + insert_str) 
-    
-    cursor = connection.cursor()
+    self.addColumnValue("rule_id", r.id)
+    self.addColumnValue("rule_required", self.rule_required)
+    self.addColumnValue("page_result_id", page_result.id)
+    self.addColumnValue("page_rc_result_id", prcr.sql_id)
+    self.addColumnValue("page_gl_result_id", pglr.sql_id)
+    self.addColumnValue("page_rs_result_id", prsr.sql_id)
+    self.addColumnValue("elements_passed", self.elements_passed)
+    self.addColumnValue("elements_violation", self.elements_violation) 
+    self.addColumnValue("elements_warning", self.elements_warning) 
+    self.addColumnValue("elements_mc_identified", self.elements_mc_identified) 
+    self.addColumnValue("elements_mc_failed", 0) 
+    self.addColumnValue("elements_mc_passed", 0) 
+    self.addColumnValue("elements_mc_na", 0) 
+    self.addColumnValue("elements_hidden", self.elements_hidden)
+    self.addColumnValue("element_results_json", escapeSingleQuotes(str(self.element_results_json))) 
+    self.addColumnValue("result_message" , escapeSingleQuotes(self.result_message))
+
+    debug("[DataPageRuleResult][saveToDjango] B") 
+
     try:
-      cursor.execute(insert_str, [])
+      super(DataPageRuleResult, self).saveToDjango('pageResults_pageruleresult')
     except:
       error("[DataPageRuleResult][saveToDjango] SQL insert error")
-      error("[DataPageRuleResult][saveToDjango] " + insert_str)
 
     # for testing only      
     try:
@@ -498,44 +614,16 @@ class DataPageRuleCategoryResult(DataRuleResult):
 
     rc = rule_category_refs.getRuleCategory(self.rule_category_code)  
 
-    debug("DataPageRuleCategoryResult][saveToDjango] " + str(rc)) 
+    debug("[DataPageRuleCategoryResult][saveToDjango] " + str(rc)) 
 
-    insert_str = "INSERT INTO \"pageResults_pagerulecategoryresult\" ( "
-    insert_str += "rule_category_id"
-    insert_str += ", page_result_id"
-    insert_str += ", ws_rc_result_id"
-    insert_str += ", rules_violation"
-    insert_str += ", rules_warning"
-    insert_str += ", rules_manual_check"
-    insert_str += ", rules_passed"
-    insert_str += ", rules_na"
-    insert_str += ", result_value"
-    insert_str += ", implementation_score"
-    insert_str += ", implementation_status"
-    insert_str += ", manual_check_status"
-    insert_str += ") VALUES ( "
-    insert_str +=  str(rc.id)
-    insert_str +=  ", "  + str(page_result.id) 
-    insert_str +=  ", "  + str(sql_id)
-    insert_str +=  ", "  + str(self.rules_violation)
-    insert_str +=  ", "  + str(self.rules_warning)
-    insert_str +=  ", "  + str(self.rules_manual_check)
-    insert_str +=  ", "  + str(self.rules_passed)
-    insert_str +=  ", "  + str(self.rules_na)
-    insert_str +=  ", "  + str(self.result_value)
-    insert_str +=  ", "  + str(self.implementation_score)
-    insert_str +=  ", '" + self.implementation_status + "'"
-    insert_str +=  ", 'NC'"
-    insert_str +=  ")"
+    self.addColumnValue("rule_category_id", rc.id)
+    self.addColumnValue("page_result_id", page_result.id)
+    self.addColumnValue("ws_rc_result_id", sql_id)
 
-#    debug("DataPageRuleCategoryResult][saveToDjango] " + insert_str) 
-    
-    cursor = connection.cursor()
     try:
-      cursor.execute(insert_str, [])
+      super(DataPageRuleCategoryResult, self).saveToDjango('pageResults_pagerulecategoryresult')
     except:
       error("[DataPageRuleCategoryResult][saveToDjango] SQL insert error")
-      error("[DataPageRuleCategoryResult][saveToDjango] " + insert_str)
 
     try:
       page_rc_result = PageRuleCategoryResult.objects.get(page_result=page_result, rule_category=rc)
@@ -562,46 +650,19 @@ class DataPageRuleScopeResult(DataRuleResult):
     return s
 
   def saveToDjango(self, page_result, sql_id):
+
     rs = rule_scope_refs.getRuleScope(self.rule_scope_code)  
 
     debug("DataPageRuleScopeResult][saveToDjango] " + str(rs)) 
 
-    insert_str = "INSERT INTO \"pageResults_pagerulescoperesult\" ( "
-    insert_str += "rule_scope_id"
-    insert_str += ", page_result_id"
-    insert_str += ", ws_rs_result_id"
-    insert_str += ", rules_violation"
-    insert_str += ", rules_warning"
-    insert_str += ", rules_manual_check"
-    insert_str += ", rules_passed"
-    insert_str += ", rules_na"
-    insert_str += ", result_value"
-    insert_str += ", implementation_score"
-    insert_str += ", implementation_status"
-    insert_str += ", manual_check_status"
-    insert_str += ") VALUES ( "
-    insert_str +=  str(rs.id)
-    insert_str +=  ", "  + str(page_result.id) 
-    insert_str +=  ", "  + str(sql_id) 
-    insert_str +=  ", "  + str(self.rules_violation)
-    insert_str +=  ", "  + str(self.rules_warning)
-    insert_str +=  ", "  + str(self.rules_manual_check)
-    insert_str +=  ", "  + str(self.rules_passed)
-    insert_str +=  ", "  + str(self.rules_na)
-    insert_str +=  ", "  + str(self.result_value)
-    insert_str +=  ", "  + str(self.implementation_score)
-    insert_str +=  ", '" + self.implementation_status + "'"
-    insert_str +=  ", 'NC'"
-    insert_str +=  ")"
+    self.addColumnValue("rule_scope_id", rs.id)
+    self.addColumnValue("page_result_id", page_result.id)
+    self.addColumnValue("ws_rs_result_id", sql_id)
 
-#    debug("DataPageRuleScopeResult][saveToDjango] " + insert_str) 
-    
-    cursor = connection.cursor()
     try:
-      cursor.execute(insert_str, [])
+      super(DataPageRuleScopeResult, self).saveToDjango('pageResults_pagerulescoperesult')
     except:
       error("[DataPageRuleScopeResult][saveToDjango] SQL insert error")
-      error("[DataPageRuleScopeResult][saveToDjango] " + insert_str)
 
     try:
       page_rs_result = PageRuleScopeResult.objects.get(page_result=page_result, rule_scope=rs)
@@ -629,46 +690,19 @@ class DataPageGuidelineResult(DataRuleResult):
     return s
 
   def saveToDjango(self, page_result, sql_id):
+
     gl = guideline_refs.getGuideline(self.guideline_number)  
 
     debug("DataPageGuidelineResult][saveToDjango] " + str(gl)) 
 
-    insert_str = "INSERT INTO \"pageResults_pageguidelineresult\" ( "
-    insert_str += "guideline_id"
-    insert_str += ", page_result_id"
-    insert_str += ", ws_gl_result_id"
-    insert_str += ", rules_violation"
-    insert_str += ", rules_warning"
-    insert_str += ", rules_manual_check"
-    insert_str += ", rules_passed"
-    insert_str += ", rules_na"
-    insert_str += ", result_value"
-    insert_str += ", implementation_score"
-    insert_str += ", implementation_status"
-    insert_str += ", manual_check_status"
-    insert_str += ") VALUES ( "
-    insert_str +=  str(gl.id)
-    insert_str +=  ", "  + str(page_result.id) 
-    insert_str +=  ", "  + str(sql_id) 
-    insert_str +=  ", "  + str(self.rules_violation)
-    insert_str +=  ", "  + str(self.rules_warning)
-    insert_str +=  ", "  + str(self.rules_manual_check)
-    insert_str +=  ", "  + str(self.rules_passed)
-    insert_str +=  ", "  + str(self.rules_na)
-    insert_str +=  ", "  + str(self.result_value)
-    insert_str +=  ", "  + str(self.implementation_score)
-    insert_str +=  ", '" + self.implementation_status + "'"
-    insert_str +=  ", 'NC'"
-    insert_str +=  ")"
+    self.addColumnValue("guideline_id", gl.id)
+    self.addColumnValue("page_result_id", page_result.id)
+    self.addColumnValue("ws_gl_result_id", sql_id)
 
-#    debug("DataPageRuleScopeResult][saveToDjango] " + insert_str) 
-    
-    cursor = connection.cursor()
     try:
-      cursor.execute(insert_str, [])
+      super(DataPageGuidelineResult, self).saveToDjango('pageResults_pageguidelineresult')
     except:
       error("[DataPageGuidelineResult][saveToDjango] SQL insert error")
-      error("[DataPageGuidelineResult][saveToDjango] " + insert_str)
 
     try:
       page_gl_result = PageGuidelineResult.objects.get(page_result=page_result, guideline=gl)
@@ -727,9 +761,15 @@ class DataPageResult(DataRuleResult):
 
   def addPageRuleResult(self, prr):
 
+#    debug("[DataPageResult][addPageRuleResult] 1")
+
     super(DataPageResult, self).addPageRuleResult(prr)
 
+#    debug("[DataPageResult][addPageRuleResult] 2")
+
     self.page_rule_results.append(prr)
+
+#    debug("[DataPageResult][addPageRuleResult] 3")
 
     prcr = self.getPageRuleCategoryResult(prr.rule_category_code)     
     if prcr:
@@ -742,6 +782,8 @@ class DataPageResult(DataRuleResult):
     prsr =  self.getPageRuleScopeResult(prr.rule_scope_code)     
     if prsr:
       prsr.addPageRuleResult(prr)
+
+#    debug("[DataPageResult][addPageRuleResult] 4")
 
   def getPageRuleCategoryResult(self, code):
 
@@ -780,47 +822,19 @@ class DataPageResult(DataRuleResult):
 
     debug("========================================================")
     debug("[DataPageResult][saveToDango]" + self.url)
-  
-    insert_str = "INSERT INTO \"pageResults_pageresult\" ( "
-    insert_str += "ws_report_id"
-    insert_str += ", page_number"
-    insert_str += ", url"
-    insert_str += ", url_encoded"
-    insert_str += ", title"
-    insert_str += ", rules_violation"
-    insert_str += ", rules_warning"
-    insert_str += ", rules_manual_check"
-    insert_str += ", rules_passed"
-    insert_str += ", rules_na"
-    insert_str += ", result_value"
-    insert_str += ", implementation_score"
-    insert_str += ", implementation_status"
-    insert_str += ", manual_check_status"
-    insert_str += ") VALUES ( "
-    insert_str +=  str(ws_report.id)
-    insert_str +=  ", "  + str(self.page_number)
-    insert_str +=  ", '" + escapeSingleQuotes(self.url) + "'" 
-    insert_str +=  ", '" + escapeSingleQuotes(self.url_encoded) + "'"
-    insert_str +=  ", '" + escapeSingleQuotes(self.title)  + "'"
-    insert_str +=  ", "  + str(self.rules_violation)
-    insert_str +=  ", "  + str(self.rules_warning)
-    insert_str +=  ", "  + str(self.rules_manual_check)
-    insert_str +=  ", "  + str(self.rules_passed)
-    insert_str +=  ", "  + str(self.rules_na)
-    insert_str +=  ", "  + str(self.result_value)
-    insert_str +=  ", "  + str(self.implementation_score)
-    insert_str +=  ", '" + self.implementation_status + "'"
-    insert_str +=  ", 'NC'"
-    insert_str +=  ")"
 
-#    debug("[DataPageResult][saveToDango] " + insert_str)
+    self.addColumnValue("ws_report_id", ws_report.id)
+    self.addColumnValue("page_number", self.page_number)
+    self.addColumnValue("url", escapeSingleQuotes(self.url))
+    self.addColumnValue("url_encoded", escapeSingleQuotes(self.url_encoded))
+    self.addColumnValue("title", escapeSingleQuotes(self.title))
 
-    cursor = connection.cursor()
+    debug("[DataPageResult][saveToDango] A ")
+
     try:
-      cursor.execute(insert_str, [])
+      super(DataPageResult, self).saveToDjango('pageResults_pageresult')
     except:
       error("[DataPageResult][saveToDango] SQL insert error")
-      error("[DataPageResult][saveToDango] " + insert_str)
 
     try:
       page_result = PageResult.objects.get(ws_report=ws_report, page_number=self.page_number)
@@ -858,9 +872,11 @@ class DataPageResult(DataRuleResult):
 #
 # ---------------------------------------------------------------
         
-class DataWebsiteRuleResult:
+class DataWebsiteRuleResult(DataResult):
 
   def __init__(self, prr):
+
+    super(DataWebsiteRuleResult, self).__init__()
 
     self.rule_id = prr.rule_id
     
@@ -881,11 +897,6 @@ class DataWebsiteRuleResult:
     self.pages_violation    = 0
 
     self.pages_with_hidden_content = 0
-
-    self.result_value          = RULE_RESULT.NOT_APPLICABLE
-
-    self.implementation_score  = -1
-    self.implementation_status = "U"
 
     self.page_rule_results = []    
 
@@ -956,7 +967,7 @@ class DataWebsiteRuleResult:
 
 
   def saveToDjango(self, dws_result, ws_result):
-#    debug("[DataWebsiteRuleResult][saveToDjango] 1 " + self.rule_id)
+    debug("[DataWebsiteRuleResult][saveToDjango] " + self.rule_id)
 
     r = rule_refs.getRule(self.rule_id)
 #    debug("[DataWebsiteRuleResult][saveToDjango] 2 " + str(r.id))
@@ -966,53 +977,25 @@ class DataWebsiteRuleResult:
 #    debug("[DataWebsiteRuleResult][saveToDjango] 4 " + str(wsglr.sql_id))
     wsrsr = dws_result.getWebsiteRuleScopeResult(self.rule_scope_code)
 #    debug("[DataWebsiteRuleResult][saveToDjango] 5 " + str(wsrsr.sql_id))
-            
-    insert_str = "INSERT INTO \"websiteResults_websiteruleresult\" ( "
-    insert_str += "rule_id"
-    insert_str += ", rule_required"
-    insert_str += ", ws_result_id"
-    insert_str += ", ws_rc_result_id"
-    insert_str += ", ws_gl_result_id"
-    insert_str += ", ws_rs_result_id"
-    insert_str += ", rule_number"
-    insert_str += ", pages_violation"
-    insert_str += ", pages_warning"
-    insert_str += ", pages_manual_check"
-    insert_str += ", pages_passed"
-    insert_str += ", pages_na"
-    insert_str += ", pages_with_hidden_content"
-    insert_str += ", result_value"
-    insert_str += ", implementation_score"
-    insert_str += ", implementation_status"
-    insert_str += ", manual_check_status"
-    insert_str += ") VALUES ( "
-    insert_str +=  str(r.id) 
-    insert_str +=  ", "  + str(self.rule_required)
-    insert_str +=  ", "  + str(ws_result.id)
-    insert_str +=  ", "  + wsrcr.sql_id
-    insert_str +=  ", "  + wsglr.sql_id
-    insert_str +=  ", "  + wsrsr.sql_id
-    insert_str +=  ", -1"
-    insert_str +=  ", "  + str(self.pages_violation)
-    insert_str +=  ", "  + str(self.pages_warning)
-    insert_str +=  ", "  + str(self.pages_manual_check)
-    insert_str +=  ", "  + str(self.pages_passed)
-    insert_str +=  ", "  + str(self.pages_na)
-    insert_str +=  ", "  + str(self.pages_with_hidden_content)
-    insert_str +=  ", "  + str(self.result_value)
-    insert_str +=  ", "  + str(self.implementation_score)
-    insert_str +=  ", '" + self.implementation_status + "'"
-    insert_str +=  ", 'NC'"
-    insert_str +=  ")"
 
-#    debug("[DataWebsiteRuleResult][saveToDjango] 6 " + insert_str)
+    self.addColumnValue("rule_id", r.id)
+    self.addColumnValue("rule_required", )
+    self.addColumnValue("ws_result_id", ws_result.id)
+    self.addColumnValue("ws_rc_result_id", wsrcr.sql_id)
+    self.addColumnValue("ws_gl_result_id", wsglr.sql_id)
+    self.addColumnValue("ws_rs_result_id", wsrsr.sql_id)
+    self.addColumnValue("rule_number", -1)
+    self.addColumnValue("pages_violation", self.pages_violation)
+    self.addColumnValue("pages_warning", self.pages_warning)
+    self.addColumnValue("pages_manual_check", self.pages_manual_check)
+    self.addColumnValue("pages_passed", self.pages_passed)
+    self.addColumnValue("pages_na", self.pages_na)
+    self.addColumnValue("pages_with_hidden_content", self.pages_with_hidden_content)
 
-    cursor = connection.cursor()
     try:
-      cursor.execute(insert_str, [])
+      super(DataWebsiteRuleCategoryResult, self).saveToDjango("websiteResults_websiteruleresult")
     except:
       error("[DataWebsiteRuleResult][saveToDjango] SQL insert error: ")
-      error("[DataWebsiteRuleResult][saveToDjango] " + insert_str)
 
 # ------------------------------------------------------------------------------------------------------------------------
 #
@@ -1039,43 +1022,17 @@ class DataWebsiteRuleCategoryResult(DataRuleResult):
   def saveToDjango(self, ws_report):
   
     rc = rule_category_refs.getRuleCategory(self.rule_category_code) 
-#    debug("    Rule Category: " + str(rc.category_id)) 
-#    debug("          Website: " + str(ws_report.id)) 
 
-    
-    insert_str = "INSERT INTO \"websiteResults_websiterulecategoryresult\" ( "
-    insert_str += "ws_report_id"
-    insert_str += ", rule_category_id"
-    insert_str += ", rules_violation"
-    insert_str += ", rules_warning"
-    insert_str += ", rules_manual_check"
-    insert_str += ", rules_passed"
-    insert_str += ", rules_na"
-    insert_str += ", result_value"
-    insert_str += ", implementation_score"
-    insert_str += ", implementation_status"
-    insert_str += ", manual_check_status"
-    insert_str += ") VALUES ( "
-    insert_str +=  str(ws_report.id)
-    insert_str +=  ", "  + str(rc.id) 
-    insert_str +=  ", "  + str(self.rules_violation)
-    insert_str +=  ", "  + str(self.rules_warning)
-    insert_str +=  ", "  + str(self.rules_manual_check)
-    insert_str +=  ", "  + str(self.rules_passed)
-    insert_str +=  ", "  + str(self.rules_na)
-    insert_str +=  ", "  + str(self.result_value)
-    insert_str +=  ", "  + str(self.implementation_score)
-    insert_str +=  ", '" + self.implementation_status + "'"
-    insert_str +=  ", 'NC'"
-    insert_str +=  ")"
 
-    cursor = connection.cursor()
-#    debug("[DataWebsiteRuleCategoryResult][saveToDjango] 1: " + insert_str)
+    self.addColumnValue("ws_report_id", ws_report.id)
+    self.addColumnValue("rule_category_id", rc.id)
+
+    debug("[DataWebsiteRuleCategoryResult][saveToDjango] " + str(rc.category_id)) 
+
     try:
-      cursor.execute(insert_str, [])
+      super(DataWebsiteRuleCategoryResult, self).saveToDjango("websiteResults_websiterulecategoryresult")
     except:
-      error("[DataWebsiteRuleCategoryResult][saveToDjango] SQL insert error: ")
-      error("[DataWebsiteRuleCategoryResult][saveToDjango] " + insert_str)
+      error("[DataWebsiteRuleCategoryResult][saveToDjango] SQL insert error ")
 
     try:
       ws_rc_result = WebsiteRuleCategoryResult.objects.get(ws_report=ws_report, rule_category=rc)
@@ -1083,7 +1040,6 @@ class DataWebsiteRuleCategoryResult(DataRuleResult):
     except:
       error("[DataWebsiteRuleCategoryResult][saveToDjango] SQL select error")
 
-#    debug("  Found Website Evaluation Rule Category Result: " + str(ws_eval_rc_result.id))
    
 # -----------------------------------------------------------------------------
 #
@@ -1110,42 +1066,14 @@ class DataWebsiteGuidelineResult(DataRuleResult):
   def saveToDjango(self, ws_report):
   
     gl = guideline_refs.getGuideline(self.guideline_number) 
-#    debug("    Guideline: " + str(g.id)) 
-    
-    insert_str = "INSERT INTO \"websiteResults_websiteguidelineresult\" ( "
-    insert_str += "ws_report_id"
-    insert_str += ", guideline_id"
-    insert_str += ", rules_violation"
-    insert_str += ", rules_warning"
-    insert_str += ", rules_manual_check"
-    insert_str += ", rules_passed"
-    insert_str += ", rules_na"
-    insert_str += ", result_value"
-    insert_str += ", implementation_score"
-    insert_str += ", implementation_status"
-    insert_str += ", manual_check_status"
-    insert_str += ") VALUES ( "
-    insert_str +=  str(ws_report.id)
-    insert_str +=  ", "  + str(gl.id) 
-    insert_str +=  ", "  + str(self.rules_violation)
-    insert_str +=  ", "  + str(self.rules_warning)
-    insert_str +=  ", "  + str(self.rules_manual_check)
-    insert_str +=  ", "  + str(self.rules_passed)
-    insert_str +=  ", "  + str(self.rules_na)
-    insert_str +=  ", "  + str(self.result_value)
-    insert_str +=  ", "  + str(self.implementation_score)
-    insert_str +=  ", '"  + self.implementation_status + "'"
-    insert_str +=  ", 'NC'"
-    insert_str +=  ")"
 
-#    debug("  INSERT STRING: " + insert_str)
+    self.addColumnValue("ws_report_id", ws_report.id)
+    self.addColumnValue("guideline_id", gl.id)
 
-    cursor = connection.cursor()
     try:
-      cursor.execute(insert_str, [])
+      super(DataWebsiteGuidelineResult, self).saveToDjango("websiteResults_websiteguidelineresult")
     except:
       error("[DataWebsiteGuidelineResult][saveToDjango] SQL insert error")
-      error("[DataWebsiteGuidelineResult][saveToDjango] " + insert_str)
 
     try:
       ws_eval_gl_result = WebsiteGuidelineResult.objects.get(ws_report=ws_report, guideline=gl)
@@ -1179,41 +1107,14 @@ class DataWebsiteRuleScopeResult(DataRuleResult):
   def saveToDjango(self, ws_report):
 
     rs = rule_scope_refs.getRuleScope(self.rule_scope_code) 
-    
-    insert_str = "INSERT INTO \"websiteResults_websiterulescoperesult\" ( "
-    insert_str += "ws_report_id"
-    insert_str += ", rule_scope_id"
-    insert_str += ", rules_violation"
-    insert_str += ", rules_warning"
-    insert_str += ", rules_manual_check"
-    insert_str += ", rules_passed"
-    insert_str += ", rules_na"
-    insert_str += ", result_value"
-    insert_str += ", implementation_score"
-    insert_str += ", implementation_status"
-    insert_str += ", manual_check_status"
-    insert_str += ") VALUES ( "
-    insert_str +=  str(ws_report.id)
-    insert_str +=  ", "  + str(rs.id) 
-    insert_str +=  ", "  + str(self.rules_violation)
-    insert_str +=  ", "  + str(self.rules_warning)
-    insert_str +=  ", "  + str(self.rules_manual_check)
-    insert_str +=  ", "  + str(self.rules_passed)
-    insert_str +=  ", "  + str(self.rules_na)
-    insert_str +=  ", "  + str(self.result_value)
-    insert_str +=  ", "  + str(self.implementation_score)
-    insert_str +=  ", '" + self.implementation_status + "'"
-    insert_str +=  ", 'NC'"
-    insert_str +=  ")"
 
-#    debug("  INSERT STRING: " + insert_str)
+    self.addColumnValue("ws_report_id", ws_report.id)
+    self.addColumnValue("rule_scope_id", rs.id)
 
-    cursor = connection.cursor()
     try:
-      cursor.execute(insert_str, [])
+      super(DataWebsiteRuleScopeResult, self).saveToDjango("websiteResults_websiterulescoperesult")
     except:
       error("[DataWebsiteRuleScopeResult][saveToDjango] SQL insert error")
-      error("[DataWebsiteRuleScopeResult][saveToDjango] " + insert_str)
 
     try:
       ws_eval_rs_result = WebsiteRuleScopeResult.objects.get(ws_report=ws_report, rule_scope=rs)
@@ -1262,24 +1163,25 @@ class DataWebsiteResult(DataRuleResult):
 #      debug("[WebsiteResult][addPageResult]: 1 ")
 
       for prr in pr.rule_results:
+#        debug("[WebsiteResult][addPageResult]: 1 " + str(prr.rule_id))
         wsrr = self.getWebsiteRuleResult(prr.rule_id, prr)
         wsrr.addPageRuleResult(prr)
 
-#      debug("[WebsiteResult][addPageResult]: 2 ")
+#      debug("[WebsiteResult][addPageResult]: 2 " + str(len(pr.page_rule_category_results)))
         
       for prcr in pr.page_rule_category_results:
         wsrcr = self.getWebsiteRuleCategoryResult(prcr.rule_category_code)
         wsrcr.addPageRuleCategoryResult(prcr)
         wsrcr.updateRuleResults()
 
-#      debug("[WebsiteResult][addPageResult]: 3 ")
+#      debug("[WebsiteResult][addPageResult]: 3 " + str(len(pr.page_guideline_results)))
 
       for pglr in pr.page_guideline_results:
         wsglr = self.getWebsiteGuidelineResult(pglr.guideline_number)
         wsglr.addPageGuidelineResult(pglr)
         wsglr.updateRuleResults()
 
-#      debug("[WebsiteResult][addPageResult]: 4 ")
+#      debug("[WebsiteResult][addPageResult]: 4 " + str(len(pr.page_rule_scope_results)))
         
       for prsr in pr.page_rule_scope_results:
         wsrsr = self.getWebsiteRuleScopeResult(prsr.rule_scope_code)
@@ -1401,24 +1303,26 @@ class DataWebsiteResult(DataRuleResult):
           wsr.rules_manual_check  = self.rules_manual_check
           wsr.rules_passed        = self.rules_passed
           wsr.rules_na            = self.rules_na
-          wsr.result_value           = self.result_value
-          wsr.implementation_score   = self.implementation_score
-          wsr.implementation_status  = self.implementation_status
+          wsr.result_value        = self.result_value
+          wsr.implementation_pass_fail_score   = self.implementation_pass_fail_score
+          wsr.implementation_pass_fail_status  = self.implementation_pass_fail_status
+          wsr.implementation_score             = self.implementation_score
+          wsr.implementation_status            = self.implementation_status
           wsr.save()
 
         except:
           error("[WebsiteResult][saveToDjango]: website result") 
           exit()
 
-        debug("[WebsiteResult][saveToDjango]: saving website rc result")    
+        debug("[WebsiteResult][saveToDjango]: saving " + str(len(self.website_rule_category_results)) + " website rc results")
 
         for wsrcr in self.website_rule_category_results:
           try:
-            wsrcr.saveToDjango(self.ws_report)  
+            wsrcr.saveToDjango(self.ws_report)
           except:
             error("[WebsiteResult][saveToDjango]: website rc result") 
 
-        debug("[WebsiteResult][saveToDjango]: saving website gl result")    
+        debug("[WebsiteResult][saveToDjango]: saving " + str(len(self.website_guideline_results)) + " website gl results")    
 
         for wsgr in self.website_guideline_results:
           try:
@@ -1426,7 +1330,7 @@ class DataWebsiteResult(DataRuleResult):
           except:
             error("[WebsiteResult][saveToDjango]: website gl result") 
 
-        debug("[WebsiteResult][saveToDjango]: saving website rs result")    
+        debug("[WebsiteResult][saveToDjango]: saving " + str(len(self.website_rule_scope_results)) + " website rs results")    
 
         for wsrsr in self.website_rule_scope_results:
           try:
@@ -1434,7 +1338,7 @@ class DataWebsiteResult(DataRuleResult):
           except:
             error("[WebsiteResult][saveToDjango]: website rs result") 
 
-        debug("[WebsiteResult][saveToDjango]: saving website rule results") 
+        debug("[WebsiteResult][saveToDjango]: saving " + str(len(self.rule_results)) + " website rule results")    
 
         for wsrr in self.rule_results:
 #          debug("[WebsiteResult][saveToDjango]: " + str(wsrr.rule_id))
@@ -1477,26 +1381,33 @@ def saveResultsToDjango(ws_report):
   def getPageDataFromJSON(num, data):
   
     pr = DataPageResult(wsr, num, data['eval_url'], data['eval_url_encoded'], data['eval_title'], data['markup_information'])
-    debug("Page Result: " + pr.title)
-    debug("             " + pr.url_encoded)
+#    debug("[saveResultsToDjango][getPageDataFromJSON] " + pr.title)
+#    debug("[saveResultsToDjango][getPageDataFromJSON] " + pr.url_encoded)
    
 #    pr.getPageElementInformation(data)
    
     for rr in data["rule_results"]:
+
       try:
+#        debug("[saveResultsToDjango][getPageDataFromJSON] " + rr["rule_id"] + " 1a ")
         prr = DataPageRuleResult(rr)
+#        debug("[saveResultsToDjango][getPageDataFromJSON] " + rr["rule_id"] + " 1b ")
         prr.calculate_implementation()
+#        debug("[saveResultsToDjango][getPageDataFromJSON] " + rr["rule_id"] + " 1c ")
       except:
         error("Error creating data page rule result: " + rr["rule_id"]) 
-        
+    
+ #     debug("[saveResultsToDjango][getPageDataFromJSON] " + rr["rule_id"] + " 2 ")
+
       try:
         pr.addPageRuleResult(prr)
       except:
         error("Error adding page rule result: " + rr["rule_id"]) 
 
-    debug(pr)
+#      debug("[saveResultsToDjango][getPageDataFromJSON] " + rr["rule_id"] + " 3 ")
+
+    debug("[saveResultsToDjango][getPageDataFromJSON] add to wsr")
     wsr.addPageResult(pr)  
-    debug(wsr)
 
         
 
@@ -1547,6 +1458,8 @@ def saveResultsToDjango(ws_report):
 #
 # ---------------------------------------------------------------
   
+  start = time.time()
+
   wsr = DataWebsiteResult(ws_report)
     
 #  os.path.walk(ws_report.data_directory + "/data", lister, None)  
@@ -1563,6 +1476,20 @@ def saveResultsToDjango(ws_report):
     ws_report.set_rule_numbers()
     info("Set status complete")
     ws_report.set_status_complete()
+
+    page_count = wsr.page_count
+    total = "{:10.4f}".format(time.time()-start)
+
+    if page_count > 0:
+      if page_count == 1:
+        ave_time = "{:10.4f}".format(time.time()-start) + " seconds/page (1 page)"
+      else:  
+        ave_time = "{:10.4f}".format((time.time()-start)/page_count) + " seconds/page (" + str(page_count) + " pages)"
+  
+    info("          Pages saved: " + str(page_count))
+    info("           Total Time: " + total)
+    info('Average time per page: ' + ave_time) 
+
   except:
     ws_report.set_status_error()
     error("Error: saving to django")  
@@ -1571,10 +1498,7 @@ def main():
 
   message_flag = True
 
-
   ws_reports = WebsiteReport.objects.all()
-
-  debug(len(ws_reports))
   
   if len(ws_reports):
     ws_report = ws_reports[0]
@@ -1585,7 +1509,7 @@ def main():
     ws_report.filtered_urls.all().delete()
     ws_report.filtered_urls.all().delete()
 
-    ws_report.ws_results.all().delete()
+    ws_report.ws_all_results.all().delete()
     ws_report.ws_gl_results.all().delete()
     ws_report.ws_rc_results.all().delete()
     ws_report.ws_rs_results.all().delete()
@@ -1596,8 +1520,6 @@ def main():
     info("Saving Data: " + str(ws_report))
     saveResultsToDjango(ws_report)
 
-    info("=======================")
-    info("Complete: " + str(ws_report))    
 
           
 if __name__ == "__main__":

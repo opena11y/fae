@@ -160,8 +160,7 @@ class WebsiteReport(models.Model):
     self.save()
 
   def set_rule_numbers(self):
-    ws_result = self.ws_results.last()
-    
+    ws_result = self.ws_all_results.last()
     num = 1
     for wsrr in ws_result.ws_rule_results.all():
       wsrr.rule_number = num

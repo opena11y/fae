@@ -30,7 +30,7 @@ from ruleCategories.models import RuleCategory
 from rules.models          import Rule
 
 
-DEBUG=True
+DEBUG=False
 INFO=True
 ERROR=True
 

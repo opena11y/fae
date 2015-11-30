@@ -34,8 +34,12 @@ MC_STATUS_CHOICES = (
 
 class RuleResult(models.Model):
   result_value           = models.IntegerField(default=0)
-  implementation_score   = models.IntegerField(default=-1)
-  implementation_status  = models.CharField("Implementation Status",  max_length=2, choices=IMPLEMENTATION_STATUS_CHOICES, default='U')
+
+  implementation_pass_fail_score  = models.IntegerField(default=-1)
+  implementation_score            = models.IntegerField(default=-1)
+
+  implementation_pass_fail_status  = models.CharField("Implementation Pass/Fail Status",  max_length=2, choices=IMPLEMENTATION_STATUS_CHOICES, default='U')
+  implementation_status            = models.CharField("Implementation Status",  max_length=2, choices=IMPLEMENTATION_STATUS_CHOICES, default='U')
 
   manual_check_status    = models.CharField("Manual Check Status",  max_length=2, choices=MC_STATUS_CHOICES, default='NC')
 
@@ -58,6 +62,8 @@ class RuleGroupResult(RuleResult):
   rules_passed       = models.IntegerField(default=0)
   rules_na           = models.IntegerField(default=0)
 
+  rules_with_hidden_content = models.IntegerField(default=0)
+
   class Meta:
         abstract = True
 
@@ -71,7 +77,7 @@ class RuleGroupResult(RuleResult):
 class WebsiteResult(RuleGroupResult):
   id                 = models.AutoField(primary_key=True)
 
-  ws_report          = models.ForeignKey(WebsiteReport, related_name="ws_results")
+  ws_report          = models.ForeignKey(WebsiteReport, related_name="ws_all_results")
 
   class Meta:
     verbose_name        = "Website Result"

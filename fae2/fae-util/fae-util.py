@@ -25,6 +25,7 @@ from fae2.settings import APP_DIR
 from django.db       import models
 from reports.models  import WebsiteReport
 
+
 # from save_website_results_sql import saveResultsToDjango
 
 DEBUG=True
@@ -154,22 +155,18 @@ def main():
   if len(ws_reports):
     ws_report = ws_reports[0]
 
+    info("=======================")
     info("Initializing report: " + str(ws_report))
     ws_report.set_status_initialized()
     initWebsiteReport(ws_report)
 
-    info("=======================")
     info("Analyze website: " + str(ws_report))
     ws_report.set_status_analyzing()
     count = analyzeWebsiteReport(ws_report)
 
-    info("=======================")
     info("Saving Data: " + str(ws_report))
     ws_report.set_status_saving()
 #    saveResultsToDjango(ws_report)
-
-    info("=======================")
-    info("Complete: " + str(ws_report))
 
           
 if __name__ == "__main__":
