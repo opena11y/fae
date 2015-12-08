@@ -4,12 +4,12 @@ import os
 import string
 
 from django.db       import models
+from reports.models     import WebsiteReport
 from pageResults.models     import PageResult
-from websiteResults.models  import WebsiteResult
 
 class WebsiteMarkup(models.Model):
   id               = models.AutoField(primary_key=True)
-  ws_result        = models.ForeignKey(WebsiteResult, related_name="mi_ws_report")
+  ws_report        = models.ForeignKey(WebsiteReport, related_name="mi_ws_report")
 
   hidden_count     = models.IntegerField(default=0)
   offscreen_count  = models.IntegerField(default=0)

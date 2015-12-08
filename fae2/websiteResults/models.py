@@ -1,93 +1,17 @@
 from django.db import models
 
+from django.core.urlresolvers import reverse
+
+from reports.models import RuleResult
+from reports.models import RuleGroupResult
 from reports.models import WebsiteReport
+
 from ruleCategories.models import RuleCategory
 from wcag20.models         import Guideline
 from rules.models          import RuleScope
 from rules.models          import Rule
 
-# Create your models here.
 
-
-IMPLEMENTATION_STATUS_CHOICES = (
-    ('U',   'Undefined'),
-    ('NA',  'Not applicable'),
-    ('NI',  'Not Implemented'),
-    ('PI',  'Partial Implementation'),
-    ('AC',  'Almost Complete'),
-    ('C',   'Complete'),
-)
-
-
-MC_STATUS_CHOICES = (
-    ('NC',  'Not Checked'),
-    ('NA',  'Not Applicable'),
-    ('P',   'Passed'),
-    ('F',   'Fail'),
-)
-
-# ---------------------------------------------------------------
-#
-# RuleResult
-#
-# ---------------------------------------------------------------
-
-class RuleResult(models.Model):
-  result_value           = models.IntegerField(default=0)
-
-  implementation_pass_fail_score  = models.IntegerField(default=-1)
-  implementation_score            = models.IntegerField(default=-1)
-
-  implementation_pass_fail_status  = models.CharField("Implementation Pass/Fail Status",  max_length=2, choices=IMPLEMENTATION_STATUS_CHOICES, default='U')
-  implementation_status            = models.CharField("Implementation Status",  max_length=2, choices=IMPLEMENTATION_STATUS_CHOICES, default='U')
-
-  manual_check_status    = models.CharField("Manual Check Status",  max_length=2, choices=MC_STATUS_CHOICES, default='NC')
-
-  class Meta:
-        abstract = True
-
-
-
-
-# ---------------------------------------------------------------
-#
-# RuleGroupResult
-#
-# ---------------------------------------------------------------
-
-class RuleGroupResult(RuleResult):
-  rules_violation    = models.IntegerField(default=0)
-  rules_warning      = models.IntegerField(default=0)
-  rules_manual_check = models.IntegerField(default=0)
-  rules_passed       = models.IntegerField(default=0)
-  rules_na           = models.IntegerField(default=0)
-
-  rules_with_hidden_content = models.IntegerField(default=0)
-
-  class Meta:
-        abstract = True
-
-
-# ---------------------------------------------------------------
-#
-# WebsiteAllRulesResult
-#
-# ---------------------------------------------------------------
-
-class WebsiteResult(RuleGroupResult):
-  id                 = models.AutoField(primary_key=True)
-
-  ws_report          = models.ForeignKey(WebsiteReport, related_name="ws_all_results")
-
-  class Meta:
-    verbose_name        = "Website Result"
-    verbose_name_plural = "Website Results"
-
-  def __str__(self):
-    return "Website Results"
-
-  def get_id(self):
-    return 'wsr' + self.id   
 
 
 # ---------------------------------------------------------------
@@ -97,15 +21,18 @@ class WebsiteResult(RuleGroupResult):
 # ---------------------------------------------------------------
 
 class WebsiteRuleCategoryResult(RuleGroupResult):
-  id                  = models.AutoField(primary_key=True)
+  id             = models.AutoField(primary_key=True)
 
-  ws_report           = models.ForeignKey(WebsiteReport, related_name="ws_rc_results")
+  slug           = models.SlugField(max_length=16, default="none", blank=True, editable=False)
 
-  rule_category       = models.ForeignKey(RuleCategory)
+  ws_report      = models.ForeignKey(WebsiteReport, related_name="ws_rc_results")
 
-  verbose_name        = "Website Rule Category Result"
-  verbose_name_plural = "Website Rule Category Results"
-  ordering            = ['rule_category']
+  rule_category  = models.ForeignKey(RuleCategory)
+
+  class Meta:
+    verbose_name        = "Website Rule Category Result"
+    verbose_name_plural = "Website Rule Category Results"
+    ordering            = ['rule_category']
 
   def __unicode__(self):
     return self.rule_category.title_plural 
@@ -128,6 +55,8 @@ class WebsiteGuidelineResult(RuleGroupResult):
 
   ws_report           = models.ForeignKey(WebsiteReport, related_name="ws_gl_results")
 
+  slug  = models.SlugField(max_length=16, default="none", blank=True, editable=False)
+
   guideline            = models.ForeignKey(Guideline)
 
   class Meta:
@@ -138,11 +67,14 @@ class WebsiteGuidelineResult(RuleGroupResult):
   def __unicode__(self):
     return str(self.guideline) 
 
-  def get_group_title(self):
+  def get_title(self):
     return self.guideline.title   
 
-  def get_group_id(self):
+  def get_id(self):
     return 'wsglr_' + self.guideline.id   
+
+
+
 
 # ---------------------------------------------------------------
 #
@@ -152,6 +84,8 @@ class WebsiteGuidelineResult(RuleGroupResult):
 
 class WebsiteRuleScopeResult(RuleGroupResult):
   id               = models.AutoField(primary_key=True)
+
+  slug  = models.SlugField(max_length=16, default="none", blank=True, editable=False)
 
   ws_report        = models.ForeignKey(WebsiteReport, related_name="ws_rs_results")
 
@@ -166,11 +100,11 @@ class WebsiteRuleScopeResult(RuleGroupResult):
   def __unicode__(self):
     return self.rule_scope.title 
     
-  def get_title(self):
-    return self.rule_scope.title   
-
   def get_id(self):
     return 'wsrsr_' + self.rule_scope.id   
+
+  def get_title(self):
+    return self.rule_scope.title   
 
 
 # ---------------------------------------------------------------
@@ -182,10 +116,12 @@ class WebsiteRuleScopeResult(RuleGroupResult):
 class WebsiteRuleResult(RuleResult):
   id                 = models.AutoField(primary_key=True)
 
+  slug  = models.SlugField(max_length=16, default="none", blank=True, editable=False)
+
   rule                  = models.ForeignKey(Rule)
   rule_required         = models.BooleanField(default=False)
   
-  ws_result     = models.ForeignKey(WebsiteResult,              related_name="ws_rule_results")
+  ws_report     = models.ForeignKey(WebsiteReport, related_name="ws_rule_results")
   
   ws_rc_result  = models.ForeignKey(WebsiteRuleCategoryResult,  related_name="ws_rule_results")
   ws_gl_result  = models.ForeignKey(WebsiteGuidelineResult,     related_name="ws_rule_results")
@@ -212,4 +148,8 @@ class WebsiteRuleResult(RuleResult):
   def get_id(self):
     return 'wsrr_' + self.rule.id  
     
+  def get_title(self):
+    return self.rule.summary_text   
+
+
        

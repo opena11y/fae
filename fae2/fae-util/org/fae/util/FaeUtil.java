@@ -26,7 +26,6 @@ import javax.xml.xpath.XPathFactory;
 import javax.xml.xpath.XPath;
 
 import org.apache.commons.logging.LogFactory;
-import org.apache.log4j.Category;
 import org.apache.log4j.ConsoleAppender;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
@@ -276,6 +275,9 @@ class FaeUtil {
         if (m_props.containsKey(m_ctrl.javaScript.getLongOpt()))
           m_ctrl.JAVA_SCRIPT = m_props.getProperty(m_ctrl.javaScript.getLongOpt());
         m_props.remove(m_ctrl.javaScript.getLongOpt());
+        if (m_props.containsKey(m_ctrl.exportOption.getLongOpt()))
+            m_ctrl.EXPORT_OPTION = m_props.getProperty(m_ctrl.exportOption.getLongOpt());
+        m_props.remove(m_ctrl.exportOption.getLongOpt());
         
       }
       catch (FileNotFoundException e) {
@@ -495,7 +497,7 @@ class FaeUtil {
         script.append("evaluator_factory.setFeature('groups', " + m_ctrl.GROUPS + "); "  + NEWLINE);
         script.append("var evaluator = evaluator_factory.newEvaluator();" + NEWLINE);
         script.append("var evaluation = evaluator.evaluate(doc, doc.title, doc.location.href);" + NEWLINE);
-        script.append("var out = evaluation." + m_props.getProperty("exportFunction") + "();" + NEWLINE);
+        script.append("var out = evaluation." + m_props.getProperty("exportFunction") + "(" + m_ctrl.EXPORT_OPTION  + ");" + NEWLINE);
         script.append("out;" + NEWLINE);
 
         try {
@@ -546,7 +548,7 @@ class FaeUtil {
         m_urlsToProcess = FileUtil.getUrlList(inputFile);
       }
       else {
-        m_urlsToProcess = new ArrayList();
+        m_urlsToProcess = new ArrayList<String>();
         m_urlsToProcess.add(singleUrl);
       }
 
@@ -799,7 +801,7 @@ class FaeUtil {
 
   // ==============================================================================================
   public void findEvents(DomNode parent, String indent) {
-    Vector<HtmlElement> hasEvents = new Vector();
+    Vector<HtmlElement> hasEvents = new Vector<HtmlElement>();
     //debug("Num children: " + parent.getChildren());
     for (DomNode node : parent.getChildren()) {
       if (node instanceof HtmlElement) {
@@ -1125,27 +1127,27 @@ class FaeUtil {
   public boolean VERBOSE = false;
   public long WAIT = 30000;
 
-  public Hashtable<String, String> events = new Hashtable();
+  public Hashtable<String, String> events = new Hashtable<String, String>();
 
   private long m_startTime;
 
-  public Vector<String> m_urlsToNotTraverse = new Vector();
-  public Vector<String> m_extensionsToNotProcess = new Vector();
-  public Vector<String> m_javascriptUrlsToNotProcess = new Vector();
+  public Vector<String> m_urlsToNotTraverse = new Vector<String>();
+  public Vector<String> m_extensionsToNotProcess = new Vector<String>();
+  public Vector<String> m_javascriptUrlsToNotProcess = new Vector<String>();
   public String m_evaluationScript;
   public ArrayList<String> m_urlsToProcess;
 
   public int m_urlCount = 0;
-  public Vector<String> m_urlsRead = new Vector();
+  public Vector<String> m_urlsRead = new Vector<String>();
   public StringBuffer m_treeRepresentation = new StringBuffer();
-  public Vector<String> m_processedURLsCSV = new Vector();
-  public Vector<String> m_filteredURLs = new Vector();
-  public Vector<String> m_filteredURLsCSV = new Vector();
-  public Vector<URL> m_unprocessedURLs = new Vector();
-  public Vector<String> m_unprocessedURLsCSV = new Vector();
+  public Vector<String> m_processedURLsCSV = new Vector<String>();
+  public Vector<String> m_filteredURLs = new Vector<String>();
+  public Vector<String> m_filteredURLsCSV = new Vector<String>();
+  public Vector<URL> m_unprocessedURLs = new Vector<URL>();
+  public Vector<String> m_unprocessedURLsCSV = new Vector<String>();
 
   // authorization variables
-  public static Vector<String> m_authorizationURLs = new Vector();
+  public static Vector<String> m_authorizationURLs = new Vector<String>();
   public static Document m_authorizationDoc = null;
   public static XPath m_authorizationXpath = null;
 

@@ -5,9 +5,8 @@ from .models import ProcessedURL
 from .models import UnprocessedURL
 from .models import FilteredURL
 
-
 class WebsiteReportAdmin(admin.ModelAdmin):
-    list_display = ('url', 'user', 'title', 'status', 'slug', 'ruleset', 'depth', 'created', 'last_viewed', 'data_directory')
+    list_display = ('url', 'user', 'title', 'status', 'slug', 'ruleset', 'depth', 'created', 'last_viewed', 'data_directory', 'rules_violation', 'rules_warning', 'rules_manual_check', 'rules_passed')
     list_filter  = ('url', 'user')
 
 admin.site.register(WebsiteReport, WebsiteReportAdmin)

@@ -25,7 +25,6 @@ from fae2.settings import APP_DIR
 from django.db       import models
 from reports.models  import WebsiteReport
 
-
 # from save_website_results_sql import saveResultsToDjango
 
 DEBUG=True
@@ -82,6 +81,7 @@ def initWebsiteReport(ws_report):
   file_prop.write("scripts=openajax_a11y/scripts.txt\n")
   file_prop.write("exportFunction=toJSON\n")
   file_prop.write("exportExtension=json\n")
+  file_prop.write("exportOption=true\n")
 
   file_prop.close()
   

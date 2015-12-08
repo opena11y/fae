@@ -3,6 +3,274 @@
 {% block content %}
   <h1>Report Processing</h1>
 
+   <table id="id_table_processing" class="details table table-striped table-hover sortable" aria-label="Requested currently being processed">
+        <thead>
+            <tr>
+                <th class="text">Title</th>      
+                <th class="text"><abbr title="Date and time of evaluation">Date/Time</abbr></th>
+                <th class="text">Status</th>
+                <th class="text">Ruleset</th>
+                <th class="text">URL</th>
+                <th class="num" >Depth</th>
+            </tr>
+        </thead>
+        <tbody id="id_tbody">
+        </tbody>
+        
+    </table>  
+    
+    
+<div id="id_div_zero">
+
+  <h2 style="margin-top: 3em">Reports with Invalid URLs or Errors in Processing</h2>
+
+  <table id="id_table_zero" class="details table table-striped table-hover sortable" aria-label="{{title}}">
+    <thead>
+            <tr>
+                <th class="text">Title</th>      
+                <th class="text"><abbr title="Date and time of evaluation">Date/Time</abbr></th>
+                <th class="text">Status</th>
+                <th class="text">Ruleset</th>
+                <th class="text">URL</th>
+                <th class="num">Depth</th>
+                <th class="num">Pages</th>
+            </tr>
+    </thead>
+    <tbody id="id_tbody_zero" role="alert">
+    </tbody>
+  </table>
+
+  <h3>Reports with Invalid URLs</h3>
+
+  <p>
+    The most common reason for reports with 0 pages is that the url requested is not the actual url that is returned by the server or there is a typo in the URL requested resulting in no page being returned.
+    Some URLs cause redirections to other URLs.
+    When this happens the filtering features of FAE exclude the redirection URL from being analyzed, since the redirection URL is not part of the domain of original URL requested.
+    Try using the URL actually appearing in the browser address bar when viewing the web page or website to be analyzed as the start URL for a report to fix this problem.
+ </p>
+
+  <h3>Reports with Errors</h3>
+  <p> The most common reason for a report with an error is the use of problem javascripts on the initial page returned by the URL requested.
+    The javascript engine of FAE does its best to emulate the capabilities of the Firefox browser, but some scripting may cause too many exceptions and cause the engine to fail.
+    The page may appear to be working fine in some desktop or mobile browsers, but is probably generating a lot of errors due to malformed script or the use of browser specific DOM extensions the engine is not able to ignore.
+  </p>
+
+</div>         
+
+
+<script type="text/javascript">
+
+    ('-', 'Created'),
+    ('I', 'Initalized'),
+    ('A', 'Analyzing'),
+    ('S', 'Saving'),
+    ('C', 'Complete'),
+    ('E', 'Error'),
+
+function updateReports(reportInfoArray) {
+
+  function getStatusNLS(s, pages) {
+  
+    var s1 = "Undefined";
+  
+    switch (s) {
+
+    case '-':
+      s1 = "Initializing...";
+      break;
+    
+    case 'I':
+      s1 = "Initializing...";
+      break;
+    
+    case 'A':
+      if (pages === 1) s1 = "1 page evaluated...";
+      else s1 = pages + " pages evaluated...";
+      break;
+    
+    case 'S':
+      if (pages === 1) s1 = "Saving results: 1 page evaluated";
+      else s1 = "Saving results: " + pages + " pages evaluated";
+      break;
+    
+    case 'C':
+      if (pages === 1) s1 = "Report ready: 1 page evaluated";
+      else s1 = "Report ready: " + pages + " pages evaluated";
+      break;
+    
+    case 'E':
+      s1 = "Error in processing";
+      break;
+
+    case 'B':
+      s1 = "Invalid URL";
+      break;
+    
+    
+    default:
+      break;
+    }
+  
+    return s1;
+  }
+
+  function updateProcessingReports(id, status, title, url, pages) {
+    var rows = node.getElementsByTagName('tr');
+    
+    for (var i = 0; i < rows.length; i++) {
+      var row = rows[i];
+      var row_id = row.getAttribute('id');
+      
+      if (row_id === ('id_row_' + id)) {
+        var s = document.getElementById('id_status_' + id);
+        if (s) s.innerHTML = getStatusNLS(status, pages);
+        
+        if (status === 'A') {
+          if (pages > 0) {
+            var td = row.getElementsByTagName('td');
+            td[0].innerHTML = '<a href="' + url + '">' + title + '</a>';
+          }
+          else {
+            row.style.display = "none";
+          }  
+        }
+        
+        return false;
+      }
+    }
+    
+    if (status === 'A') return false;
+    
+    return true;
+  }
+
+  function updateZeroPageReports(id, status, pages) {
+    var rows = tbody_zero.getElementsByTagName('tr');
+    
+    for (var i = 0; i < rows.length; i++) {
+      var row = rows[i];
+      var row_id = row.getAttribute('id');
+      if (row_id === ('id_row_' + id)) {
+        return false;
+      }
+    }
+    
+    if (status === 'E') return true;
+    if ((status === 'A') && (pages === 0)) return true;
+    
+    return false;
+  }
+
+
+  var div_zero = document.getElementById("id_div_zero");
+  var tbody_zero = document.getElementById("id_tbody_zero");
+  var html;
+
+  for (var i = 0; i < reportInfoArray.length; i++) {
+  
+    var node = document.getElementById("id_tbody");
+    
+    var ri = reportInfoArray[i];
+    
+    if (updateProcessingReports(ri['id'], ri['status'], ri['title'], ri['report_url'], ri['pages'])) {
+      html =  "";
+      html += '<tr id="id_row_'     + ri['id'] + '">';
+      html += '  <td class="text">' + ri['title']   + '</td>';
+      html += '  <td class="text">' + ri['date'] + '</td>';
+      html += '  <td role="status" class="text" id="id_status_' + ri['id'] + '">' + getStatusNLS(ri['status'], ri['pages'])  + '</td>';
+      html += '  <td class="text"><a href="' + ri['ruleset_url'] + '">' + reportInfoArray[i]['ruleset'] + '</a></td>';
+      html += '  <td class="text">' + ri['url']     + '</td>';
+      html += '  <td class="num">'  + ri['depth']   + '</td>';
+      html += '</tr>';
+      node.innerHTML += html;
+    }
+    
+    if (updateZeroPageReports(ri['id'], ri['status'], ri['pages'])) {
+      html = "";
+      html += '<tr id="id_row_'     + ri['id'] + '">';
+      html += '  <td class="text">' + ri['title']   + '</td>';
+      html += '  <td class="text">' + ri['date'] + '</td>';
+      if ((ri['status'] === 'A') && (ri['pages'] === 0)) {
+        html += '  <td class="text">' + getStatusNLS('B', ri['pages'] )  + '</td>';
+      }
+      else {
+        html += '  <td class="text">' + getStatusNLS('E', ri['pages'])  + '</td>';
+      }  
+      html += '  <td class="text"><a href="' + ri['ruleset_url'] + '">' + reportInfoArray[i]['ruleset'] + '</a></td>';
+      html += '  <td class="text">' + ri['url']     + '</td>';
+      html += '  <td class="num">'  + ri['depth']   + '</td>';
+      html += '  <td class="num">'  + ri['pages']   + '</td>';
+      html += '</tr>';
+      tbody_zero.innerHTML += html;
+    }
+    
+  }  
+  
+  if (node.innerHTML.indexOf("tr") < 0) {
+      html = "";
+      html += '<tr id="id_row_none">';
+      html += '  <td class="text">No reports being processed</td>';
+      html += '  <td class="text"></td>';
+      html += '  <td class="text"></td>';
+      html += '  <td class="text"></td>';
+      html += '  <td class="text"></td>';
+      html += '  <td class="num"></td>';
+      html += '</tr>';
+      node.innerHTML += html;
+  
+  }
+
+  if (tbody_zero.innerHTML.indexOf("tr") < 0) {
+     div_zero.style.display = "none";
+  }
+  else {
+     div_zero.style.display = "block";
+  }
+  
+  setTimeout(loadJSON, 2000);
+}
+
+
+function loadJSON()
+{
+   var data_file = "{{site.domain}}/reports/status/";
+   var http_request = new XMLHttpRequest();
+   
+   try{
+      // Opera 8.0+, Firefox, Chrome, Safari
+      http_request = new XMLHttpRequest();
+   } catch (e) {
+      // Internet Explorer Browsers
+      try{
+         http_request = new ActiveXObject("Msxml2.XMLHTTP");
+      }catch (e) {
+         try{
+            http_request = new ActiveXObject("Microsoft.XMLHTTP");
+         }catch (e){
+            // Something went wrong
+            alert("Your browser broke!");
+            return false;
+         }
+      }
+   }
+   
+   http_request.onreadystatechange  = function(){
+      if (http_request.readyState == 4)
+      {
+        // Javascript function JSON.parse to parse JSON data
+        var reportInfoArray = JSON.parse(http_request.responseText);
+        updateReports(reportInfoArray);
+      }  
+   }
+   
+   http_request.open("GET", data_file, true);
+   http_request.send();
+}
+
+loadJSON();
+
+</script>
+
 
 
 {% endblock %}

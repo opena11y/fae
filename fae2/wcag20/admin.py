@@ -8,12 +8,12 @@ class PrincipleAdmin(admin.ModelAdmin):
 admin.site.register(Principle, PrincipleAdmin)
 
 class GuidelineAdmin(admin.ModelAdmin):
-    list_display = ('title', 'num', 'url')
+    list_display = ('title', 'num', 'url', 'slug')
 
 admin.site.register(Guideline, GuidelineAdmin)
 
 class SuccessCriterionAdmin(admin.ModelAdmin):
-    list_display = ('title', 'num', 'level', 'url')
+    list_display = ('title', 'num', 'level', 'url', 'slug')
     list_filter  = ('level', )
 
 admin.site.register(SuccessCriterion, SuccessCriterionAdmin)

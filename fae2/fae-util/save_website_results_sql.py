@@ -11,6 +11,7 @@ import getopt
 import shutil
 import json
 import csv
+import re
 
 from os.path import join, getsize
 
@@ -25,15 +26,19 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'fae2.settings')
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
 
-
 from django.conf import settings
 
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.models import User
 
+from django.db       import models
 from reports.models import WebsiteReport
 
-from websiteResults.models import WebsiteResult
+from reports.models import WebsiteReport
+from reports.models import ProcessedURL
+from reports.models import FilteredURL
+from reports.models import UnprocessedURL
+
 from websiteResults.models import WebsiteRuleCategoryResult
 from websiteResults.models import WebsiteGuidelineResult
 from websiteResults.models import WebsiteRuleScopeResult
@@ -44,10 +49,6 @@ from pageResults.models import PageRuleCategoryResult
 from pageResults.models import PageGuidelineResult
 from pageResults.models import PageRuleScopeResult
 from pageResults.models import PageRuleResult
-
-from reports.models import ProcessedURL
-from reports.models import FilteredURL
-from reports.models import UnprocessedURL
 
 from wcag20.models         import Guideline
 from ruleCategories.models import RuleCategory
@@ -224,6 +225,7 @@ class RuleScopeRefs:
     
     return False    
 
+
 rule_scope_refs = RuleScopeRefs()      
 
 # ---------------------------------------------------------------
@@ -320,7 +322,7 @@ class DataRuleResult(DataResult):
 
   def saveToDjango(self, table):
 
-    debug("DataRuleResult][saveToDjango] " + table + " " + str(len(self.cols)) + " " + str(len(self.values))) 
+#    debug("[DataRuleResult][saveToDjango] " + table + " " + str(len(self.cols)) + " " + str(len(self.values))) 
 
     self.addColumnValue('rules_na', self.rules_na)  
     self.addColumnValue('rules_passed', self.rules_passed)  
@@ -337,7 +339,7 @@ class DataRuleResult(DataResult):
 
   def addPageRuleResult(self, prr):
 
-    debug("[DataRuleResult][addPageRuleResult] " + str(prr.result_value))
+    debug("[DataRuleResult][addPageRuleResult] " + str(prr.rule_id))
 
     if prr.elements_hidden > 0:
       self.rules_with_hidden_content += 1
@@ -454,9 +456,12 @@ class DataPageRuleResult(DataResult):
   def __init__(self, rr):
     super(DataPageRuleResult, self).__init__()
 
-#    debug("[DataPageRuleResult][__init__] 1") 
+    debug("[DataPageRuleResult][__init__] " + rr["rule_id"]) 
     
     self.rule_id               = rr["rule_id"]
+    self.slug                  = rule_refs.getRule(rr["rule_id"]).slug
+
+    debug("[DataPageRuleResult][__init__] A") 
 
     self.rule_required         = rr["rule_required"]
     
@@ -477,12 +482,16 @@ class DataPageRuleResult(DataResult):
     self.elements_passed         = rr["elements_passed"]
 
 
+    debug("[DataPageRuleResult][__init__] B") 
+
     self.element_results_json  = ""
-    if rr["element_results"]:
+
+    try:
       self.element_results_json  = rr["element_results"]
+    except:   
+      pass
 
-
-#    debug("[DataPageRuleResult][__init__] 2") 
+    debug("[DataPageRuleResult][__init__] C") 
 
   def __str__(self):
     return "Page Rule Result: " + self.result_value_nls + " (" + self.rule_id + ")"
@@ -541,25 +550,26 @@ class DataPageRuleResult(DataResult):
 #    debug("[DataPageRuleResult][calaculate_implementation]           score: " + str(self.implementation_score)) 
 
 
-  def saveToDjango(self, data_page_result, page_result):
+  def saveToDjango(self, data_page_result, page_result, website_rule_result):
   
     r = rule_refs.getRule(self.rule_id)
-
     debug("[DataPageRuleResult][saveToDjango] " + str(r.rule_id)) 
-    
+
     prcr = data_page_result.getPageRuleCategoryResult(self.rule_category_code)
-#    debug("[DataPageRuleResult][saveToDjango] " + str(prcr.sql_id)) 
+    debug("[DataPageRuleResult][saveToDjango] " + str(prcr.sql_id)) 
     
     pglr  = data_page_result.getPageGuidelineResult(self.guideline_number)
-#    debug("[DataPageRuleResult][saveToDjango] " + str(pglr.sql_id)) 
+    debug("[DataPageRuleResult][saveToDjango] " + str(pglr.sql_id)) 
     
     prsr = data_page_result.getPageRuleScopeResult(self.rule_scope_code)
- #   debug("[DataPageRuleResult][saveToDjango] " + str(prsr.sql_id)) 
+    debug("[DataPageRuleResult][saveToDjango] " + str(prsr.sql_id)) 
 
-    debug("[DataPageRuleResult][saveToDjango] A") 
+#    debug("[DataPageRuleResult][saveToDjango] A") 
 
     self.addColumnValue("rule_id", r.id)
+    self.addColumnValue("slug", self.slug)
     self.addColumnValue("rule_required", self.rule_required)
+    self.addColumnValue("ws_rule_result_id", website_rule_result.sql_id)
     self.addColumnValue("page_result_id", page_result.id)
     self.addColumnValue("page_rc_result_id", prcr.sql_id)
     self.addColumnValue("page_gl_result_id", pglr.sql_id)
@@ -575,7 +585,7 @@ class DataPageRuleResult(DataResult):
     self.addColumnValue("element_results_json", escapeSingleQuotes(str(self.element_results_json))) 
     self.addColumnValue("result_message" , escapeSingleQuotes(self.result_message))
 
-    debug("[DataPageRuleResult][saveToDjango] B") 
+#    debug("[DataPageRuleResult][saveToDjango] B") 
 
     try:
       super(DataPageRuleResult, self).saveToDjango('pageResults_pageruleresult')
@@ -601,6 +611,7 @@ class DataPageRuleCategoryResult(DataRuleResult):
   def __init__(self, code):
 
     self.rule_category_code = code
+    self.slug = rule_category_refs.getRuleCategory(code).slug
 
     super(DataPageRuleCategoryResult, self).__init__()
 
@@ -619,6 +630,7 @@ class DataPageRuleCategoryResult(DataRuleResult):
     self.addColumnValue("rule_category_id", rc.id)
     self.addColumnValue("page_result_id", page_result.id)
     self.addColumnValue("ws_rc_result_id", sql_id)
+    self.addColumnValue("slug", self.slug)
 
     try:
       super(DataPageRuleCategoryResult, self).saveToDjango('pageResults_pagerulecategoryresult')
@@ -641,7 +653,12 @@ class DataPageRuleCategoryResult(DataRuleResult):
 class DataPageRuleScopeResult(DataRuleResult):
 
   def __init__(self, rsc):
+
+    debug("[DataPageRuleScopeResult][__init__] " + str(rsc))
+
     self.rule_scope_code = rsc
+    self.slug = rule_scope_refs.getRuleScope(rsc).slug
+
     super(DataPageRuleScopeResult, self).__init__()
 
   def __str__(self):
@@ -658,6 +675,7 @@ class DataPageRuleScopeResult(DataRuleResult):
     self.addColumnValue("rule_scope_id", rs.id)
     self.addColumnValue("page_result_id", page_result.id)
     self.addColumnValue("ws_rs_result_id", sql_id)
+    self.addColumnValue("slug", self.slug)
 
     try:
       super(DataPageRuleScopeResult, self).saveToDjango('pageResults_pagerulescoperesult')
@@ -682,6 +700,11 @@ class DataPageGuidelineResult(DataRuleResult):
 
   def __init__(self, num):
     self.guideline_number = num
+
+#    debug("[DataPageGuidelineResult][__init__] " + str(num))
+
+    self.slug = guideline_refs.getGuideline(num).slug
+
     super(DataPageGuidelineResult, self).__init__()
 
   def __str__(self):
@@ -693,11 +716,12 @@ class DataPageGuidelineResult(DataRuleResult):
 
     gl = guideline_refs.getGuideline(self.guideline_number)  
 
-    debug("DataPageGuidelineResult][saveToDjango] " + str(gl)) 
+#    debug("[DataPageGuidelineResult][saveToDjango] " + str(gl)) 
 
     self.addColumnValue("guideline_id", gl.id)
     self.addColumnValue("page_result_id", page_result.id)
     self.addColumnValue("ws_gl_result_id", sql_id)
+    self.addColumnValue("slug", self.slug)
 
     try:
       super(DataPageGuidelineResult, self).saveToDjango('pageResults_pageguidelineresult')
@@ -761,29 +785,33 @@ class DataPageResult(DataRuleResult):
 
   def addPageRuleResult(self, prr):
 
-#    debug("[DataPageResult][addPageRuleResult] 1")
+    debug("[DataPageResult][addPageRuleResult] 1")
 
     super(DataPageResult, self).addPageRuleResult(prr)
 
-#    debug("[DataPageResult][addPageRuleResult] 2")
+    debug("[DataPageResult][addPageRuleResult] 2")
 
     self.page_rule_results.append(prr)
 
-#    debug("[DataPageResult][addPageRuleResult] 3")
+    debug("[DataPageResult][addPageRuleResult] 3")
 
     prcr = self.getPageRuleCategoryResult(prr.rule_category_code)     
     if prcr:
       prcr.addPageRuleResult(prr)
 
+    debug("[DataPageResult][addPageRuleResult] 4")
+
     pgr =  self.getPageGuidelineResult(prr.guideline_number)     
     if pgr:
       pgr.addPageRuleResult(prr)
+
+    debug("[DataPageResult][addPageRuleResult] 5")
 
     prsr =  self.getPageRuleScopeResult(prr.rule_scope_code)     
     if prsr:
       prsr.addPageRuleResult(prr)
 
-#    debug("[DataPageResult][addPageRuleResult] 4")
+    debug("[DataPageResult][addPageRuleResult] 6")
 
   def getPageRuleCategoryResult(self, code):
 
@@ -858,7 +886,10 @@ class DataPageResult(DataRuleResult):
 
     debug("[DataPageResult][saveToDango] Saving " + str(len(self.rule_results)) + "Page Rule Results..." )
     for prr in self.rule_results:
-      prr.saveToDjango(self, page_result) 
+      debug("[DataPageResult][saveToDjango] " + str(prr.rule_id)) 
+      wsrr = data_website_result.getWebsiteRuleResult(prr.rule_id, False)
+      debug("[DataPageResult][saveToDjango] " + str(wsrr.rule_id)) 
+      prr.saveToDjango(self, page_result, wsrr) 
 
     debug("[DataPageResult][saveToDango] Saving Page Markup Information...")
     if self.markup_info:
@@ -879,6 +910,7 @@ class DataWebsiteRuleResult(DataResult):
     super(DataWebsiteRuleResult, self).__init__()
 
     self.rule_id = prr.rule_id
+    self.slug    = rule_refs.getRule(prr.rule_id).slug
     
     self.rule_required = prr.rule_required
     
@@ -966,25 +998,26 @@ class DataWebsiteRuleResult(DataResult):
     return  
 
 
-  def saveToDjango(self, dws_result, ws_result):
-    debug("[DataWebsiteRuleResult][saveToDjango] " + self.rule_id)
+  def saveToDjango(self, data_ws_result, ws_report):
+#    debug("[DataWebsiteRuleResult][saveToDjango] " + self.rule_id)
 
     r = rule_refs.getRule(self.rule_id)
 #    debug("[DataWebsiteRuleResult][saveToDjango] 2 " + str(r.id))
-    wsrcr = dws_result.getWebsiteRuleCategoryResult(self.rule_category_code)
+    wsrcr = data_ws_result.getWebsiteRuleCategoryResult(self.rule_category_code)
 #    debug("[DataWebsiteRuleResult][saveToDjango] 3 " + str(wsrcr.sql_id))
-    wsglr  = dws_result.getWebsiteGuidelineResult(self.guideline_number)
+    wsglr  = data_ws_result.getWebsiteGuidelineResult(self.guideline_number)
 #    debug("[DataWebsiteRuleResult][saveToDjango] 4 " + str(wsglr.sql_id))
-    wsrsr = dws_result.getWebsiteRuleScopeResult(self.rule_scope_code)
+    wsrsr = data_ws_result.getWebsiteRuleScopeResult(self.rule_scope_code)
 #    debug("[DataWebsiteRuleResult][saveToDjango] 5 " + str(wsrsr.sql_id))
 
     self.addColumnValue("rule_id", r.id)
-    self.addColumnValue("rule_required", )
-    self.addColumnValue("ws_result_id", ws_result.id)
+    self.addColumnValue("slug", self.slug)
+    self.addColumnValue("ws_report_id", ws_report.id)
     self.addColumnValue("ws_rc_result_id", wsrcr.sql_id)
     self.addColumnValue("ws_gl_result_id", wsglr.sql_id)
     self.addColumnValue("ws_rs_result_id", wsrsr.sql_id)
     self.addColumnValue("rule_number", -1)
+    self.addColumnValue("rule_required", self.rule_required)
     self.addColumnValue("pages_violation", self.pages_violation)
     self.addColumnValue("pages_warning", self.pages_warning)
     self.addColumnValue("pages_manual_check", self.pages_manual_check)
@@ -992,10 +1025,19 @@ class DataWebsiteRuleResult(DataResult):
     self.addColumnValue("pages_na", self.pages_na)
     self.addColumnValue("pages_with_hidden_content", self.pages_with_hidden_content)
 
+    debug("[DataWebsiteRuleResult][saveToDjango] 6")
+
     try:
-      super(DataWebsiteRuleCategoryResult, self).saveToDjango("websiteResults_websiteruleresult")
+      super(DataWebsiteRuleResult, self).saveToDjango("websiteResults_websiteruleresult")
     except:
       error("[DataWebsiteRuleResult][saveToDjango] SQL insert error: ")
+
+    try:
+      ws_rule_result = WebsiteRuleResult.objects.get(ws_report=ws_report, rule=r)
+      self.sql_id = str(ws_rule_result.id)
+    except:
+      error("[DataWebsiteRuleResult][saveToDjango] SQL select error")
+
 
 # ------------------------------------------------------------------------------------------------------------------------
 #
@@ -1007,6 +1049,8 @@ class DataWebsiteRuleCategoryResult(DataRuleResult):
 
   def __init__(self, code):
     self.rule_category_code = code
+    self.slug = rule_category_refs.getRuleCategory(code).slug
+
     self.page_rc_results = []
 
     super(DataWebsiteRuleCategoryResult, self).__init__()
@@ -1026,6 +1070,7 @@ class DataWebsiteRuleCategoryResult(DataRuleResult):
 
     self.addColumnValue("ws_report_id", ws_report.id)
     self.addColumnValue("rule_category_id", rc.id)
+    self.addColumnValue("slug", self.slug)
 
     debug("[DataWebsiteRuleCategoryResult][saveToDjango] " + str(rc.category_id)) 
 
@@ -1051,7 +1096,10 @@ class DataWebsiteGuidelineResult(DataRuleResult):
 
   def __init__(self, num):
     self.guideline_number = num
+    self.slug = guideline_refs.getGuideline(num).slug
+
     self.page_gl_results = []
+
 
     super(DataWebsiteGuidelineResult, self).__init__()
 
@@ -1069,6 +1117,7 @@ class DataWebsiteGuidelineResult(DataRuleResult):
 
     self.addColumnValue("ws_report_id", ws_report.id)
     self.addColumnValue("guideline_id", gl.id)
+    self.addColumnValue("slug", self.slug)
 
     try:
       super(DataWebsiteGuidelineResult, self).saveToDjango("websiteResults_websiteguidelineresult")
@@ -1093,7 +1142,11 @@ class DataWebsiteRuleScopeResult(DataRuleResult):
 
   def __init__(self, code):
     self.rule_scope_code = code
+    self.slug = rule_scope_refs.getRuleScope(code).slug
+
     self.page_rs_results = []
+
+
     super(DataWebsiteRuleScopeResult, self).__init__()
 
   def __str__(self):
@@ -1110,6 +1163,7 @@ class DataWebsiteRuleScopeResult(DataRuleResult):
 
     self.addColumnValue("ws_report_id", ws_report.id)
     self.addColumnValue("rule_scope_id", rs.id)
+    self.addColumnValue("slug", rs.slug)
 
     try:
       super(DataWebsiteRuleScopeResult, self).saveToDjango("websiteResults_websiterulescoperesult")
@@ -1207,11 +1261,14 @@ class DataWebsiteResult(DataRuleResult):
 
   def getWebsiteRuleResult(self, rule_id, page_rule_result):
 
-#    debug("[WebsiteResult][getWebsiteRuleResult]: 1 ")
+    debug("[WebsiteResult][getWebsiteRuleResult]: " + rule_id)
 
     for wsrr in self.rule_results:
       if wsrr.rule_id == rule_id:
         return wsrr
+
+    if not page_rule_result:
+      return False    
     
 #    debug("[WebsiteResult][getWebsiteRuleResult]: 2 ")
         
@@ -1295,9 +1352,10 @@ class DataWebsiteResult(DataRuleResult):
         start = time.time()
         info("========================================================")
         info("[WebsiteResult][saveToDjango] " + str(self.ws_report))
+
+        wsr = self.ws_report
            
         try:
-          wsr = WebsiteResult(ws_report=self.ws_report)
           wsr.rules_violation     = self.rules_violation
           wsr.rules_warning       = self.rules_warning
           wsr.rules_manual_check  = self.rules_manual_check
@@ -1389,15 +1447,15 @@ def saveResultsToDjango(ws_report):
     for rr in data["rule_results"]:
 
       try:
-#        debug("[saveResultsToDjango][getPageDataFromJSON] " + rr["rule_id"] + " 1a ")
+        debug("[saveResultsToDjango][getPageDataFromJSON] " + rr["rule_id"] + " 1a ")
         prr = DataPageRuleResult(rr)
-#        debug("[saveResultsToDjango][getPageDataFromJSON] " + rr["rule_id"] + " 1b ")
+        debug("[saveResultsToDjango][getPageDataFromJSON] " + rr["rule_id"] + " 1b ")
         prr.calculate_implementation()
-#        debug("[saveResultsToDjango][getPageDataFromJSON] " + rr["rule_id"] + " 1c ")
+        debug("[saveResultsToDjango][getPageDataFromJSON] " + rr["rule_id"] + " 1c ")
       except:
         error("Error creating data page rule result: " + rr["rule_id"]) 
     
- #     debug("[saveResultsToDjango][getPageDataFromJSON] " + rr["rule_id"] + " 2 ")
+      debug("[saveResultsToDjango][getPageDataFromJSON] " + rr["rule_id"] + " 2 ")
 
       try:
         pr.addPageRuleResult(prr)
@@ -1472,8 +1530,6 @@ def saveResultsToDjango(ws_report):
 
   try:
     wsr.saveToDjango()
-    info("Set rule numbers")
-    ws_report.set_rule_numbers()
     info("Set status complete")
     ws_report.set_status_complete()
 
@@ -1509,7 +1565,6 @@ def main():
     ws_report.filtered_urls.all().delete()
     ws_report.filtered_urls.all().delete()
 
-    ws_report.ws_all_results.all().delete()
     ws_report.ws_gl_results.all().delete()
     ws_report.ws_rc_results.all().delete()
     ws_report.ws_rs_results.all().delete()

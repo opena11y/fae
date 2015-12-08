@@ -50,6 +50,7 @@ class Guideline(models.Model):
   num       = models.IntegerField()
   number    = models.CharField(max_length=8,default="none")
   url       = models.URLField(null=True,blank=True)
+  slug      = models.SlugField(max_length=32)
 
   class Meta:
         ordering = ['principle__num', 'num']
@@ -114,6 +115,7 @@ class SuccessCriterion(models.Model):
   url            = models.URLField(null=True,blank=True)
   url_meet       = models.URLField(null=True,blank=True)
   url_understand = models.URLField(null=True,blank=True)
+  slug           = models.SlugField(max_length=32)
 
   class Meta:
         ordering = ['guideline__principle__num', 'guideline__num', 'num']

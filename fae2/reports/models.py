@@ -6,6 +6,75 @@ from rulesets.models            import Ruleset
 
 from fae2.settings import APP_DIR
 
+# Create your models here.
+
+RESULT_VALUE = {
+  'UNDEFINED'      : 0,
+  'NOT_APPLICABLE' : 1,
+  'PASS'           : 2,
+  'MANUAL_CHECK'   : 3,
+  'WARNING'        : 4,
+  'VIOLATION'      : 5
+}  
+
+IMPLEMENTATION_STATUS_CHOICES = (
+    ('U',   'Undefined'),
+    ('NA',  'Not applicable'),
+    ('NI',  'Not Implemented'),
+    ('PI',  'Partial Implementation'),
+    ('AC',  'Almost Complete'),
+    ('C',   'Complete'),
+)
+
+
+MC_STATUS_CHOICES = (
+    ('NC',  'Not Checked'),
+    ('NA',  'Not Applicable'),
+    ('P',   'Passed'),
+    ('F',   'Fail'),
+)
+
+# ---------------------------------------------------------------
+#
+# RuleResult
+#
+# ---------------------------------------------------------------
+
+class RuleResult(models.Model):
+  result_value           = models.IntegerField(default=0)
+
+  implementation_pass_fail_score  = models.IntegerField(default=-1)
+  implementation_score            = models.IntegerField(default=-1)
+
+  implementation_pass_fail_status  = models.CharField("Implementation Pass/Fail Status",  max_length=2, choices=IMPLEMENTATION_STATUS_CHOICES, default='U')
+  implementation_status            = models.CharField("Implementation Status",  max_length=2, choices=IMPLEMENTATION_STATUS_CHOICES, default='U')
+
+  manual_check_status    = models.CharField("Manual Check Status",  max_length=2, choices=MC_STATUS_CHOICES, default='NC')
+
+  class Meta:
+        abstract = True
+
+
+
+
+# ---------------------------------------------------------------
+#
+# RuleGroupResult
+#
+# ---------------------------------------------------------------
+
+class RuleGroupResult(RuleResult):
+  rules_violation    = models.IntegerField(default=0)
+  rules_warning      = models.IntegerField(default=0)
+  rules_manual_check = models.IntegerField(default=0)
+  rules_passed       = models.IntegerField(default=0)
+  rules_na           = models.IntegerField(default=0)
+
+  rules_with_hidden_content = models.IntegerField(default=0)
+
+  class Meta:
+        abstract = True
+
 
 # Create your models here.
 
@@ -53,7 +122,7 @@ MAX_PAGES_CHOICES = (
 #
 # ---------------------------------------------------------------
 
-class WebsiteReport(models.Model):
+class WebsiteReport(RuleGroupResult):
 
   id    = models.AutoField(primary_key=True)
 

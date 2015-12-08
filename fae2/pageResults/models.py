@@ -6,14 +6,14 @@ from wcag20.models         import Guideline
 from rules.models          import RuleScope
 from rules.models          import Rule
 
+from reports.models import IMPLEMENTATION_STATUS_CHOICES
 
-from websiteResults.models import IMPLEMENTATION_STATUS_CHOICES
 from websiteResults.models import RuleResult
 from websiteResults.models import RuleGroupResult
-from websiteResults.models import WebsiteResult
 from websiteResults.models import WebsiteRuleCategoryResult
 from websiteResults.models import WebsiteGuidelineResult
 from websiteResults.models import WebsiteRuleScopeResult
+from websiteResults.models import WebsiteRuleResult
 
 # Create your models here.
 
@@ -61,6 +61,8 @@ class PageRuleCategoryResult(RuleGroupResult):
 
   page_result     = models.ForeignKey(PageResult, related_name="page_rc_results")
 
+  slug            = models.SlugField(max_length=32, default="none", blank=True, editable=False)
+
   ws_rc_result    = models.ForeignKey(WebsiteRuleCategoryResult, related_name="page_rc_results", blank=True, null=True)
 
   rule_category   = models.ForeignKey(RuleCategory)
@@ -91,6 +93,8 @@ class PageGuidelineResult(RuleGroupResult):
 
   page_result   = models.ForeignKey(PageResult, related_name="page_gl_results")
 
+  slug            = models.SlugField(max_length=32, default="none", blank=True, editable=False)
+
   ws_gl_result  = models.ForeignKey(WebsiteGuidelineResult, related_name="page_gl_results", blank=True, null=True)
 
   guideline     = models.ForeignKey(Guideline)
@@ -119,6 +123,8 @@ class PageRuleScopeResult(RuleGroupResult):
   id            = models.AutoField(primary_key=True)
 
   page_result   = models.ForeignKey(PageResult, related_name="page_rs_results")
+
+  slug            = models.SlugField(max_length=32, default="none", blank=True, editable=False)
 
   ws_rs_result  = models.ForeignKey(WebsiteRuleScopeResult, related_name="page_rs_results", blank=True, null=True)
 
@@ -152,7 +158,11 @@ class PageRuleResult(RuleResult):
 
   rule           = models.ForeignKey(Rule)
   rule_required  = models.BooleanField(default=False)
+
+  slug            = models.SlugField(max_length=32, default="none", blank=True, editable=False)
   
+  ws_rule_result  = models.ForeignKey(WebsiteRuleResult,      related_name="page_rule_results", blank=True)
+
   page_result     = models.ForeignKey(PageResult,             related_name="page_rule_results")
   page_rc_result  = models.ForeignKey(PageRuleCategoryResult, related_name="page_rule_results")
   page_gl_result  = models.ForeignKey(PageGuidelineResult,    related_name="page_rule_results")

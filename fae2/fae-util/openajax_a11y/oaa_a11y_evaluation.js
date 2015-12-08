@@ -2383,8 +2383,14 @@ OpenAjax.a11y.util.normalizeSpace = function (s) {
   // Replace repeated spaces, newlines and tabs with a single space
   
   if (typeof s !== 'string') return "";
+
+// **** NOTE *****
+// This function was changed to support fae-util based on HTMLUnit, which does not seem to 
+// handle character entities the same as a browser DOM
+// This resulted in special characters being generated triggering false positives in some
+/// rules, usually Landmark rules related to content being outside a landmark
   
-  if (s.replace) return s.replace(/^\s*|\s(?=\s)|\s*$/g, "");
+//  if (s.replace) return s.replace(/^\s*|\s(?=\s)|\s*$/g, "");
   
   var len = s.length;
   var s1 = "";
@@ -2393,6 +2399,9 @@ OpenAjax.a11y.util.normalizeSpace = function (s) {
   for (var i = 0; i < len; i++) {
   
     var c = s[i];
+    
+    // only include printable characters less than '~' character
+    if (c < ' ' || c > '~') continue;
   
     if ((c !== ' ') || (last_c !== ' ')) {
       s1 += c;
@@ -5966,9 +5975,9 @@ OpenAjax.a11y.cache.InputElement = function (dom_element, control_info) {
 
   var type = "";
   
-  if (dom_element.has_type) type = dom_element.type;
+  if (dom_element.has_type_attr) type = dom_element.type_attr;
   
-  if (!dom_element.has_type && (dom_element.has_id || dom_element.has_name)) type = 'text';
+  if ((typeof type !== 'string') || (type.length === 0)) type = 'text';
   
   this.type = type;
 
@@ -8908,7 +8917,7 @@ OpenAjax.a11y.cache.InteractiveElement = function (dom_element, has_tabindex, ha
   this.element_id = tag_name;
   
   if (tag_name === 'input') {
-    if (dom_element.has_type) this.element_id += "[" + dom_element.type + "]";
+    if (dom_element.has_type_attr) this.element_id += "[" + dom_element.type_attr + "]";
     else this.element_id += "[text]";
   }  
   
@@ -9568,9 +9577,6 @@ OpenAjax.a11y.cache.DOMText = function (node, parent_element) {
 
 OpenAjax.a11y.cache.DOMText.prototype.addText = function (text) {
 
-  // fixes problem with HTMLUnit
-  // text = text.replace('\Â', '');
-
   this.text += text;
   
   this.text_normalized = OpenAjax.a11y.util.normalizeSpace(this.text);
@@ -10228,7 +10234,7 @@ OpenAjax.a11y.cache.DOMElement = function (node, parent_dom_element) {
   this.is_interactive  = false;
   if ((this.tag_name === 'a') ||
       (this.tag_name === 'button') ||
-      ((this.tag_name === 'input') && node.getAttribute('type') && (node.getAttribute('type').toLowerCase() !== 'hidden')) ||
+      (this.tag_name === 'input') ||
       (this.tag_name === 'select') ||
       (this.tag_name === 'textarea') ||
       (this.tag_name === 'video') ||
@@ -10263,7 +10269,7 @@ OpenAjax.a11y.cache.DOMElement = function (node, parent_dom_element) {
   this.has_autofocus             = false;
   this.has_headers               = false;
   this.has_href                  = false;
-  this.has_id                  = false;
+  this.has_type_attr             = false;
   this.has_lang                  = false;
   this.has_longdesc              = false;
   this.has_name                  = false;
@@ -10276,15 +10282,12 @@ OpenAjax.a11y.cache.DOMElement = function (node, parent_dom_element) {
   this.has_summary               = false;
   this.has_tabindex              = false;
   this.has_title                 = false;
-  this.has_type                  = false;
 
 
   this.role           = "";
   this.role_info      = null;    
   this.aria_invalid   = false;
   this.aria_required  = false;  
-
-  if (node.id && node.id.length) this.has_id = true;
 
   this.ancestor_has_aria_activedescendant = false;
   if (parent_dom_element) this.ancestor_has_aria_activedescendant = parent_dom_element.ancestor_has_aria_activedescendant;
@@ -10428,8 +10431,8 @@ OpenAjax.a11y.cache.DOMElement = function (node, parent_dom_element) {
       
     case 'type':
       if (attr_value.length > 0) {
-        this.has_type = true;
-        this.type     = attr_value.toLowerCase();
+        this.has_type_attr = true;
+        this.type_attr     = attr_value.toLowerCase();
       }
       break;
       
@@ -12833,6 +12836,7 @@ OpenAjax.a11y.cache.DOMCache.prototype.updateDOMElements = function (node, paren
 
   case Node.ELEMENT_NODE:
 
+    if (node.tagName.toLowerCase() === 'input' && node.type.toLowerCase() === 'hidden') break;
 
     var dom_element = new OpenAjax.a11y.cache.DOMElement(node, parent_dom_element);
 
@@ -27067,7 +27071,7 @@ OpenAjax.a11y.EvaluationResult.prototype.getRuleResultsByCategory = function (ca
  
 OpenAjax.a11y.EvaluationResult.prototype.toJSON = function (include_element_results) {
 
-  if (typeof include_element_results !== 'boolean') include_element_results = true;
+  if (typeof include_element_results !== 'boolean') include_element_results = false;
   
   var wcag20_nls  = OpenAjax.a11y.nls.WCAG20.getNLS();  
   
@@ -27926,7 +27930,7 @@ OpenAjax.a11y.RuleResult.prototype.getRuleScopeNLS = function () {
 
 OpenAjax.a11y.RuleResult.prototype.toJSON = function(prefix, flag) {
 
-  if (typeof flag !== 'boolean') flag = true;
+  if (typeof flag !== 'boolean') flag = false;
 
   var next_prefix = "";
   var next_prefix_2 = "";

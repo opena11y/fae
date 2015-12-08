@@ -36,3 +36,203 @@ table.rule tbody td ul {
     padding-left: 1.25em;
     padding-bottom: 0.5em;
 }
+
+#information {
+    padding: 0.5em;
+    margin: 0;
+    margin-bottom: 1em;
+    background-color: #F4F4F4;
+    margin-right: 12em;
+    width: 100%;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+#information .title {
+    font-size: 125%;
+    font-weight: bold;
+    float: left;
+}
+
+#information .date {
+    font-size: 100%;
+    float: right;
+}
+
+#information .eval_info
+{
+    margin: 0;
+    padding: 0;
+    clear: both;
+    padding-top: 0.25em;
+    width: 100%;
+    font-size: 100%;
+}
+
+#information  ul {
+    margin-left: 0;
+    padding-left: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+#information li {
+    list-style: none;
+}
+
+#information .eval_info li {
+    display: inline;
+    padding-right: 1.25em;
+}
+
+#information .url {
+    margin-top: 0.25em;
+}
+
+#id_table_show_summary_default {
+    margin-top: 1em;
+}
+
+main table th.violation,
+main table td.violation,
+.table-striped > tbody > tr > td.violation
+{
+    background-color: #FFAEAE;
+    color: black;
+    padding-right: 1.25em;
+    padding-left:  0.5em;
+}
+
+main table th.warning,
+main table td.warning,
+.table-striped > tbody > tr > td.warning
+{
+    background-color: #FFEC94;
+    color: black;
+    padding-right: 1.25em;
+}
+
+main table th.manual_check,
+main table td.manual_check,
+.table-striped > tbody > tr > td.manual_check
+{
+    background-color: #B4D8E7;
+    color: black;
+    padding-right: 1.25em;
+}
+
+main table th.hidden,
+main table td.hidden,
+.table-striped > tbody > tr > td.hidden
+{
+    background-color: #B4D8E7;
+    color: black;
+    padding-right: 1.25em;
+}
+
+main table th.passed,
+main table td.passed,
+.table-striped > tbody > tr > td.passed
+{
+    background-color: #B0E57C;
+    color: black;
+    padding-right: 1.25em;
+}
+
+main table th.not_applicable,
+main table td.not_applicable,
+.table-striped > tbody > tr > td.not_applicable
+{
+    color: black;
+    padding-right: 1.25em;
+}
+
+main table tr.summary {
+  font-weight: bold;
+}
+
+main table tr.summary th,
+main table tr.summary td {
+    border-top: solid thin black;
+}
+
+#summary table.summary
+{
+    margin-top: 2em;
+}
+
+#summary table.summary th.num {
+    padding-left: 1em;
+}
+
+#summary table.summary th.first {
+    padding-left: 0em;
+}
+
+#summary table.summary thead th,
+#summary table.summary tbody td {
+    text-align: center;
+    width: 5em;
+    border: white solid 1px;
+}
+
+#summary table.summary tbody td.na,
+#summary table.summary tbody td.zero
+{
+    color: gray;
+}
+
+#summary table.summary tbody th {
+    font-weight: normal;
+    padding-right: 1.25em;
+}
+
+#view_options {
+    margin-top: 3em;
+}
+
+#rule_result {
+    font-size: 250%;
+}
+
+.violation {
+    background-color: #FFAEAE;
+    padding-left: 0.25em;
+    padding-right: 0.25em;
+}
+
+.warning {
+    background-color: #FFEC94;
+    padding-left: 0.25em;
+    padding-right: 0.25em;
+}
+
+.manual_check 
+    background-color: #B4D8E7;
+    padding-left: 0.25em;
+    padding-right: 0.25em;
+}
+
+.hidden {
+    background-color: #B4D8E7;
+    color: black;
+    padding-left: 0.25em;
+    padding-right: 0.25em;
+}
+
+.passed {
+    background-color: #B0E57C;
+    padding-left: 0.25em;
+    padding-right: 0.25em;
+}
+
+.not_applicable {
+    background-color: black;
+    white: white;
+    padding-left: 0.25em;
+    padding-right: 0.25em;
+}
+
+

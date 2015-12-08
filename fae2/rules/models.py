@@ -43,6 +43,7 @@ class RuleScope(models.Model):
   id = models.AutoField(primary_key=True)
 
   rule_scope_code = models.IntegerField('Scope Code', default=0)
+  slug            = models.SlugField(max_length=32, default="none", blank=True)
   title           = models.CharField('Scope Title',        max_length=128, default="none")
   abbrev          = models.CharField('Scope Abbreviation', max_length=32,  default="none")
   
@@ -113,7 +114,9 @@ class Rule(models.Model):
   id             = models.AutoField(primary_key=True)
   updated_date   = models.DateTimeField(editable=False)
 
-  rule_id             = models.CharField('Rule ID', max_length=64, unique=True) 
+  rule_id        = models.CharField('Rule ID', max_length=32, unique=True) 
+  slug           = models.SlugField(max_length=32, default="none", blank=True)
+
   scope               = models.ForeignKey(RuleScope, related_name='rules')
   group               = models.ForeignKey(RuleGroup, related_name='rules')
   category            = models.ForeignKey(RuleCategory, related_name='rules') 

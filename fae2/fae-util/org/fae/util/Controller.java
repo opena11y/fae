@@ -20,6 +20,7 @@ public class Controller {
   public boolean TEST_MODE = false;
   public boolean VERBOSE = false;
   public String JAVA_SCRIPT = "true";
+  public String EXPORT_OPTION = "false";
   public String BROWSER_VERSION = "firefox";
   public String CONFIG_FILE;
   public String DEPTH = "1";
@@ -71,6 +72,7 @@ public class Controller {
 
     System.out.println("\t" + authorization.getLongOpt() + "=> " + AUTHORIZATION);
     System.out.println("\t" + javaScript.getLongOpt() + "=> " + JAVA_SCRIPT);
+    System.out.println("\t" + exportOption.getLongOpt() + "=> " + EXPORT_OPTION);
     System.out.println(" ----------------------------------------------------- ");
   }
 
@@ -109,6 +111,8 @@ public class Controller {
     
     if (m_cmdLine.hasOption(javaScript.getOpt()))
     	JAVA_SCRIPT = m_cmdLine.getOptionValue(javaScript.getOpt());   
+    if (m_cmdLine.hasOption(exportOption.getOpt()))
+    	EXPORT_OPTION = m_cmdLine.getOptionValue(exportOption.getOpt());
     if (m_cmdLine.hasOption(browserVersion.getOpt()))
       BROWSER_VERSION = m_cmdLine.getOptionValue(browserVersion.getOpt());
     if (m_cmdLine.hasOption(depth.getOpt()))
@@ -183,6 +187,11 @@ public class Controller {
       error = true;
     }
     
+    if (!EXPORT_OPTION.equalsIgnoreCase("true") && !EXPORT_OPTION.equalsIgnoreCase("false")) {
+        System.err.println("Unknown " + exportOption.getLongOpt() + ": " + EXPORT_OPTION);
+        error = true;
+    }
+    
     if (error) {
       printUsage();
       System.exit(1);
@@ -218,6 +227,7 @@ public class Controller {
 
     m_options.addOption(authorization);
     m_options.addOption(javaScript);
+    m_options.addOption(exportOption);
   }
 
   /**
@@ -290,7 +300,8 @@ public class Controller {
 
   public Option authorization = new Option("a", "authorization", true, "Optional: filename of authorization information");
   public Option javaScript = new Option("j", "javaScript", true, "Optional: boolean value to enable (true, default) or disable (false) HtmlUnit java script");
-
+  public Option exportOption = new Option("xo", "exportOption", true, "Optional: boolean value to enable (true) or disable (false, default) export option");
+  
   // Error message constants
   private final String PARSE_ERROR = "Error parsing arguments";
 

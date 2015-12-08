@@ -26,7 +26,7 @@ def create_wcag20(wcag20):
           
           wcag20_principle.title = principle[1]
           wcag20_principle.url = principle_url
-          print(principle[1] + " (updated)")
+          print(principle[1] + " (updated) " + principle[0])
         
         except:
           wcag20_principle = Principle(num=principle[0], title=principle[1], url=principle_url)
@@ -36,15 +36,17 @@ def create_wcag20(wcag20):
         
         for guideline in principle[3]:
             guideline_url = 'http://www.w3.org/TR/WCAG20/#' + guideline[2]
+            guideline_slug = 'p' + principle[0] + 'g' + str(guideline[0])
             try:
               wcag20_guideline       = Guideline.objects.get(principle=wcag20_principle, num=guideline[0])
               print("  " +  wcag20_guideline.title + " (found)")
               wcag20_guideline.title = guideline[1]
               wcag20_guideline.url   = guideline_url
+              wcag20_guideline.slug  = guideline_slug
               print("  " + guideline[1] + " (updated)")
               
             except:  
-              wcag20_guideline = Guideline(principle=wcag20_principle, num=guideline[0], title=guideline[1], url=guideline_url)
+              wcag20_guideline = Guideline(principle=wcag20_principle, num=guideline[0], title=guideline[1], url=guideline_url, slug=guideline_slug)
               print("  " + guideline[1] + " (CREATED)")
               
             wcag20_guideline.save()
@@ -53,6 +55,7 @@ def create_wcag20(wcag20):
                 requirement_url = 'http://www.w3.org/TR/WCAG20/#' + requirement[2]
                 meet_url        = 'http://www.w3.org/WAI/WCAG20/quickref/#qr-' + requirement[2] + '.html'
                 understand_url  = 'http://www.w3.org/TR/WCAG20/' + requirement[2] + '.html'
+                requirement_slug = guideline_slug + 'sc' + str(requirement[0])
                 
                 try: 
                   wcag20_requirement = SuccessCriterion.objects.get(guideline=wcag20_guideline, num=requirement[0])
@@ -62,9 +65,10 @@ def create_wcag20(wcag20):
                   wcag20_requirement.url_meet = meet_url
                   wcag20_requirement.url_understand = understand_url
                   wcag20_requirement.level = requirement[3]
+                  wcag20_requirement.slug = requirement_slug
                   print("    " + requirement[1] + " (updated)")
                 except:
-                  wcag20_requirement = SuccessCriterion(guideline=wcag20_guideline, num=requirement[0], title=requirement[1], url=requirement_url, url_meet=meet_url, url_understand=understand_url, level=requirement[3])
+                  wcag20_requirement = SuccessCriterion(guideline=wcag20_guideline, num=requirement[0], title=requirement[1], url=requirement_url, url_meet=meet_url, url_understand=understand_url, level=requirement[3], slug=requirement_slug)
                   print("    " + requirement[1]  + " (CREATED)")
                   
                 wcag20_requirement.save()

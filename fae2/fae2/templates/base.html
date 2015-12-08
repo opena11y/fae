@@ -90,7 +90,7 @@
       <h2 id="breadcrumb-nav-label" class="sr-only">Breadcrumb Navigation</h2>
       <div class="container">
         <ul class="breadcrumb">
-          <li><a href="{% url 'run_report' %}">Run</a></li>
+          <li><a href="{% url 'run_report' %}">Home</a></li>
           {% block breadcrumb %}
           {% endblock %}
         </ul>  
@@ -109,9 +109,9 @@
                <ul class="nav nav-pills nav-stacked">
                   {% if user.is_authenticated %}
                   <li><a href="{% url 'run_report'            %}">Run FAE</a></li>
-                  <li><a href="{% url 'processing_report'     %}">Report Processing</a></li>
-                  <li><a href="{% url 'archived_report'       %}">Archived Reports</a></li>
-                  <li><a href="{% url 'manage_report'         %}">Manage Reports</a></li>
+                  <li><a href="{% url 'processing_reports'     %}">Report Processing</a></li>
+                  <li><a href="{% url 'archived_reports'       %}">Archived Reports</a></li>
+                  <li><a href="{% url 'manage_reports'         %}">Manage Reports</a></li>
                   {% else %}
                   <li><a href="{% url 'run_anonymous_report'  %}">Run FAE</a></li>
                   {% endif %}

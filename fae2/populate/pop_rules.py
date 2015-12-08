@@ -1,6 +1,7 @@
 import sys,os
 import django
 from django.core.exceptions import ObjectDoesNotExist
+import re
 
 sys.path.append(os.path.abspath('..'))
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'fae2.settings')
@@ -28,18 +29,8 @@ data = json.load(json_data)
 json_data.close()
 
 # Rule.objects.all().delete()
-# InformationalLink.objects.all().delete()
 
 
-def addInformationalLink(rule, type, title, url, date):
-  print("  Information link title: " + title)
-  print("  Information link url:   " + url)
-  if title != "": 
-    if url != "":
-      il = InformationalLink(rule=rule, type=str(type), title=title, url=url, updated_date=date)
-    else:  
-      il = InformationalLink(rule=rule, type=str(type), title=title, updated_date=date)
-    il.save()
 
 def addRuleResultMessage(rule, label, message, date):
   print("  Rule Result Message: " + label + ": " + message)
@@ -80,19 +71,19 @@ def addNodeResultMessage(rule, label, message, date):
 try:
   RuleScope.objects.get(rule_scope_code=1)
 except ObjectDoesNotExist:  
-  rs = RuleScope(rule_scope_code=1, title='Element', abbrev='E', description='Rules apply to the accessibility features of individual elements on a web page')
+  rs = RuleScope(rule_scope_code=1, title='Element', slug="element", abbrev='E', description='Rules apply to the accessibility features of individual elements on a web page')
   rs.save()
 
 try:
   RuleScope.objects.get(rule_scope_code=2)
 except ObjectDoesNotExist:  
-  rs = RuleScope(rule_scope_code=2, title='Page',    abbrev='P',   description='Rules apply to the accessibility of page layout, structure and identifying the content on the page')
+  rs = RuleScope(rule_scope_code=2, title='Page',    slug="page", abbrev='P',   description='Rules apply to the accessibility of page layout, structure and identifying the content on the page')
   rs.save()
 
 try:
   RuleScope.objects.get(rule_scope_code=3)
 except ObjectDoesNotExist:  
-  rs = RuleScope(rule_scope_code=3, title='Website', abbrev='W',   description='Rules apply to the consistency and ordering of content of the web pages within a website, website navigation features and titling that identifies the website and content of indivdiual pages')
+  rs = RuleScope(rule_scope_code=3, title='Website', slug="website", abbrev='W',   description='Rules apply to the consistency and ordering of content of the web pages within a website, website navigation features and titling that identifies the website and content of indivdiual pages')
   rs.save()
 
 # Populate Rule Group 
@@ -156,7 +147,6 @@ for r in data['rules']:
      rule.wcag_primary = SuccessCriterion.get_by_wcag_number(r['wcag_primary'])
      rule.updated_date=r['last_updated']
      
-     InformationalLink.objects.filter(rule=rule).delete()
      NodeResultMessage.objects.filter(rule=rule).delete()  
      
    except ObjectDoesNotExist:  
@@ -166,6 +156,7 @@ for r in data['rules']:
      rule.wcag_primary = SuccessCriterion.get_by_wcag_number(r['wcag_primary'])
      rule.category = RuleCategory.objects.get(rule_category_code=r['rule_category'])
      
+   rule.slug = r['rule_id'].lower().replace('_', '')
    rule.save()
 
    rule.wcag_related.clear();  

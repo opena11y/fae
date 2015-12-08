@@ -11,6 +11,6 @@ var evaluator = evaluator_factory.newEvaluator();
 
 var evaluation = evaluator.evaluate(doc, doc.title, doc.location.href);
 
-var out = evaluation.toJSON();
+var out = evaluation.toJSON(true);
 
 out;
