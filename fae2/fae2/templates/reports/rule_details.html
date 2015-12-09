@@ -1,0 +1,78 @@
+<section aria-label="Details/Actions">
+
+    <h2>Details/Actions</h2>
+
+    <table class="details table table-striped table-hover rule" aria-labelledby="{{id}}">
+        <tbody>
+            <tr>
+                <th>Definition</th>
+                <td class="rule">{{ rule.definition_html|safe }}</td>
+            </tr>
+            <tr>
+                <th>Action</th>
+                <td class="rule">
+                TBA
+                </td>
+            </tr>
+            <tr>
+                <th>Purpose</th>
+                <td class="rule">
+                {{rule.purpose_html|safe}}
+                </td>
+            </tr>
+            <tr>
+                <th>WCAG 2.0 Success Criteria</th>
+                <td class="rule">
+                    <p class="primary"><a href="{{rule.wcag_primary.url}}" target="_requirement_ref">{{rule.wcag_primary.number}} {{rule.wcag_primary.title}} ({{rule.wcag_primary.show_level}}, <em>Primary Success Criterion</em>)</a></p> 
+                    <p class="related">Other Related Success Criterion: </p>
+                    <ul class="related">
+                        {% if rule.wcag_related.all.count %}
+                        {% for sc in rule.wcag_related.all %}
+                        <li class="related"><a href="{{sc.url}}" target="_requirement_ref">{{sc.number}} {{sc.title}} ({{sc.show_level}})</a></li>   
+                        {% endfor %}
+                        {% endif %}
+                    </ul>                
+                </td>
+            </tr>
+            <tr>
+                <th>Rule Category</th>
+                <td>{{ rule.category }}</td>
+            </tr>
+            <tr>
+                <th>Scope</th>
+                <td>{{ rule.scope }}</td>
+            </tr>
+            <tr>
+                <th>Target Resources</th>
+                <td>
+                    {{ rule.target_resource_desc_html|safe}}
+                    <ul>
+                        {% for tr in rule.target_resources.all %}
+                        <li><code>{{ tr.title }}</code></li>
+                        {% endfor %}
+                    </ul>                
+                </td>
+            </tr>
+            <tr>
+                <th>Techniques</th>
+                <td>
+                  {{rule.techniques_html|safe}}
+                </td>
+            </tr>
+            {% if rule.manual_checks_html %}
+            <tr>
+                <th>Manual Checks</th>
+                <td>
+                  {{rule.manual_checks_html|safe}}
+                </td>
+            </tr>
+            {% endif %}
+            <tr>
+                <th>Informational Links</th>
+                <td>
+                  {{rule.informational_links_html|safe}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>

@@ -135,6 +135,15 @@ class WebsiteRuleResult(RuleResult):
   pages_passed       = models.IntegerField(default=0)
   pages_na           = models.IntegerField(default=0)
 
+  elements_violation     = models.IntegerField(default=0)
+  elements_warning       = models.IntegerField(default=0)
+  elements_mc_identified = models.IntegerField(default=0)
+  elements_mc_passed     = models.IntegerField(default=0)
+  elements_mc_failed     = models.IntegerField(default=0)
+  elements_mc_na         = models.IntegerField(default=0)
+  elements_passed        = models.IntegerField(default=0)
+  elements_hidden        = models.IntegerField(default=0)
+
   pages_with_hidden_content  = models.IntegerField(default=0)
 
   class Meta:

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load staticfiles i18n %}
+
+{% block breadcrumb %}
+    <li><a href="{% url 'show_report'       report.slug view %}">Summary</a></li>
+    <li><a href="{% url 'show_report_group' report.slug view group.slug %}">{{group.get_title}}</a></li>
+    <li><a href="{% url 'show_report_group_rule' report.slug view group.slug page_rule_result.slug %}">{{page_rule_result.rule.nls_rule_id}}</a></li>
+    <li>Page {{page_rule_result.page_result.page_number}}</li>
+{% endblock %}
+
+
+{% block content %}
+  <h1 id="id_h1_title">{{page_rule_result.rule.nls_rule_id}} Result for Page {{page_rule_result.page_result.page_number}}</h1>
+
+  {% include "reports/report_information.html" %}
+
+  {% include "reports/rule_result.html" with rule_result=page_rule_result %}
+    
+  <div role="region" aria-label="Element Results">
+  <pre>{{page_rule_result.element_results_json}}</pre>
+  </div>
+
+{% endblock %}

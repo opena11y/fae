@@ -171,24 +171,23 @@ class ReportGroupRulePageView(TemplateView):
 
         view = kwargs['view']
 
-        report = WebsiteReport.objects.get(slug=kwargs['slug'])
+        report = WebsiteReport.objects.get(slug=kwargs['report'])
         if view == 'gl':
-          group = report.ws_gl_results.get(guideline__slug=kwargs['group'])
+          group = report.ws_gl_results.get(slug=kwargs['group'])
         elif view == 'rs':  
-          group = report.ws_rs_results.get(rule_scope__slug=kwargs['group'])
+          group = report.ws_rs_results.get(slug=kwargs['group'])
         else:  
-          group = report.ws_rc_results.get(rule_category__slug=kwargs['group'])
+          group = report.ws_rc_results.get(slug=kwargs['group'])
           view_opt = 'rc'
 
-        rule   = group.ws_rule_results.get(rule__rule_id=kwargs['rule'])
-        page   = rule.page_rule_results.get(page_result__page_number=kwargs['page'])
+        ws_rule_result   = group.ws_rule_results.get(slug=kwargs['rule'])
+        page_rule_result = ws_rule_result.page_rule_results.get(page_result__page_number=kwargs['page'])
 
         context['report']   = report
         context['view']     = view
         context['group']    = group
-        context['rule']     = rule
-        context['summary']  = page
-        context['page']     = page
+        context['summary']           = page_rule_result
+        context['page_rule_result']  = page_rule_result
         
         return context            
 

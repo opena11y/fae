@@ -930,6 +930,12 @@ class DataWebsiteRuleResult(DataResult):
 
     self.pages_with_hidden_content = 0
 
+    self.elements_violation      = 0
+    self.elements_warning        = 0
+    self.elements_mc_identified  = 0
+    self.elements_hidden         = 0
+    self.elements_passed         = 0
+
     self.page_rule_results = []    
 
   def __str__(self):
@@ -956,6 +962,14 @@ class DataWebsiteRuleResult(DataResult):
 
     if prr.elements_hidden > 0:
       self.pages_with_hidden_content += 1
+
+
+    self.elements_violation      += prr.elements_violation
+    self.elements_warning        += prr.elements_warning
+    self.elements_mc_identified  += prr.elements_mc_identified
+    self.elements_passed         += prr.elements_passed
+    self.elements_hidden         += prr.elements_hidden
+
       
     self.page_rule_results.append(prr)  
 
@@ -1024,6 +1038,15 @@ class DataWebsiteRuleResult(DataResult):
     self.addColumnValue("pages_passed", self.pages_passed)
     self.addColumnValue("pages_na", self.pages_na)
     self.addColumnValue("pages_with_hidden_content", self.pages_with_hidden_content)
+
+    self.addColumnValue("elements_violation", self.elements_violation) 
+    self.addColumnValue("elements_warning", self.elements_warning) 
+    self.addColumnValue("elements_mc_identified", self.elements_mc_identified) 
+    self.addColumnValue("elements_mc_failed", 0) 
+    self.addColumnValue("elements_mc_passed", 0) 
+    self.addColumnValue("elements_mc_na", 0) 
+    self.addColumnValue("elements_passed", self.elements_passed)
+    self.addColumnValue("elements_hidden", self.elements_hidden)
 
     debug("[DataWebsiteRuleResult][saveToDjango] 6")
 
