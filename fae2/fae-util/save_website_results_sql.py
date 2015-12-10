@@ -487,7 +487,7 @@ class DataPageRuleResult(DataResult):
     self.element_results_json  = ""
 
     try:
-      self.element_results_json  = rr["element_results"]
+      self.element_results_json  = json.dumps(rr["element_results"])
     except:   
       pass
 

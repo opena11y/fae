@@ -1,3 +1,6 @@
+from html.parser import HTMLParser
+from html.entities import name2codepoint
+
 from django.http import HttpResponse 
 from django.http import JsonResponse
 from django.views.generic import TemplateView, CreateView, FormView
@@ -188,24 +191,62 @@ class ReportGroupRulePageView(TemplateView):
         context['group']    = group
         context['summary']           = page_rule_result
         context['page_rule_result']  = page_rule_result
-        
-        return context            
+        context['result_messages']   = page_rule_result.result_message.split(';')        
+        return context      
+
+class ReportGroupRulePageElementResultsJSON(TemplateView):
+    template_name = 'reports/report_group_rule_page.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(ReportGroupRulePageView, self).get_context_data(**kwargs)
+
+        view = kwargs['view']
+
+        report = WebsiteReport.objects.get(slug=kwargs['report'])
+        if view == 'gl':
+          group = report.ws_gl_results.get(slug=kwargs['group'])
+        elif view == 'rs':  
+          group = report.ws_rs_results.get(slug=kwargs['group'])
+        else:  
+          group = report.ws_rc_results.get(slug=kwargs['group'])
+          view_opt = 'rc'
+
+        ws_rule_result   = group.ws_rule_results.get(slug=kwargs['rule'])
+        page_rule_result = ws_rule_result.page_rule_results.get(page_result__page_number=kwargs['page'])
+
+        context['report']   = report
+        context['view']     = view
+        context['group']    = group
+        context['summary']           = page_rule_result
+        context['page_rule_result']  = page_rule_result
+        context['result_messages']   = page_rule_result.result_message.split(';')        
+        return context    
 
 class ReportPageView(TemplateView):
     template_name = 'reports/report_page.html'
 
     def get_context_data(self, **kwargs):
-        context = super(ReportGroupPageView, self).get_context_data(**kwargs)
+        context = super(ReportPageView, self).get_context_data(**kwargs)
 
         view = kwargs['view']
 
-        report = WebsiteReport.objects.get(slug=kwargs['slug'])
-        page   = report.page_results.get(page_number=kwargs['page'])
+        report = WebsiteReport.objects.get(slug=kwargs['report'])
+        page   = report.page_all_results.get(page_number=kwargs['page'])
+
+        if view == 'gl':
+          groups = page.page_gl_results.all()
+        elif view == 'rs':  
+          groups = page.page_rs_results.all()
+        else:  
+          groups = page.page_rc_results.all()
+          view_opt = 'rc'
+
 
         context['report']        = report
         context['view']          = view
         context['summary']       = page
-        context['page']           = page
+        context['groups']        = groups
+        context['page']          = page
         
         return context            
 
@@ -218,22 +259,54 @@ class ReportPageGroupView(TemplateView):
 
         view = kwargs['view']
 
-        report = WebsiteReport.objects.get(slug=kwargs['slug'])
-        page   = report.page_results.get(page_number=kwargs['page'])
+        report = WebsiteReport.objects.get(slug=kwargs['report'])
+        page   = report.page_all_results.get(page_number=kwargs['page'])
         if view == 'gl':
-          group = page.page_gl_results.get(rule_category__slug=kwargs['group'])
+          group = page.page_gl_results.get(slug=kwargs['group'])
         elif view == 'rs':  
-          group = report.ws_rs_results.get(rule_category__slug=kwargs['group'])
+          group = page.page_rs_results.get(slug=kwargs['group'])
         else:  
-          group = report.ws_rc_results.get(rule_category__slug=kwargs['group'])
+          group = page.page_rc_results.get(slug=kwargs['group'])
           view_opt = 'rc'
+
+        context['report']   = report
+        context['view']     = view
+        context['summary']  = page
+        context['group']    = group     
+        context['page']     = page
+        
+        return context           
+
+class ReportPageGroupRuleView(TemplateView):
+    template_name = 'reports/report_page_group_rule.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(ReportPageGroupRuleView, self).get_context_data(**kwargs)
+
+        view = kwargs['view']
+
+        report = WebsiteReport.objects.get(slug=kwargs['report'])
+        page   = report.page_all_results.get(page_number=kwargs['page'])
+        if view == 'gl':
+          group = page.page_gl_results.get(slug=kwargs['group'])
+        elif view == 'rs':  
+          group = page.page_rs_results.get(slug=kwargs['group'])
+        else:  
+          group = page.page_rc_results.get(slug=kwargs['group'])
+          view_opt = 'rc'
+
+        page_rule_result = group.page_rule_results.get(slug=kwargs['rule'])
 
         context['report']        = report
         context['view']          = view
         context['summary']       = page
-        context['page']           = page
+        context['group']         = group
+        context['page']          = page
+        context['page_rule_result'] = page_rule_result
+        context['result_messages']   = page_rule_result.result_message.split(';')        
+
         
-        return context            
+        return context             
 
 
 class URLSummaryView(TemplateView):

@@ -145,7 +145,8 @@ main table th.not_applicable,
 main table td.not_applicable,
 .table-striped > tbody > tr > td.not_applicable
 {
-    color: black;
+    background-color: transparent;
+    color: gray;
     padding-right: 1.25em;
 }
 
@@ -229,8 +230,8 @@ main table tr.summary td {
 }
 
 .not_applicable {
-    background-color: black;
-    white: white;
+    background-color: transparent;
+    color: gray;
     padding-left: 0.25em;
     padding-right: 0.25em;
 }

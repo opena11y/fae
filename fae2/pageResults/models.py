@@ -223,7 +223,7 @@ class PageRuleResult(RuleResult):
 
 
   def __str__(self):
-    return "Page Rule Result: " + self.message
+    return "Page Rule Result: " + self.result_message
 
 
   def get_id(self):

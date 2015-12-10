@@ -28512,12 +28512,23 @@ OpenAjax.a11y.ElementResult.prototype.toJSON = function (prefix) {
   else next_prefix = prefix + "    ";
 
   var json = "";
+  
+  var de = this.cache_item;
+  if (de.dom_element) de = de.dom_element;
+  
+  var class_name = "";
+  var id = "";
 
-  json += prefix + "{ \"result_value\"      : \"" + this.getResultValue()       + "\",\n";
-  json += prefix + "  \"result_value_nls\"  : \"" + this.getResultValueNLS()    + "\",\n";
-  json += prefix + "  \"element_identifer\" : " + JSON.stringify(this.getElementIdentifier()) + ",\n";
-  json += prefix + "  \"ordinal_position\"  : " + this.getOrdinalPosition()     + ",\n";
-  json += prefix + "  \"message\"           : " + JSON.stringify(this.getResultMessage()) + "\n";
+  if (de.class_name && de.class_name.length) class_name = de.class_name;
+  if (de.id && de.id.length) id = de.id;
+
+  json += prefix + "{ \"result_value\"       : \"" + this.getResultValue()       + "\",\n";
+  json += prefix + "  \"result_value_nls\"   : \"" + this.getResultValueNLS()    + "\",\n";
+  json += prefix + "  \"element_identifier\" : " + JSON.stringify(this.getElementIdentifier()) + ",\n";
+  json += prefix + "  \"ordinal_position\"   : " + this.getOrdinalPosition()     + ",\n";
+  json += prefix + "  \"message\"            : " + JSON.stringify(this.getResultMessage()) + ",\n";
+  json += prefix + "  \"class\"              : " + JSON.stringify(class_name) + ",\n";
+  json += prefix + "  \"id\"                 : " + JSON.stringify(id) + "\n";
   json += prefix + "}";
   
   return json;
