@@ -1,8 +1,13 @@
+{% load tz %}
 <div id="information" role="region" aria-label="Website Report Information">
 
   <div class="title">{{report.title}}</div>
     
-  <div class="date">{{ report.created|date:"F d, Y H:i" }}</div>
+  <div class="date">
+    {% timezone "America/Chicago" %}
+    {{ report.created|date:"F d, Y H:i" }}
+    {% endtimezone %}
+  </div>
   
   <div class="eval_info">
       <ul>

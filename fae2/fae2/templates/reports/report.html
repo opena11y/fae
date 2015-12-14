@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load staticfiles i18n %}
+{% load tz %}
 
 {% block breadcrumb %}
     <li>Summary</li>
@@ -7,6 +8,7 @@
 
 
 {% block content %}
+
   <h1 id="id_h1_title">Summary Report</h1>
 
   {% include "reports/report_information.html" %}

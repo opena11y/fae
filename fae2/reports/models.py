@@ -89,6 +89,7 @@ EVAL_STATUS = (
     ('S', 'Saving'),
     ('C', 'Complete'),
     ('E', 'Error'),
+    ('D', 'Deleted'),
 )
 
 FOLLOW_CHOICES = (
@@ -140,7 +141,7 @@ class WebsiteReport(RuleGroupResult):
   depth    = models.IntegerField("Depth of Evaluation", choices=DEPTH_CHOICES, default=2, blank=False)
   max_pages  = models.IntegerField("Maxiumum Pages", choices=MAX_PAGES_CHOICES, default=0, blank=False)
   ruleset  = models.ForeignKey(Ruleset, default=2, blank=False)
-  
+
   browser_emulation    = models.CharField("Browser Emulation", max_length=32, default="FIREFOX")
 
   wait_time            = models.IntegerField("How long to wait for website to load resources (in milliseconds)", choices=WAIT_TIME_CHOICES, default=90000)
@@ -149,7 +150,9 @@ class WebsiteReport(RuleGroupResult):
   exclude_sub_domains  = models.CharField("Exclude Sub-Domains (space separated)", max_length=1024, default="", blank=True)
   include_domains      = models.CharField("Include Domains (space separated)",     max_length=1024, default="", blank=True)
   authorization        = models.TextField("Authentication Information",            max_length=8192, default="", blank=True)
-  
+
+  page_count = models.IntegerField("Number of Pages",  default=0)  
+
   # Archiving information
 
   archive  = models.BooleanField(default=False)
@@ -245,7 +248,7 @@ class WebsiteReport(RuleGroupResult):
     json['title']       = self.title
     json['status']      = self.status
     json['archive']     = self.archive
-    json['created']     = self.created
+    json['date']        = self.created
     json['ruleset']     = self.ruleset.title
     json['ruleset_url'] = reverse('ruleset', args=[self.ruleset.slug])
     json['report_url']  = reverse('show_report',  args=[self.slug, 'rc'])
@@ -257,8 +260,8 @@ class WebsiteReport(RuleGroupResult):
     return json
 
   def get_page_count(self):
-    if self.status == 'C':
-      return len(self.page_all_results.all())
+    if self.status == 'C' or self.status == 'E' or self.status == 'D':
+      return self.page_count
 
     return self.get_processing_status().processed
 

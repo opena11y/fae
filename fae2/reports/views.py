@@ -91,7 +91,7 @@ class ProcessingReportView(LoginRequiredMixin, TemplateView):
         
         return context    
 
-class StatusReportsJSON(LoginRequiredMixin, TemplateView):
+class ProcessingStatusAllJSON(LoginRequiredMixin, TemplateView):
 
     def render_to_response(self, context, **response_kwargs):
 
@@ -104,22 +104,22 @@ class StatusReportsJSON(LoginRequiredMixin, TemplateView):
 
 
     def get_context_data(self, **kwargs):
-        context = super(StatusReportsJSON, self).get_context_data(**kwargs)
+        context = super(ProcessingStatusAllJSON, self).get_context_data(**kwargs)
 
         user_reports = WebsiteReport.objects.filter(user=self.request.user)
 
-        context['reports'] = user_reports.exclude(status='A').exclude(status='E')
+        context['reports'] = user_reports.all()
         
         return context    
 
-class StatusReportJSON(TemplateView):
+class ProcessingStatusJSON(TemplateView):
 
     def render_to_response(self, context, **response_kwargs):
 
         return  JsonResponse(context['report'].toJSON(), safe=False, **response_kwargs)
 
     def get_context_data(self, **kwargs):
-        context = super(StatusReportJSON, self).get_context_data(**kwargs)
+        context = super(ProcessingStatusJSON, self).get_context_data(**kwargs)
 
         report = WebsiteReport.objects.get(slug=kwargs['report'])
 

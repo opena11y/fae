@@ -1384,11 +1384,16 @@ class DataWebsiteResult(DataRuleResult):
           wsr.rules_manual_check  = self.rules_manual_check
           wsr.rules_passed        = self.rules_passed
           wsr.rules_na            = self.rules_na
+
           wsr.result_value        = self.result_value
+
           wsr.implementation_pass_fail_score   = self.implementation_pass_fail_score
           wsr.implementation_pass_fail_status  = self.implementation_pass_fail_status
           wsr.implementation_score             = self.implementation_score
           wsr.implementation_status            = self.implementation_status
+
+          wsr.page_count          = len(self.page_results)
+
           wsr.save()
 
         except:

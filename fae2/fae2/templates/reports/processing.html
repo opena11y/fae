@@ -1,25 +1,35 @@
 {% extends "base.html" %}
 {% load staticfiles i18n %}
-{% block content %}
-  <h1>Report Processing</h1>
+{% load tz %}
 
-   <table id="id_table_processing" class="details table table-striped table-hover sortable" aria-label="Requested currently being processed">
-        <thead>
-            <tr>
-                <th class="text">Title</th>      
-                <th class="text"><abbr title="Date and time of evaluation">Date/Time</abbr></th>
-                <th class="text">Status</th>
-                <th class="text">Ruleset</th>
-                <th class="text">URL</th>
-                <th class="num" >Depth</th>
-            </tr>
-        </thead>
-        <tbody id="id_tbody">
-        </tbody>
+{% block content %}
+{% localtime on %}
+
+
+<h1>Report Processing</h1>
+
+<h2 id="id_rcbp">Reports currently being processed</h2>
+
+<section aria-labelledby="id_rcbp">
+  <table id="id_table_processing" 
+          class="details table table-striped table-hover sortable" aria-labelledby="id_rcbp">
+    <thead>
+      <tr>
+          <th class="text">Title</th>      
+          <th class="text"><abbr title="Date and time of evaluation">Date/Time</abbr></th>
+          <th class="text">Status</th>
+          <th class="text">Ruleset</th>
+          <th class="text">URL</th>
+          <th class="num" >Depth</th>
+      </tr>
+    </thead>
+
+    <tbody id="id_tbody">
+    </tbody>
         
-    </table>  
-    
-    
+  </table>  
+</section>
+
 <div id="id_div_zero">
 
   <h2 style="margin-top: 3em">Reports with Invalid URLs or Errors in Processing</h2>
@@ -57,15 +67,10 @@
 
 </div>         
 
+{% endlocaltime %}
+
 
 <script type="text/javascript">
-
-    ('-', 'Created'),
-    ('I', 'Initalized'),
-    ('A', 'Analyzing'),
-    ('S', 'Saving'),
-    ('C', 'Complete'),
-    ('E', 'Error'),
 
 function updateReports(reportInfoArray) {
 
@@ -125,7 +130,7 @@ function updateReports(reportInfoArray) {
         var s = document.getElementById('id_status_' + id);
         if (s) s.innerHTML = getStatusNLS(status, pages);
         
-        if (status === 'A') {
+        if (status === 'C') {
           if (pages > 0) {
             var td = row.getElementsByTagName('td');
             td[0].innerHTML = '<a href="' + url + '">' + title + '</a>';
@@ -139,7 +144,7 @@ function updateReports(reportInfoArray) {
       }
     }
     
-    if (status === 'A') return false;
+    if (status === 'C') return false;
     
     return true;
   }
@@ -156,11 +161,18 @@ function updateReports(reportInfoArray) {
     }
     
     if (status === 'E') return true;
-    if ((status === 'A') && (pages === 0)) return true;
+    if ((status === 'C') && (pages === 0)) return true;
     
     return false;
   }
 
+  function formatDate(date) {
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+    minutes = minutes < 10 ? '0'+minutes : minutes;
+    var strTime = hours + ':' + minutes;
+    return  date.getFullYear() + "-"  + (date.getMonth()+1) + "-" + date.getDate() + "  " + strTime;
+  }
 
   var div_zero = document.getElementById("id_div_zero");
   var tbody_zero = document.getElementById("id_tbody_zero");
@@ -171,12 +183,15 @@ function updateReports(reportInfoArray) {
     var node = document.getElementById("id_tbody");
     
     var ri = reportInfoArray[i];
+
+    var localDate = new Date(ri['date']);
+    localDate = formatDate(localDate);
     
     if (updateProcessingReports(ri['id'], ri['status'], ri['title'], ri['report_url'], ri['pages'])) {
       html =  "";
       html += '<tr id="id_row_'     + ri['id'] + '">';
       html += '  <td class="text">' + ri['title']   + '</td>';
-      html += '  <td class="text">' + ri['date'] + '</td>';
+      html += '  <td class="text">' + localDate + '</td>';
       html += '  <td role="status" class="text" id="id_status_' + ri['id'] + '">' + getStatusNLS(ri['status'], ri['pages'])  + '</td>';
       html += '  <td class="text"><a href="' + ri['ruleset_url'] + '">' + reportInfoArray[i]['ruleset'] + '</a></td>';
       html += '  <td class="text">' + ri['url']     + '</td>';
@@ -189,7 +204,7 @@ function updateReports(reportInfoArray) {
       html = "";
       html += '<tr id="id_row_'     + ri['id'] + '">';
       html += '  <td class="text">' + ri['title']   + '</td>';
-      html += '  <td class="text">' + ri['date'] + '</td>';
+      html += '  <td class="text">' + localDate + '</td>';
       if ((ri['status'] === 'A') && (ri['pages'] === 0)) {
         html += '  <td class="text">' + getStatusNLS('B', ri['pages'] )  + '</td>';
       }
@@ -233,7 +248,7 @@ function updateReports(reportInfoArray) {
 
 function loadJSON()
 {
-   var data_file = "{{site.domain}}/reports/status/";
+   var data_file = "{{site.domain}}/processing/status/all/";
    var http_request = new XMLHttpRequest();
    
    try{

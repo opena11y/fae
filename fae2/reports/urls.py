@@ -7,8 +7,8 @@ from .views import ProcessingReportView
 from .views import ArchivedReportView
 from .views import ManageReportView
 
-from .views import StatusReportJSON
-from .views import StatusReportsJSON
+from .views import ProcessingStatusJSON
+from .views import ProcessingStatusAllJSON
 
 from .views import LastReportView
 
@@ -29,14 +29,13 @@ urlpatterns = [
     url(r'^anonymous/$',             RunAnonymousReportView.as_view(),        name='run_anonymous_report'),
     url(r'^anonymous/processing/$',  ProcessingAnonymousReportView.as_view(), name='processing_anonymous_reports'),
 
-    url(r'^status/$',                  StatusReportsJSON.as_view(),   name='status_reports'),
-    url(r'^status/(?P<report>\w+)/$',  StatusReportJSON.as_view(),    name='status_report'),
+    url(r'^processing/status/all/$',              ProcessingStatusAllJSON.as_view(), name='processing_status_all'),
+    url(r'^processing/status/(?P<report>\w+)/$',  ProcessingStatusJSON.as_view(),    name='processing_status'),
 
     url(r'^archived/$',              ArchivedReportView.as_view(),     name='archived_reports'),
     url(r'^manage/$',                ManageReportView.as_view(),       name='manage_reports'),
 
     url(r'^report/last/$',           LastReportView.as_view(),         name='last_report'),
-
 
     url(r'^report/(?P<report>\w+)/(?P<view>\w+)/$',                                                         ReportView.as_view(),              name='show_report'),
     url(r'^report/(?P<report>\w+)/(?P<view>\w+)/urls/$',                                                    URLInformationView.as_view(),      name='show_url_information'),

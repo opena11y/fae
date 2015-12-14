@@ -14,10 +14,13 @@ import csv
 import urllib
 
 import cmd
+import django
 
 sys.path.append(os.path.abspath('..'))
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'fae2.settings')
+django.setup()
+
 from django.conf import settings
 
 from fae2.settings import APP_DIR

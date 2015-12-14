@@ -11,10 +11,7 @@ class Principle(models.Model):
   number  = models.CharField(max_length=8,default="none")
   url     = models.URLField(null=True,blank=True)
 
-  @models.permalink
-  def get_absolute_url(self):
-    return ('show_wcag20')     
-
+ 
   class Meta:
         ordering = ['num']
         verbose_name="WCAG 2.0 Principle"

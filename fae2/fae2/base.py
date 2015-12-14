@@ -53,7 +53,6 @@ DEBUG = False
 
 ALLOWED_HOSTS = get_secret('ALLOWED_HOSTS')
 
-
 # Application definition
 
 INSTALLED_APPS = (
@@ -64,16 +63,17 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'accounts',
-    'markup',
-    'markupInfo',
-    'pageResults',
-    'reports',
-    'ruleCategories',
-    'rules',
-    'rulesets',
-    'wcag20',
-    'websiteResults',
+    'abouts.apps.AboutsConfig',
+    'accounts.apps.AccountsConfig',
+    'markup.apps.MarkupConfig',
+    'markupInfo.apps.MarkupInfoConfig',
+    'pageResults.apps.PageResultsConfig',
+    'reports.apps.ReportsConfig',
+    'ruleCategories.apps.RuleCategoriesConfig',
+    'rules.apps.RulesConfig',
+    'rulesets.apps.RulesetsConfig',
+    'wcag20.apps.WCAG20Config',
+    'websiteResults.apps.WebsiteResultsConfig',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -98,6 +98,7 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
+                'django.template.context_processors.tz',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'fae2.context_processors.site'
@@ -130,7 +131,7 @@ DATABASES = {
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Chicago'
 
 USE_I18N = True
 

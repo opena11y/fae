@@ -72,7 +72,7 @@ class RULE_RESULT:
   WARNING        = 4
   VIOLATION      = 5    
 
-DEBUG=True
+DEBUG=False
 INFO=True
 ERROR=True
 
