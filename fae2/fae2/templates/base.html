@@ -112,6 +112,11 @@
                   <li><a href="{% url 'processing_reports'     %}">Report Processing</a></li>
                   <li><a href="{% url 'archived_reports'       %}">Archived Reports</a></li>
                   <li><a href="{% url 'manage_reports'         %}">Manage Reports</a></li>
+                  {% if report %}
+                  <li><a href="{% url 'show_report' report.slug  view  %}">Last Report</a></li>
+                  {% else %}
+                  <li><a href="{% url 'last_report'            %}">Last Report</a></li>
+                  {% endif %}
                   {% else %}
                   <li><a href="{% url 'run_anonymous_report'  %}">Run FAE</a></li>
                   {% endif %}

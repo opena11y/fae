@@ -1,0 +1,15 @@
+<div id="information" role="region" aria-label="Page Information">
+
+  <div class="title">{{page.title}}</div>
+    
+  <div class="date">{{ report.created|date:"F d, Y H:i" }}</div>
+  
+  <div class="eval_info">
+      <ul>
+          <li>Page URL:  <a href="{{ page.url }}">{{ page.url }}</a></li>
+          <li>Ruleset:   <a title="{{report.ruleset.title_text}}" href="{% url 'ruleset' report.ruleset.slug %}">{{ report.ruleset }}</a></li>
+      </ul>  
+  </div>    
+    
+
+</div>

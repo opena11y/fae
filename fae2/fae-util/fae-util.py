@@ -25,7 +25,7 @@ from fae2.settings import APP_DIR
 from django.db       import models
 from reports.models  import WebsiteReport
 
-# from save_website_results_sql import saveResultsToDjango
+from save_website_results_sql import saveResultsToDjango
 
 DEBUG=True
 INFO=True
@@ -148,25 +148,32 @@ def main():
 
   debug(APP_DIR)
 
-  ws_reports = WebsiteReport.objects.filter(status="-")
+  while True:  
+    ws_reports = WebsiteReport.objects.filter(status="-")
 
-  debug(len(ws_reports))
-  
-  if len(ws_reports):
-    ws_report = ws_reports[0]
+    if len(ws_reports):
+      ws_report = ws_reports[0]
 
-    info("=======================")
-    info("Initializing report: " + str(ws_report))
-    ws_report.set_status_initialized()
-    initWebsiteReport(ws_report)
+      info("=======================")
+      info("Initializing report: " + str(ws_report))
+      ws_report.set_status_initialized()
+      initWebsiteReport(ws_report)
 
-    info("Analyze website: " + str(ws_report))
-    ws_report.set_status_analyzing()
-    count = analyzeWebsiteReport(ws_report)
+      info("Analyze website: " + str(ws_report))
+      ws_report.set_status_analyzing()
+      count = analyzeWebsiteReport(ws_report)
 
-    info("Saving Data: " + str(ws_report))
-    ws_report.set_status_saving()
-#    saveResultsToDjango(ws_report)
+      info("Saving Data: " + str(ws_report))
+      ws_report.set_status_saving()
+      saveResultsToDjango(ws_report)
+      message_flag = True
+    else:
+      if message_flag:
+        info("No report requests pending... ")
+        message_flag = False
+
+      time.sleep(1)
+      
 
           
 if __name__ == "__main__":

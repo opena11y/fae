@@ -1,0 +1,208 @@
+{% extends "base.html" %}
+{% load staticfiles i18n %}
+
+{% block breadcrumb %}
+    <li><a href="{% url 'show_report' report.slug view %}">Summary</a></li>
+    <li>URL Information</li>
+{% endblock %}
+
+
+
+{% block content %}
+
+  <h1 id="id_h1_title">URL Evaluation Information</h1>
+
+    {% include "reports/report_information.html" %}
+    
+    <h2>Summary of {{report.title}}</h2>
+
+    <ul class="urls">
+        {% if report.processed_urls.all|length = 1 %}
+        <li><a href="#id_h2_p">1 URL successfully evaluated for accessibility </a></li>
+        {% else %}
+        <li><a href="#id_h2_p">{{ report.processed_urls.all|length }} URLs successfully evaluated for accessibility</a></li>
+        {% endif %}
+        
+        {% if report.error_urls.all|length = 1 %}
+        <li><a href="#id_h2_e">1 URL that returned an error code and was not analyzed for accessibility</a></li>
+        {% else %}
+        <li><a href="#id_h2_e">{{ report.error_urls.all|length }} URLs that returned an error code and were not analyzed for accessibility</a></li>
+        {% endif %}
+        
+        {% if report.unprocessed_urls.all|length = 1 %}
+        <li><a href="#id_h2_u">1 URL that accessibility evaluation could not be completed</a></li>
+        {% else %}
+        <li><a href="#id_h2_u">{{ report.unprocessed_urls.all|length }} URLs that accessibility evaluations could not be completed</a></li>
+        {% endif %}
+        
+        {% if report.filtered_urls.all|length = 1 %}
+        <li><a href="#id_h2_f">1 URL that found that was not included in the accessibility evaluation</a></li>
+        {% else %}
+        <li><a href="#id_h2_f">{{ report.filtered_urls.all|length }} URLs that were found that were not included in the accessibility evaluation</a></li>
+        {% endif %}
+    </ul>
+
+    <h2 id="id_h2_p">Evaluated URLs</h2>
+    {% if report.processed_urls.all|length %}    
+    <section aria-labelledby="id_h2_p" class="region">
+
+        <p> The number of urls evaluated will usually be larger than the number of pages identified in the Summary Report.
+            The difference is due to redirects causing the same page being evaluated more than once (e.g. http://www.somewhere.org and http://somewhere.org return 
+            the same URL).  FAE 2.0 will only include the same returned URL once in the evaluation. 
+        </p>
+        
+        
+        <table  id="id_table_show_summary_urls_1" class="details table table-striped table-hover sortable"  aria-labelledby="id_h2_p" aria-describedby="id_table_summ">
+            <thead>
+                <tr>
+                    <th class="num" >#</th>
+                    <th class="text" >URL Requested</th>
+                    <th class="text" >URL Returned</th>
+                    <th class="text" >Referencing URL</th>
+                    <th class="num" >Processing Time<br/>(in milliseconds)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for processed_url in report.processed_urls.all %}                
+                <tr class="{% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %}">
+                    
+                    <td class="num">{{forloop.counter}}</td>
+                    <td class="text"><a href="{{processed_url.url_requested}}" target="_referenced_website" title="{{processed_url.url_requested}}">{{processed_url.get_url_requested}}</a></td>
+                    {% if processed_url.redirect %}                    
+                    <td class="text"><a href="{{processed_url.url_returned}}" target="_referenced_website" title="{{processed_url.url_returned}}">{{processed_url.get_url_returned}}</a></td>
+                    {% else %}
+                    <td class="text"><abbr title="no redirect">-</abbr></td>
+                    {% endif %}
+                    <td class="text"><a href="{{processed_url.url_referenced}}" target="_referenced_website" title="{{processed_url.url_referenced}}">{{processed_url.get_reference_url}}</a></td>
+                    <td class="num">{{processed_url.total_time}}</td>
+                    
+                </tr>    
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </section>    
+    {% else %}
+    <p class="message">No URLs processed</p>
+    {% endif %}
+
+    <h2 id="id_h2_p">Broken URLs</h2>
+    
+    {% if error_urls.all|length %}    
+    <section aria-labelledby="id_h2_p" class="region">
+
+        <p>URLs not evaluated because of error codes (e.g. HTTP status code was not 200) being returned</p>
+        
+        <table id="id_table_show_summary_urls_2" class="details table table-striped table-hover sortable" aria-labelledby="id_h2_p" aria-describedby="id_table_summ">
+            <thead>
+                <tr>
+                    <th class="num">#</th>
+                    <th class="text">URL Requested</th>
+                    <th class="text">URL Returned</th>
+                    <th class="text">Referencing URL</th>
+                    <th class="num">HTTP Status Code</th>
+                    <th class="num">Processing Time<br/>(in milliseconds)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for error_url in error_urls.all %}                
+                <tr class="{% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %}">
+                    
+                    <td class="num">{{forloop.counter}}</td>
+                    <td class="text"><a href="{{error_url.url_requested}}" target="_referenced_website" title="{{error_url.url_requested}}">{{error_url.get_url_requested}}</a></td>
+                    {% if processed_url.redirect %}                    
+                    <td class="text"><a href="{{error_url.url_returned}}" target="_referenced_website" title="{{error_url.url_returned}}">{{error_url.get_url_returned}}</a></td>
+                    {% else %}
+                    <td class="text"><abbr title="no redirect">-</abbr></td>
+                    {% endif %}
+                    <td class="text"><a href="{{error_url.url_referenced}}" target="_referenced_website" title="{{error_url.url_referenced}}">{{error_url.get_reference_url}}</a></td>
+                    <td class="num">{{error_url.http_status_code}}</td>
+                    <td class="num">{{error_url.total_time}}</td>
+                    
+                </tr>    
+                {% endfor %}
+            </tbody>
+        </table>
+        
+    </section>    
+    {% else %}
+    <p class="message">No URLs with error codes</p>
+    {% endif %}
+    
+    
+    <h2 id="id_h2_u">Evaluation Failed URLs</h2>
+    
+    {% if repot.unprocessed_urls.all|length %}
+    <section aria-labelledby="id_h2_u" class="region" aria-describedby="id_table_summ">
+
+        <p>URLs that were found and should have been evaluated for accessibility, but for some reason could not be evaluated (e.g. broken links, signifcant Javascript errors on page being loaded...).  
+            The processing engine timed out its evaluation of the page or a error from the page stopped the evaluation.</p>
+        
+        
+        <table id="id_table_show_summary_urls_3" class="details table table-striped table-hover sortable" aria-labelledby="id_h2_u">
+            <thead>
+                <tr>
+                    <th class="num">#</th>
+                    <th class="text">URL</th>
+                    <th class="text">Referencing URL</th>
+                    <th class="text">Processing Time<br/>(in milliseconds)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for unprocessed_url in report.unprocessed_urls.all %}                
+                <tr class="{% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %}">
+                    
+                    <td class="num">{{forloop.counter}}</td>
+                    <td class="text"><a href="{{unprocessed_url.url}}" target="_referenced_website" title="{{unprocessed_url.url_requested}}">{{unprocessed_url.get_url}}</a></td>
+                    <td class="text"><a href="{{unprocessed_url.url_referenced}}" target="_referenced_website" title="{{unprocessed_url.url_referenced}}">{{unprocessed_url.get_reference_url}}</a></td>
+                    <td class="text">{{unprocessed_url.total_time}}</td>
+                </tr>    
+                {% endfor %}
+            </tbody>
+        </table>
+        
+    </section>    
+    {% else %}
+    <p class="message">No unprocessed URLs</p>
+    {% endif %}
+    
+    <h2 id="id_h2_f">Filtered URLs</h2>
+    
+    {% if report.filtered_urls.all|length %}
+    <section aria-labelledby="id_h2_f" class="region">
+
+        <p>URLs that were found, but were not evaluated for accessibility due to user configuration</p>
+        
+        
+        <table id="id_table_show_summary_urls_4" class="details table table-striped table-hover sortable" aria-labelledby="id_h2_f" aria-describedby="id_table_summ">
+            <thead>
+                <tr>
+                    <th class="num">#</th>
+                    <th class="text">URL</th>
+                    <th class="text">domain</th>
+                    <th class="text">Referencing URL</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for filtered_url in report.filtered_urls.all %}
+                <tr class="{% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %}">
+                    
+                    <td class="num">{{forloop.counter}}</td>
+                    <td class="text"><a href="{{filtered_url.url}}" target="_referenced_website" title="{{filtered_url.url_requested}}">{{filtered_url.get_url}}</a></td>
+                    <td class="text">{{filtered_url.get_domain}}</td>
+                    <td class="text"><a href="{{filtered_url.url_referenced}}" target="_referenced_website" title="{{filtered_url.url_referenced}}">{{filtered_url.get_reference_url}}</a></td>
+                </tr>    
+                {% endfor %}
+            </tbody>
+        </table>
+        
+    </section>    
+    {% else %}
+    <p class="message">No URLs filtered out of evaluation</p>
+    {% endif %}
+    
+    
+</div>
+{% endblock %}
+
+

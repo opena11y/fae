@@ -3,14 +3,15 @@
 
 {% block breadcrumb %}
     <li><a href="{% url 'show_report' report.slug view %}">Summary</a></li>
+    <li><a href="{% url 'show_report_page' report.slug view page.page_number %}">Page {{page.page_number}}</a></li>
     <li>{{group.get_title}}</li>
 {% endblock %}
 
 
 {% block content %}
-  <h1 id="id_h1_title">{{group.get_title}} Rules</h1>
+  <h1 id="id_h1_title">Page {{page.page_number}}: {{group.get_title}} Rule Results</h1>
 
-  {% include "reports/report_information.html" %}
+  {% include "reports/page_information.html" %}
     
   {% include "reports/report_summary.html" %}
 

@@ -17,7 +17,7 @@ from os.path import join, getsize
 
 import urllib
 
-# sys.path.append(os.path.abspath('..'))
+sys.path.append(os.path.abspath('..'))
 
 from django.utils.encoding  import iri_to_uri
 
@@ -1532,7 +1532,7 @@ def saveResultsToDjango(ws_report):
     if file_name == "filtered_urls.csv":
       debug("Retreiving filtered urls")   
       filteredUrlsToDatabase(ws_report, dir_name + "/" + file_name, 2)
-
+  
 # ---------------------------------------------------------------
 #
 # starting point for saving information to database
@@ -1572,4 +1572,33 @@ def saveResultsToDjango(ws_report):
   except:
     ws_report.set_status_error()
     error("Error: saving to django")  
+    
+def main():
+
+  message_flag = True
+
+  ws_reports = WebsiteReport.objects.all()
   
+  if len(ws_reports):
+    ws_report = ws_reports[0]
+
+    # Removed any previous database relationships
+    ws_report.processed_urls.all().delete()
+    ws_report.unprocessed_urls.all().delete()
+    ws_report.filtered_urls.all().delete()
+    ws_report.filtered_urls.all().delete()
+
+    ws_report.ws_gl_results.all().delete()
+    ws_report.ws_rc_results.all().delete()
+    ws_report.ws_rs_results.all().delete()
+
+    ws_report.page_all_results.all().delete()
+
+    info("=======================")
+    info("Saving Data: " + str(ws_report))
+    saveResultsToDjango(ws_report)
+
+
+          
+if __name__ == "__main__":
+  main()

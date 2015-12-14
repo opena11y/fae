@@ -10,9 +10,9 @@
 
 
 {% block content %}
-  <h1 id="id_h1_title">{{page_rule_result.rule.nls_rule_id}} Result for Page {{page_rule_result.page_result.page_number}}</h1>
+  <h1 id="id_h1_title">Page {{page.page_number}}: {{page_rule_result.rule.nls_rule_id}} Rule Result </h1>
 
-  {% include "reports/report_information.html" %}
+  {% include "reports/page_information.html" %}
 
   {% include "reports/rule_result.html" with rule_result=page_rule_result %}
  

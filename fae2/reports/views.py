@@ -3,24 +3,64 @@ from html.entities import name2codepoint
 
 from django.http import HttpResponse 
 from django.http import JsonResponse
-from django.views.generic import TemplateView, CreateView, FormView
+
+from django.views.generic import TemplateView
+from django.views.generic import CreateView 
+from django.views.generic import FormView 
+from django.views.generic import RedirectView
+
+from django.contrib.auth.models import User
+
 from reports.models import WebsiteReport
 from django.core.urlresolvers import reverse_lazy
 from braces.views import LoginRequiredMixin
 from .uid import generate
 
+# ==============================================================
+#
+# Anonymous Run Report Views
+#
+# ==============================================================
 
 class RunAnonymousReportView(CreateView):
     model = WebsiteReport
     fields = ['url', 'ruleset']
     template_name = 'reports/run_anonymous_report.html'
 
-    success_url = reverse_lazy('processing_anonymous_report')
+    success_url = reverse_lazy('processing_anonymous_reports')
 
     def form_valid(self, form):
-        form.instance.user = self.request.user
+        form.instance.user = User.objects.get(username='anonymous')
+        form.instance.depth = 1
         form.instance.slug = generate()
-        return super(RunReportView, self).form_valid(form)
+
+        self.request.session['fae2_anonymous_slug'] = form.instance.slug
+ 
+        return super(RunAnonymousReportView, self).form_valid(form)
+
+
+class ProcessingAnonymousReportView(TemplateView):
+    template_name = 'reports/processing_anonymous.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(ProcessingAnonymousReportView, self).get_context_data(**kwargs)
+
+        anonymous_reports =  WebsiteReport.objects.filter(user=User.objects.get(username='anonymous'))
+        try:
+          anonymous_report  = WebsiteReport.objects.get(slug=self.request.session['fae2_anonymous_slug'])
+        except:
+          anonymous_report = False
+
+        context['reports'] = anonymous_reports.exclude(status='A').exclude(status='E')
+        context['errors'] = anonymous_reports.filter(status='E')
+        
+        return context    
+
+# ==============================================================
+#
+# Authenticated Report Views
+#
+# ==============================================================
 
 class RunReportView(LoginRequiredMixin, CreateView):
     model = WebsiteReport
@@ -44,25 +84,46 @@ class ProcessingReportView(LoginRequiredMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super(ProcessingReportView, self).get_context_data(**kwargs)
 
-        context['reports'] = WebsiteReport.objects.exclude(status='A').exclude(status='E')
-        context['errors'] = WebsiteReport.objects.filter(status='E')
+        user_reports = WebsiteReport.objects.filter(user=self.request.user)
+
+        context['reports'] = user_reports.exclude(status='A').exclude(status='E')
+        context['errors']  = user_reports.filter(status='E')
         
         return context    
 
-class ProcessingStatusView(LoginRequiredMixin, TemplateView):
-    template_name = 'reports/processing.html'
+class StatusReportsJSON(LoginRequiredMixin, TemplateView):
 
-    def render_to_json_response(self, context, **response_kwargs):
-        """
-        Returns a JSON response, transforming 'context' to make the payload.
-        """
-        return JsonResponse(self.get_data(context), **response_kwargs)
+    def render_to_response(self, context, **response_kwargs):
+
+        json = []
+
+        for r in context['reports']:
+            json.append(r.toJSON())
+
+        return  JsonResponse(json, safe=False, **response_kwargs)
+
 
     def get_context_data(self, **kwargs):
-        context = super(ProcessingReportView, self).get_context_data(**kwargs)
+        context = super(StatusReportsJSON, self).get_context_data(**kwargs)
 
-        context['reports'] = WebsiteReport.objects.exclude(status='A').exclude(status='E')
-        context['errors'] = WebsiteReport.objects.filter(status='E')
+        user_reports = WebsiteReport.objects.filter(user=self.request.user)
+
+        context['reports'] = user_reports.exclude(status='A').exclude(status='E')
+        
+        return context    
+
+class StatusReportJSON(TemplateView):
+
+    def render_to_response(self, context, **response_kwargs):
+
+        return  JsonResponse(context['report'].toJSON(), safe=False, **response_kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super(StatusReportJSON, self).get_context_data(**kwargs)
+
+        report = WebsiteReport.objects.get(slug=kwargs['report'])
+
+        context['report'] = report
         
         return context    
 
@@ -73,7 +134,9 @@ class ArchivedReportView(LoginRequiredMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super(ArchivedReportView, self).get_context_data(**kwargs)
 
-        context['reports'] = WebsiteReport.objects.filter(status='C')
+        user_reports = WebsiteReport.objects.filter(user=self.request.user)
+
+        context['reports'] = user_reports.filter(status='C')
         
         return context            
 
@@ -83,9 +146,37 @@ class ManageReportView(LoginRequiredMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super(ManageReportView, self).get_context_data(**kwargs)
 
-        context['reports'] = WebsiteReport.objects.filter(status='C')
+        user_reports = WebsiteReport.objects.filter(user=self.request.user)
+
+        context['reports'] = user_reports.filter(status='C')
         
-        return context                    
+        return context                 
+
+class LastReportView(LoginRequiredMixin, TemplateView):
+    template_name = 'reports/report.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(LastReportView, self).get_context_data(**kwargs)
+
+        view = 'rc'
+
+        report = WebsiteReport.objects.last()
+
+        if view == 'gl':
+          groups = report.ws_gl_results.all()
+        elif view == 'rs':  
+          groups = report.ws_rs_results.all()
+        else:  
+          groups = report.ws_rc_results.all()
+          view = 'rc'
+
+        context['report']   = report
+        context['view']     = view
+        context['summary']  = report
+        context['groups']   = groups
+        
+        return context                      
+
 
 class ReportView(TemplateView):
     template_name = 'reports/report.html'
@@ -309,13 +400,13 @@ class ReportPageGroupRuleView(TemplateView):
         return context             
 
 
-class URLSummaryView(TemplateView):
-    template_name = 'reports/report_url_summary.html'
+class URLInformationView(TemplateView):
+    template_name = 'reports/url_information.html'
 
     def get_context_data(self, **kwargs):
-        context = super(ReportView, self).get_context_data(**kwargs)
+        context = super(URLInformationView, self).get_context_data(**kwargs)
 
-        report = WebsiteReport.objects.get(slug=kwargs['slug'])
+        report = WebsiteReport.objects.get(slug=kwargs['report'])
 
         context['report'] = report
         

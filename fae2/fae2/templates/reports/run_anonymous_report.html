@@ -3,7 +3,7 @@
 {% block content %}
   <h1>Run Anonymous Report</h1>
 
-<form action="{% url 'run_report' %}" method="post">
+<form action="{% url 'run_anonymous_report' %}" method="post">
     {% csrf_token %}
 
     <div class="input">
@@ -11,6 +11,7 @@
         <div class="error">
         <input 
             id="id_input_url"
+            type="text"
             onkeyup="enableSubmit()"
             onblur="enableSubmit()"
             name="url"
@@ -25,6 +26,11 @@
         </div>
     </div>
 
+    <input 
+        id="id_input_title"
+        type="hidden"
+        value="none"/>
+ 
     <fieldset>
         
         {% if form.ruleset.errors|length %}
@@ -59,6 +65,7 @@
 
 </form>
 
+
 <script src="{% static 'js/url-validation.js' %}" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -66,6 +73,7 @@
    window.addEventListener('load', enableSubmit)
 
 </script>
+
 
 
 {% endblock %}

@@ -2,14 +2,15 @@
 {% load staticfiles i18n %}
 
 {% block breadcrumb %}
-    <li>Summary</li>
+    <li><a href="{% url 'show_report' report.slug view %}">Summary</a></li>
+    <li>Page {{page.page_number}}</li>
 {% endblock %}
 
 
 {% block content %}
-  <h1 id="id_h1_title">Summary Report</h1>
+  <h1 id="id_h1_title">Page {{page.page_number}}: Summary Report</h1>
 
-  {% include "reports/report_information.html" %}
+  {% include "reports/page_information.html" %}
     
   {% include "reports/report_summary.html" %}
 

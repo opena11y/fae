@@ -14,7 +14,7 @@ import csv
 
 import urllib
 
-sys.path.append(os.path.abspath('..'))
+# sys.path.append(os.path.abspath('..'))
 
 from django.utils.encoding  import iri_to_uri
 

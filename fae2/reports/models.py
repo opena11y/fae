@@ -1,4 +1,7 @@
 from django.db import models
+from urllib.parse import urlparse
+from django.core.urlresolvers import reverse
+
 
 from django.contrib.auth.models import User
 
@@ -126,7 +129,7 @@ class WebsiteReport(RuleGroupResult):
 
   id    = models.AutoField(primary_key=True)
 
-  user  = models.ForeignKey(User, editable=True)
+  user  = models.ForeignKey(User, editable=True, related_name="reports")
     
   slug  = models.SlugField(max_length=256, default="", blank=True, editable=False, unique=True)
 
@@ -189,9 +192,9 @@ class WebsiteReport(RuleGroupResult):
     if len(self.data_dir_slug) == 0:
       DIR = './../../'
 
-      count = WebsiteReport.objects.filter(user=self.user).count() + 1
+      count = len(WebsiteReport.objects.filter(user=self.user)) + 1
 
-      self.data_dir_slug = "report_" + "%05d" % (1,)
+      self.data_dir_slug = "report_" + "%05d" % (count,)
 
       self.data_directory          = DIR + "data/" + self.user.username + "/" + self.data_dir_slug 
       self.data_property_file      = self.data_directory + "/" +  self.data_dir_slug + ".properties"
@@ -235,6 +238,75 @@ class WebsiteReport(RuleGroupResult):
       wsrr.rule_number = num
       wsrr.save()
       num += 1  
+
+  def toJSON(self):
+    json = {}
+    json['slug']        = self.slug
+    json['title']       = self.title
+    json['status']      = self.status
+    json['archive']     = self.archive
+    json['created']     = self.created
+    json['ruleset']     = self.ruleset.title
+    json['ruleset_url'] = reverse('ruleset', args=[self.ruleset.slug])
+    json['report_url']  = reverse('show_report',  args=[self.slug, 'rc'])
+    json['depth']       = self.depth
+    json['url']         = self.url
+    json['pages']       = self.get_page_count()
+
+
+    return json
+
+  def get_page_count(self):
+    if self.status == 'C':
+      return len(self.page_all_results.all())
+
+    return self.get_processing_status().processed
+
+  def get_processing_status(self):
+  
+    class processing_info:
+    
+       def __init__(self):
+         self.status = ''
+         self.url    = ''
+         self.processed  = -1
+         self.unprocessed = 0
+         self.filtered  = 0
+         self.time  = 0.0
+         self.login_attempts = 0 
+         self.login_success  = 0
+         self.login_fail     = 0  
+
+    pi = processing_info()
+
+    try:
+      file = open( self.data_directory + "/data/status.txt", "r")
+      
+      for line in file.readlines():   
+        if line.find("status=") >= 0:
+          pi.status = line[7:]
+        elif line.find("url=") >= 0:
+          pi.url = line[4:]
+        elif line.find("unprocessed=") >= 0:
+          pi.unprocessed = int(line[12:])
+        elif line.find("processed=") >= 0:
+          pi.processed = int(line[10:])
+        elif line.find("filtered=") >= 0:
+          pi.filtered = int(line[9:])
+        elif line.find("time=") >= 0:
+          pi.time = float(line[5:])
+        elif line.find("login_attempts=") >= 0:
+          pi.login_attempts = int(line[15:])
+        elif line.find("login_success=") >= 0:
+          pi.login_success = int(line[14:])
+        elif line.find("login_fail=") >= 0:
+          pi.login_fail = int(line[11:])
+        
+    except:
+      pi.status = "file not found"  
+    
+    return pi
+     
 
 # ---------------------------------------------------------------
 #

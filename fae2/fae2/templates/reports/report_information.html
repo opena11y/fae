@@ -6,7 +6,7 @@
   
   <div class="eval_info">
       <ul>
-          <li>Pages:     {{  report.page_count }} (<a title="URL Details" href="{% url 'show_url_summary' report.slug %}">Included URLs</a>)</li>
+          <li>Pages:     {{  report.page_count }} (<a title="URL Details" href="{% url 'show_url_information' report.slug view %}">Included URLs</a>)</li>
           <li>Depth:     {{  report.depth }}</li>
           <li>Ruleset:   <a title="{{report.ruleset.title_text}}" href="{% url 'ruleset' report.ruleset.slug %}">{{ report.ruleset }}</a></li>
       </ul>  
