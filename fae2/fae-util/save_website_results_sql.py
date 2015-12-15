@@ -64,6 +64,8 @@ from save_markup_information import PageMarkupInformation
 
 from django.db import connection, transaction
 
+from fae2.settings import APP_DIR
+
 class RULE_RESULT:
   UNDEFINED      = 0
   NOT_APPLICABLE = 1
@@ -1392,6 +1394,7 @@ class DataWebsiteResult(DataRuleResult):
           wsr.implementation_score             = self.implementation_score
           wsr.implementation_status            = self.implementation_status
 
+          debug("[WebsiteResult][saveToDjango]: page_count= " + str(len(self.page_results)))
           wsr.page_count          = len(self.page_results)
 
           wsr.save()
@@ -1550,7 +1553,7 @@ def saveResultsToDjango(ws_report):
     
 #  os.path.walk(ws_report.data_directory + "/data", lister, None)  
  
-  dir = ws_report.data_directory + "/data"
+  dir = APP_DIR + ws_report.data_directory + "/data"
   for root, dirs, files in os.walk(dir):
     for file_name in files:
       debug('File Name: ' + dir + '/' + file_name)

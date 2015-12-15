@@ -1,9 +1,0 @@
-status=processing
-url=http://illinois.edu/ds/azList
-processed=3
-unprocessed=0
-filtered=0
-time=20.879
-login_attempts=0
-login_success=0
-login_fail=0

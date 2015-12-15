@@ -183,7 +183,7 @@ class WebsiteReport(RuleGroupResult):
   class Meta:
     verbose_name        = "Report"
     verbose_name_plural = "Reports"
-    ordering = ['created']
+    ordering = ['-created']
 
   def __str__(self):
     return "Website Report: " + self.title
@@ -193,7 +193,7 @@ class WebsiteReport(RuleGroupResult):
 
 
     if len(self.data_dir_slug) == 0:
-      DIR = './../../'
+      DIR = ''
 
       count = len(WebsiteReport.objects.filter(user=self.user)) + 1
 
@@ -244,6 +244,7 @@ class WebsiteReport(RuleGroupResult):
 
   def toJSON(self):
     json = {}
+    json['id']          = 'r' + str(self.id)
     json['slug']        = self.slug
     json['title']       = self.title
     json['status']      = self.status
@@ -256,12 +257,14 @@ class WebsiteReport(RuleGroupResult):
     json['url']         = self.url
     json['pages']       = self.get_page_count()
 
+    print('[WebsiteReport][toJSON]')
 
     return json
 
   def get_page_count(self):
-    if self.status == 'C' or self.status == 'E' or self.status == 'D':
-      return self.page_count
+    print('[WebsiteReport][get_page_count] ' + self.status + ' (' + str(self.page_count) + ')')
+#    if self.status == 'C' or self.status == 'E' or self.status == 'D':
+#      return self.page_count
 
     return self.get_processing_status().processed
 
@@ -282,9 +285,12 @@ class WebsiteReport(RuleGroupResult):
 
     pi = processing_info()
 
+    fname = APP_DIR + self.data_directory + "/data/status.txt"
+    print('[WebsiteReport][get_processing_status] ' + APP_DIR)
+    print('[WebsiteReport][get_processing_status] ' + fname)
+
     try:
-      file = open( self.data_directory + "/data/status.txt", "r")
-      
+      file = open( fname, "r")
       for line in file.readlines():   
         if line.find("status=") >= 0:
           pi.status = line[7:]

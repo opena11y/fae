@@ -35,51 +35,53 @@ INFO=True
 
 def debug(s):
   if DEBUG:
-    print("[FAE-UTIL][DEBUG]: " + str(s))
+    print('[FAE-UTIL][DEBUG]: ' + str(s))
 
 def info(s):
   if INFO:
-    print("[FAE-UTIL][INFO]: " + str(s))
+    print('[FAE-UTIL][INFO]: ' + str(s))
 
 def error(s):
-  print("[FAE-UTIL][ERROR]: " + str(s))
+  print('[FAE-UTIL][ERROR]: ' + str(s))
 
+DATA_DIR_PREFIX = "./../../"
 
 def initWebsiteReport(ws_report):
+
 
   data_dir       = ws_report.data_directory 
   data_prop_file = ws_report.data_property_file
   data_auth_file = ws_report.data_authorization_file
   data_urls_file = ws_report.data_multiple_urls_file
   
-  if os.path.exists(data_dir):
-     shutil.rmtree(data_dir)
+  if os.path.exists(DATA_DIR_PREFIX + data_dir):
+     shutil.rmtree(DATA_DIR_PREFIX + data_dir)
           
-  os.makedirs(data_dir)
+  os.makedirs(DATA_DIR_PREFIX + data_dir)
           
-  file_prop = open(data_prop_file, 'w')
+  file_prop = open(DATA_DIR_PREFIX + data_prop_file, 'w')
 
   if len(data_urls_file) > 0:  
-    file_prop.write("multipleUrls=" + data_urls_file + "\n")
+    file_prop.write("multipleUrls=" + DATA_DIR_PREFIX + data_urls_file + '\n')
   else:    
-    file_prop.write("url=" + ws_report.url + "\n")
+    file_prop.write("url=" + ws_report.url + '\n')
 
 #  if len(data_auth_file) > 0:  
-#    file_prop.write("authorization=" +  data_auth_file + "\n")     
+#    file_prop.write("authorization=" +  data_auth_file + '\n')     
   
-  file_prop.write("recommendedRules=true\n");
+  file_prop.write('recommendedRules=true\n');
   
-  file_prop.write("depth="   + str(ws_report.depth) + "\n")
-  file_prop.write("ruleset=" + ws_report.ruleset.ruleset_id + "\n")
-  file_prop.write("wait="    + str(ws_report.wait_time) + "\n")
+  file_prop.write('depth='   + str(ws_report.depth) + '\n')
+  file_prop.write('ruleset=' + ws_report.ruleset.ruleset_id + '\n')
+  file_prop.write('wait='    + str(ws_report.wait_time) + '\n')
 
-  file_prop.write("spanDomains="    + ws_report.span_sub_domains    + "\n") 
-  file_prop.write("excludeDomains=" + ws_report.exclude_sub_domains + "\n") 
-  file_prop.write("includeDomains=" + ws_report.include_domains     + "\n")
+  file_prop.write("spanDomains="    + ws_report.span_sub_domains    + '\n') 
+  file_prop.write("excludeDomains=" + ws_report.exclude_sub_domains + '\n') 
+  file_prop.write("includeDomains=" + ws_report.include_domains     + '\n')
 
-  file_prop.write("outputDirectory=" + ws_report.data_directory     + "/data" + "\n")
+  file_prop.write("outputDirectory=" + DATA_DIR_PREFIX + ws_report.data_directory + '/data' + '\n')
 
-  file_prop.write("browserVersion=" + ws_report.browser_emulation   + "\n")
+  file_prop.write("browserVersion=" + ws_report.browser_emulation   + '\n')
 
   file_prop.write("scripts=openajax_a11y/scripts.txt\n")
   file_prop.write("exportFunction=toJSON\n")
@@ -100,7 +102,7 @@ def initWebsiteReport(ws_report):
     file_ws_urls = open(data_urls_file, 'w')
     for ws_url in ws_report.ws_eval_urls.all():
       if ws_url.valid:
-        file_ws_urls.write(ws_url.url + "\n")    
+        file_ws_urls.write(ws_url.url + '\n')    
       
     file_ws_urls.close()
 
@@ -124,15 +126,15 @@ def analyzeWebsiteReport(ws_report):
   cmd.append(settings.APP_DIR + 'fae2/fae-util/run')
 
   cmd.append('-c')
-  cmd.append(ws_report.data_property_file)
+  cmd.append(DATA_DIR_PREFIX + ws_report.data_property_file)
 
   if len(ws_report.data_authorization_file):
     cmd.append('-a')
-    cmd.append(ws_report.data_authorization_file)
+    cmd.append(DATA_DIR_PREFIX + ws_report.data_authorization_file)
 
   proc = subprocess.call(cmd)      
         
-  page_count = countResultFiles(ws_report.data_directory + "/data")
+  page_count = countResultFiles(DATA_DIR_PREFIX + ws_report.data_directory + '/data')
 
   ave_time = "{:10.4f}".format(time.time()-start) + " seconds (0 pages)"
   if page_count > 0:
