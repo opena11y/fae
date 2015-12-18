@@ -4,7 +4,7 @@ from django.db import models
 
 from utils.CONST import *
 from utils.utilities import OAAMarkupToHTML, OAAMarkupToText
-import textile
+import markdown
 
 
 from ruleCategories.models import RuleCategory
@@ -52,10 +52,10 @@ class Ruleset(models.Model):
     self.tooltip_text = OAAMarkupToText(self.tooltip)
     
     if self.web_resources:
-      self.web_resources_html = textile.textile(self.web_resources)
+      self.web_resources_html = markdown.markdown(self.web_resources)
       
     if self.description:   
-      self.description_html  = textile.textile(self.description)
+      self.description_html  = markdown.markdown(self.description)
       
     super(Ruleset, self).save() # Call the "real" save() method.  
     

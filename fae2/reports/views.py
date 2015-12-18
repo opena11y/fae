@@ -13,7 +13,7 @@ from django.contrib.auth.models import User
 
 from reports.models import WebsiteReport
 from django.core.urlresolvers import reverse_lazy
-from braces.views import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .uid import generate
 
 # ==============================================================
