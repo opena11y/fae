@@ -236,4 +236,50 @@ main table tr.summary td {
     padding-right: 0.25em;
 }
 
+div.input label {
+    margin-top: 1em;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+div.input input {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+label {
+    font-size: 120%;
+    font-weight: normal;
+}
+
+legend {
+    font-size: 140%;
+    margin-top: 1em;
+    margin-bottom: 0.25em;
+}
+
+input[type="button"] {
+    font-size: 120%;
+    margin-top: 1em;
+}
+
+input[type="submit"] {
+    font-size: 120%;
+    margin-top: 1em;
+    margin-bottom: 5em;
+}
+
+input[type="submit"][disabled] {
+  color: gray;
+}
+
+.error input {
+  background-color: #ffe5e5;
+  border-color: red;
+}
+
+legend.error,
+label.error {
+    color: red;
+}
 

@@ -1,12 +1,21 @@
 <div id="information" role="region" aria-label="Page Information">
 
-  <div class="title">{{page.title}}</div>
+  {% if page %}
+  <div class="title" title="Page Title">{{page.title}}</div>
+  {% else %}
+  <div class="title">Anonymous Report</div>
+  {% endif %}
     
   <div class="date">{{ report.created|date:"F d, Y H:i" }}</div>
   
   <div class="eval_info">
       <ul>
+         {% if page %}
           <li>Page URL:  <a href="{{ page.url }}">{{ page.url }}</a></li>
+          {% else %}
+          <li>Page URL:  <a href="{{ page.url }}">{{ report.url }}</a></li>
+          {% endif %}
+
           <li>Ruleset:   <a title="{{report.ruleset.title_text}}" href="{% url 'ruleset' report.ruleset.slug %}">{{ report.ruleset }}</a></li>
       </ul>  
   </div>    

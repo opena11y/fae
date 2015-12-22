@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% load staticfiles i18n %}
 {% block content %}
-  <h1>Run Report</h1>
+<h1>Run Report</h1>
 
-<form action="{% url 'run_report' %}" method="post">
+<form id="id_run_report"  action="{% url 'run_report' %}" method="post" >
     {% csrf_token %}
 
     <input type="button" 
@@ -12,9 +12,9 @@
            value="Get Last Report Settings" 
            title="You can import a previous report settings into this form by visiting the archived report just before you come to this form"/>
 
-    <div class="input">
+    <div class="input" >
         <label for="id_input_url">URL</label>
-        <div class="error">
+        <div {% if form.url.errors|length %}class="error"{% endif %}>
         <input 
             id="id_input_url"
             onkeyup="enableSubmit()"
@@ -33,7 +33,7 @@
 
     <div class="input">
         <label for="id_input_title">Title</label>
-        <div class="error">
+        <div {% if form.title.errors|length %}class="error"{% endif %}>
         <input 
             id="id_input_title"
             onkeyup="enableSubmit()"
@@ -49,7 +49,7 @@
         </div>
     </div>
     
-    <fieldset>
+    <fieldset {% if form.depth.errors|length %}class="error"{% endif %}>
         {% if form.depth.errors|length %}
         <legend class="error">{{form.depth.label}}: {% for error in form.depth.errors %}{{error}}{% endfor %}</legend>)
         {% else %}
@@ -62,9 +62,9 @@
                 type="radio"
                 name="depth"
                 value="{{choice.0}}"
-                {% ifequal form.depth.value choice.0 %}
+                {% if choice.0|slugify == form.depth.value|slugify  %}
                 checked="checked"
-                {% endifequal %}
+                {% endif %}
                 onclick="updateFollow()"
             />
             <label for="depth_{{ forloop.counter }}">{{choice.1}}</label>
@@ -72,7 +72,7 @@
         {% endfor %}
     </fieldset>
 
-    <fieldset id="id_following">
+    <fieldset id="id_following" {% if form.follow.errors|length %}class="error"{% endif %}>
         {% if form.follow.errors|length %}
         <legend class="error">{{form.follow.label}}: {% for error in form.follow.errors %}{{error}}{% endfor %}</legend>
         {% else %}
@@ -86,9 +86,11 @@
                 type="radio"
                 name="follow"
                 value="{{choice.0}}"
-                {% ifequal form.follow.value choice.0 %}
+                {% if form.follow.value|slugify == choice.0|slugify %}
                 checked
-                {% endifequal %}
+                {% endif %}
+
+
             />
             <label for="follow_{{ forloop.counter }}">{{choice.1}}</label>
         </div>
@@ -113,9 +115,9 @@
                 type="radio"
                 name="ruleset"
                 value="{{choice.0}}"
-                {% ifequal form.ruleset.value choice.0 %}
+                {% if form.ruleset.value|slugify == choice.0|slugify %}
                 checked
-                {% endifequal %}
+                {% endif %}
             />
             <label for="ruleset_{{ forloop.counter }}" {% ifequal 'ARIA_STRICT' choice.0 %}
             title="WCAG 2.0 Level A and AA requirements using ARIA and HTML5 accessibility features."
@@ -125,19 +127,41 @@
         </div>
         {% endfor %}
     </fieldset>
+
+   <fieldset>
+        
+        {% if form.max_pages.errors|length %}
+        <legend class="error">{{form.max_pages.label}}: {% for error in form.max_pages.errors %}{{error}}{% endfor %}</legend>
+        {% else %}
+        <legend>{{form.max_pages.label}}</legend>
+        {% endif %}
+
+
+        {% for choice in form.max_pages.field.choices %}
+        <div class="fae20_radio">
+            <input
+                id="max_pages_{{ forloop.counter }}"
+                type="radio"
+                name="max_pages"
+                value="{{choice.0}}"
+                {% if form.max_pages.value|slugify == choice.0|slugify %}
+                checked
+                {% endif %}
+            />
+            <label for="max_pages_{{ forloop.counter }}" >{{choice.1}}</label>
+        </div>
+        {% endfor %}
+    </fieldset>
     
     <input id="id_submit" name="submit" type="submit" value="Evaluate"  title="You must enter a valid URL and a title before you can request a report"/>
     
 
 </form>
 
+{% endblock %}
+
+{% block javascript %}
+
 <script src="{% static 'js/url-validation.js' %}" type="text/javascript"></script>
-
-<script type="text/javascript">
-    
-   window.addEventListener('load', enableSubmit)
-
-</script>
-
 
 {% endblock %}

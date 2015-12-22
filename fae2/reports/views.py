@@ -45,14 +45,12 @@ class ProcessingAnonymousReportView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(ProcessingAnonymousReportView, self).get_context_data(**kwargs)
 
-        anonymous_reports =  WebsiteReport.objects.filter(user=User.objects.get(username='anonymous'))
         try:
-          anonymous_report  = WebsiteReport.objects.get(slug=self.request.session['fae2_anonymous_slug'])
+          report  = WebsiteReport.objects.get(slug=self.request.session['fae2_anonymous_slug'])
         except:
-          anonymous_report = False
+          report = False
 
-        context['reports'] = anonymous_reports.exclude(status='A').exclude(status='E')
-        context['errors'] = anonymous_reports.filter(status='E')
+        context['report'] = report
         
         return context    
 
@@ -64,7 +62,7 @@ class ProcessingAnonymousReportView(TemplateView):
 
 class RunReportView(LoginRequiredMixin, CreateView):
     model = WebsiteReport
-    fields = ['url', 'title', 'depth', 'follow', 'ruleset']
+    fields = ['url', 'title', 'depth', 'follow', 'ruleset', 'max_pages']
     template_name = 'reports/run_report.html'
 
     success_url = reverse_lazy('processing_reports')
@@ -77,6 +75,10 @@ class RunReportView(LoginRequiredMixin, CreateView):
         form.instance.slug = generate()
 
         return super(RunReportView, self).form_valid(form)
+
+    def form_invalid(self, form):
+
+        return super(RunReportView, self).form_invalid(form)
 
 class ProcessingReportView(LoginRequiredMixin, TemplateView):
     template_name = 'reports/processing.html'
@@ -152,31 +154,6 @@ class ManageReportView(LoginRequiredMixin, TemplateView):
         
         return context                 
 
-class LastReportView(LoginRequiredMixin, TemplateView):
-    template_name = 'reports/report.html'
-
-    def get_context_data(self, **kwargs):
-        context = super(LastReportView, self).get_context_data(**kwargs)
-
-        view = 'rc'
-
-        report = WebsiteReport.objects.last()
-
-        if view == 'gl':
-          groups = report.ws_gl_results.all()
-        elif view == 'rs':  
-          groups = report.ws_rs_results.all()
-        else:  
-          groups = report.ws_rc_results.all()
-          view = 'rc'
-
-        context['report']   = report
-        context['view']     = view
-        context['summary']  = report
-        context['groups']   = groups
-        
-        return context                      
-
 
 class ReportView(TemplateView):
     template_name = 'reports/report.html'
@@ -187,15 +164,30 @@ class ReportView(TemplateView):
         view = kwargs['view']
 
         report = WebsiteReport.objects.get(slug=kwargs['report'])
+        page = False
 
-        if view == 'gl':
-          groups = report.ws_gl_results.all()
-        elif view == 'rs':  
-          groups = report.ws_rs_results.all()
-        else:  
-          groups = report.ws_rc_results.all()
-          view = 'rc'
+        if report.page_count == 1:
+          page = report.get_first_page()
+          if view == 'gl':
+            groups = page.page_gl_results.all()
+          elif view == 'rs':  
+            groups = page.page_rs_results.all()
+          else:  
+            groups = page.page_rc_results.all()
+            view = 'rc'
+        else:
+          if view == 'gl':
+            groups = report.ws_gl_results.all()
+          elif view == 'rs':  
+            groups = report.ws_rs_results.all()
+          else:  
+            groups = report.ws_rc_results.all()
+            view = 'rc'
 
+        self.request.session['last_report_slug'] = report.slug
+        self.request.session['last_report_view'] = view
+
+        context['page']     = page
         context['report']   = report
         context['view']     = view
         context['summary']  = report
@@ -215,17 +207,21 @@ class ReportGroupView(TemplateView):
 
         report = WebsiteReport.objects.get(slug=kwargs['report'])
         if view == 'gl':
-          group = report.ws_gl_results.get(slug=kwargs['group'])
+          group        = report.ws_gl_results.get(slug=kwargs['group'])
+          page_results = group.page_gl_results.all()
         elif view == 'rs':  
-          group = report.ws_rs_results.get(slug=kwargs['group'])
+          group        = report.ws_rs_results.get(slug=kwargs['group'])
+          page_results = group.page_rs_results.all()
         else:  
-          group = report.ws_rc_results.get(slug=kwargs['group'])
+          group        = report.ws_rc_results.get(slug=kwargs['group'])
+          page_results = group.page_rc_results.all()
           view = 'rc'
 
-        context['report']  = report
-        context['view']    = view
-        context['summary'] = group
-        context['group']   = group
+        context['report']       = report
+        context['view']         = view
+        context['summary']      = group
+        context['group']        = group
+        context['page_results'] = page_results
         
         return context            
 

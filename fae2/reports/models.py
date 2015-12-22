@@ -114,10 +114,9 @@ WAIT_TIME_CHOICES = (
 
 MAX_PAGES_CHOICES = (
   (0,   ' All pages'),
-  (10,  ' 10 pages'),
-  (25,  ' 25 pages'),
-  (50,  ' 50 pages'),
-  (100,  ' 100 pages')
+  (5,   '   5 pages'),
+  (10,  '  10 pages'),
+  (25,  '  25 pages')
 )  
 
 # ---------------------------------------------------------------
@@ -134,12 +133,12 @@ class WebsiteReport(RuleGroupResult):
     
   slug  = models.SlugField(max_length=256, default="", blank=True, editable=False, unique=True)
 
-  title    = models.CharField("Title",  max_length=1024, default="no title", blank=False)
+  title    = models.CharField("Title",  max_length=1024, default="", blank=False)
   
   url      = models.URLField("URL",      max_length=1024, default="", blank=False)
   follow   = models.IntegerField("Follow Links in", choices=FOLLOW_CHOICES, default=1, blank=False)
   depth    = models.IntegerField("Depth of Evaluation", choices=DEPTH_CHOICES, default=2, blank=False)
-  max_pages  = models.IntegerField("Maxiumum Pages", choices=MAX_PAGES_CHOICES, default=0, blank=False)
+  max_pages  = models.IntegerField("Analyze Pages", choices=MAX_PAGES_CHOICES, default=0, blank=False)
   ruleset  = models.ForeignKey(Ruleset, default=2, blank=False)
 
   browser_emulation    = models.CharField("Browser Emulation", max_length=32, default="FIREFOX")
@@ -233,6 +232,9 @@ class WebsiteReport(RuleGroupResult):
   def set_status_error(self):
     self.status = 'E'
     self.save()
+
+  def get_first_page(self):
+    return self.page_all_results.all()[0]
 
   def set_rule_numbers(self):
     ws_result = self.ws_all_results.last()

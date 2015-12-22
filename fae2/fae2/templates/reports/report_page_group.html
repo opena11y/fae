@@ -3,13 +3,21 @@
 
 {% block breadcrumb %}
     <li><a href="{% url 'show_report' report.slug view %}">Summary</a></li>
+{% if report.page_count > 1 %}
     <li><a href="{% url 'show_report_page' report.slug view page.page_number %}">Page {{page.page_number}}</a></li>
-    <li>{{group.get_title}}</li>
+{% endif %}
+    <li>{{group.get_title}} Rules</li>
 {% endblock %}
 
 
 {% block content %}
+
+{% if report.page_count == 1 %}
+  <h1 id="id_h1_title">{{group.get_title}} Rule Results</h1>
+{% else %}
   <h1 id="id_h1_title">Page {{page.page_number}}: {{group.get_title}} Rule Results</h1>
+{% endif %}
+
 
   {% include "reports/page_information.html" %}
     

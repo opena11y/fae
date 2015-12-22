@@ -42,9 +42,6 @@
      node_submit.setAttribute('title', 'Report request has already been sent');     
    }
    
-   
-   
-
    function enableFollow() {
     
       var i;
@@ -87,4 +84,5 @@
       else enableFollow();
       
     } 
-        
+
+window.addEventListener('load', enableSubmit);

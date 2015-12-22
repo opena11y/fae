@@ -107,20 +107,26 @@
             <nav aria-labelledby="nav-ro">
               <h2 id="nav-ro" class="sr-only">Report Options</h2>
                <ul class="nav nav-pills nav-stacked">
-                  {% if user.is_authenticated %}
+                {% if user.is_authenticated %}
                   <li><a href="{% url 'run_report'            %}">Run FAE</a></li>
                   <li><a href="{% url 'processing_reports'     %}">Report Processing</a></li>
                   <li><a href="{% url 'archived_reports'       %}">Archived Reports</a></li>
                   <li><a href="{% url 'manage_reports'         %}">Manage Reports</a></li>
-                  {% if report %}
-                  <li><a href="{% url 'show_report' report.slug  view  %}">Last Report</a></li>
-                  {% else %}
-                  <li><a href="{% url 'last_report'            %}">Last Report</a></li>
-                  {% endif %}
-                  {% else %}
+                {% else %}
                   <li><a href="{% url 'run_anonymous_report'  %}">Run FAE</a></li>
-                  {% endif %}
-                </ul>  
+                {% endif %}
+                {% if report and report.slug|length and view|length %}
+                  <li><a href="{% url 'show_report' report.slug  view  %}">Report Summary</a></li>
+                {% else %}
+                  {% if request.session.last_report_slug %}
+                    {% if request.session.last_report_view %}
+                    <li><a href="{% url 'show_report' request.session.last_report_slug  request.session.last_report_view %}">Report Summary</a></li>
+                    {% else %}
+                    <li><a href="{% url 'show_report' request.session.last_report_slug  'rc' %}">Report Summary</a></li>
+                    {% endif %}
+                  {% endif %}  
+                {% endif %}
+              </ul>  
             </nav>
           </div>
 
@@ -254,6 +260,7 @@
 </script>
 
    {% block javascript %}
+
    {% endblock javascript %}
   </body>
 </html>
