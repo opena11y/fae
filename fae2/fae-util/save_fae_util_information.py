@@ -38,15 +38,15 @@ ERROR=True
 
 def debug(s):
   if DEBUG:
-    print ("[SAVE UTIL][DEBUG]: " + str(s))
+    print ("[SAVE UTIL   ][debug  ]: " + str(s))
 
 def info(s):
   if INFO:
-    print ("[SAVE UTIL][INFO]: " + str(s))
+    print ("[SAVE UTIL   ][Info   ]: " + str(s))
 
 def error(s):
   if ERROR:
-    print ("[SAVE UTIL][ERROR]: " + str(s))
+    print ("[SAVE UTIL   ][**ERROR]: " + str(s))
     
 
     

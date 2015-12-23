@@ -17,6 +17,7 @@ from .views import ReportGroupView
 from .views import ReportGroupRuleView
 from .views import ReportGroupRulePageView
 
+from .views import ReportAllPagesView
 from .views import ReportPageView
 from .views import ReportPageGroupView
 from .views import ReportPageGroupRuleView
@@ -39,6 +40,8 @@ urlpatterns = [
     url(r'^report/(?P<report>\w+)/(?P<view>\w+)/(?P<group>\w+)/rule/(?P<rule>\w+)/$',                       ReportGroupRuleView.as_view(),     name='show_report_group_rule'),
     url(r'^report/(?P<report>\w+)/(?P<view>\w+)/(?P<group>\w+)/rule/(?P<rule>\w+)/page/(?P<page>[\d-]+)/$', ReportGroupRulePageView.as_view(), name='show_report_group_rule_page'),
 
+    url(r'^report/(?P<report>\w+)/(?P<view>\w+)/all-pages/$',                                           ReportAllPagesView.as_view(),       name='show_report_all_pages'),
+    url(r'^report/(?P<report>\w+)/(?P<view>\w+)/page/(?P<page>[\d-]+)/$',                               ReportPageView.as_view(),           name='show_report_page'),
     url(r'^report/(?P<report>\w+)/(?P<view>\w+)/page/(?P<page>[\d-]+)/$',                               ReportPageView.as_view(),           name='show_report_page'),
     url(r'^report/(?P<report>\w+)/(?P<view>\w+)/page/(?P<page>[\d-]+)/(?P<group>\w+)/$',                ReportPageGroupView.as_view(),      name='show_report_page_group'),
     url(r'^report/(?P<report>\w+)/(?P<view>\w+)/page/(?P<page>[\d-]+)/(?P<group>\w+)/(?P<rule>\w+)/$',  ReportPageGroupRuleView.as_view(),  name='show_report_page_group_rule'),

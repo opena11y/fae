@@ -1,38 +1,38 @@
+
 {% extends "base.html" %}
 {% load staticfiles i18n %}
+{% load tz %}
 
 {% block breadcrumb %}
-    <li><a href="{% url 'show_report_all_pages' report.slug view %}">All Pages</a></li>
-{% if report.page_count > 1 %}
-    <li><a href="{% url 'show_report_page' report.slug view page.page_number %}">Page {{page.page_number}}</a></li>
-{% endif %}
-    <li>{{group.get_title}} Rules</li>
+    <li>All Pages</li>
 {% endblock %}
 
 
 {% block content %}
 
-{% if report.page_count == 1 %}
-  <h1 id="id_page_title">{{group.get_title}} Rule Results</h1>
+{% if page %}
+
+{% include "reports/one_page_details.html" %}
+
 {% else %}
-  <h1 id="id_page_title">Page {{page.page_number}}: {{group.get_title}} Rule Results</h1>
-{% endif %}
 
+<h1 id="id_page_title">Summary of All Page Results</h1>
 
-  {% include "reports/page_information.html" %}
-    
-  {% include "reports/report_summary.html" %}
+{% include "reports/report_information.html" %}
 
-  <section aria-labelledby="id_result_label">
+{% include "reports/report_summary.html" %}
 
-    <h2 id="id_result_label">{{group.get_title}} Rule Results</h2>
-    
+<section aria-labelledby="id_result_label">
+
+    <h2 id="id_result_label" class="">Page Results</h2>
+
     <table  id="id_table_show_summary" class="details table table-striped table-hover sortable"  aria-labelledby="id_result_label"  aria-describedby="id_result_description">
         <thead>
           <tr>
-            <th id="id_grp" class="text"  rowspan="2">Rule Summary</th>
+            <th id="id_pgn" class="num"  rowspan="2">Page</th>
+            <th id="id_ttl" class="text"  rowspan="2">Page Title</th>
             <th id="id_res" class="text"  rowspan="2">Result</th>
-            <th id="id_nor" class="text"  colspan="5">Number of Elements</th>
+            <th id="id_nor" class="text"  colspan="5">Rule Results</th>
             <th id="id_imp" class="text"  colspan="3">Implementation Scores</th>
           </tr>
           <tr>
@@ -40,34 +40,38 @@
             <th id="id_war" class="num"  ><abbr title="Warnings">W</abbr></th>
             <th id="id_man" class="num"  ><abbr title="Manual Checks">MC</abbr></th>
             <th id="id_pas" class="num"  ><abbr title="Passed">P</abbr></th>
-            <th id="id_pas" class="num"  ><abbr title="Hidden">H</abbr></th>
+            <th id="id_not"  class="num"  ><abbr title="Not Applicable">N/A</abbr></th>
             <th id="id_pfi" class="num"  ><abbr title="Pass/Fail Implementation Score">Pass/Fail</abbr></th>
             <th id="id_ovr" class="num"  ><abbr title="Pass/Fail/manual Checks Implementation Score">Pass/Fail/MC</abbr></th>
             <th id="id_sta" class="text"  ><abbr title="Implementation Status">Status</abbr></th>
           </tr>  
         </thead>
         <tbody>
-            {% for prr in group.page_rule_results.all %} 
+            {% for pr in report.page_all_results.all %} 
             <tr>
-                <td id="id_r{{forloop.counter}}" class="text" headers="id_grp">
-                  <a href="{% url 'show_report_page_group_rule' report.slug view page.page_number group.slug prr.rule.slug %}">
-                    {{prr.rule.summary_html|safe}}
+                <td id="id_r{{forloop.counter}}" class="text" headers="id_pgn">
+                    {{pr.page_number}}
+                </td>
+
+                <td id="id_r{{forloop.counter}}" class="text" headers="id_pgn">
+                  <a href="{% url 'show_report_page' report.slug view pr.page_number %}">
+                    {{pr.title}}
                   </a>
                 </td>
 
-                {% if prr.result_value = 5 %}
+                {% if pr.result_value = 5 %}
                 <td class="text violation"  headers="id_r{{forloop.counter}} id_res">
                 Violation
-                {% elif prr.result_value = 4 %}
+                {% elif pr.result_value = 4 %}
                 <td class="text warning"  headers="id_r{{forloop.counter}} id_res">
                 Warning
-                {% elif prr.result_value = 3 %}
+                {% elif pr.result_value = 3 %}
                 <td class="text manual_check"  headers="id_r{{forloop.counter}} id_res">
                 Manual Check
-                {% elif prr.result_value = 2 %}
+                {% elif pr.result_value = 2 %}
                 <td class="text passed"  headers="id_r{{forloop.counter}} id_res">
                 Passed
-                {% elif prr.result_value = 1 %}
+                {% elif pr.result_value = 1 %}
                 <td class="text not_applicable"  headers="id_r{{forloop.counter}} id_res">
                 Not Applicable
                 {% else %}
@@ -77,70 +81,71 @@
                 </td>
 
                 <td class="num"  headers="id_r{{forloop.counter}} id_vio">
-                {% if prr.elements_violation > 0 %}
-                {{prr.elements_violation}}
+                {% if pr.rules_violation > 0 %}
+                {{pr.rules_violation}}
                 {% else %}
                 -
                 {% endif %}
                 </td>
 
                 <td class="num"  headers="id_r{{forloop.counter}} id_war">
-                {% if prr.elements_warning > 0 %}
-                {{prr.elements_warning}}
+                {% if pr.rules_warning > 0 %}
+                {{pr.rules_warning}}
                 {% else %}
                 -
                 {% endif %}
                 </td>
 
                 <td class="num"  headers="id_r{{forloop.counter}} id_man">
-                {% if prr.elements_mc_identified > 0 %}
-                {{prr.elements_mc_identified}}
+                {% if pr.rules_mc_identified > 0 %}
+                {{pr.rules_mc_identified}}
                 {% else %}
                 -
                 {% endif %}
                 </td>
 
                 <td class="num"  headers="id_r{{forloop.counter}} id_pas">
-                {% if prr.elements_passed > 0 %}
-                {{prr.elements_passed}}
+                {% if pr.rules_passed > 0 %}
+                {{pr.rules_passed}}
                 {% else %}
                 -
                 {% endif %}
                 </td>
 
                 <td class="num"  headers="id_r{{forloop.counter}} id_not">
-                {% if prr.elements_na > 0 %}
-                {{prr.elements_na}}
+                {% if pr.rules_na > 0 %}
+                {{pr.rules_na}}
                 {% else %}
                 -
                 {% endif %}
+                </td>
 
                <td class="num"  headers="id_r{{forloop.counter}} id_pfi">
-                {% if prr.implementation_pass_fail_score >= 0 %}
-                {{prr.implementation_pass_fail_score}}
+                {% if pr.implementation_pass_fail_score >= 0 %}
+                {{pr.implementation_pass_fail_score}}
                 {% else %}
                 -
                 {% endif %}
                 </td>
 
                <td class="num"  headers="id_r{{forloop.counter}} id_ovr">
-                {% if prr.implementation_score >= 0 %}
-                {{prr.implementation_score}}
+                {% if pr.implementation_score >= 0 %}
+                {{pr.implementation_score}}
                 {% else %}
                 -
                 {% endif %}
                 </td>
 
                <td class="text"  headers="id_r{{forloop.counter}} id_sta">
-                {{prr.implementation_status}}
+                {{pr.implementation_status}}
                 </td>
 
             </tr>    
             {% endfor %}
-         </tbody>
-
-        
+        </tbody>
     </table>    
-    </div>
+</section>    
 
+{% endif %}
 {% endblock %}
+

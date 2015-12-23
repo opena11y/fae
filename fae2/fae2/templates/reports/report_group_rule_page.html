@@ -10,26 +10,21 @@
 
 
 {% block content %}
-  <h1 id="id_h1_title">{{page_rule_result.rule.nls_rule_id}} Result for Page {{page_rule_result.page_result.page_number}}</h1>
+  {% include "reports/rule_result.html" with rule_result=page_rule_result rule=page_rule_result.rule %}
 
-  {% include "reports/report_information.html" %}
+  {% include "reports/page_information.html" with page=page_rule_result.page_result%}
 
-  {% include "reports/rule_result.html" with rule_result=page_rule_result %}
  
   <nav id="view_options" aria-label="Page view options">
     <ul class="nav nav-tabs hide-show">
-      <li><a href="#shp1">Details/Actions</a></li>
-      <li class="active"><a href="#shp2">Element Results</a></li>
+      <li><a href="#id_rule_details">Details/Actions</a></li>
+      <li class="active"><a href="#id_element_results">Element Results</a></li>
     </ul>
   </nav>  
 
-  <div id="shp1">
-    {% include "reports/rule_details.html" with rule=page_rule_result.rule %}
-  </div>
+  {% include "reports/rule_details.html" with rule=page_rule_result.rule %}
 
-  <div id="shp2">
-    {% include "reports/element_results.html" %}
-  </div>
+  {% include "reports/element_results.html" %}
 
 {% endblock %}
 

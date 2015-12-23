@@ -41,7 +41,7 @@ class PageResult(RuleGroupResult):
     verbose_name_plural = "Page Results"
 
   def __str__(self):
-    return "Page Result"
+    return self.url
 
   def get_title(self):
     return "Page Result: " + self.title   

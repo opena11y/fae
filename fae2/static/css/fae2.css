@@ -3,12 +3,42 @@
 }
 
 main h1 { font-size: 250%; }
-main h2 { font-size: 175%; }
+main h2 { font-size: 175%; 
+  margin: 0;
+  padding: 0;
+}
 main h3 { font-size: 150%; }
 main h4 { 
     margin-top: 1.5em;
     font-size: 125%; 
 }
+
+main h2#id_nav_reports {
+    margin-top: 1em;
+    font-size: 130%;
+}
+
+main section h2#id_result_label,
+main section h2#id_rule_label {
+    float: left;
+    margin-top: 0.75em;
+    margin-bottom: 0.25em;
+}
+
+main section[aria-labelledby="id_result_label"],
+main section[aria-labelledby="id_rule_label"] {
+    margin-top: 2em;
+}
+
+main section.option[aria-labelledby="id_result_label"],
+main section.option[aria-labelledby="id_rule_label"] {
+    margin-top: 0;
+}
+
+main section.region {
+    margin-top: 3em;
+}
+
 
 .navbar-inverse .navbar-nav > li > a:focus,
 .navbar-inverse .navbar-nav > li > a:hover {
@@ -260,7 +290,6 @@ legend {
 
 input[type="button"] {
     font-size: 120%;
-    margin-top: 1em;
 }
 
 input[type="submit"] {
@@ -282,4 +311,37 @@ legend.error,
 label.error {
     color: red;
 }
+
+input[type="button"].sort-button {
+    margin: 0;
+    padding: 0;
+    float: right;
+}
+
+#id_nav_reports li.side_by_side {
+    clear: both;
+}
+
+#id_nav_reports li.side_by_side a.disabled {
+    color: gray;
+}
+
+#id_nav_reports li.side_by_side a.left {
+    float: left;
+    padding-left: 0.25em;
+    padding-right-min: 0.25em;
+    padding-right-max: 1em;
+}
+
+#id_nav_reports li.side_by_side a.left span.glyphicon {
+    display: inline;
+}
+
+#id_nav_reports li.side_by_side a.right {
+    float: right;
+    padding-left-min: 0.25em;
+    padding-left-max: 1em;
+    padding-right: 0.25em;
+}
+
 

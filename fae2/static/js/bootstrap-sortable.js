@@ -51,7 +51,7 @@
             // Added by JRG 
             // Adds a default sort button before the table
             if ($this.attr('id')) {
-              $this.before('<input id="' + $this.attr('id') + '_default"  type="button" value="Default Sort" disabled>');
+              $this.before('<input id="' + $this.attr('id') + '_default"  class="sort-button" type="button" value="Default Sort" disabled>');
               $('#' + $this.attr('id') + '_default').click(function() {
                  restoreDefaultSort($this.attr('id'));
                 }

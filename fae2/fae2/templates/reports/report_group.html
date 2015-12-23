@@ -8,14 +8,15 @@
 
 
 {% block content %}
-  <h1 id="id_h1_title">{{group.get_title}} Rules</h1>
+  <h1 id="id_page_title">{{group.get_title}} Rules</h1>
 
   {% include "reports/report_information.html" %}
     
   {% include "reports/report_summary.html" %}
 
-<section aria-label="Result Details">
-    <table  id="id_table_show_summary" class="details table table-striped table-hover sortable"  aria-labelledby="id_h1_title"  aria-describedby="id_result_description">
+<section aria-labelledby="id_result_label">
+    <h2 id="id_result_label">{{group.get_title}} Rule Results</h2>
+    <table  id="id_table_show_summary" class="details table table-striped table-hover sortable"  aria-labelledby="id_result_label"  aria-describedby="id_result_description">
         <thead>
           <tr>
             <th id="id_grp" class="text"  rowspan="2">Rule Summary</th>
@@ -131,7 +132,7 @@
 
 <section aria-labelledby="id_page_res" style="margin-top: 4em">
     <h2 id="id_page_res">Page Results for {{group.get_title}} Rules</h2>
-    <table  id="id_table_show_summary" class="details table table-striped table-hover sortable"  aria-labelledby="id_h1_title"  aria-describedby="id_result_description">
+    <table  id="id_table_show_summary" class="details table table-striped table-hover sortable"  aria-labelledby="id_page_title"  aria-describedby="id_result_description">
         <thead>
           <tr>
             <th id="id_pgn" class="num"  rowspan="2">Page</th>

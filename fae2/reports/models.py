@@ -156,11 +156,20 @@ class WebsiteReport(RuleGroupResult):
 
   archive  = models.BooleanField(default=False)
   stats    = models.BooleanField(default=False)
+
+  # Report History Information
+  
+  last_viewed  = models.DateTimeField(auto_now=True, editable=False)
+  last_view    = models.CharField('Last View', max_length=4, default="rc")
+  last_page    = models.IntegerField('Last Page Viewed', default=1)
+  last_next_page  = models.IntegerField('Next Page Number', default=0)
+  last_prev_page     = models.IntegerField('Previous Page Number', default=0)
+  last_next_page_url = models.URLField("Next Page URL",      max_length=1024, default="", blank=True)
+  last_prev_page_url = models.URLField("Previous Page URL",  max_length=1024, default="", blank=True)
   
   # fae-util and fae20 processing information
 
   created      = models.DateTimeField(auto_now_add=True, editable=False)
-  last_viewed  = models.DateTimeField(auto_now=True, editable=False)
   status       = models.CharField('Status',  max_length=10, choices=EVAL_STATUS, default='-')  
   
   # processining information    
@@ -188,8 +197,6 @@ class WebsiteReport(RuleGroupResult):
     return "Website Report: " + self.title
 
   def save(self):
-
-
 
     if len(self.data_dir_slug) == 0:
       DIR = ''
@@ -317,7 +324,26 @@ class WebsiteReport(RuleGroupResult):
       pi.status = "file not found"  
     
     return pi
-     
+
+  def update_last_page_numbers(self, page_number):
+    self.last_page      = page_number
+    self.last_next_page = 0;
+    self.last_prev_page = 0
+
+    if page_number < self.page_count:
+      self.last_next_page  = page_number + 1
+
+    if page_number > 1:
+      self.last_prev_page  = page_number - 1
+
+    self.save()  
+
+  def update_last_page_urls(self, prev_url, next_url):
+    self.last_prev_page_url  = prev_url
+    self.last_next_page_url  = next_url
+
+    self.save()  
+
 
 # ---------------------------------------------------------------
 #

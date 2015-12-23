@@ -9,7 +9,7 @@
 
 
 {% block content %}
-    <h1 id="id_h1_title">{{ws_rule_result.rule.nls_rule_id}}: {{ws_rule_result.rule.summary_html|safe}}</h1>
+    <h1 id="id_page_title">{{ws_rule_result.rule.nls_rule_id}}: {{ws_rule_result.rule.summary_html|safe}}</h1>
 
     {% include "reports/report_information.html" %}
 
@@ -18,18 +18,14 @@
 
     <nav id="view_options" aria-label="Page view options">
         <ul class="nav nav-tabs hide-show">
-            <li><a href="#shp1">Details/Actions</a></li>
-            <li class="active"><a href="#shp2">Page Results</a></li>
+            <li><a href="#id_rule_details">Details/Actions</a></li>
+            <li class="active"><a href="#id_page_results">Page Results</a></li>
         </ul>
     </nav>  
 
-    <div id="shp1">
     {% include "reports/rule_details.html" with rule=ws_rule_result.rule %}
-    </div>
 
-    <div id="shp2">
     {% include "reports/page_results.html" %}
-    </div>
 
 {% endblock %}
 
