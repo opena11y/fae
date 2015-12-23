@@ -2,10 +2,13 @@
 {% load staticfiles i18n %}
 
 {% block breadcrumb %}
+
+    {% if report.page_count > 1 %}
     <li><a href="{% url 'show_report_all_pages' report.slug view %}">All Pages</a></li>
-{% if report.page_count > 1 %}
     <li><a href="{% url 'show_report_page' report.slug view page.page_number %}">Page {{page.page_number}}</a></li>
-{% endif %}
+    {% else %}
+    <li><a href="{% url 'show_report_page' report.slug view 1 %}">Page Report</a></li>
+    {% endif %}
     <li>{{group.get_title}} Rules</li>
 {% endblock %}
 

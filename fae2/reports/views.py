@@ -192,6 +192,7 @@ class ReportView(TemplateView):
 
         self.request.session['last_report_slug'] = report.slug
         self.request.session['last_report_view'] = view
+        self.request.session['last_report_page_count'] = report.page_count
 
         context['page']     = page
         context['report']   = report
@@ -223,6 +224,10 @@ class ReportGroupView(TemplateView):
           page_results = group.page_rc_results.all()
           view = 'rc'
 
+        self.request.session['last_report_slug'] = report.slug
+        self.request.session['last_report_view'] = view
+        self.request.session['last_report_page_count'] = report.page_count
+
         context['report']       = report
         context['view']         = view
         context['summary']      = group
@@ -249,6 +254,10 @@ class ReportGroupRuleView(TemplateView):
           view = 'rc'
 
         ws_rule_result = group.ws_rule_results.get(slug=kwargs['rule'])
+
+        self.request.session['last_report_slug'] = report.slug
+        self.request.session['last_report_view'] = view
+        self.request.session['last_report_page_count'] = report.page_count
 
         context['report']           = report
         context['view']             = view
@@ -279,6 +288,10 @@ class ReportGroupRulePageView(TemplateView):
         ws_rule_result   = group.ws_rule_results.get(slug=kwargs['rule'])
         page_rule_result = ws_rule_result.page_rule_results.get(page_result__page_number=kwargs['page'])
 
+        self.request.session['last_report_slug'] = report.slug
+        self.request.session['last_report_view'] = view
+        self.request.session['last_report_page_count'] = report.page_count
+
         context['report']   = report
         context['view']     = view
         context['group']    = group
@@ -306,6 +319,10 @@ class ReportGroupRulePageElementResultsJSON(TemplateView):
 
         ws_rule_result   = group.ws_rule_results.get(slug=kwargs['rule'])
         page_rule_result = ws_rule_result.page_rule_results.get(page_result__page_number=kwargs['page'])
+
+        self.request.session['last_report_slug'] = report.slug
+        self.request.session['last_report_view'] = view
+        self.request.session['last_report_page_count'] = report.page_count
 
         context['report']   = report
         context['view']     = view
@@ -339,6 +356,7 @@ class ReportAllPagesView(TemplateView):
 
         self.request.session['last_report_slug'] = report.slug
         self.request.session['last_report_view'] = view
+        self.request.session['last_report_page_count'] = report.page_count
 
         context['page']     = page
         context['report']   = report
@@ -369,6 +387,10 @@ class ReportPageView(TemplateView):
           view_opt = 'rc'
 
         report.update_last_page_numbers(page.page_number)
+
+        self.request.session['last_report_slug'] = report.slug
+        self.request.session['last_report_view'] = view
+        self.request.session['last_report_page_count'] = report.page_count
 
         self.request.session['last_page_number']   = report.last_page
         self.request.session['last_prev_page_url'] = ""
@@ -409,6 +431,11 @@ class ReportPageGroupView(TemplateView):
         else:  
           group = page.page_rc_results.get(slug=group_slug)
           view_opt = 'rc'
+
+
+        self.request.session['last_report_slug'] = report.slug
+        self.request.session['last_report_view'] = view
+        self.request.session['last_report_page_count'] = report.page_count
 
         report.update_last_page_numbers(page.page_number)
 
@@ -454,6 +481,10 @@ class ReportPageGroupRuleView(TemplateView):
           view_opt = 'rc'
 
         page_rule_result = group.page_rule_results.get(slug=rule_slug)
+
+        self.request.session['last_report_slug'] = report.slug
+        self.request.session['last_report_view'] = view
+        self.request.session['last_report_page_count'] = report.page_count
 
         report.update_last_page_numbers(page.page_number)
 

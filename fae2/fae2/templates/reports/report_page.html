@@ -2,13 +2,21 @@
 {% load staticfiles i18n %}
 
 {% block breadcrumb %}
+    {% if report.page_count > 1 %}
     <li><a href="{% url 'show_report_all_pages' report.slug view %}">All Pages</a></li>
     <li>Page {{page.page_number}}</li>
+    {% else %}
+    <li>Page Report</li>
+    {% endif %}
 {% endblock %}
 
 
 {% block content %}
-  <h1 id="id_page_title">Page {{page.page_number}}: Summary Report</h1>
+    {% if report.page_count > 1 %}
+    <h1 id="id_page_title">Page {{page.page_number}}: Summary Report</h1>
+    {% else %}
+    <h1 id="id_page_title">Page Report</h1>
+    {% endif %}
 
   {% include "reports/page_information.html" %}
     

@@ -70,8 +70,8 @@ function updateReport(reportInfoObj) {
         node.innerHTML = getStatusNLS('B');
       }
       else {
-        node.innerHTML = '<a href="' + reportInfoObj['report_url'] + '">' + getStatusNLS(reportInfoObj['status']) + '</a>';
-        window.location.href = '{{site}}' + reportInfoObj['report_url'];
+        node.innerHTML = '<a href="' + reportInfoObj['report_page_url'] + '">' + getStatusNLS(reportInfoObj['status']) + '</a>';
+        window.location.href = '{{site}}' + reportInfoObj['report_page_url'];
       }  
     }
     else {

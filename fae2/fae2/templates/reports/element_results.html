@@ -27,11 +27,11 @@
             document.write('<td class="text">' + er['element_identifier'] + '</td>\n');
 
             var rv = er['result_value'];
-            if (rv == 5) document.write('<td class="text violation">V</td>\n');
-            else if (rv == 4) document.write('<td class="text warning">W</td>\n');
-            else if (rv == 3) document.write('<td class="text manual_check">MC</td>\n');
-            else if (rv == 2) document.write('<td class="text hid">H</td>\n');
-            else if (rv == 1) document.write('<td class="text passed">P</td>\n');
+            if (rv == 5) document.write('<td class="text violation">Violation</td>\n');
+            else if (rv == 4) document.write('<td class="text warning">Warning</td>\n');
+            else if (rv == 3) document.write('<td class="text manual_check">Manual Check</td>\n');
+            else if (rv == 2) document.write('<td class="text hid">Hidden</td>\n');
+            else if (rv == 1) document.write('<td class="text passed">Pass</td>\n');
             else document.write('<td class="text not_applicable">-</td>\n');
 
             document.write('<td>' + er['ordinal_position']   + '</td>\n');

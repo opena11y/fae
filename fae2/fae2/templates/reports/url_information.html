@@ -63,8 +63,9 @@
                 </tr>
             </thead>
             <tbody>
-                {% for processed_url in report.processed_urls.all %}                
-                <tr class="{% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %}">
+                {% for processed_url in report.processed_urls.all %} 
+                {% if processed_url.http_status_code = 200 %}               
+                <tr>
                     
                     <td class="num">{{forloop.counter}}</td>
                     <td class="text"><a href="{{processed_url.url_requested}}" target="_referenced_website" title="{{processed_url.url_requested}}">{{processed_url.get_url_requested}}</a></td>
@@ -75,8 +76,8 @@
                     {% endif %}
                     <td class="text"><a href="{{processed_url.url_referenced}}" target="_referenced_website" title="{{processed_url.url_referenced}}">{{processed_url.get_reference_url}}</a></td>
                     <td class="num">{{processed_url.total_time}}</td>
-                    
                 </tr>    
+                {% endif %}               
                 {% endfor %}
             </tbody>
         </table>
@@ -87,13 +88,13 @@
 
     </section>    
 
-    <section class="region" aria-labelledby="id_processed_urls_label" >
-       <h2 id="id_processed_urls_label">Broken URLs</h2>
+    <section class="region" aria-labelledby="id_unprocessed_urls_label" >
+       <h2 id="id_unprocessed_urls_label">Broken URLs</h2>
 
-     {% if error_urls.all|length %}    
+     {% if report.broken_urls|length %}    
         <p>URLs not evaluated because of error codes (e.g. HTTP status code was not 200) being returned</p>
         
-        <table id="id_table_show_summary_urls_2" class="details table table-striped table-hover sortable" aria-labelledby="id_processed_urls_label" aria-describedby="id_table_summ">
+        <table id="id_table_show_summary_urls_2" class="details table table-striped table-hover sortable" aria-labelledby="id_unprocessed_urls_label" aria-describedby="id_table_summ">
             <thead>
                 <tr>
                     <th class="num">#</th>
@@ -105,20 +106,18 @@
                 </tr>
             </thead>
             <tbody>
-                {% for error_url in error_urls.all %}                
-                <tr class="{% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %}">
-                    
+                {% for broken_url in report.broken_urls %} 
+                <tr>
                     <td class="num">{{forloop.counter}}</td>
-                    <td class="text"><a href="{{error_url.url_requested}}" target="_referenced_website" title="{{error_url.url_requested}}">{{error_url.get_url_requested}}</a></td>
+                    <td class="text"><a href="{processed_url.url_requested}}" target="_referenced_website" >{broken_url.url_requested}}</a></td>
                     {% if processed_url.redirect %}                    
-                    <td class="text"><a href="{{error_url.url_returned}}" target="_referenced_website" title="{{error_url.url_returned}}">{{error_url.get_url_returned}}</a></td>
+                    <td class="text"><a href="{{processed_url.url_returned}}" target="_referenced_website" >{{broken_url.url_returned}}</a></td>
                     {% else %}
                     <td class="text"><abbr title="no redirect">-</abbr></td>
                     {% endif %}
-                    <td class="text"><a href="{{error_url.url_referenced}}" target="_referenced_website" title="{{error_url.url_referenced}}">{{error_url.get_reference_url}}</a></td>
-                    <td class="num">{{error_url.http_status_code}}</td>
-                    <td class="num">{{error_url.total_time}}</td>
-                    
+                    <td class="text"><a href="{{processed_url.url_referenced}}" target="_referenced_website" >{{broken_url.reference_url}}</a></td>
+                    <td class="num">{{broken_url.http_status_code}}</td>
+                    <td class="num">{{broken_url.total_time}}</td>
                 </tr>    
                 {% endfor %}
             </tbody>
@@ -135,7 +134,7 @@
        <h2 id="id_unprocessed_urls_label">Evaluation Failed URLs</h2>
     
 
-    {% if repot.unprocessed_urls.all|length %}
+    {% if report.unprocessed_urls.all|length %}
         <p>URLs that were found and should have been evaluated for accessibility, but for some reason could not be evaluated (e.g. broken links, signifcant Javascript errors on page being loaded...).  
             The processing engine timed out its evaluation of the page or a error from the page stopped the evaluation.</p>
         
