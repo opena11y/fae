@@ -39,6 +39,7 @@ class PageResult(RuleGroupResult):
   class Meta:
     verbose_name        = "Page Result"
     verbose_name_plural = "Page Results"
+    ordering = ['page_number']
 
   def __str__(self):
     return self.url

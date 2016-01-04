@@ -59,7 +59,6 @@ class RuleResult(models.Model):
 
 
 
-
 # ---------------------------------------------------------------
 #
 # RuleGroupResult
@@ -251,6 +250,19 @@ class WebsiteReport(RuleGroupResult):
       wsrr.save()
       num += 1  
 
+  def set_page_numbers(self):
+    num = 1
+    for pr in self.page_all_results.all():
+      pr.page_number = num
+      pr.save()
+      num += 1     
+
+  def get_page_count(self):
+    if self.status == 'C' or self.status == 'E' or self.status == 'D':
+        return self.page_count
+
+    return self.get_processing_status().processed 
+
   def toJSON(self):
     json = {}
     json['id']          = 'r' + str(self.id)
@@ -274,12 +286,6 @@ class WebsiteReport(RuleGroupResult):
 
     return json
 
-  def get_page_count(self):
-    print('[WebsiteReport][get_page_count] ' + self.status + ' (' + str(self.page_count) + ')')
-#    if self.status == 'C' or self.status == 'E' or self.status == 'D':
-#      return self.page_count
-
-    return self.get_processing_status().processed
 
   def get_processing_status(self):
   

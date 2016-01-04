@@ -1,7 +1,191 @@
 {% extends "base.html" %}
 {% load staticfiles i18n %}
+{% load tz %}
+
 {% block content %}
-  <h1>Manage Reports</h1>
+{% localtime on %}
+
+
+<h1>Archived Reports</h1>
+
+<section aria-labelledby="id_rcbp">
+  <table id="id_table_processing" 
+          class="details table table-striped table-hover sortable" aria-labelledby="id_rcbp">
+    <thead>
+      <tr>
+          <th class="text">Perm</th>
+          <th class="text">Title</th>      
+          <th class="text"><abbr title="Date and time of evaluation">Date/Time</abbr></th>
+          <th class="text">Ruleset</th>
+          <th class="text">URL</th>
+          <th class="num" >Depth</th>
+      </tr>
+    </thead>
+
+    <tbody id="id_tbody">
+    </tbody>
+        
+  </table>  
+</section>
+
+{% endlocaltime %}
+
+
+<script type="text/javascript">
+
+var reports = [];
+
+function updateReports(reportInfoArray) {
+
+
+  function addReport(id, archive) {
+
+    for (var i=0; i < reports.length; i++) {
+
+      if (reports[i].id == id) return false;
+
+    }
+
+    var r = {};
+    r.id = id;
+    r.archive = archive;
+
+    reports.push(r)
+
+    return true;
+  }
+
+  function updateArchive(id, archive) {
+
+    for (var i = 0; i < reports.length; i++) {
+
+      if (reports[i].archive !== archive) return reports[i];
+
+    }
+
+    return false;
+  }
+
+
+  function formatDate(date) {
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+    minutes = minutes < 10 ? '0'+minutes : minutes;
+    var strTime = hours + ':' + minutes;
+    return  date.getFullYear() + "-"  + (date.getMonth()+1) + "-" + date.getDate() + "  " + strTime;
+  }
+
+  var i, tr,td, input, a;
+
+  for (i = 0; i < reportInfoArray.length; i++) {
+  
+    var node = document.getElementById("id_tbody");
+    
+    var ri = reportInfoArray[i];
+
+    var localDate = new Date(ri['date']);
+    localDate = formatDate(localDate);
+    
+    if (ri['status'] === 'C') {
+
+      if (var r = addReport(ri['id'], ri['archive'])) {
+        var tr = addChildElement(node, 'tr', 'id_row_' + ri['id'], '')
+        var td = addChildElement(tr, 'td', '', 'text');
+        var input = addChildElement(td, 'input', 'archive_' + ri['id'], '');
+        input.setAttribute('type', 'checkbox')
+        r.input = input;
+
+        if (ri['archive']) {
+          input.setAttribute('checked','');
+          input.setAttribute('aria-label', 'Archived: ' + ri['title']);
+        }
+        else {
+          input.setAttribute('aria-label', 'Not archived: ' + ri['title']);
+        }  
+
+        td = addChildElement(tr, 'td', '', 'text');
+        var a addChildElement(td, 'a', '', '');
+
+
+
+        html += '  <td class="text"><a href="' + ri['report_url'] + '">' + ri['title']   + '</a></td>';
+        html += '  <td class="text">' + localDate + '</td>';
+        html += '  <td class="text"><a href="' + ri['ruleset_url'] + '">' + reportInfoArray[i]['ruleset'] + '</a></td>';
+        html += '  <td class="text">' + ri['url']     + '</td>';
+        html += '  <td class="num">'  + ri['depth']   + '</td>';
+        html += '</tr>';
+        node.innerHTML += html;
+      }
+
+      if (updateArchive(ri['id'], ri['archive'])) {
+        var node = document.getElementById('archive_'+ ri['id']);
+
+        if(ri['archive']) node.setAttribute('checked', '');
+        else node.removeAttribute('checked');
+
+      }
+
+    }
+        
+  }  
+  
+  if (node.innerHTML.indexOf("tr") < 0) {
+      html = "";
+      html += '<tr id="id_row_none">';
+      html += '  <td class="text"></td>';
+      html += '  <td class="text">No completed reports available</td>';
+      html += '  <td class="text"></td>';
+      html += '  <td class="text"></td>';
+      html += '  <td class="text"></td>';
+      html += '  <td class="num"></td>';
+      html += '</tr>';
+      node.innerHTML += html;
+  
+  }
+  
+  setTimeout(loadJSON, 2000);
+}
+
+
+function loadJSON()
+{
+   var data_file = "{{site.domain}}/processing/status/all/";
+   var http_request = new XMLHttpRequest();
+   
+   try{
+      // Opera 8.0+, Firefox, Chrome, Safari
+      http_request = new XMLHttpRequest();
+   } catch (e) {
+      // Internet Explorer Browsers
+      try{
+         http_request = new ActiveXObject("Msxml2.XMLHTTP");
+      }catch (e) {
+         try{
+            http_request = new ActiveXObject("Microsoft.XMLHTTP");
+         }catch (e){
+            // Something went wrong
+            alert("Your browser broke!");
+            return false;
+         }
+      }
+   }
+   
+   http_request.onreadystatechange  = function(){
+      if (http_request.readyState == 4)
+      {
+        // Javascript function JSON.parse to parse JSON data
+        var reportInfoArray = JSON.parse(http_request.responseText);
+        updateReports(reportInfoArray);
+      }  
+   }
+   
+   http_request.open("GET", data_file, true);
+   http_request.send();
+}
+
+loadJSON();
+
+</script>
 
 
 
