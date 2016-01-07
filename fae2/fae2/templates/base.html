@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>{% block title %}{{site.name}}{% endblock title %}</title>
+    <title>{{site.name}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -46,8 +46,6 @@
 
         <div id="top-navbar" class="navbar-collapse collapse">
 
-
-
           <ul class="nav navbar-nav navbar-right">
             <li><a href="{% url 'rulesets' %}">Rulesets</a></li>
 
@@ -66,8 +64,9 @@
                     <li><a href="http://ainspector.github.io">AInspector Sidebar</a></li>
                     <li><a href="#">Usage Statistics</a></li>
                     <li><a href="#">Concepts and Terms</a></li>
-                    <li><a href="#">Disclaimer</a></li>
-                    <li><a href="#">Version History</a></li>
+                    <li><a href="{% url 'disclaimer' %}">Disclaimer</a></li>
+                    <li><a href="{% url 'privacy' %}">Privacy</a></li>
+                    <li><a href="{% url 'versions' %}">Version History</a></li>
                     <li><a href="#">Contact</a></li>
                     <li><a href="#">Report an Issue</a></li>
               </ul>
@@ -77,7 +76,7 @@
               <li><a href="{% url 'logout' %}" >Logout: {{user.username}}</a></li>
             {% else %}
               {% if not use_shib %}
-                <li><a href="#" >Register</a></li>
+                <li><a href="{% url 'registration_register' %}" >Register</a></li>
               {% endif %}  
               <li><a href="{% url 'login' %}" >Login</a></li>
             {% endif %}              
@@ -119,7 +118,7 @@
                
             <nav id="id_nav_reports" aria-labelledby="id_nav_reports_label">  
 
-              <h2 id="id_nav_reports_label">Reports</h2>
+              <h2 id="id_nav_reports_label">Summary Reports</h2>
 
               <ul class="nav nav-pills nav-stacked">  
                 {% if request.session.last_report_page_count = 1 %}
@@ -136,37 +135,18 @@
                   {% endif %}  
                 {% else %}
                   {% if report and report.slug|length and view|length %}
-                    <li><a href="{% url 'show_report'           report.slug  view                  %}">Summary</a></li>
+                    <li><a href="{% url 'show_report'           report.slug  view                  %}">All Rules</a></li>
                     <li><a href="{% url 'show_report_all_pages' report.slug  view                  %}">All Pages</a></li>
                     <li><a href="{% url 'show_report_page'      report.slug  view report.last_page %}">Page {{report.last_page}}</a></li>
-
-                    <li class="side_by_side">
-                      {% if report.last_prev_page_url|length %}
-                      <a href="{{report.last_prev_page_url}}" class="left">
-                      {% else %}
-                      <a href="#" class="disabled left"> 
-                      {% endif %}
-                        <span class="glyphicon glyphicon-step-backward"></span> 
-                        <abbr title="Previous Page">Prev</abbr>
-                      </a>
-                      {% if report.last_next_page_url|length %}
-                      <a href="{{report.last_next_page_url}}" class="right">
-                      {% else %}
-                      <a href="#" class="disabled right">
-                      {% endif %}
-                         <abbr title="Next Page">Next</abbr>
-                         <span class="glyphicon glyphicon-step-forward"></span>
-                      </a>
-                    </li>
 
                   {% else %}
                     {% if request.session.last_report_slug %}
 
                       {% if request.session.last_report_view %}
-                      <li><a href="{% url 'show_report'           request.session.last_report_slug request.session.last_report_view %}">Report Summary</a></li>
+                      <li><a href="{% url 'show_report'           request.session.last_report_slug request.session.last_report_view %}">All Rules</a></li>
                       <li><a href="{% url 'show_report_all_pages' request.session.last_report_slug request.session.last_report_view %}">All Pages</a></li>
                       {% else %}
-                      <li><a href="{% url 'show_report'           request.session.last_report_slug 'rc' %}">Report Summary</a></li>
+                      <li><a href="{% url 'show_report'           request.session.last_report_slug 'rc' %}">All Rules</a></li>
                       <li><a href="{% url 'show_report_all_pages' request.session.last_report_slug 'rc' %}">All Pages</a></li>
                       {% endif %}
 
@@ -176,11 +156,47 @@
                       <li><a href="{% url 'show_report_page'  request.session.last_report_slug  'rc' 1 %}">Page 1</a></li>
                       {% endif %}
 
+                    {% endif %}  
+                  {% endif %}
+                {% endif %}  
+              </ul>  
+            </nav>
+
+            {% if request.session.last_report_page_count > 1 %}
+            <nav id="id_nav_pages" aria-labelledby="id_nav_pages_label">  
+
+              <h2 id="id_nav_pages_label">Page Navigation</h2>
+
+              <ul class="nav nav-pills nav-stacked">  
+                  {% if report and report.slug|length and view|length %}
+
+                    <li class="side_by_side">
+                      {% if report.last_prev_page_url|length %}
+                      <a href="{{report.last_prev_page_url}}" class="left">
+                      {% else %}
+                      <a class="disabled left"> 
+                      {% endif %}
+                        <span class="glyphicon glyphicon-step-backward"></span> 
+                        <abbr title="Previous Page">Prev</abbr>
+                      </a>
+                      {% if report.last_next_page_url|length %}
+                      <a href="{{report.last_next_page_url}}" class="right">
+                      {% else %}
+                      <a class="disabled right">
+                      {% endif %}
+                         <abbr title="Next Page">Next</abbr>
+                         <span class="glyphicon glyphicon-step-forward"></span>
+                      </a>
+                    </li>
+
+                  {% else %}
+                    {% if request.session.last_report_slug %}
+
                     <li class="side_by_side">
                       {% if request.session.last_prev_page_url|length %}
                       <a href="{{request.session.last_prev_page_url}}" class="left">
                       {% else %}
-                      <a href="#" class="disabled left"> 
+                      <a class="disabled left"> 
                       {% endif %}
                         <span class="glyphicon glyphicon-step-backward"></span> 
                         <abbr title="Previous Page">Prev</abbr>
@@ -188,7 +204,7 @@
                       {% if request.session.last_next_page_url|length %}
                       <a href="{{request.session.last_next_page_url}}" class="right">
                       {% else %}
-                      <a href="#" class="disabled right"> 
+                      <a class="disabled right"> 
                       {% endif %}
                          <abbr title="Next Page">Next</abbr>
                          <span class="glyphicon glyphicon-step-forward"></span>
@@ -198,7 +214,7 @@
                   {% endif %}
                 {% endif %}  
               </ul>  
-            </nav>
+            </nav>            
           {% else %}
             <nav aria-labelledby="nav-report-management">
                <ul class="nav nav-pills nav-stacked">
@@ -222,6 +238,9 @@
           {% endif %}
 
             <section id="content">
+
+            <h1 id="id_page_title">{% block title %}{% endblock title %}</h1>
+
             {% block content %}
 
             {% endblock content %}

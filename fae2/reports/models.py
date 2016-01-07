@@ -1,6 +1,7 @@
 from django.db import models
 from urllib.parse import urlparse
 from django.core.urlresolvers import reverse
+from pytz import timezone
 
 
 from django.contrib.auth.models import User
@@ -154,6 +155,7 @@ class WebsiteReport(RuleGroupResult):
   # Archiving information
 
   archive  = models.BooleanField(default=False)
+  delete   = models.BooleanField(default=False)
   stats    = models.BooleanField(default=False)
 
   # Report History Information
@@ -264,17 +266,19 @@ class WebsiteReport(RuleGroupResult):
     return self.get_processing_status().processed 
 
   def toJSON(self):
+    tz = timezone(str(self.user.profile.timezone))
+
     json = {}
     json['id']          = 'r' + str(self.id)
     json['slug']        = self.slug
     json['title']       = self.title
     json['status']      = self.status
     json['archive']     = self.archive
-    json['date']        = self.created
+    json['date']        = self.created.astimezone(tz)
     json['ruleset']     = self.ruleset.title
     json['ruleset_url'] = reverse('ruleset', args=[self.ruleset.slug])
     json['report_url']       = ""
-    json['report_Page_url']  = ""
+    json['report_page_url']  = ""
     if self.page_count > 0:
       json['report_url']       = reverse('show_report',       args=[self.slug, 'rc'])
       json['report_page_url']  = reverse('show_report_page',  args=[self.slug, 'rc', 1])

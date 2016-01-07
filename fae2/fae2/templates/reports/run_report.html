@@ -1,7 +1,11 @@
 {% extends "base.html" %}
 {% load staticfiles i18n %}
+
+{% block title %}
+  Run Report
+{% endblock %}
+
 {% block content %}
-<h1>Run Report</h1>
 
 <form id="id_run_report"  action="{% url 'run_report' %}" method="post" >
     {% csrf_token %}

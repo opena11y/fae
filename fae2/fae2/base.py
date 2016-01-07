@@ -15,6 +15,7 @@ import json
 
 from django.core.exceptions import ImproperlyConfigured
 from os.path import join, abspath, dirname
+import registration.backends.default
 
 SITE_ID = 1
 
@@ -49,7 +50,16 @@ def get_secret(setting, secrets=secrets):
 SECRET_KEY = get_secret('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
+
+EMAIL_HOST               = get_secret('EMAIL_HOST')
+EMAIL_PORT               = get_secret('EMAIL_PORT')
+EMAIL_USE_TLS            = get_secret('EMAIL_USE_TLS')
+EMAIL_HOST_USER          = get_secret('EMAIL_HOST_USER')
+EMAIL_HOST_USER_PASSWORD = get_secret('EMAIL_HOST_USER_PASSWORD')
+
+ACCOUNT_ACTIVATION_DAYS = get_secret('ACCOUNT_ACTIVATION_DAYS')
+REGISTRATION_EMAIL_HTML = False
 
 ALLOWED_HOSTS = get_secret('ALLOWED_HOSTS')
 
@@ -63,6 +73,10 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+#    'django.contrib.sites.models.Site',
+#    'django.contrib.sites.models.RequestSite',
+    'registration',
+    'userProfiles.apps.UserprofilesConfig',
     'abouts.apps.AboutsConfig',
     'accounts.apps.AccountsConfig',
     'markup.apps.MarkupConfig',
@@ -144,7 +158,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = join(BASE_DIR, STATIC_URL)
+STATIC_ROOT = join(BASE_DIR, 'static/')
+
+print('STATIC ROOT: ' + STATIC_ROOT)
 
 STATICFILES_DIRS = (
   join(APP_DIR, "fae2/static"),

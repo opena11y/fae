@@ -4,7 +4,7 @@
   <div class="title">{{report.title}}</div>
     
   <div class="date">
-    {% timezone "America/Chicago" %}
+    {% timezone user.profile.timezone %}
     {{ report.created|date:"F d, Y H:i" }}
     {% endtimezone %}
   </div>

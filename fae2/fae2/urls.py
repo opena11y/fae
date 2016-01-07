@@ -22,6 +22,7 @@ from accounts.views import Logout
 
 urlpatterns = [
     url(r'^admin/',   include(admin.site.urls)),
+    url(r'^accounts/',     include('registration.backends.simple.urls')),
     url(r'^registration/', include('django.contrib.auth.urls')),
     url(r'^logout/$', Logout.as_view(), name='logout'),
     # fae2 specific 

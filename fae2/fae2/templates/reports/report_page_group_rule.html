@@ -12,10 +12,12 @@
     <li>{{page_rule_result.rule.nls_rule_id}}</li>
 {% endblock %}
 
+{% block title %}
+   {% include "reports/rule_result.html" with rule_result=page_rule_result rule=page_rule_result.rule %}
+{% endblock %}
 
 {% block content %}
 
- {% include "reports/rule_result.html" with rule_result=page_rule_result rule=page_rule_result.rule %}
 
  {% include "reports/page_information.html" %}
  

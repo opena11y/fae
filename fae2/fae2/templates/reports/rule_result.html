@@ -1,22 +1,20 @@
-<h1 id="id_page_title">
-    {% if rule_result.result_value = 5 %}
-    <span class="violation">Violation:</span> 
-    {% else %}
-    {% if rule_result.result_value = 4 %}
-    <span class="warning">Warning: </span>
-    {% else %}
-    {% if rule_result.result_value = 3 %}
-    <span class="manual_check">Manual Check:</span> 
-    {% else %}
-    {% if rule_result.result_value = 2 %}
-    <span class="passed">Pass:</span> 
-    {% else %}
-    {% if rule_result.result_value = 1 %}
-    <span class="not_applicable">Not Applicable:</span> 
-    {% endif %}
-    {% endif %}
-    {% endif %}
-    {% endif %}
-    {% endif %}
-    {{rule.summary_html|safe}}
-</h1>
+{% if rule_result.result_value = 5 %}
+<span class="violation">Violation:</span> 
+{% else %}
+{% if rule_result.result_value = 4 %}
+<span class="warning">Warning: </span>
+{% else %}
+{% if rule_result.result_value = 3 %}
+<span class="manual_check">Manual Check:</span> 
+{% else %}
+{% if rule_result.result_value = 2 %}
+<span class="passed">Pass:</span> 
+{% else %}
+{% if rule_result.result_value = 1 %}
+<span class="not_applicable">Not Applicable:</span> 
+{% endif %}
+{% endif %}
+{% endif %}
+{% endif %}
+{% endif %}
+{{rule_result.rule.summary_html|safe}}

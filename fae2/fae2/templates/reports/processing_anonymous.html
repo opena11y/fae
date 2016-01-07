@@ -1,8 +1,12 @@
 {% extends "base.html" %}
 {% load staticfiles i18n %}
+
+{% block title $}
+Page Processing
+{% endblock %}
+
 {% block content %}
 
-<h1>Page Processing</h1>
 
 {% include "reports/page_information.html" %}
 

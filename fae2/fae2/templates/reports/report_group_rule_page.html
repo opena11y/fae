@@ -9,8 +9,11 @@
 {% endblock %}
 
 
-{% block content %}
+{% block title %}
   {% include "reports/rule_result.html" with rule_result=page_rule_result rule=page_rule_result.rule %}
+{% endblock %}
+
+{% block content %}
 
   {% include "reports/page_information.html" with page=page_rule_result.page_result%}
 

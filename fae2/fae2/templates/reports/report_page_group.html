@@ -12,21 +12,23 @@
     <li>{{group.get_title}} Rules</li>
 {% endblock %}
 
+{% block title %}
+
+    {% if report.page_count == 1 %}
+      {{group.get_title}} Rule Results
+    {% else %}
+      Page {{page.page_number}}: {{group.get_title}} Rule Results
+    {% endif %}
+
+{% endblock %}
 
 {% block content %}
-
-{% if report.page_count == 1 %}
-  <h1 id="id_page_title">{{group.get_title}} Rule Results</h1>
-{% else %}
-  <h1 id="id_page_title">Page {{page.page_number}}: {{group.get_title}} Rule Results</h1>
-{% endif %}
-
 
   {% include "reports/page_information.html" %}
     
   {% include "reports/report_summary.html" %}
 
-  <section aria-labelledby="id_result_label">
+  <section class="report" aria-labelledby="id_result_label">
 
     <h2 id="id_result_label">{{group.get_title}} Rule Results</h2>
     

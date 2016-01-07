@@ -2,11 +2,12 @@
 {% load staticfiles i18n %}
 {% load tz %}
 
+{% block title %}
+Manage Reports
+{% endblock %}
+
 {% block content %}
 {% localtime on %}
-
-
-<h1>Archived Reports</h1>
 
 <section aria-labelledby="id_rcbp">
   <table id="id_table_processing" 
@@ -30,12 +31,73 @@
 
 {% endlocaltime %}
 
+{% endblock %}
+
+{% block javascript %}
 
 <script type="text/javascript">
 
 var reports = [];
+var report_status_url = "{{site.domain}}/processing/status/all/";
+
+function updateDisabledCheckboxes() {
+  var i;
+  var count = 0;
+  var r;
+
+  for (i = 0; i < reports.length; i++) {
+    r = reports[i];
+    if (r.checkbox.checked) count += 1;
+  }
+
+  if (count >= {{user.profile.max_archive}}) {
+    for (i = 0; i < reports.length; i++) {
+      r = reports[i];
+      if (!r.checkbox.checked) r.checkbox.disabled = true;
+    }
+  }
+  else {
+    for (i = 0; i < reports.length; i++) {
+      reports[i].checkbox.disabled = false;
+    }
+  }
+};
+
+function checkboxChangeEvent(event, slug) {
+
+  var url;
+  var cb = event.currentTarget;
+
+  if (cb.checked) {
+    url = "{{site.domain}}/set-report-archive/" + slug +"/true/";
+  }
+  else {
+    url = "{{site.domain}}/set-report-archive/" + slug +"/false/";
+  }
+  console.log(url)
+
+  fae2TableUtils.getJSON(url, false);
+
+  event.stopPropagation();
+
+  updateDisabledCheckboxes()
+
+//  event.preventDefault();
+
+}
 
 function updateReports(reportInfoArray) {
+
+
+  function getEventHandler(slug) {
+
+    var s = slug;
+
+    return function(event) {
+      checkboxChangeEvent(event, slug);
+    }
+
+  }
 
 
   function addReport(id, archive) {
@@ -52,7 +114,7 @@ function updateReports(reportInfoArray) {
 
     reports.push(r)
 
-    return true;
+    return r;
   }
 
   function updateArchive(id, archive) {
@@ -67,123 +129,59 @@ function updateReports(reportInfoArray) {
   }
 
 
-  function formatDate(date) {
-    var hours = date.getHours();
-    var minutes = date.getMinutes();
-    minutes = minutes < 10 ? '0'+minutes : minutes;
-    var strTime = hours + ':' + minutes;
-    return  date.getFullYear() + "-"  + (date.getMonth()+1) + "-" + date.getDate() + "  " + strTime;
-  }
-
-  var i, tr,td, input, a;
+  var i, tr;
 
   for (i = 0; i < reportInfoArray.length; i++) {
   
-    var node = document.getElementById("id_tbody");
+    var tbody = document.getElementById("id_tbody");
     
     var ri = reportInfoArray[i];
 
     var localDate = new Date(ri['date']);
-    localDate = formatDate(localDate);
+    localDate = fae2TableUtils.formatDate(localDate);
     
     if (ri['status'] === 'C') {
 
-      if (var r = addReport(ri['id'], ri['archive'])) {
-        var tr = addChildElement(node, 'tr', 'id_row_' + ri['id'], '')
-        var td = addChildElement(tr, 'td', '', 'text');
-        var input = addChildElement(td, 'input', 'archive_' + ri['id'], '');
-        input.setAttribute('type', 'checkbox')
-        r.input = input;
+      var report_id = ri['id'];
+      var report_archive = ri['archive'];
 
-        if (ri['archive']) {
-          input.setAttribute('checked','');
-          input.setAttribute('aria-label', 'Archived: ' + ri['title']);
-        }
-        else {
-          input.setAttribute('aria-label', 'Not archived: ' + ri['title']);
-        }  
+      if (r = addReport(report_id, report_archive)) {
+        tr = fae2TableUtils.addRow(tbody, 'row_' + report_id, '')
 
-        td = addChildElement(tr, 'td', '', 'text');
-        var a addChildElement(td, 'a', '', '');
+        r.checkbox = fae2TableUtils.addCellCheckbox(tr, report_archive, 'archive_' + report_id, 'text', getEventHandler(ri['slug']));
 
+        fae2TableUtils.addCellLink(tr, ri['title'], ri['report_url'], '', 'text');
 
+        fae2TableUtils.addCell(tr, localDate, '', 'text');
 
-        html += '  <td class="text"><a href="' + ri['report_url'] + '">' + ri['title']   + '</a></td>';
-        html += '  <td class="text">' + localDate + '</td>';
-        html += '  <td class="text"><a href="' + ri['ruleset_url'] + '">' + reportInfoArray[i]['ruleset'] + '</a></td>';
-        html += '  <td class="text">' + ri['url']     + '</td>';
-        html += '  <td class="num">'  + ri['depth']   + '</td>';
-        html += '</tr>';
-        node.innerHTML += html;
-      }
+        fae2TableUtils.addCellLink(tr, ri['ruleset'], ri['ruleset_url'], '', 'text');
 
-      if (updateArchive(ri['id'], ri['archive'])) {
-        var node = document.getElementById('archive_'+ ri['id']);
+        fae2TableUtils.addCell(tr, ri['url'], '', 'text');
 
-        if(ri['archive']) node.setAttribute('checked', '');
-        else node.removeAttribute('checked');
+        fae2TableUtils.addCell(tr, ri['depth'], '', 'num');
 
       }
 
+      if (updateArchive(report_id, report_archive)) {
+        fae2TableUtils.updateCheckbox('archive_' + report_id, report_archive);
+      }
     }
-        
   }  
   
-  if (node.innerHTML.indexOf("tr") < 0) {
-      html = "";
-      html += '<tr id="id_row_none">';
-      html += '  <td class="text"></td>';
-      html += '  <td class="text">No completed reports available</td>';
-      html += '  <td class="text"></td>';
-      html += '  <td class="text"></td>';
-      html += '  <td class="text"></td>';
-      html += '  <td class="num"></td>';
-      html += '</tr>';
-      node.innerHTML += html;
-  
+  if (tbody.innerHTML.indexOf("tr") < 0) {
+    tr = fae2TableUtils.addRow(tbody, 'row_none', '')
+    fae2TableUtils.addCell(tr, '', '', 'text');
+    fae2TableUtils.addCell(tr, 'No completed reports', '', 'text');
+    fae2TableUtils.addCell(tr, '', '', 'text');
+    fae2TableUtils.addCell(tr, '', '', 'text');
+    fae2TableUtils.addCell(tr, '', '', 'text');
+    fae2TableUtils.addCell(tr, '', '', 'num');
   }
   
-  setTimeout(loadJSON, 2000);
+  setTimeout(function () {fae2TableUtils.getJSON( report_status_url, updateReports);}, 3000);
 }
 
-
-function loadJSON()
-{
-   var data_file = "{{site.domain}}/processing/status/all/";
-   var http_request = new XMLHttpRequest();
-   
-   try{
-      // Opera 8.0+, Firefox, Chrome, Safari
-      http_request = new XMLHttpRequest();
-   } catch (e) {
-      // Internet Explorer Browsers
-      try{
-         http_request = new ActiveXObject("Msxml2.XMLHTTP");
-      }catch (e) {
-         try{
-            http_request = new ActiveXObject("Microsoft.XMLHTTP");
-         }catch (e){
-            // Something went wrong
-            alert("Your browser broke!");
-            return false;
-         }
-      }
-   }
-   
-   http_request.onreadystatechange  = function(){
-      if (http_request.readyState == 4)
-      {
-        // Javascript function JSON.parse to parse JSON data
-        var reportInfoArray = JSON.parse(http_request.responseText);
-        updateReports(reportInfoArray);
-      }  
-   }
-   
-   http_request.open("GET", data_file, true);
-   http_request.send();
-}
-
-loadJSON();
+fae2TableUtils.getJSON(report_status_url, updateReports);
 
 </script>
 

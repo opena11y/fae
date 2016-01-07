@@ -7,10 +7,11 @@
     <li>Archived</li>
 {% endblock %}
 
-{% block content %}
-  <h1>Archived Reports</h1>
+{% block title %}
+Archived Reports
+{% endblock %}
 
-{{TIME_ZONE}}
+{% block content %}
 
 <div id="id_report_table_desc" class="sr-only">{{ reports.count }} reports</div> 
 
@@ -46,7 +47,7 @@
                 </td>
                 
                 <td class="text date">
-                    {% timezone "America/Chicago" %}
+                    {% timezone user.profile.timezone %}
                     {{ report.created|date:"Y-m-d H:i" }}
                     {% endtimezone %}
                 </td>

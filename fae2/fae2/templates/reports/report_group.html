@@ -6,15 +6,17 @@
     <li>{{group.get_title}}</li>
 {% endblock %}
 
+{% block title %}
+  {{group.get_title}} Rules
+{% endblock %}
 
 {% block content %}
-  <h1 id="id_page_title">{{group.get_title}} Rules</h1>
 
   {% include "reports/report_information.html" %}
     
   {% include "reports/report_summary.html" %}
 
-<section aria-labelledby="id_result_label">
+<section class="report" aria-labelledby="id_result_label">
     <h2 id="id_result_label">{{group.get_title}} Rule Results</h2>
     <table  id="id_table_show_summary" class="details table table-striped table-hover sortable"  aria-labelledby="id_result_label"  aria-describedby="id_result_description">
         <thead>

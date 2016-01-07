@@ -7,22 +7,26 @@
     <li>All Pages</li>
 {% endblock %}
 
+{% block title %}
+    {% if page %}
+        Page Report
+    {% else %}
+        Summary of All Page Results
+    {% endif %}
+{% endblock %}
 
 {% block content %}
-
 {% if page %}
 
 {% include "reports/details_one_page.html" %}
     
 {% else %}
 
-<h1 id="id_page_title">Summary of All Page Results</h1>
-
 {% include "reports/report_information.html" %}
 
 {% include "reports/report_summary.html" %}
 
-<section aria-labelledby="id_result_label">
+<section class="report" aria-labelledby="id_result_label">
 
     <h2 id="id_result_label" class="">Page Results</h2>
 

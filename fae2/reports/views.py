@@ -12,6 +12,8 @@ from django.views.generic import RedirectView
 from django.contrib.auth.models import User
 
 from reports.models import WebsiteReport
+from userProfiles.models import UserProfile
+
 from django.core.urlresolvers import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .uid import generate
@@ -129,6 +131,29 @@ class ProcessingStatusJSON(TemplateView):
         
         return context    
 
+class SetReportArchiveView(TemplateView):
+
+    def render_to_response(self, context, **response_kwargs):
+
+        return  JsonResponse(context['report'].toJSON(), safe=False, **response_kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super(SetReportArchiveView, self).get_context_data(**kwargs)
+
+        report = WebsiteReport.objects.get(slug=kwargs['report'])
+        value = kwargs['value']
+
+        if value == 'true':
+            report.archive = True
+        else:    
+            report.archive = False
+
+        report.save()    
+
+        context['report'] = report
+        
+        return context
+
 
 class ArchivedReportView(LoginRequiredMixin, TemplateView):
     template_name = 'reports/archived.html'
@@ -139,6 +164,7 @@ class ArchivedReportView(LoginRequiredMixin, TemplateView):
         user_reports = WebsiteReport.objects.filter(user=self.request.user)
 
         context['reports'] = user_reports.filter(status='C')
+        context['profile'] = UserProfile.objects.get(user=self.request.user)
         
         return context            
 
@@ -274,23 +300,44 @@ class ReportGroupRulePageView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(ReportGroupRulePageView, self).get_context_data(**kwargs)
 
-        view = kwargs['view']
+        view  = kwargs['view']
+        group = kwargs['group']
+        rule  = kwargs['rule']
+        page  = kwargs['page']
 
         report = WebsiteReport.objects.get(slug=kwargs['report'])
         if view == 'gl':
-          group = report.ws_gl_results.get(slug=kwargs['group'])
+          group = report.ws_gl_results.get(slug=group)
         elif view == 'rs':  
-          group = report.ws_rs_results.get(slug=kwargs['group'])
+          group = report.ws_rs_results.get(slug=group)
         else:  
-          group = report.ws_rc_results.get(slug=kwargs['group'])
+          group = report.ws_rc_results.get(slug=group)
           view_opt = 'rc'
 
-        ws_rule_result   = group.ws_rule_results.get(slug=kwargs['rule'])
+        ws_rule_result   = group.ws_rule_results.get(slug=rule)
         page_rule_result = ws_rule_result.page_rule_results.get(page_result__page_number=kwargs['page'])
 
         self.request.session['last_report_slug'] = report.slug
         self.request.session['last_report_view'] = view
         self.request.session['last_report_page_count'] = report.page_count
+
+        report.update_last_page_numbers(page_rule_result.page_result.page_number)
+
+        self.request.session['last_report_slug'] = report.slug
+        self.request.session['last_report_view'] = view
+        self.request.session['last_report_page_count'] = report.page_count
+
+        self.request.session['last_page_number']   = report.last_page
+        self.request.session['last_prev_page_url'] = ""
+        self.request.session['last_next_page_url'] = ""
+
+        if report.last_prev_page > 0:
+            self.request.session['last_prev_page_url'] = reverse('show_report_group_rule_page', args=[report.slug, view, group.slug, rule, report.last_prev_page])
+
+        if report.last_next_page > 0:
+            self.request.session['last_next_page_url'] = reverse('show_report_group_rule_page', args=[report.slug, view, group.slug, rule, report.last_next_page])
+
+        report.update_last_page_urls(self.request.session['last_prev_page_url'], self.request.session['last_next_page_url'])
 
         context['report']   = report
         context['view']     = view
@@ -320,9 +367,6 @@ class ReportGroupRulePageElementResultsJSON(TemplateView):
         ws_rule_result   = group.ws_rule_results.get(slug=kwargs['rule'])
         page_rule_result = ws_rule_result.page_rule_results.get(page_result__page_number=kwargs['page'])
 
-        self.request.session['last_report_slug'] = report.slug
-        self.request.session['last_report_view'] = view
-        self.request.session['last_report_page_count'] = report.page_count
 
         context['report']   = report
         context['view']     = view

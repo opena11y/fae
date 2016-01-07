@@ -6,6 +6,13 @@
     <li>Summary</li>
 {% endblock %}
 
+{% block title %}
+    {% if page %}
+      Page Result
+    {% else %}
+      Summary of All Rule Results
+    {% endif %}  
+{% endblock %}
 
 {% block content %}
 
@@ -14,8 +21,6 @@
 {% include "reports/details_one_page.html" %}
 
 {% else %}
-
-<h1 id="id_page_title">Summary of Rule Results</h1>
 
 {% include "reports/report_information.html" %}
 
@@ -29,7 +34,7 @@
 	</ul>
 </nav>
 
-<section class="option" aria-labelledby="id_result_label">
+<section class="report" aria-labelledby="id_result_label">
 
 <h2 id="id_result_label">
 {% if view = 'gl' %}

@@ -2,11 +2,12 @@
 {% load staticfiles i18n %}
 {% load tz %}
 
+{% block title %}
+Report Processing
+{% endblock %}
+
 {% block content %}
 {% localtime on %}
-
-
-<h1>Report Processing</h1>
 
 <h2 id="id_rcbp">Reports currently being processed</h2>
 
@@ -43,7 +44,6 @@
                 <th class="text">Ruleset</th>
                 <th class="text">URL</th>
                 <th class="num">Depth</th>
-                <th class="num">Pages</th>
             </tr>
     </thead>
     <tbody id="id_tbody_zero" role="alert">
@@ -69,8 +69,13 @@
 
 {% endlocaltime %}
 
+{% endblock %}
+
+{% block javascript %}
 
 <script type="text/javascript">
+
+var report_status_url = "{{site.domain}}/processing/status/all/";
 
 function updateReports(reportInfoArray) {
 
@@ -120,14 +125,14 @@ function updateReports(reportInfoArray) {
   }
 
   function updateProcessingReports(id, status, title, url, pages) {
-    var rows = node.getElementsByTagName('tr');
+    var rows = tbody_proc.getElementsByTagName('tr');
     
     for (var i = 0; i < rows.length; i++) {
       var row = rows[i];
       var row_id = row.getAttribute('id');
       
-      if (row_id === ('id_row_' + id)) {
-        var s = document.getElementById('id_status_' + id);
+      if (row_id === ('row_' + id)) {
+        var s = document.getElementById('status_' + id);
         if (s) s.innerHTML = getStatusNLS(status, pages);
         
         if (status === 'C') {
@@ -144,7 +149,7 @@ function updateReports(reportInfoArray) {
       }
     }
     
-    if (status === 'C') return false;
+    if (status === 'C' || status === 'E' || status == 'B') return false;
     
     return true;
   }
@@ -155,7 +160,7 @@ function updateReports(reportInfoArray) {
     for (var i = 0; i < rows.length; i++) {
       var row = rows[i];
       var row_id = row.getAttribute('id');
-      if (row_id === ('id_row_' + id)) {
+      if (row_id === ('row_' + id)) {
         return false;
       }
     }
@@ -166,74 +171,64 @@ function updateReports(reportInfoArray) {
     return false;
   }
 
-  function formatDate(date) {
-    var hours = date.getHours();
-    var minutes = date.getMinutes();
-    minutes = minutes < 10 ? '0'+minutes : minutes;
-    var strTime = hours + ':' + minutes;
-    return  date.getFullYear() + "-"  + (date.getMonth()+1) + "-" + date.getDate() + "  " + strTime;
-  }
+
+  var i, tr;
+
+  var tbody_proc = document.getElementById("id_tbody");
 
   var div_zero   = document.getElementById("id_div_zero");
   var tbody_zero = document.getElementById("id_tbody_zero");
-  var html;
-
-  for (var i = 0; i < reportInfoArray.length; i++) {
-  
-    var node = document.getElementById("id_tbody");
     
+
+  for (i = 0; i < reportInfoArray.length; i++) {
+  
     var ri = reportInfoArray[i];
 
     var localDate = new Date(ri['date']);
-    localDate = formatDate(localDate);
+    localDate = fae2TableUtils.formatDate(localDate);
+
+    var report_id = ri['id'];
     
     if (updateProcessingReports(ri['id'], ri['status'], ri['title'], ri['report_url'], ri['pages'])) {
-      html =  "";
-      html += '<tr id="id_row_'     + ri['id'] + '">';
-      html += '  <td class="text">' + ri['title']   + '</td>';
-      html += '  <td class="text">' + localDate + '</td>';
-      html += '  <td role="status" class="text" id="id_status_' + ri['id'] + '">' + getStatusNLS(ri['status'], ri['pages'])  + '</td>';
-      html += '  <td class="text"><a href="' + ri['ruleset_url'] + '">' + reportInfoArray[i]['ruleset'] + '</a></td>';
-      html += '  <td class="text">' + ri['url']     + '</td>';
-      html += '  <td class="num">'  + ri['depth']   + '</td>';
-      html += '</tr>';
-      node.innerHTML += html;
+
+        tr = fae2TableUtils.addRow(tbody_proc, 'row_' + report_id, '')
+
+        fae2TableUtils.addCellLink(tr, ri['title'], ri['report_url'], '', 'text');
+
+        fae2TableUtils.addCell(tr, localDate, '', 'text');
+
+        fae2TableUtils.addCell(tr, getStatusNLS(ri['status'], ri['pages']), ('status_' + report_id), 'text');
+
+        fae2TableUtils.addCellLink(tr, ri['ruleset'], ri['ruleset_url'], '', 'text');
+
+        fae2TableUtils.addCell(tr, ri['url'], '', 'text');
+
+        fae2TableUtils.addCell(tr, ri['depth'], '', 'num');
+
     }
-    
+
     if (updateZeroPageReports(ri['id'], ri['status'], ri['pages'])) {
-      html = "";
-      html += '<tr id="id_row_'     + ri['id'] + '">';
-      html += '  <td class="text">' + ri['title']   + '</td>';
-      html += '  <td class="text">' + localDate + '</td>';
-      if ((ri['status'] === 'A') && (ri['pages'] === 0)) {
-        html += '  <td class="text">' + getStatusNLS('B', ri['pages'] )  + '</td>';
-      }
-      else {
-        html += '  <td class="text">' + getStatusNLS('E', ri['pages'])  + '</td>';
-      }  
-      html += '  <td class="text"><a href="' + ri['ruleset_url'] + '">' + reportInfoArray[i]['ruleset'] + '</a></td>';
-      html += '  <td class="text">' + ri['url']     + '</td>';
-      html += '  <td class="num">'  + ri['depth']   + '</td>';
-      html += '  <td class="num">'  + ri['pages']   + '</td>';
-      html += '</tr>';
-      tbody_zero.innerHTML += html;
+
+        tr = fae2TableUtils.addRow(tbody_zero, 'row_' + report_id, '')
+
+        fae2TableUtils.addCellLink(tr, ri['title'], ri['report_url'], '', 'text');
+
+        fae2TableUtils.addCell(tr, localDate, '', 'text');
+
+        if ((ri['status'] === 'A') && (ri['pages'] === 0)) {
+          fae2TableUtils.addCell(tr, getStatusNLS('B', ri['pages']), ('status_' + report_id), 'text');
+        }
+        else {
+          fae2TableUtils.addCell(tr, getStatusNLS('E', ri['pages']), ('status_' + report_id), 'text');
+        }  
+
+        fae2TableUtils.addCellLink(tr, ri['ruleset'], ri['ruleset_url'], '', 'text');
+
+        fae2TableUtils.addCell(tr, ri['url'], '', 'text');
+
+        fae2TableUtils.addCell(tr, ri['depth'], '', 'num');
     }
-    
   }  
-  
-  if (node.innerHTML.indexOf("tr") < 0) {
-      html = "";
-      html += '<tr id="id_row_none">';
-      html += '  <td class="text">No reports being processed</td>';
-      html += '  <td class="text"></td>';
-      html += '  <td class="text"></td>';
-      html += '  <td class="text"></td>';
-      html += '  <td class="text"></td>';
-      html += '  <td class="num"></td>';
-      html += '</tr>';
-      node.innerHTML += html;
-  
-  }
 
   if (tbody_zero.innerHTML.indexOf("tr") < 0) {
      div_zero.style.display = "none";
@@ -241,51 +236,22 @@ function updateReports(reportInfoArray) {
   else {
      div_zero.style.display = "block";
   }
+
+  if (tbody_proc.innerHTML.indexOf("tr") < 0) {
+    tr = fae2TableUtils.addRow(tbody_proc, 'row_none', '')
+    fae2TableUtils.addCell(tr, 'No reports being processed', '', 'text');
+    fae2TableUtils.addCell(tr, '', '', 'text');
+    fae2TableUtils.addCell(tr, '', '', 'text');
+    fae2TableUtils.addCell(tr, '', '', 'text');
+    fae2TableUtils.addCell(tr, '', '', 'text');
+    fae2TableUtils.addCell(tr, '', '', 'num');
+  }
   
-  setTimeout(loadJSON, 2000);
+  setTimeout(function () {fae2TableUtils.getJSON( report_status_url, updateReports);}, 3000);
 }
 
-
-function loadJSON()
-{
-   var data_file = "{{site.domain}}/processing/status/all/";
-   var http_request = new XMLHttpRequest();
-   
-   try{
-      // Opera 8.0+, Firefox, Chrome, Safari
-      http_request = new XMLHttpRequest();
-   } catch (e) {
-      // Internet Explorer Browsers
-      try{
-         http_request = new ActiveXObject("Msxml2.XMLHTTP");
-      }catch (e) {
-         try{
-            http_request = new ActiveXObject("Microsoft.XMLHTTP");
-         }catch (e){
-            // Something went wrong
-            alert("Your browser broke!");
-            return false;
-         }
-      }
-   }
-   
-   http_request.onreadystatechange  = function(){
-      if (http_request.readyState == 4)
-      {
-        // Javascript function JSON.parse to parse JSON data
-        var reportInfoArray = JSON.parse(http_request.responseText);
-        updateReports(reportInfoArray);
-      }  
-   }
-   
-   http_request.open("GET", data_file, true);
-   http_request.send();
-}
-
-loadJSON();
+fae2TableUtils.getJSON(report_status_url, updateReports);
 
 </script>
-
-
 
 {% endblock %}
