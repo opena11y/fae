@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load staticfiles i18n %}
+
+{% block breadcrumb %}
+  <li>Contact Form</li>
+{% endblock %}
+
+{% block title %}
+  Contact Form
+{% endblock %}
+
+{% block content %}
+
+<form id="id_contact_form"  action="{% url 'contact_form' %}" method="post" >
+    {% csrf_token %}
+
+   <div class="input" >
+        <label for="topic">{{form.topic.label}}</label>
+        <div {% if form.topic.errors|length %}class="error"{% endif %}>
+        <input 
+            id="topic"
+            name="topic"
+            required
+            value="{{form.topic.value}}"
+            {% if form.topic.errors|length %}aria-invalid="true"{% endif %}
+            size="60"
+            title="Topic of the comment or feedback"/> 
+        {% if form.topic.errors|length %}
+        <label class="error" for="topic">{% for error in form.topic.errors %}{{error}}{% endfor %}</label>
+        {% endif %}
+        </div>
+    </div>
+
+   <div class="input" >
+        <label for="message">{{form.message.label}}</label>
+        <div {% if form.tmessage.errors|length %}class="error"{% endif %}>
+        <textarea 
+            id="message"
+            name="message"
+            required
+            value="{{form.message.value}}"
+            {% if form.message.errors|length %}aria-invalid="true"{% endif %}
+            rows="10"
+            cols=80
+            title="Details of the comment or feedback"/> 
+        {% if form.message.errors|length %}
+        <label class="error" for="message">{% for error in form.message.errors %}{{error}}{% endfor %}</label>
+        {% endif %}
+        </div>
+    </div>
+
+    <input type="submit" value="Send Feedback or Question"/>
+
+</form>
+
+{% endblock %}
+

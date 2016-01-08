@@ -28,6 +28,7 @@ urlpatterns = [
     # fae2 specific 
     url(r'^',           include('reports.urls')),
     url(r'^abouts/',    include('abouts.urls')),
+    url(r'^contact/',   include('contact.urls')),
     url(r'^accounts/',  include('accounts.urls')),
     url(r'^rulesets/',  include('rulesets.urls')),
 ]

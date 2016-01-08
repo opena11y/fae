@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+
+{% block breadcrumb %}
+  <li>Concepts and Terms</li>
+{% endblock %}
+
+{% block title %}
+Concepts and Terms
+{% endblock %}
+
+{% block content %}
+    
+<h2>Conceptual Foundation</h2>
+<p>All web accessibility tools that are based on the OpenAjax Alliance Evaluation 
+    Library assume a familiarity with the following concepts.</p>
+
+<h3>Basic Concepts</h3>
+<dl>
+    <dt>Rule</dt>
+    <dd>A low-level accessibility compliance requirement with numerous components, 
+        the most basic of which are a <em>definition</em>, an <em>evaluation function</em>, 
+        and <em>result messages</em>. When a rule is evaluated, it is assigned a 
+        <em>rule result value</em>.</dd>
+
+    <dt>Target resources</dt>
+    <dd>The set of HTML elements to which a particular rule applies. This may 
+        include a pseudo-element identified as <em>page</em>, which is a 
+        placeholder for the document element. When a rule is evaluated, 
+        each of its target resources is assigned an <em>element result 
+            value</em>.</dd>
+
+    <dt>Ruleset</dt>
+    <dd>A set of rules that embodies specific standards compliance goals. 
+        Each rule within a ruleset is designated as either <em>required</em> 
+        or <em>recommended</em>, according to its relationship to the 
+        compliance goals of the ruleset.</dd>
+
+    <dt>Evaluation</dt>
+    <dd>The application of all evaluation functions of all rules in the 
+        selected ruleset to their corresponding target resources in a 
+        web page, and the subsequent collection of all evaluation 
+        results and messages, at both the rule and element levels, 
+        into a dataset.</dd>
+
+    <dt>Rule result</dt>
+    <dd>The aggregate result of a rule evaluation with respect to 
+        its target resources (all of its target elements and/or 
+        the entire page).</dd>
+
+    <dt>Element result</dt>
+    <dd>The result of a rule evaluation with respect to one of 
+    its target elements.</dd>
+    
+    <dt>Rule Scope</dt>
+    <dd>The scope helps the developer understand what they need to consider
+    in satisfying a rule.</dd>
+    <dd><em>Element</em> level rules
+        require looking at element's features for content, 
+        labeling, properties and states.</dd>
+    <dd><em>Page</em> level rules require looking at the page to help
+    users understand the purpose and structure of the content on a page.</dd>
+    <dd><em>Website</em> level rules require looking at the set of
+       pages in a website for consistent ordering and labeling of content and
+    making sure users understand the unique content of each page through
+     effective titling of the pages.</dd>
+</dl>
+
+<h3>Rule and element result values</h3>
+<table class="details">
+    <thead>
+        <tr>
+            <th class="text"><em>Value</em></th>
+            <th class="text"><em>Abbrev</em></th>
+            <th class="text"><em>Meaning</em></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="odd">
+            <td class="text">Violation</td>
+            <td class="text">V</td>
+            <td class="text">One or more target elements fail the requirements of a <em>required</em> rule</td>
+        </tr>
+        <tr class="even">
+            <td class="text">Warning</td>
+            <td class="text">W</td>
+            <td class="text">One or more target elements fail the requirements of a <em>recommended</em> rule</td>
+        </tr>
+        <tr class="odd">
+            <td class="text">Manual Check</td>
+            <td class="text">MC</td>
+            <td class="text">Unable to programmatically determine a result - evaluation requires human inspection</td>
+        </tr>
+        <tr class="even">
+            <td class="text">Pass</td>
+            <td class="text">P</td>
+            <td class="text">All rule requirements were satisfied</td>
+        </tr>
+        <tr class="odd">
+            <td class="text">Hidden</td>
+            <td class="text">H</td>
+            <td class="text">Target elements were not evaluated because they are hidden (either visually or from assistive technologies)</td>
+        </tr>
+        <tr class="even">
+            <td class="text">Not Applicable</td>
+            <td class="text">N/A or ‘-’</td>
+            <td class="text">Rule was not applied because there were no relevant target elements</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3>More about rules, target resources and result values</h3>
+
+<ul>
+    <li>A rule tests target resources for specific accessibility features.</li>
+    <li>Some rules are fully automated and return pass or fail results and messages.</li>
+    <li>Other rules can only identify the need for human judgement to determine if an accessibility requirement has been met. These return manual check results and messages.</li>
+    <li>If target resources are not found on the page, the rule result is designated as not applicable.</li>
+    <li>If target resources for a rule are hidden, the rule result is designated as hidden. The hidden resources are included in the element results list to enable developers to consider their accessibility if and when they become available to users.</li>
+    <li>Rules also include information on accessibility techniques and links to related resources to help developers understand how to meet the rquirements of a rule.</li>
+</ul>
+
+
+{% endblock %}
+
+
