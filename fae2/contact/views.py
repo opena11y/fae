@@ -42,3 +42,23 @@ class ContactsView(LoginRequiredMixin, TemplateView):
         context['all_contacts'] = all_contacts
         
         return context   
+
+# Create your views here.
+class CommentsFormView(LoginRequiredMixin, CreateView):
+    model = Contact
+    fields = ['topic', 'message', 'status', 'comments', 'status']
+    template_name = 'contact/contact_form.html'
+
+    success_url = reverse_lazy('contacts')
+
+    login_url = reverse_lazy('run_anonymous_report')
+    redirect_field_name = "Anonymous Report"
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+
+        return super(ContactFormView, self).form_valid(form)
+
+    def form_invalid(self, form):
+
+        return super(ContactFormView, self).form_invalid(form)        
