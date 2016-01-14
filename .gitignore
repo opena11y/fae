@@ -1,4 +1,3 @@
 data/
 fae2/fae2/secrets.json
-
-fae2/fae2/secrets.json
+*.pyc
