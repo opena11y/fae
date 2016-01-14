@@ -171,16 +171,16 @@
                   {% if report and report.slug|length and view|length %}
 
                     <li class="side_by_side">
-                      {% if report.last_prev_page_url|length %}
-                      <a href="{{report.last_prev_page_url}}" class="left">
+                      {% if report.prev_page_url|length %}
+                      <a href="{{report.prev_page_url}}" class="left">
                       {% else %}
                       <a class="disabled left"> 
                       {% endif %}
                         <span class="glyphicon glyphicon-step-backward"></span> 
                         <abbr title="Previous Page">Prev</abbr>
                       </a>
-                      {% if report.last_next_page_url|length %}
-                      <a href="{{report.last_next_page_url}}" class="right">
+                      {% if report.next_page_url|length %}
+                      <a href="{{report.next_page_url}}" class="right">
                       {% else %}
                       <a class="disabled right">
                       {% endif %}
@@ -189,20 +189,40 @@
                       </a>
                     </li>
 
+                    <li class="side_by_side">
+                      {% if report.first_page_url|length %}
+                      <a href="{{report.first_page_url}}" class="left">
+                      {% else %}
+                      <a class="disabled left"> 
+                      {% endif %}
+                        <span class="glyphicon glyphicon-fast-backward"></span> 
+                        <abbr title="First Page">First</abbr>
+                      </a>
+                      {% if report.last_page_url|length %}
+                      <a href="{{report.last_page_url}}" class="right">
+                      {% else %}
+                      <a class="disabled right">
+                      {% endif %}
+                         <abbr title="Last Page">Last</abbr>
+                         <span class="glyphicon glyphicon-fast-forward"></span>
+                      </a>
+                    </li>
+
+
                   {% else %}
                     {% if request.session.last_report_slug %}
 
                     <li class="side_by_side">
-                      {% if request.session.last_prev_page_url|length %}
-                      <a href="{{request.session.last_prev_page_url}}" class="left">
+                      {% if request.session.prev_page_url|length %}
+                      <a href="{{request.session.prev_page_url}}" class="left">
                       {% else %}
                       <a class="disabled left"> 
                       {% endif %}
                         <span class="glyphicon glyphicon-step-backward"></span> 
                         <abbr title="Previous Page">Prev</abbr>
                       </a>
-                      {% if request.session.last_next_page_url|length %}
-                      <a href="{{request.session.last_next_page_url}}" class="right">
+                      {% if request.session.next_page_url|length %}
+                      <a href="{{request.session.next_page_url}}" class="right">
                       {% else %}
                       <a class="disabled right"> 
                       {% endif %}
@@ -210,6 +230,27 @@
                          <span class="glyphicon glyphicon-step-forward"></span>
                       </a>
                     </li>
+
+                    <li class="side_by_side">
+                      {% if request.session.first_page_url|length %}
+                      <a href="{{request.session.first_page_url}}" class="left">
+                      {% else %}
+                      <a class="disabled left"> 
+                      {% endif %}
+                        <span class="glyphicon glyphicon-fast-backward"></span> 
+                        <abbr title="First Page">First</abbr>
+                      </a>
+                      {% if request.session.last_page_url|length %}
+                      <a href="{{request.session.last_page_url}}" class="right">
+                      {% else %}
+                      <a class="disabled right"> 
+                      {% endif %}
+                         <abbr title="Last Page">Last</abbr>
+                         <span class="glyphicon glyphicon-fast-forward"></span>
+                      </a>
+                    </li>
+                    
+
                     {% endif %}  
                   {% endif %}
                 {% endif %}  

@@ -328,16 +328,20 @@ class ReportGroupRulePageView(TemplateView):
         self.request.session['last_report_page_count'] = report.page_count
 
         self.request.session['last_page_number']   = report.last_page
-        self.request.session['last_prev_page_url'] = ""
-        self.request.session['last_next_page_url'] = ""
+        self.request.session['last_prev_page_url']  = ""
+        self.request.session['last_next_page_url']  = ""
+        self.request.session['last_first_page_url'] = ""
+        self.request.session['last_last_page_url']  = ""
 
         if report.last_prev_page > 0:
-            self.request.session['last_prev_page_url'] = reverse('show_report_group_rule_page', args=[report.slug, view, group.slug, rule, report.last_prev_page])
+            self.request.session['last_prev_page_url']  = reverse('show_report_group_rule_page', args=[report.slug, view, group.slug, rule, report.last_prev_page])
+            self.request.session['last_first_page_url'] = reverse('show_report_group_rule_page', args=[report.slug, view, group.slug, rule, report.last_first_page])
 
         if report.last_next_page > 0:
             self.request.session['last_next_page_url'] = reverse('show_report_group_rule_page', args=[report.slug, view, group.slug, rule, report.last_next_page])
+            self.request.session['last_last_page_url'] = reverse('show_report_group_rule_page', args=[report.slug, view, group.slug, rule, report.last_last_page])
 
-        report.update_last_page_urls(self.request.session['last_prev_page_url'], self.request.session['last_next_page_url'])
+        report.update_last_page_urls(self.request.session)
 
         context['report']   = report
         context['view']     = view
@@ -439,14 +443,18 @@ class ReportPageView(TemplateView):
         self.request.session['last_page_number']   = report.last_page
         self.request.session['last_prev_page_url'] = ""
         self.request.session['last_next_page_url'] = ""
+        self.request.session['last_first_page_url'] = ""
+        self.request.session['last_last_page_url']  = ""
 
         if report.last_prev_page > 0:
             self.request.session['last_prev_page_url'] = reverse('show_report_page', args=[report.slug, view, report.last_prev_page])
+            self.request.session['last_first_page_url'] = reverse('show_report_page', args=[report.slug, view, report.last_first_page])
 
         if report.last_next_page > 0:
             self.request.session['last_next_page_url'] = reverse('show_report_page', args=[report.slug, view, report.last_next_page])
+            self.request.session['last_last_page_url'] = reverse('show_report_page', args=[report.slug, view, report.last_last_page])
 
-        report.update_last_page_urls(self.request.session['last_prev_page_url'], self.request.session['last_next_page_url'])
+        report.update_last_page_urls(self.request.session)
 
         context['report']        = report
         context['view']          = view
@@ -486,14 +494,18 @@ class ReportPageGroupView(TemplateView):
         self.request.session['last_page_number']   = report.last_page
         self.request.session['last_prev_page_url'] = ""
         self.request.session['last_next_page_url'] = ""
+        self.request.session['last_first_page_url'] = ""
+        self.request.session['last_last_page_url']  = ""
 
         if report.last_prev_page > 0:
             self.request.session['last_prev_page_url'] = reverse('show_report_page_group', args=[report.slug, view, report.last_prev_page, group_slug])
+            self.request.session['last_first_page_url'] = reverse('show_report_page_group', args=[report.slug, view, report.last_first_page, group_slug])
 
         if report.last_next_page > 0:
             self.request.session['last_next_page_url'] = reverse('show_report_page_group', args=[report.slug, view, report.last_next_page, group_slug])
+            self.request.session['last_last_page_url'] = reverse('show_report_page_group', args=[report.slug, view, report.last_last_page, group_slug])
 
-        report.update_last_page_urls(self.request.session['last_prev_page_url'], self.request.session['last_next_page_url'])
+        report.update_last_page_urls(self.request.session)
 
 
         context['report']   = report
@@ -533,16 +545,20 @@ class ReportPageGroupRuleView(TemplateView):
         report.update_last_page_numbers(page.page_number)
 
         self.request.session['last_page_number']   = report.last_page
-        self.request.session['last_prev_page_url'] = ""
-        self.request.session['last_next_page_url'] = ""
+        self.request.session['last_prev_page_url']  = ""
+        self.request.session['last_next_page_url']  = ""
+        self.request.session['last_first_page_url'] = ""
+        self.request.session['last_last_page_url']  = ""
 
         if report.last_prev_page > 0:
             self.request.session['last_prev_page_url'] = reverse('show_report_page_group_rule', args=[report.slug, view, report.last_prev_page, group_slug, rule_slug])
+            self.request.session['last_first_page_url'] = reverse('show_report_page_group_rule', args=[report.slug, view, report.last_first_page, group_slug, rule_slug])
 
         if report.last_next_page > 0:
             self.request.session['last_next_page_url'] = reverse('show_report_page_group_rule', args=[report.slug, view, report.last_next_page, group_slug, rule_slug])
+            self.request.session['last_last_page_url'] = reverse('show_report_page_group_rule', args=[report.slug, view, report.last_last_page, group_slug, rule_slug])
 
-        report.update_last_page_urls(self.request.session['last_prev_page_url'], self.request.session['last_next_page_url'])        
+        report.update_last_page_urls(self.request.session)        
 
         context['report']        = report
         context['view']          = view

@@ -2,6 +2,7 @@ from django.db import models
 from urllib.parse import urlparse
 from django.core.urlresolvers import reverse
 from pytz import timezone
+from django.contrib.sites.models import Site
 
 
 from django.contrib.auth.models import User
@@ -163,10 +164,18 @@ class WebsiteReport(RuleGroupResult):
   last_viewed  = models.DateTimeField(auto_now=True, editable=False)
   last_view    = models.CharField('Last View', max_length=4, default="rc")
   last_page    = models.IntegerField('Last Page Viewed', default=1)
-  last_next_page  = models.IntegerField('Next Page Number', default=0)
+
+  last_next_page     = models.IntegerField('Next Page Number', default=0)
   last_prev_page     = models.IntegerField('Previous Page Number', default=0)
-  last_next_page_url = models.URLField("Next Page URL",      max_length=1024, default="", blank=True)
-  last_prev_page_url = models.URLField("Previous Page URL",  max_length=1024, default="", blank=True)
+
+  last_first_page    = models.IntegerField('First Page Number', default=0)
+  last_last_page     = models.IntegerField('Last Page Number', default=0)
+
+  next_page_url = models.URLField("Next Page URL",      max_length=1024, default="", blank=True)
+  prev_page_url = models.URLField("Previous Page URL",  max_length=1024, default="", blank=True)
+
+  first_page_url = models.URLField("First Page URL",      max_length=1024, default="", blank=True)
+  last_page_url  = models.URLField("Last Page URL",  max_length=1024, default="", blank=True)
   
   # fae-util and fae20 processing information
 
@@ -343,18 +352,51 @@ class WebsiteReport(RuleGroupResult):
     self.last_page      = page_number
     self.last_next_page = 0;
     self.last_prev_page = 0
+    self.last_first_page = 0;
+    self.last_last_page = 0
 
     if page_number < self.page_count:
       self.last_next_page  = page_number + 1
+      self.last_last_page  = self.page_count
 
     if page_number > 1:
-      self.last_prev_page  = page_number - 1
+      self.last_prev_page   = page_number - 1
+      self.last_first_page  = 1
 
     self.save()  
 
-  def update_last_page_urls(self, prev_url, next_url):
-    self.last_prev_page_url  = prev_url
-    self.last_next_page_url  = next_url
+  def update_last_page_urls(self, session):
+    domain = ""
+
+    prev_url  = session['last_prev_page_url']
+    next_url  = session['last_next_page_url']
+    first_url = session['last_first_page_url']
+    last_url  = session['last_last_page_url']
+
+    site = Site.objects.get_current()
+
+    if site:
+      domain = site.domain
+
+    if prev_url:
+      self.prev_page_url   = domain + prev_url
+    else: 
+      self.prev_page_url = ''
+
+    if next_url:
+      self.next_page_url   = domain + next_url
+    else:
+      self.next_page_url = ''
+
+    if first_url:
+      self.first_page_url  = domain + first_url
+    else:
+      self.first_page_url = ''
+
+    if last_url:
+      self.last_page_url   = domain + last_url
+    else:
+      self.last_page_url = ''
 
     self.save()  
 
