@@ -29,7 +29,10 @@ Development is primarilty supported by the [University of Illinois at Urbana-Cha
 
 ### Apache 2.0 Configuration Notes
 
-#### Helpful Resources
+* MOD_WSGI must be installed and support Python3.4 (default is typically Python 2.7)
+
+#### Helpful MOD_WSGI Resources
+* [How to deploy a python3 wsgi application with apache2 and debian](http://devmartin.com/blog/2015/02/How-to-deploy-a-python3-wsgi-application-with-apache2-and-debian/)
 * [How To Serve Django Applications with Apache and mod_wsgi on CentOS 7](https://www.digitalocean.com/community/tutorials/how-to-serve-django-applications-with-apache-and-mod_wsgi-on-centos-7)
 * [How to Run Django with mod_wsgi and Apache with a virtualenv Python environment on a Debian VPS](https://www.digitalocean.com/community/tutorials/how-to-run-django-with-mod_wsgi-and-apache-with-a-virtualenv-python-environment-on-a-debian-vps)
 
@@ -50,8 +53,6 @@ Development is primarilty supported by the [University of Illinois at Urbana-Cha
      Require all granted
     </Files>
   </Directory>
-
-  LoadModule wsgi_module modules/mod_wsgi.so 
 
   WSGIDaemonProcess fae2 python-path=*/absolute path*/fae2/:*/absolute path*/virtual-en
 vironments/fae2/lib/python3.4/site-packages/
