@@ -1,15 +1,27 @@
 # Functional Accessibility Evaluator, version 2.0.0
+
 by 
-[Accessible IT Group](http://disability.illinois.edu/academic-support/aitg)<br>
-[Disability Resources and Educational Servcies](http://www.disability.illinois.edu)<br>
-[College of Applied Health Sciences](http://www.ahs.illinois.edu)<br>
-[University of Illinois at Urbana-Champaign](http://illinois.edu)<br>
+
+[Accessible IT Group](http://disability.illinois.edu/academic-support/aitg)
+
+[Disability Resources and Educational Servcies](http://www.disability.illinois.edu)
+
+[College of Applied Health Sciences](http://www.ahs.illinois.edu)
+
+[University of Illinois at Urbana-Champaign](http://illinois.edu)
+
+## What is Funcrtional Accessibility Evaluator (FAE)?
+* The Functional Accessibility Evaluator (FAE) 2.0 analyzes web pages for requirements defined by the W3C Web Content Accessibility Guidelines 2.0 Single A and AA Success Criteria.
+* Every rule used in FAE 2.0 references the WCAG 2.0 Success Criterion requirement it is based on.
+* The rules support not only accessibility, but also usable web design for people with disabilities.
+* The rules support accessible and usable design by enforcing coding practices that use of the latest accessibility technologies like the W3C Accessible Rich Internet Application (ARIA) 1.0 and W3C HTML5 Specification specification and coding techniques that support features that improve usability of web resources by people with disabilities.
+
 
 ## Server Requirements
 
 * Apache2 Web Server
 * Python 3.4
-* Java XX
+* Java 1.8
 
 ### Python Modules
 
@@ -26,16 +38,16 @@ by
 #### Example Configuration File
 ```
 <VirtualHost *:80 >
-	     Servername  fae-self-reg-dev.disability.illinois.edu
-	     ServerAlias fae-self-reg-dev.disability.illinois.edu
+	     Servername  fae.*domain*
+	     ServerAlias fae.*domain*
 
-  Alias /static /var/www/fae2/fae-self-reg-dev/fae2/fae2/static/
+  Alias /static */absolute path*/fae2/fae2/static/
 
-  <Directory /var/www/fae2/fae-self-reg-dev/fae2/fae2/static>
+  <Directory */absolute path*/fae2/fae2/static>
     Require all granted
   </Directory>
 
-  <Directory /var/www/fae2/fae-self-reg-dev/fae2>
+  <Directory */absolute path*/fae2>
     <Files wsgi.py>
      Require all granted
     </Files>
@@ -43,9 +55,9 @@ by
 
   LoadModule wsgi_module modules/mod_wsgi.so 
 
-  WSGIDaemonProcess dev-self-reg-dev.disability.illinois.edu python-path=/var/www/fae2/fae-self-reg-dev/fae2/:/var/www/fae2/virtual-en
+  WSGIDaemonProcess fae2 python-path=*/absolute path*/fae2/:*/absolute path*/virtual-en
 vironments/fae2/lib/python3.4/site-packages/
-  WSGIProcessGroup  dev-self-reg-dev.disability.illinois.edu
-  WSGIScriptAlias / /var/www/fae2/fae-self-reg-dev/fae2/fae2/wsgi.py
+  WSGIProcessGroup  fae2
+  WSGIScriptAlias */absolute path*/fae2/fae2/wsgi.py
 </VirtualHost>
 ```
