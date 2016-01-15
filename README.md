@@ -1,20 +1,14 @@
 # Functional Accessibility Evaluator, version 2.0.0
 
-Development Supported by 
+Development is primarilty supported by the [University of Illinois at Urbana-Champaign](http://illinois.edu).  The development is lead by [Accessible IT Group](http://disability.illinois.edu/academic-support/aitg) which is a unit of [Disability Resources and Educational Servcies](http://www.disability.illinois.edu) which is part fo the [College of Applied Health Sciences](http://www.ahs.illinois.edu).
 
-[Accessible IT Group](http://disability.illinois.edu/academic-support/aitg)
 
-[Disability Resources and Educational Servcies](http://www.disability.illinois.edu)
-
-[College of Applied Health Sciences](http://www.ahs.illinois.edu)
-
-[University of Illinois at Urbana-Champaign](http://illinois.edu)
 
 ## What is Functional Accessibility Evaluator (FAE)?
 * The Functional Accessibility Evaluator (FAE) 2.0 analyzes web pages for requirements defined by the W3C Web Content Accessibility Guidelines 2.0 Single A and AA Success Criteria.
 * Every rule used in FAE 2.0 references the WCAG 2.0 Success Criterion requirement it is based on.
 * The rules support not only accessibility, but also usable web design for people with disabilities.
-* The rules support accessible and usable design by enforcing coding practices that use of the latest accessibility technologies like the W3C Accessible Rich Internet Application (ARIA) 1.0 and W3C HTML5 Specification specification and coding techniques that support features that improve usability of web resources by people with disabilities.
+* The rules support accessible and usable design by enforcing the accessible coding practices and techniques of the Accessible Rich Internet Application (ARIA) 1.0 and W3C HTML5 specifications.  
 
 
 ## Server Requirements
