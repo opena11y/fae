@@ -39,24 +39,24 @@ Development is primarilty supported by the [University of Illinois at Urbana-Cha
 #### Example Configuration File
 <pre>
 &lt;VirtualHost *:80 >
-	     Servername  fae.<em>domain</em>
-	     ServerAlias fae.<em>domain</em>
+	     Servername  fae.<em>[domain]</em>
+	     ServerAlias fae.<em>[domain]</em>
 
-  Alias /static <em>/absolute path</em>/fae2/fae2/static/
+  Alias /static <em>[absolute path]</em>/fae2/fae2/static/
 
-  &lt;Directory <em>/absolute path</em>/fae2/fae2/static>
+  &lt;Directory <em>[absolute path]</em>/fae2/fae2/static>
     Require all granted
   &lt;/Directory>
 
-  &lt;Directory <em>/absolute path</em>/fae2>
+  &lt;Directory <em>[absolute path]</em>/fae2>
     &lt;Files wsgi.py>
      Require all granted
     &lt;/Files>
   &lt;/Directory>
 
-  WSGIDaemonProcess fae2 python-path=<em>/absolute path</em>/fae2/:<em>/absolute path</em>/virtual-en
+  WSGIDaemonProcess fae2 python-path=<em>[absolute path]</em>/fae2/:<em>[absolute path]</em>/virtual-en
 vironments/fae2/lib/python3.4/site-packages/
   WSGIProcessGroup  fae2
-  WSGIScriptAlias <em>/absolute path</em>/fae2/fae2/wsgi.py
+  WSGIScriptAlias <em>[absolute path]</em>/fae2/fae2/wsgi.py
 &lt;/VirtualHost>
 </pre>
