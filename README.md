@@ -87,3 +87,7 @@ vironments/fae2/lib/python3.4/site-packages/
   WSGIScriptAlias <em>[absolute path]</em>/fae2/fae2/wsgi.py
 &lt;/VirtualHost>
 </pre>
+
+## Operating FAE
+* Must run <code>python fae-util.py</code> to process website evaluations
+* You can run multiple copies to process multiple requests at the same time 
