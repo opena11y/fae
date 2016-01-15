@@ -37,7 +37,7 @@ Development is primarilty supported by the [University of Illinois at Urbana-Cha
 * [How to Run Django with mod_wsgi and Apache with a virtualenv Python environment on a Debian VPS](https://www.digitalocean.com/community/tutorials/how-to-run-django-with-mod_wsgi-and-apache-with-a-virtualenv-python-environment-on-a-debian-vps)
 
 #### Example Configuration File
-```
+<pre>
 <VirtualHost *:80 >
 	     Servername  fae.*domain*
 	     ServerAlias fae.*domain*
@@ -59,4 +59,4 @@ vironments/fae2/lib/python3.4/site-packages/
   WSGIProcessGroup  fae2
   WSGIScriptAlias <em>/absolute path</em>/fae2/fae2/wsgi.py
 </VirtualHost>
-```
+</pre>
