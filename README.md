@@ -5,7 +5,7 @@ Development is primarilty supported by the [University of Illinois at Urbana-Cha
 
 
 ## What is Functional Accessibility Evaluator (FAE)?
-* FAE analyzes website based on the requirements of the W3C Web Content Accessibility Guidelines 2.0 Single A and AA Success Criteria.
+* FAE analyzes a website based on the requirements of the W3C Web Content Accessibility Guidelines 2.0 Single A and AA Success Criteria.
 * Every rule used in FAE 2.0 references at primary WCAG 2.0 Success Criterion requirement it is based on.
 * The rules support not only accessibility, but also usable web design for people with disabilities.
 * The rules support accessible and usable design by enforcing the accessible coding practices and techniques of the Accessible Rich Internet Application (ARIA) 1.0 and W3C HTML5 specifications.  
@@ -28,6 +28,10 @@ Development is primarilty supported by the [University of Illinois at Urbana-Cha
 * wheel==0.24.0
 
 ### Apache 2.0 Configuration Notes
+
+#### Helpful Resources
+* [How To Serve Django Applications with Apache and mod_wsgi on CentOS 7](https://www.digitalocean.com/community/tutorials/how-to-serve-django-applications-with-apache-and-mod_wsgi-on-centos-7)
+* [How to Run Django with mod_wsgi and Apache with a virtualenv Python environment on a Debian VPS](https://www.digitalocean.com/community/tutorials/how-to-run-django-with-mod_wsgi-and-apache-with-a-virtualenv-python-environment-on-a-debian-vps)
 
 #### Example Configuration File
 ```
