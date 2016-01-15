@@ -42,21 +42,21 @@ Development is primarilty supported by the [University of Illinois at Urbana-Cha
 	     Servername  fae.*domain*
 	     ServerAlias fae.*domain*
 
-  Alias /static */absolute path*/fae2/fae2/static/
+  Alias /static <em>/absolute path</em>/fae2/fae2/static/
 
-  <Directory */absolute path*/fae2/fae2/static>
+  <Directory <em>/absolute path</em>/fae2/fae2/static>
     Require all granted
   </Directory>
 
-  <Directory */absolute path*/fae2>
+  <Directory <em>/absolute path</em>/fae2>
     <Files wsgi.py>
      Require all granted
     </Files>
   </Directory>
 
-  WSGIDaemonProcess fae2 python-path=*/absolute path*/fae2/:*/absolute path*/virtual-en
+  WSGIDaemonProcess fae2 python-path=<em>/absolute path</em>/fae2/:<em>/absolute path</em>/virtual-en
 vironments/fae2/lib/python3.4/site-packages/
   WSGIProcessGroup  fae2
-  WSGIScriptAlias */absolute path*/fae2/fae2/wsgi.py
+  WSGIScriptAlias <em>/absolute path</em>/fae2/fae2/wsgi.py
 </VirtualHost>
 ```
