@@ -1,9 +1,9 @@
 # Functional Accessibility Evaluator, version 2.0.0
 by 
-[Accessible IT Group](http://disability.illinois.edu/academic-support/aitg)
-[Disability Resources and Educational Servcies](http://www.disability.illinois.edu)
-[College of Applied Health Sciences](http://www.ahs.illinois.edu)
-[University of Illinois at Urbana-Champaign](http://illinois.edu)
+[Accessible IT Group](http://disability.illinois.edu/academic-support/aitg)<br>
+[Disability Resources and Educational Servcies](http://www.disability.illinois.edu)<br>
+[College of Applied Health Sciences](http://www.ahs.illinois.edu)<br>
+[University of Illinois at Urbana-Champaign](http://illinois.edu)<br>
 
 ## Server Requirements
 
@@ -24,7 +24,7 @@ by
 ### Apache 2.0 Configuration Notes
 
 #### Example Configuration File
-'''
+```
 <VirtualHost *:80 >
 	     Servername  fae-self-reg-dev.disability.illinois.edu
 	     ServerAlias fae-self-reg-dev.disability.illinois.edu
@@ -48,4 +48,4 @@ vironments/fae2/lib/python3.4/site-packages/
   WSGIProcessGroup  dev-self-reg-dev.disability.illinois.edu
   WSGIScriptAlias / /var/www/fae2/fae-self-reg-dev/fae2/fae2/wsgi.py
 </VirtualHost>
-'''
+```
