@@ -1,5 +1,9 @@
 # Functional Accessibility Evaluator, version 2.0.0
-by Accessible IT Group, Disability Resources and Educational Servcies, College of Applied Health Sciences, University of Illinois at Urbana-Champaign
+by 
+[Accessible IT Group](http://disability.illinois.edu/academic-support/aitg)
+[Disability Resources and Educational Servcies](http://www.disability.illinois.edu)
+[College of Applied Health Sciences](http://www.ahs.illinois.edu)
+[University of Illinois at Urbana-Champaign](http://illinois.edu)
 
 ## Requirements
 
