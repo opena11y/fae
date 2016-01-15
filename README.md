@@ -27,6 +27,27 @@ Development is primarilty supported by the [University of Illinois at Urbana-Cha
 * pytz==2015.7
 * wheel==0.24.0
 
+### Creating a <code>secrets.json</code> file
+
+```
+{
+  	"FILENAME": "secrets.json",
+   	"SECRET_KEY": "",
+   	"DATABASE_HOST": "localhost",
+   	"DATABASE_PORT": "",
+   	"DATABASE_NAME": "DB name",
+    "DATABASE_USER": "[DB username]",
+    "DATABASE_PASSWORD": "[DB password]",
+    "ALLOWED_HOSTS": ["localhost"],
+    "EMAIL_HOST": "[mailserver]",
+    "EMAIL_PORT": 587,
+    "EMAIL_USE_TLS": true,
+    "EMAIL_HOST_USER": "[email]",
+    "EMAIL_HOST_USER_PASSWORD": "[mail password]",
+    "ACCOUNT_ACTIVATION_DAYS" : 3
+}
+```
+
 ### Apache 2.0 Configuration Notes
 
 * MOD_WSGI must be installed and support Python3.4 (default is typically Python 2.7)
