@@ -29,6 +29,12 @@ Development is primarilty supported by the [University of Illinois at Urbana-Cha
 
 ### Creating a <code>secrets.json</code> file
 
+The "secrates.json" file must be created and provides:
+* Security information for Django
+* Information for Django to access and manage the database
+* Information on on e-mail commmunications for registration and announcements.
+* Place this file in the <code><em>[absolute path]</em>/fae2/fae2</code> directory
+
 ```
 {
   	"FILENAME": "secrets.json",
