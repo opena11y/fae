@@ -2,8 +2,8 @@ from django.db import models
 
 # Ruleset models
 
-from utils.CONST import *
-from utils.utilities import OAAMarkupToHTML, OAAMarkupToText
+from utilities import OAAMarkupToHTML, OAAMarkupToText
+from const     import NLS_LANGUAGES
 import markdown
 
 

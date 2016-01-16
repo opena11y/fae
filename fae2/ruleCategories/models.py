@@ -4,7 +4,7 @@ import re
 
 # Rule Category models
 
-import utils.CONST
+import const
 
 ## Rule Categories (e.g. abbrev, audio, headings, images, links...)  
 class RuleCategory(models.Model):

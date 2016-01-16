@@ -2,8 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 
 import re
-import utils.CONST
-from utils.utilities import OAAMarkupToText, OAAMarkupToHTML
+import const
+from utilities import OAAMarkupToText, OAAMarkupToHTML
 import markdown
 
 from django.core.exceptions import ObjectDoesNotExist

@@ -1,5 +1,5 @@
-from html.parser import HTMLParser
-from html.entities import name2codepoint
+# from html.parser import HTMLParser
+# from html.entities import name2codepoint
 
 from django.http import HttpResponse 
 from django.http import JsonResponse

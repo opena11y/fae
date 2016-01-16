@@ -235,7 +235,7 @@ rule_scope_refs = RuleScopeRefs()
 #
 # ---------------------------------------------------------------
 
-class DataResult:
+class DataResult(object):
 
   def __init__(self):
 

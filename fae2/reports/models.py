@@ -1,5 +1,5 @@
 from django.db import models
-from urllib.parse import urlparse
+import urlparse
 from django.core.urlresolvers import reverse
 from pytz import timezone
 from django.contrib.sites.models import Site

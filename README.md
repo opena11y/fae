@@ -14,7 +14,7 @@ Development is primarily supported by the [University of Illinois at Urbana-Cham
 ## Server Requirements
 
 * Apache2 Web Server
-* Python 3.4
+* Python 2.7.10
 * Java 1.8
 
 ### Python Modules
@@ -59,6 +59,7 @@ The "secrates.json" file must be created and provides:
 * MOD_WSGI must be installed and support Python3.4 (default is typically Python 2.7)
 
 #### Helpful MOD_WSGI Resources
+* [Deploy a python3.4-based Django project on Centos 6.5 with mod_wsgi: doable?](http://stackoverflow.com/questions/32642937/deploy-a-python3-4-based-django-project-on-centos-6-5-with-mod-wsgi-doable)
 * [How to deploy a python3 wsgi application with apache2 and debian](http://devmartin.com/blog/2015/02/How-to-deploy-a-python3-wsgi-application-with-apache2-and-debian/)
 * [How To Serve Django Applications with Apache and mod_wsgi on CentOS 7](https://www.digitalocean.com/community/tutorials/how-to-serve-django-applications-with-apache-and-mod_wsgi-on-centos-7)
 * [How to Run Django with mod_wsgi and Apache with a virtualenv Python environment on a Debian VPS](https://www.digitalocean.com/community/tutorials/how-to-run-django-with-mod_wsgi-and-apache-with-a-virtualenv-python-environment-on-a-debian-vps)
