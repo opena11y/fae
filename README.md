@@ -57,6 +57,10 @@ The "secrates.json" file must be created and provides:
 ### Apache 2.0 Configuration Notes
 
 * MOD_WSGI must be installed and support Python3.4 (default is typically Python 2.7)
+* If a version of SELINUX (e.g. Redhat, CENTOS...) is being used, remember that application level permissions must also be set to enable Apache to execute the Django application
+  * Placing the django code in existing directories with the correct permssions for Apache execution
+  * Using the SELINUX <code>chcon</code> command to set the application permissions of the direcorites you use for both the python code and any virtual environments that fae2 is dependent on
+  * You can view application permissions of files and directories using SELINUX <code>ls -Z</code> command
 
 #### Helpful MOD_WSGI Resources
 * [Deploy a python3.4-based Django project on Centos 6.5 with mod_wsgi: doable?](http://stackoverflow.com/questions/32642937/deploy-a-python3-4-based-django-project-on-centos-6-5-with-mod-wsgi-doable)

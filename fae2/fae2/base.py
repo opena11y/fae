@@ -50,7 +50,7 @@ def get_secret(setting, secrets=secrets):
 SECRET_KEY = get_secret('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = get_secret('DEBUG')
 
 EMAIL_HOST               = get_secret('EMAIL_HOST')
 EMAIL_PORT               = get_secret('EMAIL_PORT')
@@ -137,7 +137,24 @@ DATABASES = {
     }
 }
 
-
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': get_secret('LOGGER_LEVEL'),
+            'class': 'logging.FileHandler',
+            'filename': join(APP_DIR, 'logs/fae2_log'),
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': get_secret('LOGGER_LEVEL'),
+            'propagate': True,
+        },
+    },
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
