@@ -11,12 +11,31 @@ from django.views.generic import RedirectView
 
 from django.contrib.auth.models import User
 
-from reports.models import WebsiteReport
+from reports.models  import WebsiteReport
+from rulesets.models import Ruleset
 from userProfiles.models import UserProfile
 
 from django.core.urlresolvers import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .uid import generate
+
+
+# ==============================================================
+#
+# Utiltiy functions
+#
+# ==============================================================
+
+def check_url(url):
+
+   url = url.strip()
+
+   url = ''.join(c for c in url if ord(c)<128)
+
+   if url.find('http://') == 0 or url.find('https://') == 0:
+     return url
+
+   return 'http://' + url
 
 # ==============================================================
 #
@@ -55,6 +74,42 @@ class ProcessingAnonymousReportView(TemplateView):
         context['report'] = report
         
         return context    
+
+# ==============================================================
+#
+# Run Referrer (e.g. from a link) Report Views
+#
+# ==============================================================
+
+class RunRefererReportView(TemplateView):
+    template_name = 'reports/processing_anonymous.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(RunRefererReportView, self).get_context_data(**kwargs)
+
+        referer_url = self.request.META.get('HTTP_REFERER', '')
+        report = False
+
+        if referer_url:  
+
+            user = User.objects.get(username='anonymous');
+
+            referer_url = check_url(referer_url)
+            title = "Report for URL: " + str(referer_url)
+  
+            rs = Ruleset.objects.get(slug="ARIA_STRICT")
+            uid   = generate()
+
+            report = WebsiteReport(user=user, title=title, url=referer_url, depth=1, ruleset=rs, slug=uid)
+
+            self.request.session['fae2_anonymous_slug'] = uid
+
+            report.save()
+
+        context['report'] = report
+
+        return context
+
 
 # ==============================================================
 #

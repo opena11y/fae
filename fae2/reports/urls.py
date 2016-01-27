@@ -2,8 +2,11 @@
 from django.conf.urls import url
 from .views import RunReportView
 from .views import RunAnonymousReportView
+from .views import RunRefererReportView
+
 from .views import ProcessingAnonymousReportView
 from .views import ProcessingReportView
+
 from .views import ArchivedReportView
 from .views import ManageReportView
 
@@ -28,7 +31,8 @@ urlpatterns = [
     url(r'^processing/$',            ProcessingReportView.as_view(),          name='processing_reports'),
     url(r'^anonymous/$',             RunAnonymousReportView.as_view(),        name='run_anonymous_report'),
     url(r'^anonymous/processing/$',  ProcessingAnonymousReportView.as_view(), name='processing_anonymous_reports'),
-
+    url(r'^evaluate/link/$',         RunRefererReportView.as_view(),          name='run_referer_report'),
+ 
     url(r'^processing/status/all/$',              ProcessingStatusAllJSON.as_view(), name='processing_status_all'),
     url(r'^processing/status/(?P<report>\w+)/$',  ProcessingStatusJSON.as_view(),    name='processing_status'),
     url(r'^set-report-archive/(?P<report>\w+)/(?P<value>\w+)/$',   SetReportArchiveView.as_view(),       name='set_report_archive'),
