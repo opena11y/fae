@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% load staticfiles i18n %}
+{% block content %}
+<h1>Account Registration</h1>
+
+<h2>Step 1 of 2</h2>
+
+<form method="post" action=".">
+   {% csrf_token %}
+
+
+  <div style="margin-top: 0.75em">
+
+    <div class="input">
+          <label for="id_first_name">First Name:</label>
+          <div class="error">
+          <input 
+              id="id_first_name" 
+              name="first_name" 
+              {% if form.first_name.errors|length %}aria-invalid="true"{% endif %} 
+          /> 
+          {% if form.first_name.errors|length %} 
+          <label class="error" for="id_first_name">{% for error in form.first_name.errors %}{{error}}{% endfor %}</label>
+          {% endif %}
+          </div>
+      </div>
+      
+      <div class="input">
+          <label for="id_last_name">Last Name:</label>
+          <div class="error">
+          <input 
+              id="id_last_name" 
+              name="last_name" 
+              {% if form.last_name.errors|length %}aria-invalid="true"{% endif %} 
+          /> 
+          {% if form.last_name.errors|length %} 
+          <label class="error" for="id_last_name">{% for error in form.last_name.errors %}{{error}}{% endfor %}</label>
+          {% endif %}
+          </div>
+      </div>
+
+    <div class="input">
+          <label for="id_username">User Name (this will be how you log in):</label>
+          <div class="error">
+          <input 
+              id="id_username" 
+              name="username" 
+              {% if form.username.errors|length %}aria-invalid="true"{% endif %} 
+          /> 
+          {% if form.username.errors|length %} 
+          <label class="error" for="id_username">{% for error in form.username.errors %}{{error}}{% endfor %}</label>
+          {% endif %}
+          </div>
+      </div>
+      
+      <div class="input">
+          <label for="id_email">E-mail:</label>
+          <div class="error">
+          <input 
+              id="id_email" 
+              name="email" 
+              {% if form.email.errors|length %}aria-invalid="true"{% endif %} 
+          /> 
+          {% if form.email.errors|length %} 
+          <label class="error" for="id_email">{% for error in form.email.errors %}{{error}}{% endfor %}</label>
+          {% endif %}
+          </div>
+      </div>
+      
+      <div class="input">
+          <label for="id_password1">Password:</label>
+          <div class="error">
+          <input 
+              id="id_password1" 
+              name="password1" 
+              type="password" 
+              {% if form.password1.errors|length %}aria-invalid="true"{% endif %} 
+          /> 
+          {% if form.password1.errors|length %} 
+          <label class="error" for="id_password1">{% for error in form.password1.errors %}{{error}}{% endfor %}</label>
+          {% endif %}
+          </div>
+      </div>
+
+    <div class="input">
+          <label for="id_password2">Re-enter Password:</label>
+          <div class="error">
+          <input 
+              id="id_password2" 
+              name="password2" 
+              type="password" 
+              {% if form.password2.errors|length %}aria-invalid="true"{% endif %} 
+          /> 
+          {% if form.password2.errors|length %} 
+          <label class="error" for="id_password2">{% for error in form.password2.errors %}{{error}}{% endfor %}</label>
+          {% endif %}
+          </div>
+      </div>
+
+      <input type="submit" value="Submit - Step 1"/>
+
+</form>
+
+<h2 style="margin-top: 3em;">Registration Notes</h2>
+
+<ul>
+  <li>All fields are required.</li>
+  <li>A message will be sent to the e-mail address you provide.</li>
+  <li>Please select the link in the message you receive to complete your registration.</li>
+</ul>
+
+{% endblock %}

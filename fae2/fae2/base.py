@@ -53,10 +53,17 @@ SECRET_KEY = get_secret('SECRET_KEY')
 DEBUG = get_secret('DEBUG')
 
 EMAIL_HOST               = get_secret('EMAIL_HOST')
+
 EMAIL_PORT               = get_secret('EMAIL_PORT')
 EMAIL_USE_TLS            = get_secret('EMAIL_USE_TLS')
+
 EMAIL_HOST_USER          = get_secret('EMAIL_HOST_USER')
 EMAIL_HOST_USER_PASSWORD = get_secret('EMAIL_HOST_USER_PASSWORD')
+
+DEFAULT_FROM_EMAIL       = get_secret('EMAIL_HOST_USER')
+SERVER_EMAIL             = get_secret('EMAIL_HOST_USER')
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 ACCOUNT_ACTIVATION_DAYS = get_secret('ACCOUNT_ACTIVATION_DAYS')
 REGISTRATION_EMAIL_HTML = False
