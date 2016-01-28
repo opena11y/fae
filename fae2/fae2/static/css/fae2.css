@@ -13,31 +13,32 @@ main h4 {
     font-size: 125%; 
 }
 
-main h2#id_nav_reports_label {
+main nav h2 {
     margin-top: 1em;
     margin-bottom: 0.5em;
     font-size: 130%;
 }
 
-main section h2#id_result_label,
-main section h2#id_rule_label {
+main section h2 {
+    margin-top: 0.75em;
+    margin-bottom: 0.25em;
+}
+
+main section.report h2 {
     float: left;
     margin-top: 0.75em;
     margin-bottom: 0.25em;
 }
 
-main section[aria-labelledby="id_result_label"],
-main section[aria-labelledby="id_rule_label"] {
+
+main section.report {
     margin-top: 2em;
 }
 
-main section.option[aria-labelledby="id_result_label"],
-main section.option[aria-labelledby="id_rule_label"] {
-    margin-top: 0;
-}
-
-main section.region {
+#view_options {
     margin-top: 3em;
+    margin-bottom: -1.5em;
+    padding-bottom: 0;
 }
 
 
@@ -221,15 +222,12 @@ main table tr.summary td {
     padding-right: 1.25em;
 }
 
-#view_options {
-    margin-top: 3em;
-}
 
 #rule_result {
     font-size: 250%;
 }
 
-.violation {
+span.violation {
     background-color: #FFAEAE;
     padding-left: 0.25em;
     padding-right: 0.25em;
@@ -241,7 +239,7 @@ main table tr.summary td {
     padding-right: 0.25em;
 }
 
-.manual_check 
+.manual_check {
     background-color: #B4D8E7;
     padding-left: 0.25em;
     padding-right: 0.25em;
@@ -319,30 +317,34 @@ input[type="button"].sort-button {
     float: right;
 }
 
-#id_nav_reports li.side_by_side {
+main nav li.side_by_side {
     clear: both;
 }
 
-#id_nav_reports li.side_by_side a.disabled {
+main nav li.side_by_side a.disabled {
     color: gray;
 }
 
-#id_nav_reports li.side_by_side a.left {
+main nav li.side_by_side a.left {
     float: left;
     padding-left: 0.25em;
     padding-right-min: 0.25em;
     padding-right-max: 1em;
 }
 
-#id_nav_reports li.side_by_side a.left span.glyphicon {
+main nav li.side_by_side a.left span.glyphicon {
     display: inline;
 }
 
-#id_nav_reports li.side_by_side a.right {
+main nav li.side_by_side a.right {
     float: right;
     padding-left-min: 0.25em;
     padding-left-max: 1em;
     padding-right: 0.25em;
 }
 
+footer {
+    border-top: solid thin gray;
+    margin-top: 4em;
+}
 
