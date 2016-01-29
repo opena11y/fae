@@ -14,7 +14,7 @@ Development is primarily supported by the [University of Illinois at Urbana-Cham
 ## Server Requirements
 
 * Apache2 Web Server
-* Python 2.7.10
+* Python 2.7.x
 * Java 1.8
 
 ### Python Modules
