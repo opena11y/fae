@@ -19,8 +19,8 @@ Development is primarily supported by the [University of Illinois at Urbana-Cham
 
 ### Python Modules
 
-* Django 1.9
-* django-registration-redux==1.2
+* Django==1.9
+* django-registration==2.0.4
 * django-timezone-field==1.3
 * Markdown==2.6.5
 * psycopg2==2.6.1
