@@ -100,7 +100,7 @@ vironments/fae2/lib/python3.4/site-packages/
 * Need to create "fae2/data/" with write permissions for fae-util.py, typically "root" 
 * Need to create "fae2/logs/" with write permissions for "apache" user
 
-## SELinux Issues
+## SELinux Issues (e.g. CENTOS, REDHAT)
 
 ### FAE Directory Permissions
 * Need to set application permissions on fae2 files to allow apache to execute the python scripts 
