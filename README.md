@@ -93,6 +93,21 @@ vironments/fae2/lib/python3.4/site-packages/
 &lt;/VirtualHost>
 </pre>
 
+## Setting up fae directories for read/write access
+* Need to create "fae2/data/" with write permissions for fae-util.py, typically "root" 
+* Need to create "fae2/logs/" with write permissions for "apache" user
+
+## SELinux Issues
+
+### FAE Director Permissions
+* Need to set application permissions on fae2 files to allow apache to execute the python scripts 
+* Need to set application permissions on "fae2/logs" and "fae2/data" directories to allow reading and writing ()
+
+### Self Registration and sendmail configuration
+* If you are using self registration make sure you enable Apache to send emails using sendmail ([http://www.sufinawaz.com/selinux-apache-sendmail/])
+* Setup e-mail on CENTOS 7 operating system ([http://www.krizna.com/centos/setup-mail-server-centos-7/])
+
+
 ## Operating FAE
 * Must run <code>python fae-util.py</code> to process website evaluations
 * You can run multiple copies to process multiple requests at the same time 
