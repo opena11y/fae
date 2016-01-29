@@ -99,9 +99,9 @@ vironments/fae2/lib/python3.4/site-packages/
 
 ## SELinux Issues
 
-### FAE Director Permissions
+### FAE Directory Permissions
 * Need to set application permissions on fae2 files to allow apache to execute the python scripts 
-* Need to set application permissions on "fae2/logs" and "fae2/data" directories to allow reading and writing ()
+* Need to set application permissions on "fae2/logs" and "fae2/data" directories to allow reading and writing ([http://www.serverlab.ca/tutorials/linux/web-servers-linux/configuring-selinux-policies-for-apache-web-servers/])
 
 ### Self Registration and sendmail configuration
 * If you are using self registration make sure you enable Apache to send emails using sendmail ([http://www.sufinawaz.com/selinux-apache-sendmail/])
