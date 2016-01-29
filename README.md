@@ -39,6 +39,8 @@ The "secrates.json" file must be created and provides:
 {
   	"FILENAME": "secrets.json",
    	"SECRET_KEY": "",
+    "DEBUG": false,
+    "LOGGER_LEVEL": "INFO",
    	"DATABASE_HOST": "localhost",
    	"DATABASE_PORT": "",
    	"DATABASE_NAME": "DB name",
@@ -50,7 +52,8 @@ The "secrates.json" file must be created and provides:
     "EMAIL_USE_TLS": true,
     "EMAIL_HOST_USER": "[email]",
     "EMAIL_HOST_USER_PASSWORD": "[mail password]",
-    "ACCOUNT_ACTIVATION_DAYS" : 3
+    "ACCOUNT_ACTIVATION_DAYS" : 3,
+    "CONTACT_EMAIL" : "[email]"
 }
 ```
 
