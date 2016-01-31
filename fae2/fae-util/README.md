@@ -27,7 +27,7 @@ The following libraries must be in the CLASSPATH:
 
 ## Command Line Options
 
-{{{
+```
  -a,--authorization <arg>                 Optional: filename of authorization information
  -browserVersion,--browserVersion <arg>   Optional: browserVersion to use; chrome, firefox (default), ie
  -c,--config <arg>                        Optional: filename of configuration parameters
@@ -45,7 +45,8 @@ The following libraries must be in the CLASSPATH:
  -u,--url <arg>                           Required (unless -m, --multipleUrls is specified): starting URL
  -V,--verbose                             Optional: turn on HtmlUnit logging output
  -w,--wait <arg>                          Optional: maximium time in milliseconds to wait when processing a page, default = 30000 msec. (30 seconds)
-}}}
+ ```
+
 
 * Notes:
   1. The --outputDirectory directory must not already exist.
