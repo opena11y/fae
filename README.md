@@ -107,10 +107,14 @@ vironments/fae2/lib/python3.4/site-packages/
 * Need to set application permissions on "fae2/logs" and "fae2/data" directories to allow reading and writing ([http://www.serverlab.ca/tutorials/linux/web-servers-linux/configuring-selinux-policies-for-apache-web-servers/])
 
 ### Self Registration and sendmail configuration
+* Enable send mail 
+  * [http://tecadmin.net/install-sendmail-server-on-centos-rhel-server/
+  * [https://sachinsharm.wordpress.com/2013/08/19/setting-up-sendmail-on-centosrhel-6-3/]
+  * [http://wpguru.co.uk/2015/04/how-to-open-smtp-port-587-to-send-emails-in-plesk/]
 * If you are using self registration make sure you enable Apache to send emails using sendmail ([http://www.sufinawaz.com/selinux-apache-sendmail/])
 * Setup e-mail on CENTOS 7 operating system ([http://www.krizna.com/centos/setup-mail-server-centos-7/])
 
 
 ## Operating FAE
-* Must run <code>python fae-util.py</code> to process website evaluations
+* Must run <code>python process_evaluation_requests.py</code> to process website evaluations
 * You can run multiple copies to process multiple requests at the same time 

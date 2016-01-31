@@ -16,6 +16,8 @@ import urllib
 import cmd
 import django
 
+import threading
+
 sys.path.append(os.path.abspath('..'))
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'fae2.settings')
@@ -146,35 +148,54 @@ def analyzeWebsiteReport(ws_report):
   info("  Pages analyzed: " + str(page_count))
   info('Average processing time per page: ' + ave_time) 
 
+class faeUtilThread(threading.Thread):
+    def __init__(self, ws_report):
+      threading.Thread.__init__(self)
+
+      self.ws_report = ws_report
+      info("=======================")
+      info("Initializing report: " + str(self.ws_report))
+      self.ws_report.set_status_initialized()
+      initWebsiteReport(self.ws_report)
+
+    def run(self):
+
+      info("Analyze website: " + str(self.ws_report))
+      self.ws_report.set_status_analyzing()
+      analyzeWebsiteReport(self.ws_report)
+
+      info("Saving Data: " + str(self.ws_report))
+      self.ws_report.set_status_saving()
+      saveResultsToDjango(self.ws_report)
+
 
 def main():
 
   message_flag = True
 
-  debug(APP_DIR)
 
   while True:  
     ws_reports = WebsiteReport.objects.filter(status="-")
 
-    if len(ws_reports):
+    init_count = len(ws_reports)
+
+    ws_analyzing = WebsiteReport.objects.filter(status="A")
+    ws_saving = WebsiteReport.objects.filter(status="S")
+
+    processing_count = len(ws_analyzing) + len(ws_saving)
+
+    if init_count and processing_count <= 5:
       ws_report = ws_reports[0]
 
-      info("=======================")
-      info("Initializing report: " + str(ws_report))
-      ws_report.set_status_initialized()
-      initWebsiteReport(ws_report)
+      thread = faeUtilThread(ws_report)
+      thread.start()
 
-      info("Analyze website: " + str(ws_report))
-      ws_report.set_status_analyzing()
-      count = analyzeWebsiteReport(ws_report)
-
-      info("Saving Data: " + str(ws_report))
-      ws_report.set_status_saving()
-      saveResultsToDjango(ws_report)
       message_flag = True
     else:
       if message_flag:
         info("No report requests pending... ")
+        info("Reports waiting: " + str(init_count))
+        info("Reports running: " + str(processing_count))
         message_flag = False
 
       time.sleep(1)
