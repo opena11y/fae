@@ -37,6 +37,8 @@ class UserProfile(models.Model):
     acct_type           = models.IntegerField(choices=ACCT_TYPE_CHOICES, default=1)
     org                 = models.CharField(max_length=128, blank=True)
     email_announcements = models.BooleanField(default=True)
+#    email_staging       = models.BooleanField(default=False)
+#    email_beta          = models.BooleanField(default=False)
 
     max_archive = models.IntegerField(default=5)
     max_saved   = models.IntegerField(default=10)

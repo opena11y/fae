@@ -37,14 +37,14 @@ INFO=True
 
 def debug(s):
   if DEBUG:
-    print('[FAE-UTIL][DEBUG]: ' + str(s))
+    print('[PROC_EVAL_REQ][DEBUG]: ' + str(s))
 
 def info(s):
   if INFO:
-    print('[FAE-UTIL][INFO]: ' + str(s))
+    print('[PROC_EVAL_REQ][INFO]: ' + str(s))
 
 def error(s):
-  print('[FAE-UTIL][ERROR]: ' + str(s))
+  print('[PROC_EVAL_REQ][ERROR]: ' + str(s))
 
 DATA_DIR_PREFIX = "./../../"
 

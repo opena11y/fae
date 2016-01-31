@@ -1,3 +1,8 @@
+import sys
+import os
+
+from os.path import join 
+
 from django.db import models
 import urlparse
 from django.core.urlresolvers import reverse
@@ -90,7 +95,7 @@ EVAL_STATUS = (
     ('S', 'Saving'),
     ('C', 'Complete'),
     ('E', 'Error'),
-    ('D', 'Deleted'),
+    ('S', 'Summary'),
 )
 
 FOLLOW_CHOICES = (
@@ -229,6 +234,22 @@ class WebsiteReport(RuleGroupResult):
 
     super(WebsiteReport, self).save() # Call the "real" save() method        
 
+  def delete(self):
+
+    self.delete_data_files()
+
+    super(WebsiteReport, self).delete() # Call the "real" delete() method 
+
+  def delete_data_files(self):
+    path = self.data_directory
+    try:
+      for file in os.listdir(path):
+        if fnmatch.fnmatch(file, '*.json'):
+          os.remove(join(path,file))
+    except:
+      return False   
+
+    return True    
 
   def set_status_initialized(self):
     self.status = 'I'
@@ -248,6 +269,10 @@ class WebsiteReport(RuleGroupResult):
 
   def set_status_error(self):
     self.status = 'E'
+    self.save()
+
+  def set_status_summary(self):
+    self.status = 'S'
     self.save()
 
   def get_first_page(self):
