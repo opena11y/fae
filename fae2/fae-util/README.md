@@ -18,14 +18,17 @@ The following libraries must be in the CLASSPATH:
 
 * You can use the run script in the main project directory (i.e. trunk) to run the project:
 
-  $ . run -u http://msn.com/
+```
+$ . run -u http://msn.com/
+```
 
 * Examples use of a config file:
 
-  $ ./run -c test.properties
+```
+$ ./run -c test.properties
+```
 
-
-## Command Line Options
+### Command Line Options
 
 ```
  -a,--authorization <arg>                 Optional: filename of authorization information
