@@ -55,14 +55,11 @@ $ ./run -c test.properties
  ```
 
 
-* Notes:
-  1. The --outputDirectory directory must not already exist.
-  2. The --scripts and --multipleUrls files must have one filename or URL per line;
-     blank lines are ignored.
-  3. Lines in the --multipleUrls file that begin with # are considered comments and
-     are ignored.
-  4. When --debug is specified, all results are printed to the console and
-     the --outputDirectory directory is not created.
+### Notes
+* The --outputDirectory directory must not already exist.
+* The --scripts and --multipleUrls files must have one filename or URL per line; blank lines are ignored.
+* Lines in the --multipleUrls file that begin with # are considered comments and are ignored.
+* When --debug is specified, all results are printed to the console and the --outputDirectory directory is not created.
 
 ## Source Files
 
