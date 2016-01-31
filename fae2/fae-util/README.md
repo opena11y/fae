@@ -14,9 +14,11 @@ The following libraries must be in the CLASSPATH:
 
 ## Build Information
 
-* You can use the build script in the main project directory (i.e. trunk) to build the project:
+You can use the build script in the main project directory (i.e. trunk) to build the project:
 
+```
   $ ./build
+```
 
 ## Run Information
 
