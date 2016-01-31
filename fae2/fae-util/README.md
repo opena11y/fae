@@ -1,5 +1,9 @@
 # FAE Utility Project
-This utility is used to analyze websites using the OpenAjax Evaluation library by providing a server based browser to load a we page and then execute the OpenAjax evaluation library scripts and then serial the out to each page as a JSON file.
+This utility is used to analyze web pages using the OpenAjax Evaluation library by:
+* Providing a server based browser to load a web page
+* Execute the OpenAjax evaluation library scripts
+* Serial evaluation results to a JSON file.
+* Spider the links of a website
 
 ## Dependencies
 
@@ -16,13 +20,13 @@ The following libraries must be in the CLASSPATH:
 
 ## Run Information
 
-* You can use the run script in the main project directory (i.e. trunk) to run the project:
+You can use the run script in the main project directory (i.e. trunk) to run the project:
 
 ```
 $ . run -u http://msn.com/
 ```
 
-* Examples use of a config file:
+Examples use of a config file:
 
 ```
 $ ./run -c test.properties
