@@ -58,7 +58,6 @@ from rules.models          import RuleScope
 
 from stats.models  import StatsYear
 from stats.models  import StatsMonth
-from stats.models  import StatsWeek
 from stats.models  import StatsDay
 
 
@@ -1644,6 +1643,8 @@ def saveResultsToDjango(ws_report):
       wsrg.save()
       day = StatsDay(stats_month=month, date=today, ws_report_group=wsrg)  
       day.save()
+
+      
 
 
   except:

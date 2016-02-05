@@ -18,7 +18,7 @@ from rules.models           import NodeResultMessage
 from ruleCategories.models  import RuleCategory
 from wcag20.models          import SuccessCriterion
 from markup.models          import ElementDefinition
-from utils.utilities        import OAAMarkupToHTML
+from utilities        import OAAMarkupToHTML
 
 from django.contrib.auth.models import User
 
