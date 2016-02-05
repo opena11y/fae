@@ -32,22 +32,8 @@ class StatsMonth(models.Model):
 
     ws_report_group = models.OneToOneField(WebsiteReportGroup)
 
- 
-# ---------------------------------------------------------------
-#
-# StatsWeek
-#
-# ---------------------------------------------------------------
 
-class StatsWeek(models.Model):
-	id   = models.AutoField(primary_key=True)
 
-	stats_year  = models.ForeignKey(StatsYear,  blank=False)
-    date        = models.DateField(auto_now=True, editable=False)
-
-    ws_report_group = models.OneToOneField(WebsiteReportGroup)
-
- 
 # ---------------------------------------------------------------
 #
 # StatsDay
@@ -59,7 +45,6 @@ class StatsDay(models.Model):
 
     date  = models.DateField(auto_now=True, editable=False)
 
-	stats_week  = models.ForeignKey(StatsWeek,  blank=False)
 	stats_month = models.ForeignKey(StatsMonth, blank=False)
 
     ws_report_group = models.OneToOneField(WebsiteReportGroup)

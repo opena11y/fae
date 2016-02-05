@@ -12,6 +12,7 @@ import shutil
 import json
 import csv
 import re
+import datetime
 
 from os.path import join, getsize
 
@@ -54,6 +55,12 @@ from wcag20.models         import Guideline
 from ruleCategories.models import RuleCategory
 from rules.models          import Rule
 from rules.models          import RuleScope
+
+from stats.models  import StatsYear
+from stats.models  import StatsMonth
+from stats.models  import StatsWeek
+from stats.models  import StatsDay
+
 
 from save_fae_util_information import processedUrlsToDatabase
 from save_fae_util_information import unprocessedUrlsToDatabase
@@ -1612,6 +1619,32 @@ def saveResultsToDjango(ws_report):
     info("          Pages saved: " + str(page_count))
     info("           Total Time: " + total)
     info('Average time per page: ' + ave_time) 
+
+    today = datetime.date.today()
+    try:
+      year = StatsYear.objects.get(year=today.year)
+    except:
+      wsrg =  WebsiteReportGroup(title="Summary of results year: " + str(today.year))
+      wsrg.save()
+      year = StatsYear(year=today.year, ws_report_group=wsrg) 
+      year.save()  
+
+    try:
+      month = StatsMonth.objects.get(stats_year=year, month=today.month)
+    except:
+      wsrg =  WebsiteReportGroup(title="Summary of results month: " + str(today.year) + "-" + str(today.month))
+      wsrg.save()
+      month = StatsMonth(stats_year=year, month=today.month, ws_report_group=wsrg)  
+      month.save()
+
+    try:
+      day = StatsDay.objects.get(stats_month=today.month, date=today)
+    except:
+      wsrg =  WebsiteReportGroup(title="Summary of results day: " + str(today.year) + "-" + str(today.month) + "-" + str(today.day))
+      wsrg.save()
+      day = StatsDay(stats_month=month, date=today, ws_report_group=wsrg)  
+      day.save()
+
 
   except:
     ws_report.set_status_error()
