@@ -38,7 +38,12 @@ The "secrates.json" file must be created and provides:
 ```
 {
   	"FILENAME": "secrets.json",
+    "SITE_URL": "",
+    "SITE_NAME": "FAE 2.x",
    	"SECRET_KEY": "",
+    "SHIBBOLETH_ENABLED": false,
+    "SELF_REGISTRATION_ENABLED": true,
+    "ANONYMOUS_REPORTS_ENABLED": true,
     "DEBUG": false,
     "LOGGER_LEVEL": "INFO",
    	"DATABASE_HOST": "localhost",
@@ -46,7 +51,7 @@ The "secrates.json" file must be created and provides:
    	"DATABASE_NAME": "DB name",
     "DATABASE_USER": "[DB username]",
     "DATABASE_PASSWORD": "[DB password]",
-    "ALLOWED_HOSTS": ["localhost"],
+    "ALLOWED_HOSTS": ["localhost","127.0.0.1"],
     "EMAIL_HOST": "[mailserver]",
     "EMAIL_PORT": 587,
     "EMAIL_USE_TLS": true,
@@ -54,6 +59,12 @@ The "secrates.json" file must be created and provides:
     "EMAIL_HOST_USER_PASSWORD": "[mail password]",
     "ACCOUNT_ACTIVATION_DAYS" : 3,
     "CONTACT_EMAIL" : "[email]"
+    "ADMIN_USER_NAME" : "",
+    "ADMIN_FIRST_NAME" : "",
+    "ADMIN_LAST_NAME" : "",
+    "ADMIN_PASSWORD": "",
+    "ADMIN_EMAIL": "",
+    "ANNONYMOUS_PASSWORD" : ""    
 }
 ```
 

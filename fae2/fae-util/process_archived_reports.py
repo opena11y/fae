@@ -111,7 +111,6 @@ def main():
             for wsr in ws_reports:
               if i < diff:
                 try:  
-                  wsr.delete_data_files()
                   wsr.set_status_summary()
                 except:
                   error("Error setting website report to summary: " + str(wsr))

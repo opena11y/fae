@@ -63,12 +63,19 @@ EMAIL_HOST_USER_PASSWORD = get_secret('EMAIL_HOST_USER_PASSWORD')
 DEFAULT_FROM_EMAIL       = get_secret('EMAIL_HOST_USER')
 SERVER_EMAIL             = get_secret('EMAIL_HOST_USER')
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+if get_secret('SITE_URL').find('127.0.0.1') >= 0 or get_secret('SITE_URL').find('localhost') >= 0:
+  EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+else:  
+  EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 ACCOUNT_ACTIVATION_DAYS = get_secret('ACCOUNT_ACTIVATION_DAYS')
 REGISTRATION_EMAIL_HTML = False
 
 ALLOWED_HOSTS = get_secret('ALLOWED_HOSTS')
+
+ANONYMOUS         = get_secret('ANONYMOUS_REPORTS_ENABLED')
+SELF_REGISTRATION = get_secret('SELF_REGISTRATION_ENABLED')
+SHIBBOLETH        = get_secret('SELF_REGISTRATION_ENABLED')
 
 # Application definition
 
@@ -94,6 +101,7 @@ INSTALLED_APPS = (
     'userProfiles.apps.UserprofilesConfig',
     'wcag20.apps.WCAG20Config',
     'websiteResults.apps.WebsiteResultsConfig',
+    'websiteResultGroups.apps.WebsiteresultgroupsConfig',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -121,7 +129,10 @@ TEMPLATES = [
                 'django.template.context_processors.tz',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'fae2.context_processors.site'
+                'fae2.context_processors.site',
+                'fae2.context_processors.anonymous',
+                'fae2.context_processors.self_registration',
+                'fae2.context_processors.shibboleth'
             ],
         },
     },

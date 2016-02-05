@@ -259,10 +259,13 @@
           {% else %}
             <nav aria-labelledby="nav-report-management">
                <ul class="nav nav-pills nav-stacked">
-                  <li><a href="{% url 'run_anonymous_report'  %}">Run FAE</a></li>
-                  {% if request.session.last_report_slug and request.session.last_report_view %}
-                  <li><a href="{% url 'show_report_page' request.session.last_report_slug  request.session.last_report_view  1 %}">Page Report</a></li>
-                  {% endif %}
+                  <li><a href="{% url 'login'   %}">Login</a></li>
+                  {% if anonymous %}
+                    <li><a href="{% url 'run_anonymous_report'  %}">Run FAE</a></li>
+                    {% if request.session.last_report_slug and request.session.last_report_view %}
+                    <li><a href="{% url 'show_report_page' request.session.last_report_slug  request.session.last_report_view  1 %}">Page Report</a></li>
+                    {% endif %}
+                  {% endif %}  
               </ul>
             </nav>
           {% endif %}

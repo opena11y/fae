@@ -38,7 +38,7 @@ fae2TableUtils.addCell = function (row, text, id, class_name) {
 
 	    if (td) {
     	  	td.id = id;
-      	  	td.className = class_name;
+      	  td.className = class_name;
       		row.appendChild(td);
       		td.innerHTML = text;
       		td.setAttribute('data-value', text)

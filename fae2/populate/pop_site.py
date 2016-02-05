@@ -1,11 +1,14 @@
 import sys,os
 import django
+import json
+from os.path import join, abspath, dirname
+
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.exceptions import ImproperlyConfigured
 
 sys.path.append(os.path.abspath('..'))
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'fae2.settings')
 from django.conf import settings
-
 django.setup()
 
 """This file is for populating the database with markup information
@@ -14,10 +17,26 @@ I empty it. Run as a standalone script!"""
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.sites.models import Site
 from django.contrib.auth.models import User
+from userProfiles.models import UserProfile
+from websiteResultGroups.models import WebsiteReportGroup
+
+# JSON-based secrets module
+with open(join(settings.BASE_DIR,"secrets.json")) as f:
+    secrets = json.loads(f.read())
+
+
+def get_secret(setting, secrets=secrets):
+    """(Get the secret variable or return explicit exception.)"""
+    try:
+        return secrets[setting]
+    except KeyError:
+        error_msg = "Set the {0} enviroment variable".format(setting)
+        raise ImproperlyConfigured
+
 
 users = (
-('jongund', 'abc', 'jongund@illinois.edu', 'Jon', 'Gunderson', True, True, True), 
-('anonymous', 'GhE6*2@Vd', '', 'Anonymous', 'Anonymous', True, False, False), 
+(get_secret('ADMIN_USER_NAME'), get_secret('ADMIN_PASSWORD'), get_secret('ADMIN_EMAIL'), get_secret('ADMIN_FIRST_NAME'), get_secret('ADMIN_LAST_NAME'), True, True, True), 
+('anonymous', get_secret('ANONYMOUS_PASSWORD'), '', 'Anonymous', 'Anonymous', True, False, False), 
 )
 
 
@@ -39,6 +58,14 @@ def create_users(users):
           user.set_password(person[1])
         user.save()
 
+        try:
+          profile = UserProfile.objects.get(user=user)
+        except:
+          wsrg = WebsiteReportGroup(title="Summary of results for " + user.username)
+          wsrg.save()
+          profile = UserProfile(user=user, ws_report_group=wsrg)
+        profile.save()   
+
         
 def set_site(name, url):
     site = Site.objects.get_current()
@@ -47,6 +74,6 @@ def set_site(name, url):
     site.save()
 
 create_users(users)
-set_site('FAE 2.0 (Jon Development Prototype)', 'http://localhost:8000')
+set_site(get_secret('SITE_NAME'), get_secret('SITE_URL'))
 
 

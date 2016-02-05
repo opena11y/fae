@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from registration.signals import user_registered
 from timezone_field import TimeZoneField
-
+from websiteResultGroups.models import WebsiteReportGroup
 
 ## User Profile
 # The built-in Django User relation:
@@ -37,8 +37,6 @@ class UserProfile(models.Model):
     acct_type           = models.IntegerField(choices=ACCT_TYPE_CHOICES, default=1)
     org                 = models.CharField(max_length=128, blank=True)
     email_announcements = models.BooleanField(default=True)
-#    email_staging       = models.BooleanField(default=False)
-#    email_beta          = models.BooleanField(default=False)
 
     max_archive = models.IntegerField(default=5)
     max_saved   = models.IntegerField(default=10)
@@ -48,10 +46,13 @@ class UserProfile(models.Model):
     multiple_urls_enabled           = models.BooleanField(default=False)
     website_authorization_enabled   = models.BooleanField(default=False)
     advanced_enabled                = models.BooleanField(default=False)
+
+    ws_report_group = models.OneToOneField(WebsiteReportGroup)
   
     def __unicode__(self):
         return self.user.username  
-              
+
+
     def get_account_type(self):
       for shortp, longp in ACCT_TYPE_CHOICES:
           if shortp == self.acct_type:

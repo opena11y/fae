@@ -65,7 +65,6 @@ class RuleResult(models.Model):
         abstract = True
 
 
-
 # ---------------------------------------------------------------
 #
 # RuleGroupResult
@@ -95,7 +94,7 @@ EVAL_STATUS = (
     ('S', 'Saving'),
     ('C', 'Complete'),
     ('E', 'Error'),
-    ('S', 'Summary'),
+    ('SUM', 'Summary'),
 )
 
 FOLLOW_CHOICES = (
@@ -234,12 +233,6 @@ class WebsiteReport(RuleGroupResult):
 
     super(WebsiteReport, self).save() # Call the "real" save() method        
 
-  def delete(self):
-
-    self.delete_data_files()
-
-    super(WebsiteReport, self).delete() # Call the "real" delete() method 
-
   def delete_data_files(self):
     path = self.data_directory
     try:
@@ -264,10 +257,12 @@ class WebsiteReport(RuleGroupResult):
     self.save()
 
   def set_status_complete(self):
+    self.delete_data_files()
     self.status = 'C'
     self.save()
 
   def set_status_error(self):
+    self.delete_data_files()
     self.status = 'E'
     self.save()
 
