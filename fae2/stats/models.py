@@ -12,8 +12,8 @@ from websiteResultGroups.models import WebsiteReportGroup
 # ---------------------------------------------------------------
 
 class StatsYear(models.Model):
-	id   = models.AutoField(primary_key=True)
-	year = models.IntegerField(default=2016)
+    id   = models.AutoField(primary_key=True)
+    year = models.IntegerField(default=2016)
 
     ws_report_group = models.OneToOneField(WebsiteReportGroup)
 
@@ -25,10 +25,10 @@ class StatsYear(models.Model):
 # ---------------------------------------------------------------
 
 class StatsMonth(models.Model):
-	id    = models.AutoField(primary_key=True)
+    id    = models.AutoField(primary_key=True)
 
-	stats_year = models.ForeignKey(StatsYear, blank=False)
-	month      = models.IntegerField(default=1)
+    stats_year = models.ForeignKey(StatsYear, blank=False)
+    month      = models.IntegerField(default=1)
 
     ws_report_group = models.OneToOneField(WebsiteReportGroup)
 
@@ -41,11 +41,11 @@ class StatsMonth(models.Model):
 # ---------------------------------------------------------------
 
 class StatsDay(models.Model):
-	id   = models.AutoField(primary_key=True)
+    id   = models.AutoField(primary_key=True)
 
     date  = models.DateField(auto_now=True, editable=False)
 
-	stats_month = models.ForeignKey(StatsMonth, blank=False)
+    stats_month = models.ForeignKey(StatsMonth, blank=False)
 
     ws_report_group = models.OneToOneField(WebsiteReportGroup)
 

@@ -98,10 +98,11 @@ INSTALLED_APPS = (
     'ruleCategories.apps.RuleCategoriesConfig',
     'rules.apps.RulesConfig',
     'rulesets.apps.RulesetsConfig',
-    'userProfiles.apps.UserprofilesConfig',
     'wcag20.apps.WCAG20Config',
+    'userProfiles.apps.UserprofilesConfig',
     'websiteResults.apps.WebsiteResultsConfig',
     'websiteResultGroups.apps.WebsiteresultgroupsConfig',
+    'stats.apps.StatsConfig',
 )
 
 MIDDLEWARE_CLASSES = (
