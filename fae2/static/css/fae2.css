@@ -24,7 +24,8 @@ main section h2 {
     margin-bottom: 0.25em;
 }
 
-main section.report h2 {
+main section.report h2
+ {
     float: left;
     margin-top: 0.75em;
     margin-bottom: 0.25em;
@@ -276,15 +277,21 @@ div.input input {
     padding-top: 0;
 }
 
-label {
+label,
+legend {
     font-size: 120%;
-    font-weight: normal;
+    font-weight: bold;
 }
 
 legend {
-    font-size: 140%;
-    margin-top: 1em;
+    margin: 0;
+    padding: 0;
+    padding-top: 1em;
     margin-bottom: 0.25em;
+}
+
+fieldset label {
+    font-weight: normal;
 }
 
 input[type="button"] {
