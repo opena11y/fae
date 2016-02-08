@@ -60,6 +60,8 @@ from stats.models  import StatsYear
 from stats.models  import StatsMonth
 from stats.models  import StatsDay
 
+from websiteResultGroups.models  import WebsiteReportGroup
+
 
 from save_fae_util_information import processedUrlsToDatabase
 from save_fae_util_information import unprocessedUrlsToDatabase
@@ -1627,6 +1629,9 @@ def saveResultsToDjango(ws_report):
       wsrg.save()
       year = StatsYear(year=today.year, ws_report_group=wsrg) 
       year.save()  
+      info("         Created Year: " + str(today.year))  
+
+#    year.ws_report_group.add_website_report(wsr)  
 
     try:
       month = StatsMonth.objects.get(stats_year=year, month=today.month)
@@ -1635,6 +1640,9 @@ def saveResultsToDjango(ws_report):
       wsrg.save()
       month = StatsMonth(stats_year=year, month=today.month, ws_report_group=wsrg)  
       month.save()
+      info("        Created Month: " + str(today.month))
+
+#    month.ws_report_group.add_website_report(wsr)  
 
     try:
       day = StatsDay.objects.get(stats_month=today.month, date=today)
@@ -1643,7 +1651,9 @@ def saveResultsToDjango(ws_report):
       wsrg.save()
       day = StatsDay(stats_month=month, date=today, ws_report_group=wsrg)  
       day.save()
+      info("          Created Day: " + str(today))
 
+#    day.ws_report_group.add_website_report(wsr)  
       
 
 

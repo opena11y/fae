@@ -4,7 +4,7 @@ import os
 from os.path import join 
 
 from django.db import models
-import urlparse
+from urlparse import urlparse
 from django.core.urlresolvers import reverse
 from pytz import timezone
 from django.contrib.sites.models import Site

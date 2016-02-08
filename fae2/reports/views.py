@@ -137,6 +137,37 @@ class RunReportView(LoginRequiredMixin, CreateView):
 
         return super(RunReportView, self).form_invalid(form)
 
+    def get_context_data(self, **kwargs):
+        context = super(RunReportView, self).get_context_data(**kwargs)
+
+        try:
+            slug = self.request.session['last_report_slug']
+            if slug:
+                report = WebsiteReport.objects.get(slug=slug)
+        except:
+            try:
+                report = WebsiteReport.objects.filter(user=self.request.user).latest('created')
+            except:
+                report = False
+
+        if report:
+            self.request.session['last_report_slug']       = report.slug
+            self.request.session['last_report_view']       = report.last_view
+            self.request.session['last_report_page_count'] = report.page_count
+            self.request.session['last_page_number']       = report.last_page
+
+            self.request.session['last_prev_page_url']     = report.prev_page_url
+            self.request.session['last_next_page_url']     = report.next_page_url
+            self.request.session['last_first_page_url']    = report.first_page_url
+            self.request.session['last_last_page_url']     = report.last_page_url
+
+        context['last_report'] = report
+        
+        return context    
+
+  
+
+
 class ProcessingReportView(LoginRequiredMixin, TemplateView):
     template_name = 'reports/processing.html'
 

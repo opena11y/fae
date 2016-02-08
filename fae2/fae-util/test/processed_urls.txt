@@ -1,0 +1,5 @@
+1 total URL(s) processsed. All URL(s) processsed:
+	0: http://illinois.edu/
+
+Tree representation of URL(s) processsed:
+http://illinois.edu/

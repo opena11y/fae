@@ -7,6 +7,7 @@
 
 {% block content %}
 
+
 <form id="id_run_report"  action="{% url 'run_report' %}" method="post" >
     {% csrf_token %}
 
@@ -14,7 +15,9 @@
            onclick="getLastReport()" 
            {% if report_nav.wser.url == '' %}disabled{% endif %} 
            value="Get Last Report Settings" 
-           title="You can import a previous report settings into this form by visiting the archived report just before you come to this form"/>
+           title="You can import a previous report settings into this form by visiting the archived report just before you come to this form"
+           {% if not last_report %}disabled{% endif %}
+           />
 
     <div class="input" >
         <label for="id_input_url">URL</label>
@@ -144,7 +147,7 @@
         {% for choice in form.max_pages.field.choices %}
         <div class="fae20_radio">
             <input
-                id="max_pages_{{ forloop.counter }}"
+                id="max_pages_{{ choice.0 }}"
                 type="radio"
                 name="max_pages"
                 value="{{choice.0}}"
@@ -167,5 +170,50 @@
 {% block javascript %}
 
 <script src="{% static 'js/url-validation.js' %}" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+  var last_report = {};
+  last_report.url       = "{{last_report.url}}";
+  last_report.title     = "{{last_report.title}}";
+  last_report.rulesetId = "{{last_report.ruleset.ruleset_id}}";
+  last_report.depth     = {{last_report.depth}};
+  last_report.max_pages = {{last_report.max_pages}};
+  last_report.depth_id  = "depth_" + last_report.depth.toString();
+  
+  last_report.span_sub_domains     = "{{last_report.span_sub_domains}}";
+  last_report.exclude_sub_domains = "{{last_report.exclude_sub_domains}}";
+  last_report.include_domains     = "{{last_report.include_domains}}";
+
+  function getLastReport() {
+  
+    if (last_report.url) {
+      document.getElementById("id_input_url").value   = last_report.url;
+      document.getElementById("id_input_title").value = last_report.title;
+      document.getElementById(last_report.depth_id).checked = true;
+      
+      if (last_report.span_sub_domains.length) {
+        document.getElementById("follow_2").checked = true;
+      }
+      else {
+        document.getElementById("follow_1").checked = true;
+      }
+
+      if (last_report.rulesetId === "ARIA_STRICT") {
+        document.getElementById("ruleset_1").checked = true;
+      }
+      else {
+        document.getElementById("ruleset_2").checked = true;
+      }
+
+      var max_page_input = document.getElementById("max_pages_" + last_report.max_pages);
+
+      if (max_page_input) max_page_input.checked = true;
+
+      enableSubmit();
+    }
+  }
+
+</script>
 
 {% endblock %}

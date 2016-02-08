@@ -32,6 +32,14 @@ class WebsiteReportGroup(RuleGroupResult):
   def __unicode__(self):
       return self.title
 
+  def add_website_report(self, ws_report):
+    console.log("[WebsiteReportGroup][add_website_report]: " + str(ws_report))
+    self.num_total_reports = self.num_total_reports + 1  
+    self.num_total_pages   = self.num_total_pages + ws_report.page_count
+
+    self.ws_reports.add(ws_report)
+    self.save()
+
 # ---------------------------------------------------------------
 #
 # WebsiteRuleCategoryResultGroup

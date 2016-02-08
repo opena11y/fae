@@ -1,0 +1,9 @@
+status=processing
+url=http://illinois.edu/
+processed=1
+unprocessed=0
+filtered=0
+time=0.45
+login_attempts=0
+login_success=0
+login_fail=0

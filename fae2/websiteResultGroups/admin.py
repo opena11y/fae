@@ -8,7 +8,7 @@ from .models import WebsiteRuleScopeResultGroup
 from .models import WebsiteReportGroup
 
 class WebsiteReportGroupAdmin(admin.ModelAdmin):
-    list_display = ('title', 'rules_violation', 'rules_warning', 'rules_manual_check', 'rules_passed', 'implementation_pass_fail_score', 'implementation_score', 'implementation_status')
+    list_display = ('title', 'num_total_reports', 'num_total_pages', 'rules_violation', 'rules_warning', 'rules_manual_check', 'rules_passed', 'implementation_pass_fail_score', 'implementation_score', 'implementation_status')
 
 admin.site.register(WebsiteReportGroup, WebsiteReportGroupAdmin)
 

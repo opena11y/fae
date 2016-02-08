@@ -512,7 +512,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             ],
             TECHNIQUES: [
               'Add the text "invalid" to the label of the form control, the text can be placed off screen using CSS',
-              'Add the image to the label.  The image should be visible indicating an invalid value with the alt text "invalid"',
+              'Add the image to the label.  The image should be visible indicating an invalid value with the alt text \'invalid\'',
               'Use @aira-invalid@ attribute to indicate the form control is invalid'
             ],
             MANUAL_CHECKS: [
@@ -1081,7 +1081,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               HIDDEN_P: '%N_H form control elements that are hidden were not evaluated.'
             },
             NODE_RESULT_MESSAGES: {
-              ELEMENT_PASS_1:   '@%1@ control has the label: "%2"',
+              ELEMENT_PASS_1:   '@%1@ control has the label: \'%2\'',
               ELEMENT_FAIL_1:   'Add label to @%1@ control.',
               ELEMENT_HIDDEN_1: '@%1@ control was not tested because it is hidden from assistive technologies.'
             },
@@ -7137,7 +7137,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_PASS_2:   'The @%1@ attribute with the value "@%2@" is a valid "%3" type',
               ELEMENT_FAIL_1: 'The @%1@ attribute with the value "@%2@" must change to one of the following values: %3',
               ELEMENT_FAIL_2: 'The @%1@ attribute with the value "@%2@" must change to one or more of the following values: %3',
-              ELEMENT_FAIL_3: 'The @%1@ attribute with the value "@%2@" must change to a value with type of "%3"',
+              ELEMENT_FAIL_3: 'The @%1@ attribute with the value "@%2@" must change to a value with type of \'%3\'',
               ELEMENT_HIDDEN_1: 'ARIA attribute value was not tested for validity because the @%1@ attribute with the value "@%2@" is hidden from assistive technologies and not visible on screen'
             },
             PURPOSE: [
@@ -10090,9 +10090,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
         var ie = image_elements[i];
         var de = ie.dom_element;
         var cs = de.computed_style;
-
-        console.log("SOURCE: " + ie.accessible_name_source + " NAME: " + ie.accessible_name_for_comparison + " PRESENTATION: " +  ie.is_presentation); 
-
 
         if (ie.accessible_name_source !== OpenAjax.a11y.SOURCE.NONE || ie.is_presentation) {
           if (ie.accessible_name_for_comparison.length === 0 || ie.is_presentation) {  
@@ -13063,7 +13060,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
   wcag_primary_id     : '2.4.5',
   wcag_related_ids    : [],
-  target_resources    : ['Website', 'role="search"', 'role="navigation"'],
+  target_resources    : ['Website', 'role=\'search\'', 'role=\'navigation\''],
   primary_property    : 'role',
   resource_properties : [],
   language_dependency : "",
@@ -13127,7 +13124,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
   wcag_primary_id     : '3.2.3',
   wcag_related_ids    : ['3.2.4'],
-  target_resources    : ['Website', 'role="main"', 'role="navigation"', 'role="banner"', 'role="contentinfo"','role="search"'],
+  target_resources    : ['Website', 'role=\'main\'', 'role=\'navigation\'', 'role=\'banner\'', 'role=\'contentinfo\'','role=\'search\''],
   primary_property    : 'role',
   resource_properties : [],
   language_dependency : "",
@@ -13310,7 +13307,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
   wcag_primary_id     : '3.2.4',
   wcag_related_ids    : ['3.2.3'],
-  target_resources    : ['Website', 'role="search"', 'role="navigation"', 'role="main"', 'role="banner"', 'role="contentinfo"', 'h2'],
+  target_resources    : ['Website', 'role=\'search\'', 'role=\'navigation\'', 'role=\'main\'', 'role=\'banner\'', 'role=\'contentinfo\'', 'h2'],
   primary_property    : 'role',
   resource_properties : [],
   language_dependency : "",

@@ -17,6 +17,14 @@ class StatsYear(models.Model):
 
     ws_report_group = models.OneToOneField(WebsiteReportGroup)
 
+    class Meta:
+        verbose_name        = "Stats Year"
+        verbose_name_plural = "Stats Years"
+        ordering = ['-year']
+
+    def __str__(self):
+        return str(self.year)
+
 
 # ---------------------------------------------------------------
 #
@@ -32,6 +40,13 @@ class StatsMonth(models.Model):
 
     ws_report_group = models.OneToOneField(WebsiteReportGroup)
 
+    class Meta:
+        verbose_name        = "Stats Month"
+        verbose_name_plural = "Stats Months"
+        ordering = ['-stats_year', '-month']
+
+    def __str__(self):
+        return str(self.stats_year) + "-" + str(self.month)
 
 
 # ---------------------------------------------------------------
@@ -49,3 +64,10 @@ class StatsDay(models.Model):
 
     ws_report_group = models.OneToOneField(WebsiteReportGroup)
 
+    class Meta:
+        verbose_name        = "Stats Day"
+        verbose_name_plural = "Stats Day"
+        ordering = ['-stats_month', '-date']
+
+    def __str__(self):
+        return str(self.date)

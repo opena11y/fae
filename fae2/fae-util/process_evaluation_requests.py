@@ -75,6 +75,11 @@ def initWebsiteReport(ws_report):
   
   file_prop.write('depth='   + str(ws_report.depth) + '\n')
   file_prop.write('ruleset=' + ws_report.ruleset.ruleset_id + '\n')
+  if ws_report.max_pages > 0:
+    file_prop.write('maxPage=' + str(ws_report.max_pages) + '\n')
+  else:
+    file_prop.write('maxPage=300\n')
+
   file_prop.write('wait='    + str(ws_report.wait_time) + '\n')
 
   file_prop.write("spanDomains="    + ws_report.span_sub_domains    + '\n') 

@@ -17319,18 +17319,18 @@ OpenAjax.a11y.cache.ImageElement.prototype.getAltTextNLS = function () {
    else {
      if (option === 'long') {
        if (de.has_aria_describedby) {
-          str +=  ': aria-describedby="' + trimDescription(de.calculated_aria_description) + '"';   
+          str +=  ': aria-describedby=\'' + trimDescription(de.calculated_aria_description) + '\'';   
        }
        else {
          if (de.has_title && (this.accessible_name_source !== OpenAjax.a11y.SOURCE.TITLE)) {
-           str +=  ': title="' + trimDescription(de.title) + '"';
+           str +=  ': title=\'' + trimDescription(de.title) + '\'';
          }
          else {
            if (de.has_longdesc) {
-             str += ': longdesc="' + de.longdesc + '"';
+             str += ': longdesc=\'' + de.longdesc + '\'';
            }
            else {    
-             str += ': alt="' + this.accessible_name + '"'; 
+             str += ': alt=\'' + this.accessible_name + '\''; 
            }
          }  
        }

@@ -39,6 +39,7 @@ public class URLProcessor {
   static boolean m_processingURL = false;
 
   private Processor m_processor;
+  private int pageCount = 0;
 
   // need a static WebClient so don't have to keep logging into a page
   static BrowserVersion BROWSER_VERSION = FaeUtil.BROWSER_VERSION;
@@ -82,7 +83,8 @@ public class URLProcessor {
     //        }
     //      }
     //    }
-
+	int maxPage = Integer.parseInt(faeUtil.m_ctrl.MAX_PAGE);
+   while(pageCount < maxPage){
     faeUtil.debug("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
     faeUtil.debug(faeUtil.m_urlCount + ": TRAVERSING " + url + " (" + depth + ":" + baseURL + ")");
 
@@ -97,6 +99,7 @@ public class URLProcessor {
     URLProcessor processor = new URLProcessor();
     // process the URL - read page, find events, evaluate script, find links
     processor.process(faeUtil, urlFrom, url);
+    pageCount ++;
     int urlNum = processor.getProcessor().getUrlNum();
 
     // if going to go past DEPTH then don't bother wasting cpu cycles
@@ -143,7 +146,7 @@ public class URLProcessor {
         cnt++;
       }
     }
-
+   }
   }
 
   // =========================================================================
