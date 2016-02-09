@@ -5,74 +5,99 @@
 <h1>Account Registration</h1>
 
 <h2>Step 1 of 2</h2>
+<p>Note: All fields are required</p>
 
 <form method="post" action=".">
    {% csrf_token %}
 
-
-  <div style="margin-top: 0.75em">
-
+  <fieldset>
+    <legend title="This information is used to send you a registration confirmation link.">Contact Information</legend>
     <div class="input">
-          <label for="id_first_name">First Name:</label>
-          <div class="error">
-          <input 
-              id="id_first_name" 
-              name="first_name" 
-              {% if form.first_name.errors|length %}aria-invalid="true"{% endif %} 
-          /> 
-          {% if form.first_name.errors|length %} 
-          <label class="error" for="id_first_name">{% for error in form.first_name.errors %}{{error}}{% endfor %}</label>
-          {% endif %}
-          </div>
+      <label for="id_first_name">First Name</label>
+      <div class="error">
+      <input 
+          required
+          id="id_first_name" 
+          name="first_name" 
+          {% if form.first_name.errors|length %}aria-invalid="true"{% endif %} 
+      /> 
+      {% if form.first_name.errors|length %} 
+      <label class="error" for="id_first_name">{% for error in form.first_name.errors %}{{error}}{% endfor %}</label>
+      {% endif %}
       </div>
+    </div>
       
-      <div class="input">
-          <label for="id_last_name">Last Name:</label>
-          <div class="error">
-          <input 
-              id="id_last_name" 
-              name="last_name" 
-              {% if form.last_name.errors|length %}aria-invalid="true"{% endif %} 
-          /> 
-          {% if form.last_name.errors|length %} 
-          <label class="error" for="id_last_name">{% for error in form.last_name.errors %}{{error}}{% endfor %}</label>
-          {% endif %}
-          </div>
+    <div class="input">
+      <label for="id_last_name">Last Name</label>
+      <div class="error">
+      <input 
+          required
+          id="id_last_name" 
+          name="last_name" 
+          {% if form.last_name.errors|length %}aria-invalid="true"{% endif %} 
+      /> 
+      {% if form.last_name.errors|length %} 
+      <label class="error" for="id_last_name">{% for error in form.last_name.errors %}{{error}}{% endfor %}</label>
+      {% endif %}
       </div>
+    </div>
+
 
     <div class="input">
-          <label for="id_username">User Name (this will be how you log in):</label>
-          <div class="error">
-          <input 
-              id="id_username" 
-              name="username" 
-              {% if form.username.errors|length %}aria-invalid="true"{% endif %} 
-          /> 
-          {% if form.username.errors|length %} 
-          <label class="error" for="id_username">{% for error in form.username.errors %}{{error}}{% endfor %}</label>
-          {% endif %}
-          </div>
+      <label for="id_email">E-mail </label>
+      <div class="error">
+      <input 
+          required
+          id="id_email" 
+          name="email" 
+          {% if form.email.errors|length %}aria-invalid="true"{% endif %} 
+      /> 
+      {% if form.email.errors|length %} 
+      <label class="error" for="id_email">{% for error in form.email.errors %}{{error}}{% endfor %}</label>
+      {% endif %}
       </div>
+    </div>
+  </fieldset>
+
+  <fieldset style="margin-top: 1em;">
+    <legend title="This information will be how you log in">Login Information </legend>
+ 
+    <div class="input">
+      <label for="id_username">User Name </label>
+      <div class="error">
+      <input 
+          required
+          id="id_username" 
+          name="username" 
+          {% if form.username.errors|length %}aria-invalid="true"{% endif %} 
+      /> 
+      {% if form.username.errors|length %} 
+      <label class="error" for="id_username">{% for error in form.username.errors %}{{error}}{% endfor %}</label>
+      {% endif %}
+      </div>
+    </div>
       
-      <div class="input">
-          <label for="id_password1">Password:</label>
-          <div class="error">
-          <input 
-              id="id_password1" 
-              name="password1" 
-              type="password" 
-              {% if form.password1.errors|length %}aria-invalid="true"{% endif %} 
-          /> 
-          {% if form.password1.errors|length %} 
-          <label class="error" for="id_password1">{% for error in form.password1.errors %}{{error}}{% endfor %}</label>
-          {% endif %}
-          </div>
+    <div class="input">
+      <label for="id_password1">Password</label>
+      <div class="error">
+      <input
+          required 
+          id="id_password1" 
+          name="password1" 
+          type="password" 
+          {% if form.password1.errors|length %}aria-invalid="true"{% endif %} 
+      /> 
+      {% if form.password1.errors|length %} 
+      <label class="error" for="id_password1">{% for error in form.password1.errors %}{{error}}{% endfor %}</label>
+      {% endif %}
       </div>
+    </div>
 
     <div class="input">
-          <label for="id_password2">Re-enter Password:</label>
+          <label for="id_password2">Re-enter Password</label>
           <div class="error">
           <input 
+              required
               id="id_password2" 
               name="password2" 
               type="password" 
@@ -83,22 +108,9 @@
           {% endif %}
           </div>
       </div>
-
-      <div class="input">
-          <label for="id_email">E-mail:</label>
-          <div class="error">
-          <input 
-              id="id_email" 
-              name="email" 
-              {% if form.email.errors|length %}aria-invalid="true"{% endif %} 
-          /> 
-          {% if form.email.errors|length %} 
-          <label class="error" for="id_email">{% for error in form.email.errors %}{{error}}{% endfor %}</label>
-          {% endif %}
-          </div>
-      </div>
+  </fieldset>      
       
-      <input type="submit" value="Submit - Step 1"/>
+  <input type="submit" value="Submit - Step 1" style="margin-top: 2em"/>
 
 </form>
 

@@ -47,7 +47,7 @@ class UserProfile(models.Model):
     website_authorization_enabled   = models.BooleanField(default=False)
     advanced_enabled                = models.BooleanField(default=False)
 
-    ws_report_group = models.OneToOneField(WebsiteReportGroup, blank=True)
+    ws_report_group = models.OneToOneField(WebsiteReportGroup, blank=True, null=True)
   
     def __unicode__(self):
         return self.user.username  
