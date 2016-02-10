@@ -79,6 +79,8 @@ SHIBBOLETH        = get_secret('SELF_REGISTRATION_ENABLED')
 
 # Application definition
 
+PROCESSING_THREADS = get_secret('PROCESSING_THREADS')
+
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
@@ -115,6 +117,32 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
 )
+
+if SHIBBOLETH:
+    AUTHENTICATION_BACKENDS = (
+        'shibboleth.backends.ShibbolethRemoteUserBackend',
+    )
+
+    MIDDLEWARE_CLASSES = (
+        'django.contrib.sessions.middleware.SessionMiddleware',
+        'django.middleware.common.CommonMiddleware',
+        'django.middleware.csrf.CsrfViewMiddleware',
+        'django.contrib.auth.middleware.AuthenticationMiddleware',
+        'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+        'django.contrib.messages.middleware.MessageMiddleware',
+        'django.middleware.clickjacking.XFrameOptionsMiddleware',
+        'django.middleware.security.SecurityMiddleware',
+        'shibboleth.middleware.ShibbolethRemoteUserMiddleware',
+    )
+
+    SHIBBOLETH_ATTRIBUTE_MAP = {
+        "shib-user": (True, "username"),
+        "shib-given-name": (True, "first_name"),
+        "shib-sn": (True, "last_name"),
+        "shib-mail": (False, "email"),
+    }
+
+    LOGIN_URL = 'https://your_domain.edu/Shibboleth.sso/Login'
 
 ROOT_URLCONF = 'fae2.urls'
 

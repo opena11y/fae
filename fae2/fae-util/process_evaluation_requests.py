@@ -26,6 +26,7 @@ django.setup()
 from django.conf import settings
 
 from fae2.settings import APP_DIR
+from fae2.settings import PROCESSING_THREADS
 
 from django.db       import models
 from reports.models  import WebsiteReport
@@ -189,7 +190,7 @@ def main():
 
     processing_count = len(ws_analyzing) + len(ws_saving)
 
-    if init_count and processing_count <= 5:
+    if init_count and processing_count <= PROCESSING_THREADS:
       ws_report = ws_reports[0]
 
       thread = faeUtilThread(ws_report)
