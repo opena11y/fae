@@ -61,10 +61,9 @@ def create_users(users):
         try:
           profile = UserProfile.objects.get(user=user)
         except:
-          wsrg = WebsiteReportGroup(title="Summary of results for " + user.username)
-          wsrg.save()
           profile = UserProfile(user=user, ws_report_group=wsrg)
         profile.save()   
+        profile.add_website_report_group()
 
         
 def set_site(name, url):

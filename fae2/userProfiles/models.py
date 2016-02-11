@@ -57,14 +57,23 @@ class UserProfile(models.Model):
       for shortp, longp in ACCT_TYPE_CHOICES:
           if shortp == self.acct_type:
               return longp
+
+    def add_website_report_group(self):
+      if not self.ws_report_group:
+        wsrg = WebsiteReportGroup(title="Summary of results for " + self.user.username)
+        self.ws_report_group = wsrg
+        self.save()
+
     
     
 # creates new UserProfile when new user registers 
 def user_registered_callback(sender, user, request, **kwargs):
+
     profile = UserProfile(user = user)
     profile.acct_type = 1
     profile.org = ''
     profile.save()
+    profile.add_website_report_group()
    
     # Update first and last name for user
     user.first_name = request.POST['first_name'] 

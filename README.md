@@ -19,6 +19,8 @@ Development is primarily supported by the [University of Illinois at Urbana-Cham
 
 ### Python Modules
 
+Here is the [requirements.txt] file to use with pip
+
 * Django==1.9
 * django-registration==2.0.4
 * django-timezone-field==1.3
@@ -40,10 +42,13 @@ The "secrates.json" file must be created and provides:
   	"FILENAME": "secrets.json",
     "SITE_URL": "",
     "SITE_NAME": "FAE 2.x",
+    "PROCESSING_THREADS": 4, 
    	"SECRET_KEY": "",
-    "SHIBBOLETH_ENABLED": false,
     "SELF_REGISTRATION_ENABLED": true,
     "ANONYMOUS_REPORTS_ENABLED": true,
+    "SHIBBOLETH_ENABLED": false,
+    "SHIBBOLETH_URL": "",
+    "SHIBBOLETH_NAME": "",
     "DEBUG": false,
     "LOGGER_LEVEL": "INFO",
    	"DATABASE_HOST": "localhost",
