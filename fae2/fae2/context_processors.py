@@ -4,6 +4,8 @@ from userProfiles.models import UserProfile
 from fae2.settings import ANONYMOUS_ENABLED
 from fae2.settings import SELF_REGISTRATION_ENABLED
 from fae2.settings import SHIBBOLETH_ENABLED
+from fae2.settings import SHIBBOLETH_URL
+from fae2.settings import SHIBBOLETH_NAME
 
 
 def site(request):
@@ -23,6 +25,10 @@ def self_registration(request):
 
 def shibboleth(request):
 	return {
-		'shibboleth_enabled': SHIBBOLETH_ENABLED
+		'shibboleth': { 'enabled' : SHIBBOLETH_ENABLED,
+            'url'  : SHIBBOLETH_URL,
+            'name' : SHIBBOLETH_NAME
+
+        }
 	}
 
