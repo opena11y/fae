@@ -143,7 +143,7 @@ if SHIBBOLETH_ENABLED:
         "shib-mail": (False, "email"),
     }
 
-    LOGIN_URL = 'https://your_domain.edu/Shibboleth.sso/Login'
+    LOGIN_URL = SHIBBOLETH_URL
 
 ROOT_URLCONF = 'fae2.urls'
 
