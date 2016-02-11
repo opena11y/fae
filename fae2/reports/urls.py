@@ -26,11 +26,13 @@ from .views import ReportPageView
 from .views import ReportPageGroupView
 from .views import ReportPageGroupRuleView
 
+from fae2.settings import ANONYMOUS_ENABLED
+from fae2.settings import SELF_REGISTRATION_ENABLED
+from fae2.settings import SHIBBOLETH_ENABLED
+
 urlpatterns = [
     url(r'^$',                       RunReportView.as_view(),                 name='run_report'),
     url(r'^processing/$',            ProcessingReportView.as_view(),          name='processing_reports'),
-    url(r'^anonymous/$',             RunAnonymousReportView.as_view(),        name='run_anonymous_report'),
-    url(r'^anonymous/processing/$',  ProcessingAnonymousReportView.as_view(), name='processing_anonymous_reports'),
     url(r'^evaluate/link/$',         RunRefererReportView.as_view(),          name='run_referer_report'),
  
     url(r'^processing/status/all/$',              ProcessingStatusAllJSON.as_view(), name='processing_status_all'),
@@ -52,5 +54,10 @@ urlpatterns = [
     url(r'^report/(?P<report>\w+)/(?P<view>\w+)/page/(?P<page>[\d-]+)/$',                               ReportPageView.as_view(),           name='show_report_page'),
     url(r'^report/(?P<report>\w+)/(?P<view>\w+)/page/(?P<page>[\d-]+)/(?P<group>\w+)/$',                ReportPageGroupView.as_view(),      name='show_report_page_group'),
     url(r'^report/(?P<report>\w+)/(?P<view>\w+)/page/(?P<page>[\d-]+)/(?P<group>\w+)/(?P<rule>\w+)/$',  ReportPageGroupRuleView.as_view(),  name='show_report_page_group_rule'),
-
 ]
+
+if ANONYMOUS_ENABLED:
+  urlpatterns += [
+    url(r'^anonymous/$',             RunAnonymousReportView.as_view(),        name='run_anonymous_report'),
+    url(r'^anonymous/processing/$',  ProcessingAnonymousReportView.as_view(), name='processing_anonymous_reports'),
+  ]

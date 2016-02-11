@@ -75,7 +75,7 @@
               <li><a href="{% url 'account_profile' %}" >My Account</a></li>
               <li><a href="{% url 'logout' %}" >Logout: {{user.username}}</a></li>
             {% else %}
-              {% if not use_shib %}
+              {% if self_registration_enabled %}
                 <li><a href="{% url 'registration_register' %}" >Register</a></li>
               {% endif %}  
               <li><a href="{% url 'login' %}" >Login</a></li>
@@ -260,7 +260,7 @@
             <nav aria-labelledby="nav-report-management">
                <ul class="nav nav-pills nav-stacked">
                   <li><a href="{% url 'login'   %}">Login</a></li>
-                  {% if anonymous %}
+                  {% if anonymous_enabled %}
                     <li><a href="{% url 'run_anonymous_report'  %}">Run FAE</a></li>
                     {% if request.session.last_report_slug and request.session.last_report_view %}
                     <li><a href="{% url 'show_report_page' request.session.last_report_slug  request.session.last_report_view  1 %}">Page Report</a></li>

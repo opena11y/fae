@@ -1,9 +1,9 @@
 from django.contrib.sites.models import Site
 from userProfiles.models import UserProfile
 
-from fae2.settings import ANONYMOUS
-from fae2.settings import SELF_REGISTRATION
-from fae2.settings import SHIBBOLETH
+from fae2.settings import ANONYMOUS_ENABLED
+from fae2.settings import SELF_REGISTRATION_ENABLED
+from fae2.settings import SHIBBOLETH_ENABLED
 
 
 def site(request):
@@ -13,16 +13,16 @@ def site(request):
 
 def anonymous(request):
 	return {
-		'anonymous': ANONYMOUS
+		'anonymous_enabled': ANONYMOUS_ENABLED
 	}
 
 def self_registration(request):
 	return {
-		'self_registration': SELF_REGISTRATION
+		'self_registration_enabled': SELF_REGISTRATION_ENABLED
 	}
 
 def shibboleth(request):
 	return {
-		'shibboleth': SHIBBOLETH
+		'shibboleth_enabled': SHIBBOLETH_ENABLED
 	}
 

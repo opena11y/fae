@@ -3,6 +3,7 @@
 
 from django.http import HttpResponse 
 from django.http import JsonResponse
+from django.shortcuts import redirect
 
 from django.views.generic import TemplateView
 from django.views.generic import CreateView 
@@ -18,6 +19,10 @@ from userProfiles.models import UserProfile
 from django.core.urlresolvers import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .uid import generate
+
+from fae2.settings import ANONYMOUS_ENABLED
+from fae2.settings import SELF_REGISTRATION_ENABLED
+from fae2.settings import SHIBBOLETH_ENABLED
 
 
 # ==============================================================
@@ -117,14 +122,21 @@ class RunRefererReportView(TemplateView):
 #
 # ==============================================================
 
+def get_default_url():
+    if ANONYMOUS_ENABLED:
+        return reverse_lazy('run_anonymous_report')
+    else:    
+        return reverse_lazy('login')
+
 class RunReportView(LoginRequiredMixin, CreateView):
+
     model = WebsiteReport
     fields = ['url', 'title', 'depth', 'follow', 'ruleset', 'max_pages']
     template_name = 'reports/run_report.html'
 
     success_url = reverse_lazy('processing_reports')
 
-    login_url = reverse_lazy('run_anonymous_report')
+    login_url = get_default_url()
     redirect_field_name = "Anonymous Report"
 
     def form_valid(self, form):
