@@ -61,6 +61,7 @@ class UserProfile(models.Model):
     def add_website_report_group(self):
       if not self.ws_report_group:
         wsrg = WebsiteReportGroup(title="Summary of results for " + self.user.username)
+        wsrg.save()
         self.ws_report_group = wsrg
         self.save()
 
