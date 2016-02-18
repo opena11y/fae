@@ -116,6 +116,19 @@ vironments/fae2/lib/python3.4/site-packages/
 * Need to create "fae2/data/" with write permissions for fae-util.py, typically "root" 
 * Need to create "fae2/logs/" with write permissions for "apache" user
 
+## Initialize Database Tables
+* You will need to run "python manage.py migrate" to create the tables in the database
+* After the tables in the database are created, go to the "populate" directory
+* In the populate directory run "python pop_all.py" to initialize the tables
+
+## FAE-UTIL
+* Go to the "fae-util" directory
+* Use "./run -c test.properties" to test if the utility is properly installed and configured
+  * It will out put processing information to the console
+  * It will create a directory called "test" that contains *.json files of evaluaiton results
+  * NOTE: You need to delete the "test" directory to rerun the test
+* Must run <code>python process_evaluation_requests.py</code> to process website evaluations in the background
+
 ## SELinux Issues (e.g. CENTOS, REDHAT)
 
 ### FAE Directory Permissions
@@ -130,7 +143,3 @@ vironments/fae2/lib/python3.4/site-packages/
 * If you are using self registration make sure you enable Apache to send emails using sendmail ([http://www.sufinawaz.com/selinux-apache-sendmail/])
 * Setup e-mail on CENTOS 7 operating system ([http://www.krizna.com/centos/setup-mail-server-centos-7/])
 
-
-## Operating FAE
-* Must run <code>python process_evaluation_requests.py</code> to process website evaluations
-* You can run multiple copies to process multiple requests at the same time 
