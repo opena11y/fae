@@ -130,6 +130,7 @@ vironments/fae2/lib/python3.4/site-packages/
   * It will create a directory called "test" that contains *.json files of evaluaiton results
   * NOTE: You need to delete the "test" directory to rerun the test
 * IMPORTANT: Must run <code>python process_evaluation_requests.py</code> to process website evaluations in the background
+  * There are a number of ways to make this program run in parallel with django application
 
 ## SELinux issues (e.g. CENTOS, REDHAT)
 
