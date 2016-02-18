@@ -112,19 +112,20 @@ vironments/fae2/lib/python3.4/site-packages/
 * Need to create "fae2/logs/" with write permissions for "apache" user
 
 ## Initialize database tables
-* You will need to run "python manage.py migrate" to create the tables in the database
+* You will need to run <code>python manage.py migrate</code> to create the tables in the database
 * After the tables in the database are created, go to the "populate" directory
-* In the populate directory run "python pop_all.py" to initialize the tables
+* In the populate directory run <code>python pop_all.py</code> to initialize the tables
 
 ## fae-util configuration and testing
 * Purpose of fae-util
   * fae-util is a server based browser emulator based on HTMLUnit
   * It monitors the database waiting for evaluation requests
   * When it identifes a request it will then load web pages and analyze them using the OpenAjax Evaluation Library
-  * Each page evaluation will out put a JSON file with the results
+  * Each page evaluation results in a JSON file being crerated with the results
+  * After all pages are analyzed the information in the JSON files is moved to the database
 * Testing fae-util
   * Go to the "fae-util" directory
-  * Use "./run -c test.properties" to test if the utility is properly installed and configured
+  * Use <code>./run -c test.properties</code> to test if the utility is properly installed and configured
   * It will out put processing information to the console
   * It will create a directory called "test" that contains *.json files of evaluaiton results
   * NOTE: You need to delete the "test" directory to rerun the test
