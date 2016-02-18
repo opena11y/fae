@@ -116,7 +116,7 @@ vironments/fae2/lib/python3.4/site-packages/
 * Need to create "fae2/data/" with write permissions for fae-util.py, typically "root" 
 * Need to create "fae2/logs/" with write permissions for "apache" user
 
-## Initialize Database Tables
+## Initialize database tables
 * You will need to run "python manage.py migrate" to create the tables in the database
 * After the tables in the database are created, go to the "populate" directory
 * In the populate directory run "python pop_all.py" to initialize the tables
