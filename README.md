@@ -125,13 +125,15 @@ vironments/fae2/lib/python3.4/site-packages/
 * Purpose of fae-util
   * fae-util is a server based browser emulator based on HTMLUnit
   * It monitors the database waiting for evaluation requests
-  * 
-* Go to the "fae-util" directory
-* Use "./run -c test.properties" to test if the utility is properly installed and configured
+  * When it identifes a request it will then load web pages and analyze them using the OpenAjax Evaluation Library
+  * Each page evaluation will out put a JSON file with the results
+* Testing fae-util
+  * Go to the "fae-util" directory
+  * Use "./run -c test.properties" to test if the utility is properly installed and configured
   * It will out put processing information to the console
   * It will create a directory called "test" that contains *.json files of evaluaiton results
   * NOTE: You need to delete the "test" directory to rerun the test
-* Must run <code>python process_evaluation_requests.py</code> to process website evaluations in the background
+* IMPORTANT: Must run <code>python process_evaluation_requests.py</code> to process website evaluations in the background
 
 ## SELinux Issues (e.g. CENTOS, REDHAT)
 
