@@ -126,9 +126,9 @@ vironments/fae2/lib/python3.4/site-packages/
 * Testing fae-util
   * Go to the "fae-util" directory
   * Use <code>./run -c test.properties</code> to test if the utility is properly installed and configured
-  * It will out put processing information to the console
+  * It will output URL processing information to the console
   * It will create a directory called "test" that contains *.json files of evaluaiton results
-  * NOTE: You need to delete the "test" directory to rerun the test
+  * NOTE: You must delete the "test" directory to rerun this test (e.g. directory exists error will occur)
 * IMPORTANT: Must run <code>python process_evaluation_requests.py</code> to process website evaluations in the background
   * There are a number of ways to make this program run in parallel with django application depending on your operating system
 
