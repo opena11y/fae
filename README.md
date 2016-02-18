@@ -107,16 +107,16 @@ vironments/fae2/lib/python3.4/site-packages/
 &lt;/VirtualHost>
 </pre>
 
-## Setting up fae directories for read/write access
+### Setting up fae directories for read/write access
 * Need to create "fae2/data/" with write permissions for fae-util.py, typically "root" 
 * Need to create "fae2/logs/" with write permissions for "apache" user
 
-## Initialize database tables
+### Initialize database tables
 * You will need to run <code>python manage.py migrate</code> to create the tables in the database
 * After the tables in the database are created, go to the "populate" directory
 * In the populate directory run <code>python pop_all.py</code> to initialize the tables
 
-## fae-util configuration and testing
+### fae-util configuration and testing
 * Purpose of fae-util
   * fae-util is a server based browser emulator based on HTMLUnit
   * It monitors the database waiting for evaluation requests
