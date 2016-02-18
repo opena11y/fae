@@ -121,7 +121,11 @@ vironments/fae2/lib/python3.4/site-packages/
 * After the tables in the database are created, go to the "populate" directory
 * In the populate directory run "python pop_all.py" to initialize the tables
 
-## FAE-UTIL
+## fae-util configuration and testing
+* Purpose of fae-util
+  * fae-util is a server based browser emulator based on HTMLUnit
+  * It monitors the database waiting for evaluation requests
+  * 
 * Go to the "fae-util" directory
 * Use "./run -c test.properties" to test if the utility is properly installed and configured
   * It will out put processing information to the console
