@@ -11,13 +11,13 @@ Development is primarily supported by the [University of Illinois at Urbana-Cham
 * The rules support accessible and usable design by enforcing the accessible coding practices and techniques of the Accessible Rich Internet Application (ARIA) 1.0 and W3C HTML5 specifications.  
 
 
-## Server Requirements
+## Server requirements
 
 * Apache2 Web Server
 * Python 2.7.x
 * Java 1.8
 
-### Python Modules
+### Python modules
 
 Here is the [requirements.txt] file to use with pip
 
@@ -73,7 +73,7 @@ The "secretes.json" file must be created and provides:
 }
 ```
 
-### Apache 2.0 Configuration Notes
+### Apache 2.0 configuration notes
 
 * MOD_WSGI must be installed and support Python 2.7
 * Helpful MOD_WSGI Resources
@@ -82,7 +82,7 @@ The "secretes.json" file must be created and provides:
   * [How To Serve Django Applications with Apache and mod_wsgi on CentOS 7](https://www.digitalocean.com/community/tutorials/how-to-serve-django-applications-with-apache-and-mod_wsgi-on-centos-7)
   * [How to Run Django with mod_wsgi and Apache with a virtualenv Python environment on a Debian VPS](https://www.digitalocean.com/community/tutorials/how-to-run-django-with-mod_wsgi-and-apache-with-a-virtualenv-python-environment-on-a-debian-vps)
 
-#### Example Configuration File
+#### Example Apache configuration gile
 <pre>
 &lt;VirtualHost *:80 >
 	     Servername  fae.<em>[domain]</em>
@@ -130,13 +130,13 @@ vironments/fae2/lib/python3.4/site-packages/
   * NOTE: You need to delete the "test" directory to rerun the test
 * IMPORTANT: Must run <code>python process_evaluation_requests.py</code> to process website evaluations in the background
 
-## SELinux Issues (e.g. CENTOS, REDHAT)
+## SELinux issues (e.g. CENTOS, REDHAT)
 
-### FAE Directory Permissions
+### FAE directory permissions
 * Need to set application permissions on fae2 files to allow apache to execute the python scripts 
 * Need to set application permissions on "fae2/logs" and "fae2/data" directories to allow reading and writing ([http://www.serverlab.ca/tutorials/linux/web-servers-linux/configuring-selinux-policies-for-apache-web-servers/])
 
-### Self Registration and sendmail configuration
+### Self registration and sendmail configuration
 * Enable send mail 
   * [http://tecadmin.net/install-sendmail-server-on-centos-rhel-server/
   * [https://sachinsharm.wordpress.com/2013/08/19/setting-up-sendmail-on-centosrhel-6-3/]
