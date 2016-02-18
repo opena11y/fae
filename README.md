@@ -31,7 +31,7 @@ Here is the [requirements.txt] file to use with pip
 
 ### Creating a <code>secrets.json</code> file
 
-The "secrates.json" file must be created and provides:
+The "secretes.json" file must be created and provides:
 * Security information for Django
 * Information for Django to access and manage the database
 * Information on on e-mail commmunications for registration and announcements.
@@ -75,17 +75,12 @@ The "secrates.json" file must be created and provides:
 
 ### Apache 2.0 Configuration Notes
 
-* MOD_WSGI must be installed and support Python3.4 (default is typically Python 2.7)
-* If a version of SELINUX (e.g. Redhat, CENTOS...) is being used, remember that application level permissions must also be set to enable Apache to execute the Django application
-  * Placing the django code in existing directories with the correct permssions for Apache execution
-  * Using the SELINUX <code>chcon</code> command to set the application permissions of the direcorites you use for both the python code and any virtual environments that fae2 is dependent on
-  * You can view application permissions of files and directories using SELINUX <code>ls -Z</code> command
-
-#### Helpful MOD_WSGI Resources
-* [Deploy a python3.4-based Django project on Centos 6.5 with mod_wsgi: doable?](http://stackoverflow.com/questions/32642937/deploy-a-python3-4-based-django-project-on-centos-6-5-with-mod-wsgi-doable)
-* [How to deploy a python3 wsgi application with apache2 and debian](http://devmartin.com/blog/2015/02/How-to-deploy-a-python3-wsgi-application-with-apache2-and-debian/)
-* [How To Serve Django Applications with Apache and mod_wsgi on CentOS 7](https://www.digitalocean.com/community/tutorials/how-to-serve-django-applications-with-apache-and-mod_wsgi-on-centos-7)
-* [How to Run Django with mod_wsgi and Apache with a virtualenv Python environment on a Debian VPS](https://www.digitalocean.com/community/tutorials/how-to-run-django-with-mod_wsgi-and-apache-with-a-virtualenv-python-environment-on-a-debian-vps)
+* MOD_WSGI must be installed and support Python 2.7
+* Helpful MOD_WSGI Resources
+  * [Deploy a python3.4-based Django project on Centos 6.5 with mod_wsgi: doable?](http://stackoverflow.com/questions/32642937/deploy-a-python3-4-based-django-project-on-centos-6-5-with-mod-wsgi-doable)
+  * [How to deploy a python3 wsgi application with apache2 and debian](http://devmartin.com/blog/2015/02/How-to-deploy-a-python3-wsgi-application-with-apache2-and-debian/)
+  * [How To Serve Django Applications with Apache and mod_wsgi on CentOS 7](https://www.digitalocean.com/community/tutorials/how-to-serve-django-applications-with-apache-and-mod_wsgi-on-centos-7)
+  * [How to Run Django with mod_wsgi and Apache with a virtualenv Python environment on a Debian VPS](https://www.digitalocean.com/community/tutorials/how-to-run-django-with-mod_wsgi-and-apache-with-a-virtualenv-python-environment-on-a-debian-vps)
 
 #### Example Configuration File
 <pre>
