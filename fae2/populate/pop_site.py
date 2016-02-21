@@ -7,6 +7,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.core.exceptions import ImproperlyConfigured
 
 sys.path.append(os.path.abspath('..'))
+print('\nSystem Paths\n' + str(sys.path) + '\n')
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'fae2.settings')
 from django.conf import settings
 django.setup()

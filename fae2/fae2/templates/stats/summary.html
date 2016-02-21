@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load staticfiles i18n %}
+{% load tz %}
+
+{% block breadcrumb %}
+    <li>Usage</li>
+{% endblock %}
+
+{% block title %}
+      Usage Statistics
+{% endblock %}
+
+{% block content %}
+<section aria-labelledby="id_ytd">
+<h2 id="id_ytd">Year To Date Usage</h2>
+
+<table  id="id_table_show_summary" class="details table table-striped table-hover"  aria-labelledby="id_ytd">
+    <thead>
+      <tr>
+        <th id="id_grp" class="text">Time Period</th>
+        <th id="id_nor" class="text">Reports</th>
+        <th id="id_imp" class="text">Pages</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>Today</th>
+            <td>{{today.ws_report_group.num_total_reports}}</td>
+            <td>{{today.ws_report_group.num_total_pages}}</td>
+        </tr>
+        <tr>
+            <th>Month</th>
+            <td>{{month.ws_report_group.num_total_reports}}</td>
+            <td>{{month.ws_report_group.num_total_pages}}</td>
+        </tr>
+        <tr>
+            <th>Year</th>
+            <td>{{year.ws_report_group.num_total_reports}}</td>
+            <td>{{year.ws_report_group.num_total_pages}}</td>
+        </tr>
+    </tbody>
+</table>    
+</section>
+
+{% endblock %}

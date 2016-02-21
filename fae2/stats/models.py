@@ -4,6 +4,7 @@ from django.core.urlresolvers import reverse
 
 from websiteResultGroups.models import WebsiteReportGroup
 
+from django.contrib.auth.models import User
 
 # ---------------------------------------------------------------
 #
@@ -24,7 +25,6 @@ class StatsYear(models.Model):
 
     def __str__(self):
         return str(self.year)
-
 
 # ---------------------------------------------------------------
 #
@@ -71,3 +71,25 @@ class StatsDay(models.Model):
 
     def __str__(self):
         return str(self.date)
+
+# ---------------------------------------------------------------
+#
+# StatsUser
+#
+# ---------------------------------------------------------------
+
+class StatsUser(models.Model):
+    id   = models.AutoField(primary_key=True)
+
+    user  = models.ForeignKey(User, related_name="stats")
+
+    ws_report_group = models.OneToOneField(WebsiteReportGroup)
+
+    class Meta:
+        verbose_name        = "Stats User"
+        verbose_name_plural = "Stats User"
+        ordering = ['user']
+
+    def __str__(self):
+        return str(self.user)
+

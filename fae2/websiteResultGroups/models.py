@@ -33,12 +33,14 @@ class WebsiteReportGroup(RuleGroupResult):
       return self.title
 
   def add_website_report(self, ws_report):
-    console.log("[WebsiteReportGroup][add_website_report]: " + str(ws_report))
-    self.num_total_reports = self.num_total_reports + 1  
-    self.num_total_pages   = self.num_total_pages + ws_report.page_count
+    try:
+      self.num_total_reports = self.num_total_reports + 1  
+      self.num_total_pages   = self.num_total_pages + ws_report.page_count
 
-    self.ws_reports.add(ws_report)
-    self.save()
+      self.ws_reports.add(ws_report)
+      self.save()
+    except:
+      pass   
 
 # ---------------------------------------------------------------
 #

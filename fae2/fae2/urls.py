@@ -31,4 +31,5 @@ urlpatterns = [
     url(r'^contact/',   include('contact.urls')),
     url(r'^accounts/',  include('accounts.urls')),
     url(r'^rulesets/',  include('rulesets.urls')),
+    url(r'^usage/',     include('stats.urls')),
 ]

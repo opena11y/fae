@@ -47,8 +47,6 @@ class UserProfile(models.Model):
     website_authorization_enabled   = models.BooleanField(default=False)
     advanced_enabled                = models.BooleanField(default=False)
 
-    ws_report_group = models.OneToOneField(WebsiteReportGroup, blank=True, null=True)
-  
     def __unicode__(self):
         return self.user.username  
 
@@ -57,14 +55,6 @@ class UserProfile(models.Model):
       for shortp, longp in ACCT_TYPE_CHOICES:
           if shortp == self.acct_type:
               return longp
-
-    def add_website_report_group(self):
-      if not self.ws_report_group:
-        wsrg = WebsiteReportGroup(title="Summary of results for " + self.user.username)
-        wsrg.save()
-        self.ws_report_group = wsrg
-        self.save()
-
     
     
 # creates new UserProfile when new user registers 

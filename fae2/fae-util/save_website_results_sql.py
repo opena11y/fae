@@ -59,6 +59,7 @@ from rules.models          import RuleScope
 from stats.models  import StatsYear
 from stats.models  import StatsMonth
 from stats.models  import StatsDay
+from stats.models  import StatsUser
 
 from websiteResultGroups.models  import WebsiteReportGroup
 
@@ -1621,7 +1622,10 @@ def saveResultsToDjango(ws_report):
     info("           Total Time: " + total)
     info('Average time per page: ' + ave_time) 
 
+    debug("Website Report: " + str(ws_report))
+
     today = datetime.date.today()
+    debug("Stats Year: " + str(today.year))
     try:
       year = StatsYear.objects.get(year=today.year)
     except:
@@ -1630,9 +1634,10 @@ def saveResultsToDjango(ws_report):
       year = StatsYear(year=today.year, ws_report_group=wsrg) 
       year.save()  
       info("         Created Year: " + str(today.year))  
+    
+    year.ws_report_group.add_website_report(ws_report)  
 
-#    year.ws_report_group.add_website_report(wsr)  
-
+    debug("Stats Month: " + str(today.month))
     try:
       month = StatsMonth.objects.get(stats_year=year, month=today.month)
     except:
@@ -1642,8 +1647,9 @@ def saveResultsToDjango(ws_report):
       month.save()
       info("        Created Month: " + str(today.month))
 
-#    month.ws_report_group.add_website_report(wsr)  
+    month.ws_report_group.add_website_report(ws_report)  
 
+    debug("Stats Day: " + str(today))
     try:
       day = StatsDay.objects.get(stats_month=today.month, date=today)
     except:
@@ -1653,7 +1659,19 @@ def saveResultsToDjango(ws_report):
       day.save()
       info("          Created Day: " + str(today))
 
-#    day.ws_report_group.add_website_report(wsr)  
+    day.ws_report_group.add_website_report(ws_report)  
+      
+    debug("Stats User: " + str(ws_report.user))
+    try:
+      user_stats = StatsUser.objects.get(user=ws_report.user)
+    except:
+      wsrg =  WebsiteReportGroup(title="Summary of results for " + str(ws_report.user))
+      wsrg.save()
+      user_stats = StatsUser(user=ws_report.user, ws_report_group=wsrg)  
+      user_stats.save()
+      info("          Created User: " + str(ws_report.user))
+
+    user_stats.ws_report_group.add_website_report(ws_report)  
       
 
 

@@ -135,7 +135,7 @@
         {% endfor %}
     </fieldset>
 
-   <fieldset>
+   <fieldset id="id_max_pages">
         
         {% if form.max_pages.errors|length %}
         <legend class="error">{{form.max_pages.label}}: {% for error in form.max_pages.errors %}{{error}}{% endfor %}</legend>

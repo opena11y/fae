@@ -5,6 +5,7 @@ from django.contrib import admin
 from .models import StatsYear
 from .models import StatsMonth
 from .models import StatsDay
+from .models import StatsUser
 
 class StatsYearAdmin(admin.ModelAdmin):
     list_display = ('year', )
@@ -20,3 +21,8 @@ class StatsDayAdmin(admin.ModelAdmin):
     list_display = ('date', 'stats_month')
 
 admin.site.register(StatsDay, StatsDayAdmin)
+
+class StatsUserAdmin(admin.ModelAdmin):
+    list_display = ('user', )
+
+admin.site.register(StatsUser, StatsUserAdmin)
