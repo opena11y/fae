@@ -80,9 +80,13 @@
       fs.className = "follow disabled"
         
       for(i = 0; i < controls.length; i++) {
-        if (i === 0)
-           c = controls[i];
+        c = controls[i];
+        if (i === 0) {
+          c.setAttribute('checked','');
+        }
+        else {
            c.setAttribute('disabled', '');
+         }
       }
 
       var mps = document.getElementById("id_max_pages");      
@@ -90,8 +94,13 @@
       controls = mps.getElementsByTagName("input");
       
       for(i = 0; i < controls.length; i++) {
-        c = controls[i];           
-        c.setAttribute('disabled', '');
+        c = controls[i];
+        if (i === 0) {
+          c.setAttribute('checked','');
+        }
+        else {
+           c.setAttribute('disabled', '');
+         }
       }      
     } 
 
