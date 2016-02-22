@@ -21,15 +21,23 @@
             id="topic"
             name="topic"
             required
-            value="{{form.topic.value}}"
+            list="topic_options"
             {% if form.topic.errors|length %}aria-invalid="true"{% endif %}
             size="60"
-            title="Topic of the comment or feedback"/> 
+            title="Topic of the comment or feedback"> 
+        <datalist id="topic_options">
+            <option value="Problem evaluating websites">
+            <option value="Question or problem about a rule">
+            <option value="New feature or enhancement">
+            <option value="Typo or bug in information in FAE">
+            <option value="Other">
+        </datalist>
         {% if form.topic.errors|length %}
         <label class="error" for="topic">{% for error in form.topic.errors %}{{error}}{% endfor %}</label>
         {% endif %}
         </div>
     </div>
+
 
    <div class="input" >
         <label for="message">{{form.message.label}}</label>
@@ -42,7 +50,8 @@
             {% if form.message.errors|length %}aria-invalid="true"{% endif %}
             rows="10"
             cols=80
-            title="Details of the comment or feedback"/> 
+            title="Details of the comment or feedback">
+        </textarea>     
         {% if form.message.errors|length %}
         <label class="error" for="message">{% for error in form.message.errors %}{{error}}{% endfor %}</label>
         {% endif %}
@@ -52,6 +61,32 @@
     <input type="submit" value="Send Feedback or Question"/>
 
 </form>
+
+<section aria-labelledby="id_my_comments">
+    <h2 id="id_my_comments">My Comments</h2>
+    {% if user.comments.length %}
+    <p>No contacts</p>
+    {% else %}
+        <table class="details table table-striped table-hover" aria-labelledby="id_my_comments">
+            <thead>
+                <th>Date</th>
+                <th>Topic</th>
+                <th>Message</th>
+                <th>Response</th>
+            </thead>
+            <tbody>
+                {% for contact in user.contacts.all %}
+                <td>{{contact.date}}</td>
+                <td>{{contact.topic}}</td>
+                <td>{{contact.message}}</td>
+                <td>
+                    <strong>{{contact.show_status}}</strong><br/>
+                    {{contact.comments}}
+                </td>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
 
 {% endblock %}
 

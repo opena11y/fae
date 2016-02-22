@@ -48,22 +48,19 @@
 <table  id="id_table_show_summary" class="details table table-striped table-hover"  aria-labelledby="id_user_info_info">
     <thead>
       <tr>
-        <th id="id_grp" class="text"></th>
+        <th id="id_grp" class="text">User</th>
         <th id="id_nor" class="text">Reports</th>
         <th id="id_imp" class="text">Pages</th>
       </tr>
     </thead>
     <tbody>
+        {% for u in user_stats %}
         <tr>
-            <th>Registered Users</th>
-            <td>{{today.ws_report_group.num_total_reports}}</td>
-            <td>{{today.ws_report_group.num_total_pages}}</td>
+            <th>{{u.user}}</th>
+            <td>{{u.ws_report_group.num_total_reports}}</td>
+            <td>{{u.ws_report_group.num_total_pages}}</td>
         </tr>
-        <tr>
-            <th>Anonymous</th>
-            <td>{{month.ws_report_group.num_total_reports}}</td>
-            <td>{{month.ws_report_group.num_total_pages}}</td>
-        </tr>
+        {% endfor %}
     </tbody>
 </table>    
 </section>
