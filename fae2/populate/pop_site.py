@@ -7,7 +7,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.core.exceptions import ImproperlyConfigured
 
 sys.path.append(os.path.abspath('..'))
-print('\nSystem Paths\n' + str(sys.path) + '\n')
+# print('\nSystem Paths\n' + str(sys.path) + '\n')
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'fae2.settings')
 from django.conf import settings
 django.setup()
@@ -15,11 +15,12 @@ django.setup()
 """This file is for populating the database with markup information
 I empty it. Run as a standalone script!"""
 
-from django.core.exceptions import ObjectDoesNotExist
+from django.core.exceptions      import ObjectDoesNotExist
 from django.contrib.sites.models import Site
-from django.contrib.auth.models import User
-from userProfiles.models import UserProfile
-from websiteResultGroups.models import WebsiteReportGroup
+from django.contrib.auth.models  import User
+from userProfiles.models         import UserProfile
+from websiteResultGroups.models  import WebsiteReportGroup
+from stats.models                import StatsUser
 
 # JSON-based secrets module
 with open(join(settings.BASE_DIR,"secrets.json")) as f:
@@ -64,7 +65,14 @@ def create_users(users):
         except:
           profile = UserProfile(user=user)
         profile.save()   
-        profile.add_website_report_group()
+
+        try:
+          stats = StatsUser.objects.get(user=user)
+        except:
+          wsrg =  WebsiteReportGroup(title="Summary of results for " + str(user))
+          wsrg.save()
+          stats = StatsUser(user=user, ws_report_group=wsrg)  
+        stats.save()   
 
         
 def set_site(name, url):

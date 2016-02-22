@@ -139,8 +139,20 @@ class RunReportView(LoginRequiredMixin, CreateView):
     login_url = get_default_url()
     redirect_field_name = "Anonymous Report"
 
+
+    def form_valid(self, form):
+        form.instance.user = User.objects.get(username='anonymous')
+        form.instance.depth = 1
+        form.instance.slug = generate()
+
+        return super(RunAnonymousReportView, self).form_valid(form)
+
+
     def form_valid(self, form):
         form.instance.user = self.request.user
+        if form.instance.depth == 1:
+          form.instance.follow = 1
+          form.instance.max_pages = 1
         form.instance.slug = generate()
 
         return super(RunReportView, self).form_valid(form)

@@ -53,16 +53,16 @@
       
       fs.className = "follow";      
 
-      for(i = 0; i < controls.length; i++) {
-        c = controls[i];           
-        c.removeAttribute('disabled');
+      for(i = 1; i < controls.length; i++) {
+          c = controls[i];           
+          c.removeAttribute('disabled');
       }
 
       var mps = document.getElementById("id_max_pages");      
 
       controls = mps.getElementsByTagName("input");
       
-      for(i = 0; i < controls.length; i++) {
+      for(i = 1; i < controls.length; i++) {
         c = controls[i];           
         c.removeAttribute('disabled');
       }      
@@ -80,6 +80,7 @@
       fs.className = "follow disabled"
         
       for(i = 0; i < controls.length; i++) {
+        if (i === 0)
            c = controls[i];
            c.setAttribute('disabled', '');
       }

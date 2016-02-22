@@ -25,14 +25,25 @@ class ShowUsageStatistics(TemplateView):
 
         td= datetime.date.today()
 
-        year             = StatsYear.objects.get(year=td.year)
-        month            = StatsMonth.objects.get(stats_year=year, month=td.month)
-        today            = StatsDay.objects.get(stats_month=month, date=td)
+        year   = StatsYear.objects.get(year=td.year)
+        years  = StatsYear.objects.all()
 
+        month  = StatsMonth.objects.get(stats_year=year, month=td.month)
+        months = StatsMonth.objects.all()
+
+        today  = StatsDay.objects.get(stats_month=month, date=td)
+        days   = StatsDay.objects.all()[:7]
+
+        anonymous       = User.objects.get(username="anonymous")
+        user_stats      = StatsUser.objects.exclude(user=anonymous)
+        anonymous_stats = StatsUser.objects.get(user=anonymous)         
 
         context['year']   = year 
         context['month']  = month
         context['today']  = today
+
+        context['user_stats'] = user_stats
+        context['anonymous_stats'] = anonymous_stats
         
         return context            
 
