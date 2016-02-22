@@ -11,7 +11,35 @@
 
 {% block content %}
 
+<section aria-labelledby="id_my_comments">
+    <h2 id="id_my_comments">My Comments</h2>
+    {% if user.comments.length %}
+    <p>No contacts</p>
+    {% else %}
+        <table class="details table table-striped table-hover" aria-labelledby="id_my_comments">
+            <thead>
+                <th>Date</th>
+                <th>Topic</th>
+                <th>Message</th>
+                <th>Response</th>
+            </thead>
+            <tbody>
+                {% for contact in user.contacts.all %}
+                <tr>
+                    <td>{{contact.date}}</td>
+                    <td>{{contact.topic}}</td>
+                    <td>{{contact.message}}</td>
+                    <td>
+                        <strong>{{contact.show_status}}</strong><br/>
+                        {{contact.comments}}
+                    </td>
+                </tr>
+                {% endfor %}
 
+            </tbody>
+        </table>
+    {% endif %}
+</section>
 
 {% endblock %}
 

@@ -11,7 +11,7 @@
 
 {% block content %}
 
-<form id="id_contact_form"  action="{% url 'contact_form' %}" method="post" >
+<form id="id_contact_form" action="" method="post" >
     {% csrf_token %}
 
    <div class="input" >
@@ -50,24 +50,26 @@
             {% if form.message.errors|length %}aria-invalid="true"{% endif %}
             rows="10"
             cols=80
-            title="Details of the comment or feedback">
-        </textarea>     
+            title="Details of the comment or feedback"></textarea>     
         {% if form.message.errors|length %}
         <label class="error" for="message">{% for error in form.message.errors %}{{error}}{% endfor %}</label>
         {% endif %}
         </div>
     </div>
 
+    <input type="hidden" name="status" value="NR">
+    <input type="hidden" name="comment" value="">
+
     <input type="submit" value="Send Feedback or Question"/>
 
 </form>
 
-<section aria-labelledby="id_my_comments">
-    <h2 id="id_my_comments">My Comments</h2>
+<section aria-labelledby="id_my_contacts">
+    <h2 id="id_my_contacts">My Contacts</h2>
     {% if user.comments.length %}
     <p>No contacts</p>
     {% else %}
-        <table class="details table table-striped table-hover" aria-labelledby="id_my_comments">
+        <table class="details table table-striped table-hover" aria-labelledby="id_my_contacts">
             <thead>
                 <th>Date</th>
                 <th>Topic</th>
@@ -76,17 +78,20 @@
             </thead>
             <tbody>
                 {% for contact in user.contacts.all %}
-                <td>{{contact.date}}</td>
-                <td>{{contact.topic}}</td>
-                <td>{{contact.message}}</td>
-                <td>
-                    <strong>{{contact.show_status}}</strong><br/>
-                    {{contact.comments}}
-                </td>
+                <tr>
+                    <td>{{contact.date}}</td>
+                    <td>{{contact.topic}}</td>
+                    <td>{{contact.message}}</td>
+                    <td>
+                        <strong>{{contact.show_status}}</strong><br/>
+                        {{contact.comments}}
+                    </td>
+                </tr>
                 {% endfor %}
             </tbody>
         </table>
     {% endif %}
+</section>
 
 {% endblock %}
 
