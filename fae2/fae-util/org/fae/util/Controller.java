@@ -24,7 +24,6 @@ public class Controller {
   public String BROWSER_VERSION = "firefox";
   public String CONFIG_FILE;
   public String DEPTH = "1";
-  public String MAX_PAGE = "1";
   public String INPUT_FILE;
   public String OUTPUT_DIRECTORY;
   public String SCRIPTS_FILE;
@@ -54,7 +53,6 @@ public class Controller {
     System.out.println("\t" + configFile.getLongOpt() + "=> " + CONFIG_FILE);
     System.out.println("\t" + debug.getLongOpt() + "=> " + DEBUG);
     System.out.println("\t" + depth.getLongOpt() + "=> " + DEPTH);
-    System.out.println("\t" + maxPage.getLongOpt() + "=> " + MAX_PAGE);
     System.out.println("\t" + groups.getLongOpt() + "=> " + GROUPS);
     System.out.println("\t" + inputFile.getLongOpt() + "=> " + INPUT_FILE);
     System.out.println("\t" + outputDirectory.getLongOpt() + "=> " + OUTPUT_DIRECTORY);
@@ -119,8 +117,6 @@ public class Controller {
       BROWSER_VERSION = m_cmdLine.getOptionValue(browserVersion.getOpt());
     if (m_cmdLine.hasOption(depth.getOpt()))
       DEPTH = m_cmdLine.getOptionValue(depth.getOpt());
-    if (m_cmdLine.hasOption(maxPage.getOpt()))
-        MAX_PAGE = m_cmdLine.getOptionValue(maxPage.getOpt());
     if (m_cmdLine.hasOption(groups.getOpt()))
       GROUPS = m_cmdLine.getOptionValue(groups.getOpt());
     if (m_cmdLine.hasOption(wait.getOpt()))
@@ -180,11 +176,6 @@ public class Controller {
       System.err.println("Cannot specify <" + depth.getLongOpt() + " " + excludeDomains.getLongOpt() + " " + includeDomains.getLongOpt() + " " + spanDomains.getLongOpt() + "> with " + inputFile.getLongOpt() + ".");
       error = true;
     }
-    
-    if (Integer.parseInt(MAX_PAGE) < 0) {
-        System.err.println("Invalid " + maxPage.getLongOpt() + ": " + MAX_PAGE);
-        error = true;
-    }
 
     if (!BROWSER_VERSION.equalsIgnoreCase("chrome") && !BROWSER_VERSION.equalsIgnoreCase("firefox") && !BROWSER_VERSION.equalsIgnoreCase("ie")) {
       System.err.println("Unknown " + browserVersion.getLongOpt() + ": " + BROWSER_VERSION);
@@ -217,7 +208,6 @@ public class Controller {
     m_options.addOption(configFile);
     m_options.addOption(debug);
     m_options.addOption(depth);
-    m_options.addOption(maxPage);
     m_options.addOption(groups);
     m_options.addOption(inputFile);
     m_options.addOption(outputDirectory);
@@ -291,7 +281,6 @@ public class Controller {
   public Option configFile = new Option("c", "config", true, "Optional: filename of configuration parameters");
   public Option debug = new Option("D", "debug", false, "Optional: turn on debugging output");
   public Option depth = new Option("d", "depth", true, "Optional: maximium depth to traverse (number: 1 | 2 | 3, default = 1, which means no traversing)");
-  public Option maxPage = new Option("p", "maxPage", true, "Optional: maximium number of pages to process (number: default = 1)");
   public Option groups = new Option("g", "groups", true, "Optional: number indicating which rules will be evaluated based on rule group information (default = 7)");
   public Option inputFile = new Option("m", "multipleUrls", true, "Required (unless -u, --url is specified): filename containing URLs to evaluate");
   public Option outputDirectory = new Option("o", "outputDirectory", true, "Required: directory for results files");

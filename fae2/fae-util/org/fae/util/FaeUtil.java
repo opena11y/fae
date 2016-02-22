@@ -278,9 +278,6 @@ class FaeUtil {
         if (m_props.containsKey(m_ctrl.exportOption.getLongOpt()))
             m_ctrl.EXPORT_OPTION = m_props.getProperty(m_ctrl.exportOption.getLongOpt());
         m_props.remove(m_ctrl.exportOption.getLongOpt());
-        if (m_props.containsKey(m_ctrl.maxPage.getLongOpt()))
-            m_ctrl.MAX_PAGE = m_props.getProperty(m_ctrl.maxPage.getLongOpt());
-        m_props.remove(m_ctrl.maxPage.getLongOpt());
         
       }
       catch (FileNotFoundException e) {
