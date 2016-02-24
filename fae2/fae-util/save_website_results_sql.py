@@ -1510,7 +1510,7 @@ class DataWebsiteResult(DataRuleResult):
 #
 # ---------------------------------------------------------------
         
-def saveResultsToDjango(ws_report):
+def saveResultsToDjango(APP_DIR, ws_report):
 
   def getPageDataFromJSON(num, data):
   
