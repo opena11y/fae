@@ -108,8 +108,9 @@ vironments/fae2/lib/python3.4/site-packages/
 </pre>
 
 ### Setting up fae directories for read/write access
-* Need to create "fae2/data/" with write permissions for fae-util, typically "root" 
-* Need to create "fae2/logs/" with write permissions for "apache" user
+* Need to create "data/" with write permissions for fae-util, typically "root" 
+* Need to create "logs/" with write permissions for "apache" user
+
 
 ### Initialize database tables
 * You will need to run <code>python manage.py migrate</code> to create the tables in the database

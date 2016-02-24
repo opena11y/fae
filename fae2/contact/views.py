@@ -53,3 +53,15 @@ class ResponseFormView(LoginRequiredMixin, UpdateView):
 
         return super(ResponseFormView, self).form_invalid(form)  
 
+class ResponsesView(LoginRequiredMixin, TemplateView):
+    template_name = 'contact/responses.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(ResponsesView, self).get_context_data(**kwargs)
+
+        context['new_contacts']  = Contact.objects.filter(status='NR')
+        context['old_contacts']  = Contact.objects.exclude(status='NR')
+        
+        return context            
+
+
