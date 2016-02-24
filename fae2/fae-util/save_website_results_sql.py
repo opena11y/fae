@@ -73,7 +73,7 @@ from save_markup_information import PageMarkupInformation
 
 from django.db import connection, transaction
 
-# from fae2.settings import APP_DIR
+from fae2.settings import APP_DIR
 
 class RULE_RESULT:
   UNDEFINED      = 0
@@ -1510,7 +1510,9 @@ class DataWebsiteResult(DataRuleResult):
 #
 # ---------------------------------------------------------------
         
-def saveResultsToDjango(APP_DIR, ws_report):
+def saveResultsToDjango(ws_report):
+
+  debug("APP_DIR: " + APP_DIR)
 
   def getPageDataFromJSON(num, data):
   

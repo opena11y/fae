@@ -172,7 +172,7 @@ class faeUtilThread(threading.Thread):
 
       info("Saving Data: " + str(self.ws_report))
       self.ws_report.set_status_saving()
-      saveResultsToDjango(APP_DIR, self.ws_report)
+      saveResultsToDjango(self.ws_report)
 
 
 def main():
