@@ -1601,7 +1601,7 @@ def saveResultsToDjango(APP_DIR, ws_report):
   dir = APP_DIR + ws_report.data_directory + "/data"
   for root, dirs, files in os.walk(dir):
     for file_name in files:
-#      debug('[saveResultsToDjango][main] ' + dir + '/' + file_name)
+      debug('[saveResultsToDjango][main] ' + dir + '/' + file_name)
       process_file(dir,file_name)
 
   try:
