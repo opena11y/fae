@@ -1448,7 +1448,7 @@ class DataWebsiteResult(DataRuleResult):
           error("[WebsiteResult][saveToDjango]: website result") 
           exit()
 
-#        debug("[WebsiteResult][saveToDjango]: saving " + str(len(self.website_rule_category_results)) + " website rc results")
+        debug("[WebsiteResult][saveToDjango]: saving " + str(len(self.website_rule_category_results)) + " website rc results")
 
         for wsrcr in self.website_rule_category_results:
           try:
@@ -1456,7 +1456,7 @@ class DataWebsiteResult(DataRuleResult):
           except:
             error("[WebsiteResult][saveToDjango]: website rc result") 
 
-#        debug("[WebsiteResult][saveToDjango]: saving " + str(len(self.website_guideline_results)) + " website gl results")    
+        debug("[WebsiteResult][saveToDjango]: saving " + str(len(self.website_guideline_results)) + " website gl results")    
 
         for wsgr in self.website_guideline_results:
           try:
@@ -1464,7 +1464,7 @@ class DataWebsiteResult(DataRuleResult):
           except:
             error("[WebsiteResult][saveToDjango]: website gl result") 
 
-#        debug("[WebsiteResult][saveToDjango]: saving " + str(len(self.website_rule_scope_results)) + " website rs results")    
+        debug("[WebsiteResult][saveToDjango]: saving " + str(len(self.website_rule_scope_results)) + " website rs results")    
 
         for wsrsr in self.website_rule_scope_results:
           try:
@@ -1472,16 +1472,16 @@ class DataWebsiteResult(DataRuleResult):
           except:
             error("[WebsiteResult][saveToDjango]: website rs result") 
 
-#        debug("[WebsiteResult][saveToDjango]: saving " + str(len(self.rule_results)) + " website rule results")    
+        debug("[WebsiteResult][saveToDjango]: saving " + str(len(self.rule_results)) + " website rule results")    
 
         for wsrr in self.rule_results:
-#          debug("[WebsiteResult][saveToDjango]: " + str(wsrr.rule_id))
+          debug("[WebsiteResult][saveToDjango]: " + str(wsrr.rule_id))
           try:
             wsrr.saveToDjango(self, wsr)  
           except:
             error("[WebsiteResult][saveToDjango]: website rule result ") 
 
-#        debug("[WebsiteResult][saveToDjango]: saving " + str(len(self.page_results)) + " page results") 
+        debug("[WebsiteResult][saveToDjango]: saving " + str(len(self.page_results)) + " page results") 
    
         for pr in self.page_results:
           try:
@@ -1489,7 +1489,7 @@ class DataWebsiteResult(DataRuleResult):
           except:
             error("[WebsiteResult][saveToDjango]: page result") 
 
-#        debug("[WebsiteResult][saveToDjango]: Done") 
+        debug("[WebsiteResult][saveToDjango]: Done") 
      
       except:
         self.ws_report.set_status_error()
