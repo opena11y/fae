@@ -1511,6 +1511,7 @@ class DataWebsiteResult(DataRuleResult):
 # ---------------------------------------------------------------
         
 def saveResultsToDjango(APP_DIR, ws_report):
+  debug("APP_DIR: " + APP_DIR)
 
   def getPageDataFromJSON(num, data):
   
