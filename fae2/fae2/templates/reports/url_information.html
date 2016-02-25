@@ -19,9 +19,9 @@
 
     <ul class="urls">
         {% if report.processed_urls.all|length = 1 %}
-        <li><a href="#id_processed_urls_label">1 URL successfully evaluated for accessibility </a></li>
+        <li><a href="#id_processed_urls_label">1 URL successfully evaluated for accessibility </a> {% if report.max_pages %} (Maximum Pages: {{report.max_pages}}){% endif %}</li>
         {% else %}
-        <li><a href="#id_processed_urls_label">{{ report.processed_urls.all|length }} URLs successfully evaluated for accessibility</a></li>
+        <li><a href="#id_processed_urls_label">{{ report.processed_urls.all|length }} URLs successfully evaluated for accessibility</a> {% if report.max_pages %} (Maximum Pages: {{report.max_pages}}){% endif %}</li>
         {% endif %}
         
         {% if report.error_urls.all|length = 1 %}

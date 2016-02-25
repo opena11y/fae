@@ -31,9 +31,9 @@ from fae2.settings import SELF_REGISTRATION_ENABLED
 from fae2.settings import SHIBBOLETH_ENABLED
 
 urlpatterns = [
-    url(r'^$',                       RunReportView.as_view(),                 name='run_report'),
-    url(r'^processing/$',            ProcessingReportView.as_view(),          name='processing_reports'),
-    url(r'^evaluate/link/$',         RunRefererReportView.as_view(),          name='run_referer_report'),
+    url(r'^$',                RunReportView.as_view(),         name='run_report'),
+    url(r'^processing/$',     ProcessingReportView.as_view(),  name='processing_reports'),
+    url(r'^evaluate/link/$',  RunRefererReportView.as_view(),  name='run_referer_report'),
  
     url(r'^processing/status/all/$',              ProcessingStatusAllJSON.as_view(), name='processing_status_all'),
     url(r'^processing/status/(?P<report>\w+)/$',  ProcessingStatusJSON.as_view(),    name='processing_status'),

@@ -33,9 +33,10 @@ ACCT_TYPE_CHOICES = (
 
 class UserProfile(models.Model):
 
-    user                = models.OneToOneField(User, related_name="profile")
-    acct_type           = models.IntegerField(choices=ACCT_TYPE_CHOICES, default=1)
-    org                 = models.CharField(max_length=128, blank=True)
+    user          = models.OneToOneField(User, related_name="profile")
+    acct_type     = models.IntegerField(choices=ACCT_TYPE_CHOICES, default=1)
+    org           = models.CharField(max_length=128, blank=True)
+    dept          = models.CharField(max_length=128, blank=True)
     email_announcements = models.BooleanField(default=True)
 
     max_archive = models.IntegerField(default=5)

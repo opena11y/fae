@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block title %}
-  Contact Form
+  Feedback and Questions Form
 {% endblock %}
 
 {% block content %}
@@ -65,9 +65,9 @@
 </form>
 
 <section aria-labelledby="id_my_contacts">
-    <h2 id="id_my_contacts">My Contacts</h2>
+    <h2 id="id_my_contacts">My Feedback and Questions</h2>
     {% if user.comments.length %}
-    <p>No contacts</p>
+    <p>No feedback or questions</p>
     {% else %}
         <table class="details table table-striped table-hover" aria-labelledby="id_my_contacts">
             <thead>

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block breadcrumb %}
+  <li>Status</li>
+{% endblock %}
+
+{% block title %}
+Status
+{% endblock %}
+
+{% block content %}
+
+{% include "accounts/report_list.html" with id="id_init"  title="Reports Waiting to be Processed" reports=initialied %}
+
+{% include "accounts/report_list.html" with id="id_proc"  title="Reports Being Processed" reports=processing %}
+
+{% include "accounts/report_list.html" with id="id_error" title="Reports With Errors"     reports=errors %}
+
+
+{% endblock %}
+
+

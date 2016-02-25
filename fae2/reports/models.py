@@ -140,11 +140,11 @@ class WebsiteReport(RuleGroupResult):
 
   title    = models.CharField("Title",  max_length=1024, default="", blank=False)
   
-  url      = models.URLField("URL",      max_length=1024, default="", blank=False)
-  follow   = models.IntegerField("Follow Links in", choices=FOLLOW_CHOICES, default=1, blank=False)
-  depth    = models.IntegerField("Depth of Evaluation", choices=DEPTH_CHOICES, default=2, blank=False)
-  max_pages  = models.IntegerField("Analyze Pages", choices=MAX_PAGES_CHOICES, default=0, blank=False)
-  ruleset  = models.ForeignKey(Ruleset, default=2, blank=False)
+  url        = models.URLField("URL",      max_length=1024, default="", blank=False)
+  follow     = models.IntegerField("Follow Links in", choices=FOLLOW_CHOICES, default=1, blank=False)
+  depth      = models.IntegerField("Depth of Evaluation", choices=DEPTH_CHOICES, default=2, blank=False)
+  max_pages  = models.IntegerField("Maximum Pages", choices=MAX_PAGES_CHOICES, default=0, blank=False)
+  ruleset    = models.ForeignKey(Ruleset, default=2, blank=False)
 
   browser_emulation    = models.CharField("Browser Emulation", max_length=32, default="FIREFOX")
 
