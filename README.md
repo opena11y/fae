@@ -11,7 +11,7 @@ Development is primarily supported by the [University of Illinois at Urbana-Cham
 * The rules support accessible and usable design by enforcing the accessible coding practices and techniques of the Accessible Rich Internet Application (ARIA) 1.0 and W3C HTML5 specifications.  
 
 ## Apache 2.0 License
-FAE may be used and distributed based on the terms and conditions of the [ Apache License Version 2.0 http://www.apache.org/licenses/LICENSE-2.0]. 
+FAE may be used and distributed based on the terms and conditions of the [Apache License Version 2.0 http://www.apache.org/licenses/LICENSE-2.0]. 
 
 ## Server requirements
 
