@@ -18,7 +18,7 @@ All User Information
 <p>none</p>
 {% endif %}
 
-<h2>E-mails to Exclude in Announcements</h2>
+<h2>E-mails to  Exclude in Announcements</h2>
 {% if exclude_announcements.count %}
 <textarea rows="10" cols="80" aria-labelledby="id_h2_rec" readonly>{% for up in exclude_announcements %}{% if up.user.email %}{{up.user.email}} {{up.user.first_name}} {{up.user.last_name}}
 {% endif %}{% endfor %}</textarea>
