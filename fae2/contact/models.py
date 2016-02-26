@@ -40,10 +40,10 @@ class Contact(models.Model):
     status   = models.CharField(max_length=128, choices=CONTACT_STATUS, default="NR")
     comments = models.TextField(blank=True, default="")
 
- class Meta:
-    verbose_name        = "Contact"
-    verbose_name_plural = "Contacts"
-    ordering = ['-date']
+    class Meta:
+        verbose_name        = "Contact"
+        verbose_name_plural = "Contacts"
+        ordering = ['-date']
 
 
     def show_status(self):
