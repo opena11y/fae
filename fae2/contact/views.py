@@ -71,9 +71,9 @@ class ResponseFormView(LoginRequiredMixin, UpdateView):
     redirect_field_name = "Anonymous Report"
 
     def form_valid(self, form):
-        form.instance.user = self.request.user
 
-        user = self.request.user
+        contact = self.get_object()
+        user = contact.user
         form.instance.user = user
 
         message = "The following message was submitted to the FAE contact system" 
@@ -87,7 +87,7 @@ class ResponseFormView(LoginRequiredMixin, UpdateView):
         
         contact_topic = "FAE: " + form.instance.topic
 
-        send_mail(contact_topic, message, EMAIL_HOST_USER, [ADMIN_EMAIL], fail_silently=False)
+        send_mail(contact_topic, message, EMAIL_HOST_USER, [contact.user.email], fail_silently=False)
 
         return super(ResponseFormView, self).form_valid(form)
 
