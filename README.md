@@ -132,8 +132,11 @@ vironments/fae2/lib/python3.4/site-packages/
   * It will output URL processing information to the console
   * It will create a directory called "test" that contains *.json files of evaluaiton results
   * NOTE: You must delete the "test" directory to rerun this test (e.g. directory exists error will occur)
-* IMPORTANT: Must run <code>python process_evaluation_requests.py</code> to process website evaluations in the background
+* Creating a service to run evaluation requests
+  * IMPORTANT: Must run <code>python process_evaluation_requests.py</code> to process website evaluations in the background
   * There are a number of ways to make this program run in parallel with django application depending on your operating system
+    * Linux: How to write a System V init script to start, stop, and restart my own application or service(http://www.cyberciti.biz/tips/linux-write-sys-v-init-script-to-start-stop-service.html)
+
 
 ## SELinux issues (e.g. CENTOS, REDHAT)
 
