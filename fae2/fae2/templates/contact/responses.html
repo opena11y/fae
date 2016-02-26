@@ -20,14 +20,17 @@
     {% else %}
         <table class="details table table-striped table-hover" aria-labelledby="id_new_contacts">
             <thead>
+                <th>User</th>
                 <th>Date</th>
                 <th>Topic</th>
                 <th>Message</th>
                 <th>Response</th>
             </thead>
             <tbody>
+                {% if new_contacts %}
                 {% for contact in new_contacts %}
                 <tr>
+                    <td><a href="mailto:{{contact.user.email}}">{{contact.user}}</a></td>
                     <td>{{contact.date}}</td>
                     <td>{{contact.topic}}</td>
                     <td>{{contact.message}}</td>
@@ -37,7 +40,15 @@
                     </td>
                 </tr>
                 {% endfor %}
-
+                {% else %}
+                <tr>
+                    <td>none</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                {% endif %}
             </tbody>
         </table>
     {% endif %}
@@ -50,6 +61,7 @@
     {% else %}
         <table class="details table table-striped table-hover" aria-labelledby="id_old_contacts">
             <thead>
+                <th>User</th>
                 <th>Date</th>
                 <th>Topic</th>
                 <th>Message</th>
@@ -58,6 +70,7 @@
             <tbody>
                 {% for contact in old_contacts %}
                 <tr>
+                    <td><a href="mailto:{{contact.user.email}}">{{contact.user}}</a></td>
                     <td>{{contact.date}}</td>
                     <td>{{contact.topic}}</td>
                     <td>{{contact.message}}</td>
