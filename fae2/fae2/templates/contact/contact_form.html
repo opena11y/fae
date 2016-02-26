@@ -11,7 +11,7 @@
 
 {% block content %}
 
-<form id="id_contact_form" action="{% url 'contact_form' contact.id %}" method="post" >
+<form id="id_contact_form" action="{% url 'contact_form' %}" method="post" >
     {% csrf_token %}
 
    <div class="input" >
