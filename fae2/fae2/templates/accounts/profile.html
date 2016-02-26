@@ -1,13 +1,24 @@
 {% extends "base.html" %}
 
 {% block breadcrumb %}
-  <li>Account</li>
+  <li>My Account</li>
+{% endblock %}
+
+{% block title %}
+  My Account
 {% endblock %}
 
 {% block content %}
 
-    <h1>Account</h2>
         
+<form action="{% url 'user_profile' %}"
+      method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <input type="submit" value="Update Profile" />
+</form>
+
 
 {% endblock %}
 

@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% load staticfiles i18n %}
+
+{% block breadcrumb %}
+  <li><a href="{% url 'responses' %}">Contact Responses</a></li>
+  <li>Contact Response Form</li>
+{% endblock %}
+
+{% block title %}
+  Contact Response Form
+{% endblock %}
+
+{% block content %}
+
+<form id="id_contact_form"  action="{{ action }}" method="post" >
+    {% csrf_token %}
+
+   <div class="input" >
+        <label for="topic">{{form.topic.label}}</label>
+        <div {% if form.topic.errors|length %}class="error"{% endif %}>
+        <input 
+            id="topic"
+            name="topic"
+            required
+            value="{{form.topic.value}}"
+            {% if form.topic.errors|length %}aria-invalid="true"{% endif %}
+            size="60"
+            title="Topic of the comment or feedback"/> 
+        {% if form.topic.errors|length %}
+        <label class="error" for="topic">{% for error in form.topic.errors %}{{error}}{% endfor %}</label>
+        {% endif %}
+        </div>
+    </div>
+
+   <div class="input" >
+        <label for="message">{{form.message.label}}</label>
+        <div {% if form.message.errors|length %}class="error"{% endif %}>
+        <textarea 
+            id="message"
+            name="message"
+            required
+            {% if form.message.errors|length %}aria-invalid="true"{% endif %}
+            rows="10"
+            cols=80
+            title="Details of the comment or feedback">{{form.message.value}}</textarea> 
+        {% if form.message.errors|length %}
+        <label class="error" for="message">{% for error in form.message.errors %}{{error}}{% endfor %}</label>
+        {% endif %}
+        </div>
+    </div>
+
+    <fieldset {% if form.status.errors|length %}class="error"{% endif %}>
+        {% if form.status.errors|length %}
+        <legend class="error">{{form.status.label}}: {% for error in form.status.errors %}{{error}}{% endfor %}</legend>)
+        {% else %}
+        <legend>{{form.status.label}}</legend>
+        {% endif %}
+        {% for choice in form.status.field.choices %}
+         <div class="fae20_radio">
+            <input
+                id="status_{{ forloop.counter }}"
+                type="radio"
+                name="status"
+                value="{{choice.0}}"
+                {% if choice.0|slugify == form.status.value|slugify  %}
+                checked="checked"
+                {% endif %}
+            />
+            <label for="status_{{ forloop.counter }}">{{choice.1}}</label>
+        </div>
+        {% endfor %}
+    </fieldset>
+
+
+   <div class="input" >
+        <label for="comments">{{form.comments.label}}</label>
+        <div {% if form.comments.errors|length %}class="error"{% endif %}>
+        <textarea 
+            id="comments"
+            name="comments"
+            required
+            {% if form.comments.errors|length %}aria-invalid="true"{% endif %}
+            rows="10"
+            cols=80
+            title="Response to message">{{form.comments.value}}</textarea> 
+        {% if form.comments.errors|length %}
+        <label class="error" for="comments">{% for error in form.comments.errors %}{{error}}{% endfor %}</label>
+        {% endif %}
+        </div>
+    </div>
+
+
+    <input type="submit" value="Send Feedback or Question"/>
+
+</form>
+
+{% endblock %}
+

@@ -1,3 +1,19 @@
+"""
+Copyright 2014-2016 University of Illinois
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+"""
+
 # reports/urls.py
 from django.conf.urls import url
 from .views import RunReportView
@@ -31,9 +47,9 @@ from fae2.settings import SELF_REGISTRATION_ENABLED
 from fae2.settings import SHIBBOLETH_ENABLED
 
 urlpatterns = [
-    url(r'^$',                       RunReportView.as_view(),                 name='run_report'),
-    url(r'^processing/$',            ProcessingReportView.as_view(),          name='processing_reports'),
-    url(r'^evaluate/link/$',         RunRefererReportView.as_view(),          name='run_referer_report'),
+    url(r'^$',                RunReportView.as_view(),         name='run_report'),
+    url(r'^processing/$',     ProcessingReportView.as_view(),  name='processing_reports'),
+    url(r'^evaluate/link/$',  RunRefererReportView.as_view(),  name='run_referer_report'),
  
     url(r'^processing/status/all/$',              ProcessingStatusAllJSON.as_view(), name='processing_status_all'),
     url(r'^processing/status/(?P<report>\w+)/$',  ProcessingStatusJSON.as_view(),    name='processing_status'),

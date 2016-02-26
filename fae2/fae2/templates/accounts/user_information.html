@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block breadcrumb %}
+  <li><a href="{% url 'all_user_information' %}">All User Information</a></li>
+  <li>User Information</li>
+{% endblock %}
+
+{% block title %}
+{{user_profile.user.first_name}} {{user_profile.user.last_name}}
+
+{% endblock %}
+
+{% block content %}
+
+
+{% endblock %}
+
+

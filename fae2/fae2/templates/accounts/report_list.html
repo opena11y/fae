@@ -1,0 +1,46 @@
+
+<section aria-labelledby="{{id}}">
+  <h2 id="{{id}}">{{title}}</h2>
+  
+  <table class="details table table-striped table-hover sortable" aria-labelledby="{{id}}">
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>Evaluation Status</th>
+        <th>Title</th>
+        <th>URL</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Ruleset</th>
+        <th>Pages</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% if reports.count %}
+      {% for r in reports %}
+      <tr>
+        <td><a href="mailto:{{r.user.email}}">{{r.user}}</a></td>
+        <td>{{r.show_status}}</td>
+        <td>{{r.title}}</td>
+        <td><a href="{{r.url}}">{{r.url}}</a></td>
+        <td>{{r.created | date:"Y-m-d"}}</td>
+        <td>{{r.created | date:"H:i"}}</td>
+        <td>{{r.ruleset.slug}}</td>
+        <td>{{r.page_count}}</td>
+      </tr>
+      {% endfor %}
+      {% else %}
+      <tr>
+        <td>none</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      {% endif %}
+    </tbody>
+  </table> 
+</section>

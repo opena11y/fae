@@ -14,13 +14,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
-from django.contrib import admin
+# userProfile/urls.py
+from django.conf.urls import url
 
-from .models import Ruleset
+from .views import UpdateUserProfile
 
-class RulesetAdmin(admin.ModelAdmin):
-    list_display = ('title', 'tooltip', 'version', 'author')
-    list_filter  = ('author', 'version')
-
-admin.site.register(Ruleset, RulesetAdmin)
+urlpatterns = [
+    url(r'^$', UpdateUserProfile.as_view(), name='user_profile'),
+]
 

@@ -9,7 +9,10 @@ Report Issues
 {% endblock %}
 
 {% block content %}
-    <p>Let us know about:
+
+    <h2>Contact FAE 2.0 Administrator</h2>
+
+    <p><a href="{% url 'contact_form' %}">Contact the adminstrator</a> (note: You must be a registered user) about any issue including:
       <ul>
         <li>Any problems you are having with the tools.</li>
         <li>Any problems you are having understanding a rule.</li>
@@ -18,7 +21,7 @@ Report Issues
       </ul>
     </p>
     
-    <h2>Report an Issue</h2>
+    <h2>Create an Developer Issue</h2>
     
     <dl>
       <dt><a href="https://github.com/opena11y/oaa-rules/issues">OpenAjax Evaluation Library Rulesets and Rules Issues List (GitHub Issue List)</a></dt>
@@ -36,7 +39,7 @@ Report Issues
     
     <dl>
     <dt>Announcements</dt>  
-    <dd>The <a href="https://lists.illinois.edu/lists/subscribe/oaa-tools-announcements">Open Accessibility Alliance Tools announcements list</a> is for people who would like learn about the latest releases of FAE 2.0.  It is a one way low volume e-mail list announcing major changes to the tools or training opportunities to learn more about accessibility.</dd>
+    <dd>The <a href="https://lists.illinois.edu/lists/subscribe/oaa-tools-announcements">Open Accessibility Alliance Tools announcements list</a> is for people who would like learn about the latest releases of FAE 2.0.  It is a one way low volume e-mail list announcing major changes to the tools or training opportunities to learn more about accessibility.  <a href="{% url 'registration_register' %}">Registered users</a> of FAE are automatically added to this list, but users can remove themselves from the list by updating their <a href="{% url 'user_profile' %}">User Account</a>.</dd>
 
     <dt>Discussion</dt>  
     <dd>The <a href="https://lists.illinois.edu/lists/subscribe/oaa-tools-discussions">Open Accessibility Alliance Tools discussion list</a> is for people who would like to have more direct participation in setting the direction for development of FAE 2.0 and discuss issues with the development team.  The group also holds a monthly teleconference to discuss user and development issues.</dd>

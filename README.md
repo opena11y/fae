@@ -10,6 +10,8 @@ Development is primarily supported by the [University of Illinois at Urbana-Cham
 * The rules support not only accessibility, but also usable web design for people with disabilities.
 * The rules support accessible and usable design by enforcing the accessible coding practices and techniques of the Accessible Rich Internet Application (ARIA) 1.0 and W3C HTML5 specifications.  
 
+## Apache 2.0 License
+FAE may be used and distributed based on the terms and conditions of the [Apache License Version 2.0](http://www.apache.org/licenses/LICENSE-2.0). 
 
 ## Server requirements
 
@@ -108,8 +110,9 @@ vironments/fae2/lib/python3.4/site-packages/
 </pre>
 
 ### Setting up fae directories for read/write access
-* Need to create "fae2/data/" with write permissions for fae-util, typically "root" 
-* Need to create "fae2/logs/" with write permissions for "apache" user
+* Need to create "data/" with write permissions for fae-util, typically "root" 
+* Need to create "logs/" with write permissions for "apache" user
+
 
 ### Initialize database tables
 * You will need to run <code>python manage.py migrate</code> to create the tables in the database

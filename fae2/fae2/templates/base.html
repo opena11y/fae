@@ -68,11 +68,29 @@
                     <li><a href="{% url 'privacy'         %}">Privacy</a></li>
                     <li><a href="{% url 'versions'        %}">Version History</a></li>
                     <li><a href="{% url 'contact_form'    %}">Contact</a></li>
-                    <li><a href="{% url 'report_issues'   %}">Report Issues</a></li>
+                    <li><a href="{% url 'report_issues'   %}">Create Issues</a></li>
               </ul>
             </li>
+            {% if user.is_superuser %}
+            <li class="dropdown">
+              <a  href="#" 
+                  class="dropdown-toggle" 
+                  data-toggle="dropdown" 
+                  role="button"
+                  aria-haspopup="true"
+                  aria-expanded="false">
+                Admin
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu" role="menu" aria-label="Administration Options">
+                    <li><a href="{% url 'fae_status'       %}">Processing Status</a></li>
+                    <li><a href="{% url 'responses'        %}">Respond to Contacts</a></li>
+                    <li><a href="{% url 'all_user_information' %}">User Information</a></li>
+              </ul>
+            </li>        
+            {% endif %}
             {% if user.is_authenticated %}
-              <li><a href="{% url 'account_profile' %}" >My Account</a></li>
+              <li><a href="{% url 'user_profile' %}" >My Account</a></li>
               <li><a href="{% url 'logout' %}" >Logout: {{user.username}}</a></li>
             {% else %}
               {% if self_registration_enabled %}
@@ -101,8 +119,7 @@
 
         <div class="row">
 
-          <div class="col-xs-2 col-sm-2 col-md-3 col-lg-2">
-
+          <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
           {% if user.is_authenticated %}
             <nav aria-labelledby="nav-report-management">
 
@@ -271,7 +288,7 @@
           {% endif %}
           </div>
 
-          <div class="col-xs-10 col-sm-10 col-md-9 col-lg-10">
+          <div class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
           {% if messages %}
             <section aria-labelledby="messages-label">
                 <h2 id="messages-label" class="sr-only">Important Messages</h2>
@@ -290,6 +307,7 @@
             {% endblock content %}
             </section>
           </div>
+
         </div>  
 
       </div>  
@@ -301,7 +319,7 @@
         <div style="float: left">
         Version {% include 'version.txt' %} | <a href="{% url 'run_referer_report' %}">Evaluate Page</a>
         </div>
-        <div class="text-right">Copyright 2014-16</div>
+        <div class="text-right">Copyright Universioty of Illinois 2014-16</div>
       </div>
     </footer>
 

@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load staticfiles i18n %}
+{% load tz %}
+
+{% block breadcrumb %}
+  <li>Contact Responses</li>
+{% endblock %}
+
+{% block title %}
+  Contact Responses
+{% endblock %}
+
+{% block content %}
+{% localtime on %}
+
+<section aria-labelledby="id_new_contacts">
+    <h2 id="id_new_contacts">New Contacts</h2>
+    {% if user.comments.length %}
+    <p>No contacts</p>
+    {% else %}
+        <table class="details table table-striped table-hover" aria-labelledby="id_new_contacts">
+            <thead>
+                <th>Date</th>
+                <th>Topic</th>
+                <th>Message</th>
+                <th>Response</th>
+            </thead>
+            <tbody>
+                {% for contact in new_contacts %}
+                <tr>
+                    <td>{{contact.date}}</td>
+                    <td>{{contact.topic}}</td>
+                    <td>{{contact.message}}</td>
+                    <td>
+                        <a href="{% url 'response_form' contact.id %}">{{contact.show_status}} {{contact.id}}</strong><br/>
+                        {{contact.comments}}
+                    </td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+    {% endif %}
+</section>
+
+<section aria-labelledby="id_old_contacts">
+    <h2 id="id_old_contacts">Contacts with Responses</h2>
+    {% if user.comments.length %}
+    <p>No contacts</p>
+    {% else %}
+        <table class="details table table-striped table-hover" aria-labelledby="id_old_contacts">
+            <thead>
+                <th>Date</th>
+                <th>Topic</th>
+                <th>Message</th>
+                <th>Response</th>
+            </thead>
+            <tbody>
+                {% for contact in old_contacts %}
+                <tr>
+                    <td>{{contact.date}}</td>
+                    <td>{{contact.topic}}</td>
+                    <td>{{contact.message}}</td>
+                    <td>
+                        <strong><a href="{% url 'response_form' contact.id %}">{{contact.show_status}} {{contact.id}}</a></strong><br/>
+                        {{contact.comments}}
+                    </td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+    {% endif %}
+</section>
+
+{% endlocaltime %}
+
+
+{% endblock %}
+

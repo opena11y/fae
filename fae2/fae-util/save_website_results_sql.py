@@ -1513,6 +1513,8 @@ class DataWebsiteResult(DataRuleResult):
 def saveResultsToDjango(APP_DIR, ws_report):
   debug("APP_DIR: " + APP_DIR)
 
+  debug("APP_DIR: " + APP_DIR)
+
   def getPageDataFromJSON(num, data):
   
     pr = DataPageResult(wsr, num, data['eval_url'], data['eval_url_encoded'], data['eval_title'], data['markup_information'])
