@@ -82,10 +82,10 @@
                 Admin
                 <span class="caret"></span>
               </a>
-              <ul class="dropdown-menu" role="menu" aria-label="Admin">
-                    <li><a href="{% url 'fae_status'       %}">System Status</a></li>
+              <ul class="dropdown-menu" role="menu" aria-label="Administration Options">
+                    <li><a href="{% url 'fae_status'       %}">Processing Status</a></li>
                     <li><a href="{% url 'responses'        %}">Respond to Contacts</a></li>
-                    <li><a href="{% url 'responses' %}">User Information</a></li>
+                    <li><a href="{% url 'all_user_information' %}">User Information</a></li>
               </ul>
             </li>        
             {% endif %}

@@ -28,7 +28,8 @@ from django.contrib.auth.mixins    import LoginRequiredMixin
 
 
 from django.contrib.auth.models import User
-from userProfiles.models import UserProfile
+from userProfiles.models        import UserProfile
+from stats.models               import StatsUser
 
 from django.forms.models import inlineformset_factory
 
@@ -121,4 +122,38 @@ class StatusView(LoginRequiredMixin, TemplateView):
         
         return context  
 
+# ==============================================================
+#
+# Use Information View
+#
+# ==============================================================
+
+class AllUserInformationView(LoginRequiredMixin, TemplateView):
+    template_name = 'accounts/all_user_information.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(AllUserInformationView, self).get_context_data(**kwargs)
+
+        user_profiles = UserProfile.objects.all()
+
+        context['include_announcements']  = user_profiles.filter(email_announcements=True)
+        context['exclude_announcements']  = user_profiles.filter(email_announcements=False)
+        context['stats_users']             = StatsUser.objects.all()
+        
+        return context  
+
+class UserInformationView(LoginRequiredMixin, TemplateView):
+    template_name = 'accounts/user_information.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(UserInformationView, self).get_context_data(**kwargs)
+
+        user = User.objects.get(id=kwargs['user_id'])
+        user_profile = UserProfile.objects.get(user=user)
+        stats_user   = StatsUser.objects.get(user=user)
+
+        context['user_profile']  = user_profile
+        context['stats_user']    = stats_user
+        
+        return context  
 

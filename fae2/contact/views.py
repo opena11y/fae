@@ -51,8 +51,6 @@ class ResponseFormView(LoginRequiredMixin, UpdateView):
     fields = ['topic', 'message', 'status', 'comments']
     template_name = 'contact/response_form.html'
 
-    success_url = reverse_lazy('contacts')
-
     login_url = reverse_lazy('run_anonymous_report')
     redirect_field_name = "Anonymous Report"
 
@@ -61,9 +59,17 @@ class ResponseFormView(LoginRequiredMixin, UpdateView):
 
         return super(ResponseFormView, self).form_valid(form)
 
-    def form_invalid(self, form):
+    def get_success_url(self):
+        return reverse('response_form', kwargs={'pk': self.get_object().id})
 
-        return super(ResponseFormView, self).form_invalid(form)  
+    def get_context_data(self, **kwargs):
+
+        context = super(ResponseFormView, self).get_context_data(**kwargs)
+        context['action'] = reverse('response_form',
+                                    kwargs={'pk': self.get_object().id})
+
+        return context
+
 
 class ResponsesView(LoginRequiredMixin, TemplateView):
     template_name = 'contact/responses.html'
