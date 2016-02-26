@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
+from django.core.mail import send_mail
 from django.core.urlresolvers import reverse_lazy, reverse
 
 from django.contrib.messages.views import SuccessMessageMixin
@@ -26,10 +27,13 @@ from django.contrib.auth.models import User
 
 from .models import Contact
 
+from fae2.settings import EMAIL_HOST_USER
+from fae2.settings import ADMIN_EMAIL
+
 # Create your views here.
 class ContactFormView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Contact
-    fields = ['topic', 'message', 'status']
+    fields = ['topic', 'message']
     template_name = 'contact/contact_form.html'
 
     success_url = reverse_lazy('contact_form')
@@ -40,7 +44,19 @@ class ContactFormView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     permission_denied_message = "You must login to contact the administrator"
 
     def form_valid(self, form):
-        form.instance.user = self.request.user
+        user = self.request.user
+        form.instance.user = user
+
+        message = "The following message was submitted to the FAE contact system" 
+        message += "\n\nUser: " + user.first_name + " " + user.last_name
+        message += "\nUsername: " + user.username
+        message += "\nE-mail: " + user.email
+        message += "\n\nTopic: " + form.instance.topic 
+        message += "\n\nMessage:\n" + form.instance.message
+        
+        contact_topic = "FAE: " + form.instance.topic
+
+        send_mail(contact_topic, message, EMAIL_HOST_USER, [ADMIN_EMAIL], fail_silently=False)
 
         return super(ContactFormView, self).form_valid(form)
 
@@ -57,10 +73,26 @@ class ResponseFormView(LoginRequiredMixin, UpdateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
 
+        user = self.request.user
+        form.instance.user = user
+
+        message = "The following message was submitted to the FAE contact system" 
+        message += "\n\nUser: "      + user.first_name + " " + user.last_name
+        message += "\nUsername: "    + user.username
+        message += "\nE-mail: "      + user.email
+        message += "\n\nTopic: "     + form.instance.topic 
+        message += "\n\nStatus:\n"   + form.instance.show_status()
+        message += "\n\nMessage:\n"  + form.instance.message
+        message += "\n\nResponse:\n" + form.instance.comments
+        
+        contact_topic = "FAE: " + form.instance.topic
+
+        send_mail(contact_topic, message, EMAIL_HOST_USER, [ADMIN_EMAIL], fail_silently=False)
+
         return super(ResponseFormView, self).form_valid(form)
 
     def get_success_url(self):
-        return reverse('response_form', kwargs={'pk': self.get_object().id})
+        return reverse('responses', kwargs={})
 
     def get_context_data(self, **kwargs):
 

@@ -67,6 +67,8 @@ EMAIL_HOST_USER_PASSWORD = get_secret('EMAIL_HOST_USER_PASSWORD')
 DEFAULT_FROM_EMAIL       = get_secret('EMAIL_HOST_USER')
 SERVER_EMAIL             = get_secret('EMAIL_HOST_USER')
 
+ADMIN_EMAIL              = get_secret('ADMIN_EMAIL')
+
 if get_secret('SITE_URL').find('127.0.0.1') >= 0 or get_secret('SITE_URL').find('localhost') >= 0:
   EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 else:  
