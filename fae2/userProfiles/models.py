@@ -81,7 +81,6 @@ def user_registered_callback(sender, user, request, **kwargs):
     profile.acct_type = 1
     profile.org = ''
     profile.save()
-    profile.add_website_report_group()
    
     # Update first and last name for user
     user.first_name = request.POST['first_name'] 
