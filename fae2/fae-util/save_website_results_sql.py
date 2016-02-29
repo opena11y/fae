@@ -90,14 +90,18 @@ log = False
 def debug(s):
   if DEBUG and log:
     log.write("[SAVE WEBSITE][debug  ]: " + str(s) + "\n")
+    log.flush()
+
 
 def info(s):
   if INFO and log:
     log.write("[SAVE WEBSITE][info   ]: " + str(s) + "\n")
+    log.flush()
 
 def error(s):
   if ERROR and log:
     log.write("[SAVE WEBSITE][**ERROR]: " + str(s) + "\n")
+    log.flush()
 
 # ---------------------------------------------------------------
 #

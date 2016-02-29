@@ -45,16 +45,25 @@ from save_website_results_sql import saveResultsToDjango
 DEBUG=True
 INFO=True
 
+log = open(os.path.join(APP_DIR + 'logs/fae-util.log'), 'w')
+
+print(str(log))
+
 def debug(s):
-  if DEBUG:
-    print('[PROC_EVAL_REQ][DEBUG]: ' + str(s))
+  if DEBUG and log:
+    log.write('[PROC_EVAL_REQ][DEBUG]: ' + str(s) + '\n')
+    log.flush()
 
 def info(s):
-  if INFO:
+  if INFO and log:
+    log.write('[PROC_EVAL_REQ][INFO]: ' + str(s) + '\n')
+    log.flush()
     print('[PROC_EVAL_REQ][INFO]: ' + str(s))
 
 def error(s):
-  print('[PROC_EVAL_REQ][ERROR]: ' + str(s))
+  if log:
+    log.flush()
+    log.write('[PROC_EVAL_REQ][**ERROR]: ' + str(s) + '\n')
 
 def init_oaa_script_file():
   f = open(fae_util_path + '/openajax_a11y/scripts.txt', 'w')
@@ -173,6 +182,7 @@ class faeUtilThread(threading.Thread):
       self.ws_report = ws_report
       info("=======================")
       info("Initializing report: " + str(self.ws_report))
+      info("           log file: " + str(self.ws_report.log_file))
       self.ws_report.set_status_initialized()
       initWebsiteReport(self.ws_report)
 
@@ -203,7 +213,7 @@ def main():
     init_count = len(ws_reports)
 
     ws_analyzing = WebsiteReport.objects.filter(status="A")
-    ws_saving = WebsiteReport.objects.filter(status="S")
+    ws_saving    = WebsiteReport.objects.filter(status="S")
 
     processing_count = len(ws_analyzing) + len(ws_saving)
 
@@ -222,7 +232,6 @@ def main():
         message_flag = False
 
       time.sleep(1)
-      
 
           
 if __name__ == "__main__":

@@ -41,14 +41,18 @@ log = False
 def debug(s):
   if DEBUG and log:
     log.write("[SAVE_FAE_UTIL][debug  ]: " + str(s))
+    log.flush()
+
 
 def info(s):
   if INFO and log:
     log.write("[SAVE_FAE_UTIL][Info   ]: " + str(s))
+    log.flush()
 
 def error(s):
   if ERROR and log:
     log.write("[SAVE_FAE_UTIL][**ERROR]: " + str(s))
+    log.flush()
     
 
 def stripQuotes(s):
