@@ -353,7 +353,7 @@ class WebsiteReport(RuleGroupResult):
 
     pi = processing_info()
 
-    fname = APP_DIR + self.data_directory + "/data/status.txt"
+    fname = self.data_directory + "/data/status.txt"
     print('[WebsiteReport][get_processing_status] ' + APP_DIR)
     print('[WebsiteReport][get_processing_status] ' + fname)
 
