@@ -81,21 +81,23 @@ class RULE_RESULT:
   WARNING        = 4
   VIOLATION      = 5    
 
-DEBUG=True
+DEBUG=False
 INFO=True
 ERROR=True
 
+log = False
+
 def debug(s):
-  if DEBUG:
-    print ("[SAVE WEBSITE][debug  ]: " + str(s))
+  if DEBUG and log:
+    log.write("[SAVE WEBSITE][debug  ]: " + str(s) + "\n")
 
 def info(s):
-  if INFO:
-    print ("[SAVE WEBSITE][info   ]: " + str(s))
+  if INFO and log:
+    log.write("[SAVE WEBSITE][info   ]: " + str(s) + "\n")
 
 def error(s):
-  if ERROR:
-    print ("[SAVE WEBSITE][**ERROR]: " + str(s))
+  if ERROR and log:
+    log.write("[SAVE WEBSITE][**ERROR]: " + str(s) + "\n")
 
 # ---------------------------------------------------------------
 #
@@ -782,7 +784,7 @@ class DataPageResult(DataRuleResult):
     self.page_rule_results         = []
     
     if mi:
-      self.markup_info = PageMarkupInformation(mi)
+      self.markup_info = PageMarkupInformation(mi, log)
     else:
       self.markup_info = False   
 
@@ -1508,7 +1510,10 @@ class DataWebsiteResult(DataRuleResult):
 #
 # ---------------------------------------------------------------
         
-def saveResultsToDjango(ws_report):
+def saveResultsToDjango(ws_report, l):
+
+  global log 
+  log = l
 
   def getPageDataFromJSON(num, data):
   

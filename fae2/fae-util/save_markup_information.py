@@ -34,22 +34,24 @@ DEBUG=False
 INFO=True
 ERROR=True
 
-def debug(s):
-  if DEBUG:
-    print ("[SAVE MARKUP][DEBUG]: " + str(s))
-
-def info(s):
-  if INFO:
-    print ("[SAVE MARKUP][INFO]: " + str(s))
-
-def error(s):
-  if ERROR:
-    print ("[SAVE MARKUP][ERROR]: " + str(s))
-    
 class PageMarkupInformation:
 
-  def __init__(self, mi):
+  def __init__(self, mi, log):
     self.markup_information = mi
+    log = log
+
+  def debug(s):
+    if DEBUG and log:
+      log.write("[SAVE MARKUP][DEBUG]: " + str(s) + "\n")
+
+  def info(s):
+    if INFO and log:
+      log.write("[SAVE MARKUP][INFO]: " + str(s) + "\n")
+
+  def error(s):
+    if ERROR and log:
+      log.write("[SAVE MARKUP][ERROR]: " + str(s) + "\n")
+
 
   def saveMarkupGroup(self, page_result, group, cursor):
   
@@ -71,7 +73,7 @@ class PageMarkupInformation:
       # Data insertion operation - commit required
       cursor.execute(insert_str, [])
     except:
-      error("[PageMarkupInformation][saveMarkupGroup] SQL insert error ")
+      self.error("[PageMarkupInformation][saveMarkupGroup] SQL insert error ")
      
   
   def saveToDjango(self, page_result):
@@ -81,5 +83,5 @@ class PageMarkupInformation:
       for group in self.markup_information:
         self.saveMarkupGroup(page_result, group, cursor)
     except:
-      error("[PageMarkupInformation][saveToDango] SQL insert error ")
+      self.error("[PageMarkupInformation][saveToDango] SQL insert error ")
       

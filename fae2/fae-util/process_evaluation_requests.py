@@ -128,7 +128,7 @@ def initWebsiteReport(ws_report):
 
   return
 
-def analyzeWebsiteReport(ws_report):
+def analyzeWebsiteReport(ws_report, log):
 
   def countResultFiles(dir):
     fname = dir + "/processed_urls.csv"
@@ -152,7 +152,7 @@ def analyzeWebsiteReport(ws_report):
     cmd.append('-a')
     cmd.append(ws_report.data_authorization_file)
 
-  proc = subprocess.call(cmd)      
+  proc = subprocess.call(cmd, stdout=log)      
         
   page_count = countResultFiles(ws_report.data_directory + '/data')
 
@@ -178,13 +178,17 @@ class faeUtilThread(threading.Thread):
 
     def run(self):
 
+      log = open(self.ws_report.log_file, 'w')
+
       info("Analyze website: " + str(self.ws_report))
       self.ws_report.set_status_analyzing()
-      analyzeWebsiteReport(self.ws_report)
+      analyzeWebsiteReport(self.ws_report, log)
 
       info("Saving Data: " + str(self.ws_report))
       self.ws_report.set_status_saving()
-      saveResultsToDjango(self.ws_report)
+      saveResultsToDjango(self.ws_report, log)
+
+      log.close()
 
 
 def main():

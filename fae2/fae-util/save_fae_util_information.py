@@ -36,20 +36,21 @@ DEBUG=False
 INFO=True
 ERROR=True
 
+log = False 
+
 def debug(s):
-  if DEBUG:
-    print ("[SAVE UTIL   ][debug  ]: " + str(s))
+  if DEBUG and log:
+    log.write("[SAVE_FAE_UTIL][debug  ]: " + str(s))
 
 def info(s):
-  if INFO:
-    print ("[SAVE UTIL   ][Info   ]: " + str(s))
+  if INFO and log:
+    log.write("[SAVE_FAE_UTIL][Info   ]: " + str(s))
 
 def error(s):
-  if ERROR:
-    print ("[SAVE UTIL   ][**ERROR]: " + str(s))
+  if ERROR and log:
+    log.write("[SAVE_FAE_UTIL][**ERROR]: " + str(s))
     
 
-    
 def stripQuotes(s):
   if s.startswith('"') and s.endswith('"'):
     s = s[1:-1]  
