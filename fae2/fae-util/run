@@ -12,5 +12,6 @@ else
   export FAE_HOME
 fi
 
+
 . $FAE_HOME/org/fae/util/classpath
 java org.fae.util.FaeUtil $@

@@ -229,7 +229,7 @@ class WebsiteReport(RuleGroupResult):
   def save(self):
 
     if len(self.data_dir_slug) == 0:
-      DIR = ''
+      DIR = APP_DIR
 
       count = len(WebsiteReport.objects.filter(user=self.user)) + 1
 
@@ -243,7 +243,7 @@ class WebsiteReport(RuleGroupResult):
       else:  
         self.data_authorization_file = ""
 
-      self.log_file = DIR + "logs/" + self.user.username + "_" + self.data_dir_slug 
+      self.log_file = self.data_directory + "/" +  self.data_dir_slug + ".log" 
     
       self.status = '-' 
 

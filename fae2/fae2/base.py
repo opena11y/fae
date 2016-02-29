@@ -67,8 +67,6 @@ EMAIL_HOST_USER_PASSWORD = get_secret('EMAIL_HOST_USER_PASSWORD')
 DEFAULT_FROM_EMAIL       = get_secret('EMAIL_HOST_USER')
 SERVER_EMAIL             = get_secret('EMAIL_HOST_USER')
 
-ADMIN_EMAIL              = get_secret('ADMIN_EMAIL')
-
 if get_secret('SITE_URL').find('127.0.0.1') >= 0 or get_secret('SITE_URL').find('localhost') >= 0:
   EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 else:  
@@ -84,6 +82,16 @@ SELF_REGISTRATION_ENABLED = get_secret('SELF_REGISTRATION_ENABLED')
 SHIBBOLETH_ENABLED        = get_secret('SHIBBOLETH_ENABLED')
 SHIBBOLETH_URL            = get_secret('SHIBBOLETH_URL')
 SHIBBOLETH_NAME           = get_secret('SHIBBOLETH_NAME')
+
+SITE_NAME = get_secret('SITE_NAME')
+SITE_URL  = get_secret('SITE_URL')
+
+ADMIN_USER_NAME          = get_secret('ADMIN_USER_NAME')
+ADMIN_FIRST_NAME         = get_secret('ADMIN_FIRST_NAME')
+ADMIN_LAST_NAME          = get_secret('ADMIN_LAST_NAME')
+ADMIN_PASSWORD           = get_secret('ADMIN_PASSWORD')
+ADMIN_EMAIL              = get_secret('ADMIN_EMAIL')
+ANONYMOUS_PASSWORD       = get_secret('ANONYMOUS_PASSWORD')
 
 # Application definition
 

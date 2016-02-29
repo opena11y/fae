@@ -14,47 +14,39 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
-import sys,os
+import sys
+import os
 import django
-import json
-from os.path import join, abspath, dirname
-
 from django.core.exceptions import ObjectDoesNotExist
-from django.core.exceptions import ImproperlyConfigured
+import json
 
-sys.path.append(os.path.abspath('..'))
-# print('\nSystem Paths\n' + str(sys.path) + '\n')
+fp = os.path.realpath(__file__)
+path, filename = os.path.split(fp)
+
+fae2_path = path.split('/populate')[0]
+sys.path.append(fae2_path)
+
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'fae2.settings')
 from django.conf import settings
+
 django.setup()
 
 """This file is for populating the database with markup information
 I empty it. Run as a standalone script!"""
 
 from django.core.exceptions      import ObjectDoesNotExist
+from django.core.exceptions      import ImproperlyConfigured
 from django.contrib.sites.models import Site
 from django.contrib.auth.models  import User
 from userProfiles.models         import UserProfile
 from websiteResultGroups.models  import WebsiteReportGroup
 from stats.models                import StatsUser
 
-# JSON-based secrets module
-with open(join(settings.BASE_DIR,"secrets.json")) as f:
-    secrets = json.loads(f.read())
-
-
-def get_secret(setting, secrets=secrets):
-    """(Get the secret variable or return explicit exception.)"""
-    try:
-        return secrets[setting]
-    except KeyError:
-        error_msg = "Set the {0} enviroment variable".format(setting)
-        raise ImproperlyConfigured
 
 
 users = (
-(get_secret('ADMIN_USER_NAME'), get_secret('ADMIN_PASSWORD'), get_secret('ADMIN_EMAIL'), get_secret('ADMIN_FIRST_NAME'), get_secret('ADMIN_LAST_NAME'), True, True, True), 
-('anonymous', get_secret('ANONYMOUS_PASSWORD'), '', 'Anonymous', 'Anonymous', True, False, False), 
+(settings.ADMIN_USER_NAME, settings.ADMIN_PASSWORD, settings.ADMIN_EMAIL, settings.ADMIN_FIRST_NAME, settings.ADMIN_LAST_NAME, True, True, True), 
+('anonymous', settings.ANONYMOUS_PASSWORD, '', 'Anonymous', 'Anonymous', True, False, False), 
 )
 
 
@@ -98,6 +90,6 @@ def set_site(name, url):
     site.save()
 
 create_users(users)
-set_site(get_secret('SITE_NAME'), get_secret('SITE_URL'))
+set_site(settings.SITE_NAME, settings.SITE_URL)
 
 

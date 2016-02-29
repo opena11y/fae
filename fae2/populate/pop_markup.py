@@ -14,13 +14,16 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
-import os
 import sys
+import os
 import django
-
 from django.core.exceptions import ObjectDoesNotExist
 
-sys.path.append(os.path.abspath('..'))
+fp = os.path.realpath(__file__)
+path, filename = os.path.split(fp)
+
+fae2_path = path.split('/populate')[0]
+sys.path.append(fae2_path)
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'fae2.settings')
 from django.conf import settings

@@ -228,7 +228,7 @@ class FaeUtil {
     if (m_ctrl.CONFIG_FILE != null && m_ctrl.CONFIG_FILE.length() > 0) {
       try {
         //m_props = new Properties();
-        m_props.load(new FileInputStream(homeDir + "/" + m_ctrl.CONFIG_FILE));
+        m_props.load(new FileInputStream(m_ctrl.CONFIG_FILE));
 
         // override command line options
         if (m_props.containsKey(m_ctrl.browserVersion.getLongOpt()))
@@ -388,6 +388,7 @@ class FaeUtil {
     // ------------------------------------------------------------------------
     // Get file extensions to ignore
     String exExt = m_props.getProperty("excludeExtensions");
+    System.out.println("exExt: " + exExt);
     if (exExt == null || exExt.length() == 0) {
       exExt = homeDir + "/excludeExtensions.txt";
     }

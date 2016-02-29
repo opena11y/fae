@@ -18,7 +18,16 @@ import django
 
 import threading
 
-sys.path.append(os.path.abspath('..'))
+fp = os.path.realpath(__file__)
+path, filename = os.path.split(fp)
+os.environ['FAE_HOME'] = path
+
+fae_util_path = path
+
+fae2_path = path.split('/fae-util')[0]
+sys.path.append(fae2_path)
+
+print("PATH="+ str(sys.path))
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'fae2.settings')
 django.setup()
@@ -47,25 +56,30 @@ def info(s):
 def error(s):
   print('[PROC_EVAL_REQ][ERROR]: ' + str(s))
 
-DATA_DIR_PREFIX = "./../../"
+def init_oaa_script_file():
+  f = open(fae_util_path + '/openajax_a11y/scripts.txt', 'w')
+  f.write(fae_util_path + '/openajax_a11y/oaa_a11y_evaluation.js\n')
+  f.write(fae_util_path + '/openajax_a11y/oaa_a11y_rules.js\n')
+  f.write(fae_util_path + '/openajax_a11y/oaa_a11y_rulesets.js\n')
+  f.close()
+
 
 def initWebsiteReport(ws_report):
-
 
   data_dir       = ws_report.data_directory 
   data_prop_file = ws_report.data_property_file
   data_auth_file = ws_report.data_authorization_file
   data_urls_file = ws_report.data_multiple_urls_file
   
-  if os.path.exists(DATA_DIR_PREFIX + data_dir):
-     shutil.rmtree(DATA_DIR_PREFIX + data_dir)
+  if os.path.exists(data_dir):
+     shutil.rmtree(data_dir)
           
-  os.makedirs(DATA_DIR_PREFIX + data_dir)
+  os.makedirs(data_dir)
           
-  file_prop = open(DATA_DIR_PREFIX + data_prop_file, 'w')
+  file_prop = open(data_prop_file, 'w')
 
   if len(data_urls_file) > 0:  
-    file_prop.write("multipleUrls=" + DATA_DIR_PREFIX + data_urls_file + '\n')
+    file_prop.write("multipleUrls=" + data_urls_file + '\n')
   else:    
     file_prop.write("url=" + ws_report.url + '\n')
 
@@ -85,11 +99,11 @@ def initWebsiteReport(ws_report):
   file_prop.write("excludeDomains=" + ws_report.exclude_sub_domains + '\n') 
   file_prop.write("includeDomains=" + ws_report.include_domains     + '\n')
 
-  file_prop.write("outputDirectory=" + DATA_DIR_PREFIX + ws_report.data_directory + '/data' + '\n')
+  file_prop.write("outputDirectory=" + ws_report.data_directory + '/data' + '\n')
 
   file_prop.write("browserVersion=" + ws_report.browser_emulation   + '\n')
 
-  file_prop.write("scripts=openajax_a11y/scripts.txt\n")
+  file_prop.write("scripts=" + fae_util_path + "/openajax_a11y/scripts.txt\n")
   file_prop.write("exportFunction=toJSON\n")
   file_prop.write("exportExtension=json\n")
   file_prop.write("exportOption=true\n")
@@ -132,15 +146,15 @@ def analyzeWebsiteReport(ws_report):
   cmd.append(settings.APP_DIR + 'fae2/fae-util/run')
 
   cmd.append('-c')
-  cmd.append(DATA_DIR_PREFIX + ws_report.data_property_file)
+  cmd.append(ws_report.data_property_file)
 
   if len(ws_report.data_authorization_file):
     cmd.append('-a')
-    cmd.append(DATA_DIR_PREFIX + ws_report.data_authorization_file)
+    cmd.append(ws_report.data_authorization_file)
 
   proc = subprocess.call(cmd)      
         
-  page_count = countResultFiles(DATA_DIR_PREFIX + ws_report.data_directory + '/data')
+  page_count = countResultFiles(ws_report.data_directory + '/data')
 
   ave_time = "{:10.4f}".format(time.time()-start) + " seconds (0 pages)"
   if page_count > 0:
@@ -170,13 +184,14 @@ class faeUtilThread(threading.Thread):
 
       info("Saving Data: " + str(self.ws_report))
       self.ws_report.set_status_saving()
-      saveResultsToDjango(APP_DIR, self.ws_report)
+      saveResultsToDjango(self.ws_report)
 
 
 def main():
 
   message_flag = True
 
+  init_oaa_script_file()
 
   while True:  
     ws_reports = WebsiteReport.objects.filter(status="-")

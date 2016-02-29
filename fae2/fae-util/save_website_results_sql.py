@@ -73,8 +73,6 @@ from save_markup_information import PageMarkupInformation
 
 from django.db import connection, transaction
 
-from fae2.settings import APP_DIR
-
 class RULE_RESULT:
   UNDEFINED      = 0
   NOT_APPLICABLE = 1
@@ -1510,10 +1508,7 @@ class DataWebsiteResult(DataRuleResult):
 #
 # ---------------------------------------------------------------
         
-def saveResultsToDjango(APP_DIR, ws_report):
-  debug("APP_DIR: " + APP_DIR)
-
-  debug("APP_DIR: " + APP_DIR)
+def saveResultsToDjango(ws_report):
 
   def getPageDataFromJSON(num, data):
   
@@ -1600,7 +1595,9 @@ def saveResultsToDjango(APP_DIR, ws_report):
     
 #  os.path.walk(ws_report.data_directory + "/data", lister, None)  
  
-  dir = APP_DIR + ws_report.data_directory + "/data"
+  dir = ws_report.data_directory + "/data"
+  debug("[saveResultsToDjango][main] DATA_DIR: " + dir)
+
   for root, dirs, files in os.walk(dir):
     for file_name in files:
       debug('[saveResultsToDjango][main] ' + dir + '/' + file_name)
