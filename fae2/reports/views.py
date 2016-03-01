@@ -55,6 +55,51 @@ def check_url(url):
 
    return 'http://' + url
 
+
+def formatted_result_messages(result_message):
+
+    class FormattedResultMessage:
+
+        def __init__(self):
+            self.severity = "None"
+            self.message = ""
+            self.style =""
+
+    frms = []
+
+    if len(result_message) and result_message.find(':'):
+        rms = result_message.split(';')
+
+        for rm in rms:
+            frm = FormattedResultMessage()
+
+            parts = rm.split(':')
+
+            if len(parts) > 1:
+              frm.message  = parts[1]
+
+            if rm.find('P:') >= 0:
+                frm.severity = 'Pass'
+                frm.style = 'pass'
+            elif rm.find('V:') >= 0:
+                frm.severity = 'Violation'
+                frm.style = 'violation'
+            elif rm.find('W:') >= 0:    
+                frm.severity = 'Warning'
+                frm.style = 'warning'            
+            elif rm.find('MC:') >= 0:   
+                frm.severity = 'Manual Check'   
+                frm.style = 'manual_check'
+            elif rm.find("H:") >= 0:    
+                frm.severity = 'Hidden'   
+                frm.style = 'fae-hidden'
+
+            frms.append(frm)
+    else:
+        frm = FormattedResultMessage()
+        frms.append(frm)    
+    return frms    
+
 # ==============================================================
 #
 # Anonymous Run Report Views
@@ -413,7 +458,7 @@ class ReportGroupRuleView(TemplateView):
         context['view']             = view
         context['group']            = group
         context['summary']          = ws_rule_result
-        context['ws_rule_result']      = ws_rule_result
+        context['ws_rule_result']   = ws_rule_result
         
         return context            
 
@@ -472,7 +517,7 @@ class ReportGroupRulePageView(TemplateView):
         context['group']    = group
         context['summary']           = page_rule_result
         context['page_rule_result']  = page_rule_result
-        context['result_messages']   = page_rule_result.result_message.split(';')        
+        context['result_messages']   = formatted_result_messages(page_rule_result.result_message)       
         return context      
 
 class ReportGroupRulePageElementResultsJSON(TemplateView):
@@ -495,13 +540,13 @@ class ReportGroupRulePageElementResultsJSON(TemplateView):
         ws_rule_result   = group.ws_rule_results.get(slug=kwargs['rule'])
         page_rule_result = ws_rule_result.page_rule_results.get(page_result__page_number=kwargs['page'])
 
+        context['result_messages'] = formatted_result_messages(page_rule_result.result_message)
 
         context['report']   = report
         context['view']     = view
         context['group']    = group
         context['summary']           = page_rule_result
         context['page_rule_result']  = page_rule_result
-        context['result_messages']   = page_rule_result.result_message.split(';')        
         return context    
 
 class ReportAllPagesView(TemplateView):
@@ -684,15 +729,16 @@ class ReportPageGroupRuleView(TemplateView):
 
         report.update_last_page_urls(self.request.session)        
 
+        context['result_messages'] = formatted_result_messages(page_rule_result.result_message)
+
         context['report']        = report
         context['view']          = view
         context['summary']       = page
         context['group']         = group
         context['page']          = page
         context['page_rule_result'] = page_rule_result
-        context['result_messages']   = page_rule_result.result_message.split(';')        
 
-        
+
         return context             
 
 

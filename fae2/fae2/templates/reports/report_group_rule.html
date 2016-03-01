@@ -2,7 +2,7 @@
 {% load staticfiles i18n %}
 
 {% block breadcrumb %}
-    <li><a href="{% url 'show_report'       report.slug view %}">Summary</a></li>
+    <li><a href="{% url 'show_report'       report.slug view %}">All Rules</a></li>
     <li><a href="{% url 'show_report_group' report.slug view group.slug %}">{{group.get_title}}</a></li>
     <li>{{ws_rule_result.rule.nls_rule_id}}</li>
 {% endblock %}
@@ -15,9 +15,63 @@
 {% block content %}
     {% include "reports/report_information.html" %}
 
+<section aria-labelledby="id_rrs" style="margin-top: 4em; font-size: 120%">
+  <h2 id="id_rrs">Rule Result Summary</h2>
+
+  <div class="row">
+  <div class="col-md-5">
+  <table class="table" aria-labelledby="id_rrs" style="font-size: 120%; margin-bottom: 1em">
+    <thead>
+        <tr>
+            <th class="text col-md-2">Severity</th>
+            <th class="num col-md-3">Number of Pages</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if ws_rule_result.pages_violation > 0 %}
+        <tr>
+            <td class="text violation">Violations</td>
+            <td class="num">{{ws_rule_result.pages_violation}}</td>
+        </tr>
+        {% endif %}
+
+        {% if ws_rule_result.pages_warning > 0 %}
+        <tr>
+            <td class="text warning">Warnings</td>
+            <td class="num">{{ws_rule_result.pages_warning}}</td>
+        </tr>
+        {% endif %}
+
+        {% if ws_rule_result.pages_manaul_check > 0 %}
+        <tr>
+            <td class="text manual_check">Manual Checks</td>
+            <td class="num">{{ws_rule_result.pages_manual_check}}</td>
+        </tr>
+        {% endif %}
+
+        {% if ws_rule_result.pages_passed > 0 %}
+        <tr>
+            <td class="text passed">Manual Checks</td>
+            <td class="num">{{ws_rule_result.pages_passed}}</td>
+        </tr>
+        {% endif %}
+
+        {% if ws_rule_result.pages_na > 0 %}
+        <tr>
+            <td class="text not_applicable">Not Applicable</td>
+            <td class="num">{{ws_rule_result.pages_na}}</td>
+        </tr>
+        {% endif %}
+    </tbody>
+  </table>
+  </div>
+  </div>
+
+</section>
+
     <nav id="view_options" aria-label="Page view options">
         <ul class="nav nav-tabs hide-show">
-            <li><a href="#id_rule_details">Details/Actions</a></li>
+            <li><a href="#id_rule_details">Rule Details</a></li>
             <li class="active"><a href="#id_page_results">Page Results</a></li>
         </ul>
     </nav>  

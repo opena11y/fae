@@ -162,9 +162,9 @@ main table td.manual_check,
     padding-right: 1.25em;
 }
 
-main table th.hidden,
-main table td.hidden,
-.table-striped > tbody > tr > td.hidden
+main table th.fae-hidden,
+main table td.fae-hidden,
+.table-striped > tbody > tr > td.fae-hidden
 {
     background-color: #B4D8E7;
     color: black;
@@ -196,6 +196,17 @@ main table tr.summary {
 main table tr.summary th,
 main table tr.summary td {
     border-top: solid thin black;
+}
+
+main ul.result_messages {
+    margin: 0;
+    padding: 0.25em;
+    margin-left: 1em;
+}
+
+main ul.result_messages li {
+    font-size: 125%;
+    margin-bottom: 0.5em;
 }
 
 #summary table.summary
@@ -252,7 +263,7 @@ span.violation {
     padding-right: 0.25em;
 }
 
-.hidden {
+.fae-hidden {
     background-color: #B4D8E7;
     color: black;
     padding-left: 0.25em;

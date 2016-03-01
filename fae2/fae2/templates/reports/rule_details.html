@@ -9,52 +9,6 @@
                 <td class="rule">{{ rule.definition_html|safe }}</td>
             </tr>
             <tr>
-                <th>Action</th>
-                <td class="rule">
-
-                {%if ws_rule_result %}
-                <ul>
-                    {% if ws_rule_result.pages_violation = 1 %}
-                    <li>1 page with violations</li>
-                    {% elif ws_rule_result.pages_violation > 0 %}
-                    <li>{{ws_rule_result.pages_violation}} pages with violations</li>
-                    {% endif %}
-
-                    {% if ws_rule_result.pages_warning = 1 %}
-                    <li>1 page with warnings</li>
-                    {% elif ws_rule_result.pages_warning > 0 %}
-                    <li>{{ws_rule_result.pages_warning}} pages with warnings</li>
-                    {% endif %}
-
-                    {% if ws_rule_result.pages_manual_check = 1 %}
-                    <li>1 page wth manual checks</li>
-                    {% elif ws_rule_result.pages_manual_check > 0 %}
-                    <li>{{ws_rule_result.pages_manual_check}} pages wth manual checks</li>
-                    {% endif %}
-
-                    {% if ws_rule_result.pages_passed = 1 %}
-                    <li>1 page passed</li>
-                    {% elif ws_rule_result.pages_passed > 0 %}
-                    <li>{{ws_rule_result.pages_passed}} pages that passed</li>
-                    {% endif %}
-
-                    {% if ws_rule_result.pages_na = 1 %}
-                    <li>1 page requires no action</li>
-                    {% elif ws_rule_result.pages_na > 0 %}
-                    <li>{{ws_rule_result.pages_na}} pages require no action</li>
-                    {% endif %}
-                </ul>
-                {% elif page_rule_result %}
-                <ul>
-                    {% for rm in result_messages %}
-                    <li>{{rm}}</li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
-
-                </td>
-            </tr>
-            <tr>
                 <th>Purpose</th>
                 <td class="rule">
                 {{rule.purpose_html|safe}}
