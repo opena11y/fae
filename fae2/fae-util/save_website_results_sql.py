@@ -84,7 +84,7 @@ class RULE_RESULT:
   WARNING        = 4
   VIOLATION      = 5    
 
-DEBUG=True
+DEBUG=False
 INFO=True
 ERROR=True
 
@@ -1716,24 +1716,16 @@ def saveResultsToDjango(ws_report, l):
     debug("[SAVE_WEBSITE_RESULTS] Saving StatsUser: " + str(user_stats))  
     user_stats.ws_report_group.add_website_report(ws_report) 
 
-    debug("[SAVE_WEBSITE_RESULTS] Saving RegUser: " + str(stats_reg_users))  
     if ws_report.user.username != 'anonymous':
-      debug("[SAVE_WEBSITE_RESULTS] Saving RegUser 1")  
       stats_reg_users.ws_report_group.add_website_report(ws_report) 
-      debug("[SAVE_WEBSITE_RESULTS] Saving RegUser 2")  
 
     try:
-      debug("[SAVE_WEBSITE_RESULTS] Saving StatsRuleset 1")  
       ruleset_stats = StatsRuleset.objects.get(ruleset=ws_report.ruleset)
-      debug("[SAVE_WEBSITE_RESULTS] Saving StatsRuleset 2")  
     except ObjectDoesNotExist:
-      debug("[SAVE_WEBSITE_RESULTS] Saving StatsRuleset 3")  
       wsrg =  WebsiteReportGroup(title="Summary of results for Ruleset: " + str(ws_report.ruleset))
       wsrg.save()
-      debug("[SAVE_WEBSITE_RESULTS] Saving StatsRuleset 4")  
       ruleset_stats = StatsRuleset(ruleset=ws_report.ruleset, ws_report_group=wsrg, stats_all=stats_all)  
       ruleset_stats.save()
-      debug("[SAVE_WEBSITE_RESULTS] Saving StatsRuleset 5")  
 
     debug("[SAVE_WEBSITE_RESULTS] Saving StatsRuleset: " + str(ruleset_stats))  
     ruleset_stats.ws_report_group.add_website_report(ws_report)  
