@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block breadcrumb %}
+  <li>My Account</li>
+{% endblock %}
+
+{% block title %}
+  My Account
+{% endblock %}
+
+{% block content %}
+<div class="row">
+<section aria-labellebdy="id_stats" class="col-md-4">
+<h2 id="id_stats">Usage Stats</h2>
+<table  id="id_table_show_summary" class="details table table-striped table-hover"  aria-labelledby="id_stats">
+    <thead>
+      <tr>
+        <th id="id_grp" class="text">Time Period</th>
+        <th id="id_nor" class="num">Reports</th>
+        <th id="id_imp" class="mum">Pages</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th class="text">Last 30 Days</th>
+            <td class="num">{{user_stats.get_last_30_days.num_reports}}</td>
+            <td class="num">{{user_stats.get_last_30_days.num_pages}}</td>
+        </tr>
+        <tr>
+            <th class="text">All Time</th>
+            <td class="num">{{user_stats.ws_report_group.num_total_reports}}</td>
+            <td class="num">{{user_stats.ws_report_group.num_total_pages}}</td>
+        </tr>
+    </tbody>
+</table>    
+</section>
+</div>
+
+<section aria-labellebdy="id_account">
+<h2 id="id_account">Account</h2>
+
+<p>User name: {{user}}</p>
+<p>Saved reports: {{user_profile.max_saved}}</p>
+<p>Archived reports: {{user_profile.max_archive}}</p>
+
+</section>
+
+<section aria-labellebdy="id_profile">
+<h2 id="id_profile">Profile</h2>
+
+<form action="{% url 'user_profile' %}"
+      method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <input type="submit" value="Update Profile" />
+</form>
+
+</section>
+
+
+
+{% endblock %}
+
+

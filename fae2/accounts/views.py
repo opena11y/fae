@@ -37,6 +37,8 @@ from django import forms
 
 from websiteResults.models import WebsiteReport
 
+from timezone_field import TimeZoneFormField
+
 
 # Create your views here.
 
@@ -56,10 +58,10 @@ class UserProfileForm(forms.Form):
     org                 = forms.CharField(label="Organization", max_length=127, required=False)
     dept                = forms.CharField(label="Department", max_length=127, required=False)
     email_announcements = forms.BooleanField(required=False)
-
+    timezone            = TimeZoneFormField()
 
 class UpdateUserProfileView(LoginRequiredMixin, SuccessMessageMixin, FormView):
-    template_name = 'accounts/profile.html'
+    template_name = 'accounts/my_account.html'
     form_class    = UserProfileForm
 
     success_url = reverse_lazy('user_profile')
@@ -79,9 +81,10 @@ class UpdateUserProfileView(LoginRequiredMixin, SuccessMessageMixin, FormView):
         user.email      = form.cleaned_data['email']
         user.save()
 
-        profile        = user.profile
-        profile.org    = form.cleaned_data['org']
-        profile.dept   = form.cleaned_data['dept']
+        profile           = user.profile
+        profile.org       = form.cleaned_data['org']
+        profile.dept      = form.cleaned_data['dept']
+        profile.timezone  = form.cleaned_data['timezone']
         profile.email_announcements  = form.cleaned_data['email_announcements']
         profile.save()
 
@@ -98,13 +101,21 @@ class UpdateUserProfileView(LoginRequiredMixin, SuccessMessageMixin, FormView):
         initial['email']      = user.email
         initial['org']        = user.profile.org
         initial['dept']       = user.profile.dept
+        initial['timezone']   = user.profile.timezone
         initial['email_announcements']        = user.profile.email_announcements
         return initial
 
+    def get_context_data(self, **kwargs):
+        context = super(UpdateUserProfileView, self).get_context_data(**kwargs)
+
+        context['user_stats'] = StatsUser.objects.get(user=self.request.user)
+        context['user_profile'] = UserProfile.objects.get(user=self.request.user)
+        
+        return context  
 
 # ==============================================================
 #
-# Status View
+# Administration Status View
 #
 # ==============================================================
 
@@ -124,7 +135,7 @@ class StatusView(LoginRequiredMixin, TemplateView):
 
 # ==============================================================
 #
-# Use Information View
+# Administration Status View Use Information View
 #
 # ==============================================================
 
@@ -141,6 +152,7 @@ class AllUserInformationView(LoginRequiredMixin, TemplateView):
         context['stats_users']             = StatsUser.objects.all()
         
         return context  
+
 
 class UserInformationView(LoginRequiredMixin, TemplateView):
     template_name = 'accounts/user_information.html'

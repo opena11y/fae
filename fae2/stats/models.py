@@ -14,6 +14,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
+
+from datetime import datetime, timedelta
+
 from django.db import models
 
 from django.core.urlresolvers import reverse
@@ -21,6 +24,7 @@ from django.contrib.auth.models import User
 
 from websiteResultGroups.models import WebsiteReportGroup
 from rulesets.models            import Ruleset
+
 
 
 # ---------------------------------------------------------------
@@ -112,6 +116,12 @@ class StatsDay(models.Model):
 
 
 
+class UsageInfo:
+
+    def __init__(self):
+        self.num_reports = 0
+        self.num_pages = 0;            
+
 
 # ---------------------------------------------------------------
 #
@@ -120,9 +130,11 @@ class StatsDay(models.Model):
 # ---------------------------------------------------------------
 
 class StatsUser(models.Model):
+
+
     id   = models.AutoField(primary_key=True)
 
-    user         = models.ForeignKey(User, related_name="stats")
+    user = models.ForeignKey(User, related_name="stats")
 
     ws_report_group = models.OneToOneField(WebsiteReportGroup)
 
@@ -133,6 +145,24 @@ class StatsUser(models.Model):
 
     def __str__(self):
         return str(self.user)
+
+    def get_last_30_days(self):
+
+        usage = UsageInfo()
+
+        last_month = datetime.today() - timedelta(days=30)
+        print(last_month)
+        wsrs = self.ws_report_group.ws_reports.filter(created__gte=last_month)
+
+        for wsr in wsrs:
+            usage.num_reports += 1
+            usage.num_pages += wsr.page_count
+
+        return usage
+
+
+
+
 
 # ---------------------------------------------------------------
 #
