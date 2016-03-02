@@ -1648,7 +1648,7 @@ def saveResultsToDjango(ws_report, l):
         wsrg.save()
         stats_all = StatsAll(ws_report_group=wsrg) 
         stats_all.save()  
-    except ObjectDoesNotExist:
+    except:
       wsrg =  WebsiteReportGroup(title="Summary of all reports")
       wsrg.save()
       stats_all = StatsAll(ws_report_group=wsrg) 

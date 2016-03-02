@@ -84,19 +84,39 @@ class ShowUsageStatistics(TemplateView):
             day = StatsDay(stats_month=month, day=today.day, date=today, ws_report_group=wsrg)  
             day.save()
 
-        days   = StatsDay.objects.all()[:7]
+        seven_days   = StatsDay.objects.all()[:7]
 
-        anonymous       = User.objects.get(username="anonymous")
-        user_stats      = StatsUser.objects.exclude(user=anonymous)
-        anonymous_stats = StatsUser.objects.get(user=anonymous)         
+        wsrg =  WebsiteReportGroup(title="Summary of last seven days")
 
-        context['all']    = stats_all
-        context['year']   = year 
-        context['month']  = month
-        context['day']    = day
+        for d in seven_days:
+            wsrg.num_total_reports += d.ws_report_group.num_total_reports
+            wsrg.num_total_pages   += d.ws_report_group.num_total_pages
 
-        context['user_stats']      = user_stats
-        context['anonymous_stats'] = anonymous_stats
+        seven_days.ws_report_group = wsrg
+
+        stats_reg_users = StatsRegisteredUsers.objects.all()
+        if len(stats_reg_users) > 0:
+            stats_reg_users = stats_reg_users[0]
+        else:                
+            wsrg =  WebsiteReportGroup(title="Summary of registered users")
+            wsrg.save()
+            stats_reg_users = StatsRegisteredUsers(ws_report_group=wsrg)  
+            stats_reg_users.save()
+
+        stats_anonymous = StatsUser.objects.get(user__username='anonymous')     
+
+        stats_rulesets = StatsRuleset.objects.all()    
+
+        context['stats_all']        = stats_all
+        context['stats_year']       = year 
+        context['stats_month']      = month
+        context['stats_day']        = day
+        context['stats_seven_days'] = seven_days
+
+        context['stats_reg_users'] = stats_reg_users
+        context['stats_anonymous'] = stats_anonymous
+
+        context['stats_rulesets'] = stats_rulesets
         
         return context            
 
