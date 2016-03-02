@@ -23,6 +23,7 @@ from django.shortcuts import redirect
 import datetime
 
 from django.views.generic import TemplateView
+from django.core.exceptions import ObjectDoesNotExist
 
 from django.contrib.auth.models import User
 
@@ -30,6 +31,12 @@ from .models import StatsYear
 from .models import StatsMonth
 from .models import StatsDay
 from .models import StatsUser
+from .models import StatsAll
+from .models import StatsRuleset
+from .models import StatsRegisteredUsers
+
+from websiteResultGroups.models  import WebsiteReportGroup
+
 
 # Create your views here.
 
@@ -39,26 +46,56 @@ class ShowUsageStatistics(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(ShowUsageStatistics, self).get_context_data(**kwargs)
 
-        td= datetime.date.today()
+        try:
+          stats_all = StatsAll.objects.all()[0]
+        except:
+          wsrg =  WebsiteReportGroup(title="Summary of all reports")
+          wsrg.save()
+          stats_all = StatsAll(ws_report_group=wsrg) 
+          stats_all.save()  
 
-        year   = StatsYear.objects.get(year=td.year)
+        today= datetime.date.today()
+
+        try:
+            year   = StatsYear.objects.get(year=today.year)
+        except ObjectDoesNotExist:
+            wsrg =  WebsiteReportGroup(title="Summary of results year: " + str(today.year))
+            wsrg.save()
+            year = StatsYear(year=today.year, ws_report_group=wsrg, stats_all=stats_all)
+            year.save()
+
         years  = StatsYear.objects.all()
 
-        month  = StatsMonth.objects.get(stats_year=year, month=td.month)
+        try:
+            month  = StatsMonth.objects.get(stats_year=year, month=today.month)
+        except ObjectDoesNotExist:
+            wsrg =  WebsiteReportGroup(title="Summary of results month: " + str(today.year) + "-" + str(today.month))
+            wsrg.save()
+            month = StatsMonth(stats_year=year, month=today.month, ws_report_group=wsrg)
+            month.save()
+
         months = StatsMonth.objects.all()
 
-        today  = StatsDay.objects.get(stats_month=month, date=td)
+        try:
+            day  = StatsDay.objects.get(stats_month=month, day=today.day)
+        except ObjectDoesNotExist:
+            wsrg =  WebsiteReportGroup(title="Summary of results day: " + str(today.year) + "-" + str(today.month) + "-" + str(today.day))
+            wsrg.save()
+            day = StatsDay(stats_month=month, day=today.day, date=today, ws_report_group=wsrg)  
+            day.save()
+
         days   = StatsDay.objects.all()[:7]
 
         anonymous       = User.objects.get(username="anonymous")
         user_stats      = StatsUser.objects.exclude(user=anonymous)
         anonymous_stats = StatsUser.objects.get(user=anonymous)         
 
+        context['all']    = stats_all
         context['year']   = year 
         context['month']  = month
-        context['today']  = today
+        context['day']    = day
 
-        context['user_stats'] = user_stats
+        context['user_stats']      = user_stats
         context['anonymous_stats'] = anonymous_stats
         
         return context            

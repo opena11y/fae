@@ -41,6 +41,7 @@ from django.contrib.auth.models  import User
 from userProfiles.models         import UserProfile
 from websiteResultGroups.models  import WebsiteReportGroup
 from stats.models                import StatsUser
+from stats.models                import StatsRegisteredUsers
 
 
 
@@ -49,6 +50,13 @@ users = (
 ('anonymous', settings.ANONYMOUS_PASSWORD, '', 'Anonymous', 'Anonymous', True, False, False), 
 )
 
+try:
+  stats_reg_users = StatsRegisteredUsers.objects.all()[0]
+except:
+  wsrg =  WebsiteReportGroup(title="Summary of all registered users")
+  wsrg.save()
+  stats_reg_users = StatsRegisteredUsers(ws_report_group=wsrg) 
+  stats_reg_users.save()  
 
 def create_users(users):
     
@@ -75,13 +83,16 @@ def create_users(users):
         profile.save()   
 
         try:
-          stats = StatsUser.objects.get(user=user)
+          user_stats = StatsUser.objects.get(user=user)
         except:
           wsrg =  WebsiteReportGroup(title="Summary of results for " + str(user))
           wsrg.save()
-          stats = StatsUser(user=user, ws_report_group=wsrg)  
-        stats.save()   
+          user_stats = StatsUser(user=user, ws_report_group=wsrg)  
+        user_stats.save()   
 
+        if person[0] != 'anonymous':
+          stats_reg_users.user_stats.add(user_stats)
+          stats_reg_users.save()
         
 def set_site(name, url):
     site = Site.objects.get_current()

@@ -17,10 +17,29 @@ limitations under the License.
 from django.db import models
 
 from django.core.urlresolvers import reverse
+from django.contrib.auth.models import User
 
 from websiteResultGroups.models import WebsiteReportGroup
+from rulesets.models            import Ruleset
 
-from django.contrib.auth.models import User
+
+# ---------------------------------------------------------------
+#
+# StatsAll
+#
+# ---------------------------------------------------------------
+
+class StatsAll(models.Model):
+    id   = models.AutoField(primary_key=True)
+
+    ws_report_group = models.OneToOneField(WebsiteReportGroup)
+
+    class Meta:
+        verbose_name        = 'Stats All'
+        verbose_name_plural = 'Stats All'
+
+    def __str__(self):
+        return "All Years"
 
 # ---------------------------------------------------------------
 #
@@ -29,18 +48,20 @@ from django.contrib.auth.models import User
 # ---------------------------------------------------------------
 
 class StatsYear(models.Model):
-    id   = models.AutoField(primary_key=True)
-    year = models.IntegerField(default=2016)
+    id    = models.AutoField(primary_key=True)
+
+    stats_all = models.ForeignKey(StatsAll, blank=True, default=None, related_name='years')
+    year      = models.IntegerField(default=2016)
 
     ws_report_group = models.OneToOneField(WebsiteReportGroup)
 
     class Meta:
-        verbose_name        = "Stats Year"
-        verbose_name_plural = "Stats Years"
+        verbose_name        = 'Stats Year'
+        verbose_name_plural = 'Stats Years'
         ordering = ['-year']
 
     def __str__(self):
-        return str(self.year)
+        return 'Year: ' + str(self.year)
 
 # ---------------------------------------------------------------
 #
@@ -51,18 +72,18 @@ class StatsYear(models.Model):
 class StatsMonth(models.Model):
     id    = models.AutoField(primary_key=True)
 
-    stats_year = models.ForeignKey(StatsYear, blank=False)
+    stats_year = models.ForeignKey(StatsYear, blank=False, related_name='months')
     month      = models.IntegerField(default=1)
 
     ws_report_group = models.OneToOneField(WebsiteReportGroup)
 
     class Meta:
-        verbose_name        = "Stats Month"
-        verbose_name_plural = "Stats Months"
+        verbose_name        = 'Stats Month'
+        verbose_name_plural = 'Stats Months'
         ordering = ['-stats_year', '-month']
 
     def __str__(self):
-        return str(self.stats_year) + "-" + str(self.month)
+        return 'Month: %d-%02d' % (self.stats_year.year, self.month)
 
 
 # ---------------------------------------------------------------
@@ -76,17 +97,21 @@ class StatsDay(models.Model):
 
     date  = models.DateField(auto_now=True, editable=False)
 
-    stats_month = models.ForeignKey(StatsMonth, blank=False)
+    stats_month = models.ForeignKey(StatsMonth, blank=False, related_name='days')
+    day         = models.IntegerField(default=1)
 
     ws_report_group = models.OneToOneField(WebsiteReportGroup)
 
     class Meta:
-        verbose_name        = "Stats Day"
-        verbose_name_plural = "Stats Day"
-        ordering = ['-stats_month', '-date']
+        verbose_name        = 'Stats Day'
+        verbose_name_plural = 'Stats Day'
+        ordering = ['-stats_month', '-day']
 
     def __str__(self):
-        return str(self.date)
+        return 'Day: %d-%02d-%02d' % (self.stats_month.stats_year.year, self.stats_month.month, self.day)
+
+
+
 
 # ---------------------------------------------------------------
 #
@@ -97,15 +122,57 @@ class StatsDay(models.Model):
 class StatsUser(models.Model):
     id   = models.AutoField(primary_key=True)
 
-    user  = models.ForeignKey(User, related_name="stats")
+    user         = models.ForeignKey(User, related_name="stats")
 
     ws_report_group = models.OneToOneField(WebsiteReportGroup)
 
     class Meta:
-        verbose_name        = "Stats User"
-        verbose_name_plural = "Stats User"
+        verbose_name        = 'Stats User'
+        verbose_name_plural = 'Stats User'
         ordering = ['user']
 
     def __str__(self):
         return str(self.user)
 
+# ---------------------------------------------------------------
+#
+# StatsRegisteredUsers
+#
+# ---------------------------------------------------------------
+
+class StatsRegisteredUsers(models.Model):
+    id   = models.AutoField(primary_key=True)
+
+    ws_report_group = models.OneToOneField(WebsiteReportGroup)
+
+    user_stats = models.ManyToManyField(StatsUser, blank=True, default=None, related_name="stats_registered_users")
+
+    class Meta:
+        verbose_name        = 'Stats Registered Users'
+        verbose_name_plural = 'Stats Registered Users'
+
+    def __str__(self):
+        return "Stats Registered Users"
+
+# ---------------------------------------------------------------
+#
+# StatsRuleset
+#
+# ---------------------------------------------------------------
+
+class StatsRuleset(models.Model):
+    id   = models.AutoField(primary_key=True)
+
+    stats_all = models.ForeignKey(StatsAll, related_name='rulesets')
+
+    ruleset = models.ForeignKey(Ruleset, related_name='stats')
+
+    ws_report_group = models.OneToOneField(WebsiteReportGroup)
+
+    class Meta:
+        verbose_name        = 'Stats Ruleset'
+        verbose_name_plural = 'Stats Rulesets'
+        ordering = ['ruleset']
+
+    def __str__(self):
+        return str(self.ruleset)

@@ -60,6 +60,9 @@ from stats.models  import StatsYear
 from stats.models  import StatsMonth
 from stats.models  import StatsDay
 from stats.models  import StatsUser
+from stats.models  import StatsRegisteredUsers
+from stats.models  import StatsRuleset
+from stats.models  import StatsAll
 
 from websiteResultGroups.models  import WebsiteReportGroup
 
@@ -81,7 +84,7 @@ class RULE_RESULT:
   WARNING        = 4
   VIOLATION      = 5    
 
-DEBUG=False
+DEBUG=True
 INFO=True
 ERROR=True
 
@@ -90,18 +93,23 @@ log = False
 def debug(s):
   if DEBUG and log:
     log.write("[SAVE WEBSITE][debug  ]: " + str(s) + "\n")
-    log.flush()
+    log.flush()  
+    print("[SAVE WEBSITE][debug  ]: " + str(s) + "\n")
 
 
 def info(s):
   if INFO and log:
     log.write("[SAVE WEBSITE][info   ]: " + str(s) + "\n")
     log.flush()
+    if DEBUG:
+      print("[SAVE WEBSITE][info   ]: " + str(s) + "\n")
 
 def error(s):
   if ERROR and log:
     log.write("[SAVE WEBSITE][**ERROR]: " + str(s) + "\n")
     log.flush()
+    if DEBUG:
+      print("[SAVE WEBSITE][**ERROR]: " + str(s) + "\n")
 
 # ---------------------------------------------------------------
 #
@@ -1452,7 +1460,7 @@ class DataWebsiteResult(DataRuleResult):
           error("[WebsiteResult][saveToDjango]: website result") 
           exit()
 
-        debug("[WebsiteResult][saveToDjango]: saving " + str(len(self.website_rule_category_results)) + " website rc results")
+#        debug("[WebsiteResult][saveToDjango]: saving " + str(len(self.website_rule_category_results)) + " website rc results")
 
         for wsrcr in self.website_rule_category_results:
           try:
@@ -1460,7 +1468,7 @@ class DataWebsiteResult(DataRuleResult):
           except:
             error("[WebsiteResult][saveToDjango]: website rc result") 
 
-        debug("[WebsiteResult][saveToDjango]: saving " + str(len(self.website_guideline_results)) + " website gl results")    
+#        debug("[WebsiteResult][saveToDjango]: saving " + str(len(self.website_guideline_results)) + " website gl results")    
 
         for wsgr in self.website_guideline_results:
           try:
@@ -1468,7 +1476,7 @@ class DataWebsiteResult(DataRuleResult):
           except:
             error("[WebsiteResult][saveToDjango]: website gl result") 
 
-        debug("[WebsiteResult][saveToDjango]: saving " + str(len(self.website_rule_scope_results)) + " website rs results")    
+#        debug("[WebsiteResult][saveToDjango]: saving " + str(len(self.website_rule_scope_results)) + " website rs results")    
 
         for wsrsr in self.website_rule_scope_results:
           try:
@@ -1476,16 +1484,15 @@ class DataWebsiteResult(DataRuleResult):
           except:
             error("[WebsiteResult][saveToDjango]: website rs result") 
 
-        debug("[WebsiteResult][saveToDjango]: saving " + str(len(self.rule_results)) + " website rule results")    
+#        debug("[WebsiteResult][saveToDjango]: saving " + str(len(self.rule_results)) + " website rule results")    
 
         for wsrr in self.rule_results:
-          debug("[WebsiteResult][saveToDjango]: " + str(wsrr.rule_id))
           try:
             wsrr.saveToDjango(self, wsr)  
           except:
             error("[WebsiteResult][saveToDjango]: website rule result ") 
 
-        debug("[WebsiteResult][saveToDjango]: saving " + str(len(self.page_results)) + " page results") 
+#        debug("[WebsiteResult][saveToDjango]: saving " + str(len(self.page_results)) + " page results") 
    
         for pr in self.page_results:
           try:
@@ -1493,7 +1500,7 @@ class DataWebsiteResult(DataRuleResult):
           except:
             error("[WebsiteResult][saveToDjango]: page result") 
 
-        debug("[WebsiteResult][saveToDjango]: Done") 
+#        debug("[WebsiteResult][saveToDjango]: Done") 
      
       except:
         self.ws_report.set_status_error()
@@ -1631,58 +1638,106 @@ def saveResultsToDjango(ws_report, l):
     info("           Total Time: " + total)
     info('Average time per page: ' + ave_time) 
 
-    debug("Website Report: " + str(ws_report))
+
+    try:
+      stats_all = StatsAll.objects.all()
+      if len(stats_all) > 0:
+        stats_all = stats_all[0]
+      else:    
+        wsrg =  WebsiteReportGroup(title="Summary of all reports")
+        wsrg.save()
+        stats_all = StatsAll(ws_report_group=wsrg) 
+        stats_all.save()  
+    except ObjectDoesNotExist:
+      wsrg =  WebsiteReportGroup(title="Summary of all reports")
+      wsrg.save()
+      stats_all = StatsAll(ws_report_group=wsrg) 
+      stats_all.save()  
+
+    debug("[SAVE_WEBSITE_RESULTS] Saving StatsAll: " + str(stats_all))  
+    stats_all.ws_report_group.add_website_report(ws_report)  
 
     today = datetime.date.today()
-    debug("Stats Year: " + str(today.year))
     try:
       year = StatsYear.objects.get(year=today.year)
-    except:
+    except ObjectDoesNotExist:
       wsrg =  WebsiteReportGroup(title="Summary of results year: " + str(today.year))
       wsrg.save()
-      year = StatsYear(year=today.year, ws_report_group=wsrg) 
+      year = StatsYear(year=today.year, ws_report_group=wsrg, stats_all=stats_all) 
       year.save()  
-      info("         Created Year: " + str(today.year))  
     
+    debug("[SAVE_WEBSITE_RESULTS] Saving StatsYear: " + str(year))  
     year.ws_report_group.add_website_report(ws_report)  
 
-    debug("Stats Month: " + str(today.month))
     try:
       month = StatsMonth.objects.get(stats_year=year, month=today.month)
-    except:
-      wsrg =  WebsiteReportGroup(title="Summary of results month: " + str(today.year) + "-" + str(today.month))
+    except ObjectDoesNotExist:
+      wsrg =  WebsiteReportGroup(title="Summary of results month: %d-%02d" % (today.year, today.month))
       wsrg.save()
       month = StatsMonth(stats_year=year, month=today.month, ws_report_group=wsrg)  
       month.save()
-      info("        Created Month: " + str(today.month))
 
+    debug("[SAVE_WEBSITE_RESULTS] Saving StatsMonth: " + str(month))  
     month.ws_report_group.add_website_report(ws_report)  
 
-    debug("Stats Day: " + str(today))
     try:
-      day = StatsDay.objects.get(stats_month=today.month, date=today)
-    except:
-      wsrg =  WebsiteReportGroup(title="Summary of results day: " + str(today.year) + "-" + str(today.month) + "-" + str(today.day))
+      day = StatsDay.objects.get(stats_month=month, day=today.day)
+    except ObjectDoesNotExist:
+      wsrg =  WebsiteReportGroup(title="Summary of results day: %d-%02d-%02d" % (today.year, today.month, today.day))
       wsrg.save()
-      day = StatsDay(stats_month=month, date=today, ws_report_group=wsrg)  
+      day = StatsDay(stats_month=month, day=today.day, date=today, ws_report_group=wsrg)  
       day.save()
-      info("          Created Day: " + str(today))
 
+    debug("[SAVE_WEBSITE_RESULTS] Saving StatsDay: " + str(day))  
     day.ws_report_group.add_website_report(ws_report)  
+
+    try:
+      stats_reg_users = StatsRegisteredUsers.objects.all()[0]
+    except ObjectDoesNotExist:
+      wsrg =  WebsiteReportGroup(title="Summary of registered users")
+      wsrg.save()
+      stats_reg_users = StatsRegisteredUsers(ws_report_group=wsrg)  
+      stats_reg_users.save()
+
+    debug("[SAVE_WEBSITE_RESULTS] Registered Users: " + str(stats_reg_users))  
       
-    debug("Stats User: " + str(ws_report.user))
     try:
       user_stats = StatsUser.objects.get(user=ws_report.user)
-    except:
+    except ObjectDoesNotExist:
       wsrg =  WebsiteReportGroup(title="Summary of results for " + str(ws_report.user))
       wsrg.save()
       user_stats = StatsUser(user=ws_report.user, ws_report_group=wsrg)  
       user_stats.save()
-      info("          Created User: " + str(ws_report.user))
 
-    user_stats.ws_report_group.add_website_report(ws_report)  
-      
+      if ws_report.user.username != 'anonymous':
+        stats_reg_users.user_stats.add(user_stats)
+        stats_reg_users.user_stats.save()
 
+    debug("[SAVE_WEBSITE_RESULTS] Saving StatsUser: " + str(user_stats))  
+    user_stats.ws_report_group.add_website_report(ws_report) 
+
+    debug("[SAVE_WEBSITE_RESULTS] Saving RegUser: " + str(stats_reg_users))  
+    if ws_report.user.username != 'anonymous':
+      debug("[SAVE_WEBSITE_RESULTS] Saving RegUser 1")  
+      stats_reg_users.ws_report_group.add_website_report(ws_report) 
+      debug("[SAVE_WEBSITE_RESULTS] Saving RegUser 2")  
+
+    try:
+      debug("[SAVE_WEBSITE_RESULTS] Saving StatsRuleset 1")  
+      ruleset_stats = StatsRuleset.objects.get(ruleset=ws_report.ruleset)
+      debug("[SAVE_WEBSITE_RESULTS] Saving StatsRuleset 2")  
+    except ObjectDoesNotExist:
+      debug("[SAVE_WEBSITE_RESULTS] Saving StatsRuleset 3")  
+      wsrg =  WebsiteReportGroup(title="Summary of results for Ruleset: " + str(ws_report.ruleset))
+      wsrg.save()
+      debug("[SAVE_WEBSITE_RESULTS] Saving StatsRuleset 4")  
+      ruleset_stats = StatsRuleset(ruleset=ws_report.ruleset, ws_report_group=wsrg, stats_all=stats_all)  
+      ruleset_stats.save()
+      debug("[SAVE_WEBSITE_RESULTS] Saving StatsRuleset 5")  
+
+    debug("[SAVE_WEBSITE_RESULTS] Saving StatsRuleset: " + str(ruleset_stats))  
+    ruleset_stats.ws_report_group.add_website_report(ws_report)  
+       
 
   except:
     ws_report.set_status_error()
