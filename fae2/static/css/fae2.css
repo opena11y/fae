@@ -283,17 +283,6 @@ span.violation {
     padding-right: 0.25em;
 }
 
-div.input label {
-    margin-top: 1em;
-    margin-bottom: 0;
-    padding-bottom: 0;
-}
-
-div.input input {
-    margin-top: 0;
-    padding-top: 0;
-}
-
 label,
 legend {
     font-size: 120%;
@@ -311,17 +300,46 @@ fieldset label {
     font-weight: normal;
 }
 
+div.input label,
+div.checkbox  {
+    margin-top: 1em;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+div.input input,
+div.input select {
+    margin-top: 0;
+    padding-top: 0;
+    display: block;
+}
+
+
+div.checkbox input[type="checkbox"] {
+    margin: 0;
+    padding: 0;
+    margin-top: 0.35em;
+}
+
+div.checkbox label {
+    display: inline;
+    font-size: 120%;
+    font-weight: bold;
+}
+
+
+
 input[type="button"] {
     font-size: 120%;
 }
 
-input[type="submit"] {
+main input[type="submit"] {
     font-size: 120%;
-    margin-top: 1em;
+    margin-top: 2em;
     margin-bottom: 5em;
 }
 
-input[type="submit"][disabled] {
+main input[type="submit"][disabled] {
   color: gray;
 }
 
