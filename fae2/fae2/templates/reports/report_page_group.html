@@ -4,10 +4,10 @@
 {% block breadcrumb %}
 
     {% if report.page_count > 1 %}
-    <li><a href="{% url 'show_report_all_pages' report.slug view %}">All Pages</a></li>
-    <li><a href="{% url 'show_report_page' report.slug view page.page_number %}">Page {{page.page_number}}</a></li>
+    <li><a href="{% url 'report_pages' report.slug view %}">All Pages</a></li>
+    <li><a href="{% url 'report_page' report.slug view page.page_number %}">Page {{page.page_number}}</a></li>
     {% else %}
-    <li><a href="{% url 'show_report_page' report.slug view 1 %}">Page Report</a></li>
+    <li><a href="{% url 'report_page' report.slug view 1 %}">Page Report</a></li>
     {% endif %}
     <li>{{group.get_title}} Rules</li>
 {% endblock %}
@@ -55,7 +55,7 @@
             {% for prr in group.page_rule_results.all %} 
             <tr>
                 <td id="id_r{{forloop.counter}}" class="text" headers="id_grp">
-                  <a href="{% url 'show_report_page_group_rule' report.slug view page.page_number group.slug prr.rule.slug %}">
+                  <a href="{% url 'report_page_group_rule' report.slug view page.page_number group.slug prr.rule.slug %}">
                     {{prr.rule.summary_html|safe}}
                   </a>
                 </td>

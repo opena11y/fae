@@ -1,7 +1,7 @@
 {% load tz %}
-<div id="information" role="region" aria-label="Website Report Information">
+<section id="information" aria-label="Website Report Information">
 
-  <div class="title">{{report.title}}</div>
+  <div class="title">Report Title: <strong>{{report.title}}</strong></div>
     
   <div class="date">
     {% timezone user.profile.timezone %}
@@ -11,7 +11,7 @@
   
   <div class="eval_info">
       <ul>
-          <li>Pages:     {{  report.page_count }} (<a title="URL Details" href="{% url 'show_url_information' report.slug view %}">Included URLs</a>)</li>
+          <li>Pages:     {{  report.page_count }} (<a title="URL Details" href="{% url 'report_url_information' report.slug view %}">Included URLs</a>)</li>
           {% if report.max_pages %}
           <li>Maximum Pages: {{ report.max_pages }}</li>
           {% endif %}
@@ -35,4 +35,4 @@
      </ul>  
   </div>
 
-</div>
+</section>

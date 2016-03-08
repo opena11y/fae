@@ -2,7 +2,7 @@
 {% load staticfiles i18n %}
 
 {% block breadcrumb %}
-    <li><a href="{% url 'show_report' report.slug view %}">Summary</a></li>
+    <li><a href="{% url 'report_rules' report.slug view %}">Summary</a></li>
     <li>URL Information</li>
 {% endblock %}
 

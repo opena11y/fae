@@ -32,12 +32,14 @@ from .views import SetReportArchiveView
 
 from .views import URLInformationView
 
-from .views import ReportView
-from .views import ReportGroupView
-from .views import ReportGroupRuleView
-from .views import ReportGroupRulePageView
+from .views import ReportRulesView
+from .views import ReportRulesGroupView
+from .views import ReportRulesGroupRuleView
+from .views import ReportRulesGroupRulePageView
 
-from .views import ReportAllPagesView
+from .views import ReportPagesView
+from .views import ReportPagesGroupView
+
 from .views import ReportPageView
 from .views import ReportPageGroupView
 from .views import ReportPageGroupRuleView
@@ -59,17 +61,19 @@ urlpatterns = [
     url(r'^archived/$',              ArchivedReportView.as_view(),     name='archived_reports'),
     url(r'^manage/$',                ManageReportView.as_view(),       name='manage_reports'),
 
-    url(r'^report/(?P<report>\w+)/(?P<view>\w+)/$',                                                         ReportView.as_view(),              name='show_report'),
-    url(r'^report/(?P<report>\w+)/(?P<view>\w+)/urls/$',                                                    URLInformationView.as_view(),      name='show_url_information'),
-    url(r'^report/(?P<report>\w+)/(?P<view>\w+)/(?P<group>\w+)/$',                                          ReportGroupView.as_view(),         name='show_report_group'),
-    url(r'^report/(?P<report>\w+)/(?P<view>\w+)/(?P<group>\w+)/rule/(?P<rule>\w+)/$',                       ReportGroupRuleView.as_view(),     name='show_report_group_rule'),
-    url(r'^report/(?P<report>\w+)/(?P<view>\w+)/(?P<group>\w+)/rule/(?P<rule>\w+)/page/(?P<page>[\d-]+)/$', ReportGroupRulePageView.as_view(), name='show_report_group_rule_page'),
+    url(r'^report/(?P<report>\w+)/(?P<view>\w+)/urls/$',                                                    URLInformationView.as_view(),  name='report_url_information'),
 
-    url(r'^report/(?P<report>\w+)/(?P<view>\w+)/all-pages/$',                                           ReportAllPagesView.as_view(),       name='show_report_all_pages'),
-    url(r'^report/(?P<report>\w+)/(?P<view>\w+)/page/(?P<page>[\d-]+)/$',                               ReportPageView.as_view(),           name='show_report_page'),
-    url(r'^report/(?P<report>\w+)/(?P<view>\w+)/page/(?P<page>[\d-]+)/$',                               ReportPageView.as_view(),           name='show_report_page'),
-    url(r'^report/(?P<report>\w+)/(?P<view>\w+)/page/(?P<page>[\d-]+)/(?P<group>\w+)/$',                ReportPageGroupView.as_view(),      name='show_report_page_group'),
-    url(r'^report/(?P<report>\w+)/(?P<view>\w+)/page/(?P<page>[\d-]+)/(?P<group>\w+)/(?P<rule>\w+)/$',  ReportPageGroupRuleView.as_view(),  name='show_report_page_group_rule'),
+    url(r'^report/(?P<report>\w+)/(?P<view>\w+)/$',                                                         ReportRulesView.as_view(),              name='report_rules'),
+    url(r'^report/(?P<report>\w+)/(?P<view>\w+)/(?P<group>\w+)/$',                                          ReportRulesGroupView.as_view(),         name='report_rules_group'),
+    url(r'^report/(?P<report>\w+)/(?P<view>\w+)/(?P<group>\w+)/rule/(?P<rule>\w+)/$',                       ReportRulesGroupRuleView.as_view(),     name='report_rules_group_rule'),
+    url(r'^report/(?P<report>\w+)/(?P<view>\w+)/(?P<group>\w+)/rule/(?P<rule>\w+)/page/(?P<page>[\d-]+)/$', ReportRulesGroupRulePageView.as_view(), name='report_rules_group_rule_page'),
+
+    url(r'^report/(?P<report>\w+)/(?P<view>\w+)/pages/all$',                                            ReportPagesView.as_view(),           name='report_pages'),
+    url(r'^report/(?P<report>\w+)/(?P<view>\w+)/pages/(?P<group>\w+)/$',                                ReportPagesGroupView.as_view(),      name='report_pages_group'),
+
+    url(r'^report/(?P<report>\w+)/(?P<view>\w+)/page/(?P<page>[\d-]+)/$',                               ReportPageView.as_view(),           name='report_page'),
+    url(r'^report/(?P<report>\w+)/(?P<view>\w+)/page/(?P<page>[\d-]+)/(?P<group>\w+)/$',                ReportPageGroupView.as_view(),      name='report_page_group'),
+    url(r'^report/(?P<report>\w+)/(?P<view>\w+)/page/(?P<page>[\d-]+)/(?P<group>\w+)/(?P<rule>\w+)/$',  ReportPageGroupRuleView.as_view(),  name='report_page_group_rule'),
 ]
 
 if ANONYMOUS_ENABLED:

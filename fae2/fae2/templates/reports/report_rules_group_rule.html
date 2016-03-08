@@ -2,8 +2,8 @@
 {% load staticfiles i18n %}
 
 {% block breadcrumb %}
-    <li><a href="{% url 'show_report'       report.slug view %}">All Rules</a></li>
-    <li><a href="{% url 'show_report_group' report.slug view group.slug %}">{{group.get_title}}</a></li>
+    <li><a href="{% url 'report_rules'       report.slug view %}">All Rules</a></li>
+    <li><a href="{% url 'report_rules_group' report.slug view group.slug %}">{{group.get_title}}</a></li>
     <li>{{ws_rule_result.rule.nls_rule_id}}</li>
 {% endblock %}
 

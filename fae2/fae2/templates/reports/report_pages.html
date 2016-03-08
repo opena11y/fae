@@ -4,14 +4,30 @@
 {% load tz %}
 
 {% block breadcrumb %}
-    <li>All Pages</li>
+  {% if page %}
+
+  {% else %}  
+    <li><a href="{% url 'report_pages' report.slug view %}">All Pages</a></li>
+    <li>All Rules</li>
+  {% endif %}
 {% endblock %}
+
+{% block content_before_title %}
+
+  {% if not page %}
+
+  {% include "reports/report_information.html" %}
+
+  {% endif %}
+
+{% endblock %}  
+
 
 {% block title %}
     {% if page %}
         Page Report
     {% else %}
-        Summary of All Page Results
+        All Pages
     {% endif %}
 {% endblock %}
 
@@ -22,13 +38,19 @@
     
 {% else %}
 
-{% include "reports/report_information.html" %}
-
 {% include "reports/report_summary.html" %}
+
+<nav id="view_options" aria-label="Result View Options">
+    <ul class="nav nav-tabs">
+        <li {% if view = 'rc' %}class="active"{% endif %}><a href="{% url 'report_pages' report.slug 'rc' %}">Rule Category</a></li>
+        <li {% if view = 'gl' %}class="active"{% endif %}><a href="{% url 'report_pages' report.slug 'gl' %}">WCAG Guidelines</a></li>
+        <li {% if view = 'rs' %}class="active"{% endif %}><a href="{% url 'report_pages' report.slug 'rs' %}">Rule Scope</a></li>
+    </ul>
+</nav>
 
 <section class="report" aria-labelledby="id_result_label">
 
-    <h2 id="id_result_label" class="">Page Results</h2>
+    <h2 id="id_result_label" class="sr-only">Page Results</h2>
 
     <table  id="id_table_show_summary" class="details table table-striped table-hover sortable"  aria-labelledby="id_result_label"  aria-describedby="id_result_description">
         <thead>
@@ -58,7 +80,7 @@
                 </td>
 
                 <td id="id_r{{forloop.counter}}" class="text" headers="id_pgn">
-                  <a href="{% url 'show_report_page' report.slug view pr.page_number %}">
+                  <a href="{% url 'report_page' report.slug view pr.page_number %}">
                     {{pr.title}}
                   </a>
                 </td>

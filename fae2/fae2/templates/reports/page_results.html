@@ -29,7 +29,7 @@
                 </td>
 
                 <td id="id_r{{forloop.counter}}" class="text" headers="id_pgn">
-                  <a href="{% url 'show_report_group_rule_page' report.slug view group.slug prr.slug prr.page_result.page_number %}">
+                  <a href="{% url 'report_rules_group_rule_page' report.slug view group.slug prr.slug prr.page_result.page_number %}">
                     {{prr.page_result.title}}
                   </a>
                 </td>

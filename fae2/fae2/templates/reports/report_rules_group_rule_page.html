@@ -2,9 +2,9 @@
 {% load staticfiles i18n %}
 
 {% block breadcrumb %}
-    <li><a href="{% url 'show_report'       report.slug view %}">All Rules</a></li>
-    <li><a href="{% url 'show_report_group' report.slug view group.slug %}">{{group.get_title}}</a></li>
-    <li><a href="{% url 'show_report_group_rule' report.slug view group.slug page_rule_result.slug %}">{{page_rule_result.rule.nls_rule_id}}</a></li>
+    <li><a href="{% url 'report_rules'       report.slug view %}">All Rules</a></li>
+    <li><a href="{% url 'report_rules_group' report.slug view group.slug %}">{{group.get_title}}</a></li>
+    <li><a href="{% url 'report_rules_group_rule' report.slug view group.slug page_rule_result.slug %}">{{page_rule_result.rule.nls_rule_id}}</a></li>
     <li>Page {{page_rule_result.page_result.page_number}}</li>
 {% endblock %}
 

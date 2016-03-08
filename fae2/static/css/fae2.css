@@ -46,6 +46,7 @@ main section.report {
     margin-top: 3em;
     margin-bottom: -1.5em;
     padding-bottom: 0;
+    font-size: 110%;
 }
 
 
@@ -91,7 +92,6 @@ table.rule tbody td ul {
 
 #information .title {
     font-size: 125%;
-    font-weight: bold;
     float: left;
 }
 
@@ -131,7 +131,7 @@ table.rule tbody td ul {
 }
 
 #id_table_show_summary_default {
-    margin-top: 1em;
+    margin-top: -1em;
 }
 
 main table th.violation,
@@ -357,6 +357,8 @@ input[type="button"].sort-button {
     margin: 0;
     padding: 0;
     float: right;
+    position: relative;
+    top: -1.5em;
 }
 
 main nav li.side_by_side {

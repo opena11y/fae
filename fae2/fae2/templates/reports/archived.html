@@ -37,7 +37,7 @@ Archived Reports
                 </td>
                 
                 <td id="id_title_{{forloop.count}}" class="text" style="min-width: 15em;">
-                    <a href="{% url 'show_report' report.slug 'rc' %}">
+                    <a href="{% url 'report_rules' report.slug 'rc' %}">
                     {% if report.title %}
                         {{ report.title }}
                     {% else %}

@@ -25,9 +25,16 @@ from django.views.generic import RedirectView
 
 from django.contrib.auth.models import User
 
-from reports.models  import WebsiteReport
-from rulesets.models import Ruleset
+from reports.models      import WebsiteReport
+from pageResults.models  import PageRuleCategoryResult
+from pageResults.models  import PageGuidelineResult
+from pageResults.models  import PageRuleScopeResult
+from rulesets.models     import Ruleset
 from userProfiles.models import UserProfile
+
+from ruleCategories.models import RuleCategory
+from wcag20.models         import Guideline
+from rules.models          import RuleScope
 
 from django.core.urlresolvers import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -102,11 +109,195 @@ def formatted_result_messages(result_message):
 
 # ==============================================================
 #
+# FAE 2.0 Navigation Mixin
+#
+# ==============================================================
+
+class FilterViewItem:
+
+    def __init__(self, label, url):
+        self.label = label
+        self.url   = url
+
+
+class FAENavigtionObject:
+
+    def __init__(self, nav_info):
+
+        self.slug        = nav_info.slug
+        self.report_type = nav_info.report_type
+        self.view        = nav_info.view
+        self.page        = nav_info.page
+        self.page_count  = nav_info.page_count
+
+        self.current_label = nav_info.current_label
+        self.current_url   = nav_info.current_url
+
+        self.previous_label = nav_info.previous_label
+        self.previous_url   = nav_info.previous_url
+
+        self.next_label = nav_info.next_label
+        self.next_url   = nav_info.next_url
+
+        self.filters = []
+
+        if self.view == 'rs':
+            self.add_rule_scope_filter()
+        elif self.view == 'gl':    
+            self.add_guideline_filter()
+        else:    
+            self.add_rule_category_filter()
+
+ 
+    def add_filter_item(self, group, label):
+
+        if self.report_type == 'page':
+            if group:
+                url = reverse('report_page_group', args=[self.slug, self.view, self.page, group])
+            else:    
+                url = reverse('report_page', args=[self.slug, self.view, self.page])
+
+        elif self.report_type == 'pages':
+            if group:
+                url = reverse('report_pages_group', args=[self.slug, self.view, group])
+            else:    
+                url = reverse('report_pages', args=[self.slug, self.view])
+
+        else:
+            self.report_type = 'rules'
+            if group:
+                url = reverse('report_rules_group', args=[self.slug, self.view, group])
+            else:    
+                url = reverse('report_rules', args=[self.slug, self.view])
+
+        fi = FilterViewItem(label, url)
+
+        self.filters.append(fi)
+
+    def add_rule_category_filter(self):
+        rcs = RuleCategory.objects.all()
+        self.add_filter_item(False, "All Rules")
+        for rc in rcs:
+            self.add_filter_item(rc.slug, rc.title)
+
+    def add_guideline_filter(self):
+        gls = Guideline.objects.all()
+        self.add_filter_item(False, "All Rules")
+        for gl in gls:
+            self.add_filter_item(gl.slug, gl.title)
+
+    def add_rule_scope_filter(self):
+        rss = RuleScope.objects.all()
+        self.add_filter_item(False, "All Rules")
+        for rs in rss:
+            self.add_filter_item(rs.slug, rs.title)
+
+class FAENavigationMixin(object):
+
+    slug = False
+    page_count = 0
+    view = 'rc'
+    report_type = 'rules'
+    page = 0
+
+    current_label = ""
+    current_url   = ""
+
+    previous_label = ""
+    previous_url   = ""
+
+    next_label = ""
+    next_url   = ""
+
+    def get_context_data(self, **kwargs):
+
+        context = super(FAENavigationMixin, self).get_context_data(**kwargs)
+
+        context['report_nav'] = self.set_with_session(self.request.session)
+
+        return context
+
+    def set_fae_navigation(self, session, slug, page_count, view, type, page):
+        
+        if slug:
+          self.slug                    = slug  
+          session['report_slug']       = slug  
+
+          self.page_count              = page_count  
+          session['report_page_count'] = page_count
+
+        if view:
+          self.view = view  
+          session['report_view'] = view  
+
+        if type:
+          self.report_type = type  
+          session['report_type'] = type  
+
+        if page:
+          self.page = page  
+          session['report_page'] = page  
+
+        return FAENavigtionObject(self)  
+
+    def set_with_session(self, session):
+
+        try:
+            self.slug = session['report_slug']
+        except:
+            self.slug = False
+
+        try:    
+            self.view = session['report_view']
+        except:
+            self.view = 'rc'
+
+        try:
+            self.page  = session['report_page']
+        except:
+            self.page  = 1
+
+        try:
+            self.report_type = session['report_type']
+        except:
+            self.report_type = 'rules'
+
+        try:
+            self.page_count = session['report_page_count']
+        except:
+            self.page_count = 1
+          
+        try:
+            self.current_label  = session['current_label']
+            self.current_url    = session['current_url']
+        except:  
+            self.current_label  = False
+            self.current_url    = False
+
+        try:
+            self.next_label     = session['next_label']
+            self.next_url       = session['next_url']
+        except:  
+            self.next_label     = False
+            self.next_url       = False
+
+        try:
+            self.previous_label = session['previous_label']
+            self.previous_url   = session['previous_url']
+        except:
+            self.previous_label = False
+            self.previous_url   = False
+
+        return FAENavigtionObject(self)    
+
+
+# ==============================================================
+#
 # Anonymous Run Report Views
 #
 # ==============================================================
 
-class RunAnonymousReportView(CreateView):
+class RunAnonymousReportView(FAENavigationMixin, CreateView):
     model = WebsiteReport
     fields = ['url', 'ruleset']
     template_name = 'reports/run_anonymous_report.html'
@@ -123,7 +314,7 @@ class RunAnonymousReportView(CreateView):
         return super(RunAnonymousReportView, self).form_valid(form)
 
 
-class ProcessingAnonymousReportView(TemplateView):
+class ProcessingAnonymousReportView(FAENavigationMixin, TemplateView):
     template_name = 'reports/processing_anonymous.html'
 
     def get_context_data(self, **kwargs):
@@ -145,7 +336,7 @@ class ProcessingAnonymousReportView(TemplateView):
 #
 # ==============================================================
 
-class RunRefererReportView(TemplateView):
+class RunRefererReportView(FAENavigationMixin, TemplateView):
     template_name = 'reports/processing_anonymous.html'
 
     def get_context_data(self, **kwargs):
@@ -187,7 +378,7 @@ def get_default_url():
     else:    
         return reverse_lazy('login')
 
-class RunReportView(LoginRequiredMixin, CreateView):
+class RunReportView(LoginRequiredMixin, FAENavigationMixin, CreateView):
 
     model = WebsiteReport
     fields = ['url', 'title', 'depth', 'follow', 'ruleset', 'max_pages']
@@ -251,7 +442,7 @@ class RunReportView(LoginRequiredMixin, CreateView):
   
 
 
-class ProcessingReportView(LoginRequiredMixin, TemplateView):
+class ProcessingReportView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
     template_name = 'reports/processing.html'
 
     def get_context_data(self, **kwargs):
@@ -324,7 +515,7 @@ class SetReportArchiveView(TemplateView):
         return context
 
 
-class ArchivedReportView(LoginRequiredMixin, TemplateView):
+class ArchivedReportView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
     template_name = 'reports/archived.html'
 
     def get_context_data(self, **kwargs):
@@ -337,7 +528,7 @@ class ArchivedReportView(LoginRequiredMixin, TemplateView):
         
         return context            
 
-class ManageReportView(LoginRequiredMixin, TemplateView):
+class ManageReportView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
     template_name = 'reports/manage.html'
 
     def get_context_data(self, **kwargs):
@@ -356,11 +547,11 @@ class ManageReportView(LoginRequiredMixin, TemplateView):
 #
 # ==============================================================
 
-class ReportView(TemplateView):
-    template_name = 'reports/report.html'
+class ReportRulesView(FAENavigationMixin, TemplateView):
+    template_name = 'reports/report_rules.html'
 
     def get_context_data(self, **kwargs):
-        context = super(ReportView, self).get_context_data(**kwargs)
+        context = super(ReportRulesView, self).get_context_data(**kwargs)
 
         view = kwargs['view']
 
@@ -385,9 +576,7 @@ class ReportView(TemplateView):
             groups = report.ws_rc_results.all()
             view = 'rc'
 
-        self.request.session['last_report_slug'] = report.slug
-        self.request.session['last_report_view'] = view
-        self.request.session['last_report_page_count'] = report.page_count
+        context['report_nav'] = self.set_fae_navigation(self.request.session, report.slug, report.page_count, view, 'rules', False)
 
         context['page']     = page
         context['report']   = report
@@ -399,11 +588,11 @@ class ReportView(TemplateView):
 
         
 
-class ReportGroupView(TemplateView):
-    template_name = 'reports/report_group.html'
+class ReportRulesGroupView(FAENavigationMixin, TemplateView):
+    template_name = 'reports/report_rules_group.html'
 
     def get_context_data(self, **kwargs):
-        context = super(ReportGroupView, self).get_context_data(**kwargs)
+        context = super(ReportRulesGroupView, self).get_context_data(**kwargs)
 
         view = kwargs['view']
 
@@ -419,9 +608,7 @@ class ReportGroupView(TemplateView):
           page_results = group.page_rc_results.all()
           view = 'rc'
 
-        self.request.session['last_report_slug'] = report.slug
-        self.request.session['last_report_view'] = view
-        self.request.session['last_report_page_count'] = report.page_count
+        context['report_nav'] = self.set_fae_navigation(self.request.session, report.slug, report.page_count, view, 'rules', False)
 
         context['report']       = report
         context['view']         = view
@@ -431,11 +618,11 @@ class ReportGroupView(TemplateView):
         
         return context            
 
-class ReportGroupRuleView(TemplateView):
-    template_name = 'reports/report_group_rule.html'
+class ReportRulesGroupRuleView(FAENavigationMixin, TemplateView):
+    template_name = 'reports/report_rules_group_rule.html'
 
     def get_context_data(self, **kwargs):
-        context = super(ReportGroupRuleView, self).get_context_data(**kwargs)
+        context = super(ReportRulesGroupRuleView, self).get_context_data(**kwargs)
 
         view = kwargs['view']
 
@@ -450,9 +637,7 @@ class ReportGroupRuleView(TemplateView):
 
         ws_rule_result = group.ws_rule_results.get(slug=kwargs['rule'])
 
-        self.request.session['last_report_slug'] = report.slug
-        self.request.session['last_report_view'] = view
-        self.request.session['last_report_page_count'] = report.page_count
+        context['report_nav'] = self.set_fae_navigation(self.request.session, report.slug, report.page_count, view, 'rules', False)
 
         context['report']           = report
         context['view']             = view
@@ -463,11 +648,11 @@ class ReportGroupRuleView(TemplateView):
         return context            
 
 
-class ReportGroupRulePageView(TemplateView):
-    template_name = 'reports/report_group_rule_page.html'
+class ReportRulesGroupRulePageView(FAENavigationMixin, TemplateView):
+    template_name = 'reports/report_rules_group_rule_page.html'
 
     def get_context_data(self, **kwargs):
-        context = super(ReportGroupRulePageView, self).get_context_data(**kwargs)
+        context = super(ReportRulesGroupRulePageView, self).get_context_data(**kwargs)
 
         view  = kwargs['view']
         group = kwargs['group']
@@ -484,33 +669,14 @@ class ReportGroupRulePageView(TemplateView):
           view_opt = 'rc'
 
         ws_rule_result   = group.ws_rule_results.get(slug=rule)
-        page_rule_result = ws_rule_result.page_rule_results.get(page_result__page_number=kwargs['page'])
-
-        self.request.session['last_report_slug'] = report.slug
-        self.request.session['last_report_view'] = view
-        self.request.session['last_report_page_count'] = report.page_count
+        page_rule_result = ws_rule_result.page_rule_results.get(page_result__page_number=page)
 
         report.update_last_page_numbers(page_rule_result.page_result.page_number)
 
-        self.request.session['last_report_slug'] = report.slug
-        self.request.session['last_report_view'] = view
-        self.request.session['last_report_page_count'] = report.page_count
-
-        self.request.session['last_page_number']   = report.last_page
-        self.request.session['last_prev_page_url']  = ""
-        self.request.session['last_next_page_url']  = ""
-        self.request.session['last_first_page_url'] = ""
-        self.request.session['last_last_page_url']  = ""
-
-        if report.last_prev_page > 0:
-            self.request.session['last_prev_page_url']  = reverse('show_report_group_rule_page', args=[report.slug, view, group.slug, rule, report.last_prev_page])
-            self.request.session['last_first_page_url'] = reverse('show_report_group_rule_page', args=[report.slug, view, group.slug, rule, report.last_first_page])
-
-        if report.last_next_page > 0:
-            self.request.session['last_next_page_url'] = reverse('show_report_group_rule_page', args=[report.slug, view, group.slug, rule, report.last_next_page])
-            self.request.session['last_last_page_url'] = reverse('show_report_group_rule_page', args=[report.slug, view, group.slug, rule, report.last_last_page])
-
         report.update_last_page_urls(self.request.session)
+
+        context['report_nav'] = self.set_fae_navigation(self.request.session, report.slug, report.page_count, view, 'rules', page)
+
 
         context['report']   = report
         context['view']     = view
@@ -520,11 +686,11 @@ class ReportGroupRulePageView(TemplateView):
         context['result_messages']   = formatted_result_messages(page_rule_result.result_message)       
         return context      
 
-class ReportGroupRulePageElementResultsJSON(TemplateView):
-    template_name = 'reports/report_group_rule_page.html'
+class ReportRulesGroupRulePageElementResultsJSON(TemplateView):
+    template_name = 'reports/report_rules_group_rule_page.html'
 
     def get_context_data(self, **kwargs):
-        context = super(ReportGroupRulePageView, self).get_context_data(**kwargs)
+        context = super(ReportRulesGroupRulePageView, self).get_context_data(**kwargs)
 
         view = kwargs['view']
 
@@ -549,11 +715,11 @@ class ReportGroupRulePageElementResultsJSON(TemplateView):
         context['page_rule_result']  = page_rule_result
         return context    
 
-class ReportAllPagesView(TemplateView):
-    template_name = 'reports/report_all_pages.html'
+class ReportPagesView(FAENavigationMixin, TemplateView):
+    template_name = 'reports/report_pages.html'
 
     def get_context_data(self, **kwargs):
-        context = super(ReportAllPagesView, self).get_context_data(**kwargs)
+        context = super(ReportPagesView, self).get_context_data(**kwargs)
 
         view = kwargs['view']
 
@@ -571,9 +737,7 @@ class ReportAllPagesView(TemplateView):
             groups = page.page_rc_results.all()
             view = 'rc'
 
-        self.request.session['last_report_slug'] = report.slug
-        self.request.session['last_report_view'] = view
-        self.request.session['last_report_page_count'] = report.page_count
+        context['report_nav'] = self.set_fae_navigation(self.request.session, report.slug, report.page_count, view, 'pages', False)
 
         context['page']     = page
         context['report']   = report
@@ -583,8 +747,55 @@ class ReportAllPagesView(TemplateView):
         
         return context            
 
+class ReportPagesGroupView(FAENavigationMixin, TemplateView):
+    template_name = 'reports/report_pages_group.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(ReportPagesGroupView, self).get_context_data(**kwargs)
+
+        view  = kwargs['view']
+        group = kwargs['group']
+
+        report = WebsiteReport.objects.get(slug=kwargs['report'])
+        page = False
+        groups = []
+
+        if report.page_count == 1:
+          page = report.get_first_page()
+          if view == 'gl':
+            groups = page.page_gl_results.all()
+          elif view == 'rs':  
+            groups = page.page_rs_results.all()
+          else:  
+            groups = page.page_rc_results.all()
+            view = 'rc'
+        else:
+          if view == 'gl':
+            page_results = PageGuidelineResult.objects.filter(page_result__ws_report=report, guideline__slug=group)
+            group_info   = Guideline.objects.get(slug=group)
+
+          elif view == 'rs':  
+            page_results = PageRuleScopeResult.objects.filter(page_result__ws_report=report, rule_scope__slug=group)
+            group_info   = RuleScope.objects.get(slug=group)
+
+          else:  
+            page_results = PageRuleCategoryResult.objects.filter(page_result__ws_report=report, rule_category__slug=group)
+            group_info   = RuleCategory.objects.get(slug=group)
+            view = 'rc'
+            
+
+        context['report_nav'] = self.set_fae_navigation(self.request.session, report.slug, report.page_count, view, 'pages', False)
+
+        context['page']     = page
+        context['report']   = report
+        context['view']     = view
+        context['summary']  = report
+        context['page_results']   = page_results
+        context['group']    = group_info
         
-class ReportPageView(TemplateView):
+        return context     
+        
+class ReportPageView(FAENavigationMixin, TemplateView):
     template_name = 'reports/report_page.html'
 
     def get_context_data(self, **kwargs):
@@ -605,25 +816,9 @@ class ReportPageView(TemplateView):
 
         report.update_last_page_numbers(page.page_number)
 
-        self.request.session['last_report_slug'] = report.slug
-        self.request.session['last_report_view'] = view
-        self.request.session['last_report_page_count'] = report.page_count
-
-        self.request.session['last_page_number']   = report.last_page
-        self.request.session['last_prev_page_url'] = ""
-        self.request.session['last_next_page_url'] = ""
-        self.request.session['last_first_page_url'] = ""
-        self.request.session['last_last_page_url']  = ""
-
-        if report.last_prev_page > 0:
-            self.request.session['last_prev_page_url'] = reverse('show_report_page', args=[report.slug, view, report.last_prev_page])
-            self.request.session['last_first_page_url'] = reverse('show_report_page', args=[report.slug, view, report.last_first_page])
-
-        if report.last_next_page > 0:
-            self.request.session['last_next_page_url'] = reverse('show_report_page', args=[report.slug, view, report.last_next_page])
-            self.request.session['last_last_page_url'] = reverse('show_report_page', args=[report.slug, view, report.last_last_page])
-
         report.update_last_page_urls(self.request.session)
+
+        context['report_nav'] = self.set_fae_navigation(self.request.session, report.slug, report.page_count, view, 'page', page.page_number)
 
         context['report']        = report
         context['view']          = view
@@ -634,7 +829,7 @@ class ReportPageView(TemplateView):
         return context            
 
 
-class ReportPageGroupView(TemplateView):
+class ReportPageGroupView(FAENavigationMixin, TemplateView):
     template_name = 'reports/report_page_group.html'
 
     def get_context_data(self, **kwargs):
@@ -653,29 +848,11 @@ class ReportPageGroupView(TemplateView):
           group = page.page_rc_results.get(slug=group_slug)
           view_opt = 'rc'
 
-
-        self.request.session['last_report_slug'] = report.slug
-        self.request.session['last_report_view'] = view
-        self.request.session['last_report_page_count'] = report.page_count
-
         report.update_last_page_numbers(page.page_number)
-
-        self.request.session['last_page_number']   = report.last_page
-        self.request.session['last_prev_page_url'] = ""
-        self.request.session['last_next_page_url'] = ""
-        self.request.session['last_first_page_url'] = ""
-        self.request.session['last_last_page_url']  = ""
-
-        if report.last_prev_page > 0:
-            self.request.session['last_prev_page_url'] = reverse('show_report_page_group', args=[report.slug, view, report.last_prev_page, group_slug])
-            self.request.session['last_first_page_url'] = reverse('show_report_page_group', args=[report.slug, view, report.last_first_page, group_slug])
-
-        if report.last_next_page > 0:
-            self.request.session['last_next_page_url'] = reverse('show_report_page_group', args=[report.slug, view, report.last_next_page, group_slug])
-            self.request.session['last_last_page_url'] = reverse('show_report_page_group', args=[report.slug, view, report.last_last_page, group_slug])
 
         report.update_last_page_urls(self.request.session)
 
+        context['report_nav'] = self.set_fae_navigation(self.request.session, report.slug, report.page_count, view, 'page', page.page_number)
 
         context['report']   = report
         context['view']     = view
@@ -685,7 +862,7 @@ class ReportPageGroupView(TemplateView):
         
         return context           
 
-class ReportPageGroupRuleView(TemplateView):
+class ReportPageGroupRuleView(FAENavigationMixin, TemplateView):
     template_name = 'reports/report_page_group_rule.html'
 
     def get_context_data(self, **kwargs):
@@ -707,27 +884,11 @@ class ReportPageGroupRuleView(TemplateView):
 
         page_rule_result = group.page_rule_results.get(slug=rule_slug)
 
-        self.request.session['last_report_slug'] = report.slug
-        self.request.session['last_report_view'] = view
-        self.request.session['last_report_page_count'] = report.page_count
-
         report.update_last_page_numbers(page.page_number)
 
-        self.request.session['last_page_number']   = report.last_page
-        self.request.session['last_prev_page_url']  = ""
-        self.request.session['last_next_page_url']  = ""
-        self.request.session['last_first_page_url'] = ""
-        self.request.session['last_last_page_url']  = ""
-
-        if report.last_prev_page > 0:
-            self.request.session['last_prev_page_url'] = reverse('show_report_page_group_rule', args=[report.slug, view, report.last_prev_page, group_slug, rule_slug])
-            self.request.session['last_first_page_url'] = reverse('show_report_page_group_rule', args=[report.slug, view, report.last_first_page, group_slug, rule_slug])
-
-        if report.last_next_page > 0:
-            self.request.session['last_next_page_url'] = reverse('show_report_page_group_rule', args=[report.slug, view, report.last_next_page, group_slug, rule_slug])
-            self.request.session['last_last_page_url'] = reverse('show_report_page_group_rule', args=[report.slug, view, report.last_last_page, group_slug, rule_slug])
-
         report.update_last_page_urls(self.request.session)        
+
+        context['report_nav'] = self.set_fae_navigation(self.request.session, report.slug, report.page_count, view, 'page', page.page_number)
 
         context['result_messages'] = formatted_result_messages(page_rule_result.result_message)
 
@@ -742,7 +903,7 @@ class ReportPageGroupRuleView(TemplateView):
         return context             
 
 
-class URLInformationView(TemplateView):
+class URLInformationView(FAENavigationMixin, TemplateView):
     template_name = 'reports/url_information.html'
 
     def get_context_data(self, **kwargs):
