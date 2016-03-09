@@ -1,0 +1,98 @@
+<div id="summary" role="region" aria-label="List of pages summary grid">
+
+    <table class="summary" aria-label="Rule Results Summary">
+        <thead>
+            <td></td>
+            <th>Violations</th>
+            <th>Warnings</th>
+            <th>Manual<br/>Checks</th>
+            <th>Passed</th>
+        </thead>
+        <tbody>
+            <tr>
+                <th title="Number of pages with rule result" class="first">Number of Rules</th>               
+                
+                {% if summary.rules_violation = 0 %}
+                <td class="violation"><abbr title="No rules with violations on any pages">-</abbr></td>
+                {% else %}
+                {% if summary.rules_violation = 1 %}
+                <td class="violation"><abbr title="One rule with violations on at least one page">1</abbr></td>
+                {% else %}
+                <td class="violation"><abbr title="{{violations}} rules with violations on at least one page">{{summary.rules_violation}}</abbr></td>
+                {% endif %}
+                {% endif %}
+
+                {% if summary.rules_warning = 0 %}
+                <td class="warning"><abbr title="No rules with warnings on any pages">-</abbr></td>
+                {% else %}
+                {% if summary.rules_warning = 1 %}
+                <td class="warning"><abbr title="One page with warnings on at least one page">1</abbr></td>
+                {% else %}
+                <td class="warning"><abbr title="{{warnings}} pages with warnings on at least one page">{{summary.rules_warning}}</abbr></td>
+                {% endif %}
+                {% endif %}
+                
+                {% if summary.rules_manual_check = 0 %}
+                <td class="manual_check"><abbr title="No rules with manual checks on any pages">-</abbr></td>
+                {% else %}
+                {% if summary.rules_manual_check = 1 %}
+                <td class="manual_check"><abbr title="One rule with manual checks on at least one page">1</abbr></td>
+                {% else %}
+                <td class="manual_check"><abbr title="{{manual_checks}} rules with manual checks on at least one page">{{summary.rules_manual_check}}</abbr></td>
+                {% endif %}
+                {% endif %}
+
+                {% if summary.rules_passed = 0 %}
+                <td class="passed"><abbr title="No rules with all pass on any pages">-</abbr></td>
+                {% else %}
+                {% if summary.rules_passed = 1 %}
+                <td class="passed"><abbr title="One rule with all pass on all pages">1</abbr></td>
+                {% else %}
+                <td class="passed"><abbr title="{{passed}} rules with all pass on all pages">{{summary.rules_passed}}</abbr></td>
+                {% endif %}
+                {% endif %}                
+                
+            </tr>
+        </tbody>
+    </table>  
+    
+
+    <div id="id_result_description" class="sr-only">
+    
+                {% if summary.rules_violation > 0 %}
+                {% if summary.rules_violation == 1 %}
+                1 rule with violations;
+                {% else %}
+                {{ summary.rules_violation }} rules with violations;
+                {% endif %}
+                {% endif %}
+                
+                {% if summary.rules_warning > 0 %}
+                {% if summary.rules_warning == 1 %}
+                1 rule with warnings; 
+                {% else %}
+                {{ summary.rules_warning }} rules with warnings;
+                {% endif %}
+                {% endif %}
+                
+                {% if summary.rules_manual_check > 0 %}
+                {% if summary.rules_manual_check == 1 %}
+                1 rule with manual checks;
+                {% else %}
+                {{ summary.rules_manual_check }} rules with manual checks;
+                {% endif %}
+                {% endif %}
+                
+                {% if summary.rules_passed > 0 %}
+                {% if summary.rules_passed == 1 %}
+                1 rule with all passed;
+                {% else %}
+                {{ summary.rules_passed }} rules with all passed;
+                {% endif %}
+                {% endif %}
+
+                
+    </div>
+
+      
+</div>

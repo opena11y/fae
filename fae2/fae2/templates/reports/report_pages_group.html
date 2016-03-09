@@ -23,7 +23,7 @@
     {% if page %}
         Page Report
     {% else %}
-        All Pages: {{group.title}} Rule Filter
+        All Pages  <span class="sr-only">{{group.title}} Rule Filter</span>
     {% endif %}
 {% endblock %}
 
@@ -34,7 +34,9 @@
     
 {% else %}
 
-{% include "reports/report_summary.html" %}
+<div class="rule_summary" aria-hidden="true">{{group.title}} Rules</div>
+
+{% include "reports/pages_summary.html" %}
 
 <section class="report" aria-labelledby="id_result_label">
 

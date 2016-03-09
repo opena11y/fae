@@ -742,7 +742,7 @@ class ReportPagesView(FAENavigationMixin, TemplateView):
         context['page']     = page
         context['report']   = report
         context['view']     = view
-        context['summary']  = report
+        context['summary']  = report.get_pages_summary()
         context['groups']   = groups
         
         return context            
@@ -789,7 +789,7 @@ class ReportPagesGroupView(FAENavigationMixin, TemplateView):
         context['page']     = page
         context['report']   = report
         context['view']     = view
-        context['summary']  = report
+        context['summary']  = report.get_pages_summary(view, group)
         context['page_results']   = page_results
         context['group']    = group_info
         
@@ -841,11 +841,11 @@ class ReportPageGroupView(FAENavigationMixin, TemplateView):
         report = WebsiteReport.objects.get(slug=kwargs['report'])
         page   = report.page_all_results.get(page_number=kwargs['page'])
         if view == 'gl':
-          group = page.page_gl_results.get(slug=group_slug)
+          group_results = page.page_gl_results.get(slug=group_slug)
         elif view == 'rs':  
-          group = page.page_rs_results.get(slug=group_slug)
+          group_results = page.page_rs_results.get(slug=group_slug)
         else:  
-          group = page.page_rc_results.get(slug=group_slug)
+          group_results = page.page_rc_results.get(slug=group_slug)
           view_opt = 'rc'
 
         report.update_last_page_numbers(page.page_number)
@@ -854,11 +854,11 @@ class ReportPageGroupView(FAENavigationMixin, TemplateView):
 
         context['report_nav'] = self.set_fae_navigation(self.request.session, report.slug, report.page_count, view, 'page', page.page_number)
 
-        context['report']   = report
-        context['view']     = view
-        context['summary']  = page
-        context['group']    = group     
-        context['page']     = page
+        context['report']        = report
+        context['view']          = view
+        context['summary']       = group_results
+        context['group'] = group_results     
+        context['page']          = page
         
         return context           
 

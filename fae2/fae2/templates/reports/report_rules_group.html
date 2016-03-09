@@ -2,22 +2,37 @@
 {% load staticfiles i18n %}
 
 {% block breadcrumb %}
-    <li><a href="{% url 'report_rules' report.slug view %}">All Rules</a></li>
+    <li><a href="{% url 'report_rules' report.slug view %}">Summary</a></li>
     <li>{{group.get_title}}</li>
 {% endblock %}
 
+
+{% block content_before_title %}
+
+   {% if page %}
+
+    {% include "reports/page_information.html" %}
+
+    {% else %}
+
+    {% include "reports/report_information.html" %}
+
+    {% endif %}
+
+
+{% endblock %}
+
+
 {% block title %}
-  {{group.get_title}} Rules
+  {{group.get_title}}
 {% endblock %}
 
 {% block content %}
-
-  {% include "reports/report_information.html" %}
     
-  {% include "reports/report_summary.html" %}
+  {% include "reports/rules_summary.html" %}
 
 <section class="report" aria-labelledby="id_result_label">
-    <h2 id="id_result_label">{{group.get_title}} Rule Results</h2>
+    <h2 id="id_result_label" class="sr-only">{{group.get_title}} Rule Results</h2>
     <table  id="id_table_show_summary" class="details table table-striped table-hover sortable"  aria-labelledby="id_result_label"  aria-describedby="id_result_description">
         <thead>
           <tr>

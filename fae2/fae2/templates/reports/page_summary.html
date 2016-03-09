@@ -2,55 +2,69 @@
 
     <table class="summary" aria-label="Rule Results Summary">
         <thead>
-            <td class="text"></td>
-            <th class="num">Violations</th>
-            <th class="num">Warnings</th>
-            <th class="num">Manual<br/>Checks</th>
-            <th class="num">Passed</th>
+            <td></td>
+            <th>Violations</th>
+            <th>Warnings</th>
+            <th>Manual<br/>Checks</th>
+            <th>Passed</th>
+<!--            
+            <th>Not Applicable</th>
+-->
         </thead>
         <tbody>
             <tr>
-                <th title="Number of pages with rule result">Number of Rules</th>               
+                <th title="Number of pages with rule result" class="first">Number of Rules</th>               
                 
                 {% if summary.rules_violation = 0 %}
-                <td class="num violation"><abbr title="No pages with violations">-</abbr></td>
+                <td class="violation"><abbr title="No rules with violations on this page">-</abbr></td>
                 {% else %}
                 {% if summary.rules_violation = 1 %}
-                <td class="num violation"><abbr title="One page with violations">1</abbr></td>
+                <td class="violation"><abbr title="One rule with violations on this page">1</abbr></td>
                 {% else %}
-                <td class="num violation"><abbr title="{{violations}} pages with violations">{{summary.rules_violation}}</abbr></td>
+                <td class="violation"><abbr title="{{violations}} rules with violations on this page">{{summary.rules_violation}}</abbr></td>
                 {% endif %}
                 {% endif %}
 
                 {% if summary.rules_warning = 0 %}
-                <td class="num warning"><abbr title="No pages with warnings">-</abbr></td>
+                <td class="warning"><abbr title="No rules with warnings on this page">-</abbr></td>
                 {% else %}
                 {% if summary.rules_warning = 1 %}
-                <td class="num warning"><abbr title="One page with warnings">1</abbr></td>
+                <td class="warning"><abbr title="One rule with warnings on this page">1</abbr></td>
                 {% else %}
-                <td class="num warning"><abbr title="{{warnings}} pages with warnings">{{summary.rules_warning}}</abbr></td>
+                <td class="warning"><abbr title="{{warnings}} pages with warnings on this page">{{summary.rules_warning}}</abbr></td>
                 {% endif %}
                 {% endif %}
                 
                 {% if summary.rules_manual_check = 0 %}
-                <td class="num manual_check"><abbr title="No pages with manual checks">-</abbr></td>
+                <td class="manual_check"><abbr title="No rules with manual checks on this page">-</abbr></td>
                 {% else %}
                 {% if summary.rules_manual_check = 1 %}
-                <td class="num manual_check"><abbr title="One page with manual checks">1</abbr></td>
+                <td class="manual_check"><abbr title="One rule with manual checks on this page">1</abbr></td>
                 {% else %}
-                <td class="num manual_check"><abbr title="{{manual_checks}} pages with manual checks">{{summary.rules_manual_check}}</abbr></td>
+                <td class="manual_check"><abbr title="{{manual_checks}} rules with manual checks on this page">{{summary.rules_manual_check}}</abbr></td>
                 {% endif %}
                 {% endif %}
 
                 {% if summary.rules_passed = 0 %}
-                <td class="num passed"><abbr title="No pages with all pass">-</abbr></td>
+                <td class="passed"><abbr title="No rules with all pass on this page">-</abbr></td>
                 {% else %}
                 {% if summary.rules_passed = 1 %}
-                <td class="num passed"><abbr title="One page with all pass">1</abbr></td>
+                <td class="passed"><abbr title="One rule with all pass on this page">1</abbr></td>
                 {% else %}
-                <td class="num passed"><abbr title="{{passed}} pages with all pass">{{summary.rules_passed}}</abbr></td>
+                <td class="passed"><abbr title="{{summary.rules_passed}} rules with all pass on this page">{{summary.rules_passed}}</abbr></td>
                 {% endif %}
                 {% endif %}
+<!--
+                {% if summary.rules_na = 0 %}
+                <td class="not_applicable"><abbr title="No rules with not applicable on this page">-</abbr></td>
+                {% else %}
+                {% if summary.rules_na = 1 %}
+                <td class="not_applicable"><abbr title="One rule with not applicable on this page">1</abbr></td>
+                {% else %}
+                <td class="not_applicable"><abbr title="{{summary.rules_na}} rules with not applicable on this page">{{summary.rules_na}}</abbr></td>
+                {% endif %}
+                {% endif %}
+-->                
                 
             </tr>
         </tbody>

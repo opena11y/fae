@@ -2,70 +2,38 @@
 {% load staticfiles i18n %}
 
 {% block breadcrumb %}
-    <li><a href="{% url 'report_rules'       report.slug view %}">All Rules</a></li>
+    <li><a href="{% url 'report_rules' report.slug view %}">Summary</a></li>
     <li><a href="{% url 'report_rules_group' report.slug view group.slug %}">{{group.get_title}}</a></li>
     <li>{{ws_rule_result.rule.nls_rule_id}}</li>
 {% endblock %}
 
+
+{% block content_before_title %}
+
+    {% if page %}
+
+    {% include "reports/page_information.html" %}
+
+    {% else %}
+
+    {% include "reports/report_information.html" %}
+
+    {% endif %}
+
+{% endblock %}
+
+
 {% block title %}
-{% include "reports/rule_result.html" with rule_result=ws_rule_result %}
+    Rule Result <span class="sr-only">{{ws_rule_result.rule.summary_text}}</span>
 {% endblock %}
 
 
 {% block content %}
-    {% include "reports/report_information.html" %}
 
-<section aria-labelledby="id_rrs" style="margin-top: 4em;">
-  <h2 id="id_rrs">Rule Result Summary</h2>
+<div class="rule_summary" aria-hidden="true">{{ws_rule_result.rule.nls_rule_id}}: {{ws_rule_result.rule.summary_html|safe}}</div>
 
-  <div class="row">
-  <div class="col-md-5">
-  <table class="table" aria-labelledby="id_rrs" style="font-size: 120%; margin-bottom: 1em">
-    <thead>
-        <tr>
-            <th class="text col-md-2">Severity</th>
-            <th class="num col-md-3">Number of Pages</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% if ws_rule_result.pages_violation > 0 %}
-        <tr>
-            <td class="text violation">Violations</td>
-            <td class="num">{{ws_rule_result.pages_violation}}</td>
-        </tr>
-        {% endif %}
 
-        {% if ws_rule_result.pages_warning > 0 %}
-        <tr>
-            <td class="text warning">Warnings</td>
-            <td class="num">{{ws_rule_result.pages_warning}}</td>
-        </tr>
-        {% endif %}
-
-        {% if ws_rule_result.pages_manual_check > 0 %}
-        <tr>
-            <td class="text manual_check">Manual Checks</td>
-            <td class="num">{{ws_rule_result.pages_manual_check}}</td>
-        </tr>
-        {% endif %}
-
-        {% if ws_rule_result.pages_passed > 0 %}
-        <tr>
-            <td class="text passed">Manual Checks</td>
-            <td class="num">{{ws_rule_result.pages_passed}}</td>
-        </tr>
-        {% endif %}
-
-        {% if ws_rule_result.pages_na > 0 %}
-        <tr>
-            <td class="text not_applicable">Not Applicable</td>
-            <td class="num">{{ws_rule_result.pages_na}}</td>
-        </tr>
-        {% endif %}
-    </tbody>
-  </table>
-  </div>
-  </div>
+{% include "reports/pages_summary.html" %}
 
 </section>
 

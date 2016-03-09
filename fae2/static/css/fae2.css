@@ -214,30 +214,24 @@ main ul.result_messages li {
     margin-top: 2em;
 }
 
-#summary table.summary th.num {
-    padding-left: 1em;
-}
-
-#summary table.summary th.first {
-    padding-left: 0em;
-}
-
-#summary table.summary thead th,
-#summary table.summary tbody td {
+#summary table.summary th,
+#summary table.summary td {
+    padding: 0.25em;
     text-align: center;
-    width: 5em;
+    width: 7em;
     border: white solid 1px;
 }
 
-#summary table.summary tbody td.na,
-#summary table.summary tbody td.zero
-{
-    color: gray;
+#summary table.summary tbody th.first {
+    text-align: right;
+    width: 12em;
+    padding-right: 0.25em;
 }
 
-#summary table.summary tbody th {
-    font-weight: normal;
-    padding-right: 1.25em;
+#summary table.summary tbody td.not_applicable
+{
+    background-color: #EEEEEE;
+    color: black;
 }
 
 
@@ -385,6 +379,11 @@ main nav li.side_by_side a.right {
     padding-left-min: 0.25em;
     padding-left-max: 1em;
     padding-right: 0.25em;
+}
+
+main .rule_summary {
+    margin-top: 0.5em;
+    font-size: 200%;
 }
 
 footer {

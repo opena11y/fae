@@ -9,7 +9,11 @@
 
 {% block content_before_title %}
 
-    {% if not page %}
+    {% if page %}
+
+    {% include "reports/page_information.html" %}
+
+    {% else %}
 
     {% include "reports/report_information.html" %}
 
@@ -35,7 +39,7 @@
 
 {% else %}
 
-{% include "reports/report_summary.html" %}
+{% include "reports/rules_summary.html" %}
 
 <nav id="view_options" aria-label="Result View Options">
 	<ul class="nav nav-tabs">

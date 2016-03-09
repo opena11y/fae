@@ -49,7 +49,7 @@ class WebsiteReportGroup(RuleGroupResult):
       return self.title
 
   def add_website_report(self, ws_report):
-    print('[WebsiteReportGroup][add_website_report] ws_report: ' + str(ws_report))
+#    print('[WebsiteReportGroup][add_website_report] ws_report: ' + str(ws_report))
     try:
       self.num_total_reports = self.num_total_reports + 1  
       self.num_total_pages   = self.num_total_pages + ws_report.page_count

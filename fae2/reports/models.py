@@ -25,7 +25,6 @@ from django.core.urlresolvers import reverse
 from pytz import timezone
 from django.contrib.sites.models import Site
 
-
 from django.contrib.auth.models import User
 
 from rulesets.models            import Ruleset
@@ -59,6 +58,36 @@ MC_STATUS_CHOICES = (
     ('P',   'Passed'),
     ('F',   'Fail'),
 )
+
+# ---------------------------------------------------------------
+#
+# Pages Summary Object
+#
+# ---------------------------------------------------------------
+
+class PagesSummary:
+
+  def __init__(self):
+
+    self.pages_violation = 0
+    self.pages_warning = 0
+    self.pages_manual_check = 0
+    self.pages_passed = 0
+    self.pages_not_applicable = 0
+
+  def update_summary(self, result):
+
+    if result == RESULT_VALUE['VIOLATION']:
+      self.pages_violation += 1
+    elif result == RESULT_VALUE['WARNING']:  
+      self.pages_warning += 1
+    elif result == RESULT_VALUE['MANUAL_CHECK']:  
+      self.pages_manual_check += 1
+    elif result == RESULT_VALUE['PASS']:  
+      self.pages_passed += 1
+    elif result == RESULT_VALUE['NOT_APPLICABLE']:  
+      self.pages_not_applicable += 1  
+
 
 # ---------------------------------------------------------------
 #
@@ -304,6 +333,22 @@ class WebsiteReport(RuleGroupResult):
       pr.save()
       num += 1     
 
+  def get_pages_summary(self, view=False, group=False):
+      ps = PagesSummary()
+
+      for pr in self.page_all_results.all():
+        if view == 'rs':
+          pr = pr.page_rs_results.get(rule_category__slug=group)
+        elif view == 'gl':
+          pr = pr.page_gl_results.get(guideline__slug=group)
+        elif view == 'rc':
+          pr = pr.page_rc_results.get(rule_category__slug=group)
+
+        ps.update_summary(pr.result_value) 
+
+      return ps
+
+
   def get_page_count(self):
     if self.status == 'C' or self.status == 'E' or self.status == 'D':
         return self.page_count
@@ -331,8 +376,6 @@ class WebsiteReport(RuleGroupResult):
     json['url']         = self.url
     json['pages']       = self.get_page_count()
 
-    print('[WebsiteReport][toJSON]')
-
     return json
 
 
@@ -354,8 +397,8 @@ class WebsiteReport(RuleGroupResult):
     pi = processing_info()
 
     fname = self.data_directory + "/data/status.txt"
-    print('[WebsiteReport][get_processing_status] ' + APP_DIR)
-    print('[WebsiteReport][get_processing_status] ' + fname)
+#    print('[WebsiteReport][get_processing_status] ' + APP_DIR)
+#    print('[WebsiteReport][get_processing_status] ' + fname)
 
     try:
       file = open( fname, "r")

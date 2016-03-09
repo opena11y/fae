@@ -151,7 +151,6 @@ class StatsUser(models.Model):
         usage = UsageInfo()
 
         last_month = datetime.today() - timedelta(days=30)
-        print(last_month)
         wsrs = self.ws_report_group.ws_reports.filter(created__gte=last_month)
 
         for wsr in wsrs:
