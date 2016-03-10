@@ -18,7 +18,9 @@ from django.db import models
 from django.contrib.auth.models import User
 from registration.signals import user_registered
 from timezone_field import TimeZoneField
+
 from websiteResultGroups.models import WebsiteReportGroup
+from stats.model import StatsUser
 
 ## User Profile
 # The built-in Django User relation:
@@ -86,5 +88,11 @@ def user_registered_callback(sender, user, request, **kwargs):
     user.first_name = request.POST['first_name'] 
     user.last_name = request.POST['last_name']
     user.save()
+
+    wsrg =  WebsiteReportGroup(title="Summary of results for " + str(user))
+    wsrg.save()
+    user_stats = StatsUser(user=user, ws_report_group=wsrg)  
+    user_stats.save()   
+
  
 user_registered.connect(user_registered_callback)  
