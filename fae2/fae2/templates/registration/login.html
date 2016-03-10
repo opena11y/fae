@@ -1,7 +1,12 @@
 {% extends "base.html" %}
 {% load staticfiles i18n %}
+
+{% block title %}
+  Login
+{% endblock %}
+
 {% block content %}
-<h1>Login</h1>
+
 {% if shibboleth.enabled %}
     <p><a href="{{shibboleth.url}}">{{shibboleth.name}}</a></p>
 {% else %}
@@ -20,7 +25,7 @@
 
     <form method="post" action="{% url 'django.contrib.auth.views.login' %}">
     {% csrf_token %}
-    <table>
+    <table role="presentation">
     <tr>
         <td>{{ form.username.label_tag }}</td>
         <td>{{ form.username }}</td>

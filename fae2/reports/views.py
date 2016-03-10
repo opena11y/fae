@@ -137,7 +137,7 @@ class FAENavigtionObject:
     next_label = ""
     next_url   = ""    
 
-    def __init__(self, session):
+    def __init__(self, session, user=False):
 
         self.session = session
 
@@ -189,6 +189,17 @@ class FAENavigtionObject:
 
         if self.slug:
             self.update_filters()
+        else:
+            if user and len(user.username) and user.username != 'anonymous':
+                try:
+                    report = WebsiteReport.objects.filter(user=user).latest('last_viewed')
+                except:
+                    report = False    
+
+                if report:
+                    self.set_fae_navigation(report.slug, report.page_count, report.last_view, report.last_report_type, report.last_page)
+                    session['']
+
 
     def update_filters(self):        
 
@@ -295,7 +306,7 @@ class FAENavigationMixin(object):
 
         context = super(FAENavigationMixin, self).get_context_data(**kwargs)
 
-        context['report_nav'] = FAENavigtionObject(self.request.session)
+        context['report_nav'] = FAENavigtionObject(self.request.session, self.request.user)
 
         return context
 
@@ -419,36 +430,18 @@ class RunReportView(LoginRequiredMixin, FAENavigationMixin, CreateView):
     def form_invalid(self, form):
 
         return super(RunReportView, self).form_invalid(form)
-
+  
     def get_context_data(self, **kwargs):
         context = super(RunReportView, self).get_context_data(**kwargs)
 
-        try:
-            slug = self.request.session['last_report_slug']
-            if slug:
-                report = WebsiteReport.objects.get(slug=slug)
+        try: 
+            last_report = WebsiteReport.objects.filter(user=self.request.user).latest('last_viewed')
         except:
-            try:
-                report = WebsiteReport.objects.filter(user=self.request.user).latest('created')
-            except:
-                report = False
+            last_report = False    
 
-        if report:
-            self.request.session['last_report_slug']       = report.slug
-            self.request.session['last_report_view']       = report.last_view
-            self.request.session['last_report_page_count'] = report.page_count
-            self.request.session['last_page_number']       = report.last_page
-
-            self.request.session['last_prev_page_url']     = report.prev_page_url
-            self.request.session['last_next_page_url']     = report.next_page_url
-            self.request.session['last_first_page_url']    = report.first_page_url
-            self.request.session['last_last_page_url']     = report.last_page_url
-
-        context['last_report'] = report
+        context['last_report'] = last_report
         
         return context    
-
-  
 
 
 class ProcessingReportView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
@@ -693,10 +686,6 @@ class ReportRulesGroupRulePageView(FAENavigationMixin, TemplateView):
 
         page_rule_result = ws_rule_result.page_rule_results.get(page_result__page_number=page_slug)
 
-        report.update_last_page_numbers(page_rule_result.page_result.page_number)
-
-        report.update_last_page_urls(self.request.session)
-
         report_nav = FAENavigtionObject(self.request.session)
         report_nav.set_fae_navigation(report.slug, report.page_count, view, 'rules', page_slug)
         report_nav.set_current(ws_rule_result.rule.nls_rule_id + " - " + "Page " + page_slug, reverse('report_rules_group_rule_page', args=[report.slug, view, group_slug, rule_slug, page_slug]))
@@ -848,10 +837,6 @@ class ReportPageView(FAENavigationMixin, TemplateView):
           groups = page.page_rc_results.all()
           view_opt = 'rc'
 
-        report.update_last_page_numbers(page.page_number)
-
-        report.update_last_page_urls(self.request.session)
-
         report_nav = FAENavigtionObject(self.request.session)
         report_nav.set_fae_navigation(report.slug, report.page_count, view, 'page', page.page_number)
         report_nav.set_current("Page " + page_slug, reverse('report_page', args=[report.slug, view, page_slug]))
@@ -889,10 +874,6 @@ class ReportPageGroupView(FAENavigationMixin, TemplateView):
           group_info    = RuleCategory.objects.get(slug=group_slug)
           view_opt = 'rc'
 
-        report.update_last_page_numbers(page.page_number)
-
-        report.update_last_page_urls(self.request.session)
-
         report_nav = FAENavigtionObject(self.request.session)
         report_nav.set_fae_navigation(report.slug, report.page_count, view, 'page', page.page_number)
         report_nav.set_current(group_info.title, reverse('report_page_group', args=[report.slug, view, group_slug, page_slug]))
@@ -928,10 +909,6 @@ class ReportPageGroupRuleView(FAENavigationMixin, TemplateView):
           view_opt = 'rc'
 
         page_rule_result = group.page_rule_results.get(slug=rule_slug)
-
-        report.update_last_page_numbers(page.page_number)
-
-        report.update_last_page_urls(self.request.session)        
 
         report_nav = FAENavigtionObject(self.request.session)
         report_nav.set_fae_navigation(report.slug, report.page_count, view, 'page', page.page_number)

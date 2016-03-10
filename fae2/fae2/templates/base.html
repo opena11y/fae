@@ -122,9 +122,9 @@
 
           <div class="col-xs-12 col-sm-3 col-md-3 col-lg-2">
           {% if user.is_authenticated %}
-            <nav id="id_report_manage" aria-labelledby="nav-report-management">
+            <nav id="id_report_manage" aria-labelledby="id_report_manage_label">
 
-              <h2 id="nav-report-management" class="sr-only">Report Management</h2>
+              <h2 id="id_report_manage_label" class="sr-only">Report Management</h2>
 
                <ul class="nav nav-pills nav-stacked">
                   <li><a href="{% url 'run_report'          %}">Run FAE</a></li>
@@ -133,9 +133,10 @@
                   <li><a href="{% url 'manage_reports'      %}">Manage Reports</a></li>
                </ul> 
             </nav>
+
             
             {% if report_nav.page_count > 1 %}
-            
+
             <nav id="id_nav_reports" aria-labelledby="id_nav_reports_label">  
 
               <h2 id="id_nav_reports_label">Reports</h2>
@@ -192,25 +193,30 @@
             </nav>
             {% else %}
 
-            <nav id="id_nav_reports" aria-labelledby="id_nav_reports_label">  
+              {% if report_nav.slug %}
+              <nav id="id_nav_reports" aria-labelledby="id_nav_reports_label">  
 
-              <h2 id="id_nav_reports_label">Reports</h2>
+                <h2 id="id_nav_reports_label">Reports</h2>
 
-              <ul class="nav nav-pills nav-stacked">  
-                  <li><a href="{% url 'report_page' report_nav.slug  report_nav.view  1 %}">Page Summary</a></li>
-              </ul>  
-            </nav>
+                <ul class="nav nav-pills nav-stacked">  
+                    <li><a href="{% url 'report_page' report_nav.slug  report_nav.view  1 %}">Page Summary</a></li>
+                </ul>  
+              </nav>
+              {% endif %}
 
             {% endif %}
 
           {% else %}
-            <nav aria-labelledby="nav-report-management">
+            <nav id="id_report_manage" aria-labelledby="id_report_manage_label">
+
+              <h2 id="id_report_manage_label" class="sr-only">Run Page Report or Login</h2>
+
                <ul class="nav nav-pills nav-stacked">
                   <li><a href="{% url 'login'   %}">Login</a></li>
                   {% if anonymous_enabled %}
                     <li><a href="{% url 'run_anonymous_report'  %}">Run FAE</a></li>
-                    {% if request.session.last_report_slug and request.session.last_report_view %}
-                    <li><a href="{% url 'report_page' request.session.last_report_slug  request.session.last_report_view  1 %}">Page Report</a></li>
+                    {% if report_nav.slug and report_nav.page_count == 1 %}
+                    <li><a href="{% url 'report_rules' report_nav.slug  report_nav.view %}">Page Summary</a></li>
                     {% endif %}
                   {% endif %}  
               </ul>
@@ -327,6 +333,8 @@
           }
 
           function checkLinks(url, links, style) {
+
+            if (typeof links !== 'object') return false;
 
             for (var i = 0; i < links.length; i++) {
               var link = links[i];

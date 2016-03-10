@@ -190,7 +190,7 @@ function updateReports(reportInfoArray) {
 
     var report_id = ri['id'];
     
-    if (updateProcessingReports(ri['id'], ri['status'], ri['title'], ri['report_url'], ri['pages'])) {
+    if (updateProcessingReports(ri['id'], ri['status'], ri['title'], ri['report_url'], ri['page_count'])) {
 
         tr = fae2TableUtils.addRow(tbody_proc, 'row_' + report_id, '')
 
@@ -198,7 +198,7 @@ function updateReports(reportInfoArray) {
 
         fae2TableUtils.addCell(tr, localDate, '', 'text');
 
-        fae2TableUtils.addCell(tr, getStatusNLS(ri['status'], ri['pages']), ('status_' + report_id), 'text');
+        fae2TableUtils.addCell(tr, getStatusNLS(ri['status'], ri['page_count']), ('status_' + report_id), 'text');
 
         fae2TableUtils.addCellLink(tr, ri['ruleset'], ri['ruleset_url'], '', 'text');
 
@@ -208,7 +208,7 @@ function updateReports(reportInfoArray) {
 
     }
 
-    if (updateZeroPageReports(ri['id'], ri['status'], ri['pages'])) {
+    if (updateZeroPageReports(ri['id'], ri['status'], ri['page_count'])) {
 
         tr = fae2TableUtils.addRow(tbody_zero, 'row_' + report_id, '')
 
@@ -216,11 +216,11 @@ function updateReports(reportInfoArray) {
 
         fae2TableUtils.addCell(tr, localDate, '', 'text');
 
-        if ((ri['status'] === 'A') && (ri['pages'] === 0)) {
-          fae2TableUtils.addCell(tr, getStatusNLS('B', ri['pages']), ('status_' + report_id), 'text');
+        if ((ri['status'] === 'A') && (ri['page_count'] === 0)) {
+          fae2TableUtils.addCell(tr, getStatusNLS('B', ri['page_count']), ('status_' + report_id), 'text');
         }
         else {
-          fae2TableUtils.addCell(tr, getStatusNLS('E', ri['pages']), ('status_' + report_id), 'text');
+          fae2TableUtils.addCell(tr, getStatusNLS('E', ri['page_count']), ('status_' + report_id), 'text');
         }  
 
         fae2TableUtils.addCellLink(tr, ri['ruleset'], ri['ruleset_url'], '', 'text');

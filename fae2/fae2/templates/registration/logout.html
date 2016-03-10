@@ -1,7 +1,11 @@
 {% extends "base.html" %}
+
+{% block title %}
+  Logged Out
+{% endblock %}
+
 {% block content %}
 
-    <h1>Logged Out</h1>
 
     <p>You are now logged out of FAE 2.0</p>
     <p><a href="{% url 'login' %}">Login</a></p>

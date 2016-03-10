@@ -169,6 +169,18 @@ MAX_PAGES_CHOICES = (
   (25,  '  25 pages')
 )  
 
+LAST_REPORT_TYPE_CHOICES = (
+  ('rules',   'Summary'),
+  ('pages',   'All Pages'),
+  ('page',    'Page')
+)  
+
+LAST_VIEW_CHOICES = (
+  ('rc',   'Rule Category'),
+  ('gl',   'WCAG Guideline'),
+  ('rs',   'Rule Scope')
+)  
+
 # ---------------------------------------------------------------
 #
 # WebsiteReport
@@ -210,21 +222,11 @@ class WebsiteReport(RuleGroupResult):
 
   # Report History Information
   
-  last_viewed  = models.DateTimeField(auto_now=True, editable=False)
-  last_view    = models.CharField('Last View', max_length=4, default="rc")
-  last_page    = models.IntegerField('Last Page Viewed', default=1)
-
-  last_next_page     = models.IntegerField('Next Page Number', default=0)
-  last_prev_page     = models.IntegerField('Previous Page Number', default=0)
-
-  last_first_page    = models.IntegerField('First Page Number', default=0)
-  last_last_page     = models.IntegerField('Last Page Number', default=0)
-
-  next_page_url = models.URLField("Next Page URL",      max_length=1024, default="", blank=True)
-  prev_page_url = models.URLField("Previous Page URL",  max_length=1024, default="", blank=True)
-
-  first_page_url = models.URLField("First Page URL",      max_length=1024, default="", blank=True)
-  last_page_url  = models.URLField("Last Page URL",  max_length=1024, default="", blank=True)
+  last_viewed        = models.DateTimeField(auto_now=True, editable=False)
+  last_report_type   = models.CharField('Last Report Type', max_length=16, default="rules", choices=LAST_REPORT_TYPE_CHOICES)
+  last_view          = models.CharField('Last Viewed', max_length=4, default="rc", choices=LAST_VIEW_CHOICES)
+  last_group         = models.CharField('Last Group', max_length=32, default="")
+  last_page          = models.IntegerField('Last Page Viewed', default=1)
   
   # fae-util and fae20 processing information
 
@@ -425,58 +427,6 @@ class WebsiteReport(RuleGroupResult):
       pi.status = "file not found"  
     
     return pi
-
-  def update_last_page_numbers(self, page_number):
-    self.last_page      = page_number
-    self.last_next_page = 0;
-    self.last_prev_page = 0
-    self.last_first_page = 0;
-    self.last_last_page = 0
-
-    if page_number < self.page_count:
-      self.last_next_page  = page_number + 1
-      self.last_last_page  = self.page_count
-
-    if page_number > 1:
-      self.last_prev_page   = page_number - 1
-      self.last_first_page  = 1
-
-    self.save()  
-
-  def update_last_page_urls(self, session):
-    domain = ""
-
-    prev_url  = session['last_prev_page_url']
-    next_url  = session['last_next_page_url']
-    first_url = session['last_first_page_url']
-    last_url  = session['last_last_page_url']
-
-    site = Site.objects.get_current()
-
-    if site:
-      domain = site.domain
-
-    if prev_url:
-      self.prev_page_url   = domain + prev_url
-    else: 
-      self.prev_page_url = ''
-
-    if next_url:
-      self.next_page_url   = domain + next_url
-    else:
-      self.next_page_url = ''
-
-    if first_url:
-      self.first_page_url  = domain + first_url
-    else:
-      self.first_page_url = ''
-
-    if last_url:
-      self.last_page_url   = domain + last_url
-    else:
-      self.last_page_url = ''
-
-    self.save()  
 
   def broken_urls(self):
     urls = []
