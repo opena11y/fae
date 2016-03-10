@@ -367,14 +367,13 @@ class WebsiteReport(RuleGroupResult):
     json['date']        = self.created.astimezone(tz)
     json['ruleset']     = self.ruleset.title
     json['ruleset_url'] = reverse('ruleset', args=[self.ruleset.slug])
-    json['report_url']       = ""
+    json['report_url']  = reverse('report_rules',  args=[self.slug, 'rc'])
     json['report_page_url']  = ""
     if self.page_count > 0:
-      json['report_url']       = reverse('show_report',       args=[self.slug, 'rc'])
-      json['report_page_url']  = reverse('show_report_page',  args=[self.slug, 'rc', 1])
+      json['report_page_url']  = reverse('report_page',  args=[self.slug, 'rc', 1])
     json['depth']       = self.depth
     json['url']         = self.url
-    json['pages']       = self.get_page_count()
+    json['page_count']  = self.get_page_count()
 
     return json
 

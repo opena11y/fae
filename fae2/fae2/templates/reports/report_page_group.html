@@ -7,8 +7,8 @@
     <li><a href="{% url 'report_pages_group' report.slug view group.slug %}">{{group.get_title}} Rules</a></li>
     <li>Page {{page.page_number}}</li>
     {% else %}
-    <li><a href="{% url 'report_page'       report.slug view 1 %}">Page Report</a></li>
-    <li><a href="{% url 'report_page_group' report.slug view 1 group %}">{{group.get_title}} Rules</a></li>
+    <li><a href="{% url 'report_page'       report.slug view 1 %}">Page Summary</a></li>
+    <li>{{group.get_title}} Rules</li>
     {% endif %}
 {% endblock %}
 

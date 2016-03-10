@@ -22,6 +22,7 @@ from os.path import join, abspath, dirname
 import registration.backends.default
 
 SITE_ID = 1
+DEFAULT_CHARSET='utf-8'
 
 here = lambda *dirs: join(abspath(dirname(__file__)), *dirs)
 root = lambda *dirs: join(abspath(here("..","..")), *dirs)

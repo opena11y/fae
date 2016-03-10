@@ -134,26 +134,16 @@
                </ul> 
             </nav>
             
-<!--
-             <p>{{report_nav.slug}}</p>
-             <p>{{report_nav.view}}</p> 
-             <p>{{report_nav.page}}</p> 
-             <p>{{report_nav.page_count}}</p>
--->
-            {% if report_nav.slug %}
+            {% if report_nav.page_count > 1 %}
             
             <nav id="id_nav_reports" aria-labelledby="id_nav_reports_label">  
 
               <h2 id="id_nav_reports_label">Reports</h2>
 
               <ul class="nav nav-pills nav-stacked">  
-              {% if fae_navigation.page_count = 1 %}
-                  <li><a href="{% url 'report_page' report_nav.slug  report_nav.view  1 %}">Page Report</a></li>
-              {% else %}  
                   <li><a href="{% url 'report_rules' report_nav.slug  report_nav.view %}">Summary</a></li>
                   <li><a href="{% url 'report_pages' report_nav.slug  report_nav.view %}">All Pages</a></li>
                   <li><a href="{% url 'report_page'  report_nav.slug  report_nav.view report_nav.page %}">Page {{report_nav.page}}</a></li>
-              {% endif %}  
               </ul>  
             </nav>
 
@@ -200,6 +190,18 @@
               {% endfor %}    
               </ul>
             </nav>
+            {% else %}
+
+            <nav id="id_nav_reports" aria-labelledby="id_nav_reports_label">  
+
+              <h2 id="id_nav_reports_label">Reports</h2>
+
+              <ul class="nav nav-pills nav-stacked">  
+                  <li><a href="{% url 'report_page' report_nav.slug  report_nav.view  1 %}">Page Summary</a></li>
+              </ul>  
+            </nav>
+
+            {% endif %}
 
           {% else %}
             <nav aria-labelledby="nav-report-management">
@@ -215,7 +217,6 @@
             </nav>
           {% endif %}
 
-            {% endif %}
           </div>
 
           <div class="col-xs-12 col-sm-9 col-md-9 col-lg-10">
@@ -250,10 +251,10 @@
 
     <footer>
       <div class="container">
-        <div style="float: left">
-        Version {% include 'version.txt' %} | <a href="{% url 'run_referer_report' %}">Evaluate Page</a>
+        <div class="well well-sm">
+          <div style="float: left">Copyright University of Illinois 2014-16</div>
+          <div class="text-right">Version {% include 'version.txt' %}</div>
         </div>
-        <div class="text-right">Copyright Universioty of Illinois 2014-16</div>
       </div>
     </footer>
 
@@ -376,7 +377,7 @@
             if (!flag_filters) flag_filters = checkLinks(url, document.querySelectorAll('#id_view_filters  a[href]'), 'highlight');
           }
 
-          if (!flag_reports && !flag_filters & !flag_nav) {
+          if (!flag_reports && !flag_filters && !flag_nav && ({{report_nav.page_count}} > 1)) {
             document.getElementById('id_view_current').className = 'highlight';
           }
 

@@ -7,7 +7,7 @@
     <li>All Rules</li>
     <li>Page {{page.page_number}}</li>
     {% else %}
-    <li>Page Report</li>
+    <li>Page Summary</li>
     {% endif %}
 {% endblock %}
 
@@ -18,11 +18,7 @@
 {% endblock %}
 
 {% block title %}
-    {% if report.page_count > 1 %}
     Page Summary
-    {% else %}
-    Page Report
-    {% endif %}
 {% endblock %}    
 
 {% block content %}
@@ -161,14 +157,6 @@
                     <td class="text"  headers="id_summ id_pas">
                     {% if summary.rules_passed > 0 %}
                     {{summary.rules_passed}}
-                    {% else %}
-                    -
-                    {% endif %}
-                    </td>
-
-                    <td class="text"  headers="id_summ id_not">
-                    {% if summary.rules_na > 0 %}
-                    {{summary.rules_na}}
                     {% else %}
                     -
                     {% endif %}
