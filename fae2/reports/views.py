@@ -198,7 +198,6 @@ class FAENavigtionObject:
 
                 if report:
                     self.set_fae_navigation(report.slug, report.page_count, report.last_view, report.last_report_type, report.last_page)
-                    session['']
 
 
     def update_filters(self):        
