@@ -189,6 +189,12 @@ main table td.not_applicable,
     padding-right: 1.25em;
 }
 
+main table th.none,
+main table td.none
+{
+   font-style: italic;
+}
+
 main table tr.summary {
   font-weight: bold;
 }
@@ -389,5 +395,9 @@ main .rule_summary {
 footer {
     border-top: solid thin gray;
     margin-top: 4em;
+}
+
+nav li.highlight a {
+   background-color: #EEEEEE;
 }
 

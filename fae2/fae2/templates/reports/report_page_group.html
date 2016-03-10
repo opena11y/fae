@@ -62,7 +62,7 @@
             {% for prr in group.page_rule_results.all %} 
             <tr>
                 <td id="id_r{{forloop.counter}}" class="text" headers="id_grp">
-                  <a href="{% url 'report_page_group_rule' report.slug view page.page_number group.slug prr.rule.slug %}">
+                  <a href="{% url 'report_page_group_rule' report.slug view group.slug page.page_number prr.rule.slug %}">
                     {{prr.rule.summary_html|safe}}
                   </a>
                 </td>

@@ -37,10 +37,11 @@ from .models import StatsRegisteredUsers
 
 from websiteResultGroups.models  import WebsiteReportGroup
 
+from reports.views import FAENavigationMixin
 
 # Create your views here.
 
-class ShowUsageStatistics(TemplateView):
+class ShowUsageStatistics(FAENavigationMixin, TemplateView):
     template_name = 'stats/summary.html'
 
     def get_context_data(self, **kwargs):

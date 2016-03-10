@@ -16,29 +16,37 @@
 
           var element_results = {{page_rule_result.element_results_json|safe}};
 
-          console.log(element_results);
+          if (element_results.length > 0 ) {
+            for(var i = 0; i < element_results.length; i++ ) {
 
-          for(var i = 0; i < element_results.length; i++ ) {
+                var er = element_results[i];
 
-            var er = element_results[i];
+                document.write('<tr>\n');
 
-            document.write('<tr>\n');
+                document.write('<td class="text">' + er['element_identifier'] + '</td>\n');
 
-            document.write('<td class="text">' + er['element_identifier'] + '</td>\n');
+                var rv = er['result_value'];
+                if (rv == 5) document.write('<td class="text violation">Violation</td>\n');
+                else if (rv == 4) document.write('<td class="text warning">Warning</td>\n');
+                else if (rv == 3) document.write('<td class="text manual_check">Manual Check</td>\n');
+                else if (rv == 2) document.write('<td class="text fae-hidden">Hidden</td>\n');
+                else if (rv == 1) document.write('<td class="text passed">Pass</td>\n');
+                else document.write('<td class="text not_applicable">-</td>\n');
 
-            var rv = er['result_value'];
-            if (rv == 5) document.write('<td class="text violation">Violation</td>\n');
-            else if (rv == 4) document.write('<td class="text warning">Warning</td>\n');
-            else if (rv == 3) document.write('<td class="text manual_check">Manual Check</td>\n');
-            else if (rv == 2) document.write('<td class="text fae-hidden">Hidden</td>\n');
-            else if (rv == 1) document.write('<td class="text passed">Pass</td>\n');
-            else document.write('<td class="text not_applicable">-</td>\n');
+                document.write('<td>' + er['ordinal_position']   + '</td>\n');
+                document.write('<td>' + er['message']            + '</td>\n');
 
-            document.write('<td>' + er['ordinal_position']   + '</td>\n');
-            document.write('<td>' + er['message']            + '</td>\n');
-
-            document.write('</tr>\n');
+                document.write('</tr>\n');
+            }
          }   
+         else {
+                document.write('<tr>\n');
+                document.write('<td class="none"><em>no element results</em></td>\n');
+                document.write('<td></td>\n');
+                document.write('<td></td>\n');
+                document.write('<td></td>\n');
+                document.write('</tr>\n');            
+         }
 
         </script>
         </tbody>

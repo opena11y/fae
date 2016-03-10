@@ -27,11 +27,13 @@ from django.contrib.auth.models import User
 
 from .models import Contact
 
+from reports.views import FAENavigationMixin
+
 from fae2.settings import EMAIL_HOST_USER
 from fae2.settings import ADMIN_EMAIL
 
 # Create your views here.
-class ContactFormView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+class ContactFormView(LoginRequiredMixin, FAENavigationMixin, SuccessMessageMixin, CreateView):
     model = Contact
     fields = ['topic', 'message']
     template_name = 'contact/contact_form.html'
@@ -62,7 +64,7 @@ class ContactFormView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
 
 
 # Create your views here.
-class ResponseFormView(LoginRequiredMixin, UpdateView):
+class ResponseFormView(LoginRequiredMixin, FAENavigationMixin, UpdateView):
     model = Contact
     fields = ['topic', 'message', 'status', 'comments']
     template_name = 'contact/response_form.html'
@@ -103,7 +105,7 @@ class ResponseFormView(LoginRequiredMixin, UpdateView):
         return context
 
 
-class ResponsesView(LoginRequiredMixin, TemplateView):
+class ResponsesView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
     template_name = 'contact/responses.html'
 
     def get_context_data(self, **kwargs):

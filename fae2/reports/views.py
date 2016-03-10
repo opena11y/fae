@@ -68,9 +68,9 @@ def formatted_result_messages(result_message):
     class FormattedResultMessage:
 
         def __init__(self):
-            self.severity = "None"
+            self.severity = "no actions"
             self.message = ""
-            self.style =""
+            self.style ="none"
 
     frms = []
 
@@ -187,12 +187,12 @@ class FAENavigtionObject:
             self.previous_label = False
             self.previous_url   = False
 
-        self.filters = []
-
         if self.slug:
             self.update_filters()
 
     def update_filters(self):        
+
+        self.filters = []
 
         if self.view == 'rs':
             self.add_rule_scope_filter()
@@ -250,7 +250,7 @@ class FAENavigtionObject:
 
         if self.report_type == 'page':
             if group:
-                url = reverse('report_page_group', args=[self.slug, self.view, self.page, group])
+                url = reverse('report_page_group', args=[self.slug, self.view, group, self.page])
             else:    
                 url = reverse('report_page', args=[self.slug, self.view, self.page])
 
@@ -273,19 +273,19 @@ class FAENavigtionObject:
 
     def add_rule_category_filter(self):
         rcs = RuleCategory.objects.all()
-        self.add_filter_item(False, "All Rules")
+        self.add_filter_item(False, "All Groups")
         for rc in rcs:
             self.add_filter_item(rc.slug, rc.title)
 
     def add_guideline_filter(self):
         gls = Guideline.objects.all()
-        self.add_filter_item(False, "All Rules")
+        self.add_filter_item(False, "All Groups")
         for gl in gls:
             self.add_filter_item(gl.slug, gl.title)
 
     def add_rule_scope_filter(self):
         rss = RuleScope.objects.all()
-        self.add_filter_item(False, "All Rules")
+        self.add_filter_item(False, "All Groups")
         for rs in rss:
             self.add_filter_item(rs.slug, rs.title)
 
@@ -895,7 +895,7 @@ class ReportPageGroupView(FAENavigationMixin, TemplateView):
 
         report_nav = FAENavigtionObject(self.request.session)
         report_nav.set_fae_navigation(report.slug, report.page_count, view, 'page', page.page_number)
-        report_nav.set_current(group_info.title, reverse('report_page_group', args=[report.slug, view, page_slug, group_slug]))
+        report_nav.set_current(group_info.title, reverse('report_page_group', args=[report.slug, view, group_slug, page_slug]))
         context['report_nav'] = report_nav
 
         context['report']        = report
@@ -935,7 +935,7 @@ class ReportPageGroupRuleView(FAENavigationMixin, TemplateView):
 
         report_nav = FAENavigtionObject(self.request.session)
         report_nav.set_fae_navigation(report.slug, report.page_count, view, 'page', page.page_number)
-        report_nav.set_current("Page " + page_slug + " - " + page_rule_result.rule.nls_rule_id , reverse('report_page_group_rule', args=[report.slug, view, page_slug, group_slug, rule_slug]))
+        report_nav.set_current("Page " + page_slug + " - " + page_rule_result.rule.nls_rule_id , reverse('report_page_group_rule', args=[report.slug, view, group_slug, page_slug, rule_slug]))
         context['report_nav'] = report_nav
 
         context['result_messages'] = formatted_result_messages(page_rule_result.result_message)

@@ -39,11 +39,12 @@ from websiteResults.models import WebsiteReport
 
 from timezone_field import TimeZoneFormField
 
+from reports.views import FAENavigationMixin
 
 # Create your views here.
 
 
-class Logout(TemplateView):
+class Logout(FAENavigationMixin, TemplateView):
     template_name = 'registration/logout.html'
 
     def get(self, request, *args, **kwargs):
@@ -60,7 +61,7 @@ class UserProfileForm(forms.Form):
     email_announcements = forms.BooleanField(required=False)
     timezone            = TimeZoneFormField()
 
-class UpdateUserProfileView(LoginRequiredMixin, SuccessMessageMixin, FormView):
+class UpdateUserProfileView(LoginRequiredMixin, FAENavigationMixin, SuccessMessageMixin, FormView):
     template_name = 'accounts/my_account.html'
     form_class    = UserProfileForm
 
@@ -119,7 +120,7 @@ class UpdateUserProfileView(LoginRequiredMixin, SuccessMessageMixin, FormView):
 #
 # ==============================================================
 
-class StatusView(LoginRequiredMixin, TemplateView):
+class StatusView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
     template_name = 'accounts/status.html'
 
     def get_context_data(self, **kwargs):
@@ -139,7 +140,7 @@ class StatusView(LoginRequiredMixin, TemplateView):
 #
 # ==============================================================
 
-class AllUserInformationView(LoginRequiredMixin, TemplateView):
+class AllUserInformationView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
     template_name = 'accounts/all_user_information.html'
 
     def get_context_data(self, **kwargs):
@@ -154,7 +155,7 @@ class AllUserInformationView(LoginRequiredMixin, TemplateView):
         return context  
 
 
-class UserInformationView(LoginRequiredMixin, TemplateView):
+class UserInformationView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
     template_name = 'accounts/user_information.html'
 
     def get_context_data(self, **kwargs):

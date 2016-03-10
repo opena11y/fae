@@ -104,7 +104,7 @@
     </nav>
 
 
-    <nav id="breadcrumb-nav" aria-labelledby="breadcrumb-nav-label"  class="hidden-xs">
+    <nav id="id_breadcrumbs" aria-labelledby="breadcrumb-nav-label"  class="hidden-xs">
       <h2 id="breadcrumb-nav-label" class="sr-only">Breadcrumb Navigation</h2>
       <div class="container">
         <ul class="breadcrumb">
@@ -122,7 +122,7 @@
 
           <div class="col-xs-12 col-sm-3 col-md-3 col-lg-2">
           {% if user.is_authenticated %}
-            <nav aria-labelledby="nav-report-management">
+            <nav id="id_report_manage" aria-labelledby="nav-report-management">
 
               <h2 id="nav-report-management" class="sr-only">Report Management</h2>
 
@@ -157,15 +157,15 @@
               </ul>  
             </nav>
 
-            <nav id="id_view_pages" aria-labelledby="id_nav_view_label">  
+            <nav id="id_view_nav" aria-labelledby="id_view_nav_label">  
 
-              <h2 id="id_nav_view_label">View Navigation</h2>
+              <h2 id="id_view_nav_label">View Navigation</h2>
 
               <ul class="nav nav-pills nav-stacked">  
               {% if report_nav.current_url %}
-                  <li><a href="{{report_nav.current_url}}">{{report_nav.current_label}}</a></li>
+                  <li id="id_view_current"><a href="{{report_nav.current_url}}">{{report_nav.current_label}}</a></li>
               {% else %}    
-                  <li><a class="disabled">None</a></li>
+                  <li id="id_view_current"><a class="disabled">None</a></li>
               {% endif %}    
 
                   <li class="side_by_side">
@@ -190,9 +190,9 @@
               </ul>    
             </nav>
 
-            <nav id="id_view_pages" aria-labelledby="id_nav_view_filters" class="hidden-xs">  
+            <nav id="id_view_filters" aria-labelledby="id_view_filters_label" class="hidden-xs">  
 
-              <h2 id="id_nav_view_filters">View Filters</h2>
+              <h2 id="id_view_filters_label">View Filters</h2>
 
               <ul class="nav nav-pills nav-stacked">  
               {% for fi in report_nav.filters %}
@@ -313,31 +313,73 @@
 
         window.addEventListener('load', function() {
 
-          var url = window.location.href;
-          var index1 = url.indexOf('?');
-          var index2 = url.indexOf('#');
-          var target = ""
+          function cleanURL(u) {
 
-          if (index2 > 0) target = url.substring(index2, url.length);
-          if (index1 > 0) url = url.substring(0, index1) + target;
-
-          var links = document.querySelectorAll('li > a[href]');
-
-          for (var i = 0; i < links.length; i++) {
-            var link = links[i];
-            var href = link.href;
-
-            index1 = href.indexOf('?');
-            index2 = href.indexOf('#');
+            index1 = u.indexOf('?');
+            index2 = u.indexOf('#');
             target = ""
 
-            if (index2 > 0) target = href.substring(index2, url.length);
-            if (index1 > 0) href = href.substring(0, index1) + target;
+            if (index2 > 0) target = u.substring(index2, u.length);
+            if (index1 > 0) url = u.substring(0, index1) + target;
 
-            if (href == url) {
-              link.parentNode.className = "active"
-            }
+            return u;
           }
+
+          function checkLinks(url, links, style) {
+
+            for (var i = 0; i < links.length; i++) {
+              var link = links[i];
+              var href = cleanURL(link.href);
+
+              if (href == url) {
+                if (link.parentNode.className.indexOf('active') < 0) {
+                  link.parentNode.className = style
+                }
+                return true;
+              }
+            }
+            return false;
+          }
+
+          function setActiveLink(url) {
+
+
+            checkLinks(url, document.querySelectorAll('#top-navbar       a[href]'), 'active');
+            checkLinks(url, document.querySelectorAll('#id_report_manage a[href]'), 'active');
+            flag_reports = checkLinks(url, document.querySelectorAll('#id_nav_reports   a[href]'), 'active');
+            flag_filters = checkLinks(url, document.querySelectorAll('#id_view_filters  a[href]'), 'active');
+
+          }
+
+          function setHighlightLink(url) {
+
+          }
+
+          var flag_report  = false;
+          var flag_filters = false;
+          var flag_nav     = false;
+
+          var url = cleanURL(window.location.href);
+
+          setActiveLink(url)
+
+          if (!flag_reports && !flag_filters) {
+            flag_nav = checkLinks(url, document.querySelectorAll('#id_view_nav a[href]'), 'active');
+          }
+
+          var breadcrumbs = document.querySelectorAll('#id_breadcrumbs a[href]')
+
+          for (var i =(breadcrumbs.length-1); 0 < i; i--) {
+            url = cleanURL(breadcrumbs[i].href);
+
+            if (!flag_report)  flag_report  = checkLinks(url, document.querySelectorAll('#id_nav_reports   a[href]'), 'highlight');
+            if (!flag_filters) flag_filters = checkLinks(url, document.querySelectorAll('#id_view_filters  a[href]'), 'highlight');
+          }
+
+          if (!flag_reports && !flag_filters & !flag_nav) {
+            document.getElementById('id_view_current').className = 'highlight';
+          }
+
 
         });
 
