@@ -20,7 +20,7 @@ from registration.signals import user_registered
 from timezone_field import TimeZoneField
 
 from websiteResultGroups.models import WebsiteReportGroup
-from stats.model import StatsUser
+from stats.models import StatsUser
 
 ## User Profile
 # The built-in Django User relation:
