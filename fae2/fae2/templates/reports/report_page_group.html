@@ -21,23 +21,23 @@
 {% block title %}
 
     {% if report.page_count == 1 %}
-      {{group.get_title}} Rule Results
+      {{group.get_title}} Rules
     {% else %}
-      Page Summary <span class="sr-only">{{group.get_title}} Rule Results</span>
+      Page Summary <span class="sr-only">{{group.get_title}} Rules</span>
     {% endif %}
 
 {% endblock %}
 
 {% block content %}
 
-   <div class="rule_summary" aria-hidden="true">{{group.get_title}} Rule Results</div>
+   <div class="rule_summary" aria-hidden="true">{{group.get_title}} Rules</div>
 
 
   {% include "reports/page_summary.html" %}
 
   <section class="report" aria-labelledby="id_result_label">
 
-    <h2 id="id_result_label">{{group.get_title}} Rule Results</h2>
+    <h2 id="id_result_label" class="sr-only">{{group.get_title}} Rule Results</h2>
     
     <table  id="id_table_show_summary" class="details table table-striped table-hover sortable"  aria-labelledby="id_result_label"  aria-describedby="id_result_description">
         <thead>
