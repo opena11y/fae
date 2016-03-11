@@ -36,6 +36,7 @@
     <table  id="id_table_show_summary" class="details table table-striped table-hover sortable"  aria-labelledby="id_result_label"  aria-describedby="id_result_description">
         <thead>
           <tr>
+            <th id="id_rid" class="text"  rowspan="2">ID</th>
             <th id="id_grp" class="text"  rowspan="2">Rule Summary</th>
             <th id="id_res" class="text"  rowspan="2">Result</th>
             <th id="id_nor" class="text"  colspan="5">Number of Pages</th>
@@ -46,16 +47,19 @@
             <th id="id_war" class="num"  ><abbr title="Warnings">W</abbr></th>
             <th id="id_man" class="num"  ><abbr title="Manual Checks">MC</abbr></th>
             <th id="id_pas" class="num"  ><abbr title="Passed">P</abbr></th>
-            <th id="id_pas" class="num"  ><abbr title="Not Applicable">N/A</abbr></th>
-            <th id="id_pfi" class="num"  ><abbr title="Pass/Fail Implementation Score">Pass/Fail</abbr></th>
-            <th id="id_ovr" class="num"  ><abbr title="Pass/Fail/manual Checks Implementation Score">Pass/Fail/MC</abbr></th>
+            <th id="id_pas" class="num sep"  ><abbr title="Not Applicable">N/A</abbr></th>
+            <th id="id_pfi" class="num"  ><abbr title="Pass/Fail Implementation Score">P/F</abbr></th>
+            <th id="id_ovr" class="num"  ><abbr title="Pass/Fail/manual Checks Implementation Score">P/F/MC</abbr></th>
             <th id="id_sta" class="text"  ><abbr title="Implementation Status">Status</abbr></th>
           </tr>  
         </thead>
         <tbody>
             {% for rr in group.ws_rule_results.all %} 
             <tr>
-                <td id="id_r{{forloop.counter}}" class="text" headers="id_grp">
+                <td id="id_r{{forloop.counter}}" class="text" headers="id_rid">
+                  {{rr.rule.nls_rule_id}}
+                </a>  
+                <td class="text" headers="id_grp">
                   <a href="{% url 'report_rules_group_rule' report.slug view group.slug rr.slug %}">
                     {{rr.get_title}}
                   </a>
@@ -138,7 +142,7 @@
                 </td>
 
                <td class="text"  headers="id_r{{forloop.counter}} id_sta">
-                {{rr.implementation_status}}
+                {% include 'reports/implementation_status.html' with is=rr.implementation_status pfs=rr.implementation_pass_fail_score pfmcs=rr.implementation_score %}
                 </td>
 
             </tr>    

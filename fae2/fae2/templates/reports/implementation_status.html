@@ -1,30 +1,24 @@
-<div id="information" role="region" aria-label="Website Report Information">
-
-  <div class="title">{{report.title}}</div>
-    
-  <div class="date">{{ report.created|date:"F d, Y H:i" }}</div>
-  
-  <div class="eval_info">
-      <ul>
-          <li>Pages:     {{  report.page_count }} (<a title="URL Details" href="{% url 'report_url_information' report.slug %}">Included URLs</a>)</li>
-          <li>Depth:     {{  report.depth }}</li>
-          <li>Ruleset:   <a title="{{report.ruleset.title_text}}" href="{% url 'ruleset' report.ruleset.slug %}">{{ report.ruleset }}</a></li>
-      </ul>  
-  </div>    
-    
-  <div class="domains">
-     <ul>
-         <li>URL: <a href="{{ report.url }}" target="_page">{{  report.url }}</a></li>
-         {% if report.span_sub_domains %}
-         <li>Span sub-domains: {{  report.span_sub_domains }}</li>
-         {% endif %}
-         {% if report.exclude_sub_domains %}
-         <li>Exclude sub-domains: {{  report.exclude_sub_domains }}</li>
-         {% endif %}
-         {% if report.include_domains %}
-         <li>Include domains: {{  report.include_domains }}</li>
-         {% endif %}
-     </ul>  
-  </div>
-
-</div>
+{% if is = 'C' %}
+<abbr title="Complete" class="complete">C</abbr>
+{% else %}
+{% if is = 'AC' %}
+<abbr title="Almost Complete" class="almost_complete">AC</abbr>
+{% else %}
+{% if is = 'PI' %}
+<abbr title="Partial Implementation" class="partial_implementation">PI</abbr>
+{% else %}
+{% if is = 'NI' %}
+<abbr title="Not Implemented" class="not_implemented">NI</abbr>
+{% else %}
+{% if is = 'MC' %}
+<abbr title="Required Manual Checks" class="manual_checks">RMC</abbr>
+{% else %}
+{% if is = 'NA' %}
+<abbr title="Not Applicable" class="not_applicable">na</abbr>
+{% else %}
+{% endif %}
+{% endif %}
+{% endif %}
+{% endif %}
+{% endif %}
+{% endif %}

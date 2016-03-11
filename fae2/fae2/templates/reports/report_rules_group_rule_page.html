@@ -23,6 +23,8 @@
 {% block content %}
 
 <div class="rule_summary" aria-hidden="true">{{page_rule_result.rule.nls_rule_id}}: {{page_rule_result.rule.summary_html|safe}}</div>
+<div class="rule_summary" aria-hidden="true">Page {{page_rule_result.page_result.page_number}}: {{page_rule_result.page_result.title}}</div>
+
 
 {% include "reports/result_messages.html" %}
  

@@ -134,6 +134,11 @@ table.rule tbody td ul {
     margin-top: -1em;
 }
 
+main table th.sep {
+    min-width: 6em;
+}
+
+
 main table th.violation,
 main table td.violation,
 .table-striped > tbody > tr > td.violation
@@ -388,9 +393,10 @@ main nav li.side_by_side a.right {
 }
 
 main .rule_summary {
-    margin-top: 0.5em;
-    font-size: 200%;
+    margin-top: 0.25em;
+    font-size: 135%;
 }
+
 
 footer {
     margin-top: 4em;
@@ -400,3 +406,23 @@ nav li.highlight a {
    background-color: #EEEEEE;
 }
 
+main table .complete {
+    color: #006400;
+}
+
+main table .almost_complete,
+main table .partial_implementation {
+    color: #b38f00;
+}
+
+main table .not_implemented {
+    color: #992600;
+}
+
+main table .manual_checks {
+    color: #003d99;
+}
+
+main table .not_applicable {
+    color: gray;
+}

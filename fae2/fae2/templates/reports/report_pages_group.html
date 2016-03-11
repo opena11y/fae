@@ -56,9 +56,9 @@
             <th id="id_war" class="num"  ><abbr title="Warnings">W</abbr></th>
             <th id="id_man" class="num"  ><abbr title="Manual Checks">MC</abbr></th>
             <th id="id_pas" class="num"  ><abbr title="Passed">P</abbr></th>
-            <th id="id_not"  class="num"  ><abbr title="Not Applicable">N/A</abbr></th>
-            <th id="id_pfi" class="num"  ><abbr title="Pass/Fail Implementation Score">Pass/Fail</abbr></th>
-            <th id="id_ovr" class="num"  ><abbr title="Pass/Fail/manual Checks Implementation Score">Pass/Fail/MC</abbr></th>
+            <th id="id_not" class="num sep"><abbr title="Not Applicable">N/A</abbr></th>
+            <th id="id_pfi" class="num"  ><abbr title="Pass/Fail Implementation Score">P/F</abbr></th>
+            <th id="id_ovr" class="num"  ><abbr title="Pass/Fail/manual Checks Implementation Score">P/F/MC</abbr></th>
             <th id="id_sta" class="text"  ><abbr title="Implementation Status">Status</abbr></th>
           </tr>  
         </thead>
@@ -153,7 +153,7 @@
                 </td>
 
                <td class="text"  headers="id_r{{forloop.counter}} id_sta">
-                {{pgr.implementation_status}}
+                {% include 'reports/implementation_status.html' with is=pgr.implementation_status pfs=pgr.implementation_pass_fail_score pfmcs=pgr.implementation_score %}
                 </td>
 
             </tr>    

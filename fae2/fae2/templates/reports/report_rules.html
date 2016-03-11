@@ -77,8 +77,8 @@
         <th id="id_man" class="num"  ><abbr title="Manual Checks">MC</abbr></th>
         <th id="id_pas" class="num"  ><abbr title="Passed">P</abbr></th>
         <th id="id_not" class="num"  ><abbr title="Not Applicable">N/A</abbr></th>
-        <th id="id_pfi" class="num"  ><abbr title="Pass/Fail Implementation Score">Pass/Fail</abbr></th>
-        <th id="id_ovr" class="num"  ><abbr title="Pass/Fail/manual Checks Implementation Score">Pass/Fail/MC</abbr></th>
+        <th id="id_pfi" class="num"  ><abbr title="Pass/Fail Implementation Score">P/F</abbr></th>
+        <th id="id_ovr" class="num"  ><abbr title="Pass/Fail/manual Checks Implementation Score">P/F/MC</abbr></th>
         <th id="id_sta" class="text"  ><abbr title="Implementation Status">Status</abbr></th>
       </tr>  
     </thead>
@@ -147,7 +147,7 @@
             </td>
 
            <td class="num"  headers="id_r{{forloop.counter}} id_sta">
-            {{g.implementation_status}}
+            {% include 'reports/implementation_status.html' with is=g.implementation_status pfs=g.implementation_pass_fail_score pfmcs=g.implementation_score %}
             </td>
 
         </tr>    
@@ -212,7 +212,7 @@
             </td>
 
            <td class="text"  headers="id_r{{forloop.counter}} id_sta">
-            {{summary.implementation_status}}
+            {% include 'reports/implementation_status.html' with is=summary.implementation_status pfs=summary.implementation_pass_fail_score pfmcs=summary.implementation_score %}
             </td>
 
         </tr>  
