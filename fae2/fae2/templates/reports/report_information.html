@@ -4,9 +4,7 @@
   <div class="title">Report Title: <strong>{{report.title}}</strong></div>
     
   <div class="date">
-    {% timezone user.profile.timezone %}
     {{ report.created|date:"F d, Y H:i" }}
-    {% endtimezone %}
   </div>
   
   <div class="eval_info">

@@ -134,6 +134,23 @@
                </ul> 
             </nav>
 
+          {% else %}
+            <nav id="id_report_manage" aria-labelledby="id_report_manage_label">
+
+              <h2 id="id_report_manage_label" class="sr-only">Run Page Report or Login</h2>
+
+               <ul class="nav nav-pills nav-stacked">
+                  <li><a href="{% url 'login'   %}">Login</a></li>
+                  {% if anonymous_enabled %}
+                    <li><a href="{% url 'run_anonymous_report'  %}">Run FAE</a></li>
+                    {% if report_nav.slug and report_nav.page_count == 1 %}
+                    <li><a href="{% url 'report_rules' report_nav.slug  report_nav.view %}">Page Summary</a></li>
+                    {% endif %}
+                  {% endif %}  
+              </ul>
+            </nav>
+          {% endif %}
+
             
             {% if report_nav.page_count > 1 %}
 
@@ -205,23 +222,6 @@
               {% endif %}
 
             {% endif %}
-
-          {% else %}
-            <nav id="id_report_manage" aria-labelledby="id_report_manage_label">
-
-              <h2 id="id_report_manage_label" class="sr-only">Run Page Report or Login</h2>
-
-               <ul class="nav nav-pills nav-stacked">
-                  <li><a href="{% url 'login'   %}">Login</a></li>
-                  {% if anonymous_enabled %}
-                    <li><a href="{% url 'run_anonymous_report'  %}">Run FAE</a></li>
-                    {% if report_nav.slug and report_nav.page_count == 1 %}
-                    <li><a href="{% url 'report_rules' report_nav.slug  report_nav.view %}">Page Summary</a></li>
-                    {% endif %}
-                  {% endif %}  
-              </ul>
-            </nav>
-          {% endif %}
 
           </div>
 

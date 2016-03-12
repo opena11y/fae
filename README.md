@@ -114,6 +114,9 @@ vironments/fae2/lib/python3.4/site-packages/
 * Need to create "logs/" with write permissions for "apache" user
 
 
+### Multiple Django Apps and mod_wsgi 
+* [Configuring wsgi.py for multiple Django apps](https://docs.djangoproject.com/en/1.9/howto/deployment/wsgi/modwsgi/)
+
 ### Initialize database tables
 * You will need to run <code>python manage.py migrate</code> to create the tables in the database
 * After the tables in the database are created, go to the "populate" directory

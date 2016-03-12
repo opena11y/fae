@@ -5,8 +5,10 @@
   {% else %}
   <div class="title">Anonymous Report</div>
   {% endif %}
-    
-  <div class="date">{{ report.created|date:"F d, Y H:i" }}</div>
+  
+  <div class="date">
+    {{ report.created|date:"F d, Y H:i" }}
+  </div>
   
   <div class="eval_info">
   </div>

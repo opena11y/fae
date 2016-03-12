@@ -15,7 +15,7 @@ import time
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "fae2.settings")
+os.environ["DJANGO_SETTINGS_MODULE"] = "fae2.settings"
 
 try:
     application = get_wsgi_application()
