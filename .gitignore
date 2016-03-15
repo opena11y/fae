@@ -6,3 +6,4 @@ fae2/fae-util/test/
 *.class
 *.pyc
 *~
+.idea/
