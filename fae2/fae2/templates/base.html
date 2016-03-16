@@ -115,145 +115,143 @@
       </div>  
     </nav>  <!-- /container --> 
 
-    <main>
-      <div class="container">
+    <div class="container">
 
-        <div class="row">
+      <div class="row">
 
-          <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
-          {% if user.is_authenticated %}
-            <nav id="id_report_manage" aria-labelledby="id_report_manage_label">
+        <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2">
+        {% if user.is_authenticated %}
+          <nav id="id_report_manage" aria-labelledby="id_report_manage_label">
 
-              <h2 id="id_report_manage_label" class="sr-only">Report Management</h2>
+            <h2 id="id_report_manage_label" class="sr-only">Report Management</h2>
 
-               <ul class="nav nav-pills nav-stacked">
-                  <li><a href="{% url 'run_report'          %}">Run FAE</a></li>
-                  <li><a href="{% url 'processing_reports'  %}">Report Processing</a></li>
-                  <li><a href="{% url 'archived_reports'    %}">Archived Reports</a></li>
-                  <li><a href="{% url 'manage_reports'      %}">Manage Reports</a></li>
-               </ul> 
-            </nav>
+             <ul class="nav nav-pills nav-stacked">
+                <li><a href="{% url 'run_report'          %}">Run FAE</a></li>
+                <li><a href="{% url 'processing_reports'  %}">Report Processing</a></li>
+                <li><a href="{% url 'archived_reports'    %}">Archived Reports</a></li>
+                <li><a href="{% url 'manage_reports'      %}">Manage Reports</a></li>
+             </ul> 
+          </nav>
 
+        {% else %}
+          <nav id="id_report_manage" aria-labelledby="id_report_manage_label">
+
+            <h2 id="id_report_manage_label" class="sr-only">Run Page Report or Login</h2>
+
+             <ul class="nav nav-pills nav-stacked">
+                <li><a href="{% url 'login'   %}">Login</a></li>
+                {% if anonymous_enabled %}
+                  <li><a href="{% url 'run_anonymous_report'  %}">Run FAE</a></li>
+                  {% if report_nav.slug and report_nav.page_count == 1 %}
+                  <li><a href="{% url 'report_rules' report_nav.slug  report_nav.view %}">Page Summary</a></li>
+                  {% endif %}
+                {% endif %}  
+            </ul>
+          </nav>
+        {% endif %}
+
+          
+          {% if report_nav.page_count > 1 %}
+
+          <nav id="id_nav_reports" aria-labelledby="id_nav_reports_label">  
+
+            <h2 id="id_nav_reports_label">Reports</h2>
+
+            <ul class="nav nav-pills nav-stacked">  
+                <li><a href="{% url 'report_rules' report_nav.slug  report_nav.view %}">Summary</a></li>
+                <li><a href="{% url 'report_pages' report_nav.slug  report_nav.view %}">All Pages</a></li>
+                <li><a href="{% url 'report_page'  report_nav.slug  report_nav.view report_nav.page %}">Page {{report_nav.page}}</a></li>
+            </ul>  
+          </nav>
+
+          <nav id="id_view_nav" aria-labelledby="id_view_nav_label">  
+
+            <h2 id="id_view_nav_label">View Navigation</h2>
+
+            <ul class="nav nav-pills nav-stacked">  
+            {% if report_nav.current_url %}
+                <li id="id_view_current"><a href="{{report_nav.current_url}}">{{report_nav.current_label}}</a></li>
+            {% else %}    
+                <li id="id_view_current"><a class="disabled">None</a></li>
+            {% endif %}    
+
+                <li class="side_by_side">
+                {% if report_nav.previous_url %}
+                    <a href="{{report_nav.previous_url}}" class="left">
+                {% else %}
+                    <a class="disabled left"> 
+                {% endif %}
+                        <span class="glyphicon glyphicon-step-backward"></span> 
+                        <abbr title="{{report_nav.previous_label}}">Prev</abbr>
+                    </a>
+
+                {% if report_nav.next_url %}
+                    <a href="{{report_nav.next_url}}" class="right">
+                {% else %}
+                    <a class="disabled right">
+                {% endif %}
+                        <abbr title="{{report_nav.next_label}}">Next</abbr>
+                        <span class="glyphicon glyphicon-step-forward"></span>
+                    </a>
+                </li>
+            </ul>    
+          </nav>
+
+          <nav id="id_view_filters" aria-labelledby="id_view_filters_label" class="hidden-xs">  
+
+            <h2 id="id_view_filters_label">View Filters</h2>
+
+            <ul class="nav nav-pills nav-stacked">  
+            {% for fi in report_nav.filters %}
+                <li><a href="{{fi.url}}">{{fi.label}}</a></li>
+            {% endfor %}    
+            </ul>
+          </nav>
           {% else %}
-            <nav id="id_report_manage" aria-labelledby="id_report_manage_label">
 
-              <h2 id="id_report_manage_label" class="sr-only">Run Page Report or Login</h2>
-
-               <ul class="nav nav-pills nav-stacked">
-                  <li><a href="{% url 'login'   %}">Login</a></li>
-                  {% if anonymous_enabled %}
-                    <li><a href="{% url 'run_anonymous_report'  %}">Run FAE</a></li>
-                    {% if report_nav.slug and report_nav.page_count == 1 %}
-                    <li><a href="{% url 'report_rules' report_nav.slug  report_nav.view %}">Page Summary</a></li>
-                    {% endif %}
-                  {% endif %}  
-              </ul>
-            </nav>
-          {% endif %}
-
-            
-            {% if report_nav.page_count > 1 %}
-
+            {% if report_nav.slug %}
             <nav id="id_nav_reports" aria-labelledby="id_nav_reports_label">  
 
               <h2 id="id_nav_reports_label">Reports</h2>
 
               <ul class="nav nav-pills nav-stacked">  
-                  <li><a href="{% url 'report_rules' report_nav.slug  report_nav.view %}">Summary</a></li>
-                  <li><a href="{% url 'report_pages' report_nav.slug  report_nav.view %}">All Pages</a></li>
-                  <li><a href="{% url 'report_page'  report_nav.slug  report_nav.view report_nav.page %}">Page {{report_nav.page}}</a></li>
+                  <li><a href="{% url 'report_page' report_nav.slug  report_nav.view  1 %}">Page Summary</a></li>
               </ul>  
             </nav>
-
-            <nav id="id_view_nav" aria-labelledby="id_view_nav_label">  
-
-              <h2 id="id_view_nav_label">View Navigation</h2>
-
-              <ul class="nav nav-pills nav-stacked">  
-              {% if report_nav.current_url %}
-                  <li id="id_view_current"><a href="{{report_nav.current_url}}">{{report_nav.current_label}}</a></li>
-              {% else %}    
-                  <li id="id_view_current"><a class="disabled">None</a></li>
-              {% endif %}    
-
-                  <li class="side_by_side">
-                  {% if report_nav.previous_url %}
-                      <a href="{{report_nav.previous_url}}" class="left">
-                  {% else %}
-                      <a class="disabled left"> 
-                  {% endif %}
-                          <span class="glyphicon glyphicon-step-backward"></span> 
-                          <abbr title="{{report_nav.previous_label}}">Prev</abbr>
-                      </a>
-
-                  {% if report_nav.next_url %}
-                      <a href="{{report_nav.next_url}}" class="right">
-                  {% else %}
-                      <a class="disabled right">
-                  {% endif %}
-                          <abbr title="{{report_nav.next_label}}">Next</abbr>
-                          <span class="glyphicon glyphicon-step-forward"></span>
-                      </a>
-                  </li>
-              </ul>    
-            </nav>
-
-            <nav id="id_view_filters" aria-labelledby="id_view_filters_label" class="hidden-xs">  
-
-              <h2 id="id_view_filters_label">View Filters</h2>
-
-              <ul class="nav nav-pills nav-stacked">  
-              {% for fi in report_nav.filters %}
-                  <li><a href="{{fi.url}}">{{fi.label}}</a></li>
-              {% endfor %}    
-              </ul>
-            </nav>
-            {% else %}
-
-              {% if report_nav.slug %}
-              <nav id="id_nav_reports" aria-labelledby="id_nav_reports_label">  
-
-                <h2 id="id_nav_reports_label">Reports</h2>
-
-                <ul class="nav nav-pills nav-stacked">  
-                    <li><a href="{% url 'report_page' report_nav.slug  report_nav.view  1 %}">Page Summary</a></li>
-                </ul>  
-              </nav>
-              {% endif %}
-
             {% endif %}
 
-          </div>
-
-          <div class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
-          {% if messages %}
-            <section aria-labelledby="messages-label">
-                <h2 id="messages-label" class="sr-only">Important Messages</h2>
-                {% for message in messages %}
-                  <div class="alert {% if message.tags %}alert-{{ message.tags }}"{% endif %}>{{ message }}</div>
-                {% endfor %}
-            </section>    
           {% endif %}
 
-            <section id="content">
+        </div>
 
-            {% block content_before_title %}
+        <main class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
+        {% if messages %}
+          <section aria-labelledby="messages-label">
+              <h2 id="messages-label" class="sr-only">Important Messages</h2>
+              {% for message in messages %}
+                <div class="alert {% if message.tags %}alert-{{ message.tags }}"{% endif %}>{{ message }}</div>
+              {% endfor %}
+          </section>    
+        {% endif %}
 
-            {% endblock content_before_title %}
+          <section id="content">
 
-            <h1 id="id_page_title">{% block title %}{% endblock title %}</h1>
+          {% block content_before_title %}
 
-            {% block content %}
+          {% endblock content_before_title %}
 
-            {% endblock content %}
-            </section>
-          </div>
+          <h1 id="id_page_title">{% block title %}{% endblock title %}</h1>
 
-        </div>  
+          {% block content %}
+
+          {% endblock content %}
+          </section>
+        </main>
 
       </div>  
 
-    </main> <!-- /container -->
+    </div>  <!-- /container -->
+
 
     <footer>
       <div class="container">

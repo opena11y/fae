@@ -48,6 +48,9 @@ IMPLEMENTATION_STATUS_CHOICES = (
     ('NI',  'Not Implemented'),
     ('PI',  'Partial Implementation'),
     ('AC',  'Almost Complete'),
+    ('NI-MC',  'Not Implemented with manual checks required'),
+    ('PI-MC',  'Partial Implementation with manual checks required'),
+    ('AC-MC',  'Almost Complete with manual checks required'),
     ('C',   'Complete'),
 )
 
@@ -101,8 +104,8 @@ class RuleResult(models.Model):
   implementation_pass_fail_score  = models.IntegerField(default=-1)
   implementation_score            = models.IntegerField(default=-1)
 
-  implementation_pass_fail_status  = models.CharField("Implementation Pass/Fail Status",  max_length=2, choices=IMPLEMENTATION_STATUS_CHOICES, default='U')
-  implementation_status            = models.CharField("Implementation Status",  max_length=2, choices=IMPLEMENTATION_STATUS_CHOICES, default='U')
+  implementation_pass_fail_status  = models.CharField("Implementation Pass/Fail Status",  max_length=8, choices=IMPLEMENTATION_STATUS_CHOICES, default='U')
+  implementation_status            = models.CharField("Implementation Status",  max_length=8, choices=IMPLEMENTATION_STATUS_CHOICES, default='U')
 
   manual_check_status    = models.CharField("Manual Check Status",  max_length=2, choices=MC_STATUS_CHOICES, default='NC')
 

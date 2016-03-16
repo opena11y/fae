@@ -414,7 +414,17 @@ class DataRuleResult(DataResult):
 
   def calculateImplementation(self):
 
-#    debug("[DataRuleResult][calculateImplementation] 1")
+    def set_status(score, label):
+      if pass_fail_count and score <= self.implementation_pass_fail_score:
+        self.implementation_pass_fail_status = label
+
+      if count and score <= self.implementation_score:
+        if pass_fail_total == 0:
+          self.implementation_status = "MC"  
+        elif count == pass_fail_count:  
+          self.implementation_status = label
+        else:    
+          self.implementation_status = label + "-MC"  
 
     pass_fail_total = 0
     pass_fail_count = 0
@@ -443,28 +453,22 @@ class DataRuleResult(DataResult):
 #    debug("[DataRuleResult][calculateImplementation] 2")
     if pass_fail_count > 0:
       self.implementation_pass_fail_score = int(round(pass_fail_total / pass_fail_count))   
-      self.implementation_pass_fail_status = "NI"  
-      if self.implementation_pass_fail_score > 50:
-        self.implementation_pass_fail_status = "PI"  
-      if self.implementation_pass_fail_score > 95:
-        self.implementation_pass_fail_status = "AC"  
-      if pass_fail_count_complete == pass_fail_count:
-        self.implementation_pass_fail_status = "C"        
-    else:
-      self.implementation_status = "NA"
 
 #    debug("[DataRuleResult][calculateImplementation] 3")
     if count > 0:
       self.implementation_score = int(round(total / count))   
-      self.implementation_status = "NI"  
-      if self.implementation_score > 50:
-        self.implementation_status = "PI"  
-      if self.implementation_score > 95:
-        self.implementation_status = "AC"  
-      if count_complete == count:
-        self.implementation_status = "C"        
-    else:
-      self.implementation_status = "NA"      
+
+    set_status(  0, 'NI')
+    set_status( 50, 'PI')
+    set_status( 95, 'AC')
+    set_status(100, 'C')
+
+    if pass_fail_count == pass_fail_count_complete:
+      self.implementation_pass_fail_status = "C"
+
+    if count == count_complete:
+      self.implementation_status = "C"
+
 
 #    debug("[DataRuleResult][calculateImplementation] 4")
 
@@ -522,54 +526,44 @@ class DataPageRuleResult(DataResult):
 
   def calculate_implementation(self):
 
-    self.implementation_pass_fail_score  = -1  
-    self.implementation_score       = -1  
-    self.implementation_status      = "U"  
+    def set_status(score, label):
+      if pass_fail_total and score <= self.implementation_pass_fail_score:
+        self.implementation_pass_fail_status = label
 
-#    debug("[DataPageRuleResult][calaculate_implementation] 1") 
-#    debug("[DataPageRuleResult][calaculate_implementation]   mc_identified: " + str(self.elements_mc_identified)) 
-#    debug("[DataPageRuleResult][calaculate_implementation]       mc_passed: " + str(self.elements_mc_passed)) 
-#    debug("[DataPageRuleResult][calaculate_implementation]       mc_failed: " + str(self.elements_mc_failed)) 
-#    debug("[DataPageRuleResult][calaculate_implementation]           mc_na: " + str(self.elements_mc_na)) 
+      if total and score <= self.implementation_score:
+        if pass_fail_total == 0:
+          self.implementation_status = "MC"  
+        elif total == pass_fail_total:  
+          self.implementation_status = label
+        else:    
+          self.implementation_status = label + "-MC"  
+
+    self.implementation_pass_fail_score  = -1  
+    self.implementation_score            = -1  
+
+    self.implementation_pass_fail_status = "NA"  
+    self.implementation_status           = "NA"  
 
     pass_fail_total = self.elements_violation + self.elements_warning + self.elements_passed + self.elements_mc_passed + self.elements_mc_failed
 
-#    debug("[DataPageRuleResult][calaculate_implementation] pass_fail_total: " + str(pass_fail_total)) 
     total = self.elements_mc_identified - self.elements_mc_passed - self.elements_mc_failed - self.elements_mc_na
     if total > 0:
       total = pass_fail_total + total
     else:
       total = pass_fail_total
 
-#    debug("[DataPageRuleResult][calaculate_implementation]           total: " + str(total)) 
-      
     passed = self.elements_passed + self.elements_mc_passed
 
     if pass_fail_total:
       self.implementation_pass_fail_score =  (100 * passed) / pass_fail_total
-      self.implementation_pass_fail_status = "NI"  
-      if self.implementation_pass_fail_score > 50:
-        self.implementation_pass_fail_status = "PI"  
-      if self.implementation_pass_fail_score > 95:
-        self.implementation_pass_fail_status = "AC"  
-      if passed == pass_fail_total:
-        self.implementation_status = "C"  
-    else:
-      self.implementation_status = "NA"  
-
-#    debug("[DataPageRuleResult][calaculate_implementation] pass_fail_score: " + str(self.implementation_pass_fail_score)) 
 
     if total:
       self.implementation_score =  (100 * passed) / total
-      self.implementation_status = "NI"  
-      if self.implementation_score > 50:
-        self.implementation_status = "PI"  
-      if self.implementation_score > 95:
-        self.implementation_status = "AC"  
-      if passed == total:
-        self.implementation_status = "C"  
-    else:
-      self.implementation_status = "NA"  
+
+    set_status( 0, 'NI')
+    set_status( 50, 'PI')
+    set_status( 95, 'AC')
+    set_status(100, 'C')
 
 #    debug("[DataPageRuleResult][calaculate_implementation]           score: " + str(self.implementation_score)) 
 
@@ -1007,6 +1001,18 @@ class DataWebsiteRuleResult(DataResult):
 
   def calculateImplementation(self):
 
+    def set_status(score, label):
+      if pass_fail_total and score <= self.implementation_pass_fail_score:
+        self.implementation_pass_fail_status = label
+
+      if total and score <= self.implementation_score:
+        if pass_fail_total == 0:
+          self.implementation_status = "MC"  
+        elif total == pass_fail_total:  
+          self.implementation_status = label
+        else:    
+          self.implementation_status = label + "-MC"  
+
     if self.pages_violation > 0:
       self.result_value = RULE_RESULT.VIOLATION
     elif self.pages_warning > 0:
@@ -1018,58 +1024,31 @@ class DataWebsiteRuleResult(DataResult):
     else:  
       self.result_value = RULE_RESULT.NOT_APPLICABLE
 
-
     self.implementation_pass_fail_score  = -1  
     self.implementation_score       = -1  
     self.implementation_status      = "U"  
 
-#    debug("[DataWebsiteRuleResult][calaculate_implementation]") 
-#    debug("[DataWebsiteRuleResult][calaculate_implementation]            rule: " + self.rule_id) 
-#    debug("[DataWebsiteRuleResult][calaculate_implementation]   mc_identified: " + str(self.elements_mc_identified)) 
-#    debug("[DataWebsiteRuleResult][calaculate_implementation]       mc_passed: " + str(self.elements_mc_passed)) 
-#    debug("[DataWebsiteRuleResult][calaculate_implementation]       mc_failed: " + str(self.elements_mc_failed)) 
-#    debug("[DataWebsiteRuleResult][calaculate_implementation]           mc_na: " + str(self.elements_mc_na)) 
-
     pass_fail_total = self.elements_violation + self.elements_warning + self.elements_passed + self.elements_mc_passed + self.elements_mc_failed
 
-#    debug("[DataWebsiteRuleResult][calaculate_implementation] pass_fail_total: " + str(pass_fail_total)) 
     total = self.elements_mc_identified - self.elements_mc_passed - self.elements_mc_failed - self.elements_mc_na
     if total > 0:
       total = pass_fail_total + total
     else:
       total = pass_fail_total
-
-#    debug("[DataWebsiteRuleResult][calaculate_implementation]           total: " + str(total)) 
       
     passed = self.elements_passed + self.elements_mc_passed
 
     if pass_fail_total:
       self.implementation_pass_fail_score =  (100 * passed) / pass_fail_total
-      self.implementation_pass_fail_status = "NI"  
-      if self.implementation_pass_fail_score > 50:
-        self.implementation_pass_fail_status = "PI"  
-      if self.implementation_pass_fail_score > 95:
-        self.implementation_pass_fail_status = "AC"  
-      if passed == pass_fail_total:
-        self.implementation_status = "C"  
-    else:
-      self.implementation_status = "NA"  
-
-#    debug("[DataWebsiteRuleResult][calaculate_implementation] pass_fail_score: " + str(self.implementation_pass_fail_score)) 
 
     if total:
       self.implementation_score =  (100 * passed) / total
-      self.implementation_status = "NI"  
-      if self.implementation_score > 50:
-        self.implementation_status = "PI"  
-      if self.implementation_score > 95:
-        self.implementation_status = "AC"  
-      if passed == total:
-        self.implementation_status = "C"  
-    else:
-      self.implementation_status = "NA"  
 
-    return  
+    set_status( 0, 'NI')
+    set_status( 50, 'PI')
+    set_status( 95, 'AC')
+    set_status(100, 'C')
+
 
 
   def saveToDjango(self, data_ws_result, ws_report):
