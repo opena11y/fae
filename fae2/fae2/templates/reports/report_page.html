@@ -123,7 +123,7 @@
                     </td>
 
                    <td class="num"  headers="id_r{{forloop.counter}} id_sta">
-                    {{g.implementation_status}}
+                    {% include 'reports/implementation_status.html' with is=g.implementation_status pfs=g.implementation_pass_fail_score pfmcs=g.implementation_score %}
                     </td>
 
                 </tr>    

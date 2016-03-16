@@ -209,36 +209,48 @@ class PageRuleResult(RuleResult):
     ordering = ['-elements_violation', '-elements_warning', '-elements_mc_identified', '-elements_passed', '-elements_hidden' ]
 
   def calculate_implementation(self):
+
+    def set_status(score, label):
+      if pass_fail_total and self.implementation_pass_fail_score <= score:
+        self.implementation_pass_fail_status = label
+
+      if total and self.implementation_score <= score:
+        if pass_fail_total == 0:
+          self.implementation_status = "MC"  
+        elif total == pass_fail_total:  
+          self.implementation_status = label
+        else:    
+          self.implementation_status = label + "-MC"
+      else:      
+        self.implementation_status = label
+
     self.implementation_pass_fail_score  = -1  
     self.implementation_score       = -1  
     self.implementation_status      = "U"  
 
 #    debug('V: ' + str(self.elements_violation) + ' W: ' + str(self.elements_warning) + ' MC: ' + str(self.elements_manual_check) + ' P: ' + str(self.elements_passed))
 
-    total_pass_fail = self.elements_violation + self.elements_warning + self.elements_passed + self.elements_mc_passed + self.elements_mc_failed
+    pass_fail_total = self.elements_violation + self.elements_warning + self.elements_passed + self.elements_mc_passed + self.elements_mc_failed
     total = self.elements_mc_identified - self.elements_mc_passed - self.elements_mc_failed - self.elements_mc_na
-    if total > 0:
-      total = total_pass_fail + total
-    else:
-      total = total_pass_fail
-      
-
-#    debug('TOTAL: ' + str(total))
 
     passed = self.elements_passed+self.elements_mc_passed
 
-    if total:
-      self.implementation_pass_fail_score  =  (100 * passed) / total_pass_fail
-      self.implementation_score            =  (100 * passed) / total
-      self.implementation_status = "NI"  
-      if self.implementation_score > 50:
-        self.implementation_status = "PI"  
-      if self.implementation_score > 95:
-        self.implementation_status = "AC"  
-      if self.elements_passed == total:
-        self.implementation_status = "C"  
+    if total > 0:
+      total = pass_fail_total + total
     else:
-      self.implementation_status = "NA"  
+      total = pass_fail_total
+
+    if pass_fail_total:
+      self.implementation_pass_fail_score  =  (100 * passed) / pass_fail_total
+      
+    if total:
+      self.implementation_score            =  (100 * passed) / total
+
+    set_status( 50, 'NI')
+    set_status( 95, 'PI')
+    set_status( 99, 'AC')
+    set_status(100, 'C')
+
 
     self.save()  
 

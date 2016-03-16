@@ -4,18 +4,30 @@
 {% if is = 'AC' %}
 <abbr title="Almost Complete" class="almost_complete">AC</abbr>
 {% else %}
+{% if is = 'AC-MC' %}
+<abbr title="Almost Complete with required manual checks" class="almost_complete">AC-RMC</abbr>
+{% else %}
 {% if is = 'PI' %}
 <abbr title="Partial Implementation" class="partial_implementation">PI</abbr>
+{% else %}
+{% if is = 'PI-MC' %}
+<abbr title="Partial Implementation with required manual checks" class="partial_implementation">PI-RMC</abbr>
 {% else %}
 {% if is = 'NI' %}
 <abbr title="Not Implemented" class="not_implemented">NI</abbr>
 {% else %}
+{% if is = 'NI-MC' %}
+<abbr title="Not Implemented with required manual checks" class="not_implemented">NI-RMC</abbr>
+{% else %}
 {% if is = 'MC' %}
-<abbr title="Required Manual Checks" class="manual_checks">RMC</abbr>
+<abbr title="Required manual checks" class="not_implemented">RMC</abbr>
 {% else %}
 {% if is = 'NA' %}
 <abbr title="Not Applicable" class="not_applicable">na</abbr>
 {% else %}
+{% endif %}
+{% endif %}
+{% endif %}
 {% endif %}
 {% endif %}
 {% endif %}
