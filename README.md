@@ -18,6 +18,8 @@ FAE may be used and distributed based on the terms and conditions of the [Apache
 * Apache2 Web Server
 * Python 2.7.x
 * Java 1.8
+* Python development package (`python-dev` in Debian/Ubuntu)
+* postgresql-devel (`libpq-dev` in Debian/Ubuntu)
 
 ### Python modules
 
@@ -25,6 +27,7 @@ Here is the [requirements.txt] file to use with pip
 
 * Django==1.9
 * django-registration==2.0.4
+* -e git+https://github.com/Brown-University-Library/django-shibboleth-remoteuser.git@v0.5#egg=django_shibboleth_remoteuser
 * django-timezone-field==1.3
 * Markdown==2.6.5
 * psycopg2==2.6.1
