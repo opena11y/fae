@@ -14,13 +14,16 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
+from __future__ import absolute_import
 import sys
 import os
 
 from os.path import join 
 
 from django.db import models
-from urlparse import urlparse
+from future.standard_library import install_aliases
+install_aliases()
+from urllib.parse import urlparse
 from django.core.urlresolvers import reverse
 from pytz import timezone
 from django.contrib.sites.models import Site

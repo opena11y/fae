@@ -7,6 +7,8 @@ For more information on this file, see
 https://docs.djangoproject.com/en/1.8/howto/deployment/wsgi/
 """
 
+from __future__ import absolute_import
+from __future__ import print_function
 import os
 import sys
 import traceback
@@ -19,9 +21,9 @@ os.environ["DJANGO_SETTINGS_MODULE"] = "fae2.settings"
 
 try:
     application = get_wsgi_application()
-    print 'WSGI without exception'
+    print('WSGI without exception')
 except Exception:
-    print 'handling WSGI exception'
+    print('handling WSGI exception')
     # Error loading applications
     if 'mod_wsgi' in sys.modules:
         traceback.print_exc()

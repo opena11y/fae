@@ -15,6 +15,7 @@ limitations under the License.
 """
 
 # abouts/urls.py
+from __future__ import absolute_import
 from django.conf.urls import url
 from .views import RulesetsView
 from .views import RulesetsWCAGView

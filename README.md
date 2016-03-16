@@ -33,6 +33,7 @@ Here is the [requirements.txt] file to use with pip
 * psycopg2==2.6.1
 * pytz==2015.7
 * wheel==0.24.0
+* future==0.15.2
 
 ### Creating a <code>secrets.json</code> file
 
