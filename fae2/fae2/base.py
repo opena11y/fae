@@ -15,6 +15,8 @@ limitations under the License.
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+from __future__ import print_function
+from __future__ import absolute_import
 import json
 
 from django.core.exceptions import ImproperlyConfigured
