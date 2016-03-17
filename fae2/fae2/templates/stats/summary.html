@@ -55,16 +55,11 @@
 <section aria-labelledby="id_user_info">
 <h2 id="id_user_info">User Stats</h2>
 
-{% if stats_reg_users.user_stats.count > 1 %}
-<p>{{stats_reg_users.user_stats.count}} Registered Users</p>
-{% else %}
-<p>1 Registered User</p>
-{% endif %}
-
 <table  id="id_table_show_summary" class="details table table-striped table-hover"  aria-labelledby="id_user_info">
     <thead>
       <tr>
-        <th id="id_grp" class="text">Users</th>
+        <th id="id_grp" class="text"></th>
+        <th id="id_num" class="num">Users</th>
         <th id="id_nor" class="num">Reports</th>
         <th id="id_imp" class="mum">Pages</th>
       </tr>
@@ -72,11 +67,13 @@
     <tbody>
         <tr>
             <th class="text">Registered Users</th>
+            <td class="num">{{stats_reg_users.user_stats.all.count}}</td>
             <td class="num">{{stats_reg_users.ws_report_group.num_total_reports}}</td>
             <td class="num">{{stats_reg_users.ws_report_group.num_total_pages}}</td>
         </tr>
         <tr>
             <th class="text">Anonymous Reports</th>
+            <td class="num">-</td>
             <td class="num">{{stats_anonymous.ws_report_group.num_total_reports}}</td>
             <td class="num">{{stats_anonymous.ws_report_group.num_total_pages}}</td>
         </tr>

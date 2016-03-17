@@ -77,6 +77,7 @@
                 <th>Response</th>
             </thead>
             <tbody>
+                {% if user.contacts.all.length %}    
                 {% for contact in user.contacts.all %}
                 <tr>
                     <td>{{contact.date}}</td>
@@ -88,6 +89,14 @@
                     </td>
                 </tr>
                 {% endfor %}
+                {% else %}
+                <tr>
+                    <td><span class="none">none</span></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                {% endif %}
             </tbody>
         </table>
     {% endif %}

@@ -87,7 +87,7 @@ class RULE_RESULT:
   WARNING        = 4
   VIOLATION      = 5    
 
-DEBUG=False
+DEBUG=True
 INFO=True
 ERROR=True
 
@@ -1620,7 +1620,6 @@ def saveResultsToDjango(ws_report, l):
     info("           Total Time: " + total)
     info('Average time per page: ' + ave_time) 
 
-
     try:
       stats_all = StatsAll.objects.all()
       if len(stats_all) > 0:
@@ -1691,15 +1690,20 @@ def saveResultsToDjango(ws_report, l):
       user_stats = StatsUser(user=ws_report.user, ws_report_group=wsrg)  
       user_stats.save()
 
-      if ws_report.user.username != 'anonymous':
-        stats_reg_users.user_stats.add(user_stats)
-        stats_reg_users.user_stats.save()
-
     debug("[SAVE_WEBSITE_RESULTS] Saving StatsUser: " + str(user_stats))  
     user_stats.ws_report_group.add_website_report(ws_report) 
 
     if ws_report.user.username != 'anonymous':
       stats_reg_users.ws_report_group.add_website_report(ws_report) 
+      debug("[SAVE_WEBSITE_RESULTS] StatsRegisteredUsers: 1")  
+      try:
+        debug("[SAVE_WEBSITE_RESULTS] StatsRegisteredUsers: 2")  
+        us = stats_reg_users.user_stats.get(user__username=user_stats.user.username)
+      except ObjectDoesNotExist:
+        debug("[SAVE_WEBSITE_RESULTS] StatsRegisteredUsers: 3")  
+        stats_reg_users.user_stats.add(user_stats)
+        stats_reg_users.save()
+
 
     try:
       ruleset_stats = StatsRuleset.objects.get(ruleset=ws_report.ruleset)

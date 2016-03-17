@@ -172,7 +172,8 @@ MAX_PAGES_CHOICES = (
   (0,   ' All pages'),
   (5,   '   5 pages'),
   (10,  '  10 pages'),
-  (25,  '  25 pages')
+  (25,  '  25 pages'),
+  (50,  '  50 pages')
 )  
 
 LAST_REPORT_TYPE_CHOICES = (
