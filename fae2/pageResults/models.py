@@ -68,7 +68,30 @@ class PageResult(RuleGroupResult):
     return "Page Result: " + self.title   
 
   def get_id(self):
-    return 'pr_' + self.id   
+    return 'pr_' + str(self.id)   
+
+  def to_json_results(self):  
+    json = {}
+    json['id']        = self.get_id()
+    json['num']       = self.page_number
+    json['title']     = self.title
+    json['url']       = self.url
+
+    json['rules_violation']    = self.rules_violation 
+    json['rules_warning']      = self.rules_warning 
+    json['rules_manual_check'] = self.rules_manual_check 
+    json['rules_passed']       = self.rules_passed 
+    json['rules_na']           = self.rules_na 
+
+    json['implementation_pass_fail_score'] = self.implementation_pass_fail_score
+    json['implementation_score']           = self.implementation_score 
+
+    json['implementation_pass_fail_status'] = self.implementation_pass_fail_status
+    json['implementation_status']           = self.implementation_status
+
+    json['rules_with_hidden_content']    = self.rules_with_hidden_content
+
+    return json
 
 
 # ---------------------------------------------------------------
@@ -261,6 +284,9 @@ class PageRuleResult(RuleResult):
 
   def get_id(self):
     return 'prr_' + self.id   
+
+
+
 
 
 

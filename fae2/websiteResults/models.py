@@ -61,6 +61,7 @@ class WebsiteRuleCategoryResult(RuleGroupResult):
     return 'wsrcr_' + self.rule_category.id   
 
 
+
 # ---------------------------------------------------------------
 #
 # WebsiteGuidelineResult
@@ -177,5 +178,34 @@ class WebsiteRuleResult(RuleResult):
   def get_title(self):
     return self.rule.summary_text   
 
+  def to_json_results(self):  
+    json = {}
+    json['id']        = self.rule.nls_rule_id
+    json['num']       = self.rule_number
+    json['summary']   = self.rule.summary_text
+    json['required']  = self.rule_required
+    json['rule_category']  = self.rule.category.title
+    json['wcag20']         = str(self.rule.wcag_primary)
+    json['scope']          = str(self.rule.scope)
+
+
+    json['pages_violation']    = self.pages_violation 
+    json['pages_warning']      = self.pages_warning   
+    json['pages_manual_check'] = self.pages_manual_check
+    json['pages_passed']       = self.pages_passed    
+    json['pages_na']           = self.pages_na           
+
+    json['elements_violation']     = self.elements_violation    
+    json['elements_warning']       = self.elements_warning       
+    json['elements_mc_identified'] = self.elements_mc_identified 
+    json['elements_mc_passed']     = self.elements_mc_passed    
+    json['elements_mc_failed']     = self.elements_mc_failed   
+    json['elements_mc_na']         = self.elements_mc_na         
+    json['elements_passed']        = self.elements_passed       
+    json['elements_hidden']        = self.elements_hidden        
+
+    json['pages_with_hidden_content'] = self.pages_with_hidden_content  
+
+    return json
 
        

@@ -29,9 +29,14 @@ from .views import ManageReportView
 
 from .views import ProcessingStatusJSON
 from .views import ProcessingStatusAllJSON
+
 from .views import SetReportArchiveView
+from .views import DeleteReportView
+from .views import RestoreReportView
 
 from .views import URLInformationView
+
+from .views import ReportJSON
 
 from .views import ReportRulesView
 from .views import ReportRulesGroupView
@@ -56,13 +61,21 @@ urlpatterns = [
  
     url(r'^processing/status/all/$',              ProcessingStatusAllJSON.as_view(), name='processing_status_all'),
     url(r'^processing/status/(?P<report>\w+)/$',  ProcessingStatusJSON.as_view(),    name='processing_status'),
-    url(r'^set-report-archive/(?P<report>\w+)/(?P<value>\w+)/$',   SetReportArchiveView.as_view(),       name='set_report_archive'),
 
 
     url(r'^archived/$',              ArchivedReportView.as_view(),     name='archived_reports'),
     url(r'^manage/$',                ManageReportView.as_view(),       name='manage_reports'),
 
+
+    url(r'^report/(?P<report>\w+)/archive/(?P<value>\w+)/$',   SetReportArchiveView.as_view(),  name='report_archive'),
+    url(r'^report/(?P<report>\w+)/delete/$',    DeleteReportView.as_view(),        name='report_delete'),
+    url(r'^report/(?P<report>\w+)/restore/$',   RestoreReportView.as_view(),      name='report_restore'),
+
+
+
     url(r'^summary/(?P<report>\w+)/(?P<view>\w+)/urls/$',                                                    URLInformationView.as_view(),  name='report_url_information'),
+
+    url(r'^summary/(?P<report>\w+)/json/$', ReportJSON.as_view(),  name='report_json'),
 
     url(r'^summary/(?P<report>\w+)/(?P<view>\w+)/$',                                                         ReportRulesView.as_view(),              name='report_rules'),
     url(r'^summary/(?P<report>\w+)/(?P<view>\w+)/(?P<group>\w+)/$',                                          ReportRulesGroupView.as_view(),         name='report_rules_group'),

@@ -9,9 +9,9 @@ Manage Reports
 {% block content %}
 {% localtime on %}
 
-<section aria-labelledby="id_rcbp">
-  <table id="id_table_processing" 
-          class="details table table-striped table-hover sortable" aria-labelledby="id_rcbp">
+<section>
+  <table  class="details table table-striped table-hover sortable" 
+          aria-labelledby="id_page_title">
     <thead>
       <tr>
           <th class="text">Perm</th>
@@ -20,10 +20,40 @@ Manage Reports
           <th class="text">Ruleset</th>
           <th class="text">URL</th>
           <th class="num" >Depth</th>
+          <th class="text" >Action</th>
       </tr>
     </thead>
 
     <tbody id="id_tbody">
+    </tbody>
+        
+  </table>  
+</section>
+
+<section id="id_del_rep" hidden style="margin-top: 6em;">
+  <h2 id="id_label_del_rep">Reports Identified for Deletion</h2>
+  <table class="details table table-striped table-hover sortable" 
+          aria-labelledby="id_label_del_rep">
+    <thead>
+      <tr>
+          <th class="text">Title</th>      
+          <th class="text"><abbr title="Date and time of evaluation">Date/Time</abbr></th>
+          <th class="text">Ruleset</th>
+          <th class="text">URL</th>
+          <th class="num" >Depth</th>
+          <th class="text" >Action</th>
+      </tr>
+    </thead>
+
+    <tbody id="id_tbody_del_rep">
+      <tr id="rowd_none" hidden>
+        <td class="text">No deleted reports</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
     </tbody>
         
   </table>  
@@ -38,6 +68,7 @@ Manage Reports
 <script type="text/javascript">
 
 var reports = [];
+var deleted = [];
 var report_status_url = "{{site.domain}}/processing/status/all/";
 
 function updateDisabledCheckboxes() {
@@ -63,73 +94,153 @@ function updateDisabledCheckboxes() {
   }
 };
 
-function checkboxChangeEvent(event, slug) {
+function checkboxArchiveEvent(event, slug) {
 
   var url;
   var cb = event.currentTarget;
 
   if (cb.checked) {
-    url = "{{site.domain}}/set-report-archive/" + slug +"/true/";
+    url = "{{site.domain}}/report/" + slug +"/archive/true/";
   }
   else {
-    url = "{{site.domain}}/set-report-archive/" + slug +"/false/";
+    url = "{{site.domain}}/report/" + slug +"/archive/false/";
   }
-  console.log(url)
 
   fae2TableUtils.getJSON(url, false);
 
+  updateDisabledCheckboxes();
+
   event.stopPropagation();
-
-  updateDisabledCheckboxes()
-
-//  event.preventDefault();
 
 }
 
+function deleteReportEvent(event, slug) {
+
+  var url = "{{site.domain}}/report/" + slug + "/delete/";
+
+  location.href=url;
+
+}
+
+function restoreReportEvent(event, slug) {
+
+  var url = "{{site.domain}}/report/" + slug + "/restore/";
+
+  location.href=url;
+
+}
+
+function addReport(id, archive) {
+
+  for (var i=0; i < reports.length; i++) {
+
+    if (reports[i].id == id) return false;
+
+  }
+
+  var r = {};
+  r.id = id;
+  r.archive = archive;
+
+  reports.push(r)
+
+  return r;
+}
+
+function removeReport(id) {
+
+  var rs = [];
+
+  for (var i=0; i < reports.length; i++) {
+
+    if (reports[i].id == id) continue;
+    rs.push(reports[i])
+
+  }
+
+  reports = rs;
+
+}
+
+function addDeletedReport(id, archive) {
+
+  for (var i=0; i < deleted.length; i++) {
+
+    if (deleted[i].id == id) return false;
+
+  }
+
+  var r = {};
+  r.id = id;
+  r.archive = archive;
+
+  deleted.push(r)
+
+  return r;
+}
+
+
+function removeDeletedReport(id) {
+
+  var rs = [];
+
+  for (var i=0; i < deleted.length; i++) {
+
+    if (deleted[i].id == id) continue;
+    rs.push(deleted[i])
+
+  }
+
+  deleted = rs;
+
+}
+
+
+function updateArchive(id, archive) {
+
+  for (var i = 0; i < reports.length; i++) {
+
+    if (reports[i].archive !== archive) return reports[i];
+
+  }
+
+  return false;
+}
+
+function getArchiveEventHandler(slug) {
+
+  var s = slug;
+
+  return function(event) {
+    checkboxArchiveEvent(event, slug);
+  }
+
+}
+
+function getDeleteEventHandler(slug) {
+
+  var s = slug;
+
+  return function(event) {
+    deleteReportEvent(event, slug);
+  }
+
+}
+
+function getRestoreEventHandler(slug) {
+
+  var s = slug;
+
+  return function(event) {
+    restoreReportEvent(event, slug);
+  }
+
+}  
+
 function updateReports(reportInfoArray) {
 
-
-  function getEventHandler(slug) {
-
-    var s = slug;
-
-    return function(event) {
-      checkboxChangeEvent(event, slug);
-    }
-
-  }
-
-
-  function addReport(id, archive) {
-
-    for (var i=0; i < reports.length; i++) {
-
-      if (reports[i].id == id) return false;
-
-    }
-
-    var r = {};
-    r.id = id;
-    r.archive = archive;
-
-    reports.push(r)
-
-    return r;
-  }
-
-  function updateArchive(id, archive) {
-
-    for (var i = 0; i < reports.length; i++) {
-
-      if (reports[i].archive !== archive) return reports[i];
-
-    }
-
-    return false;
-  }
-
-
   var i, tr;
+  var deleted_reports = false;
 
   for (i = 0; i < reportInfoArray.length; i++) {
   
@@ -139,16 +250,22 @@ function updateReports(reportInfoArray) {
 
     var localDate = new Date(ri['date']);
     localDate = fae2TableUtils.formatDate(localDate);
+
+    var report_archive = ri['archive'];
+
+    var report_id      = ri['id'];
+    var archive_id     = 'archive_' + report_id;
+    var row_id         = 'row_' + report_id;
+
+    console.log("[reports]" + ri['status']);
     
     if (ri['status'] === 'C') {
 
-      var report_id = ri['id'];
-      var report_archive = ri['archive'];
-
       if (r = addReport(report_id, report_archive)) {
-        tr = fae2TableUtils.addRow(tbody, 'row_' + report_id, '')
 
-        r.checkbox = fae2TableUtils.addCellCheckbox(tr, report_archive, 'archive_' + report_id, 'text', getEventHandler(ri['slug']));
+        tr = fae2TableUtils.addRow(tbody, row_id, '')
+
+        r.checkbox = fae2TableUtils.addCellCheckbox(tr, report_archive, archive_id, 'Archive: ' + ri['title'], 'text', getArchiveEventHandler(ri['slug']));
 
         fae2TableUtils.addCellLink(tr, ri['title'], ri['report_url'], '', 'text');
 
@@ -160,14 +277,28 @@ function updateReports(reportInfoArray) {
 
         fae2TableUtils.addCell(tr, ri['depth'], '', 'num');
 
+        fae2TableUtils.addCellButton(tr, 'Delete', 'Delete report: ' + ri['title'], 'text', getDeleteEventHandler(ri['slug']));
+
       }
 
       if (updateArchive(report_id, report_archive)) {
-        fae2TableUtils.updateCheckbox('archive_' + report_id, report_archive);
+        fae2TableUtils.updateCheckbox(archive_id, report_archive);
       }
+
     }
+    else {
+      if (ri['status'] === 'D') {
+        deleted_reports = true;
+        var row = document.getElementById(row_id);
+        if (row) {
+          tbody.removeChild(row);
+          removeReport(report_id);
+        }  
+      }  
+    }
+
   }  
-  
+
   if (tbody.innerHTML.indexOf("tr") < 0) {
     tr = fae2TableUtils.addRow(tbody, 'row_none', '')
     fae2TableUtils.addCell(tr, '', '', 'text');
@@ -178,6 +309,65 @@ function updateReports(reportInfoArray) {
     fae2TableUtils.addCell(tr, '', '', 'num');
   }
   
+
+  if (deleted_reports) {
+    document.getElementById('id_del_rep').removeAttribute('hidden');
+  }
+
+  var tbody = document.getElementById("id_tbody_del_rep");
+
+  var count = 0;
+
+  for (i = 0; i < reportInfoArray.length; i++) {
+  
+    var ri = reportInfoArray[i];
+
+    var localDate = new Date(ri['date']);
+    localDate = fae2TableUtils.formatDate(localDate);
+
+    var report_archive = ri['archive'];
+
+    var report_id      = ri['id'];
+    var row_id         = 'rowd_' + report_id;
+    
+    if (ri['status'] === 'D') {
+      if (r = addDeletedReport(report_id, report_archive)) {
+
+        tr = fae2TableUtils.addRow(tbody, row_id, '')
+
+        fae2TableUtils.addCell(tr, ri['title'], '', 'text');
+
+        fae2TableUtils.addCell(tr, localDate, '', 'text');
+
+        fae2TableUtils.addCell(tr, ri['ruleset'], '', 'text');
+
+        fae2TableUtils.addCell(tr, ri['url'], '', 'text');
+
+        fae2TableUtils.addCell(tr, ri['depth'], '', 'num');
+
+        fae2TableUtils.addCellButton(tr, 'Restore',  'Restore report: ' + ri['title'], 'text', getRestoreEventHandler(ri['slug']));
+
+      }
+    } 
+    else {
+      if (ri['status'] === 'C') {
+        var row = document.getElementById(row_id);
+        if (row) { 
+          tbody.removeChild(row);
+          removeDeletedReport(report_id);
+        }  
+      }  
+    }  
+  }
+
+  if (deleted.length == 0) {
+    document.getElementById('rowd_none').removeAttribute('hidden')
+  }
+  else {
+    document.getElementById('rowd_none').setAttribute('hidden', '')
+  }
+
+
   setTimeout(function () {fae2TableUtils.getJSON( report_status_url, updateReports);}, 3000);
 }
 

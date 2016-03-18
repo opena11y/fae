@@ -16,6 +16,7 @@ limitations under the License.
 
 from __future__ import absolute_import
 from django.http import HttpResponse 
+from django.http import HttpResponseRedirect
 from django.http import JsonResponse
 from django.shortcuts import redirect
 
@@ -505,7 +506,7 @@ class ProcessingStatusAllJSON(LoginRequiredMixin, TemplateView):
         json = []
 
         for r in context['reports']:
-            json.append(r.toJSON())
+            json.append(r.to_json_status())
 
         return  JsonResponse(json, safe=False, **response_kwargs)
 
@@ -523,7 +524,7 @@ class ProcessingStatusJSON(TemplateView):
 
     def render_to_response(self, context, **response_kwargs):
 
-        return  JsonResponse(context['report'].toJSON(), safe=False, **response_kwargs)
+        return  JsonResponse(context['report'].to_json_status(), safe=False, **response_kwargs)
 
     def get_context_data(self, **kwargs):
         context = super(ProcessingStatusJSON, self).get_context_data(**kwargs)
@@ -534,11 +535,11 @@ class ProcessingStatusJSON(TemplateView):
         
         return context    
 
-class SetReportArchiveView(TemplateView):
+class SetReportArchiveView(LoginRequiredMixin, TemplateView):
 
     def render_to_response(self, context, **response_kwargs):
 
-        return  JsonResponse(context['report'].toJSON(), safe=False, **response_kwargs)
+        return  JsonResponse(context['report'].to_json_status(), safe=False, **response_kwargs)
 
     def get_context_data(self, **kwargs):
         context = super(SetReportArchiveView, self).get_context_data(**kwargs)
@@ -556,7 +557,6 @@ class SetReportArchiveView(TemplateView):
         context['report'] = report
         
         return context
-
 
 class ArchivedReportView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
     template_name = 'reports/archived.html'
@@ -579,9 +579,32 @@ class ManageReportView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
 
         user_reports = WebsiteReport.objects.filter(user=self.request.user)
 
-        context['reports'] = user_reports.filter(status='C')
-        
         return context                 
+
+class DeleteReportView(LoginRequiredMixin, TemplateView):
+
+    def get(self, request, *args, **kwargs):
+        context = super(DeleteReportView, self).get_context_data(**kwargs)
+
+        report = WebsiteReport.objects.get(slug=kwargs['report'])
+
+        if report.is_complete():
+            report.set_status_deleted()
+
+        return HttpResponseRedirect(reverse('manage_reports'))
+
+
+class RestoreReportView(LoginRequiredMixin, TemplateView):
+
+    def get(self, request, *args, **kwargs):
+        context = super(RestoreReportView, self).get_context_data(**kwargs)
+
+        report = WebsiteReport.objects.get(slug=kwargs['report'])
+
+        if report.is_deleted():
+            report.set_status_complete()
+
+        return HttpResponseRedirect(reverse('manage_reports'))
 
 
 # ==============================================================
@@ -589,6 +612,22 @@ class ManageReportView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
 # Report Views
 #
 # ==============================================================
+
+
+class ReportJSON(TemplateView):
+
+    def render_to_response(self, context, **response_kwargs):
+
+        return  JsonResponse(context['report'].to_json_results(), safe=False, **response_kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super(ReportJSON, self).get_context_data(**kwargs)
+
+        report = WebsiteReport.objects.get(slug=kwargs['report'])
+
+        context['report'] = report
+        
+        return context    
 
 class ReportRulesView(FAENavigationMixin, TemplateView):
     template_name = 'reports/report_rules.html'

@@ -46,6 +46,7 @@ fae2TableUtils.addCell = function (row, text, id, class_name) {
 
     	return td;
 	};
+
 fae2TableUtils.addCellLink = function (row, text, href, id, class_name) {
 
 	    if (!row) return false;
@@ -72,7 +73,35 @@ fae2TableUtils.addCellLink = function (row, text, href, id, class_name) {
     	return link;
 	};
 
-fae2TableUtils.addCellCheckbox = function (row, checked, id, class_name, evnt) {
+
+fae2TableUtils.addCellButton = function (row, value, label, class_name, evnt) {
+
+      if (!row) return false;
+
+      if (typeof class_name !== 'string') class_name = "";
+
+      var td = document.createElement('td');
+
+      if (td) {
+            td.className = class_name;
+          row.appendChild(td);
+          td.setAttribute('data-value', '')
+      }  
+
+      button = document.createElement('input');
+      if (td && button) {
+        button.type = "button";
+        button.value = value;
+        button.setAttribute('aria-label', label)
+        button.addEventListener('click', evnt)
+        td.appendChild(button);
+      }
+
+      return button;
+  };
+
+
+fae2TableUtils.addCellCheckbox = function (row, checked, id, label, class_name, evnt) {
 
 	    if (!row) return false;
 
@@ -90,6 +119,7 @@ fae2TableUtils.addCellCheckbox = function (row, checked, id, class_name, evnt) {
     	checkbox = document.createElement('input');
     	if (td && checkbox) {
 	    	checkbox.setAttribute('type', 'checkbox');
+        checkbox.setAttribute('aria-label', label);
 	    	if (checked) checkbox.setAttribute('checked', '');
     	  	checkbox.id = id;
     	  	checkbox.addEventListener('click', evnt)

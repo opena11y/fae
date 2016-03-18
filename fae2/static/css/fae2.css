@@ -426,3 +426,7 @@ main table .manual_checks {
 main table .not_applicable {
     color: gray;
 }
+
+table td.text input[type=button] {
+    font-size: 95%;
+}

@@ -145,7 +145,8 @@ EVAL_STATUS = (
     ('S', 'Saving'),
     ('C', 'Complete'),
     ('E', 'Error'),
-    ('SUM', 'Summary'),
+    ('D', 'Marked for deletion'),
+    ('SUM', 'Archived for summary stats'),
 )
 
 FOLLOW_CHOICES = (
@@ -315,10 +316,24 @@ class WebsiteReport(RuleGroupResult):
     self.status = 'C'
     self.save()
 
+  def is_complete(self):
+    return self.status == 'C'
+
   def set_status_error(self):
     self.delete_data_files()
     self.status = 'E'
     self.save()
+
+  def is_error(self):
+    return self.status == 'E'
+
+  def set_status_deleted(self):
+    self.archive = False;
+    self.status = 'D'
+    self.save()
+
+  def is_deleted(self):
+    return self.status == 'D'
 
   def set_status_summary(self):
     self.status = 'S'
@@ -364,7 +379,32 @@ class WebsiteReport(RuleGroupResult):
 
     return self.get_processing_status().processed 
 
-  def toJSON(self):
+  def to_json_results(self):
+    tz = timezone(str(self.user.profile.timezone))
+
+    json = {}
+    json['id']          = 'r' + str(self.id)
+    json['title']       = self.title
+    json['date']        = self.created.astimezone(tz)
+    json['ruleset']     = self.ruleset.title
+    json['ruleset_url'] = reverse('ruleset', args=[self.ruleset.slug])
+    json['depth']       = self.depth
+    json['url']         = self.url
+    json['page_count']  = self.get_page_count()
+
+    json['rule_results'] = []
+    for rr in self.ws_rule_results.all():
+      json['rule_results'].append(rr.to_json_results())
+
+    json['page_results'] = []
+    for pr in self.page_all_results.all():
+      json['page_results'].append(pr.to_json_results())
+
+
+    return json
+
+
+  def to_json_status(self):
     tz = timezone(str(self.user.profile.timezone))
 
     json = {}
