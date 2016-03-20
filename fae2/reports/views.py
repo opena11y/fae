@@ -38,6 +38,8 @@ from ruleCategories.models import RuleCategory
 from wcag20.models         import Guideline
 from rules.models          import RuleScope
 
+from itertools import chain
+
 from django.core.urlresolvers import reverse_lazy, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .uid import generate
@@ -564,10 +566,13 @@ class ArchivedReportView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super(ArchivedReportView, self).get_context_data(**kwargs)
 
-        user_reports = WebsiteReport.objects.filter(user=self.request.user)
+        user_profile = UserProfile.objects.get(user=self.request.user)
 
-        context['reports'] = user_reports.filter(status='C')
-        context['profile'] = UserProfile.objects.get(user=self.request.user)
+        [reports, old_reports] = user_profile.get_active_reports()
+
+        context['reports']       = reports
+        context['old_reports']   = old_reports
+        context['user_profile']       = UserProfile.objects.get(user=self.request.user)
         
         return context            
 
@@ -577,7 +582,13 @@ class ManageReportView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super(ManageReportView, self).get_context_data(**kwargs)
 
-        user_reports = WebsiteReport.objects.filter(user=self.request.user)
+        user_profile = UserProfile.objects.get(user=self.request.user)
+
+        [reports, old_reports] = user_profile.get_active_reports()
+
+        context['reports']       = reports
+        context['old_reports']   = old_reports
+        context['user_profile']       = UserProfile.objects.get(user=self.request.user)
 
         return context                 
 

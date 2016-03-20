@@ -21,7 +21,8 @@ from registration.signals import user_registered
 from timezone_field import TimeZoneField
 
 from websiteResultGroups.models import WebsiteReportGroup
-from stats.models import StatsUser
+from reports.models             import WebsiteReport
+from stats.models               import StatsUser
 
 ## User Profile
 # The built-in Django User relation:
@@ -58,8 +59,8 @@ class UserProfile(models.Model):
     dept          = models.CharField(max_length=128, blank=True)
     email_announcements = models.BooleanField(default=True)
 
-    max_archive = models.IntegerField(default=5)
-    max_saved   = models.IntegerField(default=10)
+    max_archive   = models.IntegerField(default=10)
+    max_permanent = models.IntegerField(default=5)
 
     timezone = TimeZoneField(default='America/Chicago')
     
@@ -76,6 +77,14 @@ class UserProfile(models.Model):
           if shortp == self.acct_type:
               return longp
     
+
+    def get_active_reports(self):
+
+        user_reports = WebsiteReport.objects.filter(user=self.user).filter(status='C')
+        reports = user_reports[0:self.max_archive]
+        old_reports  = user_reports[self.max_archive:]
+
+        return [reports, old_reports] 
     
 # creates new UserProfile when new user registers 
 def user_registered_callback(sender, user, request, **kwargs):

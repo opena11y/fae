@@ -16,6 +16,7 @@ limitations under the License.
 
 from __future__ import absolute_import
 import sys
+import fnmatch
 import os
 
 from os.path import join 
@@ -260,7 +261,7 @@ class WebsiteReport(RuleGroupResult):
   class Meta:
     verbose_name        = "Report"
     verbose_name_plural = "Reports"
-    ordering = ['-created']
+    ordering = ['-archive', '-created']
 
   def __str__(self):
     return "Website Report: " + self.title
@@ -289,15 +290,21 @@ class WebsiteReport(RuleGroupResult):
     super(WebsiteReport, self).save() # Call the "real" save() method        
 
   def delete_data_files(self):
-    path = self.data_directory
+    path = self.data_directory + '/data'
+#    print('[delete_data_files]: ' + path)
     try:
       for file in os.listdir(path):
+#        print('[delete_data_files][file]: ' + file)
+
         if fnmatch.fnmatch(file, '*.json'):
+#          print('[delete_data_files][match]')
           os.remove(join(path,file))
+
     except:
       return False   
 
     return True    
+
 
   def set_status_initialized(self):
     self.status = 'I'

@@ -412,7 +412,7 @@ main table .complete {
 
 main table .almost_complete,
 main table .partial_implementation {
-    color: #b38f00;
+    color: #cc7a00;
 }
 
 main table .not_implemented {
@@ -429,4 +429,15 @@ main table .not_applicable {
 
 table td.text input[type=button] {
     font-size: 95%;
+}
+
+ul.user_profile {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+ul.user_profile li {
+    padding: 0;
+    margin: 0;
 }
