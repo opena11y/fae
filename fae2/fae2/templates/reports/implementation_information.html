@@ -1,14 +1,11 @@
 <section aria-labelledby="id_impl_info_label">
   <h2 id="iid_impl_info_label" style="margin-top: 6em;">Implementation Status Definitions</h2>
 
-   <h3>Implementation Score</h3>
-   <ul>
+   <ul style="margin: 0; padding: 0; margin-left: 1em;">
      <li>The implementation score is based on the rule results across all pages and ranges from 0 to 100.</li>
-     <li>'-' means there were no rule results for that group.</li>
+     <li>'-' means there were no rule results for that group (e.g. rules were not applicable).</li>
+     <li>The following messages give a general idea of the overall implementation of the rules for a website.</li>
    </ul>
-
-   <h3 id="id_h3_mess">Implementation Message</h3>
-   <p>The following messages give a general idea of the overall implementation of the rules for a website.</p>
 
    <table class="details table table-striped table-hover "  aria-labelledby="id_impl_info_label">
    <thead>
@@ -26,7 +23,13 @@
        <td class="text">Required Manual Checks</td>
        <td class="title">Manual checks are required to verify accessibility.  Start with the website and page 
        level manual checks since they affect website and page navigation and identification of
-       content and then start on the element level manual checks.</td>
+       content and then start on the element level manual checks.
+
+       
+       <p style="margin-top: 1em;"><strong>Note:</strong> Future versions of FAE will allow you to mark manual checks as, pass, fail or not applicable.</p>
+       </td>
+
+</td>
      </tr>
 
      <tr class="even">

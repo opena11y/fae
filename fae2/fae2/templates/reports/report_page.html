@@ -154,15 +154,7 @@
                     {% endif %}
                     </td>
 
-                   <td class="num"  headers="id_r{{forloop.counter}} id_pfi">
-                    {% if summary.implementation_pass_fail_score >= 0 %}
-                    {{summary.implementation_pass_fail_score}}
-                    {% else %}
-                    -
-                    {% endif %}
-                    </td>
-
-                   <td class="num"  headers="id_r{{forloop.counter}} id_ovr">
+                    <td class="num"  headers="id_r{{forloop.counter}} id_ovr">
                     {% if summary.implementation_score >= 0 %}
                     {{summary.implementation_score}}
                     {% else %}
