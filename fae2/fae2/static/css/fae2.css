@@ -9,17 +9,22 @@ main h1 {
     margin-top: 0.2em;
 }
 
-main h2 { font-size: 175%; 
+main h2 { 
+    font-size: 175%; 
     margin: 0;
     padding: 0;
 }
-main h3 { font-size: 150%; }
+
+main h3 { 
+    font-size: 150%; 
+}
+
 main h4 { 
     margin-top: 1.5em;
     font-size: 125%; 
 }
 
-main nav h2 {
+nav h2 {
     margin-top: 1em;
     margin-bottom: 0.5em;
     font-size: 130%;
@@ -366,26 +371,26 @@ input[type="button"].sort-button {
     top: -1.5em;
 }
 
-main nav li.side_by_side {
+nav li.side_by_side {
     clear: both;
 }
 
-main nav li.side_by_side a.disabled {
+nav li.side_by_side a.disabled {
     color: gray;
 }
 
-main nav li.side_by_side a.left {
+nav li.side_by_side a.left {
     float: left;
     padding-left: 0.25em;
     padding-right-min: 0.25em;
     padding-right-max: 1em;
 }
 
-main nav li.side_by_side a.left span.glyphicon {
+nav li.side_by_side a.left span.glyphicon {
     display: inline;
 }
 
-main nav li.side_by_side a.right {
+nav li.side_by_side a.right {
     float: right;
     padding-left-min: 0.25em;
     padding-left-max: 1em;
