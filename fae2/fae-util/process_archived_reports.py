@@ -78,9 +78,9 @@ def delete_old_reports():
       error("Error deleting at report with errors: " + str(r))  
 
   # Delete reports with marked for deletion
-  deleted_reports = WebsiteReport.objects.filter(status='D')
+  reports_marked_to_delete = WebsiteReport.objects.filter(status='D')
 
-  for r in deleted_reports:
+  for r in reports_marked_to_delete:
     try:
       r.set_status_summary()
     except:

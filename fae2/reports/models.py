@@ -225,9 +225,9 @@ class WebsiteReport(RuleGroupResult):
 
   # Archiving information
 
-  archive  = models.BooleanField(default=False)
-  delete   = models.BooleanField(default=False)
-  stats    = models.BooleanField(default=False)
+  archive     = models.BooleanField(default=False)
+  delete_flag = models.BooleanField(default=False)
+  stats       = models.BooleanField(default=False)
 
   # Report History Information
   
@@ -289,27 +289,9 @@ class WebsiteReport(RuleGroupResult):
 
     super(WebsiteReport, self).save() # Call the "real" save() method        
 
-  def delete(self):
-    super(WebsiteReport, self).delete()  
-
   def delete_page_reports(self):
     # Delete page level results
     for pr in self.page_all_results.all():
-      for prr in pr.page_rule_results.all():
-        prr.delete()
-
-      for pglr in pr.page_gl_results.all():
-        pglr.delete()
-
-      for prcr in pr.page_rc_results.all():
-        prcr.delete()
-
-      for prcr in pr.page_rc_results.all():
-        prcr.delete()
-
-      for prsr in pr.page_rs_results.all():
-        prsr.delete()
-
       pr.delete()
 
 
