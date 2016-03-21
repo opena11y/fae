@@ -188,49 +188,65 @@ class FAENavigtionObject:
 
         try:
             self.slug = session['report_slug']
+
+            r = WebsiteReport(slug=self.slug)
+
+            try:    
+                self.view = session['report_view']
+            except:
+                self.view = 'rc'
+
+            try:
+                self.page  = session['report_page']
+            except:
+                self.page  = 1
+
+            try:
+                self.report_type = session['report_type']
+            except:
+                self.report_type = 'rules'
+
+            try:
+                self.page_count = session['report_page_count']
+            except:
+                self.page_count = 1
+              
+            try:
+                self.current_label  = session['current_label']
+                self.current_url    = session['current_url']
+            except:  
+                self.current_label  = False
+                self.current_url    = False
+
+            try:
+                self.next_label     = session['next_label']
+                self.next_url       = session['next_url']
+            except:  
+                self.next_label     = False
+                self.next_url       = False
+
+            try:
+                self.previous_label = session['previous_label']
+                self.previous_url   = session['previous_url']
+            except:
+                self.previous_label = False
+                self.previous_url   = False
+
         except:
             self.slug = False
-
-        try:    
-            self.view = session['report_view']
-        except:
             self.view = 'rc'
-
-        try:
-            self.page  = session['report_page']
-        except:
             self.page  = 1
-
-        try:
-            self.report_type = session['report_type']
-        except:
             self.report_type = 'rules'
-
-        try:
-            self.page_count = session['report_page_count']
-        except:
             self.page_count = 1
-          
-        try:
-            self.current_label  = session['current_label']
-            self.current_url    = session['current_url']
-        except:  
+
+            self.previous_label = False
+            self.previous_url   = False
             self.current_label  = False
             self.current_url    = False
-
-        try:
-            self.next_label     = session['next_label']
-            self.next_url       = session['next_url']
-        except:  
             self.next_label     = False
             self.next_url       = False
 
-        try:
-            self.previous_label = session['previous_label']
-            self.previous_url   = session['previous_url']
-        except:
-            self.previous_label = False
-            self.previous_url   = False
+
 
         if self.slug:
             self.update_filters()

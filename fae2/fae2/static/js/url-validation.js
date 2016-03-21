@@ -53,10 +53,19 @@
       
       fs.className = "follow";      
 
-      for(i = 0; i < controls.length; i++) {
+      for(i = 1; i < controls.length; i++) {
+          c = controls[i];           
+          c.removeAttribute('disabled');
+      }
+
+      var mps = document.getElementById("id_max_pages");      
+
+      controls = mps.getElementsByTagName("input");
+      
+      for(i = 1; i < controls.length; i++) {
         c = controls[i];           
         c.removeAttribute('disabled');
-      }
+      }      
    } 
 
    function disableFollow() {
@@ -71,9 +80,28 @@
       fs.className = "follow disabled"
         
       for(i = 0; i < controls.length; i++) {
-           c = controls[i];
+        c = controls[i];
+        if (i === 0) {
+          c.setAttribute('checked','');
+        }
+        else {
            c.setAttribute('disabled', '');
+         }
       }
+
+      var mps = document.getElementById("id_max_pages");      
+
+      controls = mps.getElementsByTagName("input");
+      
+      for(i = 0; i < controls.length; i++) {
+        c = controls[i];
+        if (i === 0) {
+          c.setAttribute('checked','');
+        }
+        else {
+           c.setAttribute('disabled', '');
+         }
+      }      
     } 
 
    function updateFollow() {
@@ -83,6 +111,6 @@
       if (depth1.checked) disableFollow();
       else enableFollow();
       
-    } 
+    }     
 
 window.addEventListener('load', enableSubmit);
