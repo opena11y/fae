@@ -446,3 +446,9 @@ ul.user_profile li {
     padding: 0;
     margin: 0;
 }
+
+table label {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-right: 0.25em;
+}
