@@ -46,7 +46,7 @@ The "secretes.json" file must be created and provides:
 ```
 {
   	"FILENAME": "secrets.json",
-    "SITE_URL": "",
+    "SITE_URL": "[your site URL]",
     "SITE_NAME": "FAE 2.x",
     "PROCESSING_THREADS": 4, 
    	"SECRET_KEY": "",
@@ -62,7 +62,7 @@ The "secretes.json" file must be created and provides:
    	"DATABASE_NAME": "DB name",
     "DATABASE_USER": "[DB username]",
     "DATABASE_PASSWORD": "[DB password]",
-    "ALLOWED_HOSTS": ["localhost","127.0.0.1"],
+    "ALLOWED_HOSTS": ["[your site URL]"],
     "EMAIL_HOST": "[mailserver]",
     "EMAIL_PORT": 587,
     "EMAIL_USE_TLS": true,
