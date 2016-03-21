@@ -582,7 +582,7 @@ class ProcessedURL(models.Model):
  
 class UnprocessedURL(models.Model):
   unprocessed_url_id = models.AutoField(primary_key=True)
-]
+
   ws_report  = models.ForeignKey(WebsiteReport, on_delete=models.CASCADE, related_name="unprocessed_urls")
 
   url             = models.URLField( 'Unprocessed URL', max_length=4096)
@@ -624,7 +624,7 @@ class UnprocessedURL(models.Model):
 class FilteredURL(models.Model):
   filtered_url_id = models.AutoField(primary_key=True)
 
-  ws_report   = models.ForeignKey(WebsiteReport. on_delete=models.CASCADE, related_name="filtered_urls")
+  ws_report   = models.ForeignKey(WebsiteReport, on_delete=models.CASCADE, related_name="filtered_urls")
 
   url            = models.URLField( 'Other URL',      max_length=4096)
   url_referenced = models.URLField( 'Referenced URL', max_length=4096)
