@@ -10,18 +10,22 @@ import shlex
 import time
 import getopt
 import shutil
-import fnmatch
 
-import cmd
 import django
 
-from os.path import join 
+fp = os.path.realpath(__file__)
+path, filename = os.path.split(fp)
+os.environ['FAE_HOME'] = path
 
-from datetime import datetime, timedelta
+fae_util_path = path
 
-from django.utils import timezone
+fae2_path = path.split('/fae-util')[0]
 
-sys.path.append(os.path.abspath('..'))
+print("[fae2_path]"+ str(fae2_path))
+
+sys.path.append(fae2_path)
+
+print("PATH="+ str(sys.path))
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'fae2.settings')
 django.setup()
@@ -29,6 +33,7 @@ django.setup()
 from django.conf import settings
 
 from fae2.settings import APP_DIR
+from fae2.settings import PROCESSING_THREADS
 
 from django.db       import models
 from reports.models  import WebsiteReport
@@ -78,9 +83,9 @@ def delete_old_reports():
       error("Error deleting at report with errors: " + str(r))  
 
   # Delete reports with marked for deletion
-  reports_marked_to_delete = WebsiteReport.objects.filter(status='D')
+  reports_marked_for_deletion = WebsiteReport.objects.filter(status='D')
 
-  for r in reports_marked_to_delete:
+  for r in reports_marked_for_deletion:
     try:
       r.set_status_summary()
     except:
