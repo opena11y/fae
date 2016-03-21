@@ -42,9 +42,9 @@ class WebsiteRuleCategoryResult(RuleGroupResult):
 
   slug           = models.SlugField(max_length=16, default="none", blank=True, editable=False)
 
-  ws_report      = models.ForeignKey(WebsiteReport, related_name="ws_rc_results")
+  ws_report      = models.ForeignKey(WebsiteReport, on_delete=models.CASCADE, related_name="ws_rc_results")
 
-  rule_category  = models.ForeignKey(RuleCategory)
+  rule_category  = models.ForeignKey(RuleCategory, on_delete=models.SET_NULL, null=True)
 
   class Meta:
     verbose_name        = "Website Rule Category Result"
@@ -71,16 +71,16 @@ class WebsiteRuleCategoryResult(RuleGroupResult):
 class WebsiteGuidelineResult(RuleGroupResult):
   id                 = models.AutoField(primary_key=True)
 
-  ws_report           = models.ForeignKey(WebsiteReport, related_name="ws_gl_results")
+  ws_report           = models.ForeignKey(WebsiteReport, on_delete=models.CASCADE, related_name="ws_gl_results")
 
   slug  = models.SlugField(max_length=16, default="none", blank=True, editable=False)
 
-  guideline            = models.ForeignKey(Guideline)
+  guideline            = models.ForeignKey(Guideline, on_delete=models.SET_NULL, null=True)
 
   class Meta:
     verbose_name        = "Website Guideline Result"
     verbose_name_plural = "Website Guideline Results"
-    ordering = ['guideline']
+    ordering            = ['guideline']
 
   def __unicode__(self):
     return str(self.guideline) 
@@ -105,15 +105,15 @@ class WebsiteRuleScopeResult(RuleGroupResult):
 
   slug  = models.SlugField(max_length=16, default="none", blank=True, editable=False)
 
-  ws_report        = models.ForeignKey(WebsiteReport, related_name="ws_rs_results")
+  ws_report        = models.ForeignKey(WebsiteReport, on_delete=models.CASCADE, related_name="ws_rs_results")
 
-  rule_scope       = models.ForeignKey(RuleScope)  
+  rule_scope       = models.ForeignKey(RuleScope, on_delete=models.SET_NULL, null=True)  
 
 
   class Meta:
     verbose_name        = "Website Rule Scope Result"
     verbose_name_plural = "Website Rule Scope Results"
-    ordering = ['-rule_scope']
+    ordering            = ['-rule_scope']
 
   def __unicode__(self):
     return self.rule_scope.title 
@@ -136,14 +136,14 @@ class WebsiteRuleResult(RuleResult):
 
   slug  = models.SlugField(max_length=16, default="none", blank=True, editable=False)
 
-  rule                  = models.ForeignKey(Rule)
+  rule                  = models.ForeignKey(Rule, on_delete=models.SET_NULL, null=True)
   rule_required         = models.BooleanField(default=False)
   
-  ws_report     = models.ForeignKey(WebsiteReport, related_name="ws_rule_results")
+  ws_report     = models.ForeignKey(WebsiteReport, on_delete=models.CASCADE, related_name="ws_rule_results")
   
-  ws_rc_result  = models.ForeignKey(WebsiteRuleCategoryResult,  related_name="ws_rule_results")
-  ws_gl_result  = models.ForeignKey(WebsiteGuidelineResult,     related_name="ws_rule_results")
-  ws_rs_result  = models.ForeignKey(WebsiteRuleScopeResult,     related_name="ws_rule_results")
+  ws_rc_result  = models.ForeignKey(WebsiteRuleCategoryResult, on_delete=models.SET_NULL,  null=True, related_name="ws_rule_results")
+  ws_gl_result  = models.ForeignKey(WebsiteGuidelineResult,    on_delete=models.SET_NULL,  null=True, related_name="ws_rule_results")
+  ws_rs_result  = models.ForeignKey(WebsiteRuleScopeResult,    on_delete=models.SET_NULL,  null=True, related_name="ws_rule_results")
 
   rule_number   = models.IntegerField(default=-1)
 

@@ -55,7 +55,7 @@ TYPE_CODES = (
 class ElementDefinition(models.Model):
   id = models.AutoField(primary_key=True)
 
-  spec            = models.ForeignKey(LanguageSpec, related_name='definitions')
+  spec            = models.ForeignKey(LanguageSpec, on_delete=models.CASCADE, related_name='definitions')
   element         = models.CharField(blank=True, max_length=32,default="")
   attribute       = models.CharField(blank=True, max_length=32,default="")
   value           = models.CharField(blank=True, max_length=64,default="")

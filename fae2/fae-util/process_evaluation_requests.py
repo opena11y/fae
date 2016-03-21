@@ -48,7 +48,7 @@ from save_website_results_sql import saveResultsToDjango
 DEBUG=True
 INFO=True
 
-log = open(os.path.join(APP_DIR + 'logs/fae-util.log'), 'w')
+log = open(os.path.join(APP_DIR + 'logs/process-evaluation.log'), 'w')
 
 print(str(log))
 

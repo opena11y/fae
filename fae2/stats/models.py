@@ -55,7 +55,7 @@ class StatsAll(models.Model):
 class StatsYear(models.Model):
     id    = models.AutoField(primary_key=True)
 
-    stats_all = models.ForeignKey(StatsAll, blank=True, default=None, related_name='years')
+    stats_all = models.ForeignKey(StatsAll, null=True, default=None, related_name='years')
     year      = models.IntegerField(default=2016)
 
     ws_report_group = models.OneToOneField(WebsiteReportGroup)
@@ -77,7 +77,7 @@ class StatsYear(models.Model):
 class StatsMonth(models.Model):
     id    = models.AutoField(primary_key=True)
 
-    stats_year = models.ForeignKey(StatsYear, blank=False, related_name='months')
+    stats_year = models.ForeignKey(StatsYear, null=False, related_name='months')
     month      = models.IntegerField(default=1)
 
     ws_report_group = models.OneToOneField(WebsiteReportGroup)
@@ -102,7 +102,7 @@ class StatsDay(models.Model):
 
     date  = models.DateField(auto_now=True, editable=False)
 
-    stats_month = models.ForeignKey(StatsMonth, blank=False, related_name='days')
+    stats_month = models.ForeignKey(StatsMonth, null=False, related_name='days')
     day         = models.IntegerField(default=1)
 
     ws_report_group = models.OneToOneField(WebsiteReportGroup)
@@ -135,7 +135,7 @@ class StatsUser(models.Model):
 
     id   = models.AutoField(primary_key=True)
 
-    user = models.ForeignKey(User, related_name="stats")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="stats")
 
     ws_report_group = models.OneToOneField(WebsiteReportGroup)
 
@@ -193,9 +193,9 @@ class StatsRegisteredUsers(models.Model):
 class StatsRuleset(models.Model):
     id   = models.AutoField(primary_key=True)
 
-    stats_all = models.ForeignKey(StatsAll, related_name='rulesets')
+    stats_all = models.ForeignKey(StatsAll, on_delete=models.SET_NULL, null=True, related_name='rulesets')
 
-    ruleset = models.ForeignKey(Ruleset, related_name='stats')
+    ruleset = models.ForeignKey(Ruleset, on_delete=models.SET_NULL, null=True, related_name='stats')
 
     ws_report_group = models.OneToOneField(WebsiteReportGroup)
 

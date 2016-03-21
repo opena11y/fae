@@ -33,12 +33,6 @@ from wcag20.models          import SuccessCriterion
 from rulesets.models        import Ruleset
 
 
-## Helper class that includes the updated date and creator
-class Updated(models.Model):
-  updated_date   = models.DateTimeField(auto_now=True, editable=False)
-  updated_editor = models.ForeignKey(User, editable=True)
-
-
 ## Rule 
 RULE_SCOPE = (
   (0, 'Unknown'), 
@@ -134,10 +128,10 @@ class Rule(models.Model):
   rule_id        = models.CharField('Rule ID', max_length=32, unique=True) 
   slug           = models.SlugField(max_length=32, default="none", blank=True)
 
-  scope               = models.ForeignKey(RuleScope, related_name='rules')
-  group               = models.ForeignKey(RuleGroup, related_name='rules')
-  category            = models.ForeignKey(RuleCategory, related_name='rules') 
-  wcag_primary        = models.ForeignKey(SuccessCriterion, related_name='rules')
+  scope               = models.ForeignKey(RuleScope,        on_delete=models.SET_NULL, null=True, related_name='rules')
+  group               = models.ForeignKey(RuleGroup,        on_delete=models.SET_NULL, null=True, related_name='rules')
+  category            = models.ForeignKey(RuleCategory,     on_delete=models.SET_NULL, null=True, related_name='rules') 
+  wcag_primary        = models.ForeignKey(SuccessCriterion, on_delete=models.SET_NULL, null=True, related_name='rules')
   wcag_related        = models.ManyToManyField(SuccessCriterion, related_name='related_rules')  
   target_resources    = models.ManyToManyField(ElementDefinition, related_name='rules') 
   primary_property    = models.CharField('primary attribute or property used by the rule', max_length=64, default='')
@@ -303,7 +297,7 @@ class NodeResultMessage(models.Model):
   
   updated_date   = models.DateTimeField(editable=False)
   
-  rule         = models.ForeignKey(Rule, related_name="node_result_messages")
+  rule         = models.ForeignKey(Rule, on_delete=models.CASCADE, related_name="node_result_messages")
   label        = models.CharField('Label',  choices=NODE_RESULT_LABEL_CHOICES, max_length=32)
   message      = models.CharField('Message', max_length=512)
 
@@ -317,8 +311,8 @@ class NodeResultMessage(models.Model):
 class RuleMapping(models.Model):
   id             = models.AutoField(primary_key=True)
   
-  ruleset  = models.ForeignKey(Ruleset, related_name='rule_mappings')  
-  rule     = models.ForeignKey(Rule, related_name='rule_mappings')   
+  ruleset  = models.ForeignKey(Ruleset, on_delete=models.CASCADE, related_name='rule_mappings')  
+  rule     = models.ForeignKey(Rule, on_delete=models.CASCADE, related_name='rule_mappings')   
   required = models.BooleanField(default=True)      
   enabled  = models.BooleanField(default=True)      
 
@@ -332,8 +326,8 @@ class RuleMapping(models.Model):
 class RuleCategoryRuleMapping(models.Model):
   id             = models.AutoField(primary_key=True)
   
-  ruleset        = models.ForeignKey(Ruleset, related_name='rc_mappings')  
-  rule_category  = models.ForeignKey(RuleCategory)  
+  ruleset        = models.ForeignKey(Ruleset, on_delete=models.CASCADE, related_name='rc_mappings')  
+  rule_category  = models.ForeignKey(RuleCategory, on_delete=models.CASCADE)  
   rule_mappings  = models.ManyToManyField(RuleMapping)
 
   class Meta:
@@ -346,8 +340,8 @@ class RuleCategoryRuleMapping(models.Model):
 class GuidelineRuleMapping(models.Model):
   id             = models.AutoField(primary_key=True)
   
-  ruleset        = models.ForeignKey(Ruleset, related_name='gl_mappings')  
-  guideline      = models.ForeignKey(Guideline)  
+  ruleset        = models.ForeignKey(Ruleset, on_delete=models.CASCADE, related_name='gl_mappings')  
+  guideline      = models.ForeignKey(Guideline, on_delete=models.CASCADE)  
   rule_mappings  = models.ManyToManyField(RuleMapping)
 
   class Meta:
@@ -360,8 +354,8 @@ class GuidelineRuleMapping(models.Model):
 class SuccessCriterionRuleMapping(models.Model):
   id             = models.AutoField(primary_key=True)
   
-  guideline_rule_mapping = models.ForeignKey(GuidelineRuleMapping, related_name='sc_mappings')  
-  success_criterion      = models.ForeignKey(SuccessCriterion)  
+  guideline_rule_mapping = models.ForeignKey(GuidelineRuleMapping, on_delete=models.CASCADE, related_name='sc_mappings')  
+  success_criterion      = models.ForeignKey(SuccessCriterion, on_delete=models.CASCADE)  
   primary_mappings       = models.ManyToManyField(RuleMapping, related_name='primary_mappings')
   related_mappings       = models.ManyToManyField(RuleMapping, related_name='related_mappings')
 

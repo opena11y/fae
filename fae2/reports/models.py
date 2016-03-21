@@ -200,7 +200,7 @@ class WebsiteReport(RuleGroupResult):
 
   id    = models.AutoField(primary_key=True)
 
-  user  = models.ForeignKey(User, editable=True, related_name="reports")
+  user  = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, editable=True, related_name="reports")
     
   slug  = models.SlugField(max_length=256, default="", blank=True, editable=False, unique=True)
 
@@ -210,7 +210,7 @@ class WebsiteReport(RuleGroupResult):
   follow     = models.IntegerField("Follow Links in", choices=FOLLOW_CHOICES, default=1, blank=False)
   depth      = models.IntegerField("Depth of Evaluation", choices=DEPTH_CHOICES, default=2, blank=False)
   max_pages  = models.IntegerField("Maximum Pages", choices=MAX_PAGES_CHOICES, default=0, blank=False)
-  ruleset    = models.ForeignKey(Ruleset, default=2, blank=False)
+  ruleset    = models.ForeignKey(Ruleset, on_delete=models.SET_NULL, null=True, default=2, blank=False)
 
   browser_emulation    = models.CharField("Browser Emulation", max_length=32, default="FIREFOX")
 
@@ -289,6 +289,30 @@ class WebsiteReport(RuleGroupResult):
 
     super(WebsiteReport, self).save() # Call the "real" save() method        
 
+  def delete(self):
+    super(WebsiteReport, self).delete()  
+
+  def delete_page_reports(self):
+    # Delete page level results
+    for pr in self.page_all_results.all():
+      for prr in pr.page_rule_results.all():
+        prr.delete()
+
+      for pglr in pr.page_gl_results.all():
+        pglr.delete()
+
+      for prcr in pr.page_rc_results.all():
+        prcr.delete()
+
+      for prcr in pr.page_rc_results.all():
+        prcr.delete()
+
+      for prsr in pr.page_rs_results.all():
+        prsr.delete()
+
+      pr.delete()
+
+
   def delete_data_files(self):
     path = self.data_directory + '/data'
 #    print('[delete_data_files]: ' + path)
@@ -343,8 +367,12 @@ class WebsiteReport(RuleGroupResult):
     return self.status == 'D'
 
   def set_status_summary(self):
-    self.status = 'S'
+    self.status = 'SUM'
+    self.delete_page_reports()
     self.save()
+
+  def is_summary(self):
+    return self.status == 'SUM'
 
   def get_first_page(self):
     return self.page_all_results.all()[0]
@@ -501,7 +529,7 @@ class WebsiteReport(RuleGroupResult):
 class ProcessedURL(models.Model):
   processed_url_id = models.AutoField(primary_key=True)
 
-  ws_report  = models.ForeignKey(WebsiteReport, related_name="processed_urls")
+  ws_report  = models.ForeignKey(WebsiteReport, on_delete=models.CASCADE, related_name="processed_urls")
   
   page_seq_num    = models.IntegerField(default=-1)
 
@@ -554,8 +582,8 @@ class ProcessedURL(models.Model):
  
 class UnprocessedURL(models.Model):
   unprocessed_url_id = models.AutoField(primary_key=True)
-
-  ws_report  = models.ForeignKey(WebsiteReport, related_name="unprocessed_urls")
+]
+  ws_report  = models.ForeignKey(WebsiteReport, on_delete=models.CASCADE, related_name="unprocessed_urls")
 
   url             = models.URLField( 'Unprocessed URL', max_length=4096)
   url_referenced  = models.URLField( 'Referenced URL',  max_length=4096)
@@ -596,7 +624,7 @@ class UnprocessedURL(models.Model):
 class FilteredURL(models.Model):
   filtered_url_id = models.AutoField(primary_key=True)
 
-  ws_report   = models.ForeignKey(WebsiteReport, related_name="filtered_urls")
+  ws_report   = models.ForeignKey(WebsiteReport. on_delete=models.CASCADE, related_name="filtered_urls")
 
   url            = models.URLField( 'Other URL',      max_length=4096)
   url_referenced = models.URLField( 'Referenced URL', max_length=4096)

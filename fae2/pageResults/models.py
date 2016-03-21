@@ -46,7 +46,7 @@ from websiteResults.models import WebsiteRuleResult
 class PageResult(RuleGroupResult):
   id                 = models.AutoField(primary_key=True)
 
-  ws_report        = models.ForeignKey(WebsiteReport, related_name="page_all_results")
+  ws_report        = models.ForeignKey(WebsiteReport, on_delete=models.CASCADE, related_name="page_all_results")
 
   # Page identification information
   
@@ -103,7 +103,7 @@ class PageResult(RuleGroupResult):
 class PageRuleCategoryResult(RuleGroupResult):
   id              = models.AutoField(primary_key=True)
 
-  page_result     = models.ForeignKey(PageResult, related_name="page_rc_results")
+  page_result     = models.ForeignKey(PageResult, on_delete=models.CASCADE, related_name="page_rc_results")
 
   slug            = models.SlugField(max_length=32, default="none", blank=True, editable=False)
 
@@ -135,7 +135,7 @@ class PageRuleCategoryResult(RuleGroupResult):
 class PageGuidelineResult(RuleGroupResult):
   id                 = models.AutoField(primary_key=True)
 
-  page_result   = models.ForeignKey(PageResult, related_name="page_gl_results")
+  page_result   = models.ForeignKey(PageResult, on_delete=models.CASCADE, related_name="page_gl_results")
 
   slug            = models.SlugField(max_length=32, default="none", blank=True, editable=False)
 
@@ -166,7 +166,7 @@ class PageGuidelineResult(RuleGroupResult):
 class PageRuleScopeResult(RuleGroupResult):
   id            = models.AutoField(primary_key=True)
 
-  page_result   = models.ForeignKey(PageResult, related_name="page_rs_results")
+  page_result   = models.ForeignKey(PageResult, on_delete=models.CASCADE, related_name="page_rs_results")
 
   slug            = models.SlugField(max_length=32, default="none", blank=True, editable=False)
 
@@ -207,7 +207,7 @@ class PageRuleResult(RuleResult):
   
   ws_rule_result  = models.ForeignKey(WebsiteRuleResult,      related_name="page_rule_results", blank=True)
 
-  page_result     = models.ForeignKey(PageResult,             related_name="page_rule_results")
+  page_result     = models.ForeignKey(PageResult, on_delete=models.CASCADE, related_name="page_rule_results")
   page_rc_result  = models.ForeignKey(PageRuleCategoryResult, related_name="page_rule_results")
   page_gl_result  = models.ForeignKey(PageGuidelineResult,    related_name="page_rule_results")
   page_rs_result  = models.ForeignKey(PageRuleScopeResult,    related_name="page_rule_results")

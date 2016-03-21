@@ -508,7 +508,8 @@ class ProcessingStatusAllJSON(LoginRequiredMixin, TemplateView):
         json = []
 
         for r in context['reports']:
-            json.append(r.to_json_status())
+            if not r.is_summary():
+                json.append(r.to_json_status())
 
         return  JsonResponse(json, safe=False, **response_kwargs)
 
@@ -1138,3 +1139,4 @@ class URLInformationView(FAENavigationMixin, TemplateView):
         context['report'] = report
         
         return context            
+        

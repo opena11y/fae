@@ -36,92 +36,68 @@ from django.contrib.auth.models import User
 
 from django.core.exceptions     import ObjectDoesNotExist
 
-DEBUG=False
+from userProfiles.models import UserProfile
+
+DEBUG=True
 INFO=True
+ERROR=True
+
+log = open(os.path.join(APP_DIR + 'logs/archived-reports.log'), 'w')
 
 def debug(s):
-  if DEBUG:
-    print("[ARCHIVED REPORTS][DEBUG]: " + s)
+  if DEBUG and log:
+    log.write("[ARCHIVED REPORTS][debug]: " + str(s) + "\n")
+    log.flush()  
+    print("[ARCHIVED REPORTS][debug]: " + str(s) + "\n")
+
 
 def info(s):
-  if INFO:
-    print("[ARCHIVED REPORTS][INFO]: " + s)
+  if INFO and log:
+    log.write("[ARCHIVED REPORTS][info]: " + str(s) + "\n")
+    log.flush()
+    if DEBUG:
+      print("[ARCHIVED REPORTS][info]: " + str(s) + "\n")
 
 def error(s):
-  print("[ARCHIVED REPORTS][**ERROR**]: " + s)
+  if ERROR and log:
+    log.write("[ARCHIVED REPORTS][**ERROR]: " + str(s) + "\n")
+    log.flush()
+    if DEBUG:
+      print("[ARCHIVED REPORTS][**ERROR]: " + str(s) + "\n")
 
 
-def main():
+def delete_old_reports():
 
-  message_flag = True
+  # Delete reports with errors
+  error_reports = WebsiteReport.objects.filter(status='E')
 
-  while True:
-    ws_eval_results = []
+  for r in error_reports:
+    try:
+      r.delete()
+    except:
+      error("Error deleting at report with errors: " + str(r))  
+
+  # Delete reports with marked for deletion
+  deleted_reports = WebsiteReport.objects.filter(status='D')
+
+  for r in deleted_reports:
+    try:
+      r.set_status_summary()
+    except:
+      error("Error deleting a report marked for deletion: " + str(r))  
+
+  for user_profile in UserProfile.objects.all():
     
-    now         = timezone.now();
-    error_date  = now - timedelta(days=1)
-    delete_date = now - timedelta(days=2)
+    if user_profile.user.username == 'anonymous':
+      continue
+    else:
+      [reports, old_reports] = user_profile.get_active_reports()
 
-    info("=================================================")
-    info("          Now: " + str(now))
-    info("   Error date: " + str(error_date ))
-    info("  Delete date: " + str(delete_date))
-    info("=================================================")
-  
-    for user in User.objects.all():
-    
-      if user.username == 'anonymous':
-        continue
-      else:
+    for r in old_reports:
+      try:
+        r.set_status_summary()
+      except:
+        error("Error deleting at old report: " + str(r))          
 
-        # Delete any reports that had errors
-        try:
-          ws_reports = WebsiteReport.objects.filter(user=user, created__lt=error_date, status='E')
-
-          if len(ws_reports):
-            for wsr in ws_reports:
-              try:
-                wsr.delete()
-              except:
-                error("Error deleted: " + str(wsr))  
-        except:
-          error("Error accessing the database for status='E'")  
-
-        # Delete the oldest reports over the saved limit
-        try:
-          ws_reports = WebsiteReport.objects.filter(user=user, created__lt=delete_date, status='C').exclude(archive=True).order_by('-created')
-        except:
-          error("Error accessing the database for status='E' and archived=True ")  
-          
-        profile = False  
-        try:   
-          profile = user.profile 
-        except:  
-          error("Error accessing profile: " + str(user))  
-
-        if profile:
-
-          max = profile.max_saved
-          num = len(ws_reports)
-          diff = num-max
-
-          info("  User " + str(user) + "  " + str(num) + " unsaved reports old enough for deletion (Buffer " + str(max) + " reports)")
-
-          if diff:
-          
-            i = 0;
-            for wsr in ws_reports:
-              if i < diff:
-                try:  
-                  wsr.set_status_summary()
-                except:
-                  error("Error setting website report to summary: " + str(wsr))
-              i = i + 1    
-
-    if DEBUG: 
-      time.sleep(20) # wait 20 seconds between checks if in DEBUG mode
-    else:           
-      time.sleep(43200) # wait 12 hours between checks
-          
 if __name__ == "__main__":
-  main()
+  delete_old_reports()

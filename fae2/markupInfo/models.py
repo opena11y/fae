@@ -26,7 +26,7 @@ from pageResults.models     import PageResult
 
 class WebsiteMarkup(models.Model):
   id               = models.AutoField(primary_key=True)
-  ws_report        = models.ForeignKey(WebsiteReport, related_name="mi_ws_report")
+  ws_report        = models.ForeignKey(WebsiteReport, on_delete=models.CASCADE, related_name="mi_ws_report")
 
   hidden_count     = models.IntegerField(default=0)
   offscreen_count  = models.IntegerField(default=0)
@@ -38,7 +38,7 @@ class WebsiteMarkup(models.Model):
 
 class WebsiteMarkupGroup(models.Model):
   id        = models.AutoField(primary_key=True)
-  ws_markup = models.ForeignKey(WebsiteMarkup, related_name="ws_markups")
+  ws_markup = models.ForeignKey(WebsiteMarkup, on_delete=models.CASCADE, related_name="ws_markups")
 
   name      = models.CharField("Group Name",   max_length=24)
   count     = models.IntegerField(default=0)
@@ -46,7 +46,7 @@ class WebsiteMarkupGroup(models.Model):
 
 class WebsiteMarkupItem(models.Model):
   id              = models.AutoField(primary_key=True)
-  ws_markup_group = models.ForeignKey(WebsiteMarkupGroup, related_name="ws_markup_groups")
+  ws_markup_group = models.ForeignKey(WebsiteMarkupGroup, on_delete=models.CASCADE, related_name="ws_markup_groups")
 
   element    = models.CharField("Element",   max_length=24)
   attribute  = models.CharField("Attribute", max_length=24)
@@ -55,7 +55,7 @@ class WebsiteMarkupItem(models.Model):
 
 class PageMarkup(models.Model):
   id               = models.AutoField(primary_key=True)
-  page_result      = models.ForeignKey(PageResult, related_name="mi_page_markups")
+  page_result      = models.ForeignKey(PageResult, on_delete=models.CASCADE, related_name="mi_page_markups")
 
   hidden_count     = models.IntegerField(default=0)
   offscreen_count  = models.IntegerField(default=0)
@@ -68,7 +68,7 @@ class PageMarkup(models.Model):
 
 class PageMarkupGroup(models.Model):
   id          = models.AutoField(primary_key=True)
-  page_markup = models.ForeignKey(PageMarkup, related_name="page_markups")
+  page_markup = models.ForeignKey(PageMarkup, on_delete=models.CASCADE, related_name="page_markups")
   
   name        = models.CharField("Group Name",   max_length=24)
   count       = models.IntegerField(default=0)
@@ -77,20 +77,20 @@ class PageMarkupGroup(models.Model):
 
 class PageMarkupItem(models.Model):
   id                = models.AutoField(primary_key=True)
-  page_markup_group = models.ForeignKey(PageMarkupGroup, related_name="page_markup_groups")
+  page_markup_group = models.ForeignKey(PageMarkupGroup, on_delete=models.CASCADE, related_name="page_markup_groups")
 
   element    = models.CharField("Element",   max_length=24)
   attribute  = models.CharField("Attribute", max_length=24)
   event      = models.CharField("Event",     max_length=24)
   count      = models.IntegerField(default=0)
 
-  ws_markup_item = models.ForeignKey(WebsiteMarkupItem, related_name="page_ws_markup_items")
+  ws_markup_item = models.ForeignKey(WebsiteMarkupItem, on_delete=models.CASCADE, related_name="page_ws_markup_items")
 
 
 class MIpageSummary(models.Model):
   id               = models.AutoField(primary_key=True)
   
-  page_result = models.ForeignKey(PageResult, related_name="mi_page_summary")
+  page_result = models.ForeignKey(PageResult, on_delete=models.CASCADE, related_name="mi_page_summary")
 
   all_element_count    = models.IntegerField(default=0)
   all_hidden_count     = models.IntegerField(default=0)
@@ -108,7 +108,7 @@ class MIpageSummary(models.Model):
 class MIpageImages(models.Model):
   id               = models.AutoField(primary_key=True)
   
-  page_result = models.ForeignKey(PageResult, related_name="mi_page_images")
+  page_result = models.ForeignKey(PageResult, on_delete=models.CASCADE, related_name="mi_page_images")
 
   all_images_count  = models.IntegerField(default=0)
   img_count         = models.IntegerField(default=0)
@@ -128,7 +128,7 @@ class MIpageImages(models.Model):
 class MIpageHeadings(models.Model):
   id               = models.AutoField(primary_key=True)
   
-  page_result = models.ForeignKey(PageResult, related_name="mi_page_headgings")
+  page_result = models.ForeignKey(PageResult, on_delete=models.CASCADE, related_name="mi_page_headgings")
 
   all_headings_count = models.IntegerField(default=0)
   h1_count           = models.IntegerField(default=0)
@@ -146,7 +146,7 @@ class MIpageHeadings(models.Model):
 class MIpageSections(models.Model):
   id               = models.AutoField(primary_key=True)
   
-  page_result = models.ForeignKey(PageResult, related_name="mi_page_sections")
+  page_result = models.ForeignKey(PageResult, on_delete=models.CASCADE, related_name="mi_page_sections")
 
   all_sections_count = models.IntegerField(default=0)
   address_count     = models.IntegerField(default=0)
@@ -169,7 +169,7 @@ class MIpageSections(models.Model):
 class MIpageLists(models.Model):
   id               = models.AutoField(primary_key=True)
   
-  page_result = models.ForeignKey(PageResult, related_name="mi_page_lists")
+  page_result = models.ForeignKey(PageResult, on_delete=models.CASCADE, related_name="mi_page_lists")
 
   all_lists_count = models.IntegerField(default=0)
   ul_count        = models.IntegerField(default=0)
@@ -188,7 +188,7 @@ class MIpageLists(models.Model):
 class MIpageLinks(models.Model):
   id               = models.AutoField(primary_key=True)
   
-  page_result = models.ForeignKey(PageResult, related_name="mi_page_links")
+  page_result = models.ForeignKey(PageResult, on_delete=models.CASCADE, related_name="mi_page_links")
 
   all_links_count  = models.IntegerField(default=0)
   
@@ -202,7 +202,7 @@ class MIpageLinks(models.Model):
 class MIpageTables(models.Model):
   id               = models.AutoField(primary_key=True)
   
-  page_result = models.ForeignKey(PageResult, related_name="mi_page_tables")
+  page_result = models.ForeignKey(PageResult, on_delete=models.CASCADE, related_name="mi_page_tables")
 
   all_tables_count     = models.IntegerField(default=0)
   
@@ -223,7 +223,7 @@ class MIpageTables(models.Model):
 class MIpageForms(models.Model):
   id               = models.AutoField(primary_key=True)
   
-  page_result = models.ForeignKey(PageResult, related_name="mi_page_controls")
+  page_result = models.ForeignKey(PageResult, on_delete=models.CASCADE, related_name="mi_page_controls")
 
   all_forms_count      = models.IntegerField(default=0)
   
@@ -275,7 +275,7 @@ class MIpageForms(models.Model):
 class MIpageMedia(models.Model):
   id               = models.AutoField(primary_key=True)
   
-  page_result = models.ForeignKey(PageResult, related_name="mi_page_media")
+  page_result = models.ForeignKey(PageResult, on_delete=models.CASCADE, related_name="mi_page_media")
 
   all_media_count  = models.IntegerField(default=0)
   audio_count      = models.IntegerField(default=0)
@@ -293,7 +293,7 @@ class MIpageMedia(models.Model):
 class MIpageLandmarks(models.Model):
   id                  = models.AutoField(primary_key=True)
 
-  page_result    = models.ForeignKey(PageResult, related_name="mi_page_landmarks")
+  page_result    = models.ForeignKey(PageResult, on_delete=models.CASCADE, related_name="mi_page_landmarks")
   
   all_landmarks_count      = models.IntegerField(default=0)
   role_application_count   = models.IntegerField(default=0)
@@ -314,7 +314,7 @@ class MIpageLandmarks(models.Model):
 class MIpageStructures(models.Model):
   id                  = models.AutoField(primary_key=True)
 
-  page_result    = models.ForeignKey(PageResult, related_name="mi_page_structures")
+  page_result    = models.ForeignKey(PageResult, on_delete=models.CASCADE, related_name="mi_page_structures")
   
   all_structures_count     = models.IntegerField(default=0)
   role_article_count       = models.IntegerField(default=0)
@@ -333,7 +333,7 @@ class MIpageStructures(models.Model):
 class MIpageWidgets(models.Model):
   id                  = models.AutoField(primary_key=True)
 
-  page_result    = models.ForeignKey(PageResult, related_name="mi_page_widgets")
+  page_result    = models.ForeignKey(PageResult, on_delete=models.CASCADE, related_name="mi_page_widgets")
   
   all_widgets_count   = models.IntegerField(default=0)
   role_button_count   = models.IntegerField(default=0)
@@ -359,7 +359,7 @@ class MIpageWidgets(models.Model):
 class MIpageLives(models.Model):
   id                  = models.AutoField(primary_key=True)
 
-  page_result    = models.ForeignKey(PageResult, related_name="mi_page_lives")
+  page_result    = models.ForeignKey(PageResult, on_delete=models.CASCADE, related_name="mi_page_lives")
   
   all_lives_count     = models.IntegerField(default=0)
   
@@ -378,7 +378,7 @@ class MIpageLives(models.Model):
 class MIpageEvents(models.Model):
   id                    = models.AutoField(primary_key=True)
 
-  page_result      = models.ForeignKey(PageResult, related_name="mi_page_events")
+  page_result      = models.ForeignKey(PageResult, on_delete=models.CASCADE, related_name="mi_page_events")
 
   all_events_count      = models.IntegerField(default=0)
 

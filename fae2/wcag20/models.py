@@ -59,7 +59,7 @@ import re
 class Guideline(models.Model):
   id      = models.AutoField(primary_key=True)
   
-  principle = models.ForeignKey(Principle,related_name='guidelines')
+  principle = models.ForeignKey(Principle, on_delete=models.CASCADE, related_name='guidelines')
   title     = models.CharField(max_length=200)
   num       = models.IntegerField()
   number    = models.CharField(max_length=8,default="none")
@@ -121,7 +121,7 @@ WCAG20_LEVEL_HTML_CODE = (
 class SuccessCriterion(models.Model):
   id             = models.AutoField(primary_key=True)
 
-  guideline      = models.ForeignKey(Guideline,related_name='success_criteria')
+  guideline      = models.ForeignKey(Guideline, on_delete=models.CASCADE, related_name='success_criteria')
   title          = models.TextField()
   level          = models.CharField(max_length=2,choices=WCAG20_LEVEL)  
   num            = models.IntegerField()

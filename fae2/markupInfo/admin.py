@@ -51,8 +51,6 @@ class PageMarkupAdmin(admin.ModelAdmin):
 
 admin.site.register(PageMarkup, PageMarkupAdmin)
 
-
-
 class MIpageSummaryAdmin(admin.ModelAdmin):
   list_display = ('id', 'page_result', 'all_element_count', 'all_hidden_count', 'all_offscreen_count', 'frame_count', 'iframe_count')
     

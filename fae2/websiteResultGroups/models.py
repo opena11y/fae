@@ -71,9 +71,9 @@ class WebsiteRuleCategoryResultGroup(RuleGroupResult):
 
   slug           = models.SlugField(max_length=16, default="none", editable=False)
 
-  wsr_group      = models.ForeignKey(WebsiteReportGroup, related_name="ws_rc_result_groups")
+  wsr_group      = models.ForeignKey(WebsiteReportGroup, on_delete=models.CASCADE, related_name="ws_rc_result_groups")
 
-  rule_category  = models.ForeignKey(RuleCategory, blank=True, default=None)
+  rule_category  = models.ForeignKey(RuleCategory, on_delete=models.SET_NULL, null=True, default=None)
 
   class Meta:
     verbose_name        = "Website Rule Category Result Group"
@@ -100,9 +100,9 @@ class WebsiteGuidelineResultGroup(RuleGroupResult):
 
   slug       = models.SlugField(max_length=16, default="none", editable=False)
 
-  wsr_group  = models.ForeignKey(WebsiteReportGroup, related_name="ws_gl_result_groups")
+  wsr_group  = models.ForeignKey(WebsiteReportGroup, on_delete=models.CASCADE, related_name="ws_gl_result_groups")
 
-  guideline  = models.ForeignKey(Guideline, blank=True, default=None)
+  guideline  = models.ForeignKey(Guideline, on_delete=models.SET_NULL, null=True, default=None)
 
   class Meta:
     verbose_name        = "Website Guideline Result Grouo"
@@ -129,9 +129,9 @@ class WebsiteRuleScopeResultGroup(RuleGroupResult):
 
   slug           = models.SlugField(max_length=16, default="none", editable=False)
 
-  wsr_group      = models.ForeignKey(WebsiteReportGroup, related_name="ws_rs_result_groups")
+  wsr_group      = models.ForeignKey(WebsiteReportGroup, on_delete=models.CASCADE, related_name="ws_rs_result_groups")
 
-  rule_scope       = models.ForeignKey(RuleScope, blank=True, default=None)  
+  rule_scope       = models.ForeignKey(RuleScope, on_delete=models.SET_NULL, null=True, default=None)  
 
   class Meta:
     verbose_name        = "Website Rule Scope Result Group"
@@ -156,11 +156,11 @@ class WebsiteRuleScopeResultGroup(RuleGroupResult):
 
 class WebsiteRuleResultGroup(RuleResult):
 
-  wsr_group  = models.ForeignKey(WebsiteReportGroup, related_name="ws_rule_result_groups")
+  wsr_group  = models.ForeignKey(WebsiteReportGroup, on_delete=models.CASCADE, related_name="ws_rule_result_groups")
  
   slug         = models.SlugField(max_length=16, default="none", editable=False)
 
-  rule         = models.ForeignKey(Rule, blank=True, default=None)
+  rule         = models.ForeignKey(Rule, on_delete=models.SET_NULL, null=True, default=None)
   
   pages_violation    = models.IntegerField(default=0)
   pages_warning      = models.IntegerField(default=0)

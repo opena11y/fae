@@ -35,7 +35,7 @@ CONTACT_STATUS = (
 class Contact(models.Model):
     id       = models.AutoField(primary_key=True)
     date     = models.DateTimeField(auto_now_add=True)
-    user     = models.ForeignKey(User, editable=True, related_name="contacts")
+    user     = models.ForeignKey(User, on_delete=models.CASCADE, editable=True, related_name="contacts")
     topic    = models.CharField(max_length=1024)
     message  = models.TextField()
     status   = models.CharField(max_length=128, choices=CONTACT_STATUS, default="NR")
