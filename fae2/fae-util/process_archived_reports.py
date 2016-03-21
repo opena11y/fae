@@ -21,11 +21,11 @@ fae_util_path = path
 
 fae2_path = path.split('/fae-util')[0]
 
-print("[fae2_path]"+ str(fae2_path))
+# print("[fae2_path]"+ str(fae2_path))
 
 sys.path.append(fae2_path)
 
-print("PATH="+ str(sys.path))
+# print("PATH="+ str(sys.path))
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'fae2.settings')
 django.setup()
@@ -71,38 +71,41 @@ def error(s):
       print("[ARCHIVED REPORTS][**ERROR]: " + str(s) + "\n")
 
 
-def delete_old_reports():
+def archive_reports():
 
   # Delete reports with errors
   error_reports = WebsiteReport.objects.filter(status='E')
 
   for r in error_reports:
     try:
+      info("Deleting (error):" + r.title)
       r.delete()
     except:
-      error("Error deleting at report with errors: " + str(r))  
+      error("Error deleting (error): " + str(r))  
 
   # Delete reports with marked for deletion
   reports_marked_for_deletion = WebsiteReport.objects.filter(status='D')
 
   for r in reports_marked_for_deletion:
     try:
+      info("Summary (marked):" + r.title)
       r.set_status_summary()
     except:
-      error("Error deleting a report marked for deletion: " + str(r))  
+      error("Error summary (marked): " + str(r))  
 
   for user_profile in UserProfile.objects.all():
     
     if user_profile.user.username == 'anonymous':
       continue
     else:
-      [reports, old_reports] = user_profile.get_active_reports()
+      [reports, other_reports] = user_profile.get_active_reports()
 
-    for r in old_reports:
+    for r in other_reports:
       try:
+        info("Summary (other):" + r.title)
         r.set_status_summary()
       except:
-        error("Error deleting at old report: " + str(r))          
+        error("Error summary (other): " + str(r))          
 
 if __name__ == "__main__":
-  delete_old_reports()
+  archive_reports()
