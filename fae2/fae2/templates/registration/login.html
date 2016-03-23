@@ -8,7 +8,7 @@
 {% block content %}
 
 {% if shibboleth.enabled %}
-   <p>username: {{user.username}}</p>
+   <p>username: {{username}}</p>
     <p><a href="{{shibboleth.url}}">{{shibboleth.name}}</a></p>
 {% else %}
 {% if form.errors %}
