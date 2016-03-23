@@ -14,7 +14,15 @@
 
 {% block content_before_title %}
 
+ {% if page %}
+
+  {% include "reports/page_information.html" %}
+
+  {% else %}
+
   {% include "reports/report_information.html" %}
+
+  {% endif %}
 
 {% endblock %}
 
