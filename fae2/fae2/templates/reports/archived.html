@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load tz %}
+
+{% load staticfiles i18n %}
+
+{% block breadcrumb %}
+    <li>Archived</li>
+{% endblock %}
+
+{% block title %}
+Archived Reports
+{% endblock %}
+
+{% block content %}
+
+
+<section aria-labelledby="id_reports_label">
+   <h2 id="id_reports_label" class="sr-only">{{ reports.count }} reports</h2> 
+
+   {% include "reports/archived_report_list.html" with label_id="id_reports_label" report_list=reports %}
+
+    <ul class="user_profile">
+        <li>Maximum archived reports: <strong>{{user_profile.max_archive}}</strong></li>
+        <li>Maximum permanent reports: <strong>{{user_profile.max_permanent}}</strong></li>
+    </ul>
+</section>
+
+{% if old_reports.count %}
+
+<section aria-labelledby="id_other_reports_label" style="margin-top: 4em;">
+    <h2 id="id_other_reports_label">Non-Archived Reports</h2> 
+    <p>Non-archived reports will be automatically deleted within the next 24 hours.  
+    Use the <a href="{% url 'manage_reports' %}">Manage Reports</a> option to delete a report immediately or to make the report part of your group of permanent reports.</p>
+
+   {% include "reports/archived_report_list.html" with label_id="id_other_reports_label" report_list=other_reports %}
+
+</section>
+
+{% endif %}
+    
+{% endblock %}
