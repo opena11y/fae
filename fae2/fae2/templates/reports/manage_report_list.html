@@ -50,15 +50,18 @@
 
                 <td class="text">
                     {% if restore %}
-                    <input  type="button" 
+                    <input  id="id_{{report.slug}}_restore"
+                            type="button" 
                             value="Restore"
                             aria-label="Restore: {{report.title}}"
                             onclick="buttonRestoreEvent(event, '{{report.slug}}')"
                             >
                     {% else %}
-                    <input  type="button" 
+                    <input  id="id_{{report.slug}}_delete"
+                            type="button" 
                             value="Delete"
                             aria-label="Delete: {{report.title}}"
+                            {% if report.archive %}disabled{% endif %} 
                             onclick="buttonDeleteEvent(event, '{{report.slug}}')"
                             >
                     {% endif %}

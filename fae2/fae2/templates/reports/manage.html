@@ -96,12 +96,15 @@ function checkboxArchiveEvent(event, slug) {
 
   var url;
   var cb = event.currentTarget;
+  var del_button = document.getElementById(cb.id + '_delete')
 
   if (cb.checked) {
     url = "{{site.domain}}/report/" + slug +"/permanent/true/";
+    del_button.disabled = true;
   }
   else {
     url = "{{site.domain}}/report/" + slug +"/permament/false/";
+    del_button.disabled = false;
   }
 
   fae2TableUtils.getJSON(url, false);
