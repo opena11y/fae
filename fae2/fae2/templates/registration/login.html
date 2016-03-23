@@ -31,6 +31,7 @@
         <input 
             id="id_input_username"
             name="username"
+            type="text"
             required
             {% if form.username.errors|length %}aria-invalid="true"{% endif %}
             size="20"/>
@@ -46,6 +47,7 @@
         <input 
             id="id_input_password"
             name="password"
+            type="password"
             required
             {% if form.password.errors|length %}aria-invalid="true"{% endif %}
             size="20"/>
