@@ -64,43 +64,43 @@ def createRuleCategory(id, slug, nls, order, title, title_plural, code):
 
 rc_info = {
  "1"   : { "id"       : "ID_LANDMARKS",
-           "singular" : "Landmark",
+           "singular" : "Landmarks",
            "slug"     : "landmarks",
            "order"    : 1
          },    
  "2"   : { "id"       : "ID_HEADINGS",
-           "singular" : "Heading",
-           "slug"     : "heading",
+           "singular" : "Headings",
+           "slug"     : "headings",
            "order"    : 2
          },    
  "4"   : { "id"       : "ID_STYLE",
-           "singular" : "Style/Content",
+           "singular" : "Styles/Content",
            "slug"     : "style",
            "order"    : 3
          },    
  "8"   : { "id"       : "ID_IMAGES",
-           "singular" : "Image",
-           "slug"     : "image",
+           "singular" : "Images",
+           "slug"     : "images",
            "order"    : 4
          },    
  "16"  : { "id"       : "ID_LINKS",
-           "singular" : "Link",
-           "slug"     : "link",
+           "singular" : "Links",
+           "slug"     : "links",
            "order"    : 5
          },    
  "32"  : { "id"       : "ID_TABLES",
-           "singular" : "Table",
-           "slug"     : "table",
+           "singular" : "Tables",
+           "slug"     : "tables",
            "order"    : 6
          },    
  "64"  : { "id"       : "ID_FORMS",
-           "singular" : "Form",
-           "slug"     : "form",
+           "singular" : "Forms",
+           "slug"     : "forms",
            "order"    : 7
          },    
  "128" : { "id"       : "ID_WIDGETS",
-           "singular" : "Widget",
-           "slug"     : "widget",
+           "singular" : "Widgets/Scripts",
+           "slug"     : "widgets",
            "order"    : 8
          },    
  "256" : { "id"       : "ID_AUDIO_VIDEO",

@@ -10,7 +10,11 @@
 
 {% block content_before_title %}
 
-  {% if not page %}
+  {% if page %}
+
+  {% include "reports/page_information.html" %}
+
+  {% else %}
 
   {% include "reports/report_information.html" %}
 
@@ -23,7 +27,7 @@
     {% if page %}
         Page Report
     {% else %}
-        All Pages  <span class="sr-only">{{group.title}} Rule Filter</span>
+        {{group.title}}
     {% endif %}
 {% endblock %}
 
@@ -34,13 +38,11 @@
     
 {% else %}
 
-<div class="rule_summary" aria-hidden="true">{{group.title}} Rules</div>
-
 {% include "reports/pages_summary.html" %}
 
 <section class="report" aria-labelledby="id_result_label">
 
-    <h2 id="id_result_label" class="">Page Results</h2>
+    <h2 id="id_result_label" class="sr-only">Page Results</h2>
 
     <table  id="id_table_show_summary" class="details table table-striped table-hover sortable"  aria-labelledby="id_result_label"  aria-describedby="id_result_description">
         <thead>

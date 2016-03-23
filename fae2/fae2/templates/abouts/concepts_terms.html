@@ -10,63 +10,87 @@ Concepts and Terms
 
 {% block content %}
     
-<h2>Conceptual Foundation</h2>
 <p>All web accessibility tools that are based on the OpenAjax Alliance Evaluation 
     Library assume a familiarity with the following concepts.</p>
 
-<h3>Basic Concepts</h3>
-<dl>
-    <dt>Rule</dt>
-    <dd>A low-level accessibility compliance requirement with numerous components, 
-        the most basic of which are a <em>definition</em>, an <em>evaluation function</em>, 
-        and <em>result messages</em>. When a rule is evaluated, it is assigned a 
-        <em>rule result value</em>.</dd>
+<h2 id="basic_concepts">Basic Concepts</h2>
 
-    <dt>Target resources</dt>
-    <dd>The set of HTML elements to which a particular rule applies. This may 
-        include a pseudo-element identified as <em>page</em>, which is a 
-        placeholder for the document element. When a rule is evaluated, 
-        each of its target resources is assigned an <em>element result 
-            value</em>.</dd>
-
-    <dt>Ruleset</dt>
-    <dd>A set of rules that embodies specific standards compliance goals. 
+<table class="details table table-striped table-hover" aria-labelledby="basic_concepts">
+    <thead>
+        <tr>
+            <th class="text">Term</th>
+            <th class="text">Definition</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>Rule</th>
+            <td>A low-level accessibility compliance requirement with numerous components, 
+                the most basic of which are a <em>definition</em>, an <em>evaluation function</em>, 
+                and <em>result messages</em>. When a rule is evaluated, it is assigned a 
+                <em>rule result value</em>.
+            </td>
+        </tr>
+        <tr>
+            <th>Ruleset</th>
+            <td>A set of rules that embodies specific standards compliance goals. 
         Each rule within a ruleset is designated as either <em>required</em> 
         or <em>recommended</em>, according to its relationship to the 
-        compliance goals of the ruleset.</dd>
-
-    <dt>Evaluation</dt>
-    <dd>The application of all evaluation functions of all rules in the 
+        compliance goals of the ruleset.
+            </td>
+        </tr>
+        <tr>
+            <th>Evaluation</th>
+            <td>The application of all evaluation functions of all rules in the 
         selected ruleset to their corresponding target resources in a 
         web page, and the subsequent collection of all evaluation 
         results and messages, at both the rule and element levels, 
-        into a dataset.</dd>
-
-    <dt>Rule result</dt>
-    <dd>The aggregate result of a rule evaluation with respect to 
+        into a dataset.
+            </td>
+        </tr>
+        <tr>
+            <th>Rule result</th>
+            <td>The aggregate result of a rule evaluation with respect to 
         its target resources (all of its target elements and/or 
-        the entire page).</dd>
-
-    <dt>Element result</dt>
-    <dd>The result of a rule evaluation with respect to one of 
-    its target elements.</dd>
-    
-    <dt>Rule Scope</dt>
-    <dd>The scope helps the developer understand what they need to consider
-    in satisfying a rule.</dd>
-    <dd><em>Element</em> level rules
+        the entire page).
+            </td>
+        </tr>
+        <tr>
+            <th>Element result</th>
+            <td>The result of a rule evaluation with respect to one of 
+    its target elements.
+            </td>
+        </tr>
+        <tr>
+            <th>Rule Scope</th>
+            <td>
+                <ul>
+               <li>The scope helps the developer understand what they need to consider
+    in satisfying a rule.</li>
+    <li><em>Element</em> level rules
         require looking at element's features for content, 
-        labeling, properties and states.</dd>
-    <dd><em>Page</em> level rules require looking at the page to help
-    users understand the purpose and structure of the content on a page.</dd>
-    <dd><em>Website</em> level rules require looking at the set of
+        labeling, properties and states.</li>
+    <li><em>Page</em> level rules require looking at the page to help
+    users understand the purpose and structure of the content on a page.</li>
+    <li><em>Website</em> level rules require looking at the set of
        pages in a website for consistent ordering and labeling of content and
     making sure users understand the unique content of each page through
-     effective titling of the pages.</dd>
-</dl>
+     effective titling of the pages.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <th>
+            </th>
+            <td>
+            </td>
+        </tr>
+    </tbody>
+</table>    
 
-<h3>Rule and element result values</h3>
-<table class="details">
+<h2 id="result_values">Rule and element result values</h2>
+
+<table class="details table table-striped table-hover" aria-labelledby="result_values">
     <thead>
         <tr>
             <th class="text"><em>Value</em></th>
@@ -75,41 +99,40 @@ Concepts and Terms
         </tr>
     </thead>
     <tbody>
-        <tr class="odd">
-            <td class="text">Violation</td>
+        <tr>
+            <td class="text violation">Violation</td>
             <td class="text">V</td>
             <td class="text">One or more target elements fail the requirements of a <em>required</em> rule</td>
         </tr>
-        <tr class="even">
-            <td class="text">Warning</td>
+        <tr>
+            <td class="text warning">Warning</td>
             <td class="text">W</td>
             <td class="text">One or more target elements fail the requirements of a <em>recommended</em> rule</td>
         </tr>
-        <tr class="odd">
-            <td class="text">Manual Check</td>
+        <tr>
+            <td class="text manual_check">Manual Check</td>
             <td class="text">MC</td>
             <td class="text">Unable to programmatically determine a result - evaluation requires human inspection</td>
         </tr>
-        <tr class="even">
-            <td class="text">Pass</td>
+        <tr>
+            <td class="text passed">Pass</td>
             <td class="text">P</td>
             <td class="text">All rule requirements were satisfied</td>
         </tr>
-        <tr class="odd">
-            <td class="text">Hidden</td>
+        <tr>
+            <td class="text fae-hidden">Hidden</td>
             <td class="text">H</td>
             <td class="text">Target elements were not evaluated because they are hidden (either visually or from assistive technologies)</td>
         </tr>
-        <tr class="even">
-            <td class="text">Not Applicable</td>
+        <tr>
+            <td class="text not_applicable">Not Applicable</td>
             <td class="text">N/A or ‘-’</td>
             <td class="text">Rule was not applied because there were no relevant target elements</td>
         </tr>
     </tbody>
 </table>
 
-<h3>More about rules, target resources and result values</h3>
-
+<h2>More about rules, target resources and result values</h2>
 <ul>
     <li>A rule tests target resources for specific accessibility features.</li>
     <li>Some rules are fully automated and return pass or fail results and messages.</li>

@@ -15,24 +15,24 @@
 
 {% block content_before_title %}
 
-  {% include "reports/page_information.html" %}
+  {% include "reports/report_information.html" %}
 
 {% endblock %}
 
 {% block title %}
 
-    {% if report.page_count == 1 %}
-      {{group.get_title}} Rules
-    {% else %}
-      Page Summary <span class="sr-only">{{group.get_title}} Rules</span>
-    {% endif %}
+{{group.get_title}} 
 
 {% endblock %}
 
 {% block content %}
 
-   <div class="rule_summary" aria-hidden="true">{{group.get_title}} Rules</div>
-
+    <div class="rule_summary">
+      Page: 
+      <a href="{{page.url}}">
+        {{page.title}}
+      </a>
+    </div>
 
   {% include "reports/page_summary.html" %}
 

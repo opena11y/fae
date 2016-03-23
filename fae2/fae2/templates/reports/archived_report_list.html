@@ -1,0 +1,58 @@
+   <table id="{{label_id}}_table" class="details table table-striped table-hover sortable"  aria-labelledby="{{label_id}}">
+        <thead>
+            <tr>
+                <th  class="text"><abbr title="Permanent">Perm</abbr></th>
+                <th  class="text">Title</th>
+                <th  class="text"><abbr title="Date and time of evaluation">Date/Time</abbr></th>
+                <th  class="num" >Pages</th>
+                <th  class="text">Ruleset</th>
+                <th  class="text">URL</th>
+                <th  class="num" >Depth</th>
+                <th  class="text" >Export</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if report_list.count %}
+            {% for report in report_list %}
+            <tr>
+                <td class="text">
+                    {% if report.archive %}Y{% endif %}
+                </td>
+                
+                <td id="id_title_{{forloop.count}}" class="text" style="min-width: 15em;">
+                    <a href="{% url 'report_rules' report.slug 'rc' %}">
+                    {% if report.title %}
+                        {{ report.title }}
+                    {% else %}
+                        {{ report.url }}
+                    {% endif %}
+                    </a>
+                </td>
+                
+                <td class="text date">
+                    {{ report.created|date:"Y-m-d H:i" }}
+                </td>
+
+                <td class="num"> {{ report.page_all_results.count }}</td> 
+                
+                <td class="text">{{ report.ruleset     }}</td>
+
+                <td class="text">{{ report.url }}</td>
+                
+                <td class="num"> {{ report.depth                  }}</td>
+
+                <td class="text"><a href="{% url 'report_json' report.slug %}" aria-label="JSON results for {{report.title}}">json</a></td>
+
+            </tr>
+            {% endfor %}
+            {% else %}
+            <tr>
+                <td>No reports available</td>
+            </tr>
+            {% endif %}
+            
+        </tbody>
+        
+    </table>
+
+ 

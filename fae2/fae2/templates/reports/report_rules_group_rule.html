@@ -24,14 +24,11 @@
 
 
 {% block title %}
-    Rule Result <span class="sr-only">{{ws_rule_result.rule.summary_text}}</span>
+    {{ws_rule_result.rule.summary_html|safe}}
 {% endblock %}
 
 
 {% block content %}
-
-<div class="rule_summary" aria-hidden="true">{{ws_rule_result.rule.nls_rule_id}}: {{ws_rule_result.rule.summary_html|safe}}</div>
-
 
 {% include "reports/pages_summary.html" %}
 

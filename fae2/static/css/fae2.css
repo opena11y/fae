@@ -6,7 +6,6 @@ main h1 {
     font-size: 250%; 
     margin: 0;
     padding: 0;
-    margin-top: 0.2em;
 }
 
 main h2 { 
@@ -22,12 +21,6 @@ main h3 {
 main h4 { 
     margin-top: 1.5em;
     font-size: 125%; 
-}
-
-nav h2 {
-    margin-top: 1em;
-    margin-bottom: 0.5em;
-    font-size: 130%;
 }
 
 main section h2 {
@@ -54,6 +47,20 @@ main section.report {
     font-size: 110%;
 }
 
+nav {
+    margin-bottom: 1em;
+}
+
+nav h2 {
+    margin-top: 0;
+    margin-bottom: 0.125em;
+    font-size: 130%;
+}
+.nav > li > a {
+    padding-top: 0.125em;
+    padding-bottom: 0.125em;
+    font-size: 115%;
+}
 
 .navbar-inverse .navbar-nav > li > a:focus,
 .navbar-inverse .navbar-nav > li > a:hover {
@@ -75,7 +82,8 @@ button[aria-controls="top-navbar"]:hover {
     margin-bottom: 0.5em;
 }
 
-table.rule tbody td ul {
+main ul,
+table tbody td ul {
     margin: 0;
     padding: 0;
     padding-left: 1.25em;

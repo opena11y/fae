@@ -61,14 +61,16 @@
               </a>
               <ul class="dropdown-menu" role="menu" aria-label="About FAE and other resources">
                     <li><a href="{% url 'overview'        %}">Overview</a></li>
-                    <li><a href="http://ainspector.github.io">AInspector Sidebar</a></li>
-                    <li><a href="{% url 'usage_statistics'%}">Usage Statistics</a></li>
                     <li><a href="{% url 'concepts_terms'  %}">Concepts and Terms</a></li>
                     <li><a href="{% url 'disclaimer'      %}">Disclaimer</a></li>
                     <li><a href="{% url 'privacy'         %}">Privacy</a></li>
                     <li><a href="{% url 'versions'        %}">Version History</a></li>
+                    <li role="separator" class="divider"></li>                    
+                    <li><a href="{% url 'usage_statistics'%}">Usage Statistics</a></li>
                     <li><a href="{% url 'contact_form'    %}">Contact</a></li>
-                    <li><a href="{% url 'report_issues'   %}">Create Issues</a></li>
+                    <li><a href="{% url 'report_issues'   %}">Create Issue</a></li>
+                    <li role="separator" class="divider"></li>                    
+                    <li><a href="http://ainspector.github.io">AInspector Sidebar</a></li>
               </ul>
             </li>
             {% if user.is_superuser %}
@@ -166,7 +168,7 @@
 
           <nav id="id_view_nav" aria-labelledby="id_view_nav_label">  
 
-            <h2 id="id_view_nav_label">View Navigation</h2>
+            <h2 id="id_view_nav_label">Current View</h2>
 
             <ul class="nav nav-pills nav-stacked">  
             {% if report_nav.current_url %}
@@ -340,7 +342,7 @@
 
               if (href == url) {
                 if (link.parentNode.className.indexOf('active') < 0) {
-                  link.parentNode.className = style
+                  link.parentNode.className = style;
                 }
                 return true;
               }

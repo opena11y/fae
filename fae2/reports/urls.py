@@ -30,13 +30,14 @@ from .views import ManageReportView
 from .views import ProcessingStatusJSON
 from .views import ProcessingStatusAllJSON
 
-from .views import SetReportArchiveView
+from .views import SetReportPermanentView
 from .views import DeleteReportView
 from .views import RestoreReportView
 
 from .views import URLInformationView
 
 from .views import ReportJSON
+from .views import ReportNotFoundView
 
 from .views import ReportRulesView
 from .views import ReportRulesGroupView
@@ -67,11 +68,11 @@ urlpatterns = [
     url(r'^manage/$',                ManageReportView.as_view(),       name='manage_reports'),
 
 
-    url(r'^report/(?P<report>\w+)/archive/(?P<value>\w+)/$',   SetReportArchiveView.as_view(),  name='report_archive'),
+    url(r'^report/(?P<report>\w+)/permanent/(?P<value>\w+)/$',   SetReportPermanentView.as_view(),  name='report_permanent'),
     url(r'^report/(?P<report>\w+)/delete/$',    DeleteReportView.as_view(),        name='report_delete'),
     url(r'^report/(?P<report>\w+)/restore/$',   RestoreReportView.as_view(),      name='report_restore'),
 
-
+    url(r'^summary/(?P<report>\w+)/error/$',   ReportNotFoundView.as_view(),  name='report_not_found'),
 
     url(r'^summary/(?P<report>\w+)/(?P<view>\w+)/urls/$',                                                    URLInformationView.as_view(),  name='report_url_information'),
 

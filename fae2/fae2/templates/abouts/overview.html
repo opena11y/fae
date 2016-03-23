@@ -18,63 +18,100 @@ Overview
             defined by the <a href="http://www.w3.org/TR/WCAG/" target="_spec">W3C Web Content 
             Accessibility Guidelines 2.0</a> Single A and AA Success Criteria.</li>
         <li>Every rule used in FAE 2.0 references the WCAG 2.0 Success Criterion requirement it is based on.</li>
-        <li>The rules support not only accessibility, but also  
-        usable web design for people with disabilities.</li>
-        <li>The rules support accessible and usable design by enforcing  
-            coding practices that use of the latest accessibility technologies like 
-            the <a href="http://www.w3.org/TR/wai-aria/" target="_spec">W3C Accessible Rich 
-                Internet Application (ARIA) 1.0</a> and <a href="http://www.w3.org/TR/html5" target="_spec">W3C HTML5 Specification</a>
-            specification and coding techniques that support features that improve usability of web resources 
-            by people with disabilities.</li>
+        <li>The rules are based on the authoring practices of the <a href="http://www.w3.org/TR/wai-aria/" target="_spec">W3C Accessible Rich Internet Application (ARIA) 1.0</a> and <a href="http://www.w3.org/TR/html5" target="_spec">HTML5</a> specifications</li>
+        <li>
+            The rules have been developed over five years through the work of the OpenAjax Accessibility Task Force and feedback from users of FAE and AInspector Sidebar</li>
     </ul>
 
     
-    <h2 tabindex="-1" id="running_the_evaluator">Running the Evaluator</h2>
+    <h2 id="running_the_evaluator">Running the Evaluator</h2>
     
     <p>The &ldquo;Run FAE&rdquo; page provides a form for specifying the following analysis parameters:</p>
-    
-    <dl>
-        <dt>URL</dt>
-        <dd>Specifies the URL that will serve as the starting point of the analysis. Depending on the &ldquo;Depth of Evaluation&rdquo; and &ldquo;Follow Links in&rdquo; settings (described below), additional pages linked from the starting URL may also be included in the analysis.</dd>
-        
-        <dt>Report Title</dt>
-        <dd>The title to be displayed at the top of each report page. If no title is specified, then &ldquo;Untitled Report&rdquo; is displayed.</dd>
-        
-        <dt>Depth of Evaluation</dt>
-        <dd>When &ldquo;Top-level page only&rdquo; is selected, only the page specified by the URL will be analyzed.</dd>
-        <dd>&ldquo;Include second-level pages&rdquo; will cause all pages linked from the top-level page (with domain restrictions as explained below) to be included in the analysis.</dd>
-        <dd>&ldquo;Include third-level pages&rdquo; will cause all pages linked from the top- and second-level pages (with domain restrictions as explained below) to be included in the analysis.</dd>
-        
-        <dt>Follow Links in</dt>
-        <dd>In cases where &ldquo;Depth of Evaluation&rdquo; is set to either &ldquo;Include second-level pages&rdquo; or &ldquo;Include third-level pages&rdquo; the web crawler used by FAE can follow links in two different ways:</dd>
-        <dd>When &ldquo;Specified domain only&rdquo; is selected, link following is restricted to the same domain as the specified URL.</dd>
-        <dd>When &ldquo;Next-level subdomains&rdquo; is selected, links that are in subdomains of the next-level domain (relative to the domain specified by the URL) will also be followed.</dd>
-        
-        <dt>Ruleset</dt>
-        <dd><em>Landmarks Recommended</em> ruleset recommends that ARIA landmarks be used in the design of the web page
-            and that a failure of one of the landmark rules will result in a "warning".</dd>
-        <dd><em>Landmarks Required</em> ruleset requires that ARIA landmarks be used in the design of the web page
-        and that a failure of one of the landmark rules will result in a "violation".</dd>
-        
-    </dl>
-    
+
+   <table class="details table table-striped table-hover" aria-labelledby="running_the_evaluator">
+        <thead>
+            <tr>
+                <th class="text">Input</th>
+                <th class="text">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>URL</th>
+                <td>Specifies the URL that will serve as the starting point of the analysis. Depending on the &ldquo;Depth of Evaluation&rdquo; and &ldquo;Follow Links in&rdquo; settings (described below), additional pages linked from the starting URL may also be included in the analysis.
+                </td>
+            </tr>
+            <tr>
+                <th>Report Title</th>
+                <td>The title to be displayed at the top of each report page. If no title is specified, then &ldquo;Untitled Report&rdquo; is displayed.
+                </td>
+            </tr>
+            <tr>
+                <th>Depth of Evaluation</th>
+                <td>
+                    <ul>
+                       <li>When &ldquo;Top-level page only&rdquo; is selected, only the page specified by the URL will be analyzed.</li>
+        <li>&ldquo;Include second-level pages&rdquo; will cause all pages linked from the top-level page (with domain restrictions as explained below) to be included in the analysis.</li>
+        <li>&ldquo;Include third-level pages&rdquo; will cause all pages linked from the top- and second-level pages (with domain restrictions as explained below) to be included in the analysis.</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th>Follow Links in</th>
+                <td>
+                    <ul>
+                        <li>In cases where &ldquo;Depth of Evaluation&rdquo; is set to either &ldquo;Include second-level pages&rdquo; or &ldquo;Include third-level pages&rdquo; the web crawler used by FAE can follow links in two different ways:</li>
+                        <li>When &ldquo;Specified domain only&rdquo; is selected, link following is restricted to the same domain as the specified URL.</li>
+                        <li>When &ldquo;Next-level subdomains&rdquo; is selected, links that are in subdomains of the next-level domain (relative to the domain specified by the URL) will also be followed.</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th>Ruleset</th>
+                <td>
+                    <ul>
+                        <li><em>Landmarks Recommended</em> ruleset recommends that ARIA landmarks be used in the design of the web page
+                            and that a failure of one of the landmark rules will result in a "warning".</li>
+                        <li><em>Landmarks Required</em> ruleset requires that ARIA landmarks be used in the design of the web page
+                        and that a failure of one of the landmark rules will result in a "violation".</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th>Maximum Pages</th>
+                <td>
+                    Limits the number of pages evaluated, which is useful to limit the amount or results or to get results faster.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+            
     <p>After successfully completing the analysis, FAE displays the Summary Report, which provides a high-level view of the evaluation results, and places a link to this report in the Archived Reports list. This list includes additional report information such as the analysis date/time, the number of pages analyzed, the report title, the starting URL and the depth of evaluation.</p>
     
-    <h2>Rule Categories</h2>
+    <h2 id="rule_categories">Rule Categories</h2>
     
     <p>FAE organizes the analysis of documents based on the following rule categories:</p>
     
+    <table class="details table table-striped table-hover" aria-labelledby="rule_categories">
+        <thead>
+            <tr>
+                <th class="text">Category</th>
+                <th class="text">Definition</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for rule_category in rule_categories %}
+            <tr>
+                <th>{{rule_category.title}}</th>
+                <td>{{rule_category.description}}</td>
+            </tr>
+            {% endfor %} 
+        </tbody>
+    </table>        
+
     <dl>
-        {% for rule_category in rule_categories %}
-        <dt>{{rule_category.title}}</dt>
-        <dd>{{rule_category.description}}</dd>
-        {% endfor %} 
     </dl>
-    
-    
-    <p>The report header indicates the ruleset version that was in use by FAE when the report was generated. If that version corresponds to the current ruleset, this is indicated by "(current)". If it does not, this is indicated by "(outdated: current ruleset is 1011-1)".</p>
-    
-    
+        
     <h2>Announcements and Discussion E-mail Lists</h2>
     
     <dl>
@@ -89,7 +126,7 @@ Overview
     <h2>Report an Issue</h2>
     
     <dl>
-      <dt><a href="https://github.com/opena11y/oaa-rules/issues">OpenAjax Evaluation Library Rulesets and Rules Issues List</a></dt>
+      <dt><a href="https://github.com/opena11y/fae2/issues">OpenAjax Evaluation Library Rulesets and Rules Issues List</a></dt>
       <dd>Request a new rule</dd>
       <dd>Report a bug or enhancement to an existing rule (<em>note:</em> Please include the rule title)</dd> 
       
@@ -101,7 +138,7 @@ Overview
 
     <h2>Linking Directly to FAE</h2>
     
-    <p>It is now possible to place a link to FAE on a web page that, when selected, causes FAE to evaluate the page and display the resulting Summary Report. The following HTML snippet should be used:</p>
+    <p>It is possible to place a link to FAE on a web page that, when selected, causes FAE to evaluate the page and display the resulting Summary Report. The following HTML snippet should be used:</p>
     
     <p><code>&lt;a href="{{site.domain}}/evaluate/link/"&gt;Check with FAE&lt;/a&gt;</code></p>
     

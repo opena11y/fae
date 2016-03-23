@@ -14,7 +14,7 @@
 
 {% block content_before_title %}
 
-  {% include "reports/page_information.html" %}
+  {% include "reports/report_information.html" %}
 
 {% endblock %}
 
@@ -24,6 +24,12 @@
 
 {% block content %}
 
+    <div class="rule_summary">
+      Page: 
+      <a href="{{page.url}}">
+        {{page.title}}
+      </a>
+    </div>
     
   {% include "reports/page_summary.html" %}
 

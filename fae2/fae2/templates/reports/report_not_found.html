@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load staticfiles i18n %}
+{% load tz %}
+
+{% block breadcrumb %}
+    <li>Report Not Found</li>
+{% endblock %}
+
+{% block title %}
+Report Not Found
+{% endblock %}
+
+
+{% block content %}
+
+<p>The report with the slug="{{report_slug}}" was not found, you will need to rerun the report</p>
+
+{{% endblock %}

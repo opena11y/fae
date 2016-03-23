@@ -18,19 +18,23 @@
 
 {% block content_before_title %}
 
-  {% include "reports/page_information.html" %}
+  {% include "reports/report_information.html" %}
 
 {% endblock %}
 
 
 {% block title %}
-   Page-Rule Result <span class="sr-only">Page {{page.page_number}} and {{page_rule_result.rule.nls_rule_id}} {{page_rule_result.rule.summary_html|safe}}</span>
+   {{page_rule_result.rule.summary_html|safe}}</span>
 {% endblock %}
 
 {% block content %}
 
-<div class="rule_summary" >Page {{page_rule_result.page_result.page_number}}: {{page_rule_result.page_result.title}}</div>
-<div class="rule_summary" >{{page_rule_result.rule.nls_rule_id}}: {{page_rule_result.rule.summary_html|safe}}</div>
+   <div class="rule_summary">
+      Page: 
+      <a href="{{page.url}}">
+        {{page.title}}
+      </a>
+    </div>
 
 {% include "reports/result_messages.html" %}
 

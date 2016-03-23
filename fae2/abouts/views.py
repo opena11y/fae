@@ -18,7 +18,8 @@ from __future__ import absolute_import
 from django.http import HttpResponse
 from django.views.generic import TemplateView
 
-from reports.views import FAENavigationMixin
+from reports.views         import FAENavigationMixin
+from ruleCategories.models import RuleCategory
 
 
 class Disclaimer(FAENavigationMixin, TemplateView):
@@ -29,6 +30,14 @@ class ConceptsTerms(FAENavigationMixin, TemplateView):
 
 class Overview(FAENavigationMixin, TemplateView):
     template_name = 'abouts/overview.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(Overview, self).get_context_data(**kwargs)
+
+        context['rule_categories'] = RuleCategory.objects.all()
+        
+        return context            
+
 
 class Privacy(FAENavigationMixin, TemplateView):
     template_name = 'abouts/privacy.html'

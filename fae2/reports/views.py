@@ -554,14 +554,14 @@ class ProcessingStatusJSON(TemplateView):
         
         return context    
 
-class SetReportArchiveView(LoginRequiredMixin, TemplateView):
+class SetReportPermanentView(LoginRequiredMixin, TemplateView):
 
     def render_to_response(self, context, **response_kwargs):
 
         return  JsonResponse(context['report'].to_json_status(), safe=False, **response_kwargs)
 
     def get_context_data(self, **kwargs):
-        context = super(SetReportArchiveView, self).get_context_data(**kwargs)
+        context = super(SetReportPermanentView, self).get_context_data(**kwargs)
 
         report = WebsiteReport.objects.get(slug=kwargs['report'])
         value = kwargs['value']
@@ -585,11 +585,11 @@ class ArchivedReportView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
 
         user_profile = UserProfile.objects.get(user=self.request.user)
 
-        [reports, old_reports] = user_profile.get_active_reports()
+        [reports, other_reports] = user_profile.get_active_reports()
 
         context['reports']       = reports
-        context['old_reports']   = old_reports
-        context['user_profile']       = UserProfile.objects.get(user=self.request.user)
+        context['other_reports'] = other_reports
+        context['user_profile']  = user_profile
         
         return context            
 
@@ -601,11 +601,13 @@ class ManageReportView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
 
         user_profile = UserProfile.objects.get(user=self.request.user)
 
-        [reports, old_reports] = user_profile.get_active_reports()
+        [reports, other_reports] = user_profile.get_active_reports()
+        deleted_reports = WebsiteReport.objects.filter(user=self.request.user, status="D")
 
-        context['reports']       = reports
-        context['old_reports']   = old_reports
-        context['user_profile']       = UserProfile.objects.get(user=self.request.user)
+        context['reports']         = reports
+        context['other_reports']   = other_reports
+        context['deleted_reports'] = deleted_reports
+        context['user_profile']     = user_profile
 
         return context                 
 
@@ -614,7 +616,7 @@ class DeleteReportView(LoginRequiredMixin, TemplateView):
     def get(self, request, *args, **kwargs):
         context = super(DeleteReportView, self).get_context_data(**kwargs)
 
-        report = WebsiteReport.objects.get(slug=kwargs['report'])
+        report = WebsiteReport.objects.get(user=self.request.user, slug=kwargs['report'])
 
         if report.is_complete():
             report.set_status_deleted()
@@ -627,7 +629,7 @@ class RestoreReportView(LoginRequiredMixin, TemplateView):
     def get(self, request, *args, **kwargs):
         context = super(RestoreReportView, self).get_context_data(**kwargs)
 
-        report = WebsiteReport.objects.get(slug=kwargs['report'])
+        report = WebsiteReport.objects.get(user=self.request.user, slug=kwargs['report'])
 
         if report.is_deleted():
             report.set_status_complete()
@@ -656,6 +658,17 @@ class ReportJSON(TemplateView):
         context['report'] = report
         
         return context    
+
+class ReportNotFoundView(FAENavigationMixin, TemplateView):
+    template_name = 'reports/report_not_found.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(RReportNotFoundView, self).get_context_data(**kwargs)
+
+        context['report_slug']  = kwargs['report']
+        
+        return context            
+
 
 class ReportRulesView(FAENavigationMixin, TemplateView):
     template_name = 'reports/report_rules.html'
@@ -728,6 +741,7 @@ class ReportRulesGroupView(FAENavigationMixin, TemplateView):
           groups       = RuleScope.objects.all()
         else:  
           group        = report.ws_rc_results.get(slug=group_slug)
+            
           page_results = group.page_rc_results.all()
           groups       = RuleCategory.objects.all()
           view = 'rc'
@@ -778,7 +792,8 @@ class ReportRulesGroupRuleView(FAENavigationMixin, TemplateView):
           group = report.ws_rs_results.get(slug=group_slug)
         else:  
           group = report.ws_rc_results.get(slug=group_slug)
-          view = 'rc'
+
+          view = 'rc' 
 
         ws_rule_result = group.ws_rule_results.get(slug=rule_slug)
 
@@ -820,7 +835,7 @@ class ReportRulesGroupRulePageView(FAENavigationMixin, TemplateView):
         page_slug  = kwargs['page']
 
         report = WebsiteReport.objects.get(slug=kwargs['report'])
-        if view == 'gl':
+        if   view == 'gl':
           group = report.ws_gl_results.get(slug=group_slug)
         elif view == 'rs':  
           group = report.ws_rs_results.get(slug=group_slug)
