@@ -58,10 +58,18 @@ class Login(FAENavigationMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super(Login, self).get_context_data(**kwargs)
 
-        reports = WebsiteReport.objects.all()
+        context['user']     = 'none'
+        context['username'] = 'none'
 
-        context['user'] = self.request.user
-        context['username'] = kwargs['username']
+        try:
+          context['user']     = self.request.user
+        except:
+          context['user']     = 'none'
+          
+        try:  
+          context['username'] = kwargs['username']
+        except:
+          context['username']     = 'none'
 
         return context  
 
