@@ -71,11 +71,6 @@ class Login(FAENavigationMixin, TemplateView):
         except:
           context['username']     = 'none'
 
-        try:  
-          context['shib-user'] = kwargs['shib-user']
-        except:
-          context['shib-user']     = 'none'
-
         return context  
 
 class UserProfileForm(forms.Form):
