@@ -56,7 +56,7 @@ class Login(FAENavigationMixin, TemplateView):
     template_name = 'registration/login.html'
 
     def get(self, request, *args, **kwargs):
-        return super(Logout, self).get(request, *args, **kwargs)
+        return super(Login, self).get(request, *args, **kwargs)
 
 
 class UserProfileForm(forms.Form):
