@@ -33,15 +33,16 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 
+from fae2.settings import SHIBBOLETH_ENABLED
+
+
 from reports import views
 
 from accounts.views import Logout
+from accounts.views import Login
 
 urlpatterns = [
     url(r'^admin/',   include(admin.site.urls)),
-    url(r'^accounts/',     include('registration.backends.hmac.urls')),
-    url(r'^registration/', include('django.contrib.auth.urls')),
-    url(r'^logout/$', Logout.as_view(), name='logout'),
     # fae2 specific 
     url(r'^',           include('reports.urls')),
     url(r'^abouts/',    include('abouts.urls')),
@@ -50,3 +51,15 @@ urlpatterns = [
     url(r'^rulesets/',  include('rulesets.urls')),
     url(r'^usage/',     include('stats.urls')),
 ]
+
+if SHIBBOLETH_ENABLED: 
+  urlpatterns += [
+     url(r'^shib/',   include('shibboleth.urls', namespace='shibboleth')),
+     url(r'^login/$', Login.as_view(), name='login'),
+  ]
+else:
+  urlpatterns += [
+    url(r'^accounts/',     include('registration.backends.hmac.urls')),
+    url(r'^registration/', include('django.contrib.auth.urls')),
+    url(r'^logout/$',      Logout.as_view(), name='logout'),
+  ]

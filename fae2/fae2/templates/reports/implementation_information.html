@@ -10,67 +10,98 @@
    <table class="details table table-striped table-hover "  aria-labelledby="id_impl_info_label">
    <thead>
      <tr>
-       <th class="text" >Abbrev</th>
+       <th class="text" style="width: 6em">Abbrev</th>
        <th class="text" >Score</th>
        <th class="text" >Status</th>
        <th class="text" >Description</th>
      </tr>
    </thead>
    <tbody>
-     <tr class="odd">
-       <td class="text not_implemented">R</td>
-       <td class="text">0-99</td>
-       <td class="text">Required Manual Checks</td>
-       <td class="title">Manual checks are required to verify accessibility.  Start with the website and page 
-       level manual checks since they affect website and page navigation and identification of
-       content and then start on the element level manual checks.
-
-       
-       <p style="margin-top: 1em;"><strong>Note:</strong> Future versions of FAE will allow you to mark manual checks as, pass, fail or not applicable.</p>
-       </td>
-
-</td>
-     </tr>
-
-     <tr class="even">
-       <td class="text complete">C</td>
+     <tr>
+       <td class="text complete" id="res_c">C</td>
        <td class="text ">100</td>
        <td class="text">Complete</td>
        <td class="title">Complete means all rules have passed and there are no manual checks.</td>
      </tr>
    
-     <tr class="odd">
-       <td class="text almost_complete">AC</td>
+      <tr>
+       <td class="text not_implemented" id="res_r">R</td>
+       <td class="text">0</td>
+       <td class="text">Required Manual Checks</td>
+       <td class="title">
+        <ul>
+          <li>Manual checks are <strong>required</strong> to verify accessibility.</li>
+          <li>Start with the website and page 
+       level manual checks since they affect website and page navigation and identification of
+       content and then start on the element level manual checks.</li>
+       </td>
+     </tr>
+     <tr>
+       <td class="text">
+         <span class="almost_complete" id="res_ac">AC</span><br/>
+         <span class="almost_complete">AC-R</span>
+       </td>
        <td class="text">95-99</td>
        <td class="text">Almost Complete</td>
        <td class="title">
-       Almost Complete means that you seem to understand the accessibility requirements of the rules, 
-       and are close to fully implementing their requirements on all pages within the website.</td>
+         <ul>
+           <li> Almost Complete means that you seem to understand the accessibility requirements of the rules, and are close to fully implementing their requirements on all pages within the website.</li>
+           <li>"<span class="almost_complete">-R</span>" means there are <strong>required</strong> Manual Checks, that markup was identified that needs to be reviewed to determine if accessibility requirements have been met.  
+           </li> 
+         </ul>
+      </td>
      </tr>
    
-     <tr class="even">
-       <td class="text partial_implementation">PI</td>
+     <tr>
+       <td class="text">
+         <span class="partial_implementation" id="res_pi">PI</span><br/>
+         <span class="partial_implementation">PI-R</span>
+       </td>
        <td class="text">50-94</td>
        <td class="text">Partial Implementation</abbr></td>
        <td class="title">
-       Partial Implementation means that you may understand at least some of the accessibility 
-       requirements.  Please re-read the accessibility requirement and 
-       review the techniques before trying to improve the accessibility.</td>
+         <ul>
+          <li>Partial Implementation means that you may understand at least some of the accessibility 
+         requirements.</li>
+         <li>"<span class="partial_implementation">-R</span>" means there are <strong>required</strong> Manual Checks, that markup was identified that needs to be reviewed to determine if accessibility requirements have been met.  
+         </li> 
+         <li>Please re-read the accessibility requirement and 
+         review the techniques before trying to improve the accessibility.</li>
+         </ul>
+       </td>
      </tr>
    
-     <tr class="odd">
-       <td class="text not_implemented">NI</td>
+     <tr>
+       <td class="text">
+         <span class="not_implemented" id="res_ni">NI</span><br/>
+         <span class="not_implemented">NI-R</span>
+       </td>
        <td class="text">0-50</td>
        <td class="text">Not Implemented</td>
        <td class="title">
-       Incomplete means that you do <strong>not</strong> understand the accessibility 
+       <ul>
+        <li> Incomplete means that you do <strong>not</strong> understand the accessibility 
        requirements if the rules or did not consider accessibility in the design 
-       of the website.  Please read the accessibility requirements and 
-       review the techniques before trying to improve the accessibility.</td>
+       of the website.</li>
+       <li>"<span class="not_implemented">-R</span>" means there are <strong>required</strong> Manual Checks, that markup was identified that needs to be reviewed to determine if accessibility requirements have been met.  
+       </li> 
+       <li>  Please read the accessibility requirements and 
+       review the techniques before trying to improve the accessibility.</li>
+       </ul>
+      </td>
      </tr>
   
+      <tr>
+       <td class="text not_applicable" id="res_na">na</td>
+       <td class="text ">-</td>
+       <td class="text">Not Applicable</td>
+       <td class="title">No markup was found that identifed a known or possible accessibility issue.</td>
+     </tr>
+
    </tbody>
    
    </table>
   
+   <p><strong>Note:</strong> Future versions of FAE will allow you to mark manual checks as, pass, fail or not applicable.</p>
+
 </section>

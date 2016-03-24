@@ -52,6 +52,12 @@ class Logout(FAENavigationMixin, TemplateView):
         logout(request)
         return super(Logout, self).get(request, *args, **kwargs)
 
+class Login(FAENavigationMixin, TemplateView):
+    template_name = 'registration/login.html'
+
+    def get(self, request, *args, **kwargs):
+        return super(Logout, self).get(request, *args, **kwargs)
+
 
 class UserProfileForm(forms.Form):
     first_name          = forms.CharField(max_length=30)
