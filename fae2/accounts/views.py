@@ -55,9 +55,15 @@ class Logout(FAENavigationMixin, TemplateView):
 class Login(FAENavigationMixin, TemplateView):
     template_name = 'registration/login.html'
 
-    def get(self, request, *args, **kwargs):
-        return super(Login, self).get(request, *args, **kwargs)
+    def get_context_data(self, **kwargs):
+        context = super(Login, self).get_context_data(**kwargs)
 
+        reports = WebsiteReport.objects.all()
+
+        context['user'] = self.request.user
+        context['username'] = kwargs['username']
+
+        return context  
 
 class UserProfileForm(forms.Form):
     first_name          = forms.CharField(max_length=30)
