@@ -56,7 +56,7 @@ main section.report {
 #sendto a:focus,
 #sendto a:hover {
     border-color: rgb(51, 122, 183);
-    background-color: #ebf3f9;
+    background-color: #c4dced;
 }
 
 #sendto img {
