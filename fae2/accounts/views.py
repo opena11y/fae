@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
+# accounts/views.py
 from __future__ import absolute_import
 from django.http import HttpResponse
 from django.contrib.auth import logout 
@@ -186,8 +187,8 @@ class UserInformationView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
         user_profile = UserProfile.objects.get(user=user)
         stats_user   = StatsUser.objects.get(user=user)
 
-        context['user_profile']  = user_profile
-        context['stats_user']    = stats_user
+        context['user_profile'] = user_profile
+        context['stats_user']   = stats_user
         
         return context  
 

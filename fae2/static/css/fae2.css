@@ -40,6 +40,29 @@ main section.report {
     margin-top: 2em;
 }
 
+#sendto {
+    float: right;
+    position: relative;
+    top: -2.75em;
+}
+
+#sendto a {
+    border: thin solid transparent;
+    display: block;
+    padding: 1px;
+}
+
+
+#sendto a:focus,
+#sendto a:hover {
+    border-color: rgb(51, 122, 183);
+    background-color: #ebf3f9;
+}
+
+#sendto img {
+    height: 2.5em;
+}
+
 #view_options {
     margin-top: 3em;
     margin-bottom: -1.5em;

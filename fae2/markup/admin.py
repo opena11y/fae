@@ -14,14 +14,15 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
+# markup/admin.py
 from __future__ import absolute_import
 from django.contrib import admin
 from markup.models import ElementDefinition, LanguageSpec
 
 
 class ElementDefinitionAdmin(admin.ModelAdmin):
-    list_display = ('spec', 'element','attribute','value', 'description', 'url' )
-    list_filter = ( 'spec','element', 'attribute')
+    list_display = ('spec', 'element', 'attribute', 'value', 'description', 'url' )
+    list_filter  = ('spec', 'element', 'attribute')
 
 admin.site.register(ElementDefinition, ElementDefinitionAdmin)
 

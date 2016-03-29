@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% load staticfiles i18n %}
+
+{% block breadcrumb %}
+  <li>Contact Form</li>
+{% endblock %}
+
+{% block title %}
+  Feedback and Questions Form
+{% endblock %}
+
+{% block content %}
+
+<form id="id_send_report_form" 
+      action="{% url 'send_report_form' report_type report view group page rule %}" 
+      method="post" >
+    {% csrf_token %}
+
+   <div class="input" >
+        <label for="topic">{{form.sendto.label}}</label>
+        <div {% if form.sendto.errors|length %}class="error"{% endif %}>
+        <input 
+            id="sendto"
+            name="sendto"
+            required
+            {% if form.sendto.errors|length %}aria-invalid="true"{% endif %}
+            size="100"> 
+        {% if form.sendto.errors|length %}
+        <label class="error" for="sendto">{% for error in form.sendto.errors %}{{error}}{% endfor %}</label>
+        {% endif %}
+        </div>
+    </div>
+
+
+   <div class="input" >
+        <label for="topic">{{form.subject.label}}</label>
+        <div {% if form.subject.errors|length %}class="error"{% endif %}>
+        <input 
+            id="subject"
+            name="subject"
+            required
+            {% if form.subject.errors|length %}aria-invalid="true"{% endif %}
+            size="100"> 
+        {% if form.subject.errors|length %}
+        <label class="error" for="subject">{% for error in form.subject.errors %}{{error}}{% endfor %}</label>
+        {% endif %}
+        </div>
+    </div>
+
+
+   <div class="input" >
+        <label for="message">{{form.message.label}}</label>
+        <div {% if form.tmessage.errors|length %}class="error"{% endif %}>
+        <textarea 
+            id="message"
+            name="message"
+            required
+            value="{{form.message.value}}"
+            {% if form.message.errors|length %}aria-invalid="true"{% endif %}
+            rows="10"
+            cols=80
+            title="Details of the comment or feedback"></textarea>     
+        {% if form.message.errors|length %}
+        <label class="error" for="message">{% for error in form.message.errors %}{{error}}{% endfor %}</label>
+        {% endif %}
+        </div>
+    </div>
+
+    <input type="submit" value="Send Report"/>
+
+</form>
+
+<section aria-labelledby="id_sent_reports_label">
+    <h2 id="iid_sent_reports_label">My Feedback and Questions</h2>
+    {% if user.send_reports.length %}
+    <p>No reports sent</p>
+    {% else %}
+        <table class="details table table-striped table-hover" aria-labelledby="id_sent_reports_label">
+            <thead>
+                <th>Date</th>
+                <th>Sent To</th>
+                <th>Subject</th>
+                <th>Message</th>
+            </thead>
+            <tbody>
+                {% for sr in user.send_reports.all %}
+                <tr>
+                    <td>{{sr.date}}</td>
+                    <td>{{sr.send_to}}</td>
+                    <td>{{sr.subject}}</td>
+                    <td>{{sr.message}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</section>
+
+{% endblock %}
+

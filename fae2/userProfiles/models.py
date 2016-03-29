@@ -14,11 +14,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
-from __future__ import absolute_import
-from django.db import models
+from __future__                 import absolute_import
+from django.db                  import models
 from django.contrib.auth.models import User
-from registration.signals import user_registered
-from timezone_field import TimeZoneField
+from registration.signals       import user_registered
+from timezone_field             import TimeZoneField
 
 from websiteResultGroups.models import WebsiteReportGroup
 from reports.models             import WebsiteReport

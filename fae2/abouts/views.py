@@ -14,6 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
+# abouts/views.py
+
 from __future__ import absolute_import
 from django.http import HttpResponse
 from django.views.generic import TemplateView
