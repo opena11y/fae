@@ -47,9 +47,9 @@ main section.report {
 }
 
 #sendto a {
-    border: thin solid transparent;
+    border-bottom: 1px solid transparent;
     display: block;
-    padding: 1px;
+    padding: 2px;
 }
 
 
