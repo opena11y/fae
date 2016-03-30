@@ -153,6 +153,10 @@ if SHIBBOLETH_ENABLED:
         "shib-mail":       (False, "email"),
     }
 
+    INSTALLED_APPS += (
+        'shibboleth',
+    )
+    
     LOGIN_URL = SHIBBOLETH_URL
 
 else:
