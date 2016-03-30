@@ -129,7 +129,8 @@ INSTALLED_APPS = (
 
 
 if SHIBBOLETH_ENABLED:
-    AUTHENTICATION_BACKENDS += (
+    AUTHENTICATION_BACKENDS = (
+        'django.contrib.auth.backends.ModelBackend',
         'shibboleth.backends.ShibbolethRemoteUserBackend',
     )
 
