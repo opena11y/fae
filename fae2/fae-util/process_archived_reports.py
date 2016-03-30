@@ -10,6 +10,7 @@ import shlex
 import time
 import getopt
 import shutil
+import datetime
 
 import django
 
@@ -73,12 +74,14 @@ def error(s):
 
 def archive_reports():
 
+  info('Processing archived reports: ' + datetime.now().strftime("%Y-%m-%d %H:%M") )
+
   # Delete reports with errors
   error_reports = WebsiteReport.objects.filter(status='E')
 
   for r in error_reports:
     try:
-      info("Deleting (error):" + r.title)
+      info("  Deleting:" + r.title)
       r.delete()
     except:
       error("Error deleting (error): " + str(r))  
@@ -88,7 +91,7 @@ def archive_reports():
 
   for r in reports_marked_for_deletion:
     try:
-      info("Summary (marked):" + r.title)
+      info("  Summary (marked):" + r.title)
       r.set_status_summary()
     except:
       error("Error summary (marked): " + str(r))  
@@ -102,7 +105,7 @@ def archive_reports():
 
     for r in other_reports:
       try:
-        info("Summary (other):" + r.title)
+        info("  Summary (other):" + r.title)
         r.set_status_summary()
       except:
         error("Error summary (other): " + str(r))          
