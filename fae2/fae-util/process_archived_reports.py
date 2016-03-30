@@ -74,7 +74,7 @@ def error(s):
 
 def archive_reports():
 
-  info('Processing archived reports: ' + datetime.now().strftime("%Y-%m-%d %H:%M") )
+  info('Processing archived reports: ' + datetime.datetime.now().strftime("%Y-%m-%d %H:%M") )
 
   # Delete reports with errors
   error_reports = WebsiteReport.objects.filter(status='E')
