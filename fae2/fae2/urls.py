@@ -54,7 +54,7 @@ urlpatterns = [
 
 if SHIBBOLETH_ENABLED: 
   urlpatterns += [
-     url(r'^shib/',     include('shibboleth.URLs', namespace='shibboleth')),
+     url(r'^shib/',     include('shibboleth.urls', namespace='shibboleth')),
      url(r'^login/$',   Login.as_view(), name='login'),
      url(r'^logout/$',  Logout.as_view(), name='logout'),
   ]
