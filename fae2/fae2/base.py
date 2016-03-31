@@ -129,11 +129,6 @@ INSTALLED_APPS = (
 
 
 if SHIBBOLETH_ENABLED:
-    AUTHENTICATION_BACKENDS = (
-        'django.contrib.auth.backends.ModelBackend',
-        'shibboleth.backends.ShibbolethRemoteUserBackend',
-    )
-
     MIDDLEWARE_CLASSES = (
         'django.contrib.sessions.middleware.SessionMiddleware',
         'django.middleware.common.CommonMiddleware',
@@ -144,6 +139,12 @@ if SHIBBOLETH_ENABLED:
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
         'django.middleware.security.SecurityMiddleware',
         'shibboleth.middleware.ShibbolethRemoteUserMiddleware',
+    )
+
+    AUTHENTICATION_BACKENDS = (
+        'django.contrib.auth.backends.ModelBackend',
+        'django.contrib.auth.backends.RemoteUserBackend',
+        'shibboleth.backends.ShibbolethRemoteUserBackend',
     )
 
     SHIBBOLETH_ATTRIBUTE_MAP = {
