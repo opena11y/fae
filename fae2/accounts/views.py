@@ -61,7 +61,7 @@ class ShibbolethLogin(FAENavigationMixin, TemplateView):
     template_name = 'registration/login.html'
 
     def get_context_data(self, **kwargs):
-        context = super(Login, self).get_context_data(**kwargs)
+        context = super(ShibbolethLogin, self).get_context_data(**kwargs)
 
         try:
           context['user']     = self.request.user
