@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load staticfiles i18n %}
+
+{% block breadcrumb %}
+  <li>Sharing Reports</li>
+{% endblock %}
+
+{% block title %}
+Sharing Reports
+{% endblock %}
+
+
+{% block content %}
+ 
+ <p style="margin-top: 1em;"><img src="{% static 'images/message-out.png' %}" alt="E-mail report"> link to the right of the title on each report page to e-mail a link to the report to someone.  Selecting the link will open the default e-mail application for your computer  and just enter the e-mail of the person to send the report.</p>
+ 
+{% endblock %}
+
+

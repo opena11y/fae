@@ -50,3 +50,5 @@ class ReportIssues(FAENavigationMixin, TemplateView):
 class Versions(FAENavigationMixin, TemplateView):
     template_name = 'abouts/versions.html'
 
+class Sharing(FAENavigationMixin, TemplateView):
+    template_name = 'abouts/sharing.html'
