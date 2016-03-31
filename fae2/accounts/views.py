@@ -46,6 +46,8 @@ from reports.views import FAENavigationMixin
 
 from fae2.settings import SITE_URL
 
+from userProfiles.models import UserProfile
+
 
 # Create your views here.
 
@@ -60,7 +62,14 @@ class ShibbolethLogout(RedirectView):
 class ShibbolethLogin(RedirectView):
 
     def get_redirect_url(self, *args, **kwargs):
+
+        try: 
+            profile = UserProfile.objects.get(user=self.request.user)
+        except:    
+            profile = UserProfile(user=self.request.user)
+
         self.url = SITE_URL
+
         return super(ShibbolethLogin, self).get_redirect_url(*args, **kwargs)
 
 
