@@ -26,6 +26,7 @@ from django.db.models import Q
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic          import TemplateView
 from django.views.generic          import FormView 
+from django.views.generic          import RedirectView 
 from django.contrib.auth.mixins    import LoginRequiredMixin
 
 
@@ -43,7 +44,31 @@ from timezone_field import TimeZoneFormField
 
 from reports.views import FAENavigationMixin
 
+from fae2.settings import SITE_URL
+
+
 # Create your views here.
+
+class ShibbolethLogout(RedirectView):
+
+    def get_redirect_url(self, *args, **kwargs):
+        logout(request)
+        self.url = SITE_URL + '/Shibboleth.sso/Logout'
+        return super(ShibbolethLogout, self).get_redirect_url(*args, **kwargs)
+
+
+class ShibbolethLogin(FAENavigationMixin, TemplateView):
+    template_name = 'registration/login.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(Login, self).get_context_data(**kwargs)
+
+        try:
+          context['user']     = self.request.user
+        except:
+          context['user']     = 'none'
+          
+        return context  
 
 
 class Logout(FAENavigationMixin, TemplateView):
@@ -58,9 +83,6 @@ class Login(FAENavigationMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(Login, self).get_context_data(**kwargs)
-
-        context['user']     = 'none'
-        context['username'] = 'none'
 
         try:
           context['user']     = self.request.user
