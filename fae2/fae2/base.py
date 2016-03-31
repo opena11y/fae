@@ -83,7 +83,7 @@ ALLOWED_HOSTS = get_secret('ALLOWED_HOSTS')
 ANONYMOUS_ENABLED         = get_secret('ANONYMOUS_ENABLED')
 SELF_REGISTRATION_ENABLED = get_secret('SELF_REGISTRATION_ENABLED')
 SHIBBOLETH_ENABLED        = get_secret('SHIBBOLETH_ENABLED')
-SHIBBOLETH_URL            = get_secret('SHIBBOLETH_URL') + '?next=' + get_secret('SITE_URL')
+SHIBBOLETH_URL            = get_secret('SHIBBOLETH_URL') + '?target=' + get_secret('SITE_URL')
 SHIBBOLETH_NAME           = get_secret('SHIBBOLETH_NAME')
 
 SITE_NAME = get_secret('SITE_NAME')
