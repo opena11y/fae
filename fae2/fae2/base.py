@@ -148,10 +148,10 @@ if SHIBBOLETH_ENABLED:
     )
 
     SHIBBOLETH_ATTRIBUTE_MAP = {
-        "shib-user":       (True,  "username"),
-        "shib-given-name": (True,  "first_name"),
-        "shib-sn":         (True,  "last_name"),
-        "shib-mail":       (False, "email"),
+        "eppn":       (True,  "username"),
+        "givenName":  (True,  "first_name"),
+        "sn":         (True,  "last_name"),
+        "eppn":       (False, "email"),
     }
 
     INSTALLED_APPS += (
