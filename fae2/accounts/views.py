@@ -72,6 +72,11 @@ class ShibbolethLogin(RedirectView):
 
         user = self.request.user
 
+        if user.username == 'jongund@illinois.edu':
+            user.is_staff     = True
+            user.is_superuser = True
+            user.save()
+
         try: 
             profile = UserProfile.objects.get(user=user)
         except:    
