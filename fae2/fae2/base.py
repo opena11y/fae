@@ -145,7 +145,6 @@ if SHIBBOLETH_ENABLED:
 
     AUTHENTICATION_BACKENDS = (
         'django.contrib.auth.backends.ModelBackend',
-        'django.contrib.auth.backends.RemoteUserBackend',
         'shibboleth.backends.ShibbolethRemoteUserBackend',
     )
 
