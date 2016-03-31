@@ -35,6 +35,8 @@ from django.contrib.auth.mixins    import LoginRequiredMixin
 from django.contrib.auth.models import User
 from userProfiles.models        import UserProfile
 from stats.models               import StatsUser
+from websiteResultGroups.models  import WebsiteReportGroup
+
 
 from django.forms.models import inlineformset_factory
 
