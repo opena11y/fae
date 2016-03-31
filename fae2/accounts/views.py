@@ -52,7 +52,7 @@ from fae2.settings import SITE_URL
 class ShibbolethLogout(RedirectView):
 
     def get_redirect_url(self, *args, **kwargs):
-        logout(request)
+        logout(self.request)
         self.url = SITE_URL + '/Shibboleth.sso/Logout'
         return super(ShibbolethLogout, self).get_redirect_url(*args, **kwargs)
 
