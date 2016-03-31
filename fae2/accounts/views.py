@@ -67,11 +67,6 @@ class Login(FAENavigationMixin, TemplateView):
         except:
           context['user']     = 'none'
           
-        try:  
-          context['username'] = kwargs['username']
-        except:
-          context['username']     = 'none'
-
         return context  
 
 class UserProfileForm(forms.Form):
