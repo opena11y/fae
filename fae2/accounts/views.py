@@ -67,6 +67,7 @@ class ShibbolethLogin(RedirectView):
             profile = UserProfile.objects.get(user=self.request.user)
         except:    
             profile = UserProfile(user=self.request.user)
+            profile.save()
 
         self.url = SITE_URL
 
