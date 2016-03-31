@@ -57,18 +57,11 @@ class ShibbolethLogout(RedirectView):
         return super(ShibbolethLogout, self).get_redirect_url(*args, **kwargs)
 
 
-class ShibbolethLogin(FAENavigationMixin, TemplateView):
-    template_name = 'registration/login.html'
+class ShibbolethLogin(RedirectView):
 
-    def get_context_data(self, **kwargs):
-        context = super(ShibbolethLogin, self).get_context_data(**kwargs)
-
-        try:
-          context['user']     = self.request.user
-        except:
-          context['user']     = 'none'
-          
-        return context  
+    def get_redirect_url(self, *args, **kwargs):
+        self.url = SITE_URL
+        return super(ShibbolethLogin, self).get_redirect_url(*args, **kwargs)
 
 
 class Logout(FAENavigationMixin, TemplateView):
