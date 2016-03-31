@@ -64,16 +64,20 @@ class ShibbolethLogin(RedirectView):
 
     def get_redirect_url(self, *args, **kwargs):
 
+        user = self.request.user
+
         try: 
-            profile = UserProfile.objects.get(user=self.request.user)
+            profile = UserProfile.objects.get(user=user)
         except:    
-            profile = UserProfile(user=self.request.user)
+            profile = UserProfile(user=user)
             profile.save()
 
         try: 
-            stats = StatsUser.objects.get(user=self.request.user)
-        except:    
-            stats = StatsUser(user=self.request.user)
+            stats = StatsUser.objects.get(user=user)
+        except ObjectDoesNotExist:
+            wsrg =  WebsiteReportGroup(title="Summary of results for " + str(user))
+            wsrg.save()
+            stats = StatsUser(user=user, ws_report_group=wsrg)  
             stats.save()
 
         self.url = SITE_URL
