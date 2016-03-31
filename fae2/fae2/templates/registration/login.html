@@ -9,10 +9,8 @@
 
 {% if shibboleth.enabled %}
    <p>user: {{user}}</p>
-   
-    <p><a href="{{shibboleth.url}}">{{shibboleth.name}}</a></p>
 
-    <div><a href="{{ login_link }}">Shib Login</a> and <a href="{{ logout_link }}">Shib Logout</a></div>
+    <p><a href="{{shibboleth.url}}">{{shibboleth.name}}</a></p>
     
 {% else %}
 {% if form.errors %}

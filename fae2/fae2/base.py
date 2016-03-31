@@ -136,6 +136,7 @@ if SHIBBOLETH_ENABLED:
         'django.contrib.auth.middleware.AuthenticationMiddleware',
         'django.contrib.auth.middleware.RemoteUserMiddleware',    
         'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+        'django.contrib.auth.middleware.PersistentRemoteUserMiddleware',
         'django.contrib.messages.middleware.MessageMiddleware',
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
         'django.middleware.security.SecurityMiddleware',
@@ -153,10 +154,6 @@ if SHIBBOLETH_ENABLED:
         "sn":         (True,  "last_name"),
         "eppn":       (False, "email"),
     }
-
-    INSTALLED_APPS += (
-        'shibboleth',
-    )
 
     LOGIN_URL = SHIBBOLETH_URL
 
@@ -190,9 +187,7 @@ TEMPLATES = [
                 'fae2.context_processors.site',
                 'fae2.context_processors.anonymous',
                 'fae2.context_processors.self_registration',
-                'fae2.context_processors.shibboleth',
-                'shibboleth.context_processors.login_link',
-                'shibboleth.context_processors.logout_link'
+                'fae2.context_processors.shibboleth'
             ],
         },
     },
