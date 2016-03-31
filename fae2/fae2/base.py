@@ -156,7 +156,7 @@ if SHIBBOLETH_ENABLED:
     INSTALLED_APPS += (
         'shibboleth',
     )
-    
+
     LOGIN_URL = SHIBBOLETH_URL
 
 else:
@@ -188,7 +188,9 @@ TEMPLATES = [
                 'fae2.context_processors.site',
                 'fae2.context_processors.anonymous',
                 'fae2.context_processors.self_registration',
-                'fae2.context_processors.shibboleth'
+                'fae2.context_processors.shibboleth',
+                'shibboleth.context_processors.login_link',
+                'shibboleth.context_processors.logout_link'
             ],
         },
     },
