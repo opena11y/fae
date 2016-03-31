@@ -55,6 +55,7 @@ The "secretes.json" file must be created and provides:
     "SHIBBOLETH_ENABLED": false,
     "SHIBBOLETH_URL": "",
     "SHIBBOLETH_NAME": "",
+    "SHIBBOLETH_SUPERUSER": "",
     "DEBUG": false,
     "LOGGER_LEVEL": "INFO",
    	"DATABASE_HOST": "localhost",
@@ -143,6 +144,10 @@ vironments/fae2/lib/python3.4/site-packages/
   * IMPORTANT: Must run <code>fae-util/python process_evaluation_requests.py</code> to process website evaluations in the background
   * There are a number of ways to make this program run in parallel with django application depending on your operating system
     * Linux: How to write a System V init script to start, stop, and restart my own application or service(http://www.cyberciti.biz/tips/linux-write-sys-v-init-script-to-start-stop-service.html)
+
+### Shibboleth Resources
+* [(https://5chub3r7.wordpress.com/2014/12/05/how-to-not-use-shibboleth-with-the-django-web-framework/)]
+* [()]
 
 ### Utility to clean up reports and update summary statistics
 * IMPORTANT: Must run <code>fae-util/process_achive_reports.py</code> to process remove reports and update summary statistics

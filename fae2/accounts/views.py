@@ -51,6 +51,7 @@ from timezone_field import TimeZoneFormField
 from reports.views import FAENavigationMixin
 
 from fae2.settings import SITE_URL
+from fae2.settings import SHIBBOLETH_SUPERUSER
 
 from userProfiles.models import UserProfile
 from stats.models        import StatsUser
@@ -72,7 +73,7 @@ class ShibbolethLogin(RedirectView):
 
         user = self.request.user
 
-        if user.username == 'jongund@illinois.edu':
+        if user.username == SHIBBOLETH_SUPERUSER:
             user.is_staff     = True
             user.is_superuser = True
             user.save()
