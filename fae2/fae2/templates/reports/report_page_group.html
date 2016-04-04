@@ -15,16 +15,16 @@
 
 {% block content_before_title %}
 
-{% if page %}
+    {% if report.page_count > 1 %}
 
-  {% include "reports/page_information.html" %}
+    {% include "reports/report_information.html" %}
 
-  {% else %}
+    {% else %}
 
-  {% include "reports/report_information.html" %}
+    {% include "reports/page_information.html" %}
 
-  {% endif %}
-
+    {% endif %}
+    
 {% endblock %}
 
 {% block title %}

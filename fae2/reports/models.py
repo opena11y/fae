@@ -329,6 +329,13 @@ class WebsiteReport(RuleGroupResult):
     self.status = 'C'
     self.save()
 
+    if self.title == '' and self.page_count == 1:
+      try: 
+        self.title = self.page_all_results.first().title
+      except:
+        self.ttile = "no title"
+      self.save()    
+
   def is_complete(self):
     return self.status == 'C'
 

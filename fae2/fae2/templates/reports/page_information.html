@@ -20,8 +20,6 @@
           {% else %}
           <li>One page report</li>
           {% endif %}
-          <li>Page URL:  <a href="{{ page.url }}">{{ page.url }}</a></li>
-
           <li>Ruleset:   <a title="{{report.ruleset.title_text}}" href="{% url 'ruleset' report.ruleset.slug %}">{{ report.ruleset }}</a></li>
       </ul>  
   </div>    
