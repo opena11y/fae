@@ -11,7 +11,8 @@
 <form id="id_run_report"  action="{% url 'run_report' %}" method="post" >
     {% csrf_token %}
 
-    <input type="button" 
+    <input id="id_get_last" 
+           type="button" 
            onclick="getLastReport()" 
            {% if report_nav.wser.url == '' %}disabled{% endif %} 
            value="Get Last Report Settings" 

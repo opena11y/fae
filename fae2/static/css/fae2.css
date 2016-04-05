@@ -111,6 +111,11 @@ nav h2 {
     text-decoration: underline;
 }
 
+#id_get_last {
+    margin-top: 1em;
+    font-size: 100%;
+}
+
 button[aria-controls="top-navbar"] {
     outline: solid 2px transparent;
     z-index: 1050;
