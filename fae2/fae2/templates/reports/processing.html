@@ -220,7 +220,7 @@ function updateReports(reportInfoArray) {
 
     if (updateReportWithErrors(ri['id'], ri['status'], ri['page_count'])) {
 
-        tr = fae2TableUtils.addRow(tbody_zero, 'row_' + report_id, '')
+        tr = fae2TableUtils.addRow(tbody_errors, 'row_' + report_id, '')
 
         fae2TableUtils.addCellLink(tr, ri['title'], ri['report_url'], '', 'text');
 
