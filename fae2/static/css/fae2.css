@@ -87,9 +87,9 @@ nav h2 {
     font-size: 130%;
 }
 .nav > li > a {
-    padding-top: 0.125em;
-    padding-bottom: 0.125em;
-    font-size: 115%;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+    font-size: 120%;
 }
 
 .navbar-inverse .navbar-nav > li > a:focus,
