@@ -77,12 +77,24 @@ main p img {
     font-size: 110%;
 }
 
+nav 
+
 nav {
     margin-bottom: 1em;
 }
 
+nav#id_breadcrumbs,
+nav#id_breadcrumbs ul  {
+    margin: 0;
+}
+
+nav#id_breadcrumbs {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
 nav h2 {
-    margin-top: 0;
+    margin-top: 1em;
     margin-bottom: 0.125em;
     font-size: 130%;
 }
