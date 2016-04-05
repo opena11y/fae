@@ -87,6 +87,8 @@ nav h2 {
     font-size: 130%;
 }
 .nav > li > a {
+    padding: 0.25em;
+    padding-left: 0.5em;
     padding-top: 0.25em;
     padding-bottom: 0.25em;
     font-size: 120%;
