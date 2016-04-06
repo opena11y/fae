@@ -513,8 +513,7 @@ class ProcessingReportView(LoginRequiredMixin, FAENavigationMixin, TemplateView)
         user_reports = WebsiteReport.objects.filter(user=self.request.user)
 
         context['processing_reports'] = user_reports.exclude(status='C').exclude(status='E').exclude(status='SUM').order_by('-created')[:1]
-        context['complete_reports'] = user_reports.filter(status='C').order_by('-created')[:1]
-        context['errors']  = user_reports.filter(status='E')
+        context['complete_reports']   = user_reports.filter(status='C').order_by('-created')[:2]
         
         return context    
 
