@@ -13,42 +13,42 @@
                 <th class="first">Number of Pages </th>               
                 
                 {% if summary.pages_violation = 0 %}
-                <td class="violation"><abbr title="No pages with violations">-</abbr></td>
+                <td class="violation" title="No pages with violations">-</td>
                 {% else %}
                 {% if summary.pages_violation = 1 %}
-                <td class="violation"><abbr title="One page with violations">1</abbr></td>
+                <td class="violation" title="One page with violations">1</td>
                 {% else %}
-                <td class="violation"><abbr title="{{summary.pages_violation}} pages with violations">{{summary.pages_violation}}</abbr></td>
+                <td class="violation" title="{{summary.pages_violation}} pages with violations">{{summary.pages_violation}}</td>
                 {% endif %}
                 {% endif %}
 
                 {% if summary.pages_warning = 0 %}
-                <td class="warning"><abbr title="No pages with warnings">-</abbr></td>
+                <td class="warning" title="No pages with warnings">-</td>
                 {% else %}
                 {% if summary.pages_warning = 1 %}
-                <td class="warning"><abbr title="One page with warnings">1</abbr></td>
+                <td class="warning" title="One page with warnings">1</td>
                 {% else %}
-                <td class="warning"><abbr title="{{summary.pages_warning}} pages with warnings">{{summary.pages_warning}}</abbr></td>
+                <td class="warning" title="{{summary.pages_warning}} pages with warnings">{{summary.pages_warning}}</td>
                 {% endif %}
                 {% endif %}
                 
                 {% if summary.pages_manual_check = 0 %}
-                <td class="manual_check"><abbr title="No pages with manual checks">-</abbr></td>
+                <td class="manual_check" title="No pages with manual checks">-</td>
                 {% else %}
                 {% if summary.pages_manual_check = 1 %}
-                <td class="manual_check"><abbr title="One page with manual checks">1</abbr></td>
+                <td class="manual_check" title="One page with manual checks">1</td>
                 {% else %}
-                <td class="manual_check"><abbr title="{{summary.pages_manual_check}} pages with manual checks">{{summary.pages_manual_check}}</abbr></td>
+                <td class="manual_check" title="{{summary.pages_manual_check}} pages with manual checks">{{summary.pages_manual_check}}</td>
                 {% endif %}
                 {% endif %}
 
                 {% if summary.pages_passed = 0 %}
-                <td class="passed"><abbr title="No pages with all pass">-</abbr></td>
+                <td class="passed" title="No pages with all pass">-</td>
                 {% else %}
                 {% if summary.pages_passed = 1 %}
-                <td class="passed"><abbr title="One page with all pass">1</abbr></td>
+                <td class="passed" title="One page with all pass">1</td>
                 {% else %}
-                <td class="passed"><abbr title="{{summary.pages_passed}} pages with all pass">{{summary.pages_passed}}</abbr></td>
+                <td class="passed" title="{{summary.pages_passed}} pages with all pass">{{summary.pages_passed}}</td>
                 {% endif %}
                 {% endif %}
 

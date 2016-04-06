@@ -180,20 +180,20 @@
 
                 <li class="side_by_side">
                 {% if report_nav.previous_url %}
-                    <a href="{{report_nav.previous_url}}" class="left">
+                    <a href="{{report_nav.previous_url}}" class="left"  title="{{report_nav.previous_label}}">
                 {% else %}
                     <a class="disabled left"> 
                 {% endif %}
                         <span class="glyphicon glyphicon-step-backward"></span> 
-                        <abbr title="{{report_nav.previous_label}}">Prev</abbr>
+                        Prev
                     </a>
 
                 {% if report_nav.next_url %}
-                    <a href="{{report_nav.next_url}}" class="right">
+                    <a href="{{report_nav.next_url}}" class="right" title="{{report_nav.next_label}}">
                 {% else %}
                     <a class="disabled right">
                 {% endif %}
-                        <abbr title="{{report_nav.next_label}}">Next</abbr>
+                        Next
                         <span class="glyphicon glyphicon-step-forward"></span>
                     </a>
                 </li>

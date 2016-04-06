@@ -10,8 +10,8 @@
             <tr>
                 <th>Rule ID</th>
                 <th>Summary</th>
-                <th><abbr title"WCAG 2.0 Level">Level</a></th>
-                <th><abbr title"WCAG 2.0 Success Criteria">SC</a></th>
+                <th title"WCAG 2.0 Level">Level</th>
+                <th title"WCAG 2.0 Success Criteria">SC</th>
                 {% for rs in rulesets %}
                 <th>{{ rs.title }}</th>
                 {% endfor %}
@@ -31,7 +31,7 @@
                   {% if rm == '2' %}
                   <td>Recommended</td>
                   {% else %}
-                  <td><abbr title="Not included in ruleset">-</abbr></td>
+                  <td title="Not included in ruleset">-</td>
                   {% endif %}
                 {% endif %}
                 {% endfor %}
