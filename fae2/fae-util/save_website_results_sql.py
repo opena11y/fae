@@ -466,10 +466,10 @@ class DataRuleResult(DataResult):
     set_status( 95, 'AC')
     set_status(100, 'C')
 
-    if pass_fail_count == pass_fail_count_complete:
+    if (pass_fail_count == pass_fail_count_complete) and (pass_fail_count_complete > 0):
       self.implementation_pass_fail_status = "C"
 
-    if count == count_complete:
+    if (count == count_complete) and (count_complete > 0):
       self.implementation_status = "C"
 
 
