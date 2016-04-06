@@ -100,10 +100,10 @@ Report Processing
 var report_status_url = "{{site.domain}}/processing/status/all/";
 console.log(report_status_url);
 
-var complete_count = 0;
-
 
 function updateReports(reportInfoArray) {
+
+  var processing_count = 0;
 
   function getStatusNLS(s, pages) {
   
@@ -113,20 +113,24 @@ function updateReports(reportInfoArray) {
 
     case '-':
       s1 = "Initializing...";
+      processing_count += 1;
       break;
     
     case 'I':
       s1 = "Initializing...";
+      processing_count += 1;
       break;
     
     case 'A':
       if (pages === 1) s1 = "1 page evaluated...";
       else s1 = pages + " pages evaluated...";
+      processing_count += 1;
       break;
     
     case 'S':
       if (pages === 1) s1 = "Saving results: 1 page evaluated";
       else s1 = "Saving results: " + pages + " pages evaluated";
+      processing_count += 1;
       break;
     
     case 'C':
@@ -236,6 +240,9 @@ function updateReports(reportInfoArray) {
         fae2TableUtils.addCell(tr, ri['depth'], '', 'num');
 
     }
+
+    if (processing_count) document.title = "FAE Processing...";
+    else document.title = "FAE Complete";  
 
     if (updateReportWithErrors(ri['id'], ri['status'], ri['page_count'])) {
 
