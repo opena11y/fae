@@ -241,8 +241,11 @@ function updateReports(reportInfoArray) {
 
     }
 
-    if (processing_count) document.title = "FAE Processing...";
-    else document.title = "FAE Complete";  
+    var msg1 = "FAE Processing...";
+    var msg2 = "FAE Complete";
+
+    if (processing_count) document.title = msg1;
+    else if (document.title === msg1) document.title = msg2;  
 
     if (updateReportWithErrors(ri['id'], ri['status'], ri['page_count'])) {
 
