@@ -204,7 +204,12 @@ function updateReports(reportInfoArray) {
 
         tr = fae2TableUtils.addRow(tbody_proc, 'row_' + report_id, '')
 
-        fae2TableUtils.addCellLink(tr, ri['title'], ri['report_url'], '', 'text');
+        if (ri['status'] === 'C') {
+          fae2TableUtils.addCellLink(tr, ri['title'], ri['report_url'], '', 'text');
+        } 
+        else {
+          fae2TableUtils.addCell(tr, ri['title'], '', 'text');
+        }
 
         fae2TableUtils.addCell(tr, localDate, '', 'text');
 
@@ -222,7 +227,7 @@ function updateReports(reportInfoArray) {
 
         tr = fae2TableUtils.addRow(tbody_errors, 'row_' + report_id, '')
 
-        fae2TableUtils.addCellLink(tr, ri['title'], ri['report_url'], '', 'text');
+        fae2TableUtils.addCell(tr, ri['title'], '', 'text');
 
         fae2TableUtils.addCell(tr, localDate, '', 'text');
 
