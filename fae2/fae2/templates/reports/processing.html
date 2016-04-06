@@ -33,13 +33,25 @@ Report Processing
     </thead>
 
     <tbody id="id_tbody">
+      {% if processing_reports.count == 0 %}
+        {% for r in complete_reports %}
+        <tr id="row_{{r.id}}">
+          <td><a href="{% url 'report_rules' r.slug 'rc' %}">{{r.title}}</a></td>
+          <td>{{r.created}}</td>
+          <td>Complete</td>
+          <td><a href="{% url 'ruleset' r.ruleset.slug %}">{{r.ruleset}}</a></td>
+          <td>{{r.url}}</td>
+          <td>{{r.depth}}</td>
+        </tr>
+        {% endfor %}
+      {% endif %}  
     </tbody>
         
   </table>  
 
 </section>
 
-<section id="id_errors" aria-labelledby="id_errors_label">
+<section id="id_errors" aria-labelledby="id_errors_label" style="margin-top: 5em;">
 
   <h2 id="id_errors_label">Reports with Invalid URLs or Errors in Processing</h2>
 
@@ -87,6 +99,9 @@ Report Processing
 
 var report_status_url = "{{site.domain}}/processing/status/all/";
 console.log(report_status_url);
+
+var complete_count = 0;
+
 
 function updateReports(reportInfoArray) {
 
@@ -155,12 +170,11 @@ function updateReports(reportInfoArray) {
             row.style.display = "none";
           }  
         }
-        
         return false;
       }
     }
     
-    if (status === 'C' || status === 'E' || status == 'B') return false;
+    if (status === 'E' || status == 'B' || status === 'C') return false;
     
     return true;
   }
