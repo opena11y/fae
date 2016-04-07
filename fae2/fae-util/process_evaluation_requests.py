@@ -182,7 +182,7 @@ class faeUtilThread(threading.Thread):
 
       self.ws_report = ws_report
       info("=======================")
-      info("Initializing report: " + str(self.ws_report))
+      info("Initializing report: " + self.ws_report.title)
       info("           log file: " + str(self.ws_report.log_file))
       self.ws_report.set_status_initialized()
       initWebsiteReport(self.ws_report)
