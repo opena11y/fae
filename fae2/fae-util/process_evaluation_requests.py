@@ -57,14 +57,25 @@ def debug(s):
 
 def info(s):
   if INFO and log:
-    log.write('[PROC_EVAL_REQ][INFO]: ' + str(s) + '\n')
-    log.flush()
-    print('[PROC_EVAL_REQ][INFO]: ' + str(s))
+    try: 
+      log.write('[PROC_EVAL_REQ][INFO]: ' + str(s) + '\n')
+      log.flush()
+      print('[PROC_EVAL_REQ][INFO]: ' + str(s))
+    except:
+      log.write('[PROC_EVAL_REQ][INFO]: error in string "s" \n')
+      log.flush()
+      print('[PROC_EVAL_REQ][INFO]: error in string "s" \n')
+      
 
 def error(s):
   if log:
-    log.flush()
-    log.write('[PROC_EVAL_REQ][**ERROR]: ' + str(s) + '\n')
+    try:
+      log.write('[PROC_EVAL_REQ][**ERROR]: ' + str(s) + '\n')
+      log.flush()
+    except:
+      log.write('[PROC_EVAL_REQ][**ERROR]: error in string "s" \n')
+      log.flush()
+      
 
 def init_oaa_script_file():
   f = open(fae_util_path + '/openajax_a11y/scripts.txt', 'w')
