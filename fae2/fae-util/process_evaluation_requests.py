@@ -202,11 +202,11 @@ class faeUtilThread(threading.Thread):
 
       log = open(self.ws_report.log_file, 'w')
 
-      info("Analyze website: " + str(self.ws_report))
+      info("Analyze website: " + self.ws_report.title)
       self.ws_report.set_status_analyzing()
       analyzeWebsiteReport(self.ws_report, log)
 
-      info("Saving Data: " + str(self.ws_report))
+      info("Saving Data: " + self.ws_report.title))
       self.ws_report.set_status_saving()
       saveResultsToDjango(self.ws_report, log)
 
