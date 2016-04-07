@@ -30,8 +30,6 @@ fae_util_path = path
 fae2_path = path.split('/fae-util')[0]
 sys.path.append(fae2_path)
 
-print("PATH="+ str(sys.path))
-
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'fae2.settings')
 django.setup()
 

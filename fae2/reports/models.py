@@ -331,7 +331,7 @@ class WebsiteReport(RuleGroupResult):
 
     if self.title == '' and self.page_count == 1:
       try: 
-        self.title = self.page_all_results.first().title
+        self.title = str(self.page_all_results.first().title).strip()
       except:
         self.ttile = "no title"
       self.save()    
