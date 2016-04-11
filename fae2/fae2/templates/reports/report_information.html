@@ -30,6 +30,7 @@
          {% if report.include_domains %}
          <li>Include domains: {{  report.include_domains }}</li>
          {% endif %}
+         <li>Created by: <a href="mailto:{{report.user.email}}">{{report.user.first_name}} {{report.user.last_name}}</a></li>
      </ul>  
   </div>
 
