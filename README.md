@@ -145,11 +145,10 @@ vironments/fae2/lib/python3.4/site-packages/
   * There are a number of ways to make this program run in parallel with django application depending on your operating system
     * Linux: How to write a System V init script to start, stop, and restart my own application or service(http://www.cyberciti.biz/tips/linux-write-sys-v-init-script-to-start-stop-service.html)
 
-### Shibboleth Resources
-* [(https://5chub3r7.wordpress.com/2014/12/05/how-to-not-use-shibboleth-with-the-django-web-framework/)]
-* [()]
+### Django Shibboleth Resources
+* [How to (not) use Shibboleth with the Django web framework](https://5chub3r7.wordpress.com/2014/12/05/how-to-not-use-shibboleth-with-the-django-web-framework/)
 
-### Incommon Resources (SHibboleth)
+### Incommon Resources (Multi-Institution Shibboleth)
 * [InCommon: Embedded Discovery Service](https://wiki.shibboleth.net/confluence/display/EDS10/Embedded+Discovery+Service)
 * [Technology Services: Shibboleth, Multi-university configuration](https://answers.uillinois.edu/illinois/48456)
 * [InCommon: Federation Entities](https://www.incommon.org/federation/info/all-entities.html)
