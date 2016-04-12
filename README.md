@@ -152,6 +152,7 @@ vironments/fae2/lib/python3.4/site-packages/
 ### Incommon Resources (SHibboleth)
 * [(https://wiki.shibboleth.net/confluence/display/EDS10/Embedded+Discovery+Service)]
   * Requires a yum install
+* [(https://answers.uillinois.edu/illinois/48456)]
 
 ### Utility to clean up reports and update summary statistics
 * IMPORTANT: Must run <code>fae-util/process_achive_reports.py</code> to process remove reports and update summary statistics
