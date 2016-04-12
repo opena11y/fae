@@ -149,8 +149,9 @@ vironments/fae2/lib/python3.4/site-packages/
 * [(https://5chub3r7.wordpress.com/2014/12/05/how-to-not-use-shibboleth-with-the-django-web-framework/)]
 * [()]
 
-### Incommon Resources
+### Incommon Resources (SHibboleth)
 * [(https://wiki.shibboleth.net/confluence/display/EDS10/Embedded+Discovery+Service)]
+  * Requires a yum install
 
 ### Utility to clean up reports and update summary statistics
 * IMPORTANT: Must run <code>fae-util/process_achive_reports.py</code> to process remove reports and update summary statistics
