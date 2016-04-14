@@ -18,7 +18,6 @@
       <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    {% block css %}
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'css/bootstrap-theme.css' %}">
@@ -29,7 +28,9 @@
 
     <!-- This file store project specific CSS -->
     <link href="{% static 'css/fae2.css' %}" rel="stylesheet">
+    {% block css %}
     {% endblock %}
+
 
   </head>
 

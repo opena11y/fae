@@ -96,6 +96,10 @@ class ShibbolethLogin(RedirectView):
 
         return super(ShibbolethLogin, self).get_redirect_url(*args, **kwargs)
 
+class ShibbolethDiscovery(TemplateView):
+    template_name = 'registration/shib_discovery.html'
+
+
 
 class Logout(FAENavigationMixin, TemplateView):
     template_name = 'registration/logout.html'

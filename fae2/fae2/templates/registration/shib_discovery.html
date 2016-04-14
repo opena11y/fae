@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load staticfiles i18n %}
+
+{% block title %}
+  Shibboleth Discovery Page
+{% endblock %}
+
+{% block css %}
+  <link rel="stylesheet" type="text/css" href="idpselect.css">
+{% endblock %}
+
+{% block content %}
+
+<div id="idpSelect"></div>
+
+{% endblock %}
+
+{% block javascript %}
+  <script src="idpselect_config.js" type="text/javascript" language="javascript"></script>
+  <script src="idpselect.js" type="text/javascript" language="javascript"></script>
+{% endblock %}

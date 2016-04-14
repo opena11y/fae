@@ -42,6 +42,7 @@ from accounts.views import Logout
 from accounts.views import Login
 from accounts.views import ShibbolethLogout
 from accounts.views import ShibbolethLogin
+from accounts.views import ShibbolethDiscovery
 
 urlpatterns = [
     url(r'^admin/',   include(admin.site.urls)),
@@ -56,8 +57,9 @@ urlpatterns = [
 
 if SHIBBOLETH_ENABLED: 
   urlpatterns += [
-     url(r'^login/$',   ShibbolethLogin.as_view(), name='login'),
-     url(r'^logout/$',  ShibbolethLogout.as_view(), name='logout'),
+     url(r'^login/$',           ShibbolethLogin.as_view(),     name='login'),
+     url(r'^logout/$',          ShibbolethLogout.as_view(),    name='logout'),
+     url(r'^shib-discovery/$',  ShibbolethDiscovery.as_view(), name='shib_discovery'),
   ]
 else:
   urlpatterns += [
