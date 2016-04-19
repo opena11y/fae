@@ -163,6 +163,14 @@ if SHIBBOLETH_ENABLED:
 
     LOGIN_URL = SHIBBOLETH_URL
 
+    INSTALLED_APPS += (
+        'shibboleth',
+    )
+
+    urlpatterns += patterns('',
+        url(r'^shib/', include('shibboleth.urls', namespace='shibboleth')),
+    )    
+
 else:
     MIDDLEWARE_CLASSES = (
         'django.contrib.sessions.middleware.SessionMiddleware',
