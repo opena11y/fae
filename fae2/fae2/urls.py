@@ -57,9 +57,10 @@ urlpatterns = [
 
 if SHIBBOLETH_ENABLED: 
   urlpatterns += [
-     url(r'^login/$',           ShibbolethLogin.as_view(),     name='login'),
-     url(r'^logout/$',          ShibbolethLogout.as_view(),    name='logout'),
-     url(r'^shib-discovery/$',  ShibbolethDiscovery.as_view(), name='shib_discovery'),
+      url(r'^login/$',           ShibbolethLogin.as_view(),     name='login'),
+      url(r'^logout/$',          ShibbolethLogout.as_view(),    name='logout'),
+      url(r'^shib-discovery/$',  ShibbolethDiscovery.as_view(), name='shib_discovery'),
+      url(r'^shib/', include('shibboleth.urls', namespace='shibboleth')),
   ]
 else:
   urlpatterns += [

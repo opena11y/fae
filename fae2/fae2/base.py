@@ -167,10 +167,6 @@ if SHIBBOLETH_ENABLED:
         'shibboleth',
     )
 
-    urlpatterns += patterns('',
-        url(r'^shib/', include('shibboleth.urls', namespace='shibboleth')),
-    )    
-
 else:
     MIDDLEWARE_CLASSES = (
         'django.contrib.sessions.middleware.SessionMiddleware',
