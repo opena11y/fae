@@ -380,11 +380,15 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               NOT_APPLICABLE:  'No visible text content on this page'
             },
             NODE_RESULT_MESSAGES: {
-              ELEMENT_PASS_1:         'CCR of %1 exceeds 4.5',
-              ELEMENT_FAIL_1:       'CCR of %1, adjust foreground and background colors to exceed 4.5',
-              ELEMENT_MC_1: 'CCR of %1 is greater than 4.5, but background image may reduce color contrast',
-              ELEMENT_MC_2: 'CCR of %1 is less than or equal to 4.5, but background image may improve color contrast',
-              ELEMENT_HIDDEN_1:       'CCR of 4.5 not tested since the text is hidden from assistive technologies.'
+              ELEMENT_PASS_1:   'CCR of %1 exceeds 4.5',
+              ELEMENT_PASS_2:   'CCR of %1 exceeds 3.1 for large or bolded text',
+              ELEMENT_FAIL_1:   'CCR of %1, adjust foreground and background colors to exceed 4.5',
+              ELEMENT_FAIL_2:   'CCR of %1 for large or bolded text, adjust foreground and background colors to exceed 3.1',
+              ELEMENT_MC_1:     'CCR of %1 is greater than 4.5, but background image may reduce color contrast',
+              ELEMENT_MC_2:     'CCR of %1 is less than or equal to 4.5, but background image may improve color contrast',
+              ELEMENT_MC_3:     'CCR of %1 is greater than 3.1 for large or bolded text, but background image may reduce color contrast',
+              ELEMENT_MC_4:     'CCR of %1 is less than or equal to 3.1 for large and bolded text, but background image may improve color contrast',
+              ELEMENT_HIDDEN_1: 'CCR was not tested since the text is hidden from assistive technologies.'
             },  
             PURPOSE:        [ 'The higher the color contrast of text the more easy it is to read, especially for people with visual impairments'                   
                             ],
@@ -1210,7 +1214,8 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_HIDDEN_1: 'Radio button was not evaluated because it is hidden from assistive technologies.'
             },
             PURPOSE: [
-              'Radio buttons need grouping information and a common grouping label to provide the overall context for each radio button option.'
+              'Radio buttons need grouping information and a common grouping label to provide the overall context for each radio button option.',
+              'Screen readers render grouping labels differently than standard labels, typically rendering the grouping label only once when focus is moved into one of the controls.'
             ],
             TECHNIQUES: [
               'The @fieldset@/@legend@ element combination is the preferred technique for providing a grouping information and label for a related group of radio buttons.',
@@ -1337,13 +1342,16 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             RULE_RESULT_MESSAGES: {
               FAIL_S:   'Change the @label@ element to use the @for@ attribute to label its form control.',
               FAIL_P:   'Change the %N_F @label@ elements to use the @for@ attribute to label their respective form controls.',
+              MANUAL_CHECK_S: 'There is one form control being labeled by more than one labeling technique.',
+              MANUAL_CHECK_P: 'There are %N_MC form controls being labeled by more than one labeling technique.',
               HIDDEN_S: 'The @label@ element that is hidden was not evaluated.',
               HIDDEN_P: 'The %N_H @label@ elements that are hidden were not evaluated.',
               NOT_APPLICABLE: 'No visible @label@ elements with invalid @for@ references on this page.'
             },
             NODE_RESULT_MESSAGES: {
               ELEMENT_PASS_1: '@label@ element with @for@ attribute \'%1\' references a form control.',
-              ELEMENT_FAIL_1: 'Change the @label@ element @for@ attribute value \'%1\' to reference a form control.',
+              ELEMENT_FAIL_1: 'Change the @label@ element with the @for@ attribute value \'%1\' to reference a form control.',
+              ELEMENT_MC_1:   'The @label@ element with the @for@ attribute value \'%1\' is referencing a form control also being labeled with @aria-labelledby@ or @aria-label@ attribute.',
               ELEMENT_HIDDEN_1: 'The @label@ element was not evaluated because it is hidden from assistive technologies.'
             },
             PURPOSE: [
@@ -1461,8 +1469,8 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         CONTROL_9: {
             ID:         'Control 9',
-            DEFINITION: 'Verify that the @title@ attribute is the label for the form control.',
-            SUMMARY:    'Verify @title@ is label',
+            DEFINITION: 'Verify the @title@ attribute is serving as an appropriate label, and not a tooltip.',
+            SUMMARY:    'Verify @title@ is the label and not a tooltip',
             TARGET_RESOURCES_DESC: '@textarea@, @select@ and @input@ elements',
             RULE_RESULT_MESSAGES: {
               MANUAL_CHECK_S: 'Verify that the @title@ attribute is an appropriate label for the form control, and that it is not being used only as a tooltip.',
@@ -1473,7 +1481,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             },
             NODE_RESULT_MESSAGES: {
               ELEMENT_PASS_1: '@title@ is not used as label.',
-              ELEMENT_MC_1:   'Use the @label@ element or an ARIA technique to label %1 form control instead of using the @title@ attribute.',
+              ELEMENT_MC_1:   'If possible use the @label@ element or an ARIA technique to label %1 form control instead of using the @title@ attribute.',
               ELEMENT_HIDDEN_1: '@%1@ element was not evaluated because it is hidden from assistive technologies.'
             },
             PURPOSE: [
@@ -3405,12 +3413,13 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             },
             NODE_RESULT_MESSAGES: {
               ELEMENT_PASS_1:   '@%1@ landmark can be part of @banner@ landmark.',
-              ELEMENT_PASS_2:   '@banner@ landmark does not contain any landmarks.',
-              ELEMENT_PASS_3:   '@banner@ landmark contains one @navigation@, @region@ or @search@ landmark.',
-              ELEMENT_PASS_4:   '@banner@ landmark contains %1 @navigation@, @region@ and/or @search@ landmarks.',
+              ELEMENT_PASS_2:   '@banner@ landmark does not contain any other landmarks.',
+              ELEMENT_PASS_3:   '@banner@ landmark contains one allowed landmark: %1.',
+              ELEMENT_PASS_4:   '@banner@ landmark contains %1 allowed landmarks: %2.',
               ELEMENT_FAIL_1:   'Update the landmarks on the page so that the @%1@ landmark is not contained in the @banner@ landmark or @header@ element. Depending on the content in this landmark, consider moving it outside the @banner@ landmark.',
-              ELEMENT_FAIL_2:   'Update the landmarks on the page so that the @banner@ landmark or @header@ element contains only @navigation@, @region@ or @search@ landmarks.',
-              ELEMENT_HIDDEN_1: '@%1[@role="banner"]@ was not evaluated because it is hidden from assistive technologies.',
+              ELEMENT_FAIL_2:   'The  @banner@ landmark should NOT contain the following landmark: %1.',
+              ELEMENT_FAIL_3:   'The  @banner@ landmark should NOT contain the following %1 landmarks: %2.',
+              ELEMENT_HIDDEN_1: '@%1[role="banner"]@ was not evaluated because it is hidden from assistive technologies.',
               ELEMENT_HIDDEN_2: '@header@ element was not evaluated because it is hidden from assistive technologies.'
             },
             PURPOSE: [
@@ -3459,12 +3468,14 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             },
             NODE_RESULT_MESSAGES: {
               ELEMENT_PASS_1:   '@%1@ landmark can be part of @navigation@ landmark.',
-              ELEMENT_PASS_2:   '@navigation@ landmark does not contain any landmarks.',
-              ELEMENT_PASS_3:   '@navigation@ landmark contains one @region@ or @search@ landmark.',
-              ELEMENT_PASS_4:   '@navigation@ landmark contains %1 @region@ and/or @search@ landmarks.',
+              ELEMENT_PASS_2:   '@navigation@ landmark does not contain any other landmarks.',
+              ELEMENT_PASS_3:   '@navigation@ landmark contains one allowed landmark: %1.',
+              ELEMENT_PASS_4:   '@navigation@ landmark contains %1 allowed landmarks: %2.',
               ELEMENT_FAIL_1:   'Update the landmarks on the page such that the @%1@ landmark is not contained by the @navigation@ landmark. Depending on the content in this landmark, consider moving it outside the @navigation@ landmark.',
-              ELEMENT_FAIL_2:   'Update landmarks on the page such that the @navigation@ landmark contains only @region@ and/or @search@ landmarks.',
-              ELEMENT_HIDDEN_1: '@%1@ element with @role="navigation"@ was not evaluated because it is hidden from assistive technologies.'
+              ELEMENT_FAIL_2:   'The  @navigation@ landmark should NOT contain the following landmark: %1.',
+              ELEMENT_FAIL_3:   'The  @navigation@ landmark should NOT contain the following %1 landmarks: %2.',
+              ELEMENT_HIDDEN_1: '@%1[role="navigation"]@ was not evaluated because it is hidden from assistive technologies.',
+              ELEMENT_HIDDEN_2: '@nav@ element was not evaluated because it is hidden from assistive technologies.'
             },
             PURPOSE: [
               'Ensuring that the landmark structure of a page is not overly complex enables users of assistive technologies to more easily find and navigate to the desired content.'
@@ -3590,63 +3601,56 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
 
         // ----------------------------------------------------------------
-        // LANDMARK_13: complementary landmark: restrictions
+        // LANDMARK_13: contentinfo landmark: restrictions
         // ----------------------------------------------------------------
 
         LANDMARK_13: {
             ID:         'Landmark 13',
-            DEFINITION: 'The @complementary@ landmark %s be a top-level landmark or a child of a @main@ landmark.',
-            SUMMARY:    '@complementary@ landmark: must be top level',
-            TARGET_RESOURCES_DESC: '@complementary@ landmark',
+            DEFINITION: 'The @contentinfo@ landmark %s only contain @navigation@, @region@ or @search@ landmarks.',
+            SUMMARY:    '@contentinfo@ landmark: restrictions',
+            TARGET_RESOURCES_DESC: '@contentinfo@ landmark',
             RULE_RESULT_MESSAGES: {
-              FAIL_S:   'Update the @complementary@ landmark on the page to ensure that it is a top-level @complementary@ landmark or a child of a @main@ landmark.',
-              FAIL_P:   'Update the @complementary@ landmarks on the page to ensure that each is a top-level  @complementary@ landmark or a child of a @main@ landmark.',
-              HIDDEN_S: 'One element with @[role="complementary"]@ attribute or @aside@ element that is hidden was not evaluated.',
-              HIDDEN_P: '%N_H elements with @[role="complementary"]@ attribute and/or @aside@ elements  that are hidden were not evaluated.',
-              NOT_APPLICABLE: 'No @[role="complementary"]@ attributes and/or @aside@ elements on the page.'
+              FAIL_S:   'Update the landmarks on the page to ensure that the @contentinfo@ landmark only contains @navigation@, @region@ and @search@ landmarks.',
+              FAIL_P:   'Update the %N_F landmarks that are part of the @contentinfo@ landmark to ensure that the @contentinfo@ landmark only contains @navigation@, @region@ and @search@ landmarks.',
+              HIDDEN_S: 'One element with @[role="contentinfo"]@ or top-level @footer@ element that is hidden was not evaluated.',
+              HIDDEN_P: '%N_H elements with @[role="contentinfo"]@ or top-level @footer@ elements that are hidden were not evaluated.',
+              NOT_APPLICABLE: 'No @[role="contentinfo"]@ or top-level @footer@ elements on the page.'
             },
             NODE_RESULT_MESSAGES: {
-              ELEMENT_PASS_1:   '@%1[role="complementary"]@ attribute defines a @complementary@ landmark that is either a top-level landmark or a child of a @main@ landmark.',
-              ELEMENT_PASS_2:   '@%1[role="complementary"]@ attribute defines a @complementary@ landmark that is either a top-level landmark or a child of a @main@ landmark in the @frame@ or @iframe@.',
-              ELEMENT_PASS_3:   '@aside@ element defines a @complementary@ landmark that is either a top-level landmark or a child of a @main@ landmark.',
-              ELEMENT_PASS_4:   '@aside@ element defines a @complementary@ landmark is either a top-level landmark or a child of a @main@ landmark in the @frame@ or @iframe@.',
-              ELEMENT_FAIL_1:   'Update the landmark structure on the page such that the @%1[role="complementary"]@ attribute defines a @complementary@ that is either a top-level landmark or a child of a @main@ landmark (it is currently the child of a @%2@ landmark).',
-              ELEMENT_FAIL_2:   'Update the landmark structure on the page such that the @aside@ element is either a top-level landmark or a child of a @main@ landmark (it is currently the child of a @%1@ landmark).',
-              ELEMENT_HIDDEN_1: '@%1@ element with @[role="complementary"]@ attribute was not evaluated because it is hidden from assistive technologies.',
-              ELEMENT_HIDDEN_2: '@aside@ element was not evaluated because it is hidden from assistive technologies.'
+              ELEMENT_PASS_1:   '@%1@ landmark can be part of @contentinfo@ landmark.',
+              ELEMENT_PASS_2:   '@contentinfo@ landmark does not contain any other landmarks.',
+              ELEMENT_PASS_3:   '@contentinfo@ landmark contains one allowed landmark: %1.',
+              ELEMENT_PASS_4:   '@contentinfo@ landmark contains %1 allowed landmarks: %2.',
+              ELEMENT_FAIL_1:   'Update the landmarks on the page so that the @%1@ landmark is not contained in the @contentinfo@ landmark. Depending on the content in this landmark, consider moving it outside the @contentinfo@ landmark.',
+              ELEMENT_FAIL_2:   'The  @contentinfo@ landmark should NOT contain the following landmark: %1.',
+              ELEMENT_FAIL_3:   'The  @contentinfo@ landmark should NOT contain the following %1 landmarks: %2.',
+              ELEMENT_HIDDEN_1: '@%1[role="contentinfo"]@ was not evaluated because it is hidden from assistive technologies.',
+              ELEMENT_HIDDEN_2: '@footer@ element was not evaluated because it is hidden from assistive technologies.'
             },
             PURPOSE: [
-              '@complementary@ landmarks provide a way to identify sections of a page that may not be considered the main content, but that provide important supporting or related information to the main content.',
-              'Top-level landmarks are the easiest to find and navigate to using assistive technologies.',
-              'Placing a @complementary@ landmark inside a @main@ landmark identifies the information as related to the main content of the page.'
+               'Ensuring that the landmark structure of a page is not overly complex enables users of assistive technologies to more easily find and navigate to the desired content.'
             ],
             TECHNIQUES: [
-              'When creating the landmark structure on the page, ensure that the @complementary@ landmark is either a top-level landmark (i.e., it is not contained within any other landmarks) or a child of a @main@ landmark.',
-              '@[role="complementary"]@ attribute defines a @complementary@ landmark.',
-              '@aside@ element defines a @complementary@ landmark.'
+              'A @contentinfo@ landmark at most should only contain @navigation@, @region@ or @search@ landmarks.'
             ],
             MANUAL_CHECKS: [
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: complementary role',
-                url:   'http://www.w3.org/TR/wai-aria/roles#complementary'
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: contentinfo role',
+                url:   'http://www.w3.org/TR/wai-aria/roles#contentinfo'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'HTML5: The ASIDE element',
-                url:   'http://www.w3.org/TR/html5/sections.html#the-aside-element'
+                title: 'HTML5: The FOOTER element',
+                url:   'http://www.w3.org/TR/html5/sections.html#the-footer-element'
               },
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
-                title: 'ARIA11: Using ARIA landmarks to identify regions of a page',
-                url:   'http://www.w3.org/TR/WCAG20-TECHS/ARIA11'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML5: Sections',
+                url:   'http://www.w3.org/TR/html5/sections.html#sections'
               },
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
-                title: 'ARIA13: Using aria-labelledby to name regions and landmarks',
-                url:   'http://www.w3.org/TR/WCAG20-TECHS/ARIA13'
-              },
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
-                title: 'ARIA14: Using aria-label to provide an invisible label where a visible label cannot be used',
-                url:   'http://www.w3.org/TR/WCAG20-TECHS/ARIA14'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Landmark Roles',
+                url:   'http://www.w3.org/TR/wai-aria/roles#landmark_roles'
               }
             ]
         },
@@ -3670,10 +3674,11 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             NODE_RESULT_MESSAGES: {
               ELEMENT_PASS_1: '@%1@ landmark can be part of @search@ landmark.',
               ELEMENT_PASS_2: '@search@ landmark does not contain any @region@ landmarks.',
-              ELEMENT_PASS_3: '@search@ landmark contains one @region@ landmark.',
-              ELEMENT_PASS_4: '@search@ landmark contains %1 @region@ landmarks.',
+              ELEMENT_PASS_3: '@search@ landmark contains one allowed landmark: %1.',
+              ELEMENT_PASS_4: '@search@ landmark contains %1 allowed landmarks: %2.',
               ELEMENT_FAIL_1: 'Update the landmark structure on the page such that the @%1@ landmark is not contained by the @search@ landmark. Depending on the content in this landmark, consider moving it outside the @search@ landmark.',
-              ELEMENT_FAIL_2: 'Update the landmark structure on the page such that the @search@ landmark contains only @region@ landmarks.',
+              ELEMENT_FAIL_2:   'The  @search@ landmark should NOT contain the following landmark: %1.',
+              ELEMENT_FAIL_3:   'The  @search@ landmark should NOT contain the following %1 landmarks: %2.',
               ELEMENT_HIDDEN_1: '@%1@ element with @role="search"@ was not evaluated because it is hidden from assistive technologies.',
               ELEMENT_HIDDEN_2: '@%1@ element with @role="@%2"@ was not evaluated because it is hidden from assistive technologies.'
             },
@@ -3956,6 +3961,68 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/ARIA14'
               }
 
+            ]
+        },
+
+        // ----------------------------------------------------------------
+        // LANDMARK_19: complementary landmark: restrictions
+        // ----------------------------------------------------------------
+
+        LANDMARK_19: {
+            ID:         'Landmark 19',
+            DEFINITION: 'The @complementary@ landmark %s be a top-level landmark or a child of a @main@ landmark.',
+            SUMMARY:    '@complementary@ landmark: must be top level',
+            TARGET_RESOURCES_DESC: '@complementary@ landmark',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Update the @complementary@ landmark on the page to ensure that it is a top-level @complementary@ landmark or a child of a @main@ landmark.',
+              FAIL_P:   'Update the @complementary@ landmarks on the page to ensure that each is a top-level  @complementary@ landmark or a child of a @main@ landmark.',
+              HIDDEN_S: 'One element with @[role="complementary"]@ attribute or @aside@ element that is hidden was not evaluated.',
+              HIDDEN_P: '%N_H elements with @[role="complementary"]@ attribute and/or @aside@ elements  that are hidden were not evaluated.',
+              NOT_APPLICABLE: 'No @[role="complementary"]@ attributes and/or @aside@ elements on the page.'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:   '@%1[role="complementary"]@ attribute defines a @complementary@ landmark that is either a top-level landmark or a child of a @main@ landmark.',
+              ELEMENT_PASS_2:   '@%1[role="complementary"]@ attribute defines a @complementary@ landmark that is either a top-level landmark or a child of a @main@ landmark in the @frame@ or @iframe@.',
+              ELEMENT_PASS_3:   '@aside@ element defines a @complementary@ landmark that is either a top-level landmark or a child of a @main@ landmark.',
+              ELEMENT_PASS_4:   '@aside@ element defines a @complementary@ landmark is either a top-level landmark or a child of a @main@ landmark in the @frame@ or @iframe@.',
+              ELEMENT_FAIL_1:   'Update the landmark structure on the page such that the @%1[role="complementary"]@ attribute defines a @complementary@ that is either a top-level landmark or a child of a @main@ landmark (it is currently the child of a @%2@ landmark).',
+              ELEMENT_FAIL_2:   'Update the landmark structure on the page such that the @aside@ element is either a top-level landmark or a child of a @main@ landmark (it is currently the child of a @%1@ landmark).',
+              ELEMENT_HIDDEN_1: '@%1[role="complementary"]@ was not evaluated because it is hidden from assistive technologies.',
+              ELEMENT_HIDDEN_2: '@aside@ element was not evaluated because it is hidden from assistive technologies.'
+            },
+            PURPOSE: [
+              '@complementary@ landmarks provide a way to identify sections of a page that may not be considered the main content, but that provide important supporting or related information to the main content.',
+              'Top-level landmarks are the easiest to find and navigate to using assistive technologies.',
+              'Placing a @complementary@ landmark inside a @main@ landmark identifies the information as related to the main content of the page.'
+            ],
+            TECHNIQUES: [
+              'When creating the landmark structure on the page, ensure that the @complementary@ landmark is either a top-level landmark (i.e., it is not contained within any other landmarks) or a child of a @main@ landmark.',
+              '@[role="complementary"]@ attribute defines a @complementary@ landmark.',
+              '@aside@ element defines a @complementary@ landmark.'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: complementary role',
+                url:   'http://www.w3.org/TR/wai-aria/roles#complementary'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML5: The ASIDE element',
+                url:   'http://www.w3.org/TR/html5/sections.html#the-aside-element'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'ARIA11: Using ARIA landmarks to identify regions of a page',
+                url:   'http://www.w3.org/TR/WCAG20-TECHS/ARIA11'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'ARIA13: Using aria-labelledby to name regions and landmarks',
+                url:   'http://www.w3.org/TR/WCAG20-TECHS/ARIA13'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'ARIA14: Using aria-label to provide an invisible label where a visible label cannot be used',
+                url:   'http://www.w3.org/TR/WCAG20-TECHS/ARIA14'
+              }
             ]
         }
    }
@@ -8021,26 +8088,46 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
         if (cs.is_visible_onscreen === VISIBILITY.VISIBLE) {
 
-          if ((cs.color_contrast_ratio >= MIN_CCR_NORMAL_FONT) ||
-            ((cs.color_contrast_ratio >= MIN_CCR_LARGE_FONT) && (cs.is_large_font))) {
-     
-            // Passes color contrast requirements
-            if (cs.background_image != "none") {
-              rule_result.addResult(TEST_RESULT.MANUAL_CHECK, cc_item, 'ELEMENT_MC_1', [cs.color_contrast_ratio]);
-            }           
+          if (!cs.is_large_font) {
+            if (cs.color_contrast_ratio >= MIN_CCR_NORMAL_FONT) {
+              // Passes color contrast requirements
+              if (cs.background_image != "none") {
+                rule_result.addResult(TEST_RESULT.MANUAL_CHECK, cc_item, 'ELEMENT_MC_1', [cs.color_contrast_ratio]);
+              }           
+              else {
+                rule_result.addResult(TEST_RESULT.PASS, cc_item, 'ELEMENT_PASS_1', [cs.color_contrast_ratio]);
+              }
+            }
             else {
-              rule_result.addResult(TEST_RESULT.PASS, cc_item, 'ELEMENT_PASS_1', [cs.color_contrast_ratio]);
+          
+              // Fails color contrast requirements
+              if (cs.background_image === "none") {
+                rule_result.addResult(TEST_RESULT.FAIL, cc_item, 'ELEMENT_FAIL_1', [cs.color_contrast_ratio]);
+              }
+              else {
+                rule_result.addResult(TEST_RESULT.MANUAL_CHECK, cc_item, 'ELEMENT_MC_2', [cs.color_contrast_ratio]);
+              }     
             }
           }
           else {
-          
-            // Fails color contrast requirements
-            if (cs.background_image === "none") {
-              rule_result.addResult(TEST_RESULT.FAIL, cc_item, 'ELEMENT_FAIL_1', [cs.color_contrast_ratio]);
+            if (cs.color_contrast_ratio >= MIN_CCR_LARGE_FONT) {
+              // Passes color contrast requirements
+              if (cs.background_image != "none") {
+                rule_result.addResult(TEST_RESULT.MANUAL_CHECK, cc_item, 'ELEMENT_MC_3', [cs.color_contrast_ratio]);
+              }           
+              else {
+                rule_result.addResult(TEST_RESULT.PASS, cc_item, 'ELEMENT_PASS_2', [cs.color_contrast_ratio]);
+              }
             }
             else {
-              rule_result.addResult(TEST_RESULT.MANUAL_CHECK, cc_item, 'ELEMENT_MC_2', [cs.color_contrast_ratio]);
-            }     
+              // Fails color contrast requirements
+              if (cs.background_image === "none") {
+                rule_result.addResult(TEST_RESULT.FAIL, cc_item, 'ELEMENT_FAIL_2', [cs.color_contrast_ratio]);
+              }
+              else {
+                rule_result.addResult(TEST_RESULT.MANUAL_CHECK, cc_item, 'ELEMENT_MC_4', [cs.color_contrast_ratio]);
+              }     
+            }
           }
         }
         else {
@@ -8697,7 +8784,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.FORMS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
-  wcag_primary_id     : '3.2.1',
+  wcag_primary_id     : '3.2.2',
   wcag_related_ids    : ['2.1.1', '2.1.2',  '2.4.3', '2.4.7'],
   target_resources    : ['select'],
   primary_property    : 'events.has_change',
@@ -9387,8 +9474,13 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
        if (le.for_id && le.for_id.length) {
 
          if (de.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {
-           if (le.unused_label) rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_1', [le.for_id]);
-           else rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_1', [le.for_id]);
+           if (le.unused_label) {
+              rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_1', [le.for_id]);
+           } 
+           else {
+              if (le.duplicate_label) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, le, 'ELEMENT_MC_1', [le.for_id]);
+              else rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_1', [le.for_id]);
+           }   
          }
          else {
            rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', []);        
@@ -9515,7 +9607,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 /** 
  * @object CONTROL_9
  *
- * @desc Check form controls labelled using the TITLE attribute for accessible name
+ * @desc Check form controls labeled using the TITLE attribute for accessible name
  */
  
 { rule_id             : 'CONTROL_9', 
@@ -9911,7 +10003,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   wcag_related_ids    : [],
   target_resources    : ['img', '[role="img"]'],
   primary_property    : 'accessible_name',
-  resource_properties : ['tag_name', 'alt', 'role', 'is_visible_to_at'],
+  resource_properties : ['tag_name', 'alt', 'title', 'role', 'is_visible_to_at'],
   language_dependency : "",
   validate            : function (dom_cache, rule_result) {
     
@@ -11530,7 +11622,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 /**
  * @object LANDMARK_6
  *
- * @desc Each page may have one content information landmark
+ * @desc Each page may have one contentinfo landmark
  *
  */               
 { rule_id             : 'LANDMARK_6', 
@@ -11606,7 +11698,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 /**
  * @object LANDMARK_7
  *
- * @desc Each page may have only one content information landmark
+ * @desc Each page may have only one contentinfo landmark
  *
  */               
 { rule_id             : 'LANDMARK_7', 
@@ -11685,7 +11777,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 /**
  * @object LANDMARK_8
  *
- * @desc banner landmark must be a top level lanmark
+ * @desc banner landmark must be a top level landmark
  */               
 { rule_id             : 'LANDMARK_8', 
   last_updated        : '2014-11-28', 
@@ -11788,11 +11880,13 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
               (cce.landmark === 'application')) {
             if (de.has_role) rule_result.addResult(TEST_RESULT.PASS, cce, 'ELEMENT_PASS_1', [de.role]);     
             else rule_result.addResult(TEST_RESULT.PASS, cce, 'ELEMENT_PASS_1', [de.tag_name]);  
+            pass_list += ' ' + cce.landmark;
           }
           else {
             if (de.has_role) rule_result.addResult(TEST_RESULT.FAIL, cce, 'ELEMENT_FAIL_1', [de.role]);     
             else rule_result.addResult(TEST_RESULT.FAIL, cce, 'ELEMENT_FAIL_1', [de.tag_name]); 
             fail_count++;
+            fail_list += ' ' + cce.landmark;
           }
           if (cce.landmark) fail_count += checkLandmarkChildren(cce);        
         }
@@ -11804,7 +11898,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
       return fail_count;
     }
 
-
     var landmark_elements     = dom_cache.headings_landmarks_cache.landmark_elements;
     var landmark_elements_len = landmark_elements.length;
     var fail_count = 0;
@@ -11814,22 +11907,24 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
       var de = le.dom_element;
       var cs = de.computed_style;
 
-
       if (le.landmark === 'banner') {
-      
+
+        var fail_list = '';
+        var pass_list = '';
         var landmark_count = 0;
       
         if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
           fail_count = checkLandmarkChildren(le);
           
-          if (fail_count > 0) rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_2', []);
+          if (fail_count === 1) rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_2', [fail_list.toUpperCase()]);
+          else if (fail_count > 1) rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_3', [fail_count, fail_list.toUpperCase()]);
           else if (landmark_count === 0) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_2', []); 
-          else if (landmark_count === 1) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_3', []); 
-          else rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_4', [landmark_count]);
+          else if (landmark_count === 1) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_3', [pass_list.toUpperCase()]); 
+          else rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_4', [landmark_count, pass_list.toUpperCase()]);
         }  
         else {
-          if (de.has_role) rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', []);
-          else rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_2', []);
+          if (de.has_role) rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [de.tag_name]);
+          else rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_2', [de.tag_name]);
         }  
       }  
     }  
@@ -11880,15 +11975,18 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
               (cce.landmark === 'search')|| 
               (cce.landmark === 'application')) {
              rule_result.addResult(TEST_RESULT.PASS, cce, 'ELEMENT_PASS_1', [cce.landmark]);     
+             pass_list += ' ' + cce.landmark;
           }
           else {
             rule_result.addResult(TEST_RESULT.FAIL, cce, 'ELEMENT_FAIL_1', [cce.landmark]); 
             fail_count++;
+            fail_list += ' ' + cce.landmark;
           }
           fail_count += checkLandmarkChildren(cce);        
         }
         else {
-          rule_result.addResult(TEST_RESULT.HIDDEN, cce, 'ELEMENT_HIDDEN_1', [de.tag_name]);     
+          if (de.has_role) rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [de.tag_name]);
+          else rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_2', [de.tag_name]);
         }
       }
       
@@ -11908,18 +12006,21 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
       if (le.landmark === 'navigation') {
       
+        var fail_list = '';
+        var pass_list = '';
         var landmark_count = 0;
       
         if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
           fail_count = checkLandmarkChildren(le);
           
-          if (fail_count > 0) rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_2', []);
+          if (fail_count === 1) rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_2', [fail_list.toUpperCase()]);
+          else if (fail_count > 1) rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_3', [fail_count, fail_list.toUpperCase()]);
           else if (landmark_count === 0) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_2', []); 
-          else if (landmark_count === 1) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_3', []); 
-          else rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_4', [landmark_count]);
+          else if (landmark_count === 1) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_3', [pass_list.toUpperCase()]); 
+          else rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_4', [landmark_count, pass_list.toUpperCase()]);
         }  
         else {
-          rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', []);
+          rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [de.tag_name]);
         }  
       }  
     }  
@@ -12050,7 +12151,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 /**
  * @object LANDMARK_13
  *
- * @desc Complementary landmark must be a top level landmark or descendant of main
+ * @desc Contentinfo landmark should only contain only search, region and navigation landmarks
  */               
 { rule_id             : 'LANDMARK_13', 
   last_updated        : '2014-11-28', 
@@ -12059,9 +12160,9 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
   wcag_primary_id     : '1.3.1',
   wcag_related_ids    : ['2.4.1', '2.4.6', '2.4.10'],
-  target_resources    : ['aside', '[role="complementary"]'],
-  primary_property    : 'parent_landmark',
-  resource_properties : ['role', 'tag_name', 'accessible_name'],
+  target_resources    : ['header', '[role="banner"]'],
+  primary_property    : 'accessible_name',
+  resource_properties : ['role', 'tag_name', 'parent_landmark'],
   language_dependency : "",
   validate            : function (dom_cache, rule_result) {
 
@@ -12069,42 +12170,75 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
     var SOURCE      = OpenAjax.a11y.SOURCE;
 
+    function checkLandmarkChildren(landmark) {
+      
+      var cces     = landmark.child_cache_elements;
+      var cces_len = cces.length;
+      var fail_count = 0;
+    
+      for (var i = 0; i < cces_len; i++) {
+      
+        var cce = cces[i];
+        var de = cce.dom_element;
+        var cs = de.computed_style;
+        landmark_count++;
+      
+        if (!cce.landmark) continue;
+      
+        if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+          if ((cce.landmark === 'navigation') || 
+              (cce.landmark === 'region') || 
+              (cce.landmark === 'search') || 
+              (cce.landmark === 'application')) {
+            if (de.has_role) rule_result.addResult(TEST_RESULT.PASS, cce, 'ELEMENT_PASS_1', [de.role]);     
+            else rule_result.addResult(TEST_RESULT.PASS, cce, 'ELEMENT_PASS_1', [de.tag_name]);  
+            pass_list += ' ' + cce.landmark;
+          }
+          else {
+            if (de.has_role) rule_result.addResult(TEST_RESULT.FAIL, cce, 'ELEMENT_FAIL_1', [de.role]);     
+            else rule_result.addResult(TEST_RESULT.FAIL, cce, 'ELEMENT_FAIL_1', [de.tag_name]); 
+            fail_count++;
+            fail_list += ' ' + cce.landmark;
+          }
+          if (cce.landmark) fail_count += checkLandmarkChildren(cce);        
+        }
+        else {
+          rule_result.addResult(TEST_RESULT.HIDDEN, cce, 'ELEMENT_HIDDEN_1', [de.tag_name]);     
+        }
+      }
+      
+      return fail_count;
+    }
+
     var landmark_elements     = dom_cache.headings_landmarks_cache.landmark_elements;
     var landmark_elements_len = landmark_elements.length;
+    var fail_count = 0;
     
     for (var i = 0; i < landmark_elements_len; i++ ) {
       var le = landmark_elements[i];
       var de = le.dom_element;
       var cs = de.computed_style;
 
-      if (le.landmark === 'complementary') {
+      if (le.landmark === 'contentinfo') {
+
+        var fail_list = '';
+        var pass_list = '';
+        var landmark_count = 0;
       
         if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
-
-          if ((!de.parent_landmark) ||
-              (de.parent_landmark &&
-               (de.parent_landmark.landmark === 'main'))) {
-            if (de.has_role) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_1', [de.tag_name]);
-            else rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_3', []);          
-          }
-          else {
-            var de1 = de.parent_landmark.dom_element;
-            
-            if (de1 && (de.body_element !== de1.body_element)) {
-              if (de.has_role) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_2', [de.tag_name]);
-              else rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_4', []);
-            }  
-            else {
-              if (de.has_role) rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_1', [de.tag_name, de.parent_landmark.landmark]);
-              else rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_2', [de.parent_landmark.landmark]);
-            }
-          }
+          fail_count = checkLandmarkChildren(le);
+          
+          if (fail_count === 1) rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_2', [fail_list.toUpperCase()]);
+          else if (fail_count > 1) rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_3', [fail_count, fail_list.toUpperCase()]);
+          else if (landmark_count === 0) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_2', []); 
+          else if (landmark_count === 1) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_3', [pass_list.toUpperCase()]); 
+          else rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_4', [landmark_count, pass_list.toUpperCase()]);
         }  
         else {
           if (de.has_role) rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [de.tag_name]);
-          else rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_2', []);
-        }
-      }      
+          else rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_2', [de.tag_name]);
+        }  
+      }  
     }  
   } // end validate function
 },
@@ -12150,11 +12284,14 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
         if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
           if ((cce.landmark === 'region') || 
               (cce.landmark === 'application')) {
-             rule_result.addResult(TEST_RESULT.PASS, cce, 'ELEMENT_PASS_1', [cce.landmark]);     
+             rule_result.addResult(TEST_RESULT.PASS, cce, 'ELEMENT_PASS_1', [cce.landmark]);  
+             
+             pass_list += ' ' + cce.landmark;   
           }
           else {
             rule_result.addResult(TEST_RESULT.FAIL, cce, 'ELEMENT_FAIL_1', [cce.landmark]); 
             fail_count++;
+            fail_list += ' ' + cce.landmark;   
           }
           fail_count += checkLandmarkChildren(cce);        
         }
@@ -12181,15 +12318,20 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
       if (le.landmark === 'search') {
       
+        var fail_list = '';
+        var pass_list = '';
         var landmark_count = 0;
+        
       
         if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
           fail_count = checkLandmarkChildren(le);
 
-          if (fail_count > 0) rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_2', []);
+          if (fail_count === 1) rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_2', [fail_list.toUpperCase()]);
+          else if (fail_count > 1) rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_3', [fail_count, fail_list.toUpperCase()]);
           else if (landmark_count === 0) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_2', []); 
-          else if (landmark_count === 1) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_3', []); 
-          else rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_4', [landmark_count]);
+          else if (landmark_count === 1) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_3', [pass_list.toUpperCase()]); 
+          else rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_4', [landmark_count, pass_list.toUpperCase()]);
+
         }  
         else {
           rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [de.tag_name]);
@@ -12459,6 +12601,68 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
         rule_result.addResult(TEST_RESULT.MANUAL_CHECK, le, 'ELEMENT_MC_1', [le.landmark, le.computed_label]);
       }  
     }
+  } // end validate function
+},
+
+/**
+ * @object LANDMARK_19
+ *
+ * @desc Complementary landmark must be a top level landmark or descendant of main
+ */               
+{ rule_id             : 'LANDMARK_19', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LANDMARKS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '1.3.1',
+  wcag_related_ids    : ['2.4.1', '2.4.6', '2.4.10'],
+  target_resources    : ['aside', '[role="complementary"]'],
+  primary_property    : 'parent_landmark',
+  resource_properties : ['role', 'tag_name', 'accessible_name'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+    var SOURCE      = OpenAjax.a11y.SOURCE;
+
+    var landmark_elements     = dom_cache.headings_landmarks_cache.landmark_elements;
+    var landmark_elements_len = landmark_elements.length;
+    
+    for (var i = 0; i < landmark_elements_len; i++ ) {
+      var le = landmark_elements[i];
+      var de = le.dom_element;
+      var cs = de.computed_style;
+
+      if (le.landmark === 'complementary') {
+      
+        if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+
+          if ((!de.parent_landmark) ||
+              (de.parent_landmark &&
+               (de.parent_landmark.landmark === 'main'))) {
+            if (de.has_role) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_1', [de.tag_name]);
+            else rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_3', []);          
+          }
+          else {
+            var de1 = de.parent_landmark.dom_element;
+            
+            if (de1 && (de.body_element !== de1.body_element)) {
+              if (de.has_role) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_2', [de.tag_name]);
+              else rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_4', []);
+            }  
+            else {
+              if (de.has_role) rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_1', [de.tag_name, de.parent_landmark.landmark]);
+              else rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_2', [de.parent_landmark.landmark]);
+            }
+          }
+        }  
+        else {
+          if (de.has_role) rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [de.tag_name]);
+          else rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_2', []);
+        }
+      }      
+    }  
   } // end validate function
 }
 

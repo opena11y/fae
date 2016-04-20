@@ -307,6 +307,10 @@ var createARIATestRuleset = function () {
        required : true,
        enabled  : true
      },
+   LANDMARK_19 : {
+       required : true,
+       enabled  : true
+     },
    LANGUAGE_1 : {
        required : true,
        enabled  : true
@@ -858,6 +862,10 @@ var createARIATransitionalRuleset = function () {
      required : true,
      enabled  : true
    },
+   LANDMARK_19 : {
+       required : false,
+       enabled  : true
+     },
    LANGUAGE_1 : {
        required : true,
        enabled  : true
@@ -1422,6 +1430,10 @@ var createARIAStrictRuleset = function () {
         enabled  : true
       },
       LANDMARK_18 : {
+       required : true,
+       enabled  : true
+      },
+      LANDMARK_19 : {
        required : true,
        enabled  : true
       },

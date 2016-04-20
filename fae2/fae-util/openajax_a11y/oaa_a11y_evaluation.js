@@ -56,7 +56,7 @@ var OpenAjax = OpenAjax || {};
  */
 
 OpenAjax.a11y = OpenAjax.a11y || {};
-OpenAjax.a11y.VERSION = "1.0.0-beta.4";
+OpenAjax.a11y.VERSION = "1.0.0-beta.5";
 
 /**
  * @method getVersion
@@ -4817,13 +4817,16 @@ OpenAjax.a11y.cache.ControlsCache.prototype.calculateLabelsByReference = functio
       if (ce) {
 
         // check to see if label defined (i.e. an ARIA technique)
+        le.unused_label = false;          
 
         if ((ce.computed_label_source !== SOURCE.ARIA_LABELLEDBY) && 
             (ce.computed_label_source !== SOURCE.ARIA_LABEL)) {
           this.addLabel(ce, le.computed_label, OpenAjax.a11y.SOURCE.LABEL_REFERENCE);
-          le.unused_label = false;          
           le.control_element = ce;
         }  
+        else {
+          le.duplicate_label = true;
+        }
       }
       else {
         le.unused_label = true;
@@ -5731,7 +5734,8 @@ OpenAjax.a11y.cache.LabelElement = function (dom_element, control_info) {
   this.computed_label_length = 0;
   this.computed_label_for_comparison = "";
 
-  this.unused_label =  true;
+  this.unused_label    =  true;
+  this.duplicate_label =  false;
   this.hidden_label = (dom_element.computed_style.is_visible_to_at === OpenAjax.a11y.VISIBILITY.HIDDEN);
   this.control_element =  null;
 
@@ -27455,10 +27459,10 @@ OpenAjax.a11y.RuleResult.prototype.getMessage = function (id, prefix) {
   var common_nls = rule.getCommonNLS();
   var rule_id    = rule.getId();
 
-//  OpenAjax.a11y.logger.debug("[RuleResult]    rule nls: " +  rule_nls['ID']);
-//  OpenAjax.a11y.logger.debug("[RuleResult]     rule id: " +  rule_id);
-//  OpenAjax.a11y.logger.debug("[RuleResult]  message id: " +  id);
-//  OpenAjax.a11y.logger.debug("[RuleResult]   messages : " +  typeof rule_nls['RULE_RESULT_MESSAGES']);
+  OpenAjax.a11y.logger.debug("[RuleResult]    rule nls: " +  rule_nls['ID']);
+  OpenAjax.a11y.logger.debug("[RuleResult]     rule id: " +  rule_id);
+  OpenAjax.a11y.logger.debug("[RuleResult]  message id: " +  id);
+  OpenAjax.a11y.logger.debug("[RuleResult]   messages : " +  typeof rule_nls['RULE_RESULT_MESSAGES']);
   
   var message = rule_nls['RULE_RESULT_MESSAGES'][id];
 
