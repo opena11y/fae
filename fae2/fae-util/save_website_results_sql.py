@@ -1063,12 +1063,12 @@ class DataWebsiteRuleResult(DataResult):
     if (pass_fail_total == passed) and (pass_fail_total > 0):
       self.implementation_pass_fail_status = 'C'
     elif self.implementation_pass_fail_score > 99: 
-      self.implementation_pass_fail_score = 99: 
-
+      self.implementation_pass_fail_score = 99
+      
     if (total == passed) and (total > 0):
       self.implementation_status = "C"
     elif self.implementation_score > 99: 
-      self.implementation_score = 99: 
+      self.implementation_score = 99 
 
 
 #
