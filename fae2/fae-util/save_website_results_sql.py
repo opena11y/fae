@@ -464,7 +464,6 @@ class DataRuleResult(DataResult):
     set_status(  0, 'NI')
     set_status( 50, 'PI')
     set_status( 95, 'AC')
-    set_status(100, 'C')
 
     if (pass_fail_count == pass_fail_count_complete) and (pass_fail_count_complete > 0):
       self.implementation_pass_fail_status = "C"
