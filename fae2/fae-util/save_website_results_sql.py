@@ -573,7 +573,7 @@ class DataPageRuleResult(DataResult):
     if (pass_fail_total == passed) and (pass_fail_total > 0):
       self.implementation_pass_fail_status = 'C'
 
-    if (total = passed) and (total > 0):
+    if (total == passed) and (total > 0):
       self.implementation_status = "C"
 
 
@@ -1063,7 +1063,7 @@ class DataWebsiteRuleResult(DataResult):
     if (pass_fail_total == passed) and (pass_fail_total > 0):
       self.implementation_pass_fail_status = 'C'
 
-    if (total = passed) and (total > 0):
+    if (total == passed) and (total > 0):
       self.implementation_status = "C"
 
 
