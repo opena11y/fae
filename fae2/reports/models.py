@@ -35,6 +35,7 @@ from rulesets.models            import Ruleset
 
 from fae2.settings import APP_DIR
 
+
 # Create your models here.
 
 RESULT_VALUE = {
@@ -65,6 +66,10 @@ MC_STATUS_CHOICES = (
     ('P',   'Passed'),
     ('F',   'Fail'),
 )
+
+def getURLDomain(url):
+
+  return url;
 
 # ---------------------------------------------------------------
 #
@@ -267,6 +272,29 @@ class WebsiteReport(RuleGroupResult):
     return "Website Report: " + self.title
 
   def save(self):
+
+    print('[self.follow]: ' + str(self.follow))
+
+    if self.follow == 2:
+
+      url_parts = urlparse(self.url)
+
+      print('[url_parts]: ' + str(url_parts))
+
+      try:
+        if url_parts.netloc.find('www.') < 0:
+          self.span_sub_domains = url_parts.netloc      
+        else:
+          if url_parts.netloc.find('www.') == 0:
+            self.span_sub_domains = url_parts.netloc[4:]
+          else:
+            parts = url_parts.netloc.split('www.')
+            if len(parts) == 2:
+               self.span_sub_domains = parts[1]
+
+      except:
+        pass
+
 
     if len(self.data_dir_slug) == 0:
       DIR = APP_DIR
