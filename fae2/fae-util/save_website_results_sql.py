@@ -467,9 +467,13 @@ class DataRuleResult(DataResult):
 
     if (pass_fail_count == pass_fail_count_complete) and (pass_fail_count_complete > 0):
       self.implementation_pass_fail_status = "C"
+    elif self.implementation_pass_fail_score > 99:
+      self.implementation_pass_fail_score = 99
 
     if (count == count_complete) and (count_complete > 0):
       self.implementation_status = "C"
+    elif self.implementation_score > 99:
+      self.implementation_score = 99
 
 
 #    debug("[DataRuleResult][calculateImplementation] 4")
