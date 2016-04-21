@@ -441,13 +441,13 @@ class DataRuleResult(DataResult):
       if r.implementation_pass_fail_score >= 0:
         pass_fail_total += r.implementation_pass_fail_score
         pass_fail_count += 1
-        if r.implementation_pass_fail_status == "C":
+        if r.implementation_pass_fail_status == 'C':
           pass_fail_count_complete += 1
 
       if r.implementation_score >= 0:
         total += r.implementation_score
         count += 1
-        if r.implementation_status == "C":
+        if r.implementation_status == 'C':
           count_complete += 1
 
       if r.result_value > self.result_value:
@@ -466,7 +466,7 @@ class DataRuleResult(DataResult):
     set_status( 95, 'AC')
 
     if (pass_fail_count == pass_fail_count_complete) and (pass_fail_count_complete > 0):
-      self.implementation_pass_fail_status = "C"
+      self.implementation_pass_fail_status = 'C'
     elif self.implementation_pass_fail_score > 99:
       self.implementation_pass_fail_score = 99
 
@@ -569,7 +569,13 @@ class DataPageRuleResult(DataResult):
     set_status( 0, 'NI')
     set_status( 50, 'PI')
     set_status( 95, 'AC')
-    set_status(100, 'C')
+
+    if (pass_fail_total == passed) and (pass_fail_total > 0):
+      self.implementation_pass_fail_status = 'C'
+
+    if (total = passed) and (total > 0):
+      self.implementation_status = "C"
+
 
 #    debug("[DataPageRuleResult][calaculate_implementation]           score: " + str(self.implementation_score)) 
 
@@ -1053,9 +1059,15 @@ class DataWebsiteRuleResult(DataResult):
     set_status( 0, 'NI')
     set_status( 50, 'PI')
     set_status( 95, 'AC')
-    set_status(100, 'C')
+
+    if (pass_fail_total == passed) and (pass_fail_total > 0):
+      self.implementation_pass_fail_status = 'C'
+
+    if (total = passed) and (total > 0):
+      self.implementation_status = "C"
 
 
+#
 
   def saveToDjango(self, data_ws_result, ws_report):
 #    debug("[DataWebsiteRuleResult][saveToDjango] " + self.rule_id)
