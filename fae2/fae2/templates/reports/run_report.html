@@ -174,12 +174,12 @@
 <script type="text/javascript">
 
   var last_report = {};
-  last_report.url       = "{{last_report.url}}";
-  last_report.title     = "{{last_report.title}}";
-  last_report.rulesetId = "{{last_report.ruleset.ruleset_id}}";
-  last_report.depth     = {{last_report.depth}};
-  last_report.max_pages = {{last_report.max_pages}};
-  last_report.depth_id  = "depth_" + last_report.depth.toString();
+  last_report.url        = "{{last_report.url}}";
+  last_report.title      = "{{last_report.title}}";
+  last_report.ruleset_id = "{{last_report.ruleset.id}}";
+  last_report.depth      = {{last_report.depth}};
+  last_report.max_pages  = {{last_report.max_pages}};
+  last_report.depth_id   = "depth_" + last_report.depth.toString();
   
   last_report.span_sub_domains     = "{{last_report.span_sub_domains}}";
   last_report.exclude_sub_domains = "{{last_report.exclude_sub_domains}}";
@@ -199,12 +199,7 @@
         document.getElementById("follow_1").checked = true;
       }
 
-      if (last_report.rulesetId === "ARIA_STRICT") {
-        document.getElementById("ruleset_1").checked = true;
-      }
-      else {
-        document.getElementById("ruleset_2").checked = true;
-      }
+      document.getElementById("ruleset_" + last_report.ruleset_id).checked = true;
 
       var max_page_input = document.getElementById("max_pages_" + last_report.max_pages);
 

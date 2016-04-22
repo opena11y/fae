@@ -27,10 +27,11 @@
                         {{ report.url }}
                     {% endif %}
                     </a>
+
                 </td>
                 
                 <td class="text date">
-                    {{ report.created|date:"Y-m-d H:i" }}
+                    {{ report.created|date:"Y-m-d H:i" }} | {{ report.last_viewed }}
                 </td>
 
                 <td class="num"> {{ report.page_all_results.count }}</td> 

@@ -18,6 +18,8 @@ from __future__ import absolute_import
 import sys
 import fnmatch
 import os
+from datetime import datetime
+
 
 from os.path import join 
 
@@ -273,30 +275,28 @@ class WebsiteReport(RuleGroupResult):
 
   def save(self):
 
-    print('[self.follow]: ' + str(self.follow))
-
-    if self.follow == 2:
-
-      url_parts = urlparse(self.url)
-
-      print('[url_parts]: ' + str(url_parts))
-
-      try:
-        if url_parts.netloc.find('www.') < 0:
-          self.span_sub_domains = url_parts.netloc      
-        else:
-          if url_parts.netloc.find('www.') == 0:
-            self.span_sub_domains = url_parts.netloc[4:]
-          else:
-            parts = url_parts.netloc.split('www.')
-            if len(parts) == 2:
-               self.span_sub_domains = parts[1]
-
-      except:
-        pass
-
-
     if len(self.data_dir_slug) == 0:
+
+      if self.follow == 2:
+
+        url_parts = urlparse(self.url)
+
+#        print('[url_parts]: ' + str(url_parts))
+
+        try:
+          if url_parts.netloc.find('www.') < 0:
+            self.span_sub_domains = url_parts.netloc      
+          else:
+            if url_parts.netloc.find('www.') == 0:
+              self.span_sub_domains = url_parts.netloc[4:]
+            else:
+              parts = url_parts.netloc.split('www.')
+              if len(parts) == 2:
+                 self.span_sub_domains = parts[1]
+
+        except:
+          pass
+
       DIR = APP_DIR
 
       count = len(WebsiteReport.objects.filter(user=self.user)) + 1
@@ -408,6 +408,13 @@ class WebsiteReport(RuleGroupResult):
       pr.page_number = num
       pr.save()
       num += 1     
+
+  def update_last_viewed(self):
+    self.last_viewed = datetime.now()
+    self.save()
+    print('[LAST_VIEWED][' +  self.title + ']: ' + str(self.last_viewed))
+
+
 
   def get_pages_summary(self, view=False, group=False):
       ps = PagesSummary()

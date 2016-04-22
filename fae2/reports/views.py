@@ -246,8 +246,6 @@ class FAENavigtionObject:
             self.next_label     = False
             self.next_url       = False
 
-
-
         if self.slug:
             self.update_filters()
         else:
@@ -670,6 +668,7 @@ class ReportRulesView(FAENavigationMixin, TemplateView):
         view = kwargs['view']
 
         report = WebsiteReport.objects.get(slug=kwargs['report'])
+        report.update_last_viewed()
         page = False
 
         if report.page_count == 1:
@@ -722,6 +721,8 @@ class ReportRulesGroupView(FAENavigationMixin, TemplateView):
         next_group     = False
 
         report = WebsiteReport.objects.get(slug=kwargs['report'])
+        report.update_last_viewed()
+
         if view == 'gl':
           group        = report.ws_gl_results.get(slug=group_slug)
           page_results = group.page_gl_results.all()
@@ -777,6 +778,8 @@ class ReportRulesGroupRuleView(FAENavigationMixin, TemplateView):
         next_rule = False
 
         report = WebsiteReport.objects.get(slug=kwargs['report'])
+        report.update_last_viewed()
+
         if view == 'gl':
           group = report.ws_gl_results.get(slug=group_slug)
         elif view == 'rs':  
@@ -826,6 +829,8 @@ class ReportRulesGroupRulePageView(FAENavigationMixin, TemplateView):
         page_slug  = kwargs['page']
 
         report = WebsiteReport.objects.get(slug=kwargs['report'])
+        report.update_last_viewed()
+
         if   view == 'gl':
           group = report.ws_gl_results.get(slug=group_slug)
         elif view == 'rs':  
@@ -872,6 +877,8 @@ class ReportRulesGroupRulePageElementResultsJSON(TemplateView):
         view = kwargs['view']
 
         report = WebsiteReport.objects.get(slug=kwargs['report'])
+        report.update_last_viewed()
+
         if view == 'gl':
           group = report.ws_gl_results.get(slug=kwargs['group'])
         elif view == 'rs':  
@@ -901,6 +908,8 @@ class ReportPagesView(FAENavigationMixin, TemplateView):
         view = kwargs['view']
 
         report = WebsiteReport.objects.get(slug=kwargs['report'])
+        report.update_last_viewed()
+
         page = False
         groups = []
 
@@ -942,6 +951,8 @@ class ReportPagesGroupView(FAENavigationMixin, TemplateView):
         group_slug = kwargs['group']
 
         report = WebsiteReport.objects.get(slug=kwargs['report'])
+        report.update_last_viewed()
+
         page = False
         groups = []
 
@@ -1009,6 +1020,8 @@ class ReportPageView(FAENavigationMixin, TemplateView):
         page_slug = kwargs['page']
 
         report = WebsiteReport.objects.get(slug=kwargs['report'])
+        report.update_last_viewed()
+
         page   = report.page_all_results.get(page_number=page_slug)
         page_number = page.page_number
 
@@ -1056,6 +1069,8 @@ class ReportPageGroupView(FAENavigationMixin, TemplateView):
         group_slug = kwargs['group']
 
         report = WebsiteReport.objects.get(slug=kwargs['report'])
+        report.update_last_viewed()
+
         page   = report.page_all_results.get(page_number=page_slug)
         if view == 'gl':
           group_results = page.page_gl_results.get(slug=group_slug)
@@ -1109,6 +1124,8 @@ class ReportPageGroupRuleView(FAENavigationMixin, TemplateView):
         rule_slug  = kwargs['rule']
 
         report = WebsiteReport.objects.get(slug=kwargs['report'])
+        report.update_last_viewed()
+        
         page   = report.page_all_results.get(page_number=page_slug)
         if view == 'gl':
           group = page.page_gl_results.get(slug=group_slug)
