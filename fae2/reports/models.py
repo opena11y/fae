@@ -412,7 +412,7 @@ class WebsiteReport(RuleGroupResult):
   def update_last_viewed(self):
     self.last_viewed = datetime.now()
     self.save()
-    print('[LAST_VIEWED][' +  self.title + ']: ' + str(self.last_viewed))
+#    print('[LAST_VIEWED][' +  self.title + ']: ' + str(self.last_viewed))
 
 
 
