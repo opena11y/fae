@@ -82,14 +82,14 @@ main div.login a {
     font-size: 124%;
 }
 
-#view_options {
+nav#view_options {
     margin-top: 3em;
     margin-bottom: -1.5em;
-    padding-bottom: 0;
-    font-size: 110%;
 }
-
-nav 
+nav#view_options ul {
+    margin: 0;
+    padding: 0;
+}
 
 nav {
     margin-bottom: 1em;
