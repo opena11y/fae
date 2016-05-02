@@ -60,7 +60,7 @@ from stats.models        import StatsUser
 # Create your views here.
 
 
-class HeaderInfo(TemplateView):
+class HeaderInfo(LoginRequiredMixin, TemplateView):
    template_name = 'registration/header_info.html'
 
 
