@@ -43,6 +43,7 @@ from accounts.views import Login
 from accounts.views import ShibbolethLogout
 from accounts.views import ShibbolethLogin
 from accounts.views import ShibbolethDiscovery
+from accounts.views import HeaderInfo
 
 urlpatterns = [
     url(r'^admin/',   include(admin.site.urls)),
@@ -60,6 +61,7 @@ if SHIBBOLETH_ENABLED:
       url(r'^login/$',           ShibbolethLogin.as_view(),     name='login'),
       url(r'^logout/$',          ShibbolethLogout.as_view(),    name='logout'),
       url(r'^shib-discovery/$',  ShibbolethDiscovery.as_view(), name='shib_discovery'),
+      url(r'^header-info/$',     HeaderInfo.as_view(),          name='header_info'),
       url(r'^shib/', include('shibboleth.urls', namespace='shibboleth')),
   ]
 else:

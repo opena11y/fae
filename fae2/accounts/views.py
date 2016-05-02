@@ -59,6 +59,11 @@ from stats.models        import StatsUser
 
 # Create your views here.
 
+
+class HeaderInfo(TemplateView):
+   template_name = 'registration/header_info.html'
+
+
 class ShibbolethLogout(RedirectView):
 
     def get_redirect_url(self, *args, **kwargs):
