@@ -155,10 +155,10 @@ if SHIBBOLETH_ENABLED:
     )
 
     SHIBBOLETH_ATTRIBUTE_MAP = {
-        "HTTP_EPPN":        (True,  "username"),
-        "HTTP_GIVENNAME":   (True,  "first_name"),
-        "HTTP_SN":          (True,  "last_name"),
-        "HTTP_MAIL":        (False, "email"),
+        "eppn":        (True,  "username"),
+        "givenName":   (True,  "first_name"),
+        "sn":          (True,  "last_name"),
+        "mail":        (False, "email"),
     }
 
     LOGIN_URL = SHIBBOLETH_URL
