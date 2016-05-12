@@ -419,6 +419,14 @@ var createARIATestRuleset = function () {
        required : true,
        enabled  : true
      },
+   ROLE_13 : {
+       required : true,
+       enabled  : true
+     },
+   ROLE_14 : {
+       required : true,
+       enabled  : true
+     },
    SENSORY_1 : {
        required : true,
        enabled  : true
@@ -973,7 +981,15 @@ var createARIATransitionalRuleset = function () {
    ROLE_12 : {
        required : false,
        enabled  : true
-   },
+    },
+      ROLE_13 : {
+       required : true,
+       enabled  : true
+      },
+   ROLE_14: {
+       required : true,
+       enabled  : true
+     },
    SENSORY_1 : {
        required : true,
        enabled  : true
@@ -1545,6 +1561,14 @@ var createARIAStrictRuleset = function () {
        required : true,
        enabled  : true
       },
+      ROLE_13 : {
+       required : true,
+       enabled  : true
+      },
+      ROLE_14 : {
+       required : true,
+       enabled  : true
+     },
       SENSORY_1 : {
         required : true,
         enabled  : true

@@ -899,29 +899,30 @@ OpenAjax.a11y.CONTROL_TYPE = OpenAjax.a11y.CONTROL_TYPE || {
   FIELDSET       : 10,
   FILE           : 11,
   FORM           : 12,
-  HIDDEN         : 13,
-  IMAGE          : 14,
-  LABEL          : 15,
-  METER          : 16,
-  MONTH          : 17,
-  NUMBER         : 18,
-  OPTION         : 19,
-  OPTGROUP       : 20,
-  PASSWORD       : 21,
-  PROGRESS       : 22,
-  RADIO          : 23,
-  RANGE          : 24,
-  RESET          : 25,
-  SEARCH         : 26,
-  SELECT         : 27,
-  SUBMIT         : 28,
-  TEL            : 29,
-  TEXT           : 30,
-  TEXTAREA       : 31,
-  TIME           : 32,
-  URL            : 33,
-  WEEK           : 34,
-  WIDGET         : 35
+  GROUP          : 13,
+  HIDDEN         : 14,
+  IMAGE          : 15,
+  LABEL          : 16,
+  METER          : 17,
+  MONTH          : 18,
+  NUMBER         : 19,
+  OPTION         : 20,
+  OPTGROUP       : 22,
+  PASSWORD       : 23,
+  PROGRESS       : 24,
+  RADIO          : 25,
+  RANGE          : 26,
+  RESET          : 27,
+  SEARCH         : 28,
+  SELECT         : 29,
+  SUBMIT         : 30,
+  TEL            : 31,
+  TEXT           : 32,
+  TEXTAREA       : 33,
+  TIME           : 34,
+  URL            : 35,
+  WEEK           : 36,
+  WIDGET         : 37
 };
 
 /**
@@ -2399,17 +2400,23 @@ OpenAjax.a11y.util.normalizeSpace = function (s) {
   for (var i = 0; i < len; i++) {
   
     var c = s[i];
-    
+
+
     // only include printable characters less than '~' character
     if (c < ' ' || c > '~') continue;
   
     if ((c !== ' ') || (last_c !== ' ')) {
       s1 += c;
-      last_c = c;
+      last_c = c; 
     }
-    
+
   }
-  
+
+  // trim off any trailing spaces
+  while(s1.length && s1.slice(-1) === ' ') {
+    s1 = s1.slice(0, -1);
+  }  
+
   return s1;
   
 };
@@ -3556,6 +3563,7 @@ OpenAjax.a11y.cache.ColorContrastItem.prototype.toString = function () {
  *
  * @property {ControlElement}   control_element  - Parent ControlElement (if any)
  * @property {FieldsetElement}  fieldset_element - Parent FieldsetElement (if any)
+ * @property {GroupingElement}  grouping_element - Parent GroupingElement (if any)
  * @property {SelectElement}    select_element   - Parent SelectElement (if any)
  * @property {LabelElement}     label_element    - Parent LabelElement (if any)
  * @property {FormElement}      form_element     - Parent FormElement (if any)
@@ -3566,6 +3574,7 @@ OpenAjax.a11y.cache.ControlInfo = function (control_info) {
  if (control_info) {
   this.control_element  = control_info.control_element;
   this.fieldset_element = control_info.fieldset_element;
+  this.grouping_element = control_info.grouping_element;
   this.select_element   = control_info.select_element;
   this.label_element    = control_info.label_element; 
   this.form_element     = control_info.form_element; 
@@ -3574,6 +3583,7 @@ OpenAjax.a11y.cache.ControlInfo = function (control_info) {
  else {
   this.control_element  = null;
   this.fieldset_element = null;
+  this.grouping_element = null;
   this.select_element   = null;
   this.label_element    = null;
   this.form_element     = null;
@@ -3619,8 +3629,8 @@ OpenAjax.a11y.cache.ControlInfo = function (control_info) {
  * @property {Array}    label_elements        - List of all the LabelElement objects in the cache
  * @property {Number}   label_length          - Length of the label_elements array and used in calculating cache IDs
  *
- * @property {Array}    fieldset_elements     - List of all the FieldsetElement objects in the cache
- * @property {Number}   fieldset_length       - Length of the Fireldset_elements array and used in calculating cache IDs
+ * @property {Array}    grouping_elements     - List of all the FieldsetElement objects in the cache
+ * @property {Number}   grouping_length       - Length of the Fireldset_elements array and used in calculating cache IDs
  *
  * @property {Array}    form_elements         - List of all the FormElement objects in the cache
  * @property {Number}   form_length           - Length of the form_elements array and used in calculating cache IDs
@@ -3654,8 +3664,8 @@ OpenAjax.a11y.cache.ControlsCache = function (dom_cache) {
   this.label_elements  = [];
   this.label_length   = 0;
   
-  this.fieldset_elements = [];
-  this.fieldset_length = 0;
+  this.grouping_elements = [];
+  this.grouping_length = 0;
   
   this.form_elements   = [];
   this.form_length   = 0;
@@ -3762,30 +3772,30 @@ OpenAjax.a11y.cache.ControlsCache.prototype.addFormElement = function (form_elem
 };
 
 /** 
- * @method addFieldsetElement
+ * @method addGroupingElement
  *
  * @memberOf OpenAjax.a11y.cache.ControlsCache
  *
- * @desc Adds a FieldsetElement to the list of fieldset elements and generates a cache id for the object 
+ * @desc Adds a GroupingElement to the list of grouping elements and generates a cache id for the object 
  *
- * @param  {FieldsetElement}  fieldset_element  - FieldsetElement to add 
+ * @param  {GroupingElement}  grouping_element  - GroupingElement to add 
  *
- * @return {Number} Returns the number of FieldsetElement objects in the list of fieldset elements
+ * @return {Number} Returns the number of GroupingElement objects in the list of grouping elements
  */
 
-OpenAjax.a11y.cache.ControlsCache.prototype.addFieldsetElement = function (fieldset_element) {
+OpenAjax.a11y.cache.ControlsCache.prototype.addGroupingElement = function (grouping_element) {
 
-  // item must exist and have the position property
-  if (fieldset_element) {
-    this.fieldset_length = this.fieldset_length + 1;
-    fieldset_element.document_order = this.fieldset_length;
-    fieldset_element.cache_id = "fieldset_" + this.fieldset_length;
-    this.fieldset_elements.push(fieldset_element);
+  if (grouping_element) {
+    this.grouping_length = this.grouping_length + 1;
+    grouping_element.document_order = this.grouping_length;
+    grouping_element.cache_id = "grouping_" + this.grouping_length;
+    this.grouping_elements.push(grouping_element);
   } 
 
-  return this.fieldset_length;
+  return this.grouping_length;
 
 };
+
 
 /**
  * @method emptyCache
@@ -3807,8 +3817,8 @@ OpenAjax.a11y.cache.ControlsCache.prototype.emptyCache = function () {
   this.label_elements  = [];
   this.label_length   = 0;
   
-  this.fieldset_elements = [];
-  this.fieldset_length = 0;
+  this.grouping_elements = [];
+  this.grouping_length = 0;
   
   this.form_elements   = [];
   this.form_length   = 0;
@@ -3922,7 +3932,7 @@ OpenAjax.a11y.cache.ControlsCache.prototype.updateCacheItems = function (dom_ele
     case 'fieldset':
       fe = new OpenAjax.a11y.cache.FieldsetElement(dom_element, control_info);
     
-      this.addFieldsetElement(fe); 
+      this.addGroupingElement(fe); 
   
       if (control_info.control_element) {
         control_info.control_element.addChildControl(fe);   
@@ -3933,6 +3943,7 @@ OpenAjax.a11y.cache.ControlsCache.prototype.updateCacheItems = function (dom_ele
   
       ci.control_element = fe;
       ci.fieldset_element = fe;
+      ci.grouping_element = fe;
       break;
 
     case 'legend':
@@ -3996,8 +4007,8 @@ OpenAjax.a11y.cache.ControlsCache.prototype.updateCacheItems = function (dom_ele
           control_info.form_element.number_of_controls += 1;   
         }
       
-        if (control_info.fieldset_element) {
-          control_info.fieldset_element.number_of_controls += 1;   
+        if (control_info.grouping_element) {
+          control_info.grouping_element.number_of_controls += 1;   
         }
       } 
       
@@ -4028,8 +4039,8 @@ OpenAjax.a11y.cache.ControlsCache.prototype.updateCacheItems = function (dom_ele
         control_info.form_element.number_of_controls += 1;   
       }
 
-      if (control_info.fieldset_element) {
-        control_info.fieldset_element.number_of_controls += 1;   
+      if (control_info.grouping_element) {
+        control_info.grouping_element.number_of_controls += 1;   
       }
     
       ci.control_element = be;
@@ -4060,8 +4071,8 @@ OpenAjax.a11y.cache.ControlsCache.prototype.updateCacheItems = function (dom_ele
         control_info.form_element.number_of_controls += 1;   
       }
 
-      if (control_info.fieldset_element) {
-        control_info.fieldset_element.number_of_controls += 1;   
+      if (control_info.grouping_element) {
+        control_info.grouping_element.number_of_controls += 1;   
       }
     
       break;
@@ -4084,8 +4095,8 @@ OpenAjax.a11y.cache.ControlsCache.prototype.updateCacheItems = function (dom_ele
         control_info.form_element.number_of_controls += 1;   
       }
 
-      if (control_info.fieldset_element) {
-        control_info.fieldset_element.number_of_controls += 1;   
+      if (control_info.grouping_element) {
+        control_info.grouping_element.number_of_controls += 1;   
       }
     
   
@@ -4108,8 +4119,8 @@ OpenAjax.a11y.cache.ControlsCache.prototype.updateCacheItems = function (dom_ele
         control_info.form_element.number_of_controls += 1;   
       }
 
-      if (control_info.fieldset_element) {
-        control_info.fieldset_element.number_of_controls += 1;   
+      if (control_info.grouping_element) {
+        control_info.grouping_element.number_of_controls += 1;   
       }
     
       break;
@@ -4132,8 +4143,8 @@ OpenAjax.a11y.cache.ControlsCache.prototype.updateCacheItems = function (dom_ele
         control_info.form_element.number_of_controls += 1;   
       }
 
-      if (control_info.fieldset_element) {
-        control_info.fieldset_element.number_of_controls += 1;   
+      if (control_info.grouping_element) {
+        control_info.grouping_element.number_of_controls += 1;   
       }
 
       if (!interactive_element_added) {
@@ -4161,8 +4172,8 @@ OpenAjax.a11y.cache.ControlsCache.prototype.updateCacheItems = function (dom_ele
         control_info.form_element.number_of_controls += 1;   
       }
   
-      if (control_info.fieldset_element) {
-        control_info.fieldset_element.number_of_controls += 1;   
+      if (control_info.grouping_element) {
+        control_info.grouping_element.number_of_controls += 1;   
       }
     
       ci.select_element = se;
@@ -4231,6 +4242,25 @@ OpenAjax.a11y.cache.ControlsCache.prototype.updateCacheItems = function (dom_ele
       break;
       
     default:
+
+      // check to see if it is a grouping label
+      if(dom_element.is_group) {
+        ge = new OpenAjax.a11y.cache.GroupingElement(dom_element, control_info);
+      
+        this.addGroupingElement(ge); 
+        this.addControlElement(ge); 
+    
+        if (control_info.control_element) {
+          control_info.control_element.addChildControl(ge);   
+        }
+        else {
+          this.addChildControl(ge);     
+        }
+    
+        ci.control_element = ge;
+        ci.grouping_element = ge;
+
+      }
   
       break;
 
@@ -4583,9 +4613,9 @@ OpenAjax.a11y.cache.ControlsCache.prototype.getFieldsetElementByCacheId = functi
 
  var i;
 
- for (i=0; i<this.fieldset_elements.length; i++) {
-  if (this.fieldset_elements[i].cache_id == cache_id) {
-   return this.fieldset_elements[i];
+ for (i=0; i<this.grouping_elements.length; i++) {
+  if (this.grouping_elements[i].cache_id == cache_id) {
+   return this.grouping_elements[i];
   }
  }
 
@@ -4685,15 +4715,11 @@ OpenAjax.a11y.cache.ControlsCache.prototype.calculateLabelsUsingARIA = function 
     var ce = control_elements[i];
     var de = ce.dom_element;
 
-//    OpenAjax.a11y.logger.debug("   CONTROL: " + ce);
-//    OpenAjax.a11y.logger.debug("   LABEL 1: " + ce.computed_label);
-    
     if ( (de.aria_labelledby && de.aria_labelledby.length) || 
          (de.aria_label && de.aria_label.length) ||
          (de.role_info)) {
          
       this.dom_cache.getNameFromARIALabel(ce);
-//      OpenAjax.a11y.logger.debug("   LABEL 2: " + ce.computed_label);
       
       // If title attribute is the result clear label for use of other labeling techniques
       if (ce.computed_label_source == OpenAjax.a11y.SOURCE.TITLE_ATTRIBUTE && !ce.role_info) {
@@ -4709,7 +4735,7 @@ OpenAjax.a11y.cache.ControlsCache.prototype.calculateLabelsUsingARIA = function 
 
 
 /**
- * @method getFieldsetLegend
+ * @method getGroupingLabel
  *
  * @memberOf OpenAjax.a11y.cache.ControlsCache
  *
@@ -4718,18 +4744,25 @@ OpenAjax.a11y.cache.ControlsCache.prototype.calculateLabelsUsingARIA = function 
  * @param {Object}  control  -  Control Object
  */
  
-OpenAjax.a11y.cache.ControlsCache.prototype.getFieldsetLegend = function (control) {
+OpenAjax.a11y.cache.ControlsCache.prototype.getGroupingLabel = function (control) {
 
-   var fieldset_element = control.fieldset_element;
+   var grouping_element = control.grouping_element;
    var label = "";
 
    // Add fieldset/legend information if defined
-   while (fieldset_element) {
+   while (grouping_element) {
      
-     if (fieldset_element.legend_element) { 
-       label +=  " " + fieldset_element.legend_element.computed_label;
+     if (grouping_element.computed_label) { 
+       label +=  " " + grouping_element.computed_label;
      }
-     fieldset_element = fieldset_element.fieldset_element;
+     else {
+       if (grouping_element && 
+           grouping_element.legend_element&& 
+           grouping_element.legend_element.computed_label) { 
+         label +=  " " + grouping_element.legend_element.computed_label;
+       }
+     }
+     grouping_element = grouping_element.grouping_element;
    }
 
    return label;
@@ -4767,7 +4800,7 @@ OpenAjax.a11y.cache.ControlsCache.prototype.addLabel = function (control, label,
     
     if ((source != SOURCE.ARIA_LABELLEDBY) &&
         (source != SOURCE.ARIA_LABEL)) {
-      control.computed_label += this.getFieldsetLegend(control);
+      control.computed_label += this.getGroupingLabel(control);
     }  
   }
   
@@ -5308,7 +5341,7 @@ OpenAjax.a11y.cache.FieldsetElement = function (dom_element, control_info) {
   this.control_type = OpenAjax.a11y.CONTROL_TYPE.FIELDSET;
   this.number_of_controls = 0;   
  
-  this.fieldset_element = control_info.fieldset_element;
+  this.grouping_element = control_info.grouping_element;
  
   this.legend_element = null;
  
@@ -5463,11 +5496,220 @@ OpenAjax.a11y.cache.FieldsetElement.prototype.getEvents = function () {
  
 OpenAjax.a11y.cache.FieldsetElement.prototype.toString = function () {
 
- var s = "no legend element";
+ var s = "fieldset: ";
  
- if (this.legend_element) s = this.legend_element.computed_label;
+ if (this.legend_element && this.legend_element.computed_label.length) s += this.legend_element.computed_label;
+ else s += 'no legend';
    
  return s;  
+     
+};
+
+/* ---------------------------------------------------------------- */
+/*                       GroupingElement                            */ 
+/* ---------------------------------------------------------------- */
+
+/**
+ * @constructor GroupingElement
+ *
+ * @memberOf OpenAjax.a11y.cache
+ *
+ * @desc Creates a GroupingElement object used to hold information about fieldset elements
+ *
+ * @param  {DOMelement}   dom_element   - The dom element object representing the fieldset element 
+ * @param  {ControlInfo}  control_info  - Information about parent controls
+ *
+ * @property  {DOMElement}  dom_element     - Reference to the dom element representing the fieldset element
+ * @property  {String}      cache_id        - String that uniquely identifies the cache element object in the cache
+ * @property  {Number}      document_order  - Ordinal position of the fieldset element in the document in relationship to other fieldset elements
+ *
+ * @property  {Array}       child_cache_elements  - Array of child cache control elements as part of cache control tree 
+ * @property  {Number}      control_type          - Constant indicating the type of cache control object  
+ *
+ * @property  {Boolean}     needs_label    - True if the control needs a label element or aria technique, otherwise false   
+ *
+ * @property  {Number}      number_of_controls    - Number of controls in form
+ *
+ * @property  {GroupingElement}  fieldset_element  - Reference to any fieldset elements this fieldset is nested in
+ */
+
+OpenAjax.a11y.cache.GroupingElement = function (dom_element, control_info) {
+
+  this.dom_element    = dom_element;
+  this.cache_id       = "";
+  this.document_order = 0;
+
+  this.needs_label = false;
+  this.has_validity = false;
+  this.has_pattern = false;
+
+  this.child_cache_elements = [];
+  this.control_type = OpenAjax.a11y.CONTROL_TYPE.GROUPING;
+  this.number_of_controls = 0;   
+ 
+  this.grouping_element = control_info.grouping_element;
+
+  this.computed_label = "";
+  this.computed_label_length = 0;
+  this.computed_label_for_comparison = "";
+  
+};
+
+/**
+ * @method addChildControl
+ *
+ * @memberOf OpenAjax.a11y.cache.GroupingElement
+ * 
+ * @desc Adds a cache control element to the tree representation of control elements
+ *
+ * @param  {WidgetElement | ButtonElement | FieldsetElement | FormElement | InputElement | LabelElement| LegendElement | OptgroupElement | OptionElement | SelectElement | TextareaElement } control_element   - Cache control element object to add 
+ */
+
+OpenAjax.a11y.cache.GroupingElement.prototype.addChildControl = function (child_control) {
+
+  if (child_control) {
+    this.child_cache_elements.push(child_control); 
+  }  
+
+}; 
+
+/**
+ * @method getElementResults
+ *
+ * @memberOf OpenAjax.a11y.cache.FieldsetElement
+ *
+ * @desc Returns an array of node results in severity order 
+ *
+ * @return {Array} Returns a array of node results
+ */
+
+OpenAjax.a11y.cache.GroupingElement.prototype.getElementResults = function () {
+  return this.dom_element.getElementResults();
+};
+
+/**
+ * @method getStyle
+ *
+ * @memberOf OpenAjax.a11y.cache.FieldsetElement
+ *
+ * @desc Returns an array of style items 
+ *
+ * @return {Array} Returns a array of style display objects
+ */
+
+OpenAjax.a11y.cache.GroupingElement.prototype.getStyle = function () {
+
+  return this.dom_element.getStyle();
+  
+};
+
+/**
+ * @method getAttributes
+ *
+ * @memberOf OpenAjax.a11y.cache.FieldsetElement
+ *
+ * @desc Returns an array of attributes for the element, sorted in alphabetical order 
+ *
+ * @param {Boolean}  unsorted  - If defined and true the results will NOT be sorted alphabetically
+ *
+ * @return {Array} Returns a array of attribute display object
+ */
+
+OpenAjax.a11y.cache.GroupingElement.prototype.getAttributes = function (unsorted) {
+
+  var cache_nls = OpenAjax.a11y.nls.Cache;
+  var attributes = this.dom_element.getAttributes();
+  
+//  cache_nls.addPropertyIfUndefined(attributes, this, 'tag_name');
+  
+  if (!unsorted) this.dom_element.sortItems(attributes);
+  
+  return attributes;
+};
+
+/**
+ * @method getCacheProperties
+ *
+ * @memberOf OpenAjax.a11y.cache.FieldsetElement
+ *
+ * @desc Returns an array of cache properties sorted by property name 
+ *
+ * @param {Boolean}  unsorted  - If defined and true the results will NOT be sorted alphabetically
+ *
+ * @return {Array} Returns a array of cache property display object
+ */
+
+OpenAjax.a11y.cache.GroupingElement.prototype.getCacheProperties = function (unsorted) {
+
+  var cache_nls = OpenAjax.a11y.nls.Cache;
+
+  var properties = this.dom_element.getCacheProperties(unsorted);
+
+//  cache_nls.addPropertyIfDefined(properties, this, 'tag_name');
+
+  if (!unsorted) this.dom_element.sortItems(properties);
+
+  return properties;
+};
+
+/**
+ * @method getCachePropertyValue
+ *
+ * @memberOf OpenAjax.a11y.cache.FieldsetElement
+ *
+ * @desc Returns the value of a property 
+ *
+ * @param {String}  property  - The property to retreive the value
+ *
+ * @return {String | Number} Returns the value of the property
+ */
+
+OpenAjax.a11y.cache.GroupingElement.prototype.getCachePropertyValue = function (property) {
+
+  if (typeof this[property] == 'undefined') {
+    return this.dom_element.getCachePropertyValue(property);
+  }
+  
+  return this[property];
+};
+
+
+/**
+ * @method getEvents
+ *
+ * @memberOf OpenAjax.a11y.cache.FieldsetElement
+ *
+ * @desc Returns an array of events for the element, sorted in alphabetical order 
+ *
+ * @return {Array} Returns a array of event item display objects
+ */
+
+OpenAjax.a11y.cache.GroupingElement.prototype.getEvents = function () {
+   
+  return this.dom_element.getEvents();
+  
+};
+
+/**
+ * @method toString
+ *
+ * @memberOf OpenAjax.a11y.cache.FieldsetElement
+ *
+ * @desc Returns a text string representation of the grouping element 
+ *
+ * @return {String} Returns string represention the GroupingElement object
+ */
+ 
+OpenAjax.a11y.cache.GroupingElement.prototype.toString = function () {
+
+  var de = this.dom_element; 
+  var s  = de.tag_name;
+
+  if (de.has_role) s += '[role=' + de.role + ']';
+ 
+  if (this.computed_label) s += ': ' + this.computed_label;
+   
+  return s;  
      
 };
 
@@ -5514,15 +5756,15 @@ OpenAjax.a11y.cache.LegendElement = function (dom_element, control_info) {
   this.child_cache_elements = [];
   this.control_type = OpenAjax.a11y.CONTROL_TYPE.LEGEND;
  
-  this.fieldset_element = control_info.fieldset_element;
+  this.grouping_element = control_info.grouping_element;
   
   this.labels = [];
   this.computed_label = "";
   this.computed_label_length = 0;
   this.computed_label_for_comparison = "";
 
-  if (control_info.fieldset_element) {
-    control_info.fieldset_element.legend_count++;
+  if (control_info.grouping_element) {
+    control_info.grouping_element.legend_count++;
   }
 
 };
@@ -5739,7 +5981,7 @@ OpenAjax.a11y.cache.LabelElement = function (dom_element, control_info) {
   this.hidden_label = (dom_element.computed_style.is_visible_to_at === OpenAjax.a11y.VISIBILITY.HIDDEN);
   this.control_element =  null;
 
-  this.fieldset_element = control_info.fieldset_element;
+  this.grouping_element = control_info.grouping_element;
 
   this.for_id = dom_element.node.getAttribute('for');
          
@@ -6135,7 +6377,7 @@ OpenAjax.a11y.cache.InputElement = function (dom_element, control_info) {
   this.disabled  = node.disabled;
  
   this.label_element  = control_info.label_element;
-  this.fieldset_element = control_info.fieldset_element;
+  this.grouping_element = control_info.grouping_element;
 
   this.is_owned = false;
   this.owner_controls = [];
@@ -6409,7 +6651,7 @@ OpenAjax.a11y.cache.ButtonElement = function (dom_element, control_info) {
   this.readonly  = node.readonly;
   this.disabled  = node.disabled;
  
-  this.fieldset_element = control_info.fieldset_element;
+  this.grouping_element = control_info.grouping_element;
 
   this.is_owned = false;
   this.owner_controls = [];
@@ -6714,7 +6956,7 @@ OpenAjax.a11y.cache.TextareaElement = function (dom_element, control_info) {
   this.control_type = OpenAjax.a11y.CONTROL_TYPE.TEXTAREA;
  
   this.label_element  = control_info.label_element;
-  this.fieldset_element = control_info.fieldset_element;
+  this.grouping_element = control_info.grouping_element;
   
   this.name_attribute  = node.getAttribute('name');
   
@@ -6997,7 +7239,7 @@ OpenAjax.a11y.cache.ProgressElement = function (dom_element, control_info) {
   this.control_type = OpenAjax.a11y.CONTROL_TYPE.Progress;
  
   this.label_element  = control_info.label_element;
-  this.fieldset_element = control_info.fieldset_element;
+  this.grouping_element = control_info.grouping_element;
   
   this.name_attribute  = node.getAttribute('name');
   
@@ -7282,7 +7524,7 @@ OpenAjax.a11y.cache.OutputElement = function (dom_element, control_info) {
   this.control_type = OpenAjax.a11y.CONTROL_TYPE.Output;
  
   this.label_element  = control_info.label_element;
-  this.fieldset_element = control_info.fieldset_element;
+  this.grouping_element = control_info.grouping_element;
   
   this.value = node.getAttribute('value'); 
 
@@ -7557,7 +7799,7 @@ OpenAjax.a11y.cache.MeterElement = function (dom_element, control_info) {
   this.control_type = OpenAjax.a11y.CONTROL_TYPE.METER;
  
   this.label_element  = control_info.label_element;
-  this.fieldset_element = control_info.fieldset_element;
+  this.grouping_element = control_info.grouping_element;
   
   this.min   = node.getAttribute('min');
   this.max   = node.getAttribute('max'); 
@@ -7839,7 +8081,7 @@ OpenAjax.a11y.cache.SelectElement = function (dom_element, control_info) {
   this.multiple = node.multiple;
  
   this.label_element  = control_info.label_element;
-  this.fieldset_element = control_info.fieldset_element;
+  this.grouping_element = control_info.grouping_element;
   
   this.is_owned = false;
   this.owner_controls = [];
@@ -8541,7 +8783,7 @@ OpenAjax.a11y.cache.WidgetElement = function (dom_element, control_info) {
   this.control_type   = OpenAjax.a11y.CONTROL_TYPE.WIDGET; 
   
   this.label_element    = control_info.label_element;
-  this.fieldset_element = control_info.fieldset_element;
+  this.grouping_element = control_info.grouping_element;
 
   this.aria_attributes_with_invalid_values  = [];
   this.aria_attributes_missing              = []; 
@@ -8888,7 +9130,7 @@ OpenAjax.a11y.cache.WidgetElement.prototype.toString = function () {
   var label = "no label";
   if (this.computed_label_for_comparison.length) label = this.computed_label;
   
-  return this.dom_element.tag_name + "[" + this.dom_element.role + "]: " + label;
+  return this.dom_element.tag_name + "[role=" + this.dom_element.role + "]: " + label;
   
 };
 
@@ -10256,6 +10498,7 @@ OpenAjax.a11y.cache.DOMElement = function (node, parent_dom_element) {
   this.is_section      = false;
   this.is_abstract     = false;
   this.is_presentation = false;
+  this.is_group        = false;
 
   this.has_alt                   = false;
   this.has_aria_attributes       = false;
@@ -10453,6 +10696,8 @@ OpenAjax.a11y.cache.DOMElement = function (node, parent_dom_element) {
       if (!role_info || !role_info.roleType) continue;
 
       this.role_info = role_info;
+
+      if (role === 'group') this.is_group = true;
 
 //      OpenAjax.a11y.logger.debug("role=" + role + " : " + role_info.roleType);
 
@@ -11027,6 +11272,30 @@ OpenAjax.a11y.cache.DOMElement.prototype.hasChangeEvents = function (prop_list) 
   
 };
 
+/**
+ * @method getChangeEvents
+ *
+ * @memberOf OpenAjax.a11y.cache.DOMElement
+ *
+ * @desc Returns string identifying change event handler
+ */
+ 
+OpenAjax.a11y.cache.DOMElement.prototype.getChangeEvents = function () {
+
+  function addEvent(event, name) {
+    if (event) {
+      events += name + ' ';
+    }   
+  }
+
+  var events = "";
+  
+  addEvent(this.events.has_change,  'onchange');
+
+  return events;
+  
+};
+
 
 /**
  * @method hasFocusEvents
@@ -11065,6 +11334,31 @@ OpenAjax.a11y.cache.DOMElement.prototype.hasFocusEvents = function (prop_list) {
   addEvent(this.events.has_blur,   'onblur');
 
   return has_event;
+  
+};
+
+/**
+ * @method getFocusEvents
+ *
+ * @memberOf OpenAjax.a11y.cache.DOMElement
+ *
+ * @desc Returns string identifying focus specfic event handlers 
+ */
+ 
+OpenAjax.a11y.cache.DOMElement.prototype.getFocusEvents = function () {
+
+  function addEvent(event, name) {
+    if (event) {
+      events += name + ' ';
+    }   
+  }
+
+  var events = "";
+  
+  addEvent(this.events.has_focus,  'onfocus');
+  addEvent(this.events.has_blur,   'onblur');
+
+  return events;
   
 };
 
@@ -11110,6 +11404,30 @@ OpenAjax.a11y.cache.DOMElement.prototype.hasClickEvents = function (prop_list) {
   
 };
 
+/**
+ * @method getClickEvents
+ *
+ * @memberOf OpenAjax.a11y.cache.DOMElement
+ *
+ * @desc Returns string identifying click specfic event handlers 
+ */
+ 
+OpenAjax.a11y.cache.DOMElement.prototype.getClickEvents = function () {
+
+  function addEvent(event, name) {
+    if (event) {
+      events += name + ' ';
+    }   
+  }
+
+  var events = "";
+  
+  addEvent(this.events.has_click,  'onclick');
+  addEvent(this.events.has_double_click,    'ondoubleclick');
+
+  return events;
+  
+};
 
 /**
  * @method hasMouseEvents
@@ -11153,6 +11471,36 @@ OpenAjax.a11y.cache.DOMElement.prototype.hasMouseEvents = function (prop_list) {
   addEvent(this.events.has_mouse_leave, 'onmouseleave');
 
   return has_event;
+  
+};
+
+/**
+ * @method getMouseEvents
+ *
+ * @memberOf OpenAjax.a11y.cache.DOMElement
+ *
+ * @desc Returns string identifying mouse specfic event handlers (i.e. up, down, move, over, out)
+ */
+ 
+OpenAjax.a11y.cache.DOMElement.prototype.getMouseEvents = function () {
+
+  function addEvent(event, name) {
+    if (event) {
+      events += name + ' ';
+    }   
+  }
+
+  var events = "";
+  
+  addEvent(this.events.has_mouse_down,  'onmousedown');
+  addEvent(this.events.has_mouse_up,    'onmouseup');
+  addEvent(this.events.has_mouse_move,  'onmousemove');
+  addEvent(this.events.has_mouse_out,   'onmouseout');
+  addEvent(this.events.has_mouse_over,  'onmouseover');
+  addEvent(this.events.has_mouse_enter, 'onmouseenter');
+  addEvent(this.events.has_mouse_leave, 'onmouseleave');
+
+  return events;
   
 };
 
@@ -11207,6 +11555,35 @@ OpenAjax.a11y.cache.DOMElement.prototype.hasDragEvents = function (prop_list) {
   
 };
 
+/**
+ * @method getDragEvents
+ *
+ * @memberOf OpenAjax.a11y.cache.DOMElement
+ *
+ * @desc Returns string identifying drag specfic event handlers
+ */
+ 
+OpenAjax.a11y.cache.DOMElement.prototype.getDragEvents = function () {
+
+  function addEvent(event, name) {
+    if (event) {
+      events += name + ' ';
+    }   
+  }
+
+  var events = "";
+
+  addEvent(this.events.has_drag,       'ondrag');
+  addEvent(this.events.has_drag_end,   'ondragend');
+  addEvent(this.events.has_drag_enter, 'ondragenter');
+  addEvent(this.events.has_drag_leave, 'ondragleave');
+  addEvent(this.events.has_drag_over,  'ondragover');
+  addEvent(this.events.has_drag_start, 'ondragstart');
+  addEvent(this.events.has_drop,       'ondrop');
+
+  return events;
+  
+};
 
 /**
  * @method hasKeyboardEvents
@@ -11250,6 +11627,32 @@ OpenAjax.a11y.cache.DOMElement.prototype.hasKeyboardEvents = function (str, prop
   
 };
 
+/**
+ * @method getKeyboardEvents
+ *
+ * @memberOf OpenAjax.a11y.cache.DOMElement
+ *
+ * @desc Returns string identifying drag specfic event handlers
+ */
+ 
+OpenAjax.a11y.cache.DOMElement.prototype.getKeyboardEvents = function () {
+
+  function addEvent(event, name) {
+    if (event) {
+      events += name + ' ';
+    }   
+  }
+
+  var events = "";
+
+  addEvent(this.events.has_key_down,  'onkeydown');
+  addEvent(this.events.has_key_press, 'onkeypress');
+  addEvent(this.events.has_key_up,    'onkeyup');
+  if (this.tag_name == 'a') addEvent(this.events.has_click, 'onclick');
+
+  return events;
+  
+};
 
 
 
@@ -14338,15 +14741,8 @@ OpenAjax.a11y.cache.HeadingsLandmarksCache.prototype.updateCacheItems = function
 
     switch(tag_name) {
 
-      case 'address': 
       case 'article': 
       case 'aside': 
-      case 'blockquote':
-      case 'details':
-      case 'dialog':
-      case 'fieldset':
-      case 'figure':
-      case 'table':
       case 'main':
       case 'nav': 
       case 'section': 
@@ -14520,7 +14916,7 @@ OpenAjax.a11y.cache.HeadingsLandmarksCache.prototype.updateCacheItems = function
 //         (dom_element.tag_name === 'form' && !dom_element.has_role) ||
         (dom_element.tag_name === 'main' && !dom_element.has_role) ||
         (dom_element.tag_name === 'nav' && !dom_element.has_role) ||
-        ((dom_element.tag_name === 'section' && !dom_element.has_role) &&
+        (((dom_element.tag_name === 'section' || dom_element.tag_name === 'form') && !dom_element.has_role) &&
          (dom_element.has_aria_label || 
           dom_element.has_aria_labelledby ||
           dom_element.has_title)) ||
@@ -14570,6 +14966,11 @@ OpenAjax.a11y.cache.HeadingsLandmarksCache.prototype.updateCacheItems = function
           case 'footer':
             le = new OpenAjax.a11y.cache.LandmarkElement(dom_element, 'contentinfo');
             this.dom_cache.getNameFromARIALabel(le, "CONTENTINFO");
+            break;
+            
+          case 'form':
+            le = new OpenAjax.a11y.cache.LandmarkElement(dom_element, 'form');
+            this.dom_cache.getNameFromARIALabel(le, "FORM", true);
             break;
             
           case 'header':
@@ -15039,7 +15440,7 @@ OpenAjax.a11y.cache.SectionElement.prototype.getEvents = function () {
 OpenAjax.a11y.cache.SectionElement.prototype.toString = function () {
  var de = this.dom_element;
  var s = de.tag_name;
- if (de.has_role) s = de.tag_name + "[" + de.role + "]"; 
+ if (de.has_role) s = de.tag_name + "[role=" + de.role + "]"; 
  if (this.accessible_name && this.accessible_name.length) s += ": " + this.accessible_name;  
  
  return s;   
@@ -15329,7 +15730,7 @@ OpenAjax.a11y.cache.LandmarkElement.prototype.getEvents = function () {
 OpenAjax.a11y.cache.LandmarkElement.prototype.toString = function () {
  var de = this.dom_element;
  var s = de.tag_name;
- if (de.has_role) s = de.tag_name + "[" + de.role + "]"; 
+ if (de.has_role) s = de.tag_name + "[role=" + de.role + "]"; 
  if (this.accessible_name && this.accessible_name.length) s += ": " + this.accessible_name;  
  
  return s;
@@ -15677,7 +16078,7 @@ OpenAjax.a11y.cache.HeadingElement.prototype.getEvents = function () {
 OpenAjax.a11y.cache.HeadingElement.prototype.toString = function() {
  var de = this.dom_element;
  var s = de.tag_name;
- if (de.has_role) s = de.tag_name + "[" + de.role + "]"; 
+ if (de.has_role) s = de.tag_name + "[role=" + de.role + "]"; 
  if (this.name && this.name.length) s += ": " + this.name;  
  else s += ": no content";  
  
@@ -15986,7 +16387,7 @@ OpenAjax.a11y.cache.MainElement.prototype.getEvents = function () {
 OpenAjax.a11y.cache.MainElement.prototype.toString = function () {
  var de = this.dom_element;
  var s = de.tag_name;
- if (de.has_role) s = de.tag_name + "[" + de.role + "]"; 
+ if (de.has_role) s = de.tag_name + "[role=" + de.role + "]"; 
  if (this.accessible_name && this.accessible_name.length) s += ": " + this.accessible_name; 
   
  return s;
@@ -16237,7 +16638,7 @@ OpenAjax.a11y.cache.H1Element.prototype.getEvents = function () {
 OpenAjax.a11y.cache.H1Element.prototype.toString = function () {
  var de = this.dom_element;
  var s = de.tag_name;
- if (de.has_role) s = de.tag_name + "[" + de.role + "]"; 
+ if (de.has_role) s = de.tag_name + "[role=" + de.role + "]"; 
  if (this.name && this.name.length) s += ": " + this.name;  
  else s += ": no content";  
  
@@ -21761,14 +22162,14 @@ OpenAjax.a11y.cache.TablesCache = function (dom_cache) {
  * @property  {Array}       table_elements        - List of all table element objects in this table element object
  * @property  {Number}      length                - Number of table element objects 
  *
- * @property  {String}  caption                - The caption for the table
- * @property  {String}  caption_for_comparison - The caption for the table used for comparison
- * @property  {Number}  caption_length         - Length of the caption used for comparison
- * @property  {Number}  caption_source         - Numeric constant representing the source of the caption
+ * @property  {String}  accessible_name                - The caption for the table
+ * @property  {String}  accessible_name_for_comparison - The caption for the table used for comparison
+ * @property  {Number}  accessible_name_length         - Length of the caption used for comparison
+ * @property  {Number}  accessible_name_source         - Numeric constant representing the source of the caption
  *
- * @property  {String}  summary                 - Summary of the table
- * @property  {String}  summary_for_comparison  - Summary of table used for comparison
- * @property  {Number}  summary_source          - Numeric constant representing the source of thesummary
+ * @property  {String}  accessible_description                 - Summary of the table
+ * @property  {String}  accessible_description_for_comparison  - Summary of table used for comparison
+ * @property  {Number}  accessible_description_source          - Numeric constant representing the source of thesummary
  *
  * @property  {Number}  max_row     - Number of rows in a table  
  * @property  {Number}  max_column  - Number of columns in a table
@@ -27459,10 +27860,10 @@ OpenAjax.a11y.RuleResult.prototype.getMessage = function (id, prefix) {
   var common_nls = rule.getCommonNLS();
   var rule_id    = rule.getId();
 
-  OpenAjax.a11y.logger.debug("[RuleResult]    rule nls: " +  rule_nls['ID']);
-  OpenAjax.a11y.logger.debug("[RuleResult]     rule id: " +  rule_id);
-  OpenAjax.a11y.logger.debug("[RuleResult]  message id: " +  id);
-  OpenAjax.a11y.logger.debug("[RuleResult]   messages : " +  typeof rule_nls['RULE_RESULT_MESSAGES']);
+//  OpenAjax.a11y.logger.debug("[RuleResult]    rule nls: " +  rule_nls['ID']);
+//  OpenAjax.a11y.logger.debug("[RuleResult]     rule id: " +  rule_id);
+//  OpenAjax.a11y.logger.debug("[RuleResult]  message id: " +  id);
+//  OpenAjax.a11y.logger.debug("[RuleResult]   messages : " +  typeof rule_nls['RULE_RESULT_MESSAGES']);
   
   var message = rule_nls['RULE_RESULT_MESSAGES'][id];
 
@@ -31460,10 +31861,7 @@ OpenAjax.a11y.setLogger = function (logger) {
 
 // basic info about version of ruleset and rules
 OpenAjax.a11y.name = "OpenAjax Alliance Accessibility Tools Task Force";
-OpenAjax.a11y.version = "0.9.9.2";
 OpenAjax.a11y.baseUri = "http://www.openajax.org/member/wiki/Accessibility";
-
-
 
 
 

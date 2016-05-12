@@ -75,16 +75,16 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         AUDIO_1: {
             ID:                    'Audio 1',
             DEFINITION:            '@audio@ elements %s have caption or text transcription of the audio content.',
-            SUMMARY:               '@audio@ %s have alternative.',
+            SUMMARY:               '@audio@ %s have alternative',
             TARGET_RESOURCES_DESC: '@audio@ elements',
             RULE_RESULT_MESSAGES: {
               FAIL_S:         'Add caption or text transcript to @audio@ element',
-              FAIL_P:         'Add a caption or text transcript to each of the %N_F the @audio@ elements with out captions or transcripts',
-              MANUAL_CHECK_S: 'Verify the @audio@ element has either a caption or text transcript of the audio content',
-              MANUAL_CHECK_P: 'Verify the %N_MC @audio@ elements are audio only have either a caption or text transcript of the audio',
-              HIDDEN_S:       'The @audio@ element that is hidden was not analyzed for accessible audio',
-              HIDDEN_P:       'The %N_H @audio@ elements that are hidden were not analyzed for accessible audio',
-              NOT_APPLICABLE: 'No @audio@ elements found on this page'              
+              FAIL_P:         'Add a caption or text transcript to each of the %N_F the @audio@ elements with out captions or transcripts.',
+              MANUAL_CHECK_S: 'Verify the @audio@ element has either a caption or text transcript of the audio content.',
+              MANUAL_CHECK_P: 'Verify the %N_MC @audio@ elements are audio only have either a caption or text transcript of the audio.',
+              HIDDEN_S:       'The @audio@ element that is hidden was not analyzed for accessible audio.',
+              HIDDEN_P:       'The %N_H @audio@ elements that are hidden were not analyzed for accessible audio.',
+              NOT_APPLICABLE: 'No @audio@ elements found on this page.'              
             },
             NODE_RESULT_MESSAGES: {
               ELEMENT_PASS_1:    '@audio@ element has caption.',
@@ -130,7 +130,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         AUDIO_2: {
             ID:                    'Audio 2',
             DEFINITION:            '@object@ elements used for audio only %s have caption or text transcription of the audio content.',
-            SUMMARY:               '@object@ for audio %s have alternative.',
+            SUMMARY:               '@object@ for audio %s have alternative',
             TARGET_RESOURCES_DESC: '@object@ elements',
             RULE_RESULT_MESSAGES: {
               FAIL_S:   'Add caption or text transcript to @object@ element.',
@@ -149,19 +149,19 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_HIDDEN_1: 'The @object@ element is hidden and was not evaluated.'
             },  
             PURPOSE: [
-              'Captions and text transcripts provide a means for people cannot hear the audio to understand the audio content',
-              'Some types of learning disabilities affect speech perception, captions and text transcripts provide an alternative way to understand the audio content',
-              'When the language of the audio is different than the native language of the listener, captions and text transcripts support the listner in understanding the audio content'
+              'Captions and text transcripts provide a means for people cannot hear the audio to understand the audio content.',
+              'Some types of learning disabilities affect speech perception, captions and text transcripts provide an alternative way to understand the audio content.',
+              'When the language of the audio is different than the native language of the listener, captions and text transcripts support the listner in understanding the audio content.'
             ],
             TECHNIQUES: [
-              'Use the @audio@ element instead of the @object@ element for audio only content, since the @audio@ element provides better support for captions and text transcripts',
-              'Use @aria-describedby@ attribute to point to a text description of the audio only content'
+              'Use the @audio@ element instead of the @object@ element for audio only content, since the @audio@ element provides better support for captions and text transcripts.',
+              'Use @aria-describedby@ attribute to point to a text description of the audio only content.'
             ],
             MANUAL_CHECKS: [
-              'Check the web page for a link to a text transcript of the audio, or if the transcript is part of the page rendering the audio',
-              'Check the media player for a button to turn on and off captions',
-              'When captions are enabled on the media player, check to make sure the captions visible and represent the speech and sounds heard on the audio',
-              'In some cases "open" captions might be used, this means the captions are alway "on" as part of the video'
+              'Check the web page for a link to a text transcript of the audio, or if the transcript is part of the page rendering the audio.',
+              'Check the media player for a button to turn on and off captions.',
+              'When captions are enabled on the media player, check to make sure the captions visible and represent the speech and sounds heard on the audio.',
+              'In some cases "open" captions might be used, this means the captions are alway "on" as part of the video.'
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
@@ -177,15 +177,15 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         AUDIO_3: {
             ID:                    'Audio 3',
             DEFINITION:            '@embed@ elements used for audio only %s have caption or text transcription of the audio content.',
-            SUMMARY:               '@embed@ for audio %s have alternative.',
+            SUMMARY:               '@embed@ for audio %s have alternative',
             TARGET_RESOURCES_DESC: '@embed@ elements',
             RULE_RESULT_MESSAGES: {
               FAIL_S:          'Add caption or text transcript to @embed@ element.',
-              FAIL_P:          'Add a caption or text transcript to each of the %N_F @embed@ elements without captions or transcripts',
-              MANUAL_CHECK_S:  'Check if the @embed@ element is audio only content.  If it is audio only make sure it has either a caption or text transcript of the audio content',
-              MANUAL_CHECK_P:  'Check if any of the %N_MC @embed@ elements are audio only. If any are audio only make sure they have either a caption or text transcript of the audio',
-              HIDDEN_S:        'The @embed@ element that is hidden was not analyzed for accessible audio',
-              HIDDEN_P:        'The %N_H @embed@ elements that are hidden were not analyzed for accessibile audio',
+              FAIL_P:          'Add a caption or text transcript to each of the %N_F @embed@ elements without captions or transcripts.',
+              MANUAL_CHECK_S:  'Check if the @embed@ element is audio only content.  If it is audio only make sure it has either a caption or text transcript of the audio content.',
+              MANUAL_CHECK_P:  'Check if any of the %N_MC @embed@ elements are audio only. If any are audio only make sure they have either a caption or text transcript of the audio.',
+              HIDDEN_S:        'The @embed@ element that is hidden was not analyzed for accessible audio.',
+              HIDDEN_P:        'The %N_H @embed@ elements that are hidden were not analyzed for accessibile audio.',
               NOT_APPLICABLE:  'No @embed@ elements found on this page'              
             },
             NODE_RESULT_MESSAGES: {
@@ -196,19 +196,19 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_HIDDEN_1: 'The @object@ element is hidden and was not evaluated.'
             },  
             PURPOSE: [
-              'Captions and text transcripts provide a means for people cannot hear the audio to understand the audio content',
-              'Some types of learning disabilities affect speech perception, captions and text transcripts provide an alternative way to understand the audio content',
-              'When the language of the audio is different than the native language of the listener, captions and text transcripts support the listner in understanding the audio content'
+              'Captions and text transcripts provide a means for people cannot hear the audio to understand the audio content.',
+              'Some types of learning disabilities affect speech perception, captions and text transcripts provide an alternative way to understand the audio content.',
+              'When the language of the audio is different than the native language of the listener, captions and text transcripts support the listner in understanding the audio content.'
             ],
             TECHNIQUES: [
-              'Use the @audio@ element instead of the @embed@ element for audio only content, since the @audio@ element provides better support for captions and text transcripts',
-              'Use @aria-describedby@ attribute to point to a text description of the audio only content'
+              'Use the @audio@ element instead of the @embed@ element for audio only content, since the @audio@ element provides better support for captions and text transcripts.',
+              'Use @aria-describedby@ attribute to point to a text description of the audio only content.'
             ],
             MANUAL_CHECKS: [
-              'Check the web page for a link to a text transcript of the audio, or if the transcript is part of the page rendering the audio',
+              'Check the web page for a link to a text transcript of the audio, or if the transcript is part of the page rendering the audio.',
               'Check the media player for a button to turn on and off captions',
-              'When captions are enabled on the media player, check to make sure the captions visible and represent the speech and sounds heard on the audio',
-              'In some cases "open" captions might be used, this means the captions are alway "on" as part of the video'
+              'When captions are enabled on the media player, check to make sure the captions visible and represent the speech and sounds heard on the audio.',
+              'In some cases "open" captions might be used, this means the captions are alway "on" as part of the video.'
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
@@ -367,37 +367,37 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
     rules: {
         COLOR_1: {
             ID:                    'Color 1',
-            DEFINITION:            'Text content %s exceed Color Contrast Ratio (CCR) of 4.5 for any size text or 3.1 for large and/or bolded text',
-            SUMMARY:               'Text %s exceed CCR of 4.5',
+            DEFINITION:            'Text content %s exceed Color Contrast Ratio (CCR) of 3.1 for large and/or bolded text and 4.5 for any other size or style of text.',
+            SUMMARY:               'Text %s exceed CCR threshold',
             TARGET_RESOURCES_DESC: 'All elements with text content',
             RULE_RESULT_MESSAGES: {
-              FAIL_S:   'Change the foreground and background colors of the text element to meet the CCR > 4.5 requirement',
-              FAIL_P:   'Change the foreground and background colors of the %N_F text elements to meet the CCR > 4.5 requirement',
-              MANUAL_CHECK_S:     'One element requires manual checking for CCR > 4.5 due to the use of a background image',
-              MANUAL_CHECK_P:     '%N_MC elements require manual checking for CCR > 4.5 due to the use of background images',
-              HIDDEN_S: 'The element with text content that is hidden was not analyzed for color contrast accessibility',
-              HIDDEN_P: 'The %N_H elements with text content that are hidden were not analyzed for color contrast accessibility',
-              NOT_APPLICABLE:  'No visible text content on this page'
+              FAIL_S:   'Change the foreground and background colors of the text element to meet the CCR threshold.',
+              FAIL_P:   'Change the foreground and background colors of the %N_F text elements to meet the CCR threshold.',
+              MANUAL_CHECK_S:     'One element requires manual checking for CCR threshold to the use of a background image.',
+              MANUAL_CHECK_P:     '%N_MC elements require manual checking for CCR thrshold to the use of background images.',
+              HIDDEN_S: 'The element with text content that is hidden was not analyzed for color contrast accessibility.',
+              HIDDEN_P: 'The %N_H elements with text content that are hidden were not analyzed for color contrast accessibility.',
+              NOT_APPLICABLE:  'No visible text content on this page.'
             },
             NODE_RESULT_MESSAGES: {
-              ELEMENT_PASS_1:   'CCR of %1 exceeds 4.5',
-              ELEMENT_PASS_2:   'CCR of %1 exceeds 3.1 for large or bolded text',
-              ELEMENT_FAIL_1:   'CCR of %1, adjust foreground and background colors to exceed 4.5',
-              ELEMENT_FAIL_2:   'CCR of %1 for large or bolded text, adjust foreground and background colors to exceed 3.1',
-              ELEMENT_MC_1:     'CCR of %1 is greater than 4.5, but background image may reduce color contrast',
-              ELEMENT_MC_2:     'CCR of %1 is less than or equal to 4.5, but background image may improve color contrast',
-              ELEMENT_MC_3:     'CCR of %1 is greater than 3.1 for large or bolded text, but background image may reduce color contrast',
-              ELEMENT_MC_4:     'CCR of %1 is less than or equal to 3.1 for large and bolded text, but background image may improve color contrast',
+              ELEMENT_PASS_1:   'CCR of %1 exceeds 4.5.',
+              ELEMENT_PASS_2:   'CCR of %1 exceeds 3.1 for large or bolded text.',
+              ELEMENT_FAIL_1:   'CCR of %1, adjust foreground and background colors to exceed 4.5.',
+              ELEMENT_FAIL_2:   'CCR of %1 for large or bolded text, adjust foreground and background colors to exceed 3.1.',
+              ELEMENT_MC_1:     'CCR of %1 is greater than 4.5, but background image may reduce color contrast.',
+              ELEMENT_MC_2:     'CCR of %1 is less than or equal to 4.5, but background image may improve color contrast.',
+              ELEMENT_MC_3:     'CCR of %1 is greater than 3.1 for large or bolded text, but background image may reduce color contrast.',
+              ELEMENT_MC_4:     'CCR of %1 is less than or equal to 3.1 for large and bolded text, but background image may improve color contrast.',
               ELEMENT_HIDDEN_1: 'CCR was not tested since the text is hidden from assistive technologies.'
             },  
-            PURPOSE:        [ 'The higher the color contrast of text the more easy it is to read, especially for people with visual impairments'                   
+            PURPOSE:        [ 'The higher the color contrast of text the more easy it is to read, especially for people with visual impairments.'                   
                             ],
-            TECHNIQUES:     [ 'Change the foreground color to a more complementary color to the background color',
-                              'Change the background color to a more complementary color to the foreground color',
-                              'Remove background images or verify they do not compromise color contrast requirements'
+            TECHNIQUES:     [ 'Change the foreground color to a more complementary color to the background color.',
+                              'Change the background color to a more complementary color to the foreground color.',
+                              'Remove background images or verify they do not compromise color contrast requirements.'
                             ],
-            MANUAL_CHECKS:  [ 'Use graphic editing tools to analyze the color(s) of the background image and then recacluate the CCR with the range of colors in the background image',
-                              'Verify the range of colors that could be part of the background of text is have a CCR > 4.5'
+            MANUAL_CHECKS:  [ 'Use graphic editing tools to analyze the color(s) of the background image and then recacluate the CCR with the range of colors in the background image.',
+                              'Verify the range of colors that could be part of the background of text is have a CCR > 4.5.'
             ],
             INFORMATIONAL_LINKS: [{ type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
                                title: 'WCAG 2.0 Success Criterion 1.4.3 Contrast (Minimum): The visual presentation of text and images of text has a contrast ratio of at least 4.5:1', 
@@ -489,21 +489,21 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
     rules: {
         ERROR_1: {
             ID:                    'Error 1',
-            DEFINITION:            'Form controls with invalid values %s provide information to assitive technologies that the values are invalid',
+            DEFINITION:            'Form controls with invalid values %s provide information to assitive technologies that the values are invalid.',
             SUMMARY:               'Information on invalid values',
             TARGET_RESOURCES_DESC: '@textarea@, @select@ and @input@ elements',
             RULE_RESULT_MESSAGES: {
               FAIL_S:   'Change the value of @aria-invalid@ property to @true@, on form control that is invalid and @aria-invalid="false"@.',
               FAIL_P:   'Change the value of @aria-invalid@ property to @true@, on %N_F form controls that are invalid and @aria-invalid="false"@.',
-              MANUAL_CHECK_S:     'If the form control can be validated make sure it indicates invalid values when invalid',
-              MANUAL_CHECK_P:     'If the %N_MC form controls can be validated make sure they indicates invalid values when invalid',
+              MANUAL_CHECK_S:     'If the form control can be validated make sure it indicates invalid values when invalid.',
+              MANUAL_CHECK_P:     'If the %N_MC form controls can be validated make sure they indicates invalid values when invalid.',
               HIDDEN_S: 'The control element that is hidden does not need to be tested for indicating invalid values.',
               HIDDEN_P: 'The %N_H control elements that are hidden do not need to be tested for indicating invalid values.',
               NOT_APPLICABLE:  'No form controls on this page'                                          
             },
             NODE_RESULT_MESSAGES: {
-              ELEMENT_FAIL_1:       '@%1@ is invalid (i.e. validity.valid property of the control is "false") change the value of "@aria-invalid@ attribute from @false@ to @true@',
-              ELEMENT_FAIL_2:       '@%1@ is valid (i.e. validity.valid property of the control is "true") change the value of "@aria-invalid@ attribute from @true@ to @false@',
+              ELEMENT_FAIL_1:       '@%1@ is invalid (i.e. validity.valid property of the control is "false") change the value of "@aria-invalid@ attribute from @false@ to @true@.',
+              ELEMENT_FAIL_2:       '@%1@ is valid (i.e. validity.valid property of the control is "true") change the value of "@aria-invalid@ attribute from @true@ to @false@.',
               ELEMENT_MC_1: '@%1@ is invalid (i.e. validity.valid property of the control is "false"), verify the label contains information on the value being invalid or add the @aria-invalid="true"@ attribute to the control.',
               ELEMENT_MC_2: '@%1@ is being tested for validity (i.e. @pattern@ attribute is present), verify the label contains information on the validity or add the @aria-invalid@ attribute to inidcate the state of validity of the control.',
               ELEMENT_MC_3: 'Verify if the @%1@ is being validated, if it is being validated verify it implements a technique to indicate the state of validity.',
@@ -515,9 +515,9 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               'Users must be able to identify form control values which are invalid in order to successfully correct the values and submit the form.'                   
             ],
             TECHNIQUES: [
-              'Add the text "invalid" to the label of the form control, the text can be placed off screen using CSS',
-              'Add the image to the label.  The image should be visible indicating an invalid value with the alt text \'invalid\'',
-              'Use @aira-invalid@ attribute to indicate the form control is invalid'
+              'Add the text "invalid" to the label of the form control, the text can be placed off screen using CSS.',
+              'Add the image to the label.  The image should be visible indicating an invalid value with the alt text \'invalid\'.',
+              'Use @aira-invalid@ attribute to indicate the form control is invalid.'
             ],
             MANUAL_CHECKS: [
               'Enter invalid values into form controls that are validated and activate the validation event (i.e. form submission, change of focus...).',
@@ -629,7 +629,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         ERROR_4: {
             ID:                    'Error 4',
-            DEFINITION:            'When input error is automatically detected and suggestions are automatically known, the suggestions %s be provided to the user (some exceptions)',
+            DEFINITION:            'When input error is automatically detected and suggestions are automatically known, the suggestions %s be provided to the user (some exceptions).',
             SUMMARY:               'Error correction suggestions',
             TARGET_RESOURCES_DESC: '@textarea@ and @input[type="text"]@ elements, and ARIA textbox, gridcell and combobox widgets',
             RULE_RESULT_MESSAGES: {
@@ -775,39 +775,39 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
     rules: {
         FOCUS_1: {
             ID:                    'Focus 1',
-            DEFINITION:            'The sequential focus order of links, form controls, embedded apps and widgets %s be meaningful',
+            DEFINITION:            'The sequential focus order of links, form controls, embedded apps and widgets %s be meaningful.',
             SUMMARY:               'Focus order %s be meaningful',
             TARGET_RESOURCES_DESC: '@a@, @area@, @input@, @textarea@ and @select@ elements and elements with widget roles with @tabindex@ values',
             RULE_RESULT_MESSAGES: {
-              MANUAL_CHECK_S:     'Check the "tab" focus order of the page to make sure the sequence of focusable elements is meaningful',
-              MANUAL_CHECK_P:     'Check the "tab" focus order of the page to make sure the sequence of focusable elements is meaningful',
+              MANUAL_CHECK_S:     'Check the "tab" focus order of the page to make sure the sequence of focusable elements is meaningful.',
+              MANUAL_CHECK_P:     'Check the "tab" focus order of the page to make sure the sequence of focusable elements is meaningful.',
               HIDDEN_S: 'The link, form control, embedded app or widget element that is hidden does not need to be tested for focus order.',
               HIDDEN_P: 'The %N_H links, form controls, embedded apps and/or widgets that are hidden do not need to be tested for focus order.',
               NOT_APPLICABLE:  'No or only one focusable element on the page'
             },
             NODE_RESULT_MESSAGES: {
-              PAGE_MC_1:        'Use the "tab" key to check the focus order of the %1 interactive elements on the page (i.e. links, form controls, ...)',
-              PAGE_MC_2:        'Use the "tab" key to check the focus order of the %1 interactive elements on the page (i.e. links, form controls, ...); NOTE: %2 other interactive elements on the page have been removed from the tab order by setting the @tabindex@ value to less than 0',
-              ELEMENT_MC_1:     '%1 element with @role@="%2" is part of the sequential focus order manual check',
-              ELEMENT_MC_2:     '%1 element is part of the sequential focus order manual check',
-              ELEMENT_MC_3:     '%1 element with @role@="%2" has a @tabindex@="%2", so it is NOT part of the sequential focus oarder of the page',
-              ELEMENT_MC_4:     '%1 element has a @tabindex@="%2", so it is NOT part of the sequential focus order of the page',
-              ELEMENT_HIDDEN_1: '%1 element with @role@="%2" is hidden, so NOT a part of the sequential focus order of the page',
-              ELEMENT_HIDDEN_2: '%1 element is hidden, so NOT a part of the sequential focus order of the page'
+              PAGE_MC_1:        'Use the "tab" key to check the focus order of the %1 interactive elements on the page (i.e. links, form controls, ...).',
+              PAGE_MC_2:        'Use the "tab" key to check the focus order of the %1 interactive elements on the page (i.e. links, form controls, ...); NOTE: %2 other interactive elements on the page have been removed from the tab order by setting the @tabindex@ value to less than 0.',
+              ELEMENT_MC_1:     '%1 element with @role@="%2" is part of the sequential focus order manual check.',
+              ELEMENT_MC_2:     '%1 element is part of the sequential focus order manual check.',
+              ELEMENT_MC_3:     '%1 element with @role@="%2" has a @tabindex@="%2", so it is NOT part of the sequential focus oarder of the page.',
+              ELEMENT_MC_4:     '%1 element has a @tabindex@="%2", so it is NOT part of the sequential focus order of the page.',
+              ELEMENT_HIDDEN_1: '%1 element with @role@="%2" is hidden, so NOT a part of the sequential focus order of the page.',
+              ELEMENT_HIDDEN_2: '%1 element is hidden, so NOT a part of the sequential focus order of the page.'
             },  
             PURPOSE: [
-              'The "tab" key is the primary key many browsers use to navigate the interactive elements on a web page',
-              'The sequential order of the elements receiving focus can help a user understand the features on a web page',
-              'The usability of frequently used or important interactive features of a web page can be improved by moving them to the beginning of the focus sequence'
+              'The "tab" key is the primary key many browsers use to navigate the interactive elements on a web page.',
+              'The sequential order of the elements receiving focus can help a user understand the features on a web page.',
+              'The usability of frequently used or important interactive features of a web page can be improved by moving them to the beginning of the focus sequence.'
             ],
             TECHNIQUES: [
-              'Use document order to place related interactive items seuq',
-              'The @tabindex@ atttribute value (i.e. values greater than 0) can be used to change the sequence of focusable elements in a web page or make non-interactive elements part of the "tab" order of the page',
-              'A @tabindex@ values of less than 0 remove redundent interactive elements from the sequential focus order'
+              'Use document order to place related interactive items in a meaningful sequence.',
+              'The @tabindex@ atttribute value (i.e. values greater than 0) can be used to change the sequence of focusable elements in a web page or make non-interactive elements part of the "tab" order of the page.',
+              'A @tabindex@ values of less than 0 remove redundent interactive elements from the sequential focus order.'
             ],
             MANUAL_CHECKS: [
-              'Use the "tab" key to move focus through the links, form controls, embedded applications and widgets on the page',
-              'Does the sequence of elements receiving focus make sense (i.e. related items on the page are navigated sequentially as a group)'
+              'Use the "tab" key to move focus through the links, form controls, embedded applications and widgets on the page.',
+              'Does the sequence of elements receiving focus make sense (i.e. related items on the page are navigated sequentially as a group).'
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
@@ -822,38 +822,38 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         FOCUS_2: {
             ID:                    'Focus 2',
-            DEFINITION:            'The element with keyboard focus %s have a visible focus style that is different from the non-focus state',
+            DEFINITION:            'The element with keyboard focus %s have a visible focus style that is different from the non-focus state.',
             SUMMARY:               'Focus %s be visible',
             TARGET_RESOURCES_DESC: '@a@, @area@, @input@, @textarea@ and @select@ elements and elements with widget roles with @tabindex@ values',
             RULE_RESULT_MESSAGES: {
-              MANUAL_CHECK_S:     'Use the "tab" key to move focus between links, form controls, embedded apps and widgets and check the visibility of focus styling for each element as it receives focus',
-              MANUAL_CHECK_P:     'Use the "tab" key to move focus between links, form controls, embedded apps and widgets and check the visibility of focus styling for each element as it receives focus',
+              MANUAL_CHECK_S:     'Use the "tab" key to move focus between links, form controls, embedded apps and widgets and check the visibility of focus styling for each element as it receives focus.',
+              MANUAL_CHECK_P:     'Use the "tab" key to move focus between links, form controls, embedded apps and widgets and check the visibility of focus styling for each element as it receives focus.',
               HIDDEN_S: 'The link, form control, embedded app or widget element that is hidden does not need to be tested for focus order.',
               HIDDEN_P: 'The %N_H links, form controls, embedded apps and/or widgets that are hidden do not need to be tested for focus order.',
               NOT_APPLICABLE:  'No focusable elements on the page'
             },
             NODE_RESULT_MESSAGES: {
-              PAGE_MC_1:        'Use keyboard commands to check the keyboard focus styling of the %1 interactive elements on the page (i.e. links, form controls, ...)',
-              PAGE_MC_2:        'Use keyboard commands to check the keyboard focus styling of the %1 interactive elements on the page (i.e. links, form controls, ...); NOTE: %2 interactive elements are hidden',
-              ELEMENT_MC_1:     '%1 element with @role@="%2" is part of the keyboard focus styling manual check',
-              ELEMENT_MC_2:     '%1 element is part of the keyboard focus styling manual check',
-              ELEMENT_HIDDEN_1: '%1 element with @role@="%2" is hidden, so is not visible for changing the focus styling',
-              ELEMENT_HIDDEN_2: '%1 element is hidden, so is not visible for changing the focus styling'
+              PAGE_MC_1:        'Use keyboard commands to check the keyboard focus styling of the %1 interactive elements on the page (i.e. links, form controls, ...).',
+              PAGE_MC_2:        'Use keyboard commands to check the keyboard focus styling of the %1 interactive elements on the page (i.e. links, form controls, ...); NOTE: %2 interactive elements are hidden.',
+              ELEMENT_MC_1:     '%1 element with @role@="%2" is part of the keyboard focus styling manual check.',
+              ELEMENT_MC_2:     '%1 element is part of the keyboard focus styling manual check.',
+              ELEMENT_HIDDEN_1: '%1 element with @role@="%2" is hidden, so is not visible for changing the focus styling.',
+              ELEMENT_HIDDEN_2: '%1 element is hidden, so is not visible for changing the focus styling.'
             },  
             PURPOSE: [
-              'Many browsers don\'t provide a prominent or consistent visible keyboard focus styling for interactive elements, making it difficult for users to identify and track the element with keyboard focus',
+              'Many browsers don\'t provide a prominent or consistent visible keyboard focus styling for interactive elements, making it difficult for users to identify and track the element with keyboard focus.',
               'Author defined visible keyboard focus style makes it easier for users to know which interactive element has keyboard focus and provides more consistent user experience between browsers and operating systems.'
             ],
             TECHNIQUES: [
-              'Use CSS psuedo element selector @:focus@ to change the styling of elements with keyboard focus',
-              'Use @focus@ and @blur@ events on checkboxes and radio buttons to change the styling of not only the form control, but also its label text to make it easier to see',
-              'Styling changes should include creating a border around the interactive element and its label, typically using the CSS @border@ or @outline@ properties',
-              'For consistent look and feel to the website it is often useful for the focus and hover styles to be the same or similar'
+              'Use CSS psuedo element selector @:focus@ to change the styling of elements with keyboard focus.',
+              'Use @focus@ and @blur@ event handlers on checkboxes and radio buttons to change the styling of not only the form control, but also its label text to make it easier to see.',
+              'Styling changes should include creating a border around the interactive element and its label, typically using the CSS @border@ or @outline@ properties.',
+              'For consistent look and feel to the website it is often useful for the focus and hover styles to be the same or similar.'
             ],
             MANUAL_CHECKS: [
-              'Use the the keyboard (i.e. typically he "tab" key, but in the case of widgets other keys) to move focus through the links, form controls, embedded applications and widgets on the page',
-              'Check if the element with keyboard focus is clearly visible for all focusable elements on the page as you move focus between elements, and that it changes more than just color (i.e. border/outline around element with focus)',
-              'Test keyboard focus styling using more than one browser and operating system, since there is a wide varability of between operating systems and browsers for styling keyboard focus'
+              'Use the the keyboard (i.e. typically he "tab" key, but in the case of widgets other keys) to move focus through the links, form controls, embedded applications and widgets on the page.',
+              'Check if the element with keyboard focus is clearly visible for all focusable elements on the page as you move focus between elements, and that it changes more than just color (i.e. border/outline around element with focus).',
+              'Test keyboard focus styling using more than one browser and operating system, since there is a wide varability of between operating systems and browsers for styling keyboard focus.'
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
@@ -868,28 +868,28 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },    
         FOCUS_3: {
             ID:                    'Focus 3',
-            DEFINITION:            'The target of a link %s result in focus the content the window if the target results in more than one window opening',
+            DEFINITION:            'The target of a link %s result in focus the content the window if the target results in more than one window opening.',
             SUMMARY:               'Target focus %s be in content window',
             TARGET_RESOURCES_DESC: '@a@, @area@ and @role="link"@ elements',
             RULE_RESULT_MESSAGES: {
-              MANUAL_CHECK_S:     'Check the link to make sure that if the link opens more than one window that the focus is in the content window',
-              MANUAL_CHECK_P:     'Check the %N_MC links to make sure that if any of the links opens more than one window that the focus is in the content window',
+              MANUAL_CHECK_S:     'Check the link to make sure that if the link opens more than one window that the focus is in the content window.',
+              MANUAL_CHECK_P:     'Check the %N_MC links to make sure that if any of the links opens more than one window that the focus is in the content window.',
               HIDDEN_S: 'The link element that is hidden does not need to be tested for content focus.',
               HIDDEN_P: 'The %N_H link elements that are hidden do not need to be tested for content focus.',
-              NOT_APPLICABLE:  'No link elements on the page'
+              NOT_APPLICABLE:  'No link elements on the page.'
             },
             NODE_RESULT_MESSAGES: {
-              ELEMENT_MC_1: 'If the target of the link opens multiple windows (i.e. typically advertisements or other promotional information) make sure keyboard focus is on the content window',
-              ELEMENT_HIDDEN_1:       '%1 element is hidden, so cannot open any new windows'
+              ELEMENT_MC_1: 'If the target of the link opens multiple windows (i.e. typically advertisements or other promotional information) make sure keyboard focus is on the content window.',
+              ELEMENT_HIDDEN_1:       '%1 element is hidden, so cannot open any new windows.'
             },  
             PURPOSE: [
               'User\'s can become disoriented if the focus causes unpredicatable actions, including new URLs and popup windows for advertisements or promotions.'
             ],
             TECHNIQUES: [
-              'Do not link to URLs that open multiple windows and do not manage the focus to be in the content windoow the user was expecting by following the link'
+              'Do not link to URLs that open multiple windows and do not manage the focus to be in the content windoow the user was expecting by following the link.'
             ],
             MANUAL_CHECKS: [
-              'After selecting a link and if it opens multiple windows, make sure the keyboard focus is in the content window'
+              'After selecting a link and if it opens multiple windows, make sure the keyboard focus is in the content window.'
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
@@ -905,33 +905,33 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/F52'
               }                            
             ]
-        },    
+        },
         FOCUS_4: {
             ID:                    'Focus 4',
-            DEFINITION:            '@select@ elements with @onchange@ event %s not automatically change the user\'s context when keyboard focus moves between options',
+            DEFINITION:            '@select@ elements with @onchange@ event handler %s not automatically change the user\'s context when keyboard focus moves between options.',
             SUMMARY:               '@select@ %s not change context',
             TARGET_RESOURCES_DESC: '@a@, @area@ and @role="link"@ elements',
             RULE_RESULT_MESSAGES: {
-              MANUAL_CHECK_S:     'Check the @select@ element to make sure that when keyboard focus moves between options does not cause a change in context (e.g. moving to a new URL or focus being moved from the @select@ element)',
-              MANUAL_CHECK_P:     'Check the %N_MC @select@ elements to make sure that when keyboard focus moves between options in each control does not cause a change in context (e.g. moving to a new URL or focus being moved from the @select@ element)',
+              MANUAL_CHECK_S:     'Check the @select@ element to make sure that when keyboard focus moves between options does not cause a change in context (e.g. moving to a new URL or focus being moved from the @select@ element).',
+              MANUAL_CHECK_P:     'Check the %N_MC @select@ elements to make sure that when keyboard focus moves between options in each control does not cause a change in context (e.g. moving to a new URL or focus being moved from the @select@ element).',
               HIDDEN_S: 'The @select@ element that is hidden does not need to be tested for automatically changing user context.',
               HIDDEN_P: 'The %N_H @select@ elements that are hidden do not need to be tested for automatically changing user context.',
               NOT_APPLICABLE:  'No @select@ elements on the page'
             },
             NODE_RESULT_MESSAGES: {
-              ELEMENT_MC_1: 'Check to make sure moving keyboard focus between options in the @select@ box does not move focus from the list of options',
-              ELEMENT_HIDDEN_1:       '@select@ element is hidden'
+              ELEMENT_MC_1: 'Check to make sure moving keyboard focus between options in the @select@ box does not move focus from the list of options.',
+              ELEMENT_HIDDEN_1:       '@select@ element is hidden.'
             },  
             PURPOSE: [
               'User\'s can become disoriented if the focus changes cause unpredicatable actions.',
-              'When the user is using the kyboard to explore @select@ box options, the focus must stay on the options, until the user selects one of the options'
+              'When the user is using the kyboard to explore @select@ box options, the focus must stay on the options, until the user selects one of the options.'
             ],
             TECHNIQUES: [
-              'Do not use @onchange@ event handlers on @select@ elements',
-              'Use selections should be made using the enter key'
+              'Do not use @onchange@ event handlers on @select@ elements.',
+              'Use selections should be made using the enter key.'
             ],
             MANUAL_CHECKS: [
-              'Move focus to the @selection@ box and use the keyboard to move the focus between options, check to make sure the focus changes are not causing the context to change (i.e. focus movig to a new window or focus moving from the current option in the select box)'
+              'Move focus to the @selection@ box and use the keyboard to move the focus between options, check to make sure the focus changes are not causing the context to change (i.e. focus movig to a new window or focus moving from the current option in the select box).'
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
@@ -1020,7 +1020,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               'Users do not expect that checking or unchecking a radio button or checkbox will cause focus to move to another a page or section of the current page they are on.'
             ],
             TECHNIQUES: [
-              'Remove or modify the event handlers to change the behavior to not automatically change context when the checkbox or radio button is checked or unchecked '
+              'Remove or modify the event handlers to change the behavior to not automatically change context when the checkbox or radio button is checked or unchecked.'
             ],
             MANUAL_CHECKS: [
             ],
@@ -1205,22 +1205,20 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               NOT_APPLICABLE: 'No @input[type="radio"]@ elements on this page.'
             },
             NODE_RESULT_MESSAGES: {
-              ELEMENT_PASS_1: 'Radio button uses a @fieldset@ container with a @legend@ element that has text content.',
-              ELEMENT_MC_1:   'Radio button uses @aria-labelledby@ attribute. Verify that the referenced label text content includes grouping information.',
-              ELEMENT_MC_2:   'Radio button uses @aria-label@ attribute. Verify that the label text content includes grouping information.',
-              ELEMENT_MC_3:   'Radio button uses @title@ attribute. Verify that the label text content includes grouping information.',
-              ELEMENT_FAIL_1: 'Add a @legend@ element with text content to the @fieldset@ element to provide a grouping label for the radio buttons.',
-              ELEMENT_FAIL_2: 'Add a @fieldset@ with a @legend@ element to provide a grouping container and label for the radio buttons.',
+              ELEMENT_PASS_1: 'Radio button has grouping label "%1" from @fieldset/legend@ elements.',
+              ELEMENT_PASS_2: 'Radio button has grouping label "%2" from @%1[role=group]@ element.',
+              ELEMENT_FAIL_1: 'Add a @fieldset@ element with a @legend@ element to provide a grouping label for the radio buttons.',
+              ELEMENT_FAIL_2: 'The @fieldset@ element has a missing or empty @legend@ element.',
+              ELEMENT_FAIL_3: 'The @%1[role=group]@ grouping element does not have an accessible name.',
               ELEMENT_HIDDEN_1: 'Radio button was not evaluated because it is hidden from assistive technologies.'
             },
             PURPOSE: [
-              'Radio buttons need grouping information and a common grouping label to provide the overall context for each radio button option.',
-              'Screen readers render grouping labels differently than standard labels, typically rendering the grouping label only once when focus is moved into one of the controls.'
+              'Radio buttons that provide a set of related options need grouping information and a common grouping label to provide the overall context for those options.',
+              'Screen readers treat grouping labels differently than standard labels, typically speaking the grouping label only once when focus is first moved to one the groups controls.'
             ],
             TECHNIQUES: [
               'The @fieldset@/@legend@ element combination is the preferred technique for providing a grouping information and label for a related group of radio buttons.',
-              'The @aria-labelledby@ attribute can be used to provide a grouping label for related radio buttons.',
-              'The @aria-label@ attribute can be used to provide a grouping label for related radio buttons.'
+              'If the @fieldset@/@legend@ technique cannot be used, use @[role=group]@ on a container element that contains the related radio buttons, and the container element must have an accessible name representing the grouping label.'
             ],
             MANUAL_CHECKS: [
             ],
@@ -1230,27 +1228,15 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
                 url:   'http://www.w3.org/TR/html4/interact/forms.html#edef-FIELDSET'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-label@ attribute',
-                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-label'
-              },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-labelledby@ attribute',
-                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-labelledby'
-              },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'HTML 4.01 Specification: The @title@ attribute',
-                url:   'http://www.w3.org/TR/html4/struct/global.html#adef-title'
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @group@ role',
+                url:   'https://www.w3.org/TR/wai-aria/roles#group'
               },
               { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
                 title: 'H71: Providing a description for groups of form controls using fieldset and legend elements',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/H71'
               },
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
-                title: 'H90: Indicating required form controls using label or legend',
-                url:   'http://www.w3.org/TR/WCAG20-TECHS/H90'
-              },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
-                title: 'iCITA: Example 7: Fieldset/Legend for grouping radio buttons',
+                title: 'iCITA: Example 7: Fieldset/Legend for providing a grouping label for radio buttons',
                 url:   'http://html.cita.illinois.edu/nav/form/radio/index.php?example=6'
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
@@ -1349,9 +1335,9 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               NOT_APPLICABLE: 'No visible @label@ elements with invalid @for@ references on this page.'
             },
             NODE_RESULT_MESSAGES: {
-              ELEMENT_PASS_1: '@label@ element with @for@ attribute \'%1\' references a form control.',
+              ELEMENT_PASS_1: '@label[for=%1]@ references a form control.',
               ELEMENT_FAIL_1: 'Change the @label@ element with the @for@ attribute value \'%1\' to reference a form control.',
-              ELEMENT_MC_1:   'The @label@ element with the @for@ attribute value \'%1\' is referencing a form control also being labeled with @aria-labelledby@ or @aria-label@ attribute.',
+              ELEMENT_MC_1:   'The @label[for=%1]@ is being ingored as a label because the form control is being labeled with @aria-labelledby@ or @aria-label@ attribute.',
               ELEMENT_HIDDEN_1: 'The @label@ element was not evaluated because it is hidden from assistive technologies.'
             },
             PURPOSE: [
@@ -1469,8 +1455,8 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         CONTROL_9: {
             ID:         'Control 9',
-            DEFINITION: 'Verify the @title@ attribute is serving as an appropriate label, and not a tooltip.',
-            SUMMARY:    'Verify @title@ is the label and not a tooltip',
+            DEFINITION: 'Verify that the @title@ attribute content serves as an appropriate label for the form control, and not only as a tooltip.',
+            SUMMARY:    'Verify @title@ is the label.',
             TARGET_RESOURCES_DESC: '@textarea@, @select@ and @input@ elements',
             RULE_RESULT_MESSAGES: {
               MANUAL_CHECK_S: 'Verify that the @title@ attribute is an appropriate label for the form control, and that it is not being used only as a tooltip.',
@@ -1492,7 +1478,8 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               'The preferred technique for labeling form controls is to use the @label@ element and its @for@ attribute to reference the @id@ attribute value of the form control element.',
               'An alternative technique is to use the @label@ element to encapsulate the form control element.',
               'In special cases, the @aria-labelledby@ attribute can be used on the form control element to reference the id(s) of the elements on the page that describe its purpose.',
-              'In special cases, the @aria-label@ attribute can be used on the form control element to provide an explicit text description of its purpose.'
+              'In special cases, the @aria-label@ attribute can be used on the form control element to provide an explicit text description of its purpose.',
+              'The @title@ attribute will be used as the last resort to provide a label for the form control.'
             ],
             MANUAL_CHECKS: [
               'If the @title@ attribute is the labeling technique of last resort, use other form labeling techniques.',
@@ -2095,10 +2082,11 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
       },
       NODE_RESULT_MESSAGES: {
         ELEMENT_FAIL_1: 'The @aria-describedby@ attribute references undefined @id@ value(s): %1.',
-        ELEMENT_MC_1: 'Verify the @img@ element\'s long description defined using @aria-describedby="%1"@ provides a detailed description of the information conveyed by the image.',
-        ELEMENT_MC_2: 'Verify the @%1[role=img]@\'s long description defined using @aria-describedby="%2"@ provides a detailed description of the information conveyed by the image.',
-        ELEMENT_MC_3: 'Verify the @img@ element\'s long description defined using @title="%1"@ provides a detailed description of the information conveyed by the image.',
-        ELEMENT_MC_4: 'Verify the @%1[role=img]@\'s long description defined using @title="%2"@ provides a detailed description of the information conveyed by the image.',
+        ELEMENT_MC_1: 'Verify the @img@ element\'s long description "%1" (from @aria-describedby="%1"@) provides a detailed description of the information conveyed by the image.',
+        ELEMENT_MC_2: 'Verify the @%1[role=img]@\'s long description "%1" (from @aria-describedby="%1"@) provides a detailed description of the information conveyed by the image.',
+        ELEMENT_MC_3A: 'Update the @title@ attribute content to provide additional information than what is already available in the @alt@ attribute for it to become a long description.',
+        ELEMENT_MC_3: 'Verify the @img@ element\'s long description "%1" (from @title@) provides a detailed description of the information conveyed by the image.',
+        ELEMENT_MC_4: 'Verify the @%1[role=img]@\'s long description "%1" (from @title@) provides a detailed description of the information conveyed by the image.',
         ELEMENT_MC_5: 'Verify the @img@ element\'s long description defined using @longdesc="%1"@ provides a detailed description of the information conveyed by the image.',
         ELEMENT_MC_6: 'Verify the @%1[role=img]@\'s long description defined using @longdesc="%2"@ provides a detailed description of the information conveyed by the image.',
         ELEMENT_MC_7: 'Determine whether the @img@ element is a complex image, chart or graph that needs a long description, and whether the text alternative could be used to indicate the presence and location of the long description.',
@@ -2107,15 +2095,16 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         ELEMENT_HIDDEN_2: '@%1[role=img]@ element was not evaluated because it is hidden from assistive technologies.'
       },
       PURPOSE: [
+        'A long description should provide more information and detail than the text alternative for the image (e.g. @alt@ attribute).',
         'Images can convey a wide range of content and be used for many different purposes on a web page, from purely decorative to complex graphics helping people visualize the features and relationships of large data sets.',
         'All users can benefit from long descriptions by providing another modality for the author to convey information contained in the image and by providing search engines with information to more accurately return relevant results.',
         'Informative images of photographs or paintings can often benefit from long descriptions.',
-        'Informative images like charts or graphs need long descriptions to describe the data used to create the chart or graph.',
-        'If an image that is informative does not have text alternative content, users of assistive technologies will not have access to the information the image conveys.'
+        'Informative images like charts or graphs need long descriptions to describe the data used to create the chart or graph.'
       ],
       TECHNIQUES: [
         'Ideally, the long description of an image should be accessible to all users by including it as part of the page content, and in close proximity to the image it describes.',
         'Use the @aria-describedby@ attribute to reference one or more @id@s on the page that contain the long description. When this technique is used, assistive technologies extract the text content of the referenced @id@s and make it available as concatenated, unstructured text (i.e., stripping out any list markup, links, paragraphs, etc.).',
+        'Use the @title@ attribute to provide a long description.',
         'Use the @alt@ attribute or equivalent markup to indicate the presence and location of the long description when it consists of structured content (e.g. tabular data, lists, links) in close proximity to the image. For example, @alt="..., for more information view the following data table"@.',
         'Use the @longdesc@ attribute, which requires a URI value, to link to a long description for an image. NOTES: (1) The URI can be an internal link on the same page as the image, or a link to an external page or a fragment thereof. (2) There is a discoverability problem with this technique in that the description will typically only be available to screen reader users. Therefore, until browser implementations for @longdesc@ have improved, alternative techniques that enable all users to access the long description are preferred.',
         'Use techniques that allow all users to view the long description. For example, the @summary/details@ elements can be used when the author prefers the detailed description to be initially hidden from users.'
@@ -2653,7 +2642,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               FAIL_P:   'Replace the %N_F @marquee@ elements with standard HTML elements. Use CSS techniques to style the content, and JavaScript to provide controls that stop and start the scrolling.',
               HIDDEN_S: 'If the hidden @marquee@ element becomes visible, it must be changed to a standard HTML element.  Use CSS techniques to style the content, and JavaScript to provide controls that stop and start the scrolling.',
               HIDDEN_P: 'If any of the %N_H hidden @marquee@ elements become visible, they must be changed to standard HTML elements. Use CSS techniques to style the content, and JavaScript to provide controls that stop and start the scrolling.',
-              NOT_APPLICABLE:  'No @marquee@ elements found on the page'
+              NOT_APPLICABLE:  'No @marquee@ elements found on the page.'
             },
             NODE_RESULT_MESSAGES: {
               ELEMENT_FAIL_1: 'Change the @marquee@ element to a standard HTML element. Use CSS techniques to style the content, and JavaScript to provide controls that stop and start the scrolling.',
@@ -2706,36 +2695,36 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 
     KEYBOARD_1: {
       ID:                    'Keyboard 1',
-      DEFINITION:            'Widget elements %s have keyboard event handlers',
+      DEFINITION:            'Widget elements %s have keyboard event handlers.',
       SUMMARY:               'Widgets %s support keyboard',
       TARGET_RESOURCES_DESC: 'Widget elements',
       RULE_RESULT_MESSAGES: {
-        MANUAL_CHECK_S:    'Verify the widget element has keyboard event handlers through is parent elements, owner widget (i.e. aria-activedescendant) or required child widgets',
-        MANUAL_CHECK_P:    'Verify the %N_MC out %N_T widgets have keyboard event handlers through is parent elements, owner widget (i.e. aria-activedescendant) or required child widgets',
-        FAIL_S:  'Add event handlers to the widget to support keyboard operation of the widget',
-        FAIL_P:  'Add event handlers to the %N_F out of %N_T widgets to support keyboard operation of each widget',
+        MANUAL_CHECK_S:    'Verify the widget element has keyboard event handlers through is parent elements, owner widget (i.e. aria-activedescendant) or required child widgets.',
+        MANUAL_CHECK_P:    'Verify the %N_MC out %N_T widgets have keyboard event handlers through is parent elements, owner widget (i.e. aria-activedescendant) or required child widgets.',
+        FAIL_S:  'Add event handlers to the widget to support keyboard operation of the widget.',
+        FAIL_P:  'Add event handlers to the %N_F out of %N_T widgets to support keyboard operation of each widget.',
         HIDDEN_S:        'One hidden widget element was not evaluated.',
         HIDDEN_P:        '%N_H hidden widget elements were not evaluated.',
         NOT_APPLICABLE: 'No widgets on the page'
       },
       NODE_RESULT_MESSAGES: {
-        ELEMENT_PASS_1:               '@%1@ widget has keyboard support through event handlers on the widget element',
-        ELEMENT_MC_1:       'Verify the @%1@ widget has keyboard support through keyboard event handlers on a parent widget element',
-        ELEMENT_MC_2:       'Verify the @%1@ widget has keyboard support through keyboard event handlers through @aria-activedescendant@ support on its @%2@ owner widget',
-        ELEMENT_MC_3: 'Verify the @%1@ widget has keyboard support through keyboard event handlers on a required child widgets',
-        ELEMENT_FAIL_1:       'Add keyboard event handlers to the @%1@ widget to support keyboard interaction with the widget',
-        ELEMENT_HIDDEN_1:       'Widgets must support keyboard interaction was not tested because @%1@ widget is hidden from assistive technologies'
+        ELEMENT_PASS_1:               '@%1@ widget has keyboard support through event handlers on the widget element.',
+        ELEMENT_MC_1:       'Verify the @%1@ widget has keyboard support through keyboard event handlers on a parent widget element.',
+        ELEMENT_MC_2:       'Verify the @%1@ widget has keyboard support through keyboard event handlers through @aria-activedescendant@ support on its @%2@ owner widget.',
+        ELEMENT_MC_3: 'Verify the @%1@ widget has keyboard support through keyboard event handlers on a required child widgets.',
+        ELEMENT_FAIL_1:       'Add keyboard event handlers to the @%1@ widget to support keyboard interaction with the widget.',
+        ELEMENT_HIDDEN_1:       'Widgets must support keyboard interaction was not tested because @%1@ widget is hidden from assistive technologies.'
       },
       PURPOSE: [
-        'Keyboard support is required by people who cannot use the mouse to interact with a widget'
+        'Keyboard support is required by people who cannot use the mouse or gestures to interact with a widget.'
       ],
       TECHNIQUES: [
         'Use the @keyup@, @keydown@ and @keypress@ events to support keyboard interaction with widgets.',
         '@a@ elements with some types of widget roles (e.g. @button@, @menuitem@) may support the keyboard through @onclick@ events.'
       ],
       MANUAL_CHECKS: [
-        'Try using the web application with only the keyboard, and verify that all functionalities can be performed with the keyboard alone',
-        'For widgets check the keyboard behavior with the recommendations in the ARIA Authoring Practices guide to make sure that keyboard operation is predictable to the user'
+        'Try using the web application with only the keyboard, and verify that all functionalities can be performed with the keyboard alone.',
+        'For widgets check the keyboard behavior with the recommendations in the ARIA Authoring Practices guide to make sure that keyboard operation is predictable to the user.'
       ],
       INFORMATIONAL_LINKS: [
         { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
@@ -2810,29 +2799,29 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 
     KEYBOARD_3: {
       ID:                    'Keyboard 3',
-      DEFINITION:            '@object@ and @applet@ elements %s not trap the keyboard',
+      DEFINITION:            '@object@ and @applet@ elements %s not trap the keyboard.',
       SUMMARY:               'No keyboard trap',
       TARGET_RESOURCES_DESC: '@object@ and @applet@ elements',
       RULE_RESULT_MESSAGES: {
-        MANUAL_CHECK_S:  'Verify the embedded application to make sure the application does not trap the keyboard',
-        MANUAL_CHECK_P:  'Verify the %N_MC embedded applications to make sure application does not trap the keyboard',
+        MANUAL_CHECK_S:  'Verify the embedded application to make sure the application does not trap the keyboard.',
+        MANUAL_CHECK_P:  'Verify the %N_MC embedded applications to make sure application does not trap the keyboard.',
         HIDDEN_S:        'One hidden @object@ or @applet@ element was not evaluated.',
         HIDDEN_P:        '%N_H hidden @object@ and/or @applet@ elements were not evaluated.',
-        NOT_APPLICABLE:  'No @applet@ and @object@ elements on the page'
+        NOT_APPLICABLE:  'No @applet@ and @object@ elements on the page.'
       },
       NODE_RESULT_MESSAGES: {
-        ELEMENT_MC_1:  'Verify the %1 element to see if it traps the keyboard',
-        ELEMENT_HIDDEN_1:        '%1 element is hidden, so it cannot trap the keyboard'
+        ELEMENT_MC_1:  'Verify the %1 element to see if it traps the keyboard.',
+        ELEMENT_HIDDEN_1:        '%1 element is hidden, so it cannot trap the keyboard.'
       },
       PURPOSE: [
-        'If an embedded application (i.e. @object@ or @applet@ element) traps the keyboard, keyboard users will not be able to use the web page'
+        'If an embedded application (i.e. @object@ or @applet@ element) traps the keyboard, keyboard users will not be able to use the web page.'
       ],
       TECHNIQUES: [
-        'Use @tabindex="-1"@ on the element to remove it from "tab" order of the page',
-        'If the embedded application does support accessibility, use a button to move focus to the application'
+        'Use @tabindex="-1"@ on the element to remove it from "tab" order of the page.',
+        'If the embedded application does support accessibility, use a button to move focus to the application.'
       ],
       MANUAL_CHECKS: [
-        'Move keyboard focus to the embedded application and see if you can move focus back to the web content using just the keyboard'
+        'Move keyboard focus to the embedded application and see if you can move focus back to the web content using just the keyboard.'
       ],
       INFORMATIONAL_LINKS: [
         { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
@@ -3073,7 +3062,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         LANDMARK_4: {
             ID:         'Landmark 4',
             DEFINITION: 'Website branding content, typically at the top of a web page, %s be identified by using the @banner@ landmark.',
-            SUMMARY:    '@banner@ landmark: for branding content',
+            SUMMARY:    '@banner@ landmark: Indentify branding content',
             TARGET_RESOURCES_DESC: '@[role="banner"]@ and top-level @header@ element',
             RULE_RESULT_MESSAGES: {
               MANUAL_CHECK_S: 'If there is branding content, typically at the top of the page, use the @banner@ landmark to identify it.',
@@ -3091,11 +3080,10 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_HIDDEN_2: 'A top level @header@ element was not evaluated because it is hidden from assistive technologies.'
             },
             PURPOSE: [
-              'A @banner@ landmark provides a way to identify branding content, usually replicated across all pages and located at the top of each page.'
+              'A @banner@ landmark provides a way to identify organizational or company branding content, usually replicated across all pages and located at the top of each page.'
             ],
             TECHNIQUES: [
-              'The @header@ element defines a @banner@ landmark when its context is the @body@ element',
-              'The @header@ element is not considered in the context of the @body@ element if it is contained in any of the following elements @address@, @article@, @aside@, @blockquote@, @details@, @fieldset@, @figure@, @main@, @nav@, @section@ or @table@ element has the default role of @contentinfo@ landmark.',
+              'The @header@ element defines a @banner@ landmark, except when it is a descendant of any of the following elements: @article@, @aside@, @main@, @nav@ or @section@.',
               'If the @header@ element technique is not being used, a @role="banner"@ attribute on the container element for the branding content can be used to define a @banner@ landmark.',
               'In websites that support mashups using @iframe@ or @frame@ elements, a @banner@ landmark is allowed in each frame.',
               'If the page is part of a website supporting mashups, use the @aria-labelledby@ or @aria-label@ attribute to differentiate @banner@ landmarks in each frame.'
@@ -3165,8 +3153,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               'A banner landmark provides a way to identify redundant branding content, usually placed at the top of each web page.'
             ],
             TECHNIQUES: [
-              'The @header@ element defines a @banner@ landmark when its context is the @body@ element',
-              'The @header@ element is not considered in the context of the @body@ element if it is contained in any of the following elements @address@, @article@, @aside@, @blockquote@, @details@, @fieldset@, @figure@, @main@, @nav@, @section@ or @table@ element has the default role of @contentinfo@ landmark.',
+              'The @header@ element defines a @banner@ landmark, except when it is a descendant of any of the following elements: @article@, @aside@, @main@, @nav@ or @section@.',
               'If the @header@ element technique is not being used, a @role="banner"@ attribute on the container element for the branding content can be used to define a @banner@ landmark.',
               'In websites that support mashups using @iframe@ or @frame@ elements, a @banner@ landmark is allowed in each frame.',
               'If the page is part of a website supporting mashups, use the @aria-labelledby@ or @aria-label@ attribute to differentiate @banner@ landmarks in each frame.'
@@ -3206,7 +3193,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         LANDMARK_6: {
             ID:         'Landmark 6',
             DEFINITION: 'Website administrative content (e.g., copyright, contact, privacy info, etc., typically at the bottom of a web page) %s be identified by using the @contentinfo@ landmark.',
-            SUMMARY:    '@contentinfo@ landmark: for admin content',
+            SUMMARY:    '@contentinfo@ landmark: Indentify admin content',
             TARGET_RESOURCES_DESC: '@[role="contentinfo"]@ and top-level @footer@ element',
             RULE_RESULT_MESSAGES: {
               MANUAL_CHECK_S: 'If there is administrative content (e.g., copyright, contact, privacy info, etc.), typically at the bottom of the page, use the @contentinfo@ landmark or top level @footer@ element to identify it.',
@@ -3228,8 +3215,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               'The @contentinfo@ landmark typically includes information and/or links to copyright, contact info, privacy policies and other general information found on all pages in the website.'
             ],
             TECHNIQUES: [
-              'The @footer@ element defines a @contentinfo@ landmark when its context is the @body@ element',
-              'The @footer@ element is not considered in the context of the @body@ element if it is contained in any of the following elements @address@, @article@, @aside@, @blockquote@, @details@, @fieldset@, @figure@, @main@, @nav@, @section@ or @table@ element has the default role of @contentinfo@ landmark.',
+              'The @footer@ element defines a @contentinfo@ landmark, except when it is a descendant of any of the following elements: @article@, @aside@, @main@, @nav@ or @section@.',
               'If the @footer@ element technique is not being used, a @role="contentinfo"@ attribute on the container element for the administrative content can be used to define a @contentinfo@ landmark.',
               'In websites that support mashups using @iframe@ or @frame@ elements, a @contentinfo@ landmark is allowed in each frame.',
               'If the page is part of a website supporting mashups, use the @aria-labelledby@ or @aria-label@ attribute to differentiate possible @contentinfo@ landmarks in each frame.'
@@ -3301,8 +3287,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               'The @footer@ element that is NOT contained in an @section@ and @aside@ element has the default role of @contentinfo@ landmark.'
             ],
             TECHNIQUES: [
-              'The @footer@ element defines a @contentinfo@ landmark when its context is the @body@ element',
-              'The @footer@ element is not considered in the context of the @body@ element if it is contained in any of the following elements @address@, @article@, @aside@, @blockquote@, @details@, @fieldset@, @figure@, @main@, @nav@, @section@ or @table@ element has the default role of @contentinfo@ landmark.',
+              'The @footer@ element defines a @contentinfo@ landmark, except when it is a descendant of any of the following elements: @article@, @aside@, @main@, @nav@ or @section@.',
               'If the @footer@ element technique is not being used, a @role="contentinfo"@ attribute on the container element for the administrative content can be used to define a @contentinfo@ landmark.',
               'In websites that support mashups using @iframe@ or @frame@ elements, a @contentinfo@ landmark is allowed in each frame.',
               'If the page is part of a website supporting mashups, use the @aria-labelledby@ or @aria-label@ attribute to differentiate possible @contentinfo@ landmarks in each frame.'
@@ -3356,7 +3341,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_PASS_2:   '@%1[role="banner"]@ defines a top-level @banner@ landmark in the @frame@ or @iframe@.',
               ELEMENT_PASS_3:   '@header@ element defines a top-level @banner@ landmark.',
               ELEMENT_PASS_4:   '@header@ element defines a top-level @banner@ landmark in the @frame@ or @iframe@.',
-              ELEMENT_FAIL_1:   'Update the landmark structure on the page such that the @%1[role="banner"]@ is a top-level landmark (it is currently the child of a @%2@ landmark).',
+              ELEMENT_FAIL_1:   'Update the landmark structure on the page such that the @%1[role="banner"]@ element is a top-level landmark (it is currently the child of a @%2@ landmark).',
               ELEMENT_FAIL_2:   'Update the landmark structure on the page such that the @header@ element is a top-level landmark (it is currently the child of a @%1@ landmark).',
               ELEMENT_HIDDEN_1: '@%1[role="banner"]@ was not evaluated because it is hidden from assistive technologies.',
               ELEMENT_HIDDEN_2: '@header@ element was not evaluated because it is hidden from assistive technologies.'
@@ -3519,7 +3504,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_PASS_2:   '@%1[role="main"]@ attribute defines a top-level @main@ landmark in the @frame@ or @iframe@.',
               ELEMENT_PASS_3:   '@main@ element defines a top-level @main@ landmark.',
               ELEMENT_PASS_4:   '@main@ element defines a top-level @main@ landmark in the @frame@ or @iframe@.',
-              ELEMENT_FAIL_1:   'Update the landmark structure on the page such that the @%1[role="main"]@ attribute defines a top-level @main@ landmark (it is currently the child of a @%2@ landmark).',
+              ELEMENT_FAIL_1:   'Update the landmark structure on the page such that the @%1[role="main"]@ element defines a top-level @main@ landmark (it is currently the child of a @%2@ landmark).',
               ELEMENT_FAIL_2:   'Update the landmark structure on the page such that the @main@ element defines a top-level @main@ landmark (it is currently the child of a @%1@ landmark).',
               ELEMENT_HIDDEN_1: '@%1[role="main"]@ was not evaluated because it is hidden from assistive technologies.',
               ELEMENT_HIDDEN_2: '@main@ element was not evaluated because it is hidden from assistive technologies.'
@@ -3570,7 +3555,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_PASS_2:   '@%1[role="contentinfo"]@ attribute defines a top-level @contentinfo@ landmark in the @frame@ or @iframe@.',
               ELEMENT_PASS_3:   '@footer@ element defines a top-level @contentinfo@ landmark.',
               ELEMENT_PASS_4:   '@footer@ element defines a top-level @contentinfo@ landmark in the @frame@ or @iframe@.',
-              ELEMENT_FAIL_1:   'Update the landmark structure on the page such that the @[role="contentinfo"]@ attribute defines a top-level @contentinfo@ landmark (it is currently the child of a @%1@ landmark).',
+              ELEMENT_FAIL_1:   'Update the landmark structure on the page such that the @%1[role="contentinfo"]@ element defines a top-level @contentinfo@ landmark (it is currently the child of a @%2@ landmark).',
               ELEMENT_FAIL_2:   'Update the landmark structure on the page such that the @footer@ element defines a top-level @contentinfo@ landmark (it is currently the child of a @%1@ landmark).',
               ELEMENT_HIDDEN_1: '@%1@ element with @role="contentinfo"@ was not evaluated because it is hidden from assistive technologies.',
               ELEMENT_HIDDEN_2: '@%1@ element with @role="contentinfo"@ was not evaluated because it is hidden from assistive technologies.'
@@ -3746,9 +3731,9 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               'Ensuring that the landmark structure of a page is not overly complex enables users of assistive technologies to more easily find and navigate to the desired content.'
             ],
             TECHNIQUES: [
-              'A @form@ landmark should contains all the visible form controls in the form.',
-              'A @form@ landmark is defined using the @[role="form"]@ attribute.',
-              'Use a @role="region"@ attribute on an element that identifies subgroups or sections of controls.',
+              'A @form@ element or an element with a @role="form"@ attribute, which also has an author-defined accessible name, will be considered an @form@ landmark.',
+              'A @form@ landmark should be a container element of all the form controls in the form.',
+              'Use a element @[role=region]@ attribute or a @section@ on an element that identifies subgroups or sections of controls.',
               'Use ARIA labeling techniques to give each region an accessible name describing the contents of the region.'
             ],
             MANUAL_CHECKS: [
@@ -3779,7 +3764,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 
         LANDMARK_16: {
             ID:         'Landmark 16',
-            DEFINITION: 'Each element with an ARIA role of @region@ that should be an ARIA landmark %s have an accessible name.',
+            DEFINITION: 'Each element with an @[role=region]@ that should be an @region@ landmark %s have an accessible name.',
             SUMMARY:    '@region@ landmark must have accessible name',
             TARGET_RESOURCES_DESC: 'Elements with @role="region"@ and @section@ elements',
             RULE_RESULT_MESSAGES: {
@@ -3799,10 +3784,10 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             },
             PURPOSE: [
               'The @region@ landmark is used to identify subsections of @banner@, @complementary@, @contentinfo@, @main@, @navigation@ and @search@ landmarks.',
-              'For an element with an ARIA role of @region@ to be considered an ARIA landmark on the page, it must have an accessible name that identifies the contents of the region.'
+              'For an element with an @[role=region]@ to be considered an @region@ landmark on the page, it must have an accessible name that identifies the contents of the region.'
             ],
             TECHNIQUES: [
-              'A @section@ element or an element with a @role="region"@ attribute, which also has an author-defined accessible name, will be considered an ARIA landmark.',
+              'A @section@ element or an element with a @role="region"@ attribute, which also has an author-defined accessible name, will be considered an @region@ landmark.',
               'Use the @aria-labelledby@ attribute to provide an accessible name by referencing the @id@s of one or more heading (e.g. h2, h3, h4 element) or other elements that identify the contents of the region.',
               'Use the @aria-label@ attribute to provide an accessible name that identifies the contents of the region.',
               'The @title@ attribute may also be used to provide an accessible name to identify the contents of the region. Note, however, that this technique also generates a tooltip in many  web browsers.'
@@ -3970,35 +3955,34 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 
         LANDMARK_19: {
             ID:         'Landmark 19',
-            DEFINITION: 'The @complementary@ landmark %s be a top-level landmark or a child of a @main@ landmark.',
+            DEFINITION: 'The @complementary@ landmark %s be a top-level landmark.',
             SUMMARY:    '@complementary@ landmark: must be top level',
             TARGET_RESOURCES_DESC: '@complementary@ landmark',
             RULE_RESULT_MESSAGES: {
-              FAIL_S:   'Update the @complementary@ landmark on the page to ensure that it is a top-level @complementary@ landmark or a child of a @main@ landmark.',
+              FAIL_S:   'Update the @complementary@ landmark on the page to ensure that it is a top-level @complementary@ landmark.',
               FAIL_P:   'Update the @complementary@ landmarks on the page to ensure that each is a top-level  @complementary@ landmark or a child of a @main@ landmark.',
               HIDDEN_S: 'One element with @[role="complementary"]@ attribute or @aside@ element that is hidden was not evaluated.',
               HIDDEN_P: '%N_H elements with @[role="complementary"]@ attribute and/or @aside@ elements  that are hidden were not evaluated.',
               NOT_APPLICABLE: 'No @[role="complementary"]@ attributes and/or @aside@ elements on the page.'
             },
             NODE_RESULT_MESSAGES: {
-              ELEMENT_PASS_1:   '@%1[role="complementary"]@ attribute defines a @complementary@ landmark that is either a top-level landmark or a child of a @main@ landmark.',
-              ELEMENT_PASS_2:   '@%1[role="complementary"]@ attribute defines a @complementary@ landmark that is either a top-level landmark or a child of a @main@ landmark in the @frame@ or @iframe@.',
-              ELEMENT_PASS_3:   '@aside@ element defines a @complementary@ landmark that is either a top-level landmark or a child of a @main@ landmark.',
-              ELEMENT_PASS_4:   '@aside@ element defines a @complementary@ landmark is either a top-level landmark or a child of a @main@ landmark in the @frame@ or @iframe@.',
-              ELEMENT_FAIL_1:   'Update the landmark structure on the page such that the @%1[role="complementary"]@ attribute defines a @complementary@ that is either a top-level landmark or a child of a @main@ landmark (it is currently the child of a @%2@ landmark).',
-              ELEMENT_FAIL_2:   'Update the landmark structure on the page such that the @aside@ element is either a top-level landmark or a child of a @main@ landmark (it is currently the child of a @%1@ landmark).',
+              ELEMENT_PASS_1:   '@%1[role="complementary"]@ attribute defines a @complementary@ landmark that is a top-level landmark.',
+              ELEMENT_PASS_2:   '@%1[role="complementary"]@ attribute defines a @complementary@ landmark that is a top-level landmark in the @frame@ or @iframe@.',
+              ELEMENT_PASS_3:   '@aside@ element defines a @complementary@ landmark that is a top-level landmark.',
+              ELEMENT_PASS_4:   '@aside@ element defines a @complementary@ landmark is a top-level landmark in the @frame@ or @iframe@.',
+              ELEMENT_FAIL_1:   'Update the landmark structure on the page such that the @%1[role="complementary"]@ attribute defines a @complementary@ that is a top-level landmark (it is currently the child of a @%2@ landmark).',
+              ELEMENT_FAIL_2:   'Update the landmark structure on the page such that the @aside@ element is a top-level landmark (it is currently the child of a @%1@ landmark).',
               ELEMENT_HIDDEN_1: '@%1[role="complementary"]@ was not evaluated because it is hidden from assistive technologies.',
               ELEMENT_HIDDEN_2: '@aside@ element was not evaluated because it is hidden from assistive technologies.'
             },
             PURPOSE: [
               '@complementary@ landmarks provide a way to identify sections of a page that may not be considered the main content, but that provide important supporting or related information to the main content.',
-              'Top-level landmarks are the easiest to find and navigate to using assistive technologies.',
-              'Placing a @complementary@ landmark inside a @main@ landmark identifies the information as related to the main content of the page.'
+              'Top-level landmarks are the easiest to find and navigate to using assistive technologies.'
             ],
             TECHNIQUES: [
-              'When creating the landmark structure on the page, ensure that the @complementary@ landmark is either a top-level landmark (i.e., it is not contained within any other landmarks) or a child of a @main@ landmark.',
-              '@[role="complementary"]@ attribute defines a @complementary@ landmark.',
-              '@aside@ element defines a @complementary@ landmark.'
+              'Use an @aside@ element to define a @complementary@ landmark.',
+              'If the @aside@ element technique is not being used, a @role="complementary"@ attribute on the container element of the supporting content can be used to define a @complementary@ landmark.',
+              'When creating the landmark structure on the page, ensure that the @complementary@ landmark is a top-level landmark (i.e., it is not contained within any other landmarks).'
             ],
             MANUAL_CHECKS: [
             ],
@@ -4226,12 +4210,12 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
     rules: {
         LAYOUT_1: {
             ID:                    'Layout 1',
-            DEFINITION:            'Layout tables %s organize content in a meaningful sequence',
+            DEFINITION:            'Layout tables %s organize content in a meaningful sequence.',
             SUMMARY:               'Layout tables %s have meaningful sequence',
             TARGET_RESOURCES_DESC: '@table@ elements used for layout',
             RULE_RESULT_MESSAGES: {
               MANUAL_CHECK_S:    'Verify document has a meaningful sequence when layout table markup is disabled.  If content does not have a meaningful sequence, reorganize content on the page to have a meaningful sequence when layout tables are disabled.',   
-              NOT_APPLICABLE: 'No layout tables found on this page'             
+              NOT_APPLICABLE: 'No layout tables found on this page.'             
             },
             NODE_RESULT_MESSAGES: {
               PAGE_PASS_1:      'Page does not have any tables or layout tables are only one column wide.',
@@ -4243,17 +4227,17 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_HIDDEN_1: 'Meaningful sequence was not tested The layout @table@ is hidden from assistive technologies.'
             },  
             PURPOSE: [
-              'The sequence of content (i.e. order) in the document code affects its meaning, especially for users of assistive technology who cannot see the visual cues provided in a graphical that provide information about the relationships between content'                   
+              'The sequence of content (i.e. order) in the document code affects its meaning, especially for users of assistive technology who cannot see the visual cues provided in a graphical that provide information about the relationships between content.'                   
             ],
             TECHNIQUES: [
-              'Use CSS and web standards techniques for the coding of content, and the graphical styling and positioning of content',
-              'Avoid using table markup for graphical layout, if you do use tables for layout make sure the content still is meaningful when the table markup is disabled',
-              'Avoid using nested tables for layout, the deeper the level of nesting the more chance there of having a confusing sequence of content',
-              'Tables that are used for layout should use only @tr@ and @td@ elements, and the @table@, @tr@ and @td@ elements should have a @role="presentation"@ attribute to clearly indicate the table markup is being used for layout'
+              'Use CSS and web standards techniques for the coding of content, and the graphical styling and positioning of content.',
+              'Avoid using table markup for graphical layout, if you do use tables for layout make sure the content still is meaningful when the table markup is disabled.',
+              'Avoid using nested tables for layout, the deeper the level of nesting the more chance there of having a confusing sequence of content.',
+              'Tables that are used for layout should use only @tr@ and @td@ elements, and the @table@, @tr@ and @td@ elements should have a @role="presentation"@ attribute to clearly indicate the table markup is being used for layout.'
             ],
             MANUAL_CHECKS: [
-              'Use browser developer tools to disable table markup or enable a user stylesheet to change table cells to be rendered as block level elements',
-              'With layout tables disabled, view the content to make sure the reading order and structure of the document makes sense'
+              'Use browser developer tools to disable table markup or enable a user stylesheet to change table cells to be rendered as block level elements.',
+              'With layout tables disabled, view the content to make sure the reading order and structure of the document makes sense.'
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
@@ -4304,28 +4288,28 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         LAYOUT_2: {
             ID:                    'Layout 2',
-            DEFINITION:            'Tables %s not be nested for layout of content',
+            DEFINITION:            'Tables %s not be nested for layout of content.',
             SUMMARY:               'Do not nest layout tables',
             TARGET_RESOURCES_DESC: '@table@ elements used for layout',
             RULE_RESULT_MESSAGES: {
-              FAIL_S:   'Update the markup and CSS on this page to remove the nesting of the layout table that is nested',
-              FAIL_P:   'Update the markup and CSS on this page to remove the nesting of %N_F layout tables that are nested',
-              NOT_APPLICABLE:  'No table elements used for layout'              
+              FAIL_S:   'Update the markup and CSS on this page to remove the nesting of the layout table that is nested.',
+              FAIL_P:   'Update the markup and CSS on this page to remove the nesting of %N_F layout tables that are nested.',
+              NOT_APPLICABLE:  'No table elements used for layout.'              
             },
             NODE_RESULT_MESSAGES: {
-              ELEMENT_PASS_1:    'Table is not nested with another layout table',
-              ELEMENT_PASS_2:    'Table is one column wide, and will have the same document sequence when table markup is disabled',
-              ELEMENT_FAIL_1:  'Update the markup and CSS on this page to remove the nesting of this layout table',
-              ELEMENT_HIDDEN_1:  'Table nesting was not tested beacuse the @table@ is hidden from assistive technology'
+              ELEMENT_PASS_1:    'Table is not nested with another layout table.',
+              ELEMENT_PASS_2:    'Table is one column wide, and will have the same document sequence when table markup is disabled.',
+              ELEMENT_FAIL_1:  'Update the markup and CSS on this page to remove the nesting of this layout table.',
+              ELEMENT_HIDDEN_1:  'Table nesting was not tested beacuse the @table@ is hidden from assistive technology.'
             },  
             PURPOSE: [
-              'The sequence of content (i.e. order) in the document code affects its meaning, nesting layout tables often makes the sequence of content less understandable'                   
+              'The sequence of content (i.e. order) in the document code affects its meaning, nesting layout tables often makes the sequence of content less understandable.'                   
             ],
             TECHNIQUES: [
-              'Use CSS and web standards techniques for the coding of content, and the graphical styling and positioning of content',
-              'Avoid using table markup for graphical layout, if you do use tables for layout make sure the content still is meaningful when the table markup is disabled',
-              'Avoid using nested tables for layout, the deeper the level of nesting the more chance there of having a confusing sequence of content',
-              'Tables that are used for layout should use only @tr@ and @td@ elements, and the @table@, @tr@ and @td@ elements should have a @role="presentation"@ attribute to clearly indicate the table markup is being used for layout'
+              'Use CSS and web standards techniques for the coding of content, and the graphical styling and positioning of content.',
+              'Avoid using table markup for graphical layout, if you do use tables for layout make sure the content still is meaningful when the table markup is disabled.',
+              'Avoid using nested tables for layout, the deeper the level of nesting the more chance there of having a confusing sequence of content.',
+              'Tables that are used for layout should use only @tr@ and @td@ elements, and the @table@, @tr@ and @td@ elements should have a @role="presentation"@ attribute to clearly indicate the table markup is being used for layout.'
             ],
             MANUAL_CHECKS: [
             ],
@@ -5105,8 +5089,8 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             SUMMARY:          '@main@ element @role@ semantics.',
             TARGET_RESOURCES_DESC: '@main@ elements',
             RULE_RESULT_MESSAGES: {
-              FAIL_S:         'Remove the @role@ attribute from the @main@ element to support the default @main@ landmark semantics, if the content does not represent @main@ landmark semantics use @role="presentation"@ or change the element to one that does identify the semantics of the content .',
-              FAIL_P:         'Remove the @role@ attribute from the %N_F @main@ elements to support the default @main@ landmark semantics, if the content does not represent @main@ landmark semantics use @role="presentation"@ or change the element to one that does identify the semantics of the content .',
+              FAIL_S:         'Remove the @role@ attribute from the @main@ element to support the default @main@ landmark semantics, if the content does not represent @main@ landmark semantics use @role="presentation"@ or change the element to one that does identify the semantics of the content.',
+              FAIL_P:         'Remove the @role@ attribute from the %N_F @main@ elements to support the default @main@ landmark semantics, if the content does not represent @main@ landmark semantics use @role="presentation"@ or change the element to one that does identify the semantics of the content.',
               MANUAL_CHECK_S: 'Verify that the @main@ element with @role="presentation"@ does not contain @main@ landmark semantics.',
               MANUAL_CHECK_P: 'Verify that the %N_MC @main@ elements with @role="presentation"@ do not contain @main@ landmark semantics.',
               HIDDEN_S:       'One @main@ element that is hidden was not evaluated.',
@@ -5193,7 +5177,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         ROLE_3: {
             ID:               'Role 3',
-            DEFINITION:       '@ol@ and @ul@ elements %s only have grouping role values of @directory, @listbox@, @menu@, @menubar@, @presentation@, @tablist@, @toolbar@ or @tree@.',
+            DEFINITION:       '@ol@ and @ul@ elements %s only have grouping role values of @directory, @group@, @listbox@, @menu@, @menubar@, @presentation@, @radiogroup@, @tablist@, @toolbar@ or @tree@.',
             SUMMARY:          '@ol@ and @ul@ role grouping semantics',
             TARGET_RESOURCES_DESC: '@ol@ and @ul@ elements',
             RULE_RESULT_MESSAGES: {
@@ -5203,7 +5187,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               MANUAL_CHECK_P: 'Verify that the %N_MC  @ol@ and @ul@ elements with @role="presentation"@ do not contain content related to the semantics of a list element or grouping widget role.',
               HIDDEN_S:       'One @ol@ and @ul@ element with @role@ attribute that is hidden was not evaluated.',
               HIDDEN_P:       '%N_H @ol@ and @ul@ elements with @role@ attribute that are hidden were not evaluated.',
-              NOT_APPLICABLE: 'No @ol@ and @ul@ elements with @role@ attribute found on the page'
+              NOT_APPLICABLE: 'No @ol@ and @ul@ elements with @role@ attribute found on the page.'
             },
             NODE_RESULT_MESSAGES: {
               ELEMENT_FAIL_1:   'Remove the @role@ attribute on the @%1@ element, change the attribute @role="%2"@ to an allowed role, or use a different element that represents the semantics of the content.',
@@ -5218,7 +5202,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             TECHNIQUES: [
               'Do not use the @role@ attribute if the default semantics of @ol@ or @ul@ represent a container of a non-interactive list.',
               'The @ol@ and @ul@ elements when used as part of widgets must be used to indicate the grouping of a list of related widget roles.',
-              'Allowed role values include: @directory, @listbox@, @menu@, @menubar@, @presentation@, @tablist@, @toolbar@ or @tree@.',
+              'Allowed role values include: @directory, @group@, @listbox@, @menu@, @menubar@, @presentation@, @radiogroup@, @tablist@, @toolbar@ or @tree@.',
               'In rare cases @role="presentation"@ is allowed on a @ol@ and @ul@ element when the element is not being used to represent a group of related items in a list.'
             ],
             MANUAL_CHECKS: [
@@ -5696,6 +5680,71 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
                 url:   'http://www.w3.org/TR/html51/semantics.html#the-a-element'
               }
             ]
+        },
+        ROLE_13: {
+            ID:               'Role 13',
+            DEFINITION:       '@select@ elements %s only have role values of @listbox@ (default) or @menu@.',
+            SUMMARY:          '@select@ element role semantics',
+            TARGET_RESOURCES_DESC: '@select]@ elements',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:         'Remove the @role@ on the @select@ element to support the default @listbox@ semantics or change the @role@ semantics to the @menu@ role.',
+              FAIL_P:         'Remove the @role@ on the %N_F @select@ elements to support the default @listbox@ semantics and/or change the @role@ semantics to the @menu@ role.',
+              HIDDEN_S:       'One @select@ element with @role@ attribute that is hidden was not evaluated.',
+              HIDDEN_P:       '%N_H @select@ elements with @role@ attribute that are hidden were not evaluated.',
+              NOT_APPLICABLE: 'No @select@ elements with @role@ attribute found on the page.'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:   'The @role=%1@ is an allowed role value for the @select@ element.',
+              ELEMENT_FAIL_1:   'Remove the @role@ attribute on the @select@ element, change the attribute @role="%1"@ to an allowed role, or use a different element that represents the semantics of the content.',
+              ELEMENT_HIDDEN_1: '@select@ element with @role="%1"@ was not evaluated because it is hidden from assistive technologies.'
+            },  
+            PURPOSE: [
+              'The @select@ element has a default role of @listbox@ and the browser natively supports the behavior of being part of the tab order of the page (e.g. @tabindex=0@) and will repsond to click events and the enter key.',
+              'When @select@ elements only need to use the @role@ attribute when it semantics are a @menu@ instead of a @listbox@.'
+            ],
+            TECHNIQUES: [
+              'The @select@ element\'s default role of @listbox@ can only be overridden with @menu@.'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HTML 5 Specification: The select element', 
+                url:   'http://www.w3.org/TR/html51/semantics.html#the-select-element'
+              }
+            ]
+        },
+        ROLE_14: {
+            ID:               'Role 14',
+            DEFINITION:       '@textarea@ elements %s only have role values of @listbox@ (default) or @menu@.',
+            SUMMARY:          '@textarea@ element role semantics',
+            TARGET_RESOURCES_DESC: '@textarea]@ elements',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:         'Remove the @role@ on the @textarea@ element to support the default @textbox@ semantics or use a different element to represent the semantics of the content.',
+              FAIL_P:         'Remove the @role@ on the %N_F @textarea@ elements to support the default @editbox@ semantics and/or use a different element to represent the semantics of the content.',
+              HIDDEN_S:       'One @textarea@ element with @role@ attribute that is hidden was not evaluated.',
+              HIDDEN_P:       '%N_H @textarea@ elements with @role@ attribute that are hidden were not evaluated.',
+              NOT_APPLICABLE: 'No @textarea@ elements with @role@ attribute found on the page.'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:   'The @role=%1@ is an allowed role value for the @textarea@ element, but it should be removed since a @textarea@ element can only have the semantics of a @textbox@.',
+              ELEMENT_FAIL_1:   'Remove the @role@ attribute on the @textarea@ element, either remove the role to allow the default role of @textbox@, or use a different element that represents the semantics of the content.',
+              ELEMENT_HIDDEN_1: '@textarea@ element with @role="%1"@ was not evaluated because it is hidden from assistive technologies.'
+            },  
+            PURPOSE: [
+              'The @textarea@ element has a default role of @textbox@ can have no other role value.'
+            ],
+            TECHNIQUES: [
+              'The @textarea@ element\'s default role of @textbox@ it can have NO other role, do NOT set.'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HTML 5 Specification: The textarea element', 
+                url:   'http://www.w3.org/TR/html51/semantics.html#the-textarea-element'
+              }
+            ]
         }
    }     
 });
@@ -6002,7 +6051,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               NOT_APPLICABLE: 'Multiple data tables were not found on the page.'
             },
             NODE_RESULT_MESSAGES: {
-              ELEMENT_PASS_1:   'The accessible name for the data table is unique.',
+              ELEMENT_PASS_1:   'The accessible name for the data table is unique: \'%1\'.',
               ELEMENT_FAIL_1:   'Change the accessible name for the data table to be unique on the page: \'%1\'.',
               ELEMENT_FAIL_2:   'Add a accessible name to the data table.',
               ELEMENT_HIDDEN_1: 'The @table@ element was not evaluated because it is hidden from assistive technologies.'
@@ -6573,35 +6622,35 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
     rules: {
         VIDEO_1: {
             ID:                    'Video 1',
-            DEFINITION:            '@video@ elements used for prerecorded video only content %s have text or audio description of the video content',
+            DEFINITION:            '@video@ elements used for prerecorded video only content %s have text or audio description of the video content.',
             SUMMARY:               '@video@ for video only %s have alternative',
             TARGET_RESOURCES_DESC: '@video@ elements',
             RULE_RESULT_MESSAGES: {
-              MANUAL_CHECK_S:     'Verify the @video@ element with the @aria-describedby@ attributes is used for video only content.   If so, verify the text description reference using the @aria-describedby@ describes the video only content',
-              MANUAL_CHECK_P:     'Verify if any of the %N_MC @video@ elements with the @aria-describedby@ attributes are used for video only content.   If so, verify the text description reference using the @aria-describedby@ describes the video only content',
-              HIDDEN_S: 'The @video@ element that is hidden was not evaluated',
-              HIDDEN_P: 'The %N_H @video@ elements that are hidden were not evaluated',
-              NOT_APPLICABLE:  'No @video@ elements found on this page'              
+              MANUAL_CHECK_S:     'Verify the @video@ element with the @aria-describedby@ attributes is used for video only content.   If so, verify the text description reference using the @aria-describedby@ describes the video only content.',
+              MANUAL_CHECK_P:     'Verify if any of the %N_MC @video@ elements with the @aria-describedby@ attributes are used for video only content.   If so, verify the text description reference using the @aria-describedby@ describes the video only content.',
+              HIDDEN_S: 'The @video@ element that is hidden was not evaluated.',
+              HIDDEN_P: 'The %N_H @video@ elements that are hidden were not evaluated.',
+              NOT_APPLICABLE:  'No @video@ elements found on this page.'              
             },
             NODE_RESULT_MESSAGES: {
               ELEMENT_PASS_1:    '@video@ element has audio description track',
-              ELEMENT_MC_1:      'Verify the @video@ element is used for video only content.   If so, verify the text description reference using the @aria-describedby@ describes the video only content',
+              ELEMENT_MC_1:      'Verify the @video@ element is used for video only content.   If so, verify the text description reference using the @aria-describedby@ describes the video only content.',
               ELEMENT_MC_2:      'Verify the @video@ element is used for video only content provides an audio track to describe the video content or text description of the video.',
-              ELEMENT_HIDDEN_1:  'The @video@ element is hidden and therefore not evaluated'
+              ELEMENT_HIDDEN_1:  'The @video@ element is hidden and therefore not evaluated.'
             },  
             PURPOSE: [
-              'Text and audio descriptions provide a means for people who cannot see the video to understand the video content',
-              'Some types of learning disabilities affect visual processing, text and audio descriptions provide an alternative way to understand the video content'
+              'Text and audio descriptions provide a means for people who cannot see the video to understand the video content.',
+              'Some types of learning disabilities affect visual processing, text and audio descriptions provide an alternative way to understand the video content.'
             ],
             TECHNIQUES: [
-              'Use the @track@ element to add audio descriptions to the video content',
-              'Use @aria-describedby@ to reference a text description of the video content',
-              'Include an audio sound track that describes the video content'              
+              'Use the @track@ element to add audio descriptions to the video content.',
+              'Use @aria-describedby@ to reference a text description of the video content.',
+              'Include an audio sound track that describes the video content.'              
             ],
             MANUAL_CHECKS: [
-              'When audio descriptions are enabled on the media player, check to make sure the audio description can be heard',
-              'If there is a audio description make sure the description accurately describes the video content',
-              'If there is a text description make sure the description accurately describes the video content'
+              'When audio descriptions are enabled on the media player, check to make sure the audio description can be heard.',
+              'If there is a audio description make sure the description accurately describes the video content.',
+              'If there is a text description make sure the description accurately describes the video content.'
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
@@ -6620,36 +6669,36 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         VIDEO_2: {
             ID:                    'Video 2',
-            DEFINITION:            '@object@ elements used for prerecorded video only content %s have text or audio descriptions of the video content',
+            DEFINITION:            '@object@ elements used for prerecorded video only content %s have text or audio descriptions of the video content.',
             SUMMARY:               '@object@ for video only %s have alternative',
             TARGET_RESOURCES_DESC: '@object@ elements',
             RULE_RESULT_MESSAGES: {
-              MANUAL_CHECK_S:     'Verify the @object@ element is used for prerecorded video only content.  If it is used for video only, verify it has either a text or audio description of the video content',
-              MANUAL_CHECK_P:     'Verify if any of the %N_MC @object@ elements are used for prerecorded video only content.  If any are used for video only, verify they have either a text or audio description of the video content',
-              HIDDEN_S: 'The @object@ element that is hidden was not evaluated',
-              HIDDEN_P: 'The %N_H @object@ elements that are hidden were not evaluated',
-              NOT_APPLICABLE:  'No @object@ elements found on this page'              
+              MANUAL_CHECK_S:     'Verify the @object@ element is used for prerecorded video only content.  If it is used for video only, verify it has either a text or audio description of the video content.',
+              MANUAL_CHECK_P:     'Verify if any of the %N_MC @object@ elements are used for prerecorded video only content.  If any are used for video only, verify they have either a text or audio description of the video content.',
+              HIDDEN_S: 'The @object@ element that is hidden was not evaluated.',
+              HIDDEN_P: 'The %N_H @object@ elements that are hidden were not evaluated.',
+              NOT_APPLICABLE:  'No @object@ elements found on this page.'              
             },
             NODE_RESULT_MESSAGES: {
-              ELEMENT_MC_1: 'Verify the @object@ element with @video@ in its @type@ attrbute is used for video only content.  If so verify the @aria-describedby@ references a text description of the video only content',
-              ELEMENT_MC_2: 'Verify the @object@ element with @video@ in its @type@ attrbute is used for video only content.  If so verify the video only content has a text or audio descriptions',
-              ELEMENT_MC_3: 'Verify if the @object@ element is used for video only content.  If so verify the @aria-describedby@ references a text description of the video only content',
-              ELEMENT_MC_4: 'Verify if the @object@ element is used for video only content.  If so verify the video only content has a text or audio description',
-              ELEMENT_HIDDEN_1:       'The @object@ element is hidden and cannot render video content'
+              ELEMENT_MC_1: 'Verify the @object@ element with @video@ in its @type@ attrbute is used for video only content.  If so verify the @aria-describedby@ references a text description of the video only content.',
+              ELEMENT_MC_2: 'Verify the @object@ element with @video@ in its @type@ attrbute is used for video only content.  If so verify the video only content has a text or audio descriptions.',
+              ELEMENT_MC_3: 'Verify if the @object@ element is used for video only content.  If so verify the @aria-describedby@ references a text description of the video only content.',
+              ELEMENT_MC_4: 'Verify if the @object@ element is used for video only content.  If so verify the video only content has a text or audio description.',
+              ELEMENT_HIDDEN_1:       'The @object@ element is hidden and cannot render video content.'
             },  
             PURPOSE: [
-              'Text and audio descriptions provide a means for people who cannot see the video to understand the video content',
-              'Some types of learning disabilities affect visual processing, text and audio descriptions provide an alternative way to understand the video content'
+              'Text and audio descriptions provide a means for people who cannot see the video to understand the video content.',
+              'Some types of learning disabilities affect visual processing, text and audio descriptions provide an alternative way to understand the video content.'
             ],
             TECHNIQUES: [
-              'Use the @video@ element instead of the @object@ element for video only content, since the @video@ element provides better support for audio description tracks',
-              'Include an audio track in the video that describes the video content',
-              'Use @aria-describedby@ attribute to point to a text description of the video only content'
+              'Use the @video@ element instead of the @object@ element for video only content, since the @video@ element provides better support for audio description tracks.',
+              'Include an audio track in the video that describes the video content.',
+              'Use @aria-describedby@ attribute to point to a text description of the video only content.'
             ],
             MANUAL_CHECKS: [
-              'When audio descriptions are enabled on the media player, check to make sure the audio description can be heard',
-              'If there is a audio description make sure the description accurately describes the video content',
-              'If there is a text description make sure the description accurately describes the video content'
+              'When audio descriptions are enabled on the media player, check to make sure the audio description can be heard.',
+              'If there is a audio description make sure the description accurately describes the video content.',
+              'If there is a text description make sure the description accurately describes the video content.'
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
@@ -6664,36 +6713,36 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         VIDEO_3: {
             ID:                    'Video 3',
-            DEFINITION:            '@embed@ elements used for video only content %s have caption or text transcription of the audio content',
+            DEFINITION:            '@embed@ elements used for video only content %s have caption or text transcription of the audio content.',
             SUMMARY:               '@embed@ for video only %s have alternative',
             TARGET_RESOURCES_DESC: '@embed@ elements',
             RULE_RESULT_MESSAGES: {
-              MANUAL_CHECK_S:     'Verify the @embed@ element is used for prerecorded video only content.  If it is used for video only, verify it has either a text or audio description of the video content',
-              MANUAL_CHECK_P:     'Verify if any of the %N_MC @embed@ elements are used for prerecorded video only content.  If any are used for video only, verify they have either a text or audio description of the video content',
-              HIDDEN_S: 'The @embed@ element that is hidden was not evaluated',
-              HIDDEN_P: 'The %N_H @embed@ elements that are hidden were not evaluated',
-              NOT_APPLICABLE:  'No @embed@ elements found on this page'              
+              MANUAL_CHECK_S:     'Verify the @embed@ element is used for prerecorded video only content.  If it is used for video only, verify it has either a text or audio description of the video content.',
+              MANUAL_CHECK_P:     'Verify if any of the %N_MC @embed@ elements are used for prerecorded video only content.  If any are used for video only, verify they have either a text or audio description of the video content.',
+              HIDDEN_S: 'The @embed@ element that is hidden was not evaluated.',
+              HIDDEN_P: 'The %N_H @embed@ elements that are hidden were not evaluated.',
+              NOT_APPLICABLE:  'No @embed@ elements found on this page.'              
             },
             NODE_RESULT_MESSAGES: {
-              ELEMENT_MC_1: 'Verify the @embed@ element with @video@ in its @type@ attribute is used for video only content.  If so verify the @aria-describedby@ references a text description of the video only content',
-              ELEMENT_MC_2: 'Verify the @embed@ element with @video@ in its @type@ attribute is used for video only content.  If so verify the video only content has a text or audio description',
-              ELEMENT_MC_3: 'Verify if the @embed@ element is used for video only content.  If so verify the @aria-describedby@ references a text description of the video only content',
-              ELEMENT_MC_4: 'Verify if the @embed@ element is used for video only content.  If so verify the video only content has a text or audio description',
-              ELEMENT_HIDDEN_1:       'The @embed@ element is hidden and cannot render video content'
+              ELEMENT_MC_1: 'Verify the @embed@ element with @video@ in its @type@ attribute is used for video only content.  If so verify the @aria-describedby@ references a text description of the video only content.',
+              ELEMENT_MC_2: 'Verify the @embed@ element with @video@ in its @type@ attribute is used for video only content.  If so verify the video only content has a text or audio description.',
+              ELEMENT_MC_3: 'Verify if the @embed@ element is used for video only content.  If so verify the @aria-describedby@ references a text description of the video only content.',
+              ELEMENT_MC_4: 'Verify if the @embed@ element is used for video only content.  If so verify the video only content has a text or audio description.',
+              ELEMENT_HIDDEN_1:       'The @embed@ element is hidden and cannot render video content.'
             },  
             PURPOSE: [
-              'Text and audio descriptions provide a means for people who cannot see the video to understand the video content',
-              'Some types of learning disabilities affect visual processing, text and audio descriptions provide an alternative way to understand the video content'
+              'Text and audio descriptions provide a means for people who cannot see the video to understand the video content.',
+              'Some types of learning disabilities affect visual processing, text and audio descriptions provide an alternative way to understand the video content.'
             ],
             TECHNIQUES: [
-              'Use the @video@ element instead of the @embed@ element for video only content, since the @video@ element provides better support for audio description tracks',
-              'Include an audio track in the video that describes the video content',
-              'Use @aria-describedby@ attribute to point to a text description of the video only content'
+              'Use the @video@ element instead of the @embed@ element for video only content, since the @video@ element provides better support for audio description tracks.',
+              'Include an audio track in the video that describes the video content.',
+              'Use @aria-describedby@ attribute to point to a text description of the video only content.'
             ],
             MANUAL_CHECKS: [
-              'When audio descriptions are enabled on the media player, check to make sure the audio description can be heard',
-              'If there is a audio description make sure the description accurately describes the video content',
-              'If there is a text description make sure the description accurately describes the video content'
+              'When audio descriptions are enabled on the media player, check to make sure the audio description can be heard.',
+              'If there is a audio description make sure the description accurately describes the video content.',
+              'If there is a text description make sure the description accurately describes the video content.'
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
@@ -6708,38 +6757,38 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },    
         VIDEO_4: {
             ID:                    'Video 4',
-            DEFINITION:            'Live and prerecorded video with synchronized audio (i.e. a movie, lecture) using the @video@ element %s have synchronized captions',
+            DEFINITION:            'Live and prerecorded video with synchronized audio (i.e. a movie, lecture) using the @video@ element %s have synchronized captions.',
             SUMMARY:               '@video@ %s have caption',
             TARGET_RESOURCES_DESC: '@video@ elements',
             RULE_RESULT_MESSAGES: {
-              FAIL_S:   'Add caption @track@ element to the @video@ element',
-              FAIL_P:   'Add caption @track@ element to each of the %N_F @video@ elements with out caption tracks',
-              MANUAL_CHECK_S:     'Verify that the @video@ element without a caption track has open captions',
-              MANUAL_CHECK_P:     'Verify that the %N_MC @video@ elements without caption tracks have open captions',
-              HIDDEN_S: 'The @video@ element that is hidden was not evaluated',
-              HIDDEN_P: 'The %N_H @video@ elements that are hidden were not evaluated',
-              NOT_APPLICABLE:  'No @video@ elements found on this page'              
+              FAIL_S:   'Add caption @track@ element to the @video@ element.',
+              FAIL_P:   'Add caption @track@ element to each of the %N_F @video@ elements with out caption tracks.',
+              MANUAL_CHECK_S:     'Verify that the @video@ element without a caption track has open captions.',
+              MANUAL_CHECK_P:     'Verify that the %N_MC @video@ elements without caption tracks have open captions.',
+              HIDDEN_S: 'The @video@ element that is hidden was not evaluated.',
+              HIDDEN_P: 'The %N_H @video@ elements that are hidden were not evaluated.',
+              NOT_APPLICABLE:  'No @video@ elements found on this page.'              
             },
             NODE_RESULT_MESSAGES: {
-              ELEMENT_PASS_1:         '@video@ element has caption track',
-              ELEMENT_FAIL_1:       'Add caption @track@ element to @video@ element',
-              ELEMENT_MC_1: 'Verify the video content includes open captions', 
-              ELEMENT_HIDDEN_1:       'The @video@ element is hidden and cannot render content'
+              ELEMENT_PASS_1:         '@video@ element has caption track.',
+              ELEMENT_FAIL_1:       'Add caption @track@ element to @video@ element.',
+              ELEMENT_MC_1: 'Verify the video content includes open captions.', 
+              ELEMENT_HIDDEN_1:       'The @video@ element is hidden and cannot render content.'
             },  
             PURPOSE: [
-              'Synchronized captions provide a means for people who cannot hear the audio content of a video to understand the audio content of the video',
-              'Some types of learning disabilities affect auditory processing, captions provide an alternative way to understand the audio content of a video',
-              'This rule covers the requirements of both WCAG 2.0 Success Criteria 1.2.2 and 1.2.4, and therefore covers both live and prerecorded video content'
+              'Synchronized captions provide a means for people who cannot hear the audio content of a video to understand the audio content of the video.',
+              'Some types of learning disabilities affect auditory processing, captions provide an alternative way to understand the audio content of a video.',
+              'This rule covers the requirements of both WCAG 2.0 Success Criteria 1.2.2 and 1.2.4, and therefore covers both live and prerecorded video content.'
              ],
             TECHNIQUES: [
-              'Use the @track@ element to add a caption track to the video content',
+              'Use the @track@ element to add a caption track to the video content.',
               'Use open captions to include the captions as part of the video.',
               'If closed captions are not support, use open captioning to include captions as part of the video.',
               'Open captioning is the only way to insure that captions are available on most cells phones and tablet computers connecting through wireless services.'
             ],
             MANUAL_CHECKS: [
-              'When captions are enabled on the media player, verify the captions are visible',
-              'Verify that the captions accurately represent and are synchronized with the speech and sounds in the video'
+              'When captions are enabled on the media player, verify the captions are visible.',
+              'Verify that the captions accurately represent and are synchronized with the speech and sounds in the video.'
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
@@ -6754,20 +6803,20 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         VIDEO_5: {
             ID:                    'Video 5',
-            DEFINITION:            'Live and prerecorded video with synchronized audio (i.e. a movie, lecture) using the @object@ element %s have synchronized captions',
+            DEFINITION:            'Live and prerecorded video with synchronized audio (i.e. a movie, lecture) using the @object@ element %s have synchronized captions.',
             SUMMARY:               '@object@ for video %s have captions',
             TARGET_RESOURCES_DESC: '@object@ elements',
             RULE_RESULT_MESSAGES: {
-              MANUAL_CHECK_S:     'Verify the @object@ element is used for video content with synchronized audio (i.e movie, lecture).  If it is video with synchronized audio, verify it has open or closed captioning of the audio content',
-              MANUAL_CHECK_P:     'Verify if any of the %N_MC @object@ elements are used for video content with synchronized audio (i.e movie, lecture).  If any are used for video with synchronized audio, verify it has open or closed captioning of the audio content',
-              HIDDEN_S: 'The @object@ element that is hidden was not evaluated',
-              HIDDEN_P: 'The %N_H @object@ elements that are hidden were not evaluated',
-              NOT_APPLICABLE:  'No @object@ elements found on this page'              
+              MANUAL_CHECK_S:     'Verify the @object@ element is used for video content with synchronized audio (i.e movie, lecture).  If it is video with synchronized audio, verify it has open or closed captioning of the audio content.',
+              MANUAL_CHECK_P:     'Verify if any of the %N_MC @object@ elements are used for video content with synchronized audio (i.e movie, lecture).  If any are used for video with synchronized audio, verify it has open or closed captioning of the audio content.',
+              HIDDEN_S: 'The @object@ element that is hidden was not evaluated.',
+              HIDDEN_P: 'The %N_H @object@ elements that are hidden were not evaluated.',
+              NOT_APPLICABLE:  'No @object@ elements found on this page.'              
             },
             NODE_RESULT_MESSAGES: {
-              ELEMENT_MC_1: 'Verify the @object@ element with @video@ in its @type@ attribute has synchronized audio (i.e. movie, lecture).  If so, verify there is open or closed captioning of the audio content',
-              ELEMENT_MC_2: 'Verify the @object@ element renders video content with synchronized audio (i.e. movie, lecture).  If so, verify there is open or closed captioning of the audio content',
-              ELEMENT_HIDDEN_1: 'The @object@ element is hidden and cannot render video content'
+              ELEMENT_MC_1: 'Verify the @object@ element with @video@ in its @type@ attribute has synchronized audio (i.e. movie, lecture).  If so, verify there is open or closed captioning of the audio content.',
+              ELEMENT_MC_2: 'Verify the @object@ element renders video content with synchronized audio (i.e. movie, lecture).  If so, verify there is open or closed captioning of the audio content.',
+              ELEMENT_HIDDEN_1: 'The @object@ element is hidden and cannot render video content.'
             },  
             PURPOSE: [
               'Synchronized captions provide a means for people who cannot hear the audio content of a video to have access to the speech and sounds of the video.',
@@ -6781,8 +6830,8 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               'Open captioning is the only way to insure that captions are available on most cells phones and tablet computers.'
             ],
             MANUAL_CHECKS: [
-              'When captions are enabled on the media player, verify the captions are visible',
-              'Verify that the captions accurately represent and are synchronized with the speech and sounds in the video'
+              'When captions are enabled on the media player, verify the captions are visible.',
+              'Verify that the captions accurately represent and are synchronized with the speech and sounds in the video.'
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
@@ -6793,25 +6842,25 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         VIDEO_6: {
             ID:                    'Video 6',
-            DEFINITION:            'Live and prerecorded video with synchronized audio (i.e. a movie, lecture) using the @embed@ element %s have synchronized captions',
+            DEFINITION:            'Live and prerecorded video with synchronized audio (i.e. a movie, lecture) using the @embed@ element %s have synchronized captions.',
             SUMMARY:               '@embed@ for video %s have captions',
             TARGET_RESOURCES_DESC: '@embed@ elements',
             RULE_RESULT_MESSAGES: {
-              MANUAL_CHECK_S:     'Verify the @embed@ element is used for video content with synchronized audio (i.e movie, lecture).  If it is video with synchronized audio, verify it has captions of the audio content',
-              MANUAL_CHECK_P:     'Verify if any of the %N_MC @embed@ elements are used for video content with synchronized audio (i.e movie, lecture).  If any are used for video with synchronized audio, verify it has captions of the audio content',
-              HIDDEN_S: 'The @embed@ element that is hidden was not evaluated',
-              HIDDEN_P: 'The %N_H @embed@ elements that are hidden were not evaluated',
+              MANUAL_CHECK_S:     'Verify the @embed@ element is used for video content with synchronized audio (i.e movie, lecture).  If it is video with synchronized audio, verify it has captions of the audio content.',
+              MANUAL_CHECK_P:     'Verify if any of the %N_MC @embed@ elements are used for video content with synchronized audio (i.e movie, lecture).  If any are used for video with synchronized audio, verify it has captions of the audio content.',
+              HIDDEN_S: 'The @embed@ element that is hidden was not evaluated.',
+              HIDDEN_P: 'The %N_H @embed@ elements that are hidden were not evaluated.',
               NOT_APPLICABLE:  'No @embed@ elements found on this page'              
             },
             NODE_RESULT_MESSAGES: {
-              ELEMENT_MC_1: 'Verify the @embed@ element with @video@ in its @type@ attribute has synchronized audio (i.e. movie, lecture).  If so, verify their are captions avialble for the audio content',
-              ELEMENT_MC_2: 'Verify the @embed@ element renders video content with synchronized audio (i.e. movie, lecture).  If so, verify their are captions avialble for the audio content',
-              ELEMENT_HIDDEN_1:       'The @embed@ element is hidden and cannot render video content'
+              ELEMENT_MC_1: 'Verify the @embed@ element with @video@ in its @type@ attribute has synchronized audio (i.e. movie, lecture).  If so, verify their are captions avialble for the audio content.',
+              ELEMENT_MC_2: 'Verify the @embed@ element renders video content with synchronized audio (i.e. movie, lecture).  If so, verify their are captions avialble for the audio content.',
+              ELEMENT_HIDDEN_1:       'The @embed@ element is hidden and cannot render video content.'
             },  
             PURPOSE: [
-              'Synchronized captions provide a means for people who cannot hear the audio content of a video to have access to the speech and sounds of the video',
-              'Some types of learning disabilities effect auditory processing, captoins provide an alternative way to understand the audio content of a video',
-              'This rule covers the requirements of both WCAG 2.0 Success Criteria 1.2.2 and 1.2.4, and therefore covers both live and prerecorded content'
+              'Synchronized captions provide a means for people who cannot hear the audio content of a video to have access to the speech and sounds of the video.',
+              'Some types of learning disabilities effect auditory processing, captoins provide an alternative way to understand the audio content of a video.',
+              'This rule covers the requirements of both WCAG 2.0 Success Criteria 1.2.2 and 1.2.4, and therefore covers both live and prerecorded content.'
             ],
             TECHNIQUES: [
               'Consider using the @video@ element instead of the @object@ element for video containing synchronized audio.  The @video@ element has better support for adding caption tracks.',
@@ -6820,8 +6869,8 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               'Open captioning is the only way to insure that captions are available on most cells phones and tablet computers.'
             ],
             MANUAL_CHECKS: [
-              'When captions are enabled on the media player, verify the captions are visible',
-              'Verify that the captions accurately represent and are synchronized with the speech and sounds in the video'
+              'When captions are enabled on the media player, verify the captions are visible.',
+              'Verify that the captions accurately represent and are synchronized with the speech and sounds in the video.'
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
@@ -6832,37 +6881,37 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         VIDEO_7: {
             ID:                    'Video 7',
-            DEFINITION:            '@video@ elements used for prerecorded video with synchronized audio (i.e. a movie, archived lecture) %s have an audio description of the video content',
-            SUMMARY:               '@video@ element %s have audio description',
-            TARGET_RESOURCES_DESC: '@video@ elements',
+            DEFINITION:            '@video@ elements used for prerecorded video with synchronized audio (i.e. a movie, archived lecture) %s have an audio description of the video content.',
+            SUMMARY:               '@video@ element %s have audio description.',
+            TARGET_RESOURCES_DESC: '@video@ elements.',
             RULE_RESULT_MESSAGES: {
-              FAIL_S:   'Add audio description track to @video@ element without an audio description track',
-              FAIL_P:   'Add audio description track to each of the %N_F the @video@ elements without audio description tracks',
-              MANUAL_CHECK_S:     'Verify the @video@ element with is used for prerecorded video with synchronized audio.   If so, verify the video includes an audio description of the video content',
-              MANUAL_CHECK_P:     'Verify if any of the %N_MC @video@ elements are used for prerecorded video with synchronized audio.   If so, verify each of the videos includes an audio description of the video content',
-              HIDDEN_S: 'The @video@ element that is hidden was not evaluated',
-              HIDDEN_P: 'The %N_H @video@ elements that are hidden were not evaluated',
-              NOT_APPLICABLE:  'No @video@ elements found on this page'              
+              FAIL_S:   'Add audio description track to @video@ element without an audio description track.',
+              FAIL_P:   'Add audio description track to each of the %N_F the @video@ elements without audio description tracks.',
+              MANUAL_CHECK_S:     'Verify the @video@ element with is used for prerecorded video with synchronized audio.   If so, verify the video includes an audio description of the video content.',
+              MANUAL_CHECK_P:     'Verify if any of the %N_MC @video@ elements are used for prerecorded video with synchronized audio.   If so, verify each of the videos includes an audio description of the video content.',
+              HIDDEN_S: 'The @video@ element that is hidden was not evaluated.',
+              HIDDEN_P: 'The %N_H @video@ elements that are hidden were not evaluated.',
+              NOT_APPLICABLE:  'No @video@ elements found on this page.'              
             },
             NODE_RESULT_MESSAGES: {
-              ELEMENT_PASS_1:         '@video@ element has audio description track',
-              ELEMENT_FAIL_1:       'Add audio description track to @video@ element',
-              ELEMENT_MC_1: 'Verify an audio description of the video content is included in the audio track of the video',
-              ELEMENT_HIDDEN_1:       'The @video@ element is hidden and cannot render content'
+              ELEMENT_PASS_1:         '@video@ element has audio description track.',
+              ELEMENT_FAIL_1:       'Add audio description track to @video@ element.',
+              ELEMENT_MC_1: 'Verify an audio description of the video content is included in the audio track of the video.',
+              ELEMENT_HIDDEN_1:       'The @video@ element is hidden and cannot render content.'
             },  
             PURPOSE: [
-              'Text and audio descriptions provide a means for people who cannot see the video to understand the video content',
-              'Some types of learning disabilities affect visual processing, text and audio descriptions provide an alternative way to understand the video content',
-              'This rule covers the requirements of both WCAG 2.0 Success Criteria 1.2.3 and 1.2.5, that is why a text description of the video content cannot be used to satisfy this rule'
+              'Text and audio descriptions provide a means for people who cannot see the video to understand the video content.',
+              'Some types of learning disabilities affect visual processing, text and audio descriptions provide an alternative way to understand the video content.',
+              'This rule covers the requirements of both WCAG 2.0 Success Criteria 1.2.3 and 1.2.5, that is why a text description of the video content cannot be used to satisfy this rule.'
             ],
             TECHNIQUES: [
-              'Use the @track@ element to add audio descriptions to the video content',
-              'Use @aria-describedby@ to reference a text description of the video content'
+              'Use the @track@ element to add audio descriptions to the video content.',
+              'Use @aria-describedby@ to reference a text description of the video content.'
             ],
             MANUAL_CHECKS: [
-              'When audio descriptions are enabled on the media player, check to make sure the audio description can be heard',
-              'If there is a audio description make sure the description accurately describes the video content',
-              'If there is a text description make sure the description accurately describes the video content'
+              'When audio descriptions are enabled on the media player, check to make sure the audio description can be heard.',
+              'If there is a audio description make sure the description accurately describes the video content.',
+              'If there is a text description make sure the description accurately describes the video content.'
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
@@ -6881,35 +6930,35 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         VIDEO_8: {
             ID:                    'Video 8',
-            DEFINITION:            '@object@ elements used for prerecorded video with synchronized audio (i.e. a movie, archived lecture) %s have an audio description of the video content',
-            SUMMARY:               '@object@ for video %s have audio description',
+            DEFINITION:            '@object@ elements used for prerecorded video with synchronized audio (i.e. a movie, archived lecture) %s have an audio description of the video content.',
+            SUMMARY:               '@object@ for video %s have audio description.',
             TARGET_RESOURCES_DESC: '@object@ elements',
             RULE_RESULT_MESSAGES: {
-              MANUAL_CHECK_S:     'Verify the @object@ element is used for prerecorded video with synchronized audio (i.e. a movie, archived lecture).  If so, verify the video includes an audio description of the video content',
-              MANUAL_CHECK_P:     'Verify if any of the %N_MC @object@ elements are used for prerecorded video with synchronized audio (i.e. a movie, archived lecture).  If so, verify each video includes an audio description of the video content',
-              HIDDEN_S: 'The @object@ element that is hidden was not evaluated',
-              HIDDEN_P: 'The %N_H @object@ elements that are hidden were not evaluated',
+              MANUAL_CHECK_S:     'Verify the @object@ element is used for prerecorded video with synchronized audio (i.e. a movie, archived lecture).  If so, verify the video includes an audio description of the video content.',
+              MANUAL_CHECK_P:     'Verify if any of the %N_MC @object@ elements are used for prerecorded video with synchronized audio (i.e. a movie, archived lecture).  If so, verify each video includes an audio description of the video content.',
+              HIDDEN_S: 'The @object@ element that is hidden was not evaluated.',
+              HIDDEN_P: 'The %N_H @object@ elements that are hidden were not evaluated.',
               NOT_APPLICABLE:  'No @object@ elements found on this page'              
             },
             NODE_RESULT_MESSAGES: {
               ELEMENT_MC_1: 'Verify the @object@ element with @video@ in its @type@ attrbute is used for prerecorded video with synchronized audio (i.e. a movie, archived lecture).  If so verify an audio description of the video content is available.',
               ELEMENT_MC_2: 'Verify if the @object@ element is used for prerecorded video with synchronized audio (i.e. a movie, archived lecture).  If so verify an audio description of the video content is available.',
-              ELEMENT_HIDDEN_1:       'The @object@ element is hidden and cannot render video content'
+              ELEMENT_HIDDEN_1:       'The @object@ element is hidden and cannot render video content.'
             },  
             PURPOSE: [
-              'Text and audio descriptions provide a means for people who cannot see the video to understand the video content',
-              'Some types of learning disabilities affect visual processing, text and audio descriptions provide an alternative way to understand the video content',
-              'This rule covers the requirements of both WCAG 2.0 Success Criteria 1.2.3 and 1.2.5, that is why a text description of the video content cannot be used to satisfy this rule'
+              'Text and audio descriptions provide a means for people who cannot see the video to understand the video content.',
+              'Some types of learning disabilities affect visual processing, text and audio descriptions provide an alternative way to understand the video content.',
+              'This rule covers the requirements of both WCAG 2.0 Success Criteria 1.2.3 and 1.2.5, that is why a text description of the video content cannot be used to satisfy this rule.'
             ],
             TECHNIQUES: [
-              'Use the @video@ element instead of the @object@ element for video only content, since the @video@ element provides better support for audio description tracks',
-              'Include an audio track in the video that describes the video content',
-              'Use @aria-describedby@ attribute to point to a text description of the video only content'
+              'Use the @video@ element instead of the @object@ element for video only content, since the @video@ element provides better support for audio description tracks.',
+              'Include an audio track in the video that describes the video content.',
+              'Use @aria-describedby@ attribute to point to a text description of the video only content.'
             ],
             MANUAL_CHECKS: [
-              'When audio descriptions are enabled on the media player, check to make sure the audio description can be heard',
-              'If there is a audio description make sure the description accurately describes the video content',
-              'If there is a text description make sure the description accurately describes the video content'
+              'When audio descriptions are enabled on the media player, check to make sure the audio description can be heard.',
+              'If there is a audio description make sure the description accurately describes the video content.',
+              'If there is a text description make sure the description accurately describes the video content.'
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
@@ -6924,35 +6973,35 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         VIDEO_9: {
             ID:                    'Video 9',
-            DEFINITION:            '@embed@ elements used for prerecorded video with synchronized audio (i.e. a movie, archived lecture) %s have audio description of the video content',
+            DEFINITION:            '@embed@ elements used for prerecorded video with synchronized audio (i.e. a movie, archived lecture) %s have audio description of the video content.',
             SUMMARY:               '@embed@ for video %s have audio description',
             TARGET_RESOURCES_DESC: '@embed@ elements',
             RULE_RESULT_MESSAGES: {
-              MANUAL_CHECK_S:     'Verify the @embed@ element is used for prerecorded video with synchronized audio (i.e. a movie, archived lecture).   If so, verify the video includes an audio description of the video content',
-              MANUAL_CHECK_P:     'Verify if any of the %N_MC @embed@ elements are used for prerecorded video with synchronized audio (i.e. a movie, archived lecture).   If so, verify each of the videos include an audio description of the video content',
-              HIDDEN_S: 'The @embed@ element that is hidden was not evaluated',
-              HIDDEN_P: 'The %N_H @embed@ elements that are hidden were not evaluated',
-              NOT_APPLICABLE:  'No @embed@ elements found on this page'              
+              MANUAL_CHECK_S:     'Verify the @embed@ element is used for prerecorded video with synchronized audio (i.e. a movie, archived lecture).   If so, verify the video includes an audio description of the video content.',
+              MANUAL_CHECK_P:     'Verify if any of the %N_MC @embed@ elements are used for prerecorded video with synchronized audio (i.e. a movie, archived lecture).   If so, verify each of the videos include an audio description of the video content.',
+              HIDDEN_S: 'The @embed@ element that is hidden was not evaluated.',
+              HIDDEN_P: 'The %N_H @embed@ elements that are hidden were not evaluated.',
+              NOT_APPLICABLE:  'No @embed@ elements found on this page.'              
             },
             NODE_RESULT_MESSAGES: {
-              ELEMENT_MC_1: 'Verify the @embed@ element with @video@ in its @type@ attrbute is used for video with synchronized audio (i.e. a movie, archived lecture).  If so, verify the video includes an audio description of the video content',
-              ELEMENT_MC_2: 'Verify if the @embed@ element is used for video with synchronized audio (i.e. a movie, archived lecture).  If so, verify the video includes an audio description of the video content',
-              ELEMENT_HIDDEN_1:       'The @embed@ element is hidden and cannot render video content'
+              ELEMENT_MC_1: 'Verify the @embed@ element with @video@ in its @type@ attrbute is used for video with synchronized audio (i.e. a movie, archived lecture).  If so, verify the video includes an audio description of the video content.',
+              ELEMENT_MC_2: 'Verify if the @embed@ element is used for video with synchronized audio (i.e. a movie, archived lecture).  If so, verify the video includes an audio description of the video content.',
+              ELEMENT_HIDDEN_1:       'The @embed@ element is hidden and cannot render video content.'
             },  
             PURPOSE: [
-              'Text and audio descriptions provide a means for people who cannot see the video to understand the video content',
-              'Some types of learning disabilities affect visual processing, text and audio descriptions provide an alternative way to understand the video content',
-              'This rule covers the requirements of both WCAG 2.0 Success Criteria 1.2.3 and 1.2.5, that is why a text description of the video content cannot be used to satisfy this rule'
+              'Text and audio descriptions provide a means for people who cannot see the video to understand the video content.',
+              'Some types of learning disabilities affect visual processing, text and audio descriptions provide an alternative way to understand the video content.',
+              'This rule covers the requirements of both WCAG 2.0 Success Criteria 1.2.3 and 1.2.5, that is why a text description of the video content cannot be used to satisfy this rule.'
             ],
             TECHNIQUES: [
-              'Use the @video@ element instead of the @embed@ element for video only content, since the @video@ element provides better support for audio description tracks',
-              'Include an audio track in the video that describes the video content',
-              'Use @aria-describedby@ attribute to point to a text description of the video only content'
+              'Use the @video@ element instead of the @embed@ element for video only content, since the @video@ element provides better support for audio description tracks.',
+              'Include an audio track in the video that describes the video content.',
+              'Use @aria-describedby@ attribute to point to a text description of the video only content.'
             ],
             MANUAL_CHECKS: [
-              'When audio descriptions are enabled on the media player, check to make sure the audio description can be heard',
-              'If there is a audio description make sure the description accurately describes the video content',
-              'If there is a text description make sure the description accurately describes the video content'
+              'When audio descriptions are enabled on the media player, check to make sure the audio description can be heard.',
+              'If there is a audio description make sure the description accurately describes the video content.',
+              'If there is a text description make sure the description accurately describes the video content.'
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
@@ -6996,23 +7045,23 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
     rules: {
         WIDGET_1: {
             ID:                    'Widget 1',
-            DEFINITION:            'Widgets %s have label',
+            DEFINITION:            'Widgets %s have label.',
             SUMMARY:               'Widgets %s have label',
             TARGET_RESOURCES_DESC: 'Elements with @role@ attribute values that are defined as widgets',
             RULE_RESULT_MESSAGES: {
-              FAIL_S:   'Add a label to the element with a widget role that is unlabelled.',
-              FAIL_P:   'Add labels to the %N_F elements with widget roles that are unlabelled.',
-              MANUAL_CHECK_S:     'Element with a widget role may need a label.',
-              MANUAL_CHECK_P:     '%N_MC out of %N_T element with widget roles may need a label.',
-              HIDDEN_S: 'An element defined as a widget role that is hidden and was not evaluated.',
-              HIDDEN_P: '%N_H elements defined with widget roles that are hidden were not evaluated.',
-              NOT_APPLICABLE:  'No elements with widget roles on this page'              
+              FAIL_S:         'Add a label to the element with a widget role that is unlabelled.',
+              FAIL_P:         'Add labels to the %N_F elements with widget roles that are unlabelled.',
+              MANUAL_CHECK_S: 'Element with a widget role may need a label.',
+              MANUAL_CHECK_P: '%N_MC out of %N_T element with widget roles may need a label.',
+              HIDDEN_S:       'An element defined as a widget role that is hidden and was not evaluated.',
+              HIDDEN_P:       '%N_H elements defined with widget roles that are hidden were not evaluated.',
+              NOT_APPLICABLE: 'No elements with widget roles on this page'              
             },
             NODE_RESULT_MESSAGES: {
-              ELEMENT_PASS_1:    '@%1@ element with @%2@ widget role has label: %3.',
-              ELEMENT_MC_1:      '@%1@ element with @%2@ widget role may require a label depending on context (i.e multiple elements with the same widget role) in the page, adding an label will improve accessibility.',
-              ELEMENT_FAIL_1:    'Add label to @%1@ element with @%2@ widget role.',
-              ELEMENT_HIDDEN_1:  'Label for widget was not tested because @%1@ element with @%2@ widget role is hidden from assistive technologies and/or not visible on screen'
+              ELEMENT_PASS_1: '@%1@ element with @%2@ widget role has label: %3.',
+              ELEMENT_MC_1:   '@%1@ element with @%2@ widget role may require a label depending on context (i.e multiple elements with the same widget role) in the page, adding an label will improve accessibility.',
+              ELEMENT_FAIL_1:   'Add label to @%1@ element with @%2@ widget role.',
+              ELEMENT_HIDDEN_1: 'Label for widget was not tested because @%1@ element with @%2@ widget role is hidden from assistive technologies and/or not visible on screen'
             },
             PURPOSE: [
               'A label associated with a element with a widget role ensures that information about the widget is spoken by screen readers when it receives focus.'
@@ -7070,31 +7119,31 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         WIDGET_2: {
             ID:                    'Widget 2',
-            DEFINITION:            'Elements with @onClick@ events %s be a link, button or have a widget role with tabindex',
-            SUMMARY:               '@onClick@ %s have role',
-            TARGET_RESOURCES_DESC: 'Elements with @onClick@ attribute values that are defined as widgets',
+            DEFINITION:            'Elements with @onClick@ event handlers %s be a link, button or have a widget role with tabindex.',
+            SUMMARY:               '@onClick@ event handlers %s have role',
+            TARGET_RESOURCES_DESC: 'Elements with @onClick@ event handler values that are defined as widgets',
             RULE_RESULT_MESSAGES: {
-              FAIL_S:   'Add widget role name to element',
-              FAIL_P:   'Add widget roles to each of the %N_F elements',
-              MANUAL_CHECK_S:     'Verify that any child elements that can respond to element with an @onclick@ event are a link, form control or has a widget role, and can be accessed with the keyboard alone',
-              MANUAL_CHECK_P:     'Verify that any child elements that can respond to %N_MC elements with an @onclick@ event are a link, form control or has a widget role, and can be accessed with the keyboard alone',
-              HIDDEN_S: 'The element with an @onClick@ event that is hidden and was not evaluated.',
-              HIDDEN_P: '%N_H elements with @onClick@ events that are hidden were not evaluated.',
-              NOT_APPLICABLE:  'No elements with @onClick@ events on the page'              
+              FAIL_S:   'Add widget role name to element.',
+              FAIL_P:   'Add widget roles to each of the %N_F elements.',
+              MANUAL_CHECK_S:     'Verify that any child elements that can respond to element with an @onclick@ event handler are a link, form control or has a widget role, and can be accessed with the keyboard alone.',
+              MANUAL_CHECK_P:     'Verify that any child elements that can respond to %N_MC elements with an @onclick@ event handler are a link, form control or has a widget role, and can be accessed with the keyboard alone.',
+              HIDDEN_S: 'The element with an @onClick@ event handler that is hidden and was not evaluated.',
+              HIDDEN_P: '%N_H elements with @onClick@ events handler that are hidden were not evaluated.',
+              NOT_APPLICABLE:  'No elements with @onClick@ event handlers on the page'              
             },
             NODE_RESULT_MESSAGES: {
-              ELEMENT_PASS_1:   '@%1@ element has a widget role',
-              ELEMENT_PASS_2:   '@%1@ element is a form control',
-              ELEMENT_PASS_3:   '@%1@ element is a link',
-              ELEMENT_FAIL_1:   'Add widget role to the @%1@ element',
-              ELEMENT_MC_1:     'The @%1@ element has an @onclick@ event, verify any child elements that can respond to the @onclick@ event are a link, form control or have a widget role, and can be access with the keyboard alone',
-              ELEMENT_HIDDEN_1: 'Elements with onClick events having a @role@ was not tested because %1 element with @onClick@ event is hidden from assistive technologies and/or not visible on screen'
+              ELEMENT_PASS_1:   '@%1@ element has a widget role.',
+              ELEMENT_PASS_2:   '@%1@ element is a form control.',
+              ELEMENT_PASS_3:   '@%1@ element is a link.',
+              ELEMENT_FAIL_1:   'Add widget role to the @%1@ element.',
+              ELEMENT_MC_1:     'The @%1@ element has an @onclick@ event handler, verify any child elements that can respond to the @onclick@ event handler are a link, form control or have a widget role, and can be access with the keyboard alone.',
+              ELEMENT_HIDDEN_1: 'Elements with onClick events having a @role@ was not tested because %1 element with @onClick@ event handler is hidden from assistive technologies and/or not visible on screen.'
             },
             PURPOSE: [
-              'Elements with @onClick@ event handlers must be a link, form control or have a widget role'                   
+              'Elements with @onClick@ event handlers must be a link, form control or have a widget role.'                   
             ],
             TECHNIQUES: [
-              'Use ARIA widget role on non-form controls to describe their function on the page'
+              'Use ARIA widget role on non-form controls to describe their function on the page.'
             ],
             MANUAL_CHECKS: [
             ],
@@ -7127,31 +7176,31 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         WIDGET_3: {
             ID:                    'Widget 3',
-            DEFINITION:            '@role@ attribute value %s be a widget, section, landmark or live region role',
+            DEFINITION:            '@role@ attribute value %s be a widget, section, landmark or live region role.',
             SUMMARY:               '@role@ %s be valid',
             TARGET_RESOURCES_DESC: 'Elements with @role@ attribute values',
             RULE_RESULT_MESSAGES: {
-              FAIL_S:   'Add a valid widget, section, landmark or live region role value to the element',
-              FAIL_P:   'Add a valid widget, section, landmark or live region role values to %N_F out of %N_T elements with @role@ attributes',
+              FAIL_S:   'Add a valid widget, section, landmark or live region role value to the element.',
+              FAIL_P:   'Add a valid widget, section, landmark or live region role values to %N_F out of %N_T elements with @role@ attributes.',
               HIDDEN_S: 'The element with a role that is hidden and was not evaluated.',
               HIDDEN_P: '%N_H elements with a role that are hidden were not evaluated.',
               NOT_APPLICABLE:  'No elements with @role@ attribute on this page'              
             },
             NODE_RESULT_MESSAGES: {
-              ELEMENT_PASS_1:     '@%1@ is a widget role',
-              ELEMENT_PASS_2:     '@%1@ is a landmark role',
-              ELEMENT_PASS_3:     '@%1@ is a live region role',
-              ELEMENT_PASS_4:     '@%1@ is a section role',
-              ELEMENT_FAIL_1:   '@%1@ is an abstract ARIA role, change the role attribute to a widget, landmark or live region role',
-              ELEMENT_FAIL_2:   'The @role@ attribute is an empty string, change the @role@ attribute value to an appropriate widget, landmark, section or live region role',
-              ELEMENT_FAIL_3:   '@%1@ is not a defined ARIA role, change the @role@ attribute value to an appropriate widget, landmark, section or live region role',
-              ELEMENT_HIDDEN_1:   '@role@ attribute value was not validated because the %1 element is hidden from assistive technologies and/or not visible on screen'
+              ELEMENT_PASS_1:     '@%1@ is a widget role.',
+              ELEMENT_PASS_2:     '@%1@ is a landmark role.',
+              ELEMENT_PASS_3:     '@%1@ is a live region role.',
+              ELEMENT_PASS_4:     '@%1@ is a section role.',
+              ELEMENT_FAIL_1:   '@%1@ is an abstract ARIA role, change the role attribute to a widget, landmark or live region role.',
+              ELEMENT_FAIL_2:   'The @role@ attribute is an empty string, change the @role@ attribute value to an appropriate widget, landmark, section or live region role.',
+              ELEMENT_FAIL_3:   '@%1@ is not a defined ARIA role, change the @role@ attribute value to an appropriate widget, landmark, section or live region role.',
+              ELEMENT_HIDDEN_1:   '@role@ attribute value was not validated because the %1 element is hidden from assistive technologies and/or not visible on screen.'
             },
             PURPOSE: [
-              'Elements with @role@ attributes describe the section of a document (i.e landmarks) and the types of interactive elements (i.e. widgets) to users of assistive technologies, especially screen reader users'                   
+              'Elements with @role@ attributes describe the section of a document (i.e landmarks) and the types of interactive elements (i.e. widgets) to users of assistive technologies, especially screen reader users.'                   
             ],
             TECHNIQUES: [
-              'Use ARIA landmark roles to describe the sections of a web page',
+              'Use ARIA landmark roles to describe the sections of a web page.',
               'Use ARIA widget roles to describe interactive elements on a web page'
             ],
             MANUAL_CHECKS: [
@@ -7189,30 +7238,30 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         WIDGET_4: {
             ID:                    'Widget 4',
-            DEFINITION:            'ARIA property and state values %s be valid types',
+            DEFINITION:            'ARIA property and state values %s be valid types.',
             SUMMARY:               'ARIA values %s be valid',
             TARGET_RESOURCES_DESC: 'Elements with aria attributes',
             RULE_RESULT_MESSAGES: {
-              FAIL_S:   'Change ARIA attribute to a valid type',
-              FAIL_P:   'Change %N_F out of %N_T ARIA attributes to a valid types',
+              FAIL_S:   'Change ARIA attribute to a valid type.',
+              FAIL_P:   'Change %N_F out of %N_T ARIA attributes to a valid types.',
               HIDDEN_S: 'The widget that is hidden and was not evaluated.',
               HIDDEN_P: '%N_H widgets that are hidden were not evaluated.',
               NOT_APPLICABLE:  'No ARIA attributes on this page'              
             },
             NODE_RESULT_MESSAGES: {
-              ELEMENT_PASS_1:   'The @%1@ attribute with the value "@%2@" is a valid token',
-              ELEMENT_PASS_2:   'The @%1@ attribute with the value "@%2@" is a valid "%3" type',
-              ELEMENT_FAIL_1: 'The @%1@ attribute with the value "@%2@" must change to one of the following values: %3',
-              ELEMENT_FAIL_2: 'The @%1@ attribute with the value "@%2@" must change to one or more of the following values: %3',
-              ELEMENT_FAIL_3: 'The @%1@ attribute with the value "@%2@" must change to a value with type of \'%3\'',
-              ELEMENT_HIDDEN_1: 'ARIA attribute value was not tested for validity because the @%1@ attribute with the value "@%2@" is hidden from assistive technologies and not visible on screen'
+              ELEMENT_PASS_1:   'The @%1@ attribute with the value "@%2@" is a valid token.',
+              ELEMENT_PASS_2:   'The @%1@ attribute with the value "@%2@" is a valid "%3" type.',
+              ELEMENT_FAIL_1: 'The @%1@ attribute with the value "@%2@" must change to one of the following values: %3.',
+              ELEMENT_FAIL_2: 'The @%1@ attribute with the value "@%2@" must change to one or more of the following values: %3.',
+              ELEMENT_FAIL_3: 'The @%1@ attribute with the value "@%2@" must change to a value with type of \'%3\'.',
+              ELEMENT_HIDDEN_1: 'ARIA attribute value was not tested for validity because the @%1@ attribute with the value "@%2@" is hidden from assistive technologies and not visible on screen.'
             },
             PURPOSE: [
-              'ARIA attributes must be a valid type to accurately describe web content to users of assistive technologies, especially screen reader users'                   
+              'ARIA attributes must be a valid type to accurately describe web content to users of assistive technologies, especially screen reader users.'                   
             ],
             TECHNIQUES: [
-              'Use valid values for ARIA attributes',
-              'Check W3C WAI Accessible Rich Internet Applications specifications for allowed values for ARIA attributes'
+              'Use valid values for ARIA attributes.',
+              'Check W3C WAI Accessible Rich Internet Applications specifications for allowed values for ARIA attributes.'
             ],
             MANUAL_CHECKS: [
             ],
@@ -7241,27 +7290,27 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
       },
       WIDGET_5: {
             ID:                    'Widget 5',
-            DEFINITION:            'ARIA property or state %s be defined',
+            DEFINITION:            'ARIA property or state %s be defined.',
             SUMMARY:               'ARIA attribute %s be defined',
             TARGET_RESOURCES_DESC: 'Elements with aria attributes',
             RULE_RESULT_MESSAGES: {
-              FAIL_S:   'Change ARIA attribute to a defined property or state',
-              FAIL_P:   'Change all %N_F out of %N_T ARIA attributes to a defined properties or states',
+              FAIL_S:   'Change ARIA attribute to a defined property or state.',
+              FAIL_P:   'Change all %N_F out of %N_T ARIA attributes to a defined properties or states.',
               HIDDEN_S: 'The widget that is hidden and was not evaluated.',
               HIDDEN_P: '%N_H widgets that are hidden were not evaluated.',
-              NOT_APPLICABLE:  'No undefined ARIA attributes on this page'              
+              NOT_APPLICABLE:  'No undefined ARIA attributes on this page.'              
             },
             NODE_RESULT_MESSAGES: {
-              ELEMENT_PASS_1:    'The @%1@ attribute is a defined ARIA property or state',
-              ELEMENT_FAIL_1:  'The @%1@ attribute must be changed to a defined ARIA property or state',
-              ELEMENT_HIDDEN_1:  'Valid ARIA attribute was not tested becasue the @%1@ attribute with the value "@%2@" is hidden from assistive technologies and/or not visible on screen'
+              ELEMENT_PASS_1:    'The @%1@ attribute is a defined ARIA property or state.',
+              ELEMENT_FAIL_1:  'The @%1@ attribute must be changed to a defined ARIA property or state.',
+              ELEMENT_HIDDEN_1:  'Valid ARIA attribute was not tested becasue the @%1@ attribute with the value "@%2@" is hidden from assistive technologies and/or not visible on screen.'
             },
             PURPOSE: [
               'ARIA attributes must be defined properties or states to accurately describe web content to users of assistive technologies, especially screen reader users'                   
             ],
             TECHNIQUES: [
-              'Use defined ARIA properties and states in the ARIA specification',
-              'Check W3C WAI Accessible Rich Internet Applications specifications for allowed values for ARIA attributes'
+              'Use defined ARIA properties and states in the ARIA specification.',
+              'Check W3C WAI Accessible Rich Internet Applications specifications for allowed values for ARIA attributes.'
             ],
             MANUAL_CHECKS: [
             ],
@@ -7290,26 +7339,26 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
       },
       WIDGET_6: {
             ID:                    'Widget 6',
-            DEFINITION:            'Widgets %s define required properties and states',
+            DEFINITION:            'Widgets %s define required properties and states.',
             SUMMARY:               'Widgets %s have properties',
             TARGET_RESOURCES_DESC: 'Widgets with required properties and states',
             RULE_RESULT_MESSAGES: {
-              FAIL_S:   'Add required properties and states to widget',
-              FAIL_P:   'Add required properties and states to the %N_F of the %N_T widgets with required properties and/or states on the page',
+              FAIL_S:   'Add required properties and states to widget.',
+              FAIL_P:   'Add required properties and states to the %N_F of the %N_T widgets with required properties and/or states on the page.',
               HIDDEN_S: 'The widget with required properties and states that is hidden and was not evaluated.',
               HIDDEN_P: '%N_H widgets that have required properties and states that are hidden were not evaluated.',
-              NOT_APPLICABLE:  'No widgets with required properties and states on this page'              
+              NOT_APPLICABLE:  'No widgets with required properties and states on this page.'              
             },
             NODE_RESULT_MESSAGES: {
-              ELEMENT_PASS_1:   '@%1@ widget has the following required ARIA properties and states: %2',
-              ELEMENT_FAIL_1: 'Add one or more of the required ARIA properties and states (i.e. "%2") to the @%1@ widget',
-              ELEMENT_HIDDEN_1: 'Required ARA properties and states was not tested because the %1 widget is hidden from assistive technologies and/or not visible on screen'
+              ELEMENT_PASS_1:   '@%1@ widget has the following required ARIA properties and states: %2.',
+              ELEMENT_FAIL_1: 'Add one or more of the required ARIA properties and states (i.e. "%2") to the @%1@ widget.',
+              ELEMENT_HIDDEN_1: 'Required ARA properties and states was not tested because the %1 widget is hidden from assistive technologies and/or not visible on screen.'
             },
             PURPOSE: [
-              'ARIA roles, properties and states describes the features of interactive widgets to users of assistive technologies, especially screen reader users'                   
+              'ARIA roles, properties and states describes the features of interactive widgets to users of assistive technologies, especially screen reader users.'                   
             ],
             TECHNIQUES: [
-              'Use required ARIA properties to describe the features and options of a widget'
+              'Use required ARIA properties to describe the features and options of a widget.'
             ],
             MANUAL_CHECKS: [
             ],
@@ -7338,26 +7387,26 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
       WIDGET_7: {
             ID:                    'Widget 7',
-            DEFINITION:            'Widgets %s have required child roles',
+            DEFINITION:            'Widgets %s have required child roles.',
             SUMMARY:               'Widgets %s have child roles',
             TARGET_RESOURCES_DESC: 'Widgets with required owned elements',
             RULE_RESULT_MESSAGES: {
-              FAIL_S:   'Add required child roles to child elements in the widget',
-              FAIL_P:   'Add required child roles to child elements in the %N_F out of %N_T widgets with required child elements',
+              FAIL_S:   'Add required child roles to child elements in the widget.',
+              FAIL_P:   'Add required child roles to child elements in the %N_F out of %N_T widgets with required child elements.',
               HIDDEN_S: 'The widget that requires child widget roles that is hidden and was not evaluated.',
               HIDDEN_P: '%N_H widgets that require child widget roles that are hidden were not evaluated.',
-              NOT_APPLICABLE:  'No widgets with required child ARIA elements on this page'              
+              NOT_APPLICABLE:  'No widgets with required child ARIA elements on this page.'              
             },
             NODE_RESULT_MESSAGES: {
-              ELEMENT_PASS_1:    '@%1@ widget has at least one required owned elements: %2',
-              ELEMENT_FAIL_1:  '@%1@ widget is MISSING one or more of following required owned elements: %2',
-              ELEMENT_HIDDEN_1:  'Required child widgets was not tested because the %1 widget is hidden from assistive technologies and not visible on screen'
+              ELEMENT_PASS_1:    '@%1@ widget has at least one required owned elements: %2.',
+              ELEMENT_FAIL_1:  '@%1@ widget is MISSING one or more of following required owned elements: %2.',
+              ELEMENT_HIDDEN_1:  'Required child widgets was not tested because the %1 widget is hidden from assistive technologies and not visible on screen.'
             },
             PURPOSE: [
-              'ARIA roles, properties and states describes the features of interactive widgets to users of assistive technologies, especially screen reader users'                   
+              'ARIA roles, properties and states describes the features of interactive widgets to users of assistive technologies, especially screen reader users.'                   
             ],
             TECHNIQUES: [
-              'Use required ARIA owned elements to describe the features and options of a widget'
+              'Use required ARIA owned elements to describe the features and options of a widget.'
             ],
             MANUAL_CHECKS: [
             ],
@@ -7386,27 +7435,27 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
      WIDGET_8: {
             ID:                    'Widget 8',
-            DEFINITION:            'Widgets %s have required parent role',
+            DEFINITION:            'Widgets %s have required parent role.',
             SUMMARY:               'Widgets %s have parent',
             TARGET_RESOURCES_DESC: 'Widgets with required parent role',
             RULE_RESULT_MESSAGES: {
-              FAIL_S:   'Add required parent role to the widget',
-              FAIL_P:   'Add required parent role to the %N_F of the %N_T widgets that require a parent role',
+              FAIL_S:   'Add required parent role to the widget.',
+              FAIL_P:   'Add required parent role to the %N_F of the %N_T widgets that require a parent role.',
               HIDDEN_S: 'The widget that requires a parent role that is hidden and was not evaluated.',
               HIDDEN_P: '%N_H widgets that require a parent roles that are hidden were not evaluated.',
               NOT_APPLICABLE:  'No widgets with required parent role on this page'              
             },
             NODE_RESULT_MESSAGES: {
-              ELEMENT_PASS_1:   '@%1@ widget is a child of the a @%2@ role',
-              ELEMENT_FAIL_1: 'Create a parent widget with the role of @%1@ for this @%2@ widget',
-              ELEMENT_FAIL_2: 'Create a parent widget with the one of the required roles (i.e. @%1@) for this @%2@ widget',
-              ELEMENT_HIDDEN_1: 'Required parent widgets was not tested because the %1 widget is hidden from assistive technologies and/or not visible on screen'
+              ELEMENT_PASS_1:   '@%1@ widget is a child of the a @%2@ role.',
+              ELEMENT_FAIL_1: 'Create a parent widget with the role of @%1@ for this @%2@ widget.',
+              ELEMENT_FAIL_2: 'Create a parent widget with the one of the required roles (i.e. @%1@) for this @%2@ widget.',
+              ELEMENT_HIDDEN_1: 'Required parent widgets was not tested because the %1 widget is hidden from assistive technologies and/or not visible on screen.'
             },
             PURPOSE: [
-              'ARIA roles, properties and states describes the features of interactive widgets to users of assistive technologies, especially screen reader users'                   
+              'ARIA roles, properties and states describes the features of interactive widgets to users of assistive technologies, especially screen reader users.'                   
             ],
             TECHNIQUES: [
-              'Use required parent roles to describe the features and options of a widget'
+              'Use required parent roles to describe the features and options of a widget.'
             ],
             MANUAL_CHECKS: [
             ],
@@ -7435,26 +7484,26 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
      WIDGET_9: {
             ID:                    'Widget 9',
-            DEFINITION:            'Widgets %s be owned by only one parent widget',
+            DEFINITION:            'Widgets %s be owned by only one parent widget.',
             SUMMARY:               'Only one owner',
             TARGET_RESOURCES_DESC: 'Widgets with required parent roles',
             RULE_RESULT_MESSAGES: {
-              FAIL_S:   'Update widgets with aria-owns to make sure it only references a child widget once',
-              FAIL_P:   'Update %N_F out of %N_T widgets with aria-owns to make sure they reference a child widget only once',
+              FAIL_S:   'Update widgets with aria-owns to make sure it only references a child widget once.',
+              FAIL_P:   'Update %N_F out of %N_T widgets with aria-owns to make sure they reference a child widget only once.',
               HIDDEN_S: 'The widget with @aria-owns@ that is hidden and was not evaluated.',
               HIDDEN_P: '%N_H widgets with @aria-owns@ that are hidden were not evaluated.',
-              NOT_APPLICABLE:  'No widgets using aria-owns on this page'              
+              NOT_APPLICABLE:  'No widgets using aria-owns on this page.'              
             },
             NODE_RESULT_MESSAGES: {
-              ELEMENT_PASS_1:   '@%1@ child widget is referenced only by @%2@ parent widget with aria-owns',
-              ELEMENT_FAIL_1: 'Update references of @%1@ parent widgets with aria-owns to reference @%2@ child widget only once',
-              ELEMENT_HIDDEN_1: 'Widgets owned by more than one parent widget was not tested becasue the %1 parent widget with aria-owns is hidden from assistive technologies and not visible on screen'
+              ELEMENT_PASS_1:   '@%1@ child widget is referenced only by @%2@ parent widget with aria-owns.',
+              ELEMENT_FAIL_1: 'Update references of @%1@ parent widgets with aria-owns to reference @%2@ child widget only once.',
+              ELEMENT_HIDDEN_1: 'Widgets owned by more than one parent widget was not tested becasue the %1 parent widget with aria-owns is hidden from assistive technologies and not visible on screen.'
             },
             PURPOSE: [
-              'ARIA roles, properties and states describes the features of interactive widgets to users of assistive technologies, especially screen reader users'                   
+              'ARIA roles, properties and states describes the features of interactive widgets to users of assistive technologies, especially screen reader users.'                   
             ],
             TECHNIQUES: [
-              'Parent widget roles with aria-owns must accurately describe the parent relationships, a child widget can only have one parent widget'
+              'Parent widget roles with aria-owns must accurately describe the parent relationships, a child widget can only have one parent widget.'
             ],
             MANUAL_CHECKS: [
             ],
@@ -7475,32 +7524,32 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
      WIDGET_10: {
             ID:                    'Widget 10',
-            DEFINITION:            'Range widget %s have value between minimum and maximum values',
+            DEFINITION:            'Range widget %s have value between minimum and maximum values.',
             SUMMARY:               'Value in range',
-            TARGET_RESOURCES_DESC: 'Range widgets ',
+            TARGET_RESOURCES_DESC: 'Range widgets',
             RULE_RESULT_MESSAGES: {
-              FAIL_S:   'Update @range@ widget attributes of the range widget so the @aria-valuenow@ attribute is in the range defined by @aria-valuemin@ and @aria-valuemax@ attributes',
-              FAIL_P:   'Update @range@ widget attributes of the %N_F out of %N_T range widgets so the @aria-valuenow@ attribute of each widget is in the range defined by @aria-valuemin@ and @aria-valuemax@ attributes',
+              FAIL_S:   'Update @range@ widget attributes of the range widget so the @aria-valuenow@ attribute is in the range defined by @aria-valuemin@ and @aria-valuemax@ attributes.',
+              FAIL_P:   'Update @range@ widget attributes of the %N_F out of %N_T range widgets so the @aria-valuenow@ attribute of each widget is in the range defined by @aria-valuemin@ and @aria-valuemax@ attributes.',
               HIDDEN_S: 'The @range@ widget that is hidden and was not evaluated.',
               HIDDEN_P: '%N_H @range@ widgets that are hidden were not evaluated.',
-              NOT_APPLICABLE:  'No @range@ widgets on the page'              
+              NOT_APPLICABLE:  'No @range@ widgets on the page.'              
             },
             NODE_RESULT_MESSAGES: {
-              ELEMENT_PASS_1:    '@%1@ widget is using @aria-valuetext@ attribute which overrides the @aria-valuenow@ attribute for describing the value of the range',
-              ELEMENT_PASS_2:    '@%1@ widget value of %2 is in the range %3 and %4',
-              ELEMENT_PASS_3:    '@%1@ widget has the range %3 and %4, and by not including the @aria-valuenow@ attribute the value of the progress-bar is considered indeterminate',
-              ELEMENT_FAIL_1:  'Update the numeric values of @aria-valuenow@ (%1), @aria-valuemin@ (%2) and @aria-valuemax@ (%3) so the @aria-valuenow@ value is in range',
-              ELEMENT_FAIL_2:  'Update the numeric values of @aria-valuemin@ (%1) and @aria-valuemax@ (%2) so the @aria-valuemin@ value is less than the @aria-valuemax@ value',
-              ELEMENT_FAIL_3:  'For progress bar update the numeric values or add @aria-valuemin@ (%2) and @aria-valuemax@ (%3) attributes and when state of progress is known use the @aria-valuenow@ attribute value to communicate the current state of progress',
-              ELEMENT_FAIL_4:  'Update or create @%1@ attribute to be a numeric value',
-              ELEMENT_FAIL_5:  'Update or create @%1@ attributes to be a numeric values',
-              ELEMENT_HIDDEN_1:  'Widget range values were not tested becasue the %1 range widget is hidden from assistive technologies'
+              ELEMENT_PASS_1:    '@%1@ widget is using @aria-valuetext@ attribute which overrides the @aria-valuenow@ attribute for describing the value of the range.',
+              ELEMENT_PASS_2:    '@%1@ widget value of %2 is in the range %3 and %4.',
+              ELEMENT_PASS_3:    '@%1@ widget has the range %3 and %4, and by not including the @aria-valuenow@ attribute the value of the progress-bar is considered indeterminate.',
+              ELEMENT_FAIL_1:  'Update the numeric values of @aria-valuenow@ (%1), @aria-valuemin@ (%2) and @aria-valuemax@ (%3) so the @aria-valuenow@ value is in range.',
+              ELEMENT_FAIL_2:  'Update the numeric values of @aria-valuemin@ (%1) and @aria-valuemax@ (%2) so the @aria-valuemin@ value is less than the @aria-valuemax@ value.',
+              ELEMENT_FAIL_3:  'For progress bar update the numeric values or add @aria-valuemin@ (%2) and @aria-valuemax@ (%3) attributes and when state of progress is known use the @aria-valuenow@ attribute value to communicate the current state of progress.',
+              ELEMENT_FAIL_4:  'Update or create @%1@ attribute to be a numeric value.',
+              ELEMENT_FAIL_5:  'Update or create @%1@ attributes to be a numeric values.',
+              ELEMENT_HIDDEN_1:  'Widget range values were not tested becasue the %1 range widget is hidden from assistive technologies.'
             },
             PURPOSE: [
-              'ARIA roles, properties and states describes the features of interactive widgets to users of assistive technologies, especially screen reader users'                   
+              'ARIA roles, properties and states describes the features of interactive widgets to users of assistive technologies, especially screen reader users.'                   
             ],
             TECHNIQUES: [
-              'Use the @aria-valuenow@, @aria-valuemin@ and @aria-valuemax@ are accurately defined'
+              'Use the @aria-valuenow@, @aria-valuemin@ and @aria-valuemax@ are accurately defined.'
             ],
             MANUAL_CHECKS: [
             ],
@@ -7525,29 +7574,35 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
      WIDGET_11: {
             ID:                    'Widget 11',
-            DEFINITION:            'Elements with keyboard, mouse and/or drag events %s have widget roles or interactive elements (i.e. form controls or links)',
-            SUMMARY:               'Keyboard/Mouse/drag events %s have roles',
-            TARGET_RESOURCES_DESC: 'Elements with mouse events',
+            DEFINITION:            'Elements with UI event handlers %s have widget roles that accurately describe the options and actions available to the user upon interacting with the element.',
+            SUMMARY:               'Elements with event handlers %s have roles',
+            TARGET_RESOURCES_DESC: 'Elements with event handlers',
             RULE_RESULT_MESSAGES: {
-              FAIL_S:   'Add ARIA widget role to the element with events or child elements that accurately describe the user options and actions available to the user',
-              FAIL_P:   'Add ARIA widget roles to the %N_F out of %N_T elements with events or their child elements that accurately describe the user options and actions available',
-              HIDDEN_S: 'The @element@ with event handler that is hidden and was not evaluated.',
-              HIDDEN_P: '%N_H @element@ with event handlers that are hidden were not evaluated.',
-              NOT_APPLICABLE:  'No elements with keyboard, mouse or drag events found on this page'              
+              FAIL_S:          'Add ARIA widget role to the element with event handlers or child elements that accurately describe the options and actions available to the user.',
+              FAIL_P:          'Add ARIA widget roles to the %N_F out of %N_T elements with event handlers or their child elements that accurately describe the options and actions available to the user.',
+              MANUAL_CHECK_S:  'Verify the widget roles associated with event handlers or their child elements accurately describe the options and actions available to the user.',
+              MANUAL_CHECK_P:  'Verify the widget roles associated with %N_MC event handlers accurately describe the options and actions available to the user.',
+              HIDDEN_S:        'The @element@ with event handler that is hidden and was not evaluated.',
+              HIDDEN_P:        '%N_H @element@ with event handlers that are hidden were not evaluated.',
+              NOT_APPLICABLE:  'No elements with event handlers found on this page.'              
             },
             NODE_RESULT_MESSAGES: {
-              ELEMENT_PASS_1:   '@%1@ widget has the following keyboard, mouse or drag event(s): %2',
-              ELEMENT_PASS_2:   '@%1@ element has the following keyboard, mouse or drag event(s): %2',
-              ELEMENT_PASS_3:   '@%1@ element with the following keyboard, mouse or drag event(s): %2 ; has descendant elements with widget roles or interactive elements',
-              ELEMENT_FAIL_1:   'Add widget role(s) to the element and/or its descendants that accurately describe the user options and actions of the @%1@ element with the following keyboard, mouse or drag events: %2',
-              ELEMENT_HIDDEN_1: 'Roles for interactive elements was not tested because the %1 element is hidden from assistive technologies with following keyboard, mouse or drag events: %2'
+              ELEMENT_MANUAL_CHECK_1:  'Verify the user options and actions available through the "@%2@" event handler(s) are accurately described by the @%1@ widget role.',
+              ELEMENT_MANUAL_CHECK_2:  'Verify the user options and actions available through the "@%2@" event handler(s) are accurately described by native role semantics of the @%1@ element.',
+              ELEMENT_MANUAL_CHECK_3:  'Verify the user options and actions available through the "@%2@" event handler(s) are accurately described by the descendant elements with widget roles or the native role semantics of the interactive elements.',
+              ELEMENT_FAIL_1:   'Add widget role(s) to the element and/or its descendants that accurately describe the user options and actions of the @%1@ element with the following event handlers: %2.',
+              ELEMENT_HIDDEN_1: 'Roles for interactive elements was not tested because the %1 element is hidden from assistive technologies with following event handlers: %2'
             },
             PURPOSE: [
-              'ARIA roles, properties and states describes the features of interactive widgets to users of assistive technologies, especially screen reader users'                   
+              'ARIA widget roles describe the user options and actions, or more generally, the expected behavior, of interactive elements to users of assistive technologies.',
+              'Standard HTML form controls and links have default widget roles that describe their behavior.',
+              'When UI event handlers are used to create user options and actions that change the expected behavior of an interactive element, ensure that the appropriate widget role is assigned to the element.',
+              'Conversely, ensure that the event handlers are adding appropriate behaviors that align with the ARIA widget role.'                   
             ],
             TECHNIQUES: [
-              'Use the @role@ attribute to describe the type of widget associated with the mouse events',
-              'Use ARIA properties and states attributes to describe features of each widget '
+              'Use the @role@ attribute with an ARIA widget role value to describe the user options, actions and expected behavior of custom interactive elements.',
+              'Use ARIA property and state attributes to describe the features of each widget role. Note that some widget roles have required properties and states.',
+              'Ensure that all options and actions of interactive elements are available through keyboard-only interaction.'
             ],
             MANUAL_CHECKS: [
             ],
@@ -7556,12 +7611,36 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Widget Roles', 
                 url:   'http://www.w3.org/TR/wai-aria/roles#widget_roles'
               },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HTML5: INPUT element widget role semantics', 
+                url:   'https://www.w3.org/TR/html51/sec-forms.html#state-of-the-type-attribute'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HTML5: SELECT element widget role semantics', 
+                url:   'https://www.w3.org/TR/html51/sec-forms.html#the-select-element'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HTML5: TEXTAREA element widget role semantics', 
+                url:   'https://www.w3.org/TR/html51/sec-forms.html#the-textarea-element'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HTML5: BUTTON element widget role semantics', 
+                url:   'https://www.w3.org/TR/html51/sec-forms.html#the-button-element'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HTML5: A element widget role semantics', 
+                url:   'https://www.w3.org/TR/html51/textlevel-semantics.html#the-a-element'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'UI Events Specification', 
+                url:   'https://www.w3.org/TR/DOM-Level-3-Events/'
+              },
               { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes', 
+                title: 'G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes.', 
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/G108'
               },
               { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes', 
+                title: 'G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes.', 
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/G108'
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
@@ -7654,11 +7733,11 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               FAIL_P:   'Remove widget role from the %N_F elements until you are confident that you understand the ARIA properties, states, focus management and keyboard support needed by the widget.',
               HIDDEN_S: 'The element with an widget role that is hidden and was not evaluated.',
               HIDDEN_P: '%N_H elements with widget roles that are hidden were not evaluated.',
-              NOT_APPLICABLE:  'No elements with widget toles on the page'              
+              NOT_APPLICABLE:  'No elements with widget toles on the page.'              
             },
             NODE_RESULT_MESSAGES: {
               ELEMENT_FAIL_1:    'Remove @%1@ widget role from the %2 element.',
-              ELEMENT_HIDDEN_1:  '@%1[role="%2"]@ was not tested because it is hidden from assistive technologies'
+              ELEMENT_HIDDEN_1:  '@%1[role="%2"]@ was not tested because it is hidden from assistive technologies.'
             },
             PURPOSE: [
               'Developers who are new to ARIA and do not completely understand how ARIA technologies can enhancing accessibility may.',
@@ -9227,8 +9306,8 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   wcag_primary_id     : '3.3.2',
   wcag_related_ids    : ['1.3.1', '2.4.6'],
   target_resources    : ['input[type="radio"]'],
-  primary_property    : 'computed_label',
-  resource_properties : ['aria_label', 'aria_labelledby', 'title'],
+  primary_property    : 'grouping_element',
+  resource_properties : [''],
   language_dependency : "",
   validate            : function (dom_cache, rule_result) {
   
@@ -9252,48 +9331,32 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
      
           if (cs.is_visible_to_at == VISIBILITY.VISIBLE) {
     
-            if (ce.fieldset_element) {
-              if (ce.fieldset_element.legend_element && 
-                  ce.fieldset_element.legend_element.computed_label &&
-                  ce.fieldset_element.legend_element.computed_label.length) {
-                rule_result.addResult(TEST_RESULT.PASS, ce, 'ELEMENT_PASS_1', []);
-              }
-              else {
-                if (de.has_aria_labelledby) {
-                  rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_1', []);     
+            if (ce.grouping_element) {
+              var ge = ce.grouping_element;
+              var dge = ge.dom_element;
+
+              if (ge.control_type === OpenAjax.a11y.CONTROL_TYPE.FIELDSET) {
+                if (ge.legend_element &&
+                    ge.legend_element.computed_label &&
+                    ge.legend_element.computed_label.length) {
+                  rule_result.addResult(TEST_RESULT.PASS, ce, 'ELEMENT_PASS_1', [ge.legend_element.computed_label]);
                 }
                 else {
-                  if (de.has_aria_label) {
-                    rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_2', []);     
-                  }
-                  else {
-                    if (de.has_title) {
-                      rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_3', []);     
-                    }
-                    else {
-                      rule_result.addResult(TEST_RESULT.FAIL, ce, 'ELEMENT_FAIL_1', []);
-                    }
-                  }
+                  rule_result.addResult(TEST_RESULT.FAIL, ce, 'ELEMENT_FAIL_2', []);
+                }
+              }
+              else {
+                if (ge.computed_label &&
+                    ge.computed_label.length) {
+                  rule_result.addResult(TEST_RESULT.PASS, ce, 'ELEMENT_PASS_2', [dge.tag_name, ce.grouping_element.computed_label]);
+                }
+                else {
+                  rule_result.addResult(TEST_RESULT.FAIL, ce, 'ELEMENT_FAIL_3', [dge.tag_name]);
                 }
               }
             }
-            else {  
-              if (de.has_aria_labelledby) {
-                  rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_1', []);     
-              }
-              else {
-                if (de.has_aria_label) {
-                  rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_2', []);     
-                }
-                else {
-                  if (de.has_title) {
-                    rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_3', []);     
-                  }
-                  else {
-                    rule_result.addResult(TEST_RESULT.FAIL, ce, 'ELEMENT_FAIL_2', []);
-                  }
-                }      
-              }
+            else {
+              rule_result.addResult(TEST_RESULT.FAIL, ce, 'ELEMENT_FAIL_1', []);
             }
           }
           else {
@@ -9564,14 +9627,17 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
    var TEST_RESULT   = OpenAjax.a11y.TEST_RESULT;
    var VISIBILITY = OpenAjax.a11y.VISIBILITY;
   
-   var fieldset_elements      = dom_cache.controls_cache.fieldset_elements;
-   var fieldset_elements_len  = fieldset_elements.length;
+   var grouping_elements      = dom_cache.controls_cache.grouping_elements;
+   var grouping_elements_len  = grouping_elements.length;
       
    // Check to see if valid cache reference
-   if (fieldset_elements && fieldset_elements_len) {
+   if (grouping_elements && grouping_elements_len) {
     
-     for (var i = 0; i < fieldset_elements_len; i++) {
-       var fe = fieldset_elements[i];
+     for (var i = 0; i < grouping_elements_len; i++) {
+       var fe = grouping_elements[i];
+
+       if (fe.control_type !== OpenAjax.a11y.CONTROL_TYPE.FIELDSET) continue;
+
        var de = fe.dom_element;
 
        if (de.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {
@@ -10218,6 +10284,22 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   language_dependency : "",
   validate            : function (dom_cache, rule_result) {
     
+    function isSimilar(alt, title) {
+
+      if (typeof alt   !== 'string') return false;
+      if (typeof title !== 'string') return false;
+
+      alt   = OpenAjax.a11y.util.normalizeSpace(alt.toLowerCase());
+      title = OpenAjax.a11y.util.normalizeSpace(title.toLowerCase());
+
+      if (alt === title) return true;
+
+      if ((alt.length >= title.length) && 
+          (alt.indexOf(title) >= 0)) return true;
+
+      return false;
+    }
+    
     var TEST_RESULT   = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY    = OpenAjax.a11y.VISIBILITY;
 
@@ -10244,8 +10326,10 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
               else rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ie, 'ELEMENT_MC_2', [de.tag_name, de.aria_describedby], ie.toString('long'));
             } 
           } else if (de.has_title && (ie.accessible_name_source !== OpenAjax.a11y.SOURCE.TITLE)) {
-              if (de.tag_name === 'img') rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ie, 'ELEMENT_MC_3', [de.title], ie.toString('long'));
-              else rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ie, 'ELEMENT_MC_4', [de.tag_name, de.title], ie.toString('long'));
+              if (de.tag_name === 'img') {
+                if (isSimilar(de.alt, de.title)) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ie, 'ELEMENT_MC_3A', [], ie.toString('long'));
+                else rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ie, 'ELEMENT_MC_3', [de.title], ie.toString('long'));
+              } else rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ie, 'ELEMENT_MC_4', [de.tag_name, de.title], ie.toString('long'));
             }
             else if (ie.has_longdesc) {
               if (de.tag_name === 'img') rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ie, 'ELEMENT_MC_5', [ie.longdesc], ie.toString('long'));
@@ -12089,7 +12173,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 /**
  * @object LANDMARK_12
  *
- * @desc Contentinfo landmark must be a top level lanmark
+ * @desc Contentinfo landmark must be a top level landmark
  */               
 { rule_id             : 'LANDMARK_12', 
   last_updated        : '2014-11-28', 
@@ -12607,7 +12691,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 /**
  * @object LANDMARK_19
  *
- * @desc Complementary landmark must be a top level landmark or descendant of main
+ * @desc Complementary landmark must be a top level landmark 
  */               
 { rule_id             : 'LANDMARK_19', 
   last_updated        : '2014-11-28', 
@@ -12638,9 +12722,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
       
         if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
 
-          if ((!de.parent_landmark) ||
-              (de.parent_landmark &&
-               (de.parent_landmark.landmark === 'main'))) {
+          if (!de.parent_landmark) {
             if (de.has_role) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_1', [de.tag_name]);
             else rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_3', []);          
           }
@@ -13928,7 +14010,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
               rule_result.addResult(TEST_RESULT.MANUAL_CHECK, de, 'ELEMENT_MC_1', [de.tag_name]);
             }
             else {
-              if ('list directory listbox menu menubar tablist toolbar tree '.indexOf(de.role + ' ') < 0) {
+              if ('directory group listbox menu menubar presentation radiogroup tablist toolbar tree '.indexOf(de.role + ' ') < 0) {
                 rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [de.tag_name, de.role]);               
               }  
             }
@@ -13942,7 +14024,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
   } // end validate function
 },
-
 
 /**
  * @object ROLE_4
@@ -14409,7 +14490,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
   wcag_primary_id     : '4.1.2',
   wcag_related_ids    : ['4.1.1'],
-  target_resources    : ['li'],
+  target_resources    : ['a'],
   primary_property    : 'role',
   resource_properties : [],
   language_dependency : '',
@@ -14445,7 +14526,112 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     }
 
   } // end validate function
+},
+
+/**
+ * @object ROLE_13
+ *
+ * @desc select element role semantic restrictions
+ */ 
+ 
+{ rule_id             : 'ROLE_13', 
+  last_updated        : '2016-05-21', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.FORMS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '4.1.2',
+  wcag_related_ids    : ['4.1.1'],
+  target_resources    : ['select'],
+  primary_property    : 'role',
+  resource_properties : [],
+  language_dependency : '',
+  validate          : function (dom_cache, rule_result) {
+
+    var TEST_RESULT    = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY     = OpenAjax.a11y.VISIBILITY;
+    
+    var dom_elements     = dom_cache.element_cache.dom_elements;
+    var dom_elements_len = dom_elements.length;
+
+    for (var i = 0; i < dom_elements_len; i++) {
+      var de = dom_elements[i];
+      var cs = de.computed_style;
+
+      if ((de.tag_name === 'select') && de.has_role) {
+      
+        if (cs.is_visible_to_at === VISIBILITY.VISIBLE ) {     
+        
+          if (de.role && de.role.length > 0) {
+            if (' listbox menu '.indexOf(' ' + de.role + ' ') < 0) {
+              rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [de.role]);               
+            }
+            else {
+              rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_1', [de.role]);               
+            }
+          }  
+        }   
+        else {
+          rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.role]);
+        }
+      }   
+    }
+
+  } // end validate function
+},
+
+/**
+ * @object ROLE_14
+ *
+ * @desc textarea element role semantic restrictions
+ */ 
+ 
+{ rule_id             : 'ROLE_14', 
+  last_updated        : '2016-05-21', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.FORMS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '4.1.2',
+  wcag_related_ids    : ['4.1.1'],
+  target_resources    : ['textarea'],
+  primary_property    : 'role',
+  resource_properties : [],
+  language_dependency : '',
+  validate          : function (dom_cache, rule_result) {
+
+    var TEST_RESULT    = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY     = OpenAjax.a11y.VISIBILITY;
+    
+    var dom_elements     = dom_cache.element_cache.dom_elements;
+    var dom_elements_len = dom_elements.length;
+
+    for (var i = 0; i < dom_elements_len; i++) {
+      var de = dom_elements[i];
+      var cs = de.computed_style;
+
+      if ((de.tag_name === 'textarea') && de.has_role) {
+      
+        if (cs.is_visible_to_at === VISIBILITY.VISIBLE ) {     
+        
+          if (de.role && de.role.length > 0) {
+            if (' textbox '.indexOf(' ' + de.role + ' ') < 0) {
+              rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [de.role]);               
+            }
+            else {
+              rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_1', [de.role]);               
+            }
+          }  
+        }   
+        else {
+          rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.role]);
+        }
+      }   
+    }
+
+  } // end validate function
 }
+
+
+
 
 
 
@@ -14849,7 +15035,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
              (te.table_role === OpenAjax.a11y.TABLE_ROLE.COMPLEX)) && 
              te.accessible_name_length) {
           if (is_visible_to_at == VISIBILITY.VISIBLE) { 
-            if (te.accessible_name_length > 0) {             
+            if (te.accessible_name_for_comparison.length) {             
               table_visible.push(te);                          
             }
             else {
@@ -14862,48 +15048,30 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
         }   
       } // end loop
       
-      table_visible.sort(function(a,b) {return a.accessible_name_for_comparison < b.accessible_name_for_comparison;});
       
-//      for (i = 0; i < table_visible.length; i++) {
-//        OpenAjax.a11y.logger.debug("[Table Rule 4] " + table_visible[i].accessible_name_for_comparison + " (" + table_visible[i].accessible_name_length + ")");
-//      }
-      
-      for (i = 1; i < table_visible.length;) {
-        var te1 = table_visible[i-1];
-        var te2 = table_visible[i];
+      for (i = 0; i < table_visible.length; i++) {
+        var te1 = table_visible[i];
+        var unique = true;
 
-//        OpenAjax.a11y.logger.debug("[Table Rule 4] ===================");
-//        OpenAjax.a11y.logger.debug("[Table Rule 4] table 1: " + te1.accessible_name + " index: " + (i-1));
-//        OpenAjax.a11y.logger.debug("[Table Rule 4] table 2: " + te2.accessible_name + " index: " + i);
-        
-        if (te1.accessible_name_for_comparison === te2.accessible_name_for_comparison) {
-          rule_result.addResult(TEST_RESULT.FAIL, te1, 'ELEMENT_FAIL_1', [te1.accessible_name]);
-          rule_result.addResult(TEST_RESULT.FAIL, te2, 'ELEMENT_FAIL_1', [te2.accessible_name]);
-          j = i + 1;
-          if (j < table_visible.length) te2 =  table_visible[j];
+        for(j = 0; j < table_visible.length; j++) {
+
+          if (j === i) continue;
+
+          var te2 = table_visible[j];
+
+          OpenAjax.a11y.logger.debug("[Table Rule 4] ===================");
+          OpenAjax.a11y.logger.debug("[Table Rule 4] table 1: " + te1.accessible_name_for_comparison + " length: " + te1.accessible_name_for_comparison.length);
+          OpenAjax.a11y.logger.debug("[Table Rule 4] table 2: " + te2.accessible_name_for_comparison + " length: " + te2.accessible_name_for_comparison.length);
           
-          while (( j < table_visible.length) && 
-                 (te1.accessible_name_for_comparison === te2.accessible_name_for_comparison)) {
-                 
-            rule_result.addResult(TEST_RESULT.FAIL, te2, 'ELEMENT_FAIL_1', [te2.accessible_name]);
-            
-            j += 1;
-            if (j < table_visible.length) te2 =  table_visible[j];
+          if (te1.accessible_name_for_comparison === te2.accessible_name_for_comparison) {
+            rule_result.addResult(TEST_RESULT.FAIL, te1, 'ELEMENT_FAIL_1', [te1.accessible_name]);
+            unique = false;
+            break;
           }
-          i = j + 1;
-        }
-        else {
-          rule_result.addResult(TEST_RESULT.PASS, te1, 'ELEMENT_PASS_1', []);
-          i++;
-        }         
+        }  
+
+        if (unique) rule_result.addResult(TEST_RESULT.PASS, te1, 'ELEMENT_PASS_1', [te1.accessible_name]);
       }
-      
-      if (te1 && te2) {
-        if (te1.accessible_name_for_comparison !== te2.accessible_name_for_comparison) {
-          rule_result.addResult(TEST_RESULT.PASS, te2, 'ELEMENT_PASS_1', []);
-        }
-      }  
-      
     }   
   } // end validation function  
 },
@@ -16830,36 +16998,16 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   language_dependency : "",
   validate            : function (dom_cache, rule_result) {
 
-
-     function getEventString() {
+     function getUIEvents(dom_element) {
      
-       var str = "";
-     
-       for (var i = 0; i < events_prop_list.length; i++) {
-         var prop = events_prop_list[i];
-         
-         if (str.length) str += ", " + prop.label;
-         else str += prop.label;
-       }
-       
-       return str;
-     
-     }
-
-     function hasUIEvents(dom_element) {
-     
-        var list = [];
-     
-        var has_events = dom_element.hasMouseEvents(list);
-        has_events = has_events || dom_element.hasClickEvents(list);
-        has_events = has_events || dom_element.hasDragEvents(list);
-        has_events = has_events || dom_element.hasKeyboardEvents(list);
+        var events = dom_element.getMouseEvents();
+        events += dom_element.getClickEvents();
+        events += dom_element.getDragEvents();
+        events += dom_element.getKeyboardEvents();
         
-        events_prop_list = list;
+        OpenAjax.a11y.logger.debug( dom_element.toString() + "  Events: " + events);
 
-//        OpenAjax.a11y.logger.debug( dom_element.toString() + "  Number of Events: " + list.length);
-
-        return has_events;
+        return events;
      }
 
      var VISIBILITY  = OpenAjax.a11y.VISIBILITY;   
@@ -16874,28 +17022,24 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
          var de = dom_elements_with_events[i];
          
          var style = de.computed_style;
-         var events = de.events;
+         var events = getUIEvents(de);
 
-         var events_prop_list = [];         
-
-         if (hasUIEvents(de) && 
+         if (events.length && 
              (de.tag_name !== 'embed') && 
              (de.tag_name !== 'applet') && 
              (de.tag_name !== 'object') && 
              (de.tag_name !== 'video') && 
              (de.tag_name !== 'audio')) {
          
-           var events_str = getEventString();
-             
            if (style.is_visible_to_at === VISIBILITY.VISIBLE) {
            
              if (de.is_widget) { 
-               rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_1', [de.role, events_str], events_prop_list);     
+               rule_result.addResult(TEST_RESULT.MANUAL_CHECK, de, 'ELEMENT_MANUAL_CHECK_1', [de.role, events]);     
              }  
              else {
-               if (de.is_interactive) rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_2', [de.tag_name, events_str], events_prop_list);
-               else if (de.containsInteractiveElements()) rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_3', [de.tag_name, events_str], events_prop_list);
-               else rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [de.tag_name, events_str], events_prop_list);
+               if (de.is_interactive) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, de, 'ELEMENT_MANUAL_CHECK_2', [de.tag_name, events]);
+               else if (de.containsInteractiveElements()) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, de, 'ELEMENT_MANUAL_CHECK_3', [de.tag_name, events]);
+               else rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [de.tag_name, events]);
              }  
            }
            else {
