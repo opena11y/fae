@@ -98,14 +98,14 @@ class ShibbolethLogin(RedirectView):
             stats = StatsUser(user=user, ws_report_group=wsrg)  
             stats.save()
 
-        print("first:" + self.request.META.givenName)
-        print("last:" + self.request.META.sn)
-        print("email:" + self.request.META.mail)
+        print("first:" + self.request.META['givenName'])
+        print("last:" + self.request.META['sn'])
+        print("email:" + self.request.META['mail'])
 
         try:
-            user.first_name = self.request.META.givenName
-            user.last_name  = self.request.META.sn
-            user.email      = self.request.META.mail
+            user.first_name = self.request.META['givenName']
+            user.last_name  = self.request.META['sn']
+            user.email      = self.request.META['mail']
             user.save()
         except:
             pass    
