@@ -151,21 +151,21 @@ if SHIBBOLETH_ENABLED:
 
     AUTHENTICATION_BACKENDS = (
         'django.contrib.auth.backends.RemoteUserBackend',
-        'shibboleth.backends.ShibbolethRemoteUserBackend',
+#        'shibboleth.backends.ShibbolethRemoteUserBackend',
     )
 
-    SHIBBOLETH_ATTRIBUTE_MAP = {
-        "eppn":        (True,  "username"),
-        "givenName":   (True,  "first_name"),
-        "sn":          (True,  "last_name"),
-        "mail":        (False, "email"),
-    }
+#    SHIBBOLETH_ATTRIBUTE_MAP = {
+#        "eppn":        (False, "username"),
+#        "givenName":   (False, "first_name"),
+#        "sn":          (False, "last_name"),
+#        "mail":        (False, "email"),
+#    }
 
     LOGIN_URL = SHIBBOLETH_URL
 
-    INSTALLED_APPS += (
-        'shibboleth',
-    )
+#    INSTALLED_APPS += (
+#        'shibboleth',
+#    )
 
 else:
     MIDDLEWARE_CLASSES = (

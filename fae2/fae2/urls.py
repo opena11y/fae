@@ -62,7 +62,7 @@ if SHIBBOLETH_ENABLED:
       url(r'^logout/$',          ShibbolethLogout.as_view(),    name='logout'),
       url(r'^shib-discovery/$',  ShibbolethDiscovery.as_view(), name='shib_discovery'),
       url(r'^header-info/$',     HeaderInfo.as_view(),          name='header_info'),
-      url(r'^shib/', include('shibboleth.urls', namespace='shibboleth')),
+#      url(r'^shib/', include('shibboleth.urls', namespace='shibboleth')),
   ]
 else:
   urlpatterns += [

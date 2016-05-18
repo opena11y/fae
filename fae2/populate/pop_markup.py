@@ -75,15 +75,32 @@ html = create_spec("HTML 4.01", "HTML 4.01", "http://www.w3.org/tr/html", "html4
 html_textnode       = create_element_definition( html, "textnodes",   "",  "", "http://www.w3.org/TR/html4/interact/scripts.html",   "", "")
 html_all            = create_element_definition( html, "",   "",             "", "http://www.w3.org/TR/html4/",         "", "")
 
-html_all_mousedown  = create_element_definition( html, "",   "onmousedown",  "", "http://www.w3.org/TR/html4/interact/scripts.html#adef-onmousdown",   "", "E")
-html_all_mouseup    = create_element_definition( html, "",   "onmouseup",    "", "http://www.w3.org/TR/html4/interact/scripts.html#adef-onmousup",     "", "E")
-html_all_mouseover  = create_element_definition( html, "",   "onmouseover",  "", "http://www.w3.org/TR/html4/interact/scripts.html#adef-onmouseover",  "", "E")
-html_all_mouseout   = create_element_definition( html, "",   "onmouseout",   "", "http://www.w3.org/TR/html4/interact/scripts.html#adef-onmouseout",   "", "E")
-html_all_mousemove  = create_element_definition( html, "",   "onmousemove",  "", "http://www.w3.org/TR/html4/interact/scripts.html#adef-onmouseout",   "", "E")
-html_all_blur       = create_element_definition( html, "",   "onblur",       "", "http://www.w3.org/TR/html4/interact/scripts.html#adef-onblur",       "", "E")
-html_all_focus      = create_element_definition( html, "",   "onfocus",      "", "http://www.w3.org/TR/html4/interact/scripts.html#adef-onfocus",      "", "E")
-html_all_click      = create_element_definition( html, "",   "onclick",      "", "http://www.w3.org/TR/html4/interact/scripts.html#adef-onclick",      "", "E")
-html_all_change     = create_element_definition( html, "",   "onchange",     "", "http://www.w3.org/TR/html4/interact/scripts.html#adef-onchange",     "", "E")
+html_all_mousedown  = create_element_definition( html, "",   "onmousedown",  "", "https://www.w3.org/TR/uievents/#event-type-mousedown",   "", "E")
+html_all_mouseup    = create_element_definition( html, "",   "onmouseup",    "", "https://www.w3.org/TR/uievents/#event-type-mouseup",     "", "E")
+html_all_mouseover  = create_element_definition( html, "",   "onmouseover",  "", "https://www.w3.org/TR/uievents/#event-type-mouseover",  "", "E")
+html_all_mouseout   = create_element_definition( html, "",   "onmouseout",   "", "https://www.w3.org/TR/uievents/#event-type-mouseout",   "", "E")
+html_all_mousemove  = create_element_definition( html, "",   "onmousemove",  "", "https://www.w3.org/TR/uievents/#event-type-mouseout",   "", "E")
+
+html_all_blur       = create_element_definition( html, "",   "onblur",       "", "https://www.w3.org/TR/uievents/#event-type-blur",       "", "E")
+html_all_focus      = create_element_definition( html, "",   "onfocus",      "", "https://www.w3.org/TR/uievents/#event-type-focus",      "", "E")
+
+html_all_change     = create_element_definition( html, "",   "onchange",     "", "https://www.w3.org/TR/uievents/#event-type-change",     "", "E")
+
+html_all_click      = create_element_definition( html, "",   "onclick",      "", "https://www.w3.org/TR/uievents/#event-type-click",      "", "E")
+html_all_dbclick    = create_element_definition( html, "",   "ondbclick",    "", "https://www.w3.org/TR/uievents/#event-type-dblclick",      "", "E")
+
+html_all_drag       = create_element_definition( html, "",   "ondrag",       "", "https://developer.mozilla.org/en-US/docs/Web/Events/drag",  "", "E")
+html_all_dragstart  = create_element_definition( html, "",   "ondragstart",  "", "https://developer.mozilla.org/en-US/docs/Web/Events/dragstart",  "", "E")
+html_all_dragend    = create_element_definition( html, "",   "ondragend",    "", "https://developer.mozilla.org/en-US/docs/Web/Events/dragend",  "", "E")
+html_all_dragover   = create_element_definition( html, "",   "ondragover",   "", "https://developer.mozilla.org/en-US/docs/Web/Events/dragover",  "", "E")
+html_all_dragenter  = create_element_definition( html, "",   "ondragover",   "", "https://developer.mozilla.org/en-US/docs/Web/Events/dragenter",  "", "E")
+html_all_dragleave  = create_element_definition( html, "",   "ondragover",   "", "https://developer.mozilla.org/en-US/docs/Web/Events/dragleave",  "", "E")
+html_all_drop       = create_element_definition( html, "",   "ondragover",   "", "https://developer.mozilla.org/en-US/docs/Web/Events/drop",  "", "E")
+
+html_all_keydown    = create_element_definition( html, "",   "onkeydown",    "", "https://www.w3.org/TR/uievents/#event-type-keydown",    "", "E")
+html_all_keyup      = create_element_definition( html, "",   "onkeyup",      "", "https://www.w3.org/TR/uievents/#event-type-keyup",      "", "E")
+html_all_keypress   = create_element_definition( html, "",   "onkeypress",   "", "https://www.w3.org/TR/uievents/#event-type-keypress",   "", "E")
+
 
 html_html_lang = create_element_definition( html, "html",  "lang",    "", "http://www.w3.org/TR/html4/struct/global.html#adef-lang",         "", "")
 html_all_lang  = create_element_definition( html, "",      "lang",    "", "http://www.w3.org/TR/html4/struct/global.html#adef-lang",         "", "")
@@ -186,68 +203,92 @@ html5_track    = create_element_definition( html5, "track", "", "", "http://www.
 aria = create_spec("Accessible Rich Internet Application Specification", "ARIA 1.0", "http://www.w3.org/TR/wai-aria/", "aria10", "ARIA 1.0", True)
 
 aria_role              = create_element_definition( aria, "", "role", "", "http://www.w3.org/TR/wai-aria/roles", "User interface widget","R")
+
 aria_role_widget       = create_element_definition( aria, "", "role", "widget", "http://www.w3.org/TR/wai-aria/roles", "User interface widget","R")
 aria_role_alert        = create_element_definition( aria, "", "role", "alert", "http://www.w3.org/TR/wai-aria/roles#alert", "User interface widget","R")
 aria_role_alertdialog  = create_element_definition( aria, "", "role", "alertdialog", "http://www.w3.org/TR/wai-aria/roles#alertdialog", "User interface widget","R")
 aria_role_button       = create_element_definition( aria, "", "role", "button", "http://www.w3.org/TR/wai-aria/roles#button", "User interface widget","R")
+
 aria_role_checkbox     = create_element_definition( aria, "", "role", "checkbox", "http://www.w3.org/TR/wai-aria/roles#checkbox", "User interface widget","R")
 aria_role_combobox     = create_element_definition( aria, "", "role", "combobox", "http://www.w3.org/TR/wai-aria/roles#combobox", "User interface widget","R")
 aria_role_dialog       = create_element_definition( aria, "", "role", "dialog", "http://www.w3.org/TR/wai-aria/roles#dialog", "User interface widget","R")
 aria_role_grid         = create_element_definition( aria, "", "role", "grid", "http://www.w3.org/TR/wai-aria/roles#grid", "Composite user interface widget","R")
 aria_role_gridcell     = create_element_definition( aria, "", "role", "gridcell", "http://www.w3.org/TR/wai-aria/roles#gridcell", "User interface widget","R")
+
 aria_role_link         = create_element_definition( aria, "", "role", "link", "http://www.w3.org/TR/wai-aria/roles#link", "User interface widget","R")
 aria_role_listbox      = create_element_definition( aria, "", "role", "listbox", "http://www.w3.org/TR/wai-aria/roles#listbox", "Composite user interface widget","R")
 aria_role_log          = create_element_definition( aria, "", "role", "log", "http://www.w3.org/TR/wai-aria/roles#log", "User interface widget","R")
 aria_role_marquee      = create_element_definition( aria, "", "role", "marquee", "http://www.w3.org/TR/wai-aria/roles#marquee", "User interface widget","R")
 aria_role_menu         = create_element_definition( aria, "", "role", "menu", "http://www.w3.org/TR/wai-aria/roles#menu", "Composite user interface widget","R")
+
 aria_role_menubar      = create_element_definition( aria, "", "role", "menubar", "http://www.w3.org/TR/wai-aria/roles#menubar", "Composite user interface widget","R")
 aria_role_menuitem     = create_element_definition( aria, "", "role", "menuitem", "http://www.w3.org/TR/wai-aria/roles#menuitem", "User interface widget","R")
 aria_role_menuitemcheckbox = create_element_definition( aria, "", "role", "menuitemcheckbox", "http://www.w3.org/TR/wai-aria/roles#menuitemcheckbox", "User interface widget","R")
 aria_role_menuitemradio    = create_element_definition( aria, "", "role", "menuitemradio", "http://www.w3.org/TR/wai-aria/roles#menuitemradio", "User interface widget","R")
 aria_role_option       = create_element_definition( aria, "", "role", "option", "http://www.w3.org/TR/wai-aria/roles#option", "User interface widget","R")
+
 aria_role_progressbar  = create_element_definition( aria, "", "role", "progressbar", "http://www.w3.org/TR/wai-aria/roles#progressbar", "User interface widget","R")
 aria_role_radio        = create_element_definition( aria, "", "role", "radio", "http://www.w3.org/TR/wai-aria/roles#radio", "User interface widget","R")
 aria_role_radiogroup   = create_element_definition( aria, "", "role", "radiogroup", "http://www.w3.org/TR/wai-aria/roles#radiogroup", "User interface widget","R")
 aria_role_scrollbar    = create_element_definition( aria, "", "role", "scrollbar", "http://www.w3.org/TR/wai-aria/roles#scrollbar", "User interface widget","R")
 aria_role_slider       = create_element_definition( aria, "", "role", "slider", "http://www.w3.org/TR/wai-aria/roles#slider", "User interface widget","R")
+
 aria_role_spinbutton   = create_element_definition( aria, "", "role", "spinbutton", "http://www.w3.org/TR/wai-aria/roles#spinbutton", "User interface widget","R")
 aria_role_status       = create_element_definition( aria, "", "role", "status", "http://www.w3.org/TR/wai-aria/roles#status", "User interface widget","R")
 aria_role_tab          = create_element_definition( aria, "", "role", "tab", "http://www.w3.org/TR/wai-aria/roles#tab", "User interface widget","R")
+aria_role_switch       = create_element_definition( aria, "", "role", "searchbox", "https://www.w3.org/TR/wai-aria-1.1/#switch", "User Interface Widget","R")
 aria_role_tabpanel     = create_element_definition( aria, "", "role", "tabpanel", "http://www.w3.org/TR/wai-aria/roles#tabpanel", "User interface widget","R")
 aria_role_textbox      = create_element_definition( aria, "", "role", "textbox", "http://www.w3.org/TR/wai-aria/roles#textbox", "User interface widget","R")
+
 aria_role_timer        = create_element_definition( aria, "", "role", "timer", "http://www.w3.org/TR/wai-aria/roles#timer", "User interface widget","R")
 aria_role_tooltip      = create_element_definition( aria, "", "role", "tooltip", "http://www.w3.org/TR/wai-aria/roles#tooltip", "User interface widget","R")
 aria_role_treeitem     = create_element_definition( aria, "", "role", "treeitem", "http://www.w3.org/TR/wai-aria/roles#treeitem", "User interface widget","R")
 aria_role_tablist      = create_element_definition( aria, "", "role", "tablist", "http://www.w3.org/TR/wai-aria/roles#tablist", "Composite user interface widget","R")
 aria_role_toolbar      = create_element_definition( aria, "", "role", "toolbar", "http://www.w3.org/TR/wai-aria/roles#toolbar", "Composite user interface widget","R")
+
 aria_role_tree         = create_element_definition( aria, "", "role", "tree", "http://www.w3.org/TR/wai-aria/roles#tree", "Composite user interface widget","R")
 aria_role_treegrid     = create_element_definition( aria, "", "role", "treegrid", "http://www.w3.org/TR/wai-aria/roles#treegrid", "Composite user interface widget","R")
 aria_role_article      = create_element_definition( aria, "", "role", "article", "http://www.w3.org/TR/wai-aria/roles#article", "Document structure","R")
+
+
+aria_role_cell         = create_element_definition( aria, "", "role", "cell", "https://www.w3.org/TR/wai-aria-1.1/#cell", "Document structure","R")
 aria_role_columnheader = create_element_definition( aria, "", "role", "columnheader", "http://www.w3.org/TR/wai-aria/roles#columnheader", "Document structure","R")
 aria_role_definition   = create_element_definition( aria, "", "role", "definition", "http://www.w3.org/TR/wai-aria/roles#definition", "Document structure","R")
 aria_role_directory    = create_element_definition( aria, "", "role", "directory", "http://www.w3.org/TR/wai-aria/roles#directory", "Document structure","R")
 aria_role_document     = create_element_definition( aria, "", "role", "document", "http://www.w3.org/TR/wai-aria/roles#document", "Document structure","R")
+
+aria_role_figure       = create_element_definition( aria, "", "role", "figure", "https://www.w3.org/TR/wai-aria-1.1/#figure", "Document structure","R")
 aria_role_group        = create_element_definition( aria, "", "role", "group", "http://www.w3.org/TR/wai-aria/roles#group", "Document structure","R")
 aria_role_heading      = create_element_definition( aria, "", "role", "heading", "http://www.w3.org/TR/wai-aria/roles#heading", "Document structure","R")
 aria_role_img          = create_element_definition( aria, "", "role", "img", "http://www.w3.org/TR/wai-aria/roles#img", "Document structure","R")
 aria_role_list         = create_element_definition( aria, "", "role", "list", "http://www.w3.org/TR/wai-aria/roles#list", "Document structure","R")
+
 aria_role_listitem     = create_element_definition( aria, "", "role", "listitem", "http://www.w3.org/TR/wai-aria/roles#listitem", "Document structure","R")
 aria_role_math         = create_element_definition( aria, "", "role", "math", "http://www.w3.org/TR/wai-aria/roles#math", "Document structure","R")
+aria_role_none         = create_element_definition( aria, "", "role", "none", "https://www.w3.org/TR/wai-aria-1.1/#none", "Document structure","R")
 aria_role_note         = create_element_definition( aria, "", "role", "note", "http://www.w3.org/TR/wai-aria/roles#note", "Document structure","R")
 aria_role_presentation = create_element_definition( aria, "", "role", "presentation", "http://www.w3.org/TR/wai-aria/roles#presentatin", "Document structure","R")
+
 aria_role_region       = create_element_definition( aria, "", "role", "region", "http://www.w3.org/TR/wai-aria/roles#region", "Document structure","R")
 aria_role_row          = create_element_definition( aria, "", "role", "row", "http://www.w3.org/TR/wai-aria/roles#row", "Document structure","R")
 aria_role_rowgroup     = create_element_definition( aria, "", "role", "rowgroup", "http://www.w3.org/TR/wai-aria/roles#rowgroup", "Document structure","R")
 aria_role_rowheader    = create_element_definition( aria, "", "role", "rowheader", "http://www.w3.org/TR/wai-aria/roles#rowheader", "Document structure","R")
 aria_role_separator    = create_element_definition( aria, "", "role", "separator", "http://www.w3.org/TR/wai-aria/roles#separator", "Document structure","R")
+aria_role_table        = create_element_definition( aria, "", "role", "table", "https://www.w3.org/TR/wai-aria-1.1/#table", "Document structure","R")
+aria_role_term         = create_element_definition( aria, "", "role", "term", "https://www.w3.org/TR/wai-aria-1.1/#term", "Document structure","R")
+aria_role_text         = create_element_definition( aria, "", "role", "text", "https://www.w3.org/TR/wai-aria-1.1/#text", "Document structure","R")
+
 aria_role_application  = create_element_definition( aria, "", "role", "application", "http://www.w3.org/TR/wai-aria/roles#application", "Landmark","R")
 aria_role_banner       = create_element_definition( aria, "", "role", "banner", "http://www.w3.org/TR/wai-aria/roles#banner", "Landmark","R")
 aria_role_complementary = create_element_definition( aria, "", "role", "complementary", "http://www.w3.org/TR/wai-aria/roles#complementary", "Landmark","R")
 aria_role_contentinfo   = create_element_definition( aria, "", "role", "contentinfo", "http://www.w3.org/TR/wai-aria/roles#contentinfo", "Landmark","R")
 aria_role_form          = create_element_definition( aria, "", "role", "form", "http://www.w3.org/TR/wai-aria/roles#form", "Landmark","R")
+
 aria_role_main          = create_element_definition( aria, "", "role", "main", "http://www.w3.org/TR/wai-aria/roles#main", "Landmark","R")
 aria_role_navigation    = create_element_definition( aria, "", "role", "navigation", "http://www.w3.org/TR/wai-aria/roles#navigation", "Landmark","R")
 aria_role_search        = create_element_definition( aria, "", "role", "search", "http://www.w3.org/TR/wai-aria/roles#search", "Landmark","R")
+aria_role_searchbox     = create_element_definition( aria, "", "role", "searchbox", "https://www.w3.org/TR/wai-aria-1.1/#searchbox", "Document structure","R")
+
 aria_atomic           = create_element_definition( aria, "", "aria-atomic", "", "http://www.w3.org/TR/wai-aria/states_and_properties#aria-atomic", "Live region attribute","P")
 aria_busy             = create_element_definition( aria, "", "aria-busy", "", "http://www.w3.org/TR/wai-aria/states_and_properties#aria-busy", "Live region attribute","S")
 aria_live             = create_element_definition( aria, "", "aria-live", "", "http://www.w3.org/TR/wai-aria/states_and_properties#aria-live", "Global state or property","P")
