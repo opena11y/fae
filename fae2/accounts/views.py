@@ -19,7 +19,6 @@ from __future__ import absolute_import
 from django.http import HttpResponse
 from django.contrib.auth import logout 
 from django.contrib import messages
-import logging
 
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.urlresolvers import reverse_lazy, reverse
@@ -99,9 +98,9 @@ class ShibbolethLogin(RedirectView):
             stats = StatsUser(user=user, ws_report_group=wsrg)  
             stats.save()
 
-        logger.info("first:" + self.request.META.givenName)
-        logger.info("last:" + self.request.META.sn)
-        logger.info("email:" + self.request.META.mail)
+        print("first:" + self.request.META.givenName)
+        print("last:" + self.request.META.sn)
+        print("email:" + self.request.META.mail)
 
         try:
             user.first_name = self.request.META.givenName
