@@ -56,7 +56,7 @@ var OpenAjax = OpenAjax || {};
  */
 
 OpenAjax.a11y = OpenAjax.a11y || {};
-OpenAjax.a11y.VERSION = "1.0.0-beta.5";
+OpenAjax.a11y.VERSION = "1.0.0-beta.6";
 
 /**
  * @method getVersion
@@ -1071,6 +1071,7 @@ if (typeof OpenAjax.a11y.aria == "undefined") {
             "aria-atomic", 
             "aria-busy", 
             "aria-controls", 
+            "aria-current", 
             "aria-describedby",
             "aria-disabled", 
             "aria-dropeffect", 
@@ -1108,11 +1109,27 @@ if (typeof OpenAjax.a11y.aria == "undefined") {
              type : "nmtoken",
              values : ["true", "false", "mixed", "undefined"]
            },
+           "aria-colcount" : {
+             type : "number"
+           },
+           "aria-colindex" : {
+             type : "positive"
+           },
+           "aria-colspan" : {
+             type : "positive"
+           },
            "aria-controls" : {
              type : "idrefs"
            },
+           "aria-current" : {
+             type : "nmtoken",
+             values : ["page", "step", "location", "date", "time", "true", "false"]
+           },
            "aria-describedby" : {
              type : "idrefs"
+           },
+           "aria-details" : {
+             type : "idref"
            },
            "aria-disabled" : {
              type : "boolean"
@@ -1120,6 +1137,9 @@ if (typeof OpenAjax.a11y.aria == "undefined") {
            "aria-dropeffect" : {
              type : "nmtokens",
              values : ["copy", "move", "link", "execute", "popup", "none"]
+           },
+           "aria-errormessage" : {
+             type : "idref"
            },
            "aria-expanded" : {
              type : "nmtoken",
@@ -1155,6 +1175,9 @@ if (typeof OpenAjax.a11y.aria == "undefined") {
              type : "nmtoken",
              values : ["off", "polite", "assertive"]
            },
+           "aria-modal" : {
+             type : "boolean"
+           },
            "aria-multiline" : {
              type : "boolean"
            },
@@ -1167,6 +1190,9 @@ if (typeof OpenAjax.a11y.aria == "undefined") {
            },
            "aria-owns" : {
              type : "idrefs"
+           },
+           "aria-placeholder" : {
+             type : "string"
            },
            "aria-posinset" : {
              type : "integer"
@@ -1184,6 +1210,18 @@ if (typeof OpenAjax.a11y.aria == "undefined") {
            },
            "aria-required" : {
              type : "boolean"
+           },
+           "aria-roledescription" : {
+             type : "string"
+           },
+           "aria-rowcount" : {
+             type : "number"
+           },
+           "aria-rowindex" : {
+             type : "positive"
+           },
+           "aria-rowspan" : {
+             type : "positive"
            },
            "aria-selected" : {
              type : "nmtoken",
@@ -1280,7 +1318,7 @@ if (typeof OpenAjax.a11y.aria == "undefined") {
            "article" : {
              reqName : false,
              container : null,
-             props : ["aria-expanded"],
+             props : ["aria-expanded", "aria-posinset", "aria-setsize"],
              reqProps : null,
              reqChildren : null,
              htmlEquiv : null,
@@ -1309,6 +1347,17 @@ if (typeof OpenAjax.a11y.aria == "undefined") {
              nameFromContent: true,
              supportOnClick: true,
              roleType : "widget"
+           },
+           
+           "cell" : {
+             reqName : true,
+             container : ["row"],
+             props : ["aria-readonly", "aria-selected", "aria-expanded", "aria-required"],
+             reqProps : null,
+             reqChildren : null,
+             htmlEquiv : "td",
+             nameFromContent: true,
+             roleType : "section"             
            },
            
            "checkbox" : {
@@ -1389,7 +1438,7 @@ if (typeof OpenAjax.a11y.aria == "undefined") {
              props : ["aria-expanded"],
              reqProps : null,
              reqChildren : null,
-             htmlEquiv : null,
+             htmlEquiv : "dd",
              nameFromContent: false,
              roleType : "section"
            },
@@ -1424,6 +1473,17 @@ if (typeof OpenAjax.a11y.aria == "undefined") {
              reqChildren : null,
              htmlEquiv : null,
               nameFromContent: false,
+             roleType : "section"
+          },
+           
+           "figure" : {
+             reqName : false,
+             container : null,
+             props : ["aria-expanded"],
+             reqProps : null,
+             reqChildren : null,
+             htmlEquiv : "figure",
+             nameFromContent: false,
              roleType : "section"
           },
            
@@ -1675,6 +1735,17 @@ if (typeof OpenAjax.a11y.aria == "undefined") {
              roleType : "landmark"
            },
            
+           "none" : {
+             reqName : false,
+             container : null,
+             props : null,
+             reqProps : null,
+             reqChildren : null,
+             htmlEquiv : null,
+             nameFromContent: false,
+             roleType : "section"
+           },
+           
            "note" : {
              reqName : false,
              container : null,
@@ -1826,6 +1897,16 @@ if (typeof OpenAjax.a11y.aria == "undefined") {
              nameFromContent: false,
              roleType : "landmark"
            },
+           "searchbox" : {
+             reqName : true,
+             container : null,
+             props : ["aria-activedescendant", "aria-autocomplete", "aria-multiline", "aria-readonly", "aria-required"],
+             reqProps : null,
+             reqChildren : null,
+             htmlEquiv : "input[@type='search']",
+             nameFromContent: false,
+             roleType : "widget"
+           },
            "section" : {
              reqName : false,
              container : null,
@@ -1908,6 +1989,18 @@ if (typeof OpenAjax.a11y.aria == "undefined") {
              nameFromContent: false,
              roleType : "abstract"             
            },
+           
+           "switch" : {
+             reqName : true,
+             container : null,
+             props : null,
+             reqProps : ["aria-checked"],
+             reqChildren : null,
+             htmlEquiv : "",
+             nameFromContent: true,
+             supportOnClick: true,
+             roleType : "widget"
+           },
            "tab" : {
              reqName : true,
              container : ["tablist"],
@@ -1917,6 +2010,16 @@ if (typeof OpenAjax.a11y.aria == "undefined") {
              htmlEquiv : null,
              nameFromContent: true,
              roleType : "widget"
+           },            
+           "table" : {
+             reqName : true,
+             container : null,
+             props : ["aria-colcount", "aria-rowcount"],
+             reqProps : null,
+             reqChildren : ["row", "rowgroup"],
+             htmlEquiv : null,
+             nameFromContent: false,
+             roleType : "section"
            },
            "tablist" : {
              reqName : false,
@@ -1938,6 +2041,28 @@ if (typeof OpenAjax.a11y.aria == "undefined") {
              htmlEquiv : null,
              nameFromContent: false,
              roleType : "widget"
+           },
+           
+           "term" : {
+             reqName : false,
+             container : null,
+             props : ["aria-expanded"],
+             reqProps : null,
+             reqChildren : null,
+             htmlEquiv : "dt",
+             nameFromContent: false,
+             roleType : "section"
+           },
+           
+           "text" : {
+             reqName : false,
+             container : null,
+             props : [],
+             reqProps : null,
+             reqChildren : null,
+             htmlEquiv : "",
+             nameFromContent: true,
+             roleType : "section"
            },
            
            "textbox" : {
@@ -10356,7 +10481,11 @@ OpenAjax.a11y.cache.DOMElement = function (node, parent_dom_element) {
       case 'number':
         if (!isNaN(value) && value.length) return true;
         break;
-         
+
+      case 'positive':
+        if (!isNaN(value) && 
+            (parseInt(value, 10) > 0)) return true;
+        break;         
          
       case 'string':
         if (value.length) return true;

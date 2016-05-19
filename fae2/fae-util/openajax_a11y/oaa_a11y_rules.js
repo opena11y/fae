@@ -3062,7 +3062,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         LANDMARK_4: {
             ID:         'Landmark 4',
             DEFINITION: 'Website branding content, typically at the top of a web page, %s be identified by using the @banner@ landmark.',
-            SUMMARY:    '@banner@ landmark: Indentify branding content',
+            SUMMARY:    '@banner@ landmark: identifies branding content',
             TARGET_RESOURCES_DESC: '@[role="banner"]@ and top-level @header@ element',
             RULE_RESULT_MESSAGES: {
               MANUAL_CHECK_S: 'If there is branding content, typically at the top of the page, use the @banner@ landmark to identify it.',
@@ -3193,7 +3193,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         LANDMARK_6: {
             ID:         'Landmark 6',
             DEFINITION: 'Website administrative content (e.g., copyright, contact, privacy info, etc., typically at the bottom of a web page) %s be identified by using the @contentinfo@ landmark.',
-            SUMMARY:    '@contentinfo@ landmark: Indentify admin content',
+            SUMMARY:    '@contentinfo@ landmark: identifies admin content',
             TARGET_RESOURCES_DESC: '@[role="contentinfo"]@ and top-level @footer@ element',
             RULE_RESULT_MESSAGES: {
               MANUAL_CHECK_S: 'If there is administrative content (e.g., copyright, contact, privacy info, etc.), typically at the bottom of the page, use the @contentinfo@ landmark or top level @footer@ element to identify it.',
@@ -3411,7 +3411,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
                'Ensuring that the landmark structure of a page is not overly complex enables users of assistive technologies to more easily find and navigate to the desired content.'
             ],
             TECHNIQUES: [
-              'A @banner@ landmark at most should only contain @navigation@, @region@ or @search@ landmarks.'
+              'If landmarks are needed within a @banner@ landmark, use only @navigation@, @region@ or @search@.'
             ],
             MANUAL_CHECKS: [
             ],
@@ -3466,8 +3466,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               'Ensuring that the landmark structure of a page is not overly complex enables users of assistive technologies to more easily find and navigate to the desired content.'
             ],
             TECHNIQUES: [
-              'A @navigation@ landmark at most should only contain @region@ or @search@ landmarks.',
-              'A @navigation@ landmark can be defined using the @[role=navigation"]@ attribute or HTML5 @nav@ sectioning element.'
+              'If landmarks are needed within a @navigation@ landmark, use only @region@ or @search@.'
             ],
             MANUAL_CHECKS: [
             ],
@@ -3616,7 +3615,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
                'Ensuring that the landmark structure of a page is not overly complex enables users of assistive technologies to more easily find and navigate to the desired content.'
             ],
             TECHNIQUES: [
-              'A @contentinfo@ landmark at most should only contain @navigation@, @region@ or @search@ landmarks.'
+              'If landmarks are needed within a @contentinfo@ landmark, use only @navigation@, @region@ or @search@.'
             ],
             MANUAL_CHECKS: [
             ],
@@ -16356,6 +16355,10 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
                          '[aria-autocomplete]', 
                          '[aria-busy]', 
                          '[aria-checked]', 
+                         '[aria-colcount]', 
+                         '[aria-colindex]', 
+                         '[aria-colspan]', 
+                         '[aria-current]', 
                          '[aria-disabled]', 
                          '[aria-dropeffect]', 
                          '[aria-expanded]', 
@@ -16366,6 +16369,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
                          '[aria-label]', 
                          '[aria-labelledby]', 
                          '[aria-live]', 
+                         '[aria-modal]', 
                          '[aria-multiline]', 
                          '[aria-multiselectable]', 
                          '[aria-orientation]', 
@@ -16373,6 +16377,9 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
                          '[aria-readonly]', 
                          '[aria-relevant]',
                          '[aria-required]',
+                         '[aria-rowcount]', 
+                         '[aria-rowindex]', 
+                         '[aria-rowspan]', 
                          '[aria-selected]',
                          '[aria-sort]'],
   primary_property    : '',
