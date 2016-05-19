@@ -294,35 +294,58 @@ aria_busy             = create_element_definition( aria, "", "aria-busy", "", "h
 aria_live             = create_element_definition( aria, "", "aria-live", "", "http://www.w3.org/TR/wai-aria/states_and_properties#aria-live", "Global state or property","P")
 aria_relevant         = create_element_definition( aria, "", "aria-relevant", "", "http://www.w3.org/TR/wai-aria/states_and_properties#aria-relevant", "Global state or property","P")
 aria_autocomplete     = create_element_definition( aria, "", "aria-autocomplete", "", "http://www.w3.org/TR/wai-aria/states_and_properties#aria-autocomplete", "Widget attributes","P")
+
 aria_checked          = create_element_definition( aria, "", "aria-checked", "", "http://www.w3.org/TR/wai-aria/states_and_properties#aria-checked", "Widget attributes","S")
+
+aria_colcount          = create_element_definition( aria, "", "aria-colcount", "", "https://www.w3.org/TR/wai-aria-1.1/#aria-colcount", "Widget attributes","P")
+aria_colindex          = create_element_definition( aria, "", "aria-colindex", "", "https://www.w3.org/TR/wai-aria-1.1/#aria-colindex", "Widget attributes","P")
+aria_colspan           = create_element_definition( aria, "", "aria-colspan", "", "https://www.w3.org/TR/wai-aria-1.1/#aria-colspan", "Widget attributes","P")
+
+aria_rowcount          = create_element_definition( aria, "", "aria-rowcount", "", "https://www.w3.org/TR/wai-aria-1.1/#aria-rowcount", "Widget attributes","P")
+aria_rowindex          = create_element_definition( aria, "", "aria-rowindex", "", "https://www.w3.org/TR/wai-aria-1.1/#aria-rowindex", "Widget attributes","P")
+aria_rowspan           = create_element_definition( aria, "", "aria-rowspan",  "", "https://www.w3.org/TR/wai-aria-1.1/#aria-rowspan", "Widget attributes","P")
+
+aria_details           = create_element_definition( aria, "", "aria-details",  "", "https://www.w3.org/TR/wai-aria-1.1/#aria-details", "Widget attributes","P")
+aria_errormessage      = create_element_definition( aria, "", "aria-errormessage",  "", "https://www.w3.org/TR/wai-aria-1.1/#aria-errormessage", "Widget attributes","P")
+aria_modal             = create_element_definition( aria, "", "aria-modal",  "", "https://www.w3.org/TR/wai-aria-1.1/#aria-modal", "Widget attributes","P")
+aria_placeholder       = create_element_definition( aria, "", "aria-placeholder",  "", "https://www.w3.org/TR/wai-aria-1.1/#aria-placeholder", "Widget attributes","P")
+aria_roledescription   = create_element_definition( aria, "", "aria-roledescription",  "", "https://www.w3.org/TR/wai-aria-1.1/#aria-roledescription", "Widget attributes","P")
+
+aria_current          = create_element_definition( aria, "", "aria-current",  "", "https://www.w3.org/TR/wai-aria-1.1/#aria-current", "Widget attributes","S")
 aria_disabled         = create_element_definition( aria, "", "aria-disabled", "", "http://www.w3.org/TR/wai-aria/states_and_properties#aria-disabled", "Widget attributes","S")
 aria_expanded         = create_element_definition( aria, "", "aria-expanded", "", "http://www.w3.org/TR/wai-aria/states_and_properties#aria-expanded", "Widget attributes","S")
 aria_haspopup         = create_element_definition( aria, "", "aria-haspopup", "", "http://www.w3.org/TR/wai-aria/states_and_properties#aria-haspopup", "Widget attributes","P")
+
 aria_hidden           = create_element_definition( aria, "", "aria-hidden", "", "http://www.w3.org/TR/wai-aria/states_and_properties#aria-hidden", "Widget attributes","S")
 aria_invalid          = create_element_definition( aria, "", "aria-invalid", "", "http://www.w3.org/TR/wai-aria/states_and_properties#aria-invalid", "Widget attributes","S")
 aria_label            = create_element_definition( aria, "", "aria-label", "", "http://www.w3.org/TR/wai-aria/states_and_properties#aria-label", "Widget attributes","P")
 aria_level            = create_element_definition( aria, "", "aria-level", "", "http://www.w3.org/TR/wai-aria/states_and_properties#aria-level", "Widget attributes","P")
 aria_multiline        = create_element_definition( aria, "", "aria-multiline", "", "http://www.w3.org/TR/wai-aria/states_and_properties#aria-multiline", "Widget attributes","P",)
+
 aria_multiselectable  = create_element_definition( aria, "", "aria-multiselectable", "", "http://www.w3.org/TR/wai-aria/states_and_properties#aria-multiselectable", "Widget attributes","P")
 aria_orientation      = create_element_definition( aria, "", "aria-orientation", "", "http://www.w3.org/TR/wai-aria/states_and_properties#aria-orientation", "Widget attributes","P")
 aria_pressed          = create_element_definition( aria, "", "aria-pressed", "", "http://www.w3.org/TR/wai-aria/states_and_properties#aria-pressed", "Widget attributes","S")
 aria_readonly         = create_element_definition( aria, "", "aria-readonly", "", "http://www.w3.org/TR/wai-aria/states_and_properties#aria-readonly", "Widget attributes","P")
 aria_required         = create_element_definition( aria, "", "aria-required", "", "http://www.w3.org/TR/wai-aria/states_and_properties#aria-required", "Widget attributes","P")
+
 aria_selected         = create_element_definition( aria, "", "aria-selected", "", "http://www.w3.org/TR/wai-aria/states_and_properties#aria-selected", "Widget attributes","S")
 aria_sort             = create_element_definition( aria, "", "aria-sort", "", "http://www.w3.org/TR/wai-aria/states_and_properties#aria-sort", "Widget attributes","P")
 aria_valuemax         = create_element_definition( aria, "", "aria-valuemin", "", "http://www.w3.org/TR/wai-aria/states_and_properties#aria-valuemin", "Widget attributes","P")
 aria_valuemin         = create_element_definition( aria, "", "aria-valuemax", "", "http://www.w3.org/TR/wai-aria/states_and_properties#aria-valuemax", "Widget attributes","P")
 aria_valuenow         = create_element_definition( aria, "", "aria-valuenow", "", "http://www.w3.org/TR/wai-aria/states_and_properties#aria-valuenow", "Widget attributes","P")
+
 aria_valuetext        = create_element_definition( aria, "", "aria-valuetext", "", "http://www.w3.org/TR/wai-aria/states_and_properties#aria-valuetext", "Widget attributes","P")
 aria_dropeffect       = create_element_definition( aria, "", "aria-dropeffect", "", "http://www.w3.org/TR/wai-aria/states_and_properties#aria-dropeffect", "Drag and drop attributes","P")
 aria_grabbed          = create_element_definition( aria, "", "aria-grabbed", "", "http://www.w3.org/TR/wai-aria/states_and_properties#aria-grabbed", "Drag and drop attributes",'S')
 aria_activedescendant = create_element_definition( aria, "", "aria-activedescendant", "", "http://www.w3.org/TR/wai-aria/states_and_properties#aria-activedescendant", "Relationship attributes","P")
 aria_controls         = create_element_definition( aria, "", "aria-controls", "", "http://www.w3.org/TR/wai-aria/states_and_properties#aria-controls", "Relationship attributes","P")
+
 aria_describedby      = create_element_definition( aria, "", "aria-describedby", "", "http://www.w3.org/TR/wai-aria/states_and_properties#aria-describedby", "Relationship attributes","P")
 aria_flowto           = create_element_definition( aria, "", "aria-flowto", "", "http://www.w3.org/TR/wai-aria/states_and_properties#aria-flowto", "Relationship attributes","P")
 aria_labelledby       = create_element_definition( aria, "", "aria-labelledby", "", "http://www.w3.org/TR/wai-aria/states_and_properties#aria-labelledby", "Relationship attributes","P")
 aria_owns             = create_element_definition( aria, "", "aria-owns", "", "http://www.w3.org/TR/wai-aria/states_and_properties#aria-owns", "Relationship attributes","P")
 aria_posinset         = create_element_definition( aria, "", "aria-posinset", "", "http://www.w3.org/TR/wai-aria/states_and_properties#aria-posinset", "Relationship attributes","P")
+
 aria_setsize          = create_element_definition( aria, "", "aria-setsize", "", "http://www.w3.org/TR/wai-aria/states_and_properties#aria-setsize", "Relationship attributes","P")
 
 css = create_spec("CSS 2.1", "CSS 2.1", "http://www.w3.org/tr/css21", "css21", "CSS21", False)

@@ -98,13 +98,15 @@ class ShibbolethLogin(RedirectView):
             stats = StatsUser(user=user, ws_report_group=wsrg)  
             stats.save()
 
-        try:
-            user.first_name = self.request.META['givenName']
-            user.last_name  = self.request.META['sn']
-            user.email      = self.request.META['mail']
-            user.save()
-        except:
-            pass    
+        # Try to populate user information from shibboleth information
+        if user.first_name == '' or user.last_name == '' or user.mail == '':
+            try:
+                user.first_name = self.request.META['givenName']
+                user.last_name  = self.request.META['sn']
+                user.email      = self.request.META['mail']
+                user.save()
+            except:
+                pass    
 
         self.url = SITE_URL
 
