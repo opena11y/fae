@@ -7577,13 +7577,13 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             SUMMARY:               'Elements with event handlers %s have roles',
             TARGET_RESOURCES_DESC: 'Elements with event handlers',
             RULE_RESULT_MESSAGES: {
-              FAIL_S:          'Add ARIA widget role to the element with event handlers or child elements that accurately describe the options and actions available to the user.',
-              FAIL_P:          'Add ARIA widget roles to the %N_F out of %N_T elements with event handlers or their child elements that accurately describe the options and actions available to the user.',
-              MANUAL_CHECK_S:  'Verify the widget roles associated with event handlers or their child elements accurately describe the options and actions available to the user.',
-              MANUAL_CHECK_P:  'Verify the widget roles associated with %N_MC event handlers accurately describe the options and actions available to the user.',
-              HIDDEN_S:        'The @element@ with event handler that is hidden and was not evaluated.',
-              HIDDEN_P:        '%N_H @element@ with event handlers that are hidden were not evaluated.',
-              NOT_APPLICABLE:  'No elements with event handlers found on this page.'              
+              FAIL_S:          'Add an ARIA widget role to the interactive element, or to its descendants, to describe the user interactions associated with the event handler or handlers on the element.',
+              FAIL_P:          'Add ARIA widget roles to the %N_F interactive elements, or to their descendants, to describe the user interactions associated with the event handlers on those elements.',
+              MANUAL_CHECK_S:  'Verify the user interactions associated with the interactive element with one or more event handlers are accurately described by the element\'s widget role and/or those of its descendants.',
+              MANUAL_CHECK_P:  'Verify the user interactions associated with the %N_MC interactive elements with one or more event handlers are accurately described by each element\'s widget role and/or their descendants.',
+              HIDDEN_S:        'The hidden interactive element with event handlers was not evaluated.',
+              HIDDEN_P:        'The %N_H interactive elements with event handlers twere not evaluated.',
+              NOT_APPLICABLE:  'No interactive elements with event handlers found on this page.'              
             },
             NODE_RESULT_MESSAGES: {
               ELEMENT_MANUAL_CHECK_1:  'Verify the user options and actions available through the "@%2@" event handler(s) are accurately described by the @%1@ widget role.',
