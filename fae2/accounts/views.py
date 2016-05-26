@@ -99,7 +99,7 @@ class ShibbolethLogin(RedirectView):
             stats.save()
 
         # Try to populate user information from shibboleth information
-        if user.first_name == '' or user.last_name == '' or user.mail == '':
+        if user.first_name == '' or user.last_name == '' or user.email == '':
             try:
                 user.first_name = self.request.META['givenName']
                 user.last_name  = self.request.META['sn']
