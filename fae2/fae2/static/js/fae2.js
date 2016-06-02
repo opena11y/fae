@@ -21,7 +21,12 @@ fae2TableUtils.addRow = function (tbody, id, class_name) {
 	    if (tr) {
     	  	tr.id = id;
       	  	tr.className = class_name;
-      		tbody.appendChild(tr);
+          if (tbody.firstChild) {
+            tbody.insertBefore(tr, tbody.firstChild);
+          } 
+          else {
+            tbody.appendChild(tr);
+        } 
     	}  
 
     	return tr;

@@ -2,12 +2,14 @@
 
 {% block breadcrumb %}
     <li><a href="{{ rulesets_url }}">Rulesets</a></li>
-    <li>Rule</li>
+    <li>{{rule.nls_rule_id}}</li>
+{% endblock %}
+
+{% block title %}
+  {{rule.summary_html|safe}}    
 {% endblock %}
 
 {% block content %}
-
-<h1>Rule: {{rule.summary_html|safe}}</h1>    
 
 {% include "rulesets/rule_detail.html" %}
 

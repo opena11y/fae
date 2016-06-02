@@ -5,9 +5,12 @@
     <li>Ruleset</li>
 {% endblock %}
 
+{% block title %}
+  {{ruleset.title}}    
+{% endblock %}
+
 {% block content %}
 
- <h1>Ruleset: {{ruleset.title}}</h1>    
 
  {% include "rulesets/ruleset_detail.html" %}
 

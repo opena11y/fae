@@ -6,7 +6,6 @@ main h1 {
     font-size: 250%; 
     margin: 0;
     padding: 0;
-    margin-top: 0.2em;
 }
 
 main h2 { 
@@ -22,12 +21,6 @@ main h3 {
 main h4 { 
     margin-top: 1.5em;
     font-size: 125%; 
-}
-
-nav h2 {
-    margin-top: 1em;
-    margin-bottom: 0.5em;
-    font-size: 130%;
 }
 
 main section h2 {
@@ -47,17 +40,92 @@ main section.report {
     margin-top: 2em;
 }
 
-#view_options {
-    margin-top: 3em;
-    margin-bottom: -1.5em;
-    padding-bottom: 0;
-    font-size: 110%;
+#sendto {
+    float: right;
+    position: relative;
+    top: -2.15em;
 }
 
+
+#sendto a {
+    border-bottom: 1px solid transparent;
+    display: block;
+    padding: 2px;
+}
+
+
+#sendto a:focus,
+#sendto a:hover {
+    border-color: rgb(51, 122, 183);
+    background-color: #c4dced;
+}
+
+main p img,
+#sendto img {
+    height: 1.6em;
+}
+
+main p img {
+    position: relative;
+    top: -.5em;
+}
+
+main div.login a {
+    padding: 0.25em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    display: block;
+    width: 8em;
+    text-align: center;
+    background: #337ab7;
+    color: white;
+    font-size: 124%;
+}
+
+nav#view_options {
+    margin-top: 3em;
+    margin-bottom: -1.5em;
+}
+nav#view_options ul {
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    margin-bottom: 1em;
+}
+
+nav#id_breadcrumbs,
+nav#id_breadcrumbs ul  {
+    margin: 0;
+}
+
+nav#id_breadcrumbs {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+nav h2 {
+    margin-top: 1em;
+    margin-bottom: 0.125em;
+    font-size: 125%;
+}
+.nav > li > a {
+    padding: 0.25em;
+    padding-left: 0.5em;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+    font-size: 112%;
+}
 
 .navbar-inverse .navbar-nav > li > a:focus,
 .navbar-inverse .navbar-nav > li > a:hover {
     text-decoration: underline;
+}
+
+#id_get_last {
+    margin-top: 1em;
+    font-size: 100%;
 }
 
 button[aria-controls="top-navbar"] {
@@ -75,7 +143,8 @@ button[aria-controls="top-navbar"]:hover {
     margin-bottom: 0.5em;
 }
 
-table.rule tbody td ul {
+main ul,
+table tbody td ul {
     margin: 0;
     padding: 0;
     padding-left: 1.25em;
@@ -445,4 +514,10 @@ ul.user_profile {
 ul.user_profile li {
     padding: 0;
     margin: 0;
+}
+
+table label {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-right: 0.25em;
 }
