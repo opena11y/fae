@@ -398,7 +398,7 @@
             if (!flag_filters) flag_filters = checkLinks(url, document.querySelectorAll('#id_view_filters  a[href]'), 'highlight');
           }
 
-          if (!flag_reports && !flag_filters && !flag_nav && ({{report_nav.page_count}} > 1)) {
+          if (!flag_reports && !flag_filters && !flag_nav && {% if report_nav.page_count %}({{report_nav.page_count}} > 1){% else %}false{% endif %}) {
             document.getElementById('id_view_current').className = 'highlight';
           }
 

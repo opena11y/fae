@@ -1,16 +1,16 @@
 {% extends "base.html" %}
 
 {% block breadcrumb %}
-  <li>Versions</li>
+  <li>Versions.</li>
 {% endblock %}
 
 {% block title %}
-Versions
+Version History
 {% endblock %}
 
 {% block content %}
 
-  <table class="details table table-striped table-hover" aria-labelledby="id_h1_title">
+  <table class="details table table-striped table-hover" aria-labelledby="id_page_title">
     <thead>
       <tr>
         <th class="text">Version</td>
@@ -20,21 +20,31 @@ Versions
     </thead>
     <tbody>
       <tr>
+        <td class="text">2.0.0-beta.2</td>
+        <td class="text">2016-06-07</td>
+        <td class="text">
+          <ul>
+            <li>Added new maximum depth feature (8 levels).</li>
+            <li>Added run advanced report, provding more control.</li>
+            <li>Updated to Version 1.0.0-beta.6 of the OpenAjax evaluation library.</li>
+         </ul>
+      </tr>          
+      <tr>
         <td class="text">2.0.0-beta.1</td>
         <td class="text">2016-04-21</td>
         <td class="text">
           <ul>
-            <li>E-mail link to share report</li>
-            <li>Support Shibboleth authentication</li>
-            <li>Implementation score now includes manual checks in score calculation</li>
-            <li>Delete reports directly from "Manage Reports"</li>
-            <li>Added "maximum pages" feature when requesting report</li>
-            <li>Improved usage statistics</li>
-            <li>Improved contact form, users can now view there contacts and responses</li>
-            <li>Refactored code for open source distribution</li>
-            <li>Updated to fae-util to use HTMLUnit 1.9</li> 
-            <li>Source code available from GitHub.com at <a href="https://github.com/opena11y/fae2">https://github.com/opena11y/fae2</a></li>
-            <li>Updated to Version 1.0.0-beta.5 of the OpenAjax evaluation library</li>
+            <li>Added E-mail link to share a report.</li>
+            <li>Support Shibboleth authentication.</li>
+            <li>Implementation score now includes manual checks in score calculation.</li>
+            <li>Delete reports directly from "Manage Reports".</li>
+            <li>Added "maximum pages" feature when requesting report.</li>
+            <li>Improved usage statistics.</li>
+            <li>Improved contact form, users can now view there contacts and responses.</li>
+            <li>Refactored code for open source distribution.</li>
+            <li>Updated to fae-util to use HTMLUnit 1.9.</li> 
+            <li>Source code available from GitHub.com at <a href="https://github.com/opena11y/fae2">https://github.com/opena11y/fae2</a>.</li>
+            <li>Updated to Version 1.0.0-beta.5 of the OpenAjax evaluation library.</li>
          </ul>
       </tr>          
       <tr>
@@ -44,25 +54,25 @@ Versions
           <ul>
             <li>Updated OpenAjax Evaluation Library to Version 1.0.0-beta.3, has updated the following rules:
               <ul>
-                <li>Frame 1: frame must have accessible name (new)</li>
-                <li>Frame 2: iframe must have accessible name (new)</li>
-                <li>Image 1: Images must have alt text (Not new, but extensively modified)</li>
-                <li>Image 2: Alt text must summarize purpose (Not new, but extensively modified)</li>
-                <li>Image 5: Verify image is decorative (Not new, but extensively modified)</li>
-                <li>Image 6: Long description for complex images (Not new, but extensively modified)</li>
-                <li>Image 7: Use MathML for mathematical expressions (new)</li>
-                <li>Keyboard 2: Behaviors supported by keyboard (Not new, but extensively modified)</li>
-                <li>Landmark 2: All content must be contained in landmarks (Not new, but extensively modified)</li>
-                <li>Landmark 16: region landmark must have accessible name (Not new, but extensively modified)</li>
-                <li>Landmark 17: Landmarks must be uniquely identifiable (Not new, but extensively modified)</li>
-                <li>Landmark 18: Landmarks must identify content regions (Not new, but extensively modified)</li>
-                <li>Link 1: Link text must be descriptive (extensively modified)</li>
-                <li>List 1: Use list markup semantically (new)</li>
-                <li>List 2: Labeling lists (new)</li>
-                <li>Order 1: Reading order: CSS positioning (new)</li>
+                <li>Frame 1: frame must have accessible name (new).</li>
+                <li>Frame 2: iframe must have accessible name (new).</li>
+                <li>Image 1: Images must have alt text (Not new, but extensively modified).</li>
+                <li>Image 2: Alt text must summarize purpose (Not new, but extensively modified).</li>
+                <li>Image 5: Verify image is decorative (Not new, but extensively modified).</li>
+                <li>Image 6: Long description for complex images (Not new, but extensively modified).</li>
+                <li>Image 7: Use MathML for mathematical expressions (new).</li>
+                <li>Keyboard 2: Behaviors supported by keyboard (Not new, but extensively modified).</li>
+                <li>Landmark 2: All content must be contained in landmarks (Not new, but extensively modified).</li>
+                <li>Landmark 16: region landmark must have accessible name (Not new, but extensively modified).</li>
+                <li>Landmark 17: Landmarks must be uniquely identifiable (Not new, but extensively modified).</li>
+                <li>Landmark 18: Landmarks must identify content regions (Not new, but extensively modified).</li>
+                <li>Link 1: Link text must be descriptive (extensively modified).</li>
+                <li>List 1: Use list markup semantically (new).</li>
+                <li>List 2: Labeling lists (new).</li>
+                <li>Order 1: Reading order: CSS positioning (new).</li>
               </ul>
-           </li>
-           <li>Updated Ruleset view</li>
+           .</li>
+           <li>Updated Ruleset view.</li>
          </ul>
       </tr>          
       <tr>
@@ -72,30 +82,30 @@ Versions
           <ul>
             <li>Updated OpenAjax Evaluation Library to Version 0.9.9.2:
               <ul>
-                <li>Changed heading rule 5 to be required in ARIA + HTML5 ruleset</li>
-                <li>Fixed grammar in summaries for VIDEO 8 and 9 rules</li>
-                <li>Changed heading rule 5 to have primary relationship with WCAG SC 1.3.1 (was 2.4.6)</li>
-                <li>Updated visibility calculation to include test on the height of the text (e.g. text with 0 height does not need to be tested for color contrast)</li>
-                <li>Moved role semantic restriction rules from landmark to style/content rule category</li>
-                <li>Added rules for frame and iframe having accessible names</li>
-                <li>Fixed bug in incorrectly identifying header and footer elements inside sectioning elements as landmarks</li>
-                <li>Updated landmark messaging to improve the identification of techniques to create landmarks</li>
-                <li>Added landmark 19 rule: landmarks must be descriptive of the sections they identify</li>
-                <li>Updated widget rule 1 to use "label" instead of "accessible name", reference WCAG 2.0 ARAI techniques and element messaging uses XXX element with YYY widget role</li>
-                <li>Added widget rule 12 to verify labels for elements with widget roles are descriptive</li>
-                <li>Fixed Table Rule 1 to also allow the use of the headers attribute to define headers in simple data tables</li>
-                <li>Reimplementation of Keyboard Rule 3 on page being keyboard operable, basically identifying any elements with events or tab index values other than 0</li>
-                <li>Updated keyboard rule 1 to correctly test for the potential of keyboard event handlers on owned children</li>
-                <li>Removed keyboard 2 rule since HTML5 requires a default value of tabindex=-1, basically any element can receive focus</li>
-                <li>Moved keyboard rule 3 -> keyboard rule 2 since keyboard rule 2 was removed</li>
-                <li>Moved keyboard rule 4 -> keyboard rule 3 since keyboard rule 3 was removed</li>
-                <li>Added list rule 1 for using semantically meaningful list markup on the page</li>
-                <li>Added list rule 2 about manual tests for labeling a list container</li>
-                <li>Added reading order rule 1 to evaluation library</li>
+                <li>Changed heading rule 5 to be required in ARIA + HTML5 ruleset.</li>
+                <li>Fixed grammar in summaries for VIDEO 8 and 9 rules.</li>
+                <li>Changed heading rule 5 to have primary relationship with WCAG SC 1.3.1 (was 2.4.6).</li>
+                <li>Updated visibility calculation to include test on the height of the text (e.g. text with 0 height does not need to be tested for color contrast).</li>
+                <li>Moved role semantic restriction rules from landmark to style/content rule category.</li>
+                <li>Added rules for frame and iframe having accessible names.</li>
+                <li>Fixed bug in incorrectly identifying header and footer elements inside sectioning elements as landmarks.</li>
+                <li>Updated landmark messaging to improve the identification of techniques to create landmarks.</li>
+                <li>Added landmark 19 rule: landmarks must be descriptive of the sections they identify.</li>
+                <li>Updated widget rule 1 to use "label" instead of "accessible name", reference WCAG 2.0 ARAI techniques and element messaging uses XXX element with YYY widget role.</li>
+                <li>Added widget rule 12 to verify labels for elements with widget roles are descriptive.</li>
+                <li>Fixed Table Rule 1 to also allow the use of the headers attribute to define headers in simple data tables.</li>
+                <li>Reimplementation of Keyboard Rule 3 on page being keyboard operable, basically identifying any elements with events or tab index values other than 0.</li>
+                <li>Updated keyboard rule 1 to correctly test for the potential of keyboard event handlers on owned children.</li>
+                <li>Removed keyboard 2 rule since HTML5 requires a default value of tabindex=-1, basically any element can receive focus.</li>
+                <li>Moved keyboard rule 3 -> keyboard rule 2 since keyboard rule 2 was removed.</li>
+                <li>Moved keyboard rule 4 -> keyboard rule 3 since keyboard rule 3 was removed.</li>
+                <li>Added list rule 1 for using semantically meaningful list markup on the page.</li>
+                <li>Added list rule 2 about manual tests for labeling a list container.</li>
+                <li>Added reading order rule 1 to evaluation library.</li>
               </ul>
-            </li>
-            <li>Updated fae-util to latest version, now uses HTMLUnit 2.18</li>
-            <li>Updated ruleset views to include related rule information</li>
+            .</li>
+            <li>Updated fae-util to latest version, now uses HTMLUnit 2.18.</li>
+            <li>Updated ruleset views to include related rule information.</li>
           </ul>  
         </td>
       </tr>    
@@ -106,26 +116,26 @@ Versions
           <ul>
             <li>Updated OpenAjax Evaluation Library to Version 0.9.9.1:
               <ul>
-                   <li>Updated HTML5 element role restriction rules not to result in PASS, only FAIL or MANUAL checks</li>
+                   <li>Updated HTML5 element role restriction rules not to result in PASS, only FAIL or MANUAL checks.</li>
                    <li>Updated HTML5 element role restriction rule messaging to emphasize the correct us of 
-  semantics and overriding default HTML5 sectioning rules</li>
-                   <li>Updated data table rule (TABLE 2) to support complex data tables from rules</li>
-                   <li>Updated audio NLS to include element level HIDDEN message for audio rules 2 and 3</li>
-                   <li>In aria strict ruleset changed heading 5 rule to be recommended (header nesting page) to recommended and changed heading rule 8 to required (header nesting in landmarks) to be required.</li>
-                   <li>Added form element to Landmark rule 18 landmark role restrictions</li>
-                   <li>Fixed messaging bugs with LANDMARK 8 rule </li>
-                   <li>Fixed bug in calculating accessible name when LABEL elements are empty and multiple LABEL references</li>
-                   <li>Added "landmark" property to represent the computed landmark value for an element</li>
+  semantics and overriding default HTML5 sectioning rules.</li>
+                   <li>Updated data table rule (TABLE 2) to support complex data tables from rules.</li>
+                   <li>Updated audio NLS to include element level HIDDEN message for audio rules 2 and 3.</li>
+                   <li>In aria strict ruleset changed heading 5 rule to be recommended (header nesting page) to recommended and changed heading rule 8 to required (header nesting in landmarks) to be required..</li>
+                   <li>Added form element to Landmark rule 18 landmark role restrictions.</li>
+                   <li>Fixed messaging bugs with LANDMARK 8 rule .</li>
+                   <li>Fixed bug in calculating accessible name when LABEL elements are empty and multiple LABEL references.</li>
+                   <li>Added "landmark" property to represent the computed landmark value for an element.</li>
                    <li>Updated all landmark rules to use the computed "landmark" value instead or role value
-  and heading rules that are dependent on landmark information</li>
-                   <li>Support HTML5 sectioning elements for their default landmark roles in landmark rules</li>
-                   <li>Improved consistency of landmark rule messaging</li>
+  and heading rules that are dependent on landmark information.</li>
+                   <li>Support HTML5 sectioning elements for their default landmark roles in landmark rules.</li>
+                   <li>Improved consistency of landmark rule messaging.</li>
                    <li>Fixed data table naming rule (TABLE_2) that was only testing simple data tables, now also 
-  tests complex data tables</li>
+  tests complex data tables.</li>
               </ul>
-            </li>
-            <li>Updated fae-util to latest version, now uses HTMLUnit 2.16</li>
-            <li>Updated ruleset views to include related rule information</li>
+            .</li>
+            <li>Updated fae-util to latest version, now uses HTMLUnit 2.16.</li>
+            <li>Updated ruleset views to include related rule information.</li>
           </ul>  
         </td>
       </tr>    
@@ -134,9 +144,9 @@ Versions
         <td class="text">2015-03-20</td>
         <td class="text">
           <ul>
-            <li>Added information about the announcement and discussion e-mail lists</li>
-            <li>Added links to the FAE 2.0 and OpenAjax Evaluation Library issues list</li>
-            <li>Improved DL/DT/DD styling</li>
+            <li>Added information about the announcement and discussion e-mail lists.</li>
+            <li>Added links to the FAE 2.0 and OpenAjax Evaluation Library issues list.</li>
+            <li>Improved DL/DT/DD styling.</li>
           </ul>  
         </td>
       </tr>    
@@ -145,14 +155,14 @@ Versions
         <td class="text">2015-03-11</td>
         <td class="text">
           <ul>
-            <li>Fixed aria-sort property problem bug not updating correctly</li>
+            <li>Fixed aria-sort property problem bug not updating correctly.</li>
             <li>Updated OpenAjax Evaluation Library to version 0.9.8.1
               <ul>
-                <li>Fixed undeclared variable in LANDMARK RULE 3</li>
-                <li>Fixed undefined function error with Link Cache calculation by testing for type String</li>
-                <li>Fixed bug with button element accessible name calculation, now supports aria-label, aria-labelledby and title attributes</li>
+                <li>Fixed undeclared variable in LANDMARK RULE 3.</li>
+                <li>Fixed undefined function error with Link Cache calculation by testing for type String.</li>
+                <li>Fixed bug with button element accessible name calculation, now supports aria-label, aria-labelledby and title attributes.</li>
               </ul>
-            </li>
+            .</li>
           </ul>
         </td>
       </tr>    
@@ -161,10 +171,10 @@ Versions
         <td class="text">2015-03-09</td>
         <td class="text">
           <ul>
-            <li>Updated registration response to provide information about how to unsubscribe to the announcements list</li>
-            <li>Contact messages include e-mail of user for easier response to message</li>
-            <li>Added URL referral feature to allow embedding a link in a web page to have the page evaluated by FAE 2.0 when the link is selected (note: generates an anonymous single page report)</li>
-            <li>Improved internal website link and name references to use database "site" information</li>
+            <li>Updated registration response to provide information about how to unsubscribe to the announcements list.</li>
+            <li>Contact messages include e-mail of user for easier response to message.</li>
+            <li>Added URL referral feature to allow embedding a link in a web page to have the page evaluated by FAE 2.0 when the link is selected (note: generates an anonymous single page report).</li>
+            <li>Improved internal website link and name references to use database "site" information.</li>
           </ul>
         </td>
       </tr>    
@@ -173,15 +183,15 @@ Versions
         <td class="text">2015-03-02</td>
         <td class="text">
           <ul>
-            <li>Added references to <a href="http://ainspector.github.io/">AInspector Sidebar</a> in page level result views and in about menu</li>
+            <li>Added references to <a href="http://ainspector.github.io/">AInspector Sidebar</a> in page level result views and in about menu.</li>
             <li>Updated OpenAjax library to version 0.9.8 of the library
               <ul>
-                <li>Added BYPASS_1 rule that supports "SkipTo" script and internal linking</li>
-                <li>Updated table cache to provide better support for CAPTION element and SUMMARY attribute</li>
+                <li>Added BYPASS_1 rule that supports "SkipTo" script and internal linking.</li>
+                <li>Updated table cache to provide better support for CAPTION element and SUMMARY attribute.</li>
                     for naming and describing tables and table titling rules now use this information in
-                    rule evaluation and results</li>
-                <li>Updated TABLE_5 to result in manual check for tables that contain only one row or column</li>
-                <li>Removed the concept of "large" data table from library and rules</li>
+                    rule evaluation and results.</li>
+                <li>Updated TABLE_5 to result in manual check for tables that contain only one row or column.</li>
+                <li>Removed the concept of "large" data table from library and rules.</li>
                 <li>Added two rules to table data rules for:
                   <ul>
                     <li>Split simple and complex data table heading requirements out of TABLE 1 rule
@@ -189,15 +199,15 @@ Versions
                     <li>New TABLE 7 is just about headings for complex data tables
                     <li>New TABLE 8 is about accessible name beting different from accesible description
                   </ul>
-                </li>  
-                <li>Updated for CONTROL_3 to include title attribute as another group titling technique</li>
+                .</li>  
+                <li>Updated for CONTROL_3 to include title attribute as another group titling technique.</li>
                 <li>Updated labeling references for form control labeling rules to include references to 
-                    ARIA labeling specifications</li>
-                <li>Fixed bug with name calculation for links includes TITLE attribute</li>
-                <li>Updated LANDMARK_3 rule to be not applicable if no or less than 4 links found on a page</li>
-                <li>Updated CONTROL_5 to fail form controls with duplicate IDs when they are hidden, improved messaging</li>
+                    ARIA labeling specifications.</li>
+                <li>Fixed bug with name calculation for links includes TITLE attribute.</li>
+                <li>Updated LANDMARK_3 rule to be not applicable if no or less than 4 links found on a page.</li>
+                <li>Updated CONTROL_5 to fail form controls with duplicate IDs when they are hidden, improved messaging.</li>
               </ul>
-            </li>
+            .</li>
           </ul>  
         </td>
       </tr>
@@ -206,22 +216,22 @@ Versions
         <td class="text">2015-02-12</td>
         <td class="text">
           <ul>
-            <li><strong>IMPORTANT:</strong> Report quotas now will be enforced (e.g. 5 permanent reports, last 5 reports run)</li>
+            <li><strong>IMPORTANT:</strong> Report quotas now will be enforced (e.g. 5 permanent reports, last 5 reports run).</li>
             <li>Updated OpenAjax library to version 0.9.7.4 of the library
               <ul>
-                <li>Removed BASIC ruleset</li>
-                <li>Updated titles and descriptions of ARIA_STRICT and ARIA_TRANS ruleset</li>
-                <li>Removed WIDGET 12 from ARIA_TRANS ruleset</li>
-                <li>Changed conditional landmark rules to be recommended in ARIA_TRANS ruleset</li>
-                <li>Move FOCUS 2 rule to keyboard support rule category</li>
-                <li>NAVIGATION 3 and 5 rules are now required in both rulesets</li>
-                <li>Fixed bugs in other rules</li> 
+                <li>Removed BASIC ruleset.</li>
+                <li>Updated titles and descriptions of ARIA_STRICT and ARIA_TRANS ruleset.</li>
+                <li>Removed WIDGET 12 from ARIA_TRANS ruleset.</li>
+                <li>Changed conditional landmark rules to be recommended in ARIA_TRANS ruleset.</li>
+                <li>Move FOCUS 2 rule to keyboard support rule category.</li>
+                <li>NAVIGATION 3 and 5 rules are now required in both rulesets.</li>
+                <li>Fixed bugs in other rules.</li> 
               </ul>
-            </li>
-            <li>"Basic" ruleset removed from "Run" options</li>
-            <li>Added links to view rule details in "Rulesets" view</li>
-            <li>Report status automatically updated (e.g. no page refresh required) and provide information on how many pages have been analyzed in real time to show progress</li>
-            <li>Added "Get Last Report Settings" button to the run report form, to provide a way to import previously used settings</li>
+            .</li>
+            <li>"Basic" ruleset removed from "Run" options.</li>
+            <li>Added links to view rule details in "Rulesets" view.</li>
+            <li>Report status automatically updated (e.g. no page refresh required) and provide information on how many pages have been analyzed in real time to show progress.</li>
+            <li>Added "Get Last Report Settings" button to the run report form, to provide a way to import previously used settings.</li>
           </ul>  
         </td>
       </tr>
@@ -230,11 +240,11 @@ Versions
         <td class="text">2015-01-22</td>
         <td class="text">
           <ul>
-            <li>Updated OpenAjax library to version 0.9.7.2 of the library</li>
-            <li>Export reports to an JSON or XML format</li>
-            <li>Table sorting features to reorder rows by column values</li>
-            <li>Updated user interface using bootstrap.js to improve response to different screen sizes</li>
-            <li>“SkipTo” feature for keyboard only navigation</li>
+            <li>Updated OpenAjax library to version 0.9.7.2 of the library.</li>
+            <li>Export reports to an JSON or XML format.</li>
+            <li>Table sorting features to reorder rows by column values.</li>
+            <li>Updated user interface using bootstrap.js to improve response to different screen sizes.</li>
+            <li>“SkipTo” feature for keyboard only navigation.</li>
           </ul>  
         </td>
       </tr>
@@ -243,7 +253,7 @@ Versions
         <td class="text">2014-07-10</td>
         <td class="text">
           <ul>
-            <li>Updated OpenAjax library</li>
+            <li>Updated OpenAjax library.</li>
           </ul>  
         </td>
       </tr>
@@ -252,9 +262,9 @@ Versions
         <td class="text">2014-05-28</td>
         <td class="text">
           <ul>
-            <li>Updated OpenAjax library to version 0.9.4, including ARIA + Lnndmarks ruleset</li>
-            <li>Additional user options for viewing report information</li>
-            <li>Improved backend administration tools</li>
+            <li>Updated OpenAjax library to version 0.9.4, including ARIA + Lnndmarks ruleset.</li>
+            <li>Additional user options for viewing report information.</li>
+            <li>Improved backend administration tools.</li>
         </td>
       </tr>
       <tr>
@@ -262,7 +272,7 @@ Versions
         <td class="text">2014-04-29</td>
         <td class="text">
           <ul>
-            <li>Initial Release with the OpenAjax Evaluation Library</li>
+            <li>Initial Release with the OpenAjax Evaluation Library.</li>
           </ul>  
         </td>
       </tr>

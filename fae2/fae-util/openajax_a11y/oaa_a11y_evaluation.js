@@ -1672,7 +1672,6 @@ if (typeof OpenAjax.a11y.aria == "undefined") {
              reqChildren : ["menuitem", "menuitemcheckbox", "menuitemradio", "group"],
              htmlEquiv : null,
              nameFromContent: false,
-             supportOnClick: true,
              roleType : "widget"
            },
            
@@ -1684,7 +1683,6 @@ if (typeof OpenAjax.a11y.aria == "undefined") {
              reqChildren : null,
              htmlEquiv : null,
              nameFromContent: false,
-             supportOnClick: true,
              roleType : "widget"
            },
            
@@ -1696,7 +1694,6 @@ if (typeof OpenAjax.a11y.aria == "undefined") {
              reqChildren : null,
              htmlEquiv : null,
              nameFromContent: true,
-             supportOnClick: true,
              roleType : "widget"
            },
            
@@ -10408,9 +10405,11 @@ OpenAjax.a11y.cache.DOMText.prototype.toString = function(option) {
  *
  * @param {Object}    node            - The DOM text node 
  * @param {DOMElement}  parent_element  - DOMElement object that is the parent DOMElement object in the tree
+ * @param {doc}   document  - Document object of the current page being analyzed, only defined when element 
+                              is a 'body' element to get information about events attached to the document
  */
 
-OpenAjax.a11y.cache.DOMElement = function (node, parent_dom_element) {
+OpenAjax.a11y.cache.DOMElement = function (node, parent_dom_element, doc) {
 
   function addAriaAttribute (name, value) {
   
@@ -10558,6 +10557,7 @@ OpenAjax.a11y.cache.DOMElement = function (node, parent_dom_element) {
   if (!node) return null;
 
 
+  this.document = doc;
 
   this.has_element_children = false;
  
@@ -12206,7 +12206,15 @@ OpenAjax.a11y.cache.DOMElement.prototype.initEvents = function (parent_dom_eleme
 OpenAjax.a11y.cache.DOMElement.prototype.EnumerateFirefoxEvents = function (node, parent_dom_element) {
 
   var i;
+  var event_info;
  
+  if (node.tagName && node.tagName.toLowerCase() === 'body') {
+     event_info = this.EnumerateFirefoxEvents(this.document, null); 
+//     OpenAjax.a11y.logger.debug('body: ' + event_info.has_key_down);
+     parent_dom_element = {};
+     parent_dom_element.events = event_info;
+  }
+
   var events = this.initEvents(parent_dom_element);
 
   var event_listener = Components.classes["@mozilla.org/eventlistenerservice;1"];
@@ -12216,7 +12224,7 @@ OpenAjax.a11y.cache.DOMElement.prototype.EnumerateFirefoxEvents = function (node
 
     events.supports_events = true;
 
-   var event_listener_service = event_listener.createInstance(Components.interfaces.nsIEventListenerService);
+   var event_listener_service = event_listener.getService(Components.interfaces.nsIEventListenerService);
    var node_event_service     = event_listener_service.getListenerInfoFor(node, {});
 
    for (i = 0; i < node_event_service.length; i++) {
@@ -12491,6 +12499,36 @@ OpenAjax.a11y.cache.DOMElement.prototype.EnumerateInlineEvents = function (node,
 
   }
 
+  function testForPropertyAndJQueryEvent(p) {
+  
+    if (typeof node['on' + p] === 'function') {
+      events.supports_events = true;
+      return true;  
+    }  
+
+    try {
+      if ($(node)) {
+        var $events = $._data($(node)[0], "events" );
+
+        if(typeof $events != "undefined"){
+          //iteration to get each one of the handlers
+          $.each($events, function(i, event){
+            $.each(event, function(i, handler){
+              if(handler.type == p) return true;
+          });
+        });
+        }
+      }
+    }  
+    catch(e) {
+      return false;    
+    }
+    
+    return false;
+
+  }
+
+
   var events = this.initEvents(parent_dom_element);
 
   var attributes = node.attributes;
@@ -12615,6 +12653,45 @@ OpenAjax.a11y.cache.DOMElement.prototype.EnumerateInlineEvents = function (node,
       break;
     }  
   }        
+
+  // test for use of events added using 
+
+  events.has_blur         = testForPropertyAndJQueryEvent('blur');
+  events.has_change       = testForPropertyAndJQueryEvent('change');
+  events.has_click        = testForPropertyAndJQueryEvent('click');
+  events.has_double_click = testForPropertyAndJQueryEvent('dblclick');
+  events.has_focus        = testForPropertyAndJQueryEvent('focus');
+    
+  events.has_key_down     = testForPropertyAndJQueryEvent('keydown');
+  events.has_key_press    = testForPropertyAndJQueryEvent('keypress');
+  events.has_key_up       = testForPropertyAndJQueryEvent('keyup');
+    
+  events.has_load         = testForPropertyAndJQueryEvent('load');
+    
+  events.has_mouse_down   = testForPropertyAndJQueryEvent('mousedown');
+  events.has_mouse_up     = testForPropertyAndJQueryEvent('mouseup');
+  events.has_mouse_move   = testForPropertyAndJQueryEvent('mousemove');
+  events.has_mouse_out    = testForPropertyAndJQueryEvent('mouseout');
+  events.has_mouse_over   = testForPropertyAndJQueryEvent('mouseover');
+    
+  events.has_mouse_enter  = testForPropertyAndJQueryEvent('mouseenter');
+  events.has_mouse_leave  = testForPropertyAndJQueryEvent('mouseleave');
+
+  events.has_drag       = testForPropertyAndJQueryEvent('drag');
+  events.has_drag_end   = testForPropertyAndJQueryEvent('dragend');
+  events.has_drag_enter = testForPropertyAndJQueryEvent('dragenter');
+  events.has_drag_leave = testForPropertyAndJQueryEvent('dragleave');
+  events.has_drag_over  = testForPropertyAndJQueryEvent('dragover');
+  events.has_drag_start = testForPropertyAndJQueryEvent('dragstart');
+  events.has_drop       = testForPropertyAndJQueryEvent('drop');
+
+  events.has_touch_start   = testForPropertyAndJQueryEvent('touchstart');
+  events.has_touch_end     = testForPropertyAndJQueryEvent('touchend');
+  events.has_touch_leave   = testForPropertyAndJQueryEvent('touchleave');
+  events.has_touch_move    = testForPropertyAndJQueryEvent('touchmove');
+  events.has_touch_cancel  = testForPropertyAndJQueryEvent('touchcancel');
+
+
 
   if (parent_dom_element && parent_dom_element.events) {
     events.ancestor_has_blur         = parent_dom_element.events.has_blur         || parent_dom_element.events.ancestor_has_blur;
@@ -13358,10 +13435,10 @@ OpenAjax.a11y.cache.DOMCache.prototype.addTitleDOMElement = function () {
 
 OpenAjax.a11y.cache.DOMCache.prototype.updateDOMElements = function (node, parent_dom_element, previous_sibling) {
 
-//  OpenAjax.a11y.logger.debug("[updateDOMElements]: " + node.nodeType + " " + node.tagName);
     
   var n;
   var de;
+  var dom_element;
 
   switch (node.nodeType ) {
 
@@ -13372,9 +13449,12 @@ OpenAjax.a11y.cache.DOMCache.prototype.updateDOMElements = function (node, paren
 
   case Node.ELEMENT_NODE:
 
-    if (node.tagName.toLowerCase() === 'input' && node.type.toLowerCase() === 'hidden') break;
+    var tag_name = node.tagName.toLowerCase();
 
-    var dom_element = new OpenAjax.a11y.cache.DOMElement(node, parent_dom_element);
+    if (tag_name === 'input' && tag_name === 'hidden') break;
+
+    if (tag_name === 'body') dom_element = new OpenAjax.a11y.cache.DOMElement(node, parent_dom_element, this.document);
+    else dom_element = new OpenAjax.a11y.cache.DOMElement(node, parent_dom_element, null);
 
     dom_element.addComputedStyle(parent_dom_element);
     

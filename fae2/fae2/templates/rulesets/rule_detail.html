@@ -1,7 +1,6 @@
 
-<table class="details table table-striped table-hover rule" aria-label="Information on rule, {{rule.summary_text}}" style="margin-top: 1em">
+<table class="table table-striped table-hover rule" aria-label="Information on rule, {{rule.summary_text}}" style="margin-top: 1em">
     <tbody>
-        {% if rule_mapping %}
         <tr>
             <th>Definition</th>
             <td>{{ rule.definition_html|safe }}</td>
@@ -12,16 +11,13 @@
                 {{ rule.purpose_html|safe }}
             </td>
         </tr>
-        <tr>
-            <th>Ruleset</th>
-            <td>{{ rule_mapping.ruleset.title }}</td>
-        </tr>
+        {% if rule_mapping %}
         <tr>
             <th>Required</th>
             {% if rule_mapping.required %}
-            <td class="yes">Yes</td>
+            <td class="yes">Yes for <em>{{ rule_mapping.ruleset.title }}</em> ruleset mapping</td>
             {% else %}
-            <td clas="no">No</td>
+            <td clas="no">No for <em>{{ rule_mapping.ruleset.title }}</em> ruleset mapping</td>
             {% endif %}  
         </tr>
         {% else %}

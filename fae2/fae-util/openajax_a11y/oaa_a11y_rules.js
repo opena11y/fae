@@ -2695,41 +2695,55 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 
     KEYBOARD_1: {
       ID:                    'Keyboard 1',
-      DEFINITION:            'Widget elements %s have keyboard event handlers.',
-      SUMMARY:               'Widgets %s support keyboard',
-      TARGET_RESOURCES_DESC: 'Widget elements',
+      DEFINITION:            'Elements with ARIA widget roles %s have event handlers that support the keyboard interactions required by those roles.',
+      SUMMARY:               'Widget roles require keyboard support',
+      TARGET_RESOURCES_DESC: 'Elements with ARIA widget roles',
       RULE_RESULT_MESSAGES: {
-        MANUAL_CHECK_S:    'Verify the widget element has keyboard event handlers through is parent elements, owner widget (i.e. aria-activedescendant) or required child widgets.',
-        MANUAL_CHECK_P:    'Verify the %N_MC out %N_T widgets have keyboard event handlers through is parent elements, owner widget (i.e. aria-activedescendant) or required child widgets.',
-        FAIL_S:  'Add event handlers to the widget to support keyboard operation of the widget.',
-        FAIL_P:  'Add event handlers to the %N_F out of %N_T widgets to support keyboard operation of each widget.',
-        HIDDEN_S:        'One hidden widget element was not evaluated.',
-        HIDDEN_P:        '%N_H hidden widget elements were not evaluated.',
-        NOT_APPLICABLE: 'No widgets on the page'
+        MANUAL_CHECK_S:  'Verify the element with the widget role has the keyboard interactions required by its role.',
+        MANUAL_CHECK_P:  'Verify the %N_MC elements with widget roles have the keyboard interactions required by their roles.',
+        FAIL_S:          'Add event handlers to the element with the widget role to support the keyboard interactions required by its role.',
+        FAIL_P:          'Add event handlers to the %N_F elements with widget roles to support the keyboard interactions required by their roles.',
+        HIDDEN_S:        'One hidden element with a widget role was not evaluated.',
+        HIDDEN_P:        '%N_H hidden elements with widget roles were not evaluated.',
+        NOT_APPLICABLE:  'No elements with widget roles on the page'
       },
       NODE_RESULT_MESSAGES: {
-        ELEMENT_PASS_1:               '@%1@ widget has keyboard support through event handlers on the widget element.',
-        ELEMENT_MC_1:       'Verify the @%1@ widget has keyboard support through keyboard event handlers on a parent widget element.',
-        ELEMENT_MC_2:       'Verify the @%1@ widget has keyboard support through keyboard event handlers through @aria-activedescendant@ support on its @%2@ owner widget.',
-        ELEMENT_MC_3: 'Verify the @%1@ widget has keyboard support through keyboard event handlers on a required child widgets.',
-        ELEMENT_FAIL_1:       'Add keyboard event handlers to the @%1@ widget to support keyboard interaction with the widget.',
-        ELEMENT_HIDDEN_1:       'Widgets must support keyboard interaction was not tested because @%1@ widget is hidden from assistive technologies.'
+        ELEMENT_MC_1:     'Verify the "%1" event handlers on the element support the keyboard interactions required by the @%2@ widget role.',
+        ELEMENT_MC_2:     'Verify the "%1" event handlers on ancestor elements, or on the document object, support the keyboard interactions required by the @%2@ widget role.',
+        ELEMENT_MC_3:     'Verify the "%1" event handlers on the @%2@ owner widget (through @aria-owns@) support the keyboard interactions on its descendant components required by the @%3@ widget role.',
+        ELEMENT_MC_4:     'Verify the "%1" event handlers on the widget subcomponents support the keyboard interactions required by the @%2@ widget role.',
+        ELEMENT_FAIL_1:   'Add keyboard event handlers to support the keyboard interactions required by the @%1@ widget role.',
+        ELEMENT_HIDDEN_1: 'Element with @%1@ widget role was not evaluated because it is hidden.'
       },
       PURPOSE: [
-        'Keyboard support is required by people who cannot use the mouse or gestures to interact with a widget.'
+        'Keyboard support is required by people who cannot use the mouse and/or gestures to select the options and perform the actions made available to them by interactive elements.',
+        'Native HTML4 and HTML5 link and form control elements have default keyboard interactions that are built-in and standardized among browsers.',
+        'When authors create custom interactive elements they need to support the keyboard interaction patterns that users have come to expect.',
+        'The ARIA Authoring Practices Guide identifies the keyboard interaction patterns that users expect and can rely upon, based on each ARIA widget role.'
       ],
       TECHNIQUES: [
-        'Use the @keyup@, @keydown@ and @keypress@ events to support keyboard interaction with widgets.',
-        '@a@ elements with some types of widget roles (e.g. @button@, @menuitem@) may support the keyboard through @onclick@ events.'
+        'Use the ARIA Authoring Practices guide to identify the keyboard interaction support needed for each ARIA Widget role being used.',
+        'Add custom @keydown@, @keypress@ and/or @keyup@ event handlers to support the keyboard interactions required by the ARIA widget role.',
+        'Verify that keyboard interactions are consistent among browsers and devices (e.g., desktop computers and mobile devices using Bluetooth keyboards).'
       ],
       MANUAL_CHECKS: [
-        'Try using the web application with only the keyboard, and verify that all functionalities can be performed with the keyboard alone.',
-        'For widgets check the keyboard behavior with the recommendations in the ARIA Authoring Practices guide to make sure that keyboard operation is predictable to the user.'
       ],
       INFORMATIONAL_LINKS: [
         { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-          title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Widget Roles',
-          url:   'http://www.w3.org/TR/wai-aria/roles#widget_roles'
+          title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.1: Widget Roles',
+          url:   'https://www.w3.org/TR/wai-aria-1.1/#widget_roles'
+        },
+        { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+          title: 'WAI-ARIA Authoring Practices 1.1: Design Patterns and Widgets',
+          url:   'https://www.w3.org/TR/wai-aria-practices-1.1/#aria_ex'
+        },
+        { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+          title: 'Mozilla Developer Network: DOM on-event handlers',
+          url:   'https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Event_handlers'
+        },       
+        { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+          title: 'Mozilla Developer Network: EventTarget.addEventListener()',
+          url:   'https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener'
         },
         { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
           title: 'G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes',
@@ -2741,7 +2755,6 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         }
       ]
     },
-
     KEYBOARD_2: {
       ID:                    'Keyboard 2',
       DEFINITION:            'All functionality provided by the interactive elements on the page %s be operable through the keyboard interface.',
@@ -7582,7 +7595,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               MANUAL_CHECK_S:  'Verify the user interactions associated with the interactive element with one or more event handlers are accurately described by the element\'s widget role and/or those of its descendants.',
               MANUAL_CHECK_P:  'Verify the user interactions associated with the %N_MC interactive elements with one or more event handlers are accurately described by each element\'s widget role and/or their descendants.',
               HIDDEN_S:        'The hidden interactive element with event handlers was not evaluated.',
-              HIDDEN_P:        'The %N_H interactive elements with event handlers twere not evaluated.',
+              HIDDEN_P:        'The %N_H interactive elements with event handlers were not evaluated.',
               NOT_APPLICABLE:  'No interactive elements with event handlers found on this page.'              
             },
             NODE_RESULT_MESSAGES: {
@@ -11064,129 +11077,128 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   resource_properties : ['tab_index', 'is_owned', 'has_key_down', 'has_key_press', 'has_key_up', 'ancestor_has_key_down', 'ancestor_has_key_press', 'ancestor_has_key_up'],
   language_dependency : "",
   validate            : function (dom_cache, rule_result) {
-  
-      function checkForKeyboardOnParents(we) {
-        var de;
-        var has_keyboard_support;
-        var we1 = we;
+    
+    function checkForKeyboardOnRequiredChildren(widget) {
 
-        while (we1.parent_widget) { 
-          we1 = we1.parent_widget;
+      function checkChildren(children) {
 
-          de = we1.dom_element;
-          has_keyboard_support = de.events.has_key_down || de.events.ancestor_has_key_down;
-          has_keyboard_support = has_keyboard_support   || de.events.has_key_press || de.events.ancestor_has_key_press;
-          has_keyboard_support = has_keyboard_support   || de.events.has_key_up || de.events.ancestor_has_key_up;
-
-//          OpenAjax.a11y.logger.debug("[checkForKeyboardOnParents]: " + we + " ("+ we1 + ")" +  has_keyboard_support);
-          
-          if (has_keyboard_support) return we1;
+        if (!children || !children.length) return false;
+       
+        var children_len = children.length;
          
+        for (var i = 0; (i < children_len); i++) {
+
+          var we = children[i];
+          var de = we.dom_element;
+         
+          kbd_events = getEventsOnElementOrAncestors(de);
+
+          if (kbd_events.length) return kbd_events;
+
+//           OpenAjax.a11y.logger.debug("[checkForKeyboardOnRequiredChildren] " + widget + ": " + we + " ("+ flag + ")");
+
+
+          if (de.role_info && de.role_info.reqChildren && de.role_info.reqChildren.length) { 
+            kbd_events = checkChildren(we.child_cache_elements); 
+            if (kbd_events.length) return kbd_events;
+          }
         }
-     
-       return false;
-     }
-  
-     function checkForKeyboardOnRequiredChildren(widget) {
+        return "";
+      }
 
-       function checkChildren(children) {
+      return checkChildren(widget.child_cache_elements);
+    }  
+
+    function getEventsOnElement(de) {
+
+      var kbd_events = "";
+
+      if (de.events.has_key_down)  kbd_events = "keydown ";
+      if (de.events.has_key_press) kbd_events += "keypress ";
+      if (de.events.has_key_up)    kbd_events += "keyup ";
        
-         if (!children || !children.length) return false;
+      return kbd_events.trim();
+    }
+
+    function getEventsOnElementAncestors(de) {
+
+      var kbd_events = "";
+
+      if (de.events.ancestor_has_key_down)  kbd_events = "keydown ";
+      if (de.events.ancestor_has_key_press) kbd_events += "keypress ";
+      if (de.events.ancestor_has_key_up)    kbd_events += "keyup ";
        
-         var flag = false;
-         var children_len = children.length;
-         
-         for (var i = 0; (i < children_len) && !flag; i++) {
-         
-           var we = children[i];
-           var de = we.dom_element;
+      return kbd_events.trim();
+    }
 
-           flag = de.events.has_key_down || de.events.has_key_press || de.events.has_key_up;
+    function getEventsOnElementOrAncestors(de) {
 
-           OpenAjax.a11y.logger.debug("[checkForKeyboardOnRequiredChildren] " + widget + ": " + we + " ("+ flag + ")");
+      var kbd_events = "";
 
-           if (!flag && de.role_info && de.role_info.reqChildren && de.role_info.reqChildren.length) { 
-             flag = checkChildren(we.child_cache_elements); 
-           }
-         }
-         return flag;
-       }
-
-       return checkChildren(widget.child_cache_elements);
+      if (de.events.has_key_down  || de.events.ancestor_has_key_down)  kbd_events = "keydown ";
+      if (de.events.has_key_press || de.events.ancestor_has_key_press) kbd_events += "keypress ";
+      if (de.events.has_key_up    || de.events.ancestor_has_key_up)    kbd_events += "keyup ";
        
-     }  
+      return kbd_events.trim();
+    }
 
-     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;   
-     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;   
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
       
-     var widget_elements     = dom_cache.controls_cache.widget_elements;
-     var widget_elements_len = widget_elements.length;
+    var widget_elements     = dom_cache.controls_cache.widget_elements;
+    var widget_elements_len = widget_elements.length;
      
-     if (widget_elements && widget_elements) {
+    if (widget_elements && widget_elements) {
      
-       for (var i = 0; i < widget_elements_len; i++) {
-         var we = widget_elements[i];
-         var de = we.dom_element;
-         var style = de.computed_style;
+      for (var i = 0; i < widget_elements_len; i++) {
+        var we = widget_elements[i];
+        var de = we.dom_element;
+        var style = de.computed_style;
+
+        var kbd_events = "";
 
 //         OpenAjax.a11y.logger.debug("  KEYBOARD RULE 1: " + de.role + " ("+ we.toString() + ")");
 
-         if (de.role_info.roleType === 'widget') {
+        if (de.role_info.roleType === 'widget') {
 
-           if (style.is_visible_to_at === VISIBILITY.VISIBLE) {
-           
-             var has_keyboard_support = de.events.has_key_down;
-             has_keyboard_support = has_keyboard_support || de.events.has_key_press;
-             has_keyboard_support = has_keyboard_support || de.events.has_key_up;
+          if (style.is_visible_to_at === VISIBILITY.VISIBLE) {
              
-             if (de.role_info.supportOnClick) {
-               has_keyboard_support = has_keyboard_support || de.events.has_click;
-               has_keyboard_support = has_keyboard_support || de.events.has_double_click;
-             }  
-             
-             if (de.role_info.supportOnClick && 
-                 (de.tag_name === 'a')) {
-               has_keyboard_support = true;
-             }
+            kbd_events = getEventsOnElement(de);
 
-             if (has_keyboard_support) {
-               rule_result.addResult(TEST_RESULT.PASS, we, 'ELEMENT_PASS_1', [we]);     
-             }
-             else {
-      
-               has_keyboard_support = de.events.ancestor_has_key_down;
-               has_keyboard_support = has_keyboard_support || de.events.ancestor_has_key_press;
-               has_keyboard_support = has_keyboard_support || de.events.ancestor_has_key_up;
-               
-               if (de.role_info.supportOnClick) {
-                 has_keyboard_support = has_keyboard_support || de.events.ancestor_has_click;
-                 has_keyboard_support = has_keyboard_support || de.events.ancestor_has_double_click;
-               }  
-               
-               if (has_keyboard_support) { 
-                 rule_result.addResult(TEST_RESULT.MANUAL_CHECK, we, 'ELEMENT_MC_1', [de.role]);
-               }  
-               else {
+            if (kbd_events.length) {
+              rule_result.addResult(TEST_RESULT.MANUAL_CHECK, we, 'ELEMENT_MC_1', [kbd_events, de.role]);     
+            }
+            else {
+
+              kbd_events = getEventsOnElementAncestors(de);
+                   
+              if (kbd_events.length) { 
+                rule_result.addResult(TEST_RESULT.MANUAL_CHECK, we, 'ELEMENT_MC_2', [kbd_events, de.role]);
+              }  
+              else {
+                if (we.parent_widget && we.parent_widget.dom_element) {
+                  kbd_events = getEventsOnElementOrAncestors(we.parent_widget.dom_element);
+                  if (kbd_events.length) { 
+                    rule_result.addResult(TEST_RESULT.MANUAL_CHECK, we, 'ELEMENT_MC_3', [kbd_events, we.parent_widget.dom_element.toString(), de.role]);
+                    continue;
+                  }  
+                }
+
+                kbd_events = checkForKeyboardOnRequiredChildren(we);
+
+                if (kbd_events.length) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, we, 'ELEMENT_MC_4', [kbd_events, de.role]);
+                else rule_result.addResult(TEST_RESULT.FAIL, we, 'ELEMENT_FAIL_1', [de.role]);
                  
-                 var ow = checkForKeyboardOnParents(we);
-                 
-                 if (ow) {
-                   rule_result.addResult(TEST_RESULT.MANUAL_CHECK, we, 'ELEMENT_MC_2', [de.role, ow.toString()]);
-                 }
-                 else {
-                   if (checkForKeyboardOnRequiredChildren(we)) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, we, 'ELEMENT_MC_3', [de.role]);
-                   else rule_result.addResult(TEST_RESULT.FAIL, we, 'ELEMENT_FAIL_1', [de.role]);
-                 }
-               }  
-             }             
-           }
-           else {
+              }  
+            }             
+          }
+          else {
              rule_result.addResult(TEST_RESULT.HIDDEN, we, 'ELEMENT_HIDDEN_1', [we.toString()]);     
-           }
-         }  
-       } // end loop
-     } 
-   } // end validation function   
+          }
+        }  
+      } // end loop
+    } 
+  } // end validation function   
    
 },
 /**
@@ -13840,7 +13852,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     var page_element = dom_cache.timing_cache.page_element;      
 
-    OpenAjax.a11y.logger.debug("  [Resize 1][page_element][dom_element]: " + page_element.dom_element);
+//    OpenAjax.a11y.logger.debug("  [Resize 1][page_element][dom_element]: " + page_element.dom_element);
 
     if (page_element) {
       rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MC_1', []);
@@ -17012,8 +17024,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
         events += dom_element.getDragEvents();
         events += dom_element.getKeyboardEvents();
         
-        OpenAjax.a11y.logger.debug( dom_element.toString() + "  Events: " + events);
-
         return events;
      }
 

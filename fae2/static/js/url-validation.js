@@ -47,25 +47,28 @@
       var i;
       var c;
 
-      var fs = document.getElementById("id_following");      
+      var fs = document.getElementById("id_following");   
 
-      var controls = fs.getElementsByTagName("input");
-      
-      fs.className = "follow";      
+      if (fs)  {
 
-      for(i = 1; i < controls.length; i++) {
+        var controls = fs.getElementsByTagName("input");
+        
+        fs.className = "follow";      
+
+        for(i = 1; i < controls.length; i++) {
+            c = controls[i];           
+            c.removeAttribute('disabled');
+        }
+
+        var mps = document.getElementById("id_max_pages");      
+
+        controls = mps.getElementsByTagName("input");
+        
+        for(i = 1; i < controls.length; i++) {
           c = controls[i];           
           c.removeAttribute('disabled');
+        }      
       }
-
-      var mps = document.getElementById("id_max_pages");      
-
-      controls = mps.getElementsByTagName("input");
-      
-      for(i = 1; i < controls.length; i++) {
-        c = controls[i];           
-        c.removeAttribute('disabled');
-      }      
    } 
 
    function disableFollow() {

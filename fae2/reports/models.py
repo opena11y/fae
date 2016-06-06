@@ -166,7 +166,8 @@ FOLLOW_CHOICES = (
 DEPTH_CHOICES = (
   (1, 'Top-level page only'),
   (2, 'Include second-level pages'),
-  (3, 'Include third-level pages')
+  (3, 'Include third-level pages'),
+  (8, 'Include maximum-level (8 levels) pages')
 )
       
 WAIT_TIME_CHOICES = (
@@ -221,7 +222,7 @@ class WebsiteReport(RuleGroupResult):
 
   browser_emulation    = models.CharField("Browser Emulation", max_length=32, default="FIREFOX")
 
-  wait_time            = models.IntegerField("How long to wait for website to load resources (in milliseconds)", choices=WAIT_TIME_CHOICES, default=90000)
+  wait_time            = models.IntegerField("How long to wait for website to load resources", choices=WAIT_TIME_CHOICES, default=90000)
   
   span_sub_domains     = models.CharField("Span Sub-Domains (space separated)",    max_length=1024, default="", blank=True)
   exclude_sub_domains  = models.CharField("Exclude Sub-Domains (space separated)", max_length=1024, default="", blank=True)
