@@ -64,19 +64,20 @@
         <legend>{{form.depth.label}}</legend>
         {% endif %}
         {% for choice in form.depth.field.choices %}
-         <div class="fae20_radio">
-            <input
-                id="depth_{{ forloop.counter }}"
-                type="radio"
-                name="depth"
-                value="{{choice.0}}"
-                {% if choice.0|slugify == form.depth.value|slugify  %}
-                checked="checked"
-                {% endif %}
-                onclick="updateFollow()"
-            />
-            <label for="depth_{{ forloop.counter }}">{{choice.1}}</label>
-        </div>
+             <div class="fae20_radio">
+                <input
+                    id="depth_{{ forloop.counter }}"
+                    type="radio"
+                    name="depth"
+                    value="{{choice.0}}"
+                    {% if forloop.counter > 3 %}disabled{% endif %}  
+                    {% if choice.0|slugify == form.depth.value|slugify  %}
+                    checked="checked"
+                    {% endif %}
+                    onclick="updateFollow()"
+                />
+                <label for="depth_{{ forloop.counter }}">{{choice.1}}</label>
+            </div>
         {% endfor %}
     </fieldset>
 

@@ -234,6 +234,10 @@
       document.getElementById("id_input_url").value   = last_report.url;
       document.getElementById("id_input_title").value = last_report.title;
       document.getElementById(last_report.depth_id).checked = true;
+
+      document.getElementById("id_input_span_sub_domains").value    = last_report.span_sub_domains;
+      document.getElementById("id_input_exclude_sub_domains").value = last_report.exclude_sub_domains;
+      document.getElementById("id_input_include_domains").value     = last_report.include_domains;
       
 
       document.getElementById("ruleset_" + last_report.ruleset_id).checked = true;

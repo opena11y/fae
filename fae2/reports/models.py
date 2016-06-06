@@ -167,6 +167,8 @@ DEPTH_CHOICES = (
   (1, 'Top-level page only'),
   (2, 'Include second-level pages'),
   (3, 'Include third-level pages'),
+  (4, 'Include fourth-level pages'),
+  (5, 'Include fifth-level pages'),
   (8, 'Include maximum-level (8 levels) pages')
 )
       
@@ -179,11 +181,13 @@ WAIT_TIME_CHOICES = (
 )   
 
 MAX_PAGES_CHOICES = (
-  (0,   ' All pages'),
   (5,   '   5 pages'),
   (10,  '  10 pages'),
   (25,  '  25 pages'),
-  (50,  '  50 pages')
+  (50,  '  50 pages'),
+  (100, ' 100 pages'),
+  (200, ' 200 pages'),
+  (400, ' 400 pages')
 )  
 
 LAST_REPORT_TYPE_CHOICES = (
