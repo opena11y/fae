@@ -43,11 +43,11 @@ from stats.models               import StatsUser
 
 
 ACCT_TYPE_CHOICES = (
-  (1, 'Standard'),
-  (2, 'Level 2'),
-  (3, 'Level 3'),
-  (4, 'Level 4'),
-  (5, 'Maximum'),
+  (1, 'Trial'),
+  (2, 'Non-commerical'),
+  (3, 'Commerical'),
+  (4, 'Sustainer'),
+  (5, 'Sponsor'),
 )
 
 
