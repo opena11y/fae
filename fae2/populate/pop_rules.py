@@ -219,6 +219,7 @@ for r in data['rules']:
 
    rule.save()
      
+   rule.informational_links = ""
    for info in r['informational_links']:
       rule.informational_links += '* [' + OAAMarkupToHTML(info['title']) + '](' + info['url'] + ')\n'    
 

@@ -534,3 +534,7 @@ table label {
     margin-bottom: 0.5em;
     margin-right: 0.25em;
 }
+
+main a[href] {
+  text-decoration: underline;
+}
