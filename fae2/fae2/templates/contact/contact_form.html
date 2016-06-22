@@ -66,40 +66,35 @@
 
 <section aria-labelledby="id_my_contacts">
     <h2 id="id_my_contacts">My Feedback and Questions</h2>
-    {% if user.comments.length %}
-    <p>No feedback or questions</p>
-    {% else %}
-        <table class="details table table-striped table-hover" aria-labelledby="id_my_contacts">
-            <thead>
-                <th>Date</th>
-                <th>Topic</th>
-                <th>Message</th>
-                <th>Response</th>
-            </thead>
-            <tbody>
-                {% if user.contacts.all.length %}    
-                {% for contact in user.contacts.all %}
-                <tr>
-                    <td>{{contact.date}}</td>
-                    <td>{{contact.topic}}</td>
-                    <td>{{contact.message}}</td>
-                    <td>
-                        <strong>{{contact.show_status}}</strong><br/>
-                        {{contact.comments}}
-                    </td>
-                </tr>
-                {% endfor %}
-                {% else %}
-                <tr>
-                    <td><span class="none">none</span></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                {% endif %}
-            </tbody>
-        </table>
-    {% endif %}
+
+    <table class="details table table-striped table-hover" aria-labelledby="id_my_contacts">
+        <thead>
+            <th>Date</th>
+            <th>Topic</th>
+            <th>Message</th>
+            <th>Response</th>
+        </thead>
+        <tbody>
+            {% for contact in user.contacts.all %}
+            <tr>
+                <td>{{contact.date}}</td>
+                <td>{{contact.topic}}</td>
+                <td>{{contact.message}}</td>
+                <td>
+                    <strong>{{contact.show_status}}</strong><br/>
+                    {{contact.comments}}
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td><span class="none">none</span></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </section>
 
 {% endblock %}
