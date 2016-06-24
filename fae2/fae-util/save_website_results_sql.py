@@ -1595,7 +1595,7 @@ def saveResultsToDjango(ws_report, l):
       filteredUrlsToDatabase(ws_report, dir_name + "/" + file_name, 2)
 
     if file_name == "status.txt":
-      debug("[saveResultsToDjango][process_file] Retreiving status information")  
+#      debug("[saveResultsToDjango][process_file] Retreiving status information")  
       file_status = open(dir_name + "/" + file_name, 'r')
 # Need to update usage information      
 #      statusToDatabase(ws_report, file_status)
@@ -1613,11 +1613,11 @@ def saveResultsToDjango(ws_report, l):
 #  os.path.walk(ws_report.data_directory + "/data", lister, None)  
  
   dir = ws_report.data_directory + "/data"
-  debug("[saveResultsToDjango][main] DATA_DIR: " + dir)
+#  debug("[saveResultsToDjango][main] DATA_DIR: " + dir)
 
   for root, dirs, files in os.walk(dir):
     for file_name in files:
-      debug('[saveResultsToDjango][main] ' + dir + '/' + file_name)
+#      debug('[saveResultsToDjango][main] ' + dir + '/' + file_name)
       process_file(dir,file_name)
 
   try:
@@ -1654,7 +1654,7 @@ def saveResultsToDjango(ws_report, l):
       stats_all = StatsAll(ws_report_group=wsrg) 
       stats_all.save()  
 
-    debug("[SAVE_WEBSITE_RESULTS] Saving StatsAll: " + str(stats_all))  
+#    debug("[SAVE_WEBSITE_RESULTS] Saving StatsAll: " + str(stats_all))  
     stats_all.ws_report_group.add_website_report(ws_report)  
 
     today = datetime.date.today()
@@ -1666,7 +1666,7 @@ def saveResultsToDjango(ws_report, l):
       year = StatsYear(year=today.year, ws_report_group=wsrg, stats_all=stats_all) 
       year.save()  
     
-    debug("[SAVE_WEBSITE_RESULTS] Saving StatsYear: " + str(year))  
+#    debug("[SAVE_WEBSITE_RESULTS] Saving StatsYear: " + str(year))  
     year.ws_report_group.add_website_report(ws_report)  
 
     try:
@@ -1677,7 +1677,7 @@ def saveResultsToDjango(ws_report, l):
       month = StatsMonth(stats_year=year, month=today.month, ws_report_group=wsrg)  
       month.save()
 
-    debug("[SAVE_WEBSITE_RESULTS] Saving StatsMonth: " + str(month))  
+#    debug("[SAVE_WEBSITE_RESULTS] Saving StatsMonth: " + str(month))  
     month.ws_report_group.add_website_report(ws_report)  
 
     try:
@@ -1688,7 +1688,7 @@ def saveResultsToDjango(ws_report, l):
       day = StatsDay(stats_month=month, day=today.day, date=today, ws_report_group=wsrg)  
       day.save()
 
-    debug("[SAVE_WEBSITE_RESULTS] Saving StatsDay: " + str(day))  
+#    debug("[SAVE_WEBSITE_RESULTS] Saving StatsDay: " + str(day))  
     day.ws_report_group.add_website_report(ws_report)  
 
     try:
@@ -1699,7 +1699,7 @@ def saveResultsToDjango(ws_report, l):
       stats_reg_users = StatsRegisteredUsers(ws_report_group=wsrg)  
       stats_reg_users.save()
 
-    debug("[SAVE_WEBSITE_RESULTS] Registered Users: " + str(stats_reg_users))  
+#    debug("[SAVE_WEBSITE_RESULTS] Registered Users: " + str(stats_reg_users))  
       
     try:
       user_stats = StatsUser.objects.get(user=ws_report.user)
@@ -1709,17 +1709,17 @@ def saveResultsToDjango(ws_report, l):
       user_stats = StatsUser(user=ws_report.user, ws_report_group=wsrg)  
       user_stats.save()
 
-    debug("[SAVE_WEBSITE_RESULTS] Saving StatsUser: " + str(user_stats))  
+#    debug("[SAVE_WEBSITE_RESULTS] Saving StatsUser: " + str(user_stats))  
     user_stats.ws_report_group.add_website_report(ws_report) 
 
     if ws_report.user.username != 'anonymous':
       stats_reg_users.ws_report_group.add_website_report(ws_report) 
-      debug("[SAVE_WEBSITE_RESULTS] StatsRegisteredUsers: 1")  
+#      debug("[SAVE_WEBSITE_RESULTS] StatsRegisteredUsers: 1")  
       try:
-        debug("[SAVE_WEBSITE_RESULTS] StatsRegisteredUsers: 2")  
+#        debug("[SAVE_WEBSITE_RESULTS] StatsRegisteredUsers: 2")  
         us = stats_reg_users.user_stats.get(user__username=user_stats.user.username)
       except ObjectDoesNotExist:
-        debug("[SAVE_WEBSITE_RESULTS] StatsRegisteredUsers: 3")  
+#        debug("[SAVE_WEBSITE_RESULTS] StatsRegisteredUsers: 3")  
         stats_reg_users.user_stats.add(user_stats)
         stats_reg_users.save()
 
@@ -1732,7 +1732,7 @@ def saveResultsToDjango(ws_report, l):
       ruleset_stats = StatsRuleset(ruleset=ws_report.ruleset, ws_report_group=wsrg, stats_all=stats_all)  
       ruleset_stats.save()
 
-    debug("[SAVE_WEBSITE_RESULTS] Saving StatsRuleset: " + str(ruleset_stats))  
+#    debug("[SAVE_WEBSITE_RESULTS] Saving StatsRuleset: " + str(ruleset_stats))  
     ruleset_stats.ws_report_group.add_website_report(ws_report)  
        
 
