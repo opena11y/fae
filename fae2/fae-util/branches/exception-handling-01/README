@@ -1,0 +1,78 @@
+AInspector Utility Project
+
+PROJECT DEPENDENCIES
+
+The following libraries must be in the CLASSPATH:
+
+* HTMLUnit version 2.9 (http://sourceforge.net/projects/htmlunit/)
+* Apache Commons CLI 1.2 (http://commons.apache.org/cli/)
+
+BUILD INFORMATION
+
+* You will have to edit the classpath file after checking out the project
+  in order to build AInspector.
+* Once the classpath file has been updated, you can use the build script
+  in the main project directory (i.e. trunk) to build the project:
+
+  $ ./build
+
+RUN INFORMATION
+
+* Once you have built the project, to run it you first need to source the
+  classpath file with:
+
+  $ . org/ainspector/util/classpath
+
+  Then you can run it from the main project directory with:
+
+  $ java org.ainspector.util.AInspector --help
+
+* The command line options are as follows:
+
+  -s,--scripts <arg>   Required: file with names of script files
+  -o,--output <arg     Required: output directory for saving results
+
+  -i,--input <arg>     Required (unless --url): file with URLs to inspect
+  -u,--url <arg>       Required (unless --input): single URL to inspect
+
+  -D,--debug           Optional: turn on debugging output
+  -V,--verbose         Optional: turn on HtmlUnit logging output
+
+* Notes:
+  1. The --output directory must not already exist.
+  2. The --scripts and --input files must have one filename or URL per line;
+     blank lines are ignored.
+  3. Lines in the --input file that begin with # are considered comments and
+     are ignored.
+  4. When --debug is specified, all results are printed to the console and
+     the --output directory is not created.
+
+USING THE INCLUDED TEST FILES
+
+* Once you've built the project and set the runtime classpath (as above),
+  you can run the included test files with:
+
+  $ java org.ainspector.util.AInspector -s test/scripts.txt \
+    -u test/urls.txt -o tmp
+
+* For convenience, there is also a run script that, by default, is set up
+  to run the test scripts. It expects two arguments. You can run it with:
+
+  $ ./run test/urls.txt /path/to/output/directory
+
+SOURCE FILES
+
+* org/ainspector/util/AInspector.java
+* org/ainspector/util/Controller.java
+* org/ainspector/util/FileUtil.java
+
+OTHER FILES
+
+* README (this file)
+* build
+* run
+* org/ainspector/util/classpath
+* test/script1.js
+* test/script2.js
+* test/scripts.txt
+* test/urls.txt

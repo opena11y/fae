@@ -2521,14 +2521,13 @@ OpenAjax.a11y.util.normalizeSpace = function (s) {
   
   for (var i = 0; i < len; i++) {
   
-    var c = s[i];
-
+    var c = s.charCodeAt(i);
 
     // only include printable characters less than '~' character
-    if (c < ' ' || c > '~') continue;
+    if (c < 32 || c > 126) continue;
   
-    if ((c !== ' ') || (last_c !== ' ')) {
-      s1 += c;
+    if ((c !== 32) || (last_c !== 32)) {
+      s1 += s[i];
       last_c = c; 
     }
 

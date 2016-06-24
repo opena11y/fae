@@ -1,0 +1,4 @@
+#! /bin/bash
+
+. org/ainspector/util/classpath
+javac org/ainspector/util/AInspector.java

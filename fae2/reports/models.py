@@ -355,7 +355,7 @@ class WebsiteReport(RuleGroupResult):
     self.save()
 
   def set_status_complete(self):
-    self.delete_data_files()
+#    self.delete_data_files()
     self.status = 'C'
     self.save()
 

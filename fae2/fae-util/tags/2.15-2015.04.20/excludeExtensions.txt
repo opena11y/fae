@@ -1,0 +1,9 @@
+doc
+docx
+gif
+jpeg
+jpg
+mov
+pdf
+ppt
+xml

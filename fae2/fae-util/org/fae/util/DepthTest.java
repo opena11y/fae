@@ -25,7 +25,7 @@ public class DepthTest {
     try {
       FaeUtil faeUtil = new FaeUtil();
 
-      WebClient webClient = new WebClient(BrowserVersion.FIREFOX_31);
+      WebClient webClient = new WebClient(BrowserVersion.FIREFOX_45);
 
       // Suppress CSS, HTML Parser and Incorrectness warnings and errors
       webClient.setCssErrorHandler(new SilentCssErrorHandler());
@@ -48,7 +48,7 @@ public class DepthTest {
       });
 
       // Set a ScriptPreProcessor to not process problem JavaScript
-      webClient.setScriptPreProcessor(new ScriptPreprocessor(faeUtil));
+//      webClient.setScriptPreProcessor(new ScriptPreprocessor(faeUtil));
 
       webClient.getOptions().setThrowExceptionOnScriptError(false);
       webClient.getOptions().setUseInsecureSSL(true); // JSH added

@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+urls=$1
+if [ -z $urls ]
+then
+    echo "Please specify file with list of URLs..."
+    exit
+fi
+
+dir=$2
+
+. org/ainspector/util/classpath
+java org.ainspector.util.AInspector -D --scripts test/scripts.txt --urls $urls --output $dir

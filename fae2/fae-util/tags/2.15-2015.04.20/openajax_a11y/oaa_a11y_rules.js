@@ -1,0 +1,14978 @@
+/*
+ * Copyright 2011, 2012, 2013 OpenAjax Alliance
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* --------------------------------------------------------------------------- */
+/*       OpenAjax Alliance Rules National Language Support (NLS): English      */
+/* --------------------------------------------------------------------------- */
+   
+
+OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
+
+    rule_scope: ['unknown', 'Element', 'Page', 'Website'],
+    
+    message_severities: {
+      MUST  : 'must', 
+      SHOULD: 'should'
+    },
+    
+    rule_categories: {
+           '1': 'Audio and Video',
+           '2': 'Tables',  
+           '4': 'Forms',
+           '8': 'Images',
+          '16': 'Keyboard Support',
+          '32': 'Links',
+          '64': 'Navigation',
+         '128': 'Structure/Content',
+         '256': 'Styles/Readability',
+         '512': 'Widgets'
+    },
+
+    ACTION_NONE: 'None',
+    
+    NOT_APPLICABLE: 'N/A'
+    
+});/*
+ * Copyright 2011, 2012, 2013 OpenAjax Alliance
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* --------------------------------------------------------------------------- */
+/*       OpenAjax Alliance Rules National Language Support (NLS): English      */
+/* --------------------------------------------------------------------------- */
+   
+
+OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
+
+    //
+    //  OAA Rules National Language Support (NLS) for Audios
+    //
+    rules: {
+        AUDIO_1: {
+            ID:                    'Audio 1',
+            DEFINITION:            '@audio@ elements %s have caption or text transcription of the audio content',
+            SUMMARY:               '@audio@ %s have alternative',
+            TARGET_RESOURCES_DESC: '@audio@ elements',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Add caption or text transcript to @audio@ element',
+              FAIL_P:   'Add a caption or text transcript to each of the %N_F the @audio@ elements with out captions or transcripts',
+              MANUAL_CHECK_S:     'Verify the @audio@ element has either a caption or text transcript of the audio content',
+              MANUAL_CHECK_P:     'Verify the %N_MC @audio@ elements are audio only have either a caption or text transcript of the audio',
+              HIDDEN_S: 'The @audio@ element that is hidden was not analyzed for accessible audio',
+              HIDDEN_P: 'The %N_H @audio@ elements that are hidden were not analyzed for accessible audio',
+              NOT_APPLICABLE:  'No @audio@ elements found on this page'              
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:    '@audio@ element has caption',
+              ELEMENT_PASS_2:    '@audio@ element has a text transcript',
+              ELEMENT_FAIL_1:    'Add caption or text transcript to @audio@ element',
+              ELEMENT_MC_1:      'Verify the @audio@ element has captions or text transcript',
+              ELEMENT_HIDDEN_1:  'The @audio@ element is hidden and cannot render content'
+            },  
+            PURPOSE: [
+              'Captions and text transcripts provide a means for people cannot hear the audio to understand the audio content',
+              'Some types of learning disabilities affect speech perception, captions and text transcripts provide an alternative way to understand the audio content',
+              'When the language of the audio is different than the native language of the listener, captions and text transcripts support the listner in understanding the audio content'
+            ],
+            TECHNIQUES: [
+              'Use the @track@ element to add captioning to the audio content',
+              'Use WebVTT to encode the timed stamped captioning information for the audio content',
+              'Use @aria-describedby@ to reference a text transcript of the audio content'
+            ],
+            MANUAL_CHECKS: [
+              'When captions are enabled on the media player, check to make sure the captions visible',
+              'If there is a caption make sure the captions accurately represents the audio content',
+              'If there is a text transcript make sure the transcript accurately represents the audio content'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HMTL 5: The audio element', 
+                url:   'http://www.w3.org/TR/html5/embedded-content-0.html#the-audio-element'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HMTL 5: The track element', 
+                url:   'http://www.w3.org/TR/html5/embedded-content-0.html#the-track-element'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'WebVTT: The Web Video Text Tracks Format', 
+                url:   'http://dev.w3.org/html5/webvtt/'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (ARIA) 1.0: aria-describedby', 
+                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-describedby'
+              }                            
+            ]
+        },
+        AUDIO_2: {
+            ID:                    'Audio 2',
+            DEFINITION:            '@object@ elements used for audio only %s have caption or text transcription of the audio content',
+            SUMMARY:               '@object@ for audio %s have alternative',
+            TARGET_RESOURCES_DESC: '@object@ elements',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Add caption or text transcript to @object@ element',
+              FAIL_P:   'Add a caption or text transcript to each of the %N_F the @object@ elements with out captions or transcripts',
+              MANUAL_CHECK_S:     'Check if the @object@ element is audio only content.  If it is audio only make sure it has either a caption or text transcript of the audio content',
+              MANUAL_CHECK_P:     'Check if any of the %N_MC @object@ elements are audio only. If any are audio only make sure they have either a caption or text transcript of the audio',
+              HIDDEN_S: 'The @object@ element that is hidden was not analyzed for accessible audio',
+              HIDDEN_P: 'The %N_H @object@ elements that are hidden were not analyzed for accessible audio',
+              NOT_APPLICABLE:  'No @embed@ elements found on this page'              
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:         '@object@ element references text transcript',
+              ELEMENT_FAIL_1:       'Add captions or text transcript to @object@ element',
+              ELEMENT_MC_1: 'Verify the @object@ element has synchronous captions',
+              ELEMENT_MC_2: 'Verify the @object@ element only renders audio only, if it is audio only verify that it has captions or text transcript'
+            },  
+            PURPOSE: [
+              'Captions and text transcripts provide a means for people cannot hear the audio to understand the audio content',
+              'Some types of learning disabilities affect speech perception, captions and text transcripts provide an alternative way to understand the audio content',
+              'When the language of the audio is different than the native language of the listener, captions and text transcripts support the listner in understanding the audio content'
+            ],
+            TECHNIQUES: [
+              'Use the @audio@ element instead of the @object@ element for audio only content, since the @audio@ element provides better support for captions and text transcripts',
+              'Use @aria-describedby@ attribute to point to a text description of the audio only content'
+            ],
+            MANUAL_CHECKS: [
+              'Check the web page for a link to a text transcript of the audio, or if the transcript is part of the page rendering the audio',
+              'Check the media player for a button to turn on and off captions',
+              'When captions are enabled on the media player, check to make sure the captions visible and represent the speech and sounds heard on the audio',
+              'In some cases "open" captions might be used, this means the captions are alway "on" as part of the video'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HMTL 5: The object element', 
+                url:   'http://www.w3.org/TR/html5/embedded-content-0.html#the-object-element'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (ARIA) 1.0: aria-describedby', 
+                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-describedby'
+              }
+            ]
+        },
+        AUDIO_3: {
+            ID:                    'Audio 3',
+            DEFINITION:            '@embed@ elements used for audio only %s have caption or text transcription of the audio content',
+            SUMMARY:               '@embed@ for audio %s have alternative',
+            TARGET_RESOURCES_DESC: '@embed@ elements',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Add caption or text transcript to @embed@ element',
+              FAIL_P:   'Add a caption or text transcript to each of the %N_F @embed@ elements without captions or transcripts',
+              MANUAL_CHECK_S:     'Check if the @embed@ element is audio only content.  If it is audio only make sure it has either a caption or text transcript of the audio content',
+              MANUAL_CHECK_P:     'Check if any of the %N_MC @embed@ elements are audio only. If any are audio only make sure they have either a caption or text transcript of the audio',
+              HIDDEN_S: 'The @embed@ element that is hidden was not analyzed for accessible audio',
+              HIDDEN_P: 'The %N_H @embed@ elements that are hidden were not analyzed for accessibile audio',
+              NOT_APPLICABLE:  'No @embed@ elements found on this page'              
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:         '@embed@ element references text transcript',
+              ELEMENT_FAIL_1:       'Add captions or text transcript to @embed@ element',
+              ELEMENT_MC_1: 'Verify the @embed@ element has synchronous captions',
+              ELEMENT_MC_2: 'Verify the @embed@ element only renders audio only, if it is audio only verify that it has captions or text transcript'
+            },  
+            PURPOSE: [
+              'Captions and text transcripts provide a means for people cannot hear the audio to understand the audio content',
+              'Some types of learning disabilities affect speech perception, captions and text transcripts provide an alternative way to understand the audio content',
+              'When the language of the audio is different than the native language of the listener, captions and text transcripts support the listner in understanding the audio content'
+            ],
+            TECHNIQUES: [
+              'Use the @audio@ element instead of the @embed@ element for audio only content, since the @audio@ element provides better support for captions and text transcripts',
+              'Use @aria-describedby@ attribute to point to a text description of the audio only content'
+            ],
+            MANUAL_CHECKS: [
+              'Check the web page for a link to a text transcript of the audio, or if the transcript is part of the page rendering the audio',
+              'Check the media player for a button to turn on and off captions',
+              'When captions are enabled on the media player, check to make sure the captions visible and represent the speech and sounds heard on the audio',
+              'In some cases "open" captions might be used, this means the captions are alway "on" as part of the video'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HMTL 5: The embed element', 
+                url:   'http://www.w3.org/TR/html5/embedded-content-0.html#the-embed-element'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (ARIA) 1.0: aria-describedby', 
+                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-describedby'
+              }                            
+            ]
+        },
+        AUDIO_4: {
+            ID:                    'Audio 4',
+            DEFINITION:            'Media content with audio that automatically starts playing when the page loads and lasts longer than 3 seconds %s provide a means for the user able to stop, pause or mute the audio content.',
+            SUMMARY:               'Pause, stop or mute audio',
+            TARGET_RESOURCES_DESC: 'Content that is used to auto play media that includes audio content',
+            RULE_RESULT_MESSAGES: {
+              MANUAL_CHECK_S:     'Verify that there is no media content that plays automatically and includes audio content that lasts longer than 3 seconds.  If the audio content lasts longer than 3 seconds, verify the user can pause, stop or mute the audio.'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_MC_1: 'Verify that there is no media content that plays automatically and includes audio content that lasts longer than 3 seconds.  If the audio content lasts longer than 3 seconds, verify the user can pause, stop or mute the audio.'
+            },  
+            PURPOSE:        [ 'Audio content interferes with people using speech based assistive technologies like screen readers.'
+                            ],
+            TECHNIQUES:     [ 'Remove or disable the auto playing of media that includes audio content.',
+                              'Provide a means to pause, stop or mute the audio content.',
+                              'Use cookies to perserve the user peference of pausing, stopping or muting the audio content.'
+                            ],
+            MANUAL_CHECKS:  [ 'Verify that there is no media content that plays automatically and includes audio content that lasts longer than 3 seconds.  If the audio content lasts longer than 3 seconds, verify the user can pause, stop or mute the audio.'
+                            ],
+            INFORMATIONAL_LINKS: [{ type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                               title: 'WCAG 2.0 Success Criterion 1.4.2 Audio Control', 
+                               url:   'http://www.w3.org/TR/WCAG20/#visual-audio-contrast-dis-audio'
+                             },
+                             { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                               title: 'How to meet Success Criterion 1.4.2 Audio Control', 
+                               url:   'http://www.w3.org/WAI/WCAG20/quickref/#qr-visual-audio-contrast-dis-audio'
+                             }
+                            ]
+        }        
+    }     
+});
+/*
+ * Copyright 2011, 2012, 2013 OpenAjax Alliance
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* --------------------------------------------------------------------------- */
+/*       OpenAjax Alliance Rules National Language Support (NLS): English      */
+/* --------------------------------------------------------------------------- */
+   
+
+OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
+
+    //
+    //  OAA Rules title and message string National Language Support (NLS) for color rules
+    //
+    rules: {
+        COLOR_1: {
+            ID:                    'Color 1',
+            DEFINITION:            'Text content %s exceed Color Contrast Ratio (CCR) of 4.5 for any size text or 3.1 for large and/or bolded text',
+            SUMMARY:               'Text %s exceed CCR of 4.5',
+            TARGET_RESOURCES_DESC: 'All elements with text content',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Change the foreground and background colors of the text element to meet the CCR > 4.5 requirement',
+              FAIL_P:   'Change the foreground and background colors of the %N_F text elements to meet the CCR > 4.5 requirement',
+              MANUAL_CHECK_S:     'One element requires manual checking for CCR > 4.5 due to the use of a background image',
+              MANUAL_CHECK_P:     '%N_MC elements require manual checking for CCR > 4.5 due to the use of background images',
+              HIDDEN_S: 'The element with text content that is hidden was not analyzed for color contrast accessibility',
+              HIDDEN_P: 'The %N_H elements with text content that are hidden were not analyzed for color contrast accessibility',
+              NOT_APPLICABLE:  'No visible text content on this page'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:         'CCR of %1 exceeds 4.5',
+              ELEMENT_FAIL_1:       'CCR of %1, adjust foreground and background colors to exceed 4.5',
+              ELEMENT_MC_1: 'CCR of %1 is greater than 4.5, but background image may reduce color contrast',
+              ELEMENT_MC_2: 'CCR of %1 is less than or equal to 4.5, but background image may improve color contrast',
+              ELEMENT_HIDDEN_1:       'CCR of 4.5 not tested since the text is hidden from assistive technologies.'
+            },  
+            PURPOSE:        [ 'The higher the color contrast of text the more easy it is to read, especially for people with visual impairments'                   
+                            ],
+            TECHNIQUES:     [ 'Change the foreground color to a more complementary color to the background color',
+                              'Change the background color to a more complementary color to the foreground color',
+                              'Remove background images or verify they do not compromise color contrast requirements'
+                            ],
+            MANUAL_CHECKS:  [ 'Use graphic editing tools to analyze the color(s) of the background image and then recacluate the CCR with the range of colors in the background image',
+                              'Verify the range of colors that could be part of the background of text is have a CCR > 4.5'
+            ],
+            INFORMATIONAL_LINKS: [{ type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                               title: 'WCAG 2.0 Success Criterion 1.4.3 Contrast (Minimum): The visual presentation of text and images of text has a contrast ratio of at least 4.5:1', 
+                               url:   'http://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast'
+                             },
+                             { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                               title: 'How to meet Success Criterion 1.4.3 Contrast (Minimum): The visual presentation of text and images of text has a contrast ratio of at least 4.5:1', 
+                               url:   'http://www.w3.org/WAI/WCAG20/quickref/#qr-visual-audio-contrast'
+                             }
+                            ]
+        },
+        COLOR_2: {
+            ID:                    'Color 2',
+            DEFINITION:            'Color %s not be the only way to convey information on the page.',
+            SUMMARY:               'Use of color',
+            TARGET_RESOURCES_DESC: 'Any content on the page that refers to or is a specific color',
+            RULE_RESULT_MESSAGES: {
+              MANUAL_CHECK_S:     'Verify color is not used as the only visual means of conveying information, indicating an action, prompting a response, or distinguishing a visual element.'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_MC_1: 'Verify color is not used as the only visual means of conveying information, indicating an action, prompting a response, or distinguishing a visual element.'
+            },  
+            PURPOSE:        [ 'For people with color blindness and other forms of visual impairments will not be able to see colors or color differences.',
+                              'This requirement also includes references to color of content on page to identify some type of information, there should be redundant labeling of the content, for example using text labels to also identify and refer to the information.'
+                            ],
+            TECHNIQUES:     [ 'Provide redundant text labels for content presented in color, it the color is presenting meaningful information.',
+                              'Use background patterns to also identify information.'
+                            ],
+            MANUAL_CHECKS:  [ 'Verify the page does not use color alone to identify or refer to information on the page.'
+                            ],
+            INFORMATIONAL_LINKS: [{ type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                               title: 'WCAG 2.0 Success Criterion 1.4.1 Use of Color', 
+                               url:   'http://www.w3.org/TR/WCAG20/#visual-audio-contrast-without-color'
+                             },
+                             { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                               title: 'How to meet Success Criterion 1.4.1 Use of Color', 
+                               url:   'http://www.w3.org/WAI/WCAG20/quickref/#qr-visual-audio-contrast-without-color'
+                             }
+                            ]
+        }
+   }     
+});
+/*
+ * Copyright 2011, 2012, 2013 OpenAjax Alliance
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* --------------------------------------------------------------------------- */
+/*       OpenAjax Alliance Rules National Language Support (NLS): English      */
+/* --------------------------------------------------------------------------- */
+   
+
+OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
+
+    //
+    //  OAA Rules title and message string National Language Support (NLS)
+    //
+    rules: {
+        FOCUS_1: {
+            ID:                    'Focus 1',
+            DEFINITION:            'The sequential focus order of links, form controls, embedded apps and widgets %s be meaningful',
+            SUMMARY:               'Focus order %s be meaningful',
+            TARGET_RESOURCES_DESC: '@a@, @area@, @input@, @textarea@ and @select@ elements and elements with widget roles with @tabindex@ values',
+            RULE_RESULT_MESSAGES: {
+              MANUAL_CHECK_S:     'Check the "tab" focus order of the page to make sure the sequence of focusable elements is meaningful',
+              MANUAL_CHECK_P:     'Check the "tab" focus order of the page to make sure the sequence of focusable elements is meaningful',
+              HIDDEN_S: 'The link, form control, embedded app or widget element that is hidden does not need to be tested for focus order.',
+              HIDDEN_P: 'The %N_H links, form controls, embedded apps and/or widgets that are hidden do not need to be tested for focus order.',
+              NOT_APPLICABLE:  'No or only one focusable element on the page'
+            },
+            NODE_RESULT_MESSAGES: {
+              PAGE_MC_1:        'Use the "tab" key to check the focus order of the %1 interactive elements on the page (i.e. links, form controls, ...)',
+              PAGE_MC_2:        'Use the "tab" key to check the focus order of the %1 interactive elements on the page (i.e. links, form controls, ...); NOTE: %2 other interactive elements on the page have been removed from the tab order by setting the @tabindex@ value to less than 0',
+              ELEMENT_MC_1:     '%1 element with @role@="%2" is part of the sequential focus order manual check',
+              ELEMENT_MC_2:     '%1 element is part of the sequential focus order manual check',
+              ELEMENT_MC_3:     '%1 element with @role@="%2" has a @tabindex@="%2", so it is NOT part of the sequential focus oarder of the page',
+              ELEMENT_MC_4:     '%1 element has a @tabindex@="%2", so it is NOT part of the sequential focus order of the page',
+              ELEMENT_HIDDEN_1: '%1 element with @role@="%2" is hidden, so NOT a part of the sequential focus order of the page',
+              ELEMENT_HIDDEN_2: '%1 element is hidden, so NOT a part of the sequential focus order of the page'
+            },  
+            PURPOSE: [
+              'The "tab" key is the primary key many browsers use to navigate the interactive elements on a web page',
+              'The sequential order of the elements receiving focus can help a user understand the features on a web page',
+              'The usability of frequently used or important interactive features of a web page can be improved by moving them to the beginning of the focus sequence'
+            ],
+            TECHNIQUES: [
+              'Use document order to place related interactive items seuq',
+              'The @tabindex@ atttribute value (i.e. values greater than 0) can be used to change the sequence of focusable elements in a web page or make non-interactive elements part of the "tab" order of the page',
+              'A @tabindex@ values of less than 0 remove redundent interactive elements from the sequential focus order'
+            ],
+            MANUAL_CHECKS: [
+              'Use the "tab" key to move focus through the links, form controls, embedded applications and widgets on the page',
+              'Does the sequence of elements receiving focus make sense (i.e. related items on the page are navigated sequentially as a group)'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'G59: Placing the interactive elements in an order that follows sequences and relationships within the content', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G59'
+              },                             
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'H4: Creating a logical tab order through links, form controls, and objects', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/H4'
+              }                            
+            ]
+        },
+        FOCUS_2: {
+            ID:                    'Focus 2',
+            DEFINITION:            'The element with keyboard focus %s have a visible focus style that is different from the non-focus state',
+            SUMMARY:               'Focus %s be visible',
+            TARGET_RESOURCES_DESC: '@a@, @area@, @input@, @textarea@ and @select@ elements and elements with widget roles with @tabindex@ values',
+            RULE_RESULT_MESSAGES: {
+              MANUAL_CHECK_S:     'Use the "tab" key to move focus between links, form controls, embedded apps and widgets and check the visibility of focus styling for each element as it receives focus',
+              MANUAL_CHECK_P:     'Use the "tab" key to move focus between links, form controls, embedded apps and widgets and check the visibility of focus styling for each element as it receives focus',
+              HIDDEN_S: 'The link, form control, embedded app or widget element that is hidden does not need to be tested for focus order.',
+              HIDDEN_P: 'The %N_H links, form controls, embedded apps and/or widgets that are hidden do not need to be tested for focus order.',
+              NOT_APPLICABLE:  'No focusable elements on the page'
+            },
+            NODE_RESULT_MESSAGES: {
+              PAGE_MC_1:        'Use keyboard commands to check the keyboard focus styling of the %1 interactive elements on the page (i.e. links, form controls, ...)',
+              PAGE_MC_2:        'Use keyboard commands to check the keyboard focus styling of the %1 interactive elements on the page (i.e. links, form controls, ...); NOTE: %2 interactive elements are hidden',
+              ELEMENT_MC_1:     '%1 element with @role@="%2" is part of the keyboard focus styling manual check',
+              ELEMENT_MC_2:     '%1 element is part of the keyboard focus styling manual check',
+              ELEMENT_HIDDEN_1: '%1 element with @role@="%2" is hidden, so is not visible for changing the focus styling',
+              ELEMENT_HIDDEN_2: '%1 element is hidden, so is not visible for changing the focus styling'
+            },  
+            PURPOSE: [
+              'Many browsers don\'t provide a prominent or consistent visible keyboard focus styling for interactive elements, making it difficult for users to identify and track the element with keyboard focus',
+              'Author defined visible keyboard focus style makes it easier for users to know which interactive element has keyboard focus and provides more consistent user experience between browsers and operating systems.'
+            ],
+            TECHNIQUES: [
+              'Use CSS psuedo element selector @:focus@ to change the styling of elements with keyboard focus',
+              'Use @focus@ and @blur@ events on checkboxes and radio buttons to change the styling of not only the form control, but also its label text to make it easier to see',
+              'Styling changes should include creating a border around the interactive element and its label, typically using the CSS @border@ or @outline@ properties',
+              'For consistent look and feel to the website it is often useful for the focus and hover styles to be the same or similar'
+            ],
+            MANUAL_CHECKS: [
+              'Use the the keyboard (i.e. typically he "tab" key, but in the case of widgets other keys) to move focus through the links, form controls, embedded applications and widgets on the page',
+              'Check if the element with keyboard focus is clearly visible for all focusable elements on the page as you move focus between elements, and that it changes more than just color (i.e. border/outline around element with focus)',
+              'Test keyboard focus styling using more than one browser and operating system, since there is a wide varability of between operating systems and browsers for styling keyboard focus'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'C15: Using CSS to change the presentation of a user interface component when it receives focus ', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/C15'
+              },                             
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'G195: Using an author-supplied, highly visible focus indicator', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G195'
+              }                            
+            ]
+        },    
+        FOCUS_3: {
+            ID:                    'Focus 3',
+            DEFINITION:            'The target of a link %s result in focus the content the window if the target results in more than one window opening',
+            SUMMARY:               'Target focus %s be in content window',
+            TARGET_RESOURCES_DESC: '@a@, @area@ and @role="link"@ elements',
+            RULE_RESULT_MESSAGES: {
+              MANUAL_CHECK_S:     'Check the link to make sure that if the link opens more than one window that the focus is in the content window',
+              MANUAL_CHECK_P:     'Check the %N_MC links to make sure that if any of the links opens more than one window that the focus is in the content window',
+              HIDDEN_S: 'The link element that is hidden does not need to be tested for content focus.',
+              HIDDEN_P: 'The %N_H link elements that are hidden do not need to be tested for content focus.',
+              NOT_APPLICABLE:  'No link elements on the page'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_MC_1: 'If the target of the link opens multiple windows (i.e. typically advertisements or other promotional information) make sure keyboard focus is on the content window',
+              ELEMENT_HIDDEN_1:       '%1 element is hidden, so cannot open any new windows'
+            },  
+            PURPOSE: [
+              'User\'s can become disoriented if the focus causes unpredicatable actions, including new URLs and popup windows for advertisements or promotions.'
+            ],
+            TECHNIQUES: [
+              'Do not link to URLs that open multiple windows and do not manage the focus to be in the content windoow the user was expecting by following the link'
+            ],
+            MANUAL_CHECKS: [
+              'After selecting a link and if it opens multiple windows, make sure the keyboard focus is in the content window'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'G200: Opening new windows and tabs from a link only when necessary', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G200'
+              },                             
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'G201: Giving users advanced warning when opening a new window', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G201'
+              },                             
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'F52: Failure of Success Criterion 3.2.1 and 3.2.5 due to opening a new window as soon as a new page is loaded', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/F52'
+              }                            
+            ]
+        },    
+        FOCUS_4: {
+            ID:                    'Focus 4',
+            DEFINITION:            '@select@ elements with @onchange@ event %s not automatically change the user\'s context when keyboard focus moves between options',
+            SUMMARY:               '@select@ %s not change context',
+            TARGET_RESOURCES_DESC: '@a@, @area@ and @role="link"@ elements',
+            RULE_RESULT_MESSAGES: {
+              MANUAL_CHECK_S:     'Check the @select@ element to make sure that when keyboard focus moves between options does not cause a change in context (e.g. moving to a new URL or focus being moved from the @select@ element)',
+              MANUAL_CHECK_P:     'Check the %N_MC @select@ elements to make sure that when keyboard focus moves between options in each control does not cause a change in context (e.g. moving to a new URL or focus being moved from the @select@ element)',
+              HIDDEN_S: 'The @select@ element that is hidden does not need to be tested for automatically changing user context.',
+              HIDDEN_P: 'The %N_H @select@ elements that are hidden do not need to be tested for automatically changing user context.',
+              NOT_APPLICABLE:  'No @select@ elements on the page'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_MC_1: 'Check to make sure moving keyboard focus between options in the @select@ box does not move focus from the list of options',
+              ELEMENT_HIDDEN_1:       '@select@ element is hidden'
+            },  
+            PURPOSE: [
+              'User\'s can become disoriented if the focus changes cause unpredicatable actions.',
+              'When the user is using the kyboard to explore @select@ box options, the focus must stay on the options, until the user selects one of the options'
+            ],
+            TECHNIQUES: [
+              'Do not use @onchange@ event handlers on @select@ elements',
+              'Use selections should be made using the enter key'
+            ],
+            MANUAL_CHECKS: [
+              'Move focus to the @selection@ box and use the keyboard to move the focus between options, check to make sure the focus changes are not causing the context to change (i.e. focus movig to a new window or focus moving from the current option in the select box)'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'G200: Opening new windows and tabs from a link only when necessary', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G200'
+              },                             
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'G201: Giving users advanced warning when opening a new window', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G201'
+              },                             
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'F52: Failure of Success Criterion 3.2.1 and 3.2.5 due to opening a new window as soon as a new page is loaded', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/F52'
+              }                            
+            ]
+        },
+        FOCUS_5: {
+            ID:         'Focus 5',
+            DEFINITION: 'Forms %s use @input[type="submit"]@ or other form control buttons for submitting forms.',
+            SUMMARY:    'Forms submitted using buttons',
+            TARGET_RESOURCES_DESC: '@input[type="submit"]@, @input[type="button"]@, @input[type="image"]@, @button@, @[role="button"]@',
+            RULE_RESULT_MESSAGES: {
+              MANUAL_CHECK_S: 'Verify that the form has uses a button to submit the form.',
+              MANUAL_CHECK_P: 'Verify that each of the %N_MC forms has a button used to submit the form.',
+              FAIL_S:    'No button elements found for submitting the form.',
+              FAIL_P:    'No button elements found for submitting %N_MC forms.',
+              HIDDEN_S:  'The form that is hidden was not evaluated.',
+              HIDDEN_P:  'The %N_H forms that are hidden were not evaluated.',
+              NOT_APPLICABLE: 'No form controls on this page.'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1: 'The form has an @input[type="submit"]@.',
+              ELEMENT_PASS_2: '@input[type="submit"]@ is used for form submission.',
+              ELEMENT_FAIL_1: 'The form has no button elements.',
+              ELEMENT_MC_1: 'Verify that the button element contained in the form can be used for form submission.',
+              ELEMENT_MC_2: 'Verify that at least one of the %1 button elements contained in the form can be used for form submission.',
+              ELEMENT_MC_3: 'Verify if the @input[type="%1"]@ element can be used to  submit the form.',
+              ELEMENT_MC_4: 'Verify if the @button@ element can be used to  submit the form.',
+              ELEMENT_MC_5: 'Verify if the @%1[role="button"]@ element can be used to  submit the form.',
+              ELEMENT_HIDDEN_1: '@form@ element was not evaluated because it is hidden from assistive technologies.',
+              ELEMENT_HIDDEN_2: '@input[type="submit"]@ element was not evaluated because it is hidden from assistive technologies.',
+              ELEMENT_HIDDEN_3: '@input[type="%1"]@ element was not evaluated because it is hidden from assistive technologies.',
+              ELEMENT_HIDDEN_4: '@button@ element was not evaluated because it is hidden from assistive technologies.',
+              ELEMENT_HIDDEN_5: '@%1[role="button"]@ element was not evaluated because it is hidden from assistive technologies.'
+            },
+            PURPOSE: [
+              'Using a submit button allows users to easily identify and control how to  submit form information to a server for processing.  Forms that are submitted through changes in focus or selection may result in users prematurely submitting the form or not being aware they submitted the form.'
+            ],
+            TECHNIQUES: [
+              'The preferred technique for submitting forms is with the use of the input[type="submit"] form control.',
+              'An alternative techniques include using other HTML form control elements, including @input[type="button"]@, @input[type="image"]@ or @button@ elements with an accessible name indicating that the button is for submitting form information.',
+              'In the case when a non-form control element (e.g. @a@ or @div@ element) is being used to submit the form, the element can use ARIA [role="button"] attribute with the accessible name indicating that the button is for submitting form information.'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML 4.01 Specification: The @input[type="submit"]@ element',
+                url:   'http://www.w3.org/TR/html4/interact/forms.html#edef-INPUT'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'H32: Providing submit buttons',
+                url:   'http://www.w3.org/TR/2014/NOTE-WCAG20-TECHS-20140408/H32'
+              }
+            ]
+        },
+        FOCUS_6: {
+            ID:         'Focus 6',
+            DEFINITION: '@checkbox@ and @radio@ buttons %s not automatically change context.',
+            SUMMARY:    '@checkbox/radio@ buttons changing context.',
+            TARGET_RESOURCES_DESC: '@input[type="checkbox"]@ and @input[type="radio"]@',
+            RULE_RESULT_MESSAGES: {
+              MANUAL_CHECK_S: 'Verify that the @checkbox@ or @radio@ button does not automatically change context.',
+              MANUAL_CHECK_P: 'Verify that %N_MC checkbox@ and/or @radio@ buttons do not automatically change context.',
+              HIDDEN_S: 'The @checkbox@ or @radio@ button that is hidden was not evaluated.',
+              HIDDEN_P: 'The %N_H @checkbox@ or @radio@ buttons that are hidden were not evaluated.',
+              NOT_APPLICABLE: 'No @checkbox@ or @radio@ buttons on this page.'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_MC_1:     'Verify that the @input[type="%1"]@ does not automatically change context when the control is checked or unchecked.',
+              ELEMENT_MC_2:     'Verify that the @%1[role="%2"]@ does not automatically change context when the control is checked or unchecked.',
+              ELEMENT_HIDDEN_1: '@input[type="%1"]@ element was not evaluated because it is hidden from assistive technologies.',
+              ELEMENT_HIDDEN_2: ' @%1[role="%2"]@ element was not evaluated because it is hidden from assistive technologies.'
+            },
+            PURPOSE: [
+              'Users do not expect that checking or unchecking a radio button or checkbox will cause focus to move to another a page or section of the current page they are on.'
+            ],
+            TECHNIQUES: [
+              'Remove or modify the event handlers to change the behavior to not automatically change context when the checkbox or radio button is checked or unchecked '
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML 4.01 Specification: The @input[type="checkbox"]@ and @input[type="radio"]@ element',
+                url:   'http://www.w3.org/TR/html4/interact/forms.html#edef-INPUT'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: Checkbox Role',
+                url:   'http://www.w3.org/TR/wai-aria/roles#checkbox'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: Radio Role',
+                url:   'http://www.w3.org/TR/wai-aria/roles#radio'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'H32: Providing submit buttons',
+                url:   'http://www.w3.org/TR/2014/NOTE-WCAG20-TECHS-20140408/H32'
+              }
+            ]
+        }
+    }     
+});
+/*
+ * Copyright 2011, 2012, 2013 OpenAjax Alliance
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* --------------------------------------------------------------------------- */
+/*       OpenAjax Alliance Rules National Language Support (NLS): English      */
+/* --------------------------------------------------------------------------- */
+   
+
+OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
+
+    //
+    //  OAA Rules title and message string National Language Support (NLS)
+    //
+    rules: {
+        ERROR_1: {
+            ID:                    'Error 1',
+            DEFINITION:            'Form controls with invalid values %s provide information to assitive technologies that the values are invalid',
+            SUMMARY:               'Information on invalid values',
+            TARGET_RESOURCES_DESC: '@textarea@, @select@ and @input@ elements',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Change the value of @aria-invalid@ property to @true@, on form control that is invalid and @aria-invalid="false"@.',
+              FAIL_P:   'Change the value of @aria-invalid@ property to @true@, on %N_F form controls that are invalid and @aria-invalid="false"@.',
+              MANUAL_CHECK_S:     'If the form control can be validated make sure it indicates invalid values when invalid',
+              MANUAL_CHECK_P:     'If the %N_MC form controls can be validated make sure they indicates invalid values when invalid',
+              HIDDEN_S: 'The control element that is hidden does not need to be tested for indicating invalid values.',
+              HIDDEN_P: 'The %N_H control elements that are hidden do not need to be tested for indicating invalid values.',
+              NOT_APPLICABLE:  'No form controls on this page'                                          
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_FAIL_1:       '@%1@ is invalid (i.e. validity.valid property of the control is "false") change the value of "@aria-invalid@ attribute from @false@ to @true@',
+              ELEMENT_FAIL_2:       '@%1@ is valid (i.e. validity.valid property of the control is "true") change the value of "@aria-invalid@ attribute from @true@ to @false@',
+              ELEMENT_MC_1: '@%1@ is invalid (i.e. validity.valid property of the control is "false"), verify the label contains information on the value being invalid or add the @aria-invalid="true"@ attribute to the control.',
+              ELEMENT_MC_2: '@%1@ is being tested for validity (i.e. @pattern@ attribute is present), verify the label contains information on the validity or add the @aria-invalid@ attribute to inidcate the state of validity of the control.',
+              ELEMENT_MC_3: 'Verify if the @%1@ is being validated, if it is being validated verify it implements a technique to indicate the state of validity.',
+              ELEMENT_PASS_1:         '@%1@ is invalid (i.e. validity.valid property of the control is "false") and the "@aria-invalid=true@" has been set.',
+              ELEMENT_PASS_2:         '@%1@ is valid (i.e. validity.valid property of the control is "true") and the "@aria-invalid=false@" has been set.',
+              ELEMENT_HIDDEN_1:       '%1 form control was not tested for indicating invalid values because it is hidden from assistive technologies.'
+            },  
+            PURPOSE: [
+              'Users must be able to identify form control values which are invalid in order to successfully correct the values and submit the form.'                   
+            ],
+            TECHNIQUES: [
+              'Add the text "invalid" to the label of the form control, the text can be placed off screen using CSS',
+              'Add the image to the label.  The image should be visible indicating an invalid value with the alt text "invalid"',
+              'Use @aira-invalid@ attribute to indicate the form control is invalid'
+            ],
+            MANUAL_CHECKS: [
+              'Enter invalid values into form controls that are validated and activate the validation event (i.e. form submission, change of focus...).',
+              'For the form controls with invalid values check to make sure the technique for indicating the invalid value is present.'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HTML 4.01 Specification: The @label@ element', 
+                url:   'http://www.w3.org/TR/html4/interact/forms.html#edef-LABEL'
+              },                             
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: aria-invalid', 
+                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-invalid'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'H44: Using label elements to associate text labels with form controls', 
+                url:   'http://www.w3.org/TR/2010/NOTE-WCAG20-TECHS-20101014/H44'
+              }                            
+            ]
+        },
+        ERROR_2: {
+            ID:                    'Error 2',
+            DEFINITION:            'If user input is required for a form control the @required@ or @aria-required@ attribute %s must used.',
+            SUMMARY:               'Required form controls',
+            TARGET_RESOURCES_DESC: '@textarea@ and @input[type="text"]@ elements, and ARIA textbox, gridcell and combobox widgets',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:         'Update the form control with @aria-required="false"@ and the @required@ attributes to indicate the true required state of the control.',
+              FAUL_P:         'Update the %N_F form controls with @aria-required="false"@ and the @required@ attributes to indicate the true required state of the control.',
+              MANUAL_CHECK_S: 'If the form control is required, add the @required@ attribute or if HTML4 compatibility is required the @aria-required="true"@ attribute.',
+              MANUAL_CHECK_P: 'If any of the %N_F form controls are required, add the @required@ attribute or if HTML4 compatibility is required the @aria-required="true"@ attribute.',
+              HIDDEN_S:       'The form control element that is hidden does not need to be tested for being required.',
+              HIDDEN_P:       'The %N_H form control elements that are hidden do not need to be tested for being required.',
+              NOT_APPLICABLE: 'No form controls on this page that need testing for being required.'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_FAIL_1:   'If the @input[type="%1"]@ element with the attribute @aria-required="false"@ which conflicts with presence of the @required@ attribute.',
+              ELEMENT_PASS_1:   'If the @input[type="%1"]@ element has the @required@ attribute.',
+              ELEMENT_PASS_2:   'If the @input[type="%1"]@ element has the @aria-required@ attribute.',
+              ELEMENT_PASS_3:   'If the %1 element has the @required@ attribute.',
+              ELEMENT_PASS_4:   'If the %1 element has @aria-required@.',
+              ELEMENT_MC_1:     'If the @input[type="%1"]@ element is a required, add the @required@ attribute to the control.',
+              ELEMENT_MC_2:     'If the %1 element is a required, add the @required@ attribute to the control.',
+              ELEMENT_HIDDEN_1: 'The @input[type="%1"]@ element was not tested because it is hidden from assistive technologies.',
+              ELEMENT_HIDDEN_2: 'The @%1@ element was not tested because it is hidden from assistive technologies.'
+            },  
+            PURPOSE: [
+              'Users benefit from information being informed if a input to a control is required for form submission or task completion.'
+            ],
+            TECHNIQUES: [
+              'To identify a required form control, add the HTML5 @required@ attribute to the standard form controls.',
+              'If compatibility with HTML4 standards or legacy browsers and assistve technologies, you can also use @aria-required="true"@ to indicate a form control is required.',
+              'Use the @required@ attribute (or the @aria-required@ if used) as the CSS selector for visually styling the form control as required.  This ensures that the visual state stays synchronized with the accessibility API state used by assistive technologies.',
+              'The only reason to support both @required@ and @aria-required@ on the same form control is to support legacy browsers and assistive technologies.  This required extra care to make sure the two values do not conflict.  If they do conflict the @required@ attribute will override the @aria-required@ property value.'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HTML5: required attribute', 
+                url:   'http://www.w3.org/TR/html5/forms.html#attr-input-required'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: aria-required', 
+                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-required'
+              }                            
+            ]
+        },
+        ERROR_3: {
+            ID:                    'Error 3',
+            DEFINITION:            'If user input is required for a widget the @aria-required@ attribute %s must used.',
+            SUMMARY:               'Required widgets',
+            TARGET_RESOURCES_DESC: '@textarea@ and @input[type="text"]@ elements, and ARIA textbox, gridcell and combobox widgets',
+            RULE_RESULT_MESSAGES: {
+              MANUAL_CHECK_S: 'If the widget is required use @aria-required="true"@ attribute.',
+              MANUAL_CHECK_P: 'If any of the %N_F widgets are required, use the @aria-required="true"@ attribute.',
+              HIDDEN_S:       'The widget that is hidden does not need to be tested for being required.',
+              HIDDEN_P:       'The %N_H widget elements that are hidden do not need to be tested for being required.',
+              NOT_APPLICABLE: 'No widgets on this page that need testing for being required.'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:   'The @%1[role="%2"]@ widget is identified as required though the use of @aria-required="true"@ attribute.',
+              ELEMENT_MC_1:     'If the @%1[role="%2"]@ widget is a required, add the @aria-required="true"@ attribute to the control.',
+              ELEMENT_HIDDEN_1: 'The @%1[role="%2"]@ element was not tested because it is hidden from assistive technologies.'
+            },  
+            PURPOSE: [
+              'Users benefit from information being informed if a input to a widget is required for form submission or task completion.'
+            ],
+            TECHNIQUES: [
+              'To identify a required widget, add the ARIA @aria-required="true"@ attribute to the widget.',
+              'Use the @aria-required@ attribute as the CSS selector for visually styling the widget as required.  This ensures that the visual state stays synchronized with the accessibility API state used by assistive technologies.',
+              'Note the the HTML5 @required@ attribute CANNOT be used to indicate that a widget is required, the @requiured@ attribute can only be used on HTML5 defined form controls.'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: aria-required', 
+                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-required'
+              }                            
+            ]
+        },
+        ERROR_4: {
+            ID:                    'Error 4',
+            DEFINITION:            'When input error is automatically detected and suggestions are automatically known, the suggestions %s be provided to the user (some exceptions)',
+            SUMMARY:               'Error correction suggestions',
+            TARGET_RESOURCES_DESC: '@textarea@ and @input[type="text"]@ elements, and ARIA textbox, gridcell and combobox widgets',
+            RULE_RESULT_MESSAGES: {
+              MANUAL_CHECK_S: 'If the form control element or widget can automatically detect errors and suggest corrections, make sure that at least one accessible technique is used to present the suggestion to the user.',
+              MANUAL_CHECK_P: 'If the %N_MC form control elements and/or widgets can automatically detect errors and suggest corrections, make sure that at least one accessible technique is used to present the suggestion to the user.',
+              HIDDEN_S:       'The form control element and/or widget that is hidden does not need to be tested for accessible suggestions.',
+              HIDDEN_P:       'The %N_H form control elements and/or widgets that are hidden does not need to be tested for accessible suggestions.',
+              NOT_APPLICABLE: 'No form controls or widgets on this page that typically can provide suggestions.'                                          
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_MC_1:     'If the @input[type="%1"]@ element can automatically detect errors and suggest corrections, use at least one accessible technique to provide the information to users.',
+              ELEMENT_MC_2:     'If the %1 element can automatically detect errors and suggest corrections, use at least one accessible technique to provide the information to users.',
+              ELEMENT_MC_3:     'If the %1 widget can automatically detect errors and suggest corrections, use at least one accessible technique to provide the information to users.',
+              ELEMENT_HIDDEN_1: 'The @input[type="%1"]@ element was not tested because it is hidden from assistive technologies.',
+              ELEMENT_HIDDEN_2: 'The @%1@ element was not tested because it is hidden from assistive technologies.',
+              ELEMENT_HIDDEN_3: 'The @%1@ widget was not tested because it is hidden from assistive technologies.'
+            },  
+            PURPOSE: [
+              'Users benefit from information being informed of invalid information and on how to correct invalid input.'                   
+            ],
+            TECHNIQUES: [
+              'Add @aria-describedby@ reference on the form control or widget to the suggestion information.',
+              'Use a popup list to provide suggested values for valid input.'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HTML 4.01 Specification: The @label@ element', 
+                url:   'http://www.w3.org/TR/html4/interact/forms.html#edef-LABEL'
+              },                             
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: aria-invalid', 
+                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-invalid'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'H44: Using label elements to associate text labels with form controls', 
+                url:   'http://www.w3.org/TR/2010/NOTE-WCAG20-TECHS-20101014/H44'
+              }                            
+            ]
+        }
+    }     
+});
+/*
+ * Copyright 2011, 2012, 2013 OpenAjax Alliance
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* --------------------------------------------------------------------------- */
+/*       OpenAjax Alliance Rules National Language Support (NLS): English      */
+/* --------------------------------------------------------------------------- */
+
+
+OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
+
+    //
+    //  OAA Rules title and message string National Language Support (NLS)
+    //
+    rules: {
+        CONTROL_1: {
+            ID:         'Control 1',
+            DEFINITION: 'Each @input@, @select@, @textarea@, @progress@, @meter@ and @output@ element %s have an accessible label.',
+            SUMMARY:    'Form controls %s have labels',
+            TARGET_RESOURCES_DESC: '@input@, @select@, @textarea@, @progress@, @meter@ and @output@ elements',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Add a label to the form control element that is unlabelled.',
+              FAIL_P:   'Add labels to the %N_F form control elements that are unlabelled.',
+              NOT_APPLICABLE: 'No @input@, @select@, @textarea@, @progress@, @meter@ or @output@ elements on the page.',
+              HIDDEN_S: 'One form control element that is hidden was not evaluated.',
+              HIDDEN_P: '%N_H form control elements that are hidden were not evaluated.'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:   '@%1@ control has the label: "%2"',
+              ELEMENT_FAIL_1:   'Add label to @%1@ control.',
+              ELEMENT_HIDDEN_1: '@%1@ control was not tested because it is hidden from assistive technologies.'
+            },
+            PURPOSE: [
+              'A label associated with a form control ensures that information about the form control is spoken by screen readers when it receives focus.'
+            ],
+            TECHNIQUES: [
+              'The preferred technique for labeling form controls is by reference: First, include an @id@ attribute on the form control to be labeled; then use the @label@ element with a @for@ attribute value that references the @id@ value of the control.',
+              'An alternative technique is to use the @label@ element to encapsulate the form control element.',
+              'In special cases, the @aria-labelledby@ attribute can be used on the form control element to reference the id(s) of the elements on the page that describe its purpose.',
+              'In special cases, the @aria-label@ attribute can be used on the form control element to provide an explicit text description of its purpose.',
+              'In special cases, the @title@ attribute on the form control element can be used to provide an explicit text description of its purpose.'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML 4.01 Specification: The @label@ element',
+                url:   'http://www.w3.org/TR/html4/interact/forms.html#edef-LABEL'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'H44: Using label elements to associate text labels with form controls',
+                url:   'http://www.w3.org/TR/2010/NOTE-WCAG20-TECHS-20101014/H44'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'H65: Using the title attribute to identify form controls when the label element cannot be used',
+                url:   'http://www.w3.org/TR/2010/NOTE-WCAG20-TECHS-20101014/H65'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'H71: Providing a description for groups of form controls using fieldset and legend elements',
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/H71'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.TECHNIQUE,
+                title: 'iCITA Best Practices: Labels for Form Controls Overview',
+                url:   'http://html.cita.illinois.edu/nav/form/'
+              }
+            ]
+        },
+        CONTROL_2: {
+            ID:         'Control 2',
+            DEFINITION: 'Every @input@ type @image@ element %s have an @alt@ or @title@ attribute with content.',
+            SUMMARY:    'Image button %s have alt. content',
+            TARGET_RESOURCES_DESC: '@input[type="image"]@ elements',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Add an @alt@ attribute to the @input[type="image"]@ element that does not have alt. content.',
+              FAIL_P:   'Add an @alt@ attribute to the %N_F @input[type="image"]@ elements that do not have alt. content.',
+              HIDDEN_S: 'The @input@ type @image@ element that is hidden was not evaluated.',
+              HIDDEN_P: 'The %N_H @input@ type @image@ elements that are hidden were not evaluated.',
+              NOT_APPLICABLE: 'No @input[type="image"]@ elements on this page.'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1: 'Image button has an accessible name: %1',
+              ELEMENT_FAIL_1: 'Add @alt@ attribute with text content.',
+              ELEMENT_FAIL_2: 'Add text content to the @alt@ attribute.',
+              ELEMENT_HIDDEN_1: 'Image button was not evaluated because it is hidden from assistive technologies.'
+            },
+            PURPOSE: [
+              'Alternate content associated with an image-based form control ensures that information about the control is spoken by screen readers when it receives focus.'
+            ],
+            TECHNIQUES: [
+              'The @alt@ attribute is the preferred and most commonly used way to provide an accessible label for @input@ type @image@ elements.',
+              'In special cases, the @title@ attribute can be used on the @input@ type @image@ element to provide an explicit text description of its purpose.',
+              'In special cases, the @aria-labelledby@ attribute can be used on the form control element to reference the id(s) of the elements on the page that describe its purpose.',
+              'In special cases, the @aria-label@ attribute can be used on the form control element to provide an explicit text description of its purpose.'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML 4.01 Specification: The @label@ element',
+                url:   'http://www.w3.org/TR/html4/interact/forms.html#edef-LABEL'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'H36: Using alt attributes on images used as submit buttons',
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/H36'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.TECHNIQUE,
+                title: 'iCITA Best Practices: Labels for Form Controls Overview',
+                url:   'http://html.cita.illinois.edu/nav/form/'
+              }
+            ]
+        },
+        CONTROL_3: {
+            ID:         'Control 3',
+            DEFINITION: 'A related group of radio buttons %s have a grouping label.',
+            SUMMARY:    'Radio buttons %s have grouping label',
+            TARGET_RESOURCES_DESC: '@input[type="radio"]@ elements',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Add a @fieldset@ container with a @legend@ label for the @input[type="radio"]@ element NOT in a grouping container.',
+              FAIL_P:   'Add a @fieldset@ container with a @legend@ label for each group of the %N_F @input[type="radio"]@ elements NOT in a grouping container.',
+              HIDDEN_S: 'The @input[type="radio"]@ that is hidden was not evaluated.',
+              HIDDEN_P: 'The %N_H @input[type="radio"]@ elements that are hidden were not evaluated.',
+              NOT_APPLICABLE: 'No @input[type="radio"]@ elements on this page.'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1: 'Radio button uses a @fieldset@ container with a @legend@ element that has text content.',
+              ELEMENT_MC_1:   'Radio button uses @aria-labelledby@. Verify that the referenced label text content includes grouping information.',
+              ELEMENT_MC_2:   'Radio button uses @aria-label@. Verify that the label text content includes grouping information.',
+              ELEMENT_FAIL_1: 'Add a @legend@ element with text content to the @fieldset@ element to provide a grouping label for the radio buttons.',
+              ELEMENT_FAIL_2: 'Add a @fieldset@ with a @legend@ element to provide a grouping container and label for the radio buttons.',
+              ELEMENT_HIDDEN_1: 'Radio button was not evaluated because it is hidden from assistive technologies.'
+            },
+            PURPOSE: [
+              'Radio buttons need grouping information and a common grouping label to provide the overall context for each radio button option.'
+            ],
+            TECHNIQUES: [
+              'The @fieldset@/@legend@ element combination is the preferred technique for providing a grouping information and label for a related group of radio buttons.',
+              'The @aria-labelledby@ attribute can be used to provide a grouping label for related radio buttons.',
+              'The @aria-label@ attribute can be used to provide a grouping label for related radio buttons.'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML 4.01 Specification: The @fieldset@ and @legend@ elements',
+                url:   'http://www.w3.org/TR/html4/interact/forms.html#edef-FIELDSET'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'H71: Providing a description for groups of form controls using fieldset and legend elements',
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/H71'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'H90: Indicating required form controls using label or legend',
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/H90'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
+                title: 'iCITA: Example 7: Fieldset/Legend for grouping radio buttons',
+                url:   'http://html.cita.illinois.edu/nav/form/radio/index.php?example=6'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
+                title: 'IBM Web checklist: HTML example 6',
+                url:   'http://www-03.ibm.com/able/guidelines/web/webstructure.html'
+              }
+            ]
+        },
+        CONTROL_4: {
+            // TODO: Question: What if button only contains img elements with alt. text?
+            ID:         'Control 4',
+            DEFINITION: '@button@ elements %s have text content.',
+            SUMMARY:    '@button@s %s have content',
+            TARGET_RESOURCES_DESC: '@button@ elements',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Add descriptive text content to the @button@ element.',
+              FAIL_P:   'Add descriptive text content to %N_F @button@ elements.',
+              HIDDEN_S: 'The @button@ that is hidden was not evaluated.',
+              HIDDEN_P: 'The %N_H @button@ elements that are hidden were not evaluated.',
+              NOT_APPLICABLE:  'No @button@ elements on this page.'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1: '@button@ element has text content.',
+              ELEMENT_FAIL_1: 'Add text content to the @button@ element.',
+              ELEMENT_HIDDEN_1: '@button@ element was not evaluated because it is hidden from assistive technologies.'
+            },
+            PURPOSE: [
+              'The text content of a @button@ element is used as its label, and ensures that the purpose of the button is spoken by screen readers when the button receives focus.'
+            ],
+            TECHNIQUES: [
+              'The accessible label of a @button@ element includes its text content along with the @alt@ attribute content of any image elements it contains.'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML 4.01 Specification: The @button@ elements',
+                url:   'http://www.w3.org/TR/html4/interact/forms.html#edef-BUTTON'
+              }
+            ]
+        },
+        CONTROL_5: {
+            ID:         'Control 5',
+            DEFINITION: 'All @id@ attribute values %s be unique on the page.',
+            SUMMARY:               '@id@ %s be unique',
+            TARGET_RESOURCES_DESC: 'Form control elements with @id@ attributes',
+            RULE_RESULT_MESSAGES: {
+              FAIL_P:   'Update elements with @id@ attributes so that each attribute value is unique.',
+              HIDDEN_S: 'The element with an @id@ attribute that is hidden was not evaluated.',
+              HIDDEN_P: 'The %N_H elements with @id@ attributes that are hidden were not evaluated.',
+              NOT_APPLICABLE:  'No elements or only one element with an @id@ attribute on this page.'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1: '\'%1\' @id@ attribute value is unique.',
+              ELEMENT_FAIL_1: 'Update elements that share the \'%1\' @id@ value to have unique @id@ values.',
+              ELEMENT_HIDDEN_1: '%1 element with @id@ attribute was not evaluated because it is hidden from assistive technologies.'
+            },
+            PURPOSE: [
+              '@id@ attribute values on form control elements can be used as references by @label@ elements. When @id@ attribute values on the page are not unique, form controls may be incorrectly labelled.',
+              '@aria-labelledby@ and @aria-describedby@ atributes also depend on unique @id@ values for labeling and adding descriptions to form controls.'
+            ],
+            TECHNIQUES: [
+              'If a form control defines an @id@ attribute, ensure that its value is unique on the page.'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML 4.01 Specification: @id@ attribute',
+                url:   'http://www.w3.org/TR/html4/struct/global.html#adef-id'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'F77: Failure of Success Criterion 4.1.1 due to duplicate values of type ID',
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/F77'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'H88: Using HTML according to spec',
+                url:   'http://www.w3.org/TR/2010/NOTE-WCAG20-TECHS-20101014/H88'
+              }
+            ]
+        },
+        CONTROL_6: {
+            ID:         'Control 6',
+            DEFINITION: 'Each @label@ element using the @for@ attribute %s reference a form control on the page.',
+            SUMMARY:    '@label@ %s reference control',
+            TARGET_RESOURCES_DESC: '@label@ elements',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Change the @label@ element to use the @for@ attribute to label its form control.',
+              FAIL_P:   'Change the %N_F @label@ elements to use the @for@ attribute to label their respective form controls.',
+              HIDDEN_S: 'The @label@ element that is hidden was not evaluated.',
+              HIDDEN_P: 'The %N_H @label@ elements that are hidden were not evaluated.',
+              NOT_APPLICABLE: 'No visible @label@ elements with invalid @for@ references on this page.'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1: '@label@ element with @for@ attribute \'%1\' references a form control.',
+              ELEMENT_FAIL_1: 'Change the @label@ element @for@ attribute value \'%1\' to reference a form control.',
+              ELEMENT_HIDDEN_1: 'The @label@ element was not evaluated because it is hidden from assistive technologies.'
+            },
+            PURPOSE: [
+              '@label@ elements are useful for accessibility only when they reference or encapsulate form controls.'
+            ],
+            TECHNIQUES: [
+              'For a @label@ element to properly reference a form control, ensure that the @for@ attribute value on the @label@ element exactly matches the @id@ attribute value on the form control.'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML 4.01 Specification: The @label@ element FOR attribute',
+                url:   'http://www.w3.org/TR/html4/interact/forms.html#adef-for'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'H44: Using label elements to associate text labels with form controls',
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/H44'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.TECHNIQUE,
+                title: 'iCITA: Using @label@ Element for Labeling Form Controls',
+                url:   'http://html.cita.illinois.edu/nav/form/form-label-markup.php'
+              }
+            ]
+        },
+        CONTROL_7: {
+            ID:         'Control 7',
+            DEFINITION: 'Every @label@ and @legend@ element %s contain text content.',
+            SUMMARY:    '@label@ %s have content',
+            TARGET_RESOURCES_DESC: '@label@ and @legend@ elements',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Add text content to the @label@ or @legend@ element that describes the purpose of the form control or group of form controls, or remove the element if it is not needed for labeling.',
+              FAIL_P:   'Add text content to the %N_F @label@ or @legend@ elements that describes the purpose of the form control or group of form controls, or remove the element(s) if they are not needed for labeling.',
+              HIDDEN_S: 'One @label@ or @legend@ element that is hidden was not evaluated.',
+              HIDDEN_P: 'The %N_H @label@ or @legend@ elements that are hidden were not evaluated.',
+              NOT_APPLICABLE: 'No @label@ or @legend@ elements on this page.'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1: '@%1@ has text content.',
+              ELEMENT_FAIL_1: 'Add text content to the @%1@ element, or if it is unneeded, remove it from the page.',
+              ELEMENT_HIDDEN_1: '@%1@ element was not evaluated because it is hidden from assistive technologies.'
+            },
+            PURPOSE: [
+              'A @label@ or @legend@ elements is only useful for accessibility when it contains content that describes the purpose of the associated form control(s).'
+            ],
+            TECHNIQUES: [
+              'Add text content to @label@ and @legend@ elements that describes the purpose of the form control or group of form controls.'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML 4.01 Specification: The @label@ element @for@ attribute',
+                url:   'http://www.w3.org/TR/html4/interact/forms.html#adef-for'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'H44: Using @label@ elements to associate text labels with form controls',
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/H44'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'H88: Using HTML according to spec',
+                url:   'http://www.w3.org/TR/2010/NOTE-WCAG20-TECHS-20101014/H88'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.TECHNIQUE,
+                title: 'iCITA: Using @label@ element for Labeling Form Controls',
+                url:   'http://html.cita.illinois.edu/nav/form/form-label-markup.php'
+              }
+            ]
+        },
+        CONTROL_8: {
+            ID:         'Control 8',
+            DEFINITION: 'Every @fieldset@ element %s contain exactly one @legend@ element.',
+            SUMMARY:    '@fieldset@ %s have one @legend@',
+            TARGET_RESOURCES_DESC: '@fieldset@ and @legend@ elements',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Update the @fieldset@ element such that it contains only one @legend@ element.',
+              FAIL_P:   'Update %N_F @fieldset@ elements such that each contains only one @legend@ element.',
+              HIDDEN_S: 'One @fieldset@ element that is hidden was not evaluated.',
+              HIDDEN_P: 'The %N_H @fieldset@ elements that are hidden were not evaluated.',
+              NOT_APPLICABLE: 'No @fieldset@ elements on this page.'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1: '@fieldset@ has one @legend@ element.',
+              ELEMENT_FAIL_1: 'Add @legend@ element.',
+              ELEMENT_FAIL_2: 'Remove %1 @legend@ elements.',
+              ELEMENT_FAIL_3: '@legend@ element is hidden from assistive technologies. Use CSS off-screen positioning instead of CSS display or visibility properties to remove @legend@ from graphical rendering.',
+              ELEMENT_HIDDEN_1: '@fieldset@ element was not evaluated because it is hidden from assistive technologies.'
+            },
+            PURPOSE: [
+              'Multiple @legend@ elements contained in the same @fieldset@ may result in the improper calculation of labels for assistive technologies.'
+            ],
+            TECHNIQUES: [
+              'A @fieldset@ element should have one and only one @legend@ element to describe the purpose of the form controls it contains.'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML 4.01 Specification: Adding structure to forms: the @fieldset@ and @legend@ elements',
+                url:   'http://www.w3.org/TR/html4/interact/forms.html#edef-FIELDSET'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'H71: Providing a description for groups of form controls using fieldset and legend elements',
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/H71'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'H88: Using HTML according to spec',
+                url:   'http://www.w3.org/TR/2010/NOTE-WCAG20-TECHS-20101014/H88'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.TECHNIQUE,
+                title: 'iCITA: Using @label@ element for Labeling Form Controls',
+                url:   'http://html.cita.illinois.edu/nav/form/form-label-markup.php'
+              }
+            ]
+        },
+        CONTROL_9: {
+            ID:         'Control 9',
+            DEFINITION: 'Verify that the @title@ attribute is the label for the form control.',
+            SUMMARY:    'Verify @title@ is label',
+            TARGET_RESOURCES_DESC: '@textarea@, @select@ and @input@ elements',
+            RULE_RESULT_MESSAGES: {
+              MANUAL_CHECK_S: 'Verify that the @title@ attribute is an appropriate label for the form control, and that it is not being used only as a tooltip.',
+              MANUAL_CHECK_P: 'Verify that the @title@ attribute is an appropriate label for each of the %N_F form controls, and that it is not being used only as a tooltip.',
+              HIDDEN_S: 'The form control element that is hidden was not evaluated.',
+              HIDDEN_P: 'The %N_H form control elements that are hidden were not evaluated.',
+              NOT_APPLICABLE: 'No @textarea@, @select@ or @input@ elements on this page with a @title@ attribute.'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1: '@title@ is not used as label.',
+              ELEMENT_MC_1:   'Use the @label@ element or an ARIA technique to label %1 form control instead of using the @title@ attribute.',
+              ELEMENT_HIDDEN_1: '@%1@ element was not evaluated because it is hidden from assistive technologies.'
+            },
+            PURPOSE: [
+              'When the @title@ attribute is used for tooltips, it often uses more words than needed to label a form control for users of assistive technologies.',
+              'Use @aria-label@ to provide a shorter label to users of assistive technologies if the @title@ attribute content is determined not to be an optimal label.'
+            ],
+            TECHNIQUES: [
+              'The preferred technique for labeling form controls is to use the @label@ element and its @for@ attribute to reference the @id@ attribute value of the form control element.',
+              'An alternative technique is to use the @label@ element to encapsulate the form control element.',
+              'In special cases, the @aria-labelledby@ attribute can be used on the form control element to reference the id(s) of the elements on the page that describe its purpose.',
+              'In special cases, the @aria-label@ attribute can be used on the form control element to provide an explicit text description of its purpose.'
+            ],
+            MANUAL_CHECKS: [
+              'If the @title@ attribute is the labeling technique of last resort, use other form labeling techniques.',
+              'Reserve the @title@ attribute for tooltips if they are needed for your form.'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML 4.01 Specification: Adding structure to forms: the @fieldset@ and @legend@ elements',
+                url:   'http://www.w3.org/TR/html4/interact/forms.html#edef-FIELDSET'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'H88: Using HTML according to spec',
+                url:   'http://www.w3.org/TR/2010/NOTE-WCAG20-TECHS-20101014/H88'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.TECHNIQUE,
+                title: 'iCITA: Using @label@ element for Labeling Form Controls',
+                url:   'http://html.cita.illinois.edu/nav/form/form-label-markup.php'
+              }
+            ]
+        },
+        CONTROL_10: {
+            ID:         'Control 10',
+            DEFINITION: 'Each @select@, @textarea@ and @input@ element of type @text@, @password@, @checkbox@, @radio@ and @file@ must have a label that is unique on the page.',
+            SUMMARY:    'Labels %s be unique',
+            TARGET_RESOURCES_DESC: '@select@, @textarea@ and @input@ elements of type @text@, @password@, @checkbox@, @radio@ and @file@',
+            RULE_RESULT_MESSAGES: {
+              FAIL_P:   'Update the labels for the %N_F form controls with duplicate labels to uniquely identify the purpose of each control on the page.',
+              HIDDEN_S: 'The form control element that is hidden was not evaluated.',
+              HIDDEN_P: 'The %N_H form control elements that are hidden were not evaluated.',
+              NOT_APPLICABLE: 'No form controls or only one form control on this page.'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1: 'Label is unique.',
+              ELEMENT_FAIL_1: 'Add label to %1 control.',
+              ELEMENT_FAIL_2: 'Change the @label@ element content, use @fieldset@ and @legend@ elements or an ARIA technique to make the label text content unique on the page.',
+              ELEMENT_HIDDEN_1: '%1 control element was not evaluated because it is hidden from assistive technologies.'
+            },
+            PURPOSE: [
+              'Labels that are unique make it possible for people to understand the different purposes of form controls on the same page.'
+            ],
+            TECHNIQUES: [
+              'The preferred technique for labeling form controls is by reference: First, include an @id@ attribute on the form control to be labeled; then use the @label@ element with a @for@ attribute value that references the @id@ value of the control.',
+              'An alternative technique is to use the @label@ element to encapsulate the form control element.',
+              'In special cases, the @aria-labelledby@ attribute can be used on the form control element to reference the id(s) of the elements on the page that describe its purpose.',
+              'In special cases, the @aria-label@ attribute can be used on the form control element to provide an explicit text description of its purpose.'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML 4.01 Specification: The @label@ element',
+                url:   'http://www.w3.org/TR/html4/interact/forms.html#edef-LABEL'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'H44: Using label elements to associate text labels with form controls',
+                url:   'http://www.w3.org/TR/2010/NOTE-WCAG20-TECHS-20101014/H44'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'H65: Using the title attribute to identify form controls when the label element cannot be used',
+                url:   'http://www.w3.org/TR/2010/NOTE-WCAG20-TECHS-20101014/H65'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'H71: Providing a description for groups of form controls using fieldset and legend elements',
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/H71'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.TECHNIQUE,
+                title: 'iCITA Best Practices: Labels for Form Controls Overview',
+                url:   'http://html.cita.illinois.edu/nav/form/'
+              }
+            ]
+        },
+        CONTROL_11: {
+            ID:         'Control 11',
+            DEFINITION: 'If there is more than one form on a page, each @input@ element of type @submit@ or @reset@ %s have a unique label, specified using its @value@ attribute.',
+            SUMMARY:    '@submit@ and @reset@ buttons %s be unique',
+            TARGET_RESOURCES_DESC: '@submit@ and @reset@ buttons',
+            RULE_RESULT_MESSAGES: {
+              FAIL_P:   'Change the labeling of %N_F @submit@ or @reset@ buttons to uniquely identify the purpose of each on the page.',
+              HIDDEN_S: 'The @submit@ or @reset@ control element that is hidden was not evaluated.',
+              HIDDEN_P: 'The %N_H @submit@ and/or @reset@ control elements that are hidden were not evaluated.',
+              NOT_APPLICABLE: 'No forms or only one form on this page.'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1: 'Label is unique.',
+              ELEMENT_FAIL_1: 'Add label to %1 control.',
+              ELEMENT_FAIL_2: 'Change the @value@ attribute content, or use an ARIA technique to make the @submit@ or @reset@ labels unique on the page.',
+              ELEMENT_HIDDEN_1: '%1 control element was not evaluated because it is hidden from assistive technologies.'
+            },
+            PURPOSE: [
+              'Labels that are unique make it possible for people to understand the different purposes of form controls on the same page.',
+              '@submit@ and @reset@ form controls have default labels and if these are present on more than one form on a page, the user may not understand which form they are submitting.'
+            ],
+            TECHNIQUES: [
+              'The preferred technique for changing the default label for @submit@ and @reset@ controls is the @value@ attribute.',
+              'In special cases, the @aria-labelledby@ attribute can be used on the form control element to reference the id(s) of the elements on the page that describe its purpose.',
+              'In special cases, the @aria-label@ attribute can be used on the form control element to provide an explicit text description of its purpose.'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML 4.01 Specification: The @label@ element',
+                url:   'http://www.w3.org/TR/html4/interact/forms.html#edef-LABEL'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'H44: Using label elements to associate text labels with form controls',
+                url:   'http://www.w3.org/TR/2010/NOTE-WCAG20-TECHS-20101014/H44'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'H65: Using the title attribute to identify form controls when the label element cannot be used',
+                url:   'http://www.w3.org/TR/2010/NOTE-WCAG20-TECHS-20101014/H65'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'H71: Providing a description for groups of form controls using fieldset and legend elements',
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/H71'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.TECHNIQUE,
+                title: 'iCITA Best Practices: Labels for Form Controls Overview',
+                url:   'http://html.cita.illinois.edu/nav/form/'
+              }
+            ]
+        },
+        CONTROL_12: {
+            ID:         'Control 12',
+            DEFINITION: 'The label for each @button@, @select@, @textarea@ and @input@ element of type @text@, @checkbox@, @radio@, @password@, @submit@, @reset@ and @file@ on a page %s sufficiently describe its purpose.',
+            SUMMARY:    'Labels %s be descriptive',
+            TARGET_RESOURCES_DESC: '@button@, @select@, @textarea@ and @input@ elements of type @text@, @checkbox@, @radio@, @password@, @submit@, @reset@ and @file@',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'To the form control missing a label, add a label that describes its purpose.',
+              FAIL_P:   'To each of the %N_F form controls missing labels, add a label that uniquely describes its purpose.',
+              MANUAL_CHECK_S: 'Verify that the label uniquely describes the purpose of the form control.',
+              MANUAL_CHECK_P: 'Verify that the label for each of the %N_MC form controls uniquely describes its purpose.',
+              HIDDEN_S: 'The control element that is hidden was not evaluated.',
+              HIDDEN_P: 'The %N_H control elements that are hidden were not evaluated.',
+              NOT_APPLICABLE: 'No form controls on this page.'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_MC_1: 'Verify that the label for the @%1@ form control describes its purpose and/or the required input.',
+              ELEMENT_FAIL_1: 'Add a @label@ element, use @fieldset@/@legend@ elements or ARIA technique to provide a label for @%1@ form control.',
+              ELEMENT_HIDDEN_1: '%1 element was not evaluated because it is hidden from assistive technologies.'
+            },
+            PURPOSE: [
+              'Labels that are sufficiently descriptive make it possible for people to understand the purposes of, and required inputs for, the form controls on the page.'
+            ],
+            TECHNIQUES: [
+              'The preferred technique for labeling form controls is by reference: First, include an @id@ attribute on the form control to be labeled; then use the @label@ element with a @for@ attribute value that references the @id@ value of the control.',
+              'An alternative technique is to use the @label@ element to encapsulate the form control element.',
+              'In special cases, the @aria-labelledby@ attribute can be used on the form control element to reference the id(s) of the elements on the page that describe its purpose.',
+              'In special cases, the @aria-label@ attribute can be used on the form control element to provide an explicit text description of its purpose.',
+              'Use @aria-describedby@ to provide references to instructions or error information.'
+            ],
+            MANUAL_CHECKS: [
+            'Good labels are both concise and descriptive of the form control purpose',
+            'If form controls are arranged in groups, use @filedset/Legend@ or ARIA labeling techniuqes to include grouping information',
+            'Consider using @aria-describedby@ to provide references to instructions or error information'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML 4.01 Specification: The @label@ element',
+                url:   'http://www.w3.org/TR/html4/interact/forms.html#edef-LABEL'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'H44: Using label elements to associate text labels with form controls',
+                url:   'http://www.w3.org/TR/2010/NOTE-WCAG20-TECHS-20101014/H44'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'H65: Using the title attribute to identify form controls when the label element cannot be used',
+                url:   'http://www.w3.org/TR/2010/NOTE-WCAG20-TECHS-20101014/H65'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'H71: Providing a description for groups of form controls using fieldset and legend elements',
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/H71'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.TECHNIQUE,
+                title: 'iCITA Best Practices: Labels for Form Controls Overview',
+                url:   'http://html.cita.illinois.edu/nav/form/'
+              }
+            ]
+        }
+    }
+});
+/*
+ * Copyright 2011, 2012, 2013 OpenAjax Alliance
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* --------------------------------------------------------------------------- */
+/*       OpenAjax Alliance Rules National Language Support (NLS): English      */
+/* --------------------------------------------------------------------------- */
+
+
+OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
+
+    //
+    //  OAA Rules title and message string National Language Support (NLS)
+    //
+    rules: {
+        IMAGE_1: {
+            ID:         'Image 1',
+            DEFINITION: 'Each image element %s specify alternate text.',
+            SUMMARY:    'Images %s have alt. text',
+            TARGET_RESOURCES_DESC: '@img@, @area@ and [role="img"]',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Add an @alt@ attribute with descriptive content to the image element with missing alt. text.',
+              FAIL_P:   'Add an @alt@ attribute with descriptive content to each of the %N_F image elements with missing alt. text.',
+              NOT_APPLICABLE: 'No @img@, @area@ or @[role="img"]@ elements found on this page.'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1: '@%1@ element has @alt@ attribute.',
+              ELEMENT_PASS_2: '@%1@ element has @aria-labelledby@ attribute.',
+              ELEMENT_PASS_3: '@%1@ element has @aria-label@ attribute.',
+              ELEMENT_PASS_4: '@%1@ element has @title@ attribute.',
+              ELEMENT_FAIL_1: 'Add an @alt@, @aria-labelledby@ or @aria-label@ attribute to the @%1@ element.',
+              ELEMENT_FAIL_2: 'Use @aria-labelledby@ or @aria-label@ attribute instead of @alt@ attribute for the accessible name for @%1@ element with @role="img"@.',
+              ELEMENT_HIDDEN_1: '@%1@ element was not evaluated because it is hidden from assistive technologies.'
+            },
+            PURPOSE: [
+              'A text alternative for an image, usually specified with an @alt@ attribute, provides a description for people who are unable to see the image.',
+              'An image with a text alternative that is an empty string is ignored by assistive technologies, and indicates that it is being used for styling rather than meaningful content.'
+            ],
+            TECHNIQUES: [
+              'A text alternative should describe the purpose of an image as succinctly as possible (preferably with no more than 100 characters).',
+              'The @alt@ attribute is the preferred and most commonly used way to provide a text alternative for @img@ and @area@ elements.',
+              'The @aria-labelledby@ attribute can be used to provide a text alternative when images can be described using text already associated with the image, or for elements with @role="img"@.',
+              'The @aria-label@ attribute should only be used to provide a text alternative in the special case when an element has a @role="img"@ attribute.',
+              'The @title@ attribute will be used by assistive technologies to provide a text alternative if no other specification technique is found.',
+              'If an image is purely stylistic or decorative, set the text alternative such that the result is an empty string (e.g., use @alt=""@ or @role="presentation"@).'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML 4.01 Specification: 13.8 How to specify alternate text',
+                url:   'http://www.w3.org/TR/html4/struct/objects.html#adef-alt'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G94: Providing short text alternative for non-text content that serves the same purpose and presents the same information as the non-text content',
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G94'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G95: Providing short text alternatives that provide a brief description of the non-text content',
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G95'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.TECHNIQUE,
+                title: 'iCITA Best Practices: Text Equivalents for Images and other Non-Text Objects Best Practices',
+                url:   'http://html.cita.illinois.edu/text/'
+              }
+            ]
+        },
+        IMAGE_2: {
+            ID:         'Image 2',
+            DEFINITION: 'If the @longdesc@ attribute is used on an @img@ element, it %s reference a valid URL.',
+            SUMMARY:    '@longdesc@ %s be valid',
+            TARGET_RESOURCES_DESC: '@img@',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Change the @longdesc@ attribute value on the @img@ element to a valid URL.',
+              FAIL_P:   'Change the @longdesc@ attribute values on the %N_F @img@ elements to valid URLs.',
+              MANUAL_CHECK_S: 'Verify that the @img@ element with @longdesc@ attribute references a valid URL.',
+              MANUAL_CHECK_P: 'Verify that the %N_F @img@ elements with @longdesc@ attributes reference valid URLs.',
+              NOT_APPLICABLE: 'No @img@ elements with a @longdesc@ attribute found on this page.'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:   '@longdesc@ attribute is a valid URL',
+              ELEMENT_FAIL_1:   'Change the @longdesc@ attribute value to a valid URL or remove the reference.',
+              ELEMENT_MC_1:     'Use a browser to test whether the @longdesc@ attribute references a valid URL.',
+              ELEMENT_HIDDEN_1: 'Image was not evaluated because it is hidden from assistive technologies.'
+            },
+            PURPOSE: [
+              'Some images, such as charts, bar graphs, organizational charts or complex pictures and images, need a longer text equivalent than can be provided by inline specification techniques.'
+            ],
+            TECHNIQUES: [
+              '@longdesc@ can be used to provide an internal or external link to information that provides an extended and more detailed text equivalent for the image.'
+            ],
+            MANUAL_CHECKS: [
+              'Use browser inspection features to identify the value of the @longdesc@ attribute, and then try selecting the value to navigate to the new location in the browser.'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML 4.01 Specification: longdesc attribute',
+                url:   'http://www.w3.org/TR/html4/struct/objects.html#adef-longdesc-IMG'
+              },
+              { type: OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'H45: Using longdesc',
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/H45'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G92: Providing long description for non-text content that serves the same purpose and presents ',
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G92'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G74: Providing a long description in text near the non-text content, with a reference to the location of the long description in the short description',
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G74'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G73: Providing a long description in another location with a link to it that is immediately adjacent to the non-text content',
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G73'
+              },
+              { type: OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'H45: Using longdesc',
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/H45'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.TECHNIQUE,
+                title: 'iCITA Best Practices: Text Equivalents for Images and other Non-Text Objects Best Practices',
+                url:   'http://html.cita.illinois.edu/text/'
+              }
+            ]
+        },
+        IMAGE_3: {
+            ID:         'Image 3',
+            DEFINITION: 'The source file name of the image element %s not be part of the text alternative.',
+            SUMMARY:    'Don\'t use filename in alt. text',
+            TARGET_RESOURCES_DESC: '@img@, @area@ and @[role="img"]@ elements',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Change the value of the @alt@ attribute on the image element to describe the image without referencing the image source file name.',
+              FAIL_P:   'Change the value of the @alt@ attribute on the %N_F out of %N_T image elements to describe the image without referencing the image source file name.',
+              NOT_APPLICABLE:  'No @img@, @area@ or @[role="img"]@ elements on this page.'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1: 'Text alternative does not contain the source file name.',
+              ELEMENT_FAIL_1: 'Change the text alternative to succinctly describe the purpose and/or content of the image without referencing the image source file name.',
+              // TODO: Update validate fn: Need tag name for %1 placeholder
+              ELEMENT_HIDDEN_1: '@%1@ element was not evaluated because it is hidden from assistive technologies.'
+            },
+            PURPOSE: [
+              'A text alternative provides a description of an image for people who are unable to see the image. The source file name of the image should not be included because it is not useful information.',
+              'An image with a text alternative that is an empty string is ignored by assistive technologies, and indicates that it is being used for styling rather than meaningful content.'
+            ],
+            TECHNIQUES: [
+              'A text alternative should describe the purpose of an image as succinctly as possible (preferably with no more than 100 characters). Do not include the source file name as part of the text content.',
+              'The @alt@ attribute is the preferred and most commonly used way to provide a text alternative for @img@ and @area@ elements.',
+              'The @aria-labelledby@ attribute can be used to provide a text alternative when images can be described using text already associated with the image (e.g. a visible caption), or for elements with @role="img"@.',
+              'The @aria-label@ attribute should only be used to provide a text alternative in the special case when an element has a @role="img"@ attribute.',
+              'The @title@ attribute will be used by assistive technologies to provide a text alternative if no other specification technique is found.',
+              'If an image is purely stylistic or decorative, set the text alternative such that the result is an empty string (e.g., use @alt=""@ or @role="presentation"@).'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML 4.01 Specification: 13.8 How to specify alternate text',
+                url:   'http://www.w3.org/TR/html4/struct/objects.html#adef-alt'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G94: Providing short text alternative for non-text content that serves the same purpose and presents the same information as the non-text content',
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G94'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G95: Providing short text alternatives that provide a brief description of the non-text content',
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G95'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'F30: Failure of Success Criterion 1.1.1 and 1.2.1 due to using text alternatives that are not alternatives (e.g., filenames or placeholder text)',
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/F30'
+              }
+            ]
+        },
+        IMAGE_4_EN: {
+            ID:         'Image 4 (English)',
+            DEFINITION: 'The alternate text for an image %s be no more than 100 characters in length.',
+            SUMMARY:    'Alt. text max. 100 characters',
+            TARGET_RESOURCES_DESC: '@img@, @area@ and @[role="img"]@ elements',
+            RULE_RESULT_MESSAGES: {
+              MANUAL_CHECK_S: 'Modify the image alt. text to be no more than 100 characters.',
+              MANUAL_CHECK_P: 'Modify the alt. text for each of %N_F images to be no more than 100 characters.',
+              NOT_APPLICABLE: 'No @img@, @area@ or @[role="img"]@ elements on this page.'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1: 'Alt. text length is no more than 100 characters.',
+              ELEMENT_MC_1:   'Check the alt. text to determine whether it can be reworded to be no more than 100 characters. Also consider providing a longer description for the image using the @longdesc@ or @aria-describedby@ attribute, which would then allow shortening the alt. text content.',
+              // TODO: Update validate fn: Need tag name for %1 placeholder
+              ELEMENT_HIDDEN_1: '@%1@ element was not evaluated because it is hidden from assistive technologies.'
+            },
+            PURPOSE: [
+              'A text alternative for an image, usually specified with the @alt@ attribute, provides a description for people who are unable to see the image.',
+              'Overly long text alternatives can reduce usability by increasing the time it takes to read a web page and understand the significance of the included images.',
+              'An image with a text alternative that is an empty string is ignored by assistive technologies, and indicates that it is being used for styling rather than meaningful content.'
+            ],
+            TECHNIQUES: [
+              'A text alternative should describe the purpose of an image as succinctly as possible (preferably with no more than 100 characters).',
+              'If an image description requires more than 100 characters, consider using the @longdesc@ or @aria-describedby@ attribute for the full description, and shortening the alt. text content.'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML 4.01 Specification: 13.8 How to specify alternate text',
+                url:   'http://www.w3.org/TR/html4/struct/objects.html#adef-alt'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G94: Providing short text alternative for non-text content that serves the same purpose and presents the same information as the non-text content',
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G94'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G95: Providing short text alternatives that provide a brief description of the non-text content',
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G95'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'F30: Failure of Success Criterion 1.1.1 and 1.2.1 due to using text alternatives that are not alternatives (e.g., filenames or placeholder text)',
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/F30'
+              }
+            ]
+        },
+        IMAGE_5: {
+            ID:         'Image 5',
+            DEFINITION: 'If an image element has a width or height of 6 pixels or less, or its alt. text is an empty string, the image %s set its @role@ attribute to @presentation@, or it %s be removed from the page and CSS %s be used for its positioning.',
+            SUMMARY:    'Small/decorative images use @role="presentation"@',
+            TARGET_RESOURCES_DESC: '@img@ elements',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'For the one small image on the page, add @role="presentation"@ or change the text alternative to an empty string (i.e. @alt=""@).',
+              FAIL_P:   'For the %N_F small images on the page, add @role="presentation"@ or change the text alternative to an empty string (i.e. @alt=""@).',
+              NOT_APPLICABLE:  'No small or decorative images with width or height of 6 pixels or less on this page.'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:   'Image element has @role="presentation"@.',
+              ELEMENT_PASS_2:   'Image element has @alt=""@.',
+              ELEMENT_FAIL_1: 'Add @role="presentation"@ or change the alt. text to an empty string (i.e. @alt=""@).',
+              ELEMENT_HIDDEN_1: 'Small images set to @role="presentation"@ was not tested because the @img@ element is hidden from assistive technology'
+            },
+            PURPOSE: [
+              'Small and decorative images (i.e. less than 6 pixels high or wide) can be ignored by assistive technologies',
+              'Images with the @alt=""@ attribute should be set to the empty string'
+            ],
+            TECHNIQUES: [
+              'Small images are usually purely stylistic or decorative and the @alt@ text content should be the empty string (i.e. @alt=""@)'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML 4.01 Specification: 13.8 How to specify alternate text',
+                url:   'http://www.w3.org/TR/html4/struct/objects.html#adef-alt'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'F30: Failure of Success Criterion 1.1.1 and 1.2.1 due to using text alternatives that are not alternatives (e.g., filenames or placeholder text)',
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/F30'
+              }
+            ]
+        },
+        IMAGE_6: {
+            ID:         'Image 6',
+            DEFINITION: 'Verify that @img@ elements with @alt=""@ or @role="presentation"@ are in fact used purely for decorative or stylistic purposes.',
+            SUMMARY:    'Verify decorative images',
+            TARGET_RESOURCES_DESC: '@img@',
+            RULE_RESULT_MESSAGES: {
+              MANUAL_CHECK_S: 'Verify that the @img@ element with @alt=""@ or @role="presentation"@ is purely decorative.',
+              MANUAL_CHECK_P: 'Verify that the %N_MC @img@ elements with @alt=""@ or @role="presentation"@ are purely decorative.',
+              NOT_APPLICABLE: 'No @img@ elements identified as decorative (i.e., none with @alt=""@ or @role="presentation"@) on this page.'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_MC_1: 'Verify that the image is used only for styling or decoration.',
+              ELEMENT_HIDDEN_1: '@img@ element was not evaluated because it is hidden from assistive technologies.'
+            },
+            PURPOSE: [
+              'If an image is used purely for stylistic or decorative purposes, users of screen readers do not need to know that the image exists.',
+              'If an image does not have alt text content and contains information, users of assistive technology will not have access to the information.'
+            ],
+            TECHNIQUES: [
+              'Use the attributes @alt=""@ or @role="presentation"@ to indicate an image is used purely for stylistic or decorative purposes.'
+            ],
+            MANUAL_CHECKS: [
+              'Find each image on the page and verify that it is only being used decoratively or is redundant with other information on the page.'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML 4.01 Specification: 13.8 How to specify alternate text',
+                url:   'http://www.w3.org/TR/html4/struct/objects.html#adef-alt'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G94: Providing short text alternative for non-text content that serves the same purpose and presents the same information as the non-text content',
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G94'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G95: Providing short text alternatives that provide a brief description of the non-text content',
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G95'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.TECHNIQUE,
+                title: 'iCITA Best Practices: Text Equivalents for Images and other Non-Text Objects Best Practices',
+                url:   'http://html.cita.illinois.edu/text/'
+              }
+            ]
+        },
+        IMAGE_7: {
+            ID:         'Image 7',
+            DEFINITION: 'Text markup and CSS %s be used instead of images of text.',
+            SUMMARY:    'Verify no images of text',
+            TARGET_RESOURCES_DESC: '@img@',
+            RULE_RESULT_MESSAGES: {
+              MANUAL_CHECK_S:  'Verify that the @img@ element is not an image of text. If it is, convert it to text markup styled with CSS.',
+              MANUAL_CHECK_P:  'Verify that the %N_MC @img@ elements are not images of text. Convert any that are to text markup styled with CSS.',
+              NOT_APPLICABLE:  'No @img@ elements on this page'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_MC_1:     'Verify that the @img@ element is not an image of text.  If it is, convert it to text markup styled with CSS.',
+              ELEMENT_HIDDEN_1: 'The @img@ element was not evaluated because it is hidden from assistive technologies.'
+            },
+            PURPOSE: [
+              'People with visual impairments cannot easily change the font family, or the foreground and background colors of the text in the image to make the text readable.',
+              'Images of text can become pixilated, reducing readability, when the text is zoomed.'
+            ],
+            TECHNIQUES: [
+              'Convert images of text to text markup and use CSS styling techniques to style the text content.',
+              'Text that is included in logos or that is part of a larger drawing, schematic or picture are excluded from this requirement.'
+            ],
+            MANUAL_CHECKS: [
+              'Verify that the @img@ element is not an image of text. If it is, convert it to text markup styled with CSS.'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'W3C Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification',
+                url:   'http://www.w3.org/TR/CSS2/'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'How to meet Success Criterion 1.4.5 Images of Text',
+                url:   'http://www.w3.org/WAI/WCAG20/quickref/#qr-visual-audio-contrast-text-presentation'
+              }
+            ]
+        }
+   }
+});
+/*
+ * Copyright 2011, 2012, 2013 OpenAjax Alliance
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* --------------------------------------------------------------------------- */
+/*       OpenAjax Alliance Rules National Language Support (NLS): English      */
+/* --------------------------------------------------------------------------- */
+
+OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
+
+  //
+  //  OAA Rules title and message string National Language Support (NLS)
+  //
+  rules: {
+    HEADING_1: {
+      ID:                    'Heading 1',
+      DEFINITION:            'The page %s contain at least one @h1@ element and each must have an accessible name.',
+      SUMMARY:               'Page %s have @h1@ element',
+      TARGET_RESOURCES_DESC: '@h1@ and @body@ elements',
+      RULE_RESULT_MESSAGES: {
+        FAIL_S:   'Add a descriptive @h1@ element at the beginning of the main content of the page.',
+        FAIL_P:   'Add a descriptive @h1@ element at the beginning of the main content of the page.',
+        HIDDEN_S: 'One @h1@ element that is hidden was not evaluated.',
+        HIDDEN_P: '%N_H @h1@ elements that are hidden were not evaluated.'
+      },
+      NODE_RESULT_MESSAGES: {
+        PAGE_PASS_1:     'Page has @h1@ element.',
+        PAGE_FAIL_1:     'Add an @h1@ element at the beginning of the main content of the page.',
+        ELEMENT_PASS_1:  '@h1@ element contributes to passing this rule.',
+        ELEMENT_FAIL_1:  'Add an accessible name to the @h1@ element that describes the main content of the page.',
+        ELEMENT_HIDDEN_1:'The @h1@ element was not evaluated because it is hidden from assistive technologies.'
+      },
+      PURPOSE: [
+        'An @h1@ heading provides an important navigation point for users of assistive technologies, allowing them to easily find the main content of the page.'
+      ],
+      TECHNIQUES: [
+        'Include an @h1@ element at the beginning of the main content.',
+        'The accessible name of the @h1@ element should describe the main content of the page.',
+        'The @h1@ element should be visible graphically and to assistive technologies. It should not be hidden using CSS techniques.'
+      ],
+      MANUAL_CHECKS: [
+      ],
+      INFORMATIONAL_LINKS: [
+        { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+          title: 'HTML 4.01 Specification: The @h1@ element',
+          url:   'http://www.w3.org/TR/html4/struct/global.html#edef-H1'
+        },
+        { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+          title: 'G130: Providing descriptive headings',
+          url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G130'
+        },
+        { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+          title: 'G141: Organizing a page using headings',
+          url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G141'
+        },
+        { type:  OpenAjax.a11y.REFERENCES.TECHNIQUE,
+          title: 'iCITA Best Practices: Unique Title',
+          url:   'http://html.cita.illinois.edu/nav/title/'
+        }
+      ]
+    },
+    HEADING_2: {
+      ID:                    'Heading 2',
+      DEFINITION:            'If the page contains @h1@ element and either a @main@ or @banner@ landmark, the @h1@ element %s be a child of either the main or @banner@ landmark.',
+      SUMMARY:               '@h1@ %s be in @main@ or @banner@ landmark',
+      TARGET_RESOURCES_DESC: '@h1@ elements and elements with ARIA attribute @role="main"@ or @role="banner"@ ',
+      RULE_RESULT_MESSAGES: {
+        FAIL_S: 'Move the @h1@ element inside (and preferably at the beginning) of the @main@ element, or change the @h1@ element to another heading level.',
+        FAIL_P: 'Move the %N_F @h1@ elements inside (and preferably at the beginning) of @main@ or @banner@ landmark elements, or change the @h1@ elements to other heading levels.',
+        HIDDEN_S: 'One @h1@ element that is hidden was not evaluated.',
+        HIDDEN_P: '%N_H @h1@ elements that are hidden were not evaluated.',
+        NOT_APPLICABLE: 'No @h1@ elements and either a @main@ or @banner@ landmark.'
+      },
+      NODE_RESULT_MESSAGES: {
+        ELEMENT_PASS_1:   'The @h1@ is a child element of a @main@ landmark.',
+        ELEMENT_PASS_2:   'The @h1@ is a child element of a @banner@ landmark.',
+        ELEMENT_FAIL_1:   'Position the @h1@ element as one of the first child elements of a @main@ landmark to mark the beginning of main content to identify the main content of this page, or within the @banner@ landmark to provide a label for the website.',
+        ELEMENT_HIDDEN_1: 'The @h1@ element was not evaluated because it is hidden from assistive technologies.'
+      },
+      PURPOSE: [
+        'An @h1@ heading should primarily be used to identify the content on the specific page within the website and be placed at the beginning of the main content to provide an important navigation point for users of assistive technologies, allowing them to easily find the main content of the page.',
+        'An @h1@ heading can also be used (but not required) to provide a label for the website and when it is used for this purpose it should be placed in the @banner@ element.',
+        'Including both a @main@ landmark and an @h1@ element provides a redundant way for users of assistive technologies to find the main content of a web page.'
+      ],
+      TECHNIQUES: [
+        'This rule supports the coding practice of reserving the @h1@ element for titling the main content area of a web page.',
+        'Include an @h1@ element at the beginning of each @main@ landmark.',
+        'The @h1@ element should describe the main content or purpose of the page.',
+        'If there is more than one @main@ landmark, use the @aria-labelledby@ attribute on each to reference an @h1@ element that provides its accessible name.',
+        'An @h1@ element being used to label the the website must be placed inside the @banner@ element.'
+      ],
+      MANUAL_CHECKS: [
+      ],
+      INFORMATIONAL_LINKS: [
+        { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+          title: 'HTML 4.01 Specification: The @h1@ element',
+          url:   'http://www.w3.org/TR/html4/struct/global.html#edef-H1'
+        },
+        { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+          title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: @main@ role',
+          url:   'http://www.w3.org/TR/wai-aria/roles#main'
+        },
+        { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+          title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: @banner@ role',
+          url:   'http://www.w3.org/TR/wai-aria/roles#banner'
+        }
+      ]
+    },
+    HEADING_3: {
+      ID:                    'Heading 3',
+      DEFINITION:            'The accessible names of sibling heading elements of the same level %s be unique.',
+      SUMMARY:               'Sibling headings %s be unique',
+      TARGET_RESOURCES_DESC: 'Heading elements',
+      RULE_RESULT_MESSAGES: {
+        FAIL_P: 'Update the accessible names of the %N_F sibling heading elements of the same level to be unique.',
+        HIDDEN_S: 'One heading element that is hidden was not evaluated.',
+        HIDDEN_P: '%N_H heading elements that are hidden were not evaluated.',
+        NOT_APPLICABLE: 'No sibling heading elements of the same level were found on the page.'
+      },
+      NODE_RESULT_MESSAGES: {
+        ELEMENT_PASS_1:    'The %1 heading content is unique among its sibling headings.',
+        ELEMENT_FAIL_1:  'Change the accessible name of %1 heading to make it unique among its sibling headings.',
+        ELEMENT_HIDDEN_1:  'The %1 element was not evaluated because it is hidden from assistive technologies.'
+      },
+      PURPOSE: [
+        'If section headings that share the same parent heading are NOT unique, users of assistive technologies will not be able to discern the differences among sibling sections of the web page.'
+      ],
+      TECHNIQUES: [
+        'Make sure the accessible names of sibling headings that share the same parent heading help users understand the unique content of each section they describe.'
+      ],
+      MANUAL_CHECKS: [
+      ],
+      INFORMATIONAL_LINKS: [
+        { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+          title: 'HTML 4.01 Specification: Headings: The H1, H2, H3, H4, H5, H6 elements',
+          url:   'http://www.w3.org/TR/html4/struct/global.html#edef-H1'
+        },
+        { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+          title: 'G130: Providing descriptive headings',
+          url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G130'
+        },
+        { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+          title: 'G141: Organizing a page using headings',
+          url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G141'
+        },
+        { type:  OpenAjax.a11y.REFERENCES.TECHNIQUE,
+          title: 'iCITA Best Practices: Unique Title',
+          url:   'http://html.cita.illinois.edu/nav/title/'
+        },
+        { type:  OpenAjax.a11y.REFERENCES.TECHNIQUE,
+          title: 'iCITA Best Practices: Sub Headings',
+          url:   'http://html.cita.illinois.edu/nav/heading/'
+        }
+      ]
+    },
+    HEADING_4: {
+      ID:                    'Heading 4',
+      DEFINITION:            'Heading elements %s describe the sections they label.',
+      SUMMARY:               'Headings %s be descriptive',
+      TARGET_RESOURCES_DESC: 'Heading elements',
+      RULE_RESULT_MESSAGES: {
+        FAIL_S:   'Add an accessible name to the empty heading element, or remove it if it is not needed.',
+        FAIL_P:   'Add accessible names to the %N_F empty heading elements, or remove them if they are not needed.',
+        MANUAL_CHECK_S:     'Verify that the heading element describes the section that it labels.',
+        MANUAL_CHECK_P:     'Verify that each of the %N_MC heading elements describes the section that it labels.',
+        HIDDEN_S: 'One heading element that is hidden was not evaluated.',
+        HIDDEN_P: '%N_H heading elements that are hidden were not evaluated.',
+        NOT_APPLICABLE:  'No heading elements on this page.'
+      },
+      NODE_RESULT_MESSAGES: {
+        ELEMENT_MC_1:  'Check %1 element to make sure it describes the section it labels.',
+        ELEMENT_FAIL_1:        'Add an accessible name to the %1 element that describes the section it labels, or remove it from the page if it is not needed.',
+        ELEMENT_HIDDEN_1:        'The %1 element was not evaluated because it is hidden from assistive technologies.'
+      },
+      PURPOSE: [
+        'If headings are NOT descriptive or unique they will confuse users of assistive technologies.',
+        'There is a balance needed between having too few headings and too many headings on a web page. Make sure that the heading structure provides a good "outline" of the sections and subsections of the page.'
+      ],
+      TECHNIQUES: [
+        'Use the @h1@ element to indicate the start of the main content, by putting it just before the main content.',
+        'Use the @h1@ element to provide a title for the web page.',
+        'Include heading elements at the proper level for each section of a web page.',
+        'Use @aria-describedby@ to provide context for a heading in a web page.',
+        'Use headings as labels for ARIA landmarks to provide redundant page navigation capabilities for users of assistive technologies.',
+        'Use the CSS @position@ property to remove headings from the graphical rendering, while keeping them accessible to users of assistive technologies.',
+        'Do NOT use CSS @display: none@, @visibility: hidden@ or the @hidden@ attribute to hide headings when they are being used to provide section labeling information to users of assistive technologies. Instead use the CSS @position@ property to move the headings off-screen.'
+      ],
+      MANUAL_CHECKS: [
+        'Check the heading structure to make sure the headings represent the sections and subsections of the web page.',
+        'Check the headings against other headings on the page to make sure they uniquely describe the content of each section of the web page.',
+        'If headings are too similar to each other, users of assistive technologies will not understand the differences between different sections of the web page.'
+      ],
+      INFORMATIONAL_LINKS: [
+        { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+          title: 'HTML 4.01 Specification: Headings: The H1, H2, H3, H4, H5, H6 elements',
+          url:   'http://www.w3.org/TR/html4/struct/global.html#edef-H1'
+        },
+        { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+          title: 'G130: Providing descriptive headings',
+          url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G130'
+        },
+        { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+          title: 'G141: Organizing a page using headings',
+          url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G141'
+        },
+        { type:  OpenAjax.a11y.REFERENCES.TECHNIQUE,
+          title: 'iCITA Best Practices: Unique Title',
+          url:   'http://html.cita.illinois.edu/nav/title/'
+        },
+        { type:  OpenAjax.a11y.REFERENCES.TECHNIQUE,
+          title: 'iCITA Best Practices: Sub Headings',
+          url:   'http://html.cita.illinois.edu/nav/heading/'
+        }
+      ]
+    },
+    HEADING_5: {
+      ID:                    'Heading 5',
+      DEFINITION:            'Heading elements %s be properly nested on the page.',
+      SUMMARY:               'Headings %s be properly nested',
+      TARGET_RESOURCES_DESC: 'Heading elements',
+      RULE_RESULT_MESSAGES: {
+        FAIL_S:  'Review the entire heading structure and update the heading levels so that the heading element is properly nested in relation to the %N_T headings on the page.',
+        FAIL_P:  'Review the entire heading structure and update the heading levels so that the %N_F heading elements are properly nested in relation to the %N_T headings on the page.',
+        HIDDEN_S: 'One heading element that is hidden was not evaluated.',
+        HIDDEN_P: '%N_H heading elements that are hidden were not evaluated.',
+        NOT_APPLICABLE: 'No heading elements or only one heading element on this page.'
+      },
+      NODE_RESULT_MESSAGES: {
+        ELEMENT_PASS_1:   'The %1 element is properly nested.',
+        ELEMENT_PASS_2:   'All heading elements are properly nested',
+        ELEMENT_FAIL_1: 'Adjust the level of the %1 element or other heading elements so that the headings are properly nested on the page.',
+        ELEMENT_FAIL_2: 'Add text content to %1 element that describes the section it labels, or remove it from the page if it is not needed.',
+        ELEMENT_FAIL_3: 'Adjust the heading levels of the parent %1 element or this %2 element so that the headings are properly nested on the page.',
+        ELEMENT_HIDDEN_1: 'The %1 element was not evaluated because it is hidden from assistive technologies.'
+      },
+      PURPOSE: [
+        'Heading elements that are properly nested help users of assistive technologies understand the structure of the information on the web page.'
+      ],
+      TECHNIQUES: [
+        'Include headings elements at the proper level for each section of a web page.',
+        'Use headings as labels for ARIA landmarks to provide a redundant way for users of assistive technologies to navigate the page (i.e. header or landmark navigation).',
+        'Check headings against other headings in the document to make sure they uniquely describe the content of each section of the web page.',
+        'If headings are too similar to each other, users of assistive technologies will not be able to use them to understand the differences between sections of the web page.'
+      ],
+      MANUAL_CHECKS: [
+      ],
+      INFORMATIONAL_LINKS: [
+        { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+          title: 'HTML 4.01 Specification: Headings: The H1, H2, H3, H4, H5, H6 elements',
+          url:   'http://www.w3.org/TR/html4/struct/global.html#edef-H1'
+        },
+        { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+          title: 'G130: Providing descriptive headings',
+          url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G130'
+        },
+        { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+          title: 'G141: Organizing a page using headings',
+          url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G141'
+        },
+        { type:  OpenAjax.a11y.REFERENCES.TECHNIQUE,
+          title: 'iCITA Best Practices: Unique Title',
+          url:   'http://html.cita.illinois.edu/nav/title/'
+        },
+        { type:  OpenAjax.a11y.REFERENCES.TECHNIQUE,
+          title: 'iCITA Best Practices: Sub Headings',
+          url:   'http://html.cita.illinois.edu/nav/heading/'
+        }
+      ]
+    },
+    HEADING_6: {
+      ID:                    'Heading 6',
+      DEFINITION:            'Heading elements %s have visible text content.',
+      SUMMARY:               'Headings %s have text content',
+      TARGET_RESOURCES_DESC: 'Heading elements',
+      RULE_RESULT_MESSAGES: {
+        FAIL_S:   'For the heading element with only image content, replace the image with text content styled using CSS.',
+        FAIL_P:   'For the %N_F heading elements with only image content, replace the images with text content styled using CSS.',
+        HIDDEN_S: 'One heading element that is hidden was not evaluated.',
+        HIDDEN_P: '%N_H heading elements that are hidden were not evaluated.',
+        NOT_APPLICABLE:  'No headings with only image content.'
+      },
+      NODE_RESULT_MESSAGES: {
+        ELEMENT_PASS_1:   'The %1 element contains visible text content.',
+        ELEMENT_FAIL_1: 'Add visible text content to the %1 element.',
+        ELEMENT_FAIL_2: 'The %1 element does not have an accessible name.  Either remove the heading from the page or add visible text content to describe the section.',
+        ELEMENT_HIDDEN_1: 'The %1 element was not evaluated because it is hidden from assistive technologies.'
+      },
+      PURPOSE: [
+        'Heading elements that consist only of image content are not easily restyled for readabilty by people with low vision.'
+      ],
+      TECHNIQUES: [
+        'Use CSS instead of images to style heading text content.'
+      ],
+      MANUAL_CHECKS: [
+      ],
+      INFORMATIONAL_LINKS: [
+        { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+          title: 'HTML 4.01 Specification: Headings: The H1, H2, H3, H4, H5, H6 elements',
+          url:   'http://www.w3.org/TR/html4/struct/global.html#edef-H1'
+        },
+        { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+          title: 'C22: Using CSS to control visual presentation of text',
+          url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/C22'
+        }
+      ]
+    },
+    HEADING_7: {
+      ID:                    'Heading 7',
+      DEFINITION:            'If a @contentinfo@, @complementary@, @form@, @navigation@ or @search@ landmark contains a heading element, the first heading should be an @h2@ element.',
+      SUMMARY:               'First landmark heading @h2@',
+      TARGET_RESOURCES_DESC: '@contentinfo@, @complementary@, @form@, @navigation@ or @search@ landmarks elements',
+      RULE_RESULT_MESSAGES: {
+        FAIL_S:   'Adjust the heading structure within the landmark so that the first heading is an @h2@ element.',
+        FAIL_P:   'Adjust the heading structures of the %N_F landmarks with headings so that the first heading of each is an @h2@ element.',
+        HIDDEN_S: 'One @h2@ element that is hidden was not evaluated.',
+        HIDDEN_P: '%N_H @h2@ elements that are hidden were not evaluated.',
+        NOT_APPLICABLE:  'No headings in landmarks, or no landmarks on the page.'
+      },
+      NODE_RESULT_MESSAGES: {
+        ELEMENT_PASS_1:   'The @h2@ element is the first heading in the landmark.',
+        ELEMENT_FAIL_1: 'Adjust the headings in the %1 landmark to ensure that the first heading is an @h2@ element instead of an @%2@.',
+        ELEMENT_HIDDEN_1: 'The @h2@ element was not evaluated because it is hidden from assistive technologies.'
+      },
+      PURPOSE: [
+        'Headings provide a redundant way for people to navigate and orient themselves to content on a web page.',
+        'The use of an @h2@ element as the first heading in a landmark (except the @main@ and @banner@ landmarks) supports a consistent use of headings for finding the main sections in a web page.'
+      ],
+      TECHNIQUES: [
+        'Locate an @h2@ element at the beginning of the content in the landmark to describe the content in the landmark.',
+        'The @h2@ element can be used as the accessible name for a landmark using the @aria-labelledby@ attribute on the landmark to point to an @id@ attribute on the @h2@ element.',
+        'The @h2@ element can be hidden from the graphical rendering using offscreen CSS positioning (e.g. @position: absolute@ )techniques.'
+      ],
+      MANUAL_CHECKS: [
+      ],
+      INFORMATIONAL_LINKS: [
+        { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+          title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: landmark roles',
+          url:   'http://www.w3.org/TR/wai-aria/roles#landmark'
+        },
+        { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+          title: 'HTML 4.01 Specification: Headings: The H2 elements',
+          url:   'http://www.w3.org/TR/html4/struct/global.html#edef-H2'
+        }
+      ]
+    },
+        // ----------------------------------------------------------------
+        // LANDMARK_8: Headings nested in landmarks
+        // ----------------------------------------------------------------
+
+        HEADING_8: {
+            ID:         'Heading 8',
+            DEFINITION: 'Headings %s be properly nested within a landmark.',
+            SUMMARY:    'Headings nested in landmarks',
+            TARGET_RESOURCES_DESC: 'Landmark elements',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Review the heading structure within the landmark and adjust the heading levels such that all are properly nested.',
+              FAIL_P:   'Review the heading structure for each landmark with more than one heading, and adjust the heading levels in each landmark such that all headings are properly nested.',
+              HIDDEN_S: 'If the hidden heading element is supposed to be visible to assistive technologies, style it to be positioned off-screen.',
+              HIDDEN_P: 'If any of the %N_H hidden heading elements are supposed to be visible to assistive technologies, style them to be positioned off-screen.',
+              NOT_APPLICABLE: 'No nested headings found in landmarks.'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:   '@%1@ heading is properly nested in the @%2@ landmark.',
+              ELEMENT_FAIL_1:   'Adjust the level of the @%1@ heading or other heading elements such that the headings are properly nested in the @%2@ landmark.',
+              ELEMENT_FAIL_2:   'Add text content to @%1@ element that describes the section it labels or remove it from the @%2@ landmark.',
+              ELEMENT_FAIL_3:   'Adjust the level of either the parent @%1@ heading or this @%2@ heading such that they are properly nested in the @%3@ landmark.',
+              ELEMENT_HIDDEN_1: 'The @%1@ heading in the @%2@ landmark was not evaluated because it is hidden from assistive technologies.',
+              ELEMENT_HIDDEN_2: 'The @%2@ landmark was not evaluated because it is hidden from assistive technologies.'
+            },
+            PURPOSE: [
+              // TODO: what is the purpose?
+              'Headings provide a way to indicate the structure and to label the sections of content within a landmark.',
+              'Headings and there associated heading levels provide a way for people using assistive technology to understand and navigate the structure of the content within a landmark.'
+            ],
+            TECHNIQUES: [
+              // TODO: what are the techniques?
+              'Use an @h1@ element for the first heading in @main@ landmarks.',
+              'Use an @h2@ element for the first heading in other top level landmarks.',
+              'Use heading elements to identify the content of each section within a landmark.',
+              'Properly nest of heading elements within a landmark (e.g. @h2@ follows @h1@ headings, @h3@ follows @h2@ headings, ...).'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: contentinfo role',
+                url:   'http://www.w3.org/TR/wai-aria/roles#contentinfo'
+              }
+            ]
+        }
+    }    
+});
+/*
+ * Copyright 2011, 2012, 2013 OpenAjax Alliance
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* --------------------------------------------------------------------------- */
+/*       OpenAjax Alliance Rules National Language Support (NLS): English      */
+/* --------------------------------------------------------------------------- */
+   
+
+OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
+
+    //
+    //  OAA Rules title and message string National Language Support (NLS)
+    //
+    rules: {
+        HTML_1: {
+            ID:                    'HTML 1',
+            DEFINITION:            '@strong@, @em@ or in some cases @h1-h6@ heading elements %s be used instead of @b@ and @i@ elements.',
+            SUMMARY:               'Replace @b@ and @i@ elements',
+            TARGET_RESOURCES_DESC: '@b@ and @i@ elements',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Change the @b@ or @i@ element to a @strong@ or @em@ element or, if appropriate, an @h1-h6@ element.',
+              FAIL_P:   'Change the @b@ or @i@ elements to @strong@ or @em@ elements or, if appropriate, @h1-h6@ elements.',
+              HIDDEN_S: 'If the hidden @b@ or @i@ element becomes visible, it should be changed to a @strong@, @em@ or possibly an @h1-h6@ element.',
+              HIDDEN_P: 'If any of the %N_H hidden @b@ or @i@ elements become visible, they should be changed to @strong@, @em@ or possibly @h1-h6@ elements.',
+              NOT_APPLICABLE:  'No @b@ or @i@ elements found on the page'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_FAIL_1: 'Change the @b@ element to a @strong@ element or to a heading element (i.e. @h1-h6@), depending on its purpose in the page.',
+              ELEMENT_HIDDEN_1: '@b@ element is hidden, but should be changed to a @strong@ element or to a heading element (i.e. @h1-h6@), depending on its purpose in the page, in case it becomes visible.',
+              ELEMENT_FAIL_2: 'Change the @i@ element to an @em@ element or to a heading element (i.e. @h1-h6@), depending on its purpose in the page.',
+              ELEMENT_HIDDEN_2: '@i@ element is hidden, but should be changed to an @em@ element or to a heading element (i.e. @h1-h6@), depending on its purpose in the page, in case it becomes visible.'
+            },  
+            PURPOSE: [
+              'In inline formatting use, the @b@ and @i@ elements do not convey the semantics of the text content.',
+              'The @b@ and @i@ elements are often misused for emphasizing words in a sentence, or to change the styling of content being used as a section header in the page.'
+            ],
+            TECHNIQUES: [
+              'If a @b@ element is being used in a sentence for emphasizing a word or phrase, replace it with the @strong@ element.',
+              'If an @i@ element is being used in a sentence for emphasizing a word or phrase, replace it with the @em@ element.',
+              'If a @b@ or @i@ element is being used to style a section heading, replace it with an @h1-h6@ heading element, depending on the level of heading needed in accordance with the structure of the page.'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HTML 4.01 Specification: Headings: The em and strong elements', 
+                url:   'http://www.w3.org/TR/html4/struct/text.html#edef-EM'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HTML 4.01 Specification: Headings: The H1-H6 elements', 
+                url:   'http://www.w3.org/TR/html4/struct/global.html#edef-H2'
+              }
+            ]
+        },    
+        HTML_2: {
+            ID:                    'HTML 2',
+            DEFINITION:            '@marquee@ elements %s be removed to improve readability of content.',
+            SUMMARY:               'Replace @marquee@ elements',
+            TARGET_RESOURCES_DESC: '@marquee@ element',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Replace the @marquee@ element with a standard HTML element. Use CSS techniques to style the content, and JavaScript to provide controls that stop and start the scrolling.',
+              FAIL_P:   'Replace the %N_F @marquee@ elements with standard HTML elements. Use CSS techniques to style the content, and JavaScript to provide controls that stop and start the scrolling.',
+              HIDDEN_S: 'If the hidden @marquee@ element becomes visible, it must be changed to a standard HTML element.  Use CSS techniques to style the content, and JavaScript to provide controls that stop and start the scrolling.',
+              HIDDEN_P: 'If any of the %N_H hidden @marquee@ elements become visible, they must be changed to standard HTML elements. Use CSS techniques to style the content, and JavaScript to provide controls that stop and start the scrolling.',
+              NOT_APPLICABLE:  'No @marquee@ elements found on the page'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_FAIL_1: 'Change the @marquee@ element to a standard HTML element. Use CSS techniques to style the content, and JavaScript to provide controls that stop and start the scrolling.',
+              ELEMENT_HIDDEN_1: '@marquee@ element is hidden, but should be changed to a standard HTML element, in case it becomes visible. Use CSS techniques to style the content, and JavaScript to provide controls that stop and start the scrolling.'
+            },  
+            PURPOSE: [
+              'Automatically moving text cannot be read by many people with visual impairments or by people with learning disabilities that affect reading.'
+            ],
+            TECHNIQUES: [
+              'Replace the @marquee@ element with a standard HTML element and use CSS techniques to style the content.',
+              'By default, when the page loads, the marquee should be paused.',
+              'Use Javascript to provide buttons that start and stop the scrolling of content in the marquee.',
+              'Provide a means to see all of the content in the marquee at one time.'
+            ],
+            MANUAL_CHECKS: [
+              'Verify that when the page loads, the content is not scrolling.',
+              'Verify that there are start and pause buttons that start and stop the scrolling of content.'
+            ],
+            INFORMATIONAL_LINKS: [
+            ]
+        }
+   }
+});
+/*
+ * Copyright 2011, 2012, 2013 OpenAjax Alliance
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* --------------------------------------------------------------------------- */
+/*       OpenAjax Alliance Rules National Language Support (NLS): English      */
+/* --------------------------------------------------------------------------- */
+   
+
+OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
+
+    //
+    //  OAA Rules title and message string National Language Support (NLS)
+    //
+    rules: {
+     KEYBOARD_1: {
+            ID:                    'Keyboard 1',
+            DEFINITION:            'Widget elements %s have keyboard event handlers',
+            SUMMARY:               'Widgets %s support keyboard',
+            TARGET_RESOURCES_DESC: 'Widget elements',
+            RULE_RESULT_MESSAGES: {
+              MANUAL_CHECK_S:    'Verify the widget element has keyboard event handlers through is parent elements, owner widget (i.e. aria-activedescendant) or required child widgets',
+              MANUAL_CHECK_P:    'Verify the %N_MC out %N_T widgets have keyboard event handlers through is parent elements, owner widget (i.e. aria-activedescendant) or required child widgets',
+              FAIL_S:  'Add event handlers to the widget to support keyboard operation of the widget',
+              FAIL_P:  'Add event handlers to the %N_F out of %N_T widgets to support keyboard operation of each widget',
+              NOT_APPLICABLE: 'No widgets on the page'              
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:               '@%1@ widget has keyboard support through event handlers on the widget element',
+              ELEMENT_MC_1:       'Verify the @%1@ widget has keyboard support through keyboard event handlers on a parent widget element',
+              ELEMENT_MC_2:       'Verify the @%1@ widget has keyboard support through keyboard event handlers through @aria-activedescendant@ support on its @%2@ owner widget',
+              ELEMENT_MC_3: 'Verify the @%1@ widget has keyboard support through keyboard event handlers on a required child widgets',
+              ELEMENT_FAIL_1:       'Add keyboard event handlers to the @%1@ widget to support keyboard interaction with the widget',
+              ELEMENT_HIDDEN_1:       'Widgets must support keyboard interaction was not tested because @%1@ widget is hidden from assistive technologies'
+            },
+            PURPOSE: [
+              'Keyboard support is required by people who cannot use the mouse to interact with a widget'                   
+            ],
+            TECHNIQUES: [
+              'Use the @keyup@, @keydown@ and @keypress@ events to support keyboard interaction with widgets'
+            ],
+            MANUAL_CHECKS: [
+              'Try using the web application with only the keyboard, and verify that all functionalities can be performed with the keyboard alone',
+              'For widgets check the keyboard behavior with the recommendations in the ARIA Authoring Practices guide to make sure that keyboard operation is predictable to the user'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Widget Roles', 
+                url:   'http://www.w3.org/TR/wai-aria/roles#widget_roles'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G108'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
+                title: 'OAA Web Accessibility ARIA Examples', 
+                url:   'http://oaa-accessibility.org/examples/'
+              }                            
+            ]
+        },
+     KEYBOARD_2: {
+            ID:                    'Keyboard 2',
+            DEFINITION:            'Widget elements %s use tabindex to add keyboard focus support on non-interactive elements',
+            SUMMARY:               'Tabindex for focus',
+            TARGET_RESOURCES_DESC: 'Widget elements',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Add @tabindex@ value to the widget or add @aria-activedescendant@ support to an ancestor widget to provide keyboard focus support to the widget',
+              FAIL_P:   'Add @tabindex@ value to the widget or add @aria-activedescendant@ support to an ancestor widget to provide keyboard focus support to the %N_F out of %N_T widgets',
+              MANUAL_CHECK_S:     'Verify that the @aria-activedescendant@ provides keyboard focus support to the widget that is a child of a widget with an @aria-activedescendent@ property',
+              MANUAL_CHECK_P:     'Verify that the @aria-activedescendant@ provides keyboard focus support to the %N_MC out of %N_T widgets that are children of a widget with an @aria-activedescendent@ property',
+              NOT_APPLICABLE:  'No widgets on this page'              
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:          '@%1@ widget is on a @%2@ element that can receive keyboard focus',
+              ELEMENT_PASS_2:          '@%1@ widget has a @tabindex@ value that supports receiving keyboard focus',
+              ELEMENT_MC_1:  '@%1@ widget is the child of a widget that has an @aria-activedescendant@ attribute, verify the @aria-activedescendant@ supports references to the @id=%2@ of this widget',
+              ELEMENT_MC_2:  'Verify the child widgets of the @%1@ element with an onClick event of accurately represent the interactive features of this section of the web page',
+              ELEMENT_FAIL_1:        'Add @tabindex@ value to the widget or add @aria-activedescendant@ support to an ancestor widget to provide keyboard focus support',
+              ELEMENT_HIDDEN_1:        '@tabindex@ to support focus events was not tested becayse @%1@ widget is hidden from assistive technology'
+            },
+            PURPOSE: [
+              'Keyboard support is required by people who cannot use the mouse to interact with a widget'                   
+            ],
+            TECHNIQUES: [
+              'The @tabindex@ enables non-interactive elements (i.e. @div@, @li@, @span@ ...) to receive and process focus ',
+              'The @tabindex@ enables non-interactive elements (i.e. @div@, @li@, @span@ ...) to receive and process focus '
+            ],
+            MANUAL_CHECKS: [
+              'Using only the keyboard verify all features of a widget can be identified by assistive technology by changing the keyboard focus'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Widget Roles', 
+                url:   'http://www.w3.org/TR/wai-aria/roles#widget_roles'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G108'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
+                title: 'OAA Web Accessibility ARIA Examples', 
+                url:   'http://oaa-accessibility.org/examples/'
+              }                            
+            ]
+        },
+     KEYBOARD_3: {
+            ID:                    'Keyboard 3',
+            DEFINITION:            'All functionality %s be operable through the keyboard alone',
+            SUMMARY:               'Keyboard operation',
+            TARGET_RESOURCES_DESC: 'Widgets, @object@ and @applet@ elements must support keyboard operation',
+            RULE_RESULT_MESSAGES: {
+              MANUAL_CHECK_S:   'Check the widget or embedded application to make sure all functionalities are available through the keyboard',
+              MANUAL_CHECK_P:   'Check the %N_PG widgets and/or embedded applications to make sure all functionalities are available through the keyboard',
+              NOT_APPLICABLE:  'No @object@, @applet@ or widget elements on the page'              
+            },
+            NODE_RESULT_MESSAGES: {
+              PAGE_MC_1:         'Check the %1 widgets on the page for keyboard support for all functionalities',
+              PAGE_MC_2:         'Check the %1 objects on the page for keyboard support for all functionalities',
+              PAGE_MC_3:         'Check the %1 widgets and %3 @object@s on the page for keyboard support for all functionalities',
+              ELEMENT_MC_1:      'The @%1@ element with @role="%2"@ is part of the manual check for keyboard support for all functionalities',
+              ELEMENT_MC_2:      'The @%1@ element is part of the manual check for keyboard support for all functionalities',
+              ELEMENT_HIDDEN_1:  'The @%1@ element with @role="%2"@ is hidden and therefore NOT a part of the manual check for keyboard support for all functionalities',
+              ELEMENT_HIDDEN_2:  'The @%1@ element is hidden, and therefore NOT a part of the manual check for keyboard support for all functionalities'
+            },
+            PURPOSE: [
+              'Many people cannot use the mouse, either because they cannot see the pointer or to not have fine motor skills to accurately position the mouse',
+              'This requirement does not mean not to support the mouses, but just to make sure their is an equivalent way using the keyboard for all tasks that can be done with the mouse',
+              'Using efficient and plateform conventions for keyboard support will make it it easier for all users to benefit from the keyboard support, since the keys will be eaiser to discover and familair to users',
+              'Touch typists often prefer keyboard commands than the mouse for performing operations, making them much more efficient'
+            ],
+            TECHNIQUES: [
+              'Use the WAI-ARIA 1.0 Authoring Practices to determine the keyboard support for widgets',
+              'Use keyboard event handers to implement keyboard support'
+            ],
+            MANUAL_CHECKS: [
+              'Make a list of the functional feature of a web site.  NOTE: if a page only has simple links and form controls then keyboard support is built-in through browser support',
+              'Using only the keyboard excercise all the functionalities of the web page'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'WAI-ARIA 1.0 Authoring Practices', 
+                url:   'http://www.w3.org/WAI/PF/aria-practices/'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
+                title: 'OAA Web Accessibility ARIA Examples', 
+                url:   'http://oaa-accessibility.org/examples/'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
+                title: 'Accessible jQuery-ui Components Demonstration', 
+                url:   'http://access.aol.com/aegis/'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
+                title: 'Accessible jQuery-ui Components Demonstration', 
+                url:   'http://access.aol.com/aegis/'
+              }                            
+            ]
+        },
+     KEYBOARD_4: {
+            ID:                    'Keyboard 4',
+            DEFINITION:            '@object@ and @applet@ elements %s not trap the keyboard',
+            SUMMARY:               'No keyboard trap',
+            TARGET_RESOURCES_DESC: '@object@ and @applet@ elements',
+            RULE_RESULT_MESSAGES: {
+              MANUAL_CHECK_S:     'Check the embedded application to make sure the application does not trap the keyboard',
+              MANUAL_CHECK_P:     'Check the %N_MC embedded applications to make sure application does not trap the keyboard',
+              NOT_APPLICABLE:  'No @applet@ and @object@ elements on the page'              
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_MC_1:  'Check the %1 element to see if it traps the keyboard',
+              ELEMENT_HIDDEN_1:        '%1 element is hidden, so it cannot trap the keyboard'
+            },
+            PURPOSE: [
+              'If an embedded application (i.e. @object@ or @applet@ element) traps the keyboard, keyboard users will not be able to use the web page'                   
+            ],
+            TECHNIQUES: [
+              'Use @tabindex="-1"@ on the element to remove it from "tab" order of the page',
+              'If the embedded application does support accessibility, use a button to move focus to the application'
+            ],
+            MANUAL_CHECKS: [
+              'Move keyboard focus to the embedded application and see if you can move focus back to the web content using just the keyboard'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G108'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
+                title: 'OAA Web Accessibility ARIA Examples', 
+                url:   'http://oaa-accessibility.org/examples/'
+              }                            
+            ]
+        }
+   }     
+});
+/*
+ * Copyright 2011, 2012, 2013 OpenAjax Alliance
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* --------------------------------------------------------------------------- */
+/*       OpenAjax Alliance Rules National Language Support (NLS): English      */
+/* --------------------------------------------------------------------------- */
+
+
+OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
+
+    //
+    //  OAA Rules title and message string National Language Support (NLS)
+    //
+    rules: {
+
+        // ----------------------------------------------------------------
+        // LANDMARK_1: main landmark: at least one
+        // ----------------------------------------------------------------
+
+        LANDMARK_1: {
+            ID:         'Landmark 1',
+            DEFINITION: 'Each page %s have at least one @main@ landmark, used to identify the main content.',
+            SUMMARY:    '@main@ landmark: at least one',
+            TARGET_RESOURCES_DESC: '@main@ landmark',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Add a @main@ landmark to the page.',
+              FAIL_P:   'Add a @main@ landmark to the page.',
+              HIDDEN_S: 'One @main@ landmark that is hidden was not evaluated.',
+              HIDDEN_P: '%N_H @main@ landmarks that are hidden were not evaluated.'
+            },
+            NODE_RESULT_MESSAGES: {
+              PAGE_PASS_1: 'Page has one @main@ landmark.',
+              PAGE_PASS_2: 'Page has %1 @main@ landmarks.',
+              PAGE_FAIL_1: 'Add a @main@ landmark that identifies the main content of the page.',
+              ELEMENT_PASS_1:   '@%1@ element has @role="main"@.',
+              ELEMENT_HIDDEN_1: '@%1@ element with @role="main"@ was not evaluated because it is hidden from assistive technologies.'
+            },
+            PURPOSE: [
+              'A @main@ landmark provides a navigation point to the main content of the page for users of assistive technologies.',
+              'Most pages only need one @main@ landmark, but in the case of portals or mashups, there may be more than one @main@ landmark on a "page".'
+            ],
+            TECHNIQUES: [
+              'Include a @role="main"@ attribute on the element that contains the main content.',
+              'When there is only one @main@ landmark on the page (the typical case), do not use a label.',
+              'When there is more than one @main@ landmark, use the @aria-labelledby@ or @aria-label@ attribute to describe the content of each.'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: main role',
+                url:   'http://www.w3.org/TR/wai-aria/roles#main'
+              }
+            ]
+        },
+
+        // ----------------------------------------------------------------
+        // LANDMARK_2: Page structure must/should be defined by landmarks
+        // ----------------------------------------------------------------
+
+        LANDMARK_2: {
+            ID:         'Landmark 2',
+            DEFINITION: 'All rendered content %s be placed inside of container elements with appropriate ARIA landmark roles.',
+            SUMMARY:    'Page structure %s be defined by landmarks',
+            TARGET_RESOURCES_DESC: 'all rendered content',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S: 'Update the landmark structure of the page by placing the one element not contained in a landmark into a container element with proper landmark role.',
+              FAIL_P: 'Update the landmark structure of the page by placing the %N_F elements not contained in landmarks into one or more container elements with proper landmark roles.',
+              MANUAL_CHECK_S: 'One element may contain renderable content.  If so, move it into a container element with proper landmark role.',
+              MANUAL_CHECK_P: '%N_MC elements may contain renderable content.  If so, move them into container elements with proper landmark roles.',
+              HIDDEN_S: 'One hidden element with renderable content was found.  If it could become visible make sure it is in a container element with proper landmark role.',
+              HIDDEN_P: '%N_H hidden elements with renderable content were found.  If any could become visible make sure they are in container elements with proper landmark roles.',
+              NOT_APPLICABLE: 'No renderable content found on this page.'
+            },
+            NODE_RESULT_MESSAGES: {
+              PAGE_PASS_1: 'All %1 elements with content are contained in landmarks.',
+              PAGE_MC_1:   '%1 element(s) may contain renderable content. If so, move it/them into appropriate landmarks.',
+              PAGE_FAIL_1: 'Move %1 element(s) into appropriate landmarks. (This may require creating additional landmarks.)',
+              ELEMENT_PASS_1:   '@%1@ element is contained in @%2@ landmark.',
+              ELEMENT_MC_1:     '@%1@ element may contain renderable content. If so, move it into an appropriate landmark.',
+              ELEMENT_FAIL_1:   'Move @%1@ element into an appropriate landmark. (This may require creating an additional landmark.)',
+              ELEMENT_HIDDEN_1: 'The @%1@ element was not evaluated because it is hidden from assistive technologies.'
+            },
+            PURPOSE: [
+              'Landmarks provide a way to organize the various types of content on a page for users of assistive technologies. The organization is functionally similar to the way visual designers organize information for people using a graphical rendering of the content.'
+            ],
+            TECHNIQUES: [
+              'Use the appropriate landmarks to identify the different sections of a web page.',
+              'The most important landmarks are the @main@ and @navigation@ landmarks as they are likely to be the most frequently used.'
+            ],
+            MANUAL_CHECKS: [
+              '@object@, @embed@ and @applet@ tags may be used to render content. Use inspection tools to determine if any of these elements actually render content on the page.'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Landmark Roles',
+                url:   'http://www.w3.org/TR/wai-aria/roles#landmark_roles'
+              }
+            ]
+        },
+
+        // ----------------------------------------------------------------
+        // LANDMARK_3: navigation landmark: at least one
+        // ----------------------------------------------------------------
+
+        LANDMARK_3: {
+            ID:         'Landmark 3',
+            DEFINITION: 'Each page in a website %s have at least one @navigation@ landmark, used to identify website navigation links.',
+            SUMMARY:    '@navigation@ landmark: at least one',
+            TARGET_RESOURCES_DESC: '@navigation@ landmark',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Add one or more @navigation@ landmarks that identify groups of links that support website navigation.',
+              FAIL_P:   'Add one or more @navigation@ landmarks that identify groups of links that support website navigation.',
+              HIDDEN_S: 'One @navigation@ landmark that is hidden was not evaluated.',
+              HIDDEN_P: '%N_H @navigation@ landmarks that are hidden were not evaluated.'
+            },
+            NODE_RESULT_MESSAGES: {
+              WEBSITE_PASS_1: 'The page contains one @navigation@ landmark.',
+              WEBSITE_PASS_2: 'The page contains %1 @navigation@ landmarks.',
+              WEBSITE_FAIL_1: 'Add at least one @navigation@ landmark to the page to identify the links used for website or page content navigation.',
+              ELEMENT_PASS_1:   '@%1@ element has @role="navigation"@.',
+              ELEMENT_HIDDEN_1: '@%1@ element with @role="navigation"@ was not evaluated because it is hidden from assistive technologies.'
+            },
+            PURPOSE: [
+              'Navigation landmarks provide a way to identify groups of links that are intended to be used for website or page content navigation.'
+            ],
+            TECHNIQUES: [
+              'Reserve the @navigation@ landmark for website and page navigation links.',
+              'Website and page navigation links should be top-level @navigation@ landmarks (i.e., not contained in other landmarks).',
+              'The @role="navigation"@ attribute must be on a container element (e.g., @div@) for @ol@ and @ul@ elements that contain li elements with links. (This may require adding a container element.)',
+              'If there is only one @navigation@ landmark on the page, do not use a label.',
+              'If there is more than one @navigation@ landmark, use the @aria-labelledby@ or @aria-label@ attribute to describe the purpose of the links (e.g., Table of Contents, Site Map, etc.) contained in each.'
+            ],
+            MANUAL_CHECKS: [
+              'A list of links to other pages in the website, or to content sections of the current page, should use a @navigation@ landmark.'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: navigation role',
+                url:   'http://www.w3.org/TR/wai-aria/roles#navigation'
+              }
+            ]
+        },
+
+        // ----------------------------------------------------------------
+        // LANDMARK_4: banner landmark: for branding content
+        // ----------------------------------------------------------------
+
+        LANDMARK_4: {
+            ID:         'Landmark 4',
+            DEFINITION: 'Website branding content, typically at the top of a web page, %s be identified by using the @banner@ landmark.',
+            SUMMARY:    '@banner@ landmark: for branding content',
+            TARGET_RESOURCES_DESC: '@banner@ landmark',
+            RULE_RESULT_MESSAGES: {
+              MANUAL_CHECK_S: 'If there is branding content, typically at the top of the page, use the @banner@ landmark to identify it.',
+              MANUAL_CHECK_P: 'If there is branding content, typically at the top of the page, use the @banner@ landmark to identify it.',
+              HIDDEN_S: 'One @banner@ landmark that is hidden was not evaluated.',
+              HIDDEN_P: '%N_H@ banner@ landmarks that are hidden were not evaluated.'
+            },
+            NODE_RESULT_MESSAGES: {
+              WEBSITE_PASS_1: 'Page has @banner@ landmark.',
+              WEBSITE_PASS_2: 'Page has %1 @banner@ landmarks.',
+              WEBSITE_MC_1:   'If the page has a branding banner, use @role="banner"@ on its container element.',
+              ELEMENT_PASS_1:   '@%1@ element has @role="banner"@.',
+              ELEMENT_HIDDEN_1: '@%1@ element with @role="banner"@ was not evaluated because it is hidden from assistive technologies.'
+            },
+            PURPOSE: [
+              'A @banner@ landmark provides a way to identify branding content, usually replicated across all pages and located at the top of each page.'
+            ],
+            TECHNIQUES: [
+              'Include a @role="banner"@ attribute on the element that contains the website branding content, typically at the top of each page.',
+              'Pages at most need one @banner@ landmark.',
+              'A @banner@ landmark should be a top-level landmark (i.e., not a child of another landmark on the page).'
+            ],
+           MANUAL_CHECKS: [
+              'Banners are a convention used on most web sites to convey branding information, and may also be used as a location for advertising information.'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: banner role',
+                url:   'http://www.w3.org/TR/wai-aria/roles#banner'
+              }
+            ]
+        },
+
+        // ----------------------------------------------------------------
+        // LANDMARK_5: banner landmark: no more than one
+        // ----------------------------------------------------------------
+
+        LANDMARK_5: {
+            ID:         'Landmark 5',
+            DEFINITION: 'Each page %s contain no more than one @banner@ landmark.',
+            SUMMARY:    '@banner@ landmark: no more than one',
+            TARGET_RESOURCES_DESC: '@banner@ landmark',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S: 'More than one @banner@ landmark found on the page. Only one @banner@ landmark is allowed per page or iframe.',
+              FAIL_P: 'More than one @banner@ landmark found on the page. Only one @banner@ landmark is allowed per page or iframe.',
+              HIDDEN_S: 'One @banner@ landmark that is hidden was not evaluated.',
+              HIDDEN_P: '%N_H@ banner@ landmarks that are hidden were not evaluated.'
+            },
+            NODE_RESULT_MESSAGES: {
+              PAGE_FAIL_1: 'The page contains %1 @banner@ landmarks. Modify the page to have only one container element with a @banner@ landmark role.',
+              ELEMENT_FAIL_2: '@%1@ element with @banner@ landmark.  Modify the page to include only one element with @role="banner"@.',
+              ELEMENT_HIDDEN_1: '@%1@ element with @role="banner"@ was not evaluated because it is hidden from assistive technologies.'
+            },
+            PURPOSE: [
+              'Banner landmarks provide a way to identify redundant branding content, usually placed at the top of each web page.'
+            ],
+            TECHNIQUES: [
+              'In websites that support mashups using @iframe@ or @frame@ elements, a @banner@ landmark is allowed in each frame.',
+              'If the page is part of a website supporting mashups, use the @aria-labelledby@ or @aria-label@ attribute to differentiate @banner@ landmarks in each frame.'
+            ],
+            MANUAL_CHECKS: [
+              'Banners are a convention used on most web sites to convey branding information, and may also be used as a location for advertising information.'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: banner role',
+                url:   'http://www.w3.org/TR/wai-aria/roles#banner'
+              }
+            ]
+        },
+
+        // ----------------------------------------------------------------
+        // LANDMARK_6: contentinfo landmark: for admin content
+        // ----------------------------------------------------------------
+
+        LANDMARK_6: {
+            ID:         'Landmark 6',
+            DEFINITION: 'Website administrative content (e.g., copyright, contact, privacy info, etc., typically at the bottom of a web page) %s be identified by using the @contentinfo@ landmark.',
+            SUMMARY:    '@contentinfo@ landmark: for admin content',
+            TARGET_RESOURCES_DESC: '@contentinfo@ landmark',
+            RULE_RESULT_MESSAGES: {
+              MANUAL_CHECK_S: 'If there is administrative content (e.g., copyright, contact, privacy info, etc.), typically at the bottom of the page, use the @contentinfo@ landmark to identify it.',
+              MANUAL_CHECK_P: 'If there is administrative content (e.g., copyright, contact, privacy info, etc.), typically at the bottom of the page, use the @contentinfo@ landmark to identify it.',
+              HIDDEN_S: 'One @contentinfo@ landmark that is hidden was not evaluated.',
+              HIDDEN_P: '%N_H @contentinfo@ landmarks that are hidden were not evaluated.'
+            },
+            NODE_RESULT_MESSAGES: {
+              WEBSITE_PASS_1: 'Page has @contentinfo@ landmark.',
+              WEBSITE_PASS_2: 'Page has %1 @contentinfo@ landmarks.',
+              WEBSITE_MC_1:   'If the page has administrative content, use @role="contentinfo"@ on its container element.',
+              ELEMENT_PASS_1:   '@%1@ element has @role="contentinfo"@.',
+              ELEMENT_HIDDEN_1: '@%1@ element with @role="contentinfo"@ was not evaluated because it is hidden from assistive technologies.'
+            },
+            PURPOSE: [
+              'The @contentinfo@ landmark provides a way to identify administrative content, typically found at the bottom of each page in a website and referred to as footer information in publishing contexts.',
+              'The @contentinfo@ landmark typically includes information and/or links to copyright, contact info, privacy policies and other general information found on all pages in the website.'
+            ],
+            TECHNIQUES: [
+              'Include a @role="contentinfo"@ attribute on the container element for the administrative content.',
+              'In websites that support mashups using @iframe@ or @frame@ elements, a @contentinfo@ landmark is allowed in each frame.',
+              'If the page is part of a website supporting mashups, use the @aria-labelledby@ or @aria-label@ attribute to differentiate possible @contentinfo@ landmarks in each frame.'
+            ],
+            MANUAL_CHECKS: [
+              'Footers are a convention used on most web sites to provide copyright, contact, privacy and other types of adminstrative information.',
+              'Use the @contentinfo@ landmark to identify footer information on a web page.'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: contentinfo role',
+                url:   'http://www.w3.org/TR/wai-aria/roles#contentinfo'
+              }
+            ]
+        },
+
+        // ----------------------------------------------------------------
+        // LANDMARK_7: contentinfo landmark: no more than one
+        // ----------------------------------------------------------------
+
+        LANDMARK_7: {
+            ID:         'Landmark 7',
+            DEFINITION: 'Each page %s contain no more than one @contentinfo@ landmark.',
+            SUMMARY:    '@contentinfo@ landmark: no more than one',
+            TARGET_RESOURCES_DESC: '@contentinfo@ landmark',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'More than one @contentinfo@ landmark found on the page. Only one @contentinfo@ landmark is allowed per page or iframe.',
+              FAIL_P:   'More than one @contentinfo@ landmark found on the page. Only one @contentinfo@ landmark is allowed per page or iframe.',
+              HIDDEN_S: 'One @contentinfo@ landmark that is hidden was not evaluated.',
+              HIDDEN_P: '%N_H @contentinfo@ landmarks that are hidden were not evaluated.'
+            },
+            NODE_RESULT_MESSAGES: {
+              PAGE_FAIL_1: 'The page contains %1 @contentinfo@ landmarks. Modify the page to have only one container element with a @contentinfo@ landmark role.',
+              PAGE_FAIL_2: '@%1@ element with @contentinfo@ landmark.  Modify the page to include only one element with @role="contentinfo"@.',
+              ELEMENT_HIDDEN_1: '@%1@ element with @role="contentinfo"@ was not evaluated because it is hidden from assistive technologies.'
+            },
+            PURPOSE: [
+              'The @contentinfo@ landmark provides a way to identify administrative content, typically found at the bottom of each page in a website and referred to as footer information in publishing contexts.',
+              'The @contentinfo@ landmark typically includes information and/or links to copyright, contact info, privacy policies and other general information found on all pages in the website.'
+            ],
+            TECHNIQUES: [
+              'Include a @role="contentinfo"@ attribute on the container element for the administrative content.',
+              'In websites that support mashups using @iframe@ or @frame@ elements, a @contentinfo@ landmark is allowed in each frame.',
+              'If the page is part of a website supporting mashups, use the @aria-labelledby@ or @aria-label@ attribute to differentiate possible @contentinfo@ landmarks in each frame.'
+            ],
+            MANUAL_CHECKS: [
+              'Footers are a convention used on most web sites to provide copyright, contact, privacy and other types of adminstrative information.',
+              'Use the @contentinfo@ landmark to identify footer information on a web page.'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: contentinfo role',
+                url:   'http://www.w3.org/TR/wai-aria/roles#contentinfo'
+              }
+            ]
+        },
+
+        // ----------------------------------------------------------------
+        // LANDMARK_8: banner landmark: must/should be top-level
+        // ----------------------------------------------------------------
+
+        LANDMARK_8: {
+            ID:         'Landmark 12',
+            DEFINITION: 'The @banner@ landmark %s be a top-level landmark.',
+            SUMMARY:    '@banner@ landmark: %s be top-level',
+            TARGET_RESOURCES_DESC: '@banner@ landmark',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Update the @banner@ landmark on the page to ensure that it is a top-level landmark.',
+              FAIL_P:   'Update the @banner@ landmarks on the page to ensure that each is a top-level landmark.',
+              HIDDEN_S: 'One @banner@ landmark that is hidden was not evaluated.',
+              HIDDEN_P: '%N_H @banner@ landmarks that are hidden were not evaluated.',
+              NOT_APPLICABLE: 'No @banner@ landmarks on the page.'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:   '@banner@ landmark is a top-level landmark.',
+              ELEMENT_PASS_2:   '@banner@ landmark is a top-level landmark in the @frame@ or @iframe@.',
+              ELEMENT_FAIL_1:   'Update the landmark structure on the page such that the @banner@ landmark is a top-level landmark (it is currently the child of a @%1@ landmark).',
+              ELEMENT_HIDDEN_1: '@%1@ element with @role="banner"@ was not evaluated because it is hidden from assistive technologies.'
+            },
+            PURPOSE: [
+              'Top-level landmarks are the easiest to find and navigate to using assistive technologies.'
+            ],
+            TECHNIQUES: [
+              'When creating the landmark structure on the page, ensure that the @banner@ landmark is a top-level landmark (i.e., it is not contained within any other landmarks).'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: banner role',
+                url:   'http://www.w3.org/TR/wai-aria/roles#banner'
+              }
+            ]
+        },
+
+        // ----------------------------------------------------------------
+        // LANDMARK_9: banner landmark: restrictions
+        // ----------------------------------------------------------------
+
+        LANDMARK_9: {
+            ID:         'Landmark 9',
+            DEFINITION: 'The @banner@ landmark %s only contain @navigation@, @region@ or @search@ landmarks.',
+            SUMMARY:    '@banner@ landmark: restrictions',
+            TARGET_RESOURCES_DESC: '@banner@ landmark',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Update the landmarks on the page to ensure that the @banner@ landmark only contains @navigation@, @region@ and @search@ landmarks.',
+              FAIL_P:   'Update the %N_F landmarks that are part of the @banner@ landmark to ensure that the @banner@ landmark only contains @navigation@, @region@ and @search@ landmarks.',
+              HIDDEN_S: 'One @banner@ landmark that is hidden was not evaluated.',
+              HIDDEN_P: '%N_H @banner@ landmarks that are hidden were not evaluated.',
+              NOT_APPLICABLE: 'No @banner@ landmarks on the page.'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1: '@%1@ landmark can be part of @banner@ landmark.',
+              ELEMENT_PASS_2: '@banner@ landmark does not contain any landmarks.',
+              ELEMENT_PASS_3: '@banner@ landmark contains one @navigation@, @region@ or @search@ landmark.',
+              ELEMENT_PASS_4: '@banner@ landmark contains %1 @navigation@, @region@ and/or @search@ landmarks.',
+              ELEMENT_FAIL_1: 'Update the landmarks on the page so that the @%1@ landmark is not contained in the @banner@ landmark. Depending on the content in this landmark, consider moving it outside the @banner@ landmark.',
+              ELEMENT_FAIL_2: 'Update the landmarks on the page so that the @banner@ landmark contains only @navigation@, @region@ or @search@ landmarks.',
+              ELEMENT_HIDDEN_1: '@%1@ element with @role="banner"@ was not evaluated because it is hidden from assistive technologies.'
+            },
+            PURPOSE: [
+               'Ensuring that the landmark structure of a page is not overly complex enables users of assistive technologies to more easily find and navigate to the desired content.'
+            ],
+            TECHNIQUES: [
+              'A @banner@ landmark at most should only contain @navigation@, @region@ or @search@ landmarks.'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: banner role',
+                url:   'http://www.w3.org/TR/wai-aria/roles#banner'
+              }
+            ]
+        },
+
+        // ----------------------------------------------------------------
+        // LANDMARK_10: navigation landmark: restrictions
+        // ----------------------------------------------------------------
+
+        LANDMARK_10: {
+            ID:         'Landmark 10',
+            DEFINITION: 'The @navigation@ landmark %s only contain @region@ or @search@ landmarks.',
+            SUMMARY:    '@navigation@ landmark: restrictions',
+            TARGET_RESOURCES_DESC: '@navigation@ landmark',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Update the landmarks on the page to ensure that the @navigation@ landmark only contains @region@ or @search@ landmarks.',
+              FAIL_P:   'Update the %N_F @navigation@ landmarks on the page to ensure that they only contain  @region@ or @search@ landmarks.',
+              HIDDEN_S: 'One @navigation@ landmark that is hidden was not evaluated.',
+              HIDDEN_P: '%N_H @navigation@ landmarks that are hidden were not evaluated.',
+              NOT_APPLICABLE: 'No @navigation@ landmarks on the page.'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:   '@%1@ landmark can be part of @navigation@ landmark.',
+              ELEMENT_PASS_2:   '@navigation@ landmark does not contain any landmarks.',
+              ELEMENT_PASS_3:   '@navigation@ landmark contains one @region@ or @search@ landmark.',
+              ELEMENT_PASS_4:   '@navigation@ landmark contains %1 @region@ and/or @search@ landmarks.',
+              ELEMENT_FAIL_1:   'Update the landmarks on the page such that the @%1@ landmark is not contained by the @navigation@ landmark. Depending on the content in this landmark, consider moving it outside the @navigation@ landmark.',
+              ELEMENT_FAIL_2:   'Update landmarks on the page such that the @navigation@ landmark contains only @region@ and/or @search@ landmarks.',
+              ELEMENT_HIDDEN_1: '@%1@ element with @role="navigation"@ was not evaluated because it is hidden from assistive technologies.'
+            },
+            PURPOSE: [
+              'Ensuring that the landmark structure of a page is not overly complex enables users of assistive technologies to more easily find and navigate to the desired content.'
+            ],
+            TECHNIQUES: [
+              'A @navigation@ landmark at most should only contain @region@ or @search@ landmarks.'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: navigation role',
+                url:   'http://www.w3.org/TR/wai-aria/roles#navigation'
+              }
+            ]
+        },
+
+        // ----------------------------------------------------------------
+        // LANDMARK_11: main landmark: must/should be top-level
+        // ----------------------------------------------------------------
+
+        LANDMARK_11: {
+            ID:         'Landmark 11',
+            DEFINITION: 'The @main@ landmark %s be a top-level landmark.',
+            SUMMARY:    '@main@ landmark: %s be top-level',
+            TARGET_RESOURCES_DESC: '@main@ landmark',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Update the @main@ landmark on the page to ensure that it is a top-level landmark.',
+              FAIL_P:   'Update the @main@ landmarks on the page to ensure that each is a top-level landmark.',
+              HIDDEN_S: 'One @main@ landmark that is hidden was not evaluated.',
+              HIDDEN_P: '%N_H @main@ landmarks that are hidden were not evaluated.',
+              NOT_APPLICABLE: 'No @main@ landmarks on the page.'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:   '@main@ landmark is a top-level landmark.',
+              ELEMENT_PASS_2:   '@main@ landmark is a top-level landmark in the @frame@ or @iframe@.',
+              ELEMENT_FAIL_1:   'Update the landmark structure on the page such that the @main@ landmark is a top-level landmark (it is currently the child of a @%1@ landmark).',
+              ELEMENT_HIDDEN_1: '@%1@ element with @role="main"@ was not evaluated because it is hidden from assistive technologies.'
+            },
+            PURPOSE: [
+              'Top-level landmarks are the easiest landmarks to find and navigate to using assistive technologies.'
+            ],
+            TECHNIQUES: [
+              'When creating the landmark structure on the page, ensure that the @main@ landmark is a top-level landmark (i.e., it is not contained within any other landmarks).'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: main role',
+                url:   'http://www.w3.org/TR/wai-aria/roles#main'
+              }
+            ]
+        },
+
+        // ----------------------------------------------------------------
+        // LANDMARK_12: contentinfo landmark: must/should be top-level
+        // ----------------------------------------------------------------
+
+        LANDMARK_12: {
+            ID:         'Landmark 12',
+            DEFINITION: 'The @contentinfo@ landmark %s be a top-level landmark.',
+            SUMMARY:    '@contentinfo@ landmark: %s be top-level',
+            TARGET_RESOURCES_DESC: '@contentinfo@ landmark',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Update the @contentinfo@ landmark on the page to ensure that it is a top-level landmark.',
+              FAIL_P:   'Update the @contentinfo@ landmarks on the page to ensure that each is a top-level landmark.',
+              HIDDEN_S: 'One @contentinfo@ landmark that is hidden was not evaluated.',
+              HIDDEN_P: '%N_H @contentinfo@ landmarks that are hidden were not evaluated.',
+              NOT_APPLICABLE: 'No @contentinfo@ landmarks on the page.'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:   '@contentinfo@ landmark is a top-level landmark.',
+              ELEMENT_PASS_2:   '@contentinfo@ landmark is a top-level landmark in the @frame@ or @iframe@.',
+              ELEMENT_FAIL_1:   'Update the landmark structure on the page such that the @contentinfo@ landmark is a top-level landmark (it is currently the child of a @%1@ landmark).',
+              ELEMENT_HIDDEN_1: '@%1@ element with @role="contentinfo"@ was not evaluated because it is hidden from assistive technologies.'
+            },
+            PURPOSE: [
+              'Top-level landmarks are the easiest to find and navigate to using assistive technologies.'
+            ],
+            TECHNIQUES: [
+              'When creating the landmark structure on the page, ensure that the @contentinfo@ landmark is a top-level landmark (i.e., it is not contained within any other landmarks).'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: contentinfo role',
+                url:   'http://www.w3.org/TR/wai-aria/roles#contentinfo'
+              }
+            ]
+        },
+
+        // ----------------------------------------------------------------
+        // LANDMARK_13: complementary landmark: restrictions
+        // ----------------------------------------------------------------
+
+        LANDMARK_13: {
+            ID:         'Landmark 13',
+            DEFINITION: 'The @complementary@ landmark %s be a top-level landmark or a child of a @main@ landmark.',
+            SUMMARY:    '@complementary@ landmark: restrictions',
+            TARGET_RESOURCES_DESC: '@complementary@ landmark',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Update the @complementary@ landmark on the page to ensure that it is a top-level landmark or a child of a @main@ landmark.',
+              FAIL_P:   'Update the @complementary@ landmarks on the page to ensure that each is a top-level landmark or a child of a @main@ landmark.',
+              HIDDEN_S: 'One @complementary@ landmark that is hidden was not evaluated.',
+              HIDDEN_P: '%N_H @complementary@ landmarks that are hidden were not evaluated.',
+              NOT_APPLICABLE: 'No @complementary@ landmarks on the page.'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:   '@complementary@ landmark is a top-level landmark or a child of a @main@ landmark.',
+              ELEMENT_PASS_2:   '@complementary@ landmark is a top-level landmark or a child of a @main@ landmark in the @frame@ or @iframe@.',
+              ELEMENT_FAIL_1:   'Update the landmark structure on the page such that the @complementary@ landmark is a top-level landmark or a child of a @main@ landmark (it is currently the child of a @%1@ landmark).',
+              ELEMENT_HIDDEN_1: '@%1@ element with @role="complementary"@ was not evaluated because it is hidden from assistive technologies.'
+            },
+            PURPOSE: [
+              '@complementary@ landmarks provide a way to identify sections of a page that may not be considered the main content, but that provide important supporting or related information to the main content.',
+              'Top-level landmarks are the easiest to find and navigate to using assistive technologies.',
+              'Placing a @complementary@ landmark inside a @main@ landmark identifies the information as related to the main content of the page.'
+            ],
+            TECHNIQUES: [
+              'When creating the landmark structure on the page, ensure that the @complementary@ landmark is either a top-level landmark (i.e., it is not contained within any other landmarks) or a child of a @main@ landmark.'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: complementary role',
+                url:   'http://www.w3.org/TR/wai-aria/roles#complementary'
+              }
+            ]
+        },
+
+        // ----------------------------------------------------------------
+        // LANDMARK_14: search landmark: restrictions
+        // ----------------------------------------------------------------
+
+        LANDMARK_14: {
+            ID:         'Landmark 14',
+            DEFINITION: 'The @search@ landmark %s only contain @region@ landmarks.',
+            SUMMARY:    '@search@ landmark: restrictions',
+            TARGET_RESOURCES_DESC: '@search@ landmark',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Update the landmarks on the page to ensure that the @search@ landmark only contains @region@ landmarks.',
+              FAIL_P:   'Update the %N_F @search@ landmarks on the page to ensure that each only contains  @region@ landmarks.',
+              HIDDEN_S: 'One @search@ landmark that is hidden was not evaluated.',
+              HIDDEN_P: '%N_H @search@ landmarks that are hidden were not evaluated.',
+              NOT_APPLICABLE: 'No @search@ landmarks on the page.'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1: '@%1@ landmark can be part of @search@ landmark.',
+              ELEMENT_PASS_2: '@search@ landmark does not contain any @region@ landmarks.',
+              ELEMENT_PASS_3: '@search@ landmark contains one @region@ landmark.',
+              ELEMENT_PASS_4: '@search@ landmark contains %1 @region@ landmarks.',
+              ELEMENT_FAIL_1: 'Update the landmark structure on the page such that the @%1@ landmark is not contained by the @search@ landmark. Depending on the content in this landmark, consider moving it outside the @search@ landmark.',
+              ELEMENT_FAIL_2: 'Update the landmark structure on the page such that the @search@ landmark contains only @region@ landmarks.',
+              ELEMENT_HIDDEN_1: '@%1@ element with @role="search"@ was not evaluated because it is hidden from assistive technologies.',
+              ELEMENT_HIDDEN_2: '@%1@ element with @role="@%2"@ was not evaluated because it is hidden from assistive technologies.'
+            },
+            PURPOSE: [
+              'A @search@ landmark identifies a form on the page used to search for content across the entire website.',
+              'For @search@ landmarks containing more than one search option and where each option can be represented as its own section, use @region@ landmarks to identify these sections.',
+              'Ensuring that the landmark structure of a page is not overly complex enables users of assistive technologies to more easily find and navigate to the desired content.'
+            ],
+            TECHNIQUES: [
+              'Website search options should be top-level @search@ landmarks (e.g. not contained in other landmarks).',
+              'Include a @role="search"@ attribute on an element that contains all of the search form controls.'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: search role',
+                url:   'http://www.w3.org/TR/wai-aria/roles#search'
+              }
+            ]
+        },
+
+        // ----------------------------------------------------------------
+        // LANDMARK_15: form landmark: restrictions
+        // ----------------------------------------------------------------
+
+        LANDMARK_15: {
+            ID:         'Landmark 15',
+            DEFINITION: 'The @form@ landmark %s only contain @region@ landmarks.',
+            SUMMARY:    '@form@ landmark: restrictions',
+            TARGET_RESOURCES_DESC: '@form@ landmark',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Update the landmark structure on the page to ensure that the @form@ landmark only contains @region@ landmarks.',
+              FAIL_P:   'Update the %N_F @form@ landmarks on the page to ensure that each only contains @region@ landmarks.',
+              HIDDEN_S: 'One @form@ landmark that is hidden was not evaluated.',
+              HIDDEN_P: '%N_H @form@ landmarks that are hidden were not evaluated.',
+              NOT_APPLICABLE: 'No @form@ landmarks on the page.'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:   '@%1@ landmark can be part of @form@ landmark.',
+              ELEMENT_PASS_2:   '@form@ landmark does not contain any @region@ landmarks.',
+              ELEMENT_PASS_3:   '@form@ landmark contains one @region@ landmark.',
+              ELEMENT_PASS_4:   '@form@ landmark contains %1 @region@ landmarks.',
+              ELEMENT_FAIL_1:   'Update the landmark structure on the page such that the @%1@ landmark is not contained by the @form@ landmark. Depending on the content in this landmark, consider moving it outside the @form@ landmark.',
+              ELEMENT_FAIL_2:   'Update the landmark structure on the page such that the @form@ landmark contains only @region@ landmarks.',
+              ELEMENT_HIDDEN_1: '@%1@ element with @role="form"@ was not evaluated because it is hidden from assistive technologies.',
+              ELEMENT_HIDDEN_2: '@%1@ element with @role="%2"@ was not evaluated because it is hidden from assistive technologies.'
+            },
+            PURPOSE: [
+              'Form landmarks provide a way to identify groups of form controls and widgets on the page.',
+              'For @form@ landmarks containing more than one group of controls, where each is considered its own section, use @region@ landmarks to identify these sections.',
+              'Ensuring that the landmark structure of a page is not overly complex enables users of assistive technologies to more easily find and navigate to the desired content.'
+            ],
+            TECHNIQUES: [
+              'Include a @role="form"@ attribute on an element that contains all the form controls in the form.',
+              'Use a @role="region"@ attribute on an element that identifies subgroups or sections of controls.',
+              'Use ARIA labeling techniques to give each region an accessible name describing the contents of the region.'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: form role',
+                url:   'http://www.w3.org/TR/wai-aria/roles#form'
+              }
+            ]
+        },
+
+        // ----------------------------------------------------------------
+        // LANDMARK_16: region landmark labeling
+        // ----------------------------------------------------------------
+
+        LANDMARK_16: {
+            ID:         'Landmark 16',
+            DEFINITION: 'Each @region@ landmark %s have a label.',
+            SUMMARY:    '@region@ landmark labeling',
+            TARGET_RESOURCES_DESC: '@region@ landmark',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Add a label to the @region@ landmark on the page.',
+              FAIL_P:   'Add labels to the %N_F @form@ landmarks on the page that are missing labels.',
+              HIDDEN_S: 'One @region@ landmark that is hidden was not evaluated.',
+              HIDDEN_P: '%N_H @region@ landmarks that are hidden were not evaluated.',
+              NOT_APPLICABLE: 'No @region@ landmarks on the page.'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:   '@%1@ landmark has a label.',
+              ELEMENT_FAIL_1:   'Add a label to the @region@ landmark.',
+              ELEMENT_HIDDEN_1: '@%1@ element with @role="region"@ was not evaluated because it is hidden from assistive technologies.'
+            },
+            PURPOSE: [
+              '@region@ landmark is used to identify sub sections of @banner@, @complementary@, @contentinfo@, @form@, @navigation@ and @search@.',
+              'For @region@ landmarks must have a label describing the contents of the region.'
+            ],
+            TECHNIQUES: [
+              'Include a @role="region"@ attribute on a subsection of content.',
+              'Use the @aria-labelledby@ attribute to provide a label by referencing the @id@ of a heading or other element describing the content of the subsection.',
+              'Use the @aria-label@ attribute to provide a label to describe the content of the subsection.',
+              'Subsections are often associated with changes in visual styling, and are used to group related items and to distinguish such groups.'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: region role',
+                url:   'http://www.w3.org/TR/wai-aria/roles#region'
+              }
+            ]
+        },
+
+        // ----------------------------------------------------------------
+        // LANDMARK_17: unique labels for landmarks
+        // ----------------------------------------------------------------
+
+        LANDMARK_17: {
+            ID:         'Landmark 17',
+            DEFINITION: 'Landmarks %s have unique labels.',
+            SUMMARY:    'Unique labels for landmarks',
+            TARGET_RESOURCES_DESC: 'Landmarks',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Review the landmark labeling to ensure that the accessible name of each landmark is unique.',
+              FAIL_P:   'Review the labeling of %N_T landmarks to ensure that the accessible name of each landmark is unique.',
+              HIDDEN_S: 'One landmark that is hidden was not evaluated.',
+              HIDDEN_P: '%N_H landmarks that are hidden were not evaluated.',
+              NOT_APPLICABLE: 'No landmarks on the page.'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:   '@%1@ landmark has a unique label.',
+              ELEMENT_FAIL_1:   'Change the label "%1" of the @%2@ landmark (or the other duplicate label) to make the label unique on the page.',
+              ELEMENT_HIDDEN_1: '@%1@ element with @role="%2"@ was not evaluated because it is hidden from assistive technologies.'
+            },
+            PURPOSE: [
+              'Landmarks identify the sections of content on a page.',
+              'When there is more than one of the same type of landmark on the page (e.g., multiple @region@ landmarks), additional labeling is needed to allow users to easily differentiate the content of those landmarks.'
+            ],
+            TECHNIQUES: [
+              'The default label for a landmark is the name of the landmark (e.g., @main@, @navigation@, etc.).',
+              'Use @aria-labelledby@ attribute to provide additional labeling information by referencing the @id@ of a heading or other element that describes the content of the landmark.',
+              'Use @aria-label@ attribute to provide additional labeling information to describe the content of the landmark.',
+              'Make sure the label text content is unique from other landmark labels on the page.'
+            ],
+            MANUAL_CHECKS: [
+              'Verify that the label describes the content of the landmark.'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: region role',
+                url:   'http://www.w3.org/TR/wai-aria/roles#region'
+              }
+            ]
+        },
+
+        // ----------------------------------------------------------------
+        // LANDMARK_18: Element restrictions: landmark roles
+        // ----------------------------------------------------------------
+
+        LANDMARK_18: {
+            ID:         'Landmark 18',
+            DEFINITION: 'Landmark roles %s only be placed on @div@, @span@, @p@ or HTML5 sectioning elements, which include @nav@, @section@, @main@, @article@, @aside@, @header@, @footer@, @figure@ and @address@.',
+            SUMMARY:    'Element restrictions: landmark roles',
+            TARGET_RESOURCES_DESC: 'Landmarks',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Review the placement of a landmark role on an element that already has default semantics in HTML.',
+              FAIL_P:   'Review the placement of landmark roles on %N_F elements that already have default semantics in HTML.',
+              HIDDEN_S: 'One landmark that is hidden was not evaluated.',
+              HIDDEN_P: '%N_H landmarks that are hidden were not evaluated.',
+              NOT_APPLICABLE: 'No landmarks on the page.'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:   '@%1@ landmark is on a @%2@ element.',
+              ELEMENT_FAIL_1:   'Change the placement of the @%1@ landmark on the @%2@ element to a different container or sectioning element.',
+              ELEMENT_HIDDEN_1: '@%1@ element with @role="%2"@ was not evaluated because it is hidden from assistive technologies.'
+            },
+            PURPOSE: [
+              'Landmarks identify the sections of content on a page and should not obscure the semantic meaning of the elements that comprise the section.',
+              'Putting landmark roles on @ul@, @ol@, @h1@, @table@ or other elements with native semantics will override the semantics of the element (e.g. a @ul@ or @ol@ list with a landmark role is no longer rendered as a list to assistive technologies).'
+            ],
+            TECHNIQUES: [
+              'Landmarks should only be placed on @div@, @span@, @p@, @nav@, @section@, @main@, @article@, @aside@, @header@, @footer@, @figure@ or @address@ elements that are used as containers for a section of content.'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Landmarks',
+                url:   'http://www.w3.org/TR/wai-aria/roles#landmark'
+              }
+            ]
+        }
+   }
+});
+/*
+ * Copyright 2011, 2012, 2013 OpenAjax Alliance
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* --------------------------------------------------------------------------- */
+/*       OpenAjax Alliance Rules National Language Support (NLS): English      */
+/* --------------------------------------------------------------------------- */
+   
+
+OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
+
+    //
+    //  OAA Rules title and message string National Language Support (NLS)
+    //
+    rules: {
+        LANGUAGE_1: {
+            ID:                    'Language 1',
+            DEFINITION:            'Page %s define the language of its principal content using a valid IANA language code.',
+            SUMMARY:               'Page %s use language code',
+            TARGET_RESOURCES_DESC: 'HTML element',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:  'Identify the principal language of the web page by using the @lang@ attribute on its @html@ element.'
+            },
+            NODE_RESULT_MESSAGES: {
+              PAGE_PASS_1: 'The @html@ element defines the \'%1\' language code.',
+              PAGE_FAIL_1: 'Add a @lang@ attribute with a valid IANA code to the  @html@ element of the page.',
+              PAGE_FAIL_2: 'Change the language code \'%1\' defined in the @lang@ attribute of the @html@ element to a valid IANA code.'
+            },  
+            PURPOSE: [
+              'Assistive technologies like screen readers and other speech output technologies need to know the languages represented by the characters in order to speak the text content correctly.'
+            ],
+            TECHNIQUES: [
+              'Use the @lang@ attribute on the @html@ or @xhtml@ element to define the principal language of the web page.',
+              'Use the IANA codes to identify the principal language (e.g. en, fr, ...).'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HTML4: Specifying the language of content: the lang attribute', 
+                url:   'http://www.w3.org/TR/html4/struct/dirlang.html#adef-lang'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HTML5: The lang and xml:lang attributes', 
+                url:   'http://www.w3.org/TR/html5/dom.html#the-lang-and-xml:lang-attributes'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.OTHER, 
+                title: 'W3C Internationalization: Language tags in HTML and XML', 
+                url:   'http://www.w3.org/International/articles/language-tags/'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.OTHER, 
+                title: 'W3C Internationalization: Choosing a Language Tag', 
+                url:   'http://www.w3.org/International/questions/qa-choosing-language-tags'
+              }                            
+            ]
+        },    
+        LANGUAGE_2: {
+            ID:                    'Language 2',
+            DEFINITION:            'Elements with text content in a different language from the principal language of the page %s use the @lang@ attribute with a valid IANA language code to identify the change.',
+            SUMMARY:               'Identify language changes',
+            TARGET_RESOURCES_DESC: 'Elements with text content that is in a different language than the principal language of the page',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:  'Change the @lang@ attribute value to a valid IANA language code for the element with the @lang@ attribute.',
+              FAIL_P:  'Change the @lang@ attribute values of the %N_F elements with invalid codes to valid IANA language codes.',
+              MANUAL_CHECK_S: 'Review the page for any text content that is different than the principal language of the page. If such content is found, use the @lang@ attribute on the appropriate container element to identify the language change.',
+              MANUAL_CHECK_P: 'Review the page for any text content that is different than the principal language of the page. If any such content sections are found, use the @lang@ attribute on each of the appropriate container elements to identify the language changes.'
+            },
+            NODE_RESULT_MESSAGES: {
+              PAGE_FAIL_1: 'Change the @lang@ attribute value on the element with an invalid code to a valid IANA language code.',
+              PAGE_FAIL_2: 'Change the @lang@ attribute values on the %1 elements with invalid codes to valid IANA language codes.',
+              PAGE_MC_1: 'One change in language was found on the page. Review the page for any other text content in languages that are different than the principal language of the page. If any more changes in language are found, use the @lang@ attribute to identify them.',
+              PAGE_MC_2: '%1 changes in language were found on the page. Review the page for any other text content in languages that are different than the principal language of the page. If any more changes in language are found, use the @lang@ attribute to identify them.',
+              PAGE_MC_3: 'Review the page for any text content in a languages that are different than the principal language of the page. If any changes in language are found, use the @lang@ attribute to identify them.',
+              ELEMENT_PASS_1: 'The @%1@ element has the valid language code of \'%2\'',
+              ELEMENT_FAIL_1: 'Change the value \'%2\' defined for the @lang@ attribute on the @%1@ element to a valid IANA language code.',
+              ELEMENT_HIDDEN_1: 'The @%1@ element with the language code \'%2\' is hidden'
+            },  
+            PURPOSE: [
+              'Assistive technologies like screen readers and other speech output technologies need to know the language of the characters of an element to speak the text content correctly.'
+            ],
+            TECHNIQUES: [
+              'Use the @lang@ attribute to define the IANA language of the text content of the element.',
+              'Use the IANA codes to identify the language of the text in the element (e.g. en, fr, ...).'
+            ],
+            MANUAL_CHECKS: [
+              'Review the page for any text content in languages that are different than the principal language of the page.',
+              'If any changes in language are found, use the @lang@ attribute to identify them.'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HTML4: Specifying the language of content: the lang attribute', 
+                url:   'http://www.w3.org/TR/html4/struct/dirlang.html#adef-lang'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HTML5: The lang and xml:lang attributes', 
+                url:   'http://www.w3.org/TR/html5/dom.html#the-lang-and-xml:lang-attributes'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.OTHER, 
+                title: 'W3C Internationalization: Language tags in HTML and XML', 
+                url:   'http://www.w3.org/International/articles/language-tags/'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.OTHER, 
+                title: 'W3C Internationalization: Choosing a Language Tag', 
+                url:   'http://www.w3.org/International/questions/qa-choosing-language-tags'
+              }                            
+            ]
+        },    
+        LANGUAGE_3: {
+            ID:                    'Language 3',
+            DEFINITION:            'Elements with @lang@ attribute %s have valid IANA language codes.',
+            SUMMARY:               'Valid IANA language codes',
+            TARGET_RESOURCES_DESC: 'Elements with lang attributes',
+            RULE_RESULT_MESSAGES: {
+              NOT_APPLICABLE: 'No elements with @lang@ attribute defined'             
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:   'The @%1@ element defines the \'%2\' language code.',
+              ELEMENT_FAIL_1: 'Change the language code \'%2\' defined in the @lang@ attribute of the @%1@ element to a valid IANA language code.',
+              ELEMENT_HIDDEN_1: 'The @%1@ element with the language code \'%2\' is hidden.'
+            },  
+            PURPOSE: [
+              'Assistive technologies like screen readers and other speech output technologies need to know the language of the characters of an element in order to speak the text content correctly.'
+            ],
+            TECHNIQUES: [
+              'Use the @lang@ attribute to define the IANA language of the text content of the element.',
+              'Use the IANA codes to identify the language of the text in the element (e.g. en, fr, ...).'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HTML4: Specifying the language of content: the lang attribute', 
+                url:   'http://www.w3.org/TR/html4/struct/dirlang.html#adef-lang'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HTML5: The lang and xml:lang attributes', 
+                url:   'http://www.w3.org/TR/html5/dom.html#the-lang-and-xml:lang-attributes'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.OTHER, 
+                title: 'W3C Internationalization: Language tags in HTML and XML', 
+                url:   'http://www.w3.org/International/articles/language-tags/'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.OTHER, 
+                title: 'W3C Internationalization: Choosing a Language Tag', 
+                url:   'http://www.w3.org/International/questions/qa-choosing-language-tags'
+              }                            
+            ]
+        }
+   }     
+});
+/*
+ * Copyright 2011, 2012, 2013 OpenAjax Alliance
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* --------------------------------------------------------------------------- */
+/*       OpenAjax Alliance Rules National Language Support (NLS): English      */
+/* --------------------------------------------------------------------------- */
+   
+
+OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
+
+    //
+    //  OAA Rules title and message string National Language Support (NLS)
+    //
+    rules: {
+        LAYOUT_1: {
+            ID:                    'Layout 1',
+            DEFINITION:            'Web pages with layout tables %s provide content in a meaningful sequence',
+            SUMMARY:               'Page %s have meaningful sequence',
+            TARGET_RESOURCES_DESC: '@table@ elements used for layout',
+            RULE_RESULT_MESSAGES: {
+              MANUAL_CHECK_S:    'Verify document has a meaningful sequence when layout table markup is disabled.  If content does not have a meaningful sequence, reorganize content on the page to have a meaningful sequence when layout tables are disabled.',   
+              NOT_APPLICABLE: 'No layout tables found on this page'             
+            },
+            NODE_RESULT_MESSAGES: {
+              PAGE_PASS_1:      'Page does not have any tables or layout tables are only one column wide.',
+              PAGE_MC_1:        '%1 tables being used for layout were found, verify the page has a meaningful sequence of content when table markup is disabled.',
+              ELEMENT_PASS_1:   'Table is one column wide, and will have the same document sequence when table markup is disabled.',
+              ELEMENT_MC_1:     'Verify document has a meaningful sequence of content when layout table markup is disabled.',
+              ELEMENT_MC_2:     'Verify the content in the %1x%2 layout table has a meaningful sequence of content when table markup is disabled, if the table is actually a data table add data table markup to give the table an effective caption and the data tables headings.',
+              ELEMENT_MC_3:     'Verify the nesting of tables for layout of content maintains a meaningful sequence of content when table markup is disabled.',
+              ELEMENT_HIDDEN_1: 'Meaningful sequence was not tested The layout @table@ is hidden from assistive technologies.'
+            },  
+            PURPOSE: [
+              'The sequence of content (i.e. order) in the document code affects its meaning, especially for users of assistive technology who cannot see the visual cues provided in a graphical that provide information about the relationships between content'                   
+            ],
+            TECHNIQUES: [
+              'Use CSS and web standards techniques for the coding of content, and the graphical styling and positioning of content',
+              'Avoid using table markup for graphical layout, if you do use tables for layout make sure the content still is meaningful when the table markup is disabled',
+              'Avoid using nested tables for layout, the deeper the level of nesting the more chance there of having a confusing sequence of content',
+              'Tables that are used for layout should use only @tr@ and @td@ elements, and the @table@, @tr@ and @td@ elements should have a @role="presentation"@ attribute to clearly indicate the table markup is being used for layout'
+            ],
+            MANUAL_CHECKS: [
+              'Use browser developer tools to disable table markup or enable a user stylesheet to change table cells to be rendered as block level elements',
+              'With layout tables disabled, view the content to make sure the reading order and structure of the document makes sense'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification: Visual formatting model', 
+                url:   'http://www.w3.org/TR/CSS21/visuren.html'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'G57: Ordering the content in a meaningful sequence', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G57'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'C6: Positioning content based on structural markup', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/C6'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'C8: Using CSS letter-spacing to control spacing within a word', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/C8'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'C27: Making the DOM order match the visual order', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/C27'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'F1: Failure of Success Criterion 1.3.2 due to changing the meaning of content by positioning information with CSS', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/F1'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'F33: Failure of Success Criterion 1.3.1 and 1.3.2 due to using white space characters to create multiple columns in plain text content', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/F33'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'F34: Failure of Success Criterion 1.3.1 and 1.3.2 due to using white space characters to format tables in plain text content', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/F34'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'F49: Failure of Success Criterion 1.3.2 due to using an HTML layout table that does not make sense when linearized', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/F49'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.OTHER, 
+                title: 'Web Standards Group', 
+                url:   'http://webstandardsgroup.org/standards/'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.OTHER, 
+                title: 'W3C Standards', 
+                url:   'http://www.w3.org/standards/'
+              }
+            ]   
+        },
+        LAYOUT_2: {
+            ID:                    'Layout 2',
+            DEFINITION:            'Tables %s not be nested for layout of content',
+            SUMMARY:               'Do not nest layout tables',
+            TARGET_RESOURCES_DESC: '@table@ elements used for layout',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Update the markup and CSS on this page to remove the nesting of the layout table that is nested',
+              FAIL_P:   'Update the markup and CSS on this page to remove the nesting of %N_F layout tables that are nested',
+              NOT_APPLICABLE:  'No table elements used for layout'              
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:    'Table is not nested with another layout table',
+              ELEMENT_PASS_2:    'Table is one column wide, and will have the same document sequence when table markup is disabled',
+              ELEMENT_FAIL_1:  'Update the markup and CSS on this page to remove the nesting of this layout table',
+              ELEMENT_HIDDEN_1:  'Table nesting was not tested beacuse the @table@ is hidden from assistive technology'
+            },  
+            PURPOSE: [
+              'The sequence of content (i.e. order) in the document code affects its meaning, nesting layout tables often makes the sequence of content less understandable'                   
+            ],
+            TECHNIQUES: [
+              'Use CSS and web standards techniques for the coding of content, and the graphical styling and positioning of content',
+              'Avoid using table markup for graphical layout, if you do use tables for layout make sure the content still is meaningful when the table markup is disabled',
+              'Avoid using nested tables for layout, the deeper the level of nesting the more chance there of having a confusing sequence of content',
+              'Tables that are used for layout should use only @tr@ and @td@ elements, and the @table@, @tr@ and @td@ elements should have a @role="presentation"@ attribute to clearly indicate the table markup is being used for layout'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification: Visual formatting model', 
+                url:   'http://www.w3.org/TR/CSS21/visuren.html'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'F33: Failure of Success Criterion 1.3.1 and 1.3.2 due to using white space characters to create multiple columns in plain text content', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/F33'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'F49: Failure of Success Criterion 1.3.2 due to using an HTML layout table that does not make sense when linearized', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/F49'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.OTHER, 
+                title: 'Web Standards Group', 
+                url:   'http://webstandardsgroup.org/standards/'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.OTHER, 
+                title: 'W3C Standards', 
+                url:   'http://www.w3.org/standards/'
+              }
+            ]   
+        }
+   }     
+});
+/*
+ * Copyright 2011, 2012, 2013 OpenAjax Alliance
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* --------------------------------------------------------------------------- */
+/*       OpenAjax Alliance Rules National Language Support (NLS): English      */
+/* --------------------------------------------------------------------------- */
+   
+
+OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
+
+    //
+    //  OAA Rules title and message string National Language Support (NLS)
+    //
+    rules: {
+        LINK_1: {
+            ID:                    'Link 1',
+            DEFINITION:            'Links that share the same @href@, but have different accessible names %s be checked to make sure each name is meaningful',
+            SUMMARY:               'Links to the same URL %s be meaningful',
+            TARGET_RESOURCES_DESC: '@a@ and @area@ elements and elements with @role="link"@',
+            RULE_RESULT_MESSAGES: {
+              MANUAL_CHECK_P:    'Verify all %N_MC @a@, @area@ or @[role=link]@ elements accessible name describes the target of each link, since there are different accessible names for the same @href@ values.',
+              NOT_APPLICABLE:    'No @a@, @area@ or @[role=link]@ elements on page that share the same @href@ value'              
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:   '@%1@ element has the same accessible name as the %2 links it shares the same @href@ with',
+              ELEMENT_MC_1:     'Verify the @%1@ element has the an accessible name that makes sense to users, since the link shares the same @href@ with a link that has a different accessible name',
+              ELEMENT_HIDDEN_1: 'Consistent link text for links sharing the same @href@ value was not tested because the @%1@ element is hidden from assistive technologies.'
+            },  
+            PURPOSE: [
+              'Consistency of accessible names for a link makes interaction with web pages more predictable, but sometimes a link may have more than one accessible name associated with it, for example the same link may have the accessible names "Home" and "My Organization Name". When a the same link has more than one accessible name, make sure each name is meaningful to the user.  '
+            ],
+            TECHNIQUES: [
+              'When ever possible use the same accessible name for links that point to the same URL',
+              'Make sure the link text accurately describes the target of the link'
+            ],
+            MANUAL_CHECKS: [
+              'In general accessible names should be the same for links that share the same @href@ values.  In some cases you may have two accessible names to the same @href@ avlue, for example a links with the accessible names "Home" and "My Organization Name"'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HTML 4.01 Specification: 12.2 The A element', 
+                url:   'http://www.w3.org/TR/html4/struct/links.html#edef-A'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 The LINK role', 
+                url:   'http://www.w3.org/TR/wai-aria/roles#link'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'H30: Providing link text that describes the purpose of a link for anchor elements', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/H30'
+              }  
+            ]   
+        },
+        LINK_2: {
+            ID:                    'Link 2',
+            DEFINITION:            'Links with different @href@s %s have unique accessible names',
+            SUMMARY:               'Link text %s be unique',
+            TARGET_RESOURCES_DESC: '@a@ and @area@ elements and elements with @role="link"@',
+            RULE_RESULT_MESSAGES: {
+              FAIL_P:   'Change the accessible names to be uniue or add @aria-describedby@ attribute to the %N_F @a@, @area@ or @[role=link]@ elements to provide additional context to make the accessible names unique',
+              NOT_APPLICABLE:  'No @a@, @area@ or @[role=link]@ elements on page share the same accessible name'              
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:     '@%1@ element has the same @href@ value as the %2 links it shares a name with',
+              ELEMENT_PASS_2:     '@%1@ element has a different @href@ value as the %2 links it shares a name with, but it has a unique description using @aria-describedby@ attribute',
+              ELEMENT_FAIL_1:   'Change the accessible name of the @%1@ element or provide additional context text using @aria-describedby@ property to make the link text unique'
+            },  
+            PURPOSE: [
+              'Links that point to different URLs should have unique accessible names or descriptions, when a link shares the same accessible name but have different URLs, users using speech will be confused unless programmatic text context is provided'                   
+            ],
+            TECHNIQUES: [
+              'The link text (i.e. accessible name) should uniquely describe the target of a link,',
+              'Use @aria-labelledby@ to provide context for links that share the same link text',
+              'Use @aria-describedby@ to provide context for links that share the same link text'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HTML 4.01 Specification: 12.2 The A element', 
+                url:   'http://www.w3.org/TR/html4/struct/links.html#edef-A'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'H30: Providing link text that describes the purpose of a link for anchor elements', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/H30'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
+                title: 'OAA Example 44 - Using aria-describedby to satisfy WCAG 2.4.4 Link Purpose in Context', 
+                url:   'http://oaa-accessibility.org/example/44/'
+              }  
+            ]   
+        },
+        LINK_3: {
+            ID:                    'Link 3',
+            DEFINITION:            'Link %s provide minimum target dimensions.',
+            SUMMARY:               'Link %s not be small',
+            TARGET_RESOURCES_DESC: '@a@ and @area@ elements and elements with @role="link"@',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:  'Increase the dimensions of the @a@, @area@ or @[role=link]@ element to be at least 12 pixels high and 12 pixels wide',
+              FAIL_P:  'Increase the dimensions of the %N_F @a@, @area@ or @[role=link]@ elements to be at least 12 pixels high and 12 pixels wide',
+              MANUAL_CHECK_S:  'Verify the dimensions of the @a@, @area@ or @[role=link]@ element to be at least 12 pixels high and 12 pixels wide, if not change the dimensions to meet the requirement',
+              MANUAL_CHECK_P:  'Verify the dimensions of the %N_F @a@, @area@ or @[role=link]@ elements to be at least 12 pixels high and 12 pixels wide, if not change the dimension to meet the requirement',
+              NOT_APPLICABLE:  'No @a@, @area@ or @[role=link]@ elements on page'              
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:         'The image link is more than 12 pixels high and 12 pixels wide',
+              ELEMENT_MC_1: 'The rendered dimensions of the @%1@ element could not be determined, verify the image link is at least 12 pixels high and 12 pixels wide',
+              ELEMENT_FAIL_1:       'The rendered dimensions of the @%1@ element is %2 pixels by %3 pixels, change the dimensions of the image to be at least 12 pixels high and 12 pixels wide',
+              ELEMENT_HIDDEN_1:       'Minimum demensions for links was not tested beacuse the @%1@ element is off screen or hidden'
+            },  
+            PURPOSE: [
+              'Links must be large enough for people to see and select with the mouse'                   
+            ],
+            TECHNIQUES: [
+              'Increase the size of the image to at least 12 pixels high and 12 pixels wide'
+            ],
+            MANUAL_CHECKS: [
+              'Use visual inspection and browser development tools to determine if the image link is more than 12 pixels high and 12 pixels wide'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HTML 4.01 Specification: 12.2 The A element', 
+                url:   'http://www.w3.org/TR/html4/struct/links.html#edef-A'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'IITAA Implementation Guidelines 1.0: 9.3 - Avoid using small links.', 
+                url:   'http://www.dhs.state.il.us/IITAA/IITAAWebImplementationGuidelines.html'
+              }                            
+            ]
+        },
+        LINK_4: {
+            ID:                    'Link 4',
+            DEFINITION:            'Accessible names for a link %s describe the target of the link',
+            SUMMARY:               'Link text %s be descriptive',
+            TARGET_RESOURCES_DESC: '@a@ and @area@ elements and elements with @role="link"@',
+            RULE_RESULT_MESSAGES: {
+              MANUAL_CHECK_S:    'Verify the @a@, @area@ or @[role=link]@ elements accessible name describes the target of the link',
+              MANUAL_CHECK_P:    'Verify all %N_MC @a@, @area@ or @[role=link]@ elements have accessible names that describe the target of each link',
+              FAIL_S:  'Add text content to the link that does not have text content that describes the target of the link',
+              FAIL_P:  'Add text content to the %1 links that do not have text content that describes the target of each link',
+              NOT_APPLICABLE: 'No @a@, @area@ or @[role=link]@ elements on the page'              
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_MC_1: '@%1@ element has the accessible name "%2", verify that the name accurately describes the target of the link, if not change the text content or text context of the link to create a more accessible name',
+              ELEMENT_MC_2: '@%1@ element has the accessible name "%2" with a text content of "%3", verify that the name and context text accurately describes the target of the link, if not change the text content or context of the link to create a more accessible name',
+              ELEMENT_FAIL_1:       'The @%1@ element does NOT have an accessible name, add text content to the link so the accessible name describes the target of the link',
+              ELEMENT_HIDDEN_1:       'Descriptive accessibe names for links was not tested because the @%1@ element is hidden from assistive technologies.'
+            },  
+            PURPOSE: [
+              'Link text should describe the target of the link '                   
+            ],
+            TECHNIQUES: [
+              'The text content of the link (i.e. the default accessible name) should uniquely describe the target of each link,',
+              'Use @aria-label@ or @aria-labelledby@ to provide more descriptive accessible names when the text content of the link cannot be changed',
+              'Use @aria-describedby@ to provide context for links that share the same link text but have some type of context to make the link text meaningful'
+            ],
+            MANUAL_CHECKS: [
+              'Read the accessible name for each link aloud and make sure the accessible name describes the target of the link'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HTML 4.01 Specification: 12.2 The A element', 
+                url:   'http://www.w3.org/TR/html4/struct/links.html#edef-A'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'H30: Providing link text that describes the purpose of a link for anchor elements', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/H30'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
+                title: 'OAA Example 44 - Using aria-describedby to satisfy WCAG 2.4.4 Link Purpose in Context', 
+                url:   'http://oaa-accessibility.org/example/44/'
+              }  
+            ]   
+        }
+    }     
+});
+/*
+ * Copyright 2011, 2012, 2013 OpenAjax Alliance
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* --------------------------------------------------------------------------- */
+/*       OpenAjax Alliance Rules National Language Support (NLS): English      */
+/* --------------------------------------------------------------------------- */
+   
+
+OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
+
+    //
+    //  OAA Rules title and message string National Language Support (NLS)
+    //
+    rules: {
+   }     
+});
+/*
+ * Copyright 2011, 2012, 2013 OpenAjax Alliance
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* --------------------------------------------------------------------------- */
+/*       OpenAjax Alliance Rules National Language Support (NLS): English      */
+/* --------------------------------------------------------------------------- */
+
+
+OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
+
+    //
+    //  OAA Rules title and message string National Language Support (NLS)
+    //
+    rules: {
+        NAVIGATION_1: {
+            ID:         'Navigation 1',
+            DEFINITION: 'At least two of the following features %s be provided for finding content in a website: a website search feature; a list of links on the home page to all pages in the website; a list of links on each page for navigation between pages; bread crumb links on each page for hierarchical navigation of the website and/or a dedicated page that serves as a site map of all the pages in the website.',
+            SUMMARY:    'At least two ways of finding content',
+            TARGET_RESOURCES_DESC: 'Website navigational links and search form controls',
+            RULE_RESULT_MESSAGES: {
+              MANUAL_CHECK_S: 'Verify that this page can be found from other pages in the website using at least two of the following features: a website search feature; a list of links for navigation from at least one other page in the website and/or from a page in the web site that serves as a site map.',
+              MANUAL_CHECK_P: 'Verify that this page can be found from other pages in the website using at least two of the following features: a website search feature; a list of links for navigation from at least one other page in the website and/or from a page in the web site that serves as a site map.',
+              NOT_APPLICABLE: 'Single page web resource: no other pages to link to or to search from.'
+            },
+            NODE_RESULT_MESSAGES: {
+              WEBSITE_MC_1: 'This page has both @navigation@ and @search@ landmarks. Verify that they provide links for navigating and the ability to search for content in this website.',
+              WEBSITE_MC_2: 'Verify that this page can be found from at least two of the following website features: a website search feature; a list of links for navigation from at least one other page in the website and/or from a page in the web site that serves as a site map.',
+              ELEMENT_MC_1: 'Verify that this @navigation@ landmark can be used for navigation of the content in this website.',
+              ELEMENT_MC_2: 'Verify that this @search@ landmark can be used to search for content in this website.'
+            },
+            PURPOSE: [
+              'One of the fundamental features of the web is the provision of easy access to useful information. By providing multiple ways to find information within a website, people with disabilities are able to locate content in a manner that best meets their needs.'
+            ],
+            TECHNIQUES: [
+              'Website search feature identified by the @search@ landmark.',
+              'A list of links for navigation between pages using the @navigation@ landmark.',
+              'Sandtrail/bread crumb links for hierarchical navigation of the website using the @navigation@ landmark.',
+              'A dedicated page that serves as a site map of all the pages in the website.'
+            ],
+            MANUAL_CHECKS: [
+              'Verify that at least two of the techniques are implemented for finding content on this page.'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: Landmark Roles',
+                url:   'http://www.w3.org/TR/wai-aria/roles#landmark_roles'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G63: Providing a site map',
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G63'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G64: Providing a Table of Contents',
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G64'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G125: Providing links to navigate to related Web pages',
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G125'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G126: Providing a list of links to all other Web pages',
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G126'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G161: Providing a search function to help users find content',
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G161'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G185: Linking to all of the pages on the site from the home page',
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G185'
+              }
+            ]
+        },
+        NAVIGATION_2: {
+            ID:         'Navigation 2',
+            DEFINITION: 'Consistent ordering of @main@, @navigation@, @search@, @banner@ and @contentinfo@ landmarks across all pages in a website.',
+            SUMMARY:    'Consistent ordering of landmarks',
+            TARGET_RESOURCES_DESC: '@main@, @navigation@, @search@, @banner@ and @contentinfo@ landmarks',
+            RULE_RESULT_MESSAGES: {
+              MANUAL_CHECK_S: 'Verify that this page uses the same ordering of @main@, @navigation@, @banner@, @contentinfo@ and @search@ landmarks as other pages within the website.',
+              MANUAL_CHECK_P: 'Verify that this page uses the same ordering of @main@, @navigation@, @banner@, @contentinfo@ and @search@ landmarks as other pages within the website.',
+              FAIL_S:         '@main@ and/or @navigation@ landmarks need to be added to this page.',
+              FAIL_P:         '@main@ and/or @navigation@ landmarks need to be added to this page.',
+              NOT_APPLICABLE: 'Single page web resource: consistent ordering with other pages does not apply.'
+            },
+            NODE_RESULT_MESSAGES: {
+              WEBSITE_FAIL_1: 'Add a @main@ landmark to the page and make sure it is in the same order relative to other landmarks as the ordering used on the other pages in the website.',
+              WEBSITE_FAIL_2: 'Add a @navigation@ landmark to the page and make sure it is in the same order relative to other landmarks as the ordering used on the other pages in the website.',
+              WEBSITE_FAIL_3: 'Add @main@ and @navigation@ landmarks to the page and make sure they are in the same order relative to other landmarks as the ordering used on the other pages in the website.',
+              WEBSITE_MC_1:   'Verify that this page uses the same ordering of the following landmarks as other pages in the website: %1.',
+              ELEMENT_MC_1:   'Verify that the ordering of the @main@ landmark relative to other landmarks on this page is the same as the ordering used on the other pages in this website.',
+              ELEMENT_MC_2:   'Verify that the ordering of the @navigation@ landmark relative to other landmarks on this page is the same as the ordering used on the other pages in this website.',
+              ELEMENT_MC_3:   'Verify that the ordering of the @banner@ landmark relative to other landmarks on this page is the same as the ordering used on the other pages in this website.',
+              ELEMENT_MC_4:   'Verify that the ordering of the @contentinfo@ landmark relative to other landmarks on this page is the same as the ordering used on the other pages in this website.',
+              ELEMENT_MC_5:   'Verify that the ordering of the @search@ landmark relative to other landmarks on this page is the same as the ordering used on the other pages in this website.'
+            },
+            PURPOSE: [
+              'One of the fundamental features of the web is the provision of easy access to useful information. Providing consistent ordering of landmarks across all pages of a website will make it easier for people to find the information they are seeking and to navigate between and within pages.'
+            ],
+            TECHNIQUES: [
+              'Include @main@, @navigation@, @banner@ and @contentinfo@ landmarks in your page templates for the website.',
+              'If the page includes a website search form, use the @search@ landmark.',
+              'Use consistent ordering of the @main@, @navigation@, @search@, @banner@ and @contentinfo@ landmarks on each page within a website.'
+            ],
+            MANUAL_CHECKS: [
+              'Verify that the ordering of the @main@, @navigation@, @search@, @banner@ and @contentinfo@ landmarks on this page is consistent with the ordering of these landmarks on other pages.'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: Landmark Roles',
+                url:   'http://www.w3.org/TR/wai-aria/roles#landmark_roles'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G61: Presenting repeated components in the same relative order each time they appear',
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G61'
+              }
+            ]
+        },
+        NAVIGATION_3: {
+            ID:         'Navigation 3',
+            DEFINITION: 'Consistent ordering of @h1@ and @h2@ elements that label recurring page sections common across all pages in a website.',
+            SUMMARY:    'Consistent ordering of @h1@ and @h2@ labels',
+            TARGET_RESOURCES_DESC: '@h1@ and @h2@ elements used to identify recurring sections of pages within a website',
+            RULE_RESULT_MESSAGES: {
+              MANUAL_CHECK_S: 'Verify that this page uses the same ordering of @h1@ and @h2@ elements used to mark recurring page sections as the ordering used on the other pages within the website.',
+              MANUAL_CHECK_P: 'Verify that this page uses the same ordering of @h1@ and @h2@ elements used to mark recurring page sections as the ordering used on the other pages within the website.',
+              FAIL_S:         'No @h1@ or @h2@ elements found on the page.',
+              FAIL_P:         'No @h1@ or @h2@ elements found on the page.',
+              NOT_APPLICABLE: 'Single page web resource: consistent ordering of @h1@ and @h2@ does not apply.'
+            },
+            NODE_RESULT_MESSAGES: {
+              WEBSITE_FAIL_1: 'No @h1@ or @h2@ elements found on the page.',
+              WEBSITE_MC_1:   'Verify that the ordering of @h1@ and @h2@ elements used to mark recurring page sections on this page is the same as the ordering used on the other pages within the website.',
+              ELEMENT_MC_1:   'Verify that if this @h1@ heading is used to identify the main content of the page, it is in the same order relative to any @h2@ elements that identify recurring page sections as the ordering used on the other pages within the website.',
+              ELEMENT_MC_2:   'Verify that if this @h2@ heading is used to identify a recurring page section, it is in the same order relative to other comparable @h2@ elements as the ordering used on the other pages within the website.'
+            },
+            PURPOSE: [
+              'One of the fundamental features of the web is the provision of easy access to useful information. Consistent ordering of @h1@ and @h2@ elements used to identify recurring page sections common across all pages in the website will make it easier for people to find information they are seeking and to navigate between and within pages.'
+            ],
+            TECHNIQUES: [
+              'Use an @h1@ element to identify the main content within a page.',
+              'Use @h2@ elements to identify other recurring page sections such as navigation bars, web site search forms, footer information, etc.'
+            ],
+            MANUAL_CHECKS: [
+              'View the @h1@ and @h2@ heading structure of the page, and verify that it has the same or a similar structure as other pages within the website, especially with respect to recurring page sections.'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: Landmark Roles',
+                url:   'http://www.w3.org/TR/wai-aria/roles#landmark_roles'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G61: Presenting repeated components in the same relative order each time they appear',
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G61'
+              }
+            ]
+        },
+        NAVIGATION_4: {
+            ID:         'Navigation 4',
+            DEFINITION: 'Consistent labeling of @main@, @navigation@, @search@, @banner@ and @contentinfo@ landmarks across all pages in a website.',
+            SUMMARY:    'Consistent labeling of landmarks',
+            TARGET_RESOURCES_DESC: '@main@, @navigation@, @search@, @banner@ and @contentinfo@ landmarks',
+            RULE_RESULT_MESSAGES: {
+              MANUAL_CHECK_S: 'Verify that the labeling of the @main@, @navigation@, @search@, @banner@ and @contentinfo@ landmarks on this page is consistent with the labeling of all comparable landmarks on all other pages within the website.',
+              MANUAL_CHECK_P: 'Verify that the labeling of the @main@, @navigation@, @search@, @banner@ and @contentinfo@ landmarks on this page is consistent with the labeling of all comparable landmarks on all other pages within the website.',
+              FAIL_S:   'No landmarks found on the page.',
+              FAIL_P:   'No landmarks found on the page.',
+              NOT_APPLICABLE:  'Single page web resource: consistent labeling of landmarks does not apply.'
+            },
+            NODE_RESULT_MESSAGES: {
+              WEBSITE_FAIL_1: 'No landmarks found on the page.',
+              WEBSITE_MC_1: 'Verify that the labeling of landmarks on this page is consistent with the labeling of comparable landmarks on all other pages within the website.',
+              ELEMENT_MC_1: 'Verify that the labeling of the @main@ landmark on this page is consistent with the labeling of comparable @main@ landmarks on all other pages within the website.',
+              ELEMENT_MC_2: 'Verify that the labeling of the @navigation@ landmark on this page is consistent with the labeling of comparable @navigation@ landmarks on all other pages within the website.',
+              ELEMENT_MC_3: 'Verify that the labeling of the @banner@ landmark on this page is consistent with the labeling of comparable @banner@ landmarks on all other pages within the website.',
+              ELEMENT_MC_4: 'Verify that the labeling of the @contentinfo@ landmark on this page is consistent with the labeling of comparable @contentinfo@ landmarks on all other pages within the website.',
+              ELEMENT_MC_5: 'Verify that the labeling of the @search@ landmark on this page is consistent with the labeling of comparable @search@ landmarks on all other pages within the website.'
+            },
+            PURPOSE: [
+              'One of the fundamental features of the web is the provision of easy access to useful information. Consistent labeling of comparable landmark-identified content across all pages of a website will make it easier for people to find information they are seeking and to navigate between and within pages.'
+            ],
+            TECHNIQUES: [
+              'Include a @main@, @navigation@, @banner@ and @contentinfo@ landmarks in your page templates for the website.',
+              'If the page includes a website search form, use the @search@ landmark.',
+              'Landmarks only need labels (using @aria-label@ or @aria-labelledby@) if there is more than one landmark of the same type on a page.',
+              'If landmarks have labels, use consistent labeling of the landmarks across all pages within the website.'
+            ],
+            MANUAL_CHECKS: [
+              'Verify that the main content of the page is contained within the @main@ landmark.',
+              'Verify that recurring content at the top of each page is contained within a @banner@ landmark.',
+              'Verify that website navigational links are contained within @navigation@ landmarks.',
+              'Verify that recurring content at the bottom of each page is contained within a @contentinfo@ landmark.',
+              'Verify that if a landmark has a label and there are comparable landmarks on other pages in the website, the labels are the same on each page.'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: Landmark Roles',
+                url:   'http://www.w3.org/TR/wai-aria/roles#landmark_roles'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G61: Presenting repeated components in the same relative order each time they appear',
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G61'
+              }
+            ]
+        },
+        NAVIGATION_5: {
+            ID:         'Navigation 5',
+            DEFINITION: 'Consistent accessible names for @h1@ and @h2@ elements that identify recurring page sections common across all pages in a website.',
+            SUMMARY:    'Consistent @h1@ and @h2@ page section labels',
+            TARGET_RESOURCES_DESC: '@h1@ and @h2@ elements used to identify recurring page sections within a website',
+            RULE_RESULT_MESSAGES: {
+              MANUAL_CHECK_S: 'Verify that the accessible names of @h1@ and @h2@ elements used to identify recurring page sections are consistent with those on all other pages within the website.',
+              MANUAL_CHECK_P: 'Verify that the accessible names of @h1@ and @h2@ elements used to identify recurring page sections are consistent with those on all other pages within the website.',
+              FAIL_S: 'No @h1@ or @h2@ elements found on the page.',
+              FAIL_P: 'No @h1@ or @h2@ elements found on the page.',
+              NOT_APPLICABLE: 'Single page web resource: consistency of accessible names does not apply.'
+            },
+            NODE_RESULT_MESSAGES: {
+              WEBSITE_FAIL_1: 'No @h1@ or @h2@ elements found on the page',
+              WEBSITE_MC_1:   'Verify that the accessible names of @h1@ and @h2@ elements used to identify recurring page sections are the same as those of comparable @h1@ and @h2@ elements found on the other pages within the website.',
+              ELEMENT_MC_1:   'Verify that if this @h1@ heading is used to identify the main content of the page, it has the same accessible name as comparable @h1@ elements on the other pages within the website.',
+              ELEMENT_MC_2:   'Verify that if this @h2@ heading is used to identify a recurring page section, it has the same accessible name as comparable @h2@ elements on the other pages within the website.'
+            },
+            PURPOSE: [
+              'One of the fundamental features of the web is the provision of easy access to useful information. Consistent accessible names of @h1@ and @h2@ elements used to identify recurring page sections common across all pages in the website will make it easier for people to find information they are seeking and to navigate between and within pages.'
+            ],
+            TECHNIQUES: [
+              'Use @h1@ elements to identify the main content within a page.',
+              'Use @h2@ elements to identify other major sections within pages, e.g. navigation bars, web site search forms, footer information, etc.'
+            ],
+            MANUAL_CHECKS: [
+              'View the @h1@ and @h2@ heading structure of the page, and verify that it has the same relative order as other pages within the website'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: Landmark Roles',
+                url:   'http://www.w3.org/TR/wai-aria/roles#landmark_roles'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G61: Presenting repeated components in the same relative order each time they appear',
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G61'
+              }
+            ]
+        }
+   }
+});
+/*
+ * Copyright 2011, 2012, 2013, 2014 OpenAjax Alliance
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* --------------------------------------------------------------------------- */
+/*       OpenAjax Alliance Rules National Language Support (NLS): English      */
+/* --------------------------------------------------------------------------- */
+   
+
+OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
+
+    //
+    //  OAA Rules National Language Support (NLS) for Audio Rules
+    //
+    rules: {
+        RESIZE_1: {
+            ID:                    'Resize 1',
+            DEFINITION:            'When the text of a page is resized the text content %s reflow to fill available view and all text content should remain visible (e.g. text is not clipped by iframe sizes or CSS overflow limits).',
+            SUMMARY:               'Resize text content',
+            TARGET_RESOURCES_DESC: 'All pages',
+            RULE_RESULT_MESSAGES: {
+              MANUAL_CHECK_S:  'Resize the text using the zoom feature of the browser to check to make sure text content is visible (e.g. text is not clipped by iframe sizes or CSS overflow limits).'
+            },            
+            NODE_RESULT_MESSAGES: {
+              PAGE_MC_1:      'Resize the text using the zoom feature of the browser to check to make sure text content is visible (e.g. text is not clipped by iframe sizes or CSS overflow limits).'
+            },  
+            PURPOSE: [
+              'People with visual impairments may increase the size of text and the text should reflow to fit the available viewing area to make it easier to read.',
+              'If text is clipped by limits on iframe sizes or CSS overflow properties some text content will be impossible to view.'
+            ],
+            TECHNIQUES: [
+              'Use relative CSS sized like @em@ and @percentage@ rather than pixels and point sizes.',
+              'If using the CSS overflow property, @iframe@ or @frame@ check to make sure content reflows and is not clipped by changes in zoom levels.'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'How to meet 1.4.4 Resize Text',
+                url:   'http://www.w3.org/WAI/WCAG20/quickref/#qr-visual-audio-contrast-scale'
+              }
+            ]
+        }
+    }       
+});
+/*
+ * Copyright 2011, 2012, 2013 OpenAjax Alliance
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* --------------------------------------------------------------------------- */
+/*       OpenAjax Alliance Rules National Language Support (NLS): English      */
+/* --------------------------------------------------------------------------- */
+   
+
+OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
+
+    //
+    //  OAA Rules title and message string National Language Support (NLS)
+    //
+    rules: {
+        ROLE_1: {
+            ID:               'Role 1',
+            DEFINITION:       'The @main@ element %s specify @role="main"@.',
+            SUMMARY:          '@main@ element restrictions',
+            TARGET_RESOURCES_DESC: '@main@ elements',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:         'Change the role attribute on the @main@ element to be @role="main"@.',
+              FAIL_P:         'Change the role attribute on the %N_F @main@ elements to be @role="main"@.',
+              MANUAL_CHECK_S: 'Verify that the @main@ element with @role="presentation"@ does not contain the main content of the page.',
+              MANUAL_CHECK_P: 'Verify that the %N_MC @main@ elements with @role="presentation"@ do not contain the main content sections of the page.',
+              HIDDEN_S:       'One @main@ element that is hidden was not evaluated.',
+              HIDDEN_P:       '%N_H @main@ elements that are hidden were not evaluated.',
+              NOT_APPLICABLE: 'No @main@ elements found on the page.'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:  'The attribute @role="main"@ was found.',
+              ELEMENT_FAIL_1:  'Change the attribute @role="%1"@ to @role="main"@.',
+              ELEMENT_FAIL_2:  'Add the attribute @role="main"@.',
+              ELEMENT_MC_1:    'Verify the @main@ element with @role="presentation"@ does not contain the main content of the page.',
+              ELEMENT_HIDDEN_1: '@main@ element was not evaluated because it is hidden from assistive technologies.'
+            },  
+            PURPOSE: [
+              'The @main@ element semantics should be used to indicate the primary content area of each page in the website.',
+              'The role of the @main@ element should not be overridden.',
+              'If the @main@ element does not contain the main content of the web page due to author error use @role="presentation"@ to override the main content semantics.'
+            ],
+            TECHNIQUES: [
+              'The @main@ element should be used to indicate the main content on the page.',
+              'At some point most browsers and assistive technologies will support the @main@ element as a @main@ landmark without the role being specified, but until that time use @role="main"@ on the element.',
+              'In rare cases @role="presentation"@ can be used when the @main@ element does not represent the main content on the page (e.g. repairing poor page semantics).'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HTML 5 Specification: The main element', 
+                url:   'http://www.w3.org/TR/html5/grouping-content.html#the-main-element'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: main role', 
+                url:   'http://www.w3.org/TR/wai-aria/roles#main'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: presentation role', 
+                url:   'http://www.w3.org/TR/wai-aria/roles#presentation'
+              }
+            ]
+        },
+        ROLE_2: {
+            ID:               'Role 2',
+            DEFINITION:       '@body@ element %s only have @document@ or @application@ roles.',
+            SUMMARY:          '@body@ element role restrictions',
+            TARGET_RESOURCES_DESC: '@body@ element',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:         'Change the role attribute on the @body@ element to either @document@ or @application@, or remove the @role@å attribute all together.',
+              FAIL_P:         'Change the role attribute on the %N_F @body@ elements to either @document@ or @application@, or remove the role attribute all together.'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1: 'The attribute @role="%1"@ is supported on the @body@ element.',
+              ELEMENT_FAIL_1: 'Change the attribute @role="%1"@ to @role="document"@ or @role="application"@, or remove the @role@ attribute all together.'
+            },  
+            PURPOSE: [
+              'The @body@ element can be used to indicate whether the page is primarily a document or a application.',
+              'The default (e.g. no @role@ attribute) is @role="document"@.'
+            ],
+            TECHNIQUES: [
+              'If the web page is primarily composed of forms and widgets use @role="application"@ on the @body@ element.',
+              'If the web page is primarily composed of non interactive text and images do not use the @role@ attribute on the @body@ element.'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HTML 5 Specification: The body element', 
+                url:   'http://www.w3.org/TR/html5/sections.html#the-body-element'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: document role', 
+                url:   'http://www.w3.org/TR/wai-aria/roles#document'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: application role', 
+                url:   'http://www.w3.org/TR/wai-aria/roles#application'
+              }
+              
+            ]
+        },
+        ROLE_3: {
+            ID:               'Role 3',
+            // TODO: what are the allowed roles?
+            DEFINITION:       'List elements %s only have allowed ARIA roles.',
+            SUMMARY:          'List element restrictions',
+            TARGET_RESOURCES_DESC: '@ul@, @ol@ and @li@ elements',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:         'Change the role attribute on the list element to an allowed role.',
+              FAIL_P:         'Change the role attribute on the %N_F list elements to one of the allowed roles for the element.',
+              MANUAL_CHECK_S: 'Verify that the list element with @role="presentation"@ does not contain content related to the semantics of the sectioning element.',
+              MANUAL_CHECK_P: 'Verify that the %N_MC list elements with @role="presentation"@ do not contain content related to the semantics of the sectioning element.',
+              HIDDEN_S:       'One list element that is hidden was not evaluated.',
+              HIDDEN_P:       '%N_H list elements that are hidden were not evaluated.',
+              NOT_APPLICABLE: 'No list elements found on the page'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1: 'The attribute @role="%1"@ is supported on @%2@ elements.',
+              ELEMENT_FAIL_1: 'Change the attribute @role="%1"@ to one of the following roles: %2',
+              ELEMENT_FAIL_2: 'Add the attribute @role="%1"@.',
+              ELEMENT_MC_1:   'Verify the @%1@ element with @role="presentation"@ does not contain content that could be considered part of a list.',
+              // TODO: hooks for %1 and %2 needed from validate fn.
+              ELEMENT_HIDDEN_1: '@%1@ element with @role="%2"@ was not evaluated because it is hidden from assistive technologies.'
+            },  
+            PURPOSE: [
+              'The @ol@ and @ul@ elements should only be used for grouping widget roles to ensure that their native grouping semantics are not inadvertently overridden by non-grouping widget or landmark roles.',
+              'The @li@ element should only be used for widget roles that are an defined as an item in a grouping widget to make sure the native semantic of being an item in a list of items is not inadvertently overridden by non-item widget or landmark roles.'
+            ],
+            TECHNIQUES: [
+              'The @ul@ and @ol@ elements when used with widget roles must be used to indicate the grouping of a list of related widget roles.',
+              'The @li@ elements when used with widget roles must represent an item in widget grouping roles.',
+              'In rare cases @role="presentation"@ is allowed on a @ul@ or @ol@ element when the element is not being used to represent a group of related items in a list.',
+              'In rare cases @role="presentation"@ is allowed on an @li@ element when the element is not representing an item in a list.'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HTML 5 Specification: The ol element', 
+                url:   'http://www.w3.org/TR/html5/grouping-content.html#the-ol-element'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HTML 5 Specification: The ul element', 
+                url:   'http://www.w3.org/TR/html5/grouping-content.html#the-ul-element'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HTML 5 Specification: The li element', 
+                url:   'http://www.w3.org/TR/html5/grouping-content.html#the-li-element'
+              }              
+            ]
+        },
+        ROLE_4: {
+            ID:               'Role 4',
+            DEFINITION:       '@article@ element %s only have @article@, @main@, @document@ or @application@ roles.',
+            SUMMARY:          '@article@ element role restrictions',
+            TARGET_RESOURCES_DESC: '@article@ element',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:         'Change the role attribute on the @article@ element to either @document@ or @application@, or remove the @role@å attribute all together.',
+              FAIL_P:         'Change the role attribute on the %N_F @article@ elements to either @document@ or @application@, or remove the role attribute all together.',
+              HIDDEN_S:       'One @article@ element that is hidden was not evaluated.',
+              HIDDEN_P:       '%N_H @article@ elements that are hidden were not evaluated.',
+              NOT_APPLICABLE: 'No @article@ elements found on the page'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:   'The attribute @role="%1"@ is supported on the @article@ element.',
+              ELEMENT_FAIL_1:   'Change the attribute @role="%1"@ to @article@, @main@, @role="document"@ or @role="application"@, or remove the @role@ attribute all together.',
+              ELEMENT_HIDDEN_1: '@article@ element with @role="%1"@ was not evaluated because it is hidden from assistive technologies.'
+            },  
+            PURPOSE: [
+              'The @article@ element can be primarily be used to identify news paper or magazine articles, a list or nested messages in a comment or discussion list.',
+              'The @article@ element might also be used to identify static text and image content in a web application using the @document@ role.',
+              'The @article@ element might also be used to identify a section of form controls and widgets in a web application using the @application@ role.'
+              
+            ],
+            TECHNIQUES: [
+              'If the content of the @article@ element is primarily form controls and/or widgets use @role="application"@ on the @article@ element.',
+              'If the content of the @article@ element is used as the container for the main content of the page use @role="main"@ on the @article@ element.',
+              'If the content of the @article@ element is used as the container for a message in nested discussion list, comment to a blog, or as a magazine/news story use @role="article"@ on the @article@ element.',
+              'If the content of the @article@ element is primarily composed of non interactive text and images and the @article@ element is embedded inside an container element with @role="application""@ use the @role="document"@ attribute on the @article@ element.',
+              'If the content of the @article@ element does not meet any of the other techniques do not use the @role@ attribute.'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HTML 5 Specification: The article element', 
+                url:   'http://www.w3.org/TR/html5/sections.html#the-article-element'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: document role', 
+                url:   'http://www.w3.org/TR/wai-aria/roles#document'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: application role', 
+                url:   'http://www.w3.org/TR/wai-aria/roles#application'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: main role', 
+                url:   'http://www.w3.org/TR/wai-aria/roles#main'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: article role', 
+                url:   'http://www.w3.org/TR/wai-aria/roles#article'
+              }
+              
+            ]
+        },
+        ROLE_5: {
+            ID:               'Role 5',
+            DEFINITION:       '@section@ element %s only have @alert@, @alertdialog@, @application@, @contentinfo@, @dialog@, @document@, @log@, @main@, @marquee@, @presentation@, @region@, @search@ or @status@ roles.',
+            SUMMARY:          '@section@ element role restrictions',
+            TARGET_RESOURCES_DESC: '@section@ element',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:         'Change the role attribute on the @section@ element to either  @alert@, @alertdialog@, @application@, @contentinfo@, @dialog@, @document@, @log@, @main@, @marquee@, @presentation@, @region@, @search@ or @status@, or remove the @role@å attribute all together.',
+              FAIL_P:         'Change the role attribute on the %N_F @section@ elements to either @alert@, @alertdialog@, @application@, @contentinfo@, @dialog@, @document@, @log@, @main@, @marquee@, @presentation@, @region@, @search@ or @status@, or remove the role attribute all together.',
+              HIDDEN_S:       'One @section@ element that is hidden was not evaluated.',
+              HIDDEN_P:       '%N_H @section@ elements that are hidden were not evaluated.',
+              NOT_APPLICABLE: 'No @section@ elements found on the page'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:   'The attribute @role="%1"@ is supported on the @section@ element.',
+              ELEMENT_FAIL_1:   'Change the attribute @role="%1"@ to  @alert@, @alertdialog@, @application@, @contentinfo@, @dialog@, @document@, @log@, @main@, @marquee@, @presentation@, @region@, @search@ or @status@, or remove the @role@ attribute all together.',
+              ELEMENT_HIDDEN_1: '@section@ element with @role="%1"@ was not evaluated because it is hidden from assistive technologies.'
+            },  
+            PURPOSE: [
+              'The @section@ element can be used to for identifying many types of of sections and sub sections within a web page, review the techniques for the possible uses of the section element with ARIA @role@ semantics.',
+              'The @section@ element should not be used when there is a more semantically meaningful elements available (e.g. @main@, @header@, @footer@,..)',
+              'The default (e.g. no @role@ attribute) is @role="region"@.'
+            ],
+            TECHNIQUES: [
+              'If the content of the @section@ element is used to provide a time sensitive text message to the user that is very important for the user to know use the live region @role="alert"@ on the @section@ element.',
+              'If the content of the @section@ element is used to create a error dialog box with a message that is very important for the user to know use the @role="alertdialog"@ on the @section@ element.',
+              'If the content of the @section@ element is primarily form controls and/or widgets use @role="application"@ on the @section@ element.',
+              'If the content of the @section@ element is used as the container for footer information that is repeated on most pages of the website use @role="contentinfo"@ on the @section@ element.',
+              'If the content of the @section@ element is used to create a non-error message related dialog box use the @role="dialog"@ on the @section@ element.',
+              'If the content of the @section@ element is primarily composed of non interactive text and images and the @section@ element is embedded inside an container element with @role="application""@ use the @role="document"@ attribute on the @section@ element.',
+              'If the content of the @section@ element is used as the container a list of messages use @role="log"@ on the @section@ element.',              
+              'If the content of the @section@ element is used as the container for the main content of the page use @role="main"@ on the @section@ element.',
+              'If the content of the @section@ element is used as for periodically changing text on the page that is considered more informational (e.g. news tag line) use @role="marquee"@ on the @section@ element.',
+              'If the content of the @section@ element is NOT being used as the container for a region landmark use @role="presentation"@ on the @section@ element to remove it from landmark navigation.',
+              'If the content of the @section@ element is used as the container for sub section within a landmark use @role="region"@ on the @section@ element.',
+              'If the content of the @section@ element is used as the container for a search the website form use @role="search"@ on the @section@ element.',
+              'If the content of the @section@ element is used as the container for a status message that will be automatically be updated on some pending transaction use @role="status"@ on the @section@ element.',
+              'If the content of the @section@ element does not meet any of the other techniques do not use the @role@ attribute.'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HTML 5 Specification: The article element', 
+                url:   'http://www.w3.org/TR/html5/sections.html#the-article-element'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: alert role', 
+                url:   'http://www.w3.org/TR/wai-aria/roles#alert'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: alertdialog role', 
+                url:   'http://www.w3.org/TR/wai-aria/roles#alertdialog'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: application role', 
+                url:   'http://www.w3.org/TR/wai-aria/roles#application'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0:contentinfo role', 
+                url:   'http://www.w3.org/TR/wai-aria/roles#contentinfo'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: dialog role', 
+                url:   'http://www.w3.org/TR/wai-aria/roles#dialog'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: document role', 
+                url:   'http://www.w3.org/TR/wai-aria/roles#document'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: log role', 
+                url:   'http://www.w3.org/TR/wai-aria/roles#log'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: main role', 
+                url:   'http://www.w3.org/TR/wai-aria/roles#main'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: marquee role', 
+                url:   'http://www.w3.org/TR/wai-aria/roles#marquee'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: presentation role', 
+                url:   'http://www.w3.org/TR/wai-aria/roles#presentation'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: search role', 
+                url:   'http://www.w3.org/TR/wai-aria/roles#search'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: status role', 
+                url:   'http://www.w3.org/TR/wai-aria/roles#status'
+              }
+            ]
+        },    
+        ROLE_6: {
+            ID:               'Role 6',
+            DEFINITION:       '@nav@ element %s only have @navigation@ or @presentation@ roles.',
+            SUMMARY:          '@nav@ element role restrictions',
+            TARGET_RESOURCES_DESC: '@nav@ element',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:         'Change the role attribute on the @nav@ element to either @navigation@ or @presentation@.',
+              FAIL_P:         'Change the role attribute on the %N_F @nav@ elements to either @navigation@ or @presentation@.',
+              HIDDEN_S:       'One @nav@ element that is hidden was not evaluated.',
+              HIDDEN_P:       '%N_H @nav@ elements that are hidden were not evaluated.',
+              NOT_APPLICABLE: 'No @nav@ elements found on the page'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:   'The attribute @role="%1"@ is supported on the @nav@ element.',
+              ELEMENT_FAIL_1:   'Change the attribute @role="%1"@ to @navigation@ or @role="presentation"@.',
+              ELEMENT_FAIL_2:   'Add the @role@ attribute with the value of @navigation@ or @role="presentation"@.',
+              ELEMENT_HIDDEN_1: '@nav@ element with @role="%1"@ was not evaluated because it is hidden from assistive technologies.'
+            },  
+            PURPOSE: [
+              'The @nav@ element should be used to identify website and page navigation links and therefore needs to be identified as a @navigation@ landmark.',
+              'If the @nav@ element is used for any other purpose than website and page navigation links its navigation semantics should be removed using @presentation@ role.'
+            ],
+            TECHNIQUES: [
+              'If the content of the @nav@ element is primarily used for website or page navigation links use the @role="navigation"@ on the @nav@ element.',
+              'If the content of the @nav@ element is used for any other purpose than for website or page navigational links use @role="presentation"@ on the @nav@ element.'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HTML 5 Specification: The nav element', 
+                url:   'http://www.w3.org/TR/html5/sections.html#the-nav-element'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: navigation role', 
+                url:   'http://www.w3.org/TR/wai-aria/roles#navigation'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: presentation role', 
+                url:   'http://www.w3.org/TR/wai-aria/roles#presentation'
+              }
+              
+            ]
+        },    
+        ROLE_7: {
+            ID:               'Role 7',
+            DEFINITION:       '@aside@ element %s only have @complementary@, @note@, @search@ or @presentation@ roles.',
+            SUMMARY:          '@aside@ element role restrictions',
+            TARGET_RESOURCES_DESC: '@aside@ element',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:         'Change the role attribute on the @aside@ element to either @complementary@, @note@, @search@ or @presentation@.',
+              FAIL_P:         'Change the role attribute on the %N_F @aside@ elements to either @complementary@, @note@, @search@ or @presentation@.',
+              HIDDEN_S:       'One @aside@ element that is hidden was not evaluated.',
+              HIDDEN_P:       '%N_H @aside@ elements that are hidden were not evaluated.',
+              NOT_APPLICABLE: 'No @aside@ elements found on the page'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:   'The attribute @role="%1"@ is supported on the @aside@ element.',
+              ELEMENT_FAIL_1:   'Change the attribute @role="%1"@ to @complementary@, @note@, @search@ or @role="presentation"@.',
+              ELEMENT_FAIL_2:   'Add the @role@ attribute with the value of @complementary@, @note@, @search@ or @role="presentation"@.',
+              ELEMENT_HIDDEN_1: '@aside@ element with @role="%1"@ was not evaluated because it is hidden from assistive technologies.'
+            },  
+            PURPOSE: [
+              'The @aside@ element is used for tangentially related content to main content of the page and are often represented as sidebars in printed typography.',
+              'Tangentially related content should be identified as a @role="complementary"@, @role="search"@ or role of @role="note"@.',
+              'The difference between @complementary@ and @search@ roles and the @note@ role is that @complementary@ and @search@ are landmark roles and support and @note@ is not a landmark role.',
+              'The @search@ role should be used if the content of the @aside@ element are form controls or widgets used for searching the website content.'        
+            ],
+            TECHNIQUES: [
+              'If the content of the @aside@ element is used for tangentially related content to main content of the page use @role="complementary"@ to make the content part of the landmark navigation of the page.',
+              'If the content of the @aside@ element is used for website content search form controls use @role="search"@ to identify the search semantics and make the content part of the landmark navigation of the page.',
+              'If the content of the @aside@ element is used for tangentially related content to main content of the page use @role="note"@.  The @note@ role is not part of the landmark navigation of the page and therefore is less commonly used.',
+              'If the content of the @aside@ element is used for any other purpose than for tangentially related content to main content use @role="presentation"@ to remove the @aside@ semantics.'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HTML 5 Specification: The aside element', 
+                url:   'http://www.w3.org/TR/html5/sections.html#the-aside-element'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: complementary role', 
+                url:   'http://www.w3.org/TR/wai-aria/roles#complementary'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: note role', 
+                url:   'http://www.w3.org/TR/wai-aria/roles#note'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: search role', 
+                url:   'http://www.w3.org/TR/wai-aria/roles#search'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: presentation role', 
+                url:   'http://www.w3.org/TR/wai-aria/roles#presentation'
+              }
+            ]
+        },
+        ROLE_8: {
+            ID:               'Role 8',
+            DEFINITION:       'The @header@ element %s specify @role="banner"@.',
+            SUMMARY:          '@header@ element restrictions',
+            TARGET_RESOURCES_DESC: '@header@ elements',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:         'Change the role attribute on the @header@ element to be @role="banner"@.',
+              FAIL_P:         'Change the role attribute on the %N_F @header@ elements to be @role="banner"@.',
+              MANUAL_CHECK_S: 'Verify that the @header@ element with @role="presentation"@ does not contain the banner content of the page.',
+              MANUAL_CHECK_P: 'Verify that the %N_MC @header@ elements with @role="presentation"@ do not contain banner content of the page.',
+              HIDDEN_S:       'One @header@ element that is hidden was not evaluated.',
+              HIDDEN_P:       '%N_H @header@ elements that are hidden were not evaluated.',
+              NOT_APPLICABLE: 'No @header@ elements found on the page.'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:  'The attribute @role="banner"@ was found.',
+              ELEMENT_FAIL_1:  'Change the attribute @role="%1"@ to @role="banner"@.',
+              ELEMENT_FAIL_2:  'Add the attribute @role="banner"@.',
+              ELEMENT_MC_1:    'Verify the @banner@ element with @role="presentation"@ does not contain the header content of the page.',
+              ELEMENT_HIDDEN_1: '@header@ element was not evaluated because it is hidden from assistive technologies.'
+            },  
+            PURPOSE: [
+              'The @header@ element semantics should be used to indicate banner content of a website.  Banner content usually appears at the top of all or most of the pages in a website to identify the website to users.  Header information typically contains the title and logo used to identify and brand the website.',
+              'The role of the @header@ element should not be overridden.'
+            ],
+            TECHNIQUES: [
+              'The @header@ element should be used to indicate the banner content on the page using @role="banner"@.',
+              'At some point most browsers and assistive technologies will support the @header@ element as a ARIA landmark without the role being specified, but until that time use @role="banner"@ on the element.',
+              'In rare cases @role="presentation"@ can be used when the @header@ element does not represent the banner content on the page (e.g. repairing poor page semantics).'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HTML 5 Specification: The main element', 
+                url:   'http://www.w3.org/TR/html5/grouping-content.html#the-main-element'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: banner role', 
+                url:   'http://www.w3.org/TR/wai-aria/roles#banner'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: presentation role', 
+                url:   'http://www.w3.org/TR/wai-aria/roles#presentation'
+              }
+            ]
+        },
+        ROLE_9: {
+            ID:               'Role 9',
+            DEFINITION:       'The @footer@ element %s specify @role="contentinfo"@.',
+            SUMMARY:          '@footer@ element restrictions',
+            TARGET_RESOURCES_DESC: '@footer@ elements',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:         'Change the role attribute on the @footer@ element to be @role="contentinfo"@.',
+              FAIL_P:         'Change the role attribute on the %N_F @footer@ elements to be @role="contentinfo"@.',
+              MANUAL_CHECK_S: 'Verify that the @footer@ element with @role="presentation"@ does not contain the footer content of the page.',
+              MANUAL_CHECK_P: 'Verify that the %N_MC @footer@ elements with @role="presentation"@ do not contain footer content of the page.',
+              HIDDEN_S:       'One @footer@ element that is hidden was not evaluated.',
+              HIDDEN_P:       '%N_H @footer@ elements that are hidden were not evaluated.',
+              NOT_APPLICABLE: 'No @footer@ elements found on the page.'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:  'The attribute @role="contentinfo"@ was found.',
+              ELEMENT_FAIL_1:  'Change the attribute @role="%1"@ to @role="contentinfo"@.',
+              ELEMENT_FAIL_2:  'Add the attribute @role="contentinfo"@.',
+              ELEMENT_MC_1:    'Verify the @footer@ element with @role="presentation"@ does not contain the footer content of the page.',
+              ELEMENT_HIDDEN_1: '@footer@ element was not evaluated because it is hidden from assistive technologies.'
+            },  
+            PURPOSE: [
+              'The @footer@ element semantics should be used to indicate footer content of a website.  Footer content usually appears at the bottom of all or most of the pages in a website to identify the website to users. Footer information typically contains copyright information and links to privacy and contact information.',
+              'The role of the @header@ element should not be overridden.'
+            ],
+            TECHNIQUES: [
+              'The @footer@ element should be used to indicate the banner content on the page using @role="contentinfo"@.',
+              'At some point most browsers and assistive technologies will support the @footer@ element as a ARIA landmark without the role being specified, but until that time use @role="contentinfo"@ on the element.',
+              'In rare cases @role="presentation"@ can be used when the @footer@ element does not represent the footer content on the page (e.g. repairing poor page semantics).'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HTML 5 Specification: The main element', 
+                url:   'http://www.w3.org/TR/html5/grouping-content.html#the-main-element'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: contentinfo role', 
+                url:   'http://www.w3.org/TR/wai-aria/roles#contentinfo'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: presentation role', 
+                url:   'http://www.w3.org/TR/wai-aria/roles#presentation'
+              }
+            ]
+        },
+        ROLE_10: {
+            ID:               'Role 10',
+            DEFINITION:       'The heading elements (@H1-H6@) %s specify no role or @tab@ role.',
+            SUMMARY:          'Headings role restrictions',
+            TARGET_RESOURCES_DESC: '@h1@, @h2@, @h3@, @h4@, @h5@, @h6@ elements',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:         'Change the role attribute on the heading element to have no role or @role="tab"@.',
+              FAIL_P:         'Change the role attribute on the %N_F heading elements to have no role or be @role="tab"@.',
+              MANUAL_CHECK_S: 'Verify that the heading element with @role="presentation"@ does not represent a heading on the page.',
+              MANUAL_CHECK_P: 'Verify that the %N_MC heading elements with @role="presentation"@ do not represent headings on the page.',
+              HIDDEN_S:       'One heading element that is hidden was not evaluated.',
+              HIDDEN_P:       '%N_H heading elements that are hidden were not evaluated.',
+              NOT_APPLICABLE: 'No heading elements found on the page.'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:  'No @role@ attribute was found.',
+              ELEMENT_PASS_2:  'The attribute @role="tab"@ was found.',
+              ELEMENT_FAIL_1:  'Change the attribute @role="%1"@ to no role or to  @role="tab"@.',
+              ELEMENT_MC_1:    'Verify the @%1@ element with @role="presentation"@ does not contain represent a heading on the page.',
+              ELEMENT_HIDDEN_1: '@%1@ element was not evaluated because it is hidden from assistive technologies.'
+            },  
+            PURPOSE: [
+              'Heading elements (@H1-H6@) should be used to identify and label the sections and sub sections of content within a website. ',
+              'The role of the heading elements (@H1-H6@)rarely needs to be overridden.'
+            ],
+            TECHNIQUES: [
+              'Heading elements (@H1-h6@) typically do not need any role definition, there default role is @heading@.',
+              'Heading elements (@H1-h6@) used as the tabs in a tab panel widget need to have the @role="tab"@.',
+              'In rare cases @role="presentation"@ can be used when a heading element does not provide a label for a section of content or is a tab in a tabpanel widget. Although a better solution is to change the element to something more semantically meaningful.'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HTML 5 Specification: The main element', 
+                url:   'http://www.w3.org/TR/html5/grouping-content.html#the-main-element'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: heading role', 
+                url:   'http://www.w3.org/TR/wai-aria/roles#heading'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: tab role', 
+                url:   'http://www.w3.org/TR/wai-aria/roles#tab'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: presentation role', 
+                url:   'http://www.w3.org/TR/wai-aria/roles#presentation'
+              }
+            ]
+        }
+    }
+});
+/*
+ * Copyright 2011, 2012, 2013 OpenAjax Alliance
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* --------------------------------------------------------------------------- */
+/*       OpenAjax Alliance Rules National Language Support (NLS): English      */
+/* --------------------------------------------------------------------------- */
+   
+
+OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
+
+    //
+    //  OAA Rules title and message string National Language Support (NLS) for sensory rules
+    //
+    rules: {
+        SENSORY_1: {
+            ID:                    'Sensory 1',
+            DEFINITION:            'Understanding and operating on content on the page %s not rely solely on the shape, size, visual location, orientation, or sound.',
+            SUMMARY:               'Not only shape, size and location',
+            TARGET_RESOURCES_DESC: 'Images used for links and controls',
+            RULE_RESULT_MESSAGES: {
+              MANUAL_CHECK_S:     'Verify that understanding the content, navigation of links and operation of controls and widgets does not depend solely on the shape, size, visual location, orientation, or sound.'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_MC_1: 'Verify that understanding the content, navigation of links and operation of controls and widgets does not depend solely on the shape, size, visual location, orientation, or sound.'
+            },  
+            PURPOSE:        [ 'People with visual impairments and learning disabilities that affect the visual processing of information may not be able to perceive the content or identify the purpose of links and controls.',
+                              'People with hearing impairments and learning disabilities that affect the auditory processing of information may not be able to perceive the content or identify the purpose of links and controls.'
+                            ],
+            TECHNIQUES:     [ 'Provide redundant text labels and references in addition to references to shape, size, visual location or sound.'
+                            ],
+            MANUAL_CHECKS:  [ 'Verify that understanding the content, navigation of links and operation of controls and widgets does not depend solely on the shape, size, visual location, orientation, or sound.'
+                            ],
+            INFORMATIONAL_LINKS: [{ type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                               title: 'WCAG 2.0 Success Criterion 1.3.3 Sensory Characteristics', 
+                               url:   'http://www.w3.org/TR/WCAG20/#content-structure-separation-understanding'
+                             },
+                             { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                               title: 'How to meet Success Criterion 1.3.3 Sensory Characteristics', 
+                               url:   'http://www.w3.org/WAI/WCAG20/quickref/#qr-content-structure-separation-understanding'
+                             }
+                            ]
+        }
+    }  
+});
+/*
+ * Copyright 2011, 2012, 2013 OpenAjax Alliance
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* --------------------------------------------------------------------------- */
+/*       OpenAjax Alliance Rules National Language Support (NLS): English      */
+/* --------------------------------------------------------------------------- */
+   
+
+OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
+
+    //
+    //  OAA Rules title and message string National Language Support (NLS)
+    //
+    rules: {
+        TABLE_1: {
+            ID:                    'Table 1',
+            DEFINITION:            'Data cells in data tables %s have header cells',
+            SUMMARY:               'Data cells %s have headers',
+            TARGET_RESOURCES_DESC: '@td@ elements',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Add @th@ or @td[scope]@ elements to the first row or column of the data table or add a @headers@ attribute to define the headers for the data cell',
+              FAIL_P:   'Add @th@ or @td[scope]@ elements to the first row or column of the table or use the @headers@ attribute to define headers for the data cell',
+              MANUAL_CHECK_S:     'The @td@ element does not have any text content and it does not have any header cells, verify that this cell is being used for formatting and does not need headers',
+              MANUAL_CHECK_P:     'There are %N_F @td@ elements that do not have any text content and do not have any header cells, verify that thess cells are being used for formatting and do not need headers',
+              HIDDEN_S: 'The @td@ element that is hidden was not evaluated',
+              HIDDEN_P: 'The %N_H @td@ elements that are hidden were not evaluated',
+              NOT_APPLICABLE:  'No data tables and/or cells in the page'              
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:         'The header comes from the @headers@ attribute with the following ids: \'%1\'',
+              ELEMENT_PASS_2:         'The header comes from row and/or column header',
+              ELEMENT_FAIL_1:       'Add header cells using the @headers@ attribute, since this table is a complex table',
+              ELEMENT_FAIL_2:       'Add header cells using row and/or column @th@ elements, or the @headers@ attribute',
+              ELEMENT_FAIL_3:       'Add text content to the row and/or column header cells',
+              ELEMENT_FAIL_4:       'Add text content to the header cells with the following ids: \'%1\'',
+              ELEMENT_FAIL_5:       'Change the idrefs \'%1\' in the @headers@ attribute to valid ids',
+              ELEMENT_MC_1: 'The @td@ element does not have any text content and it does not have any header cells, verify that this cell is being used for formatting and does not need headers',
+              ELEMENT_HIDDEN_1:       'Header cells for data cells was not tested because the @td@ element is hidden from assistive technologies'
+            },  
+            PURPOSE: [
+              'Data cells need header cells for people using speech to understand the content of the table cell, since they cannot see the visual relationships with header cells'                   
+            ],
+            TECHNIQUES: [
+              'Use @th@ elements in the first row or column to identify row and column headers in a simple data tables',
+              'Use @headers@ attribute on each @td@ element to identify header information in complex data tables',
+              'Use @th@ element for cells used as header cells in the table',
+              'While not recommended, it is valid to use @td@ element with a @scope@ attribute as header cell'
+            ],
+            MANUAL_CHECKS: [
+              'Verify that empty @td@ and @th@ elements and does not need table headers'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HTML 4.01 Specification: 11.2.6 Table cells: The TH and TD elements', 
+                url:   'http://www.w3.org/TR/html4/struct/tables.html#edef-TD'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HTML 4.01 Specification: scope attribute', 
+                url:   'http://www.w3.org/TR/html4/struct/tables.html#adef-scope'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'H51: Using table markup to present tabular information', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/H51'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'H63: Using the scope attribute to associate header cells and data cells in data tables', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/H63'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
+                title: 'IBM Web checklist Checkpoint 1.3e: Tables', 
+                url:   'http://www-03.ibm.com/able/guidelines/web/webtableheaders.html'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
+                title: 'iCITA HTML Best Practices: Simple Data Table Example', 
+                url:   'http://html.cita.illinois.edu/nav/dtable/dtable-example-simple.php'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
+                title: 'iCITA HTML Best Practices: Complex Data Table Example', 
+                url:   'http://html.cita.illinois.edu/nav/dtable/dtable-example-complex.php'
+              }  
+            ]   
+        },
+        TABLE_2: {
+            ID:                    'Table 2',
+            DEFINITION:            'If there is more than one data table on the same page each data table %s have an accessible name',
+            SUMMARY:               'Data tables %s have name',
+            TARGET_RESOURCES_DESC: '@table@',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Add @caption@ element, @aria-label@ or @aria-labelledby@ attribute to provide an accessible name ot the data table',
+              FAIL_P:   'Add @caption@ element, @aria-label@ or @aria-labelledby@ attribute to each of the %N_F out of %N_T data tables to provide an effective caption',
+              HIDDEN_S: 'The @table@ and/or @caption@ element that is hidden was not evaluated',
+              HIDDEN_P: 'The %N_H @table@ elements and/or @caption@ elements that are hidden were not evaluated',
+              NOT_APPLICABLE:  'Less than two data tables on the page'              
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:   'Data table has an accessible name using the @caption@ element: \'%1\'',
+              ELEMENT_PASS_2:   'Data table has an accessible name using the @summary@ attribute with content: \'%1\'',
+              ELEMENT_PASS_3:   'Data table has an accessible name using the @aria-label@ attribute with content: \'%1\'',
+              ELEMENT_PASS_4:   'Data table has an accessible name using the @aria-labelledby@ attribute with content: \'%1\'',
+              ELEMENT_PASS_5:   'Data table has an accessible name using the @title@ attribute with content: \'%1\'',
+              ELEMENT_FAIL_1: 'Add @caption@ element, @aria-label@ or @aria-labelledby@ attribute to provide an accessible name for the table',
+              ELEMENT_HIDDEN_1: '@table@ element is hidden from assistive technologies and not evaluated for an accessible name'
+            },  
+            PURPOSE: [
+              'An accessible name for a data table is important for people using assistive technologies to understand the purpose of the table'                   
+            ],
+            TECHNIQUES: [
+              'Use @caption@ element to provide an accessible name',
+              'Use @aria-label@ attribute to provide an accessible name',
+              'Use @aria-labelledby@ attribute to provide an accessible name',
+              'If the table is not used for tabular data, but instead for layout of content, use the @role="presentation"@ on all the table elements'
+            ],
+            MANUAL_CHECKS: [
+              'Make sure the content of the accessibe name accurately and succinctly describes the purpose of the data table'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HTML 4.01 Specification: 11.2.2 Table Captions: The CAPTION element', 
+                url:   'http://www.w3.org/TR/html4/struct/tables.html#h-11.2.2'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HTML 4.01 Specification: summary attribute', 
+                url:   'http://www.w3.org/TR/html4/struct/tables.html#adef-summary'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'H39: Using caption elements to associate data table captions with data tables', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/H39'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'H73: Using the summary attribute of the table element to give an overview of data tables', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/H73'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'F46: Failure of Success Criterion 1.3.1 due to using th elements, caption elements, or non-empty summary attributes in layout tables', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/F46'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
+                title: 'IBM Web checklist Checkpoint 1.3e: Tables', 
+                url:   'http://www-03.ibm.com/able/guidelines/web/webtableheaders.html'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
+                title: 'iCITA HTML Best Practices: Simple Data Table Example', 
+                url:   'http://html.cita.illinois.edu/nav/dtable/dtable-example-simple.php'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
+                title: 'iCITA HTML Best Practices: Complex Data Table Example', 
+                url:   'http://html.cita.illinois.edu/nav/dtable/dtable-example-complex.php'
+              }  
+            ]   
+        },
+        TABLE_3: {
+            ID:                    'Table 3',
+            DEFINITION:            'Large or complex data tables %s have a text description or summary of data in the table',
+            SUMMARY:               'Data tables %s have description',
+            TARGET_RESOURCES_DESC: '@aria-describedby@ or @table[summary]@ attribute',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'For the complex data table without a description, add @aria-describedby@ attribute to point to a text description or summary of the content in the table',
+              FAIL_P:   'For the %N_F complex data tables without descriptiona, add @aria-describedby@ attribute to point to a text description or summary of the content for each table',
+              MANUAL_CHECK_S:     'For the simple data table without a description, consider adding an @aria-describedby@ attribute to point to a text description or summary of the content in the table',
+              MANUAL_CHECK_P:     'For the %N_F simple data tables without descriptions, consider adding an @aria-describedby@ attribute to point to a text description or summary of the content for each table',
+              HIDDEN_S: 'The data @table@ element that is hidden was not evaluated',
+              HIDDEN_P: 'The %N_H data @table@ elements elements that are hidden were not evaluated',
+              NOT_APPLICABLE:  'No data tables on the page'              
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:         'The @table@ element has an accessible description through the @aria-describedby@ reference',
+              ELEMENT_FAIL_1:       'This is a complex table, add @aria-describedby@ attribute to point to a text description or summary of the content of the table',
+              ELEMENT_MC_1: 'This is a simple table, consider adding an @aria-describedby@ attribute to point to a text description or summary of the content of the table',
+              ELEMENT_HIDDEN_1:       'The @table@ element is hidden and therefore not evaluated'
+            },  
+            PURPOSE: [
+              'For large or complex tables it may take a lot of time for users of asssitive technology to explore the content of a table.',
+              'Providing a text description of the content of the table or a summary of the conclusions that could be interpreted from the content of the table will make it easier for users of assistive technology to understand the content of the table.'
+              ],
+            TECHNIQUES: [
+              'Use the  @aria-describedby@ attribute to provide a reference to a text description or summary of a data table'
+            ],
+            MANUAL_CHECKS: [
+              'Verify the content of the text description or summary accurately describes the contents of the table'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
+                title: 'IBM Web checklist Checkpoint 1.3e: Tables', 
+                url:   'http://www-03.ibm.com/able/guidelines/web/webtableheaders.html'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
+                title: 'iCITA HTML Best Practices: Simple Data Table Example', 
+                url:   'http://html.cita.illinois.edu/nav/dtable/dtable-example-simple.php'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
+                title: 'iCITA HTML Best Practices: Complex Data Table Example', 
+                url:   'http://html.cita.illinois.edu/nav/dtable/dtable-example-complex.php'
+              }  
+            ]   
+        },
+        TABLE_4: {
+            ID:                    'Table 4',
+            DEFINITION:            'Tables with accessible names %s be unique',
+            SUMMARY:               'Table names %s be unique',
+            TARGET_RESOURCES_DESC: '@table@ elements',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Change the accessible name of the @table@ to be unique',
+              FAIL_P:   'Change the accessible names of the %N_F out of %N_T data tables that do not have unique accessible names to have unique accessible names',
+              HIDDEN_S: 'The data @table@ element with an accessible name that is hidden was not evaluated',
+              HIDDEN_P: 'The %N_H data @table@ elements elements with accessible names that are hidden were not evaluated',
+              NOT_APPLICABLE:  'No data tables on the page'              
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:    'The accessible name for the data table is unique: \'%1\'',
+              ELEMENT_FAIL_1:  'Change the accessible name for the data table to be unique on the page: \'%1\'',
+              ELEMENT_HIDDEN_1:  'The @table@ element is hidden so the accessible name was not evaluated: \'%1\''
+            },  
+            PURPOSE: [
+              'Data tables that share the same accessible name will be confusing to users of assistive technology, they will not be able to differentiate the differences in content of the data tables.',
+              'If in the rare chance the tables have duplicate data, use "Copy 1", "Copy 2" and "Copy X" as part of the accessible name of each table to make it clear there is more than one copy of the same information on the page.'
+            ],
+            TECHNIQUES: [
+              'Use @caption@ element to provide an accessible name',
+              'Use @aria-label@ attribute to provide an accessible name',
+              'Use @aria-labelledby@ attribute to provide an accessible name',
+              'If the table is not used for tabular data, but instead for layout of content, use the @role="presentation"@ on all the table elements'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HTML 4.01 Specification: 11.2.2 Table Captions: The CAPTION element', 
+                url:   'http://www.w3.org/TR/html4/struct/tables.html#h-11.2.2'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HTML 4.01 Specification: summary attribute', 
+                url:   'http://www.w3.org/TR/html4/struct/tables.html#adef-summary'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'H39: Using caption elements to associate data table captions with data tables', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/H39'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'H73: Using the summary attribute of the table element to give an overview of data tables', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/H73'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'F46: Failure of Success Criterion 1.3.1 due to using th elements, caption elements, or non-empty summary attributes in layout tables', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/F46'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
+                title: 'IBM Web checklist Checkpoint 1.3e: Tables', 
+                url:   'http://www-03.ibm.com/able/guidelines/web/webtableheaders.html'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
+                title: 'iCITA HTML Best Practices: Simple Data Table Example', 
+                url:   'http://html.cita.illinois.edu/nav/dtable/dtable-example-simple.php'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
+                title: 'iCITA HTML Best Practices: Complex Data Table Example', 
+                url:   'http://html.cita.illinois.edu/nav/dtable/dtable-example-complex.php'
+              }  
+            ]   
+        },
+        TABLE_5: {
+            ID:                    'Table 5',
+            DEFINITION:            'A table %s be defined either as a data table or a layout table',
+            SUMMARY:               'Define purpose of table markup',
+            TARGET_RESOURCES_DESC: '@table@ elements',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'For the table without headers or @role="presentation"@, define the purpose of the table by adding header cells if the table is being used for tabular data or use @role="presentation"@ on the table elements if the table is being used to layout content',
+              FAIL_P:   'For the %N_F tables without headers or @role=presentation"@, define the purpose of the table by adding header cells if the table is being used for tabular data or use @role="presentation"@ on the table elements if the table is being used to layout content',
+              HIDDEN_S: 'The @table@ element that is hidden was not evaluated',
+              HIDDEN_P: 'The %N_H @table@ elements elements that are hidden were not evaluated',
+              NOT_APPLICABLE:  'No table markup found on this page'              
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:    'The @table@ is considered a data table, since it has header cells or an accessible name',
+              ELEMENT_PASS_2:    'The @table@ is considered a layout table, since it has @role="presentation"@',
+              ELEMENT_FAIL_1:  'Define the purpose of the table by adding header cells if the table is being used for tabular data or use @role="presentation"@ on the table element if the table is being used to layout content',
+              ELEMENT_HIDDEN_1:  'Using @table@ element is hidden and therefore does not contribute to the accessibility of inaccessible of the page.'
+            },  
+            PURPOSE: [
+              'The @table@ element is designed for representing tabular data in a web page, but table markup has also been used by web developers as a means to layout content in rows and columns.',                   
+              'Users of assistive tehcnoogy are confised when the purpose of a table is not clearly defined (i.e. layout or for tabular data)',
+              'Use @role="presentation"@ to clearly identify table elements used for layout',
+              'Use an accessible name label to clearly identify a data table (e.g. layout tables must not have an accessible name)',
+              'Use header cells to clearlt identify the content of data cells in a data table.'
+            ],
+            TECHNIQUES: [
+              'Use @th@ elements in the first row or first column to identify a table as a data table.',
+              'Use @caption@ or ARIA techniques to give a data table an accessible name.',
+              'Use @role="presentation"@ on all the table elements in a table used layout table.',
+              'Layout tables must only use the @tr@ and @td@ table elements for layout content.'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HTML 4.01 Specification: 11.2.6 Table cells: The TH and TD elements', 
+                url:   'http://www.w3.org/TR/html4/struct/tables.html#edef-TD'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'H51: Using table markup to present tabular information', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/H51'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'H63: Using the scope attribute to associate header cells and data cells in data tables', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/H63'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
+                title: 'IBM Web checklist Checkpoint 1.3e: Tables', 
+                url:   'http://www-03.ibm.com/able/guidelines/web/webtableheaders.html'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
+                title: 'iCITA HTML Best Practices: Simple Data Table Example', 
+                url:   'http://html.cita.illinois.edu/nav/dtable/dtable-example-simple.php'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
+                title: 'iCITA HTML Best Practices: Complex Data Table Example', 
+                url:   'http://html.cita.illinois.edu/nav/dtable/dtable-example-complex.php'
+              }  
+            ]   
+        },
+        TABLE_6: {
+            ID:                    'Table 6',
+            DEFINITION:            'Each data table header cell %s use th elements rather than td element with a scope attribute',
+            SUMMARY:               'Header cells %s be @th@ elements',
+            TARGET_RESOURCES_DESC: '@th@ and @td[scope]@ elements',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Change the @td[scope]@ element to a  @th@ element',
+              FAIL_P:   'Change the @td[scope]@ element to a  @th@ element for each of the %N_F header cells using @td[scope]@',
+              HIDDEN_S: 'The @table@ element that is hidden was not evaluated',
+              HIDDEN_P: 'The %N_H @table@ elements elements that are hidden were not evaluated',
+              NOT_APPLICABLE:  'No td[scope]@ elements on the page'              
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:    'The @th@ element is used for header cell',
+              ELEMENT_FAIL_1:  'Change the @td[scope]@ element to a  @th@ element',
+              ELEMENT_HIDDEN_1:  'Using @th@ element for header cells in a data table was not tested because the header cell is hidden from assistive technologies'
+            },  
+            PURPOSE: [
+              '@th@ element is the web standards way to identify header cells in a table, makes the data table source code easier to read and debug for accessibility problems'                   
+            ],
+            TECHNIQUES: [
+              'Use @th@ elements in the first row or column to identify row and column headers in a simple data tables',
+              'Use @headers@ attribute on each @td@ element to identify header information in complex data tables',
+              'Use @th@ element for cells used as header cells in the table'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HTML 4.01 Specification: 11.2.6 Table cells: The TH and TD elements', 
+                url:   'http://www.w3.org/TR/html4/struct/tables.html#edef-TD'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'H51: Using table markup to present tabular information', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/H51'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'H63: Using the scope attribute to associate header cells and data cells in data tables', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/H63'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
+                title: 'IBM Web checklist Checkpoint 1.3e: Tables', 
+                url:   'http://www-03.ibm.com/able/guidelines/web/webtableheaders.html'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
+                title: 'iCITA HTML Best Practices: Simple Data Table Example', 
+                url:   'http://html.cita.illinois.edu/nav/dtable/dtable-example-simple.php'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
+                title: 'iCITA HTML Best Practices: Complex Data Table Example', 
+                url:   'http://html.cita.illinois.edu/nav/dtable/dtable-example-complex.php'
+              }  
+            ]   
+        }
+   }     
+});
+/*
+ * Copyright 2011, 2012, 2013, 2014 OpenAjax Alliance
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* --------------------------------------------------------------------------- */
+/*       OpenAjax Alliance Rules National Language Support (NLS): English      */
+/* --------------------------------------------------------------------------- */
+   
+
+OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
+
+    //
+    //  OAA Rules National Language Support (NLS) for Audio Rules
+    //
+    rules: {
+        TIMING_1: {
+            ID:                    'Timing 1',
+            DEFINITION:            'A page that contains time limits for user interaction or viewing content %s provide a way to turn off, adjust or extend the time limits.',
+            SUMMARY:               'Control time limits',
+            TARGET_RESOURCES_DESC: 'Pages with scripting or other embedded technologies to control the response time for input or the amount of time to view content',
+            RULE_RESULT_MESSAGES: {
+              MANUAL_CHECK_S:  'If the page contains time limits, verify that there is a way to turn off, adjust or extend the time limits; or that one of the three exceptions applies.'
+            },            
+            NODE_RESULT_MESSAGES: {
+              PAGE_MC_1:      'If the page contains time limits, verify that there is a way to turn off, adjust or extend the time limits; or that one of the three exceptions applies.'
+            },  
+            PURPOSE: [
+              'People with physical disabilities may need more time to respond to web sites with time limits for selecting an option.',
+              'People with visual impairments and visual processing learning disabilities may need more time to read material if the rendering of the material is automatically removed or obscured after a time period.',
+              'Providing adjustable time periods in line with the persons capabilities makes it possible for people to complete the tasks associated with the website.'
+            ],
+            TECHNIQUES: [
+              'Turn off: The user is allowed to turn off the time limit before encountering it.',
+              'Adjust: The user is allowed to adjust the time limit before encountering it over a wide range that is at least ten times the length of the default setting.',
+              'Extend: The user is warned before time expires and given at least 20 seconds to extend the time limit with a simple action (for example, "press the space bar"), and the user is allowed to extend the time limit at least ten time.',
+              'Real-time Exception: The time limit is a required part of a real-time event (for example, an auction), and no alternative to the time limit is possible.',
+              'Essential Exception: The time limit is essential and extending it would invalidate the activity.',
+              '20 Hour Exception: The time limit is longer than 20 hours.'
+            ],
+            MANUAL_CHECKS: [
+              'If the page contains time limits, verify that there is a way to turn off, adjust or extend the time limits; or that one of the three exceptions applies.'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'How to meet 2.2.1 Timing Adjustable',
+                url:   'http://www.w3.org/WAI/WCAG20/quickref/#qr-time-limits-required-behaviors'
+              }
+            ]
+        },
+        TIMING_2: {
+            ID:                    'Timing 2',
+            DEFINITION:            'A page that includes moving, blinking, scrolling or auto-updating content that starts automatically and lasts more than 5 seconds %s have a mechanism to pause, stop, or hide such content.',
+            SUMMARY:               'Control moving, blinking or auto-updating content',
+            TARGET_RESOURCES_DESC: 'Canvas, SVG and image animations; moving, blinking, scrolling or auto-updating text content; and embedded applications',
+            RULE_RESULT_MESSAGES: {
+              MANUAL_CHECK_S:     'If the page includes moving, blinking, scrolling or auto-updating content, verify there has a mechanism to pause, stop, or hide the information.',
+              MANUAL_CHECK_P:     'If the page includes moving, blinking, scrolling or auto-updating content, verify there has a mechanism to pause, stop, or hide the information.'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_MC_1:     'If the %1 element includes moving, blinking, scrolling or auto-updating content, verify there has a mechanism to pause, stop, or hide the information.',
+              ELEMENT_HIDDEN_1: 'The %1 element has not evaluated for moving, blinking, scrolling or auto-updating content',
+              PAGE_MC_1:        'If the page includes moving, blinking, scrolling or auto-updating content, verify there has a mechanism to pause, stop, or hide the information.'
+            },  
+            PURPOSE: [
+              'People with visual impairments and visual processing learning disabilities may not be able to read or understand content that is blinking, scrolling or auto updating'
+            ],
+            TECHNIQUES: [
+              'Pause/Resume: Through configuration or controls on the page, enable the user to pause and resume the moving, blinking, scrolling or auto-updating content.',
+              'Stop: Through configuration or controls on the page, enable the user to stop the moving, blinking, scrolling or auto-updating content and see all of the content at one time.',
+              'Hide: Through configuration or controls on the page, enable the user to hide the moving, blinking, scrolling or auto-updating content if it is not essential for the activity.'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'How to meet 2.2.2 Pause, Stop, Hide',
+                url:   'http://www.w3.org/WAI/WCAG20/quickref/#qr-time-limits-pause'
+              }
+            ]
+        },
+        TIMING_3: {
+            ID:                    'Timing 3',
+            DEFINITION:            'A page %s not include content that flashes more than three times in one second, unless below general flash and red flash thresholds.',
+            SUMMARY:               'Flashing limits',
+            TARGET_RESOURCES_DESC: 'Canvas, SVG and image animations; flashing text content; video; and embedded applications',
+            RULE_RESULT_MESSAGES: {
+              MANUAL_CHECK_S:     'Verify the page does not include content that flashes more than three times in one second, unless below general flash and red flash thresholds.',
+              MANUAL_CHECK_P:     'Verify the page does not include content that flashes more than three times in one second, unless below general flash and red flash thresholds.'
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_MC_1:     'Verify the %1 element does not include content that flashes more than three times in one second, unless below general flash and red flash thresholds.',
+              ELEMENT_HIDDEN_1: 'The %1 element has not evaluated for moving, blinking, scrolling or auto-updating content',
+              PAGE_MC_1:        'Verify the page does not include any content that flashes more than three times in one second, unless below general flash and red flash thresholds.'
+            },  
+            PURPOSE: [
+              'People who have photosensitive seizure disorders can have a seizure triggered by content that flashes at certain frequencies for more than a few flashes.',
+              'People are even more sensitive to red flashing than to other colors.',
+              'NOTE: This flashing requirements was adapted from the broadcasting industry standards (e.g. content is viewed from a closer distance and using a larger angle of vision).'
+            ],
+            TECHNIQUES: [
+              'There is no remedication technique, the content must be removed or disabled from flashing.'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'How to meet 2.3.1 Three Flashes or Below Threshold',
+                url:   'http://www.w3.org/WAI/WCAG20/quickref/#qr-seizure-does-not-violate'
+              }
+            ]
+        }
+    }     
+});
+/*
+ * Copyright 2011, 2012, 2013 OpenAjax Alliance
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* --------------------------------------------------------------------------- */
+/*       OpenAjax Alliance Rules National Language Support (NLS): English      */
+/* --------------------------------------------------------------------------- */
+   
+
+OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
+
+    //
+    //  OAA Rules title and message string National Language Support (NLS)
+    //
+    rules: {
+        TITLE_1: {
+            ID:            'Title 1',
+            DEFINITION:    '@title@ element %s identify both the website and page content.',
+            SUMMARY:       '@title@ %s identify website and page',
+            TARGET_RESOURCES_DESC: '@title@',
+            RULE_RESULT_MESSAGES: {
+              MANUAL_CHECK_S: 'Verify that the @title@ element identifies both the website (if applicable) and the page content.',
+              FAIL_S: 'Add a @title@ element to the @head@ element section with text content that identifies both the website (if applicable) and the page content.'
+            },
+            NODE_RESULT_MESSAGES: {
+              PAGE_MC_1:   'Verify that the @title@ element identifies both the website (if applicable) and the page content.',
+              PAGE_FAIL_1: 'Add content to the @title@ element that identifies both the website (if applicable) and the page content.',
+              PAGE_FAIL_2: 'Add a @title@ element to the page that identifies both the website (if applicable) and the page content.'
+            },  
+            PURPOSE: [
+              'The @title@ element content can be accessed by assistive technologies to orient the user to the website and page content.'
+            ],
+            TECHNIQUES: [
+              'Use a @title@ element to identify the website and page content.',
+              'If the page is part of a sequence of web pages, include the sequence number and total number of steps in the @title@ element.'
+            ],
+            MANUAL_CHECKS: [
+              'If applicable, verify that the title of the page identifies the website to which it belongs.',
+              'Verify that the title of the page also identifies the page content.',
+              'If the page is part of a sequence of web pages, verify that the title describes which step it is in the sequence.'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HTML TITLE Element Specification', 
+                url:   'http://www.w3.org/TR/html4/struct/global.html#edef-TITLE'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'G88: Providing descriptive titles for Web pages', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G88'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'H25: Providing a title using the title element', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/H25'
+              }
+            ]
+        },
+        TITLE_2: {
+            ID:            'Title 2',
+            DEFINITION:    '@h1@ elements %s match part of the @title@ element content.',
+            SUMMARY:       '@h1@ %s match part of the @title@',
+            TARGET_RESOURCES_DESC: '@title@ and @h1@',
+            RULE_RESULT_MESSAGES: {
+              MANUAL_CHECK_S: 'Verify that both the @title@ and @h1@ elements describe the purpose or content of the page.',
+              MANUAL_CHECK_P: 'Verify that both the @title@ and @h1@ elements describe the purpose or content of the page.',
+              FAIL_S: 'Modify the page to make sure there are no more than two @h1@ elements and/or update the @h1@ element to match part of the @title@ element content.'
+            },
+            NODE_RESULT_MESSAGES: {
+              PAGE_PASS_1: 'The @h1@ element has the same or similar content as the @title@ element.',
+              PAGE_PASS_2: 'The @h1@ elements have the same or similar content as the @title@ element.',
+              PAGE_FAIL_1: 'Add a @title@ element to the page to enable the evaluation of the @h1@ elements.',
+              PAGE_FAIL_2: 'Add an @h1@ element to the page at the beginning its main content.',
+              PAGE_FAIL_3: 'More than two @h1@ elements were found on the page. Revise the heading structure of the page and reserve @h1@ elements for identifying the main content.',              
+              PAGE_FAIL_4: 'Update the @h1@ elements to have the same or similar content as the @title@ element.',
+              ELEMENT_PASS_1: 'The @h1@ element has the same or similar content as the @title@ element.',
+              ELEMENT_FAIL_1: 'The @h1@ element does NOT have the same or similar content as the @title@ element.',
+              ELEMENT_FAIL_2: 'Add content to the @h1@ element, or remove it from the page.',
+              ELEMENT_HIDDEN_1: 'The @h1@ element is hidden from assistive technology and therefore does not describe the purpose or content of the page.'
+            },  
+            PURPOSE: [
+              '@h1@ elements can be accessed by assistive technologies to identify the page content and to orient users within the website. The @h1@ element may also be used to identify the website.'
+            ],
+            TECHNIQUES: [
+              'Use the @h1@ element to identify the page content in the same or similar way as the @title@ element.',
+              'The @h1@ element may also be used to identify the website in the same or similar way as the @title@ element.',
+              'If the page is part of a sequence of web pages, the @h1@ element should indicate the step in the sequence.'
+            ],
+            MANUAL_CHECKS: [
+              'Verify that the @h1@ content identifies the page content.',
+              'If applicable, verify that the @h1@ content of the page identifies the website to which it belongs.',
+              'If the web page is part of a sequence of web pages, verify that the @h1@ content indicates the step number of the sequence.'              
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HTML TITLE Element Specification', 
+                url:   'http://www.w3.org/TR/html4/struct/global.html#edef-TITLE'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'G88: Providing descriptive titles for Web pages', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G88'
+              }, 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'H25: Providing a title using the title element', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/H25'
+              }
+            ]
+        }
+   }     
+});
+/*
+ * Copyright 2011, 2012, 2013 OpenAjax Alliance
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* --------------------------------------------------------------------------- */
+/*       OpenAjax Alliance Rules National Language Support (NLS): English      */
+/* --------------------------------------------------------------------------- */
+   
+
+OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
+
+    //
+    //  OAA Rules title and message string National Language Support (NLS)
+    //
+    rules: {
+        VIDEO_1: {
+            ID:                    'Video 1',
+            DEFINITION:            '@video@ elements used for prerecorded video only content %s have text or audio description of the video content',
+            SUMMARY:               '@video@ for video only %s have alternative',
+            TARGET_RESOURCES_DESC: '@video@ elements',
+            RULE_RESULT_MESSAGES: {
+              MANUAL_CHECK_S:     'Verify the @video@ element with the @aria-describedby@ attributes is used for video only content.   If so, verify the text description reference using the @aria-describedby@ describes the video only content',
+              MANUAL_CHECK_P:     'Verify if any of the %N_MC @video@ elements with the @aria-describedby@ attributes are used for video only content.   If so, verify the text description reference using the @aria-describedby@ describes the video only content',
+              HIDDEN_S: 'The @video@ element that is hidden was not evaluated',
+              HIDDEN_P: 'The %N_H @video@ elements that are hidden were not evaluated',
+              NOT_APPLICABLE:  'No @video@ elements found on this page'              
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:    '@video@ element has audio description track',
+              ELEMENT_MC_1:      'Verify the @video@ element is used for video only content.   If so, verify the text description reference using the @aria-describedby@ describes the video only content',
+              ELEMENT_MC_2:      'Verify the @video@ element is used for video only content provides an audio track to describe the video content or text description of the video.',
+              ELEMENT_HIDDEN_1:  'The @video@ element is hidden and therefore not evaluated'
+            },  
+            PURPOSE: [
+              'Text and audio descriptions provide a means for people cannot see the video to understand the video content',
+              'Some types of learning disabilities affect visual processing, text and audio descriptions provide an alternative way to understand the video content'
+            ],
+            TECHNIQUES: [
+              'Use the @track@ element to add audio descriptions to the video content',
+              'Use @aria-describedby@ to reference a text description of the video content',
+              'Include an audio sound track that describes the video content'              
+            ],
+            MANUAL_CHECKS: [
+              'When audio descriptions are enabled on the media player, check to make sure the audio description can be heard',
+              'If there is a audio description make sure the description accurately describes the video content',
+              'If there is a text description make sure the description accurately describes the video content'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HMTL 5: The video element', 
+                url:   'http://www.w3.org/TR/html5/embedded-content-0.html#the-video-element'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HMTL 5: The track element', 
+                url:   'http://www.w3.org/TR/html5/embedded-content-0.html#the-track-element'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (ARIA) 1.0: aria-describedby', 
+                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-describedby'
+              }                            
+            ]
+        },
+        VIDEO_2: {
+            ID:                    'Video 2',
+            DEFINITION:            '@object@ elements used for prerecorded video only content %s have text or audio descriptions of the video content',
+            SUMMARY:               '@object@ for video only %s have alternative',
+            TARGET_RESOURCES_DESC: '@object@ elements',
+            RULE_RESULT_MESSAGES: {
+              MANUAL_CHECK_S:     'Verify the @object@ element is used for prerecorded video only content.  If it is used for video only, verify it has either a text or audio description of the video content',
+              MANUAL_CHECK_P:     'Verify if any of the %N_MC @object@ elements are used for prerecorded video only content.  If any are used for video only, verify they have either a text or audio description of the video content',
+              HIDDEN_S: 'The @object@ element that is hidden was not evaluated',
+              HIDDEN_P: 'The %N_H @object@ elements that are hidden were not evaluated',
+              NOT_APPLICABLE:  'No @object@ elements found on this page'              
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_MC_1: 'Verify the @object@ element with @video@ in its @type@ attrbute is used for video only content.  If so verify the @aria-describedby@ references a text description of the video only content',
+              ELEMENT_MC_2: 'Verify the @object@ element with @video@ in its @type@ attrbute is used for video only content.  If so verify the video only content has a text or audio descriptions',
+              ELEMENT_MC_3: 'Verify if the @object@ element is used for video only content.  If so verify the @aria-describedby@ references a text description of the video only content',
+              ELEMENT_MC_4: 'Verify if the @object@ element is used for video only content.  If so verify the video only content has a text or audio description',
+              ELEMENT_HIDDEN_1:       'The @object@ element is hidden and cannot render video content'
+            },  
+            PURPOSE: [
+              'Text and audio descriptions provide a means for people cannot see the video to understand the video content',
+              'Some types of learning disabilities affect visual processing, text and audio descriptions provide an alternative way to understand the video content'
+            ],
+            TECHNIQUES: [
+              'Use the @video@ element instead of the @object@ element for video only content, since the @video@ element provides better support for audio description tracks',
+              'Include an audio track in the video that describes the video content',
+              'Use @aria-describedby@ attribute to point to a text description of the video only content'
+            ],
+            MANUAL_CHECKS: [
+              'When audio descriptions are enabled on the media player, check to make sure the audio description can be heard',
+              'If there is a audio description make sure the description accurately describes the video content',
+              'If there is a text description make sure the description accurately describes the video content'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HMTL 5: The object element', 
+                url:   'http://www.w3.org/TR/html5/embedded-content-0.html#the-object-element'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (ARIA) 1.0: aria-describedby', 
+                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-describedby'
+              }
+            ]
+        },
+        VIDEO_3: {
+            ID:                    'Video 3',
+            DEFINITION:            '@embed@ elements used for video only content %s have caption or text transcription of the audio content',
+            SUMMARY:               '@embed@ for video only %s have alternative',
+            TARGET_RESOURCES_DESC: '@embed@ elements',
+            RULE_RESULT_MESSAGES: {
+              MANUAL_CHECK_S:     'Verify the @embed@ element is used for prerecorded video only content.  If it is used for video only, verify it has either a text or audio description of the video content',
+              MANUAL_CHECK_P:     'Verify if any of the %N_MC @embed@ elements are used for prerecorded video only content.  If any are used for video only, verify they have either a text or audio description of the video content',
+              HIDDEN_S: 'The @embed@ element that is hidden was not evaluated',
+              HIDDEN_P: 'The %N_H @embed@ elements that are hidden were not evaluated',
+              NOT_APPLICABLE:  'No @embed@ elements found on this page'              
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_MC_1: 'Verify the @embed@ element with @video@ in its @type@ attribute is used for video only content.  If so verify the @aria-describedby@ references a text description of the video only content',
+              ELEMENT_MC_2: 'Verify the @embed@ element with @video@ in its @type@ attribute is used for video only content.  If so verify the video only content has a text or audio description',
+              ELEMENT_MC_3: 'Verify if the @embed@ element is used for video only content.  If so verify the @aria-describedby@ references a text description of the video only content',
+              ELEMENT_MC_4: 'Verify if the @embed@ element is used for video only content.  If so verify the video only content has a text or audio description',
+              ELEMENT_HIDDEN_1:       'The @embed@ element is hidden and cannot render video content'
+            },  
+            PURPOSE: [
+              'Text and audio descriptions provide a means for people cannot see the video to understand the video content',
+              'Some types of learning disabilities affect visual processing, text and audio descriptions provide an alternative way to understand the video content'
+            ],
+            TECHNIQUES: [
+              'Use the @video@ element instead of the @embed@ element for video only content, since the @video@ element provides better support for audio description tracks',
+              'Include an audio track in the video that describes the video content',
+              'Use @aria-describedby@ attribute to point to a text description of the video only content'
+            ],
+            MANUAL_CHECKS: [
+              'When audio descriptions are enabled on the media player, check to make sure the audio description can be heard',
+              'If there is a audio description make sure the description accurately describes the video content',
+              'If there is a text description make sure the description accurately describes the video content'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HMTL 5: The embed element', 
+                url:   'http://www.w3.org/TR/html5/embedded-content-0.html#the-embed-element'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (ARIA) 1.0: aria-describedby', 
+                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-describedby'
+              }                            
+            ]
+        },    
+        VIDEO_4: {
+            ID:                    'Video 4',
+            DEFINITION:            'Live and prerecorded video with synchronized audio (i.e. a movie, lecture) using the @video@ element %s have synchronized captions',
+            SUMMARY:               '@video@ %s have caption',
+            TARGET_RESOURCES_DESC: '@video@ elements',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Add caption @track@ element to the @video@ element',
+              FAIL_P:   'Add caption @track@ element to each of the %N_F @video@ elements with out caption tracks',
+              MANUAL_CHECK_S:     'Verify that the @video@ element without a caption track has open captions',
+              MANUAL_CHECK_P:     'Verify that the %N_MC @video@ elements without caption tracks have open captions',
+              HIDDEN_S: 'The @video@ element that is hidden was not evaluated',
+              HIDDEN_P: 'The %N_H @video@ elements that are hidden were not evaluated',
+              NOT_APPLICABLE:  'No @video@ elements found on this page'              
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:         '@video@ element has caption track',
+              ELEMENT_FAIL_1:       'Add caption @track@ element to @video@ element',
+              ELEMENT_MC_1: 'Verify the video content includes open captions', 
+              ELEMENT_HIDDEN_1:       'The @video@ element is hidden and cannot render content'
+            },  
+            PURPOSE: [
+              'Synchronized captions provide a means for people cannot hear the audio content of a video to understand the audio content of the video',
+              'Some types of learning disabilities affect auditory processing, captions provide an alternative way to understand the audio content of a video',
+              'This rule covers the requirements of both WCAG 2.0 Success Criteria 1.2.2 and 1.2.4, and therefore covers both live and prerecorded video content'
+             ],
+            TECHNIQUES: [
+              'Use the @track@ element to add a caption track to the video content',
+              'Use open captions to include the captions as part of the video.',
+              'If closed captions are not support, use open captioning to include captions as part of the video.',
+              'Open captioning is the only way to insure that captions are available on most cells phones and tablet computers connecting through wireless services.'
+            ],
+            MANUAL_CHECKS: [
+              'When captions are enabled on the media player, verify the captions are visible',
+              'Verify that the captions accurately represent and are synchronized with the speech and sounds in the video'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HMTL 5: The video element', 
+                url:   'http://www.w3.org/TR/html5/embedded-content-0.html#the-video-element'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HMTL 5: The track element', 
+                url:   'http://www.w3.org/TR/html5/embedded-content-0.html#the-track-element'
+              }                            
+            ]
+        },
+        VIDEO_5: {
+            ID:                    'Video 5',
+            DEFINITION:            'Live and prerecorded video with synchronized audio (i.e. a movie, lecture) using the @object@ element %s have synchronized captions',
+            SUMMARY:               '@object@ for video %s have captions',
+            TARGET_RESOURCES_DESC: '@object@ elements',
+            RULE_RESULT_MESSAGES: {
+              MANUAL_CHECK_S:     'Verify the @object@ element is used for video content with synchronized audio (i.e movie, lecture).  If it is video with synchronized audio, verify it has open or closed captioning of the audio content',
+              MANUAL_CHECK_P:     'Verify if any of the %N_MC @object@ elements are used for video content with synchronized audio (i.e movie, lecture).  If any are used for video with synchronized audio, verify it has open or closed captioning of the audio content',
+              HIDDEN_S: 'The @object@ element that is hidden was not evaluated',
+              HIDDEN_P: 'The %N_H @object@ elements that are hidden were not evaluated',
+              NOT_APPLICABLE:  'No @object@ elements found on this page'              
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_MC_1: 'Verify the @object@ element with @video@ in its @type@ attribute has synchronized audio (i.e. movie, lecture).  If so, verify there is open or closed captioning of the audio content',
+              ELEMENT_MC_2: 'Verify the @object@ element renders video content with synchronized audio (i.e. movie, lecture).  If so, verify there is open or closed captioning of the audio content',
+              ELEMENT_HIDDEN_1: 'The @object@ element is hidden and cannot render video content'
+            },  
+            PURPOSE: [
+              'Synchronized captions provide a means for people who cannot hear the audio content of a video to have access to the speech and sounds of the video.',
+              'Some types of learning disabilities effect auditory processing, captions provide an alternative way to understand the audio content of a video.',
+              'This rule covers the requirements of both WCAG 2.0 Success Criteria 1.2.2 and 1.2.4, and therefore covers both live and prerecorded content.'
+            ],
+            TECHNIQUES: [
+              'Consider using the @video@ element instead of the @object@ element for video containing synchronized audio.  The @video@ element has better support for adding caption tracks.',
+              'Use video authoring tools and player technologies that support captioning.  Use the features of the authoring system and player to add open or closed captions to the video.',
+              'If closed captions are not support, use open captioning to include captions as part of the video.',
+              'Open captioning is the only way to insure that captions are available on most cells phones and tablet computers.'
+            ],
+            MANUAL_CHECKS: [
+              'When captions are enabled on the media player, verify the captions are visible',
+              'Verify that the captions accurately represent and are synchronized with the speech and sounds in the video'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HMTL 5: The object element', 
+                url:   'http://www.w3.org/TR/html5/embedded-content-0.html#the-object-element'
+              }
+            ]
+        },
+        VIDEO_6: {
+            ID:                    'Video 6',
+            DEFINITION:            'Live and prerecorded video with synchronized audio (i.e. a movie, lecture) using the @embed@ element %s have synchronized captions',
+            SUMMARY:               '@embed@ for video %s have captions',
+            TARGET_RESOURCES_DESC: '@embed@ elements',
+            RULE_RESULT_MESSAGES: {
+              MANUAL_CHECK_S:     'Verify the @embed@ element is used for video content with synchronized audio (i.e movie, lecture).  If it is video with synchronized audio, verify it has captions of the audio content',
+              MANUAL_CHECK_P:     'Verify if any of the %N_MC @embed@ elements are used for video content with synchronized audio (i.e movie, lecture).  If any are used for video with synchronized audio, verify it has captions of the audio content',
+              HIDDEN_S: 'The @embed@ element that is hidden was not evaluated',
+              HIDDEN_P: 'The %N_H @embed@ elements that are hidden were not evaluated',
+              NOT_APPLICABLE:  'No @embed@ elements found on this page'              
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_MC_1: 'Verify the @embed@ element with @video@ in its @type@ attribute has synchronized audio (i.e. movie, lecture).  If so, verify their are captions avialble for the audio content',
+              ELEMENT_MC_2: 'Verify the @embed@ element renders video content with synchronized audio (i.e. movie, lecture).  If so, verify their are captions avialble for the audio content',
+              ELEMENT_HIDDEN_1:       'The @embed@ element is hidden and cannot render video content'
+            },  
+            PURPOSE: [
+              'Synchronized captions provide a means for people who cannot hear the audio content of a video to have access to the speech and sounds of the video',
+              'Some types of learning disabilities effect auditory processing, captoins provide an alternative way to understand the audio content of a video',
+              'This rule covers the requirements of both WCAG 2.0 Success Criteria 1.2.2 and 1.2.4, and therefore covers both live and prerecorded content'
+            ],
+            TECHNIQUES: [
+              'Consider using the @video@ element instead of the @object@ element for video containing synchronized audio.  The @video@ element has better support for adding caption tracks.',
+              'Use video authoring tools and player technologies that support captioning.  Use the features of the authoring system and player to add open or closed captions to the video.',
+              'If closed captions are not support, use open captioning to include captions as part of the video.',
+              'Open captioning is the only way to insure that captions are available on most cells phones and tablet computers.'
+            ],
+            MANUAL_CHECKS: [
+              'When captions are enabled on the media player, verify the captions are visible',
+              'Verify that the captions accurately represent and are synchronized with the speech and sounds in the video'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HMTL 5: The embed element', 
+                url:   'http://www.w3.org/TR/html5/embedded-content-0.html#the-embed-element'
+              }
+            ]
+        },
+        VIDEO_7: {
+            ID:                    'Video 7',
+            DEFINITION:            '@video@ elements used for prerecorded video with synchronized audio (i.e. a movie, archived lecture) %s have an audio description of the video content',
+            SUMMARY:               '@video@ element %s have audio description',
+            TARGET_RESOURCES_DESC: '@video@ elements',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Add audio description track to @video@ element without an audio description track',
+              FAIL_P:   'Add audio description track to each of the %N_F the @video@ elements without audio description tracks',
+              MANUAL_CHECK_S:     'Verify the @video@ element with is used for prerecorded video with synchronized audio.   If so, verify the video includes an audio description of the video content',
+              MANUAL_CHECK_P:     'Verify if any of the %N_MC @video@ elements are used for prerecorded video with synchronized audio.   If so, verify each of the videos includes an audio description of the video content',
+              HIDDEN_S: 'The @video@ element that is hidden was not evaluated',
+              HIDDEN_P: 'The %N_H @video@ elements that are hidden were not evaluated',
+              NOT_APPLICABLE:  'No @video@ elements found on this page'              
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:         '@video@ element has audio description track',
+              ELEMENT_FAIL_1:       'Add audio description track to @video@ element',
+              ELEMENT_MC_1: 'Verify an audio description of the video content is included in the audio track of the video',
+              ELEMENT_HIDDEN_1:       'The @video@ element is hidden and cannot render content'
+            },  
+            PURPOSE: [
+              'Text and audio descriptions provide a means for people cannot see the video to understand the video content',
+              'Some types of learning disabilities affect visual processing, text and audio descriptions provide an alternative way to understand the video content',
+              'This rule covers the requirements of both WCAG 2.0 Success Criteria 1.2.3 and 1.2.5, that is why a text description of the video content cannot be used to satisfy this rule'
+            ],
+            TECHNIQUES: [
+              'Use the @track@ element to add audio descriptions to the video content',
+              'Use @aria-describedby@ to reference a text description of the video content'
+            ],
+            MANUAL_CHECKS: [
+              'When audio descriptions are enabled on the media player, check to make sure the audio description can be heard',
+              'If there is a audio description make sure the description accurately describes the video content',
+              'If there is a text description make sure the description accurately describes the video content'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HMTL 5: The video element', 
+                url:   'http://www.w3.org/TR/html5/embedded-content-0.html#the-video-element'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HMTL 5: The track element', 
+                url:   'http://www.w3.org/TR/html5/embedded-content-0.html#the-track-element'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (ARIA) 1.0: aria-describedby', 
+                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-describedby'
+              }                            
+            ]
+        },
+        VIDEO_8: {
+            ID:                    'Video 8',
+            DEFINITION:            '@object@ elements used for prerecorded video with synchronized audio (i.e. a movie, archived lecture) %s have an audio description of the video content',
+            SUMMARY:               '@object@ for used for movie %s have video description',
+            TARGET_RESOURCES_DESC: '@object@ elements',
+            RULE_RESULT_MESSAGES: {
+              MANUAL_CHECK_S:     'Verify the @object@ element is used for prerecorded video with synchronized audio (i.e. a movie, archived lecture).  If so, verify the video includes an audio description of the video content',
+              MANUAL_CHECK_P:     'Verify if any of the %N_MC @object@ elements are used for prerecorded video with synchronized audio (i.e. a movie, archived lecture).  If so, verify each video includes an audio description of the video content',
+              HIDDEN_S: 'The @object@ element that is hidden was not evaluated',
+              HIDDEN_P: 'The %N_H @object@ elements that are hidden were not evaluated',
+              NOT_APPLICABLE:  'No @object@ elements found on this page'              
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_MC_1: 'Verify the @object@ element with @video@ in its @type@ attrbute is used for prerecorded video with synchronized audio (i.e. a movie, archived lecture).  If so verify an audio description of the video content is available.',
+              ELEMENT_MC_2: 'Verify if the @object@ element is used for prerecorded video with synchronized audio (i.e. a movie, archived lecture).  If so verify an audio description of the video content is available.',
+              ELEMENT_HIDDEN_1:       'The @object@ element is hidden and cannot render video content'
+            },  
+            PURPOSE: [
+              'Text and audio descriptions provide a means for people cannot see the video to understand the video content',
+              'Some types of learning disabilities affect visual processing, text and audio descriptions provide an alternative way to understand the video content',
+              'This rule covers the requirements of both WCAG 2.0 Success Criteria 1.2.3 and 1.2.5, that is why a text description of the video content cannot be used to satisfy this rule'
+            ],
+            TECHNIQUES: [
+              'Use the @video@ element instead of the @object@ element for video only content, since the @video@ element provides better support for audio description tracks',
+              'Include an audio track in the video that describes the video content',
+              'Use @aria-describedby@ attribute to point to a text description of the video only content'
+            ],
+            MANUAL_CHECKS: [
+              'When audio descriptions are enabled on the media player, check to make sure the audio description can be heard',
+              'If there is a audio description make sure the description accurately describes the video content',
+              'If there is a text description make sure the description accurately describes the video content'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HMTL 5: The object element', 
+                url:   'http://www.w3.org/TR/html5/embedded-content-0.html#the-object-element'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (ARIA) 1.0: aria-describedby', 
+                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-describedby'
+              }
+            ]
+        },
+        VIDEO_9: {
+            ID:                    'Video 9',
+            DEFINITION:            '@embed@ elements used for prerecorded video with synchronized audio (i.e. a movie, archived lecture) %s have audio description of the video content',
+            SUMMARY:               '@embed@ for used for movie %s have video description',
+            TARGET_RESOURCES_DESC: '@embed@ elements',
+            RULE_RESULT_MESSAGES: {
+              MANUAL_CHECK_S:     'Verify the @embed@ element is used for prerecorded video with synchronized audio (i.e. a movie, archived lecture).   If so, verify the video includes an audio description of the video content',
+              MANUAL_CHECK_P:     'Verify if any of the %N_MC @embed@ elements are used for prerecorded video with synchronized audio (i.e. a movie, archived lecture).   If so, verify each of the videos include an audio description of the video content',
+              HIDDEN_S: 'The @embed@ element that is hidden was not evaluated',
+              HIDDEN_P: 'The %N_H @embed@ elements that are hidden were not evaluated',
+              NOT_APPLICABLE:  'No @embed@ elements found on this page'              
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_MC_1: 'Verify the @embed@ element with @video@ in its @type@ attrbute is used for video with synchronized audio (i.e. a movie, archived lecture).  If so, verify the video includes an audio description of the video content',
+              ELEMENT_MC_2: 'Verify if the @embed@ element is used for video with synchronized audio (i.e. a movie, archived lecture).  If so, verify the video includes an audio description of the video content',
+              ELEMENT_HIDDEN_1:       'The @embed@ element is hidden and cannot render video content'
+            },  
+            PURPOSE: [
+              'Text and audio descriptions provide a means for people cannot see the video to understand the video content',
+              'Some types of learning disabilities affect visual processing, text and audio descriptions provide an alternative way to understand the video content',
+              'This rule covers the requirements of both WCAG 2.0 Success Criteria 1.2.3 and 1.2.5, that is why a text description of the video content cannot be used to satisfy this rule'
+            ],
+            TECHNIQUES: [
+              'Use the @video@ element instead of the @embed@ element for video only content, since the @video@ element provides better support for audio description tracks',
+              'Include an audio track in the video that describes the video content',
+              'Use @aria-describedby@ attribute to point to a text description of the video only content'
+            ],
+            MANUAL_CHECKS: [
+              'When audio descriptions are enabled on the media player, check to make sure the audio description can be heard',
+              'If there is a audio description make sure the description accurately describes the video content',
+              'If there is a text description make sure the description accurately describes the video content'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HMTL 5: The embed element', 
+                url:   'http://www.w3.org/TR/html5/embedded-content-0.html#the-embed-element'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (ARIA) 1.0: aria-describedby', 
+                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-describedby'
+              }                            
+            ]
+        }    
+   }     
+});
+/*
+ * Copyright 2011, 2012, 2013 OpenAjax Alliance
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* --------------------------------------------------------------------------- */
+/*       OpenAjax Alliance Rules National Language Support (NLS): English      */
+/* --------------------------------------------------------------------------- */
+   
+
+OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
+
+    //
+    //  OAA Rules title and message string National Language Support (NLS)
+    //
+    rules: {
+        WIDGET_1: {
+            ID:                    'Widget 1',
+            DEFINITION:            'Widgets %s have an accessible name',
+            SUMMARY:               'Widget %s have name',
+            TARGET_RESOURCES_DESC: 'Elements with @role@ attribute values that are defined as widgets',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Add accessible name to the widget',
+              FAIL_P:   'Add an accessible name to %N_F out of %N_T widgets',
+              MANUAL_CHECK_S:     'Widget may need an accessible name',
+              MANUAL_CHECK_P:     '%N_MC out of %N_T widgets may need an accessible name',
+              HIDDEN_S: 'The @widget@ that is hidden and was not evaluated.',
+              HIDDEN_P: '%N_H @widegts@ that are hidden were not evaluated.',
+              NOT_APPLICABLE:  'No widgets on this page'              
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:          '%1 widget has accessible name',
+              ELEMENT_MC_1:  '%1 widget may require an accessible name depending on context (i.e multiple widgets with the same role) in the page, adding an accessible name will improve accessibility',
+              ELEMENT_FAIL_1:        'Add accessible name to %1 widget',
+              ELEMENT_HIDDEN_1:        'Accessible name for widget was not tested because %1 widget is hidden from assistive technologies and/or not visible on screen'
+            },
+            PURPOSE: [
+              'A name associated with a widget insures that information about the widget is spoken by screen readers when it receives focus'                   
+            ],
+            TECHNIQUES: [
+              'In some cases the child text nodes and @alt@ from descendant image elements will be used as the name for a widget',
+              'Use @aria-labelledby@ attribute to reference the id(s) of the elements on the page that describe the purpose of the widget',
+              'Use @aria-label@ attribute to provide a explicit text description of the purpose of the widget',
+              'Elements that have container widget roles typically do not receive keyboard focus, but giving them an accessible name provides assistive technologies a more accurate description of the purpose of the widget'
+            ],
+            MANUAL_CHECKS: [
+              'When there is more than one widget of the same type on a page, they need an accessible name for users to uniquely identify the form control'
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Accessible Name Calculation', 
+                url:   'http://www.w3.org/TR/wai-aria/roles#namecalculation'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: aria-labelledby', 
+                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-labelledby'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: aria-label', 
+                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-label'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G108'
+              },                             
+              { type:  OpenAjax.a11y.REFERENCES.TECHNIQUE, 
+                title: 'WAI-ARIA 1.0 Authoring Practices', 
+                url:   'http://www.w3.org/TR/wai-aria-practices/'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
+                title: 'OAA Web Accessibility ARIA Examples', 
+                url:   'http://oaa-accessibility.org/examples/'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
+                title: 'Accessible jQuery-ui Components Demonstration', 
+                url:   'http://access.aol.com/aegis/#goto_slider'
+              }                            
+            ]
+        },
+        WIDGET_2: {
+            ID:                    'Widget 2',
+            DEFINITION:            'Elements with @onClick@ events %s be a link, button or have a widget role with tabindex',
+            SUMMARY:               '@onClick@ %s have role',
+            TARGET_RESOURCES_DESC: 'Elements with @onClick@ attribute values that are defined as widgets',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Add widget role name to element',
+              FAIL_P:   'Add widget roles to each of the %N_F elements',
+              MANUAL_CHECK_S:     'Verify that any child elements that can respond to element with an @onclick@ event are a link, form control or has a widget role, and can be accessed with the keyboard alone',
+              MANUAL_CHECK_P:     'Verify that any child elements that can respond to %N_MC elements with an @onclick@ event are a link, form control or has a widget role, and can be accessed with the keyboard alone',
+              HIDDEN_S: 'The element with an @onClick@ event that is hidden and was not evaluated.',
+              HIDDEN_P: '%N_H elements with @onClick@ events that are hidden were not evaluated.',
+              NOT_APPLICABLE:  'No elements with @onClick@ events on the page'              
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:         '@%1@ element has a widget role',
+              ELEMENT_PASS_2:         '@%1@ element is a form control',
+              ELEMENT_PASS_3:         '@%1@ element is a link',
+              ELEMENT_FAIL_1:       'Add a @tabindex@ attribute with a numeric value to make with @%1@ element with @%2@ widget role keyboard accessible',
+              ELEMENT_FAIL_2:       'Add widget role to the @%1@ element',
+              ELEMENT_FAIL_3:       'Add widget role to the @%1@ element and a @tabindex@ attribute with a numeric value to make it keyboard accessible',
+              ELEMENT_MC_1: 'The @%1@ element has an @onclick@ event, verify any child elements that can respond to the @onclick@ event are a link, form control or have a widget role, and can be access with the keyboard alone',
+              ELEMENT_HIDDEN_1:       'Elements with onClick events having a @role@ was not tested because %1 element with @onClick@ event is hidden from assistive technologies and/or not visible on screen'
+            },
+            PURPOSE: [
+              'Elements with @onClick@ event handlers must be a link, form control or have a widget role'                   
+            ],
+            TECHNIQUES: [
+              'Use ARIA widget role on non-form controls to describe their function on the page',
+              'Use @tabindex@ attribute of "0" if the role of the element is a button or link',
+              'Use @tabindex@ attribute of "-1" if the role of the element is NOT a button or link, provide keyboard event handlers to control selection of elements in the widget'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Widget Roles', 
+                url:   'http://www.w3.org/TR/wai-aria/roles#widget_roles'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'WAI-ARIA 1.0 Authoring Practices: Tabindex for managing focus', 
+                url:   'http://www.w3.org/TR/2010/WD-wai-aria-practices-20100916/#kbd_focus'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G108'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
+                title: 'OAA Web Accessibility ARIA Examples', 
+                url:   'http://oaa-accessibility.org/examples/'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
+                title: 'Accessible jQuery-ui Components Demonstration', 
+                url:   'http://access.aol.com/aegis/#goto_slider'
+              }                            
+            ]
+        },
+        WIDGET_3: {
+            ID:                    'Widget 3',
+            DEFINITION:            '@role@ attribute value %s be a widget, section, landmark or live region role',
+            SUMMARY:               '@role@ %s be valid',
+            TARGET_RESOURCES_DESC: 'Elements with @role@ attribute values',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Add a valid widget, section, landmark or live region role value to the element',
+              FAIL_P:   'Add a valid widget, section, landmark or live region role values to %N_F out of %N_T elements with @role@ attributes',
+              HIDDEN_S: 'The element with a role that is hidden and was not evaluated.',
+              HIDDEN_P: '%N_H elements with a role that are hidden were not evaluated.',
+              NOT_APPLICABLE:  'No elements with @role@ attribute on this page'              
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:     '@%1@ is a widget role',
+              ELEMENT_PASS_2:     '@%1@ is a landmark role',
+              ELEMENT_PASS_3:     '@%1@ is a live region role',
+              ELEMENT_PASS_4:     '@%1@ is a section role',
+              ELEMENT_FAIL_1:   '@%1@ is an abstract ARIA role, change the role attribute to a widget, landmark or live region role',
+              ELEMENT_FAIL_2:   'The @role@ attribute is an empty string, change the @role@ attribute value to an appropriate widget, landmark, section or live region role',
+              ELEMENT_FAIL_3:   '@%1@ is not a defined ARIA role, change the @role@ attribute value to an appropriate widget, landmark, section or live region role',
+              ELEMENT_HIDDEN_1:   '@role@ attribute value was not validated because the %1 element is hidden from assistive technologies and/or not visible on screen'
+            },
+            PURPOSE: [
+              'Elements with @role@ attributes describe the section of a document (i.e landmarks) and the types of interactive elements (i.e. widgets) to users of assistive technologies, especially screen reader users'                   
+            ],
+            TECHNIQUES: [
+              'Use ARIA landmark roles to describe the sections of a web page',
+              'Use ARIA widget roles to describe interactive elements on a web page'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Widget Roles', 
+                url:   'http://www.w3.org/TR/wai-aria/roles#widget_roles'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Landmark Roles', 
+                url:   'http://www.w3.org/TR/wai-aria/roles#landmark_roles'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G108'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
+                title: 'OAA Web Accessibility ARIA Examples', 
+                url:   'http://oaa-accessibility.org/examples/'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
+                title: 'Accessible jQuery-ui Components Demonstration', 
+                url:   'http://access.aol.com/aegis/#goto_slider'
+              }                            
+            ]
+        },
+        WIDGET_4: {
+            ID:                    'Widget 4',
+            DEFINITION:            'ARIA property and state values %s be valid types',
+            SUMMARY:               'ARIA values %s be valid',
+            TARGET_RESOURCES_DESC: 'Elements with aria attributes',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Change ARIA attribute to a valid type',
+              FAIL_P:   'Change %N_F out of %N_T ARIA attributes to a valid types',
+              HIDDEN_S: 'The widget that is hidden and was not evaluated.',
+              HIDDEN_P: '%N_H widgets that are hidden were not evaluated.',
+              NOT_APPLICABLE:  'No ARIA attributes on this page'              
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:   'The @%1@ attribute with the value "@%2@" is a valid token',
+              ELEMENT_PASS_2:   'The @%1@ attribute with the value "@%2@" is a valid "%3" type',
+              ELEMENT_FAIL_1: 'The @%1@ attribute with the value "@%2@" must change to one of the following values: %3',
+              ELEMENT_FAIL_2: 'The @%1@ attribute with the value "@%2@" must change to one or more of the following values: %3',
+              ELEMENT_FAIL_3: 'The @%1@ attribute with the value "@%2@" must change to a value with type of "%3"',
+              ELEMENT_HIDDEN_1: 'ARIA attribute value was not tested for validity because the @%1@ attribute with the value "@%2@" is hidden from assistive technologies and not visible on screen'
+            },
+            PURPOSE: [
+              'ARIA attributes must be a valid type to accurately describe web content to users of assistive technologies, especially screen reader users'                   
+            ],
+            TECHNIQUES: [
+              'Use valid values for ARIA attributes',
+              'Check W3C WAI Accessible Rich Internet Applications specifications for allowed values for ARIA attributes'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Supported Property and States', 
+                url:   'http://www.w3.org/TR/wai-aria/states_and_properties'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G108'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
+                title: 'OAA Web Accessibility ARIA Examples', 
+                url:   'http://oaa-accessibility.org/examples/'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
+                title: 'Accessible jQuery-ui Components Demonstration', 
+                url:   'http://access.aol.com/aegis/#goto_slider'
+              }                            
+            ]
+      },
+      WIDGET_5: {
+            ID:                    'Widget 5',
+            DEFINITION:            'ARIA property or state %s be defined',
+            SUMMARY:               'ARIA attribute %s be defined',
+            TARGET_RESOURCES_DESC: 'Elements with aria attributes',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Change ARIA attribute to a defined property or state',
+              FAIL_P:   'Change all %N_F out of %N_T ARIA attributes to a defined properties or states',
+              HIDDEN_S: 'The widget that is hidden and was not evaluated.',
+              HIDDEN_P: '%N_H widgets that are hidden were not evaluated.',
+              NOT_APPLICABLE:  'No undefined ARIA attributes on this page'              
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:    'The @%1@ attribute is a defined ARIA property or state',
+              ELEMENT_FAIL_1:  'The @%1@ attribute must be changed to a defined ARIA property or state',
+              ELEMENT_HIDDEN_1:  'Valid ARIA attribute was not tested becasue the @%1@ attribute with the value "@%2@" is hidden from assistive technologies and/or not visible on screen'
+            },
+            PURPOSE: [
+              'ARIA attributes must be defined properties or states to accurately describe web content to users of assistive technologies, especially screen reader users'                   
+            ],
+            TECHNIQUES: [
+              'Use defined ARIA properties and states in the ARIA specification',
+              'Check W3C WAI Accessible Rich Internet Applications specifications for allowed values for ARIA attributes'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Supported Property and States', 
+                url:   'http://www.w3.org/TR/wai-aria/states_and_properties'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G108'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
+                title: 'OAA Web Accessibility ARIA Examples', 
+                url:   'http://oaa-accessibility.org/examples/'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
+                title: 'Accessible jQuery-ui Components Demonstration', 
+                url:   'http://access.aol.com/aegis/#goto_slider'
+              }                            
+            ]
+      },
+      WIDGET_6: {
+            ID:                    'Widget 6',
+            DEFINITION:            'Widgets %s define required properties and states',
+            SUMMARY:               'Widgets %s have properties',
+            TARGET_RESOURCES_DESC: 'Widgets with required properties and states',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Add required properties and states to widget',
+              FAIL_P:   'Add required properties and states to the %N_F of the %N_T widgets with required properties and/or states on the page',
+              HIDDEN_S: 'The widget with required properties and states that is hidden and was not evaluated.',
+              HIDDEN_P: '%N_H widgets that have required properties and states that are hidden were not evaluated.',
+              NOT_APPLICABLE:  'No widgets with required properties and states on this page'              
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:   '@%1@ widget has the following required ARIA properties and states: %2',
+              ELEMENT_FAIL_1: 'Add one or more of the required ARIA properties and states (i.e. "%2") to the @%1@ widget',
+              ELEMENT_HIDDEN_1: 'Required ARA properties and states was not tested because the %1 widget is hidden from assistive technologies and/or not visible on screen'
+            },
+            PURPOSE: [
+              'ARIA roles, properties and states describes the features of interactive widgets to users of assistive technologies, especially screen reader users'                   
+            ],
+            TECHNIQUES: [
+              'Use required ARIA properties to describe the features and options of a widget'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Widget Roles', 
+                url:   'http://www.w3.org/TR/wai-aria/roles#widget_roles'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G108'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
+                title: 'OAA Web Accessibility ARIA Examples', 
+                url:   'http://oaa-accessibility.org/examples/'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
+                title: 'Accessible jQuery-ui Components Demonstration', 
+                url:   'http://access.aol.com/aegis/#goto_slider'
+              }                            
+            ]
+        },
+      WIDGET_7: {
+            ID:                    'Widget 7',
+            DEFINITION:            'Widgets %s have required child roles',
+            SUMMARY:               'Widgets %s have child roles',
+            TARGET_RESOURCES_DESC: 'Widgets with required owned elements',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Add required child roles to child elements in the widget',
+              FAIL_P:   'Add required child roles to child elements in the %N_F out of %N_T widgets with required child elements',
+              HIDDEN_S: 'The widget that requires child widget roles that is hidden and was not evaluated.',
+              HIDDEN_P: '%N_H widgets that require child widget roles that are hidden were not evaluated.',
+              NOT_APPLICABLE:  'No widgets with required child ARIA elements on this page'              
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:    '@%1@ widget has at least one required owned elements: %2',
+              ELEMENT_FAIL_1:  '@%1@ widget is MISSING one or more of following required owned elements: %2',
+              ELEMENT_HIDDEN_1:  'Required child widgets was not tested because the %1 widget is hidden from assistive technologies and not visible on screen'
+            },
+            PURPOSE: [
+              'ARIA roles, properties and states describes the features of interactive widgets to users of assistive technologies, especially screen reader users'                   
+            ],
+            TECHNIQUES: [
+              'Use required ARIA owned elements to describe the features and options of a widget'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Widget Roles', 
+                url:   'http://www.w3.org/TR/wai-aria/roles#widget_roles'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G108'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
+                title: 'OAA Web Accessibility ARIA Examples', 
+                url:   'http://oaa-accessibility.org/examples/'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
+                title: 'Accessible jQuery-ui Components Demonstration', 
+                url:   'http://access.aol.com/aegis/#goto_slider'
+              }                            
+            ]
+        },
+     WIDGET_8: {
+            ID:                    'Widget 8',
+            DEFINITION:            'Widgets %s have required parent role',
+            SUMMARY:               'Widgets %s have parent',
+            TARGET_RESOURCES_DESC: 'Widgets with required parent role',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Add required parent role to the widget',
+              FAIL_P:   'Add required parent role to the %N_F of the %N_T widgets that require a parent role',
+              HIDDEN_S: 'The widget that requires a parent role that is hidden and was not evaluated.',
+              HIDDEN_P: '%N_H widgets that require a parent roles that are hidden were not evaluated.',
+              NOT_APPLICABLE:  'No widgets with required parent role on this page'              
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:   '@%1@ widget is a child of the a @%2@ role',
+              ELEMENT_FAIL_1: 'Create a parent widget with the role of @%1@ for this @%2@ widget',
+              ELEMENT_FAIL_2: 'Create a parent widget with the one of the required roles (i.e. @%1@) for this @%2@ widget',
+              ELEMENT_HIDDEN_1: 'Required parent widgets was not tested because the %1 widget is hidden from assistive technologies and/or not visible on screen'
+            },
+            PURPOSE: [
+              'ARIA roles, properties and states describes the features of interactive widgets to users of assistive technologies, especially screen reader users'                   
+            ],
+            TECHNIQUES: [
+              'Use required parent roles to describe the features and options of a widget'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Widget Roles', 
+                url:   'http://www.w3.org/TR/wai-aria/roles#widget_roles'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G108'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
+                title: 'OAA Web Accessibility ARIA Examples', 
+                url:   'http://oaa-accessibility.org/examples/'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
+                title: 'Accessible jQuery-ui Components Demonstration', 
+                url:   'http://access.aol.com/aegis/#goto_slider'
+              }                            
+            ]
+        },
+     WIDGET_9: {
+            ID:                    'Widget 9',
+            DEFINITION:            'Widgets %s be owned by only one parent widget',
+            SUMMARY:               'Only one owner',
+            TARGET_RESOURCES_DESC: 'Widgets with required parent roles',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Update widgets with aria-owns to make sure it only references a child widget once',
+              FAIL_P:   'Update %N_F out of %N_T widgets with aria-owns to make sure they reference a child widget only once',
+              HIDDEN_S: 'The widget with @aria-owns@ that is hidden and was not evaluated.',
+              HIDDEN_P: '%N_H widgets with @aria-owns@ that are hidden were not evaluated.',
+              NOT_APPLICABLE:  'No widgets using aria-owns on this page'              
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:   '@%1@ child widget is referenced only by @%2@ parent widget with aria-owns',
+              ELEMENT_FAIL_1: 'Update references of @%1@ parent widgets with aria-owns to reference @%2@ child widget only once',
+              ELEMENT_HIDDEN_1: 'Widgets owned by more than one parent widget was not tested becasue the %1 parent widget with aria-owns is hidden from assistive technologies and not visible on screen'
+            },
+            PURPOSE: [
+              'ARIA roles, properties and states describes the features of interactive widgets to users of assistive technologies, especially screen reader users'                   
+            ],
+            TECHNIQUES: [
+              'Parent widget roles with aria-owns must accurately describe the parent relationships, a child widget can only have one parent widget'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Widget Roles', 
+                url:   'http://www.w3.org/TR/wai-aria/roles#widget_roles'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G108'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
+                title: 'OAA Web Accessibility ARIA Examples', 
+                url:   'http://oaa-accessibility.org/examples/'
+              }                            
+            ]
+        },
+     WIDGET_10: {
+            ID:                    'Widget 10',
+            DEFINITION:            'Range widget %s have value between minimum and maximum values',
+            SUMMARY:               'Value in range',
+            TARGET_RESOURCES_DESC: 'Range widgets ',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Update @range@ widget attributes of the range widget so the @aria-valuenow@ attribute is in the range defined by @aria-valuemin@ and @aria-valuemax@ attributes',
+              FAIL_P:   'Update @range@ widget attributes of the %N_F out of %N_T range widgets so the @aria-valuenow@ attribute of each widget is in the range defined by @aria-valuemin@ and @aria-valuemax@ attributes',
+              HIDDEN_S: 'The @range@ widget that is hidden and was not evaluated.',
+              HIDDEN_P: '%N_H @range@ widgets that are hidden were not evaluated.',
+              NOT_APPLICABLE:  'No @range@ widgets on the page'              
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:    '@%1@ widget is using @aria-valuetext@ attribute which overrides the @aria-valuenow@ attribute for describing the value of the range',
+              ELEMENT_PASS_2:    '@%1@ widget value of %2 is in the range %3 and %4',
+              ELEMENT_PASS_3:    '@%1@ widget has the range %3 and %4, and by not including the @aria-valuenow@ attribute the value of the progress-bar is considered indeterminate',
+              ELEMENT_FAIL_1:  'Update the numeric values of @aria-valuenow@ (%1), @aria-valuemin@ (%2) and @aria-valuemax@ (%3) so the @aria-valuenow@ value is in range',
+              ELEMENT_FAIL_2:  'Update the numeric values of @aria-valuemin@ (%1) and @aria-valuemax@ (%2) so the @aria-valuemin@ value is less than the @aria-valuemax@ value',
+              ELEMENT_FAIL_3:  'For progress bar update the numeric values or add @aria-valuemin@ (%2) and @aria-valuemax@ (%3) attributes and when state of progress is known use the @aria-valuenow@ attribute value to communicate the current state of progress',
+              ELEMENT_FAIL_4:  'Update or create @%1@ attribute to be a numeric value',
+              ELEMENT_FAIL_5:  'Update or create @%1@ attributes to be a numeric values',
+              ELEMENT_HIDDEN_1:  'Widget range values were not tested becasue the %1 range widget is hidden from assistive technologies'
+            },
+            PURPOSE: [
+              'ARIA roles, properties and states describes the features of interactive widgets to users of assistive technologies, especially screen reader users'                   
+            ],
+            TECHNIQUES: [
+              'Use the @aria-valuenow@, @aria-valuemin@ and @aria-valuemax@ are accurately defined'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Widget Roles', 
+                url:   'http://www.w3.org/TR/wai-aria/roles#widget_roles'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G108'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
+                title: 'OAA Web Accessibility ARIA Examples', 
+                url:   'http://oaa-accessibility.org/examples/'
+              }                            
+            ]
+        },
+     WIDGET_11: {
+            ID:                    'Widget 11',
+            DEFINITION:            'Elements with keyboard, mouse and/or drag events %s have widget roles or interactive elements (i.e. form controls or links)',
+            SUMMARY:               'Keyboard/Mouse/drag events %s have roles',
+            TARGET_RESOURCES_DESC: 'Elements with mouse events',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Add ARIA widget role to the element with events or child elements that accurately describe the user options and actions available to the user',
+              FAIL_P:   'Add ARIA widget roles to the %N_F out of %N_T elements with events or their child elements that accurately describe the user options and actions available',
+              HIDDEN_S: 'The @element@ with event handler that is hidden and was not evaluated.',
+              HIDDEN_P: '%N_H @element@ with event handlers that are hidden were not evaluated.',
+              NOT_APPLICABLE:  'No elements with keyboard, mouse or drag events found on this page'              
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_PASS_1:   '@%1@ widget has the following keyboard, mouse or drag event(s): %2',
+              ELEMENT_PASS_2:   '@%1@ element has the following keyboard, mouse or drag event(s): %2',
+              ELEMENT_PASS_3:   '@%1@ element with the following keyboard, mouse or drag event(s): %2 ; has descendant elements with widget roles or interactive elements',
+              ELEMENT_FAIL_1: 'Add widget role(s) to the element and/or its descendants that accurately describe the user options and actions of the @%1@ element with the following keyboard, mouse or drag events: %2',
+              ELEMENT_HIDDEN_1: 'Roles for interactive elements was not tested because the %1 element is hidden from assistive technologies with following keyboard, mouse or drag events: %2'
+            },
+            PURPOSE: [
+              'ARIA roles, properties and states describes the features of interactive widgets to users of assistive technologies, especially screen reader users'                   
+            ],
+            TECHNIQUES: [
+              'Use the @role@ attribute to describe the type of widget associated with the mouse events',
+              'Use ARIA properties and states attributes to describe features of each widget '
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Widget Roles', 
+                url:   'http://www.w3.org/TR/wai-aria/roles#widget_roles'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G108'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
+                title: 'OAA Web Accessibility ARIA Examples', 
+                url:   'http://oaa-accessibility.org/examples/'
+              }                            
+            ]
+        },
+        WIDGET_12: {
+            ID:                    'Widget 12',
+            DEFINITION:            'Widget roles %s be removed until the ARIA properties, states, focus management and keyboard support for widgets is fully understood by the developer.',
+            SUMMARY:               'Remove widget roles',
+            TARGET_RESOURCES_DESC: 'Elements widget roles',
+            RULE_RESULT_MESSAGES: {
+              FAIL_S:   'Remove widget role from element until you are confident that you understand the ARIA properties, states, focus management and keyboard support needed by the widget.',
+              FAIL_P:   'Remove widget role from the %N_F elements until you are confident that you understand the ARIA properties, states, focus management and keyboard support needed by the widget.',
+              HIDDEN_S: 'The element with an widget role that is hidden and was not evaluated.',
+              HIDDEN_P: '%N_H elements with widget roles that are hidden were not evaluated.',
+              NOT_APPLICABLE:  'No elements with widget toles on the page'              
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_FAIL_1:    'Remove @%1@ widget role from the %2 element.',
+              ELEMENT_HIDDEN_1:  '@%1[role="%2"]@ was not tested because it is hidden from assistive technologies'
+            },
+            PURPOSE: [
+              'Developers who are new to ARIA and do not completely understand how ARIA technologies can enhancing accessibility may.',
+              'The improper use of ARIA roles leads to less accessibility due to conflicting accessibility information being represented in the accessibility APIs.',
+              'The intention of the rule to discourage web developers form using widget roles until they fully understand how to use ARIA roles, properties, states, focus management and keyboard support.',
+              'Once a developer is confident they understand how to implement ARIA enabled widgets that should use the WCAG + ARIA ruleset to evaluate the accessibility of their pages.'
+            ],
+            TECHNIQUES: [
+              'Remove widget roles from elements, until the developer fully understands who to create accessibility widgets with ARIA roles, properties, states, focus management and keyboard support.',
+              'Widget from javascript libraries that claim to support ARIA should be tested for correct use of ARIA roles, properties, states, focus management and keyboard support, since many javascript libraries using ARIA may be using it incorrectly, or updated to previously accessible libraries may have broken accessibility features.'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Widget Roles', 
+                url:   'http://www.w3.org/TR/wai-aria/roles#widget_roles'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'WAI-ARIA 1.0 Authoring Practices: Tabindex for managing focus', 
+                url:   'http://www.w3.org/TR/2010/WD-wai-aria-practices-20100916/#kbd_focus'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
+                title: 'G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes', 
+                url:   'http://www.w3.org/TR/2012/NOTE-WCAG20-TECHS-20120103/G108'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
+                title: 'OAA Web Accessibility ARIA Examples', 
+                url:   'http://oaa-accessibility.org/examples/'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
+                title: 'Accessible jQuery-ui Components Demonstration', 
+                url:   'http://access.aol.com/aegis/#goto_slider'
+              }                            
+            ]
+        }     
+   }
+});
+/**
+ * Copyright 2011-2014 OpenAjax Alliance
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* ---------------------------------------------------------------- */
+/*            OpenAjax Alliance Media Rules                         */ 
+/* ---------------------------------------------------------------- */
+
+OpenAjax.a11y.RuleManager.addRulesFromJSON([
+
+/**
+ * @object AUDIO_1
+ *
+ * @desc Audio elements must have captions or text transcripts
+ */ 
+ 
+{ rule_id             : 'AUDIO_1', 
+  last_updated        : '2014-11-21', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.AUDIO_VIDEO,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
+  wcag_primary_id     : '1.2.1',
+  wcag_related_ids    : ['1.2.2', '1.2.4', '1.2.9'],
+  target_resources    : ['audio', 'track'],
+  primary_property    : 'type',
+  resource_properties : ['controls', 'autoplay', 'name', 'src', 'label'],
+  language_dependency : "",
+  validate          : function (dom_cache, rule_result) {
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+    var MEDIA       = OpenAjax.a11y.MEDIA;
+  
+    var audio_elements     = dom_cache.media_cache.audio_elements;
+    var audio_elements_len = audio_elements.length;
+
+    for (var i = 0; i < audio_elements_len; i++) {
+      var ae = audio_elements[i];
+      var de = ae.dom_element;
+      var cs = de.computed_style;
+
+      if ((cs.is_visible_to_at === VISIBILITY.VISIBLE) ||
+          (ae.has_autoplay)) {        
+        if (ae.getTextTracks().length) rule_result.addResult(TEST_RESULT.PASS, ae, 'ELEMENT_PASS_1', []);               
+        else if (de.has_aria_describedby) rule_result.addResult(TEST_RESULT.PASS, ae, 'ELEMENT_PASS_2', []);
+        else rule_result.addResult(TEST_RESULT.FAIL, ae, 'ELEMENT_FAIL_1', []);    
+      }
+      else {
+       rule_result.addResult(TEST_RESULT.HIDDEN, ae, 'ELEMENT_HIDDEN_1', []);     
+      }
+    }
+  } // end validate function
+},
+
+/**
+ * @object AUDIO_2
+ *
+ * @desc If object element is used for audio only, object must have captions or text transcript
+ */ 
+ 
+{ rule_id             : 'AUDIO_2', 
+  last_updated        : '2014-11-21', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.AUDIO_VIDEO,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
+  wcag_primary_id     : '1.2.1',
+  wcag_related_ids    : ['1.2.2', '1.2.4', '1.2.9'],
+  target_resources    : ['object', 'param'],
+  primary_property    : 'type',
+  resource_properties : ['data', 'name', 'value', 'valuetype'],
+  language_dependency : "",
+  validate          : function (dom_cache, rule_result) {
+    
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+    var MEDIA       = OpenAjax.a11y.MEDIA;
+  
+    var object_elements     = dom_cache.media_cache.object_elements;
+    var object_elements_len = object_elements.length;
+
+    for (var i = 0; i < object_elements_len; i++) {
+      var oe = object_elements[i];
+      var de = oe.dom_element;
+      var cs = de.computed_style;
+
+      if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+        if (de.has_aria_describedby) {
+          rule_result.addResult(TEST_RESULT.PASS, oe, 'ELEMENT_PASS_1', []);
+        }
+        else {
+          if ((typeof oe.type === 'string') && 
+               (oe.type.indexOf('audio') >= 0)) { 
+            rule_result.addResult(TEST_RESULT.MANUAL_CHECK, oe, 'ELEMENT_MC_1', []);     
+          }  
+          else {
+            rule_result.addResult(TEST_RESULT.MANUAL_CHECK, oe, 'ELEMENT_MC_2', []);   
+          }
+        }  
+      }
+      else {
+       rule_result.addResult(TEST_RESULT.HIDDEN, oe, 'ELEMENT_HIDDEN_1', []);     
+      }
+    }
+  } // end validate function
+},
+
+/**
+ * @object AUDIO_3
+ *
+ * @desc If embed element is used for audio only, embed  must have captions or text transcript
+ */ 
+ 
+{ rule_id             : 'AUDIO_3', 
+  last_updated        : '2014-11-21', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.AUDIO_VIDEO,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
+  wcag_primary_id     : '1.2.1',
+  wcag_related_ids    : ['1.2.2', '1.2.4', '1.2.9'],
+  target_resources    : ['embed'],
+  primary_property    : 'type',
+  resource_properties : ['src'],
+  language_dependency : "",
+  validate          : function (dom_cache, rule_result) {
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+    var MEDIA       = OpenAjax.a11y.MEDIA;
+  
+    var embed_elements     = dom_cache.media_cache.embed_elements;
+    var embed_elements_len = embed_elements.length;
+
+    for (var i = 0; i < embed_elements_len; i++) {
+      var ee = embed_elements[i];
+      var de = ee.dom_element;
+      var cs = de.computed_style;
+
+      if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+        if (de.has_aria_describedby) {
+          rule_result.addResult(TEST_RESULT.PASS, ee, 'ELEMENT_PASS_1', []);
+        }
+        else {
+          if ((typeof ee.type === 'string') && 
+              (ee.type.indexOf('audio') >= 0)) {
+            rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ee, 'ELEMENT_MC_1', []);     
+          }  
+          else {
+            rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ee, 'ELEMENT_MC_2', []);   
+          }
+        }  
+      }
+      else {
+       rule_result.addResult(TEST_RESULT.HIDDEN, ee, 'ELEMENT_HIDDEN_1', []);     
+      }
+    }
+  } // end validate function
+},
+
+  /**
+   * @object AUDIO_4
+   *
+   * @desc  Audio automatically starts
+   */ 
+ 
+{ rule_id             : 'AUDIO_4', 
+  last_updated        : '2014-11-21', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.PAGE,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.AUDIO_VIDEO,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
+  wcag_primary_id     : '1.4.2',
+  wcag_related_ids    : [],
+  target_resources    : [],
+  primary_property    : '',
+  resource_properties : [],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+  
+      var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+   
+      var page_element = dom_cache.media_cache.page_element;
+
+      if (page_element) {
+         rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MANUAL_CHECK_1', []);      
+       }   
+      
+    } // end validate function
+  }
+
+]);
+//
+// OpenAjax Alliance Rules 
+// Rule group: Styling Rules
+//
+OpenAjax.a11y.RuleManager.addRulesFromJSON([
+      
+
+  /**
+   * @object COLOR_1
+   *
+   * @desc  Color contrast ratio must be > 4.5 for normal text, or > 3.1 for large text
+   */ 
+ 
+  { rule_id             : 'COLOR_1', 
+    last_updated        : '2014-11-21', 
+    rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+    rule_category       : OpenAjax.a11y.RULE_CATEGORIES.STYLES_READABILITY,
+    rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
+    wcag_primary_id     : '1.4.3',
+    wcag_related_ids    : ['1.4.1','1.4.6'],
+    target_resources    : ['textnodes'],
+    primary_property    : 'color_contrast_ratio',
+    resource_properties : ['color_hex', 'background_color_hex', 'background_image', 'is_large_font'],
+    language_dependency : "",
+    validate            : function (dom_cache, rule_result) {
+  
+      var MIN_CCR_NORMAL_FONT = 4.5;
+      var MIN_CCR_LARGE_FONT  = 3.1;
+  
+      var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+      var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+   
+      var cc_items     = dom_cache.text_cache.text_nodes;
+      var cc_items_len = cc_items.length;
+     
+      for (var i = 0; i < cc_items_len; i++) {
+
+        var test_result = TEST_RESULT.PASS;
+        var message_id = '';
+        var args = [];
+
+        var cc_item = cc_items[i];
+        var pe = cc_item.parent_element;
+        var cs = pe.computed_style;
+
+        // if color contrast raio is undefined, skip this item
+        if (!cs.color_contrast_ratio) continue;
+
+        if (cs.is_visible_onscreen === VISIBILITY.VISIBLE) {
+
+          if ((cs.color_contrast_ratio >= MIN_CCR_NORMAL_FONT) ||
+            ((cs.color_contrast_ratio >= MIN_CCR_LARGE_FONT) && (cs.is_large_font))) {
+     
+            // Passes color contrast requirements
+            if (cs.background_image != "none") {
+              rule_result.addResult(TEST_RESULT.MANUAL_CHECK, cc_item, 'ELEMENT_MC_1', [cs.color_contrast_ratio]);
+            }           
+            else {
+              rule_result.addResult(TEST_RESULT.PASS, cc_item, 'ELEMENT_PASS_1', [cs.color_contrast_ratio]);
+            }
+          }
+          else {
+          
+            // Fails color contrast requirements
+            if (cs.background_image === "none") {
+              rule_result.addResult(TEST_RESULT.FAIL, cc_item, 'ELEMENT_FAIL_1', [cs.color_contrast_ratio]);
+            }
+            else {
+              rule_result.addResult(TEST_RESULT.MANUAL_CHECK, cc_item, 'ELEMENT_MC_2', [cs.color_contrast_ratio]);
+            }     
+          }
+        }
+        else {
+          rule_result.addResult(TEST_RESULT.HIDDEN, cc_item, 'ELEMENT_HIDDEN_1', []);        
+        }
+        
+      } // end loop  
+      
+    } // end validate function
+  },
+
+  /**
+   * @object COLOR_1
+   *
+   * @desc  Use of color
+   */ 
+ 
+  { rule_id             : 'COLOR_2', 
+    last_updated        : '2014-04-04', 
+    rule_scope          : OpenAjax.a11y.RULE_SCOPE.PAGE,
+    rule_category       : OpenAjax.a11y.RULE_CATEGORIES.STYLES_READABILITY,
+    rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
+    wcag_primary_id     : '1.4.1',
+    wcag_related_ids    : [],
+    target_resources    : [],
+    primary_property    : '',
+    resource_properties : [],
+    language_dependency : "",
+    validate            : function (dom_cache, rule_result) {
+  
+      var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+   
+      var page_element = dom_cache.headings_landmarks_cache.page_element;
+
+      if (page_element) {
+         rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MANUAL_CHECK_1', []);      
+       }   
+      
+    } // end validate function
+  }
+ 
+]); 
+
+
+    
+
+/* ---------------------------------------------------------------- */
+/*  OpenAjax Alliance Control Rules                                 */ 
+/* ---------------------------------------------------------------- */
+
+OpenAjax.a11y.RuleManager.addRulesFromJSON([
+
+/**
+ * @object FOCUS_1
+ * 
+ * @desc Focus order
+ */
+     
+{ rule_id             : 'FOCUS_1', 
+  last_updated        : '2014-11-21', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.PAGE,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.KEYBOARD_SUPPORT,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
+  wcag_primary_id     : '2.4.3',
+  wcag_related_ids    : ['2.1.1', '2.1.2', '2.4.7', '3.2.1'],
+  target_resources    : ['Page', 'a', 'applet', 'area', 'button', 'input', 'object', 'select', 'area', 'widgets'],
+  primary_property    : 'tabindex',
+  resource_properties : [],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+  
+     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;   
+     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+      
+     var page_element = dom_cache.keyboard_focus_cache.page_element;  
+
+//     OpenAjax.a11y.logger.debug(" Page Element: " + page_element + "  " + page_element.dom_element);
+
+     var interactive_elements     = dom_cache.keyboard_focus_cache.interactive_elements;
+     var interactive_elements_len = interactive_elements.length;
+
+     var tab_count = 0;
+     var visible_count = 0;
+
+     for (var i = 0; i < interactive_elements_len; i++) {
+     
+       var ie = interactive_elements[i];
+       
+       var de = ie.dom_element;
+       if (!de) de =ie;
+       
+       var cs = de.computed_style;
+       
+       if ((cs.is_visible_to_at    === VISIBILITY.VISIBLE) ||
+           (cs.is_visible_onscreen === VISIBILITY.VISIBLE)) {
+           
+         visible_count++;
+         
+         if (de.tab_index >= 0) { 
+           if (de.is_widget) {
+             // only include widgets that can be part of the tab order
+             if (de.is_tab_stoppable) {
+                tab_count++;
+               rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ie, 'ELEMENT_MC_1', [de.tag_name, de.role]);
+             }
+           }
+           else {
+             tab_count++;
+             rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ie, 'ELEMENT_MC_2', [de.tag_name]);
+           }
+         }
+         else {
+           if (de.is_widget) {
+             // only include widgets that can be part of the tab order
+             if (de.is_tab_stoppable) {
+               rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ie, 'ELEMENT_MC_3', [de.tag_name, de.role, de.tab_index]);
+             }
+           }
+           else {
+             rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ie, 'ELEMENT_MC_4', [de.tag_name, de.tab_index]);
+           }         
+         }
+         
+       }     
+       else {
+       
+         if (de.is_widget) {
+           // only include widgets that can be part of the tab order
+           if (de.is_tab_stoppable) {
+             rule_result.addResult(TEST_RESULT.HIDDEN, ie, 'ELEMENT_HIDDEN_1', [de.tag_name, de.role]);      
+           }
+         }
+         else {
+           rule_result.addResult(TEST_RESULT.HIDDEN, ie, 'ELEMENT_HIDDEN_2', [de.tag_name]);                
+         }
+       }  
+     }  // endfor
+ 
+ //    OpenAjax.a11y.logger.debug(" Visible count: " + visible_count + "  Tab count: " + tab_count);
+
+     if (visible_count > 1) { 
+ 
+       if (tab_count === visible_count) {
+         rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MC_1', [tab_count]);
+       }
+       else {
+         rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MC_2', [tab_count, (visible_count-tab_count)]);             
+       }
+     
+     }
+
+
+   } // end validation function   
+},
+
+/**
+ * @object FOCUS_2
+ * 
+ * @desc Focus style
+ */
+     
+{ rule_id             : 'FOCUS_2', 
+  last_updated        : '2014-11-21', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.PAGE,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.STYLES_READABILITY,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
+  wcag_primary_id     : '2.4.7',
+  wcag_related_ids    : ['2.1.1', '2.1.2',  '2.4.3', '3.2.1'],
+  target_resources    : ['Page', 'a', 'applet', 'area', 'button', 'input', 'object', 'select', 'area', 'widgets'],
+  primary_property    : 'has_outline',
+  resource_properties : [],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;   
+     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+      
+     var page_element = dom_cache.keyboard_focus_cache.page_element;  
+
+//     OpenAjax.a11y.logger.debug(" Page Element: " + page_element + "  " + page_element.dom_element);
+
+     var interactive_elements     = dom_cache.keyboard_focus_cache.interactive_elements;
+     var interactive_elements_len = interactive_elements.length;
+
+     var visible_interactive_count = 0;
+
+     for (var i = 0; i < interactive_elements_len; i++) {
+     
+       var ie = interactive_elements[i];
+       
+       var de = ie.dom_element;
+       if (!de) de =ie;
+       
+       var cs = de.computed_style;
+       
+       if (cs.is_visible_onscreen === VISIBILITY.VISIBLE) {
+       
+         visible_interactive_count++;
+           
+         if (de.is_widget) {             
+           rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ie, 'ELEMENT_MC_1', [de.tag_name, de.role]);
+         }
+         else {
+           rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ie, 'ELEMENT_MC_2', [de.tag_name]);
+         }
+         
+       }
+       else {
+
+         if (de.is_widget) {             
+           rule_result.addResult(TEST_RESULT.HIDDEN, ie, 'ELEMENT_HIDDEN_1', [de.tag_name, de.role]);
+         }
+         else {
+           rule_result.addResult(TEST_RESULT.HIDDEN, ie, 'ELEMENT_HIDDEN_2', [de.tag_name]);
+         }
+
+       }  
+     }  // endfor
+ 
+//     OpenAjax.a11y.logger.debug(" Visible Interactive Count: " + visible_interactive_count);
+
+     if (visible_interactive_count > 1) { 
+ 
+       if (visible_interactive_count === interactive_elements_len) {
+         rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MC_1', [interactive_elements_len]);
+       }
+       else {
+         rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MC_2', [visible_interactive_count, (interactive_elements_len - visible_interactive_count)]);             
+       }
+     
+     }
+
+
+   } // end validation function   
+
+},
+
+/**
+ * @object FOCUS_3
+ * 
+ * @desc Target of a link does not go to a page with popup windows
+ */
+     
+{ rule_id             : 'FOCUS_3', 
+  last_updated        : '2014-11-21', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LINKS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '3.2.1',
+  wcag_related_ids    : ['2.1.1', '2.1.2',  '2.4.3', '2.4.7'],
+  target_resources    : ['a', 'area', 'select'],
+  primary_property    : 'href',
+  resource_properties : [],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;   
+     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+      
+//     OpenAjax.a11y.logger.debug(" Page Element: " + page_element + "  " + page_element.dom_element);
+
+     var link_elements     = dom_cache.links_cache.link_elements;
+     var link_elements_len = link_elements.length;
+
+     var visible_interactive_count = 0;
+
+     for (var i = 0; i < link_elements_len; i++) {
+     
+       var le = link_elements[i];
+       
+       var de = le.dom_element;
+       if (!de) de =le;
+       
+       var cs = de.computed_style;
+       
+       if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+       
+         rule_result.addResult(TEST_RESULT.MANUAL_CHECK, le, 'ELEMENT_MC_1', [de.tag_name]);
+         
+       }
+       else {
+         rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [de.tag_name, de.role]);
+       }  
+     }  // endfor
+ 
+   } // end validation function   
+},
+
+/**
+ * @object FOCUS_4
+ * 
+ * @desc Select elements with onchange events
+ */
+     
+{ rule_id             : 'FOCUS_4', 
+  last_updated        : '2014-11-21', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.FORMS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
+  wcag_primary_id     : '3.2.1',
+  wcag_related_ids    : ['2.1.1', '2.1.2',  '2.4.3', '2.4.7'],
+  target_resources    : ['select'],
+  primary_property    : 'events.has_change',
+  resource_properties : [],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;   
+     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+      
+//     OpenAjax.a11y.logger.debug(" Page Element: " + page_element + "  " + page_element.dom_element);
+
+     var control_elements     = dom_cache.controls_cache.control_elements;
+     var control_elements_len = control_elements.length;
+
+     for (var i = 0; i < control_elements_len; i++) {
+     
+       var ce = control_elements[i];
+       
+       var de = ce.dom_element;
+       
+       var cs = de.computed_style;
+       
+       if ((de.tag_name === 'select') &&
+            de.events.has_change) {
+       
+         if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {   
+           rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_1', [de.tag_name]);
+         }
+         else {
+           rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_1', [de.tag_name, de.role]);
+         }  
+       }  
+     }  // endfor
+ 
+   } // end validation function   
+},
+
+/**
+ * @object FOCUS_5
+ * 
+ * @desc Form include a submit button
+ * 
+ */
+ 
+{ rule_id             : 'FOCUS_5', 
+  last_updated        : '2014-11-21', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.FORMS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
+  wcag_primary_id     : '3.2.2',
+  wcag_related_ids    : [],
+  target_resources    : ['form', 'input[type="submit"]', 'input[type="button"]', 'input[type="image"]', 'button', '[role="button"]'],
+  primary_property    : '',
+  resource_properties : [],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+    function has_submit_button(control) {
+  
+      var cce = control.child_cache_elements;
+      var cce_len = cce.length;
+      
+      var has_submit = false;
+      
+      for(var i = 0; i < cce_len; i++) {
+        var ce = cce[i];
+        var de = ce.dom_element;
+        var cs = de.computed_style;
+        
+        if(ce.control_type === OpenAjax.a11y.CONTROL_TYPE.SUBMIT) {
+          if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+            rule_result.addResult(TEST_RESULT.PASS, ce, 'ELEMENT_PASS_2', []);                
+            has_submit = true;
+          }
+          else {
+           rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_2', []);                          } 
+        }
+        
+        if (ce.child_cache_elements && ce.child_cache_elements.length) {
+          has_submit = has_submit || has_submit_button(ce);
+        }
+        
+      }
+    
+      return has_submit;
+      
+    }
+
+    function has_other_button(control, count) {
+  
+      var cee = control.child_cache_elements;
+      var cee_len = cee.length;
+      
+      for(var i = 0; i < cee_len; i++) {
+        var ce = cee[i];
+        var de = ce.dom_element;
+        var cs = de.computed_style;
+        
+        if (ce.control_type === CONTROL_TYPE.BUTTON_INPUT) {
+          if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+            rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_3', ['button']);                
+            count += 1;
+          }
+          else {
+            rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_3', ['button']);                
+          } 
+        }
+        else {
+           if (ce.control_type === CONTROL_TYPE.IMAGE) {
+             if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+               rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_3', ['image']);                
+               count += 1;
+             }
+             else {
+               rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_3', ['image']);                
+             } 
+           }
+           else {  
+             if (ce.control_type === CONTROL_TYPE.BUTTON_ELEMENT) {
+               if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+                 rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_4', []);                
+                 count += 1;
+               }
+               else {
+                 rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_4', []);                
+               }  
+             }
+             else {  
+               if (de.role === "button") {
+                 if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+                  rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_5', [de.tag_name]);                
+                   count += 1;
+                 }
+                 else {
+                  rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_5', [de.tag_name]);                
+                 }  
+               }
+             }
+           }
+        }
+        
+        if (ce.child_cache_elements && ce.child_cache_elements.length) {
+          count += has_other_button(ce, count);
+        }
+      
+      }
+    
+      return count;
+      
+    }
+    
+    function hasVisibleFormControls(controls) {
+    
+      for (var i = 0; i < controls.length; i++) {
+      
+        var ce = controls[i];
+        if (ce.control_type === CONTROL_TYPE.LABEL) continue;
+        
+        var de = ce.dom_element;
+        var cs = de.computed_style;
+      
+        if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+          return true;
+        }
+        else {  
+          if (ce.child_cache_elements && ce.child_cache_elements.length) {
+            var result = hasVisibleFormControls(ce.child_cache_elements);
+            if (result) return true;
+          }  
+        }    
+      }
+
+      return false;    
+    }
+    
+    var TEST_RESULT  = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY   = OpenAjax.a11y.VISIBILITY;
+    var CONTROL_TYPE =  OpenAjax.a11y.CONTROL_TYPE;
+  
+    var form_elements   = dom_cache.controls_cache.form_elements;
+    var form_elements_len = form_elements.length;
+    var fes   = [];
+
+    // Check to see if valid cache reference
+    if (form_elements && form_elements_len) {
+     
+      // collect all the visible controls 
+      for (var i = 0; i < form_elements_len; i++) {
+        var fe = form_elements[i];
+        var de = fe.dom_element;
+        var cs = de.computed_style;
+  
+        var control_type = fe.control_type;
+
+//        OpenAjax.a11y.logger.debug("Form: " + fe + " controls: " + fe.number_of_controls + " cache elements: " + fe.child_cache_elements);
+
+        if ((control_type === CONTROL_TYPE.FORM) &&
+            (fe.number_of_controls > 0) &&
+            (hasVisibleFormControls(fe.child_cache_elements))) {
+
+          if (cs.is_visible_to_at === VISIBILITY.VISIBLE) { 
+          
+            if (has_submit_button(fe)) {
+              rule_result.addResult(TEST_RESULT.PASS, fe, 'ELEMENT_PASS_1', []);                
+            }
+            else {
+              var button_count = has_other_button(fe, 0);
+
+              if (button_count === 1) {
+                rule_result.addResult(TEST_RESULT.MANUAL_CHECK, fe, 'ELEMENT_MC_1', []);
+              }
+              else {
+                if (button_count > 1) {
+                  rule_result.addResult(TEST_RESULT.MANUAL_CHECK, fe, 'ELEMENT_MC_2', [button_count]);
+                }  
+                else {
+                  rule_result.addResult(TEST_RESULT.FAIL, fe, 'ELEMENT_FAIL_1', []);
+                }
+              }
+            }
+          }
+          else {
+            rule_result.addResult(TEST_RESULT.HIDDEN, fe, 'ELEMENT_HIDDEN_1', []);                                    
+          }          
+        }
+      } // end loop          
+    }    
+  } // end validate function
+},
+
+/**
+ * @object FOCUS_6
+ * 
+ * @desc Checkbox and radio button events cause a change in context
+ * 
+ */
+ 
+{ rule_id             : 'FOCUS_6', 
+  last_updated        : '2014-08-25', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.FORMS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP3,
+  wcag_primary_id     : '3.2.2',
+  wcag_related_ids    : [],
+  target_resources    : ['input[type="submit"]'],
+  primary_property    : '',
+  resource_properties : [],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+  
+    var TEST_RESULT  = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY   = OpenAjax.a11y.VISIBILITY;
+    var CONTROL_TYPE =  OpenAjax.a11y.CONTROL_TYPE;
+  
+    var control_elements   = dom_cache.controls_cache.control_elements;
+    var control_elements_len = control_elements.length;
+    var ces   = [];
+
+    // Check to see if valid cache reference
+    if (control_elements && control_elements_len) {
+     
+      // collect all the visible controls 
+      for (var i = 0; i < control_elements_len; i++) {
+        var ce = control_elements[i];
+        var de = ce.dom_element;
+        var cs = de.computed_style;
+  
+        var control_type = ce.control_type;
+
+//        OpenAjax.a11y.logger.debug(fe);
+
+        if ((control_type === OpenAjax.a11y.CONTROL_TYPE.CHECKBOX) || 
+            (control_type === OpenAjax.a11y.CONTROL_TYPE.RADIO)) {
+            
+          if ((de.role === 'checkbox') || (de.role === 'radio')) {
+            if (cs.is_visible_to_at === VISIBILITY.VISIBLE) { 
+              rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_2', [de.tag_name, de.role]);
+            }
+            else {
+              rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_2', [de.tag_name, de.role]);
+            }  
+          }
+          else {
+            if (cs.is_visible_to_at === VISIBILITY.VISIBLE) { 
+              rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_1', [ce.type]);
+            }
+            else {
+              rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_1', [ce.type]);                                    
+            }  
+          }          
+        }
+      } // end loop          
+    }    
+  } // end validate function
+}
+
+
+]); 
+
+
+    
+
+/* ---------------------------------------------------------------- */
+/*  OpenAjax Alliance Control Rules                                 */ 
+/* ---------------------------------------------------------------- */
+
+OpenAjax.a11y.RuleManager.addRulesFromJSON([
+
+/**
+ * @object ERROR_1
+ * 
+ * @desc Identify form controls with invalid values
+ * 
+ */
+ 
+{ rule_id             : 'ERROR_1', 
+  last_updated        : '2014-11-21', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.FORMS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '3.3.1',
+  wcag_related_ids    : [],
+  target_resources    : ['input[type="checkbox"]', 'input[type="date"]', 'input[type="file"]', 'input[type="radio"]', 'input[type="number"]', 'input[type="password"]', 'input[type="tel"]' , 'input[type="text"]', 'input[type="url"]', 'select', 'textarea', 'meter', 'progress'],
+  primary_property    : 'aria-invalid',
+  resource_properties : ['validity', 'validation_message', 'pattern'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY = OpenAjax.a11y.VISIBILITY;
+   
+    var control_elements   = dom_cache.controls_cache.control_elements;
+    var control_elements_len = control_elements.length;
+    var ces   = [];
+
+    // Check to see if valid cache reference
+    if (control_elements && control_elements_len) {
+     
+      // collect all the visible controls 
+      for (var i = 0; i < control_elements_len; i++) {
+        var ce = control_elements[i];
+        var de = ce.dom_element;
+        var cs = de.computed_style;
+  
+        if (ce.has_validity) {
+          if (cs.is_visible_to_at === VISIBILITY.VISIBLE) { 
+            if (!ce.is_valid) {
+              if (de.has_aria_invalid) {
+                if (de.aria_invalid) rule_result.addResult(TEST_RESULT.PASS, ce, 'ELEMENT_PASS_1', [ce.toString()]);
+                else rule_result.addResult(TEST_RESULT.FAIL, ce, 'ELEMENT_FAIL_1', [ce.toString()]);
+              }  
+              else {
+                rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_1', [ce.toString()]);               
+              }  
+            }
+            else {
+              if (de.has_aria_invalid) {
+                if (de.aria_invalid) rule_result.addResult(TEST_RESULT.FAIL, ce, 'ELEMENT_FAIL_2', [ce.toString()]);
+                else rule_result.addResult(TEST_RESULT.PASS, ce, 'ELEMENT_PASS_2', [ce.toString()]);
+              }  
+              else {
+                if (ce.has_pattern) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_2', [ce.toString()]);
+                else rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_3', [ce.toString()]);                
+              }  
+            }             
+          }
+          else {
+            rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_1', [ce].toString());                                    
+          }          
+        }
+      } // end loop          
+    }        
+  } // end validate function
+},
+
+/**
+ * @object ERROR_2
+ * 
+ * @desc Use required attribute on required standard form controls
+ * 
+ */
+ 
+{ rule_id             : 'ERROR_2', 
+  last_updated        : '2014-11-21', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.FORMS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '3.3.3',
+  wcag_related_ids    : [],
+  target_resources    : ['input[type="text"]', 'input[type="date"]', 'input[type="file"]', 'input[type="number"]', 'input[type="password"]', 'input[type="tel"]' , 'input[type="text"]', 'input[type="url"]', 'select', 'textarea'],
+  primary_property    : 'has_required',
+  resource_properties : ['has_aria_required', 'aria_required'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY = OpenAjax.a11y.VISIBILITY;
+   
+    var control_elements   = dom_cache.controls_cache.control_elements;
+    var control_elements_len = control_elements.length;
+    
+    // collect all the visible controls 
+    for (var i = 0; i < control_elements_len; i++) {
+      var ce = control_elements[i];
+      var de = ce.dom_element;
+      var cs = de.computed_style;
+
+      var control_type = ce.control_type;
+
+      if (control_type === OpenAjax.a11y.CONTROL_TYPE.CHECKBOX  ||
+          control_type === OpenAjax.a11y.CONTROL_TYPE.DATE      ||
+          control_type === OpenAjax.a11y.CONTROL_TYPE.EMAIL     ||
+          control_type === OpenAjax.a11y.CONTROL_TYPE.FILE      ||
+          control_type === OpenAjax.a11y.CONTROL_TYPE.NUMBER    ||
+          control_type === OpenAjax.a11y.CONTROL_TYPE.PASSWORD  ||
+          control_type === OpenAjax.a11y.CONTROL_TYPE.RADIO     ||
+          control_type === OpenAjax.a11y.CONTROL_TYPE.TEL       ||
+          control_type === OpenAjax.a11y.CONTROL_TYPE.TEXT      ||
+          control_type === OpenAjax.a11y.CONTROL_TYPE.URL ) {
+        
+        var input_type = de.node.getAttribute('type');    
+            
+        if (cs.is_visible_to_at === VISIBILITY.VISIBLE) { 
+          if (de.has_required || de.has_aria_required) {
+            if (de.has_required && de.has_aria_required && !de.aria_required) {
+              rule_result.addResult(TEST_RESULT.FAIL, ce, 'ELEMENT_FAIL_1', [input_type]);
+            }
+            else {
+              if (de.has_required) rule_result.addResult(TEST_RESULT.PASS, ce, 'ELEMENT_PASS_1', [input_type]);
+              else rule_result.addResult(TEST_RESULT.PASS, ce, 'ELEMENT_PASS_2', [input_type]);
+            }  
+          }
+          else {
+            rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_1', [input_type]);          
+          }  
+        }
+        else {
+          rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_1', [input_type]);
+        }  
+      }
+      else {
+        if ((control_type === OpenAjax.a11y.CONTROL_TYPE.TEXTAREA) ||
+            (control_type === OpenAjax.a11y.CONTROL_TYPE.SELECT)) {
+          
+          var tag_name = de.tag_name;
+            
+          if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+            if (de.has_required || de.has_aria_required) {
+              if (de.has_required && de.has_aria_required && !de.aria_required) {
+                rule_result.addResult(TEST_RESULT.FAIL, ce, 'ELEMENT_FAIL_2', [tag_name]);
+              }
+              else {
+                if (de.has_required) rule_result.addResult(TEST_RESULT.PASS, ce, 'ELEMENT_PASS_3', [tag_name]);
+                else rule_result.addResult(TEST_RESULT.PASS, ce, 'ELEMENT_PASS_4', [tag_name]);
+              }  
+            }
+            else {
+              rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_2', [tag_name]);          
+            }  
+          }
+          else {
+            rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_2', [de.tag_name]);
+          }  
+        }
+      }
+    }   
+
+  } // end validate function
+},
+
+/**
+ * @object ERROR_3
+ * 
+ * @desc Use aria-required attribute widgets
+ * 
+ */
+ 
+{ rule_id             : 'ERROR_3', 
+  last_updated        : '2014-11-21', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.WIDGETS_SCRIPTS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '3.3.3',
+  wcag_related_ids    : [],
+  target_resources    : ['[role=""],'],
+  primary_property    : 'has_aria_required',
+  resource_properties : ['aria_required'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY = OpenAjax.a11y.VISIBILITY;
+   
+    var widget_elements     = dom_cache.controls_cache.widget_elements;
+    var widget_elements_len = widget_elements.length;
+
+    // collect all the visible controls 
+    for (var i = 0; i < widget_elements_len; i++) {
+      var we = widget_elements[i];
+      var de = we.dom_element;
+      var cs = de.computed_style;
+
+      var role = de.role;
+
+      if (role === 'combobox'     ||
+          role === 'gridcell'     ||
+          role === 'listbox'      ||
+          role === 'radiogroup'   ||
+          role === 'spinbutton'   ||
+          role === 'textarea'     ||
+          role === 'tree'         ||
+          role === 'textbox'    ||
+          role === 'treegrid') {
+        
+        if (cs.is_visible_to_at === VISIBILITY.VISIBLE) { 
+          if (de.has_aria_required) {
+            rule_result.addResult(TEST_RESULT.PASS, we, 'ELEMENT_PASS_1', [de.tag_name, role]);
+          }
+          else {
+            rule_result.addResult(TEST_RESULT.MANUAL_CHECK, we, 'ELEMENT_MC_1', [de.tag_name, role]);          
+          }  
+        }
+        else {
+          rule_result.addResult(TEST_RESULT.HIDDEN, we, 'ELEMENT_HIDDEN_1', [de.tag_name, role]);
+        }  
+      }
+    }   
+  } // end validate function
+},
+
+/**
+ * @object ERROR_4
+ * 
+ * @desc Provide correction suggestions
+ * 
+ */
+ 
+{ rule_id             : 'ERROR_4', 
+  last_updated        : '2014-11-21', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.FORMS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '3.3.3',
+  wcag_related_ids    : [],
+  target_resources    : ['input[type="text"]', 'input[type="date"]', 'input[type="file"]', 'input[type="number"]', 'input[type="password"]', 'input[type="tel"]' , 'input[type="text"]', 'input[type="url"]', 'select', 'textarea', '[role="textbox"]', '[role="combobox"]', '[role="gridcell"]'],
+  primary_property    : 'aria-invalid',
+  resource_properties : ['validity', 'validation_message', 'pattern'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY = OpenAjax.a11y.VISIBILITY;
+   
+    var control_elements   = dom_cache.controls_cache.control_elements;
+    var control_elements_len = control_elements.length;
+
+    var widget_elements     = dom_cache.controls_cache.widget_elements;
+    var widget_elements_len = widget_elements.length;
+
+
+    var target_controls = [];
+    
+    // collect all the visible controls 
+    for (var i = 0; i < control_elements_len; i++) {
+      var ce = control_elements[i];
+      var de = ce.dom_element;
+      var cs = de.computed_style;
+
+      var control_type = ce.control_type;
+
+      if (control_type === OpenAjax.a11y.CONTROL_TYPE.DATE        ||
+            control_type === OpenAjax.a11y.CONTROL_TYPE.EMAIL     ||
+            control_type === OpenAjax.a11y.CONTROL_TYPE.FILE      ||
+            control_type === OpenAjax.a11y.CONTROL_TYPE.NUMBER    ||
+            control_type === OpenAjax.a11y.CONTROL_TYPE.PASSWORD  ||
+            control_type === OpenAjax.a11y.CONTROL_TYPE.TEL       ||
+            control_type === OpenAjax.a11y.CONTROL_TYPE.TEXT      ||
+            control_type === OpenAjax.a11y.CONTROL_TYPE.URL ) {
+        if (cs.is_visible_to_at === VISIBILITY.VISIBLE) { 
+         rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_1', [de.node.getAttribute('type')]);
+        }
+        else {
+          rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_1', [de.node.getAttribute('type')]);
+        }  
+      }
+      else {
+        if ((control_type === OpenAjax.a11y.CONTROL_TYPE.TEXTAREA) ||
+            (control_type === OpenAjax.a11y.CONTROL_TYPE.SELECT)) {
+          if (cs.is_visible_to_at === VISIBILITY.VISIBLE) { 
+            rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_2', [de.tag_name]);
+          }
+          else {
+            rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_2', [de.tag_name]);
+          }  
+        }
+      }
+    }   
+
+  } // end validate function
+}
+
+]); 
+
+
+    
+
+/* ---------------------------------------------------------------- */
+/*  OpenAjax Alliance Control Rules                                 */ 
+/* ---------------------------------------------------------------- */
+
+OpenAjax.a11y.RuleManager.addRulesFromJSON([
+
+/**
+ * @object CONTROL_1
+ * 
+ * @desc textarea, select and input elements of type text, 
+ *       password, checkbox, radio and file must have an 
+ *       accessible label
+ * 
+ */
+    
+{ rule_id             : 'CONTROL_1',
+  last_updated        : '2014-11-25', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.FORMS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
+  wcag_primary_id     : '3.3.2',
+  wcag_related_ids    : ['1.3.1', '2.4.6'],
+  target_resources    : ['input[type="checkbox"]', 'input[type="date"]', 'input[type="file"]', 'input[type="radio"]', 'input[type="number"]', 'input[type="password"]', 'input[type="tel"]' , 'input[type="text"]', 'input[type="url"]', 'select', 'textarea', 'meter', 'progress'],
+  primary_property    : 'computed_label',
+  resource_properties : ['computed_label_source', 'name_attribute', 'fieldset_element'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+  
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+  
+    var tag_name;
+    var type;
+  
+    var control_elements   = dom_cache.controls_cache.control_elements;
+    var control_elements_len = control_elements.length;
+      
+    // Check to see if valid cache reference
+    if (control_elements && control_elements_len) {
+    
+      for (var i = 0; i < control_elements_len; i++) {
+        var ce = control_elements[i];
+  
+        var control_type = ce.control_type;
+
+        if (ce.needs_label) {
+            
+          if (ce.dom_element.computed_style.is_visible_to_at == OpenAjax.a11y.VISIBILITY.VISIBLE) {
+    
+            if (ce.computed_label && ce.computed_label.length) {
+              rule_result.addResult(TEST_RESULT.PASS, ce, 'ELEMENT_PASS_1', [ce.toString(), ce.computed_label]);     
+            }
+            else {
+              rule_result.addResult(TEST_RESULT.FAIL, ce, 'ELEMENT_FAIL_1', [ce.toString()]);     
+            }
+          }
+          else {
+            rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_1', [ce.toString()]);     
+          }
+        }  
+      } // end loop
+    } 
+  } // end validation function   
+},
+
+/**
+ * @object CONTROL_2
+ * 
+ * @desc Every input type image must have an accessible name attribute with content
+ */
+    
+{ rule_id             : 'CONTROL_2', 
+  last_updated        : '2014-11-25', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.FORMS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
+  wcag_primary_id     : '3.3.2',
+  wcag_related_ids    : ['1.3.1', '2.4.6'],
+  target_resources    : ['input[type="image"]'],
+  primary_property    : 'computed_label',
+  resource_properties : ['computed_label_source', 'alt', 'aria_label', 'aria_labelledby', 'title'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+  
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+  
+    var tag_name;
+  
+    var control_elements   = dom_cache.controls_cache.control_elements;
+    var control_elements_len = control_elements.length;
+      
+    // Check to see if valid cache reference
+    if (control_elements && control_elements_len) {
+    
+      for (var i = 0; i < control_elements_len; i++) {
+        var ce = control_elements[i];
+        var de = ce.dom_element;
+  
+        var type = control_elements[i].type;
+    
+        if (type === 'image') {
+     
+          if (de.computed_style.is_visible_to_at == OpenAjax.a11y.VISIBILITY.VISIBLE) {
+    
+            if (ce.computed_label) {
+              if (ce.computed_label.length) {
+                rule_result.addResult(TEST_RESULT.PASS, ce, 'ELEMENT_PASS_1', [ce.computed_label]);
+              }
+              else {
+                rule_result.addResult(TEST_RESULT.FAIL, ce, 'ELEMENT_FAIL_2', []);                    
+              }
+            }
+            else {
+              rule_result.addResult(TEST_RESULT.FAIL, ce, 'ELEMENT_FAIL_1', []);     
+            }
+          }
+          else {
+            rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_1', []);     
+          }
+        }
+      } // end loop
+    } 
+  } // end validation function   
+ },
+ 
+/**
+ * @object CONTROL_3
+ *
+ * @desc Groups of radio buttons should be contained in fieldset/legend or have some other group label
+ */
+{ rule_id             : 'CONTROL_3', 
+  last_updated        : '2014-11-25', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.FORMS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
+  wcag_primary_id     : '3.3.2',
+  wcag_related_ids    : ['1.3.1', '2.4.6'],
+  target_resources    : ['input[type="radio"]'],
+  primary_property    : 'accessible_name',
+  resource_properties : ['fieldset_element', 'aria_label', 'aria_labelledby'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+  
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+  
+    var control_elements   = dom_cache.controls_cache.control_elements;
+    var control_elements_len = control_elements.length;
+      
+    // Check to see if valid cache reference
+    if (control_elements && control_elements_len) {
+    
+      for (var i = 0; i < control_elements_len; i++) {
+        var ce = control_elements[i];
+        var de = ce.dom_element;
+  
+        var type = control_elements[i].control_type;
+    
+        if (type == OpenAjax.a11y.CONTROL_TYPE.RADIO) {
+     
+          if (de.computed_style.is_visible_to_at == VISIBILITY.VISIBLE) {
+    
+            if (ce.fieldset_element) {
+              if (ce.fieldset_element.legend_element && 
+                  ce.fieldset_element.legend_element.computed_label &&
+                  ce.fieldset_element.legend_element.computed_label.length) {
+                rule_result.addResult(TEST_RESULT.PASS, ce, 'ELEMENT_PASS_1', []);
+              }
+              else {
+                rule_result.addResult(TEST_RESULT.FAIL, ce, 'ELEMENT_FAIL_1', []);               
+              }
+            }
+            else {  
+              if (de.aria_labelledby && de.aria_labelledby.length) {
+                  rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_1', []);     
+              }
+              else {
+                if (de.aria_label && de.aria_label.length) {
+                  rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_2', []);     
+                }
+                else {
+                  rule_result.addResult(TEST_RESULT.FAIL, ce, 'ELEMENT_FAIL_2', []);
+                }    
+              }
+            }
+          }
+          else {
+            rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_1', []);     
+          }
+        }
+      } // end loop
+    }   
+  } // end validate function
+},
+
+/**
+ * @object CONTROL_4
+ *
+ * @desc Button elements must have text content and input type button must have a value attribute with content
+ */
+{ rule_id             : 'CONTROL_4', 
+  last_updated        : '2014-11-25', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.FORMS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
+  wcag_primary_id     : '3.3.2',
+  wcag_related_ids    : ['1.3.1', '2.4.6'],
+  target_resources    : ['button'],
+  primary_property    : 'computed_label',
+  resource_properties : ['computed_label_source'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+    var TEST_RESULT  = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY   = OpenAjax.a11y.VISIBILITY;
+    var CONTROL_TYPE = OpenAjax.a11y.CONTROL_TYPE;
+     
+    var control_elements     = dom_cache.controls_cache.control_elements;
+    var control_elements_len = control_elements.length;
+      
+    // Check to see if valid cache reference
+    if (control_elements && control_elements_len) {
+    
+      for (var i = 0; i < control_elements_len; i++) {
+        var ce = control_elements[i];
+        var de = ce.dom_element;
+        var cs = de.computed_style;
+        
+        
+        if (ce.control_type === CONTROL_TYPE.BUTTON_ELEMENT) {
+     
+          if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+    
+            if (ce.computed_label_for_comparison.length > 0) {
+              rule_result.addResult(TEST_RESULT.PASS, ce, 'ELEMENT_PASS_1', []);     
+            }
+            else {
+              rule_result.addResult(TEST_RESULT.FAIL, ce, 'ELEMENT_FAIL_1', []);     
+            }
+          }
+          else {
+            rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_1', []);     
+          }
+          
+        }
+        else {
+        
+          if (ce.control_type === CONTROL_TYPE.BUTTON_INPUT) {
+     
+            if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+    
+              if (ce.value && (ce.value.length > 0)) {
+                rule_result.addResult(TEST_RESULT.PASS, ce, 'ELEMENT_PASS_1', []);     
+              }
+              else {
+                rule_result.addResult(TEST_RESULT.FAIL, ce, 'ELEMENT_FAIL_1', []);     
+              }
+            }
+            else {
+              rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_1', []);     
+            }
+          }
+        }
+        
+      } // end loop
+    }   
+
+  } // end validate function
+},
+ 
+
+/**
+ * @object CONTROL_5
+ *
+ * @desc Ids on form controls must be unique
+ *
+ * @note Do not need to test for invisible elements, since getElementById searches all elements int he DOM
+ */
+{ rule_id             : 'CONTROL_5', 
+  last_updated        : '2014-11-25', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.FORMS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
+  wcag_primary_id     : '4.1.1',
+  wcag_related_ids    : ['3.3.2', '1.3.1', '2.4.6'],
+  target_resources    : ['input[type="checkbox"]', 'input[type="radio"]', 'input[type="text"]', 'input[type="password"]', 'input[type="file"]', 'select', 'textarea'],
+  primary_property    : 'id',
+  resource_properties : [],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+   var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+   var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+   var ID          = OpenAjax.a11y.ID;
+  
+   var control_elements      = dom_cache.controls_cache.control_elements;
+   var control_elements_len  = control_elements.length;
+      
+   // Check to see if valid cache reference
+   if (control_elements && control_elements_len) {
+    
+     for (var i = 0; i < control_elements_len; i++) {
+       var ce = control_elements[i];
+       var de = ce.dom_element;
+       
+       
+       if (de.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {
+       
+         switch (de.id_unique) { 
+       
+         case ID.NOT_UNIQUE:
+           rule_result.addResult(TEST_RESULT.FAIL, ce, 'ELEMENT_FAIL_1', [de.id]);
+           break;          
+         
+         case ID.UNIQUE:
+           rule_result.addResult(TEST_RESULT.PASS, ce, 'ELEMENT_PASS_1', [de.id]);               
+           break;
+         
+         default:
+           break;       
+           
+         } // end switch
+         
+       }
+       else {
+         rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_1', [de.tag_name]);             
+       }
+     } // end loop
+   }     
+  } // end validate function
+},
+ 
+/**
+ * @object CONTROL_6
+ * 
+ * @desc Label element with a for attribute reference does not reference a form control
+ */
+{ rule_id             : 'CONTROL_6', 
+  last_updated        : '2014-11-25', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.FORMS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '3.3.2',
+  wcag_related_ids    : ['1.3.1', '2.4.6'],
+  target_resources    : ['label'],
+  primary_property    : 'for',
+  resource_properties : [],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+   var TEST_RESULT   = OpenAjax.a11y.TEST_RESULT;
+   var VISIBILITY = OpenAjax.a11y.VISIBILITY;
+  
+   var label_elements      = dom_cache.controls_cache.label_elements;
+   var label_elements_len  = label_elements.length;
+      
+   // Check to see if valid cache reference
+   if (label_elements && label_elements_len) {
+    
+     for (var i = 0; i < label_elements_len; i++) {
+       var le = label_elements[i];
+       var de = le.dom_element;
+       var cs = de.computed_style;
+
+       if (le.for_id && le.for_id.length) {
+
+         if (de.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {
+           if (le.unused_label) rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_1', [le.for_id]);
+           else rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_1', [le.for_id]);
+         }
+         else {
+           rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', []);        
+         }
+      }   
+     } // end loop
+   }     
+  } // end validate function
+},
+
+/** 
+ * @object CONTROL_7
+ *
+ * @desc Label or legend element must contain content 
+ */
+ 
+{ rule_id             : 'CONTROL_7', 
+  last_updated        : '2014-11-25', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.FORMS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '3.3.2',
+  wcag_related_ids    : ['1.3.1', '2.4.6'],
+  target_resources    : ['label', 'legend'],
+  primary_property    : 'computed_label',
+  resource_properties : [],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+   var TEST_RESULT   = OpenAjax.a11y.TEST_RESULT;
+   var VISIBILITY = OpenAjax.a11y.VISIBILITY;
+  
+   var label_elements      = dom_cache.controls_cache.label_elements;
+   var label_elements_len  = label_elements.length;
+   
+   // Check to see if valid cache reference
+   if (label_elements && label_elements_len) {
+    
+     for (var i = 0; i < label_elements_len; i++) {
+       var le = label_elements[i];
+       var de = le.dom_element;
+       var cs = de.computed_style;
+       
+       if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+       
+         if (le.computed_label_for_comparison.length === 0) {
+           rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_1', [le.tag_name]);
+         }
+         else {
+           rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_1', [le.tag_name]);        
+         }
+       }
+       else {
+         rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [le.tag_name]);                
+       }
+     } // end loop
+   } 
+  } // end validate function
+},
+
+
+/** 
+ * @object CONTROL 8
+ *
+ * @desc Fieldset must contain exactly one legend element 
+ */
+ 
+{ rule_id             : 'CONTROL_8', 
+  last_updated        : '2014-11-25', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.FORMS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
+  wcag_primary_id     : '3.3.2',
+  wcag_related_ids    : ['1.3.1', '2.4.6', '4.1.1'],
+  target_resources    : ['fieldset'],
+  primary_property    : 'legend_count',
+  resource_properties : [],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+   var TEST_RESULT   = OpenAjax.a11y.TEST_RESULT;
+   var VISIBILITY = OpenAjax.a11y.VISIBILITY;
+  
+   var fieldset_elements      = dom_cache.controls_cache.fieldset_elements;
+   var fieldset_elements_len  = fieldset_elements.length;
+      
+   // Check to see if valid cache reference
+   if (fieldset_elements && fieldset_elements_len) {
+    
+     for (var i = 0; i < fieldset_elements_len; i++) {
+       var fe = fieldset_elements[i];
+       var de = fe.dom_element;
+
+       if (de.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {
+
+         if (fe.legend_count === 0 || !fe.legend_element ) {
+           rule_result.addResult(TEST_RESULT.FAIL, fe, 'ELEMENT_FAIL_1', []);        
+         }
+         else {
+           if (fe.legend_count > 1) {
+             rule_result.addResult(TEST_RESULT.FAIL, fe, 'ELEMENT_FAIL_2', [(fe.legend_count-1)]);        
+           }
+           else {
+             de = fe.legend_element.dom_element;
+             
+             if (de.computed_style.is_visible_to_at == VISIBILITY.VISIBLE) {
+               rule_result.addResult(TEST_RESULT.PASS, fe, 'ELEMENT_PASS_1', []);                
+             }
+             else {
+               rule_result.addResult(TEST_RESULT.FAIL, fe, 'ELEMENT_FAIL_3', []);                                  
+             }
+           }
+         }
+       }
+       else {
+         rule_result.addResult(TEST_RESULT.HIDDEN, fe, 'ELEMENT_HIDDEN_1', []);                          
+       }
+     } // end loop
+   } 
+
+  } // end validate function
+},
+
+/** 
+ * @object CONTROL_9
+ *
+ * @desc Check form controls labelled using the TITLE attribute for accessible name
+ */
+ 
+{ rule_id             : 'CONTROL_9', 
+  last_updated        : '2014-11-25', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.FORMS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '3.3.2',
+  wcag_related_ids    : ['4.1.1'],
+  target_resources    : ['input', 'select', 'textarea'],
+  primary_property    : 'title',
+  resource_properties : [],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+   var TEST_RESULT   = OpenAjax.a11y.TEST_RESULT;
+   var VISIBILITY = OpenAjax.a11y.VISIBILITY;
+
+   var control_elements      = dom_cache.controls_cache.control_elements;
+   var control_elements_len  = control_elements.length;
+      
+   // Check to see if valid cache reference
+   if (control_elements && control_elements_len) {
+    
+     for (var i = 0; i < control_elements_len; i++) {
+       var ce = control_elements[i];
+       var de = ce.dom_element;
+       
+       if (ce.computed_label_source === OpenAjax.a11y.SOURCE.TITLE_ATTRIBUTE) {
+          if (de.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {
+           rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_1', [de.tag_name]);        
+         }
+         else {
+           rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_1', [de.tag_name]);                        
+         }  
+       }
+     } // end loop
+   } 
+
+  } // end validate function
+},
+
+/**
+ * @object CONTROL_10
+ * 
+ * @desc Accessible labels must be unique for every textarea, 
+ *       select and input element of type text, password, radio, 
+ *       and checkbox on a page
+ */
+ 
+{ rule_id             : 'CONTROL_10', 
+  last_updated        : '2014-11-25', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.FORMS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
+  wcag_primary_id     : '2.4.6',
+  wcag_related_ids    : ['1.3.1', '3.3.2'],
+  target_resources    : ['input[type="checkbox"]', 'input[type="radio"]', 'input[type="text"]', 'input[type="password"]', 'input[type="file"]', 'select', 'textarea'],
+  primary_property    : 'computed_label',
+  resource_properties : ['computed_label', 'fieldset_element', 'computed_label_source', 'name_attribute'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+   var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+   var VISIBILITY = OpenAjax.a11y.VISIBILITY;
+  
+   var control_elements   = dom_cache.controls_cache.control_elements;
+   var control_elements_len = control_elements.length;
+   var ces   = [];
+
+   // Check to see if valid cache reference
+   if (control_elements && control_elements_len) {
+    
+     // collect all the visible controls 
+     for (var i = 0; i < control_elements_len; i++) {
+       var ce = control_elements[i];
+       var de = ce.dom_element;
+  
+       if (ce.needs_label) {
+
+         var control_type = ce.toString();
+
+         if (de.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {  
+           if (ce.computed_label && ce.computed_label.length) {
+             ces.push(ce);
+           }
+           else {
+             rule_result.addResult(TEST_RESULT.FAIL, ce, 'ELEMENT_FAIL_1', [control_type]);                        
+           }
+         }
+         else {
+           rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_1', [control_type]);                                    
+         }
+       }
+     } // end loop    
+     
+     // sort labels
+
+     ces = dom_cache.sortArrayOfObjects(ces,'computed_label_for_comparison', true); 
+
+     for (i = 0; i < ces.length; i++) {
+       ce = ces[i];
+
+       if (ce.duplicate) {
+         rule_result.addResult(TEST_RESULT.FAIL, ce, 'ELEMENT_FAIL_2', []);                
+       }
+       else {
+         rule_result.addResult(TEST_RESULT.PASS, ce, 'ELEMENT_PASS_1', []);        
+       }
+     }
+     
+   } 
+  } // end validate function
+},
+
+/**
+ * @object CONTROL_11
+ * 
+ * @desc If there is more than one form on page, input element of type 
+ *       submit and reset must have unique labels in each form using the value attribute
+ * 
+ */
+ 
+{ rule_id             : 'CONTROL_11', 
+  last_updated        : '2014-11-25', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.FORMS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '2.4.6',
+  wcag_related_ids    : ['1.3.1', '3.3.2'],
+  target_resources    : ['input[type="submit"]', 'input[type="reset"]'],
+  primary_property    : 'computed_label',
+  resource_properties : ['value'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+   function get_input_by_type(list, form, type) {
+   
+   }
+
+   var TEST_RESULT  = OpenAjax.a11y.TEST_RESULT;
+   var VISIBILITY   = OpenAjax.a11y.VISIBILITY;
+   var CONTROL_TYPE =  OpenAjax.a11y.CONTROL_TYPE;
+  
+   var form_elements   = dom_cache.controls_cache.form_elements;
+   var form_elements_len = form_elements.length;
+   var fes   = [];
+   
+   var input_submit_info = [];
+   var input_reset_info  = [];
+
+   // Check to see if valid cache reference
+   if (form_elements && form_elements_len) {
+    
+     // collect all the visible submit and reset buttons controls 
+     for (var i = 0; i < form_elements_len; i++) {
+       var fe = form_elements[i];
+       var de = fe.dom_element;
+       var cs = de.computed_style;
+  
+       var control_type = fe.control_type;
+
+       if (control_type === OpenAjax.a11y.CONTROL_TYPE.FORM) {
+
+         if (cs.is_visible_to_at === VISIBILITY.VISIBLE) { 
+         
+           get_input_by_type(input_submit_info, fe, 'submit');
+           get_input_by_type(input_reset_info, fe, 'reset');
+           
+         }
+       }
+     } // end loop          
+   }    
+  } // end validate function
+
+},
+
+/**
+ * @object CONTROL_12
+ * 
+ * @desc Form control label should describe the purpose of the form control
+ * 
+ */
+ 
+{ rule_id             : 'CONTROL_12', 
+  last_updated        : '2014-11-25', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.FORMS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '2.4.6',
+  wcag_related_ids    : ['1.3.1', '3.3.2'],
+  target_resources    : ['button', 'input[type="checkbox"]', 'input[type="radio"]', 'input[type="text"]', 'input[type="password"]', 'input[type="file"]', 'input[type="submit"]', 'input[type="reset"]', 'select', 'textarea'],
+  cache_dependency    : 'controls_cache',
+  primary_property    : 'computed_label',
+  resource_properties : ['computed_label_source'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+   var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+   var VISIBILITY = OpenAjax.a11y.VISIBILITY;
+  
+   var control_elements   = dom_cache.controls_cache.control_elements;
+   var control_elements_len = control_elements.length;
+   var ces   = [];
+
+   // Check to see if valid cache reference
+   if (control_elements && control_elements_len) {
+    
+     // collect all the visible controls 
+     for (var i = 0; i < control_elements_len; i++) {
+       var ce = control_elements[i];
+       var de = ce.dom_element;
+       var cs = de.computed_style;
+  
+       var control_type = ce.control_type;
+
+       if (control_type === OpenAjax.a11y.CONTROL_TYPE.BUTTON_ELEMENT ||
+           control_type === OpenAjax.a11y.CONTROL_TYPE.BUTTON_INPUT   ||
+           control_type === OpenAjax.a11y.CONTROL_TYPE.CHECKBOX       ||
+           control_type === OpenAjax.a11y.CONTROL_TYPE.FILE           ||
+           control_type === OpenAjax.a11y.CONTROL_TYPE.PASSWORD       ||
+           control_type === OpenAjax.a11y.CONTROL_TYPE.RADIO          ||
+           control_type === OpenAjax.a11y.CONTROL_TYPE.SELECT         ||
+           control_type === OpenAjax.a11y.CONTROL_TYPE.TEXT           ||
+           control_type === OpenAjax.a11y.CONTROL_TYPE.TEXTAREA ) {
+
+         if (cs.is_visible_to_at === VISIBILITY.VISIBLE) { 
+         
+           if (ce.computed_label_for_comparison !== "") {
+             rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_1', [de.tag_name]);                
+           }
+           else {
+             rule_result.addResult(TEST_RESULT.FAIL, ce, 'ELEMENT_FAIL_1', [de.tag_name]);        
+           }             
+         }
+         else {
+           rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_1', [de.tag_name]);                                    
+         }          
+       }
+     } // end loop          
+   }        
+  } // end validate function
+}
+
+]); 
+
+
+   
+
+/* ---------------------------------------------------------------- */
+/* OpenAjax Alliance IMG and AREA element Rules                     */
+/* ---------------------------------------------------------------- */
+
+OpenAjax.a11y.RuleManager.addRulesFromJSON([
+      
+/**
+ * @object IMAGE_1
+ *
+ * @desc Images must have a source for an accessible name
+ */
+ 
+{ rule_id             : 'IMAGE_1', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.IMAGES,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
+  wcag_primary_id     : '1.1.1',
+  wcag_related_ids    : [],
+  target_resources    : ['img', 'area', '[role="img"]'],
+  primary_property    : 'accessible_name',
+  resource_properties : ['alt', 'aria_label', 'aria_labelledby', 'title', 'is_visible_to_at', 'role'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+ 
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+    var SOURCE      = OpenAjax.a11y.SOURCE;
+
+    var image_elements   = dom_cache.images_cache.image_elements;
+    var image_elements_len = image_elements.length;
+       
+    // Check to see if valid cache reference
+    if (image_elements && image_elements_len) {
+     
+      for (var i = 0; i < image_elements_len; i++) {
+        var ie = image_elements[i];
+        var de = ie.dom_element;
+        
+//        OpenAjax.a11y.logger.debug("Image is visibile to AT: " + de.computed_style.is_visible_to_at);
+
+        if ((de.computed_style.is_visible_to_at === VISIBILITY.VISIBLE ) &&
+            (!de.has_role || (de.role !== 'presentation'))){
+          
+          if (ie.accessible_name_source !== SOURCE.NONE) {
+            if (ie.accessible_name_source === SOURCE.ALT_ATTRIBUTE) {
+              if ((de.tag_name === "img") || (de.tag_name === "area")) rule_result.addResult(TEST_RESULT.PASS, ie, 'ELEMENT_PASS_1', [de.tag_name]);
+              else rule_result.addResult(TEST_RESULT.FAIL, ie, 'ELEMENT_FAIL_2', [de.tag_name]); 
+            } else if (ie.accessible_name_source === SOURCE.ARIA_LABELLEDBY) rule_result.addResult(TEST_RESULT.PASS, ie, 'ELEMENT_PASS_2', [de.tag_name]);
+            else if (ie.accessible_name_source === SOURCE.ARIA_LABEL)      rule_result.addResult(TEST_RESULT.PASS, ie, 'ELEMENT_PASS_3', [de.tag_name]);
+            else rule_result.addResult(TEST_RESULT.PASS, ie, 'ELEMENT_PASS_4', [de.tag_name]);
+          }
+          else {
+            rule_result.addResult(TEST_RESULT.FAIL, ie, 'ELEMENT_FAIL_1', [de.tag_name]);     
+          }
+        }
+        else {
+          rule_result.addResult(TEST_RESULT.HIDDEN, ie, 'ELEMENT_HIDDEN_1', [de.tag_name]);     
+        }
+      } // end loop
+    } 
+  } // end validation function  
+},
+
+/**
+ * @object IMAGE_2
+ *
+ * @desc If the longdesc attribute is defined, it must have valid URI
+ */
+{ rule_id             : 'IMAGE_2', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.IMAGES,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '1.1.1',
+  wcag_related_ids    : [],
+  target_resources    : ['img', '[role="img"]'],
+  primary_property    : 'longdesc_is_broken',
+  resource_properties : ['longdesc', 'is_visible_to_at'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+    var URL_RESULT = OpenAjax.a11y.URL_RESULT;
+
+    var image_elements   = dom_cache.images_cache.image_elements;
+    var image_elements_len = image_elements.length;
+       
+    // Check to see if valid cache reference
+    if (image_elements && image_elements_len) {
+     
+      for (var i = 0; i < image_elements_len; i++) {
+        var ie = image_elements[i];
+        var de = ie.dom_element;
+        var cs = de.computed_style;
+        
+        if (ie.longdesc) {
+        
+          if ((cs.is_visible_to_at === VISIBILITY.VISIBLE) &&
+              (!de.has_role || (de.role !== 'presentation'))) {  
+
+              switch (ie.longdesc_is_broken) {
+         
+              case URL_RESULT.VALID:
+                rule_result.addResult(OpenAjax.a11y.TEST_RESULT.PASS, ie, 'ELEMENT_PASS_1', []);     
+                break;
+          
+              case URL_RESULT.INVALID:
+                rule_result.addResult(TEST_RESULT.FAIL, ie, 'ELEMENT_FAIL_1', []);     
+                break;
+          
+              case URL_RESULT.NOT_TESTED:
+                rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ie, 'ELEMENT_MC_1', []);     
+                break;
+         
+              default:
+                rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ie, 'ELEMENT_MC_1', []);
+                break;
+              } 
+          }
+          else {
+            rule_result.addResult(TEST_RESULT.HIDDEN, ie, 'ELEMENT_HIDDEN_1', []);     
+          }
+        }      
+      } // end loop
+    } 
+  } // end validation function
+}, 
+
+/**
+ * @object IMAGE_3
+ *
+ * @desc The file name of the image should not be part of the accessible name content (it must have an image file extension)
+ */
+{ rule_id             : 'IMAGE_3', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.IMAGES,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
+  wcag_primary_id     : '1.1.1',
+  wcag_related_ids    : [],
+  target_resources    : ['img', '[role="img"]'],
+  primary_property    : 'accessible_name',
+  resource_properties : ['file_name', 'is_visible_to_at'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+
+    var image_elements   = dom_cache.images_cache.image_elements;
+    var image_elements_len = image_elements.length;
+       
+    // Check to see if valid cache reference
+    if (image_elements && image_elements_len) {
+     
+      for (var i = 0; i < image_elements_len; i++) {
+        var ie = image_elements[i];
+        var de = ie.dom_element;
+
+        if (ie.accessible_name_for_comparison && ie.accessible_name_for_comparison.length) {
+          
+          if ((de.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) &&
+              (!de.has_role || (de.role !== 'presentation'))){
+          
+            // make sure it has a file extension, will assume extension is for an image
+            if (ie.file_name.indexOf('.') >= 0) {
+         
+              if (ie.accessible_name_for_comparison.indexOf(ie.file_name) >= 0 ) {
+                rule_result.addResult(TEST_RESULT.FAIL, ie, 'FAIL_MC', []);                 
+              }
+              else {
+                rule_result.addResult(TEST_RESULT.PASS, ie, 'ELEMENT_PASS_1', []);                 
+              }
+            }
+            else {
+              rule_result.addResult(TEST_RESULT.PASS, ie, 'ELEMENT_PASS_1', []);                              
+            }
+          }
+          else {
+            rule_result.addResult(TEST_RESULT.HIDDEN, ie, 'ELEMENT_HIDDEN_1', [de.tag_name]);     
+          }
+        }      
+      } // end loop
+    } 
+  } // end validation function  
+ }, 
+
+/**
+ * @object IMAGE_4_EN (English)
+ *
+ * @desc If the accessible name contains content, it should be less than 100 characters long, longer descriptions should use long description techniques (English only)
+ */
+{ rule_id             : 'IMAGE_4_EN', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.IMAGES,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
+  wcag_primary_id     : '1.1.1',
+  wcag_related_ids    : [],
+  target_resources    : ['img', 'area'],
+  primary_property    : 'accessible_name_length',
+  resource_properties : ['accessible_name', 'is_visible_to_at'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+    var MAX_ACCESSIBLE_NAME_LENGTH = 100;
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+    var SOURCE      = OpenAjax.a11y.SOURCE;
+
+    var image_elements   = dom_cache.images_cache.image_elements;
+    var image_elements_len = image_elements.length;
+       
+    // Check to see if valid cache reference
+    if (image_elements && image_elements_len) {
+     
+      for (var i = 0; i < image_elements_len; i++) {
+        var ie = image_elements[i];
+        var de = ie.dom_element;
+
+        if (ie.accessible_name_source !== SOURCE.NONE) {
+
+          if ((de.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) &&
+              (!de.has_role || (de.role !== 'presentation'))){
+
+            if (ie.accessible_name_length > MAX_ACCESSIBLE_NAME_LENGTH) {
+              rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ie, 'ELEMENT_MC_1', [MAX_ACCESSIBLE_NAME_LENGTH]);     
+            }
+            else {     
+              rule_result.addResult(TEST_RESULT.PASS, ie, 'ELEMENT_PASS_1', [MAX_ACCESSIBLE_NAME_LENGTH]);     
+            }
+          }
+          else {
+            rule_result.addResult(TEST_RESULT.HIDDEN, ie, 'ELEMENT_HIDDEN_1', [de.tag_name]);     
+          }
+        }
+      } // end loop
+    } 
+  } // end validation function
+},
+
+/**
+ * @object IMAGE_5
+ *
+ * @desc If an image has a height or width of 6 pixels its accessible name set to empty, role set to presentation or the image removed and use CSS position
+ */
+{ rule_id             : 'IMAGE_5', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.IMAGES,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '1.1.1',
+  wcag_related_ids    : [],
+  target_resources    : ['img', '[role="img"]'],
+  primary_property    : 'accessible_name',
+  resource_properties : ['accessible_name_length', 'role', 'height', 'width', 'is_visible_to_at'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+    var MAX_IMAGE_HEIGHT = 6;
+    var MAX_IMAGE_WIDTH  = 6;
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+
+    var image_elements   = dom_cache.images_cache.image_elements;
+    var image_elements_len = image_elements.length;
+       
+    // Check to see if valid cache reference
+    if (image_elements && image_elements_len) {
+     
+      for (var i = 0; i < image_elements_len; i++) {
+        var ie = image_elements[i];
+        var de = ie.dom_element;
+        var cs = de.computed_style;
+
+        if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+          
+          if ((cs.height <= MAX_IMAGE_HEIGHT) || (cs.width <= MAX_IMAGE_WIDTH)) {
+            if (de.has_role && (de.role === 'presentation')) rule_result.addResult(TEST_RESULT.PASS, ie, 'ELEMENT_PASS_1', []);
+            else if (ie.accessible_name_length === 0) rule_result.addResult(TEST_RESULT.PASS, ie, 'ELEMENT_PASS_2', []);
+            else rule_result.addResult(TEST_RESULT.FAIL, ie, 'ELEMENT_FAIL_1', []);
+          } 
+        }
+        else {
+          rule_result.addResult(TEST_RESULT.HIDDEN, ie, 'ELEMENT_HIDDEN_1', [de.tag_name]);     
+        }
+      } // end loop
+    } 
+  } // end validation function
+}, 
+ 
+/**
+ * @object IMAGE_6
+ *
+ * @desc If the alt is empty or role is set presentation verify the image is purely decorative
+ */
+{ rule_id             : 'IMAGE_6', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.IMAGES,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
+  wcag_primary_id     : '1.1.1',
+  wcag_related_ids    : [],
+  target_resources    : ['img', '[role="img"]'],
+  primary_property    : 'accessible_name',
+  resource_properties : ['tag_name', 'alt', 'role', 'is_visible_to_at'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+    
+    var TEST_RESULT   = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY    = OpenAjax.a11y.VISIBILITY;
+
+    var image_elements   = dom_cache.images_cache.image_elements;
+    var image_elements_len = image_elements.length;
+
+    // Check to see if valid cache reference
+    if (image_elements && image_elements_len) {
+     
+      for (var i = 0; i < image_elements_len; i++) {
+        var ie = image_elements[i];
+        var de = ie.dom_element;
+        var cs = de.computed_style;
+
+        if ((cs.is_visible_to_at === VISIBILITY.VISIBLE) &&
+            (!de.has_role || (de.role !== 'presentation'))) {
+            
+          if (ie.accessible_name_length === 0 || ie.is_presentation) {     
+            rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ie, 'ELEMENT_MC_1', []);
+          }
+          
+        }    
+        else {
+          rule_result.addResult(TEST_RESULT.HIDDEN, ie, 'ELEMENT_HIDDEN_1', []);     
+        }
+      } // end loop
+    } 
+  } // end validation function
+}, 
+ 
+/**
+ * @object IMAGE_7
+ *
+ * @desc Image of text
+ */
+{ rule_id             : 'IMAGE_7', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.IMAGES,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
+  wcag_primary_id     : '1.4.5',
+  wcag_related_ids    : [],
+  target_resources    : ['img', '[role="img"]'],
+  primary_property    : 'accessible_name',
+  resource_properties : ['tag_name', 'alt', 'role', 'is_visible_to_at'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+    
+    var TEST_RESULT   = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY    = OpenAjax.a11y.VISIBILITY;
+
+    var image_elements   = dom_cache.images_cache.image_elements;
+    var image_elements_len = image_elements.length;
+
+    // Check to see if valid cache reference
+    if (image_elements && image_elements_len) {
+     
+      for (var i = 0; i < image_elements_len; i++) {
+        var ie = image_elements[i];
+        var de = ie.dom_element;
+        var cs = de.computed_style;
+
+        if ((cs.is_visible_to_at === VISIBILITY.VISIBLE) &&
+            (!de.has_role || (de.role !== 'presentation'))) {
+            
+          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ie, 'ELEMENT_MC_1', []);
+          
+        }    
+        else {
+          rule_result.addResult(TEST_RESULT.HIDDEN, ie, 'ELEMENT_HIDDEN_1', []);     
+        }
+      } // end loop
+    } 
+  } // end validation function
+}  
+]); 
+ 
+/* ---------------------------------------------------------------- */
+/*  OpenAjax Alliance Heading and Landmark Rules                    */ 
+/* ---------------------------------------------------------------- */
+
+OpenAjax.a11y.RuleManager.addRulesFromJSON([
+      
+/**
+ * @object HEADING_1
+ *
+ * @desc Page contains at least one H1 element and each H1 element has content
+ */               
+{ rule_id             : 'HEADING_1', 
+  last_updated        : '2014-11-25', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.PAGE,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.HEADINGS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
+  wcag_primary_id     : '2.4.1',
+  wcag_related_ids    : ['1.3.1', '2.4.2', '2.4.6', '2.4.10'],
+  target_resources    : ['Page', 'h1'],
+  primary_property    : 'name',
+  resource_properties : ['tag_name', 'name_length'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+ 
+      var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+      var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+  
+      var h1_elements     = dom_cache.headings_landmarks_cache.h1_elements;
+      var h1_elements_len = h1_elements.length;
+      
+      var page_element = dom_cache.headings_landmarks_cache.page_element;
+      
+      var h1_count = 0;
+      
+      if (h1_elements && h1_elements_len) {
+      
+        for (var i = 0; i < h1_elements_len; i++ ) {
+          var he = h1_elements[i];
+
+          if (he.dom_element.computed_style.is_visible_to_at === VISIBILITY.HIDDEN) {
+            rule_result.addResult(TEST_RESULT.HIDDEN, he, 'ELEMENT_HIDDEN_1', []);                      
+          }
+          else {
+            if (he.name && he.name.length) {
+              rule_result.addResult(TEST_RESULT.PASS, he, 'ELEMENT_PASS_1', []);
+              h1_count++;
+            }
+            else {
+              rule_result.addResult(TEST_RESULT.FAIL, he, 'ELEMENT_FAIL_1', []);
+            }
+          }  
+        }
+      }
+
+     if (page_element) {
+       // Test if no h1s
+       if (h1_count === 0) rule_result.addResult(TEST_RESULT.FAIL, page_element, 'PAGE_FAIL_1', []);
+       else rule_result.addResult(TEST_RESULT.PASS, page_element, 'PAGE_PASS_1', []);
+     } 
+  } // end validate function
+}, 
+
+/**
+ * @object HEADING_2
+ *
+ * @desc If there are main and/or banner landmarks and H1 elements, 
+ *       H1 elements should be children of main or banner landmarks 
+ *
+ */               
+{ rule_id             : 'HEADING_2', 
+  last_updated        : '2014-11-25', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.HEADINGS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
+  wcag_primary_id     : '2.4.6',
+  wcag_related_ids    : ['1.3.1', '2.4.1', '2.4.2', '2.4.10'],
+  target_resources    : ['h1'],
+  primary_property    : 'parent_landmark',
+  resource_properties : ['tag_name', 'name'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+    var SOURCE      = OpenAjax.a11y.SOURCE;
+  
+    var h1_elements     = dom_cache.headings_landmarks_cache.h1_elements;
+    var h1_elements_len = h1_elements.length;
+
+    var main_elements     = dom_cache.headings_landmarks_cache.main_elements;
+    var main_elements_len = main_elements.length;
+
+    if (main_elements && h1_elements && main_elements_len && h1_elements_len) {
+      
+      for (var i = 0; i < h1_elements_len; i++) {
+        var he = h1_elements[i];
+        var de = he.dom_element;
+        var pl = de.parent_landmark;
+        var role = "";
+        if (pl) role = pl.dom_element.role;
+        
+        if (de.computed_style.is_visible_to_at === VISIBILITY.HIDDEN) {
+          rule_result.addResult(TEST_RESULT.HIDDEN, he, 'ELEMENT_HIDDEN_1', []);                      
+        }
+        else {
+          if (role === 'main') {
+            rule_result.addResult(TEST_RESULT.PASS, he, 'ELEMENT_PASS_1', []);
+          }
+          else {  
+            if (role === 'banner') {
+              rule_result.addResult(TEST_RESULT.PASS, he, 'ELEMENT_PASS_2', []);
+            } 
+            else {  
+              rule_result.addResult(TEST_RESULT.FAIL, he, 'ELEMENT_FAIL_1', []);
+            }
+          }  
+        }
+        
+      }
+    }
+  } // end validate function
+},
+
+/**
+ * @object HEADING_3
+ *
+ * @desc Sibling headings of the same level that share the same parent heading should be unique
+ *       This rule applies only when there are no main landmarks on the page and at least one 
+ *       sibling heading
+ *
+ */               
+{ rule_id             : 'HEADING_3', 
+  last_updated        : '2014-11-25', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.HEADINGS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '2.4.6',
+  wcag_related_ids    : ['1.3.1', '2.4.10'],
+  target_resources    : ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+  primary_property    : 'name',
+  resource_properties : ['tag_name'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+    function getSiblingHeadings(index, heading_element) {
+   
+      var list = [];
+      var flag = true; 
+      
+      tested_list.push(heading_element);
+                  
+      for (var i = (index+1); i < heading_elements_len; i++) {
+        
+        var he = heading_elements[i];
+        
+        if (he.dom_element.computed_style.is_visible_to_at === VISIBILITY.HIDDEN) {
+          tested_list.push(he);
+          continue;
+        }
+        
+        if (heading_element.level > he.level) return list;
+        
+        if (heading_element.level === he.level) {
+          if (flag) list.push(heading_element);
+          flag = false;
+          
+          list.push(he);
+          tested_list.push(he);
+        }  
+
+      }
+        
+      if (list.length > 1) return list;
+      else return[];
+   
+    }
+
+    function notInTestedList(he) {
+    
+      for (var i = 0; i < tested_list.length; i++) {
+        if (tested_list[i] === he) return false;
+      }
+    
+      return true;
+    }
+
+    function notInDoneList(he) {
+    
+      for (var i = 0; i < done_list.length; i++) {
+        if (done_list[i] === he) return false;
+      }
+    
+      return true;
+    }
+
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+    var SOURCE      = OpenAjax.a11y.SOURCE;
+  
+    var heading_elements     = dom_cache.headings_landmarks_cache.heading_elements;
+    var heading_elements_len = heading_elements.length;
+
+    var main_elements     = dom_cache.headings_landmarks_cache.main_elements;
+    var main_elements_len = main_elements.length;
+    
+    var tested_list = [];
+    var done_list   = [];
+    var i, j, k;
+    var sibling_headings = [];
+    var sibling_headings_len = 0;
+
+//    if (main_elements_len === 0 && heading_elements_len > 1) {
+    if (heading_elements_len > 1) {
+    
+      for (i = 0; i < (heading_elements_len-1); i++) {
+      
+        var he = heading_elements[i];
+        
+        if (notInTestedList(he)) sibling_headings = getSiblingHeadings(i, he);
+        
+        sibling_headings_len = sibling_headings.length;
+      
+        if (sibling_headings_len > 1) {
+        
+          for (j = 0; j < (sibling_headings_len-1); j++) {
+          
+            var sh1 = sibling_headings[j];
+            var first_flag = true;
+            
+            if (notInDoneList(sh1) && sh1.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {
+            
+              for (k = j+1; k < sibling_headings_len; k++) {
+                var sh2 = sibling_headings[k];
+                
+                if (sh1.name_for_comparison === sh2.name_for_comparison) {
+                  if (first_flag) { 
+                    rule_result.addResult(TEST_RESULT.FAIL, sh1, 'ELEMENT_FAIL_1', [sh1.dom_element.tag_name]); 
+                    done_list.push(sh1);
+                  }  
+                  rule_result.addResult(TEST_RESULT.FAIL, sh2, 'ELEMENT_FAIL_1', [sh2.dom_element.tag_name]);
+                  done_list.push(sh2);
+                  first_flag = false;
+                }
+              }      
+            }  
+          }
+          
+          for (j = 0; j < sibling_headings_len; j++) {
+            var sh = sibling_headings[j];
+            if (notInDoneList(sh)) { 
+              if (sh.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {
+                rule_result.addResult(TEST_RESULT.PASS, sh, 'ELEMENT_PASS_1', [sh.dom_element.tag_name]);
+              }
+              done_list.push(sh);
+            }  
+          }
+        }
+      }
+    }
+  } // end validate function
+},
+
+/**
+ * @object HEADING_4
+ *
+ * @desc Headings should describe the content of the section they label
+ *
+ */               
+{ rule_id             : 'HEADING_4', 
+  last_updated        : '2014-11-25', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.HEADINGS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '2.4.6',
+  wcag_related_ids    : ['1.3.1', '2.4.10'],
+  target_resources    : ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+  primary_property    : 'name',
+  resource_properties : ['tag_name'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+    var SOURCE      = OpenAjax.a11y.SOURCE;
+  
+    var heading_elements     = dom_cache.headings_landmarks_cache.heading_elements;
+    var heading_elements_len = heading_elements.length;
+
+    for (var i = 0; i < heading_elements_len; i++ ) {
+      var he = heading_elements[i];
+      var de = he.dom_element;
+      if (de.computed_style.is_visible_to_at === VISIBILITY.HIDDEN) {
+        rule_result.addResult(TEST_RESULT.HIDDEN, he, 'ELEMENT_HIDDEN_1', [de.tag_name]);                      
+      }
+      else {
+        if (he.name.length) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, he, 'ELEMENT_MC_1', [de.tag_name]);
+        else rule_result.addResult(TEST_RESULT.FAIL, he, 'ELEMENT_FAIL_1', [de.tag_name]);
+      }  
+    }
+  } // end validate function
+},
+
+/**
+ * @object HEADING_5
+ *
+ * @desc Headings must be properly nested
+ *
+ */               
+{ rule_id             : 'HEADING_5', 
+  last_updated        : '2014-11-25', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.HEADINGS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '2.4.6',
+  wcag_related_ids    : ['1.3.1', '2.4.10'],
+  target_resources    : ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+  primary_property    : 'level',
+  resource_properties : ['tag_name', 'name'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+  
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+    var SOURCE      = OpenAjax.a11y.SOURCE;
+  
+    var heading_elements     = dom_cache.headings_landmarks_cache.heading_elements;
+    var heading_elements_len = heading_elements.length;
+
+    for (var i = 0; i < heading_elements_len; i++) {
+    
+      var he = heading_elements[i];
+      var tag_name = he.dom_element.tag_name;
+   
+      if (he.is_visible) {
+        if (he.has_content) {
+          if ((he.nesting_parent_heading === he.last_parent_heading)) {
+            if (!he.nesting_parent_heading ||
+                (he.nesting_parent_heading &&
+                he.nesting_parent_heading.global_properly_nested)) {
+              rule_result.addResult(TEST_RESULT.PASS, he, 'ELEMENT_PASS_1', [tag_name]);
+              he.global_properly_nested = true;
+            }
+            else {
+              rule_result.addResult(TEST_RESULT.FAIL, he, 'ELEMENT_FAIL_1', [tag_name]);                     
+              he.global_properly_nested = false;
+            }
+          }
+          else {
+            rule_result.addResult(TEST_RESULT.FAIL, he, 'ELEMENT_FAIL_1', [tag_name]);                     
+            he.global_properly_nested = false;
+          }
+        }
+        else {
+          rule_result.addResult(TEST_RESULT.FAIL, he, 'ELEMENT_FAIL_2', [tag_name]);             
+        }
+      }
+      else {
+        rule_result.addResult(TEST_RESULT.HIDDEN, he, 'ELEMENT_HIDDEN_1', [tag_name]);       
+      }    
+    }
+
+//    var page_element = dom_cache.headings_landmarks_cache.page_element;
+//
+//      if (heading_fail === 0) rule_result.addResult(TEST_RESULT.PASS, page_element, 'ELEMENT_PASS_2', []);
+//      else if (heading_fail === 1) rule_result.addResult(TEST_RESULT.FAIL, page_element, 'ELEMENT_FAIL_3', []);
+//      else rule_result.addResult(TEST_RESULT.FAIL, page_element, 'ELEMENT_FAIL_4', [heading_fail]);
+  } // end validate function
+},
+
+/**
+ * @object HEADING_6
+ *
+ * @desc Headings should not consist only of image content
+ *
+ */               
+{ rule_id             : 'HEADING_6', 
+  last_updated        : '2014-11-25', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.HEADINGS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '1.3.1',
+  wcag_related_ids    : ['2.4.6', '2.4.10'],
+  target_resources    : ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+  primary_property    : 'text_only_from_image',
+  resource_properties : ['tag_name', 'name'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+    var SOURCE      = OpenAjax.a11y.SOURCE;
+  
+    var heading_elements     = dom_cache.headings_landmarks_cache.heading_elements;
+    var heading_elements_len = heading_elements.length;
+
+    for (var i = 0; i < heading_elements_len; i++ ) {
+      var  he = heading_elements[i];
+      var de = he.dom_element;
+      var cs = de.computed_style;
+      
+      if (cs.is_visible_to_at === VISIBILITY.HIDDEN) {
+        rule_result.addResult(TEST_RESULT.HIDDEN, he, 'ELEMENT_HIDDEN_1', [de.tag_name]);                      
+      }
+      else {
+        if (he.name.length) {
+          if (he.text_only_from_image) rule_result.addResult(TEST_RESULT.FAIL, he, 'ELEMENT_FAIL_1', [de.tag_name]);
+          else rule_result.addResult(TEST_RESULT.PASS, he, 'ELEMENT_PASS_1', [de.tag_name]);
+        }
+        else {
+          rule_result.addResult(TEST_RESULT.FAIL, he, 'ELEMENT_FAIL_2', [de.tag_name]);        
+        }
+      }  
+    }
+  } // end validate function
+},
+
+/**
+ * @object HEADING_7
+ *
+ * @desc First heading in contentinfo, complementary, form, navigation and search landmark must be an h2, except main landmark h1
+ */               
+{ rule_id             : 'HEADING_7', 
+  last_updated        : '2014-11-25', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.HEADINGS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '1.3.1',
+  wcag_related_ids    : ['2.4.1', '2.4.6', '2.4.10'],
+  target_resources    : ['h2', '[role="banner"]', '[role="contentinfo"]', '[role="complementary"]', '[role="form"]', '[role="navigation"]', '[role="search"]'],
+  primary_property    : 'parent_landmark',
+  resource_properties : ['tag_name', 'name'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+    var SOURCE      = OpenAjax.a11y.SOURCE;
+  
+    var landmark_elements     = dom_cache.headings_landmarks_cache.landmark_elements;
+    var landmark_elements_len = landmark_elements.length;
+    
+    for (var i = 0; i < landmark_elements_len; i++ ) {
+      var le = landmark_elements[i];
+      var cs = le.dom_element.computed_style;
+
+      if ((le.role === 'contentinfo') ||
+          (le.role === 'complementary') ||
+          (le.role === 'form') ||
+          (le.role === 'navigation') ||
+          (le.role === 'search')) {
+          
+        if (cs.is_visible_to_at) {
+      
+          var heading_elements = le.getHeadings();
+          var heading_elements_len = heading_elements.length;
+          
+          if (heading_elements.length) {
+            var he = heading_elements[0];
+            if (he.level === 2) { 
+              rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_1', [le.role]);
+              rule_result.addResult(TEST_RESULT.PASS, he, 'ELEMENT_PASS_1', [le.role]);
+            } 
+            else {
+              rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_1', [le.role, he.level]);
+              rule_result.addResult(TEST_RESULT.FAIL, he, 'ELEMENT_FAIL_1', [le.role, he.level]);            
+            }
+          }  
+        }
+      }  
+    }  
+  } // end validate function
+},
+
+/**
+ * @object HEADING_8
+ *
+ * @desc Headings should be properly nested in a landmark
+ */               
+{ rule_id             : 'HEADING_8', 
+  last_updated        : '2014-11-25', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.HEADINGS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '1.3.1',
+  wcag_related_ids    : ['2.4.1', '2.4.6', '2.4.10'],
+  target_resources    : ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+  primary_property    : 'parent_landmark',
+  resource_properties : ['tag_name', 'name' ],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+    var SOURCE      = OpenAjax.a11y.SOURCE;
+  
+    var landmark_elements     = dom_cache.headings_landmarks_cache.landmark_elements;
+    var landmark_elements_len = landmark_elements.length;
+    
+    for (var i = 0; i < landmark_elements_len; i++ ) {
+      var le = landmark_elements[i];
+      var cs = le.dom_element.computed_style;
+
+      if (cs.is_visible_to_at) {
+      
+        var heading_elements = le.getHeadings();
+        var heading_elements_len = heading_elements.length;
+             
+        for (var j = 0; j < heading_elements_len; j++) {
+    
+          var he = heading_elements[j];
+          var tag_name = he.dom_element.tag_name;
+    
+          if (he.is_visible) {
+
+//            OpenAjax.a11y.logger.debug(" Heading: " + he + " (" + le + ")");
+//            OpenAjax.a11y.logger.debug("  LPH: " + he.landmark_parent_heading + "  LLPH: " + he.last_landmark_parent_heading);            
+//            if (he.landmark_parent_heading) OpenAjax.a11y.logger.debug("  LPH nested: " + he.landmark_parent_heading.landmark_properly_nested );
+        
+            if (he.has_content) {
+            
+              if (he.landmark_parent_heading === he.last_landmark_parent_heading) {
+                
+                if (!he.last_landmark_parent_heading || 
+                    (he.landmark_parent_heading &&
+                     he.landmark_parent_heading.landmark_properly_nested)) {
+                  rule_result.addResult(TEST_RESULT.PASS, he, 'ELEMENT_PASS_1', [tag_name, le.toString()]);
+                  he.landmark_properly_nested = true;
+                }
+                else {
+                  rule_result.addResult(TEST_RESULT.FAIL, he, 'ELEMENT_FAIL_1', [tag_name, le.toString()]);                     
+                  he.landmark_properly_nested = false;
+                }
+              }
+              else {
+                rule_result.addResult(TEST_RESULT.FAIL, he, 'ELEMENT_FAIL_1', [tag_name, le.toString()]);
+                he.landmark_properly_nested = false;
+              }
+            }
+            else {
+              rule_result.addResult(TEST_RESULT.FAIL, he, 'ELEMENT_FAIL_2', [tag_name, le.toString()]);             
+              he.landmark_properly_nested = false;
+            }
+          }
+          else {
+            rule_result.addResult(TEST_RESULT.HIDDEN, he, 'ELEMENT_HIDDEN_1', [tag_name, le.toString()]);       
+          }    
+        }      
+      }
+      else {
+        rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_2', [le.toString()]);      
+      }
+    }  
+  } // end validate function
+}
+
+]); 
+
+
+    
+
+/**
+ * Copyright 2011-2014 OpenAjax Alliance
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* ---------------------------------------------------------------- */
+/*            OpenAjax Alliance Media Rules                         */ 
+/* ---------------------------------------------------------------- */
+
+OpenAjax.a11y.RuleManager.addRulesFromJSON([
+
+/**
+ * @object HTML_1
+ *
+ * @desc Use the semanitcally meaningful em and strong elements instead of stylistic b and i elements
+ */ 
+ 
+{ rule_id             : 'HTML_1', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.STYLES_READABILITY,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '4.1.1',
+  wcag_related_ids    : [],
+  target_resources    : ['b', 'i'],
+  primary_property    : 'tag_name',
+  resource_properties : [],
+  language_dependency : "",
+  validate          : function (dom_cache, rule_result) {
+
+    var TEST_RESULT    = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY     = OpenAjax.a11y.VISIBILITY;
+    
+    var dom_elements     = dom_cache.element_cache.dom_elements;
+    var dom_elements_len = dom_elements.length;
+
+    for (var i = 0; i < dom_elements_len; i++) {
+      var de = dom_elements[i];
+
+      if (de.tag_name === 'b') {
+        if (de.computed_style.is_visible_to_at === VISIBILITY.VISIBLE ) {      
+           rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [de.tag_name, de.lang]);    
+        }   
+        else {
+          rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.tag_name, de.lang]);
+        }
+      }
+      else {
+        if (de.tag_name === 'i') {
+          if (de.computed_style.is_visible_to_at === VISIBILITY.VISIBLE ) {      
+             rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_2', [de.tag_name, de.lang]);    
+          }   
+          else {
+            rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_2', [de.tag_name, de.lang]);
+          }
+        }  
+      }  
+    } 
+    
+  } // end validate function
+},
+
+/**
+ * @object HTML_2
+ *
+ * @desc Change marquee elements to use accessible techniques
+ */ 
+ 
+{ rule_id             : 'HTML_2', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.STYLES_READABILITY,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
+  wcag_primary_id     : '2.3.1',
+  wcag_related_ids    : ['2.2.2', '4.1.1'],
+  target_resources    : ['marquee'],
+  primary_property    : 'tag_name',
+  resource_properties : [],
+  language_dependency : "",
+  validate          : function (dom_cache, rule_result) {
+
+    var TEST_RESULT    = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY     = OpenAjax.a11y.VISIBILITY;
+    
+    var dom_elements     = dom_cache.element_cache.dom_elements;
+    var dom_elements_len = dom_elements.length;
+
+    for (var i = 0; i < dom_elements_len; i++) {
+      var de = dom_elements[i];
+
+      if (de.tag_name === 'marquee') {
+        if (de.computed_style.is_visible_to_at === VISIBILITY.VISIBLE ) {      
+           rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [de.tag_name, de.lang]);    
+        }   
+        else {
+          rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.tag_name, de.lang]);
+        }
+      }
+    } 
+    
+  } // end validate function
+}
+]);
+/* ---------------------------------------------------------------- */
+/*  OpenAjax Alliance Control Rules                                 */ 
+/* ---------------------------------------------------------------- */
+
+OpenAjax.a11y.RuleManager.addRulesFromJSON([
+
+/**
+ * @object KEYBOARD_1
+ * 
+ * @desc Widget elements on non-interactive elements or that override the default role of an interactive element 
+ *       need keyboard event handlers on the widget element or a parent element of the widget
+ */
+     
+{ rule_id             : 'KEYBOARD_1', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.KEYBOARD_SUPPORT,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP3,
+  wcag_primary_id     : '2.1.1',
+  wcag_related_ids    : ['4.1.2'],
+  target_resources    : ['widgets'],
+  primary_property    : 'role',
+  resource_properties : ['tab_index', 'is_owned', 'has_key_down', 'has_key_press', 'has_key_up', 'ancestor_has_key_down', 'ancestor_has_key_press', 'ancestor_has_key_up'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+  
+     function checkForKeyboardOwner(we) {
+
+       if (we.is_owned && (we.owner_controls.length === 1)) {
+       
+         var owner = we.owner_controls[0];
+         var de = owner.dom_element;
+         
+         if (de.has_aria_activedescendant) {
+           var has_keyboard_support = de.events.has_key_down;
+           has_keyboard_support = has_keyboard_support || de.events.has_key_press;
+           has_keyboard_support = has_keyboard_support || de.events.has_key_up;
+           return has_keyboard_support;
+         }
+       }
+     
+       return false;
+     }
+  
+     function checkForKeyboardOnRequiredChildren(widget) {
+
+       function checkChildren(children) {
+       
+         if (typeof children !== 'object' || !children.length) return false;
+       
+         var flag = false;
+         var children_len = children.length;
+         
+         for (var i = 0; (i < children_len) && !flag; i++) {
+         
+           var we = children[i];
+           var de = we.dom_element;
+
+//           OpenAjax.a11y.logger.debug("  KEYBOARD RULE 1 CHID: " + de.role + " ("+ we.toString() + ")");
+
+           flag = de.events.has_key_down || de.events.has_key_press || de.events.has_key_up;
+
+           if (!flag && de.role_info && de.role_info.reqChildren && de.role_info.reqChildren.length) { 
+             flag = checkChildren(we.child_cache_elements); 
+           }
+         }
+         return flag;
+       }
+
+       return checkChildren(widget.child_cache_elements);
+       
+     }  
+
+     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;   
+     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+      
+     var widget_elements     = dom_cache.controls_cache.widget_elements;
+     var widget_elements_len = widget_elements.length;
+     
+     if (widget_elements && widget_elements) {
+     
+       for (var i = 0; i < widget_elements_len; i++) {
+         var we = widget_elements[i];
+         var de = we.dom_element;
+         var style = de.computed_style;
+
+//         OpenAjax.a11y.logger.debug("  KEYBOARD RULE 1: " + de.role + " ("+ we.toString() + ")");
+
+         if (de.role_info.roleType === 'widget') {
+
+           if (style.is_visible_to_at === VISIBILITY.VISIBLE) {
+           
+             var has_keyboard_support = de.events.has_key_down;
+             has_keyboard_support = has_keyboard_support || de.events.has_key_press;
+             has_keyboard_support = has_keyboard_support || de.events.has_key_up;
+             
+             if (de.role_info.supportOnClick) {
+               has_keyboard_support = has_keyboard_support || de.events.has_click;
+               has_keyboard_support = has_keyboard_support || de.events.has_double_click;
+             }  
+
+             if (has_keyboard_support) {
+               rule_result.addResult(TEST_RESULT.PASS, we, 'ELEMENT_PASS_1', [we]);     
+             }
+             else {
+      
+               has_keyboard_support = de.events.ancestor_has_key_down;
+               has_keyboard_support = has_keyboard_support || de.events.ancestor_has_key_press;
+               has_keyboard_support = has_keyboard_support || de.events.ancestor_has_key_up;
+               
+               if (de.role_info.supportOnClick) {
+                 has_keyboard_support = has_keyboard_support || de.events.ancestor_has_click;
+                 has_keyboard_support = has_keyboard_support || de.events.ancestor_has_double_click;
+               }  
+               
+               if (has_keyboard_support) { 
+                 rule_result.addResult(TEST_RESULT.MANUAL_CHECK, we, 'ELEMENT_MC_1', [de.role]);
+               }  
+               else {
+                 
+                 if (checkForKeyboardOwner(we)) {
+                   rule_result.addResult(TEST_RESULT.MANUAL_CHECK, we, 'ELEMENT_MC_2', [de.role, we.owner_controls[0].toString()]);
+                 }
+                 else {
+                   if (checkForKeyboardOnRequiredChildren(we)) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, we, 'ELEMENT_MC_3', [de.role]);
+                   else rule_result.addResult(TEST_RESULT.FAIL, we, 'ELEMENT_FAIL_1', [de.role]);
+                 }
+               }  
+             }             
+           }
+           else {
+             rule_result.addResult(TEST_RESULT.HIDDEN, we, 'ELEMENT_HIDDEN_1', [we.toString()]);     
+           }
+         }  
+       } // end loop
+     } 
+   } // end validation function   
+   
+},
+
+/**
+ * @object KEYBOARD_2
+ * 
+ * @desc Elements with widget roles have tabindex defined or are a child of an element
+ *       with aria-activedescendant
+ */
+     
+{ rule_id             : 'KEYBOARD_2', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.KEYBOARD_SUPPORT,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP3,
+  wcag_primary_id     : '2.1.1',
+  wcag_related_ids    : ['4.1.2'],
+  target_resources    : ['widgets'],
+  primary_property    : 'tab_index',
+  resource_properties : ['role', 'tab_index', 'aria_activedescendant', 'ancestor_has_aria_activedescendant'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+
+     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;   
+     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+      
+     var widget_elements     = dom_cache.controls_cache.widget_elements;
+     var widget_elements_len = widget_elements.length;
+     
+     if (widget_elements && widget_elements) {
+     
+       for (var i = 0; i < widget_elements_len; i++) {
+         var we = widget_elements[i];
+         var de = we.dom_element;
+         var style = de.computed_style;
+
+//         OpenAjax.a11y.logger.debug("  KEYBOARD RULE 2: " + de.role + " ("+ we.toString() + ")");
+
+         if (de.role_info.roleType === 'widget') {
+
+           if (style.is_visible_to_at === VISIBILITY.VISIBLE) {
+
+             if (de.is_interactive_element) {
+               rule_result.addResult(TEST_RESULT.PASS, we, 'ELEMENT_PASS_1', [de.role, de.tag_name]);     
+             }
+             else {
+               if (!isNaN(de.tab_index)) { 
+                 rule_result.addResult(TEST_RESULT.PASS, we, 'ELEMENT_PASS_2', [we]);     
+               }  
+               else {
+                 if (de.ancestor_has_aria_activedescendant) {
+                   if (de.id_unique === OpenAjax.a11y.ID.UNIQUE ) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, we, 'ELEMENT_MC_1', [de.tag_name, de.id]);
+                   else rule_result.addResult(TEST_RESULT.FAIL, we, 'ELEMENT_FAIL_1', [de.tag_name]);               
+                 }
+                 else { 
+                   rule_result.addResult(TEST_RESULT.FAIL, we, 'ELEMENT_FAIL_2', [de.tag_name]);               
+                 }
+               }  
+             }
+           }
+           else {
+             rule_result.addResult(TEST_RESULT.HIDDEN, we, 'ELEMENT_HIDDEN_1', [we.role]);     
+           }
+         }  
+       } // end loop
+     } 
+   } // end validation function   
+},
+
+/**
+ * @object KEYBOARD_3
+ * 
+ * @desc All operations available through the keyboard
+ */
+     
+{ rule_id             : 'KEYBOARD_3', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.PAGE,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.KEYBOARD_SUPPORT,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
+  wcag_primary_id     : '2.1.1',
+  wcag_related_ids    : ['2.1.2', '2.4.3',  '2.4.7', '3.2.1'],
+  target_resources    : ['Page', 'applet', 'object', 'widgets'],
+  primary_property    : 'tab_index',
+  resource_properties : [],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+  
+     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;   
+     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+      
+     var page_element = dom_cache.keyboard_focus_cache.page_element;  
+
+//     OpenAjax.a11y.logger.debug(" Page Element: " + page_element + "  " + page_element.dom_element);
+
+     var widget_elements      = dom_cache.controls_cache.widget_elements;
+     var widget_elements_len  = widget_elements.length;
+     
+     var object_elements      = dom_cache.media_cache.object_elements;
+     var object_elements_len  = object_elements.length;
+
+     var widget_count = 0;
+
+     for (var i = 0; i < widget_elements_len; i++) {
+     
+       var ie = widget_elements[i];
+       
+       var de = ie.dom_element;
+       if (!de) de =ie;
+       
+       var cs = de.computed_style;
+       
+       if ((cs.is_visible_to_at    === VISIBILITY.VISIBLE) ||
+           (cs.is_visible_onscreen === VISIBILITY.VISIBLE)) {
+           
+         widget_count++;
+         
+         rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ie, 'ELEMENT_MC_1', [de.tag_name, de.role]);
+         
+       }     
+       else {
+         rule_result.addResult(TEST_RESULT.HIDDEN, ie, 'ELEMENT_HIDDEN_2', [de.tag_name]);                
+       }
+     }  // endfor
+     
+     var object_count = 0;
+
+     for (i = 0; i < object_elements_len; i++) {
+     
+       var oe = object_elements[i];
+       
+       de = oe.dom_element;
+       if (!de) de =ie;
+       
+       cs = de.computed_style;
+       
+       if ((cs.is_visible_to_at    === VISIBILITY.VISIBLE) ||
+           (cs.is_visible_onscreen === VISIBILITY.VISIBLE)) {
+           
+         object_count++;
+         
+         rule_result.addResult(TEST_RESULT.MANUAL_CHECK, oe, 'ELEMENT_MC_2', [oe.tag_name]);
+         
+       }     
+       else {
+         rule_result.addResult(TEST_RESULT.HIDDEN, oe, 'ELEMENT_HIDDEN_2', [oe.tag_name]);                
+       }
+     }  // endfor
+
+ //    OpenAjax.a11y.logger.debug(" Visible count: " + visible_count + "  Tab count: " + tab_count);
+ 
+     if ((widget_count > 1) | (object_count > 1)) { 
+ 
+       if (object_count === 0) {
+         rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MC_1', [widget_count]);
+       }
+       else {
+         if (widget_count === 0) {
+           rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MC_2', [object_count]);
+         }
+         else {
+           rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MC_3', [widget_count, object_count]);
+         }
+       }  
+     }
+
+
+   } // end validation function   
+},
+
+/**
+ * @object KEYBOARD_4
+ * 
+ * @desc No keyboard trap
+ */
+     
+{ rule_id             : 'KEYBOARD_4', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.KEYBOARD_SUPPORT,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
+  wcag_primary_id     : '2.1.2',
+  wcag_related_ids    : ['2.1.1', '2.4.3',  '2.4.7', '3.2.1'],
+  target_resources    : ['object', 'applet'],
+  primary_property    : 'tab_index',
+  resource_properties : [],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+  
+
+     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;   
+     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+      
+//     OpenAjax.a11y.logger.debug(" Page Element: " + page_element + "  " + page_element.dom_element);
+
+     var object_elements      = dom_cache.media_cache.object_elements;
+     var object_elements_len  = object_elements.length;
+
+
+     for (var i = 0; i < object_elements_len; i++) {
+     
+       var oe = object_elements[i];
+       
+       var de = oe.dom_element;
+       if (!de) de =ie;
+       
+       var cs = de.computed_style;
+       
+       if ((cs.is_visible_to_at    === VISIBILITY.VISIBLE) ||
+           (cs.is_visible_onscreen === VISIBILITY.VISIBLE)) {
+           
+         rule_result.addResult(TEST_RESULT.MANUAL_CHECK, oe, 'ELEMENT_MC_1', [oe.tag_name]);
+         
+       }     
+       else {
+         rule_result.addResult(TEST_RESULT.HIDDEN, oe, 'ELEMENT_HIDDEN_1', [oe.tag_name]);                
+       }
+     }  // endfor
+
+   } // end validation function   
+}
+
+
+]); 
+
+
+    
+
+/* ---------------------------------------------------------------- */
+/*  OpenAjax Alliance Heading and Landmark Rules                    */ 
+/* ---------------------------------------------------------------- */
+
+OpenAjax.a11y.RuleManager.addRulesFromJSON([
+      
+/**
+ * @object LANDMARK_1
+ *
+ * @desc Each page should have at least one main landmark
+ *
+ */               
+{ rule_id             : 'LANDMARK_1', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.PAGE,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LANDMARKS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '2.4.1',
+  wcag_related_ids    : ['1.3.1', '2.4.6'],
+  target_resources    : ['Page', '[role="main"]'],
+  primary_property    : 'name',
+  resource_properties : ['tag_name', 'role'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+    var SOURCE      = OpenAjax.a11y.SOURCE;
+  
+    var main_elements     = dom_cache.headings_landmarks_cache.main_elements;
+    var main_elements_len = main_elements.length;
+
+    var main_count = 0;
+
+    for (var i = 0; i < main_elements_len; i++ ) {
+      var me = main_elements[i];
+      if (me.dom_element.computed_style.is_visible_to_at === VISIBILITY.HIDDEN) {
+        rule_result.addResult(TEST_RESULT.HIDDEN, me, 'ELEMENT_HIDDEN_1', [me.dom_element.tag_name]);                      
+      }
+      else {
+        rule_result.addResult(TEST_RESULT.PASS, me, 'ELEMENT_PASS_1', [me.dom_element.tag_name]);                      
+        main_count++;
+      }  
+    }
+
+    var page_element = dom_cache.headings_landmarks_cache.page_element;
+
+    if (page_element) {
+      // Test if no h1s
+      if (main_count === 0) rule_result.addResult(TEST_RESULT.FAIL, page_element, 'PAGE_FAIL_1', []);
+      else if (main_count === 1) rule_result.addResult(TEST_RESULT.PASS, page_element, 'PAGE_PASS_1', []);
+      else rule_result.addResult(TEST_RESULT.PASS, page_element, 'PAGE_PASS_2', [main_count]);
+    } 
+    
+  } // end validate function
+},
+
+/**
+ * @object LANDMARK_2
+ *
+ * @desc All rendered content should be contained in a landmark
+ */               
+{ rule_id             : 'LANDMARK_2', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LANDMARKS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '1.3.1',
+  wcag_related_ids    : ['2.4.1', '2.4.6', '2.4.10'],
+  target_resources    : ['Page', 'all'],
+  primary_property    : 'parent_landmark',
+  resource_properties : ['tag_name'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+  
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+    var SOURCE      = OpenAjax.a11y.SOURCE;
+  
+    var elements_with_content    = dom_cache.headings_landmarks_cache.elements_with_content;
+    var elements_with_content_len = elements_with_content.length;
+    
+    var pass_count   = 0;
+    var fail_count   = 0;
+    var mc_count     = 0;
+    
+    var tag_name = "";
+
+    for (var i = 0; i < elements_with_content_len; i++ ) {
+      var de =elements_with_content[i];
+      
+      if (de.tag_name) tag_name = de.tag_name;
+      else tag_name = de.parent_element.tag_name;
+
+//      OpenAjax.a11y.logger.debug("  Content: " + de.toString()  +  " " + de.may_have_renderable_content);
+      
+      if (de.computed_style.is_visible_to_at === VISIBILITY.HIDDEN) {
+        rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [tag_name]);                      
+      }
+      else {
+        if (de.parent_landmark) {
+          rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_1', [tag_name, de.parent_landmark.role]);
+          pass_count++;
+        }
+        else {
+          if (de.may_have_renderable_content) {
+            rule_result.addResult(TEST_RESULT.MANUAL_CHECK, de, 'ELEMENT_MC_1', [tag_name]);
+            mc_count++;
+          }  
+          else {
+            rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [tag_name]);
+            fail_count++;
+          }  
+        }  
+      }  
+    }        
+    
+  } // end validate function
+},
+
+/**
+ * @object LANDMARK_3
+ *
+ * @desc Each page within a website should have at least one navigation landmark
+ *
+ */               
+{ rule_id             : 'LANDMARK_3', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.WEBSITE,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LANDMARKS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '2.4.1',
+  wcag_related_ids    : ['1.3.1', '2.4.6'],
+  target_resources    : ['Website', '[role="navigation"]'],
+  primary_property    : 'name',
+  resource_properties : ['tag_name', 'role'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+    var SOURCE      = OpenAjax.a11y.SOURCE;
+  
+    var landmark_elements     = dom_cache.headings_landmarks_cache.landmark_elements;
+    var landmark_elements_len = landmark_elements.length;
+
+    var page_element = dom_cache.headings_landmarks_cache.page_element;
+
+    var navigation_count = 0;
+    
+    for (var i = 0; i < landmark_elements_len; i++ ) {
+      var le = landmark_elements[i];
+      var cs = le.dom_element.computed_style;
+      
+      var tag_name = le.dom_element.tag_name;
+      
+      if (le.role === 'navigation') {
+          navigation_count++;
+        if (cs.is_visible_to_at === VISIBILITY.VISIBLE) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_1', [tag_name]);
+        else  rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [tag_name]);
+      }  
+    }
+
+    if (page_element) {
+      // Test if no navigation landmarks
+      if (navigation_count === 0) rule_result.addResult(TEST_RESULT.FAIL, page_element, 'WEBSITE_FAIL_1', []);
+      else if (navigation_count === 1) rule_result.addResult(TEST_RESULT.PASS, page_element, 'WEBSITE_PASS_1', []);
+      else rule_result.addResult(TEST_RESULT.PASS, page_element, 'WEBSITE_PASS_2', [navigation_count]);
+    } 
+    
+  } // end validate function
+},
+
+/**
+ * @object LANDMARK_4
+ *
+ * @desc Each page may have one banner landmark
+ *
+ */
+ 
+{ rule_id             : 'LANDMARK_4', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.WEBSITE,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LANDMARKS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '2.4.1',
+  wcag_related_ids    : ['1.3.1', '2.4.6'],
+  target_resources    : ['Website', '[role="banner"]'],
+  primary_property    : '',
+  resource_properties : ['tag_name', 'name'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+    var SOURCE      = OpenAjax.a11y.SOURCE;
+  
+    var landmark_elements     = dom_cache.headings_landmarks_cache.landmark_elements;
+    var landmark_elements_len = landmark_elements.length;
+
+    var page_element = dom_cache.headings_landmarks_cache.page_element;
+
+    var landmark_count = 0;
+    var les = [];
+    
+    var LANDMARK_ROLE = 'banner';
+
+    for (var i = 0; i < landmark_elements_len; i++ ) {
+      var le = landmark_elements[i];
+      var de = le.dom_element;
+      var cs = de.computed_style;
+      var tag_name = de.tag_name;
+      
+      if (le.role === LANDMARK_ROLE) {
+        if (cs.is_visible_to_at === VISIBILITY.HIDDEN) {
+          rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [tag_name]);                  
+        }
+        else {
+          landmark_count++;
+          les.push(le);
+        }  
+      }  
+    }
+
+    if (page_element) {
+      // Test if no banner landmarks
+      if (landmark_count === 0) {
+        rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'WEBSITE_MC_1', []);
+      } 
+      else {
+        if (landmark_count === 1) {
+          rule_result.addResult(TEST_RESULT.PASS, page_element, 'WEBSITE_PASS_1', []);
+          rule_result.addResult(TEST_RESULT.PASS, les[0], 'ELEMENT_PASS_1', [tag_name]);
+        }
+        else {    
+          rule_result.addResult(TEST_RESULT.PASS, page_element, 'WEBSITE_PASS_2', [landmark_count]);
+          for (i = 0; i < les.length; i++) {
+            le = les[i];
+            rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_1', [tag_name]);
+          }  
+        }  
+      }  
+    } 
+    
+  } // end validate function
+},
+
+/**
+ * @object LANDMARK_5
+ *
+ * @desc Each page may have only one banner landmark
+ *
+ */
+ 
+{ rule_id             : 'LANDMARK_5', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.PAGE,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LANDMARKS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '2.4.1',
+  wcag_related_ids    : ['1.3.1', '2.4.6'],
+  target_resources    : ['Website', '[role="banner"]'],
+  primary_property    : '',
+  resource_properties : ['tag_name', 'role', 'name'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+    var SOURCE      = OpenAjax.a11y.SOURCE;
+  
+    var landmark_elements     = dom_cache.headings_landmarks_cache.landmark_elements;
+    var landmark_elements_len = landmark_elements.length;
+
+    var page_element = dom_cache.headings_landmarks_cache.page_element;
+
+    var landmark_count = 0;
+    var les = [];
+    
+    var LANDMARK_ROLE = 'banner';
+
+    for (var i = 0; i < landmark_elements_len; i++ ) {
+      var le = landmark_elements[i];
+      var de = le.dom_element;
+      var cs = de.computed_style;
+      var tag_name = de.tag_name;
+      
+      if (le.role === LANDMARK_ROLE) {
+        if (cs.is_visible_to_at === VISIBILITY.HIDDEN) {
+          rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [tag_name]);                  
+        }
+        else {
+          if (!de.body_element) {
+            landmark_count++;
+            les.push(le);
+          }  
+        }  
+      }  
+    }
+
+    if (page_element) {
+      // Test if more than banner landmarks
+      if (landmark_count > 1) {
+        rule_result.addResult(TEST_RESULT.FAIL, page_element, 'PAGE_FAIL_1', [landmark_count]);
+        for (i = 0; i < les.length; i++) {
+          le = les[i];
+          rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_1', [tag_name]);
+        }  
+      }  
+    } 
+    
+  } // end validate function
+},
+
+/**
+ * @object LANDMARK_6
+ *
+ * @desc Each page may have one content information landmark
+ *
+ */               
+{ rule_id             : 'LANDMARK_6', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.WEBSITE,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LANDMARKS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '2.4.1',
+  wcag_related_ids    : ['1.3.1', '2.4.6'],
+  target_resources    : ['Website', '[role="contentinfo"]'],
+  primary_property    : '',
+  resource_properties : ['tag_name', 'role', 'name'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+    var SOURCE      = OpenAjax.a11y.SOURCE;
+  
+    var landmark_elements     = dom_cache.headings_landmarks_cache.landmark_elements;
+    var landmark_elements_len = landmark_elements.length;
+
+    var page_element = dom_cache.headings_landmarks_cache.page_element;
+
+    var landmark_count = 0;
+    var les = [];
+    
+    var LANDMARK_ROLE = 'contentinfo';
+
+    for (var i = 0; i < landmark_elements_len; i++ ) {
+      var le = landmark_elements[i];
+      var de = le.dom_element;
+      var cs = de.computed_style;
+      var tag_name = de.tag_name;
+      
+      if (de.role === LANDMARK_ROLE) {
+        if (cs.is_visible_to_at === VISIBILITY.HIDDEN) {
+          rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [tag_name]);                  
+        }
+        else {
+          landmark_count++;
+          les.push(le);
+        }  
+      }  
+    }
+
+    if (page_element) {
+      // Test if no contentinfo landmarks
+      if (landmark_count === 0) {
+        rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'WEBSITE_MC_1', []);
+      } 
+      else {
+        if (landmark_count === 1) {
+          rule_result.addResult(TEST_RESULT.PASS, page_element, 'WEBSITE_PASS_1', []);
+          rule_result.addResult(TEST_RESULT.PASS, les[0], 'ELEMENT_PASS_1', [tag_name]);
+        }
+        else {    
+          rule_result.addResult(TEST_RESULT.PASS, page_element, 'WEBSITE_PASS_2', [landmark_count]);
+          for (i = 0; i < les.length; i++) {
+            le = les[i];
+            rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_1', [tag_name]);
+          }  
+        }  
+      }  
+    } 
+    
+  } // end validate function
+},
+
+/**
+ * @object LANDMARK_7
+ *
+ * @desc Each page may have only one content information landmark
+ *
+ */               
+{ rule_id             : 'LANDMARK_7', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.PAGE,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LANDMARKS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '2.4.1',
+  wcag_related_ids    : ['1.3.1', '2.4.6'],
+  target_resources    : ['Website', '[role="contentinfo"]'],
+  primary_property    : '',
+  resource_properties : ['tag_name', 'role', 'name'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+    var SOURCE      = OpenAjax.a11y.SOURCE;
+  
+    var landmark_elements     = dom_cache.headings_landmarks_cache.landmark_elements;
+    var landmark_elements_len = landmark_elements.length;
+
+    var page_element = dom_cache.headings_landmarks_cache.page_element;
+
+    var landmark_count = 0;
+    var les = [];
+    
+    var LANDMARK_ROLE = 'contentinfo';
+
+    for (var i = 0; i < landmark_elements_len; i++ ) {
+      var le = landmark_elements[i];
+      var de = le.dom_element;
+      var cs = de.computed_style;
+      var tag_name = de.tag_name;
+      
+      if (de.role === LANDMARK_ROLE) {
+        if (cs.is_visible_to_at === VISIBILITY.HIDDEN) {
+          rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [tag_name]);                  
+        }
+        else {
+          if (!de.body_element) {
+            landmark_count++;
+            les.push(le);
+          }  
+        }  
+      }  
+    }
+
+    if (page_element) {
+      // Test if no contentinfo landmarks
+      if (landmark_count > 1) {
+        rule_result.addResult(TEST_RESULT.FAIL, page_element, 'PAGE_FAIL_1', [landmark_count]);
+        for (i = 0; i < les.length; i++) {
+          le = les[i];
+          rule_result.addResult(TEST_RESULT.FAIL, le, 'PAGE_FAIL_2', [tag_name]);
+        } 
+      }  
+    } 
+    
+  } // end validate function
+},
+
+/**
+ * @object LANDMARK_8
+ *
+ * @desc banner landmark must be a top level lanmark
+ */               
+{ rule_id             : 'LANDMARK_8', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LANDMARKS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '1.3.1',
+  wcag_related_ids    : ['2.4.1', '2.4.6', '2.4.10'],
+  target_resources    : ['[role="banner"]'],
+  primary_property    : 'parent_landmark',
+  resource_properties : ['role'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+    var SOURCE      = OpenAjax.a11y.SOURCE;
+
+    var landmark_elements     = dom_cache.headings_landmarks_cache.landmark_elements;
+    var landmark_elements_len = landmark_elements.length;
+    
+    for (var i = 0; i < landmark_elements_len; i++ ) {
+      var le = landmark_elements[i];
+      var de = le.dom_element;
+      var cs = de.computed_style;
+
+      if (le.role === 'banner') {
+      
+        if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+
+          if (de.parent_landmark === null) {
+            rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_1', []);
+          }
+          else {
+              
+            var de1 = de.parent_landmark.dom_element;
+            
+            if (de1 && (de.body_element !== de1.body_element)) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_2', []);
+            else rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_1', [de.parent_landmark.role]);
+          }
+          
+        }  
+        else {
+          rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [de.tag_name]);
+        }
+      }      
+    }  
+  } // end validate function
+},
+
+/**
+ * @object LANDMARK_9
+ *
+ * @desc Banner landmark should only contain only search and navigation landmarks
+ */               
+{ rule_id             : 'LANDMARK_9', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LANDMARKS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '1.3.1',
+  wcag_related_ids    : ['2.4.1', '2.4.6', '2.4.10'],
+  target_resources    : ['[role="banner"]'],
+  primary_property    : 'parent_landmark',
+  resource_properties : ['role', 'parent_landmark'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+    var SOURCE      = OpenAjax.a11y.SOURCE;
+
+    function checkLandmarkChildren(landmark) {
+    
+      var cces     = landmark.child_cache_elements;
+      var cces_len = cces.length;
+      var fail_count = 0;
+    
+      for (var i = 0; i < cces_len; i++) {
+      
+        var cce = cces[i];
+       
+        if ((typeof cce.role === 'string') && cce.role.length) {
+          var cs = cce.dom_element.computed_style;
+          landmark_count++;
+        
+          if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+            if ((cce.role === 'navigation') || 
+                (cce.role === 'region') || 
+                (cce.role === 'search')|| 
+                (cce.role === 'application')) {
+               rule_result.addResult(TEST_RESULT.PASS, cce, 'ELEMENT_PASS_1', [cce.role]);     
+            }
+            else {
+              rule_result.addResult(TEST_RESULT.FAIL, cce, 'ELEMENT_FAIL_1', [cce.role]); 
+              fail_count++;
+            }
+            fail_count += checkLandmarkChildren(cce);        
+          }
+          else {
+            rule_result.addResult(TEST_RESULT.HIDDEN, cce, 'ELEMENT_HIDDEN_1', [cce.dom_element.tag_name]);     
+          }
+        }
+      }
+      
+      return fail_count;
+    }
+
+
+    var landmark_elements     = dom_cache.headings_landmarks_cache.landmark_elements;
+    var landmark_elements_len = landmark_elements.length;
+    var fail_count = 0;
+    
+    for (var i = 0; i < landmark_elements_len; i++ ) {
+      var le = landmark_elements[i];
+      var cs = le.dom_element.computed_style;
+
+
+      if (le.role === 'banner') {
+      
+        var landmark_count = 0;
+      
+        if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+          fail_count = checkLandmarkChildren(le);
+          
+          if (fail_count > 0) rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_2', []);
+          else if (landmark_count === 0) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_2', []); 
+          else if (landmark_count === 1) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_3', []); 
+          else rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_4', [landmark_count]);
+        }  
+        else {
+          rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', []);
+        }  
+      }  
+    }  
+  } // end validate function
+},
+
+/**
+ * @object LANDMARK_10
+ *
+ * @desc Navigation landmark should only contain only region and search landmarks
+ */               
+{ rule_id             : 'LANDMARK_10', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LANDMARKS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '1.3.1',
+  wcag_related_ids    : ['2.4.1', '2.4.6', '2.4.10'],
+  target_resources    : ['[role="naviation"]'],
+  primary_property    : 'parent_landmark',
+  resource_properties : ['role'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+    var SOURCE      = OpenAjax.a11y.SOURCE;
+
+    function checkLandmarkChildren(landmark) {
+    
+      var cces     = landmark.child_cache_elements;
+      var cces_len = cces.length;
+      var fail_count = 0;
+    
+      for (var i = 0; i < cces_len; i++) {
+      
+        var cce = cces[i];
+       
+        if ((typeof cce.role === 'string') && cce.role.length) {
+          var cs = cce.dom_element.computed_style;
+          landmark_count++;
+        
+          if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+            if ((cce.role === 'region') || 
+                (cce.role === 'search')|| 
+                (cce.role === 'application')) {
+               rule_result.addResult(TEST_RESULT.PASS, cce, 'ELEMENT_PASS_1', [cce.role]);     
+            }
+            else {
+              rule_result.addResult(TEST_RESULT.FAIL, cce, 'ELEMENT_FAIL_1', [cce.role]); 
+              fail_count++;
+            }
+            fail_count += checkLandmarkChildren(cce);        
+          }
+          else {
+            rule_result.addResult(TEST_RESULT.HIDDEN, cce, 'ELEMENT_HIDDEN_1', [cce.dom_element.tag_name]);     
+          }
+        }
+      }
+      
+      return fail_count;
+    }
+
+
+    var landmark_elements     = dom_cache.headings_landmarks_cache.landmark_elements;
+    var landmark_elements_len = landmark_elements.length;
+    var fail_count = 0;
+    
+    for (var i = 0; i < landmark_elements_len; i++ ) {
+      var le = landmark_elements[i];
+      var cs = le.dom_element.computed_style;
+
+
+      if (le.role === 'navigation') {
+      
+        var landmark_count = 0;
+      
+        if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+          fail_count = checkLandmarkChildren(le);
+          
+          if (fail_count > 0) rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_2', []);
+          else if (landmark_count === 0) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_2', []); 
+          else if (landmark_count === 1) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_3', []); 
+          else rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_4', [landmark_count]);
+        }  
+        else {
+          rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', []);
+        }  
+      }  
+    }  
+  } // end validate function
+},
+
+/**
+ * @object LANDMARK_11
+ *
+ * @desc Main landmark must be a top level lanmark
+ */               
+{ rule_id             : 'LANDMARK_11', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LANDMARKS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '1.3.1',
+  wcag_related_ids    : ['2.4.1', '2.4.6', '2.4.10'],
+  target_resources    : ['[role="main"]'],
+  primary_property    : 'parent_landmark',
+  resource_properties : ['role'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+    var SOURCE      = OpenAjax.a11y.SOURCE;
+
+    var landmark_elements     = dom_cache.headings_landmarks_cache.landmark_elements;
+    var landmark_elements_len = landmark_elements.length;
+    
+    for (var i = 0; i < landmark_elements_len; i++ ) {
+      var le = landmark_elements[i];
+      var de = le.dom_element;
+      var cs = de.computed_style;
+
+      if (le.role === 'main') {
+        if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+
+          if (de.parent_landmark !== null) {
+            var de1 = de.parent_landmark.dom_element;
+            
+            if (de1 && (de.body_element !== de1.body_element)) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_2', []);
+            else rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_1', [de.parent_landmark.role]);
+          }
+          else {
+            rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_1', []);
+          }  
+        }  
+        else {
+          rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [de.tag_name]);
+        }
+      }      
+    }  
+  } // end validate function
+},
+
+/**
+ * @object LANDMARK_12
+ *
+ * @desc Contentinfo landmark must be a top level lanmark
+ */               
+{ rule_id             : 'LANDMARK_12', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LANDMARKS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '1.3.1',
+  wcag_related_ids    : ['2.4.1', '2.4.6', '2.4.10'],
+  target_resources    : ['[role="contentinfo"]'],
+  primary_property    : 'parent_landmark',
+  resource_properties : ['role'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+    var SOURCE      = OpenAjax.a11y.SOURCE;
+
+    var landmark_elements     = dom_cache.headings_landmarks_cache.landmark_elements;
+    var landmark_elements_len = landmark_elements.length;
+    
+    for (var i = 0; i < landmark_elements_len; i++ ) {
+      var le = landmark_elements[i];
+      var de = le.dom_element;
+      var cs = de.computed_style;
+
+      if (le.role === 'contentinfo') {
+      
+        if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+
+          if (de.parent_landmark === null) {
+            rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_1', []);
+          }
+          else {
+              
+            var de1 = de.parent_landmark.dom_element;
+            
+            if (de1 && (de.body_element !== de1.body_element)) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_2', []);
+            else rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_1', [de.parent_landmark.role]);
+          }
+          
+        }  
+        else {
+          rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [de.tag_name]);
+        }
+      }      
+    }  
+  } // end validate function
+},
+
+/**
+ * @object LANDMARK_13
+ *
+ * @desc Complementary landmark must be a top level landmark or descendant of main
+ */               
+{ rule_id             : 'LANDMARK_13', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LANDMARKS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '1.3.1',
+  wcag_related_ids    : ['2.4.1', '2.4.6', '2.4.10'],
+  target_resources    : ['[role="complementary"]'],
+  primary_property    : 'parent_landmark',
+  resource_properties : ['role', 'parent_landmark'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+    var SOURCE      = OpenAjax.a11y.SOURCE;
+
+    var landmark_elements     = dom_cache.headings_landmarks_cache.landmark_elements;
+    var landmark_elements_len = landmark_elements.length;
+    
+    for (var i = 0; i < landmark_elements_len; i++ ) {
+      var le = landmark_elements[i];
+      var de = le.dom_element;
+      var cs = de.computed_style;
+
+      if (le.role === 'complementary') {
+      
+        if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+
+          if ((de.parent_landmark === null) ||
+              ((de.parent_landmark !== null) &&
+               (de.parent_landmark.role === 'main'))) {
+            rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_1', []);          
+          }
+          else {
+            var de1 = de.parent_landmark.dom_element;
+            
+            if (de1 && (de.body_element !== de1.body_element)) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_2', []);
+            else rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_1', [de.parent_landmark.role]);
+          }
+        }  
+        else {
+          rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [de.tag_name]);
+        }
+      }      
+    }  
+  } // end validate function
+},
+
+/**
+ * @object LANDMARK_14
+ *
+ * @desc Search landmark should only contain only region landmarks
+ */               
+{ rule_id             : 'LANDMARK_14', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LANDMARKS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '1.3.1',
+  wcag_related_ids    : ['2.4.1', '2.4.6', '2.4.10'],
+  target_resources    : ['[role="search"]'],
+  primary_property    : 'parent_landmark',
+  resource_properties : ['role'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+    var SOURCE      = OpenAjax.a11y.SOURCE;
+
+    function checkLandmarkChildren(landmark) {
+    
+      var cces     = landmark.child_cache_elements;
+      var cces_len = cces.length;
+      var fail_count = 0;
+    
+      for (var i = 0; i < cces_len; i++) {
+      
+        var cce = cces[i];
+       
+        if ((typeof cce.role === 'string') && cce.role.length) {
+          var de = cce.dom_element;
+          var cs = de.computed_style;
+          landmark_count++;
+        
+          if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+            if ((cce.role === 'region') || 
+                (cce.role === 'application')) {
+               rule_result.addResult(TEST_RESULT.PASS, cce, 'ELEMENT_PASS_1', [cce.role]);     
+            }
+            else {
+              rule_result.addResult(TEST_RESULT.FAIL, cce, 'ELEMENT_FAIL_1', [cce.role]); 
+              fail_count++;
+            }
+            fail_count += checkLandmarkChildren(cce);        
+          }
+          else {
+            rule_result.addResult(TEST_RESULT.HIDDEN, cce, 'ELEMENT_HIDDEN_2', [de.tag_name, de.role]);     
+          }
+        }
+      }
+      
+      return fail_count;
+    }
+
+
+    var landmark_elements     = dom_cache.headings_landmarks_cache.landmark_elements;
+    var landmark_elements_len = landmark_elements.length;
+    var fail_count = 0;
+
+//    OpenAjax.a11y.logger.debug("  LANDMARK 14 Rule");
+    
+    for (var i = 0; i < landmark_elements_len; i++ ) {
+    
+      var le = landmark_elements[i];
+      var de = le.dom_element;
+      var cs = de.computed_style;
+
+      if (de.role === 'search') {
+      
+        var landmark_count = 0;
+      
+        if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+          fail_count = checkLandmarkChildren(le);
+
+          OpenAjax.a11y.logger.debug("  Search: " + fail_count);
+          
+          if (fail_count > 0) rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_2', []);
+          else if (landmark_count === 0) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_2', []); 
+          else if (landmark_count === 1) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_3', []); 
+          else rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_4', [landmark_count]);
+        }  
+        else {
+          rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [de.tag_name]);
+        }  
+      }  
+    }  
+  } // end validate function
+},
+
+/**
+ * @object LANDMARK_15
+ *
+ * @desc Form landmark should only contain only region landmarks
+ */               
+{ rule_id             : 'LANDMARK_15', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LANDMARKS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '1.3.1',
+  wcag_related_ids    : ['2.4.1', '2.4.6', '2.4.10'],
+  target_resources    : ['[role="form"]'],
+  primary_property    : 'parent_landmark',
+  resource_properties : ['role'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+    var SOURCE      = OpenAjax.a11y.SOURCE;
+
+    function checkLandmarkChildren(landmark) {
+    
+      var cces     = landmark.child_cache_elements;
+      var cces_len = cces.length;
+      var fail_count = 0;
+    
+      for (var i = 0; i < cces_len; i++) {
+      
+        var cce = cces[i];
+       
+        if ((typeof cce.role === 'string') && cce.role.length) {
+          var cs = cce.dom_element.computed_style;
+          landmark_count++;
+        
+          if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+            if ((cce.role === 'region') || 
+                (cce.role === 'application')) {
+               rule_result.addResult(TEST_RESULT.PASS, cce, 'ELEMENT_PASS_1', [cce.role]);     
+            }
+            else {
+              rule_result.addResult(TEST_RESULT.FAIL, cce, 'ELEMENT_FAIL_1', [cce.role]); 
+              fail_count++;
+            }
+            fail_count += checkLandmarkChildren(cce);        
+          }
+          else {
+            rule_result.addResult(TEST_RESULT.HIDDEN, cce, 'ELEMENT_HIDDEN_2', [cce.dom_element.tag_name, cce.role]);     
+          }
+        }
+      }
+      
+      return fail_count;
+    }
+
+
+    var landmark_elements     = dom_cache.headings_landmarks_cache.landmark_elements;
+    var landmark_elements_len = landmark_elements.length;
+    var fail_count = 0;
+    
+    for (var i = 0; i < landmark_elements_len; i++ ) {
+    
+      var le = landmark_elements[i];
+      var de = le.dom_element;
+      var cs = de.computed_style;
+
+      if (de.role === 'form') {
+      
+        var landmark_count = 0;
+      
+        if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+          fail_count = checkLandmarkChildren(le);
+
+//          OpenAjax.a11y.logger.debug("  Search: " + fail_count);
+          
+          if (fail_count > 0) rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_2', []);
+          else if (landmark_count === 0) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_2', []); 
+          else if (landmark_count === 1) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_3', []); 
+          else rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_4', [landmark_count]);
+        }  
+        else {
+          rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [de.tag_name]);
+        }  
+      }  
+    }  
+  } // end validate function
+},
+
+/**
+ * @object LANDMARK_16
+ *
+ * @desc Region landmark must have accessible name
+ */               
+{ rule_id             : 'LANDMARK_16', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LANDMARKS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '1.3.1',
+  wcag_related_ids    : ['2.4.1', '2.4.6', '2.4.10'],
+  target_resources    : ['[role="region"]'],
+  primary_property    : 'computed_label',
+  resource_properties : ['role', 'computed_label', 'computed_label_source'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+    var SOURCE      = OpenAjax.a11y.SOURCE;
+
+    var landmark_elements     = dom_cache.headings_landmarks_cache.landmark_elements;
+    var landmark_elements_len = landmark_elements.length;
+    var fail_count = 0;
+    
+    for (var i = 0; i < landmark_elements_len; i++ ) {
+    
+      var le = landmark_elements[i];
+      var de = le.dom_element;
+      var cs = de.computed_style;
+
+      if (de.role === 'region') {
+
+        OpenAjax.a11y.logger.debug("  Region: " + fail_count);
+          
+      
+        if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+
+          if ((le.computed_label_source !== OpenAjax.a11y.SOURCE.NONE) && 
+              (le.computed_label.length > 0)) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_1', [ de.role]);
+          else rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_1', []);
+        }  
+        else {
+          rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [de.tag_name]);
+        }  
+      }  
+    }  
+  } // end validate function
+},
+
+/**
+ * @object LANDMARK_17
+ *
+ * @desc Landmark must have unique labels
+ */     
+           
+{ rule_id             : 'LANDMARK_17', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LANDMARKS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '1.3.1',
+  wcag_related_ids    : ['2.4.1', '2.4.6', '2.4.10'],
+  target_resources    : ['[role="application"]','[role="banner"]', '[role="complementary"]','[role="contentinfo"]','[role="form"]','[role="main"]','[role="navigation"]','[role="region"]','[role="search"]'],
+  primary_property    : 'computed_label',
+  resource_properties : ['role', 'computed_label_source'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+    var SOURCE      = OpenAjax.a11y.SOURCE;
+
+    var landmark_elements     = dom_cache.headings_landmarks_cache.landmark_elements;
+    var landmark_elements_len = landmark_elements.length;
+
+    var i;
+    var les   = [];
+
+    for (i = 0; i < landmark_elements_len; i++ ) {
+    
+      var le = landmark_elements[i];
+      var de = le.dom_element;
+      var cs = de.computed_style;
+      
+      if (cs.is_visible_to_at === VISIBILITY.VISIBLE) les.push(le);
+      else rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [de.tag_name, de.role]);                                    
+      
+    } // end loop    
+      
+    // sort labels
+
+    les = dom_cache.sortArrayOfObjects(les,'computed_label_for_comparison', true); 
+
+    for (i = 0; i < les.length; i++) {
+    
+      le = les[i];
+
+      if (le.duplicate) rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_1', [le.computed_label, le.dom_element.role]);                
+      else rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_1', [le.dom_element.role]);        
+      
+    }  
+    
+  } // end validate function
+},
+
+/**
+ * @object LANDMARK_18
+ *
+ * @desc Landmark should only be on p, div, span or HTML5 section elements
+ */     
+           
+{ rule_id             : 'LANDMARK_18', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LANDMARKS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '1.3.1',
+  wcag_related_ids    : ['2.4.1', '2.4.6', '2.4.10'],
+  target_resources    : ['[role="application"]','[role="banner"]', '[role="complementary"]','[role="contentinfo"]','[role="form"]','[role="main"]','[role="navigation"]','[role="region"]','[role="search"]'],
+  primary_property    : 'tag_name',
+  resource_properties : ['role'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+    var SOURCE      = OpenAjax.a11y.SOURCE;
+
+    var landmark_elements     = dom_cache.headings_landmarks_cache.landmark_elements;
+    var landmark_elements_len = landmark_elements.length;
+
+    var i;
+    var les   = [];
+
+    for (i = 0; i < landmark_elements_len; i++ ) {
+    
+      var le = landmark_elements[i];
+      var de = le.dom_element;
+      var cs = de.computed_style;
+      
+      if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+
+        if ((de.tag_name === 'div'    ) ||
+            (de.tag_name === 'span'   ) ||
+            (de.tag_name === 'p'      ) ||
+            (de.tag_name === 'address') ||
+            (de.tag_name === 'article') ||
+            (de.tag_name === 'aside'  ) ||
+            (de.tag_name === 'header' ) ||
+            (de.tag_name === 'footer' ) ||
+            (de.tag_name === 'figure' ) ||
+            (de.tag_name === 'main'   ) ||
+            (de.tag_name === 'nav'    ) ||
+            (de.tag_name === 'section')) {
+          rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_1', [de.role, de.tag_name]);                
+        } 
+        else {
+          rule_result.addResult(TEST_RESULT.FAIL,  le, 'ELEMENT_FAIL_1', [de.role, de.tag_name]);
+        }  
+      }
+      else {
+       rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [de.tag_name, de.role]);                                  
+      }   
+      
+    } // end loop    
+      
+  } // end validate function
+}
+
+
+
+
+]); 
+/* ---------------------------------------------------------------- */
+/*  OpenAjax Alliance Control Rules                                 */ 
+/* ---------------------------------------------------------------- */
+
+OpenAjax.a11y.RuleManager.addRulesFromJSON([
+
+/**
+ * @object LANGUAGE_1
+ * 
+ * @desc HTML element must have a lang attribute
+ */
+     
+{ rule_id             : 'LANGUAGE_1', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.PAGE,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.STYLES_READABILITY,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '3.1.1',
+  wcag_related_ids    : [],
+  target_resources    : ['html'],
+  primary_property    : 'lang',
+  resource_properties : [],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+    var TEST_RESULT    = OpenAjax.a11y.TEST_RESULT;
+   
+//    OpenAjax.a11y.logger.debug( "Language Codes: " + typeof OpenAjax.a11y.LANGUAGE_CODES);
+    
+    var page_element = dom_cache.headings_landmarks_cache.page_element;
+
+    if (page_element) {
+       if (dom_cache.lang && dom_cache.lang.length) {
+         if (OpenAjax.a11y.util.validLanguageCode(dom_cache.lang)) {
+           rule_result.addResult(TEST_RESULT.PASS, page_element, 'PAGE_PASS_1', [dom_cache.lang]);
+         }
+         else {
+           rule_result.addResult(TEST_RESULT.FAIL, page_element, 'PAGE_FAIL_2', [dom_cache.lang]);       
+         }
+       }
+       else {
+         rule_result.addResult(TEST_RESULT.FAIL, page_element, 'PAGE_FAIL_1', []);       
+       }
+    } 
+       
+
+  } // end validation function   
+},
+
+/**
+ * @object LANGUAGE_2
+ * 
+ * @desc Identify the elements on the page where the text content is different language from the primary content
+ */
+     
+{ rule_id             : 'LANGUAGE_2', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.PAGE,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.STYLES_READABILITY,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '3.1.2',
+  wcag_related_ids    : ['3.1.1'],
+  target_resources    : ['[lang]'],
+  primary_property    : 'lang',
+  resource_properties : [],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+    var TEST_RESULT    = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY     = OpenAjax.a11y.VISIBILITY;
+    
+    var dom_elements     = dom_cache.languages_cache.dom_elements;
+    var dom_elements_len = dom_elements.length;
+
+//
+//    OpenAjax.a11y.logger.debug("[Language Rule 2]  Language 2: " + dom_elements_len);
+    var fail_count = 0;
+    var pass_count = 0;
+
+    for (var i = 0; i < dom_elements_len; i++) {
+      var de = dom_elements[i];
+        
+      if (de.computed_style.is_visible_to_at === VISIBILITY.VISIBLE ) {
+        
+         if (OpenAjax.a11y.util.validLanguageCode(de.lang)) {
+           rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_1', [de.tag_name, de.lang]);
+           pass_count++;
+         }
+         else {
+           rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [de.tag_name, de.lang]);    
+           fail_count++;
+         }
+                   
+      }
+      else {
+        rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.tag_name, de.lang]);
+      }
+    }  
+    
+    var page_element = dom_cache.headings_landmarks_cache.page_element;
+
+    if (page_element) {
+      if (fail_count === 1) rule_result.addResult(TEST_RESULT.FAIL, page_element, 'PAGE_FAIL_1', []);
+      else if (fail_count > 1) rule_result.addResult(TEST_RESULT.FAIL, page_element, 'PAGE_FAIL_2', [fail_count]);
+      else if (pass_count === 1) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MC_1', []); 
+      else if (pass_count > 1) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MC_2', [pass_count]);    
+      else rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MC_3', []); 
+    } 
+    
+  } // end validation function   
+}
+]); 
+
+
+    
+
+/**
+ * Copyright 2011-2014 OpenAjax Alliance
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* ---------------------------------------------------------------- */
+/*      OpenAjax Alliance Table Rules                               */
+/* ---------------------------------------------------------------- */
+
+OpenAjax.a11y.RuleManager.addRulesFromJSON([
+      
+/** 
+
+   **
+ * @object LAYOUT_1
+ *
+ * @desc     Make sure content is in a meaningful sequence
+ *           tables used for layout must be checked for 
+ *           maintaining meanful sequence
+ */
+{ rule_id             : 'LAYOUT_1', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.PAGE,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.TABLES,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '1.3.2',
+  wcag_related_ids    : ['1.3.1'],
+  target_resources    : ['Page', 'table'],
+  primary_property    : 'is_data_table',
+  resource_properties : ['max_column', 'max_row', 'nesting_level'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+     
+     function getNestingLevel(table_element, level) {
+     
+       var l = level;
+       var pte = table_element.parent_table_element;
+     
+       if (pte) {
+         if ((pte.table_role === OpenAjax.a11y.TABLE_ROLE.DATA) || pte.max_column == 1) {
+           l = getNestingLevel(pte, level);           
+         }
+         else {
+           l = getNestingLevel(pte, (level+1));
+         }
+       }
+       return l;
+     }
+     
+     var TEST_RESULT   = OpenAjax.a11y.TEST_RESULT;
+     var VISIBILITY    = OpenAjax.a11y.VISIBILITY;
+    
+     var table_elements     = dom_cache.tables_cache.table_elements;
+     var table_elements_len = table_elements.length;
+     
+     var page_element = dom_cache.headings_landmarks_cache.page_element;
+     var layout_pass = 0;
+     var layout_mc   = 0;
+     var layout_fail = 0;
+
+     // Check to see if valid cache reference
+     if (table_elements && table_elements_len) {
+     
+       for (var i = 0; i < table_elements_len; i++) {
+       
+         var te = table_elements[i];
+         var de = te.dom_element;
+         var cs = de.computed_style;
+         
+         if (te.table_role === OpenAjax.a11y.TABLE_ROLE.LAYOUT) {
+
+           if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+         
+             var nesting_level = getNestingLevel(te, 0);
+             
+             te.nesting_level = nesting_level;
+
+             if (te.max_column === 1)  {
+               rule_result.addResult(TEST_RESULT.PASS, te, 'ELEMENT_PASS_1', []);          
+               layout_pass++;
+             }  
+             else {
+         
+               if (nesting_level === 0) {
+                 rule_result.addResult(TEST_RESULT.MANUAL_CHECK, te, 'ELEMENT_MC_2', [te.max_row, te.max_column]);               
+                 layout_mc++;
+               } 
+               else {
+                 rule_result.addResult(TEST_RESULT.MANUAL_CHECK, te, 'ELEMENT_MC_3', [te.nesting_level]);
+                 layout_mc++;
+               }  
+             }
+           }
+           else {
+             rule_result.addResult(TEST_RESULT.HIDDEN, te, 'ELEMENT_HIDDEN_1', []);
+           }
+         } 
+       } // end loop
+     }  
+
+     if (layout_mc) {
+       rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MC_1', []); 
+     }
+     else {
+       if (layout_pass) {
+         rule_result.addResult(TEST_RESULT.PASS, page_element, 'PAGE_PASS_1', []); 
+       }  
+     }   
+     
+   }  // end validation function
+ },
+ 
+/**
+ * @object LAYOUT_2
+ *
+ * @desc     Do not use nested tables more than 1 column wide for positioning content 
+ *           Fails with one or more one levels of nesting.
+ */
+{ rule_id             : 'LAYOUT_2', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.TABLES,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '1.3.2',
+  wcag_related_ids    : [],
+  target_resources    : ['table'],
+  primary_property    : 'nesting_level',
+  resource_properties : ['is_data_table', 'max_column', 'max_row'],
+  language_dependency : "",
+  validate          : function (dom_cache, rule_result) {
+   
+     var TEST_RESULT   = OpenAjax.a11y.TEST_RESULT;
+     var VISIBILITY    = OpenAjax.a11y.VISIBILITY;
+    
+     var i;
+     var te;
+     var nesting_level;
+    
+     var table_elements     = dom_cache.tables_cache.table_elements;
+     var table_elements_len = table_elements.length;
+     
+
+     // Check to see if valid cache reference
+     if (table_elements && table_elements_len) {
+     
+       for (i=0; i < table_elements_len; i++) {
+       
+         te = table_elements[i];
+         
+         if (te.table_role === OpenAjax.a11y.TABLE_ROLE.LAYOUT) {
+                      
+           if (te.dom_element.computed_style.is_visible_to_at == VISIBILITY.VISIBLE) {
+         
+             if (te.max_column > 1) {
+             
+               if (te.nesting_level > 0) rule_result.addResult(TEST_RESULT.FAIL, te, 'ELEMENT_FAIL_1', [te.max_row, te.max_column, te.nesting_level]);
+               else rule_result.addResult(TEST_RESULT.PASS, te, 'ELEMENT_PASS_1', []);                       
+             }  
+             else {
+               rule_result.addResult(TEST_RESULT.PASS, te, 'ELEMENT_PASS_2', []);          
+             }
+           }
+           else {
+             rule_result.addResult(TEST_RESULT.HIDDEN, te, 'ELEMENT_HIDDEN_1', []);
+           } 
+         }  
+       } // end loop
+     }  
+  } // end validation function        
+}
+]); /**
+ * Copyright 2011-2014 OpenAjax Alliance
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* ---------------------------------------------------------------- */
+/*            OpenAjax Alliance Link Rules                         */ 
+/* ---------------------------------------------------------------- */
+
+OpenAjax.a11y.RuleManager.addRulesFromJSON([
+      
+/*
+ * @object LINK_1
+ *
+ * @desc Links with the same HREF should have the same link text.
+ */
+     
+{ rule_id             : 'LINK_1', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LINKS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '2.4.4',
+  wcag_related_ids    : ['2.4.9'],
+  target_resources    : ['a', 'area', '[role=link]'],
+  primary_property    : 'accessible_name',
+  resource_properties : ['href', 'accessible_name_source'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+  
+    function updateResults(links, test_result, message) {
+    
+      for (var i = 0; i < links.length; i++) {
+      
+        var le = links[i];
+        var links_len = links[i].length;
+      
+        var tag_name  = le.dom_element.tag_name;
+              
+        rule_result.addResult(test_result, le,  message, [tag_name, links_len], le.toString(le.href));        
+        
+//        OpenAjax.a11y.logger.debug("  Update Item: " + i + " of " + links.length + " le: " + le.toString(le.href) + " " + (typeof le.toString(le.href)));
+        
+      }
+      
+    }
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    
+    var same_hrefs     = dom_cache.links_cache.getLinksThatShareTheSameHREF();
+    var same_hrefs_len = same_hrefs.length;
+
+    for (var i = 0; i < same_hrefs_len; i++) {
+      
+      var same_href = same_hrefs[i];
+      
+      if (same_href.same_names) updateResults(same_href.links, TEST_RESULT.PASS, 'ELEMENT_PASS_1');
+      else updateResults(same_href.links, TEST_RESULT.MANUAL_CHECK, 'ELEMENT_MC_1');
+//      else updateResults(same_href.links, TEST_RESULT.FAIL, 'ELEMENT_FAIL_1');
+                  
+    }  // end loop  
+    
+  } // end validate function
+ },
+
+/**
+ * @object LINK_2
+ *
+ * @desc Links with the different HREFs should have the unique accessible names
+ */ 
+     
+{ rule_id             : 'LINK_2', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LINKS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '2.4.4',
+  wcag_related_ids    : ['2.4.9'],
+
+  target_resources    : ['a', 'area', '[role=link]'],
+  primary_property    : 'href',
+  resource_properties : ['accessible_name', 'accessible_description', 'accessible_name_source'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+    function updateResults(links, test_result, message) {
+    
+      for (var i = 0; i < links.length; i++) {
+      
+        var le = links[i];
+        var links_len = links[i].length;
+      
+//        OpenAjax.a11y.logger.debug("  Update Item: " + i + " of " + end + " le: " + le.toString());
+
+        var tag_name  = le.dom_element.tag_name;
+              
+        rule_result.addResult(test_result, le,  message, [tag_name, links_len]);        
+      }
+      
+    }
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    
+    var same_names     = dom_cache.links_cache.getLinksThatShareTheSameName();
+    var same_names_len = same_names.length;
+
+    for (var i = 0; i < same_names_len; i++) {
+      
+      var same_name = same_names[i];
+      
+      if (same_name.same_hrefs) {
+        updateResults(same_name.links, TEST_RESULT.PASS, 'ELEMENT_PASS_1');
+      } else {
+        if (same_name.unique_descriptions) {
+          updateResults(same_name.links, TEST_RESULT.PASS, 'ELEMENT_PASS_2');
+        } else {
+          updateResults(same_name.links, TEST_RESULT.FAIL, 'ELEMENT_FAIL_1');
+        }  
+      }            
+    }  // end loop  
+
+  } // end validate function
+ },
+ 
+/**
+ * @object LINK_3 
+ * 
+ * @desc Links should have minimum dimensions for selecting and reading
+ */
+ 
+{ rule_id             : 'LINK_3', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LINKS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '2.4.4',
+  wcag_related_ids    : ['2.4.9'],
+  target_resources    : ['a', 'area', '[role=link]'],
+  primary_property    : 'height',
+  resource_properties : ['height', 'width', 'is_visible_onscreen'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+    
+    var MIN_HEIGHT = 12;
+    var MIN_WIDTH = 12;
+
+    var passed = true;
+    var node_result = null;
+   
+    // Check to see if valid cache reference
+    if (dom_cache.links_cache.link_elements) {
+     
+      var link_elements_len = dom_cache.links_cache.link_elements.length;
+    
+      for (var i=0; i < link_elements_len; i++) {
+       
+        var le = dom_cache.links_cache.link_elements[i];
+        var cs = le.dom_element.computed_style;
+
+        var tag_name = le.dom_element.tag_name;
+
+        // test if link is visible in a graphical rendering
+
+        if (le.is_link) {       
+
+          if ((cs.is_visible_onscreen == VISIBILITY.VISIBLE) &
+              (cs.height > 0) &&
+              (cs.width > 0)) {
+   
+            if ((cs.height >= MIN_HEIGHT) && 
+                 (cs.width >= MIN_WIDTH)) {
+              rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_1', [tag_name]);
+            }
+            else {
+              rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_1', [tag_name, cs.height, cs.width]);
+            }
+          }  
+          else {
+            rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [tag_name]);
+          } 
+        } // endif
+      } // end loop
+    } 
+  } // end validation function
+},
+
+/**
+ * @object LINK_4 
+ * 
+ * @desc Link should describe the target of a link
+ */
+ 
+{ rule_id             : 'LINK_4', 
+  last_updated        : '2012-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LINKS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '2.4.4',
+  wcag_related_ids    : ['2.4.9'],
+  target_resources    : ['a', 'area', '[role=link]'],
+  primary_property    : 'accessible_name',
+  resource_properties : ['accessible_name_source', 'href', 'accessible_description'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+    
+    var link_elements     = dom_cache.links_cache.link_elements;
+    var link_elements_len = link_elements.length;
+
+    var visible_link_elements = [];
+    
+    for (var i = 0; i < link_elements_len; i++) {
+      
+      var le = link_elements[i];
+      var tag_name = le.dom_element.tag_name;
+      
+      if (le.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE && 
+          le.is_link) {
+        visible_link_elements.push(le);
+      }
+      else {
+        rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [tag_name]);                  
+      }
+      
+    }
+    
+    var visible_link_elements_len = visible_link_elements.length;
+
+    for (i = 0; i < visible_link_elements_len; i++) {
+
+      le = visible_link_elements[i];
+      
+      var name        = le.accessible_name_for_comparison;
+      var description = le.accessible_description_for_comparison;
+      tag_name        = le.dom_element.tag_name;
+
+      if (name.length) {
+        if (description.length) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, le, 'ELEMENT_MC_2', [tag_name, name, description]);
+        else rule_result.addResult(TEST_RESULT.MANUAL_CHECK, le, 'ELEMENT_MC_1', [tag_name, name]);
+      }  
+      else {
+        rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_1', [tag_name]);
+      }
+      
+    }  // end loop  
+    
+    
+  } // end valifdation function
+}
+
+      
+]); 
+
+
+    
+
+/**
+ * Copyright 2011-2014 OpenAjax Alliance
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* ---------------------------------------------------------------- */
+/*            OpenAjax Alliance List Rules                         */ 
+/* ---------------------------------------------------------------- */
+
+OpenAjax.a11y.RuleManager.addRulesFromJSON([
+
+/**
+ * @object LIST_1 
+ * 
+ * @desc A list of navigational links should be contained within an element with role=navigation.
+ *          Thus any ul or ol element that contains at least a specified minimum of li elements with
+ *          one and only one link is considered a list of links and must have role=navigation.
+*/
+ 
+{ rule_id             : 'LIST_1', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LINKS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '2.4.4',
+  wcag_related_ids    : ['2.4.9'],
+  target_resources    : ['a', 'li', '[role=link]'],
+  primary_property    : 'parent_landmark',
+  resource_properties : ['href', 'accessible_description', 'accessible_name', 'accessible_name_source'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+      var MINIMUM_LI_ELEMENTS = 4; // to be considered a list of links
+      var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+      var container_elements = dom_cache.lists_cache.container_elements;
+
+      var i; // loop counter
+      var max = container_elements.length; // loop control
+      var le; // loop placeholder
+
+      for (i = 0; i < max; i++) {
+        le = container_elements[i];
+
+        if (le.isListOfLinks(MINIMUM_LI_ELEMENTS)) {
+          if (le.dom_element.hasAttrWithValue('role', 'navigation')) {
+            rule_result.addResult(SEVERITY.FAIL, le, 'MESSAGE_ROLE_NAV_ON_LIST',
+                                    [le.dom_element.tag_name]);
+          }
+          else {
+            if (le.dom_element.parent && le.dom_element.parent.hasAttrWithValue('role', 'navigation')) {
+              rule_result.addResult(TEST_RESULT.PASS, le, 'MESSAGE_HAS_ROLE_NAV', [le.dom_element.tag_name]);
+            }
+            else {
+              rule_result.addResult(SEVERITY.FAIL, le, 'MESSAGE_MISSING_ROLE_NAV',
+                                      [le.dom_element.tag_name]);
+            }
+          }
+        }
+      } // end loop
+    } // end validate function
+  }
+]);
+
+/* ---------------------------------------------------------------- */
+/*  OpenAjax Alliance Control Rules                                 */ 
+/* ---------------------------------------------------------------- */
+
+OpenAjax.a11y.RuleManager.addRulesFromJSON([
+
+/**
+ * @object NAVIGATION_1
+ * 
+ * @desc Page has at least two of the following resources: table of contents, site map, 
+ *       search, navigation links, sand trail
+ */
+     
+{ rule_id             : 'NAVIGATION_1', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.WEBSITE,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.SITE_NAVIGATION,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '2.4.5',
+  wcag_related_ids    : [],
+  target_resources    : ['Website', 'role="search"', 'role="navigation"'],
+  primary_property    : 'role',
+  resource_properties : [],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+    var SOURCE      = OpenAjax.a11y.SOURCE;
+  
+    var landmark_elements     = dom_cache.headings_landmarks_cache.landmark_elements;
+    var landmark_elements_len = landmark_elements.length;
+
+    var page_element = dom_cache.headings_landmarks_cache.page_element;
+
+    var landmark_count = 0;
+    var navigation_count = 0;
+    var search_count     = 0;
+    
+    var LANDMARK_ROLE = 'navigation';
+
+    for (var i = 0; i < landmark_elements_len; i++ ) {
+      var le = landmark_elements[i];
+      var tag_name = le.dom_element.tag_name;
+      
+      if (le.role === 'navigation') {
+        if (le.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {
+          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, le, 'ELEMENT_MC_1', []);
+          navigation_count++;
+        }
+      }  
+      
+      if (le.role === 'search') {
+        if (le.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {
+          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, le, 'ELEMENT_MC_2', []);
+          search_count++;
+        }  
+      }  
+      
+    }
+
+    if (page_element) {
+      if ((navigation_count > 0) && (search_count > 0)) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'WEBSITE_MC_1', []);
+      else rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'WEBSITE_MC_2', []);
+    } 
+       
+
+  } // end validation function   
+},
+
+/**
+ * @object NAVIGATION_2
+ * 
+ * @desc  Landmarks are in the same relative order when used to identify sections of web pages within the same website 
+ *
+ */
+     
+{ rule_id             : 'NAVIGATION_2', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.WEBSITE,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.SITE_NAVIGATION,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '3.2.3',
+  wcag_related_ids    : ['3.2.4'],
+  target_resources    : ['Website', 'role="main"', 'role="navigation"', 'role="banner"', 'role="contentinfo"','role="search"'],
+  primary_property    : 'role',
+  resource_properties : [],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+    var SOURCE      = OpenAjax.a11y.SOURCE;
+  
+    var landmark_elements     = dom_cache.headings_landmarks_cache.landmark_elements;
+    var landmark_elements_len = landmark_elements.length;
+
+    var page_element = dom_cache.headings_landmarks_cache.page_element;
+
+    var main_count        = 0;
+    var navigation_count  = 0;
+    var banner_count      = 0;
+    var contentinfo_count = 0;
+    var search_count      = 0;
+    
+    var LANDMARK_ROLE = 'navigation';
+    
+    var les = [];
+
+    for (var i = 0; i < landmark_elements_len; i++ ) {
+      var le = landmark_elements[i];
+      
+      if (le.role === 'main') {
+        if (le.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {
+          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, le, 'ELEMENT_MC_1', []);
+          
+          if (main_count === 0) les.push('main');
+          
+          main_count += 1;
+        }  
+      }  
+      
+      if (le.role === 'navigation') {
+        if (le.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {
+          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, le, 'ELEMENT_MC_2', []);
+          
+          if (navigation_count === 0) les.push('navigation');
+          
+          navigation_count += 1;
+        }
+      }  
+      
+      if (le.role === 'banner') {
+        if (le.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {
+          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, le, 'ELEMENT_MC_3', []);
+          
+          if (banner_count === 0) les.push('banner');
+          
+          banner_count += 1;
+        }  
+      }  
+
+      if (le.role === 'contentinfo') {
+        if (le.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {
+          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, le, 'ELEMENT_MC_4', []);
+          
+          if (contentinfo_count === 0) les.push('contentinfo');
+          
+          contentinfo_count += 1;
+        }  
+      }  
+      
+      if (le.role === 'search') {
+        if (le.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {
+          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, le, 'ELEMENT_MC_5', []);
+          
+          if (search_count === 0) les.push('search');
+          
+          search_count += 1;
+        }  
+      }  
+      
+    }
+
+    if (page_element) {
+      if ((main_count > 0) && (navigation_count > 0)) {    
+          
+          var last = les.length - 1;
+          var landmark_list = les[0];
+          
+          for (i = 1; i < les.length; i++) {
+            if (i === last) landmark_list += " and " + les[i];
+            else landmark_list += ", " + les[i];
+          }
+          
+          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'WEBSITE_MC_1', [landmark_list]);
+      }  
+      else {
+        if ((main_count === 0) && (navigation_count !== 0)) rule_result.addResult(TEST_RESULT.FAIL, page_element, 'WEBSITE_FAIL_1', []);
+        else if ((main_count !== 0) && (navigation_count === 0)) rule_result.addResult(TEST_RESULT.FAIL, page_element, 'WEBSITE_FAIL_2', []);
+        else rule_result.addResult(TEST_RESULT.FAIL, page_element, 'WEBSITE_FAIL_3', []);
+      }  
+    } 
+  } // end validation function   
+},
+
+/**
+ * @object NAVIGATION_3
+ * 
+ * @desc  h2 elements are in the same relative order when used to identify sections of web pages within the same website 
+ *
+ */
+     
+{ rule_id             : 'NAVIGATION_3', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.WEBSITE,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.SITE_NAVIGATION,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '3.2.3',
+  wcag_related_ids    : ['3.2.4'],
+  target_resources    : ['Website', 'h2'],
+  primary_property    : 'role',
+  resource_properties : [],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+  
+    var heading_elements     = dom_cache.headings_landmarks_cache.heading_elements;
+    var heading_elements_len = heading_elements.length;
+
+    var page_element = dom_cache.headings_landmarks_cache.page_element;
+
+    var heading_count = 0;
+    
+    for (var i = 0; i < heading_elements_len; i++ ) {
+      var he = heading_elements[i];
+
+      if ((he.level === 1) &&
+         (he.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE)) {
+          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, he, 'ELEMENT_MC_1', []);
+          heading_count += 1;
+      }        
+
+      if ((he.level === 2) &&
+         (he.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE)) {
+          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, he, 'ELEMENT_MC_2', []);
+          heading_count += 1;
+      }        
+    }
+
+    if (page_element) {
+       if (heading_count) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'WEBSITE_MC_1', []);
+       else rule_result.addResult(TEST_RESULT.FAIL, page_element, 'WEBSITE_FAIL_1', []);
+    } 
+       
+
+  } // end validation function   
+},
+
+/**
+ * @object NAVIGATION_4
+ * 
+ * @desc  landmarks identifying the same sections in a website have the same accessible name
+ *
+ */
+     
+{ rule_id             : 'NAVIGATION_4', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.WEBSITE,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.SITE_NAVIGATION,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '3.2.4',
+  wcag_related_ids    : ['3.2.3'],
+  target_resources    : ['Website', 'role="search"', 'role="navigation"', 'role="main"', 'role="banner"', 'role="contentinfo"', 'h2'],
+  primary_property    : 'role',
+  resource_properties : [],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+    var SOURCE      = OpenAjax.a11y.SOURCE;
+  
+    var landmark_elements     = dom_cache.headings_landmarks_cache.landmark_elements;
+    var landmark_elements_len = landmark_elements.length;
+
+    var page_element = dom_cache.headings_landmarks_cache.page_element;
+
+    var landmark_count = 0;
+    
+    var LANDMARK_ROLE = 'navigation';
+
+    for (var i = 0; i < landmark_elements_len; i++ ) {
+      var le = landmark_elements[i];
+      
+      if (le.role === 'main') {
+        if (le.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {
+          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, le, 'ELEMENT_MC_1', []);
+          landmark_count += 1;
+        }  
+      }  
+      
+      if (le.role === 'navigation') {
+        if (le.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {
+          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, le, 'ELEMENT_MC_2', []);
+          landmark_count += 1;
+        }
+      }  
+      
+      if (le.role === 'search') {
+        if (le.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {
+          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, le, 'ELEMENT_MC_3', []);
+          landmark_count += 1;
+        }  
+      }  
+      
+      if (le.role === 'banner') {
+        if (le.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {
+          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, le, 'ELEMENT_MC_4', []);
+          landmark_count += 1;
+        }  
+      }  
+
+      if (le.role === 'contentinfo') {
+        if (le.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {
+          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, le, 'ELEMENT_MC_5', []);
+          landmark_count += 1;
+        }  
+      }  
+      
+    }
+
+    if (page_element) {
+      if (landmark_count) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'WEBSITE_MC_1', []);
+      else rule_result.addResult(TEST_RESULT.FAIL, page_element, 'WEBSITE_FAIL_1', []);
+    } 
+       
+
+  } // end validation function   
+},
+
+/**
+ * @object NAVIGATION_5
+ * 
+ * @desc  h2 elements used to identify sections of web pages within the same accessible name
+ *
+ */
+     
+{ rule_id             : 'NAVIGATION_5', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.WEBSITE,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.SITE_NAVIGATION,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '3.2.4',
+  wcag_related_ids    : ['3.2.3'],
+  target_resources    : ['Website', 'h2'],
+  primary_property    : 'role',
+  resource_properties : [],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+  
+    var heading_elements     = dom_cache.headings_landmarks_cache.heading_elements;
+    var heading_elements_len = heading_elements.length;
+
+    var page_element = dom_cache.headings_landmarks_cache.page_element;
+
+    var heading_count = 0;
+    
+    for (var i = 0; i < heading_elements_len; i++ ) {
+      var he = heading_elements[i];
+
+      if ((he.level === 1) &&
+         (he.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE)) {
+          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, he, 'ELEMENT_MC_1', []);
+          heading_count += 1;
+      }        
+
+      if ((he.level === 2) &&
+         (he.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE)) {
+          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, he, 'ELEMENT_MC_2', []);
+          heading_count += 1;
+      }        
+    }
+
+    if (page_element) {
+       if (heading_count) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'WEBSITE_MC_1', []);
+       else rule_result.addResult(TEST_RESULT.FAIL, page_element, 'WEBSITE_FAIL_1', []);
+    } 
+       
+  } // end validation function   
+}
+
+]); 
+
+
+    
+
+/**
+ * Copyright 2011-2014 OpenAjax Alliance
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* ---------------------------------------------------------------- */
+/*            OpenAjax Alliance Media Rules                         */ 
+/* ---------------------------------------------------------------- */
+
+OpenAjax.a11y.RuleManager.addRulesFromJSON([
+
+/**
+ * @object RESIZE_1
+ *
+ * @desc Timing adjustable for pages with interactive elements
+ */ 
+ 
+{ rule_id             : 'RESIZE_1', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.STYLES_READABILITY,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP3,
+  wcag_primary_id     : '1.4.4',
+  wcag_related_ids    : [],
+  target_resources    : [],
+  primary_property    : '',
+  resource_properties : [],
+  language_dependency : "",
+  validate          : function (dom_cache, rule_result) {
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+
+    var page_element = dom_cache.timing_cache.page_element;      
+
+    rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MC_1', []);                        
+
+  } // end validate function
+}
+
+]);
+/**
+ * Copyright 2011-2014 OpenAjax Alliance
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* ---------------------------------------------------------------- */
+/*            OpenAjax Alliance Media Rules                         */ 
+/* ---------------------------------------------------------------- */
+
+OpenAjax.a11y.RuleManager.addRulesFromJSON([
+
+/**
+ * @object ROLE_1
+ *
+ * @desc main element may only have roles 'main' or 'presentation'
+ */ 
+ 
+{ rule_id             : 'ROLE_1', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LANDMARKS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '1.3.1',
+  wcag_related_ids    : ['2.4.1','2.4.6', '4.1.2'],
+  target_resources    : ['main'],
+  primary_property    : 'role',
+  resource_properties : [],
+  language_dependency : "",
+  validate          : function (dom_cache, rule_result) {
+
+    var TEST_RESULT    = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY     = OpenAjax.a11y.VISIBILITY;
+    
+    var dom_elements     = dom_cache.element_cache.dom_elements;
+    var dom_elements_len = dom_elements.length;
+    
+    for (var i = 0; i < dom_elements_len; i++) {
+      var de = dom_elements[i];
+
+      if (de.tag_name === 'main') {
+      
+        if (de.computed_style.is_visible_to_at === VISIBILITY.VISIBLE ) {      
+           
+           if (de.role && de.role.length > 0) {
+             if (de.role.indexOf('presentation') >= 0) {
+               rule_result.addResult(TEST_RESULT.MANUAL_CHECK, de, 'ELEMENT_MC_1', []);
+             }
+             else {
+               if (de.role.indexOf('main') >= 0) {
+                 rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_1', []);               
+               }
+               else {
+                 OpenAjax.a11y.logger.debug("FAIL 1: " + de.role );
+
+                 rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [de.role]);               
+               }
+             }  
+           }
+           else {                
+             OpenAjax.a11y.logger.debug("FAIL 2: " + de.role );
+             rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_2', []);    
+           }
+        }   
+        else {
+          rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', []);
+        }
+      }
+    } 
+    
+  } // end validate function
+},
+
+/**
+ * @object ROLE_2
+ *
+ * @desc body element role restrictions
+ */ 
+ 
+{ rule_id             : 'ROLE_2', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LANDMARKS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '1.3.1',
+  wcag_related_ids    : ['2.4.1','2.4.6', '4.1.2'],
+  target_resources    : ['body'],
+  primary_property    : 'role',
+  resource_properties : [],
+  language_dependency : "",
+  validate          : function (dom_cache, rule_result) {
+
+
+    var TEST_RESULT    = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY     = OpenAjax.a11y.VISIBILITY;
+    
+    var section_elements     = dom_cache.headings_landmarks_cache.getListOfSectionElements();
+    var section_elements_len = section_elements.length;
+
+//   OpenAjax.a11y.logger.debug("Section Elements: " + section_elements_len );
+
+    for (var i = 0; i < section_elements_len; i++) {
+      var se = section_elements[i];
+      var de = se.dom_element;
+      
+//      OpenAjax.a11y.logger.debug("ROLE 2: " + de.tag_name + "[" + de.has_role + "]");
+
+      if (de.has_role && de.tag_name === 'body') {
+          
+        var role = de.role;
+          
+        if ((role === 'application') || (role === 'document')) {
+          rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_1', [role]);               
+        } 
+        else {
+          rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [role]);               
+        }
+      }
+    } 
+  } // end validate function
+},
+
+/**
+ * @object ROLE_3
+ *
+ * @desc list element role restrictions
+ */ 
+ 
+{ rule_id             : 'ROLE_3', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.WIDGETS_SCRIPTS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '4.1.2',
+  wcag_related_ids    : ['4.1.1'],
+  target_resources    : ['ul', 'ol', 'li'],
+  primary_property    : 'role',
+  resource_properties : [],
+  language_dependency : "",
+  validate          : function (dom_cache, rule_result) {
+
+    function checkSectionElement(de, allowed_roles, req_role, pres_role_allowed) {
+
+      if (de.has_role) {
+        if (de.computed_style.is_visible_to_at === VISIBILITY.VISIBLE ) {     
+        
+          var srole = ' ' + de.role + ' ';
+          var aroles = ' ' + allowed_roles + ' ';
+        
+          if (de.role && de.role.length > 0) {
+            if (srole.indexOf('presentation') >= 0 && pres_role_allowed) {
+              rule_result.addResult(TEST_RESULT.MANUAL_CHECK, de, 'ELEMENT_MC_1', [de.tag_name]);
+            }
+            else {
+              if (aroles.indexOf(srole) >= 0) {
+                rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_1', [de.role, de.tag_name]);               
+              }
+              else {
+                rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [de.role, allowed_roles]);               
+              }  
+            }
+          }  
+          else {                
+            if (req_role && req_role) {
+              rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_2', [de.tag_name, req_role]);    
+            }    
+          }
+        }   
+        else {
+          rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.tag_name]);
+        }
+      }   
+    } 
+
+
+    var TEST_RESULT    = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY     = OpenAjax.a11y.VISIBILITY;
+    
+    var dom_elements     = dom_cache.element_cache.dom_elements;
+    var dom_elements_len = dom_elements.length;
+
+    for (var i = 0; i < dom_elements_len; i++) {
+      var de = dom_elements[i];
+
+      switch(de.tag_name) {
+          
+      case 'ol':
+      case 'ul':
+        checkSectionElement(de, 'list directory listbox menu menubar tablist toolbar tree', '', true);
+        break;
+
+      case 'li':
+        checkSectionElement(de, 'listitem menuitem menuitemcheckbox menuitemradio option tab treeitem', '', true);
+        break;
+                       
+      case 'hr':
+        checkSectionElement(de, 'separator', '', true);
+        break;
+                       
+      default:
+        break;  
+           
+      }
+    } 
+  } // end validate function
+},
+
+/**
+ * @object ROLE_4
+ *
+ * @desc article element role restrictions
+ */ 
+ 
+{ rule_id             : 'ROLE_4', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LANDMARKS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '1.3.1',
+  wcag_related_ids    : ['2.4.1','2.4.6', '4.1.2'],
+  target_resources    : ['article'],
+  primary_property    : 'role',
+  resource_properties : [],
+  language_dependency : "",
+  validate          : function (dom_cache, rule_result) {
+
+
+    var TEST_RESULT    = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY     = OpenAjax.a11y.VISIBILITY;
+    
+    var section_elements     = dom_cache.headings_landmarks_cache.getListOfSectionElements();
+    var section_elements_len = section_elements.length;
+
+//   OpenAjax.a11y.logger.debug("Section Elements: " + section_elements_len );
+
+    for (var i = 0; i < section_elements_len; i++) {
+      var se = section_elements[i];
+      var de = se.dom_element;
+      
+//      OpenAjax.a11y.logger.debug("ROLE 4: " + de.tag_name + "[" + de.has_role + "]");
+
+      if (de.has_role && de.tag_name === 'article') {
+          
+        var role = de.role;
+        var cs   = de.computed_style;
+          
+        if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+           
+          if ((role === 'application') || 
+              (role === 'document') || 
+              (role === 'main') || 
+              (role === 'article')) {
+            rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_1', [role]);               
+          } 
+          else {
+            rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [role]);               
+          }          
+        } 
+        else {
+          rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [role]);                       
+        } 
+      }
+    } 
+  } // end validate function
+},
+
+/**
+ * @object ROLE_5
+ *
+ * @desc section element role restrictions
+ */ 
+ 
+{ rule_id             : 'ROLE_5', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LANDMARKS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '1.3.1',
+  wcag_related_ids    : ['2.4.1','2.4.6', '4.1.2'],
+  target_resources    : ['section'],
+  primary_property    : 'role',
+  resource_properties : [],
+  language_dependency : "",
+  validate          : function (dom_cache, rule_result) {
+
+
+    var TEST_RESULT    = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY     = OpenAjax.a11y.VISIBILITY;
+    
+    var section_elements     = dom_cache.headings_landmarks_cache.getListOfSectionElements();
+    var section_elements_len = section_elements.length;
+
+    for (var i = 0; i < section_elements_len; i++) {
+      var se = section_elements[i];
+      var de = se.dom_element;
+      
+//      OpenAjax.a11y.logger.debug("ROLE 5: " + de.tag_name + "[" + de.has_role + "]");
+
+      if (de.has_role && de.tag_name === 'section') {
+          
+        var role = de.role;
+        var cs   = de.computed_style;
+          
+        if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+           
+          if ((role === 'alert') || 
+              (role === 'alertdialog') || 
+              (role === 'application') || 
+              (role === 'contentinfo') || 
+              (role === 'dialog') || 
+              (role === 'document') || 
+              (role === 'log') || 
+              (role === 'main') || 
+              (role === 'marquee') ||
+              (role === 'presentation') ||
+              (role === 'region') ||
+              (role === 'search') ||
+              (role === 'status')) {
+            rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_1', [role]);               
+          } 
+          else {
+            rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [role]);               
+          }          
+        } 
+        else {
+          rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [role]);                       
+        } 
+      }
+    } 
+  } // end validate function
+},
+
+/**
+ * @object ROLE_6
+ *
+ * @desc nav element role restrictions
+ */ 
+ 
+{ rule_id             : 'ROLE_6', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LANDMARKS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '1.3.1',
+  wcag_related_ids    : ['2.4.1','2.4.6', '4.1.2'],
+  target_resources    : ['nav'],
+  primary_property    : 'role',
+  resource_properties : [],
+  language_dependency : "",
+  validate          : function (dom_cache, rule_result) {
+
+
+    var TEST_RESULT    = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY     = OpenAjax.a11y.VISIBILITY;
+    
+    var section_elements     = dom_cache.headings_landmarks_cache.getListOfSectionElements();
+    var section_elements_len = section_elements.length;
+
+    for (var i = 0; i < section_elements_len; i++) {
+      var se = section_elements[i];
+      var de = se.dom_element;
+      
+//      OpenAjax.a11y.logger.debug("ROLE 5: " + de.tag_name + "[" + de.has_role + "]");
+
+      if (de.tag_name === 'nav') {
+        
+        if (de.has_role) {  
+          var cs   = de.computed_style;
+          
+          if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+          
+            var role = de.role;
+            
+            if ((role === 'navigation') ||
+                (role === 'presentation')) {
+              rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_1', [role]);               
+            } 
+            else {
+              rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [role]);               
+            }
+          } 
+          else {
+            rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [role]);                       
+          }
+        }
+//  Future manual check        
+//        else {
+//          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, de, 'ELEMENT_MC_1', [role]);               
+//        }  
+      }
+    } 
+  } // end validate function
+},
+
+/**
+ * @object ROLE_7
+ *
+ * @desc aside element role restrictions
+ */ 
+ 
+{ rule_id             : 'ROLE_7', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LANDMARKS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '1.3.1',
+  wcag_related_ids    : ['2.4.1','2.4.6', '4.1.2'],
+  target_resources    : ['aside'],
+  primary_property    : 'role',
+  resource_properties : [],
+  language_dependency : "",
+  validate          : function (dom_cache, rule_result) {
+
+
+    var TEST_RESULT    = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY     = OpenAjax.a11y.VISIBILITY;
+    
+    var section_elements     = dom_cache.headings_landmarks_cache.getListOfSectionElements();
+    var section_elements_len = section_elements.length;
+
+    for (var i = 0; i < section_elements_len; i++) {
+      var se = section_elements[i];
+      var de = se.dom_element;
+      
+//      OpenAjax.a11y.logger.debug("ROLE 5: " + de.tag_name + "[" + de.has_role + "]");
+
+      if (de.has_role && de.tag_name === 'aside') {
+          
+        var cs   = de.computed_style;
+          
+        if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+          
+          var role = de.role;
+            
+          if ((role === 'complementary') ||
+              (role === 'region') ||
+              (role === 'note') ||
+              (role === 'search') ||
+              (role === 'presentation')) {
+            rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_1', [role]);               
+          } 
+          else {
+            rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [role]);               
+          }
+        } 
+        else {
+          rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [role]);                       
+        } 
+      }
+    } 
+  } // end validate function
+},
+
+/**
+ * @object ROLE_8
+ *
+ * @desc header element role restrictions
+ */ 
+ 
+{ rule_id             : 'ROLE_8', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LANDMARKS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '1.3.1',
+  wcag_related_ids    : ['2.4.1','2.4.6', '4.1.2'],
+  target_resources    : ['header'],
+  primary_property    : 'role',
+  resource_properties : ['role'],
+  language_dependency : "",
+  validate          : function (dom_cache, rule_result) {
+
+
+    var TEST_RESULT    = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY     = OpenAjax.a11y.VISIBILITY;
+    
+    var section_elements     = dom_cache.headings_landmarks_cache.getListOfSectionElements();
+    var section_elements_len = section_elements.length;
+
+    for (var i = 0; i < section_elements_len; i++) {
+      var se = section_elements[i];
+      var de = se.dom_element;
+      
+//      OpenAjax.a11y.logger.debug("ROLE 5: " + de.tag_name + "[" + de.has_role + "]");
+
+      if (de.has_role && de.tag_name === 'header') {
+          
+        var cs   = de.computed_style;
+          
+        if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+          
+          if (de.has_role) { 
+            var role = de.role;
+            
+            if ((role === 'banner') ||
+                (role === 'presentation')) {
+              rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_1', [role]);               
+            } 
+            else {
+              rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [role]);               
+            }
+          }
+          else {
+            rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_2', []);                 
+          }            
+        } 
+        else {
+          rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [role]);                       
+        } 
+      }
+    } 
+  } // end validate function
+},
+
+/**
+ * @object ROLE_9
+ *
+ * @desc footer element role restrictions
+ */ 
+ 
+{ rule_id             : 'ROLE_9', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LANDMARKS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '1.3.1',
+  wcag_related_ids    : ['2.4.1','2.4.6', '4.1.2'],
+  target_resources    : ['header'],
+  primary_property    : 'role',
+  resource_properties : [],
+  language_dependency : "",
+  validate          : function (dom_cache, rule_result) {
+
+
+    var TEST_RESULT    = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY     = OpenAjax.a11y.VISIBILITY;
+    
+    var section_elements     = dom_cache.headings_landmarks_cache.getListOfSectionElements();
+    var section_elements_len = section_elements.length;
+
+    for (var i = 0; i < section_elements_len; i++) {
+      var se = section_elements[i];
+      var de = se.dom_element;
+      
+//      OpenAjax.a11y.logger.debug("ROLE 5: " + de.tag_name + "[" + de.has_role + "]");
+
+      if (de.has_role && de.tag_name === 'footer') {
+          
+        var cs   = de.computed_style;
+          
+        if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+          
+          if (de.has_role) { 
+            var role = de.role;
+            
+            if ((role === 'contentinfo') ||
+                (role === 'presentation')) {
+              rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_1', [role]);               
+            } 
+            else {
+              rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [role]);               
+            }
+          }
+          else {
+            rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_2', []);                 
+          }            
+        } 
+        else {
+          rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [role]);                       
+        } 
+      }
+    } 
+  } // end validate function
+},
+
+/**
+ * @object ROLE_10
+ *
+ * @desc h1, h2, h3, h4, h5 and h6 element role restrictions
+ */ 
+ 
+{ rule_id             : 'ROLE_10', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.HEADINGS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '1.3.1',
+  wcag_related_ids    : ['2.4.1','2.4.6', '4.1.2'],
+  target_resources    : ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+  primary_property    : 'role',
+  resource_properties : [],
+  language_dependency : "",
+  validate          : function (dom_cache, rule_result) {
+
+
+    var TEST_RESULT    = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY     = OpenAjax.a11y.VISIBILITY;
+    
+    var heading_elements     = dom_cache.headings_landmarks_cache.heading_elements;
+    var heading_elements_len = heading_elements.length;
+
+    for (var i = 0; i < heading_elements_len; i++) {
+      var he = heading_elements[i];
+      var de = he.dom_element;
+      var cs = de.computed_style;
+      
+//      OpenAjax.a11y.logger.debug("ROLE 5: " + de.tag_name + "[" + de.has_role + "]");
+
+      if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+          
+        if (de.has_role) { 
+            var role = de.role;
+            
+            if ((role === 'heading') ||
+                (role === 'tab')) {
+              rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_2', [role]);               
+            } 
+            else {
+              if (role === 'presentation') {
+                rule_result.addResult(TEST_RESULT.MANUAL_CHECK, de, 'ELEMENT_MC_1', [de.tag_name]);              
+              }
+              else {
+                rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [role]);
+              }  
+            }
+        }
+        else {
+            rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_1', []);                 
+        }            
+      } 
+      else {
+        rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [role]);                        
+      }
+    } 
+  } // end validate function
+}
+
+
+]);
+/**
+ * Copyright 2011-2014 OpenAjax Alliance
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* ---------------------------------------------------------------- */
+/*            OpenAjax Alliance Media Rules                         */ 
+/* ---------------------------------------------------------------- */
+
+OpenAjax.a11y.RuleManager.addRulesFromJSON([
+
+  /**
+   * @object SENSORY_1
+   *
+   * @desc Content does not rely solely on sensory characteristics
+   */ 
+ 
+{ rule_id             : 'SENSORY_1', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.PAGE,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.STYLES_READABILITY,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '1.3.3',
+  wcag_related_ids    : [],
+  target_resources    : [],
+  primary_property    : '',
+  mc_properties       : [],
+  resource_properties : [],
+  language_dependency : "",
+  validate          : function (dom_cache, rule_result) {
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+   
+    var page_element = dom_cache.headings_landmarks_cache.page_element;
+
+    if (page_element) {
+      rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MANUAL_CHECK_1', []);      
+    }   
+  } // end validate function
+} 
+
+]);
+/**
+ * Copyright 2011-2014 OpenAjax Alliance
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* ---------------------------------------------------------------- */
+/*      OpenAjax Alliance Table Rules                               */
+/* ---------------------------------------------------------------- */
+
+OpenAjax.a11y.RuleManager.addRulesFromJSON([
+     
+/** 
+ * @object TABLE_1
+ * 
+ * @desc If a table is a data table, if each data cell has headers
+ */
+{ rule_id             : 'TABLE_1', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.TABLES,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '1.3.1',
+  wcag_related_ids    : ['2.4.6'],
+  target_resources    : ['td'],
+  primary_property    : 'header_content',
+  resource_properties : ['table_role', 'headers', 'header_source'],
+  language_dependency : "",
+  validate          : function (dom_cache, rule_result) {
+  
+    function allReadyDone(span_cell) {
+    
+      var span_cells_len = span_cells.length;
+    
+      for (var i = 0; i < span_cells_len; i++) {
+        if (span_cell === span_cells[i]) return true;
+      }
+      
+      span_cells.push(span_cell);
+      return false;
+    }
+  
+    var TEST_RESULT   = OpenAjax.a11y.TEST_RESULT;
+    var HEADER_SOURCE = OpenAjax.a11y.HEADER_SOURCE;
+    var VISIBILITY    = OpenAjax.a11y.VISIBILITY;
+  
+    var span_cells = [];
+  
+    var info_row;
+    var info_column;
+     
+    var table_elements   = dom_cache.tables_cache.table_elements;
+    var table_elements_len = table_elements.length;
+    
+//     OpenAjax.a11y.logger.debug("[Table Rule 1] Table Elements on page: " + table_elements_len);
+    
+    // Check to see if valid cache reference
+    if (table_elements && table_elements_len) {
+    
+      for (var i=0; i < table_elements_len; i++) {
+        var te = table_elements[i];
+        var is_visible_to_at = te.dom_element.computed_style.is_visible_to_at;
+
+//         OpenAjax.a11y.logger.debug("[Table Rule 1] Table Element: " + te + "   is data table: " + te.table_role);
+
+        if (te.table_role === OpenAjax.a11y.TABLE_ROLE.DATA) {
+    
+          var max_row    = te.max_row;
+          var max_column = te.max_column;
+          var cells      = te.cells;
+
+          for (var r = 0; r < max_row; r++) {
+            for (var c = 0; c < max_column; c++) {
+          
+              var cell = cells[r][c];
+            
+              if (cell && cell.table_type  === OpenAjax.a11y.TABLE.TD_ELEMENT) {
+                
+                if (is_visible_to_at == VISIBILITY.VISIBLE) {
+          
+                  if(cell.has_spans && allReadyDone(cell)) continue;
+                
+                  if(te.is_complex_data_table) {
+                    if (cell.text_content_for_comparison.length === 0) {
+                      rule_result.addResult(TEST_RESULT.MANUAL_CHECK, cell, 'ELEMENT_MC_1', []);
+                    }  
+                    else {
+                      if (cell.header_source === HEADER_SOURCE.HEADERS_ATTRIBUTE) {
+                        if (cell.header_content.length > 0) {
+                          rule_result.addResult(TEST_RESULT.PASS, cell, 'ELEMENT_PASS_1', [cell.headers]);
+                        }
+                        else {
+                          rule_result.addResult(TEST_RESULT.FAIL, cell, 'ELEMENT_FAIL_4', [cell.headers]);                       
+                        }
+                      }  
+                      else {
+                      
+//         OpenAjax.a11y.logger.debug("[Table Rule 1] Cell: " + cell + " headers: " + cell.headers);
+                        
+                        if (cell.headers && cell.headers.length > 0) {
+                          rule_result.addResult(TEST_RESULT.FAIL, cell, 'ELEMENT_FAIL_5', [cell.headers]);
+                        }
+                        else {
+                          rule_result.addResult(TEST_RESULT.FAIL, cell, 'ELEMENT_FAIL_1', []);
+                        }  
+                      }
+                    }  
+                  }
+                  else {
+                    if (cell.text_content_for_comparison.length === 0) {
+                      rule_result.addResult(TEST_RESULT.MANUAL_CHECK, cell, 'ELEMENT_MC_1', []);
+                    }
+                    else {
+                      if (cell.header_source === HEADER_SOURCE.HEADERS_ATTRIBUTE) {
+                        if (cell.header_content.length > 0) {
+                          rule_result.addResult(TEST_RESULT.PASS, cell, 'ELEMENT_PASS_1', [cell.headers]);
+                        }
+                        else {
+                          rule_result.addResult(TEST_RESULT.FAIL, cell, 'ELEMENT_FAIL_4', [cell.headers]);                       
+                        }
+                      }  
+                      else {
+                        if (cell.header_source === HEADER_SOURCE.ROW_OR_COLUMN_HEADERS) {
+                          if (cell.header_content.length > 0) {
+                            rule_result.addResult(TEST_RESULT.PASS, cell, 'ELEMENT_PASS_2', []);
+                          }
+                          else {
+                            rule_result.addResult(TEST_RESULT.FAIL, cell, 'ELEMENT_FAIL_3', []);                       
+                          }
+                        } 
+                        else {
+                          if (cell.headers && cell.headers.length > 0) {
+                            rule_result.addResult(TEST_RESULT.FAIL, cell, 'ELEMENT_FAIL_5', [cell.headers]);
+                          }
+                          else {
+                            rule_result.addResult(TEST_RESULT.FAIL, cell, 'ELEMENT_FAIL_2', []);
+                          }  
+                        }
+                      }
+                    }  
+                  }
+                }
+                else {
+                 rule_result.addResult(TEST_RESULT.HIDDEN, cell, 'ELEMENT_HIDDEN_1', []);     
+                }
+              }
+            }             
+          }
+        }   
+      } // end loop
+    }   
+  } // end validation function
+ },
+ 
+/** 
+ * @object TABLE_2 
+ *
+ * @desc If there is more than one data table on the same page each data table %s have an accessible name
+ */
+{ rule_id             : 'TABLE_2', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.TABLES,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '1.3.2',
+  wcag_related_ids    : ['4.1.2'],
+  target_resources    : ['caption', 'aria-label', 'aria-labelledby', 'titlr'],
+  primary_property    : 'accessible_name',
+  resource_properties : ['table_role', 'accessible_description', 'accessible_name_source'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+  
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var SOURCE      = OpenAjax.a11y.SOURCE;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+
+    var table_elements     = dom_cache.tables_cache.table_elements;
+    var table_elements_len = table_elements.length;
+
+    var data_tables = [];
+    var visible_data_tables = 0;
+    
+    var i, te, is_visible_to_at;
+
+//     OpenAjax.a11y.logger.debug("[Table Rule 2] Number of tables: " + table_elements_len);
+
+    // Check to see if valid cache reference
+    if (table_elements && table_elements_len) {
+      
+      for (i = 0; i < table_elements_len; i++) {
+        te = table_elements[i];
+      
+        if (te.table_role === OpenAjax.a11y.TABLE_ROLE.DATA) { 
+          data_tables.push(te);
+          if (te.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) visible_data_tables++;
+        }
+      } // end loop
+
+//       OpenAjax.a11y.logger.debug("[Table Rule 2] Number of data tables: " + visible_data_tables);
+
+      if (visible_data_tables > 1) {
+      
+        for (i = 0; i < data_tables.length; i++) {
+          te = table_elements[i];
+      
+          if (te.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {
+          
+            if (te.accessible_name_length > 0) {
+            
+               switch (te.accessible_name_source) {
+               
+               case SOURCE.TABLE_CAPTION:
+                  rule_result.addResult(TEST_RESULT.PASS, te, 'ELEMENT_PASS_1', [te.accessible_name]);
+                  break;
+                  
+               case SOURCE.TABLE_SUMMARY:
+                  rule_result.addResult(TEST_RESULT.PASS, te, 'ELEMENT_PASS_2', [te.accessible_name]);
+                  break;
+                  
+               case SOURCE.ARIA_LABEL:
+                  rule_result.addResult(TEST_RESULT.PASS, te, 'ELEMENT_PASS_3', [te.accessible_name]);
+                  break;
+                  
+               case SOURCE.ARIA_LABELLEDBY:
+                  rule_result.addResult(TEST_RESULT.PASS, te, 'ELEMENT_PASS_4', [te.accessible_name]);
+                  break;
+                  
+               case SOURCE.TITLE_ATTRIBUTE:
+                  rule_result.addResult(TEST_RESULT.PASS, te, 'ELEMENT_PASS_5', [te.accessible_name]);
+                  break;
+               default:
+               
+                  break;
+              }
+            }  
+            else {
+             rule_result.addResult(TEST_RESULT.FAIL, te, 'ELEMENT_FAIL_1', []);
+           }  
+          }
+          else {
+            rule_result.addResult(TEST_RESULT.HIDDEN, te, 'ELEMENT_HIDDEN_1', []);     
+          }
+        } // end loop
+      }
+    } 
+  } // end validation function
+ },
+
+/**
+ * @object TABLE_3
+ *
+ * @desc  Large or complex data tables %s have a text description or summary of data in the table 
+ */
+ 
+{ rule_id             : 'TABLE_3', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.TABLES,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '1.3.1',
+  wcag_related_ids    : ['2.4.6'],
+  target_resources    : ['aria-describedby', 'table[sumary]'],
+  primary_property    : 'accessible_name',
+  resource_properties : ['table_role', 'accessible_name_source', 'accessible_description'],
+  language_dependency : "",
+  validate          : function (dom_cache, rule_result) {
+  
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+    
+    var LARGE_TABLE_CELL_COUNT = 64;
+    
+    var table_elements     = dom_cache.tables_cache.table_elements;
+    var table_elements_len = table_elements.length;
+
+    // Check to see if valid cache reference
+    if (table_elements && table_elements_len) {
+    
+      for (var i = 0; i < table_elements_len; i++) {
+        var te = table_elements[i];
+        var is_visible_to_at = te.dom_element.computed_style.is_visible_to_at;
+     
+        if (te.table_role === OpenAjax.a11y.TABLE_ROLE.DATA) {
+        
+          if (is_visible_to_at == VISIBILITY.VISIBLE) {
+
+             if (te.accessible_description.length > 0) {
+               rule_result.addResult(TEST_RESULT.PASS, te, 'ELEMENT_PASS_1', []);
+             }
+             else {
+               if ((te.cell_count >= LARGE_TABLE_CELL_COUNT) ||
+                   te.is_complex_data_table) {    
+                rule_result.addResult(TEST_RESULT.FAIL, te, 'ELEMENT_FAIL_1', []);     
+               }
+               else {
+                 rule_result.addResult(TEST_RESULT.MANUAL_CHECK, te, 'ELEMENT_MC_1', []);     
+               }
+            }   
+          }
+          else {
+            rule_result.addResult(TEST_RESULT.HIDDEN, te, 'ELEMENT_HIDDEN_1', []);     
+          }
+        }
+      } // end loop
+    }
+  } // end validation function
+ },
+
+/** 
+ * @object TABLE_4
+ *
+ * @desc   Data tables with accessible names must be unique 
+ */
+ 
+{ rule_id             : 'TABLE_4', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.TABLES,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '1.3.1',
+  wcag_related_ids    : ['2.4.6'],
+  target_resources    : ['caption', 'aria-label', 'aria-labelledby'],
+  primary_property    : 'accessible_name',
+  resource_properties : ['table_role', 'accessible_name_source', 'accessible_description'],
+  language_dependency : "",
+  validate          : function (dom_cache, rule_result) {
+  
+    var TEST_RESULT   = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY    = OpenAjax.a11y.VISIBILITY;
+  
+    var span_cells = [];
+  
+    var info_row;
+    var info_column;
+     
+    var table_elements   = dom_cache.tables_cache.table_elements;
+    var table_elements_len = table_elements.length;
+    
+    var table_visible = [];
+    var i;
+    var j;
+    
+    // Check to see if valid cache reference
+    if (table_elements && table_elements_len) {
+    
+      for (i = 0; i < table_elements_len; i++) {
+        var te = table_elements[i];
+        var is_visible_to_at = te.dom_element.computed_style.is_visible_to_at;
+
+        if (te.table_role === OpenAjax.a11y.TABLE_ROLE.DATA) {
+    
+          if (te.accessible_name_length > 0) {             
+          
+            if (is_visible_to_at == VISIBILITY.VISIBLE) { 
+              table_visible.push(te);                          
+            }
+            else {
+              rule_result.addResult(TEST_RESULT.HIDDEN, te, 'ELEMENT_HIDDEN_1', []);              
+            }
+          }
+        }   
+      } // end loop
+      
+      table_visible.sort(function(a,b) {return a.accessible_name_for_comparison < b.accessible_name_for_comparison;});
+      
+      for (i = 1; i < table_visible.length;) {
+        var te1 = table_visible[i-1];
+        var te2 = table_visible[i];
+        
+        if (te1.accessible_name_for_comparison === te2.accessible_name_for_comparison) {
+          rule_result.addResult(TEST_RESULT.FAIL, te1, 'ELEMENT_FAIL_1', [te1.accessible_name]);
+          rule_result.addResult(TEST_RESULT.FAIL, te2, 'ELEMENT_FAIL_1', [te2.accessible_name]);
+          j = i + 1;
+          
+          while (( j < table_visible.length) && 
+                 (te1.accessible_name_for_comparison === table_visible[j].accessible_name_for_comparison)) {
+            rule_result.addResult(TEST_RESULT.FAIL, table_visible[j], 'ELEMENT_FAIL_1', [table_visible[j].accessible_name]);
+            j++;
+          }
+          i = j;
+        }
+        else {
+          rule_result.addResult(TEST_RESULT.PASS, te1, 'ELEMENT_PASS_1', [te1.accessible_name]);
+          i++;
+        }         
+      }
+      
+    }   
+  } // end validation function  
+},
+ 
+/**
+ * @object TABLE_5
+ *
+ * @desc  Identifies a table is being used for layout or tabular data, or cannot be determined form markup
+ */
+ 
+ { rule_id             : 'TABLE_5', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.TABLES,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '1.3.1',
+  wcag_related_ids    : ['2.4.6'],
+  target_resources    : ['table'],
+  primary_property    : 'tables_role',
+  resource_properties : [],
+  language_dependency : "",
+  validate          : function (dom_cache, rule_result) {
+  
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+    
+    var table_elements     = dom_cache.tables_cache.table_elements;
+    var table_elements_len = table_elements.length;
+
+    // Check to see if valid cache reference
+    if (table_elements && table_elements_len) {
+    
+      for (var i = 0; i < table_elements_len; i++) {
+        var te = table_elements[i];
+        var es = te.effective_summary_for_comparison;
+        var ec = te.effective_caption_for_comparison;
+        var is_visible_to_at = te.dom_element.computed_style.is_visible_to_at;
+
+        if (is_visible_to_at == VISIBILITY.VISIBLE) {
+
+          if (te.table_role === OpenAjax.a11y.TABLE_ROLE.DATA) rule_result.addResult(TEST_RESULT.PASS, te, 'ELEMENT_PASS_1', []);
+          else if (te.table_role === OpenAjax.a11y.TABLE_ROLE.LAYOUT) rule_result.addResult(TEST_RESULT.PASS, te, 'ELEMENT_PASS_2', []);
+          else rule_result.addResult(TEST_RESULT.FAIL, te, 'ELEMENT_FAIL_1', []);    
+        }
+        else {
+          rule_result.addResult(TEST_RESULT.HIDDEN, te, 'ELEMENT_HIDDEN_1', []);     
+        }
+      } // end loop
+    }
+  } // end validation function
+ },
+
+/** 
+ * @object TABLE_6
+ *
+ * @desc    Tests if table headers use TH elements instead of TD with SCOPE
+ */
+ 
+{ rule_id             : 'TABLE_6', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.TABLES,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '1.3.1',
+  wcag_related_ids    : ['2.4.6'],
+  target_resources    : ['td[scope]'],
+  primary_property    : 'tag_name',
+  resource_properties : ['scope'],
+  language_dependency : "",
+  validate          : function (dom_cache, rule_result) {
+
+    function allReadyDone(span_cell) {
+    
+      var span_cells_len = span_cells.length;
+    
+      for (var i = 0; i < span_cells_len; i++) {
+        if (span_cell === span_cells[i]) return true;
+      }
+      
+      span_cells.push(span_cell);
+      return false;
+    }
+  
+    var TEST_RESULT   = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY    = OpenAjax.a11y.VISIBILITY;
+  
+    var span_cells = [];
+  
+    var info_row;
+    var info_column;
+     
+    var table_elements   = dom_cache.tables_cache.table_elements;
+    var table_elements_len = table_elements.length;
+    
+    // Check to see if valid cache reference
+    if (table_elements && table_elements_len) {
+    
+      for (var i=0; i < table_elements_len; i++) {
+        var te = table_elements[i];
+        var is_visible_to_at = te.dom_element.computed_style.is_visible_to_at;
+
+        if (te.table_role === OpenAjax.a11y.TABLE_ROLE.DATA) {
+    
+          var max_row    = te.max_row;
+          var max_column = te.max_column;
+          var cells      = te.cells;
+
+          for (var r = 0; r < max_row; r++) {
+            for (var c = 0; c < max_column; c++) {
+          
+              var cell = cells[r][c];
+            
+              if (cell && cell.table_type  === OpenAjax.a11y.TABLE.TH_ELEMENT) {
+                
+                if (is_visible_to_at == VISIBILITY.VISIBLE) {
+          
+                  if(cell.has_spans && allReadyDone(cell)) continue;
+                
+                  if(cell.dom_element.tag_name === 'th') rule_result.addResult(TEST_RESULT.PASS, cell, 'ELEMENT_PASS_1', []);
+                  else rule_result.addResult(TEST_RESULT.FAIL, cell, 'ELEMENT_FAIL_1', []);
+                  
+                }
+                else {
+                 rule_result.addResult(TEST_RESULT.HIDDEN, cell, 'ELEMENT_HIDDEN_1', []);     
+                }
+              }
+            }             
+          }
+        }   
+      } // end loop
+    }   
+  } // end validation function  
+}
+]); 
+
+
+   
+
+/**
+ * Copyright 2011-2014 OpenAjax Alliance
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* ---------------------------------------------------------------- */
+/*            OpenAjax Alliance Media Rules                         */ 
+/* ---------------------------------------------------------------- */
+
+OpenAjax.a11y.RuleManager.addRulesFromJSON([
+
+/**
+ * @object TIMING_1
+ *
+ * @desc Timing adjustable for pages with interactive elements
+ */ 
+ 
+{ rule_id             : 'TIMING_1', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.TIMING,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '2.2.1',
+  wcag_related_ids    : [],
+  target_resources    : ['a', 'input', 'button', 'wdiget'],
+  primary_property    : '',
+  resource_properties : [],
+  language_dependency : "",
+  validate          : function (dom_cache, rule_result) {
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+
+    var page_element = dom_cache.timing_cache.page_element;      
+
+    rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MC_1', []);                        
+
+  } // end validate function
+},
+
+/**
+ * @object TIMING_2
+ *
+ * @desc Stop, puase or hide content that is moving, scrolling, flashing or auto updating
+ */ 
+ 
+{ rule_id             : 'TIMING_2', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.TIMING,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '2.2.2',
+  wcag_related_ids    : [],
+  target_resources    : ['applet', 'canvas', 'embed', 'img', 'object', 'svg'],
+  primary_property    : '',
+  resource_properties : [],
+  language_dependency : "",
+  validate          : function (dom_cache, rule_result) {
+    
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+  
+    var timing_elements     = dom_cache.timing_cache.timing_elements;
+    var timing_elements_len = timing_elements.length;
+
+    var page_element = dom_cache.timing_cache.page_element;      
+
+    for (var i = 0; i < timing_elements_len; i++) {
+      var mbe = timing_elements[i];
+      var de = mbe.dom_element;
+      var cs = de.computed_style;
+
+      if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+        rule_result.addResult(TEST_RESULT.MANUAL_CHECK, mbe, 'ELEMENT_MC_1', [de.tag_name]);     
+      }  
+      else {
+       rule_result.addResult(TEST_RESULT.HIDDEN, mbe, 'ELEMENT_HIDDEN_1', [de.tag_name]);     
+      }
+    }
+
+    rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MC_1', []);                        
+    
+  } // end validate function
+},
+
+/**
+ * @object TIMING_3
+ *
+ * @desc Web pages do not contain anything that flashes more than three times in any one second period
+ */ 
+ 
+{ rule_id             : 'TIMING_3', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.TIMING,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '2.3.1',
+  wcag_related_ids    : [],
+  target_resources    : ['applet', 'canvas', 'embed', 'img', 'object', 'svg'],
+  primary_property    : '',
+  resource_properties : [],
+  language_dependency : "",
+  validate          : function (dom_cache, rule_result) {
+    
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+  
+    var timing_elements     = dom_cache.timing_cache.timing_elements;
+    var timing_elements_len = timing_elements.length;
+
+    var page_element = dom_cache.timing_cache.page_element;      
+
+    for (var i = 0; i < timing_elements_len; i++) {
+      var mbe = timing_elements[i];
+      var de = mbe.dom_element;
+      var cs = de.computed_style;
+
+      if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+        rule_result.addResult(TEST_RESULT.MANUAL_CHECK, mbe, 'ELEMENT_MC_1', [de.tag_name]);     
+      }  
+      else {
+       rule_result.addResult(TEST_RESULT.HIDDEN, mbe, 'ELEMENT_HIDDEN_1', [de.tag_name]);     
+      }
+    }
+
+    rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MC_1', []);                       
+    
+  } // end validate function
+}
+
+]);
+/* ---------------------------------------------------------------- */
+/*  OpenAjax Alliance Heading and Landmark Rules                    */ 
+/* ---------------------------------------------------------------- */
+
+OpenAjax.a11y.RuleManager.addRulesFromJSON([
+      
+
+/**
+ * @object TITLE_1
+ *
+ * @desc the title element text content must describe the purpose or content of the page
+ */               
+ 
+{ rule_id             : 'TITLE_1', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.PAGE,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.SITE_NAVIGATION,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
+  wcag_primary_id     : '2.4.2',
+  wcag_related_ids    : ['1.3.1', '2.4.6'],
+  target_resources    : ['Page', 'title'],
+  primary_property    : 'name',
+  resource_properties : ['tag_name', 'name_for_comparison'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+  
+      var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+  
+      var title_element  = dom_cache.headings_landmarks_cache.title_element;
+      
+      if (dom_cache.document_has_title) {
+      
+        if (title_element.name_for_comparison.length) {
+          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, title_element, 'PAGE_MC_1', []);                        
+        }
+        else {
+          rule_result.addResult(TEST_RESULT.FAIL, title_element, 'PAGE_FAIL_1', []);        
+        }
+      }
+      else {
+        rule_result.addResult(TEST_RESULT.FAIL, title_element, 'PAGE_FAIL_2', []);
+      }
+        
+    } // end validate function
+},
+  
+/**
+ * @object TITLE_2
+ *
+ * @desc The words in the @h1@ content must be part of the title element text content.
+ *
+ */               
+ 
+{ rule_id             : 'TITLE_2', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.PAGE,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.SITE_NAVIGATION,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '2.4.2',
+  wcag_related_ids    : ['1.3.1', '2.4.6'],
+  target_resources    : ['Page', 'title', 'h1'],
+  primary_property    : 'name',
+  resource_properties : ['tag_name', 'name_for_comparison'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+  
+      function compareTextContent(s1, s2) {
+      
+        var words = s2.split(' ');
+        var words_len = words.length;
+        var words_match = 0;
+        var words_not_matched = 0;
+        var characters_match = 0;
+        var characters_not_matched = 0;
+
+//        OpenAjax.a11y.logger.debug("Comparison: " + s1 + "/" + s2);
+
+        for (var i = 0; i < words_len; i++) {
+          var w = words[i];
+          if (s1.indexOf(w) >= 0) {
+            characters_match += w.length;
+            words_match++;
+          }  
+          else {
+            characters_not_matched += w.length;
+            words_not_matched++;
+          }  
+        }
+
+//        OpenAjax.a11y.logger.debug("Match Information: " + (characters_match * words_match) + "/" + (characters_not_matched * words_not_matched));
+
+        if (characters_not_matched === 0) return true;
+        
+        var p = (100 * characters_match * words_match) / ((characters_match  * words_match) + (characters_not_matched * words_not_matched ));
+
+//        OpenAjax.a11y.logger.debug("Match Percentage: " + p);
+
+        if (p > 80) return true;
+        
+        return false;
+      }
+  
+      var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+      var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+  
+      var title_element  = dom_cache.headings_landmarks_cache.title_element;
+      var page_element   = dom_cache.headings_landmarks_cache.page_element;
+      var h1_elements    = dom_cache.headings_landmarks_cache.h1_elements;
+      var visible_h1_element_count = 0;
+      var passed_h1_element_count  = 0;
+      
+      if (dom_cache.document_has_title && title_element.name_for_comparison.length) {
+      
+        for(var i = 0; i < h1_elements.length; i++) {
+          var h1 = h1_elements[i];
+          var de = h1.dom_element;
+          var cs = de.computed_style;
+
+          if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+            if (h1.name_for_comparison.length) {
+              visible_h1_element_count++;
+              if (compareTextContent(title_element.name_for_comparison, h1.name_for_comparison)) {
+                rule_result.addResult(TEST_RESULT.PASS, h1, 'ELEMENT_PASS_1', []);                        
+                passed_h1_element_count++;
+              }
+              else {
+                rule_result.addResult(TEST_RESULT.FAIL, h1, 'ELEMENT_FAIL_1', []);        
+              }
+            }
+            else {
+              rule_result.addResult(TEST_RESULT.FAIL, h1, 'ELEMENT_FAIL_2', []);        
+            }
+          }
+          else {
+            rule_result.addResult(TEST_RESULT.HIDDEN, h1, 'ELEMENT_HIDDEN_1', []);        
+          }  
+        }  
+        
+        if (visible_h1_element_count === 0) rule_result.addResult(TEST_RESULT.FAIL, page_element, 'PAGE_FAIL_2', []);
+        else if (visible_h1_element_count > 2) rule_result.addResult(TEST_RESULT.FAIL, page_element, 'PAGE_FAIL_3', []);
+        else if (visible_h1_element_count !== passed_h1_element_count) rule_result.addResult(TEST_RESULT.FAIL, page_element, 'PAGE_FAIL_4', []);
+        else if (visible_h1_element_count === 1) rule_result.addResult(TEST_RESULT.PASS, page_element, 'PAGE_PASS_1', []);
+        else rule_result.addResult(TEST_RESULT.PASS, page_element, 'PAGE_PASS_2', []);
+        
+      } 
+      else {
+        rule_result.addResult(TEST_RESULT.FAIL, page_element, 'PAGE_FAIL_1', []);        
+      }
+    } // end validate function
+  }
+ ]); 
+/**
+ * Copyright 2011-2014 OpenAjax Alliance
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/* ---------------------------------------------------------------- */
+/*            OpenAjax Alliance Media Rules                         */ 
+/* ---------------------------------------------------------------- */
+
+OpenAjax.a11y.RuleManager.addRulesFromJSON([
+
+/**
+ * @object VIDEO_1
+ *
+ * @desc Video elements used for prerecorded video only content using the video element must have text or audio description 
+ */ 
+ 
+{ rule_id             : 'VIDEO_1', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.AUDIO_VIDEO,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
+  wcag_primary_id     : '1.2.1',
+  wcag_related_ids    : ['1.2.2', '1.2.4'],
+  target_resources    : ['video', 'track'],
+  primary_property    : '',
+  resource_properties : ['controls', 'autoplay', 'name', 'type', 'src', 'label'],
+  language_dependency : "",
+  validate          : function (dom_cache, rule_result) {
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+    var MEDIA       = OpenAjax.a11y.MEDIA;
+  
+    var video_elements     = dom_cache.media_cache.video_elements;
+    var video_elements_len = video_elements.length;
+
+    for (var i = 0; i < video_elements_len; i++) {
+      var ve = video_elements[i];
+      var de = ve.dom_element;
+      var cs = de.computed_style;
+
+      if ((cs.is_visible_to_at === VISIBILITY.VISIBLE) ||
+          (ve.has_autoplay)) {        
+        if (ve.getTextTracks().length) rule_result.addResult(TEST_RESULT.PASS, ve, 'ELEMENT_PASS_1', []);               
+        else if (de.has_aria_describedby) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ve, 'ELEMENT_MC_1', []);
+        else rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ve, 'ELEMENT_MC_2', []);    
+      }
+      else {
+       rule_result.addResult(TEST_RESULT.HIDDEN, ve, 'ELEMENT_HIDDEN_1', []);     
+      }
+    }
+  } // end validate function
+},
+
+/**
+ * @object VIDEO_2
+ *
+ * @desc Video elements used for prerecorded video only content using the object element must have text or audio description 
+ */ 
+ 
+{ rule_id             : 'VIDEO_2', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.AUDIO_VIDEO,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
+  wcag_primary_id     : '1.2.1',
+  wcag_related_ids    : ['1.2.2', '1.2.4'],
+  target_resources    : ['object', 'param'],
+  primary_property    : '',
+  resource_properties : ['data', 'type', 'name', 'value', 'valuetype'],
+  language_dependency : "",
+  validate          : function (dom_cache, rule_result) {
+    
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+    var MEDIA       = OpenAjax.a11y.MEDIA;
+  
+    var object_elements     = dom_cache.media_cache.object_elements;
+    var object_elements_len = object_elements.length;
+
+    for (var i = 0; i < object_elements_len; i++) {
+      var oe = object_elements[i];
+      var de = oe.dom_element;
+      var cs = de.computed_style;
+
+      if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+        if (oe.isTypeVideo()) {
+          if (de.has_aria_describedby) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, oe, 'ELEMENT_MC_1', []);
+          else rule_result.addResult(TEST_RESULT.MANUAL_CHECK, oe, 'ELEMENT_MC_2', []);     
+        }  
+        else {
+          if (de.has_aria_describedby) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, oe, 'ELEMENT_MC_3', []);
+          else rule_result.addResult(TEST_RESULT.MANUAL_CHECK, oe, 'ELEMENT_MC_4', []);     
+        }  
+      }
+      else {
+       rule_result.addResult(TEST_RESULT.HIDDEN, oe, 'ELEMENT_HIDDEN_1', []);     
+      }
+    }
+  } // end validate function
+},
+
+/**
+ * @object VIDEO_3
+ *
+ * @desc Video elements used for prerecorded video only content using the embed element must have text or audio description 
+ */ 
+ 
+{ rule_id             : 'VIDEO_3', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.AUDIO_VIDEO,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
+  wcag_primary_id     : '1.2.1',
+  wcag_related_ids    : ['1.2.2', '1.2.4'],
+  target_resources    : ['embed'],
+  primary_property    : '',
+  resource_properties : ['src', 'type'],
+  language_dependency : "",
+  validate          : function (dom_cache, rule_result) {
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+    var MEDIA       = OpenAjax.a11y.MEDIA;
+  
+    var embed_elements     = dom_cache.media_cache.embed_elements;
+    var embed_elements_len = embed_elements.length;
+
+    for (var i = 0; i < embed_elements_len; i++) {
+      var ee = embed_elements[i];
+      var de = ee.dom_element;
+      var cs = de.computed_style;
+
+      if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+        if (ee.isTypeVideo()) {
+          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ee, 'ELEMENT_MC_1', []);     
+        }  
+        else {
+          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ee, 'ELEMENT_MC_2', []);     
+        }  
+      }
+      else {
+       rule_result.addResult(TEST_RESULT.HIDDEN, ee, 'ELEMENT_HIDDEN_1', []);     
+      }
+    }
+  } // end validate function
+},
+
+/**
+ * @object VIDEO_4
+ *
+ * @desc Live and prerecorded video with synchronized audio (i.e. movie, lecture) using the video element must have captions
+ */ 
+ 
+{ rule_id             : 'VIDEO_4', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.AUDIO_VIDEO,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
+  wcag_primary_id     : '1.2.2',
+  wcag_related_ids    : ['1.2.4'],
+  target_resources    : ['video', 'track'],
+  primary_property    : '',
+  resource_properties : ['controls', 'autoplay', 'name', 'type', 'src', 'label'],
+  language_dependency : "",
+  validate          : function (dom_cache, rule_result) {
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+    var MEDIA       = OpenAjax.a11y.MEDIA;
+  
+    var video_elements     = dom_cache.media_cache.video_elements;
+    var video_elements_len = video_elements.length;
+
+    for (var i = 0; i < video_elements_len; i++) {
+      var ve = video_elements[i];
+      var de = ve.dom_element;
+      var cs = de.computed_style;
+
+      if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+        if (ve.hasCaptionTrack() || ve.hasSubtitleTrack()) rule_result.addResult(TEST_RESULT.PASS, ve, 'ELEMENT_PASS_1', []);               
+        else rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ve, 'ELEMENT_MC_1', []);    
+      }
+      else {
+       rule_result.addResult(TEST_RESULT.HIDDEN, ve, 'ELEMENT_HIDDEN_1', []);     
+      }
+    }
+  } // end validate function
+},
+
+/**
+ * @object VIDEO_5
+ *
+ * @desc Live and prerecorded video with synchronized audio (i.e. movie, lecture) using the object element must have captions
+ */ 
+ 
+{ rule_id             : 'VIDEO_5', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.AUDIO_VIDEO,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
+  wcag_primary_id     : '1.2.2',
+  wcag_related_ids    : ['1.2.4'],
+  target_resources    : ['object', 'param'],
+  primary_property    : '',
+  resource_properties : ['data', 'type', 'name', 'value', 'valuetype'],
+  language_dependency : "",
+  validate          : function (dom_cache, rule_result) {
+    
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+    var MEDIA       = OpenAjax.a11y.MEDIA;
+  
+    var object_elements     = dom_cache.media_cache.object_elements;
+    var object_elements_len = object_elements.length;
+
+    for (var i = 0; i < object_elements_len; i++) {
+      var oe = object_elements[i];
+      var de = oe.dom_element;
+      var cs = de.computed_style;
+
+      if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+        if (oe.isTypeVideo()) {
+          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, oe, 'ELEMENT_MC_1', []);     
+        }  
+        else {
+          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, oe, 'ELEMENT_MC_2', []);     
+        }  
+      }
+      else {
+       rule_result.addResult(TEST_RESULT.HIDDEN, oe, 'ELEMENT_HIDDEN_1', []);     
+      }
+    }
+  } // end validate function
+},
+
+/**
+ * @object VIDEO_6
+ *
+ * @desc Live and prerecorded video with synchronized audio (i.e. movie, lecture) using the embed element must have captions
+ */ 
+ 
+{ rule_id             : 'VIDEO_6', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.AUDIO_VIDEO,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
+  wcag_primary_id     : '1.2.2',
+  wcag_related_ids    : ['1.2.1', '1.2.4'],
+  target_resources    : ['embed'],
+  primary_property    : '',
+  resource_properties : ['src', 'type'],
+  language_dependency : "",
+  validate          : function (dom_cache, rule_result) {
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+    var MEDIA       = OpenAjax.a11y.MEDIA;
+  
+    var embed_elements     = dom_cache.media_cache.embed_elements;
+    var embed_elements_len = embed_elements.length;
+
+    for (var i = 0; i < embed_elements_len; i++) {
+      var ee = embed_elements[i];
+      var de = ee.dom_element;
+      var cs = de.computed_style;
+
+      if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+        if (ee.isTypeVideo()) {
+          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ee, 'ELEMENT_MC_1', []);
+        }  
+        else {
+          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ee, 'ELEMENT_MC_2', []);     
+        }  
+      }
+      else {
+       rule_result.addResult(TEST_RESULT.HIDDEN, ee, 'ELEMENT_HIDDEN_1', []);     
+      }
+    }
+  } // end validate function
+},
+
+/**
+ * @object VIDEO_7
+ *
+ * @desc Prerecorded video with synchronized audio (i.e. movie) using the video element must have audio description 
+ */ 
+ 
+{ rule_id             : 'VIDEO_7', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.AUDIO_VIDEO,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
+  wcag_primary_id     : '1.2.3',
+  wcag_related_ids    : ['1.2.5'],
+  target_resources    : ['video', 'track'],
+  primary_property    : '',
+  resource_properties : ['controls', 'autoplay', 'name', 'type', 'src', 'label'],
+  language_dependency : "",
+  validate          : function (dom_cache, rule_result) {
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+    var MEDIA       = OpenAjax.a11y.MEDIA;
+  
+    var video_elements     = dom_cache.media_cache.video_elements;
+    var video_elements_len = video_elements.length;
+
+    for (var i = 0; i < video_elements_len; i++) {
+      var ve = video_elements[i];
+      var de = ve.dom_element;
+      var cs = de.computed_style;
+
+      if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+        if (ve.hasDescriptionTrack()) rule_result.addResult(TEST_RESULT.PASS, ve, 'ELEMENT_PASS_1', []);
+        else rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ve, 'ELEMENT_MC_1', []);    
+      }
+      else {
+       rule_result.addResult(TEST_RESULT.HIDDEN, ve, 'ELEMENT_HIDDEN_1', []);     
+      }
+    }
+  } // end validate function
+},
+
+/**
+ * @object VIDEO_8
+ *
+ * @desc Prerecorded video with synchronized audio (i.e. movie) using the object element must have audio description 
+ */ 
+ 
+{ rule_id             : 'VIDEO_8', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.AUDIO_VIDEO,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
+  wcag_primary_id     : '1.2.3',
+  wcag_related_ids    : ['1.2.1', '1.2.5'],
+  target_resources    : ['object', 'param'],
+  primary_property    : '',
+  resource_properties : ['data', 'type', 'name', 'value', 'valuetype'],
+  language_dependency : "",
+  validate          : function (dom_cache, rule_result) {
+    
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+    var MEDIA       = OpenAjax.a11y.MEDIA;
+  
+    var object_elements     = dom_cache.media_cache.object_elements;
+    var object_elements_len = object_elements.length;
+
+    for (var i = 0; i < object_elements_len; i++) {
+      var oe = object_elements[i];
+      var de = oe.dom_element;
+      var cs = de.computed_style;
+
+      if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+        if (oe.isTypeVideo()) {
+          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, oe, 'ELEMENT_MC_1', []);     
+        }  
+        else {
+          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, oe, 'ELEMENT_MC_2', []);     
+        }  
+      }
+      else {
+       rule_result.addResult(TEST_RESULT.HIDDEN, oe, 'ELEMENT_HIDDEN_1', []);     
+      }
+    }
+  } // end validate function
+},
+
+/**
+ * @object VIDEO_9
+ *
+ * @desc Prerecorded video with synchronized audio (i.e. movie) using the embed element must have audio description 
+ */ 
+ 
+{ rule_id             : 'VIDEO_9', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.AUDIO_VIDEO,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
+  wcag_primary_id     : '1.2.3',
+  wcag_related_ids    : ['1.2.1', '1.2.5'],
+  target_resources    : ['embed'],
+  primary_property    : '',
+  resource_properties : ['src', 'type'],
+  language_dependency : "",
+  validate          : function (dom_cache, rule_result) {
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+    var MEDIA       = OpenAjax.a11y.MEDIA;
+  
+    var embed_elements     = dom_cache.media_cache.embed_elements;
+    var embed_elements_len = embed_elements.length;
+
+    for (var i = 0; i < embed_elements_len; i++) {
+      var ee = embed_elements[i];
+      var de = ee.dom_element;
+      var cs = de.computed_style;
+
+      if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+        if (ee.isTypeVideo()) {
+          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ee, 'ELEMENT_MC_1', []);     
+        }  
+        else {
+          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ee, 'ELEMENT_MC_2', []);     
+        }  
+      }
+      else {
+       rule_result.addResult(TEST_RESULT.HIDDEN, ee, 'ELEMENT_HIDDEN_1', []);     
+      }
+    }  
+  } // end validate function
+}
+ 
+]);
+/* ---------------------------------------------------------------- */
+/*  OpenAjax Alliance Control Rules                                 */ 
+/* ---------------------------------------------------------------- */
+
+OpenAjax.a11y.RuleManager.addRulesFromJSON([
+
+/**
+ * @object WIDGET_1
+ * 
+ * @desc ARIA Widgets must have accessible names
+ */
+     
+{ rule_id             : 'WIDGET_1', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.WIDGETS_SCRIPTS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP3,
+  wcag_primary_id     : '4.1.2',
+  wcag_related_ids    : ['1.3.1', '3.3.2'],
+  target_resources    : ['[role="widget"]'],
+  primary_property    : 'accessible_name',
+  resource_properties : ['accessible_description', 'computed_label_source'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+   
+     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;   
+     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+      
+     var widgets     = dom_cache.controls_cache.widget_elements;
+     var widgets_len = widgets.length;
+       
+     // Check to see if valid cache reference
+     if (widgets && widgets_len) {
+     
+       for (var i = 0; i < widgets_len; i++) {
+         var we = widgets[i];
+         var de = we.dom_element;
+  
+         if (de.is_widget) {
+         
+           if (de.computed_style.is_visible_to_at == VISIBILITY.VISIBLE) {
+     
+             if (we.computed_label && we.computed_label.length) {
+               rule_result.addResult(TEST_RESULT.PASS, we, 'ELEMENT_PASS_1', [de.role]);     
+             }
+             else {
+               if (!de.role_info.reqName) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, we, 'ELEMENT_MC_1', [de.role]);  
+               else rule_result.addResult(TEST_RESULT.FAIL, we, 'ELEMENT_FAIL_1', [de.role]);     
+             }
+           }
+           else {
+             rule_result.addResult(TEST_RESULT.HIDDEN, we, 'ELEMENT_HIDDEN_1', [de.role]);     
+           }
+         }  
+       } // end loop
+     } 
+   } // end validation function   
+},
+
+/**
+ * @object WIDGET_2
+ * 
+ * @desc Elements with onClick event handlers event handlers need role 
+ */
+     
+{ rule_id             : 'WIDGET_2', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.WIDGETS_SCRIPTS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP3,
+  wcag_primary_id     : '4.1.2',
+  wcag_related_ids    : ['1.3.1', '3.3.2'],
+  target_resources    : ['[onClick]'],
+  primary_property    : 'has_click',
+  resource_properties : ['tag_name', 'role', 'is_widget'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+    
+     function hasDecendantWidgetRole(dom_element) {
+       
+       function checkChildren(list) {
+       
+         if (typeof list !== 'object') return false;
+       
+         var flag = false;
+       
+         for (var i = 0; (i < list.length) && !flag; i++) {
+           
+           var de = list[i];
+           
+           if (de.type != Node.ELEMENT_NODE) continue;
+           
+           if (de.is_widget || 
+               "input textarea button select".indexOf(de.tag_name) ||
+               de.tag_name === "a" ||
+               de.tag_name === "area") return true;
+
+           if (de.child_dom_elements.length) flag = checkChildren(de.child_dom_elements);
+            
+         }
+         
+         return flag;
+       
+       }
+          
+       return checkChildren(dom_element.child_dom_elements);     
+     }  
+   
+     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;   
+     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+      
+     var dom_elements     = dom_cache.element_cache.dom_elements;
+     var dom_elements_len = dom_elements.length;
+       
+     if (dom_elements && dom_elements_len) {
+     
+       for (var i = 0; i < dom_elements_len; i++) {
+         var de = dom_elements[i];
+         var style = de.computed_style;
+       
+        if (de.events.has_click) { 
+        
+           if (style.is_visible_to_at == VISIBILITY.VISIBLE || style.is_visible_onscreen == VISIBILITY.VISIBLE ) {
+           
+             if (de.tag_name !== "body" && de.tag_name !== "frame" &&  de.tag_name !== "iframe") {
+         
+               if (de.is_widget) {
+                 if (!isNaN(de.tab_index))  rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_1', [de.tag_name]);     
+                 else rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [de.tag_name, de.role]);
+               }
+               else if ("input textarea button select".indexOf(de.tag_name) >= 0) {
+                   rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_2', [de.tag_name]);     
+                 }
+                 else if ("a area".indexOf(de.tag_name) >= 0) {
+                   rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_3', [de.tag_name]);
+                 }
+                 else {
+                   if (hasDecendantWidgetRole(de)) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, de, 'ELEMENT_MC_1', [de.tag_name]);
+                   else if (!isNaN(de.tab_index)) rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_2', [de.tag_name]);     
+                   else rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_3', [de.tag_name]);
+               }    
+             }
+             else {
+               rule_result.addResult(TEST_RESULT.MANUAL_CHECK, de, 'ELEMENT_MC_1', [de.tag_name]);
+             }
+           }
+           else {
+             rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.tag_name]);     
+           }
+         }  
+         
+       } // end loop
+     } 
+   } // end validation function   
+},
+
+/**
+ * @object WIDGET_3
+ * 
+ * @desc Elements with role values must have valid widget or landmark roles 
+ */
+     
+{ rule_id             : 'WIDGET_3', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.WIDGETS_SCRIPTS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP3,
+  wcag_primary_id     : '4.1.2',
+  wcag_related_ids    : ['1.3.1', '3.3.2'],
+  target_resources    : ['[role]'],
+  primary_property    : 'role',
+  resource_properties : [],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+   
+     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;   
+     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+      
+     var elements_with_role     = dom_cache.controls_cache.elements_with_role;
+     var elements_with_role_len = elements_with_role.length;
+     
+     if (elements_with_role && elements_with_role_len) {
+     
+       for (var i = 0; i < elements_with_role_len; i++) {
+         var de = elements_with_role[i];
+         var style = de.computed_style;
+       
+         if (style.is_visible_to_at == VISIBILITY.VISIBLE || style.is_visible_onscreen == VISIBILITY.VISIBLE ) {
+           
+           if (de.is_widget) rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_1', [de.role]);     
+           else if (de.is_landmark) rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_2', [de.role]);
+           else if (de.is_live) rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_3', [de.role]);
+           else if (de.is_section) rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_4', [de.role]);
+           else if (de.is_abstract) rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [de.role]);
+           else if (de.role.length === 0) rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_2', []);
+           else rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_3', [de.role]);
+         }
+         else {
+           rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.tag_name, de.role]);     
+         }         
+       } // end loop
+     } 
+   } // end validation function   
+},
+
+/**
+ * @object WIDGET_4
+ * 
+ * @desc Elements with ARIA attributes have valid values
+ */
+     
+{ rule_id             : 'WIDGET_4', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.WIDGETS_SCRIPTS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP3,
+  wcag_primary_id     : '4.1.2',
+  wcag_related_ids    : ['1.3.1', '3.3.2'],
+  target_resources    : ['[aria-atomic]', 
+                         '[aria-autocomplete]', 
+                         '[aria-busy]', 
+                         '[aria-checked]', 
+                         '[aria-disabled]', 
+                         '[aria-dropeffect]', 
+                         '[aria-expanded]', 
+                         '[aria-grabbed]', 
+                         '[aria-haspopup]', 
+                         '[aria-hidden]', 
+                         '[aria-invalid]', 
+                         '[aria-label]', 
+                         '[aria-labelledby]', 
+                         '[aria-live]', 
+                         '[aria-multiline]', 
+                         '[aria-multiselectable]', 
+                         '[aria-orientation]', 
+                         '[aria-pressed]', 
+                         '[aria-readonly]', 
+                         '[aria-relevant]',
+                         '[aria-required]',
+                         '[aria-selected]',
+                         '[aria-sort]'],
+  primary_property    : '',
+  resource_properties : [],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+  
+     function makeProp(label, value) {
+     
+       var p = {};
+       
+       p.label = label;
+       p.value = value;
+       p.description = "";
+       
+       return p;
+     
+     }
+   
+     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;   
+     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+      
+     var elements_with_aria_attributes     = dom_cache.controls_cache.elements_with_aria_attributes;
+     var elements_with_aria_attributes_len = elements_with_aria_attributes.length;
+     
+     if (elements_with_aria_attributes && elements_with_aria_attributes_len) {
+     
+       for (var i = 0; i < elements_with_aria_attributes_len; i++) {
+         var de = elements_with_aria_attributes[i];
+         var style = de.computed_style;
+         var aria_attrs = de.aria_attributes;
+         var aria_attrs_len = aria_attrs.length;         
+
+         for (var j = 0; j < aria_attrs_len; j++) {
+         
+           var attr = aria_attrs[j];
+           
+           var prop = makeProp(attr.name, attr.value);
+         
+           if (style.is_visible_to_at == VISIBILITY.VISIBLE || style.is_visible_onscreen == VISIBILITY.VISIBLE ) {
+           
+             if (attr.is_value_valid && attr.tokens) rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_1', [attr.name, attr.value], [prop]);
+             else if (attr.is_value_valid) rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_2', [attr.name, attr.value, attr.type], [prop]);
+             else if (attr.type === 'nmtoken' || attr.type === 'boolean') rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [attr.name, attr.value, attr.tokens], [prop]);
+             else if (attr.type === 'nmtokens') rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_2', [attr.name, attr.value, attr.tokens], [prop]);
+             else rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_3', [attr.name, attr.value, attr.type], [prop]);
+           
+           }
+           else {
+             rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [attr.name, attr.value], [prop]);     
+           }
+           
+         } // end loop 
+       } // end loop
+     } 
+   } // end validation function   
+},
+
+/**
+ * @object WIDGET_5
+ * 
+ * @desc Elements with ARIA attributes have valid values
+ */
+     
+{ rule_id             : 'WIDGET_5', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.WIDGETS_SCRIPTS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP3,
+  wcag_primary_id     : '4.1.2',
+  wcag_related_ids    : ['1.3.1', '3.3.2'],
+  target_resources    : ['[aria-atomic]', 
+                         '[aria-autocomplete]', 
+                         '[aria-busy]', 
+                         '[aria-checked]', 
+                         '[aria-controls]', 
+                         '[aria-describedby]', 
+                         '[aria-disabled]', 
+                         '[aria-dropeffect]', 
+                         '[aria-expanded]', 
+                         '[aria-flowto]', 
+                         '[aria-grabbed]', 
+                         '[aria-haspopup]', 
+                         '[aria-hidden]', 
+                         '[aria-invalid]', 
+                         '[aria-label]', 
+                         '[aria-labelledby]', 
+                         '[aria-level]', 
+                         '[aria-live]', 
+                         '[aria-multiline]', 
+                         '[aria-multiselectable]', 
+                         '[aria-orientation]', 
+                         '[aria-owns]', 
+                         '[aria-pressed]', 
+                         '[aria-readonly]', 
+                         '[aria-relevant]',
+                         '[aria-required]',
+                         '[aria-selected]',
+                         '[aria-sort]',
+                         '[aria-valuemax]',
+                         '[aria-valuemin]',
+                         '[aria-valuenow]',
+                         '[aria-valuetext]'],
+  primary_property    : '',
+  resource_properties : [],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+  
+     function makeProp(label, value) {
+     
+       var p = {};
+       
+       p.label = label;
+       p.value = value;
+       p.description = "";
+       
+       return p;
+     
+     }
+   
+     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;   
+     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+      
+     var elements_with_aria_attributes     = dom_cache.controls_cache.elements_with_aria_attributes;
+     var elements_with_aria_attributes_len = elements_with_aria_attributes.length;
+     
+     if (elements_with_aria_attributes && elements_with_aria_attributes_len) {
+     
+       for (var i = 0; i < elements_with_aria_attributes_len; i++) {
+         var de = elements_with_aria_attributes[i];
+         var style = de.computed_style;
+         var aria_attrs = de.aria_attributes;
+         var aria_attrs_len = aria_attrs.length;         
+
+         for (var j = 0; j < aria_attrs_len; j++) {
+         
+           var attr = aria_attrs[j];
+           
+           var prop = makeProp(attr.name, attr.value);
+         
+           if (style.is_visible_to_at == VISIBILITY.VISIBLE || style.is_visible_onscreen == VISIBILITY.VISIBLE ) {
+           
+             if (attr.is_valid_attribute) rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_1', [attr.name], [prop]);
+             else rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [attr.name], [prop]);
+           
+           }
+           else {
+             rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [attr.name, attr.value], [prop]);     
+           }
+           
+         } // end loop 
+       } // end loop
+     } 
+   } // end validation function   
+},
+
+/**
+ * @object WIDGET_6
+ * 
+ * @desc Widgets must have required properties
+ */
+     
+{ rule_id             : 'WIDGET_6', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.WIDGETS_SCRIPTS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP3,
+  wcag_primary_id     : '4.1.2',
+  wcag_related_ids    : ['1.3.1', '3.3.2'],
+  target_resources    : ['[role]'],
+  primary_property    : 'role',
+  resource_properties : [],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+     function getRequiredPropertiesAndValues(dom_element, required_props) {
+    
+       var rps = [];
+     
+       var attrs     = dom_element.aria_attributes;
+       var attrs_len = attrs.length;
+     
+       for (var i = 0; i < required_props.length; i++) {
+       
+         var prop = required_props[i];
+       
+         var flag = false;
+       
+         for (var j = 0; j <attrs_len; j++) {
+           if (prop === attrs[j].name) { 
+             flag = true;
+             break;
+           }
+         }
+         
+         var rp = {};
+         rp.label = prop;
+         rp.description = "";
+         rp.defined = flag;
+         
+         if (flag) {
+           rp.value  = attrs[j].value;
+         }
+         else {
+           rp.value  = "undefined";       
+         }
+         
+         rps.push(rp);
+       
+       }
+       
+       return rps;
+     
+     }
+
+     function getPropsString(props) {
+     
+       var str = "";
+       var prop_max = props.length - 1;
+       
+       for (var i = 0; i < props.length; i++ ) {
+         str += props[i];
+         if (i !== prop_max) str += ", ";
+       }
+       
+       return str;
+     
+     }
+   
+     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;   
+     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+      
+     var widget_elements     = dom_cache.controls_cache.widget_elements;
+     var widget_elements_len = widget_elements.length;
+     
+     if (widget_elements && widget_elements) {
+     
+       for (var i = 0; i < widget_elements_len; i++) {
+         var we = widget_elements[i];
+         var de = we.dom_element;
+         var style = de.computed_style;
+       
+//         OpenAjax.a11y.logger.debug("  RULE WIDGET 6: " + de.role + " ("+ de.role_info + ")");
+       
+         var required_properties = de.role_info.reqProps;
+             
+         if (required_properties) {
+             
+           if (style.is_visible_to_at == VISIBILITY.VISIBLE || style.is_visible_onscreen == VISIBILITY.VISIBLE ) {
+           
+             var props_string   = getPropsString(required_properties);
+             var required_props = getRequiredPropertiesAndValues(de, required_properties);
+             
+             var flag = true;
+             
+             for (var j = 0; (j < required_props.length) && flag; j++) flag = flag && required_props[j].defined;
+             
+             if (flag) rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_1', [de.role, props_string], required_props);     
+             else rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [de.role, props_string], required_props);
+           }
+           else {
+             rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.role]);     
+           }
+         }
+       } // end loop
+     } 
+   } // end validation function   
+},
+
+/**
+ * @object WIDGET_7
+ * 
+ * @desc Widgets must have required owned elements
+ */
+     
+{ rule_id             : 'WIDGET_7', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.WIDGETS_SCRIPTS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP3,
+  wcag_primary_id     : '4.1.2',
+  wcag_related_ids    : ['1.3.1', '3.3.2'],
+  target_resources    : ['[role]'],
+  primary_property    : 'role',
+  resource_properties : [],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+  
+  
+     function getRequiredChildRolesString(required_children) {
+     
+       var str = "";
+       var required_children_max = required_children.length - 1;
+       
+       for (var i = 0; i < required_children.length; i++ ) {
+         str += required_children[i];
+         if (i !== required_children_max) str += ", ";
+       }
+       
+       return str;
+     
+     }
+   
+     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;   
+     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+      
+     var widget_elements     = dom_cache.controls_cache.widget_elements;
+     var widget_elements_len = widget_elements.length;
+     
+     if (widget_elements && widget_elements) {
+     
+       for (var i = 0; i < widget_elements_len; i++) {
+         var we = widget_elements[i];
+         var de = we.dom_element;
+         var style = de.computed_style;
+       
+         var required_child_roles = de.role_info.reqChildren;
+             
+         if (required_child_roles) {
+             
+           if (style.is_visible_to_at == VISIBILITY.VISIBLE || style.is_visible_onscreen == VISIBILITY.VISIBLE ) {
+           
+             var flag = false;
+             
+             for (var j = 0; (j < required_child_roles.length) && !flag; j++) {
+               
+               var role = required_child_roles[j];
+               
+               flag = we.hasChildRole(role);
+                              
+             }
+             
+             var required_child_roles_string = getRequiredChildRolesString(required_child_roles);
+             
+             if (flag) rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_1', [de.role, required_child_roles_string]);     
+             else rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [de.role, required_child_roles_string]);
+           }
+           else {
+             rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.role]);     
+           }
+         }
+       } // end loop
+     } 
+   } // end validation function   
+},
+
+/**
+ * @object WIDGET_8
+ * 
+ * @desc Widgets must have required parent roles
+ */
+     
+{ rule_id             : 'WIDGET_8', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.WIDGETS_SCRIPTS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP3,
+  wcag_primary_id     : '4.1.2',
+  wcag_related_ids    : ['1.3.1', '3.3.2'],
+  target_resources    : ['[role]'],
+  primary_property    : 'role',
+  resource_properties : [],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+  
+  
+     function getRequiredRolesString(required_roles) {
+     
+       var str = "";
+       var required_roles_max = required_roles.length - 1;
+       
+       for (var i = 0; i < required_roles.length; i++ ) {
+         str += required_roles[i];
+         if (i !== required_roles_max) str += ", ";
+       }
+       
+       return str;
+     
+     }
+   
+     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;   
+     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+      
+     var widget_elements     = dom_cache.controls_cache.widget_elements;
+     var widget_elements_len = widget_elements.length;
+     
+     if (widget_elements && widget_elements) {
+     
+       for (var i = 0; i < widget_elements_len; i++) {
+         var we = widget_elements[i];
+         var de = we.dom_element;
+         var style = de.computed_style;
+       
+         var required_parent_roles = de.role_info.container;
+             
+         if (required_parent_roles) {
+             
+           if (style.is_visible_to_at == VISIBILITY.VISIBLE || style.is_visible_onscreen == VISIBILITY.VISIBLE ) {
+           
+             var flag = false;
+             
+             for (var j = 0; (j < required_parent_roles.length) && !flag; j++) {
+               
+               var role = required_parent_roles[j];
+               
+               flag = we.hasParentRole(role);
+                              
+             }
+             
+             var required_roles_string = getRequiredRolesString(required_parent_roles);
+             
+             if (flag) rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_1', [de.role, role]);     
+             else rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [required_roles_string, de.role]);
+           }
+           else {
+             rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.role]);     
+           }
+         }
+       } // end loop
+     } 
+   } // end validation function   
+},
+/**
+ * @object WIDGET_9
+ * 
+ * @desc Widgets cannot be owned by more than one widget
+ */
+     
+{ rule_id             : 'WIDGET_9', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.WIDGETS_SCRIPTS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP3,
+  wcag_primary_id     : '4.1.2',
+  wcag_related_ids    : ['1.3.1', '3.3.2'],
+  target_resources    : ['[aria-owns]', '[aria-owns]'],
+  primary_property    : 'is_owned',
+  resource_properties : ['owner_controls'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+     function getParentWidgetString(list) {
+     
+       var str = "";
+       list_max = list.length - 1;
+       
+       for (var i = 0; i < list.length; i++ ) {
+         str += list[i].toString();
+         if (i !== list_max) str += "; ";
+       }
+       
+       return str;
+     
+     }
+   
+     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;   
+     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+      
+     var widget_elements     = dom_cache.controls_cache.widget_elements;
+     var widget_elements_len = widget_elements.length;
+     
+     if (widget_elements && widget_elements) {
+     
+       for (var i = 0; i < widget_elements_len; i++) {
+         var we = widget_elements[i];
+         var de = we.dom_element;
+         var style = de.computed_style;
+
+         if (we.is_owned) {
+             
+           if (style.is_visible_to_at == VISIBILITY.VISIBLE || style.is_visible_onscreen == VISIBILITY.VISIBLE ) {
+           
+             var parent_string = getParentWidgetString(we.owner_controls);
+             
+             if (we.owner_controls.length === 1) rule_result.addResult(TEST_RESULT.PASS, we, 'ELEMENT_PASS_1', [we.toString(), parent_string]);     
+             else if (we.owner_controls.length > 1) rule_result.addResult(TEST_RESULT.FAIL, we, 'ELEMENT_FAIL_1', [parent_string, we.toString()]);
+           }
+           else {
+             rule_result.addResult(TEST_RESULT.HIDDEN, we, 'ELEMENT_HIDDEN_1', [we.toString()]);     
+           }
+         }
+       } // end loop
+     } 
+   } // end validation function   
+},
+
+/**
+ * @object WIDGET_10
+ * 
+ * @desc Range widgets with ariavaluenow mut be in range of aria-valuemin and aria-valuemax
+ */
+     
+{ rule_id             : 'WIDGET_10', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.WIDGETS_SCRIPTS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP3,
+  wcag_primary_id     : '4.1.2',
+  wcag_related_ids    : ['1.3.1', '3.3.2'],
+  target_resources    : ['[role="slider"]','[role="progress"]','[role="scrollbar"]','[role="spinbutton"]'],
+  primary_property    : '',
+  resource_properties : ['aria-valuemin', 'aria-valuenow', 'aria-valuemax'],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+     function getNotNumbersString() {
+     
+       var str = "";
+       
+       if (isNaN(min)) str += 'aria-valuemin';
+       
+       if (isNaN(max)) {
+         if (str.length > 0) str += ", ";
+         str += 'aria-valuemax';
+       }  
+       
+       if (isNaN(value)) {
+         if (str.length > 0) str += ", ";
+         str += 'aria-valuenow';
+       }  
+
+       return str;
+     }
+
+     function getNumberCount() {
+     
+       var count = 0;
+       
+       if (!isNaN(min)) count++;
+       if (!isNaN(max)) count++;
+       if (!isNaN(value)) count++;
+
+       return count;
+     }
+
+     function hasMaxMin() {
+     
+       var count = 0;
+       
+       if (!isNaN(min)) count++;
+       if (!isNaN(max)) count++;
+ 
+       return count === 2;
+     }
+
+     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;   
+     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+      
+     var widget_elements     = dom_cache.controls_cache.widget_elements;
+     var widget_elements_len = widget_elements.length;
+     
+     if (widget_elements && widget_elements) {
+     
+       for (var i = 0; i < widget_elements_len; i++) {
+         var we = widget_elements[i];
+         var de = we.dom_element;
+         var style = de.computed_style;
+
+         if (de.has_range) {
+             
+           if (style.is_visible_to_at === VISIBILITY.VISIBLE) {
+           
+             var valuetext = de.node.getAttribute('aria-valuetext');
+             var min       = parseInt(de.node.getAttribute('aria-valuemin'), 10);
+             var max       = parseInt(de.node.getAttribute('aria-valuemax'), 10);
+             var value     = parseInt(de.node.getAttribute('aria-valuenow'), 10);
+             var number_count = getNumberCount();
+             var has_max_min  = hasMaxMin();
+
+             if (typeof valuetext === 'string' && (valuetext.length > 0)) { 
+               rule_result.addResult(TEST_RESULT.PASS, we, 'ELEMENT_PASS_1', [we, valuetext]);     
+             }  
+             else {
+               if (number_count === 3 || (de.role === 'progressbar' && has_max_min)) {
+                 if (min < max) {
+                   if ((min <= value) && (value <= max)) rule_result.addResult(TEST_RESULT.PASS, we, 'ELEMENT_PASS_2', [we, value, min, max]);     
+                   else if (de.role === 'progressbar' && has_max_min)  rule_result.addResult(TEST_RESULT.PASS, we, 'ELEMENT_PASS_3', [min, max]);
+                   else rule_result.addResult(TEST_RESULT.FAIL, we, 'ELEMENT_FAIL_1', [value, min, max]);
+                 }
+                 else {
+                   rule_result.addResult(TEST_RESULT.FAIL, we, 'ELEMENT_FAIL_2', [min, max]);
+                 }
+               }
+               else {
+               
+                  if (de.role === 'progressbar' && !has_max_min) {
+                    rule_result.addResult(TEST_RESULT.FAIL, we, 'ELEMENT_FAIL_3', [value, min, max]);
+                  }
+                  else { 
+                    var not_numbers_string = getNotNumbersString();
+
+                   if (number_count === 1) rule_result.addResult(TEST_RESULT.FAIL, we, 'ELEMENT_FAIL_4', [not_numbers_string]);
+                   else rule_result.addResult(TEST_RESULT.FAIL, we, 'ELEMENT_FAIL_5', [not_numbers_string]);
+                 }  
+               }
+             }    
+           }
+           else {
+             rule_result.addResult(TEST_RESULT.HIDDEN, we, 'ELEMENT_HIDDEN_1', [we.toString()]);     
+           }
+         }
+       } // end loop
+     } 
+   } // end validation function   
+},
+
+/**
+ * @object WIDGET_11
+ * 
+ * @desc Elements with mouse down, mouse move and mouse up events must have roles
+ */
+     
+{ rule_id             : 'WIDGET_11', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.WIDGETS_SCRIPTS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP3,
+  wcag_primary_id     : '4.1.2',
+  wcag_related_ids    : ['1.3.1', '3.3.2'],
+  target_resources    : ['[onmousedown]', '[onmouseup]', '[onmousemove]'],
+  primary_property    : '',
+  resource_properties : [],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+     function getEventString() {
+     
+       var str = "";
+     
+       for (var i = 0; i < events_prop_list.length; i++) {
+         var prop = events_prop_list[i];
+         
+         if (str.length) str += ", " + prop.label;
+         else str += prop.label;
+       }
+       
+       return str;
+     
+     }
+
+     function hasUIEvents(dom_element) {
+     
+        var list = [];
+     
+        var has_events = dom_element.hasMouseEvents(list);
+        has_events = has_events || dom_element.hasClickEvents(list);
+        has_events = has_events || dom_element.hasDragEvents(list);
+        has_events = has_events || dom_element.hasKeyboardEvents(list);
+        
+        events_prop_list = list;
+
+//        OpenAjax.a11y.logger.debug( dom_element.toString() + "  Number of Events: " + list.length);
+
+        return has_events;
+     }
+
+     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;   
+     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+      
+     var dom_elements_with_events     = dom_cache.controls_cache.elements_with_events;
+     var dom_elements_with_events_len = dom_elements_with_events.length;
+     
+     if (dom_elements_with_events_len) {
+     
+       for (var i = 0; i < dom_elements_with_events_len; i++) {
+         var de = dom_elements_with_events[i];
+         
+         var style = de.computed_style;
+         var events = de.events;
+
+         var events_prop_list = [];         
+
+         if (hasUIEvents(de) && 
+             (de.tag_name !== 'video') && 
+             (de.tag_name !== 'audio')) {
+         
+           var events_str = getEventString();
+             
+           if (style.is_visible_to_at === VISIBILITY.VISIBLE) {
+           
+             if (de.is_widget) { 
+               rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_1', [de.role, events_str], events_prop_list);     
+             }  
+             else {
+               if (de.is_interactive) rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_2', [de.tag_name, events_str], events_prop_list);
+               else if (de.containsInteractiveElements()) rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_3', [de.tag_name, events_str], events_prop_list);
+               else rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [de.tag_name, events_str], events_prop_list);
+             }  
+           }
+           else {
+             rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.tag_name]);     
+           }
+         }
+       } // end loop
+     } 
+   } // end validation function   
+},
+
+/**
+ * @object WIDGET_12
+ * 
+ * @desc Warning about using widget roles
+ */
+     
+{ rule_id             : 'WIDGET_12', 
+  last_updated        : '2014-11-28', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.WIDGETS_SCRIPTS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP3,
+  wcag_primary_id     : '4.1.2',
+  wcag_related_ids    : ['1.3.1', '3.3.2'],
+  target_resources    : [],
+  primary_property    : '',
+  resource_properties : [],
+  language_dependency : "",
+  validate            : function (dom_cache, rule_result) {
+
+
+     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;   
+     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+      
+     var elements_with_role     = dom_cache.controls_cache.elements_with_role;
+     var elements_with_role_len = elements_with_role.length;
+     
+     if (elements_with_role && elements_with_role_len) {
+     
+       for (var i = 0; i < elements_with_role_len; i++) {
+         var de = elements_with_role[i];
+         var style = de.computed_style;
+       
+         if (de.is_widget) {
+           if (style.is_visible_to_at == VISIBILITY.VISIBLE || style.is_visible_onscreen == VISIBILITY.VISIBLE ) {
+             rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [de.role, de.tag_name]);     
+           }
+           else {
+             rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.tag_name, de.role]);     
+           }
+         }           
+       } // end loop
+     } 
+   } // end validation function   
+}
+
+
+]); 
+
+
+    
+

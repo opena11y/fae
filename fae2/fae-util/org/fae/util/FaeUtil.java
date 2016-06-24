@@ -388,7 +388,6 @@ class FaeUtil {
     // ------------------------------------------------------------------------
     // Get file extensions to ignore
     String exExt = m_props.getProperty("excludeExtensions");
-    System.out.println("exExt: " + exExt);
     if (exExt == null || exExt.length() == 0) {
       exExt = homeDir + "/excludeExtensions.txt";
     }
@@ -460,7 +459,7 @@ class FaeUtil {
       BROWSER_VERSION = BrowserVersion.CHROME;
     }
     else if (m_ctrl.BROWSER_VERSION.equalsIgnoreCase("ie")) {
-      BROWSER_VERSION = BrowserVersion.INTERNET_EXPLORER_11;
+      BROWSER_VERSION = BrowserVersion.INTERNET_EXPLORER;
     }
     else {
       BROWSER_VERSION = BrowserVersion.FIREFOX_38;
@@ -720,7 +719,7 @@ class FaeUtil {
     });
 
     // Set a ScriptPreProcessor to not process problem JavaScript
-    webClient.setScriptPreProcessor(new org.fae.util.ScriptPreprocessor(this));
+//    webClient.setScriptPreProcessor(new org.fae.util.ScriptPreprocessor(this));
   }
 
   // ==============================================================================================
@@ -1124,7 +1123,7 @@ class FaeUtil {
   public Properties m_props = null;
   public static Controller m_ctrl = new Controller("java org.fae.util.FaeUtil <options>");
   
-  public static BrowserVersion BROWSER_VERSION = BrowserVersion.FIREFOX_38;
+  public static BrowserVersion BROWSER_VERSION = BrowserVersion.FIREFOX_45;
   public boolean DEBUG = false;
   public int DEPTH = 1;
   public String OUTPUT_DIRECTORY;
