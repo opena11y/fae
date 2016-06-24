@@ -1,7 +1,0 @@
-#!/bin/bash
-CP=/Users/nhoyt/Documents/Work/Java/commons-cli-1.2
-HP=/Users/nhoyt/Documents/Work/Java/htmlunit-2.8/lib
-CLASSPATH=.
-CLASSPATH=$CLASSPATH:$CP/commons-cli-1.2.jar
-CLASSPATH=$CLASSPATH:$HP/log4j-1.2.8.jar:$HP/httpmime-4.0.1.jar:$HP/httpcore-4.0.1.jar:$HP/httpclient-4.0.1.jar:$HP/apache-mime4j-0.6.jar:$HP/commons-codec-1.4.jar:$HP/commons-io-1.4.jar:$HP/cssparser-0.9.5.jar:$HP/nekohtml-1.9.14.jar:$HP/xercesImpl-2.9.1.jar:$HP/commons-collections-3.2.1.jar:$HP/commons-lang-2.4.jar:$HP/htmlunit-2.8.jar:$HP/sac-1.3.jar:$HP/serializer-2.7.1.jar:$HP/xml-apis-1.3.04.jar:$HP/commons-httpclient-3.1.jar:$HP/commons-logging-1.1.1.jar:$HP/htmlunit-core-js-2.8.jar:$HP/xalan-2.7.1.jar
-export CLASSPATH

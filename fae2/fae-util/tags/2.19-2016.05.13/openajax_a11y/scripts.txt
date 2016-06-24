@@ -1,4 +1,0 @@
-openajax_a11y/oaa_a11y_evaluation.js
-openajax_a11y/oaa_a11y_rules.js
-openajax_a11y/oaa_a11y_rulesets.js
-

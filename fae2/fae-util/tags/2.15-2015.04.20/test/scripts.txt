@@ -1,2 +1,0 @@
-test/script1.js
-test/script2.js

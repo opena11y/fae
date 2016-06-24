@@ -1,2 +1,0 @@
-test/openajax_a11y_all.js
-test/openajax_a11y_test.js
