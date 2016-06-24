@@ -20,6 +20,7 @@
                 <td class="text">
                     <input  id="id_{{report.slug}}" 
                             type="checkbox" 
+                            {% if report.is_deleted %}disabled{% endif %}
                             {% if report.archive %}checked{% endif %} 
                             aria-label="Archive {{report.title}}"
                             onclick="checkboxArchiveEvent(event, '{{report.slug}}')"
