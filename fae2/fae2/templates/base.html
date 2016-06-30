@@ -52,7 +52,6 @@
         <div id="top-navbar" class="navbar-collapse collapse">
 
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="{% url 'rulesets' %}">Rulesets</a></li>
 
             <li class="dropdown">
               <a  href="#" 
@@ -73,7 +72,6 @@
                     <li><a href="{% url 'versions'        %}">Version History</a></li>
                     <li role="separator" class="divider"></li>                    
                     <li><a href="{% url 'usage_statistics'%}">Usage Statistics</a></li>
-                    <li><a href="{% url 'contact_form'    %}">Contact</a></li>
                     <li><a href="{% url 'report_issues'   %}">Create Issue</a></li>
                     <li role="separator" class="divider"></li>                    
                     <li><a href="http://ainspector.github.io">AInspector Sidebar</a></li>
@@ -97,7 +95,9 @@
               </ul>
             </li>        
             {% endif %}
+            <li><a href="{% url 'rulesets'    %}">Rulesets</a></li>
             {% if user.is_authenticated %}
+              <li><a href="{% url 'contact_form'%}">Contact</a></li>
               <li><a href="{% url 'user_profile' %}" >My Account</a></li>
               <li><a href="{% url 'logout' %}" >Logout: {{user.username}}</a></li>
             {% else %}
@@ -250,9 +250,9 @@
 
 
           {% if report %}
-          <div id="sendto">
+          <div id="sendto" >
             <a href="mailto:?cc={{report.user.email}}&amp;subject=FAE report for {{report.title}}&amp;body=FAE Report%0D%0DTitle:%20{{report.title}}%0DURL:%20{{report.url}}%0DRuleset:%20{{report.ruleset}}%0DDepth:%20{{report.depth}}%0DCreated: {{report.created}}%0DFrom:%20{{report.user.first_name}}%20{{report.user.last_name}}%0D%0DFAE Report:%20{{site.domain}}/{{report_nav.current_url}}" title="Share report URL using e-mail">
-             <img src="{% static 'images/message-out.png' %}" alt="E-mail report" >
+            <span class="glyphicon glyphicon-envelope" style="width: 1.2em;"></span>E-mail Report
             </a> 
           </div>
           {% endif %}

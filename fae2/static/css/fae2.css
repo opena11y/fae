@@ -41,27 +41,19 @@ main section.report {
 }
 
 #sendto {
-    float: right;
     position: relative;
-    top: -2.15em;
+    float: right;
+    top: -1.5em;
+    font-size: 110%;
+}
+
+#sendto span {
+    position: relative;
+    top: .125em;
 }
 
 
-#sendto a {
-    border-bottom: 1px solid transparent;
-    display: block;
-    padding: 2px;
-}
-
-
-#sendto a:focus,
-#sendto a:hover {
-    border-color: rgb(51, 122, 183);
-    background-color: #c4dced;
-}
-
-main p img,
-#sendto img {
+main p img {
     height: 1.6em;
 }
 
