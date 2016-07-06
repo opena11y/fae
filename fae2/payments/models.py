@@ -21,6 +21,28 @@ Author: Jon Gunderson
 
 from __future__ import unicode_literals
 
-from django.db import models
+from django.db         import models
+from accounts.models   import AccountType
 
 # Create your models here.
+
+class AccountTypeCost(models.Model):
+    id = models.AutoField(primary_key=True)
+
+    cost_id = models.IntegerField(default=0)
+
+    account_type  = models.OneToOneField(AccountType, related_name="costs")
+
+    one_month     = models.IntegerField(default=0)
+    three_month   = models.IntegerField(default=0)
+    six_month     = models.IntegerField(default=0)
+    twelve_month  = models.IntegerField(default=0)
+
+    class Meta:
+        verbose_name        = "Account Type Cost"
+        verbose_name_plural = "Account Type Costs"
+        ordering = ['account_type']
+    
+    def __str__(self):
+        return self.account_type.title
+

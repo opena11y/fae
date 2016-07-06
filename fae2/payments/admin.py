@@ -21,4 +21,9 @@ Author: Jon Gunderson
 
 from django.contrib import admin
 
-# Register your models here.
+from payments.models import AccountTypeCost
+
+class AccountTypeCostAdmin(admin.ModelAdmin):
+    list_display = ('cost_id', 'one_month', 'three_month', 'six_month', 'twelve_month')
+
+admin.site.register(AccountTypeCost, AccountTypeCostAdmin)

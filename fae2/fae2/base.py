@@ -12,6 +12,11 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+
+file: fae2/base.py
+
+Author: Jon Gunderson
+
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -118,6 +123,7 @@ INSTALLED_APPS = (
     'registration',
     'abouts.apps.AboutsConfig',
     'accounts.apps.AccountsConfig',
+    'payments.apps.PaymentsConfig',
     'contact.apps.ContactConfig',
     'markup.apps.MarkupConfig',
     'markupInfo.apps.MarkupInfoConfig',
