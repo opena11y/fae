@@ -19,8 +19,8 @@ Manage Reports
    {% include "reports/manage_report_list.html" with label_id="id_reports_label" report_list=reports %}
 
     <ul class="user_profile">
-        <li>Maximum archived reports: <strong>{{user_profile.max_archive}}</strong></li>
-        <li>Maximum permanent reports: <strong>{{user_profile.max_permanent}}</strong></li>
+        <li>Maximum archived reports: <strong>{{user_profile.account_type.max_archive}}</strong></li>
+        <li>Maximum permanent reports: <strong>{{user_profile.account_type.max_permanent}}</strong></li>
     </ul>
 </section>
 
@@ -81,7 +81,7 @@ function updateDisabledCheckboxes() {
 
   for(var i=0; i < checkboxes.length; i++) {
     var cb = checkboxes[i];
-    if (count >= {{user_profile.max_permanent}}) {
+    if (count >= {{user_profile.account_type.max_permanent}}) {
       if (!cb.checked) cb.disabled=true
     }
     else {

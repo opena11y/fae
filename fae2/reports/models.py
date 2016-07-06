@@ -12,6 +12,11 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+
+file: reports/models.py
+
+Author: Jon Gunderson
+
 """
 
 from __future__ import absolute_import
@@ -181,10 +186,15 @@ WAIT_TIME_CHOICES = (
 )   
 
 MAX_PAGES_CHOICES = (
-  (0,   '  All pages'),
-  (5,   '   5 pages'),
-  (10,  '  10 pages'),
-  (25,  '  25 pages')
+  (   5, '   5 pages'),
+  (  10, '  10 pages'),
+  (  25, '  25 pages'),
+  (  50, '  50 pages'),
+  ( 100, ' 100 pages'),
+  ( 200, ' 200 pages'),
+  ( 400, ' 400 pages'),
+  ( 800, ' 800 pages'),
+  (1600, '1600 pages')
 )  
 
 LAST_REPORT_TYPE_CHOICES = (

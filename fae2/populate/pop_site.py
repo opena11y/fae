@@ -12,6 +12,11 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+
+file: populate/pop_site.py
+
+Author: Jon Gunderson
+
 """
 
 from __future__ import print_function
@@ -40,6 +45,7 @@ from django.core.exceptions      import ObjectDoesNotExist
 from django.core.exceptions      import ImproperlyConfigured
 from django.contrib.sites.models import Site
 from django.contrib.auth.models  import User
+from accounts.models             import AccountType
 from userProfiles.models         import UserProfile
 from websiteResultGroups.models  import WebsiteReportGroup
 from stats.models                import StatsUser
@@ -61,8 +67,11 @@ except:
   stats_reg_users.save()  
 
 def create_users(users):
+
     
     for person in users:
+        is_anonymous = person[0] == 'anonymous'
+
         try:
           print("Update User: " + person[0])
           user = User.objects.get(username=person[0])
@@ -81,7 +90,12 @@ def create_users(users):
         try:
           profile = UserProfile.objects.get(user=user)
         except:
-          profile = UserProfile(user=user)
+          if is_anonymous:
+            atype = AccountType.objects.get(type_id=0)
+          else:  
+            atype = AccountType.objects.get(type_id=1)
+          print('Account Type: ' + str(atype))
+          profile = UserProfile(user=user, account_type=atype)
         profile.save()   
 
         try:
@@ -92,7 +106,7 @@ def create_users(users):
           user_stats = StatsUser(user=user, ws_report_group=wsrg)  
         user_stats.save()   
 
-        if person[0] != 'anonymous':
+        if not is_anonymous:
           stats_reg_users.user_stats.add(user_stats)
           stats_reg_users.save()
         

@@ -12,6 +12,11 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+
+file: userProfiles/models.py
+
+Author: Jon Gunderson
+
 """
 
 from __future__                 import absolute_import
@@ -20,69 +25,36 @@ from django.contrib.auth.models import User
 from registration.signals       import user_registered
 from timezone_field             import TimeZoneField
 
+
+from accounts.models            import AccountType
 from websiteResultGroups.models import WebsiteReportGroup
 from reports.models             import WebsiteReport
 from stats.models               import StatsUser
+import markdown
 
-## User Profile
-# The built-in Django User relation:
-
-#class User(models.Model):
-#   username      = models.CharField(max_length=30, unique=True)
-#   first_name    = models.CharField(max_length=30, blank=True)
-#   last_name     = models.CharField(max_length=30, blank=True)
-#   email         = models.EmailField(blank=True)
-#   password      = models.CharField(max_length=128)
-#   is_staff      = models.BooleanField(default=False)
-#   is_active     = models.BooleanField(default=True)
-#   is_superuser  = models.BooleanField(default=False)
-#   last_login    = models.DateTimeField()
-#   date_joined   = models.DateTimeField()
-
-# Custom classes for FAE
-
-
-ACCT_TYPE_CHOICES = (
-  (1, 'Trial'),
-  (2, 'Non-commerical'),
-  (3, 'Commerical'),
-  (4, 'Sustainer'),
-  (5, 'Sponsor'),
-)
-
+import datetime
 
 class UserProfile(models.Model):
 
     user          = models.OneToOneField(User, related_name="profile")
-    acct_type     = models.IntegerField(choices=ACCT_TYPE_CHOICES, default=1)
+
+    account_type     = models.ForeignKey(AccountType, related_name="user_profiles")
+    account_expires  = TimeZoneField(default='America/Chicago')
+
     org           = models.CharField(max_length=128, blank=True)
     dept          = models.CharField(max_length=128, blank=True)
     email_announcements = models.BooleanField(default=True)
 
-    max_archive   = models.IntegerField(default=10)
-    max_permanent = models.IntegerField(default=5)
-
     timezone = TimeZoneField(default='America/Chicago')
     
-    multiple_urls_enabled           = models.BooleanField(default=False)
-    website_authorization_enabled   = models.BooleanField(default=False)
-    advanced_enabled                = models.BooleanField(default=False)
-
     def __unicode__(self):
         return self.user.username  
-
-
-    def get_account_type(self):
-      for shortp, longp in ACCT_TYPE_CHOICES:
-          if shortp == self.acct_type:
-              return longp
-    
 
     def get_active_reports(self):
 
         user_reports = WebsiteReport.objects.filter(user=self.user).filter(status='C')
-        reports = user_reports[0:self.max_archive]
-        old_reports  = user_reports[self.max_archive:]
+        reports = user_reports[0:self.account_type.max_archive]
+        old_reports  = user_reports[self.account_type.max_archive:]
 
         return [reports, old_reports] 
     
@@ -90,7 +62,7 @@ class UserProfile(models.Model):
 def user_registered_callback(sender, user, request, **kwargs):
 
     profile = UserProfile(user = user)
-    profile.acct_type = 1
+    profile.account_type = AccountType.objects.get(type_id=1)
     profile.org = ''
     profile.save()
    

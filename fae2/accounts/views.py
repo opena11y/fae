@@ -12,6 +12,11 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+
+file: accounts/views.py
+
+Author: Jon Gunderson
+
 """
 
 # accounts/views.py
@@ -34,6 +39,7 @@ from django.contrib.auth.mixins    import LoginRequiredMixin
 
 from django.contrib.auth.models import User
 from userProfiles.models        import UserProfile
+from accounts.models        import AccountType
 from stats.models               import StatsUser
 from websiteResultGroups.models  import WebsiteReportGroup
 
@@ -87,7 +93,8 @@ class ShibbolethLogin(RedirectView):
         try: 
             profile = UserProfile.objects.get(user=user)
         except:    
-            profile = UserProfile(user=user)
+            atype = AccountType.objects.get(type_id=1)
+            profile = UserProfile(user=user, account_type=atype)
             profile.save()
 
         try: 

@@ -69,6 +69,7 @@
         {% endif %}
         {% for choice in form.depth.field.choices %}
          <div class="fae20_radio">
+            {% if forloop.counter <= user.profile.account_type.max_depth %} 
             <input
                 id="depth_{{ forloop.counter }}"
                 type="radio"
@@ -80,6 +81,7 @@
                 onclick="updateFollow()"
             />
             <label for="depth_{{ forloop.counter }}">{{choice.1}}</label>
+            {% endif %}
         </div>
         {% endfor %}
     </fieldset>
@@ -175,16 +177,18 @@
 
         {% for choice in form.max_pages.field.choices %}
         <div class="fae20_radio">
+            {% if choice.0 <= user.profile.account_type.max_pages %}
             <input
                 id="max_pages_{{ choice.0 }}"
                 type="radio"
                 name="max_pages"
                 value="{{choice.0}}"
-                {% if form.max_pages.value|slugify == choice.0|slugify %}
+                {% if choice.0 = user.profile.account_type.max_pages %}
                 checked
                 {% endif %}
             />
             <label for="max_pages_{{ choice.0 }}" >{{choice.1}}</label>
+            {% endif %}
         </div>
         {% endfor %}
     </fieldset>

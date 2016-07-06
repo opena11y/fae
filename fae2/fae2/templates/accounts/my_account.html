@@ -39,9 +39,35 @@
 <section aria-labelledby="id_account">
 <h2 id="id_account">Account</h2>
 
-<p>User name: {{user}}</p>
-<p>Saved reports: {{user_profile.max_saved}}</p>
-<p>Archived reports: {{user_profile.max_archive}}</p>
+<table  id="id_table_show_summary" class="details table table-striped table-hover"  aria-labelledby="id_stats">
+    <tbody>
+        <tr>
+            <th class="text" style="width: 12em">Account Type</th>
+            <td class="text">{{user_profile.account_type.title}}</td>
+        </tr>
+        <tr>
+            <th class="text">Account Description</th>
+            <td class="text">{{user_profile.account_type.description_html|safe}}</td>
+        </tr>
+        <tr>
+            <th class="text">Permanent reports</th>
+            <td class="num">{{user_profile.account_type.max_permanent}}</td>
+        </tr>
+        <tr>
+            <th class="text">Total reports</th>
+            <td class="text">{{user_profile.account_type.max_archive}}</td>
+        </tr>
+        <tr>
+            <th class="text">Max Depth</th>
+            <td class="text">{{user_profile.account_type.max_depth}}</td>
+        </tr>
+        <tr>
+            <th class="text">Max Pages</th>
+            <td class="text">{{user_profile.account_type.max_pages}}</td>
+        </tr>
+    </tbody>
+</table>   
+
 
 </section>
 

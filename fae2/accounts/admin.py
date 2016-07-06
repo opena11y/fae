@@ -12,10 +12,20 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+
+File: accounts/admin.py
+
+Author: Jon Gunderson
+
 """
 
 # accounts/admin.py
 from __future__ import absolute_import
 from django.contrib import admin
 
-# Register your models here.
+from accounts.models import AccountType
+
+class AccountTypeAdmin(admin.ModelAdmin):
+    list_display = ('title', 'type_id', 'default', 'max_archive', 'max_permanent', 'max_depth', 'max_pages', 'advanced')
+
+admin.site.register(AccountType, AccountTypeAdmin)

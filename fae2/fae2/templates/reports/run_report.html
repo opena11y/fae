@@ -7,7 +7,6 @@
 
 {% block content %}
 
-
 <form id="id_run_report"  action="{% url 'run_report' %}" method="post" >
     {% csrf_token %}
 
@@ -64,7 +63,7 @@
         <legend>{{form.depth.label}}</legend>
         {% endif %}
         {% for choice in form.depth.field.choices %}
-          {% if forloop.counter < 4 %} 
+          {% if forloop.counter <= user.profile.account_type.max_depth %} 
              <div class="fae20_radio">
                 <input
                     id="depth_{{ forloop.counter }}"
@@ -148,16 +147,18 @@
 
         {% for choice in form.max_pages.field.choices %}
         <div class="fae20_radio">
+            {% if choice.0 <= user.profile.account_type.max_pages %}
             <input
                 id="max_pages_{{ choice.0 }}"
                 type="radio"
                 name="max_pages"
                 value="{{choice.0}}"
-                {% if form.max_pages.value|slugify == choice.0|slugify %}
+                {% if user.profile.account_type.max_pages == choice.0 %}
                 checked
                 {% endif %}
             />
             <label for="max_pages_{{ choice.0 }}" >{{choice.1}}</label>
+            {% endif %}
         </div>
         {% endfor %}
     </fieldset>

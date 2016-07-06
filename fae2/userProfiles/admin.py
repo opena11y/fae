@@ -12,6 +12,11 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+
+file: userProfiles/admin.py
+
+Author: Jon Gunderson
+
 """
 
 from __future__ import absolute_import
@@ -20,7 +25,7 @@ from django.contrib import admin
 from userProfiles.models import UserProfile
 
 class UserProfileAdmin(admin.ModelAdmin):
-    list_display = ('user', 'acct_type', 'org', 'max_archive', 'max_permanent')
-    list_filter  = ('acct_type', 'org')
+    list_display = ('user', 'org', 'timezone')
+    list_filter  = ('org',)
 
 admin.site.register(UserProfile, UserProfileAdmin)
