@@ -123,7 +123,7 @@ INSTALLED_APPS = (
     'registration',
     'abouts.apps.AboutsConfig',
     'accounts.apps.AccountsConfig',
-    'payments.apps.PaymentsConfig',
+    'subscriptions.apps.SubscriptionsConfig',
     'contact.apps.ContactConfig',
     'markup.apps.MarkupConfig',
     'markupInfo.apps.MarkupInfoConfig',

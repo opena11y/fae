@@ -13,14 +13,17 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-file: payments/apps.py
+file: subscriptions/admin.py
 
 Author: Jon Gunderson
 
 """
 
-from django.apps import AppConfig
+from django.contrib import admin
 
+from subscriptions.models import Subscription
 
-class PaymentsConfig(AppConfig):
-    name = 'payments'
+class SubscriptionAdmin(admin.ModelAdmin):
+    list_display = ('subscription_id', 'one_month', 'three_month', 'six_month', 'twelve_month')
+
+admin.site.register(Subscription, SubscriptionAdmin)

@@ -13,17 +13,12 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-file: payments/admin.py
+file: subscriptions/views.py
 
 Author: Jon Gunderson
 
 """
 
-from django.contrib import admin
+from django.shortcuts import render
 
-from payments.models import AccountTypeCost
-
-class AccountTypeCostAdmin(admin.ModelAdmin):
-    list_display = ('cost_id', 'one_month', 'three_month', 'six_month', 'twelve_month')
-
-admin.site.register(AccountTypeCost, AccountTypeCostAdmin)
+# Create your views here.

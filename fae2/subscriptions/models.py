@@ -13,7 +13,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-file: payments/models.py
+file: subscriptions/models.py
 
 Author: Jon Gunderson
 
@@ -26,12 +26,15 @@ from accounts.models   import AccountType
 
 # Create your models here.
 
-class AccountTypeCost(models.Model):
+class Subscription(models.Model):
     id = models.AutoField(primary_key=True)
 
-    cost_id = models.IntegerField(default=0)
+    subscription_id = models.IntegerField(default=0)
 
-    account_type  = models.OneToOneField(AccountType, related_name="costs")
+    description        = models.TextField(blank=True, default="")
+    description_html   = models.TextField(blank=True, default="")
+
+    account_type  = models.OneToOneField(AccountType, related_name="subscriptions")
 
     one_month     = models.IntegerField(default=0)
     three_month   = models.IntegerField(default=0)
@@ -39,10 +42,16 @@ class AccountTypeCost(models.Model):
     twelve_month  = models.IntegerField(default=0)
 
     class Meta:
-        verbose_name        = "Account Type Cost"
-        verbose_name_plural = "Account Type Costs"
+        verbose_name        = "Subscription"
+        verbose_name_plural = "Subscriptions"
         ordering = ['account_type']
     
     def __str__(self):
-        return self.account_type.title
+        return 'Subscription: ' + self.account_type.title
 
+    def save(self):
+      
+        if self.description:   
+            self.description_html  = markdown.markdown(self.description)
+      
+        super(Subscription, self).save() # Call the "real" save() method.  
