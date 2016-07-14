@@ -22,14 +22,27 @@ Author: Jon Gunderson
 # accounts/urls.py
 from __future__ import absolute_import
 from django.conf.urls import url
+
 from .views import UpdateUserProfileView
+from .views import UpdateAccountTypeView
+
+from .views import DonateView
+from .views import DonateSuccessView
+from .views import DonateFailView
+
 from .views import StatusView
 from .views import UserInformationView
 from .views import AllUserInformationView
 
 
 urlpatterns = [
-    url(r'^profile/$',        UpdateUserProfileView.as_view(),   name='user_profile'),
+    url(r'^$',         UpdateUserProfileView.as_view(),   name='user_profile'),
+    url(r'^update/$',  UpdateAccountTypeView.as_view(),   name='update_account_type'),
+
+    url(r'^donate/$',          DonateView.as_view(),        name='donate'),
+    url(r'^donate/success/$',  DonateSuccessView.as_view(), name='donate_success'),
+    url(r'^donate/fail/$',     DonateFailView.as_view(),    name='donate_fail'),
+
     url(r'^status/$',         StatusView.as_view(),              name='fae_status'),
     url(r'^all-user-info/$',  AllUserInformationView.as_view(),  name='all_user_information'),
     url(r'^user-info/(?P<user_id>[\d-]+)/$',  UserInformationView.as_view(),   name='user_information'),

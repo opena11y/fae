@@ -75,6 +75,9 @@
                     <li><a href="{% url 'report_issues'   %}">Create Issue</a></li>
                     <li role="separator" class="divider"></li>                    
                     <li><a href="http://ainspector.github.io">AInspector Sidebar</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="{% url 'subscription'   %}">Subscription Options</a></li>
+                    <li><a href="{% url 'donate'   %}">Donate</a></li>
               </ul>
             </li>
             {% if user.is_superuser %}

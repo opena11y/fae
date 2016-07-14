@@ -21,9 +21,16 @@ Author: Jon Gunderson
 
 from django.contrib import admin
 
-from subscriptions.models import Subscription
+from subscriptions.models import SubscriptionRate
+from subscriptions.models import Payment
 
-class SubscriptionAdmin(admin.ModelAdmin):
-    list_display = ('subscription_id', 'one_month', 'three_month', 'six_month', 'twelve_month')
 
-admin.site.register(Subscription, SubscriptionAdmin)
+class SubscriptionRateAdmin(admin.ModelAdmin):
+    list_display = ('id', 'one_month', 'three_month', 'six_month', 'twelve_month')
+
+admin.site.register(SubscriptionRate, SubscriptionRateAdmin)
+
+class PaymentAdmin(admin.ModelAdmin):
+    list_display = ('reference_id', 'transaction_date', 'amount', 'reconciliation', 'status')
+
+admin.site.register(Payment, PaymentAdmin)

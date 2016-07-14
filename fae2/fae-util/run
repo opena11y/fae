@@ -13,4 +13,4 @@ else
 fi
 
 . $FAE_HOME/org/fae/util/classpath
-java org.fae.util.FaeUtil $@
+java -XX:+UseConcMarkSweepGC org.fae.util.FaeUtil $@

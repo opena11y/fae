@@ -42,19 +42,19 @@
 <table  id="id_table_show_summary" class="details table table-striped table-hover"  aria-labelledby="id_stats">
     <tbody>
         <tr>
-            <th class="text" style="width: 12em">Account Type</th>
-            <td class="text">{{user_profile.account_type.title}}</td>
+            <th class="text" style="width: 9em">Type</th>
+            <td class="text">{{user_profile.account_type.title}}  <a href="{% url 'update_account_type' %}">Change Account Type</a></td>
         </tr>
         <tr>
-            <th class="text">Account Description</th>
+            <th class="text">Description</th>
             <td class="text">{{user_profile.account_type.description_html|safe}}</td>
         </tr>
         <tr>
-            <th class="text">Permanent reports</th>
+            <th class="text" title="Total number of reports saved">Total Reports</th>
             <td class="num">{{user_profile.account_type.max_permanent}}</td>
         </tr>
         <tr>
-            <th class="text">Total reports</th>
+            <th class="text" title="Total number of reports that can be archived">Archive reports</th>
             <td class="text">{{user_profile.account_type.max_archive}}</td>
         </tr>
         <tr>

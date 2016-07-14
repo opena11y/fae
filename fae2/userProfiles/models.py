@@ -39,7 +39,7 @@ class UserProfile(models.Model):
     user          = models.OneToOneField(User, related_name="profile")
 
     account_type     = models.ForeignKey(AccountType, related_name="user_profiles")
-    account_expires  = TimeZoneField(default='America/Chicago')
+    account_expires  = models.DateTimeField(null=True, blank=True)
 
     org           = models.CharField(max_length=128, blank=True)
     dept          = models.CharField(max_length=128, blank=True)

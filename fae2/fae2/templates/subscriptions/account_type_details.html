@@ -1,0 +1,61 @@
+    <section aria-labelledby="{{id}}">
+
+        <h2 id="{{id}}">{{title}}</h2>
+
+        <table  class="details table table-striped"  aria-labelledby="{{id}}">
+            <thead>
+                <tr>
+                    <th class="text" style="width: 12em;">Title</th>
+                    <th class="text">Description</th>
+                    <th class="text" style="width: 14em;">Cost</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for at in account_types %}
+                <tr>
+                    <th class="text">{{at.title}}</th>
+                    <td class="text">
+                        {{at.description_html|safe}}
+                        <ul>
+                            <li>Maximum archived reports: {{at.max_archive}}</li>
+                            <li>Maximum permanent reports: {{at.max_permanent}}</li>
+                            <li>Maximum number of pages/report: {{at.max_pages}}</li>
+                            <li>Maximum spidering depth: {{at.max_depth}}</li>
+                            {% if at.advanced %}
+                            <li>Advanced spidering option is enabled</li>
+                            {% endif %}
+                        </ul>
+                    </td>
+                    <td class="text">
+                        {% if at.subscription_rate %}
+                        <ul style="list-style: none; padding-left: 0;">
+                            {% if at.subscription_rate.one_month %}
+                            <li>${{at.subscription_rate.one_month}} monthly</li>
+                            {% endif %}
+                            {% if at.subscription_rate.three_month %}
+                            <li>${{at.subscription_rate.three_month}} every three months</li>
+                            {% endif %}
+                            {% if at.subscription_rate.six_month %}
+                            <li>${{at.subscription_rate.six_month}} every six months</li>
+                            {% endif %}
+                            {% if at.subscription_rate.twelve_month %}
+                            <li>${{at.subscription_rate.twelve_month}} yearly</li>
+                            {% else %}
+                            <li>No cost</li>
+                            {% endif %}    
+
+                        </ul>
+                        {% else %}
+                        No cost
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>   
+
+    </section>
+
+
+

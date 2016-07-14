@@ -56,7 +56,8 @@ urlpatterns = [
     url(r'^',           include('reports.urls')),
     url(r'^abouts/',    include('abouts.urls')),
     url(r'^contact/',   include('contact.urls')),
-    url(r'^accounts/',  include('accounts.urls')),
+    url(r'^account/',   include('accounts.urls')),
+    url(r'^subscription/',   include('subscriptions.urls')),
     url(r'^rulesets/',  include('rulesets.urls')),
     url(r'^usage/',     include('stats.urls')),
 ]

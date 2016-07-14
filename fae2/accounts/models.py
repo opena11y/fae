@@ -42,6 +42,11 @@ class AccountType(models.Model):
     description        = models.TextField(blank=True, default="")
     description_html   = models.TextField(blank=True, default="")
 
+    self_registration  = models.BooleanField(default=False)
+    shibboleth         = models.BooleanField(default=False)
+    self_hosted        = models.BooleanField(default=False)
+    sponsor            = models.BooleanField(default=False)
+ 
     max_archive   = models.IntegerField(default=10)
     max_permanent = models.IntegerField(default=5)
     max_depth     = models.IntegerField(default=2)
@@ -63,5 +68,9 @@ class AccountType(models.Model):
       
         if self.description:   
             self.description_html  = markdown.markdown(self.description)
+        else:    
+            self.description_html  = ""
       
-        super(AccountType, self).save() # Call the "real" save() method.  
+        super(AccountType, self).save() # Call the "real" save() method.
+
+          

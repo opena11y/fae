@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block breadcrumb %}
+  <li>Proposed Subscription Options</li>
+{% endblock %}
+
+{% block title %}
+ Proposed Subscription Options
+{% endblock %}
+
+{% block content %}
+
+    <section aria-labelledby="id0">
+
+        <h2 id="id0">Why Purchase a Subscription?</h2>
+
+        <p>The subscriptions are needed to help support the continued development of the tools and OpenAjax rules to provide information on the latest web standards and most effective accessibility techniques, including the emerging <a href="https://www.w3.org/TR/wai-aria-1.1/">Accessible Rich Internet Application 1.1</a> and <a href="https://www.w3.org/TR/html51/">HTML 5.1 Specifications</a>.  </p>
+
+        <p>The funds will be used to:</p>
+
+        <ul>
+            <li>Support graduate and undergraduate students in helping to develop and test the open source tools (e.g. FAE, AInspector Sidebar and Accessibility Bookmarklets).</li>
+            <li>Development of online training materials to help people understand accessibility using web standards.</li>
+            <li>Support participation in web standards groups like the W3C to learn about and contribute to the development and implmentation of the next generation web accessibility standards.
+            <li>Support participation in regional and national conferences to help people learn about web accessibility and to promote the tools as a resource in people understanding and designing accessible web resourses.</li>
+        </ul>
+
+        </p>
+
+    </section>
+
+
+    <section aria-labelledby="id1">
+
+        <h2 id="id1">Self-Registration Subscription Levels</h2>
+
+        <p>The self-registration version of FAE is designed for inidividuals to create and manage there own accounts.
+        If an individual is consistently using FAE it is expected they would purchase a paid subscription based on their use and spidering needs.
+        </p>
+
+        {% include "subscriptions/account_type_details.html"  with id="id1" account_types=self_regs %}
+
+    </section>
+
+    <section aria-labelledby="id2">
+
+        <h2 id="id2">Shibboleth Subscription Levels</h2>
+
+        <p>The Shibboleth version allows users to use their <a href="https://www.incommon.org/">InCommon</a> credentials to authenticate to FAE.
+        InCommon us used by most higher educational institutions as a way to provide single sign-on authentication.  
+        There is no limit on the number of accounts a university can create with a Shibboleth subscription.</p> 
+
+        {% include "subscriptions/account_type_details.html"  with id="id2" account_types=shibboleths %}
+
+    </section>
+
+    <p><strong>Note:</strong> There are <em>no</em> refunds on a paid subscription, so use the "Trial" level or a shorter term of subscription if you are unsure of your long term interest in FAE.  When a paid subscription is not renewed the subscription level will automatially return to the "Trial" level, whish may result in losing archived and permanent reports.</p>
+
+
+
+{% endblock %}
+
+

@@ -23,8 +23,6 @@ from __future__ import absolute_import
 import re
 # Formatter
 
-from fae2.settings import STATIC_URL
-
 
 def OAAMarkupToHTML(str):
   str1 = ""
@@ -57,38 +55,5 @@ def OAAMarkupToText(str):
   return str1
 
 
-
-def HTMLToSourceCodeFormat(text):
-    """A filter to format the sample HTML for rendering the soruce code"""
-    try:
-        out = re.sub(r'&','&amp;', text)
-        out = re.sub(r'\t', '&#160;&#160;', out)
-        out = re.sub(r'<', '&lt;', out)
-        out = re.sub(r'>', '&gt;', out)
-        out = re.sub(r'&lt;HL1&gt;', '<strong>', out)
-        out = re.sub(r'&lt;/HL1&gt;', '</strong>', out)
-        out = re.sub(r'&lt;HL2&gt;', '<em>', out)
-        out = re.sub(r'&lt;/HL2&gt;', '</em>', out)
-        out = re.sub(r'\n', '<br/>\n', out)
-        out = re.sub(r'  ', '&#160;&#160;', out)
-        out = re.sub(r'{{EXAMPLE_MEDIA}}',  STATIC_URL + 'examples/', out)
-        return out
-    except (TypeError, NameError, AttributeError):
-        return ''
-
-
-def OAAMarkupRemoveHighlightCode(text):
-
-    """Remove tags for highlighting for rendering the code as HTML."""
-
-    try:
-        out = re.sub(r'<HL1>', '', text)
-        out = re.sub(r'</HL1>', '', out)
-        out = re.sub(r'<HL2>', '', out)
-        out = re.sub(r'</HL2>', '', out)
-        out = re.sub(r'{{EXAMPLE_MEDIA}}', STATIC_URL + 'examples/', out)
-        return out
-    except (TypeError, NameError, AttributeError):
-        return ''
 
    

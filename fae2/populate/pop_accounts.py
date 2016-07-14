@@ -48,7 +48,7 @@ from accounts.models import AccountType
 from django.contrib.auth.models import User
 
 
-def create_acount_type(type_id, title, archive, permanent, depth, pages, default, adv, protected ):
+def create_acount_type(type_id, self, shib, host, sponsor, title, archive, permanent, depth, pages, default, adv, protected ):
 
 
   try:
@@ -57,6 +57,11 @@ def create_acount_type(type_id, title, archive, permanent, depth, pages, default
 
     atype.type   = type_id
     atype.title  = title
+
+    atype.self_registration = self
+    atype.shibboleth        = shib
+    atype.self_hosted       = host
+    atype.sponsor           = sponsor
 
     atype.max_archive   = archive
     atype.max_permanent = permanent
@@ -70,7 +75,7 @@ def create_acount_type(type_id, title, archive, permanent, depth, pages, default
 
   except ObjectDoesNotExist:
     print("  Creating Account Type: " + title )
-    atype = AccountType(type_id=type_id, title=title, max_archive=archive, max_permanent=permanent, max_depth=depth, max_pages=pages, default=default, advanced=adv, protected=protected)
+    atype = AccountType(type_id=type_id, self_registration=self, shibboleth=shib, self_hosted=host, sponsor=sponsor, title=title, max_archive=archive, max_permanent=permanent, max_depth=depth, max_pages=pages, default=default, advanced=adv, protected=protected)
 
   atype.save()
   return atype
@@ -86,18 +91,30 @@ def set_account_type_description(type_id, desc):
   except ObjectDoesNotExist:
     print("  Account type not found: " + acc_type )
 
+create_acount_type(0, False, False, False, False,   'Anonymous',         1,  1, 1,    1, False,  False, False)
+create_acount_type(1, True, False, False, False,   'Trial',              2,  5, 2,   25, True,   False, False)
+create_acount_type(2, True, False, False, False,   'Non-Commercial',     5, 10, 3,   50, False,  False, False)
+create_acount_type(3, True, False, False, False,   'Commercial',         5, 10, 3,  100, False,  False, False)
+create_acount_type(4, True, False, False, False,   'Advanced I',        10, 20, 4,  200, False,   True, False)
+create_acount_type(5, True, False, False, False,   'Advanced II',       20, 40, 5,  400, False,   True, False)
+create_acount_type(6, True, False, False, False,   'Advanced III',      40, 80, 6,  800, False,   True, False)
 
-create_acount_type(0, 'Anonymous',       1,  1, 1,    1, False,  False, False )
-create_acount_type(1, 'Trial',           2,  5, 2,   25, True,   False, False )
-create_acount_type(2, 'Non-Commercial',  5, 10, 3,   50, False,  False, False )
-create_acount_type(3, 'Commercial',      5, 10, 3,  100, False,  False, False )
-create_acount_type(4, 'Advanced',       10, 20, 4,  200, False,   True, False )
-create_acount_type(5, 'Sustainer',      20, 40, 5,  400, False,   True, False )
-create_acount_type(6, 'Founder',        40, 80, 6,  800, False,   True, False )
-create_acount_type(7, 'Special I',      40, 80, 6, 1600, False,   True, False )
-create_acount_type(16, 'Shibboleth',    20, 40, 5,  400, False,   True, False )
+create_acount_type(16, False, True, False, False, 'Shibboleth I',   10, 20, 3,  100, False,   False, False)
+create_acount_type(17, False, True, False, False, 'Shibboleth II',  20, 40, 4,  200, False,   False, False)
+create_acount_type(18, False, True, False, False, 'Shibboleth III', 40, 80, 5,  400, False,   True, False)
 
-set_account_type_description(1, """
-* No cost trial version for determining if FAE is useful to you for understanding the accessibility of your online resources.  
-* If you use FAE and/or AInspector Sidebar on a regular we ask that you help support the development and maintenance of the tools by purchasing on of the paid level subscriptions.""")
+create_acount_type(32, False, False, True, False, 'Self-Hosted',    20, 40, 5,  400, False,   True, False)
+
+create_acount_type(64, False, False, False, True, 'Sponsor: Bronze',  40, 80, 5, 800, False, True, False)
+create_acount_type(65, False, False, False, True, 'Sponsor: Sliver',  40, 80, 5, 800, False, True, False)
+create_acount_type(66, False, False, False, True, 'Sponsor: Gold',    40, 80, 5, 800, False, True, False)
+
+set_account_type_description(1, """No cost trial version for determining if FAE is useful to you for understanding the accessibility of your online resources.  If you use FAE and/or AInspector Sidebar on a regular basis we ask that you help support the development and maintenance of the tools by purchasing a paid level subscriptions.""")
+
+set_account_type_description(2, """The Non-commerical subscription is provides an inidividual, educational and/or non-profit organization with basic website evaluation services.""")
+
+set_account_type_description(3, """The Commerical subscription provides a for profit company basic website evaluation services.""")
   
+set_account_type_description(16, """For educational institutions less than 5,000 students.""")
+set_account_type_description(17, """For educational institutions of 5,000 students to 10,000 students.""")
+set_account_type_description(18, """For educational institutions of over 10,000 students .""")

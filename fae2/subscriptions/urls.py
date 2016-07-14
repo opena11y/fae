@@ -13,19 +13,20 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-File: accounts/admin.py
+File: accounts/urls.py
 
 Author: Jon Gunderson
 
 """
 
-# accounts/admin.py
+# accounts/urls.py
 from __future__ import absolute_import
-from django.contrib import admin
+from django.conf.urls import url
 
-from accounts.models import AccountType
+from .views import SubscriptionOptionsView
 
-class AccountTypeAdmin(admin.ModelAdmin):
-    list_display = ('title', 'type_id', 'self_registration', 'shibboleth', 'sponsor', 'default', 'max_archive', 'max_permanent', 'max_depth', 'max_pages', 'advanced')
+urlpatterns = [
+    url(r'^$',        SubscriptionOptionsView.as_view(),  name='subscription'),
+]
 
-admin.site.register(AccountType, AccountTypeAdmin)
+
