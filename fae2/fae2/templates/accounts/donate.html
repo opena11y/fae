@@ -28,7 +28,8 @@
     <input type="hidden" name="DEPARTMENT_EMAIL" value="jongund@illinois.edu,jsmccoy@illinois.edu,giving@ahs.uiuc.edu">
     <input type="hidden" name="TRACKING_CODE"    value="5WAAA">
 
-    <input type="hidden" name="COMPLETED_URL"    value="{% url 'donate_success' %}">
+    <input type="hidden" name="RedirectAfterSubmit"    value="{{site.domain}}{% url 'donate_success' %}">
+    <input type="hidden" name="RedirectAfterSubmitConfirmMessage"    value="Thank you for your donation!">
 
     <div class="input" >
         <label for="id_donation_amount">Gift Amount</label>
