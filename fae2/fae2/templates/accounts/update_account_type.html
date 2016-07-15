@@ -11,102 +11,58 @@
 
 {% block content %}
 
-<form id="id_run_report"  action="{% url 'donate' %}" method="post" >
-    {% csrf_token %}
+    <form id="id_run_report"  action="{% url 'donate' %}" method="post" >
+        {% csrf_token %}
 
-    <div class="input" >
-        <label for="id_payment_amount">Amount</label>
-        <div {% if form.payment_amount.errors|length %}class="error"{% endif %}>
-        <input 
-            id="id_payment_amount"
-            onkeyup="enableSubmit()"
-            onblur="enableSubmit()"
-            onkeypress="numbersOnly(event)"
-            name="payment_amount"
-            required
-            value="25"
-            {% if form.payment_amount.errors|length %}aria-invalid="true"{% endif %}
-            size="6"
-        {% if form.payment_amount.errors|length %}
-        <label class="error" for="id_payment_amount">{% for error in form.payment_amount.errors %}{{error}}{% endfor %}</label>
-        {% endif %}
-        <p>Amount in United States Dollars</p>
-        </div>
-    </div>
-
-    <div class="input" >
-        <label>
+        <div class="input" >
+            <label for="id_payment_amount">Amount</label>
+            <div {% if form.payment_amount.errors|length %}class="error"{% endif %}>
             <input 
-            type="checkbox"
-            name="show_donation"
-            {% if form.show_donation.value %}checked{% endif %}
-            style="display: inline;">
-            Include your name on our public list of donors
-        </label>        
-    </div>
+                id="id_payment_amount"
+                onkeyup="enableSubmit()"
+                onblur="enableSubmit()"
+                onkeypress="numbersOnly(event)"
+                name="payment_amount"
+                required
+                value="25"
+                {% if form.payment_amount.errors|length %}aria-invalid="true"{% endif %}
+                size="6"
+            {% if form.payment_amount.errors|length %}
+            <label class="error" for="id_payment_amount">{% for error in form.payment_amount.errors %}{{error}}{% endfor %}</label>
+            {% endif %}
+            <p>Amount in United States Dollars</p>
+            </div>
+        </div>
+
+        <div class="input" >
+            <label>
+                <input 
+                type="checkbox"
+                name="show_donation"
+                {% if form.show_donation.value %}checked{% endif %}
+                style="display: inline;">
+                Include your name on our public list of donors
+            </label>        
+        </div>
 
 
-   <input id="id_submit" name="submit" disabled type="submit" value="Update Subscription"  title="You must enter your name, e-mail and amount to submit a donation"/>
+       <input id="id_submit" name="submit" disabled type="submit" value="Update Subscription"  title="You must enter your name, e-mail and amount to submit a donation"/>
 
-</form>
+    </form>
 
+    <section aria-labelledby="id1">
 
-    <section>
+        <h2 id="id1">Self-Registration Subscription Levels</h2>
 
-        <h2 id="id_types">Subscription Levels</h2>
+        <p>The self-registration version of FAE is designed for inidividuals to create and manage there own accounts.
+        If an individual is consistently using FAE it is expected they would purchase a paid subscription based on their use and spidering needs.
+        </p>
 
-        <table  class="details table table-striped"  aria-labelledby="id_types">
-            <thead>
-                <tr>
-                    <th class="text" style="width: 12em;">Title</th>
-                    <th class="text">Description</th>
-                    <th class="text" style="width: 14em;">Subscription Options</th>
-                </tr>
-            </thead>
-
-            <tbody>
-                {% for at in account_types %}
-                <tr>
-                    <th class="text">{{at.title}}</th>
-                    <td class="text">
-                        {{at.description_html|safe}}
-                        <ul>
-                            <li>Maximum archived reports: {{at.max_archive}}</li>
-                            <li>Maximum permanent reports: {{at.max_permanent}}</li>
-                            <li>Maximum number of pages/report: {{at.max_pages}}</li>
-                            <li>Maximum spidering depth: {{at.max_depth}}</li>
-                        </ul>
-                    </td>
-                    <td class="text">
-                        {% if at.subscription_rate %}
-                        <ul style="list-style: none; padding-left: 0;">
-                            {% if at.subscription_rate.one_month %}
-                            <li>${{at.subscription_rate.one_month}} monthly</li>
-                            {% endif %}
-                            {% if at.subscription_rate.three_month %}
-                            <li>${{at.subscription_rate.three_month}} every three months</li>
-                            {% endif %}
-                            {% if at.subscription_rate.six_month %}
-                            <li>${{at.subscription_rate.six_month}} evey six months</li>
-                            {% endif %}
-                            {% if at.subscription_rate.twelve_month %}
-                            <li>${{at.subscription_rate.twelve_month}} yearly</li>
-                            {% else %}
-                            <li>No cost</li>
-                            {% endif %}    
-                        </ul>
-                        {% else %}
-                        No cost, just adminstrator to change your account type.
-                        {% endif %}
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>   
+        {% include "subscriptions/account_type_details.html"  with id="id1" account_types=account_types %}
 
         <p><strong>Note:</strong> There are <em>no</em> refunds on a paid subscription, so use the "Trial" level or a shorter term of subscription if you are unsure of your long term interest in FAE.  When a paid subscription is not renewed the subscription level will automatially return to the "Trial" level, whish may result in losing archived and permanent reports.</p>
-    </section>
 
+    </section>
 
 
 {% endblock %}

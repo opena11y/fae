@@ -10,81 +10,40 @@
 
 {% block content %}
 
-<p>Help support Open Source web accessibility tool development, including FAE, AInspector Sidebar and Accessibility Bookmarklets.</p>
+<p>Your credit card donation will help support web accessibility through the following tools and educational resouces:</p>
 
-<form id="id_run_report"  action="{% url 'donate' %}" method="post" >
+<ul>
+    <li>Functional Accessibility Evaluator (FAE)</li>
+    <li>AInspector Sidebar</li>
+    <li>Accessibility Bookmarklets</li>
+    <li>Online training materials to people understand web accessibility</li>
+    <li>Example widgets for inclusion in the ARIA Authoring Practices Guide</a></li>
+</ul>
+
+<form action="https://ps.uif.uillinois.edu/Gifts/Payment.aspx" method="post" >
     {% csrf_token %}
 
-    <div class="input" >
-        <label for="id_donor_name">Name</label>
-        <div {% if form.donor_name.errors|length %}class="error"{% endif %}>
-        <input 
-            id="id_donor_name"
-            onkeyup="enableSubmit()"
-            onblur="enableSubmit()"
-            name="donor_name"
-            required
-            value="{{form.donor_name.value}}"
-            {% if form.donor_name.errors|length %}aria-invalid="true"{% endif %}
-            size="30"
-        {% if form.donor_name.errors|length %}
-        <label class="error" for="id_donor_name">{% for error in form.donor_name.errors %}{{error}}{% endfor %}</label>
-        {% endif %}
-        </div>
-    </div>
+    <input type="hidden" name="FUND1"            value="11336380 – IT Web Accessibility Research">
+    <input type="hidden" name="DEPARTMENT"       value="Disability Resources and Education Services">
+    <input type="hidden" name="DEPARTMENT_EMAIL" value="jongund@illinois.edu,jsmccoy@illinois.edu,giving@ahs.uiuc.edu">
+    <input type="hidden" name="TRACKING_CODE"    value="5WAAA">
+
+    <input type="hidden" name="COMPLETED_URL"    value="{% url 'donate_success' %}">
 
     <div class="input" >
-        <label for="id_donor_email">E-mail</label>
-        <div {% if form.donor_email.errors|length %}class="error"{% endif %}>
-        <input 
-            id="id_donor_email"
-            onkeyup="enableSubmit()"
-            onblur="enableSubmit()"
-            name="donor_email"
-            required
-            value="{{form.donor_email.value}}"
-            {% if form.donor_email.errors|length %}aria-invalid="true"{% endif %}
-            size="30"
-        {% if form.donor_email.errors|length %}
-        <label class="error" for="id_donor_email">{% for error in form.donor_email.errors %}{{error}}{% endfor %}</label>
-        {% endif %}
-        <p>E-mail used for sending receipt for donation.</p>
-        </div>
-    </div>
-
-    <div class="input" >
-        <label for="id_donation_amount">Amount</label>
-        <div {% if form.donation_amount.errors|length %}class="error"{% endif %}>
-        <input 
+        <label for="id_donation_amount">Gift Amount</label>
+        <div>$ <input 
             id="id_donation_amount"
-            onkeyup="enableSubmit()"
-            onblur="enableSubmit()"
+            type="text"
+            name="GIFT_AMOUNT1"
+            size=10
             onkeypress="numbersOnly(event)"
-            name="donation_amount"
-            required
-            value="25"
-            {% if form.donation_amount.errors|length %}aria-invalid="true"{% endif %}
-            size="6"
-        {% if form.donation_amount.errors|length %}
-        <label class="error" for="id_donation_amount">{% for error in form.donation_amount.errors %}{{error}}{% endfor %}</label>
-        {% endif %}
-        <p>Amount in United States Dollars</p>
-        </div>
-    </div>
-
-    <div class="input" >
-        <label>
-            <input 
-            type="checkbox"
-            name="show_donation"
-            {% if form.show_donation.value %}checked{% endif %}
-            style="display: inline;">
-            Include your name on our public list of donors
-        </label>        
+            onkeyup="enableSubmit(event)" style="display: inline">
+        </div>    
     </div>
 
 
-   <input id="id_submit" name="submit" disabled type="submit" value="Donate"  title="You must enter your name, e-mail and amount to submit a donation"/>
+   <input id="id_submit" name="submit" disabled type="submit" value="Donate using Credit Card"  title="This button takes "/>
 
 </form>
 
@@ -107,23 +66,6 @@
 
    function enableSubmit() {
 
-     function test_name() {
-
-       var s  = node_name.value;
-       s = s.trim();
-       
-       return s.length > 0;
-     
-     }
-
-     function test_email() {
-  
-       var s  = node_email.value;
-       s = s.trim();
-       
-       return s.length > 0 && (s.indexOf('@') > 1) && (s.indexOf('.') > 1);
-   
-     }
 
      function test_amount() {
   
@@ -136,17 +78,15 @@
 
      var node_submit   = document.getElementById('id_submit');
 
-     var node_name     = document.getElementById('id_donor_name');
-     var node_email    = document.getElementById('id_donor_email');
      var node_amount   = document.getElementById('id_donation_amount')
 
-     if (test_name() && test_email() && test_amount()) {
+     if (test_amount()) {
         node_submit.disabled = false;
         node_submit.setAttribute('title', 'Donation is ready for credit card processing');     
      }
      else {
         node_submit.disabled = true;
-        node_submit.setAttribute('title', 'You must enter a valid name, e-mail address and amount before credit card processing');     
+        node_submit.setAttribute('title', 'You must enter an amount before credit card processing');     
      }
    
    }
