@@ -9,12 +9,10 @@
 {% endblock %}
 
 {% block content %}
-<div class="row">
+<form action="{% url 'donate_success' %}" method="post" >
+    {% csrf_token %}
 
- 
-
-</div>
-
+</form>
 {% endblock %}
 
 
