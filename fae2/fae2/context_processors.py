@@ -25,9 +25,12 @@ from userProfiles.models import UserProfile
 
 from fae2.settings import ANONYMOUS_ENABLED
 from fae2.settings import SELF_REGISTRATION_ENABLED
+
 from fae2.settings import SHIBBOLETH_ENABLED
 from fae2.settings import SHIBBOLETH_URL
 from fae2.settings import SHIBBOLETH_NAME
+
+
 
 
 def site(request):
@@ -53,4 +56,5 @@ def shibboleth(request):
 
         }
 	}
+
 

@@ -30,6 +30,10 @@ import datetime
 import string
 import random
 
+
+
+
+
 def id_generator(size=6, chars=string.ascii_uppercase + string.digits):
   return ''.join(random.choice(chars) for _ in range(size))
 
@@ -67,56 +71,70 @@ class SubscriptionRate(models.Model):
       
         super(SubscriptionRate, self).save() # Call the "real" save() method.  
 
-PAYMENT_TYPE = (
-    ('DON', 'Donation'),
-    ('SUB', 'Subscription'),
-)
 
 PAYMENT_STATUS = (
     ('NEW',      'New un-initialized payment transaction'),
-    ('INIT',     'Transaction is ready for payment'),
-    ('SUBMIT',   'Transaction has been sent for approval'),
-    ('APPROV',   'Payment approved'),
-    ('DECLINED', 'Payment declined'),
+    ('TOKEN_REQ',       'Token requested'),
+    ('PMT_APPROV',      'Payment approved'),
+    ('PMT_CANCELLED',   'Payment cancelled by user'),
+    ('PMT_MAX_ATTEMPT', 'Payment max attempts'),
+    ('PMT_EXPIRED',     'Payment token expired'),
+)
+
+PAYMENT_DURATION = (
+    ('1',  'One month'),
+    ('3',  'Three months'),
+    ('6',  'Six months'),
+    ('12', 'Twelve months'),
 )
 
 class Payment(models.Model):
     id = models.AutoField(primary_key=True)
 
-    payment_id       = models.IntegerField(default=0)    
-
     user             = models.ForeignKey(User, related_name="payments", on_delete=models.CASCADE)
 
-    status           = models.CharField(max_length=8, choices=PAYMENT_STATUS, default='NEW')
-    payement_type    = models.CharField(max_length=8, choices=PAYMENT_TYPE, default='DON')
+    status           = models.CharField(max_length=16, choices=PAYMENT_STATUS, default='NEW')
 
-    account_type     = models.ForeignKey(AccountType, related_name="payments", null=True, blank=True, on_delete=models.CASCADE)
+    account_type             = models.ForeignKey(AccountType, related_name="payments", null=True, blank=True, on_delete=models.CASCADE)
+    subscription_end         = models.DateField(null=True, blank=True)
+    subscription_cost        = models.IntegerField(default=0)
+    actual_subscription_cost = models.IntegerField(default=0)
+    subscription_duration    = models.CharField(max_length=4, choices=PAYMENT_DURATION, default='1')
 
-    reference_id     = models.CharField(max_length=50, blank=True, unique=True)
+    reconciliation = models.IntegerField(default=-1)
+
+    reference_id     = models.CharField(max_length=50, blank=True)
     transaction_id   = models.CharField(max_length=13, default="")
     token            = models.CharField(max_length=48, default="")
+    redirect_url     = models.URLField(max_length=256, blank=True)
 
-    amount           = models.IntegerField(default=-1)
-    reconciliation   = models.IntegerField(default=-1)
+    reference_time   = models.DateTimeField(auto_now_add=True, editable=False)
 
-    name             = models.CharField(max_length=60, default="")
-    email            = models.EmailField(default="")
-    show_donation    = models.BooleanField(default=False)
+    register_time    = models.DateTimeField(null=True, blank=True)
+    query_time       = models.DateTimeField(null=True, blank=True)
+    capture_time     = models.DateTimeField(null=True, blank=True)
 
-    transaction_date         = models.DateTimeField(auto_now_add=True, editable=False)
-    account_expiration_date  = models.DateField(null=True, blank=True)
+    register_response_code = models.IntegerField(default=-1)
+    query_response_code    = models.IntegerField(default=-1)
+    capture_response_code  = models.IntegerField(default=-1)
+
+
 
 
     class Meta:
         verbose_name        = "Payment"
         verbose_name_plural = "Payments"
-        ordering = ['transaction_date']
+        ordering = ['reference_time', 'capture_time']
     
     def __str__(self):
-        return 'Payment: ' + self.name + ' (' + str(self.transaction_date.month) + '/' + str(self.transaction_date.day) + '/' + str(self.transaction_date.year) + ')'
+        return 'Payment: ' + str(self.user) + ' (' + str(self.reference_time) 
 
     def save(self):
 
-        self.reference_id   =  id_generator(50)     
-     
+        self.reference_id = id_generator(50)
+
         super(Payment, self).save() # Call the "real" save() method.         
+
+   
+            
+     

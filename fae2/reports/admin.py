@@ -29,7 +29,7 @@ from .models import FilteredURL
 
 class WebsiteReportAdmin(admin.ModelAdmin):
     list_display = ('url', 'user', 'title', 'status', 'slug', 'archive', 'ruleset', 'depth', 'created', 'rules_violation', 'rules_warning', 'rules_manual_check', 'rules_passed', 'implementation_score', 'implementation_status')
-    list_filter  = ('url', 'user')
+    list_filter  = ('status', 'user')
 
 admin.site.register(WebsiteReport, WebsiteReportAdmin)
 

@@ -28,11 +28,13 @@ from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.urlresolvers import reverse_lazy, reverse
 
+
 from django.db.models import Q
 
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic          import TemplateView
 from django.views.generic          import FormView 
+from django.views.generic          import CreateView 
 from django.views.generic          import RedirectView 
 from django.contrib.auth.mixins    import LoginRequiredMixin
 
@@ -42,6 +44,19 @@ from userProfiles.models         import UserProfile
 from accounts.models             import AccountType
 from stats.models                import StatsUser
 from websiteResultGroups.models  import WebsiteReportGroup
+
+import requests
+import hmac
+import hashlib
+import base64
+import string
+
+from fae2.settings import PAYMENT_SITE_ID
+from fae2.settings import PAYMENT_URL
+from fae2.settings import PAYMENT_SEND_KEY
+from fae2.settings import PAYMENT_RECEIVE_KEY
+
+from reports.views import get_default_url
 
 from subscriptions.models        import Payment
 
@@ -62,6 +77,7 @@ from reports.views import FAENavigationMixin
 
 from fae2.settings import SITE_URL
 from fae2.settings import SHIBBOLETH_SUPERUSER
+
 
 from userProfiles.models import UserProfile
 from stats.models        import StatsUser
@@ -214,6 +230,9 @@ class UpdateUserProfileView(LoginRequiredMixin, FAENavigationMixin, SuccessMessa
     def get_initial(self):
         # Populate ticks in BooleanFields
         user = self.request.user
+
+        user.profile.update_subscription_balance()
+
         initial = {}
         initial['first_name'] = user.first_name
         initial['last_name']  = user.last_name
@@ -229,60 +248,134 @@ class UpdateUserProfileView(LoginRequiredMixin, FAENavigationMixin, SuccessMessa
 
         context['user_stats'] = StatsUser.objects.get(user=self.request.user)
         context['user_profile'] = UserProfile.objects.get(user=self.request.user)
+        context['payment_enabled'] = PAYMENT_SITE_ID 
         
         return context  
 
 
-class AccountTypeForm(forms.Form):
-    account_type        = forms.CharField(max_length=3)
-    payment_duration    = forms.CharField(max_length=3)
-    payment_amount      = forms.CharField(max_length=20)
+class UpdateAccountView(LoginRequiredMixin, FAENavigationMixin, CreateView):
 
-
-class UpdateAccountTypeView(LoginRequiredMixin, FAENavigationMixin, SuccessMessageMixin, FormView):
+    model         = Payment
+    fields        = ['account_type', 'subscription_duration', 'subscription_end', 'subscription_cost', 'actual_subscription_cost']
     template_name = 'accounts/update_account_type.html'
-    form_class    = AccountTypeForm
 
-    success_url = reverse_lazy('update_account_type')
-    success_message = "Account Type Updated!"
-
-    login_url = reverse_lazy('run_anonymous_report')
+    login_url = get_default_url()
     redirect_field_name = "Anonymous Report"
-
-    updated = False
-    errors  = False
 
     def form_valid(self, form):
 
         user = self.request.user
 
-        account_type      = form.cleaned_data['account_type']
-        payment_duration  = form.cleaned_data['payment_duration']
-        amount            = form.cleaned_data['payment_amount']
+        form.instance.user = user
 
-        profile           = user.profile
-        profile.account_type    = AccountType.objects.get(id=account_type)
-#        profile.expiration_date = datetime.datetime.now()
-        profile.save()
+        account_type             = form.instance.account_type
+        subscription_duration    = form.instance.subscription_duration
+        subscription_end         = form.instance.subscription_end
+        subscription_cost        = form.instance.subscription_cost
+        actual_subscription_cost = form.instance.actual_subscription_cost
 
-        return super(UpdateAccountTypeView, self).form_valid(form)
-  
+        print("Test: " + str(actual_subscription_cost))
+
+        ro = self.register(str(actual_subscription_cost))
+
+        form.instance.token                   = ro['TOKEN']
+        form.instance.transaction_id          = ro['TRANSACTIONID']
+        form.instance.register_time           = ro['TIMESTAMP']
+        form.instance.register_response_code  = ro['RESPONSECODE']
+        form.instance.redirect_url            = ro['REDIRECT']
+
+#        form.instance.token = ro['TOKEN']
+
+        return super(UpdateAccountView, self).form_valid(form)
+
+    def form_invalid(self, form):
+
+        return super(UpdateAccountView, self).form_invalid(form)
 
     def get_initial(self):
         # Populate ticks in BooleanFields
         user = self.request.user
+
+        user.profile.update_subscription_balance()
+
         initial = {}
-        initial['account_type'] = self.request.user.profile.account_type.type_id
+        initial['account_type']     = self.request.user.profile.account_type.type_id + 1
+        initial['subscription_duration']    = '1'
+        initial['subscription_end']         = ''
+        initial['subscription_cost']        = '0'
+        initial['actual_subscription_cost'] = '0'
+
         return initial
 
     def get_context_data(self, **kwargs):
-        context = super(UpdateAccountTypeView, self).get_context_data(**kwargs)
+        context = super(UpdateAccountView, self).get_context_data(**kwargs)
 
         context['user_stats']    = StatsUser.objects.get(user=self.request.user)
         context['user_profile']  = UserProfile.objects.get(user=self.request.user)
         context['account_types'] = AccountType.objects.filter(self_registration=True)
         
         return context  
+
+    def get_success_url(self):
+        return reverse('payment_register', args=[self.object.reference_id])    
+
+    def parse_result(self, result):
+        ro = {}
+
+        lines = result.splitlines()
+
+        count = 1
+
+        for line in lines:
+            if len(line):
+                [name,value] = line.split('=')
+                ro[name] = value
+
+#        print("RO: " + str(ro))
+
+        return ro
+
+    def format_timestamp(self, ts):
+
+        [date, time] = ts.split(' ')
+
+        [month,day,year] = date.split('-')
+
+        return year + '-' + month + '-' + day + ' ' + time
+
+
+    def register(self, amount):
+        try:
+
+            print("AMMOUNT: " + amount)
+
+            certification_maker = hmac.new(str(PAYMENT_SEND_KEY), digestmod=hashlib.sha1)
+
+            now = datetime.datetime.utcnow()
+            ts =  now.strftime("%m-%d-%Y %H:%M:%S")
+            amount = amount + '.00'
+            code = amount + '|' + str(PAYMENT_SITE_ID) + '|' + ts
+
+            certification_maker.update(code)
+
+            payload = {'action': 'registerccpayment',
+               'siteid': PAYMENT_SITE_ID,
+               'amount': amount,
+               'market': 'retail',
+               'referenceid1' : 'test',
+               'timestamp': ts,
+               'certification' : certification_maker.hexdigest()
+            }
+
+            r = requests.post(PAYMENT_URL, data=payload)
+
+            ro = self.parse_result(r.text)
+
+            ro['TIMESTAMP'] = self.format_timestamp(ro['TIMESTAMP'])
+
+            return ro
+        except:
+            return False         
 
 
 
@@ -308,22 +401,16 @@ class DonateView(FAENavigationMixin, SuccessMessageMixin, FormView):
 
     def form_valid(self, form):
 
-        print("USER 1: " + str(self.request.user))    
-
         user = self.request.user
 
         if user.is_anonymous():
             user = User.objects.get(username='anonymous')    
-
-        print("USER 2: " + str(user))    
 
         name           = form.cleaned_data['donor_name']
         email          = form.cleaned_data['donor_email']
         amount         = form.cleaned_data['donation_amount']
         show_donation  = form.cleaned_data['show_donation']
 
-        payment = Payment(user=user, name=name, email=email, amount=amount, show_donation=show_donation)
-        payment.save()
 
         return super(DonateView, self).form_valid(form) 
 
@@ -360,6 +447,34 @@ class DonateFailView(FAENavigationMixin, TemplateView):
         context = super(DonateFailView, self).get_context_data(**kwargs)
 
         return context  
+
+# ==============================================================
+#
+# Payment Views
+#
+# ==============================================================
+
+class RegisterView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
+    template_name = 'accounts/payment_register.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(RegisterView, self).get_context_data(**kwargs)
+
+        context['payment'] = Payment.objects.get(reference_id=kwargs['reference_id'])
+
+        return context  
+
+
+class PaymentView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
+    template_name = 'accounts/payment.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(PaymentView, self).get_context_data(**kwargs)
+
+        token = kwargs['token']
+        
+        return context  
+ 
 
 
 # ==============================================================

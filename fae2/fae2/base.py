@@ -108,6 +108,17 @@ ADMIN_PASSWORD           = get_secret('ADMIN_PASSWORD')
 ADMIN_EMAIL              = get_secret('ADMIN_EMAIL')
 ANONYMOUS_PASSWORD       = get_secret('ANONYMOUS_PASSWORD')
 
+try:
+    PAYMENT_SITE_ID     = get_secret('PAYMENT_SITE_ID')
+    PAYMENT_URL         = get_secret('PAYMENT_URL')
+    PAYMENT_SEND_KEY    = get_secret('PAYMENT_SEND_KEY')
+    PAYMENT_RECEIVE_KEY = get_secret('PAYMENT_RECEIVE_KEY')
+except:
+    PAYMENT_SITE_ID     = False
+    PAYMENT_URL         = False
+    PAYMENT_SEND_KEY    = False
+    PAYMENT_RECEIVE_KEY = False
+
 # Application definition
 
 PROCESSING_THREADS = get_secret('PROCESSING_THREADS')

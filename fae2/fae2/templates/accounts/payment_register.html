@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block breadcrumb %}
+  <li><a href="{% url 'user_profile' %}">My Account</a></li>
+  <li>Payment Register</li>
+{% endblock %}
+
+{% block title %}
+Payment Register
+{% endblock %}
+
+{% block content %}
+
+<pre>{{response}}</pre>
+
+{{payment.redirect_url}}
+
+ 
+{% endblock %}
+
+
+{% block javascript %}
+
+<script type="text/javascript">
+
+function paymentRedirect() {
+
+  var url = "{{payment.redirect_url}}?token={{payment.token}}";
+
+  window.location.href=url;
+}
+
+window.addEventListener('load', paymentRedirect);
+
+ 
+</script>
+
+{% endblock %}

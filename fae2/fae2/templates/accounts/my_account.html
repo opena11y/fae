@@ -43,7 +43,7 @@
     <tbody>
         <tr>
             <th class="text" style="width: 9em">Type</th>
-            <td class="text">{{user_profile.account_type.title}}  <a href="{% url 'update_account_type' %}">Change Account Type</a></td>
+            <td class="text">{{user_profile.account_type.title}} {% if payment_enabled %}<a href="{% url 'update_account_type' %}">Change Account Type</a>{% endif %}</td>
         </tr>
         <tr>
             <th class="text">Description</th>

@@ -31,6 +31,6 @@ class SubscriptionRateAdmin(admin.ModelAdmin):
 admin.site.register(SubscriptionRate, SubscriptionRateAdmin)
 
 class PaymentAdmin(admin.ModelAdmin):
-    list_display = ('reference_id', 'transaction_date', 'amount', 'reconciliation', 'status')
+    list_display = ('reference_id', 'reference_time', 'capture_time', 'subscription_cost', 'subscription_end', 'reconciliation', 'status')
 
 admin.site.register(Payment, PaymentAdmin)

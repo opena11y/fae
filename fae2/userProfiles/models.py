@@ -38,8 +38,13 @@ class UserProfile(models.Model):
 
     user          = models.OneToOneField(User, related_name="profile")
 
-    account_type     = models.ForeignKey(AccountType, related_name="user_profiles")
-    account_expires  = models.DateTimeField(null=True, blank=True)
+    account_type  = models.ForeignKey(AccountType, related_name="user_profiles")
+
+    subscription_end          = models.DateField(null=True, blank=True)
+    subscription_start        = models.DateField(null=True, blank=True)
+
+    subscription_amount       = models.IntegerField(default=0)
+    subscription_balance      = models.IntegerField(default=0) 
 
     org           = models.CharField(max_length=128, blank=True)
     dept          = models.CharField(max_length=128, blank=True)
@@ -57,6 +62,18 @@ class UserProfile(models.Model):
         old_reports  = user_reports[self.account_type.max_archive:]
 
         return [reports, old_reports] 
+
+    def update_subscription_balance(self):
+        now = datetime.datetime.now().date()
+
+        if self.subscription_start < self.subscription_end and self.subscription_amount > 0 and self.subscription_end > now:
+            self.subscription_balance = (self.subscription_amount * (( 100 * (self.subscription_end-now).days) / (self.subscription_end-self.subscription_start).days)) / 100 
+        else:
+            self.subscription_balance = 0
+
+        self.save()    
+
+        return self.subscription_balance    
     
 # creates new UserProfile when new user registers 
 def user_registered_callback(sender, user, request, **kwargs):
