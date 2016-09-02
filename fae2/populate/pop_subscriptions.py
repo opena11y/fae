@@ -46,9 +46,11 @@ from django.core.exceptions import ObjectDoesNotExist
 
 from accounts.models      import AccountType
 from subscriptions.models import SubscriptionRate
+from userProfiles         import userProfile
 
 from django.contrib.auth.models import User
 
+from fae2.settings import DEFAULT_ACCOUNT_TYPE
 
 def create_subscription_rate(sub_id, one, three, six, twelve):
 
@@ -88,6 +90,14 @@ def set_subscription_description(sub_id, desc):
   except ObjectDoesNotExist:
     print("  Subscription not found: " + str(sub_id) )
 
+def update_user_profiles():
+  for u in User.objects.all():
+    try:
+      p = userProfile.objects.get(user=u)
+    except:
+      p = UserProfile(user=u)
+      p.account_type = AccountType.objects.get(type_id=DEFAULT_ACCOUNT_TYPE)
+      p.save()
 
 create_subscription_rate( 0,    0,    0,    0,     0)
 create_subscription_rate( 1,    0,    0,    0,     0)

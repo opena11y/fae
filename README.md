@@ -145,13 +145,6 @@ vironments/fae2/lib/python3.4/site-packages/
   * There are a number of ways to make this program run in parallel with django application depending on your operating system
     * Linux: How to write a System V init script to start, stop, and restart my own application or service(http://www.cyberciti.biz/tips/linux-write-sys-v-init-script-to-start-stop-service.html)
 
-### Django Shibboleth Resources
-* [How to (not) use Shibboleth with the Django web framework](https://5chub3r7.wordpress.com/2014/12/05/how-to-not-use-shibboleth-with-the-django-web-framework/)
-
-### Incommon Resources (Multi-Institution Shibboleth)
-* [InCommon: Embedded Discovery Service](https://wiki.shibboleth.net/confluence/display/EDS10/Embedded+Discovery+Service)
-* [Technology Services: Shibboleth, Multi-university configuration](https://answers.uillinois.edu/illinois/48456)
-* [InCommon: Federation Entities](https://www.incommon.org/federation/info/all-entities.html)
 
 ### Utility to clean up reports and update summary statistics
 * IMPORTANT: Must run <code>fae-util/process_achive_reports.py</code> to process remove reports and update summary statistics
@@ -161,6 +154,15 @@ vironments/fae2/lib/python3.4/site-packages/
 #!/usr/bin/env bash
 <path to virtual environment>/python <path to script>/process_achive_reports.py
 </pre>
+
+## Shibboleth Configuration
+
+To enable shibboleth support on your institution or organization you need your service manager to enable the following attributes to the entityID identifying the installation of FAE with Shibboleth Suppoert (e.g. "https://fae.illinois.edu/shibboleth" for the University of Illinois campus):
+* eppn
+* giveName
+* sn
+* mail
+
 
 
 ## SELinux issues (e.g. CENTOS, REDHAT)
@@ -177,3 +179,12 @@ vironments/fae2/lib/python3.4/site-packages/
 * If you are using self registration make sure you enable Apache to send emails using sendmail ([http://www.sufinawaz.com/selinux-apache-sendmail/])
 * Setup e-mail on CENTOS 7 operating system ([http://www.krizna.com/centos/setup-mail-server-centos-7/])
 
+## Development Resources
+
+### Django Shibboleth Resources
+* [How to (not) use Shibboleth with the Django web framework](https://5chub3r7.wordpress.com/2014/12/05/how-to-not-use-shibboleth-with-the-django-web-framework/)
+
+### Incommon Resources (Multi-Institution Shibboleth)
+* [InCommon: Embedded Discovery Service](https://wiki.shibboleth.net/confluence/display/EDS10/Embedded+Discovery+Service)
+* [Technology Services: Shibboleth, Multi-university configuration](https://answers.uillinois.edu/illinois/48456)
+* [InCommon: Federation Entities](https://www.incommon.org/federation/info/all-entities.html)
