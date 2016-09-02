@@ -107,17 +107,20 @@ ADMIN_LAST_NAME          = get_secret('ADMIN_LAST_NAME')
 ADMIN_PASSWORD           = get_secret('ADMIN_PASSWORD')
 ADMIN_EMAIL              = get_secret('ADMIN_EMAIL')
 ANONYMOUS_PASSWORD       = get_secret('ANONYMOUS_PASSWORD')
+DEFAULT_ACCOUNT_TYPE     = get_secret('DEFAULT_ACCOUNT_TYPE')
 
 try:
     PAYMENT_SITE_ID     = get_secret('PAYMENT_SITE_ID')
     PAYMENT_URL         = get_secret('PAYMENT_URL')
     PAYMENT_SEND_KEY    = get_secret('PAYMENT_SEND_KEY')
     PAYMENT_RECEIVE_KEY = get_secret('PAYMENT_RECEIVE_KEY')
+    PAYMENT_ACCOUNT     = get_secret('PAYMENT_ACCOUNT')
 except:
     PAYMENT_SITE_ID     = False
     PAYMENT_URL         = False
     PAYMENT_SEND_KEY    = False
     PAYMENT_RECEIVE_KEY = False
+    PAYMENT_ACCOUNT     = False
 
 # Application definition
 

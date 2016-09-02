@@ -32,19 +32,24 @@ from reports.models             import WebsiteReport
 from stats.models               import StatsUser
 import markdown
 
-import datetime
+from fae2.settings import DEFAULT_ACCOUNT_TYPE
+
+from datetime import datetime 
+
+from datetime import date
 
 class UserProfile(models.Model):
 
     user          = models.OneToOneField(User, related_name="profile")
 
-    account_type  = models.ForeignKey(AccountType, related_name="user_profiles")
+    account_type             = models.ForeignKey(AccountType, related_name="user_profiles")
+    enable_any_account_types = models.BooleanField(default=False)
+    
+    subscription_start      = models.DateField(null=True, blank=True)
+    subscription_end        = models.DateField(null=True, blank=True)
+    subscription_payments   = models.IntegerField(default=0) # in dollars
+    subscription_daily_rate = models.IntegerField(default=0) # in cents
 
-    subscription_end          = models.DateField(null=True, blank=True)
-    subscription_start        = models.DateField(null=True, blank=True)
-
-    subscription_amount       = models.IntegerField(default=0)
-    subscription_balance      = models.IntegerField(default=0) 
 
     org           = models.CharField(max_length=128, blank=True)
     dept          = models.CharField(max_length=128, blank=True)
@@ -55,6 +60,42 @@ class UserProfile(models.Model):
     def __unicode__(self):
         return self.user.username  
 
+    def set_payments(self, amount):
+        self.subscription_payments = amount
+        self.update_daily_rate()
+    
+    def add_payment(self, amount):
+        self.subscription_payments += amount
+        self.update_daily_rate()
+
+    def subtract_payment(self, amount):
+        self.subscription_payments -= amount
+
+        if self.subscription_payments < 0:
+            self.subscription_payments = 0 
+
+        self.update_daily_rate()
+
+
+    def update_daily_rate(self):
+        self.subscription_daily_rate = 0;
+
+
+        if self.subscription_payments > 0 and self.subscription_start and self.subscription_end:
+            date1 = date(self.subscription_end.year, self.subscription_end.month, self.subscription_end.day)
+            date2 = date(self.subscription_start.year, self.subscription_start.month, self.subscription_start.day)
+            delta = date1 - date2
+
+            days = delta.days
+
+            if (days > 0):
+                self.subscription_daily_rate = (100 * self.subscription_payments) / days
+
+        self.save()        
+
+
+
+
     def get_active_reports(self):
 
         user_reports = WebsiteReport.objects.filter(user=self.user).filter(status='C')
@@ -63,23 +104,14 @@ class UserProfile(models.Model):
 
         return [reports, old_reports] 
 
-    def update_subscription_balance(self):
-        now = datetime.datetime.now().date()
 
-        if self.subscription_start < self.subscription_end and self.subscription_amount > 0 and self.subscription_end > now:
-            self.subscription_balance = (self.subscription_amount * (( 100 * (self.subscription_end-now).days) / (self.subscription_end-self.subscription_start).days)) / 100 
-        else:
-            self.subscription_balance = 0
 
-        self.save()    
-
-        return self.subscription_balance    
     
 # creates new UserProfile when new user registers 
 def user_registered_callback(sender, user, request, **kwargs):
 
     profile = UserProfile(user = user)
-    profile.account_type = AccountType.objects.get(type_id=1)
+    profile.account_type = AccountType.objects.get(type_id=DEFAULT_ACCOUNT_TYPE)
     profile.org = ''
     profile.save()
    

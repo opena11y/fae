@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block breadcrumb %}
+  <li><a href="{% url 'user_profile' %}">My Account</a></li>
+  <li>Payment</li>
+{% endblock %}
+
+{% block title %}
+Payment
+{% endblock %}
+
+{% block content %}
+
+{% if reason == 'canceled' %}
+
+<div class="error">
+  <p>Payment cancelled by card holder</p>
+</div>
+
+{% else %}
+    
+    {% if reason == 'maxattempts' %}
+
+<div class="error">
+  <p>Too many attempts to validate credit card purchase, please verify your credit card information and <a href="{% url 'update_subscription' %}">try again</a>.</p>
+</div>
+
+    {% else %}
+
+        {% if reason == 'tokenexpired' %}
+
+<div class="error">
+  <p>Payment session has timed out, please <a href="{% url 'update_subscription' %}">try again</a>.</p>
+</div>
+
+        {% else %}
+
+            {% if payment.status == 'PMT_NOCOST' %}
+
+<div class="success">
+    <p>There was <strong>no</strong> cost associated with updating your subscription.</p>
+    <p><a href="{% url 'user_profile' %}">View updated account information.</a></p> 
+</div>  
+
+            {% else %}
+
+<div class="success">
+    <p>Your payment of ${{payment.actual_subscription_cost}} was approved.</p>
+    <p>Thank you for your extending or updating your subscription!</p>
+    <p><a href="{% url 'user_profile' %}">View updated account information.</a></p> 
+</div>  
+
+            {% endif %}
+        {% endif %}
+    {% endif %}
+{% endif %}    
+
+ 
+{% endblock %}
+
+
+{% block javascript %}
+
+<script type="text/javascript">
+
+ 
+</script>
+
+{% endblock %}

@@ -89,13 +89,13 @@ def set_subscription_description(sub_id, desc):
     print("  Subscription not found: " + str(sub_id) )
 
 
-create_subscription_rate( 0,   0,    0,    0,     0)
-create_subscription_rate( 1,   0,    0,    0,     0)
-create_subscription_rate( 2,  60,  160,  280,   480)
-create_subscription_rate( 3,  90,  240,  420,   720)
-create_subscription_rate( 4,  120,  320,  560,  960)
-create_subscription_rate( 5,  240,  640, 1200, 1920)
-create_subscription_rate( 6,  480, 1280, 2400, 3840)
+create_subscription_rate( 0,    0,    0,    0,     0)
+create_subscription_rate( 1,    0,    0,    0,     0)
+create_subscription_rate( 2,   40,  110,  205,   360)
+create_subscription_rate( 3,   70,  190,  360,   630)
+create_subscription_rate( 4,  120,  325,  610,  1080)
+create_subscription_rate( 5,  200,  540, 1020,  1800)
+create_subscription_rate( 6,  300,  810, 1530,  2700)
 
 create_subscription_rate(16,    0, 1000, 1800, 3200)
 create_subscription_rate(17,    0, 2000, 3600, 6400)

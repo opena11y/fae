@@ -29,20 +29,19 @@
                         {% if at.subscription_rate %}
                         <ul style="list-style: none; padding-left: 0;">
                             {% if at.subscription_rate.one_month %}
-                            <li>${{at.subscription_rate.one_month}} monthly</li>
+                            <li>${{at.subscription_rate.one_month}} for a month</li>
                             {% endif %}
                             {% if at.subscription_rate.three_month %}
-                            <li>${{at.subscription_rate.three_month}} every three months</li>
+                            <li>${{at.subscription_rate.three_month}} for three months</li>
                             {% endif %}
                             {% if at.subscription_rate.six_month %}
-                            <li>${{at.subscription_rate.six_month}} every six months</li>
+                            <li>${{at.subscription_rate.six_month}} for six months</li>
                             {% endif %}
                             {% if at.subscription_rate.twelve_month %}
-                            <li>${{at.subscription_rate.twelve_month}} yearly</li>
+                            <li>${{at.subscription_rate.twelve_month}} for a year</li>
                             {% else %}
                             <li>No cost</li>
                             {% endif %}    
-
                         </ul>
                         {% else %}
                         No cost

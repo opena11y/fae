@@ -2,57 +2,43 @@
 
 {% block breadcrumb %}
   <li><a href="{% url 'user_profile' %}">My Account</a></li>
-  <li>Update Account</li>
+  <li>Subscription</li>
 {% endblock %}
 
 {% block title %}
- Update Account
+ Extend or Update Subscription
 {% endblock %}
 
 {% block content %}
 
-    <h2 id="id_current_account">Current Account</h2>
+    <h2 id="id_current_account">Current Subscription</h2>
 
     <table class="table table-striped" aria-labelledby="id_current_account" style="width: 24em;">
-        <thead>
-            <tr>
-                <th class="text" style="width: 12em;">Feature</th>
-                <th class="text">Description</th>
-            </tr>
-        </thead>
         <tbody>
             <tr>
-                <td>Account Type</td>
+                <th class="text" style="width: 8em">Account Type</th>
                 <td>{{user_profile.account_type}}</td>
             </tr>
-            <tr>
-                <td>Last Payment</td>
+            <tr>    
+                <th class="text">Started</th>
                 <td>
-                    {% if user_profile.subscription_start %}
-                    {{user_profile.subscription_start|date:"n/j/Y"}}
-                    {% else %}
-                    none
-                    {% endif %}
+                {% if user_profile.subscription_start %}{{user_profile.subscription_start|date:"n/j/Y"}}{% else %}-{% endif %}
                 </td>
             </tr>
-            <tr>
-                <td>End Date</td>
+            <tr>    
+                <th class="text">Ends</th>
                 <td>
-                {% if user_profile.subscription_end %}{{user_profile.subscription_end|date:"n/j/Y"}}{% else %}Never{% endif %}
+                {% if user_profile.subscription_end %}{{user_profile.subscription_end|date:"n/j/Y"}}{% else %}-{% endif %}
                 </td>
-            </tr>
-            <tr>
-                <td>Account Balance</td>
-                <td>${{user_profile.subscription_balance}}</td>
             </tr>
         </tbody>
     </table>    
 
 
-    <h2>Update Options</h2>
-    <p>See self-registration <a href="#id1">subscription options and descriptions</a> following the form.</p>
+    <h2>Update Subscription</h2>
+    <p>Extend or change subscription type.  See self-registration <a href="#id1">subscription options and descriptions</a> following the form.</p>
 
-    <form id="id_run_report"  action="{% url 'update_account_type' %}" method="post" >
+    <form id="id_run_report"  action="{% url 'update_subscription' %}" method="post" >
         {% csrf_token %}
 
         <fieldset id="id_account_type"  {% if form.account_type.errors|length %}class="error"{% endif %}>
@@ -63,14 +49,15 @@
             {% endif %}
             {% for choice in form.account_type.field.choices %}
                 {% if forloop.counter > 2 and forloop.counter < 9 %}
-                 <div class="fae20_radio">
+
+                <div class="fae20_radio">
                     <input
                         id="id_account_type_{{ forloop.counter }}"
                         type="radio"
                         name="account_type"
                         value="{{choice.0}}"
 
-                        {% if choice.0 == 2 and user_profile.subscription_balance > 0  %}
+                        {% if choice.0 <= user_profile.account_type.type_id and not user_profile.enable_any_account_types %}
                         disabled
                         {% endif %}
 
@@ -136,7 +123,7 @@
             value="{{form.subscription_cost.value|slugify}}">
 
         <div class="input" >
-            <label for="id_actual_subscription_cost">Cost</label>
+            <label for="id_actual_subscription_cost">Actual Cost</label>
             <div {% if form.actual_subscription_cost.errors|length %}class="error"{% endif %}>
             <input 
                 type="text"
@@ -188,6 +175,32 @@
 
     };
 
+    function getAccountBalance(daily_rate, year, month, day) {
+
+        function days_between() {
+
+            // The number of milliseconds in one day
+            var ONE_DAY = 1000 * 60 * 60 * 24;
+
+            // Convert both dates to milliseconds
+            var now = new Date();
+            var end = new Date(year, (month-1), day);
+
+            // Calculate the difference in milliseconds
+            var difference_ms = Math.abs(end.getTime() - now.getTime());
+
+            // Convert back to days and return
+            return Math.round(difference_ms/ONE_DAY);
+
+        }        
+
+        var days = days_between();
+
+        return Math.ceil((days * daily_rate) / 100);
+
+
+    }
+
     function updateSubscriptionCost() {
 
         function getSelectedAccountType() {
@@ -218,8 +231,8 @@
                         node.parentNode.previousElementSibling.setAttribute('data-value', value + '.' + duration);
                     } 
                     else {
-                        if (balance > 0 ) {
-                            node.innerHTML = 'no cost, using balance';
+                        if (credit > 0 ) {
+                            node.innerHTML = 'no cost, using credit from current subscription';
                             node.parentNode.previousElementSibling.setAttribute('data-value', '0.' + duration);
                         }
                         else {
@@ -251,8 +264,23 @@
 
         }
 
+        var end_year   = false;
+        var end__month = false;
+        var end_day    = false;
+        var credit     = 0;
 
-        var balance = {{user_profile.subscription_balance}};
+        {% if user_profile.subscription_end %}
+        end_year  = {{user_profile.subscription_end|date:"Y"}};
+        end_month = {{user_profile.subscription_end|date:"n"}};
+        end_day   = {{user_profile.subscription_end|date:"j"}};
+        {% endif %}
+
+        {% if user_profile.subscription_daily_rate %}
+        var daily_rate  = {{user_profile.subscription_daily_rate}};
+        {% else %}
+        var daily_rate = 0;
+        {% endif %}
+
         var isCurrentAccountType = true;
 
         var oneMonth    = document.getElementById('id_subscription_cost_1');
@@ -281,16 +309,22 @@
             end = new Date('{{user_profile.subscription_end|date:"n/j/Y"}}');
         }
         else {
-            if (balance > 0) {
+
+            credit = 0;
+
+            if (end_year && daily_rate > 0) credit = getAccountBalance(daily_rate, end_year, end_month, end_day);
+
+            console.log("CREDIT: " + credit);
+
+            if (actualCost > 0 && credit > 0) {
                 // if new account type apply balance to new account and use today as start date
-                credit = balance;
-                actualCost = cost - balance;
+                actualCost = cost - credit;
                 if (actualCost < 0 ) { 
                     actualCost = 0;
                     credit = cost;
                 }    
 
-                explainCost.innerHTML = "Cost includes $" + credit + " credit for current subscription balance";
+                explainCost.innerHTML = "Cost includes $" + credit + " credit for current subscription payments.";
             }
         }    
 

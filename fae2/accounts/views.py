@@ -8,7 +8,7 @@ You may obtain a copy of the License at
     http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
+distributed under the License is distributed on an "AS IS" BASIS,Payement
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
@@ -45,16 +45,7 @@ from accounts.models             import AccountType
 from stats.models                import StatsUser
 from websiteResultGroups.models  import WebsiteReportGroup
 
-import requests
-import hmac
-import hashlib
-import base64
-import string
 
-from fae2.settings import PAYMENT_SITE_ID
-from fae2.settings import PAYMENT_URL
-from fae2.settings import PAYMENT_SEND_KEY
-from fae2.settings import PAYMENT_RECEIVE_KEY
 
 from reports.views import get_default_url
 
@@ -75,6 +66,20 @@ from timezone_field import TimeZoneFormField
 
 from reports.views import FAENavigationMixin
 
+import requests
+import hmac
+import hashlib
+import base64
+import string
+import random
+
+from fae2.settings import PAYMENT_SITE_ID
+from fae2.settings import PAYMENT_URL
+from fae2.settings import PAYMENT_SEND_KEY
+from fae2.settings import PAYMENT_RECEIVE_KEY
+from fae2.settings import PAYMENT_ACCOUNT
+from fae2.settings import DEFAULT_ACCOUNT_TYPE
+
 from fae2.settings import SITE_URL
 from fae2.settings import SHIBBOLETH_SUPERUSER
 
@@ -82,6 +87,9 @@ from fae2.settings import SHIBBOLETH_SUPERUSER
 from userProfiles.models import UserProfile
 from stats.models        import StatsUser
 
+
+def id_generator(size=6, chars=string.ascii_uppercase + string.digits):
+  return ''.join(random.choice(chars) for _ in range(size))
 
 def getExpirationDate(dt, months):
 
@@ -101,6 +109,30 @@ def getExpirationDate(dt, months):
         year += 1
 
     return 
+# Utilities
+
+def parse_result(result):
+    ro = {}
+
+    lines = result.splitlines()
+
+    count = 1
+
+    for line in lines:
+        if len(line):
+            [name,value] = line.split('=')
+            ro[name] = value
+
+
+    return ro
+
+def format_timestamp(ts):
+
+    [date, time] = ts.split(' ')
+
+    [month,day,year] = date.split('-')
+
+    return year + '-' + month + '-' + day + ' ' + time
 
 
 # Create your views here.
@@ -133,7 +165,7 @@ class ShibbolethLogin(RedirectView):
         try: 
             profile = UserProfile.objects.get(user=user)
         except:    
-            atype = AccountType.objects.get(type_id=1)
+            atype = AccountType.objects.get(type_id=DEFAULT_ACCOUNT_TYPE)
             profile = UserProfile(user=user, account_type=atype)
             profile.save()
 
@@ -231,8 +263,6 @@ class UpdateUserProfileView(LoginRequiredMixin, FAENavigationMixin, SuccessMessa
         # Populate ticks in BooleanFields
         user = self.request.user
 
-        user.profile.update_subscription_balance()
-
         initial = {}
         initial['first_name'] = user.first_name
         initial['last_name']  = user.last_name
@@ -253,11 +283,11 @@ class UpdateUserProfileView(LoginRequiredMixin, FAENavigationMixin, SuccessMessa
         return context  
 
 
-class UpdateAccountView(LoginRequiredMixin, FAENavigationMixin, CreateView):
+class UpdateSubscriptionView(LoginRequiredMixin, FAENavigationMixin, CreateView):
 
     model         = Payment
     fields        = ['account_type', 'subscription_duration', 'subscription_end', 'subscription_cost', 'actual_subscription_cost']
-    template_name = 'accounts/update_account_type.html'
+    template_name = 'accounts/update_subscription.html'
 
     login_url = get_default_url()
     redirect_field_name = "Anonymous Report"
@@ -268,25 +298,36 @@ class UpdateAccountView(LoginRequiredMixin, FAENavigationMixin, CreateView):
 
         form.instance.user = user
 
-        account_type             = form.instance.account_type
-        subscription_duration    = form.instance.subscription_duration
-        subscription_end         = form.instance.subscription_end
-        subscription_cost        = form.instance.subscription_cost
         actual_subscription_cost = form.instance.actual_subscription_cost
 
-        print("Test: " + str(actual_subscription_cost))
+        try:
+            p = UserProfile.objects.get(user=user)
+            form.instance.profile_subscription_end = p.subscription_end
+        except:    
+            pass
 
-        ro = self.register(str(actual_subscription_cost))
+        if actual_subscription_cost > 0:
 
-        form.instance.token                   = ro['TOKEN']
-        form.instance.transaction_id          = ro['TRANSACTIONID']
-        form.instance.register_time           = ro['TIMESTAMP']
-        form.instance.register_response_code  = ro['RESPONSECODE']
-        form.instance.redirect_url            = ro['REDIRECT']
+            ro = self.register(str(actual_subscription_cost))
 
-#        form.instance.token = ro['TOKEN']
+            form.instance.token                   = ro['TOKEN']
+            form.instance.transaction_id          = ro['TRANSACTIONID']
+            form.instance.register_time           = ro['TIMESTAMP']
+            form.instance.register_response_code  = ro['RESPONSECODE']
+            form.instance.register_response_msg   = ro['RESPONSEMESSAGE']
+            form.instance.redirect_url            = ro['REDIRECT']
 
-        return super(UpdateAccountView, self).form_valid(form)
+            if form.instance.register_response_code == '0':
+                form.instance.status = 'PMT_REGISTERED'
+            else:  
+                form.instance.status = 'PMT_ERROR'
+        else:
+
+            form.instance.token  = id_generator(40)
+            form.instance.status = 'PMT_NOCOST'
+            form.instance.redirect_url  = reverse('payment')
+
+        return super(UpdateSubscriptionView, self).form_valid(form)
 
     def form_invalid(self, form):
 
@@ -296,10 +337,10 @@ class UpdateAccountView(LoginRequiredMixin, FAENavigationMixin, CreateView):
         # Populate ticks in BooleanFields
         user = self.request.user
 
-        user.profile.update_subscription_balance()
-
         initial = {}
-        initial['account_type']     = self.request.user.profile.account_type.type_id + 1
+        initial['account_type']             = user.profile.account_type.type_id + 1
+        initial['profile_subscription_end'] = user.profile.subscription_end
+
         initial['subscription_duration']    = '1'
         initial['subscription_end']         = ''
         initial['subscription_cost']        = '0'
@@ -308,7 +349,7 @@ class UpdateAccountView(LoginRequiredMixin, FAENavigationMixin, CreateView):
         return initial
 
     def get_context_data(self, **kwargs):
-        context = super(UpdateAccountView, self).get_context_data(**kwargs)
+        context = super(UpdateSubscriptionView, self).get_context_data(**kwargs)
 
         context['user_stats']    = StatsUser.objects.get(user=self.request.user)
         context['user_profile']  = UserProfile.objects.get(user=self.request.user)
@@ -319,35 +360,9 @@ class UpdateAccountView(LoginRequiredMixin, FAENavigationMixin, CreateView):
     def get_success_url(self):
         return reverse('payment_register', args=[self.object.reference_id])    
 
-    def parse_result(self, result):
-        ro = {}
-
-        lines = result.splitlines()
-
-        count = 1
-
-        for line in lines:
-            if len(line):
-                [name,value] = line.split('=')
-                ro[name] = value
-
-#        print("RO: " + str(ro))
-
-        return ro
-
-    def format_timestamp(self, ts):
-
-        [date, time] = ts.split(' ')
-
-        [month,day,year] = date.split('-')
-
-        return year + '-' + month + '-' + day + ' ' + time
-
 
     def register(self, amount):
         try:
-
-            print("AMMOUNT: " + amount)
 
             certification_maker = hmac.new(str(PAYMENT_SEND_KEY), digestmod=hashlib.sha1)
 
@@ -369,15 +384,177 @@ class UpdateAccountView(LoginRequiredMixin, FAENavigationMixin, CreateView):
 
             r = requests.post(PAYMENT_URL, data=payload)
 
-            ro = self.parse_result(r.text)
+            ro = parse_result(r.text)
 
-            ro['TIMESTAMP'] = self.format_timestamp(ro['TIMESTAMP'])
+            try:
+                ro['TIMESTAMP'] = format_timestamp(ro['TIMESTAMP'])
+            except:    
+                ro['TIMESTAMP'] = datetime.datetime.utcnow()
 
             return ro
         except:
             return False         
 
+# ==============================================================
+#
+# Payment Views
+#
+# ==============================================================
 
+class RegisterView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
+    template_name = 'accounts/payment_register.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(RegisterView, self).get_context_data(**kwargs)
+
+        context['payment'] = Payment.objects.get(reference_id=kwargs['reference_id'])
+
+        return context  
+
+
+class PaymentView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
+    template_name = 'accounts/payment.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(PaymentView, self).get_context_data(**kwargs)
+
+        user = self.request.user
+
+        try:
+            profile = UserProfile.objects.get(user=user)
+        except:
+            profile = False    
+
+        try:
+            token  = self.request.GET['token']
+        except:
+            token = False
+
+        try:
+            reason = self.request.GET['reason']
+        except:
+            reason = False
+
+        try: 
+            payment = Payment.objects.get(token=token)
+
+            if payment.actual_subscription_cost > 0:
+
+                ro = self.capture(payment)
+
+                payment.capture_time          = ro['TIMESTAMP']
+                payment.capture_response_msg  = ro['RESPONSEMESSAGE']
+                payment.capture_response_code = ro['RESPONSECODE']
+                payment.save()
+
+    #            print("PROFILE: " + str(profile))
+    #            print(" REASON: " + str(reason))
+    #            print("   CODE: " + str(payment.capture_response_code))
+    #            print("   COST: " + str(payment.subscription_cost))
+    #            print("  START: " + str(payment.capture_time))
+    #            print("    END: " + str(payment.subscription_end))
+    #            print("    END: " + str(payment.profile_subscription_end))
+
+                if profile:
+                    if profile.subscription_end == payment.profile_subscription_end:
+                        if not reason and payment.capture_response_code == '0':
+                            payment.status = 'PMT_APPROV'
+                        elif reason == 'canceled':
+                            payment.status = 'PMT_CANCELLED'
+                        elif reason == 'maxattempts':
+                            payment.status = 'PMT_MAX_ATTEMPT'
+                        elif reason == 'tokenexpired': 
+                            payment.status = 'PMT_EXPIRED'
+                        else: 
+                            payment.status = 'PMT_ERROR'
+                    else:
+                        payment.status = 'PMT_SESSION'                            
+                else:        
+                    payment.status = 'PMT_ERROR'
+
+            payment.save()  
+
+            if profile:
+                if payment.status == 'PMT_APPROV':
+
+                    if profile.account_type == payment.account_type:
+                        print("Updating subscription")
+                        profile.subscription_end    = payment.subscription_end
+                        profile.add_payment(payment.subscription_cost)
+                    else:    
+                        print("Changing subscription")
+                        profile.account_type        = payment.account_type
+                        profile.subscription_start  = datetime.datetime.utcnow()
+                        profile.subscription_end    = payment.subscription_end
+                        profile.set_payments(payment.subscription_cost)
+
+                if payment.status == 'PMT_NOCOST':
+                    profile.account_type = payment.account_type
+                    profile.subscription_start  = datetime.datetime.utcnow()
+                    profile.subscription_end    = payment.subscription_end
+                    profile.subtract_payment(payment.subscription_cost)       
+ 
+                profile.save()
+
+
+        except:
+            payment = False     
+
+
+        context['token']   = token
+        context['reason']  = reason
+        context['payment'] = payment
+
+        return context  
+
+    def capture(self, payment):
+        try:
+
+            certification_maker = hmac.new(str(PAYMENT_SEND_KEY), digestmod=hashlib.sha1)
+
+            now = datetime.datetime.utcnow()
+            ts =  now.strftime("%m-%d-%Y %H:%M:%S")
+            amount = str(payment.actual_subscription_cost) + '.00'
+            code = payment.token + '|' + amount + '|' + ts + '|1|' + PAYMENT_ACCOUNT + '|' + amount
+
+            print("CODE: " + code)
+
+            account = PAYMENT_ACCOUNT.split('|')
+
+            certification_maker.update(code)
+
+            payload = {'action': 'captureccpayment',
+               'token': payment.token,
+               'amount': amount,
+               'numaccounts'   : 1,
+               'chart1'        : account[0],
+               'fund1'         : account[1],
+               'org1'          : account[2],
+               'account1'      : account[3],
+               'program1'      : account[4],
+               'amount1'       : amount,
+               'timestamp'     : ts,
+               'certification' : certification_maker.hexdigest()
+            }
+
+            print(str(payload))
+
+            r = requests.post(PAYMENT_URL, data=payload)
+
+            print(r.text)
+
+            ro = parse_result(r.text)
+
+            try:
+                ro['TIMESTAMP'] = format_timestamp(ro['TIMESTAMP'])
+            except:    
+                ro['TIMESTAMP'] = datetime.datetime.utcnow()
+
+            print(str(ro))
+
+            return ro
+        except:
+            return False          
 
 # ==============================================================
 #
@@ -448,32 +625,7 @@ class DonateFailView(FAENavigationMixin, TemplateView):
 
         return context  
 
-# ==============================================================
-#
-# Payment Views
-#
-# ==============================================================
 
-class RegisterView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
-    template_name = 'accounts/payment_register.html'
-
-    def get_context_data(self, **kwargs):
-        context = super(RegisterView, self).get_context_data(**kwargs)
-
-        context['payment'] = Payment.objects.get(reference_id=kwargs['reference_id'])
-
-        return context  
-
-
-class PaymentView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
-    template_name = 'accounts/payment.html'
-
-    def get_context_data(self, **kwargs):
-        context = super(PaymentView, self).get_context_data(**kwargs)
-
-        token = kwargs['token']
-        
-        return context  
  
 
 

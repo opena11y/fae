@@ -24,7 +24,7 @@ from __future__ import absolute_import
 from django.conf.urls import url
         
 from .views import UpdateUserProfileView
-from .views import UpdateAccountView
+from .views import UpdateSubscriptionView
 
 from .views import DonateView
 from .views import DonateSuccessView
@@ -40,10 +40,10 @@ from .views import AllUserInformationView
 
 urlpatterns = [
     url(r'^$',         UpdateUserProfileView.as_view(),   name='user_profile'),
-    url(r'^update/$',  UpdateAccountView.as_view(),   name='update_account_type'),
+    url(r'^update/$',  UpdateSubscriptionView.as_view(),   name='update_subscription'),
 
     url(r'^register/(?P<reference_id>\w+)/$',   RegisterView.as_view(),  name='payment_register'),
-    url(r'^payment/?token=(?P<token>\w+)/$',  PaymentView.as_view(),   name='payment'),
+    url(r'^payment/$',  PaymentView.as_view(),   name='payment'),
 
     url(r'^donate/$',          DonateView.as_view(),        name='donate'),
     url(r'^donate/success/$',  DonateSuccessView.as_view(), name='donate_success'),

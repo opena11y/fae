@@ -73,12 +73,15 @@ class SubscriptionRate(models.Model):
 
 
 PAYMENT_STATUS = (
-    ('NEW',      'New un-initialized payment transaction'),
-    ('TOKEN_REQ',       'Token requested'),
+    ('NEW',             'New un-initialized payment transaction'),
+    ('PMT_REGISTERED',    'Payment registered'),
     ('PMT_APPROV',      'Payment approved'),
     ('PMT_CANCELLED',   'Payment cancelled by user'),
     ('PMT_MAX_ATTEMPT', 'Payment max attempts'),
     ('PMT_EXPIRED',     'Payment token expired'),
+    ('PMT_SESSION',     'Payment session error'),
+    ('PMT_ERROR',       'Payment error'),
+    ('PMT_NOCOST',      'No cost change'),
 )
 
 PAYMENT_DURATION = (
@@ -95,7 +98,12 @@ class Payment(models.Model):
 
     status           = models.CharField(max_length=16, choices=PAYMENT_STATUS, default='NEW')
 
+    # used to verify that a payment has not been made in abother session
+    subscription_balance     = models.IntegerField(default=0) 
+
     account_type             = models.ForeignKey(AccountType, related_name="payments", null=True, blank=True, on_delete=models.CASCADE)
+
+    profile_subscription_end = models.DateField(null=True, blank=True)
     subscription_end         = models.DateField(null=True, blank=True)
     subscription_cost        = models.IntegerField(default=0)
     actual_subscription_cost = models.IntegerField(default=0)
@@ -110,16 +118,13 @@ class Payment(models.Model):
 
     reference_time   = models.DateTimeField(auto_now_add=True, editable=False)
 
-    register_time    = models.DateTimeField(null=True, blank=True)
-    query_time       = models.DateTimeField(null=True, blank=True)
-    capture_time     = models.DateTimeField(null=True, blank=True)
-
+    register_time          = models.DateTimeField(null=True, blank=True)
     register_response_code = models.IntegerField(default=-1)
-    query_response_code    = models.IntegerField(default=-1)
+    register_response_msg  = models.CharField(max_length=2048, blank=True)
+
+    capture_time           = models.DateTimeField(null=True, blank=True)
     capture_response_code  = models.IntegerField(default=-1)
-
-
-
+    capture_response_msg   = models.CharField(max_length=2048, blank=True)
 
     class Meta:
         verbose_name        = "Payment"
@@ -131,9 +136,11 @@ class Payment(models.Model):
 
     def save(self):
 
-        self.reference_id = id_generator(50)
+        if self.reference_id == '':
+            self.reference_id = id_generator(50)
 
         super(Payment, self).save() # Call the "real" save() method.         
+
 
    
             

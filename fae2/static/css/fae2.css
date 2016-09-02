@@ -299,6 +299,25 @@ main ul.result_messages li {
     margin-bottom: 0.5em;
 }
 
+main div.redirect,
+main div.error,
+main div.success {
+    margin: 2em;
+    margin-top: 4em;
+    padding: 1em;
+    font-size: 135%;
+    background-color: #EEEEEE;
+    text-align: center;
+}
+
+main div.error {
+    border: red solid thin; 
+}
+
+main div.success {
+    border: #337ab7 solid thin; 
+}
+
 #summary table.summary
 {
     margin-top: 2em;
@@ -380,6 +399,11 @@ legend {
     margin-bottom: 0.25em;
 }
 
+fieldset input[disabled] + label,
+input[disabled] + label {
+    color: gray;
+}
+
 fieldset label {
     font-weight: normal;
 }
@@ -410,7 +434,6 @@ div.checkbox label {
     font-size: 120%;
     font-weight: bold;
 }
-
 
 
 input[type="button"] {
