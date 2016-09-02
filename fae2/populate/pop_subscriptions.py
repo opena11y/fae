@@ -46,7 +46,7 @@ from django.core.exceptions import ObjectDoesNotExist
 
 from accounts.models      import AccountType
 from subscriptions.models import SubscriptionRate
-from userProfiles         import userProfile
+from userProfiles.models  import UserProfile
 
 from django.contrib.auth.models import User
 
@@ -95,8 +95,13 @@ def update_user_profiles():
     try:
       p = userProfile.objects.get(user=u)
     except:
+      print("  Creating UserProfile for: " + u.username)
+
       p = UserProfile(user=u)
-      p.account_type = AccountType.objects.get(type_id=DEFAULT_ACCOUNT_TYPE)
+      if u.username == 'anonymous':
+        p.account_type = AccountType.objects.get(type_id=0)
+      else:  
+        p.account_type = AccountType.objects.get(type_id=DEFAULT_ACCOUNT_TYPE)
       p.save()
 
 create_subscription_rate( 0,    0,    0,    0,     0)
@@ -113,3 +118,4 @@ create_subscription_rate(18,    0, 3000, 5400, 9600)
 
 create_subscription_rate(32,    0, 2000, 3600, 6400)
 
+update_user_profiles()
