@@ -166,12 +166,16 @@ To enable shibboleth support for your institution or organization you need your 
 ## Testing e-mail on localhost development
 * Use a python utitlity to simulator a smtp server: <code>python -m smtpd -n -c DebuggingServer localhost:1025</code>
 * Configure e-mail in "secretes.json" with the following values:
+```
+    ....
     "EMAIL_HOST": "localhost",
     "EMAIL_PORT": 1025,
     "EMAIL_USE_TLS": false,
     "EMAIL_HOST_USER": "None",
     "EMAIL_HOST_USER_PASSWORD": "None",
-
+    ....
+    
+```
 ## SELinux issues (e.g. CENTOS, REDHAT)
 
 ### FAE directory permissions
