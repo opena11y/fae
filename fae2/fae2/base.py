@@ -135,6 +135,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'registration',
+    'password_reset',    
     'abouts.apps.AboutsConfig',
     'accounts.apps.AccountsConfig',
     'subscriptions.apps.SubscriptionsConfig',

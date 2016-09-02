@@ -74,4 +74,5 @@ else:
     url(r'^accounts/',     include('registration.backends.hmac.urls')),
     url(r'^registration/', include('django.contrib.auth.urls')),
     url(r'^logout/$',      Logout.as_view(), name='logout'),
+    url(r'^reset/',        include('password_reset.urls')),
   ]
