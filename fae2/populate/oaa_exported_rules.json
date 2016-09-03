@@ -1,7 +1,3 @@
-    JSON
-    Raw Data
-    Headers
-
 { "wcag20"  : {
       "1" : {
         "id"             : 1,
