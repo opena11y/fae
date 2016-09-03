@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,7 +46,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
     NOT_APPLICABLE: 'N/A'
     
 });/*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -254,7 +254,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
     }     
 });
 /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -339,7 +339,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
     }     
 });
 /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -461,7 +461,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
    }     
 });
 /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -747,7 +747,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
     }     
 });
 /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1046,7 +1046,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
     }     
 });
 /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1625,7 +1625,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         }    }
 });
 /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1738,7 +1738,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
   }
 });
 /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -2219,7 +2219,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
   }
 });
 /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -2566,7 +2566,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
     }    
 });
 /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -2667,7 +2667,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
    }
 });
 /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -2850,7 +2850,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
   }
 });
 /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -4024,7 +4024,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
    }
 });
 /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -4194,7 +4194,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
    }     
 });
 /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -4351,7 +4351,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
    }     
 });
 /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -4513,7 +4513,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
   }
 });
 /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -4690,7 +4690,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 });
 
 /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -4943,7 +4943,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
    }
 });
 /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -5012,7 +5012,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
   }
 });
 /*
- * Copyright 2011-2015 OpenAjax Alliance
+ * Copyright 2011-2016 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -5069,7 +5069,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
     }       
 });
 /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -5761,7 +5761,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
    }     
 });
 /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -5818,7 +5818,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
     }  
 });
 /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -6356,7 +6356,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
    }
 });
 /*
- * Copyright 2011-2015 OpenAjax Alliance
+ * Copyright 2011-2016 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -6481,7 +6481,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
     }     
 });
 /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -6606,7 +6606,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
    }     
 });
 /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -7029,7 +7029,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
    }     
 });
 /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -7789,7 +7789,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
     }
 });
 /**
- * Copyright 2011-2015 OpenAjax Alliance
+ * Copyright 2011-2016 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -7990,7 +7990,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
 ]);
 /**
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -10939,7 +10939,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     
 
 /**
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -12877,7 +12877,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     
 
 /**
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13058,7 +13058,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   } // end validation function        
 }
 ]); /**
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13211,7 +13211,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     
 
 /**
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13736,7 +13736,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     
 
 /**
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13808,7 +13808,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
 ]);
 /**
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13863,7 +13863,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
 ]);
 /**
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14648,7 +14648,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
 ]);
 /**
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14700,7 +14700,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
 ]);
 /**
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15407,7 +15407,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
    
 
 /**
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15716,7 +15716,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   }
  ]); 
 /**
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.

@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -56,7 +56,7 @@ var OpenAjax = OpenAjax || {};
  */
 
 OpenAjax.a11y = OpenAjax.a11y || {};
-OpenAjax.a11y.VERSION = "1.0.0-beta.6";
+OpenAjax.a11y.VERSION = "1.0.0";
 
 /**
  * @method getVersion
@@ -1039,7 +1039,7 @@ OpenAjax.a11y.LANGUAGE_CODES = OpenAjax.a11y.LANGUAGE_CODES || {
 
 };
 /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -2188,7 +2188,7 @@ if (typeof OpenAjax.a11y.aria == "undefined") {
     
 }
 /**
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -2578,7 +2578,7 @@ OpenAjax.a11y.util.replaceAll = function(s, str1, str2, ignore) {
   return s1;
   
 };/*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -3067,7 +3067,7 @@ OpenAjax.a11y.cache.AbbreviationItem.prototype.toString = function () {
 
 
 /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -3653,7 +3653,7 @@ OpenAjax.a11y.cache.ColorContrastItem.prototype.toString = function () {
   return str;
 };
 /*
- * Copyright 2011-2015 OpenAjax Alliance
+ * Copyright 2011-2016 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -9480,7 +9480,7 @@ OpenAjax.a11y.cache.InteractiveElement.prototype.toString = function () {
   
 };
 /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13052,7 +13052,7 @@ OpenAjax.a11y.cache.DOMElement.prototype.toString = function() {
 };
 
 /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13976,7 +13976,7 @@ OpenAjax.a11y.cache.DOMCache.prototype.getDuplicateObjects = function(objects, p
 
 
 /*
- * Copyright 2011-2015 OpenAjax Alliance
+ * Copyright 2011-2016 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14428,7 +14428,7 @@ OpenAjax.a11y.cache.FrameElement.prototype.toString = function () {
 
 
 /**
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17226,7 +17226,7 @@ OpenAjax.a11y.cache.PageElementHeadingsLandmarks.prototype.toString = function (
   return "page";
 };
 /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18379,7 +18379,7 @@ OpenAjax.a11y.cache.SVGElement.prototype.getEvents = function () {
 
 
 /*
- * Copyright 2011-2015 OpenAjax Alliance
+ * Copyright 2011-2016 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18559,7 +18559,7 @@ OpenAjax.a11y.cache.LanguagesCache.prototype.toString = function () {
 };
 
 /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19410,7 +19410,7 @@ OpenAjax.a11y.cache.LinkElement.prototype.getLinkType = function () {
 
 
 /*
- * Copyright 2011-2015 OpenAjax Alliance
+ * Copyright 2011-2016 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20329,7 +20329,7 @@ OpenAjax.a11y.cache.ContainerElement.prototype.toString = function () {
 
 
 /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21426,7 +21426,7 @@ OpenAjax.a11y.cache.PageElementMedia.prototype.toString = function () {
   return "page (media)";
 };
 /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21882,7 +21882,7 @@ OpenAjax.a11y.cache.DOMElementComputedStyle.prototype.toString = function (color
   return "Computed style " + this.color_hex + " " + this.background_color_hex + " " + this.color_contrast_ratio; 
 };
 /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24539,7 +24539,7 @@ OpenAjax.a11y.cache.PageElementLayout.prototype.toString = function () {
   return "page";  
 };
 /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24753,7 +24753,7 @@ OpenAjax.a11y.cache.TextCache.prototype.updateCache = function () {
 };
 
 /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25020,7 +25020,7 @@ OpenAjax.a11y.cache.PageElementKeyboardFocus.prototype.toString = function () {
 
 
 /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25288,7 +25288,7 @@ OpenAjax.a11y.cache.PageElementTimingFlashing.prototype.toString = function () {
 
 
   /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26417,7 +26417,7 @@ OpenAjax.a11y.cache.ElementInformation.prototype.toJSON = function (add_comma, p
   
 };
 /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27029,7 +27029,7 @@ OpenAjax.a11y.info.PageInfo = function (dom_cache) {
 
 
 /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27343,7 +27343,7 @@ OpenAjax.a11y.info.RuleResultsSummary = function () {
 };
 
 /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27736,7 +27736,7 @@ OpenAjax.a11y.EvaluationResult.prototype.toJSON = function (include_element_resu
  
 
 /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28633,7 +28633,7 @@ OpenAjax.a11y.RuleResult.prototype.toString = function () {
 };
 
 /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29257,7 +29257,7 @@ OpenAjax.a11y.RelatedElements.prototype.toString = function () {
   return this.title + "(" + this.related_elements_info.length + " related elements)";
 };
 /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30274,7 +30274,7 @@ OpenAjax.a11y.CacheItemResult.prototype.toJSON = function(prefix) {
 
 };
 /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30619,7 +30619,7 @@ OpenAjax.a11y.RuleGroupResult.prototype.toJSON = function(prefix, flag) {
 
 
 /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31192,7 +31192,7 @@ OpenAjax.a11y.nls.Cache = function() {
     }
   };
 }();  /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31442,7 +31442,7 @@ OpenAjax.a11y.nls.RuleCategoryNLS.prototype.toJSON = function(prefix) {
 };
 
 /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32018,7 +32018,7 @@ OpenAjax.a11y.nls.WCAG20NLSSuccessCriterion.prototype.toJSON = function(prefix) 
 };
 
 /*
- * Copyright 2011-2015 OpenAjax Alliance
+ * Copyright 2011-2016 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32074,7 +32074,7 @@ OpenAjax.a11y.baseUri = "http://www.openajax.org/member/wiki/Accessibility";
 
 
 /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33379,7 +33379,7 @@ OpenAjax.a11y.RuleManager = function () {
 
 
   /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34104,7 +34104,7 @@ OpenAjax.a11y.RulesetManager = function() {
 }();
 
 /*
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34419,7 +34419,7 @@ OpenAjax.a11y.Evaluator = function (r, blt, ep, grps) {
 };
 
 /**
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35022,7 +35022,7 @@ OpenAjax.a11y.nls.Cache.addCacheNLSFromJSON('en-us', {
   }
 );
 /**
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35129,7 +35129,7 @@ OpenAjax.a11y.nls.RuleCategories.addNLS('en-us', {
   ]  
 });
 /**
- * Copyright 2011-2015  OpenAjax Alliance
+ * Copyright 2011-2016  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
