@@ -9535,8 +9535,8 @@
   "rulesets" : [
   {
       "ruleset_id"              : "TEST",
-      "ruleset_version"         : "1.0.0-beta.4",
-      "ruleset_updated"         : "2015-11-22",
+      "ruleset_version"         : "1.0.0",
+      "ruleset_updated"         : "2016-09-02",
       "ruleset_author_name"     : "OpenAjax Accessibility Task Force",
       "ruleset_author_url"      : "http://www.openajax.org/member/wiki/Accessibility",
       "ruleset_title"           : "TEST Ruleset: All rules in the library are included as required rules",
@@ -10086,8 +10086,8 @@
 ,
   {
       "ruleset_id"              : "ARIA_TRANS",
-      "ruleset_version"         : "1.0.0-beta.4",
-      "ruleset_updated"         : "2015-11-22",
+      "ruleset_version"         : "1.0.0",
+      "ruleset_updated"         : "2016-09-02",
       "ruleset_author_name"     : "OpenAjax Accessibility Task Force",
       "ruleset_author_url"      : "http://www.openajax.org/member/wiki/Accessibility",
       "ruleset_title"           : "HTML4 Legacy Techniques",
@@ -10589,8 +10589,8 @@
 ,
   {
       "ruleset_id"              : "ARIA_STRICT",
-      "ruleset_version"         : "1.0.0-beta.4",
-      "ruleset_updated"         : "2015-11-22",
+      "ruleset_version"         : "1.0.0",
+      "ruleset_updated"         : "2016-09-02",
       "ruleset_author_name"     : "OpenAjax Accessibility Task Force",
       "ruleset_author_url"      : "http://www.openajax.org/member/wiki/Accessibility",
       "ruleset_title"           : "HTML5 and ARIA Techniques",
