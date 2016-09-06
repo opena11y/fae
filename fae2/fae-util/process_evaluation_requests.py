@@ -26,6 +26,7 @@ import sys
 import os
 import string
 import glob
+import getopt
 
 import optparse
 import subprocess
@@ -209,6 +210,7 @@ def analyzeWebsiteReport(ws_report, log):
   info('Average processing time per page: ' + ave_time) 
 
 class faeUtilThread(threading.Thread):
+
     def __init__(self, ws_report):
       threading.Thread.__init__(self)
 
@@ -234,13 +236,15 @@ class faeUtilThread(threading.Thread):
       log.close()
 
 
-def main():
+def main(argv):
 
   message_flag = True
 
   init_oaa_script_file()
 
-  while True:  
+  loop = True
+
+  while loop:  
     ws_reports = WebsiteReport.objects.filter(status="-")
 
     init_count = len(ws_reports)
@@ -253,8 +257,28 @@ def main():
     if init_count and processing_count <= PROCESSING_THREADS:
       ws_report = ws_reports[0]
 
-      thread = faeUtilThread(ws_report)
-      thread.start()
+      # if no arguements use threading
+      if len(argv) == 0:
+        thread = faeUtilThread(ws_report)
+        thread.start()
+      else:
+        info("=======================")
+        info("Initializing report: " + ws_report.title)
+        info("           log file: " + str(ws_report.log_file))
+        ws_report.set_status_initialized()
+        initWebsiteReport(ws_report)
+
+        log = open(ws_report.log_file, 'w')
+
+        info("Analyze website: " + ws_report.title)
+        ws_report.set_status_analyzing()
+        analyzeWebsiteReport(ws_report, log)
+
+        info("Saving Data: " + ws_report.title)
+        ws_report.set_status_saving()
+        saveResultsToDjango(ws_report, log)
+
+        log.close()         
 
       message_flag = True
     else:
@@ -266,6 +290,8 @@ def main():
 
       time.sleep(1)
 
+    if len(argv):
+      loop = False  
           
 if __name__ == "__main__":
-  main()
+  main(sys.argv[1:])

@@ -156,7 +156,6 @@ class ShibbolethLogin(RedirectView):
 
         user = self.request.user
 
-
         if user.username == SHIBBOLETH_SUPERUSER:
             user.is_staff     = True
             user.is_superuser = True
@@ -193,7 +192,6 @@ class ShibbolethLogin(RedirectView):
 
 class ShibbolethDiscovery(TemplateView):
     template_name = 'registration/shib_discovery.html'
-
 
 
 class Logout(FAENavigationMixin, TemplateView):

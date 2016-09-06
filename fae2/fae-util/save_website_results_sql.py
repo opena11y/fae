@@ -1482,7 +1482,7 @@ class DataWebsiteResult(DataRuleResult):
           error("[WebsiteResult][saveToDjango]: website result") 
           exit()
 
-#        debug("[WebsiteResult][saveToDjango]: saving " + str(len(self.website_rule_category_results)) + " website rc results")
+        info("[WebsiteResult][saveToDjango]: Saving Rule Category Results")
 
         for wsrcr in self.website_rule_category_results:
           try:
@@ -1490,7 +1490,7 @@ class DataWebsiteResult(DataRuleResult):
           except:
             error("[WebsiteResult][saveToDjango]: website rc result") 
 
-#        debug("[WebsiteResult][saveToDjango]: saving " + str(len(self.website_guideline_results)) + " website gl results")    
+        info("[WebsiteResult][saveToDjango]: Saving Guideline Results")    
 
         for wsgr in self.website_guideline_results:
           try:
@@ -1498,7 +1498,7 @@ class DataWebsiteResult(DataRuleResult):
           except:
             error("[WebsiteResult][saveToDjango]: website gl result") 
 
-#        debug("[WebsiteResult][saveToDjango]: saving " + str(len(self.website_rule_scope_results)) + " website rs results")    
+        info("[WebsiteResult][saveToDjango]: Saving Rule Scope Results")    
 
         for wsrsr in self.website_rule_scope_results:
           try:
@@ -1506,7 +1506,7 @@ class DataWebsiteResult(DataRuleResult):
           except:
             error("[WebsiteResult][saveToDjango]: website rs result") 
 
-#        debug("[WebsiteResult][saveToDjango]: saving " + str(len(self.rule_results)) + " website rule results")    
+        info("[WebsiteResult][saveToDjango]: Saving Rule Results")    
 
         for wsrr in self.rule_results:
           try:
@@ -1514,7 +1514,7 @@ class DataWebsiteResult(DataRuleResult):
           except:
             error("[WebsiteResult][saveToDjango]: website rule result ") 
 
-#        debug("[WebsiteResult][saveToDjango]: saving " + str(len(self.page_results)) + " page results") 
+        info("[WebsiteResult][saveToDjango]: Saving Page Results") 
    
         for pr in self.page_results:
           try:
@@ -1522,7 +1522,7 @@ class DataWebsiteResult(DataRuleResult):
           except:
             error("[WebsiteResult][saveToDjango]: page result") 
 
-#        debug("[WebsiteResult][saveToDjango]: Done") 
+        info("[WebsiteResult][saveToDjango]: Done Saving Results") 
      
       except:
         self.ws_report.set_status_error()
@@ -1675,7 +1675,7 @@ def saveResultsToDjango(ws_report, l):
       stats_all = StatsAll(ws_report_group=wsrg) 
       stats_all.save()  
 
-#    debug("[SAVE_WEBSITE_RESULTS] Saving StatsAll: " + str(stats_all))  
+    info("[SAVE_WEBSITE_RESULTS] Saving StatsAll: " + str(stats_all))  
     stats_all.ws_report_group.add_website_report(ws_report)  
 
     today = datetime.date.today()
@@ -1687,7 +1687,7 @@ def saveResultsToDjango(ws_report, l):
       year = StatsYear(year=today.year, ws_report_group=wsrg, stats_all=stats_all) 
       year.save()  
     
-#    debug("[SAVE_WEBSITE_RESULTS] Saving StatsYear: " + str(year))  
+    info("[SAVE_WEBSITE_RESULTS] Saving StatsYear: " + str(year))  
     year.ws_report_group.add_website_report(ws_report)  
 
     try:
@@ -1698,7 +1698,7 @@ def saveResultsToDjango(ws_report, l):
       month = StatsMonth(stats_year=year, month=today.month, ws_report_group=wsrg)  
       month.save()
 
-#    debug("[SAVE_WEBSITE_RESULTS] Saving StatsMonth: " + str(month))  
+    info("[SAVE_WEBSITE_RESULTS] Saving StatsMonth: " + str(month))  
     month.ws_report_group.add_website_report(ws_report)  
 
     try:
@@ -1709,7 +1709,7 @@ def saveResultsToDjango(ws_report, l):
       day = StatsDay(stats_month=month, day=today.day, date=today, ws_report_group=wsrg)  
       day.save()
 
-#    debug("[SAVE_WEBSITE_RESULTS] Saving StatsDay: " + str(day))  
+    info("[SAVE_WEBSITE_RESULTS] Saving StatsDay: " + str(day))  
     day.ws_report_group.add_website_report(ws_report)  
 
     try:
@@ -1720,7 +1720,7 @@ def saveResultsToDjango(ws_report, l):
       stats_reg_users = StatsRegisteredUsers(ws_report_group=wsrg)  
       stats_reg_users.save()
 
-#    debug("[SAVE_WEBSITE_RESULTS] Registered Users: " + str(stats_reg_users))  
+    info("[SAVE_WEBSITE_RESULTS] Saving Stats for Registered Users: " + str(stats_reg_users))  
       
     try:
       user_stats = StatsUser.objects.get(user=ws_report.user)
@@ -1730,7 +1730,7 @@ def saveResultsToDjango(ws_report, l):
       user_stats = StatsUser(user=ws_report.user, ws_report_group=wsrg)  
       user_stats.save()
 
-#    debug("[SAVE_WEBSITE_RESULTS] Saving StatsUser: " + str(user_stats))  
+    info("[SAVE_WEBSITE_RESULTS] Saving StatsUser: " + str(user_stats))  
     user_stats.ws_report_group.add_website_report(ws_report) 
 
     if ws_report.user.username != 'anonymous':
@@ -1753,9 +1753,10 @@ def saveResultsToDjango(ws_report, l):
       ruleset_stats = StatsRuleset(ruleset=ws_report.ruleset, ws_report_group=wsrg, stats_all=stats_all)  
       ruleset_stats.save()
 
-#    debug("[SAVE_WEBSITE_RESULTS] Saving StatsRuleset: " + str(ruleset_stats))  
+    info("[SAVE_WEBSITE_RESULTS] Saving StatsRuleset: " + str(ruleset_stats))  
     ruleset_stats.ws_report_group.add_website_report(ws_report)  
        
+    info("[SAVE_WEBSITE_RESULTS] Done Saving Stats")
 
   except:
     ws_report.set_status_error()
