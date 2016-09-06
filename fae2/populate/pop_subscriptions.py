@@ -93,7 +93,8 @@ def set_subscription_description(sub_id, desc):
 def update_user_profiles():
   for u in User.objects.all():
     try:
-      p = userProfile.objects.get(user=u)
+      p = UserProfile.objects.get(user=u)
+      print("  User '" + str(u) + "'' has a profile.")
     except:
       print("  Creating UserProfile for: " + u.username)
 
@@ -106,11 +107,11 @@ def update_user_profiles():
 
 create_subscription_rate( 0,    0,    0,    0,     0)
 create_subscription_rate( 1,    0,    0,    0,     0)
-create_subscription_rate( 2,   40,  110,  205,   360)
-create_subscription_rate( 3,   70,  190,  360,   630)
-create_subscription_rate( 4,  120,  325,  610,  1080)
-create_subscription_rate( 5,  200,  540, 1020,  1800)
-create_subscription_rate( 6,  300,  810, 1530,  2700)
+create_subscription_rate( 2,   30,   81,  153,   270)
+create_subscription_rate( 3,   60,  162,  306,   540)
+create_subscription_rate( 4,   90,  243,  459,   810)
+create_subscription_rate( 5,  120,  324,  612,  1080)
+create_subscription_rate( 6,  150,  405,  765,  1350)
 
 create_subscription_rate(16,    0, 1000, 1800, 3200)
 create_subscription_rate(17,    0, 2000, 3600, 6400)
