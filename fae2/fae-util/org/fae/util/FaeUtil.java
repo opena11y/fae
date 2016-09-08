@@ -462,7 +462,7 @@ class FaeUtil {
       BROWSER_VERSION = BrowserVersion.INTERNET_EXPLORER;
     }
     else {
-      BROWSER_VERSION = BrowserVersion.FIREFOX_38;
+      BROWSER_VERSION = BrowserVersion.FIREFOX_45;
     }
     //System.out.println("browser version: " + BROWSER_VERSION.getNickname());
 
