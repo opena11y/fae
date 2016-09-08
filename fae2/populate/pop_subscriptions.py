@@ -111,7 +111,7 @@ create_subscription_rate( 2,   30,   81,  153,   270)
 create_subscription_rate( 3,   60,  162,  306,   540)
 create_subscription_rate( 4,   90,  243,  459,   810)
 create_subscription_rate( 5,  180,  486,  918,  1620)
-create_subscription_rate( 6,  300,  810, 1530,  2700)
+create_subscription_rate( 6,  300,  810, 1530,  2700 )
 
 create_subscription_rate(16,    0, 1000, 1800, 3200)
 create_subscription_rate(17,    0, 2000, 3600, 6400)

@@ -274,8 +274,11 @@ class UpdateUserProfileView(LoginRequiredMixin, FAENavigationMixin, SuccessMessa
     def get_context_data(self, **kwargs):
         context = super(UpdateUserProfileView, self).get_context_data(**kwargs)
 
+        user_profile = UserProfile.objects.get(user=self.request.user)
+        user_profile.update_subscription_status()
+
         context['user_stats'] = StatsUser.objects.get(user=self.request.user)
-        context['user_profile'] = UserProfile.objects.get(user=self.request.user)
+        context['user_profile'] = user_profile
         context['payment_enabled'] = PAYMENT_SITE_ID 
         
         return context  
@@ -349,8 +352,11 @@ class UpdateSubscriptionView(LoginRequiredMixin, FAENavigationMixin, CreateView)
     def get_context_data(self, **kwargs):
         context = super(UpdateSubscriptionView, self).get_context_data(**kwargs)
 
+        user_profile = UserProfile.objects.get(user=self.request.user)
+        user_profile.update_subscription_status()
+
         context['user_stats']    = StatsUser.objects.get(user=self.request.user)
-        context['user_profile']  = UserProfile.objects.get(user=self.request.user)
+        context['user_profile']  = user_profile
         context['account_types'] = AccountType.objects.filter(self_registration=True)
         
         return context  

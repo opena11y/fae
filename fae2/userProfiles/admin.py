@@ -25,7 +25,7 @@ from django.contrib import admin
 from userProfiles.models import UserProfile
 
 class UserProfileAdmin(admin.ModelAdmin):
-    list_display = ('user', 'account_type', 'org', 'timezone')
-    list_filter  = ('org', 'account_type',)
+    list_display = ('user', 'account_type', 'org', 'timezone', 'subscription_status')
+    list_filter  = ('org', 'account_type', 'subscription_status')
 
 admin.site.register(UserProfile, UserProfileAdmin)

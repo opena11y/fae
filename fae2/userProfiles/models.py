@@ -38,6 +38,12 @@ from datetime import datetime
 
 from datetime import date
 
+SUBSCRIPTION_STATUS_CHOICES = (
+    ('NEVER',    'Never subscribed'),
+    ('CURRENT',  'Current'),
+    ('EXPIRED',  'Expired')
+)
+
 class UserProfile(models.Model):
 
     user          = models.OneToOneField(User, related_name="profile")
@@ -49,6 +55,8 @@ class UserProfile(models.Model):
     subscription_end        = models.DateField(null=True, blank=True)
     subscription_payments   = models.IntegerField(default=0) # in dollars
     subscription_daily_rate = models.IntegerField(default=0) # in cents
+    subscription_status     = models.CharField(max_length=8, choices=SUBSCRIPTION_STATUS_CHOICES, default="NEVER")
+    subscription_days       = models.IntegerField(default=0)
 
 
     org           = models.CharField(max_length=128, blank=True)
@@ -76,20 +84,40 @@ class UserProfile(models.Model):
 
         self.update_daily_rate()
 
+    def update_subscription_status(self):
+        self.subscription_status = 'NEVER'
+        if self.subscription_end and self.subscription_start:
+            date1 = date(self.subscription_end.year, self.subscription_end.month, self.subscription_end.day)
+            date2 = date.today()
+            delta = date1 - date2
+
+            self.subscription_days = delta.days
+
+            self.subscription_status = 'CURRENT'            
+            if self.subscription_days < 0:
+                self.subscription_status = 'EXPIRED'
+
+            if self.subscription_days < 3:
+                self.enable_any_account_types = True  
+
+            if self.subscription_days < 0:
+                self.account_type = AccountType.objects.get(type_id=1)     
+
+        self.save() 
+
+        return self.subscription_status       
+
 
     def update_daily_rate(self):
         self.subscription_daily_rate = 0;
 
-
-        if self.subscription_payments > 0 and self.subscription_start and self.subscription_end:
+        if self.subscription_payments > 0 and self.subscription_end and self.subscription_start:
             date1 = date(self.subscription_end.year, self.subscription_end.month, self.subscription_end.day)
             date2 = date(self.subscription_start.year, self.subscription_start.month, self.subscription_start.day)
             delta = date1 - date2
 
-            days = delta.days
-
-            if (days > 0):
-                self.subscription_daily_rate = (100 * self.subscription_payments) / days
+            if delta.days > 0:
+              self.subscription_daily_rate = (100 * self.subscription_payments) / delta.days
 
         self.save()        
 

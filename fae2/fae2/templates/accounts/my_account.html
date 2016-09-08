@@ -43,12 +43,42 @@
     <tbody>
         <tr>
             <th class="text" style="width: 9em">Type</th>
-            <td class="text">{{user_profile.account_type.title}} ({% if payment_enabled %}<a href="{% url 'update_subscription' %}">Extend or Change Subscription</a>{% endif %})</td>
+            <td class="text">{{user_profile.account_type.title}}</td>
         </tr>
+        {% if user_profile.account_type.description_html %}
         <tr>
             <th class="text">Description</th>
             <td class="text">{{user_profile.account_type.description_html|safe}}</td>
         </tr>
+        {% endif %}
+        {% if payment_enabled %}
+        <tr>
+            <th class="text">Subscription</th>
+            <td class="text">
+            {% if user_profile.subscription_status == 'NEVER' %}
+                <a href="{% url 'update_subscription' %}">Subscribe to FAE</a>
+            {% else %}
+                <ul class="status">
+                {% if user_profile.subscription_status == 'CURRENT' %}
+                    {% if user_profile.subscription_days > 1 %}
+                    <li>{{user_profile.subscription_days}} days remaining</li>
+                    {% else %}
+                        {% if user_profile.subscription_days == 1 %}
+                    <li>1 day remaining</li> 
+                        {% else %}
+                    <li>Last day</li> 
+                        {% endif %}
+                    {% endif %}
+                    <li><a href="{% url 'update_subscription' %}">Extend or Change Subscription</a></li>
+                {% else %}
+                    <li>Subscription expired on {{user_profile.subscription_end|date:"n/j/Y"}}</li>
+                    <li><a href="{% url 'update_subscription' %}">Renew Subscription</a></li>
+                {% endif %}
+                </ul>    
+            {% endif %}
+            </td>
+        </tr>
+        {% endif %}
         <tr>
             <th class="text" title="Total number of reports saved">Total Reports</th>
             <td class="num">{{user_profile.account_type.max_permanent}}</td>
@@ -73,7 +103,7 @@
 
 <section aria-labelledby="id_profile">
 <h2 id="id_profile">Profile</h2>
-
+<p><a href="{% url "password_reset_recover" %}">Change Password</a></p>
 <form action="{% url 'user_profile' %}"
       method="POST">
     {% csrf_token %}

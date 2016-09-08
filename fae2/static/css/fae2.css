@@ -149,6 +149,11 @@ table tbody td ul {
     padding-bottom: 0.5em;
 }
 
+table tbody td ul.status {
+    list-style: none;
+    padding-left: 0em;
+}
+
 table tbody td ul li {
     margin: 0;
     padding: 0;
