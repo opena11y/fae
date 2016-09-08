@@ -49,7 +49,7 @@ The "secretes.json" file must be created and provides:
 {
   	"FILENAME": "secrets.json",
     "SITE_URL": "[your site URL]",
-    "SITE_NAME": "FAE 2.x",
+    "SITE_NAME": "FAE 2.0",
     "PROCESSING_THREADS": 4, 
    	"SECRET_KEY": "",
     "SELF_REGISTRATION_ENABLED": true,
@@ -60,9 +60,9 @@ The "secretes.json" file must be created and provides:
     "SHIBBOLETH_SUPERUSER": "",
     "DEBUG": false,
     "LOGGER_LEVEL": "INFO",
-   	"DATABASE_HOST": "localhost",
-   	"DATABASE_PORT": "",
-   	"DATABASE_NAME": "DB name",
+   	"DATABASE_HOST": "[ip address]",
+   	"DATABASE_PORT": "[port]",
+   	"DATABASE_NAME": "[DB name]",
     "DATABASE_USER": "[DB username]",
     "DATABASE_PASSWORD": "[DB password]",
     "ALLOWED_HOSTS": ["[your site URL]"],
@@ -73,12 +73,13 @@ The "secretes.json" file must be created and provides:
     "EMAIL_HOST_USER_PASSWORD": "[mail password]",
     "ACCOUNT_ACTIVATION_DAYS" : 3,
     "CONTACT_EMAIL" : "[email]"
-    "ADMIN_USER_NAME" : "",
-    "ADMIN_FIRST_NAME" : "",
-    "ADMIN_LAST_NAME" : "",
-    "ADMIN_PASSWORD": "",
-    "ADMIN_EMAIL": "",
-    "ANNONYMOUS_PASSWORD" : ""    
+    "ADMIN_USER_NAME" : "[username]",
+    "ADMIN_FIRST_NAME" : "[first name]",
+    "ADMIN_LAST_NAME" : "[last name]",
+    "ADMIN_PASSWORD": "[admin password]",
+    "ADMIN_EMAIL": "[email]",
+    "ANNONYMOUS_PASSWORD" : "[annonymous password]",
+    "DEFAULT_ACCOUNT_TYPE" : 2    
 }
 ```
 
