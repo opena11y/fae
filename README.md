@@ -25,6 +25,7 @@ FAE may be used and distributed based on the terms and conditions of the [Apache
 
 Here is the [requirements.txt] file to use with pip
 
+```
   Django==1.9
   django-password-reset==0.9
   django-registration==2.0.4
@@ -34,7 +35,7 @@ Here is the [requirements.txt] file to use with pip
   psycopg2==2.6.1
   pytz==2015.7
   requests==2.10.0
-
+```
 
 ### Creating a <code>secrets.json</code> file
 
