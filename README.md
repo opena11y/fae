@@ -25,15 +25,16 @@ FAE may be used and distributed based on the terms and conditions of the [Apache
 
 Here is the [requirements.txt] file to use with pip
 
-* Django==1.9
-* django-registration==2.0.4
-* -e git+https://github.com/Brown-University-Library/django-shibboleth-remoteuser.git@v0.5#egg=django_shibboleth_remoteuser
-* django-timezone-field==1.3
-* Markdown==2.6.5
-* psycopg2==2.6.1
-* pytz==2015.7
-* wheel==0.24.0
-* future==0.15.2
+  Django==1.9
+  django-password-reset==0.9
+  django-registration==2.0.4
+  django-timezone-field==1.3
+  future==0.15.2
+  Markdown==2.6.5
+  psycopg2==2.6.1
+  pytz==2015.7
+  requests==2.10.0
+
 
 ### Creating a <code>secrets.json</code> file
 
