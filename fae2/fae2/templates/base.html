@@ -76,7 +76,9 @@
                     <li role="separator" class="divider"></li>                    
                     <li><a href="http://ainspector.github.io">AInspector Sidebar</a></li>
                     <li role="separator" class="divider"></li>
+                    {% if payment_enabled %}
                     <li><a href="{% url 'subscription'   %}">Subscription Options</a></li>
+                    {% endif %}
                     <li><a href="{% url 'donate'   %}">Donate</a></li>
               </ul>
             </li>
@@ -100,8 +102,8 @@
             {% endif %}
             <li><a href="{% url 'rulesets'    %}">Rulesets</a></li>
             {% if user.is_authenticated %}
-              <li><a href="{% url 'contact_form'%}">Contact</a></li>
-              <li><a href="{% url 'user_profile' %}" >My Account</a></li>
+              <li><a href="{% url 'contact_form'  %}">Contact</a></li>
+              <li><a href="{% url 'my_account' %}" >My Account</a></li>
               <li><a href="{% url 'logout' %}" >Logout: {{user.username}}</a></li>
             {% else %}
               {% if self_registration_enabled %}

@@ -110,12 +110,14 @@ ANONYMOUS_PASSWORD       = get_secret('ANONYMOUS_PASSWORD')
 DEFAULT_ACCOUNT_TYPE     = get_secret('DEFAULT_ACCOUNT_TYPE')
 
 try:
+    PAYMENT_ENABLED     = True
     PAYMENT_SITE_ID     = get_secret('PAYMENT_SITE_ID')
     PAYMENT_URL         = get_secret('PAYMENT_URL')
     PAYMENT_SEND_KEY    = get_secret('PAYMENT_SEND_KEY')
     PAYMENT_RECEIVE_KEY = get_secret('PAYMENT_RECEIVE_KEY')
     PAYMENT_ACCOUNT     = get_secret('PAYMENT_ACCOUNT')
 except:
+    PAYMENT_ENABLED     = False
     PAYMENT_SITE_ID     = False
     PAYMENT_URL         = False
     PAYMENT_SEND_KEY    = False
@@ -207,7 +209,8 @@ TEMPLATES = [
                 'fae2.context_processors.site',
                 'fae2.context_processors.anonymous',
                 'fae2.context_processors.self_registration',
-                'fae2.context_processors.shibboleth'
+                'fae2.context_processors.shibboleth',
+                'fae2.context_processors.payment_enabled'
             ],
         },
     },

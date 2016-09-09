@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block breadcrumb %}
+  <li><a href="{% url 'my_account' %}">My Account</a></li>
+  <li>Update Profile</li>
+{% endblock %}
+
+{% block title %}
+  Update Profile
+{% endblock %}
+
+{% block content %}
+
+<p><a href="{% url "password_reset_recover" %}">Change Password</a></p>
+<form action="{% url 'update_profile' %}"
+      method="POST">
+    {% csrf_token %}
+
+    {% include "forms/input_text.html" with input=form.first_name size=30 %}
+    {% include "forms/input_text.html" with input=form.last_name  size=30 %}
+    {% include "forms/input_text.html" with input=form.email      size=30 type='email' %}
+    {% include "forms/input_text.html" with input=form.org        size=45 %}
+    {% include "forms/input_text.html" with input=form.dept       size=45 %}
+    {% include "forms/input_checkbox.html" with checkbox=form.email_announcements %}
+    {% include "forms/input_select.html" with select=form.timezone %}
+
+    <input type="submit" value="Update Profile" />
+</form>
+
+
+{% endblock %}
+
+

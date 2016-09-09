@@ -30,6 +30,7 @@ from fae2.settings import SHIBBOLETH_ENABLED
 from fae2.settings import SHIBBOLETH_URL
 from fae2.settings import SHIBBOLETH_NAME
 
+from fae2.settings import PAYMENT_ENABLED
 
 
 
@@ -56,5 +57,11 @@ def shibboleth(request):
 
         }
 	}
+
+def payment_enabled(request):
+    return {
+        'payment_enabled': PAYMENT_ENABLED
+    }
+
 
 

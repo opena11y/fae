@@ -1,20 +1,27 @@
 {% extends "base.html" %}
 
 {% block breadcrumb %}
-  <li>Processing Status</li>
+  <li>Report Processing Status</li>
 {% endblock %}
 
 {% block title %}
-Processing Status
+Report Processing Status
 {% endblock %}
 
 {% block content %}
 
-{% include "accounts/report_list.html" with id="id_init"  title="Reports Waiting to be Processed" reports=initialied %}
+<p>Processing threads: {{processing_threads}}</p>
 
-{% include "accounts/report_list.html" with id="id_proc"  title="Reports Being Processed" reports=processing %}
+{% include "accounts/report_list.html" with id="id_error" title="Errors"     reports=errors %}
 
-{% include "accounts/report_list.html" with id="id_error" title="Reports With Errors"     reports=errors %}
+{% include "accounts/report_list.html" with id="id_proc"  title="Processing" reports=processing %}
+
+{% include "accounts/report_list.html" with id="id_save"  title="Saving"     reports=saving %}
+
+{% include "accounts/report_list.html" with id="id_init"  title="Initailized"     reports=initialized %}
+
+{% include "accounts/report_list.html" with id="id_crea"  title="Created"         reports=created %}
+
 
 {% endblock %}
 

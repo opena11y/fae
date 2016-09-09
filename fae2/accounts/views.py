@@ -83,6 +83,8 @@ from fae2.settings import DEFAULT_ACCOUNT_TYPE
 from fae2.settings import SITE_URL
 from fae2.settings import SHIBBOLETH_SUPERUSER
 
+from fae2.settings import PROCESSING_THREADS
+
 
 from userProfiles.models import UserProfile
 from stats.models        import StatsUser
@@ -214,6 +216,19 @@ class Login(FAENavigationMixin, TemplateView):
           
         return context  
 
+class MyAccountView(FAENavigationMixin, TemplateView):
+    template_name = 'accounts/my_account.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(MyAccountView, self).get_context_data(**kwargs)
+
+        user_profile = UserProfile.objects.get(user=self.request.user)
+        user_profile.update_subscription_status()
+
+        context['user_stats'] = StatsUser.objects.get(user=self.request.user)
+        context['user_profile'] = user_profile
+          
+        return context  
 
 
 class UserProfileForm(forms.Form):
@@ -226,7 +241,7 @@ class UserProfileForm(forms.Form):
     timezone            = TimeZoneFormField()
 
 class UpdateUserProfileView(LoginRequiredMixin, FAENavigationMixin, SuccessMessageMixin, FormView):
-    template_name = 'accounts/my_account.html'
+    template_name = 'accounts/update_profile.html'
     form_class    = UserProfileForm
 
     success_url = reverse_lazy('user_profile')
@@ -279,7 +294,6 @@ class UpdateUserProfileView(LoginRequiredMixin, FAENavigationMixin, SuccessMessa
 
         context['user_stats'] = StatsUser.objects.get(user=self.request.user)
         context['user_profile'] = user_profile
-        context['payment_enabled'] = PAYMENT_SITE_ID 
         
         return context  
 
@@ -647,9 +661,13 @@ class StatusView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
 
         reports = WebsiteReport.objects.all()
 
-        context['initialized'] = reports.filter(Q(status='-') | Q(status='I'))
-        context['processing']  = reports.filter(Q(status='A') | Q(status='S'))
+        context['created']     = reports.filter(status='-')
+        context['initialized'] = reports.filter(status='I')
+        context['processing']  = reports.filter(status='A')
+        context['saving']      = reports.filter(status='S')
         context['errors']      = reports.filter(status='E')
+
+        context['processing_threads'] = PROCESSING_THREADS
         
         return context  
 

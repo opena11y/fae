@@ -110,15 +110,34 @@ nav h2 {
     font-size: 112%;
 }
 
+.navbar-inverse .navbar-nav > li > a{
+    padding-left: 1.1em;
+    color: #DDDDDD;
+}
+
+.navbar-inverse .navbar-header a {
+     color: #DDDDDD;
+     position: relative;
+     top: -0.6em;
+}
+
+
 .navbar-inverse .navbar-nav > li > a:focus,
-.navbar-inverse .navbar-nav > li > a:hover {
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-header a:focus,
+.navbar-inverse .navbar-header a:hover {
     text-decoration: underline;
+}
+
+.nav-pills > li > a:focus {
+    border: solid black thin;
 }
 
 #id_get_last {
     margin-top: 1em;
     font-size: 100%;
 }
+
 
 button[aria-controls="top-navbar"] {
     outline: solid 2px transparent;

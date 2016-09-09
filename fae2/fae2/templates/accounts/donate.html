@@ -10,14 +10,7 @@
 
 {% block content %}
 
-<p>Your credit card donation will help support the development of the following web accessibility tools and educational resouces:</p>
-
-<ul>
-    <li><a href="{{site}}">Functional Accessibility Evaluator</a> (FAE)</li>
-    <li>Browser add-ons and extensions to evaluate, inspect and highlight accessibility features of websites (e.g. <a href="https://addons.mozilla.org/en-US/firefox/addon/ainspector-sidebar/">AInspector Sidebar</a> and <a href="http://accessibility-bookmarklets.org/">Accessibility Bookmarklets</a>)</li>
-    <li>Online training materials for people understand web accessibility and how to use the tools</li>
-    <li>Example widgets for inclusion in the <a href="http://www.w3.org/TR/wai-aria-practices-1.1/">ARIA Authoring Practices Guide</a></li>
-</ul>
+{% include "subscriptions/use_of_funds.html"  with start="Your donation " %}
 
 <form action="https://ps.uif.uillinois.edu/Gifts/Payment.aspx" method="post" >
     {% csrf_token %}

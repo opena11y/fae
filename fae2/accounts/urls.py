@@ -23,6 +23,7 @@ Author: Jon Gunderson
 from __future__ import absolute_import
 from django.conf.urls import url
         
+from .views import MyAccountView
 from .views import UpdateUserProfileView
 from .views import UpdateSubscriptionView
 
@@ -39,8 +40,9 @@ from .views import AllUserInformationView
 
 
 urlpatterns = [
-    url(r'^$',         UpdateUserProfileView.as_view(),   name='user_profile'),
-    url(r'^update/$',  UpdateSubscriptionView.as_view(),   name='update_subscription'),
+    url(r'^$',         MyAccountView.as_view(),          name='my_account'),
+    url(r'^profile/$', UpdateUserProfileView.as_view(),  name='update_profile'),
+    url(r'^update/$',  UpdateSubscriptionView.as_view(), name='update_subscription'),
 
     url(r'^register/(?P<reference_id>\w+)/$',   RegisterView.as_view(),  name='payment_register'),
     url(r'^payment/$',  PaymentView.as_view(),   name='payment'),

@@ -1,58 +1,60 @@
 {% extends "base.html" %}
 
 {% block breadcrumb %}
-  <li>Subscription Options</li>
+  <li>Subscription Information</li>
 {% endblock %}
 
 {% block title %}
- Subscription Options
+ Subscription Information
 {% endblock %}
 
 {% block content %}
+
+    <h2 id="summ">Summary of Options</h2>
+    <table  class="details table table-striped"  aria-labelledby="summ">
+        <thead>
+            <tr>
+                <th class="text">Option</th>
+                <th class="text">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><a href="#id_indiv">Individual</a></td>
+                <td>
+                    <ul>
+                        <li>Single account</li>
+                        <li>Mulitple subscription options based on the number of archived reports, spidering depth and maximum number of pages per report.</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><a href="#id_inst">Institutional</a></td>
+                <td>
+                    <ul>
+                        <li>Multiple accounts based on <a href="">InCommon</a> authentication.  InCommon is used by most Higher Education Institutions to manage authentication to campus supported IT services.</li>
+                        <li>Subscription costs based on the size of the institution.</li>
+                        <li><a href="{% url 'contact_form' %}">Contact the adminstrator</a> for custom account settings for your institution.</li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
 
     <section aria-labelledby="id0">
 
         <h2 id="id0">Why Purchase a Subscription?</h2>
 
-        <p>The subscriptions are needed to help support the continued development of the tools and OpenAjax rules to provide evaluation results and information based on the latest web standards and most effective/efficient accessibility techniques, including the emerging <a href="https://www.w3.org/TR/wai-aria-1.1/">Accessible Rich Internet Application 1.1</a> and <a href="https://www.w3.org/TR/html51/">HTML 5.1 </a> Specifications.  </p>
-
-        <p>The funds will be used to:</p>
-
-        <ul>
-            <li>Support graduate and undergraduate students in helping to develop and test the open source tools (e.g. FAE, AInspector Sidebar and Accessibility Bookmarklets).</li>
-            <li>Development of online training materials to help people understand accessibility using web standards.</li>
-            <li>Support participation in web standards groups like the W3C to learn about and contribute to the development and implmentation of the next generation web accessibility standards.
-            <li>Support participation in regional and national conferences to help people learn about web accessibility and to promote the open source tools as a resource in people understanding and designing accessible web resourses.</li>
-        </ul>
-
-        </p>
+        {% include "subscriptions/use_of_funds.html"  with start="Your subscription " %}
 
     </section>
 
 
-    <section aria-labelledby="id1">
+    {% include "subscriptions/option_individual.html"     with id="id_indiv" %}
 
-        <h2 id="id1">Self-Registration Subscription Levels</h2>
 
-        <p>The self-registration version of FAE is designed for inidividuals to create and manage there own accounts.
-        If an individual is consistently using FAE it is expected they would purchase a paid subscription based on their use and spidering needs.
-        </p>
-
-        {% include "subscriptions/account_type_details.html"  with id="id1" account_types=self_regs %}
-
-    </section>
-
-    <section aria-labelledby="id2">
-
-        <h2 id="id2">Shibboleth Subscription Levels</h2>
-
-        <p>The Shibboleth version allows users to use their <a href="https://www.incommon.org/">InCommon</a> credentials to authenticate to FAE.
-        InCommon us used by most higher educational institutions as a way to provide single sign-on authentication.  
-        There is no limit on the number of accounts a university can create with a Shibboleth subscription.</p> 
-
-        {% include "subscriptions/account_type_details.html"  with id="id2" account_types=shibboleths %}
-
-    </section>
+    {% include "subscriptions/option_institutional.html"  with id="id_inst" %}
 
 
     {% include "subscriptions/refund_policy.html" %}

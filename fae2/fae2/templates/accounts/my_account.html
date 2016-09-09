@@ -9,45 +9,31 @@
 {% endblock %}
 
 {% block content %}
-<div class="row">
-<section aria-labelledby="id_stats" class="col-md-4">
-<h2 id="id_stats">Usage Stats</h2>
-<table  id="id_table_show_summary" class="details table table-striped table-hover"  aria-labelledby="id_stats">
-    <thead>
-      <tr>
-        <th id="id_grp" class="text">Time Period</th>
-        <th id="id_nor" class="num">Reports</th>
-        <th id="id_imp" class="mum">Pages</th>
-      </tr>
-    </thead>
+
+
+
+<table  id="id_table_show_summary" class="details table table-striped table-hover"  aria-labelledby="id_title" style="margin-top: 2em">
     <tbody>
         <tr>
-            <th class="text">Last 30 Days</th>
-            <td class="num">{{user_stats.get_last_30_days.num_reports}}</td>
-            <td class="num">{{user_stats.get_last_30_days.num_pages}}</td>
+            <th class="text">Name </th>
+            <td class="text">
+                {{user.first_name}} {{user.last_name}}
+                {% if user_profile.dept %}, {{user_profile.dept}}{% endif %}
+                {% if user_profile.org  %}, {{user_profile.org }}{% endif %}
+                <br/><a href="{% url 'update_profile' %}">Update Profile</a>
+            </td>
         </tr>
         <tr>
-            <th class="text">All Time</th>
-            <td class="num">{{user_stats.ws_report_group.num_total_reports}}</td>
-            <td class="num">{{user_stats.ws_report_group.num_total_pages}}</td>
+            <th class="text">Username</th>
+            <td class="text">{{user.username}}</td>
         </tr>
-    </tbody>
-</table>    
-</section>
-</div>
-
-<section aria-labelledby="id_account">
-<h2 id="id_account">Account</h2>
-
-<table  id="id_table_show_summary" class="details table table-striped table-hover"  aria-labelledby="id_stats">
-    <tbody>
         <tr>
-            <th class="text" style="width: 9em">Type</th>
+            <th class="text" style="width: 9em">Account Type</th>
             <td class="text">{{user_profile.account_type.title}}</td>
         </tr>
         {% if user_profile.account_type.description_html %}
         <tr>
-            <th class="text">Description</th>
+            <th class="text">Account Description</th>
             <td class="text">{{user_profile.account_type.description_html|safe}}</td>
         </tr>
         {% endif %}
@@ -80,47 +66,47 @@
         </tr>
         {% endif %}
         <tr>
-            <th class="text" title="Total number of reports saved">Total Reports</th>
-            <td class="num">{{user_profile.account_type.max_permanent}}</td>
+            <th class="text" title="Total number of reports saved">Maximum Archived Reports</th>
+            <td class="num">{{user_profile.account_type.max_archive}}</td>
         </tr>
         <tr>
-            <th class="text" title="Total number of reports that can be archived">Archive reports</th>
-            <td class="text">{{user_profile.account_type.max_archive}}</td>
+            <th class="text" title="Total number of reports that can be archived">Permanent Archived Reports</th>
+            <td class="text">{{user_profile.account_type.max_permanent}}</td>
         </tr>
         <tr>
-            <th class="text">Max Depth</th>
+            <th class="text">Max Depth of Spidering</th>
             <td class="text">{{user_profile.account_type.max_depth}}</td>
         </tr>
         <tr>
-            <th class="text">Max Pages</th>
+            <th class="text">Max web pages per report</th>
             <td class="text">{{user_profile.account_type.max_pages}}</td>
         </tr>
     </tbody>
-</table>   
+</table>
 
+<h2 id="id_stats">Usage Statistics</h2>
 
-</section>
-
-<section aria-labelledby="id_profile">
-<h2 id="id_profile">Profile</h2>
-<p><a href="{% url "password_reset_recover" %}">Change Password</a></p>
-<form action="{% url 'user_profile' %}"
-      method="POST">
-    {% csrf_token %}
-
-    {% include "forms/input_text.html" with input=form.first_name size=30 %}
-    {% include "forms/input_text.html" with input=form.last_name  size=30 %}
-    {% include "forms/input_text.html" with input=form.email      size=30 type='email' %}
-    {% include "forms/input_text.html" with input=form.org        size=45 %}
-    {% include "forms/input_text.html" with input=form.dept       size=45 %}
-    {% include "forms/input_checkbox.html" with checkbox=form.email_announcements %}
-    {% include "forms/input_select.html" with select=form.timezone %}
-
-    <input type="submit" value="Update Profile" />
-</form>
-
-</section>
-
+<table  id="id_table_show_summary" class="details table table-striped table-hover"  aria-labelledby="id_stats" style="max-width: 20em">
+    <thead>
+      <tr>
+        <th id="id_grp" class="text" style="max-width: 4em">Time Period</th>
+        <th id="id_nor" class="num"  style="max-width: 3em">Reports</th>
+        <th id="id_imp" class="mum"  style="max-width: 3em">Pages</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th class="text">Last 30 Days</th>
+            <td class="num">{{user_stats.get_last_30_days.num_reports}}</td>
+            <td class="num">{{user_stats.get_last_30_days.num_pages}}</td>
+        </tr>
+        <tr>
+            <th class="text">All Time</th>
+            <td class="num">{{user_stats.ws_report_group.num_total_reports}}</td>
+            <td class="num">{{user_stats.ws_report_group.num_total_pages}}</td>
+        </tr>
+    </tbody>
+</table>    
 
 
 {% endblock %}
