@@ -12,7 +12,8 @@ Sharing Reports
 
 {% block content %}
  
- <p style="margin-top: 1em;"><img src="{% static 'images/message-out.png' %}" alt="E-mail report"> link to the right of the title on each report page to e-mail a link to the report to someone.  Selecting the link will open the default e-mail application for your computer  and just enter the e-mail of the person to send the report.</p>
+ <p style="margin-top: 1em;"><span class="sendto"><a href="#"><span class="glyphicon glyphicon-envelope" style="width: 1.2em;"></span>E-mail Report</a></span></p>
+ <p> This link to the right of the title on each report page to e-mail a link to the report to someone.  Selecting the link will open the default e-mail application for your computer  and just enter the e-mail of the person to send the report.</p>
  
 {% endblock %}
 
