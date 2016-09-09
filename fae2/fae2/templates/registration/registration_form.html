@@ -1,8 +1,15 @@
 {% extends "base.html" %}
 {% load staticfiles i18n %}
+
 {% block content %}
 
 <h1>Account Registration</h1>
+
+<ul>
+  <li>All fields are required.</li>
+  <li>A message will be sent to the e-mail address you provide.</li>
+  <li>Please select the link in the message you receive to complete your registration.</li>
+</ul>
 
 <h2>Step 1 of 2</h2>
 
@@ -13,7 +20,6 @@
     <legend title="This information is used to send you a registration confirmation link.">Contact Information</legend>
     <div class="input">
       <label for="id_first_name">First Name</label>
-      <div class="error">
       <input 
           required
           id="id_first_name" 
@@ -23,12 +29,10 @@
       {% if form.first_name.errors|length %} 
       <label class="error" for="id_first_name">{% for error in form.first_name.errors %}{{error}}{% endfor %}</label>
       {% endif %}
-      </div>
     </div>
       
     <div class="input">
       <label for="id_last_name">Last Name</label>
-      <div class="error">
       <input 
           required
           id="id_last_name" 
@@ -38,13 +42,11 @@
       {% if form.last_name.errors|length %} 
       <label class="error" for="id_last_name">{% for error in form.last_name.errors %}{{error}}{% endfor %}</label>
       {% endif %}
-      </div>
     </div>
 
 
     <div class="input">
       <label for="id_email">E-mail </label>
-      <div class="error">
       <input 
           required
           id="id_email" 
@@ -54,7 +56,6 @@
       {% if form.email.errors|length %} 
       <label class="error" for="id_email">{% for error in form.email.errors %}{{error}}{% endfor %}</label>
       {% endif %}
-      </div>
     </div>
   </fieldset>
 
@@ -63,7 +64,6 @@
  
     <div class="input">
       <label for="id_username">User Name </label>
-      <div class="error">
       <input 
           required
           id="id_username" 
@@ -73,12 +73,10 @@
       {% if form.username.errors|length %} 
       <label class="error" for="id_username">{% for error in form.username.errors %}{{error}}{% endfor %}</label>
       {% endif %}
-      </div>
     </div>
       
     <div class="input">
       <label for="id_password1">Password</label>
-      <div class="error">
       <input
           required 
           id="id_password1" 
@@ -89,12 +87,10 @@
       {% if form.password1.errors|length %} 
       <label class="error" for="id_password1">{% for error in form.password1.errors %}{{error}}{% endfor %}</label>
       {% endif %}
-      </div>
     </div>
 
     <div class="input">
           <label for="id_password2">Re-enter Password</label>
-          <div class="error">
           <input 
               required
               id="id_password2" 
@@ -105,20 +101,38 @@
           {% if form.password2.errors|length %} 
           <label class="error" for="id_password2">{% for error in form.password2.errors %}{{error}}{% endfor %}</label>
           {% endif %}
-          </div>
       </div>
   </fieldset>      
       
-  <input type="submit" value="Submit - Step 1" style="margin-top: 2em"/>
+  <input id="id_submit" type="submit" value="Submit - Step 1" style="margin-top: 2em"/>
+
+  <div class="input" style="position: absolute; top: -30em; left: -300em">
+    <label for="id_email_verify">E-mail Verify</label>
+    <input tabindex="-1"
+        required
+        id="id_email_verify" 
+        name="email_verify" 
+        value="do not change, used for security"
+        oninput="disableSubmit(event)" 
+    /> 
+  </div>
 
 </form>
 
-<h2>Registration Notes</h2>
 
-<ul>
-  <li>All fields are required.</li>
-  <li>A message will be sent to the e-mail address you provide.</li>
-  <li>Please select the link in the message you receive to complete your registration.</li>
-</ul>
 
 {% endblock %}
+
+{% block javascript %}
+
+<script type="text/javascript">
+
+  function disableSubmit(event) {
+    console.log('disable submit');
+    document.getElementById('id_submit').disabled = true;
+  }
+
+</script>
+
+{% endblock %}
+

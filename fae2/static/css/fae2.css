@@ -110,10 +110,13 @@ nav h2 {
     font-size: 112%;
 }
 
-.navbar-inverse .navbar-nav > li > a{
-    padding-left: 1.1em;
+.navbar-inverse .navbar-nav > li > a {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
     color: #DDDDDD;
 }
+
+
 
 .navbar-inverse .navbar-header a {
      color: #DDDDDD;
@@ -121,7 +124,7 @@ nav h2 {
      top: -0.6em;
 }
 
-
+.navbar-inverse .navbar-nav > li.active > a,
 .navbar-inverse .navbar-nav > li > a:focus,
 .navbar-inverse .navbar-nav > li > a:hover,
 .navbar-inverse .navbar-header a:focus,
@@ -129,8 +132,19 @@ nav h2 {
     text-decoration: underline;
 }
 
-.nav-pills > li > a:focus {
-    border: solid black thin;
+.navbar-inverse .navbar-nav > li.active > a:focus,
+.navbar-inverse .navbar-nav > li.active > a:hover {
+    outline: solid 1px white;
+}
+
+
+.nav-pills > li > a {
+    border: 1px solid transparent;
+}
+
+.nav-pills > li > a:focus,
+.nav-pills > li > a:hover {
+    border-color: black;
 }
 
 #id_get_last {
