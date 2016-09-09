@@ -10,6 +10,9 @@ Overview
 
 
 {% block content %}
+
+    <p>The Functional Accessibility Evaluator (FAE) is a service of the <a href="http://disability.illinois.edu">Division of Disability Resources and Education Services</a> in the <a href="http://ahs.illinois.edu">College of Applied Health Studies</a> at the <a href="http://illinois.edu">University of Illinios in Urbana-Champaign</a>.</p>
+
     
     <h2>What is FAE?</h2>
     
@@ -38,12 +41,18 @@ Overview
         <tbody>
             <tr>
                 <th>URL</th>
-                <td>Specifies the URL that will serve as the starting point of the analysis. Depending on the &ldquo;Depth of Evaluation&rdquo; and &ldquo;Follow Links in&rdquo; settings (described below), additional pages linked from the starting URL may also be included in the analysis.
+                <td>
+                    <ul>
+                        <li>Specifies the URL that will serve as the starting point of the analysis. Depending on the &ldquo;Depth of Evaluation&rdquo; and &ldquo;Follow Links in&rdquo; settings (described below), additional pages linked from the starting URL may also be included in the analysis.</li>
+                    </ul>    
                 </td>
             </tr>
             <tr>
                 <th>Report Title</th>
-                <td>The title to be displayed at the top of each report page. If no title is specified, then &ldquo;Untitled Report&rdquo; is displayed.
+                <td>
+                    <ul>
+                        <li>The title to be displayed at the top of each report page. If no title is specified, then &ldquo;Untitled Report&rdquo; is displayed.</li>
+                    </ul>    
                 </td>
             </tr>
             <tr>
@@ -51,8 +60,10 @@ Overview
                 <td>
                     <ul>
                        <li>When &ldquo;Top-level page only&rdquo; is selected, only the page specified by the URL will be analyzed.</li>
-        <li>&ldquo;Include second-level pages&rdquo; will cause all pages linked from the top-level page (with domain restrictions as explained below) to be included in the analysis.</li>
-        <li>&ldquo;Include third-level pages&rdquo; will cause all pages linked from the top- and second-level pages (with domain restrictions as explained below) to be included in the analysis.</li>
+                        <li>&ldquo;Include second-level pages&rdquo; will cause all pages linked from the top-level page (with domain restrictions as explained below) to be included in the analysis.</li>
+                        {% if payment_enabled %}
+                        <li>You can increase the depth of spidering a website by purchasing or increasing your <a href="{% url 'subscription' %}">subscription level</a>.</li>
+                        {% endif %}
                     </ul>
                 </td>
             </tr>
@@ -63,6 +74,9 @@ Overview
                         <li>In cases where &ldquo;Depth of Evaluation&rdquo; is set to either &ldquo;Include second-level pages&rdquo; or &ldquo;Include third-level pages&rdquo; the web crawler used by FAE can follow links in two different ways:</li>
                         <li>When &ldquo;Specified domain only&rdquo; is selected, link following is restricted to the same domain as the specified URL.</li>
                         <li>When &ldquo;Next-level subdomains&rdquo; is selected, links that are in subdomains of the next-level domain (relative to the domain specified by the URL) will also be followed.</li>
+                        {% if payment_enabled %}
+                        <li>You can more control over what domains are included and excluded by purchaisng or increasing your <a href="{% url 'subscription' %}">subscription level</a> that includes the "Advanced" run feature.</li>
+                        {% endif %}
                     </ul>
                 </td>
             </tr>
@@ -70,9 +84,9 @@ Overview
                 <th>Ruleset</th>
                 <td>
                     <ul>
-                        <li><em>Landmarks Recommended</em> ruleset recommends that ARIA landmarks be used in the design of the web page
+                        <li><em>HTML4 Legacy Techniques</em> ruleset recommends (<em>but does not require</em>) that ARIA landmarks be used in the design of the web page
                             and that a failure of one of the landmark rules will result in a "warning".</li>
-                        <li><em>Landmarks Required</em> ruleset requires that ARIA landmarks be used in the design of the web page
+                        <li><em>HTML5 and ARIA Techniques</em> ruleset requires that ARIA landmarks be used in the design of the web page
                         and that a failure of one of the landmark rules will result in a "violation".</li>
                     </ul>
                 </td>
@@ -80,7 +94,12 @@ Overview
             <tr>
                 <th>Maximum Pages</th>
                 <td>
-                    Limits the number of pages evaluated, which is useful to limit the amount or results or to get results faster.
+                    <ul>
+                        <li>Limits the number of pages evaluated, which is useful to limit the amount or results or to get results faster.</li>
+                        {% if payment_enabled %}
+                        <li>You can increase the maximum number of pages by purchasing or increasing your <a href="{% url 'subscription' %}">subscription level</a>.</li>
+                        {% endif %}
+                    </ul>    
                 </td>
             </tr>
         </tbody>
