@@ -12,16 +12,15 @@ Report Processing Status
 
 <p>Processing threads: {{processing_threads}}</p>
 
-{% include "accounts/report_list.html" with id="id_error" title="Errors"     reports=errors %}
+{% include "accounts/report_list.html" with id="id_proc"  title="Processing"  reports=processing %}
 
-{% include "accounts/report_list.html" with id="id_proc"  title="Processing" reports=processing %}
+{% include "accounts/report_list.html" with id="id_save"  title="Saving"      reports=saving %}
 
-{% include "accounts/report_list.html" with id="id_save"  title="Saving"     reports=saving %}
+{% include "accounts/report_list.html" with id="id_init"  title="Initailized" reports=initialized %}
 
-{% include "accounts/report_list.html" with id="id_init"  title="Initailized"     reports=initialized %}
+{% include "accounts/report_list.html" with id="id_crea"  title="Created"     reports=created %}
 
-{% include "accounts/report_list.html" with id="id_crea"  title="Created"         reports=created %}
-
+{% include "accounts/report_list.html" with id="id_error" title="Errors"      reports=errors %}
 
 {% endblock %}
 
