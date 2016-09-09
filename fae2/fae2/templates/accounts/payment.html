@@ -39,7 +39,7 @@ Payment
 
 <div class="success">
     <p>There was <strong>no</strong> cost associated with updating your subscription.</p>
-    <p><a href="{% url 'user_profile' %}">View updated account information.</a></p> 
+    <p><a href="{% url 'my_account' %}">View updated account information.</a></p> 
 </div>  
 
             {% else %}
@@ -47,7 +47,7 @@ Payment
 <div class="success">
     <p>Your payment of ${{payment.actual_subscription_cost}} was approved.</p>
     <p>Thank you for your extending or updating your subscription!</p>
-    <p><a href="{% url 'user_profile' %}">View updated account information.</a></p> 
+    <p><a href="{% url 'my_account' %}">View updated account information.</a></p> 
 </div>  
 
             {% endif %}
