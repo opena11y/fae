@@ -86,7 +86,11 @@ class UserProfile(models.Model):
 
     def update_subscription_status(self):
         self.subscription_status = 'NEVER'
+        self.enable_any_account_types = True  
+
         if self.subscription_end and self.subscription_start:
+            self.enable_any_account_types = False  
+
             date1 = date(self.subscription_end.year, self.subscription_end.month, self.subscription_end.day)
             date2 = date.today()
             delta = date1 - date2
@@ -104,6 +108,8 @@ class UserProfile(models.Model):
                 self.account_type = AccountType.objects.get(type_id=1)     
 
         self.save() 
+        
+        self.update_daily_rate()
 
         return self.subscription_status       
 

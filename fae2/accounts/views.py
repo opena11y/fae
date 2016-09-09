@@ -224,7 +224,6 @@ class MyAccountView(FAENavigationMixin, TemplateView):
 
         user_profile = UserProfile.objects.get(user=self.request.user)
         user_profile.update_subscription_status()
-        user_profile.update_daily_rate()
 
         context['user_stats'] = StatsUser.objects.get(user=self.request.user)
         context['user_profile'] = user_profile
@@ -292,7 +291,6 @@ class UpdateUserProfileView(LoginRequiredMixin, FAENavigationMixin, SuccessMessa
 
         user_profile = UserProfile.objects.get(user=self.request.user)
         user_profile.update_subscription_status()
-        user_profile.update_daily_rate()
 
         context['user_stats'] = StatsUser.objects.get(user=self.request.user)
         context['user_profile'] = user_profile
@@ -370,7 +368,6 @@ class UpdateSubscriptionView(LoginRequiredMixin, FAENavigationMixin, CreateView)
 
         user_profile = UserProfile.objects.get(user=self.request.user)
         user_profile.update_subscription_status()
-        user_profile.update_daily_rate()
 
         context['user_stats']    = StatsUser.objects.get(user=self.request.user)
         context['user_profile']  = user_profile
