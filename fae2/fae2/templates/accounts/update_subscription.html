@@ -159,7 +159,7 @@
 
     var subscriptionCosts = {
 
-        {% for at in account_types %}
+        {% for at in self_regs %}
         '{{at.id}}': [{{at.subscription_rate.one_month}},{{at.subscription_rate.three_month}},{{at.subscription_rate.six_month}},{{at.subscription_rate.twelve_month}}]{% if not forloop.last %},{% endif %}
         {% endfor %}
 
