@@ -3,9 +3,12 @@
 
         <h2 id="{{id}}">Institutional Subscription Level</h2>
 
-        <p>The Institutional version allows users to use their <a href="https://www.incommon.org/">InCommon</a> credentials to authenticate to FAE.
-        InCommon is used by most higher educational institutions as a way to provide single sign-on authentication.  
-        There is no limit on the number of accounts a university can create with a Institutional subscription.</p> 
+        <ul>
+            <li>The Institutional version allows users to use their <a href="https://www.incommon.org/">InCommon</a> credentials to authenticate to FAE.</li>
+            <li>InCommon is used by most higher educational institutions as a way to provide single sign-on authentication.</li>
+            <li>There is no limit on the number of accounts a university can create with a Institutional subscription.</li>
+            <li><a href="{% url 'contact_form' %">Contact the administrator</a> to setup an Instituional Subscription or to discuss your institutional licensing needs.</li>
+        </ul>    
 
         {% include "subscriptions/account_type_details.html"  with id="id_inst" account_types=shibboleths %}
 
