@@ -5,7 +5,7 @@
         <ul>
             <li>The Individual Subscription option of FAE is designed for inidividuals to create and manage their own accounts.</li>
             <li>If an individual is consistently using FAE it is <em>expected</em> they would purchase a paid subscription based on their use and spidering needs to help support the delivery and enhancement of the FAE service.</li>
-            <li>To purchase a paid subscription you must be a registered user of FAE and then use <a href="{% url 'update_subscription' %}">Update Subscription</a> page (e.g. in My Accounts) to create a subscription.</li>
+            <li>To purchase a paid subscription you must be a registered user of FAE and then use <a href="{% url 'update_subscription' %}">Update Subscription</a> page (e.g. in <a href="{% url 'my_account' %}">My Account</a>) to create a subscription.</li>
         </ul>
 
         {% include "subscriptions/account_type_details.html"  with account_types=self_regs %}
