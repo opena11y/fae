@@ -304,8 +304,6 @@
 
             if (end_year && daily_rate > 0) credit = getAccountBalance(daily_rate, end_year, end_month, end_day);
 
-            console.log("CREDIT: " + credit);
-
             if (actualCost > 0 && credit > 0) {
                 // if new account type apply balance to new account and use today as start date
                 actualCost = cost - credit;
