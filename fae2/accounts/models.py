@@ -56,6 +56,8 @@ class AccountType(models.Model):
     protected     = models.BooleanField(default=False)
     default       = models.BooleanField(default=False)
 
+    next_account_type  = models.OneToOneField('AccountType', related_name="previous_account_type", blank=True, null=True)
+
     class Meta:
         verbose_name        = "Account Type"
         verbose_name_plural = "Account Types"

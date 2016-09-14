@@ -10,28 +10,32 @@
 <form id="id_run_report"  action="{% url 'run_report' %}" method="post" >
     {% csrf_token %}
 
-    <input id="id_get_last" 
-           type="button" 
-           onclick="getLastReport()" 
-           {% if report_nav.wser.url == '' %}disabled{% endif %} 
-           value="Get Last Report Settings" 
-           title="You can import a previous report settings into this form by visiting the archived report just before you come to this form"
-           {% if not last_report %}disabled{% endif %}
-           />
-
+    <div class="fae20_button">
+        <input id="id_get_last" 
+               type="button" 
+               onclick="getLastReport()" 
+               {% if report_nav.wser.url == '' %}disabled{% endif %} 
+               value="Get Last Report Settings" 
+               title="You can import a previous report settings into this form by visiting the archived report just before you come to this form"
+               {% if not last_report %}disabled{% endif %}
+               />
+    </div>
+    
     <div class="input" >
         <label for="id_input_url">URL</label>
         <div {% if form.url.errors|length %}class="error"{% endif %}>
-        <input 
-            id="id_input_url"
-            onkeyup="enableSubmit()"
-            onblur="enableSubmit()"
-            name="url"
-            required
-            value="{{form.url.value}}"
-            {% if form.url.errors|length %}aria-invalid="true"{% endif %}
-            size="60"
-            title="URL must start with http:// or https://, example: http://www.somewhere.org"/> 
+        <div class="fae20_text">
+            <input 
+                id="id_input_url"
+                onkeyup="enableSubmit()"
+                onblur="enableSubmit()"
+                name="url"
+                required
+                value="{{form.url.value}}"
+                {% if form.url.errors|length %}aria-invalid="true"{% endif %}
+                size="60"
+                title="URL must start with http:// or https://, example: http://www.somewhere.org"/> 
+        </div>    
         {% if form.url.errors|length %}
         <label class="error" for="id_input_url">{% for error in form.url.errors %}{{error}}{% endfor %}</label>
         {% endif %}
@@ -41,15 +45,17 @@
     <div class="input">
         <label for="id_input_title">Title</label>
         <div {% if form.title.errors|length %}class="error"{% endif %}>
-        <input 
-            id="id_input_title"
-            onkeyup="enableSubmit()"
-            onblur="enableSubmit()"
-            name="title"
-            required
-            {% if form.title.errors|length %}aria-invalid="true"{% endif %}
-            value="{{form.title.value}}"
-            size="80"/>
+        <div class="fae20_text">
+            <input 
+                id="id_input_title"
+                onkeyup="enableSubmit()"
+                onblur="enableSubmit()"
+                name="title"
+                required
+                {% if form.title.errors|length %}aria-invalid="true"{% endif %}
+                value="{{form.title.value}}"
+                size="80"/>
+        </div>    
         {% if form.title.errors|length %}
         <label class="error" for="id_input_title">{% for error in form.title.errors %}{{error}}{% endfor %}</label>
         {% endif %}
@@ -63,8 +69,8 @@
         <legend>{{form.depth.label}}</legend>
         {% endif %}
         {% for choice in form.depth.field.choices %}
-          {% if forloop.counter <= user.profile.account_type.max_depth %} 
-             <div class="fae20_radio">
+            {% if forloop.counter <= user.profile.account_type.next_account_type.max_depth %}
+            <div class="fae20_radio">
                 <input
                     id="depth_{{ forloop.counter }}"
                     type="radio"
@@ -73,12 +79,15 @@
                     {% if choice.0|slugify == form.depth.value|slugify  %}
                     checked="checked"
                     {% endif %}
+                    {% if forloop.counter > user.profile.account_type.max_depth %}disabled{% endif %}   
                     onclick="updateFollow()"
                 />
                 <label for="depth_{{ forloop.counter }}">{{choice.1}}</label>
             </div>
-          {% endif %}   
+            {% endif %}
         {% endfor %}
+        {% if user.profile.account_type.next_account_type %}
+        {% endif %}
     </fieldset>
 
     <fieldset id="id_following" {% if form.follow.errors|length %}class="error"{% endif %}>
@@ -98,8 +107,6 @@
                 {% if form.follow.value|slugify == choice.0|slugify %}
                 checked
                 {% endif %}
-
-
             />
             <label for="follow_{{ forloop.counter }}">{{choice.1}}</label>
         </div>
@@ -144,22 +151,24 @@
         <legend>{{form.max_pages.label}}</legend>
         {% endif %}
 
-
         {% for choice in form.max_pages.field.choices %}
-        <div class="fae20_radio">
-            {% if choice.0 <= user.profile.account_type.max_pages %}
-            <input
-                id="max_pages_{{ choice.0 }}"
-                type="radio"
-                name="max_pages"
-                value="{{choice.0}}"
-                {% if user.profile.account_type.max_pages == choice.0 %}
-                checked
-                {% endif %}
-            />
-            <label for="max_pages_{{ choice.0 }}" >{{choice.1}}</label>
+            {% if choice.0 <= user.profile.account_type.next_account_type.max_pages  %}
+            <div class="fae20_radio">
+                <input
+                    id="max_pages_{{ choice.0 }}"
+                    type="radio"
+                    name="max_pages"
+                    value="{{choice.0}}"
+                    {% if user.profile.account_type.max_pages == choice.0 %}
+                    checked
+                    {% endif %}
+                    {% if choice.0 > user.profile.account_type.max_pages %}
+                    disabled
+                    {% endif %}
+                />
+                <label for="max_pages_{{ choice.0 }}">{{choice.1}}</label>
+            </div>
             {% endif %}
-        </div>
         {% endfor %}
     </fieldset>
     

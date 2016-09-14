@@ -111,11 +111,23 @@ create_subscription_rate( 2,   30,   81,  153,   270)
 create_subscription_rate( 3,   60,  162,  306,   540)
 create_subscription_rate( 4,   90,  243,  459,   810)
 create_subscription_rate( 5,  180,  486,  918,  1620)
-create_subscription_rate( 6,  300,  810, 1530,  2700 )
+create_subscription_rate( 6,  300,  810, 1530,  2700)
 
-create_subscription_rate(16,    0, 1000, 1800, 3200)
-create_subscription_rate(17,    0, 2000, 3600, 6400)
-create_subscription_rate(18,    0, 3000, 5400, 9600)
+create_subscription_rate(16,    0,  540, 1020, 1800)
+set_subscription_description(16, 'For educational institutions with 0-2,000 students.')
+
+create_subscription_rate(17,    0,  810, 1530, 2700)
+set_subscription_description(17, 'For educational institutions with 2,001-4,000 students.')
+
+create_subscription_rate(18,    0, 1215, 2295, 4050)
+set_subscription_description(18, 'For educational institutions with 4,001-8,000 students.')
+
+create_subscription_rate(19,    0, 1890, 3570, 6300)
+set_subscription_description(19, 'For educational institutions with 8,001-16,000 students.')
+
+create_subscription_rate(20,    0, 2700, 5100, 9000)
+set_subscription_description(20, 'For educational institutions with more than 16,000 students.')
+
 
 create_subscription_rate(32,    0, 2000, 3600, 6400)
 

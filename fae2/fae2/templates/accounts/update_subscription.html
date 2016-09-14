@@ -36,7 +36,7 @@
 
 
     <h2>Update Subscription</h2>
-    <p>Extend or change subscription type.  See self-registration <a href="#id1">subscription options and descriptions</a> following the form.</p>
+    <p>Extend or change subscription type.  See <a href="#id1">Individual Subscription</a> options and descriptions following the form.</p>
 
     <form id="id_run_report"  action="{% url 'update_subscription' %}" method="post" >
         {% csrf_token %}
@@ -146,19 +146,9 @@
 
     </form>
 
-    <section aria-labelledby="id1">
+    {% include "subscriptions/option_individual.html"  with id="id1"  %}
 
-        <h2 id="id1">Self-Registration Subscription Levels</h2>
-
-        <p>The self-registration version of FAE is designed for inidividuals to create and manage there own accounts.
-        If an individual is consistently using FAE it is expected they would purchase a paid subscription based on their use and spidering needs.
-        </p>
-
-        {% include "subscriptions/account_type_details.html"  with id="id1" account_types=account_types %}
-
-        {% include "subscriptions/refund_policy.html"  with id="id1" account_types=account_types %}
-
-    </section>
+    {% include "subscriptions/refund_policy.html" %}
 
 {% endblock %}
 

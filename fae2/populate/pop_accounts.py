@@ -91,23 +91,42 @@ def set_account_type_description(type_id, desc):
   except ObjectDoesNotExist:
     print("  Account type not found: " + acc_type )
 
-create_acount_type(0, False, False, False, False,  'Anonymous',         1,  1, 1,    1, False,  False, False)
-create_acount_type(1, True, False, False, False,   'Free',               2,  5, 2,   10, True,   False, False)
-create_acount_type(2, True, False, False, False,   'Standard I',         5, 10, 3,   25, False,  False, False)
-create_acount_type(3, True, False, False, False,   'Standard II',       10, 20, 3,   50, False,  False, False)
-create_acount_type(4, True, False, False, False,   'Advanced I',        10, 20, 4,  100, False,   True, False)
-create_acount_type(5, True, False, False, False,   'Advanced II',       20, 40, 5,  200, False,   True, False)
-create_acount_type(6, True, False, False, False,   'Advanced III',      40, 80, 6,  400, False,   True, False)
+at00 = create_acount_type(0, False, False, False, False,  'Anonymous',         1,  1, 1,    1, False,  False, False)
+at01 = create_acount_type(1, True, False, False, False,   'Free',               2,  5, 2,   10, True,   False, False)
+at00.next_account_type = at01
+at00.save()
 
-create_acount_type(16, False, True, False, False, 'Institutional I: Small Size Institutions',   20, 40, 4,  100, False,   False, False)
-create_acount_type(17, False, True, False, False, 'Institutional I: Medium Size Institutions',  20, 40, 4,  100, False,   False, False)
-create_acount_type(18, False, True, False, False, 'Institutional I: Large Size Institutions',        20, 40, 4,  100, False,   False, False)
+at02 = create_acount_type(2, True, False, False, False,   'Standard I',         5, 10, 3,   25, False,  False, False)
+at01.next_account_type = at02
+at01.save()
 
-create_acount_type(32, False, False, True, False, 'Self-Hosted',    20, 40, 5,  400, False,   True, False)
+at03 = create_acount_type(3, True, False, False, False,   'Standard II',       10, 20, 3,   50, False,  False, False)
+at02.next_account_type = at03
+at02.save()
 
-create_acount_type(64, False, False, False, True, 'Sponsor: Bronze',  40, 80, 5, 800, False, True, False)
-create_acount_type(65, False, False, False, True, 'Sponsor: Sliver',  40, 80, 5, 800, False, True, False)
-create_acount_type(66, False, False, False, True, 'Sponsor: Gold',    40, 80, 5, 800, False, True, False)
+at04 = create_acount_type(4, True, False, False, False,   'Advanced I',        10, 20, 4,  100, False,   True, False)
+at03.next_account_type = at04
+at03.save()
+
+at05 = create_acount_type(5, True, False, False, False,   'Advanced II',       20, 40, 5,  200, False,   True, False)
+at04.next_account_type = at05
+at04.save()
+
+at06 = create_acount_type(6, True, False, False, False,   'Advanced III',      40, 80, 6,  400, False,   True, False)
+at05.next_account_type = at06
+at05.save()
+
+at16 = create_acount_type(16, False, True, False, False, 'Institutional I',           20, 40, 4,  100, False,   False, False)
+at17 = create_acount_type(17, False, True, False, False, 'Institutional II',       20, 40, 4,  100, False,   False, False)
+at18 = create_acount_type(18, False, True, False, False, 'Institutional III',       20, 40, 4,  100, False,   False, False)
+at19 = create_acount_type(19, False, True, False, False, 'Institutional IV',      20, 40, 4,  100, False,   False, False)
+at20 = create_acount_type(20, False, True, False, False, 'Institutional V',  20, 40, 4,  100, False,   False, False)
+
+a32 = create_acount_type(32, False, False, True, False, 'Self-Hosted',    20, 40, 5,  400, False,   True, False)
+
+a64 = create_acount_type(64, False, False, False, True, 'Sponsor: Bronze',  40, 80, 5, 800, False, True, False)
+a65 = create_acount_type(65, False, False, False, True, 'Sponsor: Sliver',  40, 80, 5, 800, False, True, False)
+a66 = create_acount_type(66, False, False, False, True, 'Sponsor: Gold',    40, 80, 5, 800, False, True, False)
 
 set_account_type_description(1, """Free version provides basic website evaluation for any user.  If you use FAE and/or AInspector Sidebar on a regular basis we ask that you help support the development and maintenance of the tools by purchasing a paid level subscriptions.""")
 
