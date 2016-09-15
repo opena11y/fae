@@ -140,10 +140,10 @@ nav h2 {
 
 .nav-pills > li > a {
     border: 1px solid transparent;
+    border-radius: 4px;
 }
 
-.nav-pills > li > a:focus,
-.nav-pills > li > a:hover {
+.nav-pills > li > a:focus {
     border-color: black;
 }
 
@@ -365,7 +365,9 @@ main .fae_input {
     padding-left: 4px;
 }
 
-main .fae_input_text {
+main .fae_input_text,
+main .fae_select ,
+main .fae_textarea {
     padding: 3px;
 }
 
@@ -404,7 +406,7 @@ main input[type=button]:hover,
 main input[type=submit]:hover {
     padding: 4px 14px; 
     border-width: 2px;
-    border-color: ;
+    border-color: #337ab7;
 }
 
 
@@ -413,14 +415,14 @@ main input[type="submit"]:focus {
     border-width: 2px;    
 }
 
-
-main input[type="text"]:focus {
-    background-color: #EEEEEE;
+main .fae_hover {
+    border-color: transparent;
+    background-color: #CCCCCC;
 }
 
-main .fae_hover {
-    border-color: #337ab7;
-    background-color: #EEEEEE;
+main input[disabled] .fae_hover {
+    border-color: transparent;
+    background-color: white`;
 }
 
 
@@ -532,10 +534,12 @@ div.input select {
 div.checkbox input[type="checkbox"] {
     margin: 0;
     padding: 0;
+    margin-top: 0.35em;
 }
 
 div.checkbox label {
-    display: inline;
+    position: realtive;
+    top: -0.075em;
     font-size: 120%;
     font-weight: bold;
 }
@@ -548,7 +552,6 @@ input[type="button"] {
 main input[type="submit"] {
     font-size: 120%;
     margin-top: 2em;
-    margin-bottom: 5em;
 }
 
 main input[type="submit"][disabled] {

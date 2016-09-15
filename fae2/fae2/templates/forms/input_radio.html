@@ -1,0 +1,20 @@
+   <div class="fae20_radio">
+        <input
+            id="{{id}}"
+            type="radio"
+            name="{{account_type}}"
+            value="{{choice.0}}"
+
+            {% if choice.0 <= {{disabled1}} and not {{disabled2}} %}
+            disabled
+            {% endif %}
+
+            {% if choice.0|slugify == {{value}}|slugify  %}
+            checked="checked"
+            data-current="true"
+            {% endif %}
+
+            onclick="updateSubscriptionCost()"
+        />
+        <label for="id_account_type_{{ counter }}">{{choice.1}} {% if choice.0|slugify == form.account_type.value|slugify  %}(Current){% endif %}</label>
+    </div>

@@ -1,9 +1,12 @@
     <div class="input" >
         <label for="id_{{textarea.name}}">{{textarea.label}}</label>
+        <div class="fae_input fae_textarea">
         <textarea id="id_{{textarea.name}}"
             {% if onkeyup %}onKeyUp="{{onkeyup}}"{% endif %}
             {% if onblur %}onBlur="{{onblur}}"{% endif %}
             cols="{% if cols %}{{cols}}{% else %}80{% endif %}"
             rows="{% if rows %}{{rows}}{% else %}10{% endif %}"
-            name="{{textarea.name}}">{{textarea.value}}</textarea>    
+            name="{{textarea.name}}" 
+            {% if desc %}title="{{desc}}"{% endif %}>{{textarea.value}}</textarea>
+        </div>        
     </div>

@@ -1,16 +1,18 @@
     <div class="input" >
         <label for="id_{{select.name}}">{{select.label}}</label>
-        <select id="id_{{select.name}}"
-            {% if onkeyup %}onKeyUp="{{onkeyup}}"{% endif %}
-            {% if onblur %}onBlur="{{onblur}}"{% endif %}
-            name="{{select.name}}">
-            {% for choice in select.field.choices %}
-            <option value="{{choice.0}}"
-                {% if choice.0|slugify == select.value|slugify  %}
-                selected
-                {% endif %}>
-              {{choice.1}}
-            </option>
-            {% endfor %}
-        </select>    
+        <div class="fae_input fae_select">
+            <select id="id_{{select.name}}"
+                {% if onkeyup %}onKeyUp="{{onkeyup}}"{% endif %}
+                {% if onblur %}onBlur="{{onblur}}"{% endif %}
+                name="{{select.name}}">
+                {% for choice in select.field.choices %}
+                <option value="{{choice.0}}"
+                    {% if choice.0|slugify == select.value|slugify  %}
+                    selected
+                    {% endif %}>
+                  {{choice.1}}
+                </option>
+                {% endfor %}
+            </select>    
+        </div>    
     </div>

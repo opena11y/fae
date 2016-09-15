@@ -1,18 +1,22 @@
     <div class="input" >
         <label for="id_{{input.name}}">{{input.label}}</label>
         <div {% if f.errors|length %}class="error"{% endif %}>
-        <input 
-            type="{% if type %}{{type}}{% else %}text{% endif %}"
-            id="id_{{input.name}}"
-            {% if onkeyup %}onKeyUp="{{onkeyup}}"{% endif %}
-            {% if onblur  %}onBlur="{{onblur}}"  {% endif %}
-            name="{{input.name}}"
-            {% if input.required %}required{% endif %}
-            value="{{input.value}}"
-            {% if input.errors|length %}aria-invalid="true"{% endif %}
-            size="{% if size %}{{size}}{% else %}20{% endif %}"
-        {% if input.errors|length %}
-        <label class="error" for="id_{{input.name}}">{% for error in input.errors %}{{error}}{% endfor %}</label>
-        {% endif %}
+            <div class="fae_input fae_input_text">
+                <input 
+                    type="{% if type %}{{type}}{% else %}text{% endif %}"
+                    id="id_{{input.name}}"
+                    {% if onkeyup %}onKeyUp="{{onkeyup}}"{% endif %}
+                    {% if onblur  %}onBlur="{{onblur}}"  {% endif %}
+                    name="{{input.name}}"
+                    {% if input.required %}required{% endif %}
+                    {% if input.value %}value="{{input.value}}"{% endif %}
+                    {% if input.errors|length %}aria-invalid="true"{% endif %}
+                    {% if datalist %}list="{{datalist}}"{% endif %}
+                    size="{% if size %}{{size}}{% else %}20{% endif %}"
+                    {% if desc %}title="{{desc}}"{% endif %}>
+            </div>    
+            {% if input.errors|length %}
+            <label class="error" for="id_{{input.name}}">{% for error in input.errors %}{{error}}{% endfor %}</label>
+            {% endif %}
         </div>
     </div>

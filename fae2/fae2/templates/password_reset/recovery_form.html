@@ -1,4 +1,5 @@
 {% extends "password_reset/base.html" %}
+{% load staticfiles i18n %}
 {% load i18n %}
 
 {% block title %}{% trans "Password recovery" %}{% endblock %}
@@ -6,7 +7,16 @@
 {% block content %}
 	<form method="post" action="{{ url }}">
 		{% csrf_token %}
-		{{ form.as_p }}
-		<p><input type="submit" value="{% trans "Recover my password" %}"></p>
+
+        {% include "forms/input_text.html" with input=form.username_or_email size=30 %}
+
+		<input type="submit" value="{% trans "Recover my password" %}"
 	</form>
 {% endblock %}
+
+{% block javascript %}
+
+<script src="{% static 'js/form-control-focus.js' %}" type="text/javascript"></script>
+
+{% endblock %}
+

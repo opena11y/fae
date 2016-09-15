@@ -27,42 +27,15 @@
     {% endif %}
 
     <form method="post" action="{% url 'django.contrib.auth.views.login' %}">
-
         {% csrf_token %}
-        <div class="input" >
-            <label for="id_input_username" >Username</label>
-            <div {% if form.username.errors|length %}class="error"{% endif %}>
-            <input 
-                id="id_input_username"
-                name="username"
-                type="text"
-                required
-                {% if form.username.errors|length %}aria-invalid="true"{% endif %}
-                size="20">
-            {% if form.username.errors|length %}
-            <label class="error" for="id_input_username">{% for error in form.username.errors %}{{error}}{% endfor %}</label>
-            {% endif %}
-            </div>
-        </div>
 
-       <div class="input" style="margin-top: 0em; padding: 0;">
-            <label for="id_input_password" >Password</label>
-            <div {% if form.password.errors|length %}class="error"{% endif %}>
-            <input 
-                id="id_input_password"
-                name="password"
-                type="password"
-                required
-                {% if form.password.errors|length %}aria-invalid="true"{% endif %}
-                size="20">
-            {% if form.password.errors|length %}
-            <label class="error" for="id_input_password">{% for error in form.password.errors %}{{error}}{% endfor %}</label>
-            {% endif %}
-            </div>
-        </div>
-     
-        <p><a href="{% url 'password_reset_recover' %}">Lost password?</a></p>
+        {% include "forms/input_text.html" with input=form.username size=20  %}
+        {% include "forms/input_text.html" with input=form.password size=30 type='password' %}
+      
         <input type="submit" value="login">
+
+        <p><a href="{% url 'password_reset_recover' %}">Lost password?</a></p>
+
         <input type="hidden" name="next" value="{{ next }}">
 
     </form>
@@ -70,8 +43,15 @@
     {# Assumes you setup the password_reset view in your URLconf #}
 {% endif %}
 
-<h2>Support Open Source Tools</h2>
-<p>Make a <a href="{% url 'donate' %}">donation</a> or <a href="{% url 'subscription' %}">subscribe</a> to the FAE service to help support the development of open source tools for web accessibility evaluation and inspection.</p>
+<section aria-labelledby="#support" style="margin-top: 5em;">
+    <h2 id="support">Support Open Source Tools</h2>
+    <p>Make a <a href="{% url 'donate' %}">donation</a> or <a href="{% url 'subscription' %}">subscribe</a> to the FAE service to help support the development of open source tools for web accessibility evaluation and inspection.</p>
+</section>
 
+{% endblock %}
+
+{% block javascript %}
+
+<script src="{% static 'js/form-control-focus.js' %}" type="text/javascript"></script>
 
 {% endblock %}

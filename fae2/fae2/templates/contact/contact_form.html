@@ -14,48 +14,18 @@
 <form id="id_contact_form" action="{% url 'contact_form' %}" method="post" >
     {% csrf_token %}
 
-   <div class="input" >
-        <label for="topic">{{form.topic.label}}</label>
-        <div {% if form.topic.errors|length %}class="error"{% endif %}>
-        <input 
-            id="topic"
-            name="topic"
-            required
-            list="topic_options"
-            {% if form.topic.errors|length %}aria-invalid="true"{% endif %}
-            size="60"
-            title="Topic of the comment or feedback"> 
-        <datalist id="topic_options">
-            <option value="Problem evaluating websites">
-            <option value="Question or problem about a rule">
-            <option value="New feature or enhancement">
-            <option value="Typo or bug in information in FAE">
-            <option value="Other">
-        </datalist>
-        {% if form.topic.errors|length %}
-        <label class="error" for="topic">{% for error in form.topic.errors %}{{error}}{% endfor %}</label>
-        {% endif %}
-        </div>
-    </div>
+    {% include "forms/input_text.html" with input=form.topic size=60 datalist='topic_options'%}
+
+    <datalist id="topic_options">
+        <option value="Problem evaluating websites">
+        <option value="Question or problem about a rule">
+        <option value="New feature or enhancement">
+        <option value="Typo or bug in information in FAE">
+        <option value="Other">
+    </datalist>
 
 
-   <div class="input" >
-        <label for="message">{{form.message.label}}</label>
-        <div {% if form.tmessage.errors|length %}class="error"{% endif %}>
-        <textarea 
-            id="message"
-            name="message"
-            required
-            value="{{form.message.value}}"
-            {% if form.message.errors|length %}aria-invalid="true"{% endif %}
-            rows="10"
-            cols=80
-            title="Details of the comment or feedback"></textarea>     
-        {% if form.message.errors|length %}
-        <label class="error" for="message">{% for error in form.message.errors %}{{error}}{% endfor %}</label>
-        {% endif %}
-        </div>
-    </div>
+    {% include "forms/textarea.html" with textarea=form.message rows=10 cols=80 desc="Details of the comment or feedback"%}
 
     <input type="hidden" name="status" value="NR">
     <input type="hidden" name="comment" value="">
@@ -64,7 +34,7 @@
 
 </form>
 
-<section aria-labelledby="id_my_contacts">
+<section aria-labelledby="id_my_contacts" style="margin-top: 5em">
     <h2 id="id_my_contacts">My Feedback and Questions</h2>
 
     <table class="details table table-striped table-hover" aria-labelledby="id_my_contacts">
@@ -98,4 +68,12 @@
 </section>
 
 {% endblock %}
+
+{% block javascript %}
+
+<script src="{% static 'js/form-control-focus.js' %}" type="text/javascript"></script>
+
+{% endblock %}
+
+
 
