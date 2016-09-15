@@ -387,10 +387,32 @@ main .fae_focus {
     background-color: #EEEEEE;
 }
 
+main input[type=button],
+main input[type=submit] {
+    padding: 5px 15px; 
+    border: 1px solid black;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 4px; 
+    background-color: #EEEEEE;
+    font-weight: bold;
+}
+
+main input[type=button]:focus,
+main input[type=submit]:focus,
+main input[type=button]:hover,
+main input[type=submit]:hover {
+    padding: 4px 14px; 
+    border-width: 2px;
+    border-color: ;
+}
+
+
 main input[type="button"]:focus,
 main input[type="submit"]:focus {
     border-width: 2px;    
 }
+
 
 main input[type="text"]:focus {
     background-color: #EEEEEE;
