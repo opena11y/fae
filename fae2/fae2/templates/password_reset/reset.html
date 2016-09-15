@@ -9,9 +9,9 @@
 		<form method="post" action="{% url "password_reset_reset" token %}">
 			{% csrf_token %}
 
-			{{ form.as_p }}
+	       {% include "forms/input_text.html" with input=form.password1 size=30 %}
+    	   {% include "forms/input_text.html" with input=form.password2 size=30 %}
 
-			
 			<p><input type="submit" value="{% trans "Set new password" %}"></p>
 		</form>
 	{% endif %}
