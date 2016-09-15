@@ -356,6 +356,52 @@ main div.success {
     border: #337ab7 solid thin; 
 }
 
+main .fae_input {
+    position: relative;
+    left: -6px;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    padding: 0;
+    padding-left: 4px;
+}
+
+main .fae_input_text {
+    padding: 3px;
+}
+
+main .fae_button {
+    position: relative;
+    left: -2px;
+    top: 4px;
+    padding: 2px;
+    border: 2px solid transparent;
+}
+
+main .fae_input label {
+    position: relative;
+    top: .125em;
+}
+
+main .fae_focus {
+    border-color: #337ab7;
+    background-color: #EEEEEE;
+}
+
+main input[type="button"]:focus,
+main input[type="submit"]:focus {
+    border-width: 2px;    
+}
+
+main input[type="text"]:focus {
+    background-color: #EEEEEE;
+}
+
+main .fae_hover {
+    border-color: #337ab7;
+    background-color: #EEEEEE;
+}
+
+
 #summary table.summary
 {
     margin-top: 2em;
@@ -464,7 +510,6 @@ div.input select {
 div.checkbox input[type="checkbox"] {
     margin: 0;
     padding: 0;
-    margin-top: 0.35em;
 }
 
 div.checkbox label {

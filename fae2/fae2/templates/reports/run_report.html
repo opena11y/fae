@@ -10,7 +10,7 @@
 <form id="id_run_report"  action="{% url 'run_report' %}" method="post" >
     {% csrf_token %}
 
-    <div class="fae20_button">
+    <div class="fae_button">
         <input id="id_get_last" 
                type="button" 
                onclick="getLastReport()" 
@@ -20,11 +20,11 @@
                {% if not last_report %}disabled{% endif %}
                />
     </div>
-    
+
     <div class="input" >
         <label for="id_input_url">URL</label>
         <div {% if form.url.errors|length %}class="error"{% endif %}>
-        <div class="fae20_text">
+        <div class="fae_input fae_input_text">
             <input 
                 id="id_input_url"
                 onkeyup="enableSubmit()"
@@ -45,7 +45,7 @@
     <div class="input">
         <label for="id_input_title">Title</label>
         <div {% if form.title.errors|length %}class="error"{% endif %}>
-        <div class="fae20_text">
+        <div class="fae_input fae_input_text">
             <input 
                 id="id_input_title"
                 onkeyup="enableSubmit()"
@@ -70,7 +70,7 @@
         {% endif %}
         {% for choice in form.depth.field.choices %}
             {% if forloop.counter <= user.profile.account_type.next_account_type.max_depth %}
-            <div class="fae20_radio">
+            <div class="fae_input">
                 <input
                     id="depth_{{ forloop.counter }}"
                     type="radio"
@@ -98,7 +98,7 @@
         {% endif %}
         
         {% for choice in form.follow.field.choices %}
-        <div class="fae20_radio">
+        <div class="fae_input">
             <input
                 id="follow_{{ forloop.counter }}"
                 type="radio"
@@ -124,7 +124,7 @@
 
 
         {% for choice in form.ruleset.field.choices %}
-        <div class="fae20_radio">
+        <div class="fae_input">
             <input
                 id="ruleset_{{ forloop.counter }}"
                 type="radio"
@@ -153,7 +153,7 @@
 
         {% for choice in form.max_pages.field.choices %}
             {% if choice.0 <= user.profile.account_type.next_account_type.max_pages  %}
-            <div class="fae20_radio">
+            <div class="fae_input">
                 <input
                     id="max_pages_{{ choice.0 }}"
                     type="radio"
@@ -172,8 +172,9 @@
         {% endfor %}
     </fieldset>
     
-    <input id="id_submit" name="submit" type="submit" value="Evaluate"  title="You must enter a valid URL and a title before you can request a report"/>
-    
+    <div class="fae_button">
+        <input id="id_submit" name="submit" type="submit" value="Evaluate"  title="You must enter a valid URL and a title before you can request a report"/>
+    </div>
 
 </form>
 
@@ -182,6 +183,8 @@
 {% block javascript %}
 
 <script src="{% static 'js/url-validation.js' %}" type="text/javascript"></script>
+
+<script src="{% static 'js/form-control-focus.js' %}" type="text/javascript"></script>
 
 <script type="text/javascript">
 
