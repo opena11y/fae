@@ -659,5 +659,14 @@ table label {
 }
 
 main a[href] {
+  padding-left: 3px;
+  padding-right: 3px;
   text-decoration: underline;
+}
+
+main a[href]:focus {
+  padding-left: 2px;
+  padding-right: 2px;
+  border: 1px solid #337ab7;
+  background-color: #EEEEEE;
 }
