@@ -71,23 +71,27 @@
         <legend>{{form.depth.label}}</legend>
         {% endif %}
         {% for choice in form.depth.field.choices %}
-         <div class="fae_input">
-            {% if forloop.counter <= user.profile.account_type.max_depth %} 
-            <input
-                id="depth_{{ forloop.counter }}"
-                type="radio"
-                name="depth"
-                value="{{choice.0}}"
-                {% if choice.0|slugify == form.depth.value|slugify  %}
-                checked="checked"
-                {% endif %}
-                onclick="updateFollow()"
-            />
-            <label for="depth_{{ forloop.counter }}">{{choice.1}}</label>
+            {% if forloop.counter <= user.profile.account_type.next_account_type.max_depth %}
+            <div class="fae_input">
+                <input
+                    id="depth_{{ forloop.counter }}"
+                    type="radio"
+                    name="depth"
+                    value="{{choice.0}}"
+                    {% if choice.0|slugify == form.depth.value|slugify  %}
+                    checked="checked"
+                    {% endif %}
+                    {% if forloop.counter > user.profile.account_type.max_depth %}disabled{% endif %}   
+                    onclick="updateFollow()"
+                />
+                <label for="depth_{{ forloop.counter }}">{{choice.1}}</label>
+            </div>
             {% endif %}
-        </div>
         {% endfor %}
+        {% if user.profile.account_type.next_account_type %}
+        {% endif %}
     </fieldset>
+
 
     <fieldset>
       <legend>Domain Information</legend>
@@ -174,8 +178,7 @@
     </fieldset>
 
 
-
-    <fieldset id="id_max_pages">
+   <fieldset id="id_max_pages">
         
         {% if form.max_pages.errors|length %}
         <legend class="error">{{form.max_pages.label}}: {% for error in form.max_pages.errors %}{{error}}{% endfor %}</legend>
@@ -183,24 +186,28 @@
         <legend>{{form.max_pages.label}}</legend>
         {% endif %}
 
-
         {% for choice in form.max_pages.field.choices %}
-        <div class="fae_input">
-            {% if choice.0 <= user.profile.account_type.max_pages %}
-            <input
-                id="max_pages_{{ choice.0 }}"
-                type="radio"
-                name="max_pages"
-                value="{{choice.0}}"
-                {% if choice.0 = user.profile.account_type.max_pages %}
-                checked
-                {% endif %}
-            />
-            <label for="max_pages_{{ choice.0 }}" >{{choice.1}}</label>
+            {% if choice.0 <= user.profile.account_type.next_account_type.max_pages  %}
+            <div class="fae_input">
+                <input
+                    id="max_pages_{{ choice.0 }}"
+                    type="radio"
+                    name="max_pages"
+                    value="{{choice.0}}"
+                    {% if user.profile.account_type.max_pages == choice.0 %}
+                    checked
+                    {% endif %}
+                    {% if choice.0 > user.profile.account_type.max_pages %}
+                    disabled
+                    {% endif %}
+                />
+                <label for="max_pages_{{ choice.0 }}">{{choice.1}}</label>
+            </div>
             {% endif %}
-        </div>
         {% endfor %}
     </fieldset>
+
+
 
     <div class="input">        
         <label for="id_wait_time">{{form.wait_time.label}}</label>
