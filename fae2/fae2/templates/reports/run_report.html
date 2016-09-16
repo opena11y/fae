@@ -14,10 +14,11 @@
         <input id="id_get_last" 
                type="button" 
                onclick="getLastReport()" 
-               {% if report_nav.wser.url == '' %}disabled{% endif %} 
                value="Get Last Report Settings" 
                title="You can import a previous report settings into this form by visiting the archived report just before you come to this form"
-               {% if not last_report %}disabled{% endif %}
+               {% if not last_report and report_nav.wser.url == ''%}
+               disabled="disabled"
+               {% endif %}
                />
     </div>
 
@@ -30,7 +31,7 @@
                 onkeyup="enableSubmit()"
                 onblur="enableSubmit()"
                 name="url"
-                required
+                required="required"
                 value="{{form.url.value}}"
                 {% if form.url.errors|length %}aria-invalid="true"{% endif %}
                 size="60"
@@ -51,7 +52,7 @@
                 onkeyup="enableSubmit()"
                 onblur="enableSubmit()"
                 name="title"
-                required
+                required="required"
                 {% if form.title.errors|length %}aria-invalid="true"{% endif %}
                 value="{{form.title.value}}"
                 size="80"/>
@@ -79,7 +80,9 @@
                     {% if choice.0|slugify == form.depth.value|slugify  %}
                     checked="checked"
                     {% endif %}
-                    {% if forloop.counter > user.profile.account_type.max_depth %}disabled{% endif %}   
+                    {% if forloop.counter > user.profile.account_type.max_depth %}
+                    disabled="disabled"
+                    {% endif %}   
                     onclick="updateFollow()"
                 />
                 <label for="depth_{{ forloop.counter }}">{{choice.1}}</label>
@@ -105,7 +108,7 @@
                 name="follow"
                 value="{{choice.0}}"
                 {% if form.follow.value|slugify == choice.0|slugify %}
-                checked
+                checked="checked"
                 {% endif %}
             />
             <label for="follow_{{ forloop.counter }}">{{choice.1}}</label>
@@ -131,7 +134,7 @@
                 name="ruleset"
                 value="{{choice.0}}"
                 {% if form.ruleset.value|slugify == choice.0|slugify %}
-                checked
+                checked="checked"
                 {% endif %}
             />
             <label for="ruleset_{{ forloop.counter }}" {% ifequal 'ARIA_STRICT' choice.0 %}
@@ -159,12 +162,8 @@
                     type="radio"
                     name="max_pages"
                     value="{{choice.0}}"
-                    {% if user.profile.account_type.max_pages == choice.0 %}
-                    checked
-                    {% endif %}
-                    {% if choice.0 > user.profile.account_type.max_pages %}
-                    disabled
-                    {% endif %}
+                    {% if choice.0 > user.profile.account_type.max_pages %}disabled="disabled"{% endif %}
+                    {% if user.profile.account_type.max_pages == choice.0 %}checked="checked"{% endif %}
                 />
                 <label for="max_pages_{{ choice.0 }}">{{choice.1}}</label>
             </div>
@@ -218,7 +217,7 @@
 
       var max_page_input = document.getElementById("max_pages_" + last_report.max_pages);
 
-      if (max_page_input) max_page_input.checked = true;
+      if (max_page_input && !max_page_input.disabled) max_page_input.checked = true;
 
       enableSubmit();
     }
