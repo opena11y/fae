@@ -12,7 +12,10 @@
 
 {% block content %}
 
+{% if self_registration_enabled %}
 <p><a href="{% url "password_reset_recover" %}">Change Password</a></p>
+{% endif %}
+
 <form action="{% url 'update_profile' %}"
       method="POST">
     {% csrf_token %}
