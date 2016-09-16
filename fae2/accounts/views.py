@@ -244,7 +244,7 @@ class UpdateUserProfileView(LoginRequiredMixin, FAENavigationMixin, SuccessMessa
     template_name = 'accounts/update_profile.html'
     form_class    = UserProfileForm
 
-    success_url = reverse_lazy('user_profile')
+    success_url = reverse_lazy('my_account')
     success_message = "Updated %(first_name)s %(last_name)s Profile"
 
     login_url = reverse_lazy('run_anonymous_report')
