@@ -389,6 +389,16 @@ main .fae_focus {
     background-color: #EEEEEE;
 }
 
+main .fae_hover {
+    background-color: #CCCCCC;
+}
+
+main input[disabled] .fae_hover {
+    border-color: transparent;
+    background-color: white`;
+}
+
+
 main input[type=button],
 main input[type=submit] {
     padding: 5px 15px; 
@@ -413,16 +423,6 @@ main input[type=submit]:hover {
 main input[type="button"]:focus,
 main input[type="submit"]:focus {
     border-width: 2px;    
-}
-
-main .fae_hover {
-    border-color: transparent;
-    background-color: #CCCCCC;
-}
-
-main input[disabled] .fae_hover {
-    border-color: transparent;
-    background-color: white`;
 }
 
 
