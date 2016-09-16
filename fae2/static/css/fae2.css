@@ -419,6 +419,31 @@ main input[type=submit]:hover {
     border-color: #337ab7;
 }
 
+main input[type=button].sort-button,
+main input[type=submit].sort-button {
+    padding: 2px 2px; 
+    border: 1px solid black;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 4px; 
+    background-color: #EEEEEE;
+    font-weight: normal;
+}
+
+
+main input[type=button].sort-button:focus,
+main input[type=submit].sort-button:focus,
+main input[type=button].sort-button:hover,
+main input[type=submit].sort-button:hover {
+    padding: 1px 1px; 
+    border-width: 2px;
+    border-color: #337ab7;
+}
+
+main input[type=button][disabled].sort-button {
+    color: #808080;
+    border-color: #808080;
+}
 
 main input[type="button"]:focus,
 main input[type="submit"]:focus {
