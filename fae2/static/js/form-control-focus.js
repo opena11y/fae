@@ -16,14 +16,14 @@ $(document).ready(function() {
 
     function getHighlightWidth(node) {
         var width = 0;
-        var adjust_width = 14;
+        var adjust_width = 18;
 
         var e = node.firstElementChild;
 
         while(e) {
             width += e.clientWidth;
             if (e.tagName === 'SELECT') adjust_width = 36;
-            if ((e.tagName === 'INPUT' && (e.type === 'RADIO' || e.type === 'CHECKBOX'))) adjust_width = 18;
+            if ((e.tagName === 'INPUT' && (e.type === 'RADIO' || e.type === 'CHECKBOX'))) adjust_width = 20;
             e = e.nextElementSibling;
         }
 
