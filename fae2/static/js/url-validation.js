@@ -65,8 +65,10 @@
         controls = mps.getElementsByTagName("input");
         
         for(i = 1; i < controls.length; i++) {
-          c = controls[i];           
-          c.removeAttribute('disabled');
+          c = controls[i];     
+          if (c.id.indexOf("disabled") < 0 ) {
+            c.removeAttribute('disabled');
+          }  
         }      
       }
    } 

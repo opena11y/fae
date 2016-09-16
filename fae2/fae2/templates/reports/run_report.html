@@ -107,7 +107,6 @@
                 type="radio"
                 name="follow"
                 value="{{choice.0}}"
-                onclick="setFocus(event)"
                 {% if form.follow.value|slugify == choice.0|slugify %}
                 checked="checked"
                 {% endif %}
@@ -134,7 +133,6 @@
                 type="radio"
                 name="ruleset"
                 value="{{choice.0}}"
-                onclick="setFocus(event)"
                 {% if form.ruleset.value|slugify == choice.0|slugify %}
                 checked="checked"
                 {% endif %}
@@ -160,15 +158,18 @@
             {% if choice.0 <= user.profile.account_type.next_account_type.max_pages  %}
             <div class="fae_input">
                 <input
-                    id="max_pages_{{ choice.0 }}"
                     type="radio"
-                    name="max_pages"
                     value="{{choice.0}}"
-                    onclick="setFocus(event)"
-                    {% if choice.0 > user.profile.account_type.max_pages %}disabled="disabled"{% endif %}
+                    {% if choice.0 <= user.profile.account_type.max_pages %}
+                    id="max_pages_{{ choice.0 }}"
+                    name="max_pages"
+                    {% else %}
+                    id="max_pages_disabled_{{ choice.0 }}"
+                    disabled="disabled"
+                    {% endif %}
                     {% if user.profile.account_type.max_pages == choice.0 %}checked="checked"{% endif %}
                 />
-                <label for="max_pages_{{ choice.0 }}">{{choice.1}}</label>
+                <label for="max_pages_{% if choice.0 > user.profile.account_type.max_pages %}disabled_{% endif %}{{ choice.0 }}">{{choice.1}}</label>
             </div>
             {% endif %}
         {% endfor %}
@@ -226,9 +227,6 @@
     }
   }
 
-  function setFocus(event) {
-    event.currentTarget.focus();
-  }
 
 </script>
 
