@@ -26,16 +26,18 @@
     <div class="input" >
         <label for="id_input_url">URL</label>
         <div {% if form.url.errors|length %}class="error"{% endif %}>
-        <input 
-            id="id_input_url"
-            onkeyup="enableSubmit()"
-            onblur="enableSubmit()"
-            name="url"
-            required
-            value="{{form.url.value}}"
-            {% if form.url.errors|length %}aria-invalid="true"{% endif %}
-            size="60"
-            title="URL must start with http:// or https://, example: http://www.somewhere.org"/> 
+        <div class="fae_input fae_input_text">
+           <input 
+              id="id_input_url"
+              onkeyup="enableSubmit()"
+              onblur="enableSubmit()"
+              name="url"
+              required
+              value="{{form.url.value}}"
+              {% if form.url.errors|length %}aria-invalid="true"{% endif %}
+              size="60"
+              title="URL must start with http:// or https://, example: http://www.somewhere.org"/> 
+        </div>    
         {% if form.url.errors|length %}
         <label class="error" for="id_input_url">{% for error in form.url.errors %}{{error}}{% endfor %}</label>
         {% endif %}
@@ -45,15 +47,17 @@
     <div class="input">
         <label for="id_input_title">Title</label>
         <div {% if form.title.errors|length %}class="error"{% endif %}>
-        <input 
-            id="id_input_title"
-            onkeyup="enableSubmit()"
-            onblur="enableSubmit()"
-            name="title"
-            required
-            {% if form.title.errors|length %}aria-invalid="true"{% endif %}
-            value="{{form.title.value}}"
-            size="80"/>
+        <div class="fae_input fae_input_text">
+          <input 
+              id="id_input_title"
+              onkeyup="enableSubmit()"
+              onblur="enableSubmit()"
+              name="title"
+              required
+              {% if form.title.errors|length %}aria-invalid="true"{% endif %}
+              value="{{form.title.value}}"
+              size="80"/>
+        </div>      
         {% if form.title.errors|length %}
         <label class="error" for="id_input_title">{% for error in form.title.errors %}{{error}}{% endfor %}</label>
         {% endif %}
@@ -67,7 +71,7 @@
         <legend>{{form.depth.label}}</legend>
         {% endif %}
         {% for choice in form.depth.field.choices %}
-         <div class="fae20_radio">
+         <div class="fae_input">
             {% if forloop.counter <= user.profile.account_type.max_depth %} 
             <input
                 id="depth_{{ forloop.counter }}"
@@ -91,12 +95,14 @@
       <div class="input">
           <label for="id_input_span_sub_domains">Span Domains</label>
           <div {% if form.span_sub_domains.errors|length %}class="error"{% endif %}>
-          <input 
-              id="id_input_span_sub_domains"
-              name="span_sub_domains"
-              {% if form.span_sub_domains.errors|length %}aria-invalid="true"{% endif %}
-              value="{{form.span_sub_domains.value}}"
-              size="80"/>
+          <div class="fae_input fae_input_text">
+            <input 
+                id="id_input_span_sub_domains"
+                name="span_sub_domains"
+                {% if form.span_sub_domains.errors|length %}aria-invalid="true"{% endif %}
+                value="{{form.span_sub_domains.value}}"
+                size="80"/>
+          </div>    
           {% if form.span_sub_domains.errors|length %}
           <label class="error" for="id_input_span_sub_domains">{% for error in form.span_sub_domains.errors %}{{error}}{% endfor %}</label>
           {% endif %}
@@ -106,12 +112,14 @@
       <div class="input">
           <label for="id_input_exclude_sub_domains">Exclude Domains</label>
           <div {% if form.exclude_sub_domains.errors|length %}class="error"{% endif %}>
-          <input 
-              id="id_input_exclude_sub_domains"
-              name="exclude_sub_domains"
-              {% if form.exclude_sub_domains.errors|length %}aria-invalid="true"{% endif %}
-              value="{{form.exclude_sub_domains.value}}"
-              size="80"/>
+          <div class="fae_input fae_input_text">
+            <input 
+                id="id_input_exclude_sub_domains"
+                name="exclude_sub_domains"
+                {% if form.exclude_sub_domains.errors|length %}aria-invalid="true"{% endif %}
+                value="{{form.exclude_sub_domains.value}}"
+                size="80"/>
+          </div>      
           {% if form.exclude_sub_domains.errors|length %}
           <label class="error" for="id_input_exclude_sub_domains">{% for error in form.exclude_sub_domains.errors %}{{error}}{% endfor %}</label>
           {% endif %}
@@ -121,12 +129,14 @@
       <div class="input">
           <label for="id_input_include_domains">Include Domains</label>
           <div {% if form.include_domains.errors|length %}class="error"{% endif %}>
+          <div class="fae_input fae_input_text">
           <input 
               id="id_input_include_domains"
               name="include_domains"
               {% if form.include_domains.errors|length %}aria-invalid="true"{% endif %}
               value="{{form.include_domains.value}}"
               size="80"/>
+          </div>    
           {% if form.include_domains.errors|length %}
           <label class="error" for="id_input_include_domains">{% for error in form.include_domains.errors %}{{error}}{% endfor %}</label>
           {% endif %}
@@ -144,7 +154,7 @@
 
 
         {% for choice in form.ruleset.field.choices %}
-        <div class="fae20_radio">
+        <div class="fae_input">
             <input
                 id="ruleset_{{ forloop.counter }}"
                 type="radio"
@@ -175,7 +185,7 @@
 
 
         {% for choice in form.max_pages.field.choices %}
-        <div class="fae20_radio">
+        <div class="fae_input">
             {% if choice.0 <= user.profile.account_type.max_pages %}
             <input
                 id="max_pages_{{ choice.0 }}"
@@ -195,15 +205,17 @@
     <div class="input">        
         <label for="id_wait_time">{{form.wait_time.label}}</label>
         
-        <select id="id_wait_time" name="wait_time" >
-            {% for wt in form.wait_time.field.choices %}
-            {% if form.is_bound %}
-            <option {% ifequal form.wait_time.value wt.0 %}selected{% endifequal %} value="{{wt.0}}">{{wt.1}}</option>
-            {% else %}
-            <option {% ifequal wt.0 '60000' %}selected{% endifequal %} value="{{wt.0}}">{{wt.1}}</option>
-            {% endif %}
-            {% endfor %}
-        </select>
+        <div class="fae_input fae_select">
+          <select id="id_wait_time" name="wait_time" >
+              {% for wt in form.wait_time.field.choices %}
+              {% if form.is_bound %}
+              <option {% ifequal form.wait_time.value wt.0 %}selected{% endifequal %} value="{{wt.0}}">{{wt.1}}</option>
+              {% else %}
+              <option {% ifequal wt.0 '60000' %}selected{% endifequal %} value="{{wt.0}}">{{wt.1}}</option>
+              {% endif %}
+              {% endfor %}
+          </select>
+        </div>  
     </div>
 
     <input id="id_submit" name="submit" type="submit" value="Evaluate"  title="You must enter a valid URL and a title before you can request a report"/>
@@ -216,6 +228,8 @@
 {% block javascript %}
 
 <script src="{% static 'js/url-validation.js' %}" type="text/javascript"></script>
+
+<script src="{% static 'js/form-control-focus.js' %}" type="text/javascript"></script>
 
 <script type="text/javascript">
 

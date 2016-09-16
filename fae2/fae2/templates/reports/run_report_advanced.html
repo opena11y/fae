@@ -27,16 +27,18 @@
     <div class="input" >
         <label for="id_input_url">URL</label>
         <div {% if form.url.errors|length %}class="error"{% endif %}>
-        <input 
-            id="id_input_url"
-            onkeyup="enableSubmit()"
-            onblur="enableSubmit()"
-            name="url"
-            required
-            value="{{form.url.value}}"
-            {% if form.url.errors|length %}aria-invalid="true"{% endif %}
-            size="60"
-            title="URL must start with http:// or https://, example: http://www.somewhere.org"/> 
+        <div class="fae_input fae_input_text">
+          <input 
+              id="id_input_url"
+              onkeyup="enableSubmit()"
+              onblur="enableSubmit()"
+              name="url"
+              required
+              value="{{form.url.value}}"
+              {% if form.url.errors|length %}aria-invalid="true"{% endif %}
+              size="60"
+              title="URL must start with http:// or https://, example: http://www.somewhere.org"/> 
+        </div>    
         {% if form.url.errors|length %}
         <label class="error" for="id_input_url">{% for error in form.url.errors %}{{error}}{% endfor %}</label>
         {% endif %}
@@ -46,15 +48,17 @@
     <div class="input">
         <label for="id_input_title">Title</label>
         <div {% if form.title.errors|length %}class="error"{% endif %}>
-        <input 
-            id="id_input_title"
-            onkeyup="enableSubmit()"
-            onblur="enableSubmit()"
-            name="title"
-            required
-            {% if form.title.errors|length %}aria-invalid="true"{% endif %}
-            value="{{form.title.value}}"
-            size="80"/>
+        <div class="fae_input fae_input_text">
+          <input 
+              id="id_input_title"
+              onkeyup="enableSubmit()"
+              onblur="enableSubmit()"
+              name="title"
+              required
+              {% if form.title.errors|length %}aria-invalid="true"{% endif %}
+              value="{{form.title.value}}"
+              size="80"/>
+        </div>      
         {% if form.title.errors|length %}
         <label class="error" for="id_input_title">{% for error in form.title.errors %}{{error}}{% endfor %}</label>
         {% endif %}
@@ -68,7 +72,7 @@
         <legend>{{form.depth.label}}</legend>
         {% endif %}
         {% for choice in form.depth.field.choices %}
-         <div class="fae20_radio">
+         <div class="fae_input">
             <input
                 id="depth_{{ forloop.counter }}"
                 type="radio"
@@ -92,7 +96,7 @@
         {% endif %}
         
         {% for choice in form.follow.field.choices %}
-        <div class="fae20_radio">
+        <div class="fae_input">
             <input
                 id="follow_{{ forloop.counter }}"
                 type="radio"
@@ -101,8 +105,6 @@
                 {% if form.follow.value|slugify == choice.0|slugify %}
                 checked
                 {% endif %}
-
-
             />
             <label for="follow_{{ forloop.counter }}">{{choice.1}}</label>
         </div>
@@ -120,7 +122,7 @@
 
 
         {% for choice in form.ruleset.field.choices %}
-        <div class="fae20_radio">
+        <div class="fae_input">
             <input
                 id="ruleset_{{ forloop.counter }}"
                 type="radio"
@@ -149,7 +151,7 @@
 
 
         {% for choice in form.max_pages.field.choices %}
-        <div class="fae20_radio">
+        <div class="fae_input">
             <input
                 id="max_pages_{{ choice.0 }}"
                 type="radio"
