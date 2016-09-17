@@ -26,7 +26,7 @@
             {% endif %}
         {% endfor %}
 
-        {% if payement_enabled and user.profile.account_type.next_account_type %}
+        {% if payment_enabled and user.profile.account_type.next_account_type %}
             {% if user.profile.account_type.next_account_type.type ==  1 %}
         <p class="subscription"><a href="{% url 'update_subscription' %}">Subscribe</a> to FAE to increase the number of pages spidered.</p>
             {% else %}
