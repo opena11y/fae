@@ -64,4 +64,3 @@ def payment_enabled(request):
     }
 
 
-

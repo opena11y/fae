@@ -26,4 +26,13 @@
         {% endfor %}
         {% if user.profile.account_type.next_account_type %}
         {% endif %}
+
+        {% if user.profile.account_type.next_account_type %}
+            {% if user.profile.account_type.next_account_type.type ==  1 %}
+        <p class="subscription"><a href="{% url 'update_subscription' %}">Subscribe</a> to FAE to increase the depth of pages spidered.</p>
+            {% else %}
+        <p class="subscription">Note: Change the level of your <a href="{% url 'update_subscription' %}">subscription</a> to increase the depth of pages spidered.</p>
+            {% endif %}
+        {% endif %}
+
     </fieldset>
