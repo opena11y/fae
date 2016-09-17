@@ -692,3 +692,7 @@ main a[href]:focus {
   outline: 2px solid #337ab7;
   background-color: #EEEEEE;
 }
+
+main a[href]:hover {
+  background-color: #DDDDDD;
+}
