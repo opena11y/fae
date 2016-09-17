@@ -1,0 +1,20 @@
+    <div class="input" >
+        <label for="id_input_url">URL</label>
+        <div {% if form.url.errors|length %}class="error"{% endif %}>
+        <div class="fae_input fae_input_text">
+            <input 
+                id="id_input_url"
+                onkeyup="enableSubmit()"
+                onblur="enableSubmit()"
+                name="url"
+                required="required"
+                value="{{form.url.value}}"
+                {% if form.url.errors|length %}aria-invalid="true"{% endif %}
+                size="60"
+                title="URL must start with http:// or https://, example: http://www.somewhere.org"/> 
+        </div>    
+        {% if form.url.errors|length %}
+        <label class="error" for="id_input_url">{% for error in form.url.errors %}{{error}}{% endfor %}</label>
+        {% endif %}
+        </div>
+    </div>

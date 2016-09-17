@@ -1,0 +1,20 @@
+    <div class="input">
+        <label for="id_input_title">Title</label>
+        <div {% if form.title.errors|length %}class="error"{% endif %}>
+        <div class="fae_input fae_input_text">
+            <input 
+                id="id_input_title"
+                onkeyup="enableSubmit()"
+                onblur="enableSubmit()"
+                name="title"
+                required="required"
+                {% if form.title.errors|length %}aria-invalid="true"{% endif %}
+                value="{{form.title.value}}"
+                size="80"/>
+        </div>    
+        {% if form.title.errors|length %}
+        <label class="error" for="id_input_title">{% for error in form.title.errors %}{{error}}{% endfor %}</label>
+        {% endif %}
+        </div>
+    </div>
+    

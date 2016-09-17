@@ -1,0 +1,54 @@
+    <fieldset>
+      <legend>Domain Information</legend>
+
+      <div class="input">
+          <label for="id_input_span_sub_domains">Span Domains</label>
+          <div {% if form.span_sub_domains.errors|length %}class="error"{% endif %}>
+          <div class="fae_input fae_input_text">
+            <input 
+                id="id_input_span_sub_domains"
+                name="span_sub_domains"
+                {% if form.span_sub_domains.errors|length %}aria-invalid="true"{% endif %}
+                value="{{form.span_sub_domains.value}}"
+                size="80"/>
+          </div>    
+          {% if form.span_sub_domains.errors|length %}
+          <label class="error" for="id_input_span_sub_domains">{% for error in form.span_sub_domains.errors %}{{error}}{% endfor %}</label>
+          {% endif %}
+          </div>
+      </div>
+
+      <div class="input">
+          <label for="id_input_exclude_sub_domains">Exclude Domains</label>
+          <div {% if form.exclude_sub_domains.errors|length %}class="error"{% endif %}>
+          <div class="fae_input fae_input_text">
+            <input 
+                id="id_input_exclude_sub_domains"
+                name="exclude_sub_domains"
+                {% if form.exclude_sub_domains.errors|length %}aria-invalid="true"{% endif %}
+                value="{{form.exclude_sub_domains.value}}"
+                size="80"/>
+          </div>      
+          {% if form.exclude_sub_domains.errors|length %}
+          <label class="error" for="id_input_exclude_sub_domains">{% for error in form.exclude_sub_domains.errors %}{{error}}{% endfor %}</label>
+          {% endif %}
+          </div>
+      </div>
+
+      <div class="input">
+          <label for="id_input_include_domains">Include Domains</label>
+          <div {% if form.include_domains.errors|length %}class="error"{% endif %}>
+          <div class="fae_input fae_input_text">
+          <input 
+              id="id_input_include_domains"
+              name="include_domains"
+              {% if form.include_domains.errors|length %}aria-invalid="true"{% endif %}
+              value="{{form.include_domains.value}}"
+              size="80"/>
+          </div>    
+          {% if form.include_domains.errors|length %}
+          <label class="error" for="id_input_include_domains">{% for error in form.include_domains.errors %}{{error}}{% endfor %}</label>
+          {% endif %}
+          </div>
+      </div>
+    </fieldset>

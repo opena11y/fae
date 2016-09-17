@@ -1,0 +1,23 @@
+    <fieldset id="id_following" {% if form.follow.errors|length %}class="error"{% endif %}>
+        {% if form.follow.errors|length %}
+        <legend class="error">{{form.follow.label}}: {% for error in form.follow.errors %}{{error}}{% endfor %}</legend>
+        {% else %}
+        <legend>{{form.follow.label}}</legend>
+        {% endif %}
+        
+        {% for choice in form.follow.field.choices %}
+        <div class="fae_input">
+            <input
+                id="follow_{{ forloop.counter }}"
+                type="radio"
+                name="follow"
+                value="{{choice.0}}"
+                {% if form.follow.value|slugify == choice.0|slugify %}
+                checked="checked"
+                {% endif %}
+            />
+            <label for="follow_{{ forloop.counter }}">{{choice.1}}</label>
+        </div>
+        {% endfor %}
+        </ul>
+    </fieldset>    

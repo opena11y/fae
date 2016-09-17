@@ -1,0 +1,28 @@
+    <fieldset>   
+        {% if form.ruleset.errors|length %}
+        <legend class="error">{{form.ruleset.label}}: {% for error in form.ruleset.errors %}{{error}}{% endfor %}</legend>
+        {% else %}
+        <legend>{{form.ruleset.label}}</legend>
+        {% endif %}
+
+
+        {% for choice in form.ruleset.field.choices %}
+        <div class="fae_input">
+            <input
+                id="ruleset_{{ forloop.counter }}"
+                type="radio"
+                name="ruleset"
+                value="{{choice.0}}"
+                {% if form.ruleset.value|slugify == choice.0|slugify %}
+                checked="checked"
+                {% endif %}
+            />
+            <label for="ruleset_{{ forloop.counter }}" {% ifequal 'ARIA_STRICT' choice.0 %}
+            title="WCAG 2.0 Level A and AA requirements using ARIA and HTML5 accessibility features."
+            {% else %}
+            title="WCAG 2.0 Level A and AA requirements using legacy HTML4 features, but allowing the use of ARIA and HTML5 accessibility features."
+            {% endifequal %}>{{choice.1}}</label>
+        </div>
+        {% endfor %}
+    </fieldset>
+

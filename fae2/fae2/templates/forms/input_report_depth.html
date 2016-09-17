@@ -1,0 +1,29 @@
+    <fieldset {% if form.depth.errors|length %}class="error"{% endif %}>
+        {% if form.depth.errors|length %}
+        <legend class="error">{{form.depth.label}}: {% for error in form.depth.errors %}{{error}}{% endfor %}</legend>)
+        {% else %}
+        <legend>{{form.depth.label}}</legend>
+        {% endif %}
+        {% for choice in form.depth.field.choices %}
+            {% if forloop.counter <= user.profile.account_type.max_depth or forloop.counter <= user.profile.account_type.next_account_type.max_depth %}
+            <div class="fae_input">
+                <input
+                    id="depth_{{ forloop.counter }}"
+                    type="radio"
+                    name="depth"
+                    value="{{choice.0}}"
+                    {% if choice.0|slugify == form.depth.value|slugify  %}
+                    checked="checked"
+                    {% endif %}
+                    {% if forloop.counter > user.profile.account_type.max_depth %}
+                    disabled="disabled"
+                    {% endif %}   
+                    onclick="updateFollow()"
+                />
+                <label for="depth_{{ forloop.counter }}">{{choice.1}}</label>
+            </div>
+            {% endif %}
+        {% endfor %}
+        {% if user.profile.account_type.next_account_type %}
+        {% endif %}
+    </fieldset>

@@ -1,0 +1,16 @@
+   <div class="input">        
+        <label for="id_wait_time">{{form.wait_time.label}}</label>
+        
+        <div class="fae_input fae_select">
+          <select id="id_wait_time" name="wait_time" >
+              {% for wt in form.wait_time.field.choices %}
+              {% if form.is_bound %}
+              <option {% ifequal form.wait_time.value wt.0 %}selected{% endifequal %} value="{{wt.0}}">{{wt.1}}</option>
+              {% else %}
+              <option {% ifequal wt.0 '60000' %}selected{% endifequal %} value="{{wt.0}}">{{wt.1}}</option>
+              {% endif %}
+              {% endfor %}
+          </select>
+        </div>  
+    </div>
+
