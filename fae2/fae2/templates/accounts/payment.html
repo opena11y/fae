@@ -6,7 +6,11 @@
 {% endblock %}
 
 {% block title %}
-Payment
+{% if payment.status == 'PMT_NOCOST' or payment.status == 'PMT_APPROV' %}
+Payment Successful
+{% else %}
+Payment Error
+{% endif %}
 {% endblock %}
 
 {% block content %}
