@@ -9,10 +9,11 @@
 {% if payment.status == 'PMT_NOCOST' or payment.status == 'PMT_APPROV' %}
 Payment Successful
 {% else %}
-{% if payment.status == 'PMT_CANCELLED' %}
+  {% if payment.status == 'PMT_CANCELLED' %}
 Payment Cancelled
-{% else %}
+  {% else %}
 Payment Error
+  {% endif %}
 {% endif %}
 {% endblock %}
 
