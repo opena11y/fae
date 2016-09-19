@@ -7,7 +7,7 @@
         {% endif %}
 
         {% for choice in form.max_pages.field.choices %}
-            {% if choice.0 <= user.profile.account_type.max_pages or choice.0 <= user.profile.account_type.next_account_type.max_pages  %}
+            {% if choice.0 <= user.profile.account_type.max_pages or payment_enabled and choice.0 <= user.profile.account_type.next_account_type.max_pages  %}
             <div class="fae_input">
                 <input
                     type="radio"
