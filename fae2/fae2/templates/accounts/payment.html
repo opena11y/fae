@@ -11,7 +11,7 @@ Payment
 
 {% block content %}
 
-{% if reason == 'canceled' %}
+{% if payment.status == 'PMT_CANCELLED' %}
 
 <div class="error">
   <p>Payment cancelled by card holder</p>
@@ -19,40 +19,59 @@ Payment
 
 {% else %}
     
-    {% if reason == 'maxattempts' %}
+  {% if payment.status == 'PMT_MAX_ATTEMPT' %}
 
 <div class="error">
   <p>Too many attempts to validate credit card purchase, please verify your credit card information and <a href="{% url 'update_subscription' %}">try again</a>.</p>
 </div>
 
-    {% else %}
+  {% else %}
 
-        {% if reason == 'tokenexpired' %}
+    {% if payment.status == 'PMT_EXPIRED' %}
 
 <div class="error">
   <p>Payment session has timed out, please <a href="{% url 'update_subscription' %}">try again</a>.</p>
 </div>
 
-        {% else %}
+    {% else %}
 
-            {% if payment.status == 'PMT_NOCOST' %}
+      {% if payment.status == 'PMT_ERROR' %}
+
+<div class="error">
+  <p>Unkown error processing your credit card information.</p>
+</div>
+
+      {% else %}
+
+        {% if payment.status == 'PMT_SESSION' %}
+
+<div class="error">
+  <p>Your account has been updated since starting this payment session.  
+     Check <a href="(% url 'my_account' %}">your account</a> information before trying to update or extend your subscription.
+     You may want to close other browsers and other browser windows before proceeding with another payment attempt.
+  </p>
+</div>
+
+        {% else %}
+          {% if payment.status == 'PMT_NOCOST' %}
 
 <div class="success">
     <p>There was <strong>no</strong> cost associated with updating your subscription.</p>
     <p><a href="{% url 'my_account' %}">View updated account information.</a></p> 
 </div>  
 
-            {% else %}
+          {% else %}
 
 <div class="success">
     <p>Your payment of ${{payment.actual_subscription_cost}} was approved.</p>
     <p>Thank you for your extending or updating your subscription!</p>
     <p><a href="{% url 'my_account' %}">View updated account information.</a></p> 
 </div>  
-
-            {% endif %}
+          {% endif %}
         {% endif %}
+      {% endif %}
     {% endif %}
+  {% endif %}
 {% endif %}    
 
  
