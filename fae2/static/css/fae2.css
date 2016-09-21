@@ -393,7 +393,7 @@ main .fae_input label {
 }
 
 main .fae_focus {
-    border-color: #337ab7;
+    border-color: black;
     background-color: #EEEEEE;
 }
 
@@ -410,7 +410,7 @@ main input[disabled] .fae_hover {
 main input[type=button],
 main input[type=submit] {
     padding: 5px 15px; 
-    border: 1px solid black;
+    border: 1px solid #337ab7;
     cursor:pointer;
     -webkit-border-radius: 5px;
     border-radius: 4px; 
@@ -424,7 +424,7 @@ main input[type=button]:hover,
 main input[type=submit]:hover {
     padding: 4px 14px; 
     border-width: 2px;
-    border-color: #337ab7;
+    border-color: black;
 }
 
 main input[type=button].sort-button,
