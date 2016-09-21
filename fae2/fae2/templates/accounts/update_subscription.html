@@ -32,8 +32,20 @@
                 {% if user_profile.subscription_end %}{{user_profile.subscription_end|date:"n/j/Y"}}{% else %}-{% endif %}
                 </td>
             </tr>
+            {% if user_profile.subscription_status == 'EXPIRED' and last_subscription %}
+            <tr>    
+                <th class="text">Last Subscription</th>
+                <td>
+                    <ul>            
+                    {{last_subscription.account_type}}<br/>
+                    Ended on {{last_subscription.subscription_end|date:"n/j/Y"}}
+                    </ul>
+                </td>
+            </tr>
+            {% endif %}
         </tbody>
     </table>    
+
 
 
     <h2>Update Subscription</h2>

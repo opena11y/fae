@@ -239,16 +239,17 @@
         </div>
 
         <main class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
+
         {% if messages %}
           <section aria-labelledby="messages-label">
               <h2 id="messages-label" class="sr-only">Important Messages</h2>
               {% for message in messages %}
-                <div class="alert {% if message.tags %}alert-{{ message.tags }}"{% endif %}>{{ message }}</div>
+                <div class="alert {% if message.tags %}alert-{{ message.tags }}"{% endif %}>{{ message|safe }}</div>
               {% endfor %}
           </section>    
         {% endif %}
 
-          <section id="content">
+        <section id="content">
 
           {% block content_before_title %}
 

@@ -1,0 +1,1 @@
+Your <a href="{{url}}">subscripton</a> exipred yesterday.

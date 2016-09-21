@@ -27,9 +27,18 @@ from timezone_field             import TimeZoneField
 
 
 from accounts.models            import AccountType
+from subscriptions.models       import Payment
 from websiteResultGroups.models import WebsiteReportGroup
 from reports.models             import WebsiteReport
 from stats.models               import StatsUser
+
+from django.core.urlresolvers import reverse
+from django.template.loader   import render_to_string
+
+from django.db.models import Q
+
+from django.contrib import messages
+
 import markdown
 
 from fae2.settings import DEFAULT_ACCOUNT_TYPE
@@ -85,7 +94,6 @@ class UserProfile(models.Model):
         self.update_daily_rate()
 
     def update_subscription_status(self):
-        self.subscription_status = 'NEVER'
         self.enable_any_account_types = True  
 
         if self.subscription_end and self.subscription_start:
@@ -98,20 +106,43 @@ class UserProfile(models.Model):
             self.subscription_days = delta.days
 
             self.subscription_status = 'CURRENT'            
-            if self.subscription_days < 0:
-                self.subscription_status = 'EXPIRED'
 
-            if self.subscription_days < 3:
+            if self.subscription_days < 0:
+                self.subscription_status   = 'EXPIRED'
+                self.subscription_start    = None
+                self.subscription_end      = None
+                self.subscription_days     = 0
+                self.subscription_payments = 0
+                self.subscription_rate     = 0
+                self.account_type          = AccountType.objects.get(type_id=1)     
+
+            if self.subscription_days < 7:
                 self.enable_any_account_types = True  
-
-            if self.subscription_days < 0:
-                self.account_type = AccountType.objects.get(type_id=1)     
 
         self.save() 
         
         self.update_daily_rate()
 
-        return self.subscription_status       
+        return self.subscription_status
+
+    def get_last_subscription(self):
+        return Payment.objects.filter(Q(status='PMT_APPROV') | Q(status='PMT_NOCOST'), user=self.user).latest('reference_time')
+
+
+    def check_for_subscription_messages(self, request):
+
+        subscription_url = reverse('update_subscription')
+
+        self.update_subscription_status()
+
+        if self.subscription_status == 'CURRENT':
+            messages.warning(request, render_to_string('accounts/subscription_current.txt', {'url': subscription_url, 'days': self.subscription_days})) 
+        elif self.subscription_status == 'EXPIRED' and self.subscription_days == -1:
+            messages.warning(request, render_to_string('accounts/subscription_expired.txt', {'url': subscription_url, 'days': self.subscription_days})) 
+
+    def check_for_email_subscription_notifications(self):
+
+        return
 
 
     def update_daily_rate(self):

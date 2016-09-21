@@ -691,16 +691,24 @@ table label {
     margin-right: 0.25em;
 }
 
-main a[href] {
-  text-decoration: underline;
+main a[href],
+main a[href] code {
+  text-decoration: none;
+  border-bottom: 1px solid #337ab7;
+}
+
+main a[href] code {
+    padding-bottom: 0;
 }
 
 main a[href]:focus {
-  padding: 2px 4px;
-  outline: 2px solid #337ab7;
+  outline-offset: 0.125em;
+  outline: 2px solid black;
   background-color: #EEEEEE;
+  border-color: transparent;
 }
 
-main a[href]:hover {
+main a[href]:hover,
+main a[href] code:hover {
   background-color: #DDDDDD;
 }

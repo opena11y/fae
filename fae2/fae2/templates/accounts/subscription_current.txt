@@ -1,0 +1,31 @@
+{% if days == 0 %}
+Your <a href="{{url}}">subscripton exipres today.</a>
+{% else %}
+{% if days == 1 %}
+Your <a href="{{url}}">subscripton exipres in one day.</a>
+{% else %}
+{% if days == 2 %}
+Your <a href="{{url}}">subscripton exipres in two days.</a>
+{% else %}
+{% if days == 3 %}
+Your <a href="{{url}}">subscripton exipres in three days.</a>
+{% else %}
+{% if days == 4 %}
+Your <a href="{{url}}">subscripton exipres in four days.</a>
+{% else %}
+{% if days == 5 %}
+Your <a href="{{url}}">subscripton exipres in five days.</a>
+{% else %}
+{% if days == 6 %}
+Your <a href="{{url}}">subscripton exipres in six days.</a>
+{% else %}
+{% if days == 7 %}
+Your <a href="{{url}}">subscripton exipres in seven days.</a>
+{% endif %}
+{% endif %}
+{% endif %}
+{% endif %}
+{% endif %}
+{% endif %}
+{% endif %}
+{% endif %}

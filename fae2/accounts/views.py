@@ -369,9 +369,10 @@ class UpdateSubscriptionView(LoginRequiredMixin, FAENavigationMixin, CreateView)
         user_profile = UserProfile.objects.get(user=self.request.user)
         user_profile.update_subscription_status()
 
-        context['user_stats']    = StatsUser.objects.get(user=self.request.user)
-        context['user_profile']  = user_profile
-        context['self_regs']     = AccountType.objects.filter(self_registration=True)
+        context['last_subscription'] = user_profile.get_last_subscription()
+        context['user_stats']        = StatsUser.objects.get(user=self.request.user)
+        context['user_profile']      = user_profile
+        context['self_regs']         = AccountType.objects.filter(self_registration=True)
         
         return context  
 

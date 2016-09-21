@@ -25,6 +25,8 @@ from django.http import HttpResponseRedirect
 from django.http import JsonResponse
 from django.shortcuts import redirect
 
+from django.contrib import messages
+
 from django.views.generic import TemplateView
 from django.views.generic import CreateView 
 from django.views.generic import FormView 
@@ -52,6 +54,7 @@ from .uid import generate
 from fae2.settings import ANONYMOUS_ENABLED
 from fae2.settings import SELF_REGISTRATION_ENABLED
 from fae2.settings import SHIBBOLETH_ENABLED
+from fae2.settings import PAYMENT_ENABLED
 
 
 # ==============================================================
@@ -455,6 +458,8 @@ class RunRefererReportView(FAENavigationMixin, TemplateView):
 #
 # ==============================================================
 
+
+
 def get_default_url():
     if ANONYMOUS_ENABLED:
         return reverse_lazy('run_anonymous_report')
@@ -493,6 +498,10 @@ class RunReportView(LoginRequiredMixin, FAENavigationMixin, CreateView):
         except:
             last_report = False    
 
+        if PAYMENT_ENABLED:
+            user_profile = UserProfile.objects.get(user=self.request.user)
+            user_profile.check_for_subscription_messages(self.request)
+
         context['last_report'] = last_report
         
         return context    
@@ -529,6 +538,10 @@ class RunAdvancedReportView(LoginRequiredMixin, FAENavigationMixin, CreateView):
         except:
             last_report = False    
 
+        if PAYMENT_ENABLED:
+            user_profile = UserProfile.objects.get(user=self.request.user)
+            user_profile.check_for_subscription_messages(self.request)
+
         context['last_report'] = last_report
         
         return context    
@@ -540,6 +553,10 @@ class ProcessingReportView(LoginRequiredMixin, FAENavigationMixin, TemplateView)
         context = super(ProcessingReportView, self).get_context_data(**kwargs)
 
         user_reports = WebsiteReport.objects.filter(user=self.request.user)
+
+        if PAYMENT_ENABLED:
+            user_profile = UserProfile.objects.get(user=self.request.user)
+            user_profile.check_for_subscription_messages(self.request)
 
         context['processing_reports'] = user_reports.exclude(status='C').exclude(status='E').exclude(status='SUM').order_by('-created')[:1]
         context['complete_reports']   = user_reports.filter(status='C').order_by('-created')[:2]
@@ -614,6 +631,9 @@ class ArchivedReportView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
 
         user_profile = UserProfile.objects.get(user=self.request.user)
 
+        if PAYMENT_ENABLED:
+            user_profile.check_for_subscription_messages(self.request)
+
         [reports, other_reports] = user_profile.get_active_reports()
 
         context['reports']       = reports
@@ -629,6 +649,9 @@ class ManageReportView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
         context = super(ManageReportView, self).get_context_data(**kwargs)
 
         user_profile = UserProfile.objects.get(user=self.request.user)
+
+        if PAYMENT_ENABLED:
+            user_profile.check_for_subscription_messages(self.request)
 
         [reports, other_reports] = user_profile.get_active_reports()
         deleted_reports = WebsiteReport.objects.filter(user=self.request.user, status="D")
