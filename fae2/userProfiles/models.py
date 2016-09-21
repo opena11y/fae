@@ -105,9 +105,9 @@ class UserProfile(models.Model):
 
             self.subscription_days = delta.days
 
-            self.subscription_status = 'CURRENT'            
-
-            if self.subscription_days < 0:
+            if self.subscription_days >= 0:
+                self.subscription_status = 'CURRENT'            
+            else:
                 self.subscription_status   = 'EXPIRED'
                 self.subscription_start    = None
                 self.subscription_end      = None

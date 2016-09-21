@@ -224,6 +224,7 @@ class MyAccountView(FAENavigationMixin, TemplateView):
 
         user_profile = UserProfile.objects.get(user=self.request.user)
         user_profile.update_subscription_status()
+        user_profile.check_for_subscription_messages(self.request)
 
         context['user_stats'] = StatsUser.objects.get(user=self.request.user)
         context['user_profile'] = user_profile
@@ -291,6 +292,7 @@ class UpdateUserProfileView(LoginRequiredMixin, FAENavigationMixin, SuccessMessa
 
         user_profile = UserProfile.objects.get(user=self.request.user)
         user_profile.update_subscription_status()
+        user_profile.check_for_subscription_messages(self.request)
 
         context['user_stats'] = StatsUser.objects.get(user=self.request.user)
         context['user_profile'] = user_profile
@@ -368,6 +370,7 @@ class UpdateSubscriptionView(LoginRequiredMixin, FAENavigationMixin, CreateView)
 
         user_profile = UserProfile.objects.get(user=self.request.user)
         user_profile.update_subscription_status()
+        user_profile.check_for_subscription_messages(self.request)
 
         context['last_subscription'] = user_profile.get_last_subscription()
         context['user_stats']        = StatsUser.objects.get(user=self.request.user)

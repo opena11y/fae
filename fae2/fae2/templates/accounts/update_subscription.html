@@ -23,13 +23,13 @@
             <tr>    
                 <th class="text">Started</th>
                 <td>
-                {% if user_profile.subscription_start %}{{user_profile.subscription_start|date:"n/j/Y"}}{% else %}-{% endif %}
+                {% if user_profile.subscription_status == 'CURRENT' and user_profile.subscription_start %}{{user_profile.subscription_start|date:"n/j/Y"}}{% else %}-{% endif %}
                 </td>
             </tr>
             <tr>    
                 <th class="text">Ends</th>
                 <td>
-                {% if user_profile.subscription_end %}{{user_profile.subscription_end|date:"n/j/Y"}}{% else %}-{% endif %}
+                {% if user_profile.subscription_status == 'CURRENT' and user_profile.subscription_end %}{{user_profile.subscription_end|date:"n/j/Y"}}{% else %}-{% endif %}
                 </td>
             </tr>
             {% if user_profile.subscription_status == 'EXPIRED' and last_subscription %}
