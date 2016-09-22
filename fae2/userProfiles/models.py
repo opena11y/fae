@@ -110,8 +110,10 @@ class UserProfile(models.Model):
             if self.subscription_days >= 0:
                 self.subscription_status = 'CURRENT'            
             else:
-                self.subscription_status   = 'EXPIRED'
-                self.account_type          = AccountType.objects.get(type_id=1)     
+                self.subscription_status     = 'EXPIRED'
+                self.subscription_payments   = 0
+                self.subscription_daily_rate = 0
+                self.account_type            = AccountType.objects.get(type_id=1)     
 
             if self.subscription_days < 7:
                 self.enable_any_account_types = True  
