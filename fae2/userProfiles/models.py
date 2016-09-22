@@ -48,7 +48,7 @@ from datetime import datetime
 from datetime import date
 
 SUBSCRIPTION_STATUS_CHOICES = (
-    ('NEVER',    'Never subscribed'),
+    ('FREE',    'Free'),
     ('CURRENT',  'Current'),
     ('EXPIRED',  'Expired')
 )
@@ -64,12 +64,12 @@ class UserProfile(models.Model):
     subscription_end        = models.DateField(null=True, blank=True)
     subscription_payments   = models.IntegerField(default=0) # in dollars
     subscription_daily_rate = models.IntegerField(default=0) # in cents
-    subscription_status     = models.CharField(max_length=8, choices=SUBSCRIPTION_STATUS_CHOICES, default="NEVER")
+    subscription_status     = models.CharField(max_length=8, choices=SUBSCRIPTION_STATUS_CHOICES, default="FREE")
     subscription_days       = models.IntegerField(default=0)
 
 
-    org           = models.CharField(max_length=128, blank=True)
-    dept          = models.CharField(max_length=128, blank=True)
+    org                 = models.CharField(max_length=128, blank=True)
+    dept                = models.CharField(max_length=128, blank=True)
     email_announcements = models.BooleanField(default=True)
 
     timezone = TimeZoneField(default='America/Chicago')
@@ -105,15 +105,12 @@ class UserProfile(models.Model):
 
             self.subscription_days = delta.days
 
+            print(str(delta.days))
+
             if self.subscription_days >= 0:
                 self.subscription_status = 'CURRENT'            
             else:
                 self.subscription_status   = 'EXPIRED'
-                self.subscription_start    = None
-                self.subscription_end      = None
-                self.subscription_days     = 0
-                self.subscription_payments = 0
-                self.subscription_rate     = 0
                 self.account_type          = AccountType.objects.get(type_id=1)     
 
             if self.subscription_days < 7:
@@ -135,7 +132,7 @@ class UserProfile(models.Model):
 
         self.update_subscription_status()
 
-        if self.subscription_status == 'CURRENT':
+        if self.subscription_status == 'CURRENT' and self.subscription_days < 8:
             messages.warning(request, render_to_string('accounts/subscription_current.txt', {'url': subscription_url, 'days': self.subscription_days})) 
         elif self.subscription_status == 'EXPIRED' and self.subscription_days == -1:
             messages.warning(request, render_to_string('accounts/subscription_expired.txt', {'url': subscription_url, 'days': self.subscription_days})) 
