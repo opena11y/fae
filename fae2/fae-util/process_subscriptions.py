@@ -102,18 +102,22 @@ def update_subscriptions():
 
   for up in user_profiles:
 
-    info('User: ' + str(up))
-
     up.update_subscription_status()
+    up.check_for_email_subscription_notifications()
 
-    if up.subscription_end:
-
-      if up.subscription_days < 0:
-        info("Expired: " + str(up.subscription_days))
-      else:
-        info("Days left: " + str(up.subscription_days))
+    if up.subscription_status == 'EXPIRED':
+      if up.subscription_days == -1:
+        info(str(up) + ": Expired 1 day ago")
+      else:  
+        info(str(up) + ": Expired " + str(abs(up.subscription_days)) + " days ago")
     else:
-      info('Free account')    
+      if up.subscription_status == 'CURRENT':
+        if up.subscription_days == 1:
+          info(str(up) + ": Current, 1 day left")
+        else:  
+          info(str(up) + ": Current, " + str(up.subscription_days) + " days left")
+      else:
+        info(str(up) + ": Free")
 
 
 

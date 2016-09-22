@@ -31,6 +31,8 @@ from subscriptions.models       import Payment
 from websiteResultGroups.models import WebsiteReportGroup
 from reports.models             import WebsiteReport
 from stats.models               import StatsUser
+from django.contrib.sites.models import Site
+
 
 from django.core.urlresolvers import reverse
 from django.template.loader   import render_to_string
@@ -42,6 +44,11 @@ from django.contrib import messages
 import markdown
 
 from fae2.settings import DEFAULT_ACCOUNT_TYPE
+
+from django.core.mail import send_mail
+from fae2.settings import EMAIL_HOST_USER
+from fae2.settings import ADMIN_EMAIL
+
 
 from datetime import datetime 
 
@@ -105,8 +112,6 @@ class UserProfile(models.Model):
 
             self.subscription_days = delta.days
 
-            print(str(delta.days))
-
             if self.subscription_days >= 0:
                 self.subscription_status = 'CURRENT'            
             else:
@@ -140,6 +145,24 @@ class UserProfile(models.Model):
             messages.warning(request, render_to_string('accounts/subscription_expired.txt', {'url': subscription_url, 'days': self.subscription_days})) 
 
     def check_for_email_subscription_notifications(self):
+
+        topic = ""
+        
+        if self.subscription_status == 'CURRENT':
+            if self.subscription_days == 7:
+                topic = "FAE subscription expires in " + str(self.subscription_days) + "days"
+            elif self.subscription_days == 1:
+                topic = "FAE subscription expires in one day"
+            elif self.subscription_days == 0:
+                topic = "FAE subscription expires today"
+
+        if self.subscription_status == 'EXPIRED' and self.subscription_days == -1:              
+            topic = "FAE subscription expired yesterday"
+              
+        if topic:
+            site = Site.objects.get_current()
+            message = render_to_string('accounts/email_message.txt', {'user_profile': self, 'subscription_url': str(site) + reverse('update_subscription') })
+            send_mail(topic, message, EMAIL_HOST_USER, [self.user.email], fail_silently=False)        
 
         return
 
