@@ -3,6 +3,7 @@ An automated message from Functional Accessibility Evaluator (FAE) service.
 Username: {{user_profile.user.username}}
 First: {{user_profile.user.first_name}}
 Last: {{user_profile.user.last_name}}
+
 {% if user_profile.subscription_status == 'CURRENT' %}
     {% if user_profile.subscription_days == 0 %}
 Your subscription to the FAE ends today.
