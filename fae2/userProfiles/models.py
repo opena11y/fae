@@ -130,7 +130,15 @@ class UserProfile(models.Model):
         return self.subscription_status
 
     def get_last_subscription(self):
-        return Payment.objects.filter(Q(status='PMT_APPROV') | Q(status='PMT_NOCOST'), user=self.user).latest('reference_time')
+        try:
+            payments = Payment.objects.filter(Q(status='PMT_APPROV') | Q(status='PMT_NOCOST'), user=self.user).latest('reference_time')
+        except:
+            payments = False
+
+        if payments:
+            return payments
+            
+        return payments
 
 
     def check_for_subscription_messages(self, request):
