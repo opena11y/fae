@@ -105,6 +105,12 @@ nav#id_breadcrumbs {
     margin-bottom: 1em;
 }
 
+nav#id_breadcrumbs a:focus {
+    outline-offset: 2px;
+    outline: solid 1px black;
+}
+
+
 nav h2 {
     margin-top: 1em;
     margin-bottom: 0.125em;
@@ -125,24 +131,24 @@ nav h2 {
 }
 
 
-
 .navbar-inverse .navbar-header a {
      color: #DDDDDD;
      position: relative;
      top: -0.6em;
 }
 
-.navbar-inverse .navbar-nav > li.active > a,
 .navbar-inverse .navbar-nav > li > a:focus,
-.navbar-inverse .navbar-nav > li > a:hover,
-.navbar-inverse .navbar-header a:focus,
-.navbar-inverse .navbar-header a:hover {
-    text-decoration: underline;
+.navbar-inverse .navbar-header a:focus {
+    outline: solid white thin;
+    background-image: linear-gradient(to bottom, #080808 0%, #0f0f0f 100%);
 }
 
-.navbar-inverse .navbar-nav > li.active > a:focus,
-.navbar-inverse .navbar-nav > li.active > a:hover {
-    outline: solid 1px white;
+.navbar-inverse .navbar-nav > li.active > a,
+.navbar-inverse .navbar-nav > li.active > a:visited,
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-header a:hover {
+    border-bottom: thin solid white;
+    background-color: 
 }
 
 
@@ -712,3 +718,4 @@ main a[href]:hover,
 main a[href] code:hover {
   background-color: #DDDDDD;
 }
+
