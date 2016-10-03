@@ -82,6 +82,13 @@ main div.login a {
     font-size: 124%;
 }
 
+main div.login a:focus,
+main div.login a:hover {
+    background: #337ab7;
+    color: white;
+    text-decoration: underline;
+}
+
 nav#view_options {
     margin-top: 3em;
     margin-bottom: -1.5em;
