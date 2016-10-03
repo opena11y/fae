@@ -35,59 +35,14 @@
 <form id="id_run_report" action="{% url 'run_anonymous_report' %}" method="post">
     {% csrf_token %}
 
-    <div class="input">
-        <label for="id_input_url">URL</label>
-        <div {% if form.url.errors|length %}class="error"{% endif %}>
-        <input 
-            id="id_input_url"
-            type="text"
-            onkeyup="enableSubmit()"
-            onblur="enableSubmit()"
-            name="url"
-            required
-            value="{{form.url.value}}"
-            {% if form.url.errors|length %}aria-invalid="true"{% endif %}
-            size="60"
-            title="URL must start with http:// or https://, example: http://www.somewhere.org"/> 
-        {% if form.url.errors|length %}
-        <label class="error" for="id_input_url">{% for error in form.url.errors %}{{error}}{% endfor %}</label>
-        {% endif %}
-        </div>
-    </div>
+    {% include "forms/input_report_url.html" %}
 
     <input 
         id="id_input_title"
         type="hidden"
         value="none"/>
  
-    <fieldset {% if form.ruleset.errors|length %}class="error"{% endif %}>
-        
-        {% if form.ruleset.errors|length %}
-        <legend class="error">{{form.ruleset.label}}: {% for error in form.ruleset.errors %}{{error}}{% endfor %}</legend>
-        {% else %}
-        <legend>{{form.ruleset.label}}</legend>
-        {% endif %}
-
-
-        {% for choice in form.ruleset.field.choices %}
-        <div class="fae20_radio">
-            <input
-                id="ruleset_{{ forloop.counter }}"
-                type="radio"
-                name="ruleset"
-                value="{{choice.0}}"
-                {% if form.ruleset.value|slugify == choice.0|slugify %}
-                checked
-                {% endif %}
-            />
-            <label for="ruleset_{{ forloop.counter }}" {% ifequal 'ARIA_STRICT' choice.0 %}
-            title="WCAG 2.0 Level A and AA requirements using ARIA and HTML5 accessibility features."
-            {% else %}
-            title="WCAG 2.0 Level A and AA requirements using legacy HTML4 features, but allowing the use of ARIA and HTML5 accessibility features."
-            {% endifequal %}>{{choice.1}}</label>
-        </div>
-        {% endfor %}
-    </fieldset>
+    {% include "forms/input_report_ruleset.html" %}
     
     <input id="id_submit" name="submit" type="submit" value="Evaluate"  title="You must enter a valid URL and a title before you can request a report"/>
     
@@ -103,6 +58,8 @@
 {% block javascript %}
 
 <script src="{% static 'js/url-validation.js' %}" type="text/javascript"></script>
+
+<script src="{% static 'js/form-control-focus.js' %}" type="text/javascript"></script>
 
 <script type="text/javascript">
     
