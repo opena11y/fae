@@ -166,6 +166,8 @@ To enable shibboleth support for your institution or organization you need your 
 * sn
 * mail
 
+Enityt IDs: [https://www.incommon.org/federation/info/all-entities.html#IdPs]
+
 ## Testing e-mail on localhost development
 * Use a python utitlity to simulate an SMTP server: <code>python -m smtpd -n -c DebuggingServer localhost:1025</code>
 * Configure e-mail in "secretes.json" with the following values:
