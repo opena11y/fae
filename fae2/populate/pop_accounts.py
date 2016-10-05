@@ -128,11 +128,12 @@ a64 = create_acount_type(64, False, False, False, True, 'Sponsor: Bronze',  40, 
 a65 = create_acount_type(65, False, False, False, True, 'Sponsor: Sliver',  40, 80, 5, 800, False, True, False)
 a66 = create_acount_type(66, False, False, False, True, 'Sponsor: Gold',    40, 80, 5, 800, False, True, False)
 
-set_account_type_description(1, """Free version provides basic website evaluation for any user.  If you use FAE and/or AInspector Sidebar on a regular basis we ask that you help support the development and maintenance of the tools by purchasing a paid level subscriptions.""")
-
-set_account_type_description(2, """The Standard I subscription is provides an inidividual, educational and/or other organization with more extensive website evaluation services including deeper spidering of pages in a website, higher maximum number of pages, more saved and permanent reports.""")
-
-set_account_type_description(3, "")
+set_account_type_description(1, """The Free version provides basic website evaluation for any user.  If you use FAE and/or AInspector Sidebar on a regular basis we ask that you help support the development and maintenance of the tools by purchasing a paid level subscriptions.""")
+set_account_type_description(2, """The Standard I subscription provides an inidividual, educational and/or other organization with more extensive website evaluation services including deeper spidering of pages in a website, higher maximum number of pages, more saved and permanent reports than the Free account type.""")
+set_account_type_description(3, """The Standard II subscription provides an inidividual, educational and/or other organization with more extensive website evaluation services including deeper spidering of pages in a website, higher maximum number of pages, more saved and permanent reports than the Standard I subscription.""")
+set_account_type_description(4, """The Advanced I subscription provides an inidividual, educational and/or other organization with more extensive website evaluation services including deeper spidering of pages in a website, higher maximum number of pages, more saved and permanent reports than the Standard II subscription and also includes more advanced control over website spidering through the specification of include and exclude domain names.""")
+set_account_type_description(5, """The Advanced II subscription provides an inidividual, educational and/or other organization with more extensive website evaluation services including deeper spidering of pages in a website, higher maximum number of pages, more saved and permanent reports than the Advanced I subscription and also includes more advanced control over website spidering through the specification of include and exclude domain names.""")
+set_account_type_description(6, """The Advanced III subscription provides an inidividual, educational and/or other organization with more extensive website evaluation services including deeper spidering of pages in a website, higher maximum number of pages, more saved and permanent reports than the Advanced II subscription and also includes more advanced control over website spidering through the specification of include and exclude domain names.""")
   
 set_account_type_description(16, """For educational institutions less than 5,000 students.""")
 set_account_type_description(17, """For educational institutions of 5,000 students to 10,000 students.""")
