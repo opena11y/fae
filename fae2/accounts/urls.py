@@ -37,6 +37,7 @@ from .views import PaymentView
 from .views import StatusView
 from .views import UserInformationView
 from .views import AllUserInformationView
+from .views import PaymentInformationView
 
 
 urlpatterns = [
@@ -54,6 +55,7 @@ urlpatterns = [
     url(r'^status/$',         StatusView.as_view(),              name='fae_status'),
     url(r'^all-user-info/$',  AllUserInformationView.as_view(),  name='all_user_information'),
     url(r'^user-info/(?P<user_id>[\d-]+)/$',  UserInformationView.as_view(),   name='user_information'),
+    url(r'^payments/$',  PaymentInformationView.as_view(),   name='payment_information'),
 ]
 
 

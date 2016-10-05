@@ -712,3 +712,17 @@ class UserInformationView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
         
         return context  
 
+class PaymentInformationView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
+    template_name = 'accounts/payment_information.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(PaymentInformationView, self).get_context_data(**kwargs)
+
+        approved_payments  = Payment.objects.filter(status='PMT_APPROV')
+
+        context['approved_payments'] = approved_payments
+        
+        return context  
+
+
+
