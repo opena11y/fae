@@ -503,6 +503,10 @@ class PaymentView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
                         print("Updating subscription")
                         profile.subscription_end    = payment.subscription_end
                         profile.add_payment(payment.subscription_cost)
+
+                        if not profile.subscription_start:
+                            profile.subscription_start  = datetime.datetime.utcnow()
+
                     else:    
                         print("Changing subscription")
                         profile.account_type        = payment.account_type
@@ -510,12 +514,14 @@ class PaymentView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
                         profile.subscription_end    = payment.subscription_end
                         profile.set_payments(payment.subscription_cost)
 
+    
                 if payment.status == 'PMT_NOCOST':
                     profile.account_type = payment.account_type
                     profile.subscription_start  = datetime.datetime.utcnow()
                     profile.subscription_end    = payment.subscription_end
                     profile.subtract_payment(payment.subscription_cost)       
  
+
                 profile.save()
 
 
