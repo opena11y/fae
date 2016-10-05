@@ -315,7 +315,8 @@
 
         if (isCurrentAccountType) {
             // if current account just extend time
-            end = new Date('{{user_profile.subscription_end|date:"n/j/Y"}}');
+            var e = new Date('{{user_profile.subscription_end|date:"n/j/Y"}}');
+            if (typeof e.getDate() === 'Number') end =  e;
         }
         else {
 
