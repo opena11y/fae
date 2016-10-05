@@ -41,7 +41,7 @@
         <tr>
             <th class="text">Subscription</th>
             <td class="text">
-            {% if user_profile.subscription_status == 'NEVER' %}
+            {% if user_profile.subscription_status == 'FREE' %}
                 <a href="{% url 'update_subscription' %}">Subscribe to FAE</a>
             {% else %}
                 <ul class="status">
