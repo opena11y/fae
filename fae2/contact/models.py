@@ -37,6 +37,7 @@ from django.core.urlresolvers import reverse
 from django.template.loader   import render_to_string
 
 import markdown
+from datetime import date
 
 from fae2.settings import EMAIL_HOST_USER
 from fae2.settings import ADMIN_EMAIL
@@ -110,6 +111,9 @@ class Announcement(models.Model):
                 self.message_html = self.message_text
             else:
                 self.message_html = ""    
+
+        if self.web and not self.end_date:
+            self.end_date = datetime.datetime.now() + datetime.timedelta(days=3)      
       
         super(Announcement, self).save() # Call the "real" save() method.
 

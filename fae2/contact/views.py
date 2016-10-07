@@ -25,9 +25,9 @@ from django.core.mail import send_mail
 from django.core.urlresolvers import reverse_lazy, reverse
 
 from django.contrib.messages.views import SuccessMessageMixin
-from django.views.generic import CreateView 
-from django.views.generic import UpdateView 
-from django.views.generic import TemplateView 
+from django.views.generic       import CreateView 
+from django.views.generic       import UpdateView 
+from django.views.generic       import TemplateView 
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from django.contrib.auth.models import User
@@ -150,6 +150,6 @@ class AnnouncementsView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
         context = super(AnnouncementsView, self).get_context_data(**kwargs)
 
         context['current']  = Announcement.objects.exclude(status='Arch')
-        context['archived']  = Announcement.objects.filter(status='Arch')
+        context['archived'] = Announcement.objects.filter(status='Arch')
         
         return context            
