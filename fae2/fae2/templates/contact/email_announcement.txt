@@ -1,0 +1,7 @@
+An announcement from Functional Accessibility Evaluator (FAE) service. 
+
+TOPIC:
+{{announcement.topic}}
+
+ANNOUNCEMENT:
+{{announcement.message}}

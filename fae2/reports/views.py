@@ -44,6 +44,8 @@ from userProfiles.models import UserProfile
 from ruleCategories.models import RuleCategory
 from wcag20.models         import Guideline
 from rules.models          import RuleScope
+from contact.models              import Announcement
+
 
 from itertools import chain
 
@@ -458,6 +460,11 @@ class RunRefererReportView(FAENavigationMixin, TemplateView):
 #
 # ==============================================================
 
+def check_for_announcements(profile, request):
+    announcements = Announcement.objects.exclude(status='Arch')
+
+    for a in announcements:
+        a.check_to_show(profile, request)
 
 
 def get_default_url():
@@ -498,9 +505,12 @@ class RunReportView(LoginRequiredMixin, FAENavigationMixin, CreateView):
         except:
             last_report = False    
 
+        user_profile = UserProfile.objects.get(user=self.request.user)
+        check_for_announcements(user_profile, self.request)
+
         if PAYMENT_ENABLED:
-            user_profile = UserProfile.objects.get(user=self.request.user)
             user_profile.check_for_subscription_messages(self.request)
+
 
         context['last_report'] = last_report
         
@@ -538,8 +548,10 @@ class RunAdvancedReportView(LoginRequiredMixin, FAENavigationMixin, CreateView):
         except:
             last_report = False    
 
+        user_profile = UserProfile.objects.get(user=self.request.user)
+        check_for_announcements(user_profile, self.request)
+
         if PAYMENT_ENABLED:
-            user_profile = UserProfile.objects.get(user=self.request.user)
             user_profile.check_for_subscription_messages(self.request)
 
         context['last_report'] = last_report
@@ -554,8 +566,10 @@ class ProcessingReportView(LoginRequiredMixin, FAENavigationMixin, TemplateView)
 
         user_reports = WebsiteReport.objects.filter(user=self.request.user)
 
+        user_profile = UserProfile.objects.get(user=self.request.user)
+        check_for_announcements(user_profile, self.request)
+
         if PAYMENT_ENABLED:
-            user_profile = UserProfile.objects.get(user=self.request.user)
             user_profile.check_for_subscription_messages(self.request)
 
         context['processing_reports'] = user_reports.exclude(status='C').exclude(status='E').exclude(status='SUM').order_by('-created')[:1]
@@ -630,6 +644,7 @@ class ArchivedReportView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
         context = super(ArchivedReportView, self).get_context_data(**kwargs)
 
         user_profile = UserProfile.objects.get(user=self.request.user)
+        check_for_announcements(user_profile, self.request)
 
         if PAYMENT_ENABLED:
             user_profile.check_for_subscription_messages(self.request)
@@ -649,6 +664,7 @@ class ManageReportView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
         context = super(ManageReportView, self).get_context_data(**kwargs)
 
         user_profile = UserProfile.objects.get(user=self.request.user)
+        check_for_announcements(user_profile, self.request)
 
         if PAYMENT_ENABLED:
             user_profile.check_for_subscription_messages(self.request)

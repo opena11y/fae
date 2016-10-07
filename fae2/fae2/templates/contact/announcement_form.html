@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load staticfiles i18n %}
+
+{% block breadcrumb %}
+  <li>Create Announcement</li>
+{% endblock %}
+
+{% block title %}
+  Create Announcement
+{% endblock %}
+
+{% block content %}
+
+<form action="{{action}}" method="post" >
+    {% csrf_token %}
+
+    {% include "forms/input_text.html" with input=form.topic size=60 %}
+
+    {% include "forms/textarea.html" with textarea=form.message_text     rows=10 cols=80 desc="Text version of announcement"%}
+    {% include "forms/textarea.html" with textarea=form.message_markdown rows=10 cols=80 desc="Markdown/HTML version of announcement"%}
+
+    <fieldset {% if form.scope.errors|length %}class="error"{% endif %}>
+        {% if form.scope.errors|length %}
+        <legend class="error">{{form.scope.label}}: {% for error in form.scope.errors %}{{error}}{% endfor %}</legend>
+        {% else %}
+        <legend>{{form.scope.label}}</legend>
+        {% endif %}
+        {% for choice in form.scope.field.choices %}
+         <div class="fae_input">
+            <input
+                id="scope_{{ forloop.counter }}"
+                type="radio"
+                name="scope"
+                value="{{choice.0}}"
+                {% if choice.0 == form.scope.value  %}
+                checked="checked"
+                {% endif %}
+            />
+            <label for="scope_{{ forloop.counter }}">{{choice.1}}</label>
+        </div>
+        {% endfor %}
+    </fieldset>
+
+    {% include "forms/input_checkbox.html" with checkbox=form.email %}
+
+    {% include "forms/input_checkbox.html" with checkbox=form.web %}
+
+    <input type="submit" value="Create Announcement"/>
+
+</form>
+
+{% endblock %}
+
+{% block javascript %}
+
+<script src="{% static 'js/form-control-focus.js' %}" type="text/javascript"></script>
+
+{% endblock %}
+

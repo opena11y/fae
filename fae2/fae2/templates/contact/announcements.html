@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load staticfiles i18n %}
+{% load tz %}
+
+{% block breadcrumb %}
+  <li>Announcements</li>
+{% endblock %}
+
+{% block title %}
+  Announcements
+{% endblock %}
+
+{% block content %}
+{% localtime on %}
+
+{% include "contact/announcement_list.html" with id="ca_list" title="Current Announcements" list=current %}
+
+{% include "contact/announcement_table.html" with id="aa_table" title="Archived" list=archived %}
+
+{% endlocaltime %}
+
+
+{% endblock %}
+

@@ -62,6 +62,8 @@ from fae2.settings import PROCESSING_THREADS
 
 from django.db       import models
 from reports.models  import WebsiteReport
+from contact.models  import Announcement
+from userProfiles.models  import UserProfile
 
 from save_website_results_sql import saveResultsToDjango
 
@@ -235,6 +237,14 @@ class faeUtilThread(threading.Thread):
 
       log.close()
 
+def process_announcements():
+  profiles = UserProfile.objects.all()
+  new_announcements  = Announcement.objects.filter(status='New')
+
+  if profiles and new_announcements:
+    for n in new_announcements:
+      n.send_announcement(profiles)
+
 
 def main(argv):
 
@@ -287,6 +297,8 @@ def main(argv):
         info("Reports waiting: " + str(init_count))
         info("Reports running: " + str(processing_count))
         message_flag = False
+
+      process_announcements()
 
       time.sleep(1)
 

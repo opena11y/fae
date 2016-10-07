@@ -33,6 +33,8 @@ from reports.models             import WebsiteReport
 from stats.models               import StatsUser
 from django.contrib.sites.models import Site
 
+from contact.models              import Announcement
+
 
 from django.core.urlresolvers import reverse
 from django.template.loader   import render_to_string
@@ -189,8 +191,6 @@ class UserProfile(models.Model):
         self.save()        
 
 
-
-
     def get_active_reports(self):
 
         user_reports = WebsiteReport.objects.filter(user=self.user).filter(status='C')
@@ -199,7 +199,7 @@ class UserProfile(models.Model):
 
         return [reports, old_reports] 
 
-
+ 
 
     
 # creates new UserProfile when new user registers 

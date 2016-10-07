@@ -23,9 +23,16 @@ from __future__ import absolute_import
 from django.contrib import admin
 
 from contact.models import Contact
+from contact.models import Announcement
 
 class ContactAdmin(admin.ModelAdmin):
   list_display = ('user', 'topic', 'date','status' )
   list_filter = ('user', 'date', 'topic', 'status')
 
 admin.site.register(Contact, ContactAdmin)
+
+class AnnouncementAdmin(admin.ModelAdmin):
+  list_display = ('topic', 'date', 'scope', 'end_date', 'status', 'email', 'web' )
+  list_filter = ('topic', 'scope')
+
+admin.site.register( Announcement,  AnnouncementAdmin)

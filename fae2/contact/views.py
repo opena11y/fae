@@ -33,6 +33,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 
 from .models import Contact
+from .models import Announcement
 
 from reports.views import FAENavigationMixin
 
@@ -124,3 +125,31 @@ class ResponsesView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
         return context            
 
 
+class AnnouncementFormView(LoginRequiredMixin, FAENavigationMixin, SuccessMessageMixin, CreateView):
+    model = Announcement
+    fields = ['topic', 'message_text', 'message_markdown', 'scope', 'email', 'web', 'end_date']
+    template_name = 'contact/announcement_form.html'
+
+    success_url = reverse_lazy('create_announcement')
+    success_message = "Announcement on \"%(topic)s\" was sent succesfully created"
+
+
+    login_url = reverse_lazy('run_anonymous_report')
+    redirect_field_name = "Anonymous Report"
+
+    def form_valid(self, form):
+
+        return super(AnnouncementFormView, self).form_valid(form)
+
+
+
+class AnnouncementsView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
+    template_name = 'contact/announcements.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(AnnouncementsView, self).get_context_data(**kwargs)
+
+        context['current']  = Announcement.objects.exclude(status='Arch')
+        context['archived']  = Announcement.objects.filter(status='Arch')
+        
+        return context            
