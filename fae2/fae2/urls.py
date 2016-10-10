@@ -54,7 +54,13 @@ from accounts.views import DisabledView
 
 if FAE_DISABLED:
     urlpatterns = [
-        url(r'^$',  DisabledView.as_view(),  name='disabled'),
+        url(r'^$',  DisabledView.as_view()),
+        url(r'^(?P<item1>\w+)/$',  DisabledView.as_view()),
+        url(r'^(?P<item1>\w+)/(?P<item2>\w+)/$',  DisabledView.as_view()),
+        url(r'^(?P<item1>\w+)/(?P<item2>\w+)/(?P<item3>\w+)/$',  DisabledView.as_view()),
+        url(r'^(?P<item1>\w+)/(?P<item2>\w+)/(?P<item3>\w+)/(?P<item4>\w+)/$',  DisabledView.as_view()),
+        url(r'^(?P<item1>\w+)/(?P<item2>\w+)/(?P<item3>\w+)/(?P<item4>\w+)/(?P<item5>\w+)/$',  DisabledView.as_view()),
+        url(r'^(?P<item1>\w+)/(?P<item2>\w+)/(?P<item3>\w+)/(?P<item4>\w+)/(?P<item6>\w+)/(?P<item7>\w+)/$',  DisabledView.as_view()),
     ]  
 else:  
   urlpatterns = [
