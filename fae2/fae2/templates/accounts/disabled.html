@@ -1,0 +1,88 @@
+{% load staticfiles i18n %}
+<!DOCTYPE html>
+<html lang="en" ng-app>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{{site.name}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="description" content="The Functional Accessibility Evalutor (FAE) evaluates a website or a single web page based on the W3C Web Content Accessibility Guidelines (WCAG) 2.0 Level A and AA requirements.">
+
+    <meta name="keywords" content="wcag web content accessibility guidelines section 508 disability evaluation evalutor disability ada report">
+    
+    <meta name="author" content="Jon Gunderson, Nicholas Hoyt, University of Illinois">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-theme.css' %}">
+
+    <!-- Your stuff: Third-party css libraries go here -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap-accessibility.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-sortable.css' %}">
+
+    <!-- This file store project specific CSS -->
+    <link href="{% static 'css/fae2.css' %}" rel="stylesheet">
+    {% block css %}
+    {% endblock %}
+
+
+  </head>
+
+  <body>
+    <header id="top-navbar-container" class="navbar navbar-inverse" >
+        <div style="margin-top:  0.25em; margin-left: 1em;color: white; font-size: 150%; ">{{site.name}} is Disabled</div>
+    </header>
+
+    <div class="container">
+
+      <div class="row">
+
+        <main class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+        <h1>{{site.name}} is Disabled</h1>
+
+
+        <p>This testing version of the Functional Accessibility Evaluator is not available.</p>
+        {% if fae_disabled_url %}
+        <p>Please use the <a href="{{fae_disabled_url}}">production version of FAE 2.0</a>.</p>
+        {% endif %}
+
+        </main>
+
+      </div>  
+
+    </div>  <!-- /container -->
+
+
+    <footer>
+      <div class="container">
+        <div class="well well-sm">
+          <div style="float: left">Copyright University of Illinois 2014-2016</div>
+          <div class="text-right">Version {% include 'version.txt' %}</div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+      <!-- Latest JQuery -->
+      <script src="{% static 'js/jquery-2.1.4.min.js' %}"></script>
+
+      <!-- Latest compiled and minified JavaScript -->
+      <script src="{% static 'js/bootstrap.js' %}"></script>
+
+      <script src="{% static 'js/bootstrap-accessibility.min.js' %}"></script>
+
+      <!-- place project specific Javascript in this file -->
+      <script src="{% static 'js/fae2.js' %}"></script>
+
+  </body>
+</html>
+ 

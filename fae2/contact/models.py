@@ -140,14 +140,15 @@ class Announcement(models.Model):
             now = datetime.datetime.now()
             end = datetime.datetime(self.end_date.year,  self.end_date.month, self.end_date.day)
 
-            print(str(end) + " " + str(now) + " " + str(end < now))
-
             if end < now:
                 self.status = 'Arch'
                 self.save()
 
-        if self.web and (self.status != 'Arch') and (self.scope == 'All' or (profile.account_type == 1 and self.scope == 'Free') or (profile.account_type > 1 and self.scope == 'Sub')):
+        if self.web and (self.status != 'Arch') and profile and (self.scope == 'All' or (profile.account_type == 1 and self.scope == 'Free') or (profile.account_type > 1 and self.scope == 'Sub')):
             messages.info(request, render_to_string('contact/announcement.txt', {'announcement': self})) 
+        else:
+            if not profile:    
+                messages.info(request, render_to_string('contact/announcement.txt', {'announcement': self})) 
        
 
 

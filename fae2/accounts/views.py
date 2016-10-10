@@ -45,6 +45,7 @@ from accounts.models             import AccountType
 from stats.models                import StatsUser
 from websiteResultGroups.models  import WebsiteReportGroup
 
+from fae2.settings import FAE_DISABLED_URL
 
 
 from reports.views import get_default_url
@@ -724,5 +725,14 @@ class PaymentInformationView(LoginRequiredMixin, FAENavigationMixin, TemplateVie
         
         return context  
 
+class DisabledView(TemplateView):
+    template_name = 'accounts/disabled.html'
 
+    def get_context_data(self, **kwargs):
+        context = super(DisabledView, self).get_context_data(**kwargs)
+
+        context['fae_disabled_url'] = FAE_DISABLED_URL
+
+          
+        return context 
 

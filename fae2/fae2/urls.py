@@ -39,6 +39,7 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 from fae2.settings import SHIBBOLETH_ENABLED
+from fae2.settings import FAE_DISABLED
 
 
 from reports import views
@@ -49,30 +50,36 @@ from accounts.views import ShibbolethLogout
 from accounts.views import ShibbolethLogin
 from accounts.views import ShibbolethDiscovery
 from accounts.views import HeaderInfo
+from accounts.views import DisabledView
 
-urlpatterns = [
-    url(r'^admin/',   include(admin.site.urls)),
-    # fae2 specific 
-    url(r'^',           include('reports.urls')),
-    url(r'^abouts/',    include('abouts.urls')),
-    url(r'^contact/',   include('contact.urls')),
-    url(r'^account/',   include('accounts.urls')),
-    url(r'^subscription/',   include('subscriptions.urls')),
-    url(r'^rulesets/',  include('rulesets.urls')),
-    url(r'^usage/',     include('stats.urls')),
-]
+if FAE_DISABLED:
+    urlpatterns = [
+        url(r'^$',  DisabledView.as_view(),  name='disabled'),
+    ]  
+else:  
+  urlpatterns = [
+      url(r'^admin/',   include(admin.site.urls)),
+      # fae2 specific 
+      url(r'^',           include('reports.urls')),
+      url(r'^abouts/',    include('abouts.urls')),
+      url(r'^contact/',   include('contact.urls')),
+      url(r'^account/',   include('accounts.urls')),
+      url(r'^subscription/',   include('subscriptions.urls')),
+      url(r'^rulesets/',  include('rulesets.urls')),
+      url(r'^usage/',     include('stats.urls')),
+  ]
 
-if SHIBBOLETH_ENABLED: 
-  urlpatterns += [
-      url(r'^login/$',           ShibbolethLogin.as_view(),     name='login'),
-      url(r'^logout/$',          ShibbolethLogout.as_view(),    name='logout'),
-      url(r'^shib-discovery/$',  ShibbolethDiscovery.as_view(), name='shib_discovery'),
-      url(r'^header-info/$',     HeaderInfo.as_view(),          name='header_info'), # debug information
-  ]
-else:
-  urlpatterns += [
-    url(r'^accounts/',     include('registration.backends.hmac.urls')),
-    url(r'^registration/', include('django.contrib.auth.urls')),
-    url(r'^logout/$',      Logout.as_view(), name='logout'),
-    url(r'^reset/',        include('password_reset.urls')),
-  ]
+  if SHIBBOLETH_ENABLED: 
+    urlpatterns += [
+        url(r'^login/$',           ShibbolethLogin.as_view(),     name='login'),
+        url(r'^logout/$',          ShibbolethLogout.as_view(),    name='logout'),
+        url(r'^shib-discovery/$',  ShibbolethDiscovery.as_view(), name='shib_discovery'),
+        url(r'^header-info/$',     HeaderInfo.as_view(),          name='header_info'), # debug information
+    ]
+  else:
+    urlpatterns += [
+      url(r'^accounts/',     include('registration.backends.hmac.urls')),
+      url(r'^registration/', include('django.contrib.auth.urls')),
+      url(r'^logout/$',      Logout.as_view(), name='logout'),
+      url(r'^reset/',        include('password_reset.urls')),
+    ]

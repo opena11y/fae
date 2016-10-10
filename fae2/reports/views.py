@@ -401,6 +401,11 @@ class RunAnonymousReportView(FAENavigationMixin, CreateView):
  
         return super(RunAnonymousReportView, self).form_valid(form)
 
+    def get_context_data(self, **kwargs):
+        context = super(RunAnonymousReportView, self).get_context_data(**kwargs)
+
+        check_for_announcements(False, self.request)
+
 
 class ProcessingAnonymousReportView(FAENavigationMixin, TemplateView):
     template_name = 'reports/processing_anonymous.html'

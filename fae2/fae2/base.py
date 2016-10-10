@@ -110,6 +110,16 @@ ANONYMOUS_PASSWORD       = get_secret('ANONYMOUS_PASSWORD')
 DEFAULT_ACCOUNT_TYPE     = get_secret('DEFAULT_ACCOUNT_TYPE')
 
 try:
+    FAE_DISABLED = get_secret('FAE_DISABLED')
+except:
+    FAE_DISABLED = False
+
+try:
+    FAE_DISABLED_URL = get_secret('FAE_DISABLED_URL')
+except:
+    FAE_DISABLED_URL = ""
+
+try:
     PAYMENT_ENABLED     = True
     PAYMENT_SITE_ID     = get_secret('PAYMENT_SITE_ID')
     PAYMENT_URL         = get_secret('PAYMENT_URL')
