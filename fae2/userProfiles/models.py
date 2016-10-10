@@ -105,7 +105,7 @@ class UserProfile(models.Model):
     def update_subscription_status(self):
         self.enable_any_account_types = True  
 
-        if self.subscription_end and self.subscription_start:
+        if self.subscription_end:
             self.enable_any_account_types = False  
 
             date1 = date(self.subscription_end.year, self.subscription_end.month, self.subscription_end.day)
