@@ -691,9 +691,31 @@ class AllUserInformationView(LoginRequiredMixin, FAENavigationMixin, TemplateVie
 
         user_profiles = UserProfile.objects.all()
 
+        stats_users = StatsUser.objects.exclude(user__username="anonymous")
+
+        active = 0
+        subscribers = 0
+        registered = 0
+        for su in stats_users:
+            u = su.get_last_30_days()
+            if u.num_reports > 0:
+                active += 1
+
+            if su.user.profile.account_type.type_id > 1:
+                subscribers += 1 
+
+            registered += 1
+
+
+
         context['include_announcements']  = user_profiles.filter(email_announcements=True)
         context['exclude_announcements']  = user_profiles.filter(email_announcements=False)
-        context['stats_users']             = StatsUser.objects.all()
+        context['stats_users']            = stats_users 
+
+
+        context['registered']  = registered
+        context['subscribers'] = subscribers
+        context['active']      = active
         
         return context  
 
