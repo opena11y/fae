@@ -72,9 +72,43 @@ class SubscriptionRate(models.Model):
         super(SubscriptionRate, self).save() # Call the "real" save() method.  
 
 
+class InstitutionalSubscription(models.Model):
+    id = models.AutoField(primary_key=True)
+
+    contact1_name   = models.CharField(max_length=32,  blank=True, default="")
+    contact1_title  = models.CharField(max_length=32,  blank=True, default="")
+    contact1_email  = models.EmailField(max_length=64, blank=True, default="")
+    contact1_phone  = models.CharField(max_length=16,  blank=True, default="")
+
+    contact2_name   = models.CharField(max_length=32,  blank=True, default="")
+    contact2_title  = models.CharField(max_length=32,  blank=True, default="")
+    contact2_email  = models.EmailField(max_length=64, blank=True, default="")
+    contact2_phone  = models.CharField(max_length=16,  blank=True, default="")
+
+    account_type  = models.OneToOneField(AccountType, related_name="institional_subscriptions")
+    domain        = models.CharField(max_length=64, blank=True, default="")
+
+    subscription_start    = models.DateField(null=True, blank=True)
+    subscription_end      = models.DateField(null=True, blank=True)
+    subscription_payment  = models.IntegerField(default=0) # in dollars
+    last_payment          = models.IntegerField(default=0) # in dollars
+
+    users = models.ManyToManyField(User, blank=True, default=None)
+
+
+    class Meta:
+        verbose_name        = "Institutional Subscription"
+        verbose_name_plural = "Institutional Subscriptions"
+        ordering = ['account_type']
+    
+    def __str__(self):
+        return 'Institutional Subscription: ' + self.domain
+
+
+
 PAYMENT_STATUS = (
     ('NEW',             'New un-initialized payment transaction'),
-    ('PMT_REGISTERED',    'Payment registered'),
+    ('PMT_REGISTERED',  'Payment registered'),
     ('PMT_APPROV',      'Payment approved'),
     ('PMT_CANCELLED',   'Payment cancelled by user'),
     ('PMT_MAX_ATTEMPT', 'Payment max attempts'),

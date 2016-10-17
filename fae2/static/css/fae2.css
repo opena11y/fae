@@ -726,3 +726,6 @@ main a[href] code:hover {
   background-color: #DDDDDD;
 }
 
+summary {
+    display: list-item;
+}

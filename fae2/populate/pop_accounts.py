@@ -116,11 +116,12 @@ at06 = create_acount_type(6, True, False, False, False,   'Advanced III',      4
 at05.next_account_type = at06
 at05.save()
 
-at16 = create_acount_type(16, False, True, False, False, 'Institutional I',           20, 40, 4,  100, False,   False, False)
-at17 = create_acount_type(17, False, True, False, False, 'Institutional II',       20, 40, 4,  100, False,   False, False)
-at18 = create_acount_type(18, False, True, False, False, 'Institutional III',       20, 40, 4,  100, False,   False, False)
-at19 = create_acount_type(19, False, True, False, False, 'Institutional IV',      20, 40, 4,  100, False,   False, False)
-at20 = create_acount_type(20, False, True, False, False, 'Institutional V',  20, 40, 4,  100, False,   False, False)
+at16 = create_acount_type(16, False, True, False, False, 'Institutional Free',  2,  5, 3,   20, False, False, False)
+at17 = create_acount_type(17, False, True, False, False, 'Institutional I',    20, 40, 4,  100, False,  True, False)
+at18 = create_acount_type(18, False, True, False, False, 'Institutional II',   20, 40, 4,  100, False,  True, False)
+at19 = create_acount_type(19, False, True, False, False, 'Institutional III',  20, 40, 4,  100, False,  True, False)
+at20 = create_acount_type(20, False, True, False, False, 'Institutional IV',   20, 40, 4,  100, False,  True, False)
+at21 = create_acount_type(21, False, True, False, False, 'Institutional V',    20, 40, 4,  100, False,  True, False)
 
 a32 = create_acount_type(32, False, False, True, False, 'Self-Hosted',    20, 40, 5,  400, False,   True, False)
 
@@ -135,6 +136,9 @@ set_account_type_description(4, """The Advanced I subscription provides an inidi
 set_account_type_description(5, """The Advanced II subscription provides an inidividual, educational and/or other organization with more extensive website evaluation services including deeper spidering of pages in a website, higher maximum number of pages, more saved and permanent reports than the Advanced I subscription and also includes more advanced control over website spidering through the specification of include and exclude domain names.""")
 set_account_type_description(6, """The Advanced III subscription provides an inidividual, educational and/or other organization with more extensive website evaluation services including deeper spidering of pages in a website, higher maximum number of pages, more saved and permanent reports than the Advanced II subscription and also includes more advanced control over website spidering through the specification of include and exclude domain names.""")
   
-set_account_type_description(16, """For educational institutions less than 5,000 students.""")
-set_account_type_description(17, """For educational institutions of 5,000 students to 10,000 students.""")
-set_account_type_description(18, """For educational institutions of over 10,000 students .""")
+set_account_type_description(16, """Free version for educational institutions.""")
+set_account_type_description(17, """For educational institutions of less than 2,000 students.""")
+set_account_type_description(18, """For educational institutions of 2,000-3,999 students.""")
+set_account_type_description(19, """For educational institutions of 4,000-7,999 students.""")
+set_account_type_description(20, """For educational institutions of 8,000-15,000 students.""")
+set_account_type_description(21, """For educational institutions of more than 15,000 students.""")

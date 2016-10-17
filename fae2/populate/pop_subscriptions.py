@@ -113,21 +113,25 @@ create_subscription_rate( 4,   90,  243,  459,   810)
 create_subscription_rate( 5,  180,  486,  918,  1620)
 create_subscription_rate( 6,  300,  810, 1530,  2700)
 
-create_subscription_rate(16,    0,  540, 1020, 1800)
-set_subscription_description(16, 'For educational institutions with 0-2,000 students.')
+inst_desc = "<li>Institutional subscriptions allow for <strong>unlimited</strong> number of accounts for faculty, staff and students at the institution.</li></ul>  <p><em>Each user</em> has the following capabilities:</p> "
 
-create_subscription_rate(17,    0,  810, 1530, 2700)
-set_subscription_description(17, 'For educational institutions with 2,001-4,000 students.')
+create_subscription_rate(16,    0,  0, 0, 0)
+set_subscription_description(16, '<ul><li>Free account for educational institutions.</li>'  + inst_desc)
 
-create_subscription_rate(18,    0, 1215, 2295, 4050)
-set_subscription_description(18, 'For educational institutions with 4,001-8,000 students.')
+create_subscription_rate(17,    0,  540, 1020, 1800)
+set_subscription_description(16, '<ul><li>For educational institutions with less than 2000 students.</li>' + inst_desc)
 
-create_subscription_rate(19,    0, 1890, 3570, 6300)
-set_subscription_description(19, 'For educational institutions with 8,001-16,000 students.')
+create_subscription_rate(18,    0,  810, 1530, 2700)
+set_subscription_description(17, '<ul><li>For educational institutions with 2,000-3,999 students.</li>' + inst_desc)
 
-create_subscription_rate(20,    0, 2700, 5100, 9000)
-set_subscription_description(20, 'For educational institutions with more than 16,000 students.')
+create_subscription_rate(19,    0, 1215, 2295, 4050)
+set_subscription_description(18, '<ul><li>For educational institutions with 4,000-7,999 students.</li>' + inst_desc)
 
+create_subscription_rate(20,    0, 1890, 3570, 6300)
+set_subscription_description(19, '<ul><li>For educational institutions with 8,000-15,000 students.</li>' + inst_desc)
+
+create_subscription_rate(21,    0, 2700, 5100, 9000)
+set_subscription_description(20, '<ul><li>For educational institutions with more than 16,000 students.</li>' + inst_desc)
 
 create_subscription_rate(32,    0, 2000, 3600, 6400)
 
