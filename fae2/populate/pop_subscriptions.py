@@ -135,4 +135,4 @@ set_subscription_description(20, '<ul><li>For educational institutions with more
 
 create_subscription_rate(32,    0, 2000, 3600, 6400)
 
-update_user_profiles()
+# update_user_profiles()
