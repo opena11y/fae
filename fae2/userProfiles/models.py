@@ -90,7 +90,8 @@ class UserProfile(models.Model):
 
     def save(self):
       
-        self.set_domain_info()
+        if self.user.email and not self.domain:
+            self.set_domain_info()
       
         super(UserProfile, self).save() # Call the "real" save() method.  
 
