@@ -44,6 +44,7 @@ I empty it. Run as a standalone script!"""
 
 from django.core.exceptions import ObjectDoesNotExist
 
+from accounts.models      import AccountType
 from userProfiles.models  import UserProfile
 
 from django.contrib.auth.models import User
