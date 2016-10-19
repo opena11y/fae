@@ -91,14 +91,21 @@ def set_subscription_description(sub_id, desc):
     print("  Subscription not found: " + str(sub_id) )
 
 def update_user_profiles():
-  for u in User.objects.all():
+  for u in User.objects.exclude(username='anonymous'):
     try:
       p = UserProfile.objects.get(user=u)
       print("  User '" + str(u) + "'' has a profile.")
+
+      if not p.top_level_domain:
+        p.set_domain_info()
+        print("    Setting top level: " + p.top_level_domain)
+        print("       Setting domain: " + p.domain + "\n")
+
     except:
       print("  Creating UserProfile for: " + u.username)
 
       p = UserProfile(user=u)
+      
       if u.username == 'anonymous':
         p.account_type = AccountType.objects.get(type_id=0)
       else:  
@@ -135,4 +142,4 @@ set_subscription_description(20, '<ul><li>For educational institutions with more
 
 create_subscription_rate(32,    0, 2000, 3600, 6400)
 
-# update_user_profiles()
+update_user_profiles()

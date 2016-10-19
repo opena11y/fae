@@ -76,6 +76,8 @@ class UserProfile(models.Model):
     subscription_status     = models.CharField(max_length=8, choices=SUBSCRIPTION_STATUS_CHOICES, default="FREE")
     subscription_days       = models.IntegerField(default=0)
 
+    top_level_domain = models.CharField(max_length=8, null=True, blank=True)
+    domain           = models.CharField(max_length=64, null=True, blank=True)
 
     org                 = models.CharField(max_length=128, blank=True)
     dept                = models.CharField(max_length=128, blank=True)
@@ -85,6 +87,25 @@ class UserProfile(models.Model):
     
     def __unicode__(self):
         return self.user.username  
+
+    def save(self):
+      
+        self.set_domain_info()
+      
+        super(UserProfile, self).save() # Call the "real" save() method.  
+
+    def set_domain_info(self):
+        email = self.user.email
+
+        if email:
+            email = email.strip()
+            parts = email.split('.')
+            l = len(parts)
+            if l > 1:
+                self.top_level_domain = parts[l-1] 
+                parts = parts[l-2].split('@')
+                self.domain = parts[len(parts)-1]
+                self.save()
 
     def set_payments(self, amount):
         self.subscription_payments = amount
