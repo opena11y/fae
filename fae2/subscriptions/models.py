@@ -85,9 +85,10 @@ class InstitutionalSubscription(models.Model):
     contact2_email  = models.EmailField(max_length=64, blank=True, default="")
     contact2_phone  = models.CharField(max_length=16,  blank=True, default="")
 
-    account_type     = models.OneToOneField(AccountType, related_name="institional_subscriptions")
+    account_type     = models.ForeignKey(AccountType, related_name="institional_subscriptions")
     top_level_domain = models.CharField(max_length=8, blank=True, default="")
     domain           = models.CharField(max_length=64, blank=True, default="")
+    alt_domain       = models.CharField(max_length=64, blank=True, default="")
 
     subscription_start    = models.DateField(null=True, blank=True)
     subscription_end      = models.DateField(null=True, blank=True)
