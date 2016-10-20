@@ -36,6 +36,9 @@ sys.path.append(fae2_path)
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'fae2.settings')
 from django.conf import settings
 
+from fae2.settings import SHIBBOLETH_ENABLED
+
+
 django.setup()
 
 
@@ -57,7 +60,12 @@ def update_user_profiles():
       p = UserProfile.objects.get(user=u)
       print("  User '" + str(u) + "'' has a profile.")
 
-      if not p.top_level_domain:
+      if SHIBBOLETH_ENABLED:
+        if (not p.user.email or len(p.user.email) == 0) and (p.user.username.find('@') > 0):
+          p.user.email = p.user.username
+          p.user.save()
+
+      if not p.top_level_domain and (p.user.email and len(p.user.email) > 0):
         p.set_domain_info()
         print("    Setting top level: " + p.top_level_domain)
         print("       Setting domain: " + p.domain + "\n")
