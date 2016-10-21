@@ -119,10 +119,10 @@ def update_subscriptions():
 
         ip = InstitutionalProfile.objects.filter(top_level_domain=up.top_level_domain, domain=up.domain)
 
-        ip.users.add(up.user)
-        ip.save()
 
         if ip and ip.account_type.shibboleth:
+            ip.users.add(up.user)
+            ip.save()
             up.account_status     = ip.account_status
             up.subscription_end   = ip.subscription_end
             up.subscription_start = ip.subscription_start
