@@ -125,10 +125,10 @@ def update_subscriptions():
         ip.save()
         if ip.account_type.shibboleth:
 
-          up.account_status     = ip.account_status
-          up.subscription_end   = ip.subscription_end
-          up.subscription_start = ip.subscription_start
-          up.subscription_days  = ip.subscription_days
+          up.subscription_status  = ip.subscription_status
+          up.subscription_end     = ip.subscription_end
+          up.subscription_start   = ip.subscription_start
+          up.subscription_days    = ip.subscription_days
 
           if ip.subscription_status == 'CURRENT':
               up.account_type = ip.account_type
