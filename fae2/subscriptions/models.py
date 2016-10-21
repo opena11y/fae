@@ -30,14 +30,10 @@ import datetime
 import string
 import random
 
-
-
-
-
 def id_generator(size=6, chars=string.ascii_uppercase + string.digits):
   return ''.join(random.choice(chars) for _ in range(size))
 
-from accounts.models   import AccountType
+from accounts.models     import AccountType
 
 # Create your models here.
 
@@ -70,42 +66,6 @@ class SubscriptionRate(models.Model):
             self.description_html  = markdown.markdown(self.description)
       
         super(SubscriptionRate, self).save() # Call the "real" save() method.  
-
-
-class InstitutionalSubscription(models.Model):
-    id = models.AutoField(primary_key=True)
-
-    contact1_name   = models.CharField(max_length=32,  blank=True, default="")
-    contact1_title  = models.CharField(max_length=32,  blank=True, default="")
-    contact1_email  = models.EmailField(max_length=64, blank=True, default="")
-    contact1_phone  = models.CharField(max_length=16,  blank=True, default="")
-
-    contact2_name   = models.CharField(max_length=32,  blank=True, default="")
-    contact2_title  = models.CharField(max_length=32,  blank=True, default="")
-    contact2_email  = models.EmailField(max_length=64, blank=True, default="")
-    contact2_phone  = models.CharField(max_length=16,  blank=True, default="")
-
-    account_type     = models.ForeignKey(AccountType, related_name="institional_subscriptions")
-    top_level_domain = models.CharField(max_length=8, blank=True, default="")
-    domain           = models.CharField(max_length=64, blank=True, default="")
-    alt_domain       = models.CharField(max_length=64, blank=True, default="")
-
-    subscription_start    = models.DateField(null=True, blank=True)
-    subscription_end      = models.DateField(null=True, blank=True)
-    subscription_payment  = models.IntegerField(default=0) # in dollars
-    last_payment          = models.IntegerField(default=0) # in dollars
-
-    users = models.ManyToManyField(User, blank=True, default=None)
-
-
-    class Meta:
-        verbose_name        = "Institutional Subscription"
-        verbose_name_plural = "Institutional Subscriptions"
-        ordering = ['account_type']
-    
-    def __str__(self):
-        return 'Institutional Subscription: ' + self.domain
-
 
 
 PAYMENT_STATUS = (

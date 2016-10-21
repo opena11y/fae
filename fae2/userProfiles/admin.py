@@ -23,9 +23,18 @@ from __future__ import absolute_import
 from django.contrib import admin
 
 from userProfiles.models import UserProfile
+from userProfiles.models import InstitutionalProfile
 
 class UserProfileAdmin(admin.ModelAdmin):
     list_display = ('user', 'account_type', 'top_level_domain', 'domain', 'subscription_status')
     list_filter  = ('org', 'account_type', 'subscription_status')
 
 admin.site.register(UserProfile, UserProfileAdmin)
+
+class InstitutionalProfileAdmin(admin.ModelAdmin):
+    list_display = ('domain', 'top_level_domain', 'account_type', 'subscription_end', 'last_payment')
+
+    list_filter  = ('account_type',)
+
+admin.site.register(InstitutionalProfile, InstitutionalProfileAdmin)
+

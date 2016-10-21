@@ -1,0 +1,29 @@
+An automated message from Functional Accessibility Evaluator (FAE) service. 
+
+Contact 1: {{institutional_profile.contact1_name}}
+Contact 2: {{institutional_profile.contact2_name}}
+
+{% if institutional_profile.subscription_status == 'CURRENT' %}
+    {% if institutional_profile.subscription_days == 0 %}
+Your subscription to the FAE ends today.
+    {% else %}
+    {% if institutional_profile.subscription_days == 1 %}
+Your subscription to the FAE ends in 1 day.
+    {% else %}
+Your subscription to the FAE ends in {{institutional_profile.subscription_days}} days.
+    {% endif %}
+    {% endif %}
+
+Use this link to extend your contact the administrator:
+{{subscription_url}}
+
+NOTE: If you do not extend your subscription you may loose archived and/or permanent reports
+{% endif %}
+
+{% if institutional_profile.subscription_status == 'EXPIRED' %}
+Your subscription to the FAE expired yesterday.
+Your account has been changed to FREE acount type.
+
+Contact the administrator to renew your subscription:
+{{subscription_url}}
+{% endif %}

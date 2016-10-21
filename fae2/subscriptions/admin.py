@@ -22,7 +22,6 @@ Author: Jon Gunderson
 from django.contrib import admin
 
 from subscriptions.models import SubscriptionRate
-from subscriptions.models import InstitutionalSubscription
 from subscriptions.models import Payment
 
 
@@ -31,12 +30,7 @@ class SubscriptionRateAdmin(admin.ModelAdmin):
 
 admin.site.register(SubscriptionRate, SubscriptionRateAdmin)
 
-class InstitutionalSubscriptionAdmin(admin.ModelAdmin):
-    list_display = ('domain', 'account_type', 'subscription_end', 'last_payment')
 
-    list_filter  = ('account_type',)
-
-admin.site.register(InstitutionalSubscription, InstitutionalSubscriptionAdmin)
 
 class PaymentAdmin(admin.ModelAdmin):
     list_display = ('reference_id', 'reference_time', 'capture_time', 'subscription_cost', 'subscription_end', 'reconciliation', 'status')

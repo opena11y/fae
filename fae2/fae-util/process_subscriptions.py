@@ -52,18 +52,14 @@ sys.path.append(fae2_path)
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'fae2.settings')
 django.setup()
 
-from django.conf import settings
-
 from fae2.settings import APP_DIR
 
-from django.db       import models
-from reports.models  import WebsiteReport
-from django.contrib.auth.models import User
-
-from django.core.exceptions     import ObjectDoesNotExist
-
 from userProfiles.models import UserProfile
+from userProfiles.models import InstitutionalProfile
+from accounts.models import AccountType
 
+from fae2.settings import DEFAULT_ACCOUNT_TYPE
+from fae2.settings import SHIBBOLETH_ENABLED
 
 DEBUG=True
 INFO=True
@@ -71,11 +67,12 @@ ERROR=True
 
 log = open(os.path.join(APP_DIR + 'logs/subscriptions-reports.log'), 'w')
 
+
 def debug(s):
   if DEBUG and log:
     log.write("[SUBSCRIPTIONS][debug]: " + str(s) + "\n")
     log.flush()  
-    print("[SUBSCRIPTIONS][debug]: " + str(s) + "\n")
+    print("[SUBSCRIPTIONS][debug]: " + str(s))
 
 
 def info(s):
@@ -83,27 +80,65 @@ def info(s):
     log.write("[SUBSCRIPTIONS][info]: " + str(s) + "\n")
     log.flush()
     if DEBUG:
-      print("[SUBSCRIPTIONS][info]: " + str(s) + "\n")
+      print("[SUBSCRIPTIONS][info]: " + str(s))
 
 def error(s):
   if ERROR and log:
     log.write("[SUBSCRIPTIONS][**ERROR]: " + str(s) + "\n")
     log.flush()
     if DEBUG:
-      print("[SUBSCRIPTIONS][**ERROR]: " + str(s) + "\n")
+      print("[SUBSCRIPTIONS][**ERROR]: " + str(s))
 
 
 def update_subscriptions():
 
+
   info('Updating subscriptions: ' + datetime.datetime.now().strftime("%Y-%m-%d %H:%M") )
+
+
+  if SHIBBOLETH_ENABLED or True:
+
+    for ip in InstitutionalProfile.objects.all():
+      ip.update_subscription_status()
+      ip.check_for_email_subscription_notifications()
+
+      info("== " + str(ip) + " ==")
+      info("  Status: " + str(ip.subscription_status))
+      info("    Days: " + str(ip.subscription_days))
+      info("   Start: " + str(ip.subscription_start))
+      info("     End: " + str(ip.subscription_end))
 
   # Get all users
   user_profiles = UserProfile.objects.all()
 
+  ip_free = AccountType.objects.get(type_id=16)
+
   for up in user_profiles:
 
-    up.update_subscription_status()
-    up.check_for_email_subscription_notifications()
+    if SHIBBOLETH_ENABLED and up.account_type.shibboleth:
+
+        ip = InstitutionalProfile.objects.filter(top_level_domain=up.top_level_domain, domain=up.domain)
+
+        ip.users.add(up.user)
+        ip.save()
+
+        if ip and ip.account_type.shibboleth:
+            up.account_status     = ip.account_status
+            up.subscription_end   = ip.subscription_end
+            up.subscription_start = ip.subscription_start
+            up.subscription_days  = ip.subscription_days
+
+            if ip.subscription_status == 'CURRENT':
+                up.account_type = ip.account_type
+
+            if ip.subscription_status == 'EXPIRED':
+                up.account_type = ip_free
+
+            up.save()
+
+    else:  
+      up.update_subscription_status()
+      up.check_for_email_subscription_notifications()
 
     if up.subscription_status == 'EXPIRED':
       if up.subscription_days == -1:
@@ -122,4 +157,6 @@ def update_subscriptions():
 
 
 if __name__ == "__main__":
+
   update_subscriptions()
+
