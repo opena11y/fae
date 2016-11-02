@@ -158,9 +158,9 @@ vironments/fae2/lib/python3.4/site-packages/
 <path to virtual environment>/python <path to script>/process_achive_reports.py
 </pre>
 
-## Shibboleth Configuration
+## InCommon (Shibboleth) Configuration
 
-To enable shibboleth support for your institution or organization you need your service manager to enable the following attributes to the entityID identifying the installation of FAE with Shibboleth Support (e.g. "https://fae.illinois.edu/shibboleth" for the University of Illinois campus):
+To enable shibboleth support through [https://www.incommon.org InCommon] for your institution or organization you need your service manager to enable the following attributes to the entityID identifying the installation of FAE with Shibboleth Support (e.g. "https://fae.illinois.edu/shibboleth" for the University of Illinois campus):
 * eppn
 * giveName
 * sn
