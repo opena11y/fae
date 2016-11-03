@@ -662,6 +662,16 @@ nav li.highlight a {
    background-color: #EEEEEE;
 }
 
+main table th.text,
+main table td.text {
+    text-align: left;
+}
+
+main table th.num,
+main table td.num {
+    text-align: right;
+}
+
 main table .complete {
     color: #006400;
 }
