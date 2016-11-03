@@ -128,6 +128,7 @@ def update_subscriptions():
 
       try:
         ip = InstitutionalProfile.objects.get(top_level_domain=up.top_level_domain, domain=up.domain)
+        info("    inst: " + str(ip))
 
         if ip:
           ip.users.add(up.user)
