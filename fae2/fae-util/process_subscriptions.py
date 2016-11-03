@@ -122,29 +122,34 @@ def update_subscriptions():
 
       try:
         ip = InstitutionalProfile.objects.get(top_level_domain=up.top_level_domain, domain=up.domain)
+      except:  
+        try:
+          ip = InstitutionalProfile.objects.get(top_level_domain=up.top_level_domain, alt_domain=up.domain)
+        except:
+          ip = False
 
-        if ip:
-          ip.users.add(up.user)
-          ip.save()
+      if ip:
 
-          info(str(up) + " added to " + str(ip))
+        if not up.
+        ip.users.add(up.user)
+        ip.save()
 
-          if ip.account_type.shibboleth:
+        info(str(up) + " added to " + str(ip))
 
-            up.subscription_status  = ip.subscription_status
-            up.subscription_end     = ip.subscription_end
-            up.subscription_start   = ip.subscription_start
-            up.subscription_days    = ip.subscription_days
+        if ip.account_type.shibboleth:
 
-            if ip.subscription_status == 'CURRENT':
-                up.account_type = ip.account_type
+          up.subscription_status  = ip.subscription_status
+          up.subscription_end     = ip.subscription_end
+          up.subscription_start   = ip.subscription_start
+          up.subscription_days    = ip.subscription_days
 
-            if ip.subscription_status == 'EXPIRED':
-                up.account_type = ip_free
+          if ip.subscription_status == 'CURRENT':
+              up.account_type = ip.account_type
 
-            up.save()
-      except:
-        pass      
+          if ip.subscription_status == 'EXPIRED':
+              up.account_type = ip_free
+
+          up.save()
 
     else:  
       up.update_subscription_status()
