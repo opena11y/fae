@@ -18,6 +18,9 @@ file: reports/views.py
 Author: Jon Gunderson
 
 """
+
+from __future__ import absolute_import
+
 from itertools import chain
 
 from django.core.urlresolvers import reverse_lazy, reverse
@@ -29,7 +32,6 @@ from fae2.settings import SELF_REGISTRATION_ENABLED
 from fae2.settings import SHIBBOLETH_ENABLED
 from fae2.settings import PAYMENT_ENABLED
 
-from __future__ import absolute_import
 from django.http import HttpResponse 
 from django.http import HttpResponseRedirect
 from django.http import JsonResponse
@@ -54,7 +56,7 @@ from userProfiles.models import UserProfile
 from ruleCategories.models import RuleCategory
 from wcag20.models         import Guideline
 from rules.models          import RuleScope
-from contact.models              import Announcement
+from contact.models        import Announcement
 
 
 

@@ -102,7 +102,7 @@ def update_subscriptions():
       ip.update_subscription_status()
       ip.check_for_email_subscription_notifications()
 
-      info("== " + str(ip.top_level_domain) + " ==")
+      info("== " + str(ip) + " ==")
       info("  Status: " + str(ip.subscription_status))
       info("    Days: " + str(ip.subscription_days))
       info("   Start: " + str(ip.subscription_start))
