@@ -32,7 +32,7 @@ class UserProfileAdmin(admin.ModelAdmin):
 admin.site.register(UserProfile, UserProfileAdmin)
 
 class InstitutionalProfileAdmin(admin.ModelAdmin):
-    list_display = ('domain', 'top_level_domain', 'account_type', 'subscription_end', 'last_payment')
+    list_display = ('title', 'domain', 'top_level_domain', 'account_type', 'subscription_end', 'last_payment')
 
     list_filter  = ('account_type',)
 

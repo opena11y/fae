@@ -41,6 +41,7 @@ from django.contrib.auth.mixins    import LoginRequiredMixin
 
 from django.contrib.auth.models  import User
 from userProfiles.models         import UserProfile
+from userProfiles.models         import InstitutionalProfile
 from accounts.models             import AccountType
 from stats.models                import StatsUser
 from websiteResultGroups.models  import WebsiteReportGroup
@@ -734,6 +735,18 @@ class UserInformationView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
         context['stats_user']   = stats_user
         
         return context  
+
+class InstitutionalInformationView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
+    template_name = 'accounts/institutional_information.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(InstitutionalInformationView, self).get_context_data(**kwargs)
+
+        institutions = InstitutionalProfile.objects.all()
+
+        context['institutions'] = institutions
+        
+        return context          
 
 class PaymentInformationView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
     template_name = 'accounts/payment_information.html'

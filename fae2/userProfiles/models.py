@@ -247,6 +247,7 @@ user_registered.connect(user_registered_callback)
 class InstitutionalProfile(models.Model):
     id = models.AutoField(primary_key=True)
 
+    title           = models.CharField(max_length=64,  blank=True, default="")
     contact1_name   = models.CharField(max_length=32,  blank=True, default="")
     contact1_title  = models.CharField(max_length=32,  blank=True, default="")
     contact1_email  = models.EmailField(max_length=64, blank=True, default="")

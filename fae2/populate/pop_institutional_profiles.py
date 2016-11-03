@@ -47,7 +47,7 @@ from django.contrib.auth.models import User
 from fae2.settings import DEFAULT_ACCOUNT_TYPE
 from fae2.settings import SHIBBOLETH_ENABLED
 
-def create_institutional_profile(type_id, domain, alt_domain, name1, email1, phone1, name2, email2, phone2, start, end):
+def create_institutional_profile(type_id, title, domain, alt_domain, name1, email1, phone1, name2, email2, phone2, start, end):
 
   try:
     atype = AccountType.objects.get(type_id=type_id)
@@ -59,32 +59,33 @@ def create_institutional_profile(type_id, domain, alt_domain, name1, email1, pho
     ip = InstitutionalProfile.objects.get(domain=domain)
     print("  Updating Institutional Subscription: " + str(domain) + '.edu')
 
-    ip.account_type    = atype
+    ip.title            = title
+    ip.account_type     = atype
     ip.top_level_domain = 'edu'
-    ip.domain          = domain
-    ip.alt_domain      = alt_domain
-    ip.contact1_name   = name1
-    ip.contact1_email  = email1
-    ip.contact1_phone  = phone1
-    ip.contact2_name   = name2
-    ip.contact2_email  = email2
-    ip.contact2_phone  = phone2
+    ip.domain           = domain
+    ip.alt_domain       = alt_domain
+    ip.contact1_name    = name1
+    ip.contact1_email   = email1
+    ip.contact1_phone   = phone1
+    ip.contact2_name    = name2
+    ip.contact2_email   = email2
+    ip.contact2_phone   = phone2
     ip.subscription_start  = start
     ip.subscription_start  = end
 
   except ObjectDoesNotExist:
     print("  Creating Institutional Subscription: " + str(domain) + '.edu')
-    ip = InstitutionalProfile(account_type=atype,domain=domain,alt_domain=alt_domain,contact1_name=name1,contact1_email=email1,contact1_phone=phone1,contact2_name=name2,contact2_email=email2,contact2_phone=phone2,subscription_start=start,subscription_end=end,top_level_domain='edu')
+    ip = InstitutionalProfile(account_type=atype,title=title,top_level_domain='edu',domain=domain,alt_domain=alt_domain,contact1_name=name1,contact1_email=email1,contact1_phone=phone1,contact2_name=name2,contact2_email=email2,contact2_phone=phone2,subscription_start=start,subscription_end=end)
 
   ip.save()
   return ip
 
-create_institutional_profile(21,'illinois','uiuc','Jon Gunderson','jongund@illinois.edu','(217) 244-5870', '', '', '', '2016-10-01', '2099-01-01')
-create_institutional_profile(21,'uic','','Kevin Shalla','kshalla@uic.edu','312-996-1231', 'Kevin Price', 'pricek@uic.edu', '312-413-0886', '2016-10-01', '2099-01-01')
-create_institutional_profile(21,'uillinois','','Tilakaratne, Dimuthu P','dpt@uillinois.edu','(217) 244-8567', 'Marla McKinney', 'mmckinne@uillinois.edu', '(217) 333-4058', '2016-10-01', '2099-01-01')
-create_institutional_profile(21,'psu','','Christian Vinten-Johansen','v23@psu.edu','(814) 863-4574', '', '', '', '2016-10-01', '2017-01-01')
-create_institutional_profile(21,'uiowa','','Todd Weissenberger','todd-weissenberger@uiowa.edu','(319) 384-3323', '', '', '', '2016-10-01', '2017-01-01')
-create_institutional_profile(21,'umn','','Scott Marshall','marsh058@umn.edu','(612) 626-4954', 'Tonu Mikk', 'tmikk@umn.edu', '612 625-3307', '2016-10-01', '2017-01-01')
-create_institutional_profile(21,'northwestern','','Sherry L. Minton','sl-minton@northwestern.edu','(847) 491-3507', '', '', '', '2016-10-01', '2017-01-01')
-create_institutional_profile(21,'washington', 'uw','Terrill Thompson','tft@uw.edu','(206) 221-4168', 'Anna Marie Golden', 'amgolden@uw.edu', '(206) 221-4164', '2016-10-01', '2017-01-01')
+create_institutional_profile(21,'University of Illinois: Champaign/Urbana','illinois','uiuc','Jon Gunderson','jongund@illinois.edu','(217) 244-5870', '', '', '', '2016-10-01', '2099-01-01')
+create_institutional_profile(21,'University of Illinois: Chicago','uic','','Kevin Shalla','kshalla@uic.edu','312-996-1231', 'Kevin Price', 'pricek@uic.edu', '312-413-0886', '2016-10-01', '2099-01-01')
+create_institutional_profile(21,'University of Illinois: Administration','uillinois','','Tilakaratne, Dimuthu P','dpt@uillinois.edu','(217) 244-8567', 'Marla McKinney', 'mmckinne@uillinois.edu', '(217) 333-4058', '2016-10-01', '2099-01-01')
+create_institutional_profile(21,'Penn State University','psu','','Christian Vinten-Johansen','v23@psu.edu','(814) 863-4574', '', '', '', '2016-10-01', '2017-01-01')
+create_institutional_profile(21,'University of Iowa','uiowa','','Todd Weissenberger','todd-weissenberger@uiowa.edu','(319) 384-3323', '', '', '', '2016-10-01', '2017-01-01')
+create_institutional_profile(21,'University of Minnesota','umn','','Scott Marshall','marsh058@umn.edu','(612) 626-4954', 'Tonu Mikk', 'tmikk@umn.edu', '612 625-3307', '2016-10-01', '2017-01-01')
+create_institutional_profile(21,'Northwestern University','northwestern','','Sherry L. Minton','sl-minton@northwestern.edu','(847) 491-3507', '', '', '', '2016-10-01', '2017-01-01')
+create_institutional_profile(21,'University of Washington','washington', 'uw','Terrill Thompson','tft@uw.edu','(206) 221-4168', 'Anna Marie Golden', 'amgolden@uw.edu', '(206) 221-4164', '2016-10-01', '2017-01-01')
 

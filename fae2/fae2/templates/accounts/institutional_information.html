@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block breadcrumb %}
+  <li><a href="{% url 'all_user_information' %}">All User Information</a></li>
+  <li>User Information</li>
+{% endblock %}
+
+{% block title %}
+Institutional Accounts
+{% endblock %}
+
+{% block content %}
+
+  <table class="details table table-striped table-hover sortable" aria-labelledby="id_title">
+    <thead>
+      <tr >
+        <th class="text">Institution</th>
+        <th class="text">Domain</th>
+        <th class="text">Alt Domain</th>
+        <th class="text">Account</th>
+        <th class="text">Expires</th>
+        <th class="text">Users</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for i in institutions %}
+      <tr>
+        <td>{{i.title}}</td>
+        <td>{{i.domain}}.{{i.top_level_domain}}</td>
+        <td>{{i.alt_domain}}.{{i.top_level_domain}}</td>
+        <td>{{i.account_type}}</td>
+        <td>{{i.subscription_end}}</td>
+        <td>
+            {% if i.users.count %}
+            <details>
+                <summary>{{i.users.count}} Users</summary>
+                <ul>
+                    {% for u in i.users.all %}
+                    <li>{{u}}</li>
+                    {% endfor %}
+                </ul>
+            </details>
+            {% else %}
+            no users
+            {% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>  
+
+{% endblock %}
+
+
