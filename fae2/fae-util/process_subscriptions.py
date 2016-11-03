@@ -130,7 +130,6 @@ def update_subscriptions():
 
       if ip:
 
-        if not up.
         ip.users.add(up.user)
         ip.save()
 
