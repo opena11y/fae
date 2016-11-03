@@ -118,7 +118,7 @@ def update_subscriptions():
     if not up.domain:
       up.set_domain_info()
 
-    if SHIBBOLETH_ENABLED and up.account_type.shibboleth and up.domain and up.up.top_level_domain:
+    if SHIBBOLETH_ENABLED and up.account_type.shibboleth and up.domain and up.top_level_domain:
 
       ip = InstitutionalProfile.objects.get(top_level_domain=up.top_level_domain, domain=up.domain)
 
