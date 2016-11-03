@@ -270,7 +270,7 @@ class InstitutionalProfile(models.Model):
     subscription_payment  = models.IntegerField(default=0) # in dollars
     last_payment          = models.IntegerField(default=0) # in dollars
 
-    users = models.ManyToManyField(User, blank=True, default=None)
+    users = models.ManyToManyField(User, related_name="institional_subscriptions", blank=True, default=None)
 
     class Meta:
         verbose_name        = "Institutional Profile"
