@@ -729,3 +729,10 @@ main a[href] code:hover {
 summary {
     display: list-item;
 }
+
+dl.contact {
+    margin-left: 1em;
+}
+dl.contact dt {
+    margin-top: 0.25em;
+}
