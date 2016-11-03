@@ -126,6 +126,9 @@ def update_subscriptions():
         if ip:
           ip.users.add(up.user)
           ip.save()
+
+          info(str(up) + " added to " + str(ip))
+
           if ip.account_type.shibboleth:
 
             up.subscription_status  = ip.subscription_status
