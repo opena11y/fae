@@ -125,6 +125,7 @@ def update_subscriptions():
     info("    shib: " + str(up.account_type.shibboleth))
 
     if SHIBBOLETH_ENABLED and up.account_type.shibboleth and up.domain and up.top_level_domain:
+      info(" here ")
 
       try:
         ip = InstitutionalProfile.objects.get(top_level_domain=up.top_level_domain, domain=up.domain)
