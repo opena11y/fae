@@ -59,21 +59,22 @@ def create_institutional_profile(type_id, domain, alt_domain, name1, email1, pho
     ip = InstitutionalProfile.objects.get(domain=domain)
     print("  Updating Institutional Subscription: " + str(domain) + '.edu')
 
-    ip.account_type    = atype
-    ip.domain          = domain
-    ip.alt_domain      = alt_domain
-    ip.contact1_name   = name1
-    ip.contact1_email  = email1
-    ip.contact1_phone  = phone1
-    ip.contact2_name   = name2
-    ip.contact2_email  = email2
-    ip.contact2_phone  = phone2
+    ip.account_type     = atype
+    ip.top_level_domain = 'edu'
+    ip.domain           = domain
+    ip.alt_domain       = alt_domain
+    ip.contact1_name    = name1
+    ip.contact1_email   = email1
+    ip.contact1_phone   = phone1
+    ip.contact2_name    = name2
+    ip.contact2_email   = email2
+    ip.contact2_phone   = phone2
     ip.subscription_start  = start
     ip.subscription_start  = end
 
   except ObjectDoesNotExist:
     print("  Creating Institutional Subscription: " + str(domain) + '.edu')
-    ip = InstitutionalProfile(account_type=atype,domain=domain,alt_domain=alt_domain,contact1_name=name1,contact1_email=email1,contact1_phone=phone1,contact2_name=name2,contact2_email=email2,contact2_phone=phone2,subscription_start=start,subscription_end=end)
+    ip = InstitutionalProfile(account_type=atype,top_level_domain='edu',domain=domain,alt_domain=alt_domain,contact1_name=name1,contact1_email=email1,contact1_phone=phone1,contact2_name=name2,contact2_email=email2,contact2_phone=phone2,subscription_start=start,subscription_end=end)
 
   ip.save()
   return ip
