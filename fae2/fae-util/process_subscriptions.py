@@ -118,6 +118,10 @@ def update_subscriptions():
     if not up.domain:
       up.set_domain_info()
 
+    info("\n    User: " + str(up))
+    info("  domain: " + str(up.domain))
+    info("     top: " + str(up.top_level_domain))
+
     if SHIBBOLETH_ENABLED and up.account_type.shibboleth and up.domain and up.top_level_domain:
 
       try:
@@ -127,7 +131,6 @@ def update_subscriptions():
           ip.users.add(up.user)
           ip.save()
 
-          info(str(up) + " added to " + str(ip))
 
           if ip.account_type.shibboleth:
 
