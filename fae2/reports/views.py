@@ -18,6 +18,16 @@ file: reports/views.py
 Author: Jon Gunderson
 
 """
+from itertools import chain
+
+from django.core.urlresolvers import reverse_lazy, reverse
+from django.contrib.auth.mixins import LoginRequiredMixin
+from .uid import generate
+
+from fae2.settings import ANONYMOUS_ENABLED
+from fae2.settings import SELF_REGISTRATION_ENABLED
+from fae2.settings import SHIBBOLETH_ENABLED
+from fae2.settings import PAYMENT_ENABLED
 
 from __future__ import absolute_import
 from django.http import HttpResponse 
@@ -47,16 +57,7 @@ from rules.models          import RuleScope
 from contact.models              import Announcement
 
 
-from itertools import chain
 
-from django.core.urlresolvers import reverse_lazy, reverse
-from django.contrib.auth.mixins import LoginRequiredMixin
-from .uid import generate
-
-from fae2.settings import ANONYMOUS_ENABLED
-from fae2.settings import SELF_REGISTRATION_ENABLED
-from fae2.settings import SHIBBOLETH_ENABLED
-from fae2.settings import PAYMENT_ENABLED
 
 
 # ==============================================================

@@ -96,7 +96,7 @@ def update_subscriptions():
   info('Updating subscriptions: ' + datetime.datetime.now().strftime("%Y-%m-%d %H:%M") )
 
 
-  if SHIBBOLETH_ENABLED or True:
+  if SHIBBOLETH_ENABLED:
 
     for ip in InstitutionalProfile.objects.all():
       ip.update_subscription_status()
@@ -115,10 +115,12 @@ def update_subscriptions():
 
   for up in user_profiles:
 
-    if SHIBBOLETH_ENABLED and up.account_type.shibboleth:
+    if not up.domain:
+      up.set_domain_info()
+
+    if SHIBBOLETH_ENABLED and up.account_type.shibboleth and up.domain and up.up.top_level_domain:
 
       ip = InstitutionalProfile.objects.get(top_level_domain=up.top_level_domain, domain=up.domain)
-
 
       if ip:
         ip.users.add(up.user)
