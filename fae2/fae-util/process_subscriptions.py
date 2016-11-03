@@ -118,23 +118,16 @@ def update_subscriptions():
     if not up.domain:
       up.set_domain_info()
 
-    info("-----------")
-    info("    User: " + str(up))
-    info("  domain: " + str(up.domain))
-    info("     top: " + str(up.top_level_domain))
-    info("    shib: " + str(up.account_type.shibboleth))
-
     if SHIBBOLETH_ENABLED and up.account_type.shibboleth and up.domain and up.top_level_domain:
-      info(" here ")
 
       try:
         ip = InstitutionalProfile.objects.get(top_level_domain=up.top_level_domain, domain=up.domain)
-        info("    inst: " + str(ip))
 
         if ip:
           ip.users.add(up.user)
           ip.save()
 
+          info(str(up) + " added to " + str(ip))
 
           if ip.account_type.shibboleth:
 
