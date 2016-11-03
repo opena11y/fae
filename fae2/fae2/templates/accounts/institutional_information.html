@@ -27,7 +27,7 @@ Institutional Accounts
       <tr>
         <td>{{i.title}}</td>
         <td>{{i.domain}}.{{i.top_level_domain}}</td>
-        <td>{{i.alt_domain}}.{{i.top_level_domain}}</td>
+        <td>{% if i.alt_domain %}{{i.alt_domain}}.{{i.top_level_domain}}{% else %}-{% endif %}</td>
         <td>{{i.account_type}}</td>
         <td>{{i.subscription_end}}</td>
         <td>
