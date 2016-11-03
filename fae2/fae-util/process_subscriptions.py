@@ -118,9 +118,11 @@ def update_subscriptions():
     if not up.domain:
       up.set_domain_info()
 
-    info("\n    User: " + str(up))
+    info("-----------")
+    info("    User: " + str(up))
     info("  domain: " + str(up.domain))
     info("     top: " + str(up.top_level_domain))
+    info("    shib: " + str(up.account_type.shibboleth))
 
     if SHIBBOLETH_ENABLED and up.account_type.shibboleth and up.domain and up.top_level_domain:
 
