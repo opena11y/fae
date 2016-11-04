@@ -106,7 +106,9 @@ class UserProfile(models.Model):
                 self.top_level_domain = parts[l-1] 
                 parts = parts[l-2].split('@')
                 self.domain = parts[len(parts)-1]
-                self.save()
+
+                if len(self.top_level_domain) < 8 and len(self.domain) < 64:
+                  self.save()  
 
     def set_payments(self, amount):
         self.subscription_payments = amount
