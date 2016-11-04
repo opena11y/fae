@@ -88,13 +88,6 @@ class UserProfile(models.Model):
     def __unicode__(self):
         return self.user.username  
 
-    def save(self):
-      
-        if self.user.email and not self.domain:
-            self.set_domain_info()
-      
-        super(UserProfile, self).save() # Call the "real" save() method.  
-
     def set_domain_info(self):
         email = self.user.email
 
