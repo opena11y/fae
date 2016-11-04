@@ -166,8 +166,6 @@ INSTALLED_APPS = (
     'stats.apps.StatsConfig',
 )
 
-
-
 if SHIBBOLETH_ENABLED:
     MIDDLEWARE_CLASSES = (
         'django.contrib.sessions.middleware.SessionMiddleware',
