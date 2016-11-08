@@ -98,7 +98,10 @@ class UserProfile(models.Model):
             if l > 1:
                 top    = parts[l-1] 
                 parts  = parts[l-2].split('@')
-                domain = parts[len(parts)-1]
+                if len(parts) > 1:
+                  domain = parts[len(parts)-1]
+                else:
+                  domain = parts[0]  
 
                 if len(top) < 8 and len(domain) < 64:
                   self.top_level_domain = top

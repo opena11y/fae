@@ -81,7 +81,7 @@
        <td class="title">
        <ul>
         <li> Incomplete means that you do <strong>not</strong> understand the accessibility 
-       requirements if the rules or did not consider accessibility in the design 
+       requirements of the rules or did not consider accessibility in the design 
        of the website.</li>
        <li>"<span class="not_implemented">-R</span>" means there are <strong>required</strong> Manual Checks.  Markup has been identified that needs to be reviewed to determine if accessibility requirements have been met.  
        </li> 
@@ -103,5 +103,146 @@
    </table>
   
    <p><strong>Note:</strong> Future versions of FAE will allow you to mark manual checks as, pass, fail or not applicable.</p>
+
+  <h2>Implementation Score Computation</h2>
+
+  <p>Implementation Score = P / (P + F + MC)</p>
+
+  <p>Each variable represents the number of element level results for a particular rule, where:</p>
+  <ul>
+      <li>P = elements that passed</li>
+      <li>F = elements that failed</li>
+      <li>MC = elements that require a manual check</li>
+  </ul>    
+
+  <p>The score ranges in value from 0 to 100, that is from no implementation to all accessibility requirements met. In the future, FAE will allow you to change manual checks to pass, fail or not applicable, and will recompute the Implementation Score based on the updated manual checking results. </p>
+
+ <p><strong>Note:</strong> When a manual check is changed to not applicable that element result is removed from the implementation score computation.</p>
+
+  <h3 id="id_is_comb">Implementation Score Combinations</h3>
+
+  <p>Implementation scores are rule-based and are computed for the following combinations:</p>
+
+  <table class="details table table-striped table-hover "  aria-labelledby="id_is_comb">
+     <thead>
+       <tr>
+         <th class="text">Pages</th>
+         <th class="text">Rules</th>
+         <th class="text">Calculation</th>
+       </tr>
+     </thead>
+     <tbody>
+
+      <tr>
+        <td>1</td>
+        <td>1</td>
+        <td>Element level results determine the implementation score for a rule on a specific page.</td>
+      </tr>
+
+      <tr>
+        <td>1</td>
+        <td>All</td>
+        <td>The implementation score for a page is the average of all implementation scores for all rules on the page, with all rules being equally weighted.</td>
+      </tr>
+
+      <tr>
+        <td>All</td>
+        <td>1</td>
+        <td>The implementation score for a rule across all the pages in a website is based on the aggregation of all element results for the rule across all pages.</td>
+      </tr>
+
+      <tr>
+        <td>All</td>
+        <td>All</td>
+        <td>The implementation score for a website is the average of the website rule implementation scores.</td>
+      </tr>
+             
+       
+     </tbody>
+  </table>
+
+
+  <h3 id="id_ex_1">Example Rule Implementation Scores on Individual Page</h3>
+
+   <table class="details table table-striped table-hover "  aria-labelledby="id_ex_1">
+     <thead>
+       <tr>
+         <th class="text">Description</th>
+         <th class="num">Pass</th>
+         <th class="num">Fail</th>
+         <th class="num">Manual Check</th>
+         <th class="num">Implementation Score</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr>
+         <td class="text">A rule with scope of <em>element</em>, like "Image must have <code>alt</code> text".</td>
+         <td class="num">8</td>
+         <td class="num">2</td>
+         <td class="num">0</td>
+         <td class="num">80</td>
+       </tr>  
+       <tr>
+         <td class="text">A rule with scope of <em>page</em> like "Page must have <code>main</code> landmark".</td>
+         <td class="num">0</td>
+         <td class="num">1</td>
+         <td class="num">0</td>
+         <td class="num">0</td>
+       </tr>  
+       <tr>
+         <td class="text">A rule with scope of <em>element</em> with elment results of pass, fail and manual checks that may occur for the color contrast rule.</td>
+         <td class="num">134</td>
+         <td class="num">29</td>
+         <td class="num">37</td>
+         <td class="num">67</td>
+       </tr>  
+     </tbody>
+   </table>
+
+  <h3 id="id_ex_2">Example Rule Implementation Score for All Pages in a Website</h3>
+
+  <p>This is a hypothetical example for a website 
+
+   <table class="details table table-striped table-hover "  aria-labelledby="id_ex_2">
+     <thead>
+       <tr>
+         <th class="text">Page results for Rule X</th>
+         <th class="num">Pass</th>
+         <th class="num">Fail</th>
+         <th class="num">Manual Check</th>
+         <th class="num">Implementation Score</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr>
+         <td class="text">Page 1 element results for rule X.</td>
+         <td class="num">23</td>
+         <td class="num">12</td>
+         <td class="num">4</td>
+         <td class="num">59</td>
+       </tr>  
+       <tr>
+         <td class="text">Page 2 element results for rule X.</td>
+         <td class="num">12</td>
+         <td class="num">4</td>
+         <td class="num">0</td>
+         <td class="num">75</td>
+       </tr>  
+       <tr>
+         <td class="text">Page 3 element results for rule X.</td>
+         <td class="num">45</td>
+         <td class="num">0</td>
+         <td class="num">0</td>
+         <td class="num">100</td>
+       </tr>  
+       <tr style="font-weight: bold">
+         <th class="text">Website element results for Rule X</th>
+         <td class="num">80</td>
+         <td class="num">16</td>
+         <td class="num">4</td>
+         <td class="num">80</td>
+       </tr>  
+     </tbody>
+   </table>
 
 </section>
