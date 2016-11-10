@@ -28,33 +28,43 @@ from django.views.generic import TemplateView
 
 from reports.views         import FAENavigationMixin
 from ruleCategories.models import RuleCategory
+from .models               import FAQ
 
-
-class Disclaimer(FAENavigationMixin, TemplateView):
+class DisclaimerView(FAENavigationMixin, TemplateView):
     template_name = 'abouts/disclaimer.html'
 
-class ConceptsTerms(FAENavigationMixin, TemplateView):
+class ConceptsTermsView(FAENavigationMixin, TemplateView):
     template_name = 'abouts/concepts_terms.html'
 
-class Overview(FAENavigationMixin, TemplateView):
+class OverviewView(FAENavigationMixin, TemplateView):
     template_name = 'abouts/overview.html'
 
     def get_context_data(self, **kwargs):
-        context = super(Overview, self).get_context_data(**kwargs)
+        context = super(OverviewView, self).get_context_data(**kwargs)
 
         context['rule_categories'] = RuleCategory.objects.all()
         
         return context            
 
 
-class Privacy(FAENavigationMixin, TemplateView):
+class PrivacyView(FAENavigationMixin, TemplateView):
     template_name = 'abouts/privacy.html'
 
-class ReportIssues(FAENavigationMixin, TemplateView):
+class ReportIssuesView(FAENavigationMixin, TemplateView):
     template_name = 'abouts/report_issues.html'
 
-class Versions(FAENavigationMixin, TemplateView):
+class VersionsView(FAENavigationMixin, TemplateView):
     template_name = 'abouts/versions.html'
 
-class Sharing(FAENavigationMixin, TemplateView):
+class SharingView(FAENavigationMixin, TemplateView):
     template_name = 'abouts/sharing.html'
+
+class FAQView(FAENavigationMixin, TemplateView):
+    template_name = 'abouts/faqs.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(FAQView, self).get_context_data(**kwargs)
+
+        context['faqs'] = FAQ.objects.all()
+        
+        return context  

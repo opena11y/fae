@@ -23,20 +23,22 @@ Author: Jon Gunderson
 # abouts/urls.py
 from __future__ import absolute_import
 from django.conf.urls import url
-from .views import ConceptsTerms
-from .views import Disclaimer
-from .views import Overview
-from .views import Privacy
-from .views import ReportIssues
-from .views import Sharing
-from .views import Versions
+from .views import ConceptsTermsView
+from .views import DisclaimerView
+from .views import OverviewView
+from .views import PrivacyView
+from .views import ReportIssuesView
+from .views import SharingView
+from .views import VersionsView
+from .views import FAQView
 
 urlpatterns = [ 
-    url(r'^$',            Overview.as_view(),       name='overview'),
-    url(r'^concepts/$',   ConceptsTerms.as_view(),  name='concepts_terms'),
-    url(r'^disclaimer/$', Disclaimer.as_view(),     name='disclaimer'),
-    url(r'^issues/$',     ReportIssues.as_view(),   name='report_issues'),
-    url(r'^privacy/$',    Privacy.as_view(),        name='privacy'),
-    url(r'^sharing/$',    Sharing.as_view(),        name='sharing'),
-    url(r'^versions/$',   Versions.as_view(),       name='versions'),
+    url(r'^$',            OverviewView.as_view(),       name='overview'),
+    url(r'^concepts/$',   ConceptsTermsView.as_view(),  name='concepts_terms'),
+    url(r'^disclaimer/$', DisclaimerView.as_view(),     name='disclaimer'),
+    url(r'^issues/$',     ReportIssuesView.as_view(),   name='report_issues'),
+    url(r'^privacy/$',    PrivacyView.as_view(),        name='privacy'),
+    url(r'^sharing/$',    SharingView.as_view(),        name='sharing'),
+    url(r'^versions/$',   VersionsView.as_view(),       name='versions'),
+    url(r'^faqs/$',       FAQView.as_view(),            name='faqs'),
 ]

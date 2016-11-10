@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block breadcrumb %}
+  <li>FAQs</li>
+{% endblock %}
+
+{% block title %}
+Frequently Asked Questions
+{% endblock %}
+
+{% block content %}
+
+  {% for faq in faqs %}
+
+<h2>{{faq.title}}</h2>
+<div>{{faq.description_html|safe}}</div>
+
+  {% endfor %}  
+
+{% endblock %}
+
+

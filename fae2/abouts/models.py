@@ -20,7 +20,28 @@ Author: Jon Gunderson
 """
 
 # abouts/models.py
-from __future__ import absolute_import
-from django.db import models
+from __future__                 import absolute_import
+from django.db                  import models
+from django.contrib.auth.models import User
+from registration.signals       import user_registered
+from timezone_field             import TimeZoneField
 
-# Create your models here.
+import markdown
+
+import datetime
+
+
+class FAQ(models.Model):
+  id = models.AutoField(primary_key=True)
+
+  seq               = models.IntegerField(default=0, unique=True)
+  title             = models.CharField(max_length=256)
+  description       = models.TextField(null=True,blank=True)
+  description_html  = models.TextField(null=True,blank=True)
+
+  def save(self):
+
+    if self.description:
+      self.description_html = markdown.markdown(self.description)
+    
+    super(FAQ, self).save() # Call the "real" save() method.

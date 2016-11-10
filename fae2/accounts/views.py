@@ -760,6 +760,7 @@ class PaymentInformationView(LoginRequiredMixin, FAENavigationMixin, TemplateVie
         
         return context  
 
+
 class DisabledView(TemplateView):
     template_name = 'accounts/disabled.html'
 
