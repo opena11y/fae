@@ -122,9 +122,10 @@ class Announcement(models.Model):
 
         self.status = "Sending"
 
-        for p in profiles:
-            if self.email_announcements and self.check_profile_for_announcement(p):
-                send_mail(self.topic, self.message_text, EMAIL_HOST_USER, [p.user.email], fail_silently=False)
+        if self.email:
+            for p in profiles:
+                if p.email_announcements:
+                    send_mail(self.topic, self.message_text, EMAIL_HOST_USER, [p.user.email], fail_silently=False)
 
         if self.web:
             self.status = "Visible"
