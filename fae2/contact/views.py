@@ -143,7 +143,7 @@ class AnnouncementFormView(LoginRequiredMixin, FAENavigationMixin, SuccessMessag
 
 
 
-class AnnouncementsView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
+class AnnouncementsView(FAENavigationMixin, TemplateView):
     template_name = 'contact/announcements.html'
 
     def get_context_data(self, **kwargs):
