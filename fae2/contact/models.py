@@ -93,7 +93,7 @@ class Announcement(models.Model):
     email     = models.BooleanField(verbose_name="E-mail to users", default="True")
     web       = models.BooleanField(verbose_name="Show in web views",default="True")
     end_date  = models.DateField(verbose_name="End date for showing in web views", null=True, blank=True) # Show as a message in selected views and login screen, if black does not show
-    message_text     = models.TextField(default="")
+    message_text     = models.TextField(blank=True, default="")
     message_markdown = models.TextField(blank=True, default="")
     message_html     = models.TextField(blank=True, default="")
 
