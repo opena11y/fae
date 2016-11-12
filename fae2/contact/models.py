@@ -124,7 +124,7 @@ class Announcement(models.Model):
 
         if self.email:
             for p in profiles:
-                if p.email_announcements:
+                if p.email_announcements and p.user.email and p.user.email.find('@'):
                     send_mail(self.topic, self.message_text, EMAIL_HOST_USER, [p.user.email], fail_silently=False)
 
         if self.web:
