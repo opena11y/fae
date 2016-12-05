@@ -43,7 +43,8 @@ django.setup()
 I empty it. Run as a standalone script!"""
 
 from django.core.exceptions import ObjectDoesNotExist
-from accounts.models import AccountType
+from accounts.models        import AccountType
+from subscriptions.models    import SubscriptionRate
 
 from django.contrib.auth.models import User
 
@@ -90,6 +91,27 @@ def set_account_type_description(type_id, desc):
 
   except ObjectDoesNotExist:
     print("  Account type not found: " + acc_type )
+
+def set_subscription_rate(type_id, desc, one, three, six, twelve):
+  atype = AccountType.objects.get(type_id=type_id)
+
+  try:
+    sr = SubscriptionRate.objects.get(account_type=atype)
+    print("  Updating Subscription Rate: " + atype.title)
+
+    sr.description  = desc
+    sr.one_month    = one
+    sr.three_month  = three
+    sr.six_month    = six
+    sr.twelve_month = twelve
+
+  except ObjectDoesNotExist:
+    print("  Creating Subscription Rate: " + acc_type )
+    sr = SubscriptionRate(account_type=atype, description=desc, one_month=one, three_month=three, six_month=six, twelve_month=twelve)
+
+  sr.save()
+  return atype
+
 
 at00 = create_acount_type(0, False, False, False, False,  'Anonymous',         1,  1, 1,    1, False,  False, False)
 at01 = create_acount_type(1, True, False, False, False,   'Free',               2,  5, 2,   10, True,   False, False)
@@ -142,3 +164,19 @@ set_account_type_description(18, """For educational institutions of 2,000-3,999 
 set_account_type_description(19, """For educational institutions of 4,000-7,999 students.""")
 set_account_type_description(20, """For educational institutions of 8,000-15,000 students.""")
 set_account_type_description(21, """For educational institutions of more than 15,000 students.""")
+
+set_subscription_rate(1, "",    0,    0,    0,    0)
+set_subscription_rate(2, "",   30,   81,  153,  270)
+set_subscription_rate(3, "",   40,  108,  204,  360)
+set_subscription_rate(4, "",  120,  324,  612, 1080)
+set_subscription_rate(5, "",  200,  540, 1020, 1800)
+set_subscription_rate(6, "",  300,  810, 1530, 2700)
+
+set_subscription_rate(16, "",    0,    0,    0,    0)
+set_subscription_rate(17, "",    0,  540, 1020, 1800)
+set_subscription_rate(18, "",    0,  810, 1530, 2700)
+set_subscription_rate(19, "",    0, 1215, 2295, 4050)
+set_subscription_rate(20, "",    0, 1890, 3570, 6300)
+set_subscription_rate(21, "",    0, 2700, 5100, 9000)
+
+
