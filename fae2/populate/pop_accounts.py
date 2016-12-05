@@ -106,7 +106,7 @@ def set_subscription_rate(type_id, desc, one, three, six, twelve):
     sr.twelve_month = twelve
 
   except ObjectDoesNotExist:
-    print("  Creating Subscription Rate: " + acc_type )
+    print("  Creating Subscription Rate: " +  atype.title)
     sr = SubscriptionRate(account_type=atype, description=desc, one_month=one, three_month=three, six_month=six, twelve_month=twelve)
 
   sr.save()
