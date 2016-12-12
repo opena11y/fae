@@ -1,0 +1,23 @@
+10 total URL(s) processsed. All URL(s) processsed:
+	0: http://www.uis.edu/chemistry/
+	1: http://www.uis.edu/chemistry/about/
+	2: http://www.uis.edu/chemistry/curriculum/
+	3: http://www.uis.edu/chemistry/contact/
+	4: http://www.uis.edu/chemistry/about/instrumentation/
+	5: http://www.uis.edu/chemistry/curriculum/biochemistry-major/
+	6: http://www.uis.edu/chemistry/faculty/facultyfocus/
+	7: http://www.uis.edu/chemistry/faculty/
+	8: http://www.uis.edu/chemistry/students/
+	9: http://www.uis.edu/chemistry/sitemap/
+
+Tree representation of URL(s) processsed:
+http://www.uis.edu/chemistry/
+	http://www.uis.edu/chemistry/about/
+	http://www.uis.edu/chemistry/curriculum/
+	http://www.uis.edu/chemistry/contact/
+	http://www.uis.edu/chemistry/about/instrumentation/
+	http://www.uis.edu/chemistry/curriculum/biochemistry-major/
+	http://www.uis.edu/chemistry/faculty/facultyfocus/
+	http://www.uis.edu/chemistry/faculty/
+	http://www.uis.edu/chemistry/students/
+	http://www.uis.edu/chemistry/sitemap/

@@ -25,6 +25,7 @@ public class Controller {
   public String CONFIG_FILE;
   public String DEPTH = "1";
   public String MAX_PAGES = "0";
+  public String PATH;
   public String INPUT_FILE;
   public String OUTPUT_DIRECTORY;
   public String SCRIPTS_FILE;
@@ -55,6 +56,7 @@ public class Controller {
     System.out.println("\t" + debug.getLongOpt() + "=> " + DEBUG);
     System.out.println("\t" + depth.getLongOpt() + "=> " + DEPTH);
     System.out.println("\t" + maxPages.getLongOpt() + "=> " + MAX_PAGES);
+    System.out.println("\t" + path.getLongOpt() + "=> " + PATH);
     System.out.println("\t" + groups.getLongOpt() + "=> " + GROUPS);
     System.out.println("\t" + inputFile.getLongOpt() + "=> " + INPUT_FILE);
     System.out.println("\t" + outputDirectory.getLongOpt() + "=> " + OUTPUT_DIRECTORY);
@@ -121,6 +123,8 @@ public class Controller {
       DEPTH = m_cmdLine.getOptionValue(depth.getOpt());
     if (m_cmdLine.hasOption(maxPages.getOpt()))
         MAX_PAGES = m_cmdLine.getOptionValue(maxPages.getOpt());
+    if (m_cmdLine.hasOption(path.getOpt()))
+        PATH = m_cmdLine.getOptionValue(path.getOpt());
     if (m_cmdLine.hasOption(groups.getOpt()))
       GROUPS = m_cmdLine.getOptionValue(groups.getOpt());
     if (m_cmdLine.hasOption(wait.getOpt()))
@@ -218,6 +222,7 @@ public class Controller {
     m_options.addOption(debug);
     m_options.addOption(depth);
     m_options.addOption(maxPages);
+    m_options.addOption(path);
     m_options.addOption(groups);
     m_options.addOption(inputFile);
     m_options.addOption(outputDirectory);
@@ -292,6 +297,7 @@ public class Controller {
   public Option debug = new Option("D", "debug", false, "Optional: turn on debugging output");
   public Option depth = new Option("d", "depth", true, "Optional: maximium depth to traverse (number: 1 | 2 | 3, default = 1, which means no traversing)");
   public Option maxPages = new Option("p", "maxPages", true, "Optional: maximium number of pages to process (number, greater than or equal to 1: default = all pages)");
+  public Option path = new Option("h", "path", true, "Optional: url path (string, url path: default = empty)");
   public Option groups = new Option("g", "groups", true, "Optional: number indicating which rules will be evaluated based on rule group information (default = 7)");
   public Option inputFile = new Option("m", "multipleUrls", true, "Required (unless -u, --url is specified): filename containing URLs to evaluate");
   public Option outputDirectory = new Option("o", "outputDirectory", true, "Required: directory for results files");

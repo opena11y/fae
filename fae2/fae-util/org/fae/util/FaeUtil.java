@@ -281,6 +281,9 @@ class FaeUtil {
         if (m_props.containsKey(m_ctrl.maxPages.getLongOpt()))
             m_ctrl.MAX_PAGES = m_props.getProperty(m_ctrl.maxPages.getLongOpt());
         m_props.remove(m_ctrl.maxPages.getLongOpt());
+        if (m_props.containsKey(m_ctrl.path.getLongOpt()))
+            m_ctrl.PATH = m_props.getProperty(m_ctrl.path.getLongOpt());
+        m_props.remove(m_ctrl.path.getLongOpt());
         
       }
       catch (FileNotFoundException e) {
@@ -569,8 +572,16 @@ class FaeUtil {
           processor.process(this, "ENTRY_POINT", url_str);
         }
         else {
-          //System.out.println("\n");
-
+          //Updating url if path is provided
+        	if (m_ctrl.PATH != null
+					&& !m_ctrl.PATH.toString().isEmpty()) {
+	        	if (url_str.endsWith("/")) {
+	        		url_str = url_str + m_ctrl.PATH + "/";
+				} else {
+					url_str = url_str + "/" + m_ctrl.PATH + "/";
+				}	
+        	}
+        	
           // IF TRAVERSING
           URL url = new URL(url_str);
           System.out.println("url: " + url);
@@ -770,6 +781,7 @@ class FaeUtil {
       out.write("login_attempts=" + attempt + NEWLINE);
       out.write("login_success=" + URLProcessor.m_loginSuccessURLs.size() + NEWLINE);
       out.write("login_fail=" + URLProcessor.m_loginFailURLs.size() + NEWLINE);
+      out.write("more_urls=" + URLProcessor.more_urls + NEWLINE);
 
       out.close();
     }

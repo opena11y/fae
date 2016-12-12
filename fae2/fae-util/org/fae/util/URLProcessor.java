@@ -50,6 +50,7 @@ public class URLProcessor {
 	private Vector<String> maxPageUrls = new Vector<String>();
 	public static Vector<String> m_loginSuccessURLs = new Vector<String>();
 	public static Vector<String> m_loginFailURLs = new Vector<String>();
+	public static boolean more_urls;
 
 	// ==========================================================================
 	// ==========================================================================
@@ -88,13 +89,29 @@ public class URLProcessor {
 		// }
 		// }
 		int maxPage = 0;
-		if(faeUtil.m_ctrl.MAX_PAGES.length() > 0){
+		if (faeUtil.m_ctrl.MAX_PAGES.length() > 0) {
 			maxPage = Integer.parseInt(faeUtil.m_ctrl.MAX_PAGES);
 		}
 		if (pageCount < maxPage && !maxPageUrls.contains(url)) {
+			if (faeUtil.m_ctrl.PATH != null
+					&& !faeUtil.m_ctrl.PATH.toString().isEmpty()) {
+				if (pageCount > 0
+						&& url.length() > urlFrom.length()
+						&& urlFrom.substring(0, urlFrom.length() - 1).equals(
+								url.substring(0, urlFrom.length() - 1))) {
+					subTraverseURL(faeUtil, urlFrom, url, depth, baseURL);
+				} else {
+					if (pageCount == 0) {
+						subTraverseURL(faeUtil, urlFrom, url, depth, baseURL);
+					}
+				}
+			} else {
 				subTraverseURL(faeUtil, urlFrom, url, depth, baseURL);
-		}else if(maxPage == 0){
+			}
+		} else if (maxPage == 0) {
 			subTraverseURL(faeUtil, urlFrom, url, depth, baseURL);
+		} else if (pageCount == maxPage) {
+			more_urls = true;
 		}
 	}
 
@@ -112,6 +129,10 @@ public class URLProcessor {
 
 		if (authorizationUrlMatch(faeUtil, 0, 0, url))
 			traverseURL(faeUtil, urlFrom, url, depth, baseURL);
+
+		// if (pageCount > 0 && baseURL.length() > urlFrom.length() &&
+		// urlFrom.substring(0, urlFrom.length() -
+		// 1).equals(baseURL.substring(0, urlFrom.length() - 1))){
 
 		URLProcessor processor = new URLProcessor();
 		// process the URL - read page, find events, evaluate script, find links
@@ -1094,8 +1115,10 @@ public class URLProcessor {
 							m_faeUtil.verbose("\t" + m_urlNum
 									+ ": Running evaluation scripts... ");
 							startTime = System.currentTimeMillis();
+
 							ScriptResult result = page
 									.executeJavaScript(m_faeUtil.m_evaluationScript);
+
 							// System.out.println("result=>" + result);
 							// System.out.println("result.getJavaScriptResult()=>"
 							// + result.getJavaScriptResult());
