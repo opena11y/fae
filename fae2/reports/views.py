@@ -481,6 +481,8 @@ def get_default_url():
     else:    
         return reverse_lazy('login')
 
+      
+
 class RunReportView(LoginRequiredMixin, FAENavigationMixin, CreateView):
 
     model = WebsiteReport
@@ -518,7 +520,6 @@ class RunReportView(LoginRequiredMixin, FAENavigationMixin, CreateView):
 
         if PAYMENT_ENABLED:
             user_profile.check_for_subscription_messages(self.request)
-
 
         context['last_report'] = last_report
         

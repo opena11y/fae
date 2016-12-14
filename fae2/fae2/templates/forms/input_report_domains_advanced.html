@@ -2,7 +2,7 @@
       <legend>Domain Information</legend>
 
       <div class="input">
-          <label for="id_input_span_sub_domains">Span Domains</label>
+          <label id="id_input_span_sub_domains_label" for="id_input_span_sub_domains">Span Domains</label>
           <div {% if form.span_sub_domains.errors|length %}class="error"{% endif %}>
           <div class="fae_input fae_input_text">
             <input 
@@ -19,7 +19,7 @@
       </div>
 
       <div class="input">
-          <label for="id_input_exclude_sub_domains">Exclude Domains</label>
+          <label id="id_input_exclude_sub_domains_label" for="id_input_exclude_sub_domains">Exclude Domains</label>
           <div {% if form.exclude_sub_domains.errors|length %}class="error"{% endif %}>
           <div class="fae_input fae_input_text">
             <input 
@@ -36,7 +36,7 @@
       </div>
 
       <div class="input">
-          <label for="id_input_include_domains">Include Domains</label>
+          <label id="id_input_include_domains_label" for="id_input_include_domains">Include Domains</label>
           <div {% if form.include_domains.errors|length %}class="error"{% endif %}>
           <div class="fae_input fae_input_text">
           <input 

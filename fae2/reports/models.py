@@ -208,6 +208,10 @@ LAST_VIEW_CHOICES = (
   ('rs',   'Rule Scope')
 )  
 
+PROTOCOL_CHOICES = (
+  ('http',  'http'),
+  ('https', 'https')
+)
 # ---------------------------------------------------------------
 #
 # WebsiteReport
@@ -234,6 +238,11 @@ class WebsiteReport(RuleGroupResult):
 
   wait_time            = models.IntegerField("How long to wait for website to load resources", choices=WAIT_TIME_CHOICES, default=90000)
   
+  protocol             = models.CharField("Protocol",  max_length=16,   choices=PROTOCOL_CHOICES, default="http", blank=True)
+  domain               = models.CharField("Domain",    max_length=1024, default="", blank=True)
+  path                 = models.CharField("Path",      max_length=1024, default="", blank=True)
+
+  more_urls            = models.BooleanField(default=False)
   span_sub_domains     = models.CharField("Span Sub-Domains (space separated)",    max_length=1024, default="", blank=True)
   exclude_sub_domains  = models.CharField("Exclude Sub-Domains (space separated)", max_length=1024, default="", blank=True)
   include_domains      = models.CharField("Include Domains (space separated)",     max_length=1024, default="", blank=True)
@@ -286,13 +295,39 @@ class WebsiteReport(RuleGroupResult):
 
   def save(self):
 
+    def trim_path(p):
+      p = p[1:]
+      if p.endswith("/"):
+        p = p[:-1]
+
+      return p  
+
     if len(self.data_dir_slug) == 0:
 
+      print('[url]: ' + str(self.url))
+
+      url_parts     = urlparse(self.url)
+      self.protocol = url_parts.scheme
+      self.domain   = url_parts.netloc
+
+      print('[protocol]: ' + str(self.protocol))
+      print('[domain]: ' + str(self.domain))
+
+      try:
+        if len(url_parts.path) > 1:
+
+          self.path = trim_path(url_parts.path)
+
+          print("[path]: " + self.path)  
+
+          self.span_sub_domains     = ""
+          self.exclude_sub_domains  = ""
+          self.include_domains      = ""
+          self.follow = 1
+      except:
+        pass    
+
       if self.follow == 2:
-
-        url_parts = urlparse(self.url)
-
-#        print('[url_parts]: ' + str(url_parts))
 
         try:
           if url_parts.netloc.find('www.') < 0:

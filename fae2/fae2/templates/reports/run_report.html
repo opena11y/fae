@@ -41,6 +41,8 @@
 <script type="text/javascript">
 
   var last_report = {};
+
+  {% if last_report %}
   last_report.url        = "{{last_report.url}}";
   last_report.title      = "{{last_report.title}}";
   last_report.ruleset_id = "{{last_report.ruleset.id}}";
@@ -51,6 +53,18 @@
   last_report.span_sub_domains     = "{{last_report.span_sub_domains}}";
   last_report.exclude_sub_domains = "{{last_report.exclude_sub_domains}}";
   last_report.include_domains     = "{{last_report.include_domains}}";
+  {% else %}
+  last_report.url        = "";
+  last_report.title      = "";
+  last_report.ruleset_id = "";
+  last_report.depth      = 0;
+  last_report.max_pages  = 0;
+  last_report.depth_id   = "depth_2";
+  
+  last_report.span_sub_domains     = "";
+  last_report.exclude_sub_domains = "";
+  last_report.include_domains     = "";
+  {% endif %}
 
   function getLastReport() {
   
@@ -72,7 +86,8 @@
 
       if (max_page_input && !max_page_input.disabled) max_page_input.checked = true;
 
-      enableSubmit();
+      checkURL();
+
     }
   }
 
