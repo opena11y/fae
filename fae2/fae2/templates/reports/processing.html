@@ -122,8 +122,9 @@ function updateReports(reportInfoArray) {
       break;
     
     case 'A':
-      if (pages === 1) s1 = "1 page evaluated...";
-      else s1 = pages + " pages evaluated...";
+      if (pages < 1) s1 = "Starting...";
+      else if (pages === 1) s1 = "1 page evaluated";
+      else s1 = pages + " pages evaluated";
       processing_count += 1;
       break;
     
