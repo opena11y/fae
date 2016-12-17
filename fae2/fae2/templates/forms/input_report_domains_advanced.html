@@ -10,7 +10,8 @@
                 name="span_sub_domains"
                 {% if form.span_sub_domains.errors|length %}aria-invalid="true"{% endif %}
                 value="{{form.span_sub_domains.value}}"
-                size="80"/>
+                size="80"
+                placeholder="example.com"/>
           </div>    
           {% if form.span_sub_domains.errors|length %}
           <label class="error" for="id_input_span_sub_domains">{% for error in form.span_sub_domains.errors %}{{error}}{% endfor %}</label>
@@ -27,7 +28,8 @@
                 name="exclude_sub_domains"
                 {% if form.exclude_sub_domains.errors|length %}aria-invalid="true"{% endif %}
                 value="{{form.exclude_sub_domains.value}}"
-                size="80"/>
+                size="80"
+                placeholder="blog.example.com news.example.com"/>
           </div>      
           {% if form.exclude_sub_domains.errors|length %}
           <label class="error" for="id_input_exclude_sub_domains">{% for error in form.exclude_sub_domains.errors %}{{error}}{% endfor %}</label>
@@ -44,7 +46,8 @@
               name="include_domains"
               {% if form.include_domains.errors|length %}aria-invalid="true"{% endif %}
               value="{{form.include_domains.value}}"
-              size="80"/>
+              size="80"
+              placeholder="events.example.com calendar.example.com"/>
           </div>    
           {% if form.include_domains.errors|length %}
           <label class="error" for="id_input_include_domains">{% for error in form.include_domains.errors %}{{error}}{% endfor %}</label>

@@ -471,6 +471,10 @@ main input[type="submit"]:focus {
     border-width: 2px;    
 }
 
+main .fae_info_button {
+    padding: 0.125em;
+    color: rgb(51, 122, 183);
+}
 
 #summary table.summary
 {
@@ -694,6 +698,10 @@ main table .not_applicable {
     color: gray;
 }
 
+main .fae-info-button {
+    color: gray;
+}
+
 table td.text input[type=button] {
     font-size: 95%;
 }
@@ -725,7 +733,8 @@ main a[href] code {
     padding-bottom: 0;
 }
 
-main a[href]:focus {
+main a[href]:focus,
+main .focus  {
   outline-offset: 0.125em;
   outline: 2px solid black;
   background-color: #EEEEEE;
@@ -733,7 +742,8 @@ main a[href]:focus {
 }
 
 main a[href]:hover,
-main a[href] code:hover {
+main a[href] code:hover,
+main .fae_info_button:hover {
   background-color: #DDDDDD;
 }
 

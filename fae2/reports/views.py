@@ -528,7 +528,7 @@ class RunReportView(LoginRequiredMixin, FAENavigationMixin, CreateView):
 class RunAdvancedReportView(LoginRequiredMixin, FAENavigationMixin, CreateView):
 
     model = WebsiteReport
-    fields = ['url', 'title', 'depth', 'span_sub_domains', 'exclude_sub_domains', 'include_domains', 'ruleset', 'wait_time', 'max_pages']
+    fields = ['protocol', 'domain', 'path','title', 'depth', 'span_sub_domains', 'exclude_sub_domains', 'include_domains', 'ruleset', 'wait_time', 'max_pages']
     template_name = 'reports/run_advanced_report.html'
 
     success_url = reverse_lazy('processing_reports')

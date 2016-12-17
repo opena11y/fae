@@ -238,7 +238,7 @@ class WebsiteReport(RuleGroupResult):
 
   wait_time            = models.IntegerField("How long to wait for website to load resources", choices=WAIT_TIME_CHOICES, default=90000)
   
-  protocol             = models.CharField("Protocol",  max_length=16,   choices=PROTOCOL_CHOICES, default="http", blank=True)
+  protocol             = models.CharField("Protocol",  max_length=16,   choices=PROTOCOL_CHOICES, default="http")
   domain               = models.CharField("Domain",    max_length=1024, default="", blank=True)
   path                 = models.CharField("Path",      max_length=1024, default="", blank=True)
 
@@ -304,21 +304,30 @@ class WebsiteReport(RuleGroupResult):
 
     if len(self.data_dir_slug) == 0:
 
-      print('[url]: ' + str(self.url))
+      if len(self.url):
+        url_parts     = urlparse(self.url)
+        self.protocol = url_parts.scheme
+        self.domain   = url_parts.netloc
+      else:
+        if len(self.protocol) and len(self.domain):
+          self.url = self.protocol + '://' +  self.domain
 
-      url_parts     = urlparse(self.url)
-      self.protocol = url_parts.scheme
-      self.domain   = url_parts.netloc
+          if len(self.path):
 
-      print('[protocol]: ' + str(self.protocol))
-      print('[domain]: ' + str(self.domain))
+            if self.path.startswith('/'):
+              self.path = self.path[1:]
+
+            if self.path.endswith('/'):
+              self.path = self.path[:-1]
+
+            if len(self.path):
+              self.url = self.url + '/' + self.path + '/' 
 
       try:
         if len(url_parts.path) > 1:
 
           self.path = trim_path(url_parts.path)
 
-          print("[path]: " + self.path)  
 
           self.span_sub_domains     = ""
           self.exclude_sub_domains  = ""
@@ -326,6 +335,12 @@ class WebsiteReport(RuleGroupResult):
           self.follow = 1
       except:
         pass    
+
+      print('[save][     url]: ' + str(self.url))
+      print('[save][protocol]: ' + str(self.protocol))
+      print('[save][  domain]: ' + str(self.domain))
+      print('[save][    path]: ' + str(self.path))
+
 
       if self.follow == 2:
 

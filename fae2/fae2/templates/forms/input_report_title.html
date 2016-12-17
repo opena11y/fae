@@ -10,7 +10,8 @@
                 required="required"
                 {% if form.title.errors|length %}aria-invalid="true"{% endif %}
                 value="{{form.title.value}}"
-                size="80"/>
+                size="80"
+                placeholder="a name for your report"/>
         </div>    
         {% if form.title.errors|length %}
         <label class="error" for="id_input_title">{% for error in form.title.errors %}{{error}}{% endfor %}</label>

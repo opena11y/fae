@@ -13,7 +13,7 @@
                 name="follow"
                 value="{{choice.0}}"
                 {% if form.follow.value|slugify == choice.0|slugify %}
-                checked="checked"
+                checked
                 {% endif %}
             />
             <label for="follow_{{ forloop.counter }}">{{choice.1}}</label>

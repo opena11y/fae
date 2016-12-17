@@ -14,7 +14,7 @@
                 name="ruleset"
                 value="{{choice.0}}"
                 {% if form.ruleset.value|slugify == choice.0|slugify %}
-                checked="checked"
+                checked
                 {% endif %}
             />
             <label for="ruleset_{{ forloop.counter }}" {% ifequal 'ARIA_STRICT' choice.0 %}
