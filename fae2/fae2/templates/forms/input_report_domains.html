@@ -2,9 +2,14 @@
         {% if form.follow.errors|length %}
         <legend class="error">{{form.follow.label}}: {% for error in form.follow.errors %}{{error}}{% endfor %}</legend>
         {% else %}
-        <legend>{{form.follow.label}}</legend>
+        <legend>
+        {{form.follow.label}} 
+        <span class="fae_info_button" aria-controls="id_inst_following"></span>
+        </legend>
         {% endif %}
-        
+        <div id="id_inst_following" class="fae_info">             
+            This option allows sub-domains of the doman name of the URL to be included in the report or not.
+        </div>            
         {% for choice in form.follow.field.choices %}
         <div class="fae_input">
             <input

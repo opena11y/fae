@@ -1,14 +1,14 @@
     <div class="input" >
-        <label for="id_input_path">Path</label> <span class="fae_info_button" aria-controls="id_inst_path"></span>
+        <label for="id_input_path">Path</label> 
+        <span class="fae_info_button" aria-controls="id_inst_path"></span>
         <div id="id_inst_path" class="fae_info">             
-            If you include a <code>path</code> it will be used to filter the URLs analyzed, just like the <code>domain</code> name filter.  Having a <code>path</code> filter disables the "Domain Information" options.
+            If you include a <code>path</code> it will be used to filter the pages analyzed, just like the <code>domain</code> name filter.  Defining a <code>path</code> filter disables the &quot;Domain Information&quot; options.
         </div>
         <div {% if form.path.errors|length %}class="error"{% endif %}>
         <div class="fae_input fae_input_text">
             <input 
                 id="id_input_path"
                 name="path"
-                required="required"
                 value="{{form.path.value}}"
                 {% if form.path.errors|length %}aria-invalid="true"{% endif %}
                 size="60"

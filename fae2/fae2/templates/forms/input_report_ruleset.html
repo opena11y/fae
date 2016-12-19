@@ -1,9 +1,22 @@
     <fieldset>   
         {% if form.ruleset.errors|length %}
-        <legend class="error">{{form.ruleset.label}}: {% for error in form.ruleset.errors %}{{error}}{% endfor %}</legend>
+        <legend class="error">
+          {{form.ruleset.label}}: 
+          {% for error in form.ruleset.errors %}{{error}}{% endfor %} 
+          <span class="fae_info_button" aria-controls="id_inst_ruleset"></span>
+        </legend>
         {% else %}
-        <legend>{{form.ruleset.label}}</legend>
+        <legend>
+          {{form.ruleset.label}} 
+          <span class="fae_info_button" aria-controls="id_inst_ruleset"></span>
+        </legend>
         {% endif %}
+
+        
+        
+        <div id="id_inst_ruleset" class="fae_info">             
+            <a href="{% url 'rulesets' %}">Link to more detailed ruleset information</a>.
+        </div>
 
 
         {% for choice in form.ruleset.field.choices %}

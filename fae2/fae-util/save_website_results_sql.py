@@ -1580,8 +1580,8 @@ def saveResultsToDjango(ws_report, l):
 
   def process_file(dir_name, file_name):
     parts = file_name.split('.');
+    info("Processing File: " + file_name)
     if len(parts) == 2 and parts[1] == 'json':
-      info("Processing File: " + file_name)
       file_json = open(dir_name + "/" + file_name, 'r')
       try:
         page_data = json.load(file_json)
@@ -1618,8 +1618,7 @@ def saveResultsToDjango(ws_report, l):
     if file_name == "status.txt":
 #      debug("[saveResultsToDjango][process_file] Retreiving status information")  
       file_status = open(dir_name + "/" + file_name, 'r')
-# Need to update usage information      
-#      statusToDatabase(ws_report, file_status)
+      statusToDatabase(ws_report, file_status)
 
 # ---------------------------------------------------------------
 #

@@ -41,27 +41,19 @@ main section.report {
 }
 
 #sendto {
-    float: right;
     position: relative;
-    top: -2.15em;
+    float: right;
+    top: -1.5em;
+    font-size: 110%;
+}
+
+#sendto span {
+    position: relative;
+    top: .125em;
 }
 
 
-#sendto a {
-    border-bottom: 1px solid transparent;
-    display: block;
-    padding: 2px;
-}
-
-
-#sendto a:focus,
-#sendto a:hover {
-    border-color: rgb(51, 122, 183);
-    background-color: #c4dced;
-}
-
-main p img,
-#sendto img {
+main p img {
     height: 1.6em;
 }
 
@@ -69,6 +61,14 @@ main p img {
     position: relative;
     top: -.5em;
 }
+
+main p.subscription {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 1em;
+    font-style: italic;
+}
+
 
 main div.login a {
     padding: 0.25em;
@@ -80,6 +80,13 @@ main div.login a {
     background: #337ab7;
     color: white;
     font-size: 124%;
+}
+
+main div.login a:focus,
+main div.login a:hover {
+    background: #337ab7;
+    color: white;
+    text-decoration: underline;
 }
 
 nav#view_options {
@@ -105,6 +112,12 @@ nav#id_breadcrumbs {
     margin-bottom: 1em;
 }
 
+nav#id_breadcrumbs a:focus {
+    outline-offset: 2px;
+    outline: solid 1px black;
+}
+
+
 nav h2 {
     margin-top: 1em;
     margin-bottom: 0.125em;
@@ -118,15 +131,48 @@ nav h2 {
     font-size: 112%;
 }
 
+.navbar-inverse .navbar-nav > li > a {
+    padding-left: 0.65em;
+    padding-right: 0.65em;
+    color: #DDDDDD;
+}
+
+
+.navbar-inverse .navbar-header a {
+     color: #DDDDDD;
+     position: relative;
+     top: -0.6em;
+}
+
 .navbar-inverse .navbar-nav > li > a:focus,
-.navbar-inverse .navbar-nav > li > a:hover {
-    text-decoration: underline;
+.navbar-inverse .navbar-header a:focus {
+    outline: solid white thin;
+    background-image: linear-gradient(to bottom, #080808 0%, #0f0f0f 100%);
+}
+
+.navbar-inverse .navbar-nav > li.active > a,
+.navbar-inverse .navbar-nav > li.active > a:visited,
+.navbar-inverse .navbar-nav > li > a:hover,
+.navbar-inverse .navbar-header a:hover {
+    border-bottom: thin solid white;
+    background-color: 
+}
+
+
+.nav-pills > li > a {
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.nav-pills > li > a:focus {
+    border-color: black;
 }
 
 #id_get_last {
     margin-top: 1em;
     font-size: 100%;
 }
+
 
 button[aria-controls="top-navbar"] {
     outline: solid 2px transparent;
@@ -143,13 +189,31 @@ button[aria-controls="top-navbar"]:hover {
     margin-bottom: 0.5em;
 }
 
-main ul,
-table tbody td ul {
+main ul {
     margin: 0;
     padding: 0;
     padding-left: 1.25em;
     padding-bottom: 0.5em;
 }
+
+table tbody td ul {
+    margin: 0;
+    padding: 0;
+    padding-left: 1em;
+    padding-bottom: 0.5em;
+}
+
+table tbody td ul.status {
+    list-style: none;
+    padding-left: 0em;
+}
+
+table tbody td ul li {
+    margin: 0;
+    padding: 0;
+}
+
+
 
 #information {
     padding: 0.5em;
@@ -294,6 +358,125 @@ main ul.result_messages li {
     margin-bottom: 0.5em;
 }
 
+main div.redirect,
+main div.error,
+main div.success {
+    margin: 2em;
+    margin-top: 4em;
+    padding: 1em;
+    font-size: 135%;
+    background-color: #EEEEEE;
+    text-align: center;
+}
+
+main div.error {
+    border: red solid thin; 
+}
+
+main div.success {
+    border: #337ab7 solid thin; 
+}
+
+main .fae_input {
+    position: relative;
+    left: -6px;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    padding: 0;
+    padding-left: 4px;
+}
+
+main .fae_input_text,
+main .fae_select ,
+main .fae_textarea {
+    padding: 3px;
+}
+
+main .fae_button {
+    position: relative;
+    left: -2px;
+    top: 4px;
+    padding: 2px;
+    border: 2px solid transparent;
+}
+
+main .fae_input label {
+    position: relative;
+    top: .125em;
+}
+
+main .fae_focus {
+    border-color: black;
+    background-color: #EEEEEE;
+}
+
+main .fae_hover {
+    background-color: #CCCCCC;
+}
+
+main input[disabled] .fae_hover {
+    border-color: transparent;
+    background-color: white`;
+}
+
+
+main input[type=button],
+main input[type=submit] {
+    padding: 5px 15px; 
+    border: 1px solid #337ab7;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 4px; 
+    background-color: #EEEEEE;
+    font-weight: bold;
+}
+
+main input[type=button]:focus,
+main input[type=submit]:focus,
+main input[type=button]:hover,
+main input[type=submit]:hover {
+    padding: 4px 14px; 
+    border-width: 2px;
+    border-color: black;
+}
+
+main input[type=button].sort-button,
+main input[type=submit].sort-button {
+    padding: 2px 2px; 
+    border: 1px solid black;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 4px; 
+    background-color: #EEEEEE;
+    font-weight: normal;
+}
+
+
+main input[type=button].sort-button:focus,
+main input[type=submit].sort-button:focus,
+main input[type=button].sort-button:hover,
+main input[type=submit].sort-button:hover {
+    padding: 1px 1px; 
+    border-width: 2px;
+    border-color: #337ab7;
+}
+
+main input[type=button][disabled].sort-button {
+    color: #808080;
+    border-color: #808080;
+}
+
+main input[type="button"]:focus,
+main input[type="submit"]:focus {
+    border-width: 2px;    
+}
+
+main .fae_info_button {
+    padding: 0.125em;
+    color: rgb(51, 122, 183);
+    color: red;
+}
+
 #summary table.summary
 {
     margin-top: 2em;
@@ -375,6 +558,12 @@ legend {
     margin-bottom: 0.25em;
 }
 
+fieldset input[disabled] + label,
+input[disabled] + label,
+label.disabled {
+    color: gray;
+}
+
 fieldset label {
     font-weight: normal;
 }
@@ -401,11 +590,11 @@ div.checkbox input[type="checkbox"] {
 }
 
 div.checkbox label {
-    display: inline;
+    position: realtive;
+    top: -0.075em;
     font-size: 120%;
     font-weight: bold;
 }
-
 
 
 input[type="button"] {
@@ -415,7 +604,6 @@ input[type="button"] {
 main input[type="submit"] {
     font-size: 120%;
     margin-top: 2em;
-    margin-bottom: 5em;
 }
 
 main input[type="submit"][disabled] {
@@ -480,6 +668,16 @@ nav li.highlight a {
    background-color: #EEEEEE;
 }
 
+main table th.text,
+main table td.text {
+    text-align: left;
+}
+
+main table th.num,
+main table td.num {
+    text-align: right;
+}
+
 main table .complete {
     color: #006400;
 }
@@ -498,6 +696,12 @@ main table .manual_checks {
 }
 
 main table .not_applicable {
+    color: gray;
+}
+
+main .fae-info-button {
+    position: relative;
+    top: 0.5em;
     color: gray;
 }
 
@@ -520,4 +724,39 @@ table label {
     margin-top: 0.5em;
     margin-bottom: 0.5em;
     margin-right: 0.25em;
+}
+
+main a[href],
+main a[href] code {
+  text-decoration: none;
+  border-bottom: 1px solid #337ab7;
+}
+
+main a[href] code {
+    padding-bottom: 0;
+}
+
+main a[href]:focus,
+main .focus  {
+  outline-offset: 0.125em;
+  outline: 2px solid black;
+  background-color: #EEEEEE;
+  border-color: transparent;
+}
+
+main a[href]:hover,
+main a[href] code:hover,
+main .fae_info_button:hover {
+  background-color: #DDDDDD;
+}
+
+summary {
+    display: list-item;
+}
+
+dl.contact {
+    margin-left: 1em;
+}
+dl.contact dt {
+    margin-top: 0.25em;
 }

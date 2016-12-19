@@ -268,6 +268,11 @@ table tbody td ul li {
     margin-top: 0.25em;
 }
 
+#information .highlight {
+/*  color: #FF443A; */
+  color: #FF170B;     
+}
+
 #id_table_show_summary_default {
     margin-top: -1em;
 }
@@ -472,9 +477,20 @@ main input[type="submit"]:focus {
 }
 
 main .fae_info_button {
-    padding: 0.125em;
+    padding: 0;
+    margin-left: 0.5em;
     color: rgb(51, 122, 183);
 }
+
+main fieldset div legend {
+    display: inline;
+}
+
+main legend .fae_info_button {
+    font-size: 90%;
+    font-weight: normal;
+}
+
 
 #summary table.summary
 {
@@ -698,9 +714,6 @@ main table .not_applicable {
     color: gray;
 }
 
-main .fae-info-button {
-    color: gray;
-}
 
 table td.text input[type=button] {
     font-size: 95%;

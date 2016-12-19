@@ -84,38 +84,22 @@ def stripQuotes(s):
 
 def statusToDatabase(ws_report, file_status):
   # get usage object corresponding to ws_report
-  
-  try: 
-    #create usage object
-    un    = ws_report.user.username
-    rs_id = ws_report.ruleset.ruleset_id
-        
-    usage = Usage(username=un, ruleset_id=rs_id, ws_report_id=ws_report.id)  
-    usage.save()
-  except:
-    usage = False
-    error("Error creating usage file for: " + str(ws_report))
-    
+              
   for line in file_status:
     parts = line.split('=')
     if len(parts) == 2:
       if parts[0] == 'processed':
         ws_report.processed_urls_count   = int(parts[1])  
-        if usage:
-          usage.processed_urls_count   = int(parts[1])
       elif parts[0] == 'unprocessed':      
         ws_report.unprocessed_urls_count = int(parts[1]) 
-        if usage:
-          usage.unprocessed_urls_count   = int(parts[1]) 
       elif parts[0] == 'filtered':      
         ws_report.filtered_urls_count    = int(parts[1]) 
-        if usage:
-          usage.filtered_urls_count    = int(parts[1])  
       elif parts[0] == 'time':
         ws_report.processing_time = int(float(parts[1])*1000.0)
-        if usage:
-          usage.processing_time = int(float(parts[1])*1000.0)
-            
+      elif parts[0] == 'more_urls':
+        ws_report.more_urls = ('true' == parts[1].strip().lower())
+
+  print('MORE URLS: ' + str(ws_report.more_urls))           
   try:      
     ws_report.save()    
     if usage:

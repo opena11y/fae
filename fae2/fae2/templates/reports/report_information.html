@@ -36,4 +36,8 @@
      </ul>  
   </div>
 
+  {% if report.more_urls %}
+  <div class="more_urls"><span class="highlight">Maximum page limit was reached</span>: The report does <strong style="text-decoration: underline">not</strong> contain all the pages that could have been analyzed. Increase the &quot;Maximum Page&quot; setting to spider all the pages, which may require purchasing a <a href="{% url 'update_subscription' %}">subscription</a>.</div>
+  {% endif %}
+
 </section>

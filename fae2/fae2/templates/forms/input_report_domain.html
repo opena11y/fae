@@ -1,5 +1,11 @@
     <div class="input" >
         <label for="id_input_domain">Domain</label>
+        <span class="fae_info_button" aria-controls="id_inst_domain"></span>
+        <div id="id_inst_domain" class="fae_info">             
+            The <code>domain</code> name to begin spidering the pages in a website.  
+            Unless additional domain information is defined, only pages that 
+            have this domain name will be included in the evaluation.
+        </div>    
         <div {% if form.domain.errors|length %}class="error"{% endif %}>
         <div class="fae_input fae_input_text">
             <input 

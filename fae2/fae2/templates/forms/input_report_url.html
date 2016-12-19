@@ -3,7 +3,7 @@
         
         <span class="fae_info_button" aria-controls="id_inst_url"></span>
         <div id="id_inst_url" class="fae_info">             
-            If you include a <code>path</code> as part of the URL if will be used to filter the URLs analyzed, just like the <code>domain</code> name filter.
+            If you include a <code>path</code> (e.g. /path/) as part of the URL it will be used to filter the pages analyzed, just like the <code>domain</code> (e.g. example.org) name filter.
         </div>
 
         <div {% if form.url.errors|length %}class="error"{% endif %}>
@@ -15,8 +15,8 @@
                 value="{{form.url.value}}"
                 {% if form.url.errors|length %}aria-invalid="true"{% endif %}
                 size="60"
-                placeholder="http://www.example.org/path/"
-                title="URL must start with http:// or https://, example: http://www.example.org"/> 
+                placeholder="http://example.org/path/"
+                title="URL must start with http:// or https://, example: http://example.org"/> 
         </div>    
         {% if form.url.errors|length %}
         <label class="error" for="id_input_url">{% for error in form.url.errors %}{{error}}{% endfor %}</label>
