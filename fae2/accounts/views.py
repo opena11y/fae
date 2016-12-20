@@ -48,7 +48,6 @@ from websiteResultGroups.models  import WebsiteReportGroup
 
 from fae2.settings import FAE_DISABLED_URL
 
-
 from reports.views import get_default_url
 
 from subscriptions.models        import Payment
@@ -90,6 +89,8 @@ from fae2.settings import PROCESSING_THREADS
 
 from userProfiles.models import UserProfile
 from stats.models        import StatsUser
+
+from userProfiles.models import get_profile
 
 
 def id_generator(size=6, chars=string.ascii_uppercase + string.digits):
@@ -165,20 +166,8 @@ class ShibbolethLogin(RedirectView):
             user.is_superuser = True
             user.save()
 
-        try: 
-            profile = UserProfile.objects.get(user=user)
-        except:    
-            atype = AccountType.objects.get(type_id=DEFAULT_ACCOUNT_TYPE)
-            profile = UserProfile(user=user, account_type=atype)
-            profile.save()
+        profile = get_profile(user)    
 
-        try: 
-            stats = StatsUser.objects.get(user=user)
-        except ObjectDoesNotExist:
-            wsrg =  WebsiteReportGroup(title="Summary of results for " + str(user))
-            wsrg.save()
-            stats = StatsUser(user=user, ws_report_group=wsrg)  
-            stats.save()
 
         # Try to populate user information from shibboleth information
         if user.first_name == '' or user.last_name == '' or user.email == '':

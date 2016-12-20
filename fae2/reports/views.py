@@ -58,6 +58,8 @@ from wcag20.models         import Guideline
 from rules.models          import RuleScope
 from contact.models        import Announcement
 
+from userProfiles.models import get_profile
+
 
 
 
@@ -515,11 +517,12 @@ class RunReportView(LoginRequiredMixin, FAENavigationMixin, CreateView):
         except:
             last_report = False    
 
-        user_profile = UserProfile.objects.get(user=self.request.user)
-        check_for_announcements(user_profile, self.request)
+        profile = get_profile(user=self.request.user)
 
+        check_for_announcements(profile, self.request)
+        
         if PAYMENT_ENABLED:
-            user_profile.check_for_subscription_messages(self.request)
+            profile.check_for_subscription_messages(self.request)
 
         context['last_report'] = last_report
         

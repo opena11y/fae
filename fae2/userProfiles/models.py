@@ -56,6 +56,25 @@ from datetime import datetime
 
 from datetime import date
 
+def get_profile(user):
+    try: 
+        profile = UserProfile.objects.get(user=user)
+    except:    
+        atype = AccountType.objects.get(type_id=DEFAULT_ACCOUNT_TYPE)
+        profile = UserProfile(user=user, account_type=atype)
+        profile.save()
+
+    try: 
+        stats = StatsUser.objects.get(user=user)
+    except ObjectDoesNotExist:
+        wsrg =  WebsiteReportGroup(title="Summary of results for " + str(user))
+        wsrg.save()
+        stats = StatsUser(user=user, ws_report_group=wsrg)  
+        stats.save()
+
+    return profile
+
+
 SUBSCRIPTION_STATUS_CHOICES = (
     ('FREE',    'Free'),
     ('CURRENT',  'Current'),
