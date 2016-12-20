@@ -26,6 +26,17 @@ from registration.signals       import user_registered
 from timezone_field             import TimeZoneField
 
 
+
+from django.core.exceptions import ObjectDoesNotExist
+from django.core.urlresolvers import reverse
+from django.template.loader   import render_to_string
+
+from django.db.models import Q
+
+from django.contrib import messages
+
+import markdown
+
 from accounts.models            import AccountType
 from subscriptions.models       import Payment
 from websiteResultGroups.models import WebsiteReportGroup
@@ -35,15 +46,6 @@ from django.contrib.sites.models import Site
 
 from contact.models              import Announcement
 
-
-from django.core.urlresolvers import reverse
-from django.template.loader   import render_to_string
-
-from django.db.models import Q
-
-from django.contrib import messages
-
-import markdown
 
 from fae2.settings import DEFAULT_ACCOUNT_TYPE
 
