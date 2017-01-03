@@ -2,7 +2,7 @@
         <label for="id_input_path">Path</label> 
         <span class="fae_info_button" aria-controls="id_inst_path"></span>
         <div id="id_inst_path" class="fae_info">             
-            If you include a <code>path</code> it will be used to filter the pages analyzed, just like the <code>domain</code> name filter.  Defining a <code>path</code> filter disables the &quot;Domain Information&quot; options.
+            If you include a <code>path</code> only pages that include the specificed domain and path will be included in the evaluation, other following or exlcuding link options are disabled.
         </div>
         <div {% if form.path.errors|length %}class="error"{% endif %}>
         <div class="fae_input fae_input_text">

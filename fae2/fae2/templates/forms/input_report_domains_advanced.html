@@ -1,12 +1,15 @@
     <fieldset>
       <legend>Following and/or Excluding Links</legend>
 
+      <p>NOTE: If you include a <code>path</code> (e.g. /path/) only pages with the specified domain and path will be included in the report. </p>
+
+      <p>
 
       <div class="input">
-        <label id="id_input_span_sub_domains_label" for="id_input_span_sub_domains">Include links with the any next level subdomain of the following domains</label>
+        <label id="id_input_span_sub_domains_label" for="id_input_span_sub_domains">Include links with any next-level subdomain of the following domains</label>
         <span class="fae_info_button" aria-controls="id_inst_span_sub_domains"></span>
         <div id="id_inst_span_sub_domains" class="fae_info">             
-            Include pages found with any first level sub-domain of the following <code>domain</code> names, unless excluded by the next option.
+            Include pages found with any next-level sub-domain of the following <code>domain</code> names, unless excluded by the next option.
             (Note: domain names are space separated).
         </div>    
         <div {% if form.span_sub_domains.errors|length %}class="error"{% endif %}>
@@ -26,7 +29,7 @@
       </div>
 
       <div class="input">
-        <label id="id_input_exclude_sub_domains_label" for="id_input_exclude_sub_domains">Exclude links with the following Domains</label>
+        <label id="id_input_exclude_sub_domains_label" for="id_input_exclude_sub_domains">Exclude links with the following domains</label>
         <span class="fae_info_button" aria-controls="id_inst_exclude_sub_domains"></span>
         <div id="id_inst_exclude_sub_domains" class="fae_info">             
             Exclude pages found with the following <code>domain</code> names from the evaluation.
