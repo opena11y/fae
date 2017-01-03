@@ -3,7 +3,7 @@
         
         <span class="fae_info_button" aria-controls="id_inst_url"></span>
         <div id="id_inst_url" class="fae_info">             
-            If you include a <code>path</code> (e.g. /path/) as part of the URL it will be used to filter the pages analyzed, just like the <code>domain</code> (e.g. example.org) name filter.
+            If you include a <code>path</code> (e.g. /path/) only pages with that domain and path will be included in the report.
         </div>
 
         <div {% if form.url.errors|length %}class="error"{% endif %}>
