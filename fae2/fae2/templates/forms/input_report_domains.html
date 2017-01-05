@@ -21,12 +21,13 @@
                 checked
                 {% endif %}
             />
-            <label for="id_follow_1">Include links with specified domain only (optionally path)</label>
+            <label for="id_follow_1">Specified domain only</label>
 
         </div>
 
-        <div class="fae_input">
-            <label id="id_input_require_path_label" style="display: block; margin-left: 1em;" class="{% if not form.path.value %}disabled{% endif %}">
+        <div class="fae_input_indent">
+
+            <div class="fae_input">
                 <input 
                     id="id_input_require_path" 
                     type="checkbox" 
@@ -36,13 +37,15 @@
                     {% endif %}
                     {% if not form.path.value %}disabled{% endif %}
                 />
-                Include only links with path:
+                <label for="id_input_require_path" class="{% if not form.path.value %}disabled{% endif %}">
+                With specified path:
                 {% if form.path and form.path.length %}
                 <span id="id_path_value">{{form.path.value}}</span>
                 {% else %}
                 <span id="id_path_value" class="undefined">no path defined</span>
-                {% endif %} 
-            </label>
+                {% endif %}
+                </label>
+            </div>
         </div>    
 
  
@@ -56,12 +59,13 @@
                 checked
                 {% endif %}
             />
-            <label for="id_follow_2">Include links with next-level subdomains <span class="fae_info_button" aria-controls="id_inst_follow_2"></span></label>
+            <label for="id_follow_2">Specified domain and all of its next-level subdomains <span class="fae_info_button" aria-controls="id_inst_follow_2"></span></label>
             
       </div>
-    <div id="id_inst_follow_2" class="fae_info">             
-        Include pages found with any next-level sub-domain domain specified in the starting URL (e.g. calendar.somewhere.org, events.somewhere.org).
-    </div>    
+
+        <div id="id_inst_follow_2" class="fae_input_indent fae_info">             
+            Include pages found with any next-level sub-domain domain specified in the starting URL (e.g. calendar.somewhere.org, events.somewhere.org).
+        </div>    
 
        {% if profile.account_type.advanced %}   
   
@@ -75,21 +79,19 @@
                 checked
                 {% endif %}
             />
-            <label for="id_follow_3">Include and exclude links using following domain information:</label>
+            <label for="id_follow_3">Specified domain and the following inclusions and/or exclusions:</label>
         </div>
             
-       <div class="fae_input">
+        <div class="fae_input_indent">
  
-                <div style="margin-left: 1em;">
-
-                  <div class="input">
-                    <label id="id_input_span_sub_domains_label" for="id_input_span_sub_domains" style="margin-top: 0em;">Include links with any next-level subdomain of the following domains</label>
-                    <span class="fae_info_button" aria-controls="id_inst_span_sub_domains"></span>
-                    <div id="id_inst_span_sub_domains" class="fae_info">             
-                        Include pages found with any next-level sub-domain of the following <code>domain</code> names, unless excluded by the next option.
-                        (Note: domain names are space separated).
-                    </div>    
-                    <div {% if form.span_sub_domains.errors|length %}class="error"{% endif %}>
+            <div class="input">
+                <label id="id_input_span_sub_domains_label" for="id_input_span_sub_domains" >Include links with any next-level subdomain of the following domains</label>
+                <span class="fae_info_button" aria-controls="id_inst_span_sub_domains"></span>
+                <div id="id_inst_span_sub_domains" class="fae_info">             
+                    Include pages found with any next-level sub-domain of the following <code>domain</code> names, unless excluded by the next option.
+                    (Note: domain names are space separated).
+                </div>    
+                <div {% if form.span_sub_domains.errors|length %}class="error"{% endif %}>
                     <div class="fae_input fae_input_text">
                       <input 
                           id="id_input_span_sub_domains"
@@ -102,17 +104,17 @@
                     {% if form.span_sub_domains.errors|length %}
                     <label class="error" for="id_input_span_sub_domains">{% for error in form.span_sub_domains.errors %}{{error}}{% endfor %}</label>
                     {% endif %}
-                    </div>
-                  </div>
+                </div>
+            </div>
 
-                  <div class="input">
-                    <label id="id_input_exclude_domains_label" for="id_input_exclude_domains" style="margin-top: 0em;">Exclude links with the following domains</label>
-                    <span class="fae_info_button" aria-controls="id_inst_exclude_domains"></span>
-                    <div id="id_inst_exclude_domains" class="fae_info">             
-                        Exclude pages found with the following <code>domain</code> names from the evaluation.
-                        (Note: domain names are space separated).
-                    </div>    
-                    <div {% if form.exclude_domains.errors|length %}class="error"{% endif %}>
+            <div class="input">
+                <label id="id_input_exclude_domains_label" for="id_input_exclude_domains" >Exclude links with the following domains</label>
+                <span class="fae_info_button" aria-controls="id_inst_exclude_domains"></span>
+                <div id="id_inst_exclude_domains" class="fae_info">             
+                    Exclude pages found with the following <code>domain</code> names from the evaluation.
+                    (Note: domain names are space separated).
+                </div>    
+                <div {% if form.exclude_domains.errors|length %}class="error"{% endif %}>
                     <div class="fae_input fae_input_text">
                       <input 
                           id="id_input_exclude_domains"
@@ -122,37 +124,35 @@
                           size="80"
                           placeholder="blog.somewhere.org news.somewhere.org events.elsewhere.org"/>
                     </div>      
-                    {% if form.exclude_domains.errors|length %}
-                    <label class="error" for="id_input_exclude_domains">{% for error in form.exclude_domains.errors %}{{error}}{% endfor %}</label>
-                    {% endif %}
-                    </div>
-                  </div>
+                {% if form.exclude_domains.errors|length %}
+                <label class="error" for="id_input_exclude_domains">{% for error in form.exclude_domains.errors %}{{error}}{% endfor %}</label>
+                {% endif %}
+                </div>
+            </div>    
 
-                  <div class="input">
-                    <label id="id_input_include_domains_label" for="id_input_include_domains" style="margin-top: 0em;">Include links with the following domains</label>
-                    <span class="fae_info_button" aria-controls="id_inst_include_domains"></span>
-                    <div id="id_inst_include_domains" class="fae_info">             
-                        Include links found with the following <code>domain</code> names in the evaluation.
-                        (Note: domain names are space separated).
-                    </div>    
-                    <div {% if form.include_domains.errors|length %}class="error"{% endif %}>
+            <div class="input">
+                <label id="id_input_include_domains_label" for="id_input_include_domains">Include links with the following domains</label>
+                <span class="fae_info_button" aria-controls="id_inst_include_domains"></span>
+                <div id="id_inst_include_domains" class="fae_info">             
+                    Include links found with the following <code>domain</code> names in the evaluation.
+                    (Note: domain names are space separated).
+                </div>    
+                <div {% if form.include_domains.errors|length %}class="error"{% endif %}>
                     <div class="fae_input fae_input_text">
-                    <input 
-                        id="id_input_include_domains"
-                        name="include_domains"
-                        {% if form.include_domains.errors|length %}aria-invalid="true"{% endif %}
-                        value="{{form.include_domains.value}}"
-                        size="80"
-                        placeholder="events.somewhere.org calendar.elsewhere.org"/>
+                        <input 
+                            id="id_input_include_domains"
+                            name="include_domains"
+                            {% if form.include_domains.errors|length %}aria-invalid="true"{% endif %}
+                            value="{{form.include_domains.value}}"
+                            size="80"
+                            placeholder="events.somewhere.org calendar.elsewhere.org"/>
                     </div>    
                     {% if form.include_domains.errors|length %}
                     <label class="error" for="id_input_include_domains">{% for error in form.include_domains.errors %}{{error}}{% endfor %}</label>
                     {% endif %}
-                    </div>
-                  </div>
                 </div>
+            </div>
         </div>
-        {% else %}
         {% endif %}   
 
     </fieldset>    

@@ -1,17 +1,22 @@
    
-    function parseURL(url) {
+    function getParsedURL() {
+
+        var node_url = document.getElementById('id_input_url');
 
         var parser = document.createElement('a'),
             searchObject = {},
             queries, split, i;
+
         // Let the browser do the work
-        parser.href = url;
+        parser.href = node_url.value;
+
         // Convert query string to object
         queries = parser.search.replace(/^\?/, '').split('&');
         for( i = 0; i < queries.length; i++ ) {
             split = queries[i].split('=');
             searchObject[split[0]] = split[1];
         }
+
         return {
             protocol: parser.protocol,
             host: parser.host,
@@ -24,123 +29,183 @@
         };
     }
 
-   function enableSubmit() {
+    function enableSubmit() {
 
-     function test_url() {
+      function test_url() {
 
-       var s  = node_url.value;
-       s = s.trim();
+        var url_info = getParsedURL();
+
+        var s  = node_url.value;
+        s = s.trim();
        
-       return s.length > 0;
+        return s.length > 0;
      
-     }
+      }
 
-     function test_title() {
+      function test_title() {
   
-       var s  = node_title.value;
-       s = s.trim();
+        var s  = node_title.value;
+        s = s.trim();
        
-       return s.length > 0;
+        return s.length > 0;
    
-     }
+      }
 
-     var node_url      = document.getElementById('id_input_url');
-     var node_title    = document.getElementById('id_input_title');
-     var node_submit   = document.getElementById('id_submit');
+      var node_url      = document.getElementById('id_input_url');
+      var node_title    = document.getElementById('id_input_title');
+      var node_submit   = document.getElementById('id_submit');
 
-     if (test_url() && test_title()) {
+      updatePathOption();
+
+      if (test_url() && test_title()) {
         node_submit.disabled = false;
         node_submit.setAttribute('title', 'Submit form to start evaluation');     
-     }
-     else {
+      }
+      else {
         node_submit.disabled = true;
         node_submit.setAttribute('title', 'You must enter a valid URL and a title before you can request a report');     
-     }
-   
-   }
+      }
+    }
    
    
    function disableSubmit() {
-     enableFollow();
      
      var node_submit = document.getElementById('id_submit');     
      node_submit.disabled = true;
      node_submit.setAttribute('title', 'Report request has already been sent');     
    }
    
-   function enableFollow() {
-    
-      var fs = document.getElementById("id_following"); 
+    function disableFollowOptions () {
+      var follow1   = document.getElementById("id_follow_1");
+      follow1.checked = true;
+      updatePathOption();
 
-      if (fs)  {
+      var follow2   = document.getElementById("id_follow_2");
+      follow2.disabled = true;
 
-        var controls = fs.getElementsByTagName("input");
-        
-        fs.className = "follow";      
+      var follow3   = document.getElementById("id_follow_3");
+      follow3.disabled = true;
+      disableAdvancedOptions();
 
-        for(var i = 1; i < controls.length; i++) {
-            var c = controls[i];           
-            c.removeAttribute('disabled');
-        }
+    }
 
+    function enableFollowOptions () {
+      var follow1   = document.getElementById("id_follow_1");
+      if (follow1.checked) {
+        updatePathOption();
       }
+      else {
+        disablePathOption();     
+      }  
 
-      var n = document.getElementById("id_input_span_sub_domains");
-      if (n) n.removeAttribute('disabled');
-      n = document.getElementById("id_input_span_sub_domains_label");
-      if (n) n.classList.remove('disabled');
+      var follow2   = document.getElementById("id_follow_2");
+      follow2.disabled = false;
 
-      n = document.getElementById("id_input_exclude_domains");
-      if (n) n.removeAttribute('disabled');
-      n = document.getElementById("id_input_exclude_domains_label");
-      if (n) n.classList.remove('disabled');
+      var follow3   = document.getElementById("id_follow_3");
+      follow3.disabled = false;
+      if (follow3.checked) {
+        enableAdvancedOptions();
+      }
+      else {
+        disableAdvancedOptions();
+      }
+    }
 
-      n = document.getElementById("id_input_include_domains");
-      if (n) n.removeAttribute('disabled');
-      n = document.getElementById("id_input_include_domains_label");
-      if (n) n.classList.remove('disabled');
-   } 
+    function updatePathOption() {
 
-   function disableFollow() {
-    
-      var fs = document.getElementById("id_following");
+      var n;
+      var url_info = getParsedURL();
+      var path_value = document.getElementById("id_path_value");
+      var follow_1   = document.getElementById("id_follow_1");
 
-      if (fs) {
+      if (url_info.pathname && (url_info.pathname.length > 1)) {
 
-        var controls = fs.getElementsByTagName("input");
+        path_value.innerHTML = url_info.pathname;
+        path_value.classList.remove('undefined');
+
+        if (follow_1.checked) {
+          n = document.getElementById("id_input_require_path");
+          if (n) n.removeAttribute('disabled');
+          n = document.getElementById("id_input_require_path_label");
+          if (n) n.classList.remove('disabled');          
         
-        fs.className = "follow disabled"
-          
-        for(var i = 0; i < controls.length; i++) {
-          var c = controls[i];
-          if (i === 0) {
-            c.setAttribute('checked','');
-          }
-          else {
-             c.setAttribute('disabled', '');
-           }
         }
       }
       else {
-        // for advanced reports
+        path_value.innerHTML = "no path defined";
+        path_value.classList.add('undefined');
+        disablePathOption();
+      }
 
+    }
+
+    function disablePathOption() {
+      var n = document.getElementById("id_input_require_path");
+      if (n) n.setAttribute('disabled', '');
+      n = document.getElementById("id_input_require_path_label");
+      if (n) n.classList.add('disabled');
+    }
+
+    function enableAdvancedOptions() {
       var n = document.getElementById("id_input_span_sub_domains");
-      if (n) n.setAttribute('disabled','');
+      if (n) n.removeAttribute('disabled');
+      n = document.getElementById("id_input_span_sub_domains_label");
+      if (n) n.classList.remove('disabled');
+
+      n = document.getElementById("id_input_exclude_domains");
+      if (n) n.removeAttribute('disabled');
+      n = document.getElementById("id_input_exclude_domains_label");
+      if (n) n.classList.remove('disabled');
+
+      n = document.getElementById("id_input_include_domains");
+      if (n) n.removeAttribute('disabled');
+      n = document.getElementById("id_input_include_domains_label");
+      if (n) n.classList.remove('disabled');      
+    }
+
+    function disableAdvancedOptions() {
+      var n = document.getElementById("id_input_span_sub_domains");
+      if (n) n.setAttribute('disabled', '');
       n = document.getElementById("id_input_span_sub_domains_label");
       if (n) n.classList.add('disabled');
 
       n = document.getElementById("id_input_exclude_domains");
-      if (n) n.setAttribute('disabled','');
+      if (n) n.setAttribute('disabled', '');
       n = document.getElementById("id_input_exclude_domains_label");
       if (n) n.classList.add('disabled');
 
       n = document.getElementById("id_input_include_domains");
-      if (n) n.setAttribute('disabled','');
+      if (n) n.setAttribute('disabled', '');
       n = document.getElementById("id_input_include_domains_label");
-      if (n) n.classList.add('disabled');
+      if (n) n.classList.add('disabled');      
+    }
 
+
+    function updateFollow(event) {
+      var follow1   = document.getElementById("id_follow_1");
+      var follow2   = document.getElementById("id_follow_2");
+      var follow3   = document.getElementById("id_follow_3");
+
+      updatePathOption();
+
+      if (follow1.checked) {
+        disableAdvancedOptions();
       }
-    } 
+      else {
+
+        if (follow2.checked) {
+          disablePathOption();
+          disableAdvancedOptions();
+        }
+        else {
+          if (follow3.checked) {
+            disablePathOption();          
+            enableAdvancedOptions();
+          }        
+        }
+      }
+   } 
+
 
    function enableMaxPages() {
     
@@ -181,67 +246,67 @@
     } 
 
 
-   function updateFollow() {
+   function updateDepth(event) {
+
     
-      var depth1 = document.getElementById("depth_1");
+      var depth1 = document.getElementById("id_depth_1");
+
+      console.log(depth1.checked);
 
       if (depth1.checked) {
         disableMaxPages();
+        disableFollowOptions();
       }  
       else {
         enableMaxPages();
+        enableFollowOptions();
       }  
 
-      var url = document.getElementById("id_input_url");
-
-      if (url) {
-        var parts = parseURL(url.value);
-        var pathname = parts.pathname;
-
-        if (pathname.length > 1) {
-          pathname = pathname.slice(1);
-
-          if (pathname.length) {
-            if (pathname[pathname.length-1] === '/') {
-              pathname = pathname.substring(0, pathname.length-1);
-            }
-          }
-
-          if (pathname.length || depth1.checked) {
-            disableFollow();
-          }
-          else {
-            enableFollow();
-          }
-        }
-        else {
-          if (depth1.checked) {
-            disableFollow();
-          }
-          else {
-            enableFollow();
-          }
-        }  
-      }
     };
-
-    function checkURL() {
-      enableSubmit();
-      updateFollow();
-    };
-
 
 
     function initRun () {
 
-      enableSubmit();
+      var c;
 
-      var c = document.getElementById('id_input_url');
+      enableSubmit();
+      updateFollow();
+
+      c = document.getElementById('id_input_url');
 
       if (c) {
-        c.addEventListener('keyup', checkURL);
-        c.addEventListener('blur', checkURL);
+        c.addEventListener('keyup', enableSubmit);
+        c.addEventListener('blur', enableSubmit);
       }
+
+      c = document.getElementById('id_input_title');
+
+      if (c) {
+        c.addEventListener('keyup', enableSubmit);
+        c.addEventListener('blur', enableSubmit);
+      }
+
+      i = 1
+      c = document.getElementById('id_depth_' + i);
+      while(c) {
+
+        c.addEventListener('click', updateDepth);
+
+        i += 1;
+        c = document.getElementById('id_depth_' + i);
+      }
+
+      i = 1
+      c = document.getElementById('id_follow_' + i);
+      while(c) {
+
+        c.addEventListener('click', updateFollow);
+
+        i += 1;
+        c = document.getElementById('id_follow_' + i);
+      }
+
+
     }
 
 window.addEventListener('load', initRun);

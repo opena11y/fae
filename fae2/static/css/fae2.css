@@ -213,8 +213,6 @@ table tbody td ul li {
     padding: 0;
 }
 
-
-
 #information {
     padding: 0.5em;
     margin: 0;
@@ -382,6 +380,10 @@ main div.success {
     border: #337ab7 solid thin; 
 }
 
+main .fae_input_indent {
+    margin-left: 1.1em;
+}
+
 main .fae_input {
     position: relative;
     left: -6px;
@@ -390,6 +392,7 @@ main .fae_input {
     padding: 0;
     padding-left: 4px;
 }
+
 
 main .fae_input_text,
 main .fae_select ,
@@ -597,6 +600,9 @@ div.input select {
     display: block;
 }
 
+div.fae_input_indent div.input label {
+    margin-top: 0;
+}
 
 div.checkbox input[type="checkbox"] {
     margin: 0;
