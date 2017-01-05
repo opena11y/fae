@@ -56,8 +56,12 @@
                 checked
                 {% endif %}
             />
-            <label for="id_follow_2">Include links with next-level subdomains</label>
-        </div>
+            <label for="id_follow_2">Include links with next-level subdomains <span class="fae_info_button" aria-controls="id_inst_follow_2"></span></label>
+            
+      </div>
+    <div id="id_inst_follow_2" class="fae_info">             
+        Include pages found with any next-level sub-domain domain specified in the starting URL (e.g. calendar.somewhere.org, events.somewhere.org).
+    </div>    
 
        {% if profile.account_type.advanced %}   
   

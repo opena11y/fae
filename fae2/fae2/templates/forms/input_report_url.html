@@ -3,7 +3,7 @@
         
         <span class="fae_info_button" aria-controls="id_inst_url"></span>
         <div id="id_inst_url" class="fae_info">             
-            If you include a <code>path</code> (e.g. /path/) only pages with the domain and path will be included in the evaluation.  Links in the same domain without a path or have a different path will not be included in the evaluation.
+            If you include a <code>path</code> (e.g. /path/) in the URL you can optionally use the path as a requirement for pages included in the evaluation, see first option the "Following Links in" section of the form.  
         </div>
 
         <div {% if form.url.errors|length %}class="error"{% endif %}>
