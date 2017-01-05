@@ -49,8 +49,11 @@
   last_report.depth      = {{last_report.depth}};
   last_report.max_pages  = {{last_report.max_pages}};
   last_report.depth_id   = "depth_" + last_report.depth.toString();
-  
-  last_report.span_sub_domains     = "{{last_report.span_sub_domains}}";
+
+  last_report.follow              = {{last_report.follow}};
+  last_report.require_path        = {% if last_report.require_path %}true{% else %}false{% endif %};
+  last_report.path                = "{{last_report.path}}";
+  last_report.span_sub_domains    = "{{last_report.span_sub_domains}}";
   last_report.exclude_sub_domains = "{{last_report.exclude_sub_domains}}";
   last_report.include_domains     = "{{last_report.include_domains}}";
   {% else %}
@@ -61,7 +64,10 @@
   last_report.max_pages  = 0;
   last_report.depth_id   = "depth_2";
   
-  last_report.span_sub_domains     = "";
+  last_report.follow              = 1;
+  last_report.require_path        = false;
+  last_report.path                = "";
+  last_report.span_sub_domains    = "";
   last_report.exclude_sub_domains = "";
   last_report.include_domains     = "";
   {% endif %}
@@ -73,14 +79,19 @@
       document.getElementById("id_input_title").value = last_report.title;
       document.getElementById(last_report.depth_id).checked = true;
       
-      if (last_report.span_sub_domains.length) {
-        document.getElementById("follow_2").checked = true;
+      if (last_report.follow === 3) {
+        document.getElementById("id_follow_3").checked = true;
       }
       else {
-        document.getElementById("follow_1").checked = true;
+        if (last_report.follow === 2) {
+          document.getElementById("id_follow_2").checked = true;
+        }
+        else {
+          document.getElementById("id_follow_1").checked = true;
+        }
       }
 
-      document.getElementById("ruleset_" + last_report.ruleset_id).checked = true;
+      document.getElementById("id_ruleset_" + last_report.ruleset_id).checked = true;
 
       var max_page_input = document.getElementById("max_pages_" + last_report.max_pages);
 

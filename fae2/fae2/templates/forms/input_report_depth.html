@@ -8,7 +8,7 @@
             {% if forloop.counter <= user.profile.account_type.max_depth or forloop.counter <= user.profile.account_type.next_account_type.max_depth %}
             <div class="fae_input">
                 <input
-                    id="depth_{{ forloop.counter }}"
+                    id="id_depth_{{ forloop.counter }}"
                     type="radio"
                     name="depth"
                     value="{{choice.0}}"
@@ -18,9 +18,8 @@
                     {% if forloop.counter > user.profile.account_type.max_depth %}
                     disabled="disabled"
                     {% endif %}   
-                    onclick="updateFollow()"
                 />
-                <label for="depth_{{ forloop.counter }}">{{choice.1}}</label>
+                <label for="id_depth_{{ forloop.counter }}">{{choice.1}}</label>
             </div>
             {% endif %}
         {% endfor %}

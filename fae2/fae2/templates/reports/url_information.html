@@ -6,6 +6,12 @@
     <li>URL Information</li>
 {% endblock %}
 
+{% block content_before_title %}
+
+    {% include "reports/report_information.html" %}
+
+{% endblock %}
+
 {% block title %}
   URL Evaluation Information
 {% endblock %}
@@ -13,8 +19,6 @@
 
 {% block content %}
 
-    {% include "reports/report_information.html" %}
-    
     <h2>Summary of {{report.title}}</h2>
 
     <ul class="urls">

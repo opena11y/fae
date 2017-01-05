@@ -7,37 +7,46 @@
     {{ report.created|date:"F d, Y H:i" }}
   </div>
   
+    
+  <div class="eval_info">
+     <ul>
+        <li>URL: <a href="{{ report.url }}" target="_page">{{  report.url }}</a></li>
+        <li>Depth:     {{  report.depth }}</li>
+        <li>Ruleset:   <a title="{{report.ruleset.title_text}}" href="{% url 'ruleset' report.ruleset.slug %}">{{ report.ruleset }}</a></li>
+     </ul>  
+  </div>
+
+
+  {% if report.span_sub_domains %}
+  <div class="domains">
+     <ul>
+         {% if report.span_sub_domains %}
+         <li>Include next-level subdomains: {{ report.span_sub_domains }}</li>
+         {% endif %}
+         {% if report.exclude_sub_domains %}
+         <li>Exclude domains: {{  report.exclude_sub_domains }}</li>
+         {% endif %}
+         {% if report.include_domains %}
+         <li>Include domains: {{  report.include_domains }}</li>
+         {% endif %}
+     </ul>  
+  </div>
+  {% endif %}
+
   <div class="eval_info">
       <ul>
           <li>Pages:     {{  report.page_count }} (<a title="URL Details" href="{% url 'report_url_information' report.slug view %}">Included URLs</a>)</li>
           {% if report.max_pages %}
           <li>Maximum Pages: {{ report.max_pages }}</li>
           {% endif %}
-          <li>Depth:     {{  report.depth }}</li>
-          <li>Ruleset:   <a title="{{report.ruleset.title_text}}" href="{% url 'ruleset' report.ruleset.slug %}">{{ report.ruleset }}</a></li>
+          {% if report.user != user %}
+          <li>Created by: <a href="mailto:{{report.user.email}}">{{report.user.first_name}} {{report.user.last_name}}</a></li>
+          {% endif %}
       </ul>  
-  </div>    
-    
-  <div class="domains">
-     <ul>
-         <li>URL: <a href="{{ report.url }}" target="_page">{{  report.url }}</a></li>
-         {% if report.span_sub_domains %}
-         <li>Span sub-domains: {{  report.span_sub_domains }}</li>
-         {% endif %}
-         {% if report.exclude_sub_domains %}
-         <li>Exclude sub-domains: {{  report.exclude_sub_domains }}</li>
-         {% endif %}
-         {% if report.include_domains %}
-         <li>Include domains: {{  report.include_domains }}</li>
-         {% endif %}
-         {% if report.user != user %}
-         <li>Created by: <a href="mailto:{{report.user.email}}">{{report.user.first_name}} {{report.user.last_name}}</a></li>
-         {% endif %}
-     </ul>  
-  </div>
+  </div> 
 
   {% if report.more_urls %}
-  <div class="more_urls"><span class="highlight">Maximum page limit was reached</span>: The report does <strong style="text-decoration: underline">not</strong> contain all the pages that could have been analyzed. Increase the &quot;Maximum Page&quot; setting to spider all the pages, which may require purchasing a <a href="{% url 'update_subscription' %}">subscription</a>.</div>
+  <details class="more_urls"><summary class="highlight">Maximum page limit was reached</summary> You may want to increase the "Maximum Page" setting to include more pages, which may require purchasing a <a href="{% url 'update_subscription' %}">subscription</a>.</details>
   {% endif %}
 
 </section>

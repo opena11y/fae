@@ -178,7 +178,9 @@ fae2TableUtils.getJSON = function(url, callback) {
    		http_request.onreadystatechange  = function(){
       		if (http_request.readyState == 4) {
 		        // Javascript function JSON.parse to parse JSON data
-        		var json_array = JSON.parse(http_request.responseText);
+            var response = http_request.responseText;
+            console.log(response);
+        		var json_array = JSON.parse(response);
         		if (callback) callback(json_array);
       		}  
    		}

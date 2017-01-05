@@ -33,10 +33,10 @@
                     <td><a href="mailto:{{contact.user.email}}">{{contact.user}}</a></td>
                     <td>{{contact.date}}</td>
                     <td>{{contact.topic}}</td>
-                    <td>{{contact.message}}</td>
+                    <td><pre>{{contact.message}}</pre></td>
                     <td>
                         <a href="{% url 'response_form' contact.id %}">{{contact.show_status}} {{contact.id}}</strong><br/>
-                        {{contact.comments}}
+                        <pre>{{contact.comments}}</pre>
                     </td>
                 </tr>
                 {% endfor %}
@@ -73,10 +73,10 @@
                     <td><a href="mailto:{{contact.user.email}}">{{contact.user}}</a></td>
                     <td>{{contact.date}}</td>
                     <td>{{contact.topic}}</td>
-                    <td>{{contact.message}}</td>
+                    <td><pre>{{contact.message}}</pre></td>
                     <td>
                         <strong><a href="{% url 'response_form' contact.id %}">{{contact.show_status}} {{contact.id}}</a></strong><br/>
-                        {{contact.comments}}
+                        <pre>{{contact.comments}}</pre>
                     </td>
                 </tr>
                 {% endfor %}

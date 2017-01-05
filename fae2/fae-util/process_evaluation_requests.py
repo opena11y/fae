@@ -131,7 +131,7 @@ def initWebsiteReport(ws_report):
 #  if len(data_auth_file) > 0:  
 #    file_prop.write("authorization=" +  data_auth_file + '\n')     
   
-  if len(ws_report.path):
+  if ws_report.require_path and len(ws_report.path):
     file_prop.write("path=" + ws_report.path + '\n')
 
   file_prop.write('recommendedRules=true\n');

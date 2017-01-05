@@ -90,4 +90,5 @@ create_institutional_profile(21,'Northwestern University','northwestern','','She
 create_institutional_profile(21,'University of Washington','washington', 'uw','Terrill Thompson','tft@uw.edu','(206) 221-4168', 'Anna Marie Golden', 'amgolden@uw.edu', '(206) 221-4164', '2016-10-01', '2017-01-01')
 create_institutional_profile(21,'University of Northern Iowa','uni', '','Carolyn Dorr','carolyn.dorr@uni.edu','', '', '', '', '2016-11-10', '2017-02-01')
 create_institutional_profile(21,'Iowa State University','iastate', '','Zayira Jordan','zjordan@iastate.edu','', '', '', '', '2016-11-10', '2017-02-01')
+create_institutional_profile(21,'Southern Illinois University','siu', 'siue','Elizabeth Hunter','lizhunter@siu.edu','', '', '', '', '2017-01-05', '2017-02-01')
 

@@ -164,7 +164,8 @@ EVAL_STATUS = (
 
 FOLLOW_CHOICES = (
   (1, 'Specified domain only'),
-  (2, 'Next-level subdomains')
+  (2, 'Next-level subdomains'),
+  (3, 'Include or exclude based on set of domains')
 )
 
 
@@ -240,6 +241,7 @@ class WebsiteReport(RuleGroupResult):
   
   protocol             = models.CharField("Protocol",  max_length=16,   choices=PROTOCOL_CHOICES, default="http")
   domain               = models.CharField("Domain",    max_length=1024, default="", blank=True)
+  require_path         = models.BooleanField(default=False)
   path                 = models.CharField("Path",      max_length=1024, default="", blank=True)
 
   more_urls            = models.BooleanField(default=False)
@@ -328,21 +330,25 @@ class WebsiteReport(RuleGroupResult):
 
           self.path = trim_path(url_parts.path)
 
-
-          self.span_sub_domains     = ""
-          self.exclude_sub_domains  = ""
-          self.include_domains      = ""
-          self.follow = 1
       except:
         pass    
 
-      print('[save][     url]: ' + str(self.url))
-      print('[save][protocol]: ' + str(self.protocol))
-      print('[save][  domain]: ' + str(self.domain))
-      print('[save][    path]: ' + str(self.path))
+#      print('[save][     url]: ' + str(self.url))
+#      print('[save][protocol]: ' + str(self.protocol))
+#      print('[save][  domain]: ' + str(self.domain))
+#      print('[save][    path]: ' + str(self.path))
 
+      if self.follow == 1:
 
-      if self.follow == 2:
+        self.span_sub_domains = ""
+        self.exclude_sub_domains = ""
+        self.include_domains = ""
+
+      elif self.follow == 2:
+
+        self.exclude_sub_domains = ""
+        self.include_domains = ""
+        self.require_path = False
 
         try:
           if url_parts.netloc.find('www.') < 0:
@@ -357,6 +363,10 @@ class WebsiteReport(RuleGroupResult):
 
         except:
           pass
+
+      elif self.follow == 3:
+        self.require_path = False
+      
 
       DIR = APP_DIR
 

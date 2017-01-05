@@ -488,7 +488,7 @@ def get_default_url():
 class RunReportView(LoginRequiredMixin, FAENavigationMixin, CreateView):
 
     model = WebsiteReport
-    fields = ['url', 'title', 'depth', 'follow', 'ruleset', 'max_pages']
+    fields = ['url', 'title', 'depth', 'follow', 'ruleset', 'max_pages', 'span_sub_domains', 'exclude_sub_domains', 'include_domains', 'path', 'require_path']
     template_name = 'reports/run_report.html'
 
     success_url = reverse_lazy('processing_reports')
@@ -525,13 +525,15 @@ class RunReportView(LoginRequiredMixin, FAENavigationMixin, CreateView):
             profile.check_for_subscription_messages(self.request)
 
         context['last_report'] = last_report
+        context['profile']     = profile
+
         
         return context    
 
 class RunAdvancedReportView(LoginRequiredMixin, FAENavigationMixin, CreateView):
 
     model = WebsiteReport
-    fields = ['protocol', 'domain', 'path','title', 'depth', 'span_sub_domains', 'exclude_sub_domains', 'include_domains', 'ruleset', 'wait_time', 'max_pages']
+    fields = ['protocol', 'domain', 'path','title', 'depth', 'span_sub_domains', 'exclude_sub_domains', 'include_domains', 'ruleset', 'wait_time', 'max_pages', 'require_path']
     template_name = 'reports/run_advanced_report.html'
 
     success_url = reverse_lazy('processing_reports')

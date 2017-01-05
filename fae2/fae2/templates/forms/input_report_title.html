@@ -4,8 +4,6 @@
         <div class="fae_input fae_input_text">
             <input 
                 id="id_input_title"
-                onkeyup="enableSubmit()"
-                onblur="enableSubmit()"
                 name="title"
                 required="required"
                 {% if form.title.errors|length %}aria-invalid="true"{% endif %}
