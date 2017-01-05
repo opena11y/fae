@@ -71,7 +71,7 @@ def create_institutional_profile(type_id, title, domain, alt_domain, name1, emai
     ip.contact2_email   = email2
     ip.contact2_phone   = phone2
     ip.subscription_start  = start
-    ip.subscription_start  = end
+    ip.subscription_end    = end
 
   except ObjectDoesNotExist:
     print("  Creating Institutional Subscription: " + str(domain) + '.edu')
