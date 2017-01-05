@@ -152,9 +152,9 @@
       n = document.getElementById("id_input_span_sub_domains_label");
       if (n) n.classList.remove('disabled');
 
-      n = document.getElementById("id_input_exclude_sub_domains");
+      n = document.getElementById("id_input_exclude_domains");
       if (n) n.removeAttribute('disabled');
-      n = document.getElementById("id_input_exclude_sub_domains_label");
+      n = document.getElementById("id_input_exclude_domains_label");
       if (n) n.classList.remove('disabled');
 
       n = document.getElementById("id_input_include_domains");
@@ -169,9 +169,9 @@
       n = document.getElementById("id_input_span_sub_domains_label");
       if (n) n.classList.add('disabled');
 
-      n = document.getElementById("id_input_exclude_sub_domains");
+      n = document.getElementById("id_input_exclude_domains");
       if (n) n.setAttribute('disabled', '');
-      n = document.getElementById("id_input_exclude_sub_domains_label");
+      n = document.getElementById("id_input_exclude_domains_label");
       if (n) n.classList.add('disabled');
 
       n = document.getElementById("id_input_include_domains");
@@ -182,22 +182,23 @@
 
 
     function updateFollow(event) {
+      var follow1   = document.getElementById("id_follow_1");
+      var follow2   = document.getElementById("id_follow_2");
+      var follow3   = document.getElementById("id_follow_3");
 
+      updatePathOption();
 
-      var id = event.currentTarget.id;
-
-      if (id === 'id_follow_1') {
-        updatePathOption();
+      if (follow1.checked) {
         disableAdvancedOptions();
       }
       else {
 
-        if (id === 'id_follow_2') {
+        if (follow2.checked) {
           disablePathOption();
           disableAdvancedOptions();
         }
         else {
-          if (id === 'id_follow_3') {
+          if (follow3.checked) {
             disablePathOption();          
             enableAdvancedOptions();
           }        
@@ -269,6 +270,7 @@
       var c;
 
       enableSubmit();
+      updateFollow();
 
       c = document.getElementById('id_input_url');
 

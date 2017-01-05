@@ -90,9 +90,9 @@
       n = document.getElementById("id_input_span_sub_domains_label");
       if (n) n.classList.remove('disabled');
 
-      n = document.getElementById("id_input_exclude_sub_domains");
+      n = document.getElementById("id_input_exclude_domains");
       if (n) n.removeAttribute('disabled');
-      n = document.getElementById("id_input_exclude_sub_domains_label");
+      n = document.getElementById("id_input_exclude_domains_label");
       if (n) n.classList.remove('disabled');
 
       n = document.getElementById("id_input_include_domains");
@@ -129,9 +129,9 @@
       n = document.getElementById("id_input_span_sub_domains_label");
       if (n) n.classList.add('disabled');
 
-      n = document.getElementById("id_input_exclude_sub_domains");
+      n = document.getElementById("id_input_exclude_domains");
       if (n) n.setAttribute('disabled','');
-      n = document.getElementById("id_input_exclude_sub_domains_label");
+      n = document.getElementById("id_input_exclude_domains_label");
       if (n) n.classList.add('disabled');
 
       n = document.getElementById("id_input_include_domains");

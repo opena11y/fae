@@ -147,9 +147,6 @@
 
              <ul class="nav nav-pills nav-stacked">
                 <li><a href="{% url 'run_report'          %}">Run FAE</a></li>
-                {% if user.profile.account_type.advanced %}
-                <li><a href="{% url 'run_advanced_report' %}">Run Advanced FAE</a></li>
-                {% endif %}
                 <li><a href="{% url 'processing_reports'  %}">Report Processing</a></li>
                 <li><a href="{% url 'archived_reports'    %}">Archived Reports</a></li>
                 <li><a href="{% url 'manage_reports'      %}">Manage Reports</a></li>

@@ -48,13 +48,13 @@
   last_report.ruleset_id = "{{last_report.ruleset.id}}";
   last_report.depth      = {{last_report.depth}};
   last_report.max_pages  = {{last_report.max_pages}};
-  last_report.depth_id   = "depth_" + last_report.depth.toString();
+  last_report.depth_id   = "id_depth_" + last_report.depth.toString();
 
   last_report.follow              = {{last_report.follow}};
   last_report.require_path        = {% if last_report.require_path %}true{% else %}false{% endif %};
   last_report.path                = "{{last_report.path}}";
   last_report.span_sub_domains    = "{{last_report.span_sub_domains}}";
-  last_report.exclude_sub_domains = "{{last_report.exclude_sub_domains}}";
+  last_report.exclude_domains     = "{{last_report.exclude_domains}}";
   last_report.include_domains     = "{{last_report.include_domains}}";
   {% else %}
   last_report.url        = "";
@@ -62,13 +62,13 @@
   last_report.ruleset_id = "";
   last_report.depth      = 0;
   last_report.max_pages  = 0;
-  last_report.depth_id   = "depth_2";
+  last_report.depth_id   = "id_depth_2";
   
   last_report.follow              = 1;
   last_report.require_path        = false;
   last_report.path                = "";
   last_report.span_sub_domains    = "";
-  last_report.exclude_sub_domains = "";
+  last_report.exclude_domains = "";
   last_report.include_domains     = "";
   {% endif %}
 
@@ -77,7 +77,9 @@
     if (last_report.url) {
       document.getElementById("id_input_url").value   = last_report.url;
       document.getElementById("id_input_title").value = last_report.title;
+
       document.getElementById(last_report.depth_id).checked = true;
+      document.getElementById("id_input_require_path").checked = last_report.require_path;
       
       if (last_report.follow === 3) {
         document.getElementById("id_follow_3").checked = true;
@@ -97,7 +99,8 @@
 
       if (max_page_input && !max_page_input.disabled) max_page_input.checked = true;
 
-      checkURL();
+      enableSubmit();
+      updateFollow();
 
     }
   }

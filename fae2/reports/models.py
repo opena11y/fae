@@ -245,10 +245,10 @@ class WebsiteReport(RuleGroupResult):
   path                 = models.CharField("Path",      max_length=1024, default="", blank=True)
 
   more_urls            = models.BooleanField(default=False)
-  span_sub_domains     = models.CharField("Span Sub-Domains (space separated)",    max_length=1024, default="", blank=True)
-  exclude_sub_domains  = models.CharField("Exclude Sub-Domains (space separated)", max_length=1024, default="", blank=True)
-  include_domains      = models.CharField("Include Domains (space separated)",     max_length=1024, default="", blank=True)
-  authorization        = models.TextField("Authentication Information",            max_length=8192, default="", blank=True)
+  span_sub_domains     = models.CharField("Span Sub-Domains (space separated)",  max_length=1024, default="", blank=True)
+  exclude_domains      = models.CharField("Exclude Domains (space separated)",   max_length=1024, default="", blank=True)
+  include_domains      = models.CharField("Include Domains (space separated)",   max_length=1024, default="", blank=True)
+  authorization        = models.TextField("Authentication Information",          max_length=8192, default="", blank=True)
 
   page_count = models.IntegerField("Number of Pages",  default=0)  
 
@@ -341,12 +341,12 @@ class WebsiteReport(RuleGroupResult):
       if self.follow == 1:
 
         self.span_sub_domains = ""
-        self.exclude_sub_domains = ""
+        self.exclude_domains = ""
         self.include_domains = ""
 
       elif self.follow == 2:
 
-        self.exclude_sub_domains = ""
+        self.exclude_domains = ""
         self.include_domains = ""
         self.require_path = False
 

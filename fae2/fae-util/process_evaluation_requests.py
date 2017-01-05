@@ -131,7 +131,7 @@ def initWebsiteReport(ws_report):
 #  if len(data_auth_file) > 0:  
 #    file_prop.write("authorization=" +  data_auth_file + '\n')     
   
-  if ws_report.require_path and len(ws_report.path):
+  if ws_report.follow == 1 and ws_report.require_path and len(ws_report.path):
     file_prop.write("path=" + ws_report.path + '\n')
 
   file_prop.write('recommendedRules=true\n');
@@ -143,9 +143,14 @@ def initWebsiteReport(ws_report):
 
   file_prop.write('wait='    + str(ws_report.wait_time) + '\n')
 
-  file_prop.write("spanDomains="    + ws_report.span_sub_domains    + '\n') 
-  file_prop.write("excludeDomains=" + ws_report.exclude_sub_domains + '\n') 
-  file_prop.write("includeDomains=" + ws_report.include_domains     + '\n')
+  if len(ws_report.span_sub_domains) and (ws_report.follow == 2 or ws_report.follow == 3): 
+    file_prop.write("spanDomains=" + ws_report.span_sub_domains    + '\n')
+
+  if len(ws_report.exclude_domains) and ws_report.follow == 3: 
+    file_prop.write("excludeDomains=" + ws_report.exclude_domains + '\n') 
+
+  if len(ws_report.include_domains) and ws_report.follow == 3: 
+    file_prop.write("includeDomains=" + ws_report.include_domains     + '\n')
 
   file_prop.write("outputDirectory=" + ws_report.data_directory + '/data' + '\n')
 
