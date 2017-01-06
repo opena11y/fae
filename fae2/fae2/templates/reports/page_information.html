@@ -11,14 +11,11 @@
   </div>
   
   <div class="eval_info">
-  </div>
-
-  <div class="eval_info">
       <ul>
           {% if page.ws_report.page_count > 1 %}
           <li>Page {{page.page_number}} of {{page.ws_report.page_count}}</li>
           {% else %}
-          <li>One page report</li>
+          <li>URL: <a href="{{page.url}}">{{page.url}}</a></li>
           {% endif %}
           <li>Ruleset:   <a title="{{report.ruleset.title_text}}" href="{% url 'ruleset' report.ruleset.slug %}">{{ report.ruleset }}</a></li>
       </ul>  

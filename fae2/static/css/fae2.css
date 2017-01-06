@@ -411,6 +411,7 @@ main .fae_button {
 main .fae_input label {
     position: relative;
     top: .125em;
+    left: 0.25em;
 }
 
 main .fae_focus {
@@ -426,7 +427,6 @@ main input[disabled] .fae_hover {
     border-color: transparent;
     background-color: white`;
 }
-
 
 main input[type=button],
 main input[type=submit] {

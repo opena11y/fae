@@ -1,10 +1,16 @@
    <fieldset id="id_max_pages">
         
         {% if form.max_pages.errors|length %}
-        <legend class="error">{{form.max_pages.label}}: {% for error in form.max_pages.errors %}{{error}}{% endfor %}</legend>
+        <legend class="error">{{form.max_pages.label}}: {% for error in form.max_pages.errors %}{{error}}{% endfor %}
         {% else %}
-        <legend>{{form.max_pages.label}}</legend>
+        <legend>{{form.max_pages.label}}
         {% endif %}
+            <span class="fae_info_button" aria-controls="id_inst_max_pages"></span>
+        </legend>
+        <div id="id_inst_max_pages" class="fae_info">             
+            This option is for determining the maximum pages that will be included in a report.  
+            For a large website or a website you are not sure about the size it may be useful to evaluate a smaller number of pages and reduce the amout of time to complete a report.
+        </div>            
 
         {% for choice in form.max_pages.field.choices %}
             {% if choice.0 <= user.profile.account_type.max_pages or payment_enabled and choice.0 <= user.profile.account_type.next_account_type.max_pages  %}
@@ -30,7 +36,7 @@
             {% if user.profile.account_type.next_account_type.type ==  1 %}
         <p class="subscription"><a href="{% url 'update_subscription' %}">Subscribe</a> to FAE to increase the number of pages spidered.</p>
             {% else %}
-        <p class="subscription">Note: Change the level of your <a href="{% url 'update_subscription' %}">subscription</a> to increase the number of pages spidered.</p>
+        <p class="subscription">Note: Change the level of your <a href="{% url 'update_subscription' %}">subscription</a> to increase the maximum number of pages that can be evaluated.</p>
             {% endif %}
         {% endif %}
 

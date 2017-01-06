@@ -24,7 +24,6 @@ from __future__ import absolute_import
 from django.conf.urls import url
 
 from .views import RunReportView
-from .views import RunAdvancedReportView
 from .views import RunAnonymousReportView
 from .views import RunRefererReportView
 
@@ -64,7 +63,6 @@ from fae2.settings import SHIBBOLETH_ENABLED
 
 urlpatterns = [
     url(r'^$',                RunReportView.as_view(),         name='run_report'),
-    url(r'^advanced/$',       RunAdvancedReportView.as_view(), name='run_advanced_report'),
     url(r'^processing/$',     ProcessingReportView.as_view(),  name='processing_reports'),
     url(r'^evaluate/link/$',  RunRefererReportView.as_view(),  name='run_referer_report'),
  

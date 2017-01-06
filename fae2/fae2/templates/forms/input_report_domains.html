@@ -1,14 +1,16 @@
     <fieldset id="id_following" {% if form.follow.errors|length %}class="error"{% endif %}>
         {% if form.follow.errors|length %}
-        <legend class="error">{{form.follow.label}}: {% for error in form.follow.errors %}{{error}}{% endfor %}</legend>
+        <legend class="error">{{form.follow.label}}: {% for error in form.follow.errors %}{{error}}{% endfor %}
         {% else %}
         <legend>
         {{form.follow.label}} 
-        <span class="fae_info_button" aria-controls="id_inst_following"></span>
+         {% endif %}
+          <span class="fae_info_button" aria-controls="id_inst_following"></span>
         </legend>
-        {% endif %}
+
         <div id="id_inst_following" class="fae_info">             
-            This option allows sub-domains of the domain name of the URL to be included in the report or not.
+            This option allows for additional control over which pages are included or excluded from an evaluation based on the domain names of each link in the website.
+            You can review the URLs of a report by selecting the "Included URLs" link in the Report Information section at the top of each page of a Report. 
         </div>            
 
         <div class="fae_input">
@@ -44,10 +46,16 @@
                 {% else %}
                 <span id="id_path_value" class="undefined">no path defined</span>
                 {% endif %}
+                <span class="fae_info_button" aria-controls="id_inst_url"></span>
                 </label>
+        
+
             </div>
         </div>    
 
+        <div id="id_inst_url" class="fae_info" style="margin-left: 2.5em;">             
+            If a <code>/path/</code> is included in the Starting URL, checking this option will require the <code>/path/</code> for pages included in the evaluation.  
+        </div>
  
         <div class="fae_input">
             <input
@@ -63,7 +71,7 @@
             
       </div>
 
-        <div id="id_inst_follow_2" class="fae_input_indent fae_info">             
+        <div id="id_inst_follow_2" class="fae_info" style="margin-left: 1.5em;">             
             Include pages found with any next-level sub-domain domain specified in the starting URL (e.g. calendar.somewhere.org, events.somewhere.org).
         </div>    
 
@@ -99,7 +107,7 @@
                           {% if form.span_sub_domains.errors|length %}aria-invalid="true"{% endif %}
                           value="{{form.span_sub_domains.value}}"
                           size="80"
-                          placeholder="somewhere.org elsewhere.org"/>
+                          placeholder="somewhere.org"/>
                     </div>    
                     {% if form.span_sub_domains.errors|length %}
                     <label class="error" for="id_input_span_sub_domains">{% for error in form.span_sub_domains.errors %}{{error}}{% endfor %}</label>
@@ -122,7 +130,7 @@
                           {% if form.exclude_domains.errors|length %}aria-invalid="true"{% endif %}
                           value="{{form.exclude_domains.value}}"
                           size="80"
-                          placeholder="blog.somewhere.org news.somewhere.org events.elsewhere.org"/>
+                          placeholder="blog.somewhere.org"/>
                     </div>      
                 {% if form.exclude_domains.errors|length %}
                 <label class="error" for="id_input_exclude_domains">{% for error in form.exclude_domains.errors %}{{error}}{% endfor %}</label>
@@ -145,7 +153,7 @@
                             {% if form.include_domains.errors|length %}aria-invalid="true"{% endif %}
                             value="{{form.include_domains.value}}"
                             size="80"
-                            placeholder="events.somewhere.org calendar.elsewhere.org"/>
+                            placeholder="events.somewhere.org"/>
                     </div>    
                     {% if form.include_domains.errors|length %}
                     <label class="error" for="id_input_include_domains">{% for error in form.include_domains.errors %}{{error}}{% endfor %}</label>

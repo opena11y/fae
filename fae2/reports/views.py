@@ -411,6 +411,8 @@ class RunAnonymousReportView(FAENavigationMixin, CreateView):
 
         check_for_announcements(False, self.request)
 
+        return context
+
 
 class ProcessingAnonymousReportView(FAENavigationMixin, TemplateView):
     template_name = 'reports/processing_anonymous.html'
@@ -530,47 +532,6 @@ class RunReportView(LoginRequiredMixin, FAENavigationMixin, CreateView):
         
         return context    
 
-class RunAdvancedReportView(LoginRequiredMixin, FAENavigationMixin, CreateView):
-
-    model = WebsiteReport
-    fields = ['protocol', 'domain', 'path','title', 'depth', 'span_sub_domains', 'exclude_domains', 'include_domains', 'ruleset', 'wait_time', 'max_pages', 'require_path']
-    template_name = 'reports/run_advanced_report.html'
-
-    success_url = reverse_lazy('processing_reports')
-
-    login_url = get_default_url()
-    redirect_field_name = "Anonymous Report"
-
-    def form_valid(self, form):
-        form.instance.user = self.request.user
-        if form.instance.depth == 1:
-          form.instance.follow = 1
-          form.instance.max_pages = 1
-        form.instance.slug = generate()
-
-        return super(RunAdvancedReportView, self).form_valid(form)
-
-    def form_invalid(self, form):
-
-        return super(RunAdvancedReportView, self).form_invalid(form)
-  
-    def get_context_data(self, **kwargs):
-        context = super(RunAdvancedReportView, self).get_context_data(**kwargs)
-
-        try: 
-            last_report = WebsiteReport.objects.filter(user=self.request.user).latest('last_viewed')
-        except:
-            last_report = False    
-
-        user_profile = UserProfile.objects.get(user=self.request.user)
-        check_for_announcements(user_profile, self.request)
-
-        if PAYMENT_ENABLED:
-            user_profile.check_for_subscription_messages(self.request)
-
-        context['last_report'] = last_report
-        
-        return context    
 
 class ProcessingReportView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
     template_name = 'reports/processing.html'

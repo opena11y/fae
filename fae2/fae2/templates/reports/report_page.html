@@ -27,13 +27,13 @@
 {% endblock %}
 
 {% block title %}
-    Page Summary
+    Page {{page.page_number}} Summary
 {% endblock %}    
 
 {% block content %}
 
     <div class="rule_summary">
-      Page: 
+      Page {{page.page_number}}: 
       <a href="{{page.url}}">
         {{page.title}}
       </a>

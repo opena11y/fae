@@ -1,11 +1,6 @@
     <div class="input" >
         <label for="id_input_url">Starting URL</label>
         
-        <span class="fae_info_button" aria-controls="id_inst_url"></span>
-        <div id="id_inst_url" class="fae_info">             
-            If you include a <code>path</code> (e.g. /path/) in the URL you can optionally use the path as a requirement for pages included in the evaluation, see first option the "Following Links in" section of the form.  
-        </div>
-
         <div {% if form.url.errors|length %}class="error"{% endif %}>
         <div class="fae_input fae_input_text">
             <input 

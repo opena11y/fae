@@ -16,22 +16,32 @@
      </ul>  
   </div>
 
-
-  {% if report.span_sub_domains %}
   <div class="domains">
      <ul>
-         {% if report.span_sub_domains %}
-         <li>Include next-level subdomains: {{ report.span_sub_domains }}</li>
+        {% if report.follow == 1 %} 
+        <li>Followed links in specfied domain only</li>
+        {% endif %}
+
+        {% if report.follow == 2 %}
+        <li>Followed links in specified domian and next-level subdomains</li>
+        {% endif %}
+
+        {% if report.follow == 3 %}
+        <li>Followed links in specified domian and the following inclusions and/or exclusions:</li>
+            <ul>
+           {% if report.span_sub_domains %}
+           <li>Next-level subdomains: {{ report.span_sub_domains }}</li>
+           {% endif %}
+           {% if report.exclude_domains %}
+           <li>Exclude domains: {{  report.exclude_domains }}</li>
+           {% endif %}
+           {% if report.include_domains %}
+           <li>Include domains: {{  report.include_domains }}</li>
+           </ul>
          {% endif %}
-         {% if report.exclude_domains %}
-         <li>Exclude domains: {{  report.exclude_domains }}</li>
-         {% endif %}
-         {% if report.include_domains %}
-         <li>Include domains: {{  report.include_domains }}</li>
-         {% endif %}
+        {% endif %}
      </ul>  
   </div>
-  {% endif %}
 
   <div class="eval_info">
       <ul>

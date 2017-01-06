@@ -517,14 +517,19 @@ public class URLProcessor {
 					}
 					if (url.indexOf(tok + "/") != -1) {
 						URL t = new URL(url);
-						String prefix = t.getHost().substring(0,
-								t.getHost().indexOf(tok));
-						// System.out.println(prefix);
-						// count number of periods
-						int num = countOccurrences(prefix, '.');
-						// System.out.println(num);
-						if (num == 0 || num == 1) {
-							match = true;
+						if (t.getHost().indexOf(tok) != -1){
+							String prefix = t.getHost().substring(0,
+									t.getHost().indexOf(tok));
+							// System.out.println(prefix);
+							// count number of periods
+							int num = countOccurrences(prefix, '.');
+							// System.out.println(num);
+							if (num == 0 || num == 1) {
+								match = true;
+								break;
+							}
+						} else {
+							match = false;
 							break;
 						}
 					}
