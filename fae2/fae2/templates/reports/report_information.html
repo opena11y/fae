@@ -30,13 +30,13 @@
         <li>Followed links in specified domian and the following inclusions and/or exclusions:</li>
             <ul>
            {% if report.span_sub_domains %}
-           <li>Next-level subdomains: {{ report.span_sub_domains }}</li>
+           <li>Next-level subdomains: <strong>{{ report.span_sub_domains }}</strong></li>
            {% endif %}
            {% if report.exclude_domains %}
-           <li>Exclude domains: {{  report.exclude_domains }}</li>
+           <li>Exclude domains: <strong>{{  report.exclude_domains }}</strong></li>
            {% endif %}
            {% if report.include_domains %}
-           <li>Include domains: {{  report.include_domains }}</li>
+           <li>Include domains: <strong>{{  report.include_domains }}</strong></li>
            </ul>
          {% endif %}
         {% endif %}

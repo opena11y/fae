@@ -7,7 +7,9 @@
           <tr>
             <th id="id_ele" class="text">Element Identifier</th>
             <th id="id_res" class="text">Result</th>
-            <th id="id_pos" class="text">Position</th>
+            <th id="id_pos" class="text" title="The element number based on the DOM order of elements in the page, see definition at end of page.">
+                Number
+            </th>
             <th id="id_mes" class="text">Message</th>
           </tr>
         </thead>
@@ -50,5 +52,21 @@
 
         </script>
         </tbody>
-    </table>    
+    </table>
+
+    <section aria-labelledby="id_definitions"  style="margin-top: 4em;">
+        <h3 id="id_definitions">Column Definitions</h3>
+        <dl>
+            <dt>Element Identifier</dt>
+            <dd>Information about the element associated with the result, typically include the elements tag name and often its accessible name or other information related to the rule requirements.</dd>
+            <dd>"Page" means that the result applied to the page.  For example the rule "One main landmark on the page" is a page level rule.</dd>
+        </dl>    
+        <dl>
+            <dt>Number</dt>
+            <dd>The element number is based on the DOM order of elements in the page.</dd>
+            <dd>It may be useful for people who are trying to find the element on the page analyzed.</dd>
+            <dd>The first element in the page is number 1.</dd>
+            <dd>The last element on the page is number of the total elements found.</dd> 
+        </dl>    
+    </section>
 </section>    
