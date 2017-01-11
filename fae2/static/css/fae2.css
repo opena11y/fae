@@ -433,7 +433,6 @@ main .fae_focus {
     background-color: #EEEEEE;
 }
 
-
 main input[disabled] .fae_hover {
     border-color: transparent;
     background-color: white`;
@@ -504,6 +503,8 @@ main .fae_hover,
 main textarea:hover,
 main input[type="text"]:hover,
 main input[type="url"]:hover,
+main .fae_radio label:hover,
+main .fae_checkbox label:hover,
 main .fae_info_button:hover {
     background-color: #DDDDDD;
 }

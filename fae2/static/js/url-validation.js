@@ -165,8 +165,6 @@
     function enableAdvancedOptions() {
       var checkbox, textbox, label;
 
-      console.log('enable advanced options');
-
       checkbox = document.getElementById("id_enable_next_level_sub_domains");
       if (checkbox) {
         checkbox.disabled = false;
@@ -223,8 +221,6 @@
 
       var checkbox, textbox, label;
 
-      console.log('disable advanced options');
-
       checkbox = document.getElementById("id_enable_next_level_sub_domains");
       if (checkbox) checkbox.disabled = true;
 
@@ -269,8 +265,6 @@
       var follow1   = document.getElementById("id_follow_1");
       var follow2   = document.getElementById("id_follow_2");
       var follow3   = document.getElementById("id_follow_3");
-
-      console.log("[updateFollow]: " + follow1 + " " + follow2 + " " + follow3)
 
       updatePathOption();
 
