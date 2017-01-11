@@ -53,9 +53,17 @@
   last_report.follow              = {{last_report.follow}};
   last_report.require_path        = {% if last_report.require_path %}true{% else %}false{% endif %};
   last_report.path                = "{{last_report.path}}";
-  last_report.span_sub_domains    = "{{last_report.span_sub_domains}}";
-  last_report.exclude_domains     = "{{last_report.exclude_domains}}";
-  last_report.include_domains     = "{{last_report.include_domains}}";
+
+  last_report.enable_next_level_sub_domains = {% if last_report.enable_next_level_sub_domains %}true{% else %}false{% endif %};
+
+  last_report.enable_span_sub_domains = {% if last_report.enable_span_sub_domains %}true{% else %}false{% endif %};
+  last_report.span_sub_domains        = "{{last_report.span_sub_domains}}";
+
+  last_report.enable_exclude_domains  = {% if last_report.enable_exclude_domains %}true{% else %}false{% endif %};
+  last_report.exclude_domains         = "{{last_report.exclude_domains}}";
+
+  last_report.enable_include_domains  = {% if last_report.enable_include_domains %}true{% else %}false{% endif %};
+  last_report.include_domains         = "{{last_report.include_domains}}";
   {% else %}
   last_report.url        = "";
   last_report.title      = "";
@@ -66,34 +74,94 @@
   
   last_report.follow              = 1;
   last_report.require_path        = false;
+
   last_report.path                = "";
+
+  last_report.enable_next_level_sub_domains = false;
+
+  last_report.enable_span_sub_domains = false;
   last_report.span_sub_domains    = "";
+
+  last_report.enable_exclude_domains  = false;
   last_report.exclude_domains     = "";
+
+  last_report.enable_include_domains  = false;
   last_report.include_domains     = "";
+
   {% endif %}
 
   function getLastReport() {
-  
-    if (last_report.url) {
-      document.getElementById("id_input_url").value   = last_report.url;
-      document.getElementById("id_input_title").value = last_report.title;
 
-      document.getElementById(last_report.depth_id).checked = true;
-      document.getElementById("id_input_require_path").checked = last_report.require_path;
+    function updateValue(id, value) {
+
+      var node = document.getElementById(id);
+
+      if (node && (typeof node.value === 'string')) {
+        node.value = value;
+      }
+
+    }
+
+    function updateChecked(id, value) {
+
+      var node = document.getElementById(id);
+
+      if (node && (typeof node.checked === 'boolean')) {
+        node.checked = value;
+      }
+
+    }
+  
+    function updateText(id, value) {
+
+      var node = document.getElementById(id);
+
+      if (node) {
+        node.text = value;
+      }
+
+    }
+    if (last_report.url) {
+      updateValue("id_input_url",   last_report.url);
+      updateValue("id_input_title", last_report.title);
+
+      updateChecked(last_report.depth_id, true);
+      updateChecked("id_input_require_path", last_report.require_path);
+      updateChecked("id_input_require_path", last_report.require_path);
+
+
+      updateChecked("id_enable_next_level_sub_domains", last_report.enable_next_level_sub_domains);
+
+      updateChecked("id_enable_span_sub_domains", last_report.enable_span_sub_domains);
+      updateValue("id_input_span_sub_domains", last_report.span_sub_domains);
+
+      updateChecked("id_enable_exclude_domains", last_report.enable_exclude_domains);
+      updateValue("id_input_exclude_domains", last_report.exclude_domains);
       
+      updateChecked("id_enable_include_domains", last_report.enable_include_domains);
+      updateValue("id_input_include_domains", last_report.include_domains);
+      
+      
+      if (last_report.path && last_report.path.length) {
+        updateText("id_path_value", last_report.path);
+      }
+      else {
+        updateText("id_path_value", "no path defined");
+      }
+
       if (last_report.follow === 3) {
-        document.getElementById("id_follow_3").checked = true;
+        updateChecked("id_follow_3", true);
       }
       else {
         if (last_report.follow === 2) {
-          document.getElementById("id_follow_2").checked = true;
+          updateChecked("id_follow_2", true);
         }
         else {
-          document.getElementById("id_follow_1").checked = true;
+          updateChecked("id_follow_1", true);
         }
       }
 
-      document.getElementById("id_ruleset_" + last_report.ruleset_id).checked = true;
+      updateChecked("id_ruleset_" + last_report.ruleset_id, true);
 
       var max_page_input = document.getElementById("max_pages_" + last_report.max_pages);
 

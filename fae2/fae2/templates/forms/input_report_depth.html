@@ -1,6 +1,7 @@
     <fieldset {% if form.depth.errors|length %}class="error"{% endif %}>
         {% if form.depth.errors|length %}
         <legend class="error">{{form.depth.label}}: {% for error in form.depth.errors %}{{error}}{% endfor %}
+            <span class="fae_info_button" aria-controls="id_inst_depth"></span>
         {% else %}
         <legend>{{form.depth.label}}
         {% endif %}
@@ -9,23 +10,24 @@
         <div id="id_inst_depth" class="fae_info">             
             This option is for setting how "deep" FAE will look for pages within a website to include in the evaluation.   Increasing the depth typically results in more pages.
         </div>            
-
         {% for choice in form.depth.field.choices %}
             {% if forloop.counter <= user.profile.account_type.max_depth or forloop.counter <= user.profile.account_type.next_account_type.max_depth %}
-            <div class="fae_input">
-                <input
-                    id="id_depth_{{ forloop.counter }}"
-                    type="radio"
-                    name="depth"
-                    value="{{choice.0}}"
-                    {% if choice.0|slugify == form.depth.value|slugify  %}
-                    checked="checked"
-                    {% endif %}
-                    {% if forloop.counter > user.profile.account_type.max_depth %}
-                    disabled="disabled"
-                    {% endif %}   
-                />
-                <label for="id_depth_{{ forloop.counter }}">{{choice.1}}</label>
+            <div class="fae_radio">
+                <label>
+                    <input
+                        id="id_depth_{{ forloop.counter }}"
+                        type="radio"
+                        name="depth"
+                        value="{{choice.0}}"
+                        {% if choice.0|slugify == form.depth.value|slugify  %}
+                        checked="checked"
+                        {% endif %}
+                        {% if forloop.counter > user.profile.account_type.max_depth %}
+                        disabled="disabled"
+                        {% endif %}   
+                    />
+                    <span>{{choice.1}}</span>
+                </label>
             </div>
             {% endif %}
         {% endfor %}

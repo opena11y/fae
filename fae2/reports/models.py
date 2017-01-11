@@ -230,9 +230,9 @@ class WebsiteReport(RuleGroupResult):
   title    = models.CharField("Title",  max_length=1024, default="", blank=False)
   
   url        = models.URLField("URL",      max_length=1024, default="", blank=False)
-  follow     = models.IntegerField("Follow Links in", choices=FOLLOW_CHOICES, default=1, blank=False)
+  follow     = models.IntegerField("Follow Links In", choices=FOLLOW_CHOICES, default=1, blank=False)
   depth      = models.IntegerField("Depth of Evaluation", choices=DEPTH_CHOICES, default=2, blank=False)
-  max_pages  = models.IntegerField("Maximum Pages", choices=MAX_PAGES_CHOICES, default=0, blank=False)
+  max_pages  = models.IntegerField("Evaluation Limited To", choices=MAX_PAGES_CHOICES, default=0, blank=False)
   ruleset    = models.ForeignKey(Ruleset, on_delete=models.SET_NULL, null=True, default=2, blank=False)
 
   browser_emulation    = models.CharField("Browser Emulation", max_length=32, default="FIREFOX")
@@ -245,9 +245,15 @@ class WebsiteReport(RuleGroupResult):
   path                 = models.CharField("Path",      max_length=1024, default="", blank=True)
 
   more_urls            = models.BooleanField(default=False)
-  span_sub_domains     = models.CharField("Span Sub-Domains (space separated)",  max_length=1024, default="", blank=True)
-  exclude_domains      = models.CharField("Exclude Domains (space separated)",   max_length=1024, default="", blank=True)
-  include_domains      = models.CharField("Include Domains (space separated)",   max_length=1024, default="", blank=True)
+
+  enable_next_level_sub_domains = models.BooleanField(default=False)
+  enable_span_sub_domains       = models.BooleanField(default=False)
+  enable_exclude_domains        = models.BooleanField(default=False)
+  enable_include_domains        = models.BooleanField(default=False)
+
+  span_sub_domains     = models.CharField("Other next-level subdomains (space separated)",  max_length=1024, default="", blank=True)
+  exclude_domains      = models.CharField("Exclude domains (space separated)",   max_length=1024, default="", blank=True)
+  include_domains      = models.CharField("Include domains (space separated)",   max_length=1024, default="", blank=True)
   authorization        = models.TextField("Authentication Information",          max_length=8192, default="", blank=True)
 
   page_count = models.IntegerField("Number of Pages",  default=0)  
@@ -340,15 +346,17 @@ class WebsiteReport(RuleGroupResult):
 
       if self.follow == 1:
 
-        self.span_sub_domains = ""
-        self.exclude_domains = ""
-        self.include_domains = ""
+        self.enable_next_level_sub_domains = False
+        self.enable_span_sub_domains = False
+        self.enable_exclude_domains = False
+        self.enable_include_domains = False
 
       elif self.follow == 2:
 
-        self.exclude_domains = ""
-        self.include_domains = ""
-        self.require_path = False
+        self.enable_next_level_sub_domains = True
+        self.enable_span_sub_domains = False
+        self.enable_exclude_domains = False
+        self.enable_include_domains = False
 
         try:
           if url_parts.netloc.find('www.') < 0:

@@ -8,26 +8,34 @@
             <span class="fae_info_button" aria-controls="id_inst_max_pages"></span>
         </legend>
         <div id="id_inst_max_pages" class="fae_info">             
-            This option is for determining the maximum pages that will be included in a report.  
+            This option is for determining the maximum pages that will be included in an evaluation.  
             For a large website or a website you are not sure about the size it may be useful to evaluate a smaller number of pages and reduce the amout of time to complete a report.
         </div>            
 
         {% for choice in form.max_pages.field.choices %}
             {% if choice.0 <= user.profile.account_type.max_pages or payment_enabled and choice.0 <= user.profile.account_type.next_account_type.max_pages  %}
-            <div class="fae_input">
+            <div class="fae_radio">
+                <label {% if choice.0 > user.profile.account_type.max_pages %}class="disabled"{% endif %}">
                 <input
                     type="radio"
                     value="{{choice.0}}"
+
                     {% if choice.0 <= user.profile.account_type.max_pages %}
+
                     id="max_pages_{{ choice.0 }}"
                     name="max_pages"
+
                     {% else %}
+
                     id="max_pages_disabled_{{ choice.0 }}"
                     disabled="disabled"
+
                     {% endif %}
+
                     {% if user.profile.account_type.max_pages == choice.0 %}checked="checked"{% endif %}
                 />
-                <label for="max_pages_{% if choice.0 > user.profile.account_type.max_pages %}disabled_{% endif %}{{ choice.0 }}">{{choice.1}}</label>
+                <span>{{choice.1}}</span>
+                </label>
             </div>
             {% endif %}
         {% endfor %}

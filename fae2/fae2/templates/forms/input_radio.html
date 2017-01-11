@@ -1,4 +1,5 @@
-   <div class="fae20_radio">
+    <div class="fae_radio">
+        <label>
         <input
             id="{{id}}"
             type="radio"
@@ -16,5 +17,5 @@
 
             onclick="updateSubscriptionCost()"
         />
-        <label for="id_account_type_{{ counter }}">{{choice.1}} {% if choice.0|slugify == form.account_type.value|slugify  %}(Current){% endif %}</label>
+        {{choice.1}} {% if choice.0|slugify == form.account_type.value|slugify  %}(Current){% endif %}</label>
     </div>

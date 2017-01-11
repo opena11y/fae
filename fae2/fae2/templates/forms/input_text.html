@@ -1,7 +1,7 @@
     <div class="input" >
         <label for="id_{{input.name}}">{{input.label}}</label>
         <div {% if f.errors|length %}class="error"{% endif %}>
-            <div class="fae_input fae_input_text">
+            <div class="fae_textbox">
                 <input 
                     type="{% if type %}{{type}}{% else %}text{% endif %}"
                     id="id_{{input.name}}"

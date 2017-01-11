@@ -23,21 +23,39 @@
         {% endif %}
 
         {% if report.follow == 2 %}
-        <li>Followed links in specified domian and next-level subdomains</li>
+        <li>Followed links in specified domian and in:</li>
+            <ul>
+           <li>Next-level subdomains: <strong>{{ report.domain }}</strong></li>
+        </ul>   
         {% endif %}
 
         {% if report.follow == 3 %}
         <li>Followed links in specified domian and the following inclusions and/or exclusions:</li>
-            <ul>
-           {% if report.span_sub_domains %}
-           <li>Next-level subdomains: <strong>{{ report.span_sub_domains }}</strong></li>
-           {% endif %}
-           {% if report.exclude_domains %}
-           <li>Exclude domains: <strong>{{  report.exclude_domains }}</strong></li>
-           {% endif %}
-           {% if report.include_domains %}
-           <li>Include domains: <strong>{{  report.include_domains }}</strong></li>
-           </ul>
+          <ul>
+             {% if report.enable_next_level_sub_domains %}
+
+               {% if report.enable_span_sub_domains %}
+               <li>Next-level subdomains: <strong>{{ report.domain }}, {{ report.span_sub_domains }}</strong></li>
+               {% else %}
+               <li>Next-level subdomains: <strong>{{ report.domain }}</strong></li>
+               {% endif %}
+
+             {% else %}
+
+               {% if report.enable_span_sub_domains %}
+               <li>Next-level subdomains: <strong>{{ report.span_sub_domains }}</strong></li>
+               {% endif %}             
+
+             {% endif %}
+
+
+             {% if report.enable_exclude_domains %}
+             <li>Exclude domains: <strong>{{  report.exclude_domains }}</strong></li>
+             {% endif %}
+
+             {% if report.enable_include_domains %}
+             <li>Include domains: <strong>{{  report.include_domains }}</strong></li>
+          </ul>
          {% endif %}
         {% endif %}
      </ul>  
@@ -47,7 +65,7 @@
       <ul>
           <li>Pages:     {{  report.page_count }} (<a title="URL Details" href="{% url 'report_url_information' report.slug view %}">Included URLs</a>)</li>
           {% if report.max_pages %}
-          <li>Maximum Pages: {{ report.max_pages }}</li>
+          <li>Page Limit: {{ report.max_pages }}</li>
           {% endif %}
           {% if report.user != user %}
           <li>Created by: <a href="mailto:{{report.user.email}}">{{report.user.first_name}} {{report.user.last_name}}</a></li>
@@ -56,7 +74,7 @@
   </div> 
 
   {% if report.more_urls %}
-  <details class="more_urls"><summary class="highlight">Maximum page limit was reached</summary> You may want to increase the "Maximum Page" setting to include more pages, which may require purchasing a <a href="{% url 'update_subscription' %}">subscription</a>.</details>
+  <details class="more_urls"><summary class="highlight">Maximum page limit was reached</summary> You may want to increase the "Maximim Page" setting to include more pages, which may require purchasing a <a href="{% url 'update_subscription' %}">subscription</a>.</details>
   {% endif %}
 
 </section>

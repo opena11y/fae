@@ -99,6 +99,8 @@ InformationButton.prototype.handleKeydown = function (event) {
 
 InformationButton.prototype.handleClick = function (event) {
   this.toggleExpanded();
+  event.stopPropagation();
+  event.preventDefault();
 };
 
 InformationButton.prototype.handleFocus = function (event) {

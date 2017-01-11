@@ -490,7 +490,7 @@ def get_default_url():
 class RunReportView(LoginRequiredMixin, FAENavigationMixin, CreateView):
 
     model = WebsiteReport
-    fields = ['url', 'title', 'depth', 'follow', 'ruleset', 'max_pages', 'span_sub_domains', 'exclude_domains', 'include_domains', 'path', 'require_path']
+    fields = ['url', 'title', 'depth', 'follow', 'ruleset', 'max_pages', 'enable_next_level_sub_domains', 'enable_span_sub_domains', 'span_sub_domains', 'enable_exclude_domains', 'exclude_domains', 'enable_include_domains', 'include_domains', 'path', 'require_path']
     template_name = 'reports/run_report.html'
 
     success_url = reverse_lazy('processing_reports')

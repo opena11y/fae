@@ -141,15 +141,25 @@ def initWebsiteReport(ws_report):
   if ws_report.max_pages > 0:
     file_prop.write('maxPages=' + str(ws_report.max_pages) + '\n')
 
-  file_prop.write('wait='    + str(ws_report.wait_time) + '\n')
+  file_prop.write('wait=' + str(ws_report.wait_time) + '\n')
 
-  if len(ws_report.span_sub_domains) and (ws_report.follow == 2 or ws_report.follow == 3): 
-    file_prop.write("spanDomains=" + ws_report.span_sub_domains    + '\n')
+  span_sub_domains = ""
+  if ws_report.enable_next_level_sub_domains:
+    span_sub_domains += ws_report.domain
 
-  if len(ws_report.exclude_domains) and ws_report.follow == 3: 
+  if ws_report.enable_span_sub_domains and len(ws_report.span_sub_domains): 
+    if len(span_sub_domains):
+      span_sub_domains += ',' + ws_report.span_sub_domains 
+    else:
+      span_sub_domains += ws_report.span_sub_domains 
+
+  if len(span_sub_domains):
+    file_prop.write("spanDomains=" + span_sub_domains + '\n') 
+
+  if ws_report.enable_exclude_domains and len(ws_report.exclude_domains): 
     file_prop.write("excludeDomains=" + ws_report.exclude_domains + '\n') 
 
-  if len(ws_report.include_domains) and ws_report.follow == 3: 
+  if ws_report.enable_include_domains and len(ws_report.include_domains): 
     file_prop.write("includeDomains=" + ws_report.include_domains     + '\n')
 
   file_prop.write("outputDirectory=" + ws_report.data_directory + '/data' + '\n')

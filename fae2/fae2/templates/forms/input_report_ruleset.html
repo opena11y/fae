@@ -16,21 +16,23 @@
 
 
         {% for choice in form.ruleset.field.choices %}
-        <div class="fae_input">
-            <input
-                id="id_ruleset_{{ forloop.counter }}"
-                type="radio"
-                name="ruleset"
-                value="{{choice.0}}"
-                {% if form.ruleset.value|slugify == choice.0|slugify %}
-                checked
-                {% endif %}
-            />
-            <label for="id_ruleset_{{ forloop.counter }}" {% ifequal 'ARIA_STRICT' choice.0 %}
-            title="WCAG 2.0 Level A and AA requirements using ARIA and HTML5 accessibility features."
-            {% else %}
-            title="WCAG 2.0 Level A and AA requirements using legacy HTML4 features, but allowing the use of ARIA and HTML5 accessibility features."
-            {% endifequal %}>{{choice.1}}</label>
+        <div class="fae_radio">
+            <label{% ifequal 'ARIA_STRICT' choice.0 %}
+                title="WCAG 2.0 Level A and AA requirements using ARIA and HTML5 accessibility features."
+                {% else %}
+                title="WCAG 2.0 Level A and AA requirements using legacy HTML4 features, but allowing the use of ARIA and HTML5 accessibility features."
+                {% endifequal %}>
+                <input
+                    id="id_ruleset_{{ forloop.counter }}"
+                    type="radio"
+                    name="ruleset"
+                    value="{{choice.0}}"
+                    {% if form.ruleset.value|slugify == choice.0|slugify %}
+                    checked
+                    {% endif %}
+                />
+                <span>{{choice.1}}</span>
+            </label>
         </div>
         {% endfor %}
     </fieldset>

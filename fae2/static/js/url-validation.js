@@ -68,40 +68,55 @@
     }
    
    
-   function disableSubmit() {
+  function disableSubmit() {
      
-     var node_submit = document.getElementById('id_submit');     
-     node_submit.disabled = true;
-     node_submit.setAttribute('title', 'Report request has already been sent');     
-   }
+    var node_submit = document.getElementById('id_submit');     
+    node_submit.disabled = true;
+    node_submit.setAttribute('title', 'Report request has already been sent');     
+  }
    
-    function disableFollowOptions () {
-      var follow1   = document.getElementById("id_follow_1");
+  function disableFollowOptions () {
+
+    var follow1   = document.getElementById("id_follow_1");
+    var follow2   = document.getElementById("id_follow_2");
+    var follow3   = document.getElementById("id_follow_3");
+
+    if (follow1) {
       follow1.checked = true;
       updatePathOption();
-
-      var follow2   = document.getElementById("id_follow_2");
-      follow2.disabled = true;
-
-      var follow3   = document.getElementById("id_follow_3");
-      follow3.disabled = true;
-      disableAdvancedOptions();
-
     }
 
-    function enableFollowOptions () {
-      var follow1   = document.getElementById("id_follow_1");
-      if (follow1.checked) {
+    if (follow2) {
+      follow2.disabled = true;
+    }
+
+    if (follow3) {
+      follow3.disabled = true;
+      disableAdvancedOptions();
+    }  
+
+  }
+
+  function enableFollowOptions () {
+
+    var follow1   = document.getElementById("id_follow_1");
+    var follow2   = document.getElementById("id_follow_2");
+    var follow3   = document.getElementById("id_follow_3");
+
+    if (follow1) {
+      if(follow1.checked) {
         updatePathOption();
       }
       else {
         disablePathOption();     
-      }  
+      } 
+    }  
 
-      var follow2   = document.getElementById("id_follow_2");
+    if (follow2) {
       follow2.disabled = false;
+    }
 
-      var follow3   = document.getElementById("id_follow_3");
+    if (follow3) {
       follow3.disabled = false;
       if (follow3.checked) {
         enableAdvancedOptions();
@@ -110,6 +125,7 @@
         disableAdvancedOptions();
       }
     }
+  }
 
     function updatePathOption() {
 
@@ -147,64 +163,151 @@
     }
 
     function enableAdvancedOptions() {
-      var n = document.getElementById("id_input_span_sub_domains");
-      if (n) n.removeAttribute('disabled');
-      n = document.getElementById("id_input_span_sub_domains_label");
-      if (n) n.classList.remove('disabled');
+      var checkbox, textbox, label;
 
-      n = document.getElementById("id_input_exclude_domains");
-      if (n) n.removeAttribute('disabled');
-      n = document.getElementById("id_input_exclude_domains_label");
-      if (n) n.classList.remove('disabled');
+      console.log('enable advanced options');
 
-      n = document.getElementById("id_input_include_domains");
-      if (n) n.removeAttribute('disabled');
-      n = document.getElementById("id_input_include_domains_label");
-      if (n) n.classList.remove('disabled');      
+      checkbox = document.getElementById("id_enable_next_level_sub_domains");
+      if (checkbox) {
+        checkbox.disabled = false;
+        
+        label = document.getElementById("id_label_next_level_sub_domains");
+        if (label) label.classList.remove('disabled');
+      }  
+
+      checkbox = document.getElementById("id_enable_span_sub_domains");
+      if (checkbox) {
+        checkbox.disabled = false;
+        
+        label = document.getElementById("id_label_span_sub_domains");
+        if (label) label.classList.remove('disabled');
+
+        textbox = document.getElementById("id_input_span_sub_domains");
+
+        if (checkbox.checked) {
+          textbox.disabled = false;
+        }
+      }
+
+      checkbox = document.getElementById("id_enable_exclude_domains");
+      if (checkbox) {
+        checkbox.disabled = false;
+        
+        label = document.getElementById("id_label_exclude_domains");
+        if (label) label.classList.remove('disabled');
+
+        textbox = document.getElementById("id_input_exclude_domains");
+
+        if (checkbox.checked) {
+          textbox.disabled = false;
+        }
+      }
+
+      checkbox = document.getElementById("id_enable_include_domains");
+      if (checkbox) {
+        checkbox.disabled = false;
+        
+        label = document.getElementById("id_label_include_domains");
+        if (label) label.classList.remove('disabled');
+
+        textbox = document.getElementById("id_input_include_domains");
+
+        if (checkbox.checked) {
+          textbox.disabled = false;
+        }
+      }
+
     }
 
     function disableAdvancedOptions() {
-      var n = document.getElementById("id_input_span_sub_domains");
-      if (n) n.setAttribute('disabled', '');
-      n = document.getElementById("id_input_span_sub_domains_label");
-      if (n) n.classList.add('disabled');
 
-      n = document.getElementById("id_input_exclude_domains");
-      if (n) n.setAttribute('disabled', '');
-      n = document.getElementById("id_input_exclude_domains_label");
-      if (n) n.classList.add('disabled');
+      var checkbox, textbox, label;
 
-      n = document.getElementById("id_input_include_domains");
-      if (n) n.setAttribute('disabled', '');
-      n = document.getElementById("id_input_include_domains_label");
-      if (n) n.classList.add('disabled');      
+      console.log('disable advanced options');
+
+      checkbox = document.getElementById("id_enable_next_level_sub_domains");
+      if (checkbox) checkbox.disabled = true;
+
+      label = document.getElementById("id_label_next_level_sub_domains");
+      if (label) label.classList.add('disabled');
+
+
+      checkbox = document.getElementById("id_enable_span_sub_domains");
+      if (checkbox) checkbox.disabled = true;
+
+      label = document.getElementById("id_label_span_sub_domains");
+      if (label) label.classList.add('disabled');
+
+      textbox = document.getElementById("id_input_span_sub_domains");
+      if (textbox) textbox.disabled = true;
+
+
+      checkbox = document.getElementById("id_enable_exclude_domains");
+      if (checkbox) checkbox.disabled = true;
+
+      label = document.getElementById("id_label_exclude_domains");
+      if (label) label.classList.add('disabled');
+
+      textbox = document.getElementById("id_input_exclude_domains");
+      if (textbox) textbox.disabled = true;
+
+
+      checkbox = document.getElementById("id_enable_include_domains");
+      if (checkbox) checkbox.disabled = true;
+
+      label = document.getElementById("id_label_include_domains");
+      if (label) label.classList.add('disabled');
+
+      textbox = document.getElementById("id_input_include_domains");
+      if (textbox) textbox.disabled = true;
+
     }
 
 
-    function updateFollow(event) {
+  function updateFollow(event) {
+
       var follow1   = document.getElementById("id_follow_1");
       var follow2   = document.getElementById("id_follow_2");
       var follow3   = document.getElementById("id_follow_3");
 
+      console.log("[updateFollow]: " + follow1 + " " + follow2 + " " + follow3)
+
       updatePathOption();
 
-      if (follow1.checked) {
+      if (follow1 && follow1.checked) {
         disableAdvancedOptions();
       }
-      else {
 
-        if (follow2.checked) {
-          disablePathOption();
-          disableAdvancedOptions();
-        }
-        else {
-          if (follow3.checked) {
-            disablePathOption();          
-            enableAdvancedOptions();
-          }        
+      if (follow2 && follow2.checked) {
+        disablePathOption();
+        disableAdvancedOptions();
+      }
+
+      if (follow3 && follow3.checked) {
+        disablePathOption();          
+        enableAdvancedOptions();
+      }        
+
+   } 
+
+   function updateDomainTextbox (event) {
+
+      var node = event.currentTarget;
+
+      if (node) {
+        var textbox = document.getElementById(node.getAttribute('aria-controls'));
+
+        if (textbox) {
+          if (node.checked) {
+            textbox.disabled = false;
+          }
+          else {
+            textbox.disabled = true;
+          }
         }
       }
-   } 
+
+   }
 
 
    function enableMaxPages() {
@@ -251,8 +354,6 @@
     
       var depth1 = document.getElementById("id_depth_1");
 
-      console.log(depth1.checked);
-
       if (depth1.checked) {
         disableMaxPages();
         disableFollowOptions();
@@ -296,14 +397,21 @@
         c = document.getElementById('id_depth_' + i);
       }
 
-      i = 1
-      c = document.getElementById('id_follow_' + i);
-      while(c) {
+      /* The following need to be explicit */
 
-        c.addEventListener('click', updateFollow);
+      c = document.getElementById('id_follow_1');
+      if (c) {
+        c.addEventListener('click', updateFollow);        
+      }
 
-        i += 1;
-        c = document.getElementById('id_follow_' + i);
+      c = document.getElementById('id_follow_2');
+      if (c) {
+        c.addEventListener('click', updateFollow);        
+      }
+
+      c = document.getElementById('id_follow_3');
+      if (c) {
+        c.addEventListener('click', updateFollow);        
       }
 
 

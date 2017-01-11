@@ -2,10 +2,11 @@
         <label for="id_input_url">Starting URL</label>
         
         <div {% if form.url.errors|length %}class="error"{% endif %}>
-        <div class="fae_input fae_input_text">
+        <div class="fae_textbox">
             <input 
                 id="id_input_url"
                 name="url"
+                type="url"
                 required="required"
                 value="{{form.url.value}}"
                 {% if form.url.errors|length %}aria-invalid="true"{% endif %}
