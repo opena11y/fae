@@ -109,6 +109,13 @@ nav {
 nav#id_breadcrumbs,
 nav#id_breadcrumbs ul  {
     margin: 0;
+    font-style: italic;
+}
+
+nav#id_breadcrumbs ul li:before {
+  padding: 0 5px;
+  color: #ccc;
+  content: "/\00a0";    
 }
 
 nav#id_breadcrumbs {
