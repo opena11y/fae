@@ -83,6 +83,7 @@
 
     if (follow1) {
       follow1.checked = true;
+      follow1.disabled = true;
       updatePathOption();
     }
 
@@ -104,6 +105,7 @@
     var follow3   = document.getElementById("id_follow_3");
 
     if (follow1) {
+      follow1.disabled = false;
       if(follow1.checked) {
         updatePathOption();
       }

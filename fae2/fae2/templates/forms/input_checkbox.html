@@ -1,14 +1,12 @@
-    <div class="checkbox" >
-        <div class="fae_checkbox">
-            <label>
-                 <input 
-                    type="checkbox"
-                    id="id_{{checkbox.name}}"
-                    {% if onkeyup %}onKeyUp="{{onkeyup}}"{% endif %}
-                    {% if onblur %}onBlur="{{onblur}}"{% endif %}
-                    name="{{checkbox.name}}"
-                    {% if checkbox.value %}checked{% endif %}>
-                <span>{{checkbox.label}}</span>
-            </label>
-        </div>    
-    </div>
+    <div class="fae_checkbox">
+        <label>
+             <input 
+                type="checkbox"
+                id="id_{{checkbox.name}}"
+                {% if onkeyup %}onKeyUp="{{onkeyup}}"{% endif %}
+                {% if onblur %}onBlur="{{onblur}}"{% endif %}
+                name="{{checkbox.name}}"
+                {% if checkbox.value %}checked{% endif %}>
+            <span>{{checkbox.label}}</span>
+        </label>
+    </div>    

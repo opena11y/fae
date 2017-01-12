@@ -1,4 +1,4 @@
-   <fieldset id="id_max_pages">
+   <fieldset class="fae_group" id="id_max_pages">
         
         {% if form.max_pages.errors|length %}
         <legend class="error">{{form.max_pages.label}}: {% for error in form.max_pages.errors %}{{error}}{% endfor %}
@@ -42,9 +42,9 @@
 
         {% if payment_enabled and user.profile.account_type.next_account_type %}
             {% if user.profile.account_type.next_account_type.type ==  1 %}
-        <p class="subscription"><a href="{% url 'update_subscription' %}">Subscribe</a> to FAE to increase the number of pages spidered.</p>
+        <div class="subscription"><a href="{% url 'update_subscription' %}">Subscribe</a> to FAE to increase the number of pages spidered.</div>
             {% else %}
-        <p class="subscription">Note: Change the level of your <a href="{% url 'update_subscription' %}">subscription</a> to increase the maximum number of pages that can be evaluated.</p>
+        <div class="subscription">Note: Change the level of your <a href="{% url 'update_subscription' %}">subscription</a> to increase the maximum number of pages that can be evaluated.</div>
             {% endif %}
         {% endif %}
 

@@ -24,21 +24,24 @@
     <input type="hidden" name="RedirectAfterSubmit"    value="{{site.domain}}{% url 'donate' %}">
     <input type="hidden" name="RedirectAfterSubmitConfirmMessage"    value="Thank you for your donation!">
 
-    <div class="input" >
+    <div class="fae_group" >
         <label for="id_donation_amount">Gift Amount (in U.S. Dollars)</label>
-        <div class="fae_input fae_input_text">
+        <div class="fae_textbox">
           <input 
             id="id_donation_amount"
             type="text"
             name="GIFT_AMOUNT1"
-            size=10
+            size="10"
             onkeypress="numbersOnly(event)"
-            onkeyup="enableSubmit(event)" style="display: inline">
+            onkeyup="enableSubmit(event)"
+            />
         </div>    
     </div>
 
 
-   <input id="id_submit" name="submit" disabled type="submit" value="Donate using Credit Card"  title="This button takes "/>
+    <div class="fae_button">
+       <input id="id_submit" name="submit" disabled type="submit" value="Donate using Credit Card"  title="This button takes "/>
+    </div>
 
 </form>
 

@@ -26,15 +26,18 @@
         {% endif %}
     {% endif %}
 
+    <p><a href="{% url 'password_reset_recover' %}">Lost password?</a></p>
+
     <form method="post" action="{% url 'django.contrib.auth.views.login' %}">
         {% csrf_token %}
 
         {% include "forms/input_text.html" with input=form.username size=20  %}
         {% include "forms/input_text.html" with input=form.password size=30 type='password' %}
       
-        <input type="submit" value="login">
+        <div class="fae_button">
+            <input type="submit" value="login">
+        </div>
 
-        <p><a href="{% url 'password_reset_recover' %}">Lost password?</a></p>
 
         <input type="hidden" name="next" value="{{ next }}">
 

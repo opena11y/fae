@@ -54,7 +54,7 @@
     <form id="id_run_report"  action="{% url 'update_subscription' %}" method="post" >
         {% csrf_token %}
 
-        <fieldset id="id_account_type"  {% if form.account_type.errors|length %}class="error"{% endif %}>
+        <fieldset id="id_account_type"  {% if form.account_type.errors|length %}class="error"{% endif %} class="fae_group">
             {% if form.account_type.errors|length %}
             <legend class="error">{{form.account_type.label}}: {% for error in form.account_type.errors %}{{error}}{% endfor %}</legend>)
             {% else %}
@@ -63,7 +63,7 @@
             {% for choice in form.account_type.field.choices %}
                 {% if forloop.counter > 2 and forloop.counter < 9 %}
 
-                <div class="fae_input">
+                <div class="fae_radio">
                     <input
                         id="id_account_type_{{ forloop.counter }}"
                         type="radio"
@@ -87,14 +87,14 @@
             {% endfor %}
         </fieldset>    
 
-        <fieldset id="id_subscription_duration" {% if form.subscription_duration.errors|length %}class="error"{% endif %}>
+        <fieldset id="id_subscription_duration" {% if form.subscription_duration.errors|length %}class="error"{% endif %} class="fae_group">
             {% if form.subscription_duration.errors|length %}
             <legend class="error">{{form.subscription_duration.label}}: {% for error in form.subscription_duration.errors %}{{error}}{% endfor %}</legend>)
             {% else %}
             <legend>Duration</legend>
             {% endif %}
             {% for choice in form.subscription_duration.field.choices %}
-                 <div class="fae_input">
+                 <div class="fae_radio">
                     <input
                         id="id_subscription_duration_{{ forloop.counter }}"
                         type="radio"
@@ -112,10 +112,10 @@
             {% endfor %}
         </fieldset>                
 
-        <div class="input" >
+        <div class="fae_group" >
             <label for="id_subscription_end">End Date</label>
             <div {% if form.subscription_end.errors|length %}class="error"{% endif %}>
-            <div class="fae_input fae_input_text">
+            <div class="fae_textbox">
             <input 
                 type="text"
                 readonly
@@ -137,10 +137,10 @@
             name="subscription_cost"
             value="{{form.subscription_cost.value|slugify}}">
 
-        <div class="input" >
+        <div class="fae_group" >
             <label for="id_actual_subscription_cost">Actual Cost</label>
             <div {% if form.actual_subscription_cost.errors|length %}class="error"{% endif %}>
-            <div class="fae_input fae_input_text">
+            <div class="fae_textbox">
             <input 
                 type="text"
                 readonly
@@ -159,7 +159,9 @@
             </div>
         </div>
 
-       <input id="id_submit" name="submit" type="submit" value="Update Account"  title="You must enter your name, e-mail and amount to submit a donation"/>
+        <div class="fae_button">
+           <input id="id_submit" name="submit" type="submit" value="Update Account"  title="You must enter your name, e-mail and amount to submit a donation"/>
+        </div>
 
     </form>
 

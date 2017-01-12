@@ -123,6 +123,7 @@ nav h2 {
     margin-bottom: 0.125em;
     font-size: 125%;
 }
+
 .nav > li > a {
     padding: 0.25em;
     padding-left: 0.5em;
@@ -136,7 +137,6 @@ nav h2 {
     padding-right: 0.65em;
     color: #DDDDDD;
 }
-
 
 .navbar-inverse .navbar-header a {
      color: #DDDDDD;
@@ -158,7 +158,6 @@ nav h2 {
     background-color: 
 }
 
-
 .nav-pills > li > a {
     border: 1px solid transparent;
     border-radius: 4px;
@@ -168,11 +167,62 @@ nav h2 {
     border-color: black;
 }
 
-#id_get_last {
-    margin-top: 1em;
-    font-size: 100%;
+main .fae_group {
+    margin: 0;
+    padding: 0;
+    margin-top: 2em;
 }
 
+main .fae_subgroup {
+    margin: 0;
+    padding: 0;
+    margin-top: 1.5em;
+}
+
+main .fae_subgroup .fae_info {
+    margin-bottom: 0.25em;
+}
+
+main .fae_indent {
+    margin-left: 1.5em;
+}
+
+main .fae_indent .fae_indent{
+    margin-left: 1.5em;
+}
+
+main .fae_checkbox,
+main .fae_radio {
+    margin-left: -0.25em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+main label,
+main legend {
+    margin: 0;
+    padding: 0;
+    font-size: 120%;
+    font-weight: bold;
+}
+
+main legend.error,
+main label.error {
+    color: red;
+}
+
+main .input_subgroup .fae_textbox {
+    margin: 0;
+    padding: 0;
+    margin-left: 1.5em;
+}
+
+
+main input#id_get_last {
+    float: right;
+    position: relative;
+    top: -3.55em;
+}
 
 button[aria-controls="top-navbar"] {
     outline: solid 2px transparent;
@@ -279,7 +329,6 @@ main table th.sep {
     min-width: 6em;
 }
 
-
 main table th.violation,
 main table td.violation,
 .table-striped > tbody > tr > td.violation
@@ -380,18 +429,7 @@ main div.success {
     border: #337ab7 solid thin; 
 }
 
-main .fae_indent {
-    margin-left: 1.5em;
-}
 
-main .fae_indent .fae_indent{
-    margin-left: 1.4em;
-}
-
-main .fae_checkbox,
-main .fae_radio {
-    margin-left: -0.25em;
-}
 
 main .fae_checkbox label input,
 main .fae_radio label input {
@@ -415,11 +453,13 @@ main .fae_radio span.fae_info_button {
 }
 
 main .fae_button {
-    position: relative;
-    left: -2px;
-    top: 4px;
+    margin: 0;
+    padding: 0;
+    margin-top: 2.5em;
     padding: 2px;
     border: 2px solid transparent;
+    position: relative;
+    left: -4px;
 }
 
 main .fae_focus {
@@ -502,9 +542,8 @@ main input[type="password"]:hover,
 main .fae_radio label:hover,
 main .fae_checkbox label:hover,
 main .fae_info_button:hover {
-    background-color: #DDDDDD;
+    background-color: #EEEEEE;
 }
-
 
 main .fae_info_button {
     padding: 0;
@@ -512,28 +551,15 @@ main .fae_info_button {
     color: rgb(51, 122, 183);
 }
 
-main .fae_info,
-main .fae_indent_info {
-    border: solid thin #E0E0E0;
+main .fae_info {
+    border: solid thin #9cc2e3;
     background-color: #F8F8F8;
-    padding-top: 0;
-    padding-bottom: 0;
-    padding-left: 0.25em;
-    padding-right: 0.25em;
-}
-
-main .fae_indent .fae_info {
-    margin-left: 0.125em;
-}
-
-main .fae_indent .fae_indent_info {
-    margin-left: 1.625em;
+    padding: 0.25em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
 }
 
 
-main fieldset div legend {
-    display: inline;
-}
 
 main legend .fae_info_button {
     font-size: 90%;
@@ -609,18 +635,6 @@ span.violation {
     padding-right: 0.25em;
 }
 
-label,
-legend {
-    font-size: 120%;
-    font-weight: bold;
-}
-
-legend {
-    margin: 0;
-    padding: 0;
-    padding-top: 1em;
-    margin-bottom: 0.25em;
-}
 
 fieldset input[disabled] + label,
 input[disabled] + label,
@@ -656,7 +670,6 @@ input[type="button"] {
 
 main input[type="submit"] {
     font-size: 120%;
-    margin-top: 2em;
 }
 
 main input[type="submit"][disabled] {
@@ -668,10 +681,7 @@ main input[type="submit"][disabled] {
   border-color: red;
 }
 
-legend.error,
-label.error {
-    color: red;
-}
+
 
 input[type="button"].sort-button {
     margin: 0;

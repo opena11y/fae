@@ -1,4 +1,4 @@
-    <fieldset {% if form.depth.errors|length %}class="error"{% endif %}>
+    <fieldset {% if form.depth.errors|length %}class="error"{% endif %} class="fae_group">
         {% if form.depth.errors|length %}
         <legend class="error">{{form.depth.label}}: {% for error in form.depth.errors %}{{error}}{% endfor %}
             <span class="fae_info_button" aria-controls="id_inst_depth"></span>
@@ -36,9 +36,9 @@
 
         {% if payment_enabled and user.profile.account_type.next_account_type %}
             {% if user.profile.account_type.next_account_type.type ==  1 %}
-        <p class="subscription"><a href="{% url 'update_subscription' %}">Subscribe</a> to FAE to increase the depth of pages spidered.</p>
+        <div class="subscription"><a href="{% url 'update_subscription' %}">Subscribe</a> to FAE to increase the depth of pages spidered.</div>
             {% else %}
-        <p class="subscription">Note: Change the level of your <a href="{% url 'update_subscription' %}">subscription</a> to increase the depth of pages spidered.</p>
+        <div class="subscription">Note: Change the level of your <a href="{% url 'update_subscription' %}">subscription</a> to increase the depth of pages spidered.</div>
             {% endif %}
         {% endif %}
 
