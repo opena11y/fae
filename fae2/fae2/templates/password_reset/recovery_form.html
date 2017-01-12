@@ -9,7 +9,9 @@
 
         {% include "forms/input_text.html" with input=form.username_or_email size=30 %}
 
-		<input type="submit" value="{% trans "Recover my password" %}"/>
+        <div class="fae_button">
+		  <input type="submit" value="{% trans "Recover my password" %}"/>
+        </div>
 
 	</form>
 {% endblock %}
