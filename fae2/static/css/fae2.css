@@ -414,12 +414,6 @@ main .fae_radio span.fae_info_button {
     margin-left: 0;
 }
 
-main .fae_textbox,
-main .fae_select ,
-main .fae_textarea {
-    padding: 3px;
-}
-
 main .fae_button {
     position: relative;
     left: -2px;
@@ -493,6 +487,7 @@ main .fae_focus,
 main textarea:focus,
 main input[type="text"]:focus,
 main input[type="url"]:focus,
+main input[type="password"]:focus,
 main .fae_info_button:focus {
     background-color: #EEEEEE;
     outline: black solid 2px;
@@ -503,6 +498,7 @@ main .fae_hover,
 main textarea:hover,
 main input[type="text"]:hover,
 main input[type="url"]:hover,
+main input[type="password"]:hover,
 main .fae_radio label:hover,
 main .fae_checkbox label:hover,
 main .fae_info_button:hover {

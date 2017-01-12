@@ -7,7 +7,7 @@ $(document).ready(function() {
 
         console.log(e.type);
 
-        if (" button hidden url text submit".indexOf(e.type) > 0) continue;
+        if (" button hidden url text submit password".indexOf(e.type) > 0) continue;
 
         e.addEventListener('focus', function (event) { addHighlight(event, 'fae_focus');    });
         e.addEventListener('blur',  function (event) { removeHighlight(event, 'fae_focus'); });

@@ -1,22 +1,30 @@
-    <div class="input" >
-        <label for="id_{{input.name}}">{{input.label}}</label>
-        <div {% if f.errors|length %}class="error"{% endif %}>
+    <div class="input">
+
+        <label for="{% if name %}id_{{name}}{% else %}id_{{input.name}}{% endif %}">
+            {% if label %}{{label}}{% else %}{{input.label}}{% endif %}
+        </label>
+    
+        <div {% if input.errors|length %}class="error"{% endif %}>
             <div class="fae_textbox">
                 <input 
                     type="{% if type %}{{type}}{% else %}text{% endif %}"
-                    id="id_{{input.name}}"
+                    id="{% if name %}id_{{name}}{% else %}id_{{input.name}}{% endif %}"
                     {% if onkeyup %}onKeyUp="{{onkeyup}}"{% endif %}
                     {% if onblur  %}onBlur="{{onblur}}"  {% endif %}
-                    name="{{input.name}}"
+                    name="{% if name %}{{name}}{% else %}{{input.name}}{% endif %}"
                     {% if input.required %}required{% endif %}
                     {% if input.value %}value="{{input.value}}"{% endif %}
                     {% if input.errors|length %}aria-invalid="true"{% endif %}
                     {% if datalist %}list="{{datalist}}"{% endif %}
                     size="{% if size %}{{size}}{% else %}20{% endif %}"
-                    {% if desc %}title="{{desc}}"{% endif %}>
+                    {% if desc %}title="{{desc}}"{% endif %}
+                />
             </div>    
+    
             {% if input.errors|length %}
-            <label class="error" for="id_{{input.name}}">{% for error in input.errors %}{{error}}{% endfor %}</label>
+            <label class="error" for="{% if name %}id_{{name}}{% else %}id_{{input.name}}{% endif %}">
+                {% for error in input.errors %}{{error}}{% endfor %}
+            </label>
             {% endif %}
         </div>
     </div>
