@@ -89,6 +89,10 @@ main div.login a:hover {
     text-decoration: underline;
 }
 
+nav#id_report_manage {
+    margin-top: 0.4em;
+}
+
 nav#view_options {
     margin-top: 3em;
     margin-bottom: -1.5em;
