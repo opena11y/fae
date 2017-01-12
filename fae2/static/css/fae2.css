@@ -109,6 +109,10 @@ nav {
 nav#id_breadcrumbs,
 nav#id_breadcrumbs ul  {
     margin: 0;
+}
+
+nav#id_breadcrumbs ul {
+    background-color: #EEEEEE;
     font-style: italic;
 }
 
