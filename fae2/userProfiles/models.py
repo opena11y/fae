@@ -80,7 +80,8 @@ def get_profile(user):
 SUBSCRIPTION_STATUS_CHOICES = (
     ('FREE',    'Free'),
     ('CURRENT',  'Current'),
-    ('EXPIRED',  'Expired')
+    ('EXPIRED',  'Expired'),
+    ('SPECIAL',  'Special')
 )
 
 class UserProfile(models.Model):

@@ -275,6 +275,7 @@
 
           {% endblock content %}
           </section>
+
         </main>
 
       </div>  
@@ -285,8 +286,10 @@
     <footer>
       <div class="container">
         <div class="well well-sm">
-          <div style="float: left">Copyright &copy; 2014&#8211;2017 University of Illinois</div>
-          <div class="text-right">Version {% include 'version.txt' %}</div>
+          <div>
+            <div style="float: left">Copyright &copy; 2014&#8211;{% now "Y" %} University of Illinois</div>
+            <div class="text-right">Version {% include 'version.txt' %}</div>
+          </div>
         </div>
       </div>
     </footer>

@@ -8,10 +8,19 @@
             <span class="fae_info_button" aria-controls="id_inst_depth"></span>
         </legend>
         <div id="id_inst_depth" class="fae_info">             
-            This option is for setting how "deep" FAE will look for pages within a website to include in the evaluation.   Increasing the depth typically results in more pages.
+            This option is for setting how "deep" FAE will look for pages within a website to include in the evaluation.   Increasing the depth typically results in more pages evaluated.
+
+            {% if payment_enabled and user.profile.account_type.next_account_type %}
+                {% if user.profile.account_type.next_account_type.type ==  1 %}
+            <div class="subscription">Note: <a href="{% url 'update_subscription' %}">Subscribe</a> to FAE to increase the depth of pages spidered.</div>
+                {% else %}
+            <div class="subscription">Note: Change the level of your <a href="{% url 'update_subscription' %}">subscription</a> to increase the depth of pages spidered.</div>
+                {% endif %}
+            {% endif %}
+
         </div>            
         {% for choice in form.depth.field.choices %}
-            {% if forloop.counter <= user.profile.account_type.max_depth or forloop.counter <= user.profile.account_type.next_account_type.max_depth %}
+            {% if forloop.counter <= user.profile.account_type.max_depth %}
             <div class="fae_radio">
                 <label>
                     <input
@@ -22,9 +31,6 @@
                         {% if choice.0|slugify == form.depth.value|slugify  %}
                         checked="checked"
                         {% endif %}
-                        {% if forloop.counter > user.profile.account_type.max_depth %}
-                        disabled="disabled"
-                        {% endif %}   
                     />
                     <span>{{choice.1}}</span>
                 </label>
@@ -34,12 +40,5 @@
         {% if user.profile.account_type.next_account_type %}
         {% endif %}
 
-        {% if payment_enabled and user.profile.account_type.next_account_type %}
-            {% if user.profile.account_type.next_account_type.type ==  1 %}
-        <div class="subscription"><a href="{% url 'update_subscription' %}">Subscribe</a> to FAE to increase the depth of pages spidered.</div>
-            {% else %}
-        <div class="subscription">Note: Change the level of your <a href="{% url 'update_subscription' %}">subscription</a> to increase the depth of pages spidered.</div>
-            {% endif %}
-        {% endif %}
 
     </fieldset>

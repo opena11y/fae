@@ -29,7 +29,36 @@
         </tr>
         <tr>
             <th class="text" style="width: 9em">Account Type</th>
-            <td class="text">{{user_profile.account_type.title}}</td>
+            <td class="text">
+                <div class="subscription_type">{{user_profile.account_type.title}}</div>
+            {% if payment_enabled %}
+                <div class="subscribe">
+                {% if user_profile.subscription_status == 'FREE' %}
+                    <a href="{% url 'update_subscription' %}">Subscribe to FAE</a> for a higher level of service.
+                {% else %}
+                    <ul class="status">
+                    {% if user_profile.subscription_status == 'CURRENT' %}
+                        {% if user_profile.subscription_days > 1 %}
+                        {{user_profile.subscription_days}} days remaining in</li>
+                        {% else %}
+                            {% if user_profile.subscription_days == 1 %}
+                            1 day remaining in </li> 
+                            {% else %}
+                            Last day of </li> 
+                            {% endif %}
+                        {% endif %}
+                    your subscription, <a href="{% url 'update_subscription' %}">extend or change your subscription</a>.
+                {% else %}
+                    Previous subscription expired on {{user_profile.subscription_end|date:"n/j/Y"}}, 
+                    <a href="{% url 'update_subscription' %}">Renew Subscription</a>.
+                {% endif %}
+                </div>
+            {% endif %}
+            </td>
+        </tr>
+        {% endif %}
+
+            </td>
         </tr>
         {% if user_profile.account_type.description_html %}
         <tr>
@@ -37,37 +66,9 @@
             <td class="text">{{user_profile.account_type.description_html|safe}}</td>
         </tr>
         {% endif %}
-        {% if payment_enabled %}
-        <tr>
-            <th class="text">Subscription</th>
-            <td class="text">
-            {% if user_profile.subscription_status == 'FREE' %}
-                <a href="{% url 'update_subscription' %}">Subscribe to FAE</a>
-            {% else %}
-                <ul class="status">
-                {% if user_profile.subscription_status == 'CURRENT' %}
-                    {% if user_profile.subscription_days > 1 %}
-                    <li>{{user_profile.subscription_days}} days remaining</li>
-                    {% else %}
-                        {% if user_profile.subscription_days == 1 %}
-                    <li>1 day remaining</li> 
-                        {% else %}
-                    <li>Last day</li> 
-                        {% endif %}
-                    {% endif %}
-                    <li><a href="{% url 'update_subscription' %}">Extend or Change Subscription</a></li>
-                {% else %}
-                    <li>Subscription expired on {{user_profile.subscription_end|date:"n/j/Y"}}</li>
-                    <li><a href="{% url 'update_subscription' %}">Renew Subscription</a></li>
-                {% endif %}
-                </ul>    
-            {% endif %}
-            </td>
-        </tr>
-        {% endif %}
         <tr>
             <th class="text" title="Total number of reports saved">Maximum Archived Reports</th>
-            <td class="num">{{user_profile.account_type.max_archive}}</td>
+            <td class="text">{{user_profile.account_type.max_archive}}</td>
         </tr>
         <tr>
             <th class="text" title="Total number of reports that can be archived">Permanent Archived Reports</th>

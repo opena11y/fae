@@ -218,7 +218,8 @@ TEMPLATES = [
                 'fae2.context_processors.anonymous',
                 'fae2.context_processors.self_registration',
                 'fae2.context_processors.shibboleth',
-                'fae2.context_processors.payment_enabled'
+                'fae2.context_processors.payment_enabled',
+                'fae2.context_processors.user_profile'
             ],
         },
     },

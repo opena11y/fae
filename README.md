@@ -48,9 +48,9 @@ The "secretes.json" file must be created and provides:
 ```
 {
   	"FILENAME": "secrets.json",
+    "PROCESSING_THREADS": 4, 
     "SITE_URL": "[your site URL]",
     "SITE_NAME": "FAE 2.0",
-    "PROCESSING_THREADS": 4, 
    	"SECRET_KEY": "",
     "SELF_REGISTRATION_ENABLED": true,
     "ANONYMOUS_REPORTS_ENABLED": true,

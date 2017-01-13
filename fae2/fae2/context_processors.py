@@ -22,6 +22,8 @@ Author: Jon Gunderson
 from __future__ import absolute_import
 from django.contrib.sites.models import Site
 from userProfiles.models import UserProfile
+from django.contrib.auth.models import AnonymousUser 
+
 
 from fae2.settings import ANONYMOUS_ENABLED
 from fae2.settings import SELF_REGISTRATION_ENABLED
@@ -31,7 +33,6 @@ from fae2.settings import SHIBBOLETH_URL
 from fae2.settings import SHIBBOLETH_NAME
 
 from fae2.settings import PAYMENT_ENABLED
-
 
 
 def site(request):
@@ -63,4 +64,16 @@ def payment_enabled(request):
         'payment_enabled': PAYMENT_ENABLED
     }
 
+def user_profile(request):
 
+    if request.user.id:
+        user_profile = UserProfile.objects.get(user=request.user)
+    else:
+        user_profile = False
+
+    if not user_profile or user_profile.user.username == 'anonymous':
+        user_profile = False
+
+    return {
+        'user_profile' : user_profile
+    }

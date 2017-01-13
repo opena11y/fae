@@ -62,13 +62,6 @@ main p img {
     top: -.5em;
 }
 
-main p.subscription {
-    margin: 0;
-    padding: 0;
-    margin-bottom: 1em;
-    font-style: italic;
-}
-
 
 main div.login a {
     padding: 0.25em;
@@ -118,7 +111,7 @@ nav#id_breadcrumbs ul {
 
 nav#id_breadcrumbs ul li:before {
   padding: 0 5px;
-  color: #ccc;
+  color: #999;
   content: "/\00a0";    
 }
 
@@ -444,8 +437,6 @@ main div.success {
     border: #337ab7 solid thin; 
 }
 
-
-
 main .fae_checkbox label input,
 main .fae_radio label input {
     margin-left: 0.25em;
@@ -574,13 +565,15 @@ main .fae_info {
     padding-right: 0.5em;
 }
 
-
-
 main legend .fae_info_button {
     font-size: 90%;
     font-weight: normal;
 }
 
+main div.subscription {
+    margin-top: 1em;
+    font-style: italic;
+}
 
 #summary table.summary
 {

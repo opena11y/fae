@@ -8,29 +8,29 @@
             <span class="fae_info_button" aria-controls="id_inst_max_pages"></span>
         </legend>
         <div id="id_inst_max_pages" class="fae_info">             
-            This option is for determining the maximum pages that will be included in an evaluation.  
+            This option is for determining the maximum number of pages that will be included in an evaluation.  
             For a large website or a website you are not sure about the size it may be useful to evaluate a smaller number of pages and reduce the amount of time to complete a report.
+
+            {% if payment_enabled and user.profile.account_type.next_account_type %}
+                {% if user.profile.account_type.next_account_type.type ==  1 %}
+            <div class="subscription">Note: <a href="{% url 'update_subscription' %}">Subscribe</a> to FAE to increase the page limit for an evaluation.</div>
+                {% else %}
+            <div class="subscription">Note: Change the level of your <a href="{% url 'update_subscription' %}">subscription</a> to increase page limit for an evaluated.</div>
+                {% endif %}
+            {% endif %}
+
         </div>            
 
         {% for choice in form.max_pages.field.choices %}
-            {% if choice.0 <= user.profile.account_type.max_pages or payment_enabled and choice.0 <= user.profile.account_type.next_account_type.max_pages  %}
+            {% if choice.0 <= user.profile.account_type.max_pages  %}
             <div class="fae_radio">
                 <label {% if choice.0 > user.profile.account_type.max_pages %}class="disabled"{% endif %}">
                 <input
                     type="radio"
                     value="{{choice.0}}"
 
-                    {% if choice.0 <= user.profile.account_type.max_pages %}
-
                     id="max_pages_{{ choice.0 }}"
                     name="max_pages"
-
-                    {% else %}
-
-                    id="max_pages_disabled_{{ choice.0 }}"
-                    disabled="disabled"
-
-                    {% endif %}
 
                     {% if user.profile.account_type.max_pages == choice.0 %}checked="checked"{% endif %}
                 />
@@ -40,13 +40,6 @@
             {% endif %}
         {% endfor %}
 
-        {% if payment_enabled and user.profile.account_type.next_account_type %}
-            {% if user.profile.account_type.next_account_type.type ==  1 %}
-        <div class="subscription"><a href="{% url 'update_subscription' %}">Subscribe</a> to FAE to increase the number of pages spidered.</div>
-            {% else %}
-        <div class="subscription">Note: Change the level of your <a href="{% url 'update_subscription' %}">subscription</a> to increase the maximum number of pages that can be evaluated.</div>
-            {% endif %}
-        {% endif %}
 
     </fieldset>
     
