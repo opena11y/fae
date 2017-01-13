@@ -147,9 +147,9 @@ at21 = create_acount_type(21, False, True, False, False, 'Institutional V',    2
 
 a32 = create_acount_type(32, False, False, True, False, 'Self-Hosted',    20, 40, 5,  400, False,   True, False)
 
-a64 = create_acount_type(64, False, False, False, True, 'Sponsor: Bronze',  40, 80, 5, 800, False, True, False)
-a65 = create_acount_type(65, False, False, False, True, 'Sponsor: Sliver',  40, 80, 5, 800, False, True, False)
-a66 = create_acount_type(66, False, False, False, True, 'Sponsor: Gold',    40, 80, 5, 800, False, True, False)
+a64 = create_acount_type(64, False, False, False, True, 'Special I',   40, 80, 4, 100, False, True, False)
+a65 = create_acount_type(65, False, False, False, True, 'Special II',  40, 80, 4, 100, False, True, False)
+a66 = create_acount_type(66, False, False, False, True, 'Special III', 40, 80, 4, 100, False, True, False)
 
 set_account_type_description(1, """The Free version provides basic website evaluation for any user.  If you use FAE and/or AInspector Sidebar on a regular basis we ask that you help support the development and maintenance of the tools by purchasing a paid level subscriptions.""")
 set_account_type_description(2, """The Standard I subscription provides an inidividual, educational and/or other organization with more extensive website evaluation services including deeper spidering of pages in a website, higher maximum number of pages, more saved and permanent reports than the Free account type.""")
