@@ -11,7 +11,7 @@
             This option is for determining the maximum number of pages that will be included in an evaluation.  
             For a large website or a website you are not sure about the size it may be useful to evaluate a smaller number of pages and reduce the amount of time to complete a report.
 
-            {% if payment_enabled and user.profile.account_type.next_account_type %}
+            {% if payment_enabled %}
                 {% if user.profile.account_type.next_account_type.type ==  1 %}
             <div class="subscription">Note: <a href="{% url 'update_subscription' %}">Subscribe</a> to FAE to increase the page limit for an evaluation.</div>
                 {% else %}

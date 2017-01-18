@@ -10,7 +10,7 @@
         <div id="id_inst_depth" class="fae_info">             
             This option is for setting how "deep" FAE will look for pages within a website to include in the evaluation.   Increasing the depth typically results in more pages evaluated.
 
-            {% if payment_enabled and user.profile.account_type.next_account_type %}
+            {% if payment_enabled %}
                 {% if user.profile.account_type.next_account_type.type ==  1 %}
             <div class="subscription">Note: <a href="{% url 'update_subscription' %}">Subscribe</a> to FAE to increase the depth of pages spidered.</div>
                 {% else %}
