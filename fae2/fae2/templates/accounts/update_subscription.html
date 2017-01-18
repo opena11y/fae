@@ -166,7 +166,15 @@
 
     </form>
 
+    {% if self_registration_enabled %}
+
     {% include "subscriptions/option_individual.html"  with id="id1"  %}
+
+    {% else %}
+
+    {% include "subscriptions/option_institutional.html"  with id="id1"  %}
+
+    {% endif %}
 
     {% include "subscriptions/refund_policy.html" %}
 
