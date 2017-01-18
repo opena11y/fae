@@ -367,6 +367,7 @@ class UpdateSubscriptionView(LoginRequiredMixin, FAENavigationMixin, CreateView)
         context['user_stats']        = StatsUser.objects.get(user=self.request.user)
         context['user_profile']      = user_profile
         context['self_regs']         = AccountType.objects.filter(self_registration=True)
+        context['shibboleths']       = AccountType.objects.filter(shibboleth=True)
         
         return context  
 
