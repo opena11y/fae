@@ -19,7 +19,11 @@
   <div class="domains">
      <ul>
         {% if report.follow == 1 %} 
+          {% if report.require_path %}
+        <li>Followed links in specfied domain only, including specified path: <strong>/{{report.path}}/</strong></li>
+          {% else %}
         <li>Followed links in specfied domain only</li>
+          {% endif %}
         {% endif %}
 
         {% if report.follow == 2 %}
@@ -74,7 +78,11 @@
   </div> 
 
   {% if report.more_urls %}
-  <details class="more_urls"><summary class="highlight">Maximum page limit was reached</summary> You may want to increase the "Maximim Page" setting to include more pages, which may require purchasing a <a href="{% url 'update_subscription' %}">subscription</a>.</details>
+  <details class="more_urls">
+    <summary class="highlight">Maximum page limit was reached</summary> 
+    <div>You need to increase the page limit for your evaluation to evaluate more pages in the website, which may require increasing your <a href="{% url 'update_subscription' %}">subscription</a> level.
+    </div>
+  </details>
   {% endif %}
 
 </section>
