@@ -49,6 +49,9 @@
 
 
     <h2>Update Subscription</h2>
+
+    {% if self_registration_enabled %}
+
     <p>Extend or change subscription type.  See <a href="#id1">Individual Subscription</a> options and descriptions following the form.</p>
 
     <form id="id_run_report"  action="{% url 'update_subscription' %}" method="post" >
@@ -166,11 +169,11 @@
 
     </form>
 
-    {% if self_registration_enabled %}
-
     {% include "subscriptions/option_individual.html"  with id="id1"  %}
 
     {% else %}
+
+    <p>Instutional subscription for coming soon.</p>
 
     {% include "subscriptions/option_institutional.html"  with id="id1"  %}
 
