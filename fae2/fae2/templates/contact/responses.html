@@ -73,10 +73,10 @@
                     <td><a href="mailto:{{contact.user.email}}">{{contact.user}}</a></td>
                     <td>{{contact.date}}</td>
                     <td>{{contact.topic}}</td>
-                    <td><pre>{{contact.message}}</pre></td>
+                    <td>{{contact.message}}</td>
                     <td>
                         <strong><a href="{% url 'response_form' contact.id %}">{{contact.show_status}} {{contact.id}}</a></strong><br/>
-                        <pre>{{contact.comments}}</pre>
+                        {{contact.comments}}
                     </td>
                 </tr>
                 {% endfor %}
