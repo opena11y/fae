@@ -94,10 +94,10 @@
     </section>    
 
     <section class="region" aria-labelledby="id_unprocessed_urls_label" >
-       <h2 id="id_unprocessed_urls_label">Broken URLs</h2>
+       <h2 id="id_unprocessed_urls_label">Problem URLs</h2>
 
      {% if report.broken_urls|length %}    
-        <p>URLs not evaluated because of error codes (e.g. HTTP status code was not 200) being returned</p>
+        <p>URLs not evaluated because of error codes (e.g. HTTP status code was not 200) being returned, for example broken links.</p>
         
         <table id="id_table_show_summary_urls_2" class="details table table-striped table-hover sortable" aria-labelledby="id_unprocessed_urls_label" aria-describedby="id_table_summ">
             <thead>
