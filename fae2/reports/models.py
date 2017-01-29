@@ -312,15 +312,11 @@ class WebsiteReport(RuleGroupResult):
 
     if len(self.data_dir_slug) == 0:
 
-      print("URL: " + self.url)
-
       if len(self.url):
-        print("Option 1")
         url_parts     = urlparse(self.url)
         self.protocol = url_parts.scheme
         self.domain   = url_parts.netloc
       else:
-        print("Option 2")
         if len(self.protocol) and len(self.domain):
           self.url = self.protocol + '://' +  self.domain
 
@@ -354,9 +350,6 @@ class WebsiteReport(RuleGroupResult):
         self.enable_span_sub_domains = False
         self.enable_exclude_domains = False
         self.enable_include_domains = False
-
-        if len(self.path):
-          self.require_path = True
 
       elif self.follow == 2:
 

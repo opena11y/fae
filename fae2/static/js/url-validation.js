@@ -409,6 +409,7 @@
         c.addEventListener('click', updateFollow);        
       }
 
+      updateDepth();
 
     }
 
