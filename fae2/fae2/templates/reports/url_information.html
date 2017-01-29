@@ -114,13 +114,13 @@
                 {% for broken_url in report.broken_urls %} 
                 <tr>
                     <td class="num">{{forloop.counter}}</td>
-                    <td class="text"><a href="{processed_url.url_requested}}" target="_referenced_website" >{broken_url.url_requested}}</a></td>
+                    <td class="text"><a href="{{broken_url.url_requested}}" target="_referenced_website" >{{broken_url.url_requested}}</a></td>
                     {% if processed_url.redirect %}                    
-                    <td class="text"><a href="{{processed_url.url_returned}}" target="_referenced_website" >{{broken_url.url_returned}}</a></td>
+                    <td class="text"><a href="{{broken_url.url_returned}}" target="_referenced_website" >{{broken_url.url_returned}}</a></td>
                     {% else %}
                     <td class="text" title="no redirect">-</td>
                     {% endif %}
-                    <td class="text"><a href="{{processed_url.url_referenced}}" target="_referenced_website" >{{broken_url.reference_url}}</a></td>
+                    <td class="text"><a href="{{broken_url.reference_url}}" target="_referenced_website" >{{broken_url.reference_url}}</a></td>
                     <td class="num">{{broken_url.http_status_code}}</td>
                     <td class="num">{{broken_url.total_time}}</td>
                 </tr>    
