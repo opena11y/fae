@@ -83,7 +83,6 @@
 
     if (follow1) {
       follow1.checked = true;
-      follow1.disabled = true;
       updatePathOption();
     }
 
