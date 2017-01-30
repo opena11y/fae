@@ -125,8 +125,11 @@ def initWebsiteReport(ws_report):
 
   if len(data_urls_file) > 0:  
     file_prop.write("multipleUrls=" + data_urls_file + '\n')
-  else:    
-    file_prop.write("url=" + ws_report.url + '\n')
+  else:
+    if ws_report.depth > 1 and ws_report.require_path:
+      file_prop.write("url=" + ws_report.protocol + '://' + ws_report.domain + '\n')      
+    else:    
+      file_prop.write("url=" + ws_report.url + '\n')
 
 #  if len(data_auth_file) > 0:  
 #    file_prop.write("authorization=" +  data_auth_file + '\n')     

@@ -96,8 +96,11 @@
     <section class="region" aria-labelledby="id_unprocessed_urls_label" >
        <h2 id="id_unprocessed_urls_label">Problem URLs</h2>
 
+
+
      {% if report.broken_urls|length %}    
-        <p>URLs not evaluated because of error codes (e.g. HTTP status code was not 200) being returned, for example broken links.</p>
+        <p>URLs not evaluated because of error codes (e.g. HTTP status code was not 200) being returned, for example broken links. <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html">More information on HTTP status codes</a>.. </p>
+
         
         <table id="id_table_show_summary_urls_2" class="details table table-striped table-hover sortable" aria-labelledby="id_unprocessed_urls_label" aria-describedby="id_table_summ">
             <thead>
@@ -121,7 +124,7 @@
                     <td class="text" title="no redirect">-</td>
                     {% endif %}
                     <td class="text"><a href="{{broken_url.reference_url}}" target="_referenced_website" >{{broken_url.reference_url}}</a></td>
-                    <td class="num">{{broken_url.http_status_code}}</td>
+                    <td class="num">{% include "reports/http_status_codes.html" with code=broken_url.http_status_code %}</td>
                     <td class="num">{{broken_url.total_time}}</td>
                 </tr>    
                 {% endfor %}
@@ -140,7 +143,7 @@
     
 
     {% if report.unprocessed_urls.all|length %}
-        <p>URLs that were found and should have been evaluated for accessibility, but for some reason could not be evaluated (e.g. broken links, signifcant Javascript errors on page being loaded...).  
+        <p>URLs that were found and should have been evaluated for accessibility, but for some reason could not be evaluated (e.g. extensive html coding errors, signifcant Javascript errors on page being loaded...).  
             The processing engine timed out its evaluation of the page or a error from the page stopped the evaluation.</p>
         
         
