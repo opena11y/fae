@@ -73,8 +73,8 @@
                 <th id="id_vio" class="num"   title="Violations">V</th>
                 <th id="id_war" class="num"   title="Warnings">W</th>
                 <th id="id_man" class="num"   title="Manual Checks">MC</th>
-                <th id="id_pas" class="num sep" title="Passed">P</th>
-                <th id="id_ovr" class="num"   title="Pass/Fail/manual Checks Implementation Score">Score</th>
+                <th id="id_pas" class="num" title="Passed">P</th>
+                <th id="id_ovr" class="num sep"   title="Pass/Fail/manual Checks Implementation Score">Score</th>
                 <th id="id_sta" class="text"   title="Implementation Status">Status</th>
               </tr>  
             </thead>
@@ -127,7 +127,7 @@
                     {% endif %}
                     </td>
 
-                   <td class="num"  headers="id_r{{forloop.counter}} id_sta">
+                   <td class="text"  headers="id_r{{forloop.counter}} id_sta">
                     {% include 'reports/implementation_status.html' with is=g.implementation_status %}
                     </td>
 
@@ -136,7 +136,7 @@
                 <tr class="summary">
                     <td id="id_summ" class="text" headers="id_grp">All Rule Groups</td>
 
-                    <td class="text"  headers="id_summ id_vio">
+                    <td class="num"  headers="id_summ id_vio">
                     {% if summary.rules_violation > 0 %}
                     {{summary.rules_violation}}
                     {% else %}
@@ -144,7 +144,7 @@
                     {% endif %}
                     </td>
 
-                    <td class="text"  headers="id_summ id_war">
+                    <td class="num"  headers="id_summ id_war">
                     {% if summary.rules_warning > 0 %}
                     {{summary.rules_warning}}
                     {% else %}
@@ -152,7 +152,7 @@
                     {% endif %}
                     </td>
 
-                    <td class="text"  headers="id_summ id_man">
+                    <td class="num"  headers="id_summ id_man">
                     {% if summary.rules_manual_check > 0 %}
                     {{summary.rules_manual_check}}
                     {% else %}
@@ -160,7 +160,7 @@
                     {% endif %}
                     </td>
 
-                    <td class="text"  headers="id_summ id_pas">
+                    <td class="num"  headers="id_summ id_pas">
                     {% if summary.rules_passed > 0 %}
                     {{summary.rules_passed}}
                     {% else %}
