@@ -321,7 +321,7 @@
    } 
 
    function disableMaxPages() {
-    
+
       var i;
       var c;
 
@@ -332,8 +332,8 @@
       for(i = 0; i < controls.length; i++) {
         c = controls[i];
         if (i === 0) {
-          c.checked = true;
           c.disabled = false;
+          c.checked = true;
         }
         else {
            c.disabled = true;

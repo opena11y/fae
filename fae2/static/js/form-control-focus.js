@@ -5,8 +5,6 @@ $(document).ready(function() {
     for(var i = 0; i < elements.length; i++ ) {
         var e = elements[i];
 
-        console.log(e.type);
-
         if (" button hidden url text submit password".indexOf(e.type) > 0) continue;
 
         e.addEventListener('focus', function (event) { addHighlight(event, 'fae_focus');    });
