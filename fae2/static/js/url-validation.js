@@ -315,10 +315,7 @@
       controls = mps.getElementsByTagName("input");
       
       for(i = 1; i < controls.length; i++) {
-        c = controls[i];     
-        if (c.id.indexOf("disabled") < 0 ) {
-          c.removeAttribute('disabled');
-        }  
+        controls[i].disabled = false;     
       }      
 
    } 
@@ -335,10 +332,11 @@
       for(i = 0; i < controls.length; i++) {
         c = controls[i];
         if (i === 0) {
-          c.setAttribute('checked','');
+          c.checked = true;
+          c.disabled = false;
         }
         else {
-           c.setAttribute('disabled', '');
+           c.disabled = true;
          }
       }      
     } 
