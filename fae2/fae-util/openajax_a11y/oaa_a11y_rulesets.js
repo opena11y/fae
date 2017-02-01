@@ -1,5 +1,5 @@
 /**
- * Copyright 2011-2016  OpenAjax Alliance
+ * Copyright 2011-2017  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,8 +22,8 @@ var createARIATestRuleset = function () {
 
   var ruleset_info = {
     ruleset_id    : "TEST",  
-    version       : "1.0.0",
-    last_updated  : "2016-09-02",
+    version       : "1.1.0",
+    last_updated  : "2017-02-01",
     author        : "OpenAjax Accessibility Task Force",
     author_url    : "http://www.openajax.org/member/wiki/Accessibility",
 
@@ -327,6 +327,10 @@ var createARIATestRuleset = function () {
        required : true,
        enabled  : true
      },
+   LAYOUT_3 : {
+       required : true,
+       enabled  : true
+     },
    LINK_1 : {
        required : true,
        enabled  : true
@@ -570,6 +574,10 @@ var createARIATestRuleset = function () {
    WIDGET_13: {
        required : true,
        enabled  : true
+     },
+   WIDGET_14: {
+       required : true,
+       enabled  : true
      }
   };  
 
@@ -594,7 +602,7 @@ var createARIATestRuleset = function () {
 
    
 /**
- * Copyright 2011-2016  OpenAjax Alliance
+ * Copyright 2011-2017  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -617,8 +625,8 @@ var createARIATransitionalRuleset = function () {
 
   var ruleset_info = {
     ruleset_id    : "ARIA_TRANS",  
-    version       : "1.0.0",
-    last_updated  : "2016-09-02",
+    version       : "1.1.0",
+    last_updated  : "2017-02-01",
     author        : "OpenAjax Accessibility Task Force",
     author_url    : "http://www.openajax.org/member/wiki/Accessibility",
 
@@ -763,7 +771,7 @@ var createARIATransitionalRuleset = function () {
        enabled  : true
      },
    HEADING_5 : {
-       required : true,
+       required : false,
        enabled  : true
      },
    HEADING_6 : {
@@ -888,6 +896,10 @@ var createARIATransitionalRuleset = function () {
      },
    LAYOUT_2 : {
        required : false,
+       enabled  : true
+     },
+   LAYOUT_3 : {
+       required : true,
        enabled  : true
      },
    LINK_1 : {
@@ -1117,6 +1129,10 @@ var createARIATransitionalRuleset = function () {
    WIDGET_12 : {
        required : true,
        enabled  : true
+     },
+   WIDGET_14 : {
+       required : true,
+       enabled  : true
      }
   };  
 
@@ -1140,7 +1156,7 @@ var createARIATransitionalRuleset = function () {
   
 }();
 /**
- * Copyright 2011-2016  OpenAjax Alliance
+ * Copyright 2011-2017  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1164,8 +1180,8 @@ var createARIAStrictRuleset = function () {
 
   var ruleset_info = {
     ruleset_id    : "ARIA_STRICT",  
-    version       : "1.0.0",
-    last_updated  : "2016-09-02",
+    version       : "1.1.0",
+    last_updated  : "2017-02-01",
     author        : "OpenAjax Accessibility Task Force",
     author_url    : "http://www.openajax.org/member/wiki/Accessibility",
 
@@ -1314,7 +1330,7 @@ var createARIAStrictRuleset = function () {
         enabled  : true
       },
       HEADING_5 : {
-        required : true,
+        required : false,
         enabled  : true
       },
       HEADING_6 : {
@@ -1326,7 +1342,7 @@ var createARIAStrictRuleset = function () {
         enabled  : true
       },
       HEADING_8 : {
-        required : true,
+        required : false,
         enabled  : true
       },
       HTML_1 : {
@@ -1467,6 +1483,10 @@ var createARIAStrictRuleset = function () {
       },
       LAYOUT_2 : {
         required : false,
+        enabled  : true
+      },
+      LAYOUT_3 : {
+        required : true,
         enabled  : true
       },
       LINK_1 : {
@@ -1702,6 +1722,10 @@ var createARIAStrictRuleset = function () {
         enabled  : true
       },
       WIDGET_12 : {
+       required : true,
+       enabled  : true
+     },
+      WIDGET_14 : {
        required : true,
        enabled  : true
      }

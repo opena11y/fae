@@ -71,8 +71,8 @@
                 </td>
 
                 <td class="num"  headers="id_r{{forloop.counter}} id_man">
-                {% if prr.elements_manual_check > 0 %}
-                {{prr.element_manual_check}}
+                {% if prr.elements_mc_identified > 0 %}
+                {{prr.elements_mc_identified}}
                 {% else %}
                 -
                 {% endif %}
@@ -149,7 +149,7 @@
                 </td>
 
                 <td class="num"  headers="id_all id_man">
-                {% if ws_rule_result.elements_manual_check > 0 %}
+                {% if ws_rule_result.mc_identified > 0 %}
                 {{ws_rule_result.mc_identified}}
                 {% else %}
                 -

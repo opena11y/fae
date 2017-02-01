@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2016  OpenAjax Alliance
+ * Copyright 2011-2017  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -46,7 +46,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
     NOT_APPLICABLE: 'N/A'
     
 });/*
- * Copyright 2011-2016  OpenAjax Alliance
+ * Copyright 2011-2017  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -254,7 +254,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
     }     
 });
 /*
- * Copyright 2011-2016  OpenAjax Alliance
+ * Copyright 2011-2017  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -339,7 +339,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
     }     
 });
 /*
- * Copyright 2011-2016  OpenAjax Alliance
+ * Copyright 2011-2017  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -461,7 +461,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
    }     
 });
 /*
- * Copyright 2011-2016  OpenAjax Alliance
+ * Copyright 2011-2017  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -747,7 +747,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
     }     
 });
 /*
- * Copyright 2011-2016  OpenAjax Alliance
+ * Copyright 2011-2017  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1046,7 +1046,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
     }     
 });
 /*
- * Copyright 2011-2016  OpenAjax Alliance
+ * Copyright 2011-2017  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1625,7 +1625,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         }    }
 });
 /*
- * Copyright 2011-2016  OpenAjax Alliance
+ * Copyright 2011-2017  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1738,7 +1738,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
   }
 });
 /*
- * Copyright 2011-2016  OpenAjax Alliance
+ * Copyright 2011-2017  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -2219,7 +2219,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
   }
 });
 /*
- * Copyright 2011-2016  OpenAjax Alliance
+ * Copyright 2011-2017  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -2566,7 +2566,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
     }    
 });
 /*
- * Copyright 2011-2016  OpenAjax Alliance
+ * Copyright 2011-2017  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -2667,7 +2667,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
    }
 });
 /*
- * Copyright 2011-2016  OpenAjax Alliance
+ * Copyright 2011-2017  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -2701,8 +2701,6 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
       RULE_RESULT_MESSAGES: {
         MANUAL_CHECK_S:  'Verify the element with the widget role has the keyboard interactions required by its role.',
         MANUAL_CHECK_P:  'Verify the %N_MC elements with widget roles have the keyboard interactions required by their roles.',
-        FAIL_S:          'Add event handlers to the element with the widget role to support the keyboard interactions required by its role.',
-        FAIL_P:          'Add event handlers to the %N_F elements with widget roles to support the keyboard interactions required by their roles.',
         HIDDEN_S:        'One hidden element with a widget role was not evaluated.',
         HIDDEN_P:        '%N_H hidden elements with widget roles were not evaluated.',
         NOT_APPLICABLE:  'No elements with widget roles on the page'
@@ -2712,7 +2710,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         ELEMENT_MC_2:     'Verify the "%1" event handlers on ancestor elements, or on the document object, support the keyboard interactions required by the @%2@ widget role.',
         ELEMENT_MC_3:     'Verify the "%1" event handlers on the @%2@ owner widget (through @aria-owns@) support the keyboard interactions on its descendant components required by the @%3@ widget role.',
         ELEMENT_MC_4:     'Verify the "%1" event handlers on the widget subcomponents support the keyboard interactions required by the @%2@ widget role.',
-        ELEMENT_FAIL_1:   'Add keyboard event handlers to support the keyboard interactions required by the @%1@ widget role.',
+        ELEMENT_MC_5:     'Verify the keyboard interaction required by the @%1@ widget role.',
         ELEMENT_HIDDEN_1: 'Element with @%1@ widget role was not evaluated because it is hidden.'
       },
       PURPOSE: [
@@ -2850,7 +2848,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
   }
 });
 /*
- * Copyright 2011-2016  OpenAjax Alliance
+ * Copyright 2011-2017  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -4024,7 +4022,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
    }
 });
 /*
- * Copyright 2011-2016  OpenAjax Alliance
+ * Copyright 2011-2017  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -4194,7 +4192,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
    }     
 });
 /*
- * Copyright 2011-2016  OpenAjax Alliance
+ * Copyright 2011-2017  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -4239,7 +4237,10 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_HIDDEN_1: 'Meaningful sequence was not tested The layout @table@ is hidden from assistive technologies.'
             },  
             PURPOSE: [
-              'The sequence of content (i.e. order) in the document code affects its meaning, especially for users of assistive technology who cannot see the visual cues provided in a graphical that provide information about the relationships between content.'                   
+              'The sequence of content (i.e. order) in the document code affects its meaning, especially for users of assistive technology who cannot see relationships between content provided by the visual cues provided in a graphical layout.',
+              'There are many ways web content, including the use of table markup and CSS positioning tecnhiques, to alter the graphical rendering of content so that it makes sense visually, but the DOM order of content does not.',
+              'The chance of this situation is increasing with the use of Javascript techniques to hide/show and move content based on user interaction with the page.',
+              'If table markup and dynamic CSS positioning are used on a page it is important to test with assistive technologies to make sure the content makes sense for the non-graphical renderings.'      
             ],
             TECHNIQUES: [
               'Use CSS and web standards techniques for the coding of content, and the graphical styling and positioning of content.',
@@ -4347,11 +4348,44 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
                 url:   'http://www.w3.org/standards/'
               }
             ]   
+        },
+        LAYOUT_3: {
+            ID:                    'Layout 3',
+            DEFINITION:            'Verify that content order defined by @aria-flowto@ attribute makes sense to users of assistive technology.',
+            SUMMARY:               'Verify @aria-flowto@ changes make sense',
+            TARGET_RESOURCES_DESC: 'Elements with @aria-flowto@ attribute',
+            RULE_RESULT_MESSAGES: {
+              MANUAL_CHECK_S:    'Verify document with one @aria-flowto@ element defines a meaningful reading sequence with asisstive technologies.',   
+              MANUAL_CHECK_P:    'Verify document with %N_MC @aria-flowto@ elements define a meaningful reading sequence with asisstive technologies.',
+              HIDDEN_S:          'One element eith @aria-flowto@ attribute that is hidden was not evaluated.',
+              HIDDEN_P:          '%N_H elements eith @aria-flowto@ attribute that are hidden were not evaluated.',                 
+              NOT_APPLICABLE:  'No elements with @aria-flowto@ found.'              
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_MC_1:     'Verify the content reflow define by the @aria-flowto@ attribute on the  @%1@ element.',
+              ELEMENT_HIDDEN_1: 'No need to verify the content reflow define by the @aria-flowto@ attribute beacuse the @%1@ element is hidden from assistive technology.'
+            },  
+            PURPOSE: [
+              'The sequence of content (i.e. order) in the document can be made easier to understand by users of assistive technology in some cases with the use of @aria-flowto@.',
+              'For example a multi-column newspaper where an article spans several columns, @aria-flowto@ can be used to make it look like one continious column to assistive technology.',
+              'The @aria-flowto@ reorganizes the content by changing the order of how the content is represented in accessibility Application Programming Interfaces (APIs) used by operating systems to communicate to assistive technologies like screen readers.'                
+            ],
+            TECHNIQUES: [
+              'Read the document with a screen reader to verify the content affected by the @aria-flowto@ makes sense.'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: flowto property',
+                url:   'https://www.w3.org/TR/wai-aria/states_and_properties#aria-flowto'
+              }
+            ]   
         }
    }     
 });
 /*
- * Copyright 2011-2016  OpenAjax Alliance
+ * Copyright 2011-2017  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -4513,7 +4547,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
   }
 });
 /*
- * Copyright 2011-2016  OpenAjax Alliance
+ * Copyright 2011-2017  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -4690,7 +4724,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 });
 
 /*
- * Copyright 2011-2016  OpenAjax Alliance
+ * Copyright 2011-2017  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -4943,7 +4977,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
    }
 });
 /*
- * Copyright 2011-2016  OpenAjax Alliance
+ * Copyright 2011-2017  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -5012,7 +5046,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
   }
 });
 /*
- * Copyright 2011-2016 OpenAjax Alliance
+ * Copyright 2011-2017 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -5069,7 +5103,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
     }       
 });
 /*
- * Copyright 2011-2016  OpenAjax Alliance
+ * Copyright 2011-2017  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -5761,7 +5795,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
    }     
 });
 /*
- * Copyright 2011-2016  OpenAjax Alliance
+ * Copyright 2011-2017  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -5818,7 +5852,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
     }  
 });
 /*
- * Copyright 2011-2016  OpenAjax Alliance
+ * Copyright 2011-2017  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -6356,7 +6390,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
    }
 });
 /*
- * Copyright 2011-2016 OpenAjax Alliance
+ * Copyright 2011-2017 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -6481,7 +6515,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
     }     
 });
 /*
- * Copyright 2011-2016  OpenAjax Alliance
+ * Copyright 2011-2017  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -6606,7 +6640,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
    }     
 });
 /*
- * Copyright 2011-2016  OpenAjax Alliance
+ * Copyright 2011-2017  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -7029,7 +7063,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
    }     
 });
 /*
- * Copyright 2011-2016  OpenAjax Alliance
+ * Copyright 2011-2017  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -7785,11 +7819,77 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
                 url:   'http://access.aol.com/aegis/#goto_slider'
               }                            
             ]
+        },
+        WIDGET_14: {
+            ID:                    'Widget 14',
+            DEFINITION:            'Verify a live region identified with a @alert@, @log@ or @status@ role, or an @aria-live@ attribute is appropriate for the type of changing information it contains.',
+            SUMMARY:               'Verify live region is appropriate',
+            TARGET_RESOURCES_DESC: 'Elements with @alert@, @log@ or @status@ roles or the @aria-live@ attribute',
+            RULE_RESULT_MESSAGES: {
+              MANUAL_CHECK_S:   'Verify the element identifed with a live region is appropriate for the type of changing information it contains.',
+              MANUAL_CHECK_P:   'Verify the %N_MC elements identifed with a live region are appropriate for the type of changing information each contains.',
+              HIDDEN_S: 'One element that has been identified as a live region is hidden and was not evaluated.',
+              HIDDEN_P: '%N_H elements that have been identified as live regions are hidden and were not evaluated..',
+              NOT_APPLICABLE:  'No elements were identified as a live region on the page.'              
+            },
+            NODE_RESULT_MESSAGES: {
+              ELEMENT_MC_1:       'Verify the %1 element with a @aria-live="%2"@ attribute is appropriate for type of changing information.',
+              ELEMENT_MC_2:       'Verify the %1 element with a @alert@ role is for critical time-sensitive information.',
+              ELEMENT_MC_3:       'Verify the %1 element with a @log@ role is for new information added and deleted in a meaningful order.',
+              ELEMENT_MC_4:       'Verify the %1 element with a @status@ role is for advisory information.',
+              ELEMENT_HIDDEN_1:   '@%1[arial-live="%2"]@ was not tested because it is hidden from assistive technologies.',
+              ELEMENT_HIDDEN_2:   '@%1[role="%2"]@ was not tested because it is hidden from assistive technologies.'
+            },
+            PURPOSE: [
+              'Screen reader users need a way for messages that appear in a defined region of a page to be automatically announced to the user when the user is view other parts of the page.',
+              'ARIA live regions make it possible to identify regions on a web apge to be automatically read to them when the content of the region changes.',
+              'In general live regions should be used as little as possible, since live regions that are constantly announcing changes in content may become so distracting that the user cannot complete the task they are working on.',
+              'A common misuse of live regions is to announce the opening of pull down menus or dialog boxes, there is other ARIA markup that must be used to identify these types of changes.'
+            ],
+            TECHNIQUES: [
+              'The @alert@ role is a message with very important, and usually time-sensitive, information.  An example inlcudes transaction errors that are cancelling or impeding the progress of completing a financial transaction.',
+              'The @log@ role is a type of live region where new information is added in meaningful order and old information may disappear. Examples include chat logs, messaging history, game log, or an error log.',
+              'The @status@ role is an advisory message, but is not important enough to justify an @alert@ role, often but not necessarily presented as a status bar.',
+              'The @aria-live@ role can be used to customize a live region and can optionally be used in conjuction with other ARIA properties: @aria-atomic@, @aria-busy@, @aria-live@ and @aria-relevant@.'
+            ],
+            MANUAL_CHECKS: [
+            ],
+            INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Alert Role', 
+                url:   'https://www.w3.org/TR/wai-aria/roles#alert'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Log Role', 
+                url:   'https://www.w3.org/TR/wai-aria/roles#log'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Status Role', 
+                url:   'https://www.w3.org/TR/wai-aria/roles#status'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: aria-live', 
+                url:   'https://www.w3.org/TR/wai-aria/states_and_properties#aria-live'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: aria-atomic', 
+                url:   'https://www.w3.org/TR/wai-aria/states_and_properties#aria-atomic'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: aria-busy', 
+                url:   'https://www.w3.org/TR/wai-aria/states_and_properties#aria-busy'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: aria-relevant', 
+                url:   'https://www.w3.org/TR/wai-aria/states_and_properties#aria-relevant'
+              } 
+
+            ]
         }   
     }
 });
 /**
- * Copyright 2011-2016 OpenAjax Alliance
+ * Copyright 2011-2017 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -7990,7 +8090,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
 ]);
 /**
- * Copyright 2011-2016  OpenAjax Alliance
+ * Copyright 2011-2017  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -10939,7 +11039,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     
 
 /**
- * Copyright 2011-2016  OpenAjax Alliance
+ * Copyright 2011-2017  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -11187,7 +11287,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
                 kbd_events = checkForKeyboardOnRequiredChildren(we);
 
                 if (kbd_events.length) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, we, 'ELEMENT_MC_4', [kbd_events, de.role]);
-                else rule_result.addResult(TEST_RESULT.FAIL, we, 'ELEMENT_FAIL_1', [de.role]);
+                else rule_result.addResult(TEST_RESULT.MANUAL_CHECK, we, 'ELEMENT_MC_5', [de.role]);
                  
               }  
             }             
@@ -12877,7 +12977,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     
 
 /**
- * Copyright 2011-2016  OpenAjax Alliance
+ * Copyright 2011-2017  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13008,7 +13108,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 { rule_id             : 'LAYOUT_2', 
   last_updated        : '2014-11-28', 
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
-  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.TABLES,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.STYLES_READABILITY,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
   wcag_primary_id     : '1.3.2',
   wcag_related_ids    : [],
@@ -13056,9 +13156,53 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
        } // end loop
      }  
   } // end validation function        
+},
+ 
+/**
+ * @object LAYOUT_3
+ *
+ * @desc     Check to see if aria-flowto property ordering makes sense to AT users.
+ */
+{ rule_id             : 'LAYOUT_3', 
+  last_updated        : '2017-01-17', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.STYLES_READABILITY,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '1.3.2',
+  wcag_related_ids    : [],
+  target_resources    : ['[aria_flowto]'],
+  primary_property    : 'aria_flowto',
+  resource_properties : ['aria_flowto'],
+  language_dependency : "",
+  validate          : function (dom_cache, rule_result) {
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+  
+    var dom_elements     = dom_cache.element_cache.dom_elements;
+    var dom_elements_len = dom_elements.length;
+
+    for (var i = 0; i < dom_elements_len; i++ ) {
+
+      var de =dom_elements[i];
+
+      if (de.type != Node.ELEMENT_NODE) continue;
+
+//      OpenAjax.a11y.logger.debug('[RULE][LAYOUT 3]: ' + de.tag_name + ' (' + de.has_aria_flowto + ')');
+      
+      if (de.has_aria_flowto) {
+        if (de.computed_style.is_visible_to_at === VISIBILITY.HIDDEN) {
+          rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.tag_name]);                      
+        }
+        else {
+          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, de, 'ELEMENT_MC_1', [de.tag_name]);
+        }  
+      }
+    }      
+  } // end validation function        
 }
 ]); /**
- * Copyright 2011-2016  OpenAjax Alliance
+ * Copyright 2011-2017  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13211,7 +13355,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     
 
 /**
- * Copyright 2011-2016  OpenAjax Alliance
+ * Copyright 2011-2017  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13736,7 +13880,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     
 
 /**
- * Copyright 2011-2016  OpenAjax Alliance
+ * Copyright 2011-2017  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13808,7 +13952,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
 ]);
 /**
- * Copyright 2011-2016  OpenAjax Alliance
+ * Copyright 2011-2017  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13863,7 +14007,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
 ]);
 /**
- * Copyright 2011-2016  OpenAjax Alliance
+ * Copyright 2011-2017  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14648,7 +14792,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
 ]);
 /**
- * Copyright 2011-2016  OpenAjax Alliance
+ * Copyright 2011-2017  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14700,7 +14844,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
 ]);
 /**
- * Copyright 2011-2016  OpenAjax Alliance
+ * Copyright 2011-2017  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14862,8 +15006,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
         de = te.dom_element;
         cs = de.computed_style;
 
-//        OpenAjax.a11y.logger.debug("[Table Rule 2] Table: " + te + " table role: " + te.table_role);
-      
         if ((te.table_role === OpenAjax.a11y.TABLE_ROLE.DATA) || 
             (te.table_role === OpenAjax.a11y.TABLE_ROLE.COMPLEX)) { 
           data_tables.push(te);
@@ -14871,16 +15013,12 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
         }
       } // end loop
 
-//      OpenAjax.a11y.logger.debug("[Table Rule 2] Number of data tables: " + visible_data_tables);
-
       if (visible_data_tables > 0) {
       
         for (i = 0; i < data_tables.length; i++) {
           te = table_elements[i];
           de = te.dom_element;
           cs = de.computed_style;
-
-          OpenAjax.a11y.logger.debug("[Table Rule 2] Table: " + te + "  Source of name: " + te.accessible_name_source);
       
           if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
           
@@ -15062,26 +15200,27 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
       
       for (i = 0; i < table_visible.length; i++) {
         var te1 = table_visible[i];
-        var unique = true;
+        var count = 0;
 
         for(j = 0; j < table_visible.length; j++) {
 
-          if (j === i) continue;
-
           var te2 = table_visible[j];
 
-          OpenAjax.a11y.logger.debug("[Table Rule 4] ===================");
-          OpenAjax.a11y.logger.debug("[Table Rule 4] table 1: " + te1.accessible_name_for_comparison + " length: " + te1.accessible_name_for_comparison.length);
-          OpenAjax.a11y.logger.debug("[Table Rule 4] table 2: " + te2.accessible_name_for_comparison + " length: " + te2.accessible_name_for_comparison.length);
-          
+
           if (te1.accessible_name_for_comparison === te2.accessible_name_for_comparison) {
-            rule_result.addResult(TEST_RESULT.FAIL, te1, 'ELEMENT_FAIL_1', [te1.accessible_name]);
-            unique = false;
-            break;
+            count += 1;
+            if (count > 1) break;
           }
         }  
 
-        if (unique) rule_result.addResult(TEST_RESULT.PASS, te1, 'ELEMENT_PASS_1', [te1.accessible_name]);
+//        OpenAjax.a11y.logger.debug("[Table Rule 4]: " + te1.accessible_name + " '" + te1.accessible_name_for_comparison + "' " + te1.accessible_name_for_comparison.length + " "+ count);
+
+        if (count < 2) {
+          rule_result.addResult(TEST_RESULT.PASS, te1, 'ELEMENT_PASS_1', [te1.accessible_name]);
+        }
+        else {
+            rule_result.addResult(TEST_RESULT.FAIL, te1, 'ELEMENT_FAIL_1', [te1.accessible_name]);          
+        }  
       }
     }   
   } // end validation function  
@@ -15407,7 +15546,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
    
 
 /**
- * Copyright 2011-2016  OpenAjax Alliance
+ * Copyright 2011-2017  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15659,7 +15798,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
       var passed_h1_element_count  = 0;
       var i, h1, de, cs;
       
-      OpenAjax.a11y.logger.debug('[RULE][TITLE 2] Title: ' + title_element.name_for_comparison + '(' + title_element.name_for_comparison.length + ')');
+//      OpenAjax.a11y.logger.debug('[RULE][TITLE 2] Title: ' + title_element.name_for_comparison + '(' + title_element.name_for_comparison.length + ')');
       
       if (title_element.name_for_comparison.length === 0) {
         rule_result.addResult(TEST_RESULT.FAIL, page_element, 'PAGE_FAIL_1', []);        
@@ -15680,7 +15819,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
           de = h1.dom_element;
           cs = de.computed_style;
 
-          OpenAjax.a11y.logger.debug('[RULE][TITLE 2] H1: ' + h1.name_for_comparison + '(' + h1.name_for_comparison.length + ')');
+//          OpenAjax.a11y.logger.debug('[RULE][TITLE 2] H1: ' + h1.name_for_comparison + '(' + h1.name_for_comparison.length + ')');
 
           if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
             if (h1.name_for_comparison.length) {
@@ -15716,7 +15855,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   }
  ]); 
 /**
- * Copyright 2011-2016  OpenAjax Alliance
+ * Copyright 2011-2017  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17164,7 +17303,88 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
        } // end loop
      } 
    } // end validation function   
+},
+ 
+/**
+ * @object WIDGET_14
+ *
+ * @desc     Verify live regions are being used properly
+ */
+{ rule_id             : 'WIDGET_14', 
+  last_updated        : '2017-01-17', 
+  rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
+  rule_category       : OpenAjax.a11y.RULE_CATEGORIES.WIDGETS_SCRIPTS,
+  rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
+  wcag_primary_id     : '4.1.2',
+  wcag_related_ids    : [],
+  target_resources    : ['[role="alert"]','[role="log"]','[role="status"]','[aria-live]'],
+  primary_property    : 'is_live',
+  resource_properties : ['is_live', 'role','aria_live', 'aria_atomic', 'aria_busy', 'aria_relavent'],
+  language_dependency : "",
+  validate          : function (dom_cache, rule_result) {
+
+    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
+  
+    var dom_elements     = dom_cache.element_cache.dom_elements;
+    var dom_elements_len = dom_elements.length;
+
+    for (var i = 0; i < dom_elements_len; i++ ) {
+
+      var de =dom_elements[i];
+
+      if (de.type != Node.ELEMENT_NODE || !de.is_live) continue;
+
+      OpenAjax.a11y.logger.debug('[RULE][WIDGET 14]: ' + de.tag_name );
+      
+      if (de.has_aria_live) {
+        if (de.aria_live !== 'off') {
+            if (de.computed_style.is_visible_to_at === VISIBILITY.HIDDEN) {
+              rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.tag_name, de.aria_live]);                      
+            }
+            else {
+              rule_result.addResult(TEST_RESULT.MANUAL_CHECK, de, 'ELEMENT_MC_1', [de.tag_name, de.aria_live]);
+            }  
+        }
+      }
+      else {
+        switch (de.role) {
+
+          case 'alert':
+            if (de.computed_style.is_visible_to_at === VISIBILITY.HIDDEN) {
+              rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_2', [de.tag_name, de.role]);                      
+            }
+            else {
+              rule_result.addResult(TEST_RESULT.MANUAL_CHECK, de, 'ELEMENT_MC_2', [de.tag_name]);
+            }  
+            break;
+
+          case 'log':
+            if (de.computed_style.is_visible_to_at === VISIBILITY.HIDDEN) {
+              rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_2', [de.tag_name, de.role]);                      
+            }
+            else {
+              rule_result.addResult(TEST_RESULT.MANUAL_CHECK, de, 'ELEMENT_MC_3', [de.tag_name]);
+            }  
+            break;
+
+          case 'status':
+            if (de.computed_style.is_visible_to_at === VISIBILITY.HIDDEN) {
+              rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_2', [de.tag_name, de.role]);                      
+            }
+            else {
+              rule_result.addResult(TEST_RESULT.MANUAL_CHECK, de, 'ELEMENT_MC_4', [de.tag_name]);
+            }  
+            break;
+
+          default:
+            break;
+        } 
+      }
+    }      
+  } // end validation function        
 }
+
 ]); 
 
 
