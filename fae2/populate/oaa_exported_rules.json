@@ -9662,7 +9662,7 @@
   "rulesets" : [
   {
       "ruleset_id"              : "TEST",
-      "ruleset_version"         : "1.1.0",
+      "ruleset_version"         : "1.1.0-beta.1",
       "ruleset_updated"         : "2017-02-01",
       "ruleset_author_name"     : "OpenAjax Accessibility Task Force",
       "ruleset_author_url"      : "http://www.openajax.org/member/wiki/Accessibility",
@@ -10221,7 +10221,7 @@
 ,
   {
       "ruleset_id"              : "ARIA_TRANS",
-      "ruleset_version"         : "1.1.0",
+      "ruleset_version"         : "1.1.0-beta.1",
       "ruleset_updated"         : "2017-02-01",
       "ruleset_author_name"     : "OpenAjax Accessibility Task Force",
       "ruleset_author_url"      : "http://www.openajax.org/member/wiki/Accessibility",
@@ -10732,7 +10732,7 @@
 ,
   {
       "ruleset_id"              : "ARIA_STRICT",
-      "ruleset_version"         : "1.1.0",
+      "ruleset_version"         : "1.1.0-beta.1",
       "ruleset_updated"         : "2017-02-01",
       "ruleset_author_name"     : "OpenAjax Accessibility Task Force",
       "ruleset_author_url"      : "http://www.openajax.org/member/wiki/Accessibility",
