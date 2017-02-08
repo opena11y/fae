@@ -62,7 +62,6 @@ json_data.close()
 
 
 def addRuleResultMessage(rule, label, message, date):
-  print("  Rule Result Message: " + label + ": " + message)
 
   if label == 'MANUAL_CHECK_S':
     rule.rule_result_mc_s      = message
@@ -86,7 +85,6 @@ def addRuleResultMessage(rule, label, message, date):
       
 
 def addNodeResultMessage(rule, label, message, date):
-  print("  Node Result Message: " + label + ": " + message)
   
   if label != "" and message != "": 
     try:   
@@ -149,17 +147,16 @@ rg.save()
 
 
 for r in data['rules']:
-   print("\nRule: " + r['nls_rule_id'])
 
    resource_properties = ""
    if r['resource_properties'] != "":
      resource_properties = ' '.join(r['resource_properties'])
-     print("  Resource Properties: " + resource_properties)
+#     print("  Resource Properties: " + resource_properties)
 
-   print("  Getting rule scope: " + str(r['rule_scope']))
+#   print("  Getting rule scope: " + str(r['rule_scope']))
    scope = RuleScope.objects.get(rule_scope_code=r['rule_scope'])  
 
-   print("  Getting rule group: " + str(r['rule_group']))
+#   print("  Getting rule group: " + str(r['rule_group']))
    group = RuleGroup.objects.get(rule_group_code=r['rule_group'])  
      
    try:
@@ -197,7 +194,8 @@ for r in data['rules']:
      try: 
        rule.target_resources.add(ElementDefinition.get_by_title(m))
      except:
-       print("  target resources exception for element definition: " + m  )
+       pass
+#       print("  target resources exception for element definition: " + m  )
 
    rule.save()
 
@@ -209,17 +207,14 @@ for r in data['rules']:
 
    rule.purpose = ""
    for p in r['purpose']:
-     print("PURPOSE: " + p)
      rule.purpose += '* ' + OAAMarkupToHTML(p) + '\n'
 
    rule.techniques = ""
    for t in r['techniques']:
-     print("TECHNIQUE: " + t)
      rule.techniques += '* ' + OAAMarkupToHTML(t) + '\n'
 
    rule.manual_checks = ""
    for mc in r['manual_checks']:
-     print("MC: " + mc)
      rule.manual_checks += '* ' + OAAMarkupToHTML(mc) + '\n'
 
    rule.save()

@@ -2594,41 +2594,56 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
     rules: {
         HTML_1: {
             ID:                    'HTML 1',
-            DEFINITION:            '@strong@, @em@ or in some cases @h1-h6@ heading elements %s be used instead of @b@ and @i@ elements.',
-            SUMMARY:               'Replace @b@ and @i@ elements',
-            TARGET_RESOURCES_DESC: '@b@ and @i@ elements',
+            DEFINITION:            '@b@, @i@ and @u@ elements %s not be used in place of HTML elements with more appropriate semantics, for example heading elements (@h1-h6@).',
+            SUMMARY:               'Verify the proper use @b@, @i@ and @u@ elements',
+            TARGET_RESOURCES_DESC: '@b@, @i@ and @u@ elements',
             RULE_RESULT_MESSAGES: {
-              FAIL_S:   'Change the @b@ or @i@ element to a @strong@ or @em@ element or, if appropriate, an @h1-h6@ element.',
-              FAIL_P:   'Change the @b@ or @i@ elements to @strong@ or @em@ elements or, if appropriate, @h1-h6@ elements.',
-              HIDDEN_S: 'If the hidden @b@ or @i@ element becomes visible, it should be changed to a @strong@, @em@ or possibly an @h1-h6@ element.',
-              HIDDEN_P: 'If any of the %N_H hidden @b@ or @i@ elements become visible, they should be changed to @strong@, @em@ or possibly @h1-h6@ elements.',
-              NOT_APPLICABLE:  'No @b@ or @i@ elements found on the page'
+              MANUAL_CHECK_S:   'Verify the @b@, @i@ or @u@ element is not being used in place of HTML elements with mpre appropriate semantics, for example heading elements (@h1-h6@).',
+              MANUAL_CHECK_P:   'Verify the %N_MC @b@, @i@ and/or @u@ elements are not being used in place of HTML elements with appropriate semantics, for example heading elements (@h1-h6@).',
+              HIDDEN_S:         'The one @b@, @i@ or @u@ element that is hidden was not evaluated.',
+              HIDDEN_P:         'The %N_H @b@, @i@ and/or @u@ elements that are hidden were not evaluated.',
+              NOT_APPLICABLE:  'No @b@, @i@ or @u@ elements found on the page'
             },
             NODE_RESULT_MESSAGES: {
-              ELEMENT_FAIL_1: 'Change the @b@ element to a @strong@ element or to a heading element (i.e. @h1-h6@), depending on its purpose in the page.',
-              ELEMENT_HIDDEN_1: '@b@ element is hidden, but should be changed to a @strong@ element or to a heading element (i.e. @h1-h6@), depending on its purpose in the page, in case it becomes visible.',
-              ELEMENT_FAIL_2: 'Change the @i@ element to an @em@ element or to a heading element (i.e. @h1-h6@), depending on its purpose in the page.',
-              ELEMENT_HIDDEN_2: '@i@ element is hidden, but should be changed to an @em@ element or to a heading element (i.e. @h1-h6@), depending on its purpose in the page, in case it becomes visible.'
+              ELEMENT_MC_1: 'Verify the @%1@ element is being used to highlight a word or phrase and not being used in place of a more semantically meaningful element, like a heading element (@h1-h6@).',
+              ELEMENT_HIDDEN_1: 'The @%1@ element was not tested since the text is hidden from assistive technologies.'
             },  
             PURPOSE: [
-              'In inline formatting use, the @b@ and @i@ elements do not convey the semantics of the text content.',
-              'The @b@ and @i@ elements are often misused for emphasizing words in a sentence, or to change the styling of content being used as a section header in the page.'
+              'The @b@, @i@ and @u@ elements are typically used for emphasizing words or phrases in a sentences and paragraphs.',
+              'When @b@, @i@ and @u@ elements are used in place of elements with more meanginful HTML semantics, like heading elements (@h1-h6@), the more meaningful elements should replace the @b@, @i@ and/or @u@ elements.',
+              'The @strong@ and @em@ elements are preferred for emphaiszing conent over @b@ and @i@ elements, since the @strong@ and @em@ sematics are not directly related to a graphical rendering.'
             ],
             TECHNIQUES: [
-              'If a @b@ element is being used in a sentence for emphasizing a word or phrase, replace it with the @strong@ element.',
-              'If an @i@ element is being used in a sentence for emphasizing a word or phrase, replace it with the @em@ element.',
-              'If a @b@ or @i@ element is being used to style a section heading, replace it with an @h1-h6@ heading element, depending on the level of heading needed in accordance with the structure of the page.'
+              'Change @b@, @i@ and @u@ elements to heading elements (@h1-h6@) if they are being used to visually idenfity headings on the page.',
+              'Change @b@ elements to @strong@ elements to make them more rendering independent.',
+              'Change @i@ elements to @em@ elements to make them more rendering independent.'
             ],
             MANUAL_CHECKS: [
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HTML 4.01 Specification: Headings: The em and strong elements', 
-                url:   'http://www.w3.org/TR/html4/struct/text.html#edef-EM'
+                title: 'HTML 5 Specification on Text-level semantics: The b element', 
+                url:   'https://www.w3.org/TR/html5/text-level-semantics.html#the-b-element'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HTML 4.01 Specification: Headings: The H1-H6 elements', 
-                url:   'http://www.w3.org/TR/html4/struct/global.html#edef-H2'
+                title: 'HTML 5 Specification on Text-level semantics: The i element', 
+                url:   'https://www.w3.org/TR/html5/text-level-semantics.html#the-i-element'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HTML 5 Specification on Text-level semantics: The u element', 
+                url:   'https://www.w3.org/TR/html5/text-level-semantics.html#the-u-element'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HTML 5 Specification on Text-level semantics: The strong element', 
+                url:   'https://www.w3.org/TR/html5/text-level-semantics.html#the-strong-element'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HTML 5 Specification on Text-level semantics: The em element', 
+                url:   'https://www.w3.org/TR/html5/text-level-semantics.html#the-em-element'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
+                title: 'HTML 5 Specification on Sections: The h1, h2, h3, h4, h5, and h6 elements', 
+                url:   'https://www.w3.org/TR/html5/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements'
               }
             ]
         },    
@@ -4224,7 +4239,9 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             SUMMARY:               'Layout tables %s have meaningful sequence',
             TARGET_RESOURCES_DESC: '@table@ elements used for layout',
             RULE_RESULT_MESSAGES: {
-              MANUAL_CHECK_S:    'Verify document has a meaningful sequence when layout table markup is disabled.  If content does not have a meaningful sequence, reorganize content on the page to have a meaningful sequence when layout tables are disabled.',   
+              MANUAL_CHECK_S:    'Verify document has a meaningful sequence when layout table markup is disabled.  If content does not have a meaningful sequence, reorganize content on the page to have a meaningful sequence when layout tables are disabled.',
+              HIDDEN_S:          'One @table@ element that is hidden was not evaluated.',
+              HIDDEN_P:          '%N_H @table@ elements that are hidden were not evaluated.',   
               NOT_APPLICABLE: 'No layout tables found on this page.'             
             },
             NODE_RESULT_MESSAGES: {
@@ -4307,6 +4324,8 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             RULE_RESULT_MESSAGES: {
               FAIL_S:   'Update the markup and CSS on this page to remove the nesting of the layout table that is nested.',
               FAIL_P:   'Update the markup and CSS on this page to remove the nesting of %N_F layout tables that are nested.',
+              HIDDEN_S: 'One table element that is hidden was not evaluated.',
+              HIDDEN_P: '%N_H table elements that are hidden were not evaluated.',
               NOT_APPLICABLE:  'No table elements used for layout.'              
             },
             NODE_RESULT_MESSAGES: {
@@ -4351,27 +4370,29 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         LAYOUT_3: {
             ID:                    'Layout 3',
-            DEFINITION:            'Verify that content order defined by @aria-flowto@ attribute makes sense to users of assistive technology.',
-            SUMMARY:               'Verify @aria-flowto@ changes make sense',
+            DEFINITION:            'Verify that the use of the @aria-flowto@ attribute supports the intended reading order of content on the page.',
+            SUMMARY:               'Verify @aria-flowto@ supports reading order',
             TARGET_RESOURCES_DESC: 'Elements with @aria-flowto@ attribute',
             RULE_RESULT_MESSAGES: {
-              MANUAL_CHECK_S:    'Verify document with one @aria-flowto@ element defines a meaningful reading sequence with asisstive technologies.',   
-              MANUAL_CHECK_P:    'Verify document with %N_MC @aria-flowto@ elements define a meaningful reading sequence with asisstive technologies.',
-              HIDDEN_S:          'One element eith @aria-flowto@ attribute that is hidden was not evaluated.',
-              HIDDEN_P:          '%N_H elements eith @aria-flowto@ attribute that are hidden were not evaluated.',                 
-              NOT_APPLICABLE:  'No elements with @aria-flowto@ found.'              
+              MANUAL_CHECK_S:    'Verify the use of the @aria-flowto@ attribute defines a meaningful reading order as rendered by assistive technologies.',   
+              MANUAL_CHECK_P:    'Verify the use %N_MC @aria-flowto@ attributes define a meaningful reading order as rendered by assistive technologies.',
+              HIDDEN_S:          'One element with @aria-flowto@ attribute that is hidden was not evaluated.',
+              HIDDEN_P:          '%N_H elements with @aria-flowto@ attribute that are hidden were not evaluated.',                 
+              NOT_APPLICABLE:  'No elements with @aria-flowto@ attribute found.'              
             },
             NODE_RESULT_MESSAGES: {
-              ELEMENT_MC_1:     'Verify the content reflow define by the @aria-flowto@ attribute on the  @%1@ element.',
-              ELEMENT_HIDDEN_1: 'No need to verify the content reflow define by the @aria-flowto@ attribute beacuse the @%1@ element is hidden from assistive technology.'
+              ELEMENT_MC_1:     'Verify the content reflow defined by the @aria-flowto@ attribute on the  @%1@ element creates a meaningful reading order.',
+              ELEMENT_HIDDEN_1: '@%1@ element with @aria-flowto@ attribute was not evaluated because it is hidden from assistive technologies.'
             },  
             PURPOSE: [
-              'The sequence of content (i.e. order) in the document can be made easier to understand by users of assistive technology in some cases with the use of @aria-flowto@.',
+              'The reading order of content on the page can, in some cases, be made easier to understand by users of assistive technology with the use of @aria-flowto@.',
+              'By default the reading order used by assisitive technologies is the same as the DOM ordering of content.',
+              'When the DOM order of content is interspersed with unrelated content, @aria-flowto@ can be used to keep related content together.',
               'For example a multi-column newspaper where an article spans several columns, @aria-flowto@ can be used to make it look like one continious column to assistive technology.',
-              'The @aria-flowto@ reorganizes the content by changing the order of how the content is represented in accessibility Application Programming Interfaces (APIs) used by operating systems to communicate to assistive technologies like screen readers.'                
+              'The @aria-flowto@ reorganizes the content by changing the order of how the content is represented in accessibility Application Programming Interfaces (APIs) used by operating systems to communicate to screen readers.'                
             ],
             TECHNIQUES: [
-              'Read the document with a screen reader to verify the content affected by the @aria-flowto@ makes sense.'
+              'Read the page with a screen reader to verify the content affected by the @aria-flowto@ places related information in the proper sequence.'
             ],
             MANUAL_CHECKS: [
             ],
@@ -7826,10 +7847,10 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             SUMMARY:               'Verify live region is appropriate',
             TARGET_RESOURCES_DESC: 'Elements with @alert@, @log@ or @status@ roles or the @aria-live@ attribute',
             RULE_RESULT_MESSAGES: {
-              MANUAL_CHECK_S:   'Verify the element identifed with a live region is appropriate for the type of changing information it contains.',
-              MANUAL_CHECK_P:   'Verify the %N_MC elements identifed with a live region are appropriate for the type of changing information each contains.',
-              HIDDEN_S: 'One element that has been identified as a live region is hidden and was not evaluated.',
-              HIDDEN_P: '%N_H elements that have been identified as live regions are hidden and were not evaluated..',
+              MANUAL_CHECK_S:  'Verify the element identifed as a live region is appropriate for the type of changing information it contains.',
+              MANUAL_CHECK_P:  'Verify the %N_MC elements identifed as live regions are appropriate for the type of changing information each contains.',
+              HIDDEN_S:        'One element identified as a live region is hidden and was not evaluated.',
+              HIDDEN_P:        '%N_H elements identified as live regions are hidden and were not evaluated..',
               NOT_APPLICABLE:  'No elements were identified as a live region on the page.'              
             },
             NODE_RESULT_MESSAGES: {
@@ -7837,19 +7858,19 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_MC_2:       'Verify the %1 element with a @alert@ role is for critical time-sensitive information.',
               ELEMENT_MC_3:       'Verify the %1 element with a @log@ role is for new information added and deleted in a meaningful order.',
               ELEMENT_MC_4:       'Verify the %1 element with a @status@ role is for advisory information.',
-              ELEMENT_HIDDEN_1:   '@%1[arial-live="%2"]@ was not tested because it is hidden from assistive technologies.',
-              ELEMENT_HIDDEN_2:   '@%1[role="%2"]@ was not tested because it is hidden from assistive technologies.'
+              ELEMENT_HIDDEN_1:   '@%1[arial-live="%2"]@ was not evaluated because it is hidden from assistive technologies.',
+              ELEMENT_HIDDEN_2:   '@%1[role="%2"]@ was not evaluated because it is hidden from assistive technologies.'
             },
             PURPOSE: [
-              'Screen reader users need a way for messages that appear in a defined region of a page to be automatically announced to the user when the user is view other parts of the page.',
+              'Screen reader users need a way for messages that appear in a defined region of a page to be automatically announced to the user when the user is viewing other parts of the page.',
               'ARIA live regions make it possible to identify regions on a web apge to be automatically read to them when the content of the region changes.',
-              'In general live regions should be used as little as possible, since live regions that are constantly announcing changes in content may become so distracting that the user cannot complete the task they are working on.',
-              'A common misuse of live regions is to announce the opening of pull down menus or dialog boxes, there is other ARIA markup that must be used to identify these types of changes.'
+              'In general live regions should be used as little as possible, since live regions that are constantly announcing changes become distracting keeping the user from completing the task they are working on.',
+              'A common misuse of live regions is to announce the opening of pull down menus or dialog boxes and these announcements are handled through the appropriate use of other ARIA markup like @menu@ and @dialog@ roles.'
             ],
             TECHNIQUES: [
-              'The @alert@ role is a message with very important, and usually time-sensitive, information.  An example inlcudes transaction errors that are cancelling or impeding the progress of completing a financial transaction.',
+              'The @alert@ role is a message with very important, and usually time-sensitive, information and typically interrupts current speech being spoken by a screen reader.  An example inlcudes transaction errors that are cancelling or impeding the progress of completing a financial transaction.',
               'The @log@ role is a type of live region where new information is added in meaningful order and old information may disappear. Examples include chat logs, messaging history, game log, or an error log.',
-              'The @status@ role is an advisory message, but is not important enough to justify an @alert@ role, often but not necessarily presented as a status bar.',
+              'The @status@ role is an advisory message, but is not important enough to justify an @alert@ role, often but not necessarily presented as a status bar and typically waits for a break in the current speech from a screen reader before announcing the change.',
               'The @aria-live@ role can be used to customize a live region and can optionally be used in conjuction with other ARIA properties: @aria-atomic@, @aria-busy@, @aria-live@ and @aria-relevant@.'
             ],
             MANUAL_CHECKS: [
@@ -11063,17 +11084,17 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 /**
  * @object HTML_1
  *
- * @desc Use the semanitcally meaningful em and strong elements instead of stylistic b and i elements
+ * @desc Verify that b, i and u are not being used in place of more semantically headingful elements
  */ 
  
 { rule_id             : 'HTML_1', 
-  last_updated        : '2014-11-28', 
+  last_updated        : '2017-02-08', 
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.STYLES_READABILITY,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
   wcag_primary_id     : '4.1.1',
   wcag_related_ids    : [],
-  target_resources    : ['b', 'i'],
+  target_resources    : ['b', 'i', 'u'],
   primary_property    : 'tag_name',
   resource_properties : [],
   language_dependency : "",
@@ -11088,24 +11109,16 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     for (var i = 0; i < dom_elements_len; i++) {
       var de = dom_elements[i];
 
-      if (de.tag_name === 'b') {
+      if (de.tag_name === 'b' || 
+          de.tag_name === 'i' || 
+          de.tag_name === 'u') {
         if (de.computed_style.is_visible_to_at === VISIBILITY.VISIBLE ) {      
-           rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [de.tag_name, de.lang]);    
+           rule_result.addResult(TEST_RESULT.MANUAL_CHECK, de, 'ELEMENT_MC_1', [de.tag_name]);    
         }   
         else {
-          rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.tag_name, de.lang]);
+          rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.tag_name]);
         }
       }
-      else {
-        if (de.tag_name === 'i') {
-          if (de.computed_style.is_visible_to_at === VISIBILITY.VISIBLE ) {      
-             rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_2', [de.tag_name, de.lang]);    
-          }   
-          else {
-            rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_2', [de.tag_name, de.lang]);
-          }
-        }  
-      }  
     } 
     
   } // end validate function
@@ -11166,7 +11179,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  */
      
 { rule_id             : 'KEYBOARD_1', 
-  last_updated        : '2014-11-28', 
+  last_updated        : '2017-02-08', 
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.KEYBOARD_SUPPORT,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP3,
@@ -17311,7 +17324,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * @desc     Verify live regions are being used properly
  */
 { rule_id             : 'WIDGET_14', 
-  last_updated        : '2017-01-17', 
+  last_updated        : '2017-02-08', 
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.WIDGETS_SCRIPTS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,

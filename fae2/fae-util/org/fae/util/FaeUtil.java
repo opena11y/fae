@@ -9,6 +9,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -773,6 +774,7 @@ class FaeUtil {
       out.write("url=" + url + NEWLINE);
       out.write("processed=" + m_urlsRead.size() + NEWLINE);
       out.write("unprocessed=" + m_unprocessedURLs.size() + NEWLINE);
+      out.write("excluded=" + m_excludedURLs.size() + NEWLINE);
       out.write("filtered=" + m_filteredURLs.size() + NEWLINE);
 
       long endTime = System.currentTimeMillis();
@@ -888,6 +890,8 @@ class FaeUtil {
           boolean passes = true;
           for (String ext : m_extensionsToNotProcess) {
             if (link.endsWith(ext)) {
+            	m_excludedURLs.add(link);
+				m_excludedURLsCSV.add("\"" + link + "\"," + ext);
               passes = false;
             }
           }
@@ -1100,6 +1104,49 @@ class FaeUtil {
 
     // ------------------------------------------------------------------------
     // ------------------------------------------------------------------------
+    
+    if (m_excludedURLs.size() > 0) {
+        try {
+          Thread.sleep(2000);
+        }
+        catch (InterruptedException e1) {
+          e1.printStackTrace();
+        }
+        if (OUTPUT_DIRECTORY != null) {
+          try {
+            File file = new File(OUTPUT_DIRECTORY + FILESEP + "excluded_urls.txt");
+            System.out.println("writting to " + file);
+            FileWriter fstream = new FileWriter(file);
+            BufferedWriter out = new BufferedWriter(fstream);
+            out.write("These URL(s) were excluded based on the extensions to not process:" + NEWLINE);
+            for (String url : m_excludedURLs) {
+              out.write(url.toString() + NEWLINE);
+            }
+            out.close();
+          }
+          catch (IOException e) {
+            e.printStackTrace();
+            displayException(e);
+          }
+          try {
+            File file = new File(OUTPUT_DIRECTORY + FILESEP + "excluded_urls.csv");
+            System.out.println("writting to " + file);
+            FileWriter fstream = new FileWriter(file);
+            BufferedWriter out = new BufferedWriter(fstream);
+            for (String csv : m_excludedURLsCSV) {
+              out.write(csv + NEWLINE);
+            }
+            out.close();
+          }
+          catch (IOException e) {
+            e.printStackTrace();
+          }
+        }
+        System.out.println(NEWLINE);
+      }
+
+      // ------------------------------------------------------------------------
+      // ------------------------------------------------------------------------
     System.out.println(m_treeRepresentation);
 
     //create authorization status file
@@ -1160,6 +1207,8 @@ class FaeUtil {
   public Vector<String> m_filteredURLsCSV = new Vector<String>();
   public Vector<URL> m_unprocessedURLs = new Vector<URL>();
   public Vector<String> m_unprocessedURLsCSV = new Vector<String>();
+  public Vector<String> m_excludedURLs = new Vector<String>();
+  public Vector<String> m_excludedURLsCSV = new Vector<String>();
 
   // authorization variables
   public static Vector<String> m_authorizationURLs = new Vector<String>();
