@@ -758,3 +758,39 @@ class FilteredURL(models.Model):
     else:
       return self.url_referenced
 
+# ---------------------------------------------------------------
+#
+# ExcludedURL
+#
+# ---------------------------------------------------------------
+  
+class ExcludedURL(models.Model):
+  filtered_url_id = models.AutoField(primary_key=True)
+
+  ws_report   = models.ForeignKey(WebsiteReport, on_delete=models.CASCADE, related_name="excluded_urls")
+
+  filename            = models.CharField('File Type',      max_length=256, default="")
+  url                 = models.URLField( 'Other URL',      max_length=4096)
+  first_reference_url = models.URLField( 'Referenced URL', max_length=4096)
+  reference_count     = models.IntegerField('Number of times URL referenced', default=0)
+  file_type           = models.CharField('File Type',      max_length=16, default="")
+
+  class Meta:
+    verbose_name        = "URL: Excluded"
+    verbose_name_plural = "URL: Excluded"
+    ordering = ['first_reference_url', 'url']
+
+  def __unicode__(self):
+    return self.url 
+
+  def get_url(self):
+    if len(self.url) > 50:
+      return self.url[:50] + '...... '   
+    else:
+      return self.url   
+     
+  def get_reference_url(self):
+    if len(self.url_referenced) > 50:
+      return self.url_referenced[:50] + '...... '   
+    else:
+      return self.url_referenced

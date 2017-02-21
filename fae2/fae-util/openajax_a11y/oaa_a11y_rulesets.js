@@ -771,14 +771,10 @@ var createARIATransitionalRuleset = function () {
        enabled  : true
      },
    HEADING_5 : {
-       required : false,
+       required : true,
        enabled  : true
      },
    HEADING_6 : {
-       required : false,
-       enabled  : true
-     },
-   HTML_1 : {
        required : false,
        enabled  : true
      },
@@ -1330,7 +1326,7 @@ var createARIAStrictRuleset = function () {
         enabled  : true
       },
       HEADING_5 : {
-        required : false,
+        required : true,
         enabled  : true
       },
       HEADING_6 : {
@@ -1342,11 +1338,7 @@ var createARIAStrictRuleset = function () {
         enabled  : true
       },
       HEADING_8 : {
-        required : false,
-        enabled  : true
-      },
-      HTML_1 : {
-        required : false,
+        required : true,
         enabled  : true
       },
       HTML_2 : {

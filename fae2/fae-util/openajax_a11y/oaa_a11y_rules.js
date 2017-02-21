@@ -2592,58 +2592,43 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
     //  OAA Rules title and message string National Language Support (NLS)
     //
     rules: {
-        HTML_1: {
+         HTML_1: {
             ID:                    'HTML 1',
-            DEFINITION:            '@b@, @i@ and @u@ elements %s not be used in place of HTML elements with more appropriate semantics, for example heading elements (@h1-h6@).',
-            SUMMARY:               'Verify the proper use @b@, @i@ and @u@ elements',
-            TARGET_RESOURCES_DESC: '@b@, @i@ and @u@ elements',
+            DEFINITION:            '@strong@, @em@ or in some cases @h1-h6@ heading elements %s be used instead of @b@ and @i@ elements.',
+            SUMMARY:               'Replace @b@ and @i@ elements',
+            TARGET_RESOURCES_DESC: '@b@ and @i@ elements',
             RULE_RESULT_MESSAGES: {
-              MANUAL_CHECK_S:   'Verify the @b@, @i@ or @u@ element is not being used in place of HTML elements with mpre appropriate semantics, for example heading elements (@h1-h6@).',
-              MANUAL_CHECK_P:   'Verify the %N_MC @b@, @i@ and/or @u@ elements are not being used in place of HTML elements with appropriate semantics, for example heading elements (@h1-h6@).',
-              HIDDEN_S:         'The one @b@, @i@ or @u@ element that is hidden was not evaluated.',
-              HIDDEN_P:         'The %N_H @b@, @i@ and/or @u@ elements that are hidden were not evaluated.',
-              NOT_APPLICABLE:  'No @b@, @i@ or @u@ elements found on the page'
+              FAIL_S:   'Change the @b@ or @i@ element to a @strong@ or @em@ element or, if appropriate, an @h1-h6@ element.',
+              FAIL_P:   'Change the @b@ or @i@ elements to @strong@ or @em@ elements or, if appropriate, @h1-h6@ elements.',
+              HIDDEN_S: 'If the hidden @b@ or @i@ element becomes visible, it should be changed to a @strong@, @em@ or possibly an @h1-h6@ element.',
+              HIDDEN_P: 'If any of the %N_H hidden @b@ or @i@ elements become visible, they should be changed to @strong@, @em@ or possibly @h1-h6@ elements.',
+              NOT_APPLICABLE:  'No @b@ or @i@ elements found on the page'
             },
             NODE_RESULT_MESSAGES: {
-              ELEMENT_MC_1: 'Verify the @%1@ element is being used to highlight a word or phrase and not being used in place of a more semantically meaningful element, like a heading element (@h1-h6@).',
-              ELEMENT_HIDDEN_1: 'The @%1@ element was not tested since the text is hidden from assistive technologies.'
+              ELEMENT_FAIL_1: 'Change the @b@ element to a @strong@ element or to a heading element (i.e. @h1-h6@), depending on its purpose in the page.',
+              ELEMENT_HIDDEN_1: '@b@ element is hidden, but should be changed to a @strong@ element or to a heading element (i.e. @h1-h6@), depending on its purpose in the page, in case it becomes visible.',
+              ELEMENT_FAIL_2: 'Change the @i@ element to an @em@ element or to a heading element (i.e. @h1-h6@), depending on its purpose in the page.',
+              ELEMENT_HIDDEN_2: '@i@ element is hidden, but should be changed to an @em@ element or to a heading element (i.e. @h1-h6@), depending on its purpose in the page, in case it becomes visible.'
             },  
             PURPOSE: [
-              'The @b@, @i@ and @u@ elements are typically used for emphasizing words or phrases in a sentences and paragraphs.',
-              'When @b@, @i@ and @u@ elements are used in place of elements with more meanginful HTML semantics, like heading elements (@h1-h6@), the more meaningful elements should replace the @b@, @i@ and/or @u@ elements.',
-              'The @strong@ and @em@ elements are preferred for emphaiszing conent over @b@ and @i@ elements, since the @strong@ and @em@ sematics are not directly related to a graphical rendering.'
+              'In inline formatting use, the @b@ and @i@ elements do not convey the semantics of the text content.',
+              'The @b@ and @i@ elements are often misused for emphasizing words in a sentence, or to change the styling of content being used as a section header in the page.'
             ],
             TECHNIQUES: [
-              'Change @b@, @i@ and @u@ elements to heading elements (@h1-h6@) if they are being used to visually idenfity headings on the page.',
-              'Change @b@ elements to @strong@ elements to make them more rendering independent.',
-              'Change @i@ elements to @em@ elements to make them more rendering independent.'
+              'If a @b@ element is being used in a sentence for emphasizing a word or phrase, replace it with the @strong@ element.',
+              'If an @i@ element is being used in a sentence for emphasizing a word or phrase, replace it with the @em@ element.',
+              'If a @b@ or @i@ element is being used to style a section heading, replace it with an @h1-h6@ heading element, depending on the level of heading needed in accordance with the structure of the page.'
             ],
             MANUAL_CHECKS: [
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HTML 5 Specification on Text-level semantics: The b element', 
-                url:   'https://www.w3.org/TR/html5/text-level-semantics.html#the-b-element'
+                title: 'HTML 4.01 Specification: Headings: The em and strong elements', 
+                url:   'http://www.w3.org/TR/html4/struct/text.html#edef-EM'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HTML 5 Specification on Text-level semantics: The i element', 
-                url:   'https://www.w3.org/TR/html5/text-level-semantics.html#the-i-element'
-              },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HTML 5 Specification on Text-level semantics: The u element', 
-                url:   'https://www.w3.org/TR/html5/text-level-semantics.html#the-u-element'
-              },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HTML 5 Specification on Text-level semantics: The strong element', 
-                url:   'https://www.w3.org/TR/html5/text-level-semantics.html#the-strong-element'
-              },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HTML 5 Specification on Text-level semantics: The em element', 
-                url:   'https://www.w3.org/TR/html5/text-level-semantics.html#the-em-element'
-              },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HTML 5 Specification on Sections: The h1, h2, h3, h4, h5, and h6 elements', 
-                url:   'https://www.w3.org/TR/html5/sections.html#the-h1,-h2,-h3,-h4,-h5,-and-h6-elements'
+                title: 'HTML 4.01 Specification: Headings: The H1-H6 elements', 
+                url:   'http://www.w3.org/TR/html4/struct/global.html#edef-H2'
               }
             ]
         },    
@@ -7843,39 +7828,49 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         WIDGET_14: {
             ID:                    'Widget 14',
-            DEFINITION:            'Verify a live region identified with a @alert@, @log@ or @status@ role, or an @aria-live@ attribute is appropriate for the type of changing information it contains.',
-            SUMMARY:               'Verify live region is appropriate',
+            DEFINITION:            'Verify the live region has the appropriate ARIA markup to indicate whether or how the screen reader will interrupt the user with a change notification.',
+            SUMMARY:               'Verify appropriate use of live region',
             TARGET_RESOURCES_DESC: 'Elements with @alert@, @log@ or @status@ roles or the @aria-live@ attribute',
             RULE_RESULT_MESSAGES: {
-              MANUAL_CHECK_S:  'Verify the element identifed as a live region is appropriate for the type of changing information it contains.',
-              MANUAL_CHECK_P:  'Verify the %N_MC elements identifed as live regions are appropriate for the type of changing information each contains.',
+              FAIL_S:          'One element identified as a live region has a conflict between the implied attribute values of the role and the defined attribute values.',
+              FAIL_P:          'The %N_F elements identified as live regions have conflicts between the implied attribute values of their roles and the defined attribute values.',
               HIDDEN_S:        'One element identified as a live region is hidden and was not evaluated.',
-              HIDDEN_P:        '%N_H elements identified as live regions are hidden and were not evaluated..',
-              NOT_APPLICABLE:  'No elements were identified as a live region on the page.'              
+              MANUAL_CHECK_S:  'Verify the element identified as a live region has the appropriate ARIA markup for the type of informational change that can occur.',
+              MANUAL_CHECK_P:  'Verify the %N_MC elements identified as live regions have the appropriate ARIA markup for the type of informational changes that can occur in those regions.',
+              HIDDEN_P:        '%N_H elements identified as live regions are hidden and were not evaluated.',
+              NOT_APPLICABLE:  'No elements were identified as live regions on the page.'              
             },
             NODE_RESULT_MESSAGES: {
-              ELEMENT_MC_1:       'Verify the %1 element with a @aria-live="%2"@ attribute is appropriate for type of changing information.',
-              ELEMENT_MC_2:       'Verify the %1 element with a @alert@ role is for critical time-sensitive information.',
-              ELEMENT_MC_3:       'Verify the %1 element with a @log@ role is for new information added and deleted in a meaningful order.',
-              ELEMENT_MC_4:       'Verify the %1 element with a @status@ role is for advisory information.',
-              ELEMENT_HIDDEN_1:   '@%1[arial-live="%2"]@ was not evaluated because it is hidden from assistive technologies.',
-              ELEMENT_HIDDEN_2:   '@%1[role="%2"]@ was not evaluated because it is hidden from assistive technologies.'
+              ELEMENT_FAIL_1:     'The @aria-live@ attribute value of @%1@ conflicts with the implied attribute value of @%2@ for the @%3@ role.',
+              ELEMENT_FAIL_2:     'The @aria-atomic@ attribute value of @false@ conflicts with the implied attribute value of @true@ for the @%1@ role.',
+              ELEMENT_MC_1:       'Verify the @aria-live@ attribute value of @%1@ is appropriate for the type of informational change that can occur in the region.',
+              ELEMENT_MC_2:       'Verify the @alert@ role identifies a live region with critical time-sensitive information.',
+              ELEMENT_MC_3:       'Verify the @log@ role identifies a live region where new information added and deleted in a meaningful order.',
+              ELEMENT_MC_4:       'Verify the @alert@ role identifies a live region with advisory information.',
+              ELEMENT_HIDDEN_1:   '[arial-live="%1"]@ was not evaluated because it is hidden from assistive technologies.',
+              ELEMENT_HIDDEN_2:   '[role="%1"]@ was not evaluated because it is hidden from assistive technologies.'
             },
             PURPOSE: [
-              'Screen reader users need a way for messages that appear in a defined region of a page to be automatically announced to the user when the user is viewing other parts of the page.',
-              'ARIA live regions make it possible to identify regions on a web apge to be automatically read to them when the content of the region changes.',
-              'In general live regions should be used as little as possible, since live regions that are constantly announcing changes become distracting keeping the user from completing the task they are working on.',
-              'A common misuse of live regions is to announce the opening of pull down menus or dialog boxes and these announcements are handled through the appropriate use of other ARIA markup like @menu@ and @dialog@ roles.'
+              'ARIA live regions provide a mechanism for displaying dynamic text content on a page such that changes in the content will be automatically announced to screen reader users while they are focusing on other parts of the page.',
+              'The manner in which informational changes in live regions are announced to screen reader users is controlled by three separate ARIA roles that may be assigned to the region: @alert@, @log@ and @status@.',
+              'In general, live regions should be used sparingly, since live regions that are constantly announcing changes become distracting, and may prevent the user from completing the task they are working on.',
+              'A common misuse of live regions is to announce the opening of pull down menus or dialog boxes: These types of announcements are better handled through the appropriate use of other ARIA markup such as the @menu@ and @dialog@ roles.'
             ],
             TECHNIQUES: [
-              'The @alert@ role is a message with very important, and usually time-sensitive, information and typically interrupts current speech being spoken by a screen reader.  An example inlcudes transaction errors that are cancelling or impeding the progress of completing a financial transaction.',
-              'The @log@ role is a type of live region where new information is added in meaningful order and old information may disappear. Examples include chat logs, messaging history, game log, or an error log.',
-              'The @status@ role is an advisory message, but is not important enough to justify an @alert@ role, often but not necessarily presented as a status bar and typically waits for a break in the current speech from a screen reader before announcing the change.',
-              'The @aria-live@ role can be used to customize a live region and can optionally be used in conjuction with other ARIA properties: @aria-atomic@, @aria-busy@, @aria-live@ and @aria-relevant@.'
+              'The @alert@ role identifies a live region with very important, and usually time-sensitive, information. When the information changes in this type of live region, a message is typically sent that interrupts the current speech being spoken by a screen reader. Examples includes transaction errors that are cancelling or impeding the progress of completing a financial transaction.',
+              'The @log@ role identifies a type of live region where new information is added in a meaningful order and old information may disappear. Examples include chat logs, messaging history, game log, or an error log.',
+              'The @status@ role identifies a live region that contains an advisory message, but one that is not important enough to justify an @alert@ role. This type of region is often, but not necessarily, presented as a status bar, and announcements of informational changes are typically delayed until a break occurs in the current speech being read by the screen reader software.',
+              'When the @aria-atomic@ attribute is specified for a live region, it indicates to assistive technologies whether to render all of the content or just the changes in information when a change occurs.',
+              'The optional @aria-relevant@ attribute on a live region indicates what types of informational changes should be communicated to the user (e.g. @additions@, @deletions@, @text@ and @all@).',
+              'The @aria-live@ attribute can be used to create custom live regions, with possible values of @polite@, @assertive@ and @off@. When used in conjunction with the ARIA @alert@, @log@ or @status@ roles, care must be taken in order to avoid conflicts with the default properties of those roles.'
             ],
             MANUAL_CHECKS: [
             ],
             INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.OTHER, 
+                title: 'Mozilla Developer Network: ARIA Live Regions', 
+                url:   'https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions'
+              },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Alert Role', 
                 url:   'https://www.w3.org/TR/wai-aria/roles#alert'
@@ -7895,10 +7890,6 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: aria-atomic', 
                 url:   'https://www.w3.org/TR/wai-aria/states_and_properties#aria-atomic'
-              },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: aria-busy', 
-                url:   'https://www.w3.org/TR/wai-aria/states_and_properties#aria-busy'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: aria-relevant', 
@@ -11081,20 +11072,14 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
 OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
-/**
- * @object HTML_1
- *
- * @desc Verify that b, i and u are not being used in place of more semantically headingful elements
- */ 
- 
 { rule_id             : 'HTML_1', 
-  last_updated        : '2017-02-08', 
+  last_updated        : '2014-11-28', 
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.STYLES_READABILITY,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
   wcag_primary_id     : '4.1.1',
   wcag_related_ids    : [],
-  target_resources    : ['b', 'i', 'u'],
+  target_resources    : ['b', 'i'],
   primary_property    : 'tag_name',
   resource_properties : [],
   language_dependency : "",
@@ -11109,16 +11094,24 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     for (var i = 0; i < dom_elements_len; i++) {
       var de = dom_elements[i];
 
-      if (de.tag_name === 'b' || 
-          de.tag_name === 'i' || 
-          de.tag_name === 'u') {
+      if (de.tag_name === 'b') {
         if (de.computed_style.is_visible_to_at === VISIBILITY.VISIBLE ) {      
-           rule_result.addResult(TEST_RESULT.MANUAL_CHECK, de, 'ELEMENT_MC_1', [de.tag_name]);    
+           rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [de.tag_name, de.lang]);    
         }   
         else {
-          rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.tag_name]);
+          rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.tag_name, de.lang]);
         }
       }
+      else {
+        if (de.tag_name === 'i') {
+          if (de.computed_style.is_visible_to_at === VISIBILITY.VISIBLE ) {      
+             rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_2', [de.tag_name, de.lang]);    
+          }   
+          else {
+            rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_2', [de.tag_name, de.lang]);
+          }
+        }  
+      }  
     } 
     
   } // end validate function
@@ -17342,25 +17335,64 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     var dom_elements     = dom_cache.element_cache.dom_elements;
     var dom_elements_len = dom_elements.length;
 
+
     for (var i = 0; i < dom_elements_len; i++ ) {
 
       var de =dom_elements[i];
 
-      if (de.type != Node.ELEMENT_NODE || !de.is_live) continue;
+      if (de.type != Node.ELEMENT_NODE || !de.is_live || (de.aria_live === 'off')) continue;
 
-      OpenAjax.a11y.logger.debug('[RULE][WIDGET 14]: ' + de.tag_name );
+      var has_failure = false;
+
+      var has_live_role =  de.role && de.role.length && (" alert log status".indexOf(de.role) > 0);
+
       
       if (de.has_aria_live) {
-        if (de.aria_live !== 'off') {
-            if (de.computed_style.is_visible_to_at === VISIBILITY.HIDDEN) {
-              rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.tag_name, de.aria_live]);                      
-            }
-            else {
-              rule_result.addResult(TEST_RESULT.MANUAL_CHECK, de, 'ELEMENT_MC_1', [de.tag_name, de.aria_live]);
-            }  
+        if (de.computed_style.is_visible_to_at === VISIBILITY.HIDDEN) {
+          rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.tag_name, de.aria_live]);                      
         }
+        else {
+          if (has_live_role) {
+
+            switch (de.role) {
+
+              case 'alert':
+                if (de.aria_live === 'polite') {
+                  rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', ['polite', 'assertive',  de.role]);
+                  has_failure = true;
+                }
+                break;
+
+              case 'log':
+              case 'status':
+                if (de.aria_live === 'assertive') {
+                  rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', ['assertive', 'polite', de.role]);
+                  has_failure = true;
+                }
+                break;
+
+              default:
+                break;
+
+            }
+          }
+          else {
+            rule_result.addResult(TEST_RESULT.MANUAL_CHECK, de, 'ELEMENT_MC_1', [de.tag_name, de.aria_live]);
+          }
+        }  
       }
-      else {
+
+      if (de.has_aria_atomic && has_live_role && (de.role === 'alert' || de.role === 'status')) {
+
+        if (de.aria_atomic === 'false') {
+          rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_2', [de.role]);
+          has_failure = true;
+        }
+
+      }
+
+      if(has_live_role && !has_failure) {
+
         switch (de.role) {
 
           case 'alert':

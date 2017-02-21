@@ -891,7 +891,7 @@ class FaeUtil {
           for (String ext : m_extensionsToNotProcess) {
             if (link.endsWith(ext)) {
             	m_excludedURLs.add(link);
-				m_excludedURLsCSV.add("\"" + link + "\"," + ext);
+				m_excludedURLsCSV.add("\"" + link + "\",\"" + URLProcessor.excludedURLParent + "\"," + ext);
               passes = false;
             }
           }

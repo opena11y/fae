@@ -50,6 +50,7 @@ public class URLProcessor {
 	private Vector<String> maxPageUrls = new Vector<String>();
 	public static Vector<String> m_loginSuccessURLs = new Vector<String>();
 	public static Vector<String> m_loginFailURLs = new Vector<String>();
+	public static String excludedURLParent;
 	public static boolean more_urls;
 
 	// ==========================================================================
@@ -1081,6 +1082,7 @@ public class URLProcessor {
 						m_faeUtil.verbose("\t" + m_urlNum
 								+ ": Looking for links... ");
 						startTime = System.currentTimeMillis();
+						excludedURLParent = m_url;
 						m_faeUtil.findLinks(page, "", m_linksFound);
 						endTime = System.currentTimeMillis();
 						// for (String link : m_linksFound) {

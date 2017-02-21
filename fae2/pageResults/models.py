@@ -24,6 +24,7 @@ from __future__ import absolute_import
 from django.db import models
 
 from reports.models        import WebsiteReport
+from reports.models        import ExcludedURL
 from ruleCategories.models import RuleCategory
 from wcag20.models         import Guideline
 from rules.models          import RuleScope
@@ -52,6 +53,7 @@ class PageResult(RuleGroupResult):
   id                 = models.AutoField(primary_key=True)
 
   ws_report        = models.ForeignKey(WebsiteReport, on_delete=models.CASCADE, related_name="page_all_results")
+  excluded_urls    = models.ManyToManyField(ExcludedURL)
 
   # Page identification information
   

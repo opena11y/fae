@@ -10641,6 +10641,7 @@ OpenAjax.a11y.cache.DOMElement = function (node, parent_dom_element, doc) {
   this.is_group        = false;
 
   this.has_alt                   = false;
+  this.has_aria_atomic           = false;
   this.has_aria_attributes       = false;
   this.has_aria_activedescendant = false;
   this.has_aria_controls         = false;
@@ -10696,6 +10697,13 @@ OpenAjax.a11y.cache.DOMElement = function (node, parent_dom_element, doc) {
     case 'aria-activedescendant':
       this.has_aria_activedescendant = true;
       addAriaAttribute('aria-activedescendant', attr_value);
+      break;
+
+    case 'aria-atomic':
+      this.has_aria_atomic = true;
+      this.aria_atomic = attr_value;
+      addAriaAttribute('aria-atomic', attr_value);
+      this.has_aria_attributes = true;
       break;
        
     case 'aria-controls':
@@ -10756,6 +10764,7 @@ OpenAjax.a11y.cache.DOMElement = function (node, parent_dom_element, doc) {
       this.aria_owns = attr_value;
       addAriaAttribute('aria-owns', attr_value);
       break;
+
 
     case 'aria-required':
       this.aria_required = attr_value.toLowerCase() === 'true';
