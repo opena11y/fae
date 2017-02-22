@@ -4239,10 +4239,8 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_HIDDEN_1: 'Meaningful sequence was not tested The layout @table@ is hidden from assistive technologies.'
             },  
             PURPOSE: [
-              'The sequence of content (i.e. order) in the document code affects its meaning, especially for users of assistive technology who cannot see relationships between content provided by the visual cues provided in a graphical layout.',
-              'There are many ways web content, including the use of table markup and CSS positioning tecnhiques, to alter the graphical rendering of content so that it makes sense visually, but the DOM order of content does not.',
-              'The chance of this situation is increasing with the use of Javascript techniques to hide/show and move content based on user interaction with the page.',
-              'If table markup and dynamic CSS positioning are used on a page it is important to test with assistive technologies to make sure the content makes sense for the non-graphical renderings.'      
+              'The sequence of the content (i.e. reading order) in a web page affects the conveyed meaning, especially for users of assistive technologies who cannot see the relationships between sections of content as provided by the visual cues in a graphical layout.',
+              'Using table markup for page layout is one way in which the DOM order of web content can be altered such that it makes sense visually, but the reading order rendered by assistive technologies is no longer meaningful.'     
             ],
             TECHNIQUES: [
               'Use CSS and web standards techniques for the coding of content, and the graphical styling and positioning of content.',
@@ -7841,8 +7839,8 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               NOT_APPLICABLE:  'No elements were identified as live regions on the page.'              
             },
             NODE_RESULT_MESSAGES: {
-              ELEMENT_FAIL_1:     'The @aria-live@ attribute value of @%1@ conflicts with the implied attribute value of @%2@ for the @%3@ role.',
-              ELEMENT_FAIL_2:     'The @aria-atomic@ attribute value of @false@ conflicts with the implied attribute value of @true@ for the @%1@ role.',
+              ELEMENT_FAIL_1:     'The @aria-live@ attribute value of @%1@ conflicts with the default value of @%2@ for the @aria-live@ property of the @%3@ role.',
+              ELEMENT_FAIL_2:     'The @aria-atomic@ attribute value of @false@ conflicts with the default value of @true@ for the @aria-atomic@ property of the @%1@ role.',
               ELEMENT_MC_1:       'Verify the @aria-live@ attribute value of @%1@ is appropriate for the type of informational change that can occur in the region.',
               ELEMENT_MC_2:       'Verify the @alert@ role identifies a live region with critical time-sensitive information.',
               ELEMENT_MC_3:       'Verify the @log@ role identifies a live region where new information added and deleted in a meaningful order.',
@@ -7860,7 +7858,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               'The @alert@ role identifies a live region with very important, and usually time-sensitive, information. When the information changes in this type of live region, a message is typically sent that interrupts the current speech being spoken by a screen reader. Examples includes transaction errors that are cancelling or impeding the progress of completing a financial transaction.',
               'The @log@ role identifies a type of live region where new information is added in a meaningful order and old information may disappear. Examples include chat logs, messaging history, game log, or an error log.',
               'The @status@ role identifies a live region that contains an advisory message, but one that is not important enough to justify an @alert@ role. This type of region is often, but not necessarily, presented as a status bar, and announcements of informational changes are typically delayed until a break occurs in the current speech being read by the screen reader software.',
-              'When the @aria-atomic@ attribute is specified for a live region, it indicates to assistive technologies whether to render all of the content or just the changes in information when a change occurs.',
+              'When the @aria-atomic@ attribute is specified for a live region, it indicates to assistive technologies that when a change occurs, it should re-render all of the content or just the changes.',
               'The optional @aria-relevant@ attribute on a live region indicates what types of informational changes should be communicated to the user (e.g. @additions@, @deletions@, @text@ and @all@).',
               'The @aria-live@ attribute can be used to create custom live regions, with possible values of @polite@, @assertive@ and @off@. When used in conjunction with the ARIA @alert@, @log@ or @status@ roles, care must be taken in order to avoid conflicts with the default properties of those roles.'
             ],
