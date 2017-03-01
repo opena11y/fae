@@ -84,7 +84,7 @@ create_institutional_profile(21,'University of Illinois: Champaign/Urbana','illi
 create_institutional_profile(21,'University of Illinois: Chicago','uic','','Kevin Shalla','kshalla@uic.edu','312-996-1231', 'Kevin Price', 'pricek@uic.edu', '312-413-0886', '2016-10-01', '2099-01-01')
 create_institutional_profile(21,'University of Illinois: Administration','uillinois','','Tilakaratne, Dimuthu P','dpt@uillinois.edu','(217) 244-8567', 'Marla McKinney', 'mmckinne@uillinois.edu', '(217) 333-4058', '2016-10-01', '2099-01-01')
 create_institutional_profile(21,'Penn State University','psu','','Christian Vinten-Johansen','v23@psu.edu','(814) 863-4574', '', '', '', '2016-10-01', '2017-07-01')
-create_institutional_profile(21,'University of Iowa','uiowa','','Todd Weissenberger','todd-weissenberger@uiowa.edu','(319) 384-3323', '', '', '', '2016-10-01', '2017-03-01')
+create_institutional_profile(21,'University of Iowa','uiowa','','Todd Weissenberger','todd-weissenberger@uiowa.edu','(319) 384-3323', '', '', '', '2016-10-01', '2017-04-01')
 create_institutional_profile(21,'University of Minnesota','umn','','Scott Marshall','marsh058@umn.edu','(612) 626-4954', 'Tonu Mikk', 'tmikk@umn.edu', '612 625-3307', '2016-10-01', '2017-03-01')
 create_institutional_profile(21,'Northwestern University','northwestern','','Sherry L. Minton','sl-minton@northwestern.edu','(847) 491-3507', '', '', '', '2016-10-01', '2017-03-01')
 create_institutional_profile(21,'University of Washington','washington', 'uw','Terrill Thompson','tft@uw.edu','(206) 221-4168', 'Anna Marie Golden', 'amgolden@uw.edu', '(206) 221-4164', '2017-03-01', '2017-02-01')
