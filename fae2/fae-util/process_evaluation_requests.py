@@ -72,8 +72,6 @@ INFO=True
 
 log = open(os.path.join(APP_DIR + 'logs/process-evaluation.log'), 'w')
 
-print(str(log))
-
 def debug(s):
   if DEBUG and log:
     log.write('[PROC_EVAL_REQ][DEBUG]: ' + str(s) + '\n')

@@ -91,6 +91,7 @@ from stats.models  import StatsAll
 from websiteResultGroups.models  import WebsiteReportGroup
 
 
+from save_fae_util_information import excludedUrlsToDatabase
 from save_fae_util_information import processedUrlsToDatabase
 from save_fae_util_information import unprocessedUrlsToDatabase
 from save_fae_util_information import filteredUrlsToDatabase
@@ -1604,21 +1605,31 @@ def saveResultsToDjango(ws_report, l):
 
 
     if file_name == "processed_urls.csv":
-#      debug("[saveResultsToDjango][process_file] Retreiving processed urls information")    
+      debug("[saveResultsToDjango][process_file] Retreiving processed urls information")    
       processedUrlsToDatabase(ws_report, dir_name + "/" + file_name, 10)
 
     if file_name == "unprocessed_urls.csv":
-#      debug("[saveResultsToDjango][process_file] Retreiving unprocessed urls information")
+      debug("[saveResultsToDjango][process_file] Retreiving unprocessed urls information")
       unprocessedUrlsToDatabase(ws_report, dir_name + "/" + file_name, 7)
            
     if file_name == "filtered_urls.csv":
-#      debug("[saveResultsToDjango][process_file] Retreiving filtered urls")   
+      debug("[saveResultsToDjango][process_file] Retreiving filtered urls")   
       filteredUrlsToDatabase(ws_report, dir_name + "/" + file_name, 2)
 
+
     if file_name == "status.txt":
-#      debug("[saveResultsToDjango][process_file] Retreiving status information")  
+      debug("[saveResultsToDjango][process_file] Retreiving status information")  
       file_status = open(dir_name + "/" + file_name, 'r')
       statusToDatabase(ws_report, file_status)
+
+  def process_excludedURLs(dir_name):
+    info("[saveResultsToDjango][process_file] Retreiving excluded urls")   
+    file_name = dir_name + "/" + "excluded_urls.csv"
+    try:
+      if os.path.isfile(file_name): 
+        excludedUrlsToDatabase(ws_report, file_name, 3)
+    except:
+      error("[saveResultsToDjango][process_file] Retreiving excluded urls")    
 
 # ---------------------------------------------------------------
 #
@@ -1630,8 +1641,6 @@ def saveResultsToDjango(ws_report, l):
 
   wsr = DataWebsiteResult(ws_report)
     
-#  os.path.walk(ws_report.data_directory + "/data", lister, None)  
- 
   dir = ws_report.data_directory + "/data"
 #  debug("[saveResultsToDjango][main] DATA_DIR: " + dir)
 
@@ -1642,6 +1651,7 @@ def saveResultsToDjango(ws_report, l):
 
   try:
     wsr.saveToDjango()
+    process_excludedURLs(dir)
     info("Set status complete")
     ws_report.set_page_numbers()
     ws_report.set_status_complete()
@@ -1734,12 +1744,9 @@ def saveResultsToDjango(ws_report, l):
 
     if ws_report.user.username != 'anonymous':
       stats_reg_users.ws_report_group.add_website_report(ws_report) 
-#      debug("[SAVE_WEBSITE_RESULTS] StatsRegisteredUsers: 1")  
       try:
-#        debug("[SAVE_WEBSITE_RESULTS] StatsRegisteredUsers: 2")  
         us = stats_reg_users.user_stats.get(user__username=user_stats.user.username)
       except ObjectDoesNotExist:
-#        debug("[SAVE_WEBSITE_RESULTS] StatsRegisteredUsers: 3")  
         stats_reg_users.user_stats.add(user_stats)
         stats_reg_users.save()
 

@@ -765,32 +765,54 @@ class FilteredURL(models.Model):
 # ---------------------------------------------------------------
   
 class ExcludedURL(models.Model):
-  filtered_url_id = models.AutoField(primary_key=True)
+  excluded_url_id = models.AutoField(primary_key=True)
 
   ws_report   = models.ForeignKey(WebsiteReport, on_delete=models.CASCADE, related_name="excluded_urls")
 
   filename            = models.CharField('File Type',      max_length=256, default="")
-  url                 = models.URLField( 'Other URL',      max_length=4096)
-  first_reference_url = models.URLField( 'Referenced URL', max_length=4096)
-  reference_count     = models.IntegerField('Number of times URL referenced', default=0)
+  url                 = models.URLField( 'Excluded URL',   max_length=4096)
+  reference_count     = models.IntegerField('Number of times URL referenced', default=1)
   file_type           = models.CharField('File Type',      max_length=16, default="")
 
   class Meta:
-    verbose_name        = "URL: Excluded"
-    verbose_name_plural = "URL: Excluded"
-    ordering = ['first_reference_url', 'url']
+    verbose_name        = "URL: Excluded URL"
+    verbose_name_plural = "URL: Excluded URL"
+    ordering = ['file_type', 'reference_count', 'url']
 
   def __unicode__(self):
     return self.url 
 
   def get_url(self):
     if len(self.url) > 50:
-      return self.url[:50] + '...... '   
+      return self.url[0:20] + '......' + self.url[len(self.url)-20:] 
     else:
       return self.url   
      
-  def get_reference_url(self):
-    if len(self.url_referenced) > 50:
-      return self.url_referenced[:50] + '...... '   
+
+# ---------------------------------------------------------------
+#
+# ExcludedURL
+#
+# ---------------------------------------------------------------
+  
+class ExcludedURLPageReference(models.Model):
+  page_reference_id = models.AutoField(primary_key=True)
+
+  ws_report      = models.ForeignKey(WebsiteReport, on_delete=models.CASCADE, related_name="excluded_url_page_refs")
+  url            = models.URLField( 'Excluded URL',  max_length=4096)
+  excluded_urls  = models.ManyToManyField(ExcludedURL, related_name="excluded_url_page_refs")
+
+  class Meta:
+    verbose_name        = "URL: Page Reference for Excluded URLs"
+    verbose_name_plural = "URL: Page Reference for Excluded URLs"
+    ordering = ['url']
+
+  def __unicode__(self):
+    return self.url 
+
+  def get_url(self):
+    if len(self.url) > 50:
+      return self.url[0:20] + '......' + self.url[len(self.url)-20:] 
     else:
-      return self.url_referenced
+      return self.url   
+     

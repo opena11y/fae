@@ -45,7 +45,9 @@ django.setup()
 from save_website_results_sql import saveResultsToDjango
 
 from reports.models import WebsiteReport
+from fae2.settings import APP_DIR
 
+log = open(os.path.join(APP_DIR + 'logs/process-evaluation.log'), 'w')
     
 def main():
 
@@ -54,7 +56,7 @@ def main():
   ws_reports = WebsiteReport.objects.all()
   
   if len(ws_reports):
-    ws_report = ws_reports[0]
+    ws_report = ws_reports.latest('created')
 
     # Removed any previous database relationships
     ws_report.processed_urls.all().delete()
@@ -70,7 +72,7 @@ def main():
 
     print("=======================")
     print("Saving Data: " + str(ws_report))
-    saveResultsToDjango(ws_report)
+    saveResultsToDjango(ws_report, log)
 
           
 if __name__ == "__main__":

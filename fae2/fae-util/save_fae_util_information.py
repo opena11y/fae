@@ -34,7 +34,10 @@ import shutil
 import json
 import csv
 
+
 import urllib
+
+from urlparse import urlparse
 
 sys.path.append(os.path.abspath('..'))
 
@@ -47,7 +50,12 @@ from django.core.exceptions import ObjectDoesNotExist
 
 from django.contrib.auth.models import User
 
-from reports.models import ProcessedURL, FilteredURL, UnprocessedURL
+from reports.models import ProcessedURL 
+from reports.models import FilteredURL
+from reports.models import UnprocessedURL
+from reports.models import ExcludedURL
+from reports.models import ExcludedURLPageReference
+
 
 # from usage.models import Usage
 
@@ -58,22 +66,25 @@ DEBUG=False
 INFO=True
 ERROR=True
 
-log = False 
+from fae2.settings import APP_DIR
+
+#log = open(os.path.join(APP_DIR + 'logs/fae-information.log'), 'w')
+log = False;
 
 def debug(s):
   if DEBUG and log:
-    log.write("[SAVE_FAE_UTIL][debug  ]: " + str(s))
+    log.write("[SAVE_FAE_UTIL][debug  ]: " + str(s) + "\n")
     log.flush()
 
 
 def info(s):
   if INFO and log:
-    log.write("[SAVE_FAE_UTIL][Info   ]: " + str(s))
+    log.write("[SAVE_FAE_UTIL][Info   ]: " + str(s) + "\n")
     log.flush()
 
 def error(s):
   if ERROR and log:
-    log.write("[SAVE_FAE_UTIL][**ERROR]: " + str(s))
+    log.write("[SAVE_FAE_UTIL][**ERROR]: " + str(s) + "\n")
     log.flush()
     
 
@@ -99,17 +110,13 @@ def statusToDatabase(ws_report, file_status):
       elif parts[0] == 'more_urls':
         ws_report.more_urls = ('true' == parts[1].strip().lower())
 
-  print('MORE URLS: ' + str(ws_report.more_urls))           
   try:      
-    ws_report.save()    
-    if usage:
-      usage.save()
+    ws_report.save() 
   except:
     error("** Error: Could not update status information")
         
 def getRowWithComplicatedURLs(r, n):     
 
-  debug("    Complicated Row: " + r)
   r_len = len(r)
 
   items = []
@@ -120,7 +127,6 @@ def getRowWithComplicatedURLs(r, n):
   
   if pos0 != 0:
     item = r[0:(pos0-1)] 
-    debug("       First Number: " + item)
     items.append(item)
   else:
     pos = 0  
@@ -153,10 +159,10 @@ def getRowWithComplicatedURLs(r, n):
   if len(r1) > 0:
     r1 = r1.strip()
   
-  debug("   Complicated URL 1: " + url1)
-  debug("   Complicated URL 2: " + url2)
-  debug("   Complicated URL 3: " + url3)
-  debug("Complicated Remander: " + r1 + " (" + str(len(r1)) + ")")
+#  debug("   Complicated URL 1: " + url1)
+#  debug("   Complicated URL 2: " + url2)
+#  debug("   Complicated URL 3: " + url3)
+#  debug("Complicated Remander: " + r1 + " (" + str(len(r1)) + ")")
   
   if len(r1):    
     r2 = r1.split(",")
@@ -194,7 +200,6 @@ def filteredUrlsToDatabase(ws_report, fname, num):
       i = 1
       try: 
         for row in csvfile:
-          debug("  Row: " + row)
 
           items = getRowItems(row)
           
@@ -240,8 +245,6 @@ def unprocessedUrlsToDatabase(ws_report, fname, num):
       i = 1
       try: 
         for row in csvfile:
-          debug('  ROW: ' + row)
-
           items = getRowItems(row)
         
           if len(items) == num:  
@@ -293,7 +296,6 @@ def processedUrlsToDatabase(ws_report, fname, num):
       i = 1
       try: 
         for row in csvfile:
-          debug('  ROW: ' + row)
           items = getRowItems(row)
         
           if len(items) == num:
@@ -316,6 +318,80 @@ def processedUrlsToDatabase(ws_report, fname, num):
               i += 1
             except:   
               error("** Error creating ProcessedURL object for: " + items[0] + " " + url1 + " from  " + url2)
+          else:    
+            error("** Could not parse row into " + str(num) + " parts: " + row)
+      except:
+        error("** Error reading line: " + str(i) + " in " + fname)                           
+  except IOError as e:
+    error("******** Error: " + fname + " cannot be opened")
+    error("  I/O error({0}): {1}".format(e.errno, e.strerror))    
+
+
+def excludedUrlsToDatabase(ws_report, fname, num):
+  
+  def getRowItems(r):
+    
+    items = r.split(',')
+
+    # if the line contains simple URLs there should be only 7 commas
+    if len(items) == num:
+      return items
+    
+    return []   
+  
+  info("Excluded urls from: " + fname)   
+  try: 
+    with open(fname, 'r') as csvfile:     
+        
+      i = 1
+      try: 
+        for row in csvfile:
+          items = getRowItems(row)
+          debug('  ITEMS: ' + str(items))
+        
+          if len(items) == num:
+            
+            url1 = iri_to_uri(stripQuotes(items[0]))
+            url2 = iri_to_uri(stripQuotes(items[1]))
+            file_type  = items[2].strip()
+
+            debug("[STEP 1]  url1: " + url1 + " url2: " + url2 + " file type: " + file_type)
+
+            parsed = urlparse(url1)
+            filename = os.path.basename(parsed.path)
+
+            debug("[STEP 2] file name: " + filename)
+
+            try:
+              e_url = ExcludedURL.objects.get(ws_report=ws_report, filename=filename, url=url1, file_type=file_type)
+              e_url.reference_count += 1
+              e_url.save()
+            except:  
+              try:
+                e_url = ExcludedURL(ws_report=ws_report, filename=filename, url=url1, reference_count=1, file_type=file_type)
+                e_url.save()
+              except:   
+                error("** Error creating ExcludedURL object for: " + fname + " " + url1 + " from  " + url2)
+
+            debug("[STEP 3]  e_url: " + str(e_url))
+
+            try:
+              pr_url = ExcludedURLPageReference.objects.get(ws_report=ws_report, url=url2)    
+            except:
+              try:
+                pr_url = ExcludedURLPageReference(ws_report=ws_report, url=url2) 
+                pr_url.save()
+              except:
+                pr_url = False  
+                error("** Could not find or create a page reference for: '" + url2 + "'")
+
+            debug("[STEP 4]  page_report: " + str(pr_url))
+              
+            if pr_url:
+              pr_url.excluded_urls.add(e_url) 
+              pr_url.save()
+              debug("[STEP 5]  saved")
+
           else:    
             error("** Could not parse row into " + str(num) + " parts: " + row)
       except:

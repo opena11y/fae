@@ -13,4 +13,4 @@ else
 fi
 
 . $FAE_HOME/org/fae/util/classpath
-java -Xmx4096m org.fae.util.FaeUtil $@
+java -Xmx2048m org.fae.util.FaeUtil $@

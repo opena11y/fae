@@ -23,6 +23,7 @@ from __future__ import absolute_import
 from django.contrib import admin
 
 from .models import ExcludedURL
+from .models import ExcludedURLPageReference
 from .models import WebsiteReport
 from .models import ProcessedURL
 from .models import UnprocessedURL
@@ -53,8 +54,13 @@ class FilteredURLAdmin(admin.ModelAdmin):
 admin.site.register(FilteredURL, FilteredURLAdmin)
 
 class ExcludedURLAdmin(admin.ModelAdmin):
-    list_display = ('filename', 'url', 'ws_report')
+    list_display = ('filename', 'file_type', 'url', 'ws_report')
     list_filter  = ('ws_report',)
 
 admin.site.register(ExcludedURL, ExcludedURLAdmin)
 
+class ExcludedURLPageReferenceAdmin(admin.ModelAdmin):
+    list_display = ('url', 'ws_report')
+    list_filter  = ('ws_report',)
+
+admin.site.register(ExcludedURLPageReference, ExcludedURLPageReferenceAdmin)

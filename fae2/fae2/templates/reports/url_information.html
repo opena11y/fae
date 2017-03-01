@@ -45,6 +45,12 @@
         {% else %}
         <li><a href="#id_filtered_urls_label">{{ report.filtered_urls.all|length }} URLs that were found that were not included in the accessibility evaluation</a></li>
         {% endif %}
+
+        {% if report.excluded_urls.all|length = 1 %}
+        <li><a href="#id_excluded_urls_label">1 link found to a non-HTML resource (e.g. PDF, Office Document, XML...)</a></li>
+        {% else %}
+        <li><a href="#id_excluded_urls_label">{{ report.excluded_urls.all|length }} links found to a non-HTML resources (e.g. PDF, Office Document, XML...)</a></li>
+        {% endif %}
     </ul>
 
     <section class="region" aria-labelledby="id_processed_urls_label">
@@ -211,6 +217,58 @@
         
     </section>    
     
+
+    <section class="region" aria-labelledby="id_excluded_urls_label">
+        <h2 id="id_excluded_urls_label">Files Linked to Pages in the Report</h2>
+    
+    {% if report.excluded_urls.all|length %}
+
+        <p>Links to files (e.g. non-HTML resources) that need to be checked for accessibility using other tools or inspection techniques.</p>
+        
+        
+        <table class="details table table-striped table-hover sortable" aria-labelledby="id_excluded_urls_label" aria-describedby="id_table_summ">
+            <thead>
+                <tr>
+                    <th class="text">File Name</th>
+                    <th class="text">File Extension</th>
+                    <th class="text" style="min-width: 16em">Pages Referencing File</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for excluded_url in report.excluded_urls.all %}
+                <tr class="{% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %}">
+                    
+                    <td class="text"><a href="{{excluded_url.url}}" target="_referenced_website" title="{{excluded_url.url}}">{{excluded_url.filename}}</a></td>
+
+                    <td class="text">{{excluded_url.file_type}}</td>
+
+
+                    <td class="text">
+                        <details>
+                            {% if excluded_url.reference_count == 1 %}
+                            <summary>1 Page</summary>
+                            {% else %}
+                            <summary>{{excluded_url.reference_count}} Pages</summary>
+                            {% endif %}
+
+                            <ol>
+                            {% for pr in excluded_url.excluded_url_page_refs.all %}
+                                <li><a href="{{pr.url}}" target="_referenced_website" title="{{pr.url}}">{{pr.get_url}}</a></li>
+                            {% endfor %}
+                            </ol>
+                        </details>
+                    </td>
+                </tr>    
+                {% endfor %}
+            </tbody>
+        </table>
+
+    {% else %}
+    <p class="message">No URLs filtered out of evaluation</p>
+    {% endif %}
+        
+    </section>    
+
     
 </div>
 {% endblock %}
