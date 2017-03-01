@@ -67,16 +67,26 @@
 
   <div class="eval_info">
       <ul>
-          <li>Pages:     {{  report.page_count }} (<a title="URL Details" href="{% url 'report_url_information' report.slug view %}">Included URLs</a>)</li>
+          <li title="Number of pages evaluated">
+            Pages: {{ report.page_count }} 
+          </li>
+
+          <li title="Page limit used when report was run">
+            Page Limit: {{ report.max_pages }}
+          </li>
           
-          {% if report.max_pages %}
-          <li>Page Limit: {{ report.max_pages }}</li>
-          {% endif %}
-
           {% if report.excluded_urls.count %}
-          <li title="Links found to PDF, Office, XML, video, audio and other non-HTML resources">Non-HTML Resources: {{ report.excluded_urls.count }}</li>
+          <li title="Number of files found while spidering the website (e.g. PDF, Microsoft Office, XML, video..)">
+               Files: {{ report.excluded_urls.count }} 
+          </li>
           {% endif %}
 
+          <li>
+            <a title="Details of the the URLs evaluated, excluded, failed and other non-HTML files found"
+               href="{% url 'report_url_information' report.slug view %}">
+              URL Evaluation Information
+            </a>  
+          </li>
 
           {% if report.user != user %}
           <li>Created by: <a href="mailto:{{report.user.email}}">{{report.user.first_name}} {{report.user.last_name}}</a></li>

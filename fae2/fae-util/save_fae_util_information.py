@@ -355,25 +355,23 @@ def excludedUrlsToDatabase(ws_report, fname, num):
             url2 = iri_to_uri(stripQuotes(items[1]))
             file_type  = items[2].strip()
 
-            debug("[STEP 1]  url1: " + url1 + " url2: " + url2 + " file type: " + file_type)
+#            debug("[STEP 1]  url1: " + url1 + " url2: " + url2 + " file type: " + file_type)
 
             parsed = urlparse(url1)
             filename = os.path.basename(parsed.path)
 
-            debug("[STEP 2] file name: " + filename)
+#            debug("[STEP 2] file name: " + filename)
 
             try:
               e_url = ExcludedURL.objects.get(ws_report=ws_report, filename=filename, url=url1, file_type=file_type)
-              e_url.reference_count += 1
-              e_url.save()
             except:  
               try:
-                e_url = ExcludedURL(ws_report=ws_report, filename=filename, url=url1, reference_count=1, file_type=file_type)
+                e_url = ExcludedURL(ws_report=ws_report, filename=filename, url=url1, file_type=file_type)
                 e_url.save()
               except:   
                 error("** Error creating ExcludedURL object for: " + fname + " " + url1 + " from  " + url2)
 
-            debug("[STEP 3]  e_url: " + str(e_url))
+#            debug("[STEP 3]  e_url: " + str(e_url))
 
             try:
               pr_url = ExcludedURLPageReference.objects.get(ws_report=ws_report, url=url2)    
@@ -385,12 +383,11 @@ def excludedUrlsToDatabase(ws_report, fname, num):
                 pr_url = False  
                 error("** Could not find or create a page reference for: '" + url2 + "'")
 
-            debug("[STEP 4]  page_report: " + str(pr_url))
+#            debug("[STEP 4]  page_report: " + str(pr_url))
               
             if pr_url:
               pr_url.excluded_urls.add(e_url) 
               pr_url.save()
-              debug("[STEP 5]  saved")
 
           else:    
             error("** Could not parse row into " + str(num) + " parts: " + row)

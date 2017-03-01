@@ -223,7 +223,7 @@
     
     {% if report.excluded_urls.all|length %}
 
-        <p>Links to files (e.g. non-HTML resources) that need to be checked for accessibility using other tools or inspection techniques.</p>
+        <p>The following files were found while spidering the website.  FAE does not have the capabilities to evaluate the files for accessibility, but the file information and URLs are provided to identify other website resources that need to be checked for accessibility (e.g. using other tools or inspection techniques).</p>
         
         
         <table class="details table table-striped table-hover sortable" aria-labelledby="id_excluded_urls_label" aria-describedby="id_table_summ">
@@ -251,7 +251,7 @@
                             {% if excluded_url.reference_count == 1 %}
                             <summary>1 Page</summary>
                             {% else %}
-                            <summary>{{excluded_url.reference_count}} Pages</summary>
+                            <summary>{{excluded_url.excluded_url_page_refs.count}} Pages</summary>
                             {% endif %}
 
                             <ol>

@@ -771,13 +771,12 @@ class ExcludedURL(models.Model):
 
   filename            = models.CharField('File Type',      max_length=256, default="")
   url                 = models.URLField( 'Excluded URL',   max_length=4096)
-  reference_count     = models.IntegerField('Number of times URL referenced', default=1)
   file_type           = models.CharField('File Type',      max_length=16, default="")
 
   class Meta:
     verbose_name        = "URL: Excluded URL"
     verbose_name_plural = "URL: Excluded URL"
-    ordering = ['file_type', 'reference_count', 'url']
+    ordering = ['file_type', 'url']
 
   def __unicode__(self):
     return self.url 

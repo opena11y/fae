@@ -53,8 +53,6 @@ class PageResult(RuleGroupResult):
   id                 = models.AutoField(primary_key=True)
 
   ws_report        = models.ForeignKey(WebsiteReport, on_delete=models.CASCADE, related_name="page_all_results")
-  # excluded_urls is not used at this point, maybe in the future
-  excluded_urls    = models.ManyToManyField(ExcludedURL, related_name="page_all_results")
 
   # Page identification information
   
