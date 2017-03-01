@@ -47,9 +47,9 @@
         {% endif %}
 
         {% if report.excluded_urls.all|length = 1 %}
-        <li><a href="#id_excluded_urls_label">1 link found to a non-HTML resource (e.g. PDF, Office Document, XML...)</a></li>
+        <li><a href="#id_excluded_urls_label">1 file found (e.g. PDF, Office document, XML...)</a></li>
         {% else %}
-        <li><a href="#id_excluded_urls_label">{{ report.excluded_urls.all|length }} links found to a non-HTML resources (e.g. PDF, Office Document, XML...)</a></li>
+        <li><a href="#id_excluded_urls_label">{{ report.excluded_urls.all|length }} files found (e.g. PDF, Office document, XML...)</a></li>
         {% endif %}
     </ul>
 
@@ -229,15 +229,18 @@
         <table class="details table table-striped table-hover sortable" aria-labelledby="id_excluded_urls_label" aria-describedby="id_table_summ">
             <thead>
                 <tr>
+                    <th class="num">#</th>
                     <th class="text">File Name</th>
                     <th class="text">File Extension</th>
-                    <th class="text" style="min-width: 16em">Pages Referencing File</th>
+                    <th class="text" style="min-width: 24em">Pages Referencing File</th>
                 </tr>
             </thead>
             <tbody>
                 {% for excluded_url in report.excluded_urls.all %}
                 <tr class="{% if forloop.counter|divisibleby:2 %}even{% else %}odd{% endif %}">
                     
+                    <td class="num">{{forloop.counter}}</td>
+
                     <td class="text"><a href="{{excluded_url.url}}" target="_referenced_website" title="{{excluded_url.url}}">{{excluded_url.filename}}</a></td>
 
                     <td class="text">{{excluded_url.file_type}}</td>

@@ -254,19 +254,22 @@ main ul {
     padding-bottom: 0.5em;
 }
 
-table tbody td ul {
+table tbody td ul,
+table tbody td ol {
     margin: 0;
     padding: 0;
     padding-left: 1em;
     padding-bottom: 0.5em;
 }
 
-table tbody td ul.status {
+table tbody td ul.status,
+table tbody td ol.status {
     list-style: none;
     padding-left: 0em;
 }
 
-table tbody td ul li {
+table tbody td ul li,
+table tbody td ol li  {
     margin: 0;
     padding: 0;
 }
