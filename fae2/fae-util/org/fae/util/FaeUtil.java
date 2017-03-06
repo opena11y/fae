@@ -731,7 +731,7 @@ class FaeUtil {
     });
 
     // Set a ScriptPreProcessor to not process problem JavaScript
-//    webClient.setScriptPreProcessor(new org.fae.util.ScriptPreprocessor(this));
+    webClient.setScriptPreProcessor(new org.fae.util.ScriptPreprocessor(this));
   }
 
   // ==============================================================================================

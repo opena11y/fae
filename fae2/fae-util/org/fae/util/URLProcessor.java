@@ -576,19 +576,21 @@ public class URLProcessor {
 			// check includeDomains
 			// System.out.println(Controller.INCLUDE_DOMAINS);
 			if (faeUtil.m_ctrl.INCLUDE_DOMAINS != null) {
-				StringTokenizer st = new StringTokenizer(
-						faeUtil.m_ctrl.INCLUDE_DOMAINS, ",");
-				while (st.hasMoreTokens()) {
-					String tok = st.nextToken();
-					// System.out.println(tok);
-					if (url.indexOf("/" + tok + "/") != -1) {
-						traverseIt = true;
-						faeUtil.m_filteredURLs.remove(url);
-						String timing = "\"" + url + "\",\"" + urlFrom + "\"";
-						faeUtil.m_filteredURLsCSV.remove(timing);
-						msg = urlNum + ":" + cnt + ": depth:" + depth + ": "
-								+ url + " MATCHES INCLUDE DOMAIN " + tok
-								+ ", PROCESSING";
+				if(count(url,"http") == 1) {
+					StringTokenizer st = new StringTokenizer(
+							faeUtil.m_ctrl.INCLUDE_DOMAINS, ",");
+					while (st.hasMoreTokens()) {
+						String tok = st.nextToken();
+						// System.out.println(tok);
+						if (url.indexOf("/" + tok + "/") != -1) {
+							traverseIt = true;
+							faeUtil.m_filteredURLs.remove(url);
+							String timing = "\"" + url + "\",\"" + urlFrom + "\"";
+							faeUtil.m_filteredURLsCSV.remove(timing);
+							msg = urlNum + ":" + cnt + ": depth:" + depth + ": "
+									+ url + " MATCHES INCLUDE DOMAIN " + tok
+									+ ", PROCESSING";
+						}
 					}
 				}
 			}
@@ -1180,5 +1182,26 @@ public class URLProcessor {
 			m_faeUtil.debug(m_urlNum + ": leaving Processor:run");
 		}
 	}
+	
+	/**
+	   * Count the number of instances of substring within a string.
+	   *
+	   * @param string     String to look for substring in.
+	   * @param substring  Sub-string to look for.
+	   * @return           Count of substrings in string.
+	   */
+	  public static int count(final String string, final String substring)
+	  {
+	     int count = 0;
+	     int idx = 0;
+
+	     while ((idx = string.indexOf(substring, idx)) != -1)
+	     {
+	        idx++;
+	        count++;
+	     }
+
+	     return count;
+	  }
 
 }

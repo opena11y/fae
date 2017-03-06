@@ -48,7 +48,7 @@ public class DepthTest {
       });
 
       // Set a ScriptPreProcessor to not process problem JavaScript
-//      webClient.setScriptPreProcessor(new ScriptPreprocessor(faeUtil));
+      webClient.setScriptPreProcessor(new ScriptPreprocessor(faeUtil));
 
       webClient.getOptions().setThrowExceptionOnScriptError(false);
       webClient.getOptions().setUseInsecureSSL(true); // JSH added

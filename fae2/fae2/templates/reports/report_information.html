@@ -76,8 +76,8 @@
           </li>
           
           {% if report.excluded_urls.count %}
-          <li title="Number of files found while spidering the website (e.g. PDF, Microsoft Office, XML, video..)">
-               Files: {{ report.excluded_urls.count }} 
+          <li title="Number of non-HTML files found while spidering the website (e.g. PDF, Microsoft Office, XML, video..)">
+               non-HTML Files: {{ report.excluded_urls.count }} 
           </li>
           {% endif %}
 

@@ -628,7 +628,14 @@ class WebsiteReport(RuleGroupResult):
 # ProcessedURL
 #
 # ---------------------------------------------------------------
- 
+
+def short_url(url):
+  if len(url) > 50:
+    return url[0:20] + '......' + url[len(url)-20:] 
+  else:
+    return url 
+
+
 class ProcessedURL(models.Model):
   processed_url_id = models.AutoField(primary_key=True)
 
@@ -659,23 +666,13 @@ class ProcessedURL(models.Model):
     return self.url_returned + " (" + str(self.total_time) + " milliseconds)" 
     
   def get_url_requested(self):
-    if len(self.url_requested) > 50:
-      return self.url_requested[:50] + '...... '   
-    else:
-      return self.url_requested   
+    return short_url(self.url_requested)
       
-
   def get_url_returned(self):
-    if len(self.url_returned) > 50:
-      return self.url_returned[:50] + '...... '   
-    else:
-      return self.url_returned  
+    return short_url(self.url_returned) 
 
   def get_reference_url(self):
-    if len(self.url_referenced) > 50:
-      return self.url_referenced[:50] + '...... '   
-    else:
-      return self.url_referenced  
+    return short_url(self.url_referenced)  
 
 # ---------------------------------------------------------------
 #

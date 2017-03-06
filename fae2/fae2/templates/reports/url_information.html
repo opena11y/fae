@@ -47,9 +47,9 @@
         {% endif %}
 
         {% if report.excluded_urls.all|length = 1 %}
-        <li><a href="#id_excluded_urls_label">1 file found (e.g. PDF, Office document, XML...)</a></li>
+        <li><a href="#id_excluded_urls_label">1 non-HTML file found (e.g. PDF, Office document, XML...)</a></li>
         {% else %}
-        <li><a href="#id_excluded_urls_label">{{ report.excluded_urls.all|length }} files found (e.g. PDF, Office document, XML...)</a></li>
+        <li><a href="#id_excluded_urls_label">{{ report.excluded_urls.all|length }} non-HTML files found (e.g. PDF, Office document, XML...)</a></li>
         {% endif %}
     </ul>
 
@@ -219,11 +219,11 @@
     
 
     <section class="region" aria-labelledby="id_excluded_urls_label">
-        <h2 id="id_excluded_urls_label">Files Linked to Pages in the Report</h2>
+        <h2 id="id_excluded_urls_label">Non-HTML Files</h2>
     
     {% if report.excluded_urls.all|length %}
 
-        <p>The following files were found while spidering the website.  FAE does not have the capabilities to evaluate the files for accessibility, but the file information and URLs are provided to identify other website resources that need to be checked for accessibility (e.g. using other tools or inspection techniques).</p>
+        <p>The following non-HTML files were found while spidering the links of the website.  FAE does not have the capabilities to evaluate non-HTML files for accessibility, but it is important to identify these file so they can be checked for accessibility using other tools or manual inspection techniques.</p>
         
         
         <table class="details table table-striped table-hover sortable" aria-labelledby="id_excluded_urls_label" aria-describedby="id_table_summ">
