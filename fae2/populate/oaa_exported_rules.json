@@ -5620,6 +5620,7 @@
           "The @aria-flowto@ reorganizes the content by changing the order of how the content is represented in accessibility Application Programming Interfaces (APIs) used by operating systems to communicate to screen readers."
         ],
         "techniques" : [
+          "The @aria-flowto@ attribute value contains a sequence of @idrefs@ that changes the reading order of content on the page as rendered by assistive technologies.",
           "Since @aria-flowto@ changes reading order to assistive technologies, it is important to read the page with a screen reader to verify the content affected by the @aria-flowto@ places related information in the proper sequence."
         ],
         "manual_checks" : [
@@ -5631,8 +5632,8 @@
           }
         ],
         "rule_result_messages" : {
-           "MANUAL_CHECK_S": "Verify the element with the @aria-flowto@ attribute defines a meaningful reading order as rendered by assistive technologies.",
-          "MANUAL_CHECK_P": "Verify the %N_MC elements with @aria-flowto@ attributes define a meaningful reading order as rendered by assistive technologies.",
+           "MANUAL_CHECK_S": "Verify the element with the @aria-flowto@ attribute contributes to the intended reading order of content on the page.",
+          "MANUAL_CHECK_P": "Verify the %N_MC elements with the @aria-flowto@ attributes contribute to the intended reading order of content on the page.",
           "HIDDEN_S": "One element with @aria-flowto@ attribute that is hidden was not evaluated.",
           "HIDDEN_P": "%N_H elements with @aria-flowto@ attribute that are hidden were not evaluated.",
           "NOT_APPLICABLE": "No elements with @aria-flowto@ attribute found."
@@ -9663,8 +9664,8 @@
           "ELEMENT_MC_2": "Verify the @alert@ role identifies a live region with critical time-sensitive information.",
           "ELEMENT_MC_3": "Verify the @log@ role identifies a live region where new information added and deleted in a meaningful order.",
           "ELEMENT_MC_4": "Verify the @alert@ role identifies a live region with advisory information.",
-          "ELEMENT_HIDDEN_1": "[arial-live=\"%1\"]@ was not evaluated because it is hidden from assistive technologies.",
-          "ELEMENT_HIDDEN_2": "[role=\"%1\"]@ was not evaluated because it is hidden from assistive technologies."
+          "ELEMENT_HIDDEN_1": "@%1[arial-live=\"%2\"]@ was not evaluated because it is hidden from assistive technologies.",
+          "ELEMENT_HIDDEN_2": "@%1[role=\"%2\"]@ was not evaluated because it is hidden from assistive technologies."
         }
       }
     ],
