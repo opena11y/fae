@@ -8196,7 +8196,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
                 bypass_links.push(le);
                 rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_2', []);
 
-                OpenAjax.a11y.logger.debug("[BYPASS 1] tag: " + de.tag_name + " tabindex: " + de.tab_index  + " has tabindex: " + de.has_tabindex + " has href: " + de.has_href );
+//                OpenAjax.a11y.logger.debug("[BYPASS 1] tag: " + de.tag_name + " tabindex: " + de.tab_index  + " has tabindex: " + de.has_tabindex + " has href: " + de.has_href );
                 
                 if ((de.tag_name !== 'a') || 
                     (de.tab_index < 0) || 

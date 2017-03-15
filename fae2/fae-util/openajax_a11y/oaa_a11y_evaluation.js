@@ -21735,20 +21735,22 @@ OpenAjax.a11y.cache.DOMElementComputedStyle = function (dom_element, parent_elem
     this.left    = normalizePositionLeft(style.getPropertyValue("left"), parent_element);
   }
  
-  // This is an edge case test typcially for body elements and frames
-  if ((this.background_color == 'inherit') ||
-      (this.background_color == 'transparent')) {
+  if ((this.background_color.indexOf("0, 0, 0, 0") > 0) ||
+      (this.background_color == 'transparent') ||
+      (this.background_color == 'inherit')) {
+
     if (parent_element && parent_element.computed_style) { 
       this.background_color   = parent_element.computed_style.background_color;
       this.background_color_hex = parent_element.computed_style.background_color_hex;
     }
     else {
+      // This is an edge case test typcially for body elements and frames
       this.background_color = 'rgb(255,255,255)';
       this.background_color_hex = 'ffffff';
     }   
   } 
   else {
-    this.background_color_hex = OpenAjax.a11y.util.RGBToHEX(style.getPropertyValue("background-color")); 
+    this.background_color_hex = OpenAjax.a11y.util.RGBToHEX(this.background_color); 
   }
 
   if (parent_element && 
@@ -21756,8 +21758,7 @@ OpenAjax.a11y.cache.DOMElementComputedStyle = function (dom_element, parent_elem
 
     var parent_style = parent_element.computed_style;
 
-    // We do have parent_element so use its information if needed  
- 
+    // We do have parent_element so use its information if needed   
     if ((this.display === 'inherit') ||
         (parent_style.display == 'none'))  {
       this.display = 'none';
