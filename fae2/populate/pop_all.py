@@ -22,7 +22,10 @@ Author: Jon Gunderson
 from __future__ import absolute_import
 
 import pop_accounts
-import pop_subscriptions
+import os.path
+# If self hosting we do not have or need _subscriptions so check for it's existence.
+if os.path.isfile('pop_subscriptions'):
+  import pop_subscriptions
 import pop_site
 import pop_markup
 import pop_wcag20
