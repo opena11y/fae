@@ -133,6 +133,7 @@ at18 = create_acount_type(18, False, True, False, False, 'Institutional II',   2
 at19 = create_acount_type(19, False, True, False, False, 'Institutional III',  20, 40, 4,  100, False,  True, False)
 at20 = create_acount_type(20, False, True, False, False, 'Institutional IV',   20, 40, 4,  100, False,  True, False)
 at21 = create_acount_type(21, False, True, False, False, 'Institutional V',    20, 40, 4,  100, False,  True, False)
+at22 = create_acount_type(22, False, True, False, False, 'Institutional Special',    40, 80, 6,  400, False,  True, False)
 
 a32 = create_acount_type(32, False, False, True, False, 'Self-Hosted',    20, 40, 5,  400, False,   True, False)
 

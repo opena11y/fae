@@ -92,6 +92,6 @@ create_institutional_profile(21,'University of Northern Iowa','uni', '','Carolyn
 create_institutional_profile(21,'Iowa State University','iastate', '','Zayira Jordan','zjordan@iastate.edu','', '', '', '', '2016-11-10', '2017-09-15')
 create_institutional_profile(21,'Southern Illinois University','siu', 'siue','Elizabeth Hunter','lizhunter@siu.edu','', '', '', '', '2017-01-05', '2017-09-15')
 create_institutional_profile(21,'Purdue University','purdue', '','Dean Brusnighan','dabrus@purdue.edu','', '', '', '', '2017-01-05', '2017-09-15')
-create_institutional_profile(21,'University of Montana','umt', 'umontana','Ryan Snyder]','Ryan.Snyder@umontana.edu]','(406) 243-6321', '', '', '', '2017-01-05', '2018-02-01')
+create_institutional_profile(22,'University of Montana','umt', 'umontana','Ryan Snyder]','Ryan.Snyder@umontana.edu]','(406) 243-6321', '', '', '', '2017-01-05', '2018-02-01')
 create_institutional_profile(21,'Temple','temple', '','Brent Whiting','bwhiting@temple.edu','267-468-8380', '', '', '', '2017-01-05', '2017-09-15')
 create_institutional_profile(21,'Indiana University','iu', '','Kristy Muncy','marcgonz@iu.edu','317-274-7465', 'Brian Richwine', 'brichwin@iu.edu', '', '2017-02-08', '2017-09-15')
