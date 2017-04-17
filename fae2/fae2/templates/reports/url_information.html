@@ -40,10 +40,10 @@
         <li><a href="#id_not_included_urls_label">{{ report.filtered_urls.all|length }} URLs not included</a></li>
         {% endif %}
 
-        {% if report.broken_urls.all|length = 1 %}
+        {% if report.broken_urls|length = 1 %}
         <li><a href="#id_problem_urls_label">1 Problem URL</a></li>
         {% else %}
-        <li><a href="#id_problem_urls_label">{{ report.broken_urls.all|length }} Problem URLs</a></li>
+        <li><a href="#id_problem_urls_label">{{ report.broken_urls|length }} Problem URLs</a></li>
         {% endif %}
         
         {% if report.unprocessed_urls.all|length = 1 %}
@@ -213,10 +213,10 @@
 
     <section class="region" aria-labelledby="id_problem_urls_label" >
 
-        {% if report.broken_urls.all|length = 1 %}
+        {% if report.broken_urls|length = 1 %}
         <h2 id="id_problem_urls_label">1 Problem URL</h2>
         {% else %}
-        <h2 id="id_problem_urls_label">{{ report.broken_urls.all|length }} Problem URLs</h2>
+        <h2 id="id_problem_urls_label">{{ report.broken_urls|length }} Problem URLs</h2>
         {% endif %}
 
         <p>URLs not evaluated because of error codes (e.g. HTTP status code was not 200) being returned, for example broken links. <a href="https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html">More information on HTTP status codes</a>.. </p>
