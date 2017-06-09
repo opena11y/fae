@@ -53,7 +53,7 @@ The "secretes.json" file must be created and provides:
     "SITE_NAME": "FAE 2.0",
    	"SECRET_KEY": "",
     "SELF_REGISTRATION_ENABLED": true,
-    "ANONYMOUS_REPORTS_ENABLED": true,
+    "ANONYMOUS_ENABLED": true,
     "SHIBBOLETH_ENABLED": false,
     "SHIBBOLETH_URL": "",
     "SHIBBOLETH_NAME": "",
@@ -78,7 +78,7 @@ The "secretes.json" file must be created and provides:
     "ADMIN_LAST_NAME" : "[last name]",
     "ADMIN_PASSWORD": "[admin password]",
     "ADMIN_EMAIL": "[email]",
-    "ANNONYMOUS_PASSWORD" : "[annonymous password]",
+    "ANONYMOUS_PASSWORD" : "[anonymous password]",
     "DEFAULT_ACCOUNT_TYPE" : 2    
 }
 ```
