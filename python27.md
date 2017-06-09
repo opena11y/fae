@@ -15,6 +15,8 @@ Also you need the packages below to enable SSL, bz2, zlib for Python and some ut
 
 ## Installing Python 2.7.8 from source
 
+### Getting Python and openssl source code
+
 Download Python and extract it
 
 ```
@@ -23,13 +25,7 @@ Download Python and extract it
   tar -xvf Python-2.7.13.tar  
 ```
 
-
-
-## Installation process
-
-### Install openssl from source
-
-Install OpenSSL from source:
+Download and install OpenSSL from source:
 
 ```
 $ wget http://www.openssl.org/source/openssl-1.0.2e.tar.gz
@@ -50,7 +46,7 @@ $ make install
 
 OpenSSL installation is done. Let’s us now compile Python.
 
-### Configure for SSL Support
+### Configure Python build for SSL Support
 
 Enter the Python Modules directory:
 
