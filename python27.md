@@ -23,19 +23,73 @@ Download Python and extract it
   tar -xvf Python-2.7.13.tar  
 ```
 
+
+
 ## Installation process
 
-Since we already installed all the dependencies we are ready to go:
+### Install openssl from source
 
-Enter the directory:
+Install OpenSSL from source:
 
-```  
-  cd Python-2.7.13
 ```
+$ wget http://www.openssl.org/source/openssl-1.0.2e.tar.gz
+
+cd openssl-1.0.2e
+
+$ ./config --prefix=/usr/local/openssl --openssldir=/usr/local/openssl
+
+```
+
+Note: By default openssl will be installed under /usr/local/ssl. If you do not want to mess with existing SSL installation, then install it in the '/usr/local/openssl' directory.
+
+```
+$ make
+$ make test
+$ make install
+```
+
+OpenSSL installation is done. Let’s us now compile Python.
 
 ### Configure for SSL Support
 
+Enter the Python Modules directory:
+
+```  
+  cd Python-2.7.13\Modules
+```
+
+Find the following lines of code in the "Setup" file:
+
+```
+# Socket module helper for SSL support; you must comment out the other
+# socket line above, and possibly edit the SSL variable:
+#SSL=/usr/local/ssl
+#_ssl _ssl.c \
+#-DUSE_SSL -I$(SSL)/include -I$(SSL)/include/openssl \
+#-L$(SSL)/lib -lssl -lcrypto
+```
+
+Uncomment the follwing lines to include SSL support in the Python build
+
+```
+# Socket module helper for SSL support; you must comment out the other
+# socket line above, and possibly edit the SSL variable:
+SSL=/usr/local/openssl
+_ssl _ssl.c \
+-DUSE_SSL -I$(SSL)/include -I$(SSL)/include/openssl \
+-L$(SSL)/lib -lssl -lcrypto
+```
+
 ### Build Python
+
+Since we already installed all the dependencies we are ready to go:
+
+Go to the parent Python directory:
+
+```
+cd ..
+```
+
 Run the configure:
 
 ```
@@ -49,7 +103,7 @@ compile and install it:
   make altinstall
 ```
 
-## Checking Python version:
+### Checking Python version:
 
 ```
   [root@nicetry ~]# python2.7 -V 
