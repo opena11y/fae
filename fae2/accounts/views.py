@@ -194,11 +194,11 @@ class ShibbolethInstitution(RedirectView):
 
         try:
             ip = InstitutionalProfile.objects.get(domain=kwargs['domain'])
-            self.url += '/Shibboleth.sso/Login?entityID=' + ip.authentication
+            self.url += '/Shibboleth.sso/Login?entityID=' + ip.authentication + '&amp;target=' + SITE_URL
         except:
             try:
                 ip =  InstitutionalProfile.objects.get(alt_domain=kwargs['domain'])     
-                self.url += '/Shibboleth.sso/Login?entityID=' + ip.authentication
+                self.url += '/Shibboleth.sso/Login?entityID=' + ip.authentication + '&amp;target=' + SITE_URL
             except:
                 ip =  None   
   
