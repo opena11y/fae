@@ -201,7 +201,7 @@ class ShibbolethInstitution(RedirectView):
             except:
                 ip =  None   
   
-        return super(ShibbolethInstitutional, self).get_redirect_url(*args, **kwargs)
+        return super(ShibbolethInstitution, self).get_redirect_url(*args, **kwargs)
 
 class Logout(FAENavigationMixin, TemplateView):
     template_name = 'registration/logout.html'
