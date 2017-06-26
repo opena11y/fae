@@ -103,7 +103,7 @@ SITE_URL  = get_secret('SITE_URL')
 
 try:
     SHIB_URL  = get_secret('SHIB_URL')
-else:
+except:
     SHIB_URL  = ''    
 
 ADMIN_USER_NAME          = get_secret('ADMIN_USER_NAME')
