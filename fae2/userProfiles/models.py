@@ -284,6 +284,7 @@ class InstitutionalProfile(models.Model):
     top_level_domain = models.CharField(max_length=8, blank=True, default="")
     domain           = models.CharField(max_length=64, blank=True, default="")
     alt_domain       = models.CharField(max_length=64, blank=True, default="")
+    authentication   = models.CharField(max_length=64, blank=True, default="")
 
     subscription_status   = models.CharField(max_length=8, choices=SUBSCRIPTION_STATUS_CHOICES, default="FREE")
     subscription_days       = models.IntegerField(default=0)

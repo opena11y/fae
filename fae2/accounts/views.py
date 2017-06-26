@@ -186,6 +186,22 @@ class ShibbolethLogin(RedirectView):
 class ShibbolethDiscovery(TemplateView):
     template_name = 'registration/shib_discovery.html'
 
+class ShibbolethInstitional(RedirectView):
+    def get_redirect_url(self, *args, **kwargs):
+
+        self.url = SITE_URL 
+
+        try:
+            ip = InstitutionalProfile.objects.get(domain=kwargs['domain'])
+            self.url += '/shibboleth.sso/Login?entityID=' + ip.authentication
+        except:
+            try:
+                ip =  InstitutionalProfile.objects.get(alt_domain=kwargs['domain'])     
+                self.url += '/shibboleth.sso/Login?entityID=' + ip.authentication
+            except:
+                ip =  None   
+  
+        return super(ShibbolethInstitutional, self).get_redirect_url(*args, **kwargs)
 
 class Logout(FAENavigationMixin, TemplateView):
     template_name = 'registration/logout.html'
