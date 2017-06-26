@@ -186,7 +186,7 @@ class ShibbolethLogin(RedirectView):
 class ShibbolethDiscovery(TemplateView):
     template_name = 'registration/shib_discovery.html'
 
-class ShibbolethInstitional(RedirectView):
+class ShibbolethInstition(RedirectView):
     def get_redirect_url(self, *args, **kwargs):
 
         self.url = SITE_URL 
