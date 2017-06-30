@@ -11,3 +11,10 @@ Disabiling SELinux will make it much easier to install and configure FAE 2.0
 If Apache web server is not installed. install using the following instructions
 
 [How to Install Apache on CentOS 7](https://www.liquidweb.com/kb/how-to-install-apache-on-centos-7/)
+
+## Setup and Configure Virtual Environment for Python
+
+* FAE 2.0 need Python 2.7.x to run
+* The virtual environment is need for Apache configuration
+
+[Hitchhicker Guide to Virtual Environments](http://python-guide-pt-br.readthedocs.io/en/latest/dev/virtualenvs/)
