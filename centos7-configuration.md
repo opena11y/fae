@@ -11,13 +11,13 @@ Disabiling SELinux will make it much easier to install and configure FAE 2.0
 If git is not installed, install git
 
 ```
-yum -y install git
+$ yum -y install git
 ```
 
 Test git version
 
 ```
-git --version
+$ git --version
 ```
 
 ## Install Apache
@@ -31,7 +31,7 @@ If Apache web server is not installed. install using the following instructions
 This is a pyhon package needed for Apache to run FAE 2.0
 
 ```
-yum -y install mod_wsgi
+$ yum -y install mod_wsgi
 ```
 
 ## Install Postgres database
@@ -45,7 +45,7 @@ If postggres is not installed, installusing the following instrutions
 Use the createuser command to create a database user for FAE 2.0
 
 ```
-$sudo -i -u postgres
+$ sudo -i -u postgres
 $ createuser --interactive
 Enter name of role to add: fae2user
 Shall the new role be a superuser? (y/n) n
@@ -59,7 +59,7 @@ $
 Use psql shell to create a database
 
 ```
-$createdb fae2_prod -O fae2user
+$ createdb fae2_prod -O fae2user
 ```
 
 
@@ -68,10 +68,10 @@ $createdb fae2_prod -O fae2user
 Create a directory to put FAE 2.0 related files
 
 ```
-cd \var\www
-mkdir fae2
-cd fae2
-git clone https://github.com/opena11y/fae2.git
+$ cd \var\www
+$ mkdir fae2
+$ cd fae2
+$ git clone https://github.com/opena11y/fae2.git
 ```
 
 
@@ -98,30 +98,30 @@ $ virtualenv --version
 Create a virtual environment for FAE 2.0
 
 ```
-virtualenv fae2env
+$ virtualenv fae2env
 ```
 
 Change directory to virtual env
 
 ```
-cd fae2env
+$ cd fae2env
 ```
 
 Activate virtual environment
 
 ```
-source bin/activate
+$ source bin/activate
 ```
 
 Install required pyton packages using requirement.txt file
 
 ```
-cp ../fae2/requirements.txt .
-pip install -r requirements.txt
+$ cp ../fae2/requirements.txt .
+$ pip install -r requirements.txt
 ```
 
 Install shibboleth modue using git
 
 ```
-pip install git+https://github.com/Brown-University-Library/django-shibboleth-remoteuser.git
+$ pip install git+https://github.com/Brown-University-Library/django-shibboleth-remoteuser.git
 ```
