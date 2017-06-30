@@ -26,7 +26,15 @@ If Apache web server is not installed. install using the following instructions
 
 [How to Install Apache on CentOS 7](https://www.liquidweb.com/kb/how-to-install-apache-on-centos-7/)
 
-## Install Postgre database
+## Install mod_wsgi
+
+This is a pyhon package needed for Apache to run FAE 2.0
+
+```
+yum -y install mod_wsgi
+```
+
+## Install Postgres database
 
 If postggres is not installed, installusing the following instrutions
 
