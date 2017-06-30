@@ -6,12 +6,6 @@ Disabiling SELinux will make it much easier to install and configure FAE 2.0
 
 [Enable or Disable SELinux](https://www.centos.org/docs/5/html/5.1/Deployment_Guide/sec-sel-enable-disable.html)
 
-## Install Apache
-
-If Apache web server is not installed. install using the following instructions
-
-[How to Install Apache on CentOS 7](https://www.liquidweb.com/kb/how-to-install-apache-on-centos-7/)
-
 ## Install Git
 
 If git is not installed, install git
@@ -25,6 +19,18 @@ Test git version
 ```
 git --version
 ```
+
+## Install Apache
+
+If Apache web server is not installed. install using the following instructions
+
+[How to Install Apache on CentOS 7](https://www.liquidweb.com/kb/how-to-install-apache-on-centos-7/)
+
+## Install Postgre database
+
+If postggres is not installed, installusing the following instrutions
+
+[How To Install and Use PostgreSQL on CentOS 7](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-centos-7)
 
 ## Clone FAE 2.0 repository 
 
