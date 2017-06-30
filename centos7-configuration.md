@@ -32,6 +32,17 @@ If postggres is not installed, installusing the following instrutions
 
 [How To Install and Use PostgreSQL on CentOS 7](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-centos-7)
 
+### Create a database user
+```
+$sudo -i -u postgres
+$ createuser --interactive
+Enter name of role to add: fae2user
+Shall the new role be a superuser? (y/n) n
+Shall the new role be allowed to create databases? (y/n) y
+Shall the new role be allowed to create more new roles? (y/n) n
+$ 
+```
+
 ## Clone FAE 2.0 repository 
 
 Create a directory to put FAE 2.0 related files
