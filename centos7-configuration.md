@@ -18,3 +18,29 @@ If Apache web server is not installed. install using the following instructions
 * The virtual environment is need for Apache configuration
 
 [Hitchhicker Guide to Virtual Environments](http://python-guide-pt-br.readthedocs.io/en/latest/dev/virtualenvs/)
+
+Install virtualenv via pip:
+
+```
+$ pip install virtualenv
+```
+
+Test your installation
+
+```
+$ virtualenv --version
+```
+
+Create a directory to put FAE 2.0 related files
+
+```
+cd \var\www
+mkdir fae2
+cd fae2
+```
+
+Create a virtual environment for FAE 2.0
+
+```
+virtualenv fae2env
+```
