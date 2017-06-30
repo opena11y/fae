@@ -34,7 +34,7 @@ Create a directory to put FAE 2.0 related files
 cd \var\www
 mkdir fae2
 cd fae2
-git clone 
+git clone https://github.com/opena11y/fae2.git
 ```
 
 
