@@ -12,6 +12,32 @@ If Apache web server is not installed. install using the following instructions
 
 [How to Install Apache on CentOS 7](https://www.liquidweb.com/kb/how-to-install-apache-on-centos-7/)
 
+## Install Git
+
+If git is not installed, install git
+
+```
+yum -y install git
+```
+
+Test git version
+
+```
+git --version
+```
+
+## Clone FAE 2.0 repository 
+
+Create a directory to put FAE 2.0 related files
+
+```
+cd \var\www
+mkdir fae2
+cd fae2
+git clone 
+```
+
+
 ## Setup and Configure Virtual Environment for Python
 
 * FAE 2.0 need Python 2.7.x to run
@@ -31,16 +57,16 @@ Test your installation
 $ virtualenv --version
 ```
 
-Create a directory to put FAE 2.0 related files
-
-```
-cd \var\www
-mkdir fae2
-cd fae2
-```
 
 Create a virtual environment for FAE 2.0
 
 ```
 virtualenv fae2env
 ```
+
+Change directory to virtual env
+
+```
+cd fae2env
+```
+
