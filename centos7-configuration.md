@@ -107,3 +107,21 @@ Change directory to virtual env
 cd fae2env
 ```
 
+Activate virtual environment
+
+```
+source bin/activate
+```
+
+Install required pyton packages using requirement.txt file
+
+```
+cp ../fae2/requirements.txt .
+pip install -r requirements.txt
+```
+
+Install shibboleth modue using git
+
+```
+pip install git+https://github.com/Brown-University-Library/django-shibboleth-remoteuser.git
+```
