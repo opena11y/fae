@@ -52,12 +52,7 @@ Use the createuser command to create a database user for FAE 2.0
 
 ```
 $ sudo -i -u postgres
-$ createuser --interactive
-Enter name of role to add: fae2user
-Shall the new role be a superuser? (y/n) n
-Shall the new role be allowed to create databases? (y/n) y
-Shall the new role be allowed to create more new roles? (y/n) n
-$ 
+$ createuser --interactive -P fae2user
 ```
 
 ### Create database
