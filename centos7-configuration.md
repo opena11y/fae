@@ -40,6 +40,12 @@ If postggres is not installed, installusing the following instrutions
 
 [How To Install and Use PostgreSQL on CentOS 7](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-centos-7)
 
+## Install psycopg2
+
+```
+$ yum -y install python-psycopg2
+```
+
 ### Create a database user
 
 Use the createuser command to create a database user for FAE 2.0
