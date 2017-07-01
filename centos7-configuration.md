@@ -143,3 +143,15 @@ Install shibboleth modue using git
 ```
 $ pip install git+https://github.com/Brown-University-Library/django-shibboleth-remoteuser.git
 ```
+
+## Create a secrets.json file for configuring local version of FAE
+
+```
+$ cp 
+```
+
+## Populate database
+
+```
+
+```
