@@ -62,7 +62,6 @@ $
 
 ### Create database
 
-
 Use psql shell to create a database
 
 ```
