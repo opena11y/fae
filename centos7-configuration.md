@@ -62,12 +62,26 @@ $
 
 ### Create database
 
+
 Use psql shell to create a database
 
 ```
 $ createdb fae2_prod -O fae2user
 ```
 
+## Install Java
+
+If Java is not installed, install the latest version of java
+
+```
+$ sudo yum install java-1.8.0-openjdk
+```
+
+If javac is not installed, install latest version:
+
+```
+$ sudo yum install java-1.8.0-openjdk-devel
+```
 
 ## Create a place to put FAE 2.0 code and clone git repository 
 
@@ -78,15 +92,22 @@ $ cd \var\www
 $ mkdir fae2
 $ cd fae2
 $ git clone https://github.com/opena11y/fae2.git
-```
+ an
 
+$
+## Setup and Configure Virtual Environ
+t for Python
 
-## Setup and Configure Virtual Environment for Python
+If javac is not installed, install latest version:
+
+$
+## Setup and Configure Virtual Environmen```
+t for Python
 
 * FAE 2.0 need Python 2.7.x to run
 * The virtual environment is need for Apache configuration
 
-[Hitchhicker Guide to Virtual Environments](http://python-guide-pt-br.readthedocs.io/en/latest/dev/virtualenvs/)
+[Hitchhicke Guide to Virtual Environments](http://python-guide-pt-br.readthedocs.io/en/latest/dev/virtualenvs/)
 
 Install virtualenv via pip:
 
