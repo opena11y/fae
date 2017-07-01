@@ -92,17 +92,9 @@ $ cd \var\www
 $ mkdir fae2
 $ cd fae2
 $ git clone https://github.com/opena11y/fae2.git
- an
+```
 
-$
-## Setup and Configure Virtual Environ
-t for Python
-
-If javac is not installed, install latest version:
-
-$
-## Setup and Configure Virtual Environmen```
-t for Python
+## Setup and Configure Virtual Environment for Python
 
 * FAE 2.0 need Python 2.7.x to run
 * The virtual environment is need for Apache configuration
