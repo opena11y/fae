@@ -1,12 +1,12 @@
 # Setting up FAE 2.0 on CENTOS7 Linux
 
-All commands are assume you are logged in as root or are using sudo.
+All commands are assume you are logged in as `root` or are using `sudo`.
 
 ## Disable Selinux
 
 Disabiling SELinux will make it much easier to install and configure FAE 2.0
 
-Edit the /etc/sysconfig/selinux file and change the SELINUX=enforcing to SELINUX=permissive
+Edit the `/etc/sysconfig/selinux` file and change the `SELINUX=enforcing` to `SELINUX=permissive`.
 
 ```
 $ nano /etc/sysconfig/selinux
