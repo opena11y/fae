@@ -267,19 +267,20 @@ $ source bin/activate
 Install required pyton packages using requirement.txt file
 
 ```
-$ cp ../fae2/requirements.txt .
-$ pip install -r requirements.txt
+$ (fae2env) cp ../fae2/requirements.txt .
+$ (fae2env) pip install -r requirements.txt
 ```
 
 Install shibboleth modue using git
 
 ```
-$ pip install git+https://github.com/Brown-University-Library/django-shibboleth-remoteuser.git
+$ (fae2env) pip install git+https://github.com/Brown-University-Library/django-shibboleth-remoteuser.git
 ```
 
 ## Create a secrets.json file for configuring local version of FAE
 
 ```
+$ cd /var/www/fae2/fae2/fae2/fae2
 $ cp 
 ```
 
