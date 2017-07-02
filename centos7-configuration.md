@@ -190,7 +190,7 @@ Use the createuser command to create a database user for FAE 2.0
 
 ```
 $ sudo -i -u postgres
-$ createuser --interactive -P fae2user
+$ createuser --interactive -P fae2DBuser
 ```
 
 ### Create database
@@ -198,7 +198,7 @@ $ createuser --interactive -P fae2user
 Use psql shell to create a database
 
 ```
-$ createdb fae2_prod -O fae2user
+$ createdb fae2DB -O fae2DBuser
 ```
 
 ## Install Java
