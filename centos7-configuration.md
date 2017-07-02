@@ -178,6 +178,8 @@ Instructions based on [How To Install and Use PostgreSQL on CentOS 7](https://ww
 
 ## Install psycopg2
 
+The `psycopg2` package is ued by python to connect to the postgres database server
+
 ```
 $ yum -y install python-psycopg2
 ```
