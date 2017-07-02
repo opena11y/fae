@@ -29,7 +29,7 @@ SELINUXTYPE=targeted
 
 Based on the resource [Enable or Disable SELinux](https://www.centos.org/docs/5/html/5.1/Deployment_Guide/sec-sel-enable-disable.html)
 
-## Make sure yum has update packages
+## Make sure yum has updated packages
 
 First, clean-up yum:
 
