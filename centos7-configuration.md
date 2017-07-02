@@ -176,9 +176,9 @@ PostgreSQL is now ready to be used. We can go over how it works and how it may b
 
 Instructions based on [How To Install and Use PostgreSQL on CentOS 7](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-centos-7)
 
-## Install psycopg2
+### Install `psycopg2`
 
-The `psycopg2` package is ued by python to connect to the postgres database server
+The `psycogp2` package is used by python to connect to the postgres database server
 
 ```
 $ yum -y install python-psycopg2
