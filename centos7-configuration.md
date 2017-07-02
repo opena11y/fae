@@ -125,7 +125,56 @@ $ yum -y install mod_wsgi
 
 If postggres is not installed, installusing the following instrutions
 
-[How To Install and Use PostgreSQL on CentOS 7](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-centos-7)
+Install the postgresql-server package and the "contrib" package, that adds some additional utilities and functionality:
+
+```
+$ yum install postgresql-server postgresql-contrib
+```
+Accept the prompt, by responding with a y.
+
+Now that our software is installed, we have to perform a few steps before we can use it.
+
+Create a new PostgreSQL database cluster:
+
+```
+$ postgresql-setup initdb
+```
+
+By default, PostgreSQL does not allow password authentication. We will change that by editing its host-based authentication (HBA) configuration.
+
+Open the HBA configuration with your favorite text editor. We will use vi:
+
+```
+$ nano /var/lib/pgsql/data/pg_hba.conf
+```
+Find the lines that looks like this, near the bottom of the file:
+pg_hba.conf excerpt (original)
+
+```
+host    all             all             127.0.0.1/32            ident
+host    all             all             ::1/128                 ident
+```
+Then replace "ident" with "md5", so they look like this:
+pg_hba.conf excerpt (updated)
+
+```
+host    all             all             127.0.0.1/32            md5
+host    all             all             ::1/128                 md5
+```
+
+Save and exit. PostgreSQL is now configured to allow password authentication.
+
+Now start and enable PostgreSQL:
+
+```
+    sudo systemctl start postgresql
+    sudo systemctl enable postgresql
+```
+
+PostgreSQL is now ready to be used. We can go over how it works and how it may be different from similar database management systems you may have used.
+
+
+Instructions based on [How To Install and Use PostgreSQL on CentOS 7](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-centos-7)
 
 ## Install psycopg2
 
