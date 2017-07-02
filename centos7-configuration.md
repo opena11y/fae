@@ -38,11 +38,54 @@ $ git --version
 
 If Apache web server is not installed. install using the following instructions
 
+### Apache Step 1: Install Apache
+
 Installing Apache is as simple as running just one command:
 
 ```
-sudo yum -y install httpd
+$ sudo yum -y install httpd
+```
 
+### Apache Step 2: Allow Apache Through the Firewall
+
+Allow the default HTTP and HTTPS port, ports 80 and 443, through firewalld:
+
+```
+$ sudo firewall-cmd --permanent --add-port=80/tcp
+
+$ sudo firewall-cmd --permanent --add-port=443/tcp
+```
+
+And reload the firewall:
+
+```
+$ sudo firewall-cmd --reload
+```
+
+### Apache Step 3: Configure Apache to Start on Boot
+
+And then start Apache:
+
+```
+$ sudo systemctl start httpd
+```
+
+Be sure that Apache starts at boot:
+
+```
+$ sudo systemctl enable httpd
+```
+
+To check the status of Apache:
+
+```
+$ sudo systemctl status httpd
+```
+
+To stop Apache:
+
+```
+$ sudo systemctl stop httpd
 ```
 
 Based on [How to Install Apache on CentOS 7](https://www.liquidweb.com/kb/how-to-install-apache-on-centos-7/)
