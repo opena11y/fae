@@ -40,22 +40,5 @@
             {% endif %}
         {% endfor %}
 
-        {% if 800 < user.profile.account_type.max_pages %}
-
-            <div class="fae_radio">
-                <label>
-                <input
-                    type="radio"
-                    value="{{user.profile.account_type.max_pages}}"
-                    id="max_pages_{{user.profile.account_type.max_pages}}"
-                    name="max_pages"
-                    checked="checked"
-                />
-                <span>{{user.profile.account_type.max_pages}} pages (maximum)</span>
-                </label>
-            </div>
-
-        {% endif %}
-
     </fieldset>
     
