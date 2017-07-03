@@ -280,12 +280,23 @@ $ (fae2env) pip install git+https://github.com/Brown-University-Library/django-s
 ## Create a secrets.json file for configuring local version of FAE
 
 ```
-$ cd /var/www/fae2/fae2/fae2/fae2
+$ (fae2env) cd /var/www/fae2/fae2/fae2/fae2
 $ cp 
+```
+
+## Setup static files for CSS, Javascript and images
+
+```
+$ (fae2env) python manage.py collectstatic
+```
+## Setup database tables
+
+```
+$ (fae2env) python manage.py migrate
 ```
 
 ## Populate database
 
 ```
-
+$ $ (fae2env) python populate/pop_all.py
 ```
