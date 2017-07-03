@@ -9,8 +9,8 @@
 ### END INIT INFO
 
 # Edit the command path to local locations of virtual environment and fae-utl directories
-SCRIPT=/var/www/fae2/fae2env/bin/python /var/www/fae2/fae2/fae2/fae-util/process_evaluation_requests.py
-RUNAS=fae-util
+SCRIPT='/var/www/fae2/fae2env/bin/python /var/www/fae2/fae2/fae2/fae-util/process_evaluation_requests.py'
+RUNAS=root
 
 PIDFILE=/var/run/fae-util.pid
 LOGFILE=/var/log/fae-util.log
