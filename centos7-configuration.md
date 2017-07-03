@@ -287,6 +287,13 @@ $ (fae2env) nano secrets.json
 
 Edit the `secrets.json` file for your specific installation
 
+## Set file permissions for log file
+
+```
+$ cd /var/www/fae2/fae2/logs
+$ chown apache fae2_log
+```
+
 ## Setup static files for CSS, Javascript and images
 
 ```
