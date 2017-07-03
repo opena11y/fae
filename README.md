@@ -26,15 +26,15 @@ FAE may be used and distributed based on the terms and conditions of the [Apache
 Here is the [requirements.txt] file to use with pip
 
 ```
-  Django==1.9
-  django-password-reset==0.9
-  django-registration==2.0.4
-  django-timezone-field==1.3
-  future==0.15.2
-  Markdown==2.6.5
-  psycopg2==2.6.1
-  pytz==2015.7
-  requests==2.10.0
+Django==1.9
+django-password-reset==0.9
+django-registration==2.0.4
+django-timezone-field==1.3
+psycopg2
+future==0.15.2
+Markdown==2.6.5
+pytz==2015.7
+requests==2.10.0
 ```
 
 ### Creating a <code>secrets.json</code> file
@@ -47,39 +47,35 @@ The "secretes.json" file must be created and provides:
 
 ```
 {
-  	"FILENAME": "secrets.json",
-    "PROCESSING_THREADS": 4, 
-    "SITE_URL": "[your site URL]",
-    "SITE_NAME": "FAE 2.0",
-   	"SECRET_KEY": "",
-    "SELF_REGISTRATION_ENABLED": true,
-    "ANONYMOUS_ENABLED": true,
-    "SHIBBOLETH_ENABLED": false,
-    "SHIBBOLETH_URL": "",
-    "SHIBBOLETH_NAME": "",
-    "SHIBBOLETH_SUPERUSER": "",
-    "DEBUG": false,
-    "LOGGER_LEVEL": "INFO",
-   	"DATABASE_HOST": "[ip address]",
-   	"DATABASE_PORT": "[port]",
-   	"DATABASE_NAME": "[DB name]",
-    "DATABASE_USER": "[DB username]",
-    "DATABASE_PASSWORD": "[DB password]",
-    "ALLOWED_HOSTS": ["[your site URL]"],
-    "EMAIL_HOST": "[mailserver]",
-    "EMAIL_PORT": 587,
-    "EMAIL_USE_TLS": true,
-    "EMAIL_HOST_USER": "[email]",
-    "EMAIL_HOST_USER_PASSWORD": "[mail password]",
-    "ACCOUNT_ACTIVATION_DAYS" : 3,
-    "CONTACT_EMAIL" : "[email]"
-    "ADMIN_USER_NAME" : "[username]",
-    "ADMIN_FIRST_NAME" : "[first name]",
-    "ADMIN_LAST_NAME" : "[last name]",
-    "ADMIN_PASSWORD": "[admin password]",
-    "ADMIN_EMAIL": "[email]",
-    "ANONYMOUS_PASSWORD" : "[anonymous password]",
-    "DEFAULT_ACCOUNT_TYPE" : 2    
+  "FILENAME": "secrets.json",
+  "PROCESSING_THREADS": 4, 
+  "SITE_URL": "[your site URL]",
+  "SITE_NAME": "FAE 2.0 for [your organization]",
+  "SECRET_KEY": "[random string of 40-50 characters used by django]",
+  "SELF_REGISTRATION_ENABLED": true,
+  "ANONYMOUS_ENABLED": true,
+  "DEBUG": false,
+  "LOGGER_LEVEL": "INFO",
+  "DATABASE_HOST": "[ip address or localhost if database on same server]",
+  "DATABASE_PORT": "[port, typicall 5432]",
+  "DATABASE_NAME": "[DB name]",
+  "DATABASE_USER": "[DB username]",
+  "DATABASE_PASSWORD": "[DB password]",
+  "ALLOWED_HOSTS": ["[your site URL]"],
+  "EMAIL_HOST": "[mailserver]",
+  "EMAIL_PORT": 25,
+  "EMAIL_USE_TLS": true,
+  "EMAIL_HOST_USER": "[email used for sending registration information and announcements]",
+  "EMAIL_HOST_USER_PASSWORD": "[email password]",
+  "ACCOUNT_ACTIVATION_DAYS" : 3,
+  "CONTACT_EMAIL" : "[email notification when a contact form is submitted]",
+  "ADMIN_USER_NAME" : "[username of admin user]",
+  "ADMIN_FIRST_NAME" : "[first name of admin]",
+  "ADMIN_LAST_NAME" : "[last name of admin]",
+  "ADMIN_PASSWORD": "[password for admin]",
+  "ADMIN_EMAIL": "[email for admin]",
+  "ANONYMOUS_PASSWORD" : "[anonymous password, use random characters]",
+  "DEFAULT_ACCOUNT_TYPE" : 2
 }
 ```
 
