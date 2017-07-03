@@ -6,7 +6,7 @@ All commands are assume you are logged in as `root` or are using `sudo`.
 
 Disabiling SELinux will make it much easier to install and configure FAE 2.0
 
-Edit the `/etc/sysconfig/selinux` file and change the `SELINUX=enforcing` to `SELINUX=permissive`.
+Edit the `/etc/sysconfig/selinux` file and change the `SELINUX=enforcing` to `SELINUX=disabled`.
 
 ```
 $ nano /etc/sysconfig/selinux
@@ -20,11 +20,17 @@ Example of updated file:
 #       enforcing - SELinux security policy is enforced.
 #       permissive - SELinux prints warnings instead of enforcing.
 #       disabled - SELinux is fully disabled.
-SELINUX=permissive
+SELINUX=disabled
 # SELINUXTYPE= type of policy in use. Possible values are:
 #       targeted - Only targeted network daemons are protected.
 #       strict - Full SELinux protection.
 SELINUXTYPE=targeted
+```
+
+Restart the server
+
+```
+$ reboot
 ```
 
 Based on the resource [Enable or Disable SELinux](https://www.centos.org/docs/5/html/5.1/Deployment_Guide/sec-sel-enable-disable.html)
