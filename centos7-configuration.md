@@ -322,3 +322,18 @@ $ service fae-util start
 ```
 $ systemctl enable fae-util
 ```
+
+## Setting up a `cron` job to cleanup reports
+
+* In centos cron scripts are configures `/etc/crontab` files
+* Add the following line to `crontab` file
+* You may need to edit the paths bases on your location of the virtual environment and fae files
+
+```
+# at 1:30AM in the file /tmp/meminfo 
+30 1 * * /var/www/fae2/fae2/scripts/fae-util-report-cleanup.sh
+``` 
+```
+
+```
+```
