@@ -357,6 +357,12 @@ ib/python2.7/site-packages/
 </VirtualHost>
 ```
 
+Restart apache
+
+```
+service httpd restart
+```
+
 ## Setting up a `cron` job to cleanup reports
 
 * In centos cron scripts are configures `/etc/crontab` files
