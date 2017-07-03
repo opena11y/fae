@@ -390,7 +390,7 @@ service httpd restart
 
 * In centos cron scripts are configures `/etc/crontab` files
 * Add the following line to `crontab` file
-* You may need to edit the paths bases on your location of the virtual environment and fae files
+* You may need to edit the paths bases on your location of the virtual environment and fae2 files
 
 ```
 # at 1:30AM in the file /tmp/meminfo 
