@@ -293,7 +293,10 @@ $ (fae2env) nano secrets.json
 
 Edit the `secrets.json` file for your specific installation
 
-## Set file permissions for log and data files
+## Create and set file permissions for log and data directories
+* The `data` directory is where `fae-util` stores evaluation results
+* The evaluation results are copied to the database at the event of an evaluation request
+* The `logs` directory contins log files related to the use of fae2
 
 ```
 $ (fae2env) cd /var/www/fae2/fae2
