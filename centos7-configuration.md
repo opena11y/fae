@@ -306,7 +306,10 @@ $ $ (fae2env) python populate/pop_all.py
 
 ## Configure `fae-util` service
 
-The fae-util service is used to load and analyze the pages in websites and runs in the backgound of the server waiting for an evaluation request.  In centos7 service related scripts go in the `/etc/init.d` directory.
+* The `fae-util` service is used to load and analyze the pages using the Openajax evaluation library for websites.
+* The `fae-util` service runs in the backgound waiting for an evaluation request.  
+* In centos7 service scripts go in the `/etc/init.d` directory.
+* You may need to edit the `fae-util` script for the directories associated with your virtual environment and fae2 files
 
 ```
 $ cd /etc/initd/
