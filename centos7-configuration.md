@@ -323,6 +323,40 @@ $ service fae-util start
 $ systemctl enable fae-util
 ```
 
+## Configure Apache to serve FAE 2.0 web interface
+
+Add a `fae2.conf` to the `\etc\httpd\conf.d'
+
+```
+$ cd /etc/httpd/conf.d
+$ nano fae2.conf
+```
+The following is a sample `fae2.conf` file:
+
+```
+<VirtualHost *:80 >
+	     Servername  [domain name]
+	     ServerAlias [domain name]
+
+  Alias /static /var/www/fae2/fae2/fae2/static/
+
+  <Directory /var/www/fae2/fae2/fae2/static>
+    Require all granted
+  </Directory>
+
+  <Directory /var/www/fae2/fae2>
+    <Files wsgi.py>
+     Require all granted
+    </Files>
+  </Directory>
+
+  WSGIDaemonProcess fae2 python-path=/var/www/fae2/fae2/:/var/www/fae2/fae2env/l
+ib/python2.7/site-packages/
+  WSGIProcessGroup  fae2
+  WSGIScriptAlias / /var/www/fae2/fae2/fae2/wsgi.py process-group=fae2
+</VirtualHost>
+```
+
 ## Setting up a `cron` job to cleanup reports
 
 * In centos cron scripts are configures `/etc/crontab` files
