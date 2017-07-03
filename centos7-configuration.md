@@ -321,7 +321,7 @@ $ (fae2env) python manage.py migrate
 ## Populate database
 
 ```
-$ $ (fae2env) python populate/pop_all.py
+$ (fae2env) python populate/pop_all.py
 ```
 
 ## Configure `fae-util` service
@@ -331,6 +331,8 @@ $ $ (fae2env) python populate/pop_all.py
 * In centos7 service scripts go in the `/etc/init.d` directory.
 * A sample `fae-util` service script is in the `fae2/scripts` directory
 * You may need to edit the sample `fae-util` script for the directories associated with your virtual environment and fae2 files
+
+NOTE: You do not need to be in the virtual python environment for the next steps, but you need to be `root` or `sudo`.
 
 ```
 $ cd /etc/initd/
