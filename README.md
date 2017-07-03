@@ -82,40 +82,38 @@ The "secretes.json" file must be created and provides:
 ### Apache 2.0 configuration notes
 
 * MOD_WSGI must be installed and support Python 2.7
-* Helpful MOD_WSGI Resources
-  * [Deploy a python3.4-based Django project on Centos 6.5 with mod_wsgi: doable?](http://stackoverflow.com/questions/32642937/deploy-a-python3-4-based-django-project-on-centos-6-5-with-mod-wsgi-doable)
-  * [How to deploy a python3 wsgi application with apache2 and debian](http://devmartin.com/blog/2015/02/How-to-deploy-a-python3-wsgi-application-with-apache2-and-debian/)
-  * [How To Serve Django Applications with Apache and mod_wsgi on CentOS 7](https://www.digitalocean.com/community/tutorials/how-to-serve-django-applications-with-apache-and-mod_wsgi-on-centos-7)
-  * [How to Run Django with mod_wsgi and Apache with a virtualenv Python environment on a Debian VPS](https://www.digitalocean.com/community/tutorials/how-to-run-django-with-mod_wsgi-and-apache-with-a-virtualenv-python-environment-on-a-debian-vps)
 
-#### Example Apache configuration gile
-<pre>
-&lt;VirtualHost *:80 >
-	     Servername  fae.<em>[domain]</em>
-	     ServerAlias fae.<em>[domain]</em>
+#### Sample Apache configuration gile
 
-  Alias /static <em>[absolute path]</em>/fae2/fae2/static/
+```
+<VirtualHost *:80 >
 
-  &lt;Directory <em>[absolute path]</em>/fae2/fae2/static>
+  Servername  [fae.somedomain.org]
+  ServerAlias [fae.somedomain.org]
+
+  Alias /static /var/www/fae2/fae2/fae2/fae2/static/
+
+  <Directory /var/www/fae2/fae2/fae2/fae2/static>
     Require all granted
-  &lt;/Directory>
+  </Directory>
 
-  &lt;Directory <em>[absolute path]</em>/fae2>
-    &lt;Files wsgi.py>
+  <Directory /var/www/fae2/fae2/fae2>
+    <Files wsgi.py>
      Require all granted
-    &lt;/Files>
-  &lt;/Directory>
+    </Files>
+  </Directory>
 
-  WSGIDaemonProcess fae2 python-path=<em>[absolute path]</em>/fae2/:<em>[absolute path]</em>/virtual-en
-vironments/fae2/lib/python3.4/site-packages/
+  WSGIDaemonProcess fae2 python-path=/var/www/fae2/fae2/fae2:/var/www/fae2/fae2env/lib/python2.7/site-packages
   WSGIProcessGroup  fae2
-  WSGIScriptAlias <em>[absolute path]</em>/fae2/fae2/wsgi.py
-&lt;/VirtualHost>
-</pre>
+
+  WSGIScriptAlias / /var/www/fae2/fae2/fae2/fae2/wsgi.py process-group=fae2
+
+</VirtualHost>
+```
 
 ### Setting up fae directories for read/write access
-* Need to create "data/" with write permissions for fae-util, typically "root" 
-* Need to create "logs/" with write permissions for "apache" user
+* Need to create `data` directory with write permissions for `apache` user and group `root` user
+* Need to create `logs` direcotry with write permissions for `apache` user and group `root` user
 
 
 ### Multiple Django Apps and mod_wsgi 
@@ -151,7 +149,7 @@ vironments/fae2/lib/python3.4/site-packages/
 * The shell script contains the following command lines:
 <pre>
 #!/usr/bin/env bash
-<path to virtual environment>/python <path to script>/process_achive_reports.py
+<path to virtual environment>/python <path to fae-util>/fae-util/process_achive_reports.py
 </pre>
 
 ## InCommon (Shibboleth) Configuration
@@ -177,19 +175,6 @@ Enityt IDs: [https://www.incommon.org/federation/info/all-entities.html#IdPs]
     ....
 
 ```
-## SELinux issues (e.g. CENTOS, REDHAT)
-
-### FAE directory permissions
-* Need to set application permissions on fae2 files to allow apache to execute the python scripts 
-* Need to set application permissions on "fae2/logs" and "fae2/data" directories to allow reading and writing ([http://www.serverlab.ca/tutorials/linux/web-servers-linux/configuring-selinux-policies-for-apache-web-servers/])
-
-### Self registration and sendmail configuration
-* Enable send mail 
-  * [http://tecadmin.net/install-sendmail-server-on-centos-rhel-server/
-  * [https://sachinsharm.wordpress.com/2013/08/19/setting-up-sendmail-on-centosrhel-6-3/]
-  * [http://wpguru.co.uk/2015/04/how-to-open-smtp-port-587-to-send-emails-in-plesk/]
-* If you are using self registration make sure you enable Apache to send emails using sendmail ([http://www.sufinawaz.com/selinux-apache-sendmail/])
-* Setup e-mail on CENTOS 7 operating system ([http://www.krizna.com/centos/setup-mail-server-centos-7/])
 
 ## Development Resources
 
