@@ -281,8 +281,11 @@ $ (fae2env) pip install git+https://github.com/Brown-University-Library/django-s
 
 ```
 $ (fae2env) cd /var/www/fae2/fae2/fae2/fae2
-$ cp 
+$ (fae2env) cp secrets_template.json secrets.json
+$ (fae2env) nano secrets.json
 ```
+
+Edit the `secrets.json` file for our specific installation
 
 ## Setup static files for CSS, Javascript and images
 
