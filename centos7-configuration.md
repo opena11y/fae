@@ -317,5 +317,5 @@ $ service fae-util start
 ### Start `fae-util` service whenever the server restarts
 
 ```
-$ 
+$ systemctl enable fae-util
 ```
