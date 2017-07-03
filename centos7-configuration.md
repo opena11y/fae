@@ -217,7 +217,7 @@ $ sudo yum install java-1.8.0-openjdk-devel
 
 ## Create a place to put FAE 2.0 code and clone git repository 
 
-Create a directory to put FAE 2.0 related files
+Create a directory to put FAE 2.0 related files, in this example `/var/www/fae2`.
 
 ```
 $ cd \var\www
@@ -280,12 +280,41 @@ $ (fae2env) pip install git+https://github.com/Brown-University-Library/django-s
 ## Create a secrets.json file for configuring local version of FAE
 
 ```
-$ cd /var/www/fae2/fae2/fae2/fae2
-$ cp 
+$ (fae2env) cd /var/www/fae2/fae2/fae2/fae2
+$ (fae2env) cp secrets_template.json secrets.json
+$ (fae2env) nano secrets.json
+```
+
+Edit the `secrets.json` file for our specific installation
+
+## Setup static files for CSS, Javascript and images
+
+```
+$ (fae2env) python manage.py collectstatic
+```
+## Setup database tables
+
+```
+$ (fae2env) python manage.py migrate
 ```
 
 ## Populate database
 
 ```
+$ $ (fae2env) python populate/pop_all.py
+```
 
+## Configure `fae-util` service
+
+The fae-util service is used to load and analyze the pages in websites and runs in the backgound of the server waiting for an evaluation request.  In centos7 service related scripts go in the `/etc/init.d` directory.
+
+```
+$ cd /etc/initd/
+$ cp /var/www/fae2/fae2/scripts/fae-util .
+$ chmod 744 fae-util
+$ service fae-util start
+```
+### Start `fae-util` service when the server restarts
+
+```
 ```
