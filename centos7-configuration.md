@@ -285,7 +285,7 @@ $ (fae2env) cp secrets_template.json secrets.json
 $ (fae2env) nano secrets.json
 ```
 
-Edit the `secrets.json` file for our specific installation
+Edit the `secrets.json` file for your specific installation
 
 ## Setup static files for CSS, Javascript and images
 
