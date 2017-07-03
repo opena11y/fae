@@ -309,6 +309,7 @@ $ (fae2env) chown apache logs
 ## Setup static files for CSS, Javascript and images
 
 ```
+$ (fae2env) cd /var/www/fae2/fae2/fae2/
 $ (fae2env) python manage.py collectstatic
 ```
 ## Setup database tables
