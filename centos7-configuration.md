@@ -350,7 +350,7 @@ The following is a sample `fae2.conf` file:
     </Files>
   </Directory>
 
-  WSGIDaemonProcess fae2 python-path=/var/www/fae2/fae2/:/var/www/fae2/fae2env/l
+  WSGIDaemonProcess fae2 python-path=/var/www/fae2/fae2/fae:/var/www/fae2/fae2env/l
 ib/python2.7/site-packages/
   WSGIProcessGroup  fae2
   WSGIScriptAlias / /var/www/fae2/fae2/fae2/wsgi.py process-group=fae2
