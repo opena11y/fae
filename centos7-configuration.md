@@ -351,13 +351,13 @@ The following is a sample `fae2.conf` file:
 	     Servername  [domain name]
 	     ServerAlias [domain name]
 
-  Alias /static /var/www/fae2/fae2/fae2/static/
+  Alias /static /var/www/fae2/fae2/fae2/fae2/static/
 
-  <Directory /var/www/fae2/fae2/fae2/static>
+  <Directory /var/www/fae2/fae2/fae2/fae2/static>
     Require all granted
   </Directory>
 
-  <Directory /var/www/fae2/fae2>
+  <Directory /var/www/fae2/fae2/fae2>
     <Files wsgi.py>
      Require all granted
     </Files>
@@ -366,7 +366,7 @@ The following is a sample `fae2.conf` file:
   WSGIDaemonProcess fae2 python-path=/var/www/fae2/fae2/fae:/var/www/fae2/fae2env/l
 ib/python2.7/site-packages/
   WSGIProcessGroup  fae2
-  WSGIScriptAlias / /var/www/fae2/fae2/fae2/wsgi.py process-group=fae2
+  WSGIScriptAlias / /var/www/fae2/fae2/fae2/fae2/wsgi.py process-group=fae2
 </VirtualHost>
 ```
 
