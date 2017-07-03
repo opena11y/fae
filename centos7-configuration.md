@@ -314,7 +314,8 @@ $ cp /var/www/fae2/fae2/scripts/fae-util .
 $ chmod 744 fae-util
 $ service fae-util start
 ```
-### Start `fae-util` service when the server restarts
+### Start `fae-util` service whenever the server restarts
 
 ```
+$ 
 ```
