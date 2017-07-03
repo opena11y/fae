@@ -245,7 +245,7 @@ Install virtualenv via pip:
 $ pip install virtualenv
 ```
 
-Test your installation
+Test your virtual environment installation
 
 ```
 $ virtualenv --version
@@ -296,8 +296,8 @@ Edit the `secrets.json` file for your specific installation
 ## Set file permissions for log file
 
 ```
-$ cd /var/www/fae2/fae2/logs
-$ chown apache fae2_log
+$ (fae2env) cd /var/www/fae2/fae2/logs
+$ (fae2env) chown apache fae2_log
 ```
 
 ## Setup static files for CSS, Javascript and images
