@@ -49,6 +49,27 @@ As a matter of best practice we’ll update our packages:
 sudo yum -y update
 ```
 
+## Check version of Python
+
+```
+~ python -V
+```
+
+You want to have at least Python 2.7 installed as the default python version
+
+### Check if python PIP installed
+
+```
+$ pip
+```
+
+If pip is not installed, you can install it with the following command:
+
+```
+$ curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
+$ python get-pip.py
+```
+
 ## Install Git
 
 If git is not installed, install git
