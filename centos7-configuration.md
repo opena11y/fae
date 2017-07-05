@@ -49,6 +49,27 @@ As a matter of best practice we’ll update our packages:
 sudo yum -y update
 ```
 
+## Check version of Python
+
+```
+~ python -V
+```
+
+You want to have at least Python 2.7 installed as the default python version
+
+### Check if python PIP installed
+
+```
+$ pip
+```
+
+If pip is not installed, you can install it with the following command:
+
+```
+$ curl "https://bootstrap.pypa.io/get-pip.py" -o "get-pip.py"
+$ python get-pip.py
+```
+
 ## Install Git
 
 If git is not installed, install git
@@ -292,6 +313,11 @@ $ (fae2env) nano secrets.json
 ```
 
 Edit the `secrets.json` file for your specific installation
+
+The `secrets.json` file is a JSON formatted file that contains configuration information for your local
+version of FAE 2.0.   A template of the contents of the file is in 'secrets_template.json`.  You can copy 
+this file to `secretes.json` and then edit the file for you local configuration with the `nano` or other 
+text editor.
 
 ## Create and set file permissions for log and data directories
 * The `data` directory is where `fae-util` stores evaluation results
