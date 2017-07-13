@@ -79,6 +79,14 @@ def get_profile(user):
 
     return profile
 
+
+SUBSCRIPTION_STATUS_CHOICES = (
+    ('FREE',    'Free'),
+    ('CURRENT',  'Current'),
+    ('EXPIRED',  'Expired'),
+    ('SPECIAL',  'Special')
+)
+
 class InstitutionalProfile(models.Model):
     id = models.AutoField(primary_key=True)
 
@@ -162,13 +170,6 @@ class InstitutionalProfile(models.Model):
             send_mail(topic, message, EMAIL_HOST_USER, emails, fail_silently=False)          
 
 
-
-SUBSCRIPTION_STATUS_CHOICES = (
-    ('FREE',    'Free'),
-    ('CURRENT',  'Current'),
-    ('EXPIRED',  'Expired'),
-    ('SPECIAL',  'Special')
-)
 
 class UserProfile(models.Model):
 
