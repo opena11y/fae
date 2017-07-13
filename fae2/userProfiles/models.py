@@ -48,6 +48,7 @@ from contact.models              import Announcement
 
 
 from fae2.settings import DEFAULT_ACCOUNT_TYPE
+from fae2.settings import SHIBBOLETH_ENABLED
 
 from django.core.mail import send_mail
 from fae2.settings import EMAIL_HOST_USER
