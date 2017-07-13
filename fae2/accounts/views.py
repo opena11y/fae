@@ -169,7 +169,6 @@ class ShibbolethLogin(RedirectView):
 
         profile = get_profile(user)    
 
-
         # Try to populate user information from shibboleth header information
         if user.first_name == '':
             try:
@@ -197,6 +196,7 @@ class ShibbolethLogin(RedirectView):
                 except:
                     pass 
 
+        profile.update_institutional_subscription()
 
         self.url = SITE_URL
 
