@@ -304,7 +304,9 @@ Install shibboleth modue using git
 $ (fae2env) pip install git+https://github.com/Brown-University-Library/django-shibboleth-remoteuser.git
 ```
 
-## Create a secrets.json file for configuring local version of FAE
+## Configure FAE django settings
+
+### Create a secrets.json file for configuring local version of FAE
 
 ```
 $ (fae2env) cd /var/www/fae2/fae2/fae2/fae2
@@ -315,11 +317,11 @@ $ (fae2env) nano secrets.json
 Edit the `secrets.json` file for your specific installation
 
 The `secrets.json` file is a JSON formatted file that contains configuration information for your local
-version of FAE 2.0.   A template of the contents of the file is in 'secrets_template.json`.  You can copy 
+version of FAE 2.0.   A template of the contents of the file is in `secrets_template.json`.  You can copy 
 this file to `secretes.json` and then edit the file for you local configuration with the `nano` or other 
 text editor.
 
-## Create and set file permissions for log and data directories
+### Create and set file permissions for log and data directories
 * The `data` directory is where `fae-util` stores evaluation results
 * The evaluation results are copied to the database at the event of an evaluation request
 * The `logs` directory contins log files related to the use of fae2
@@ -332,23 +334,32 @@ $ (fae2env) mkdir logs
 $ (fae2env) chown apache logs 
 ```
 
-## Setup static files for CSS, Javascript and images
+### Setup static files for CSS, Javascript and images
 
 ```
 $ (fae2env) cd /var/www/fae2/fae2/fae2/
 $ (fae2env) python manage.py collectstatic
 ```
-## Setup database tables
+### Setup database tables
 
 ```
 $ (fae2env) python manage.py migrate
 ```
 
-## Populate database
+### Populate database
 
 ```
 $ (fae2env) python populate/pop_all.py
 ```
+
+### Test configuration
+
+To test the configuration you will need to know the IP address of the computer or server, or use local host (e.g. 127.0.0.1).
+
+```
+$ (fae2env) python manage.py runserver  127.0.0.1:8000
+```
+You should be able to open and browser and go to the 127.0.0.1:8000, or if you used the computers actual IP address IP:8000, andFAE 2.0 login screen should apprear.   
 
 ## Configure `fae-util` service
 
