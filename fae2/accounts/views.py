@@ -170,7 +170,7 @@ class ShibbolethLogin(RedirectView):
         profile = get_profile(user)    
 
 
-        # Try to populate user information from shibboleth information
+        # Try to populate user information from shibboleth header information
         if user.first_name == '' or user.last_name == '' or user.email == '':
             try:
                 user.first_name = self.request.META['givenName']

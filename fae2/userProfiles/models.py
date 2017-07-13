@@ -111,6 +111,12 @@ class UserProfile(models.Model):
         return self.user.username  
 
     def set_domain_info(self):
+        # If shibboleth headers did not find an e-mail address, populate with the username
+        if not len(self.user.email):
+            if self.user.username.find('@') > 0 and self.user.username.find('.') > 0:
+                self.user.email = self.user.username
+                self.user.save()
+
         email = self.user.email
 
         if email:
