@@ -67,8 +67,7 @@ def get_profile(user):
         profile = UserProfile(user=user, account_type=atype)
         profile.save()
 
-        # check for shibboleth user
-
+        profile.update_institutional_subscription()
 
     try: 
         stats = StatsUser.objects.get(user=user)
