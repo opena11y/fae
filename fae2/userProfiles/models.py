@@ -79,6 +79,89 @@ def get_profile(user):
 
     return profile
 
+class InstitutionalProfile(models.Model):
+    id = models.AutoField(primary_key=True)
+
+    title           = models.CharField(max_length=64,  blank=True, default="")
+    contact1_name   = models.CharField(max_length=32,  blank=True, default="")
+    contact1_title  = models.CharField(max_length=32,  blank=True, default="")
+    contact1_email  = models.EmailField(max_length=64, blank=True, default="")
+    contact1_phone  = models.CharField(max_length=16,  blank=True, default="")
+
+    contact2_name   = models.CharField(max_length=32,  blank=True, default="")
+    contact2_title  = models.CharField(max_length=32,  blank=True, default="")
+    contact2_email  = models.EmailField(max_length=64, blank=True, default="")
+    contact2_phone  = models.CharField(max_length=16,  blank=True, default="")
+
+    account_type     = models.ForeignKey(AccountType, related_name="institional_subscriptions")
+    top_level_domain = models.CharField(max_length=8, blank=True, default="")
+    domain           = models.CharField(max_length=64, blank=True, default="")
+    alt_domain       = models.CharField(max_length=64, blank=True, default="")
+    authentication   = models.CharField(max_length=64, blank=True, default="")
+
+    subscription_status   = models.CharField(max_length=8, choices=SUBSCRIPTION_STATUS_CHOICES, default="FREE")
+    subscription_days       = models.IntegerField(default=0)
+
+    subscription_start    = models.DateField(null=True, blank=True)
+    subscription_end      = models.DateField(null=True, blank=True)
+    subscription_payment  = models.IntegerField(default=0) # in dollars
+    last_payment          = models.IntegerField(default=0) # in dollars
+
+    users = models.ManyToManyField(User, related_name="institional_subscriptions", blank=True, default=None)
+
+    class Meta:
+        verbose_name        = "Institutional Profile"
+        verbose_name_plural = "Institutional Profiles"
+        ordering = ['account_type']
+    
+    def __str__(self):
+        return self.domain + '.' + self.top_level_domain
+
+    def update_subscription_status(self):
+
+        if self.subscription_end:
+            date1 = date(self.subscription_end.year, self.subscription_end.month, self.subscription_end.day)
+            date2 = date.today()
+            delta = date1 - date2
+
+            self.subscription_days = delta.days
+
+            if self.subscription_days >= 0:
+                self.subscription_status = 'CURRENT'            
+            else:
+                self.subscription_status     = 'EXPIRED'
+                self.subscription_payments   = 0
+                self.account_type            = AccountType.objects.get(type_id=16)     
+
+        self.save() 
+
+    def check_for_email_subscription_notifications(self):
+
+        topic = ""
+        
+        if self.subscription_status == 'CURRENT':
+            if self.subscription_days == 7 or self.subscription_days == 14:
+                topic = "FAE Institutional Subscription expires in " + str(self.subscription_days) + "days"
+            elif self.subscription_days == 1:
+                topic = "FAE Institutional Subscription expires in one day"
+            elif self.subscription_days == 0:
+                topic = "FAE Institutional Subscription expires today"
+
+        if self.subscription_status == 'EXPIRED' and self.subscription_days == -1:              
+            topic = "FAE Institutional Subscription expired yesterday"
+              
+        if topic:
+            emails = []
+            if self.contact1_email:
+                emails.append(self.contact1_email)
+            if self.contact2_email:
+                emails.append(self.contact2_email)
+
+            site = Site.objects.get_current()
+            message = render_to_string('accounts/email_institutional_message.txt', {'institutional_profile': self, 'subscription_url': str(site) + reverse('contact_form') })
+            send_mail(topic, message, EMAIL_HOST_USER, emails, fail_silently=False)          
+
+
 
 SUBSCRIPTION_STATUS_CHOICES = (
     ('FREE',    'Free'),
@@ -311,86 +394,4 @@ def user_registered_callback(sender, user, request, **kwargs):
 
  
 user_registered.connect(user_registered_callback)  
-
-class InstitutionalProfile(models.Model):
-    id = models.AutoField(primary_key=True)
-
-    title           = models.CharField(max_length=64,  blank=True, default="")
-    contact1_name   = models.CharField(max_length=32,  blank=True, default="")
-    contact1_title  = models.CharField(max_length=32,  blank=True, default="")
-    contact1_email  = models.EmailField(max_length=64, blank=True, default="")
-    contact1_phone  = models.CharField(max_length=16,  blank=True, default="")
-
-    contact2_name   = models.CharField(max_length=32,  blank=True, default="")
-    contact2_title  = models.CharField(max_length=32,  blank=True, default="")
-    contact2_email  = models.EmailField(max_length=64, blank=True, default="")
-    contact2_phone  = models.CharField(max_length=16,  blank=True, default="")
-
-    account_type     = models.ForeignKey(AccountType, related_name="institional_subscriptions")
-    top_level_domain = models.CharField(max_length=8, blank=True, default="")
-    domain           = models.CharField(max_length=64, blank=True, default="")
-    alt_domain       = models.CharField(max_length=64, blank=True, default="")
-    authentication   = models.CharField(max_length=64, blank=True, default="")
-
-    subscription_status   = models.CharField(max_length=8, choices=SUBSCRIPTION_STATUS_CHOICES, default="FREE")
-    subscription_days       = models.IntegerField(default=0)
-
-    subscription_start    = models.DateField(null=True, blank=True)
-    subscription_end      = models.DateField(null=True, blank=True)
-    subscription_payment  = models.IntegerField(default=0) # in dollars
-    last_payment          = models.IntegerField(default=0) # in dollars
-
-    users = models.ManyToManyField(User, related_name="institional_subscriptions", blank=True, default=None)
-
-    class Meta:
-        verbose_name        = "Institutional Profile"
-        verbose_name_plural = "Institutional Profiles"
-        ordering = ['account_type']
-    
-    def __str__(self):
-        return self.domain + '.' + self.top_level_domain
-
-    def update_subscription_status(self):
-
-        if self.subscription_end:
-            date1 = date(self.subscription_end.year, self.subscription_end.month, self.subscription_end.day)
-            date2 = date.today()
-            delta = date1 - date2
-
-            self.subscription_days = delta.days
-
-            if self.subscription_days >= 0:
-                self.subscription_status = 'CURRENT'            
-            else:
-                self.subscription_status     = 'EXPIRED'
-                self.subscription_payments   = 0
-                self.account_type            = AccountType.objects.get(type_id=16)     
-
-        self.save() 
-
-    def check_for_email_subscription_notifications(self):
-
-        topic = ""
-        
-        if self.subscription_status == 'CURRENT':
-            if self.subscription_days == 7 or self.subscription_days == 14:
-                topic = "FAE Institutional Subscription expires in " + str(self.subscription_days) + "days"
-            elif self.subscription_days == 1:
-                topic = "FAE Institutional Subscription expires in one day"
-            elif self.subscription_days == 0:
-                topic = "FAE Institutional Subscription expires today"
-
-        if self.subscription_status == 'EXPIRED' and self.subscription_days == -1:              
-            topic = "FAE Institutional Subscription expired yesterday"
-              
-        if topic:
-            emails = []
-            if self.contact1_email:
-                emails.append(self.contact1_email)
-            if self.contact2_email:
-                emails.append(self.contact2_email)
-
-            site = Site.objects.get_current()
-            message = render_to_string('accounts/email_institutional_message.txt', {'institutional_profile': self, 'subscription_url': str(site) + reverse('contact_form') })
-            send_mail(topic, message, EMAIL_HOST_USER, emails, fail_silently=False)          
 
