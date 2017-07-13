@@ -205,20 +205,20 @@ class UserProfile(models.Model):
             ip.users.add(self.user)
             ip.save()
 
-        if ip.account_type.shibboleth:
+            if ip.account_type.shibboleth:
 
-          self.subscription_status  = ip.subscription_status
-          self.subscription_end     = ip.subscription_end
-          self.subscription_start   = ip.subscription_start
-          self.subscription_days    = ip.subscription_days
+              self.subscription_status  = ip.subscription_status
+              self.subscription_end     = ip.subscription_end
+              self.subscription_start   = ip.subscription_start
+              self.subscription_days    = ip.subscription_days
 
-          if ip.subscription_status == 'CURRENT':
-              self.account_type = ip.account_type
+              if ip.subscription_status == 'CURRENT':
+                  self.account_type = ip.account_type
 
-          if ip.subscription_status == 'EXPIRED':
-              self.account_type = ip_free
+              if ip.subscription_status == 'EXPIRED':
+                  self.account_type = ip_free
 
-          self.save()
+              self.save()
         
         return ip
 
