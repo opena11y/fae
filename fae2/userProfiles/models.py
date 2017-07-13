@@ -67,6 +67,7 @@ def get_profile(user):
         profile = UserProfile(user=user, account_type=atype)
         profile.save()
 
+    if SHIBBOLETH_ENABLED:
         profile.update_institutional_subscription()
 
     try: 
