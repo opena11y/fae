@@ -202,11 +202,8 @@ class UserProfile(models.Model):
                 ip = False
 
         if ip:
-
             ip.users.add(self.user)
             ip.save()
-
-        info(str(self) + " added to " + str(ip))
 
         if ip.account_type.shibboleth:
 
