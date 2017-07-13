@@ -66,6 +66,9 @@ def get_profile(user):
         profile = UserProfile(user=user, account_type=atype)
         profile.save()
 
+        # check for shibboleth user
+
+
     try: 
         stats = StatsUser.objects.get(user=user)
     except ObjectDoesNotExist:
@@ -180,6 +183,46 @@ class UserProfile(models.Model):
         self.update_daily_rate()
 
         return self.subscription_status
+
+    def update_institutional_subscription(self):
+
+        if not self.domain:
+            self.set_domain_info()
+
+        if not SHIBBOLETH_ENABLED:
+            return False
+
+        try:
+            ip = InstitutionalProfile.objects.get(top_level_domain=self.top_level_domain, domain=self.domain)
+        except:  
+            try:
+                ip = InstitutionalProfile.objects.get(top_level_domain=self.top_level_domain, alt_domain=self.domain)
+            except:
+                ip = False
+
+        if ip:
+
+            ip.users.add(self.user)
+            ip.save()
+
+        info(str(self) + " added to " + str(ip))
+
+        if ip.account_type.shibboleth:
+
+          self.subscription_status  = ip.subscription_status
+          self.subscription_end     = ip.subscription_end
+          self.subscription_start   = ip.subscription_start
+          self.subscription_days    = ip.subscription_days
+
+          if ip.subscription_status == 'CURRENT':
+              self.account_type = ip.account_type
+
+          if ip.subscription_status == 'EXPIRED':
+              self.account_type = ip_free
+
+          self.save()
+        
+        return ip
 
     def get_last_subscription(self):
         try:

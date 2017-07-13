@@ -115,41 +115,8 @@ def update_subscriptions():
 
   for up in user_profiles:
 
-    if not up.domain:
-      up.set_domain_info()
-
-    if SHIBBOLETH_ENABLED and up.account_type.shibboleth and up.domain and up.top_level_domain:
-
-      try:
-        ip = InstitutionalProfile.objects.get(top_level_domain=up.top_level_domain, domain=up.domain)
-      except:  
-        try:
-          ip = InstitutionalProfile.objects.get(top_level_domain=up.top_level_domain, alt_domain=up.domain)
-        except:
-          ip = False
-
-      if ip:
-
-        ip.users.add(up.user)
-        ip.save()
-
-        info(str(up) + " added to " + str(ip))
-
-        if ip.account_type.shibboleth:
-
-          up.subscription_status  = ip.subscription_status
-          up.subscription_end     = ip.subscription_end
-          up.subscription_start   = ip.subscription_start
-          up.subscription_days    = ip.subscription_days
-
-          if ip.subscription_status == 'CURRENT':
-              up.account_type = ip.account_type
-
-          if ip.subscription_status == 'EXPIRED':
-              up.account_type = ip_free
-
-          up.save()
-
+    if SHIBBOLETH_ENABLED:
+      up.update_institutional_subscription()
     else:  
       up.update_subscription_status()
       up.check_for_email_subscription_notifications()
