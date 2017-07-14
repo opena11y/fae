@@ -67,6 +67,8 @@ def get_profile(user):
         profile = UserProfile(user=user, account_type=atype)
         profile.save()
 
+        profile.update_institutional_subscription()
+
     try: 
         stats = StatsUser.objects.get(user=user)
     except ObjectDoesNotExist:
