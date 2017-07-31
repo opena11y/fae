@@ -688,7 +688,7 @@ public class URLProcessor {
 						faeUtil.m_unprocessedURLsCSV.add(timing);
 						System.err.println("COULD NOT PROCESS URL: " + url
 								+ ". WAITED " + diff + "ms.");
-						th.stop();
+						th.interrupt();
 						Thread.sleep(3000); // give some time for resources to
 											// clean up
 						break;

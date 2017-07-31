@@ -1,3 +1,3 @@
-/var/www/fae2/fae2/fae2/fae-util/openajax_a11y/oaa_a11y_evaluation.js
-/var/www/fae2/fae2/fae2/fae-util/openajax_a11y/oaa_a11y_rules.js
-/var/www/fae2/fae2/fae2/fae-util/openajax_a11y/oaa_a11y_rulesets.js
+/Users/jongund/GitHub/jongund/oaa-fae2/fae2/fae-util/openajax_a11y/oaa_a11y_evaluation.js
+/Users/jongund/GitHub/jongund/oaa-fae2/fae2/fae-util/openajax_a11y/oaa_a11y_rules.js
+/Users/jongund/GitHub/jongund/oaa-fae2/fae2/fae-util/openajax_a11y/oaa_a11y_rulesets.js
