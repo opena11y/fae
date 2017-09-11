@@ -1,0 +1,385 @@
+{% extends "base.html" %}
+
+{% block breadcrumb %}
+  <li>Versions.</li>
+{% endblock %}
+
+{% block title %}
+Section 508 Voluntary Product Acessibility Template (VPAT)
+{% endblock %}
+
+{% block content %}
+
+<h2 id="id_summ">Summary Table for Voluntary Product Accessibility Template</h2>
+
+<table class="details table table-striped table-hover" aria-labelledby="id_summ">
+  <thead>
+    <tr>
+      <th>Section 508 Requirement</th>
+      <th>Level of Support</th>
+      <th>Remarks and explanations</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        Section 1194.21 Software Applications and Operating Systems
+      </td>
+      <td>
+        <abbr title="Not Applicable">n/a</abbr>
+      </td>
+      <td>
+        &nbsp;</td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#id_1194.22">Section 1194.22 Web-based Internet Information and Applications</a>
+      </td>
+      <td>
+        Compliant</td>
+      <td>
+        <ul>
+          <li>Designed to be accessible and usable to people with disabiltiies form the beginning.  Basically eating our own dog food.</li>
+          <li>Use the latest ARIA and HTML5 acessibility techniques to implement WCAG 2.0 Level A and AA requirements.</li>
+          <li>Implement ARIA Landmarks using ARIA 1.1 Authoring Guide Best Practices.</li>
+        </ul>  
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Section 1194.23 Telecommunications Products
+      </td>
+      <td>
+        <abbr title="Not Applicable">n/a</abbr>
+      </td>
+      <td>
+        &nbsp;</td>
+    </tr>
+    <tr>
+      <td>
+        Section 1194.24 Video and Multi-media Products
+      </td>
+      <td>
+        <abbr title="Not Applicable">n/a</abbr>
+      </td>
+      <td>
+        &nbsp;</td>
+    </tr>
+    <tr>
+      <td>
+        Section 1194.25 Self-Contained, Closed Products
+      </td>
+      <td>
+        <abbr title="Not Applicable">n/a</abbr>
+      </td>
+      <td>
+        &nbsp;</td>
+    </tr>
+    <tr>
+      <td>
+        Section 1194.26 Desktop and Portable Computers
+      </td>
+      <td>
+        <abbr title="Not Applicable">n/a</abbr>
+      </td>
+      <td>
+        &nbsp;</td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#id_1194.31">Section 1194.31 Functional Performance Criteria</a>
+      </td>
+      <td>
+        Compliant
+      </td>
+      <td>
+        Tested with:
+        <ul>
+          <li><a href="http://ainspector.github.io/">AInspector Sidebar</a> (automated testing)</li>
+          <li>Screen reader users</li>
+          <li>Keyboard only operation</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <a href="#id_1194.41">Section 1194.41 Information, Documentation and Support</a>
+      </td>
+      <td>
+        Compliant with one exception</td>
+      <td>
+        Getting started video is currently not captioned by should be by the end of Septemebr 2017</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="id_1194.22">Section 1194.22 Web-based Internet Information and Applications</h2>
+
+<table class="details table table-striped table-hover" aria-labelledby="id_1194.22">
+  <thead>
+    <tr>
+      <th>Criteria </th>
+      <th>Level of Support &amp; Supporting Features</th>
+      <th>Remarks and explanations</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        (a) A text equivalent for every non-text element shall be provided (e.g., via &quot;alt&quot;, &quot;longdesc&quot;, or in element content).
+      </td>
+      <td>
+        &nbsp;</td>
+      <td>
+        &nbsp;</td>
+    </tr>
+    <tr>
+      <td>
+        (b) Equivalent alternatives for any multimedia presentation shall be synchronized with the presentation.
+      </td>
+      <td>
+        &nbsp;</td>
+      <td>
+        &nbsp;</td>
+    </tr>
+    <tr>
+      <td>
+        (c) Web pages shall be designed so that all information conveyed with color is also available without color, for example from context or markup.
+      </td>
+      <td>
+        &nbsp;</td>
+      <td>
+        &nbsp;</td>
+    </tr>
+    <tr>
+      <td>
+        (d) Documents shall be organized so they are readable without requiring an associated style sheet.
+      </td>
+      <td>
+        &nbsp;</td>
+      <td>
+        &nbsp;</td>
+    </tr>
+    <tr>
+      <td>
+        (e) Redundant text links shall be provided for each active region of a server-side image map.
+      </td>
+      <td>
+        &nbsp;</td>
+      <td>
+        &nbsp;</td>
+    </tr>
+    <tr>
+      <td>
+        (f) Client-side image maps shall be provided instead of server-side image maps except where the regions cannot be defined with an available geometric shape.
+      </td>
+      <td>
+        &nbsp;</td>
+      <td>
+        &nbsp;</td>
+    </tr>
+    <tr>
+      <td>
+        (g) Row and column headers shall be identified for data tables.
+      </td>
+      <td>
+        &nbsp;</td>
+      <td>
+        &nbsp;</td>
+    </tr>
+    <tr>
+      <td width="41%">
+        (h) Markup shall be used to associate data cells and header cells for data tables that have two or more logical levels of row or column headers.
+      </td>
+      <td>
+        &nbsp;</td>
+      <td>
+        &nbsp;</td>
+    </tr>
+    <tr>
+      <td>
+        (i) Frames shall be titled with text that facilitates frame identification and navigation
+      </td>
+      <td>
+        &nbsp;</td>
+      <td>
+        &nbsp;</td>
+    </tr>
+    <tr>
+      <td>
+        (j) Pages shall be designed to avoid causing the screen to flicker with a frequency greater than 2 Hz and lower than 55 Hz.
+      </td>
+      <td>
+        &nbsp;</td>
+      <td>
+        &nbsp;</td>
+    </tr>
+    <tr>
+      <td>
+        (k) A text-only page, with equivalent information or functionality, shall be provided to make a web site comply with the provisions of this part, when compliance cannot be accomplished in any other way. The content of the text-only page shall be updated whenever the primary page changes.
+      </td>
+      <td>
+        &nbsp;</td>
+      <td>
+        &nbsp;</td>
+    </tr>
+    <tr>
+      <td>
+        (l) When pages utilize scripting languages to display content, or to create interface elements, the information provided by the script shall be identified with functional text that can be read by Assistive Technology.
+      </td>
+      <td>
+        &nbsp;</td>
+      <td>
+        &nbsp;</td>
+    </tr>
+    <tr>
+      <td>
+        (m) When a web page requires that an applet, plug-in or other application be present on the client system to interpret page content, the page must provide a link to a plug-in or applet that complies with 1194.21(a) through (l).
+      </td>
+      <td>
+        &nbsp;</td>
+      <td>
+        &nbsp;</td>
+    </tr>
+    <tr>
+      <td>
+        (n) When electronic forms are designed to be completed on-line, the form shall allow people using Assistive Technology to access the information, field elements, and functionality required for completion and submission of the form, including all directions and cues.
+      </td>
+      <td>
+        &nbsp;</td>
+      <td>
+        &nbsp;</td>
+    </tr>
+    <tr>
+      <td>
+        (o) A method shall be provided that permits users to skip repetitive navigation links.
+      </td>
+      <td>
+        &nbsp;</td>
+      <td>
+        &nbsp;</td>
+    </tr>
+    <tr>
+      <td>
+        (p) When a timed response is required, the user shall be alerted and given sufficient time to indicate more time is required.
+      </td>
+      <td>
+        &nbsp;</td>
+      <td>
+        &nbsp;</td>
+    </tr>
+
+  </tbody>
+</table>  
+
+<h2 id="id_1194.31">Section 1194.31 Functional Performance Criteria</h2>
+
+<table class="details table table-striped table-hover" aria-labelledby="id_1194.31">
+  <thead>
+    <tr>
+      <th>Criteria </th>
+      <th>Level of Support &amp; Supporting Features</th>
+      <th>Remarks and explanations</th>
+    </tr>
+  </thead>
+  <tbody>
+      <td>
+        (a) At least one mode of operation and information retrieval that does not require user vision shall be provided, or support for Assistive Technology used by people who are blind or visually impaired shall be provided.
+      </td>
+      <td>
+        &nbsp;</td>
+      <td>
+        &nbsp;</td>
+    </tr>
+    <tr>
+      <td>
+        (b) At least one mode of operation and information retrieval that does not require visual acuity greater than 20/70 shall be provided in audio and enlarged print output working together or independently, or support for Assistive Technology used by people who are visually impaired shall be provided.
+      </td>
+      <td>
+        &nbsp;</td>
+      <td>
+        &nbsp;</td>
+    </tr>
+    <tr>
+      <td>
+        (c) At least one mode of operation and information retrieval that does not require user hearing shall be provided, or support for Assistive Technology used by people who are deaf or hard of hearing shall be provided
+      </td>
+      <td>
+        &nbsp;</td>
+      <td>
+        &nbsp;</td>
+    </tr>
+    <tr>
+      <td>
+        (d) Where audio information is important for the use of a product, at least one mode of operation and information retrieval shall be provided in an enhanced auditory fashion, or support for assistive hearing devices shall be provided.
+      </td>
+      <td>
+        &nbsp;</td>
+      <td>
+        &nbsp;</td>
+    </tr>
+    <tr>
+      <td>
+        (e) At least one mode of operation and information retrieval that does not require user speech shall be provided, or support for Assistive Technology used by people with disabilities shall be provided.
+      </td>
+      <td>
+        &nbsp;</td>
+      <td>
+        &nbsp;</td>
+    </tr>
+    <tr>
+      <td>
+        (f) At least one mode of operation and information retrieval that does not require fine motor control or simultaneous actions and that is operable with limited reach and strength shall be provided.
+      </td>
+      <td>
+        &nbsp;</td>
+      <td>
+        &nbsp;</td>
+    </tr>
+  </tbody>
+</table>  
+
+<h2 id="id_1194.41">Section 1194.41 Information, Documentation and Support</h2>
+
+<table class="details table table-striped table-hover" aria-labelledby="id_1194.41">
+  <thead>
+    <tr>
+      <th>Criteria </th>
+      <th>Level of Support &amp; Supporting Features</th>
+      <th>Remarks and explanations</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        (a) Product support documentation provided to end-users shall be made available in alternate formats upon request, at no additional charge
+      </td>
+      <td width="27%">
+        &nbsp;</td>
+      <td>
+        &nbsp;</td>
+    </tr>
+    <tr>
+      <td valign="top">
+        (b) End-users shall have access to a description of the accessibility and compatibility features of products in alternate formats or alternate methods upon request, at no additional charge.
+      </td>
+      <td width="27%">
+        &nbsp;</td>
+      <td>
+        &nbsp;</td>
+    </tr>
+    <tr>
+      <td>
+        (c) Support services for products shall accommodate the communication needs of end-users with disabilities.
+      </td>
+      <td width="27%">
+        &nbsp;</td>
+      <td>
+        &nbsp;</td>
+    </tr>
+  </tbody>
+</table>  
+
+{% endblock %}
+
+

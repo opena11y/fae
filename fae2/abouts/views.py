@@ -59,6 +59,9 @@ class VersionsView(FAENavigationMixin, TemplateView):
 class SharingView(FAENavigationMixin, TemplateView):
     template_name = 'abouts/sharing.html'
 
+class VPATView(FAENavigationMixin, TemplateView):
+    template_name = 'abouts/vpat.html'
+
 class FAQView(FAENavigationMixin, TemplateView):
     template_name = 'abouts/faqs.html'
 
