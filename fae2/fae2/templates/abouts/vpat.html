@@ -1,16 +1,18 @@
 {% extends "base.html" %}
 
 {% block breadcrumb %}
-  <li>Versions.</li>
+  <li>Section 508 VPAT</li>
 {% endblock %}
 
 {% block title %}
-Section 508 Voluntary Product Acessibility Template (VPAT)
+Section 508 VPAT
 {% endblock %}
 
 {% block content %}
 
-<h2 id="id_summ">Summary Table for Voluntary Product Accessibility Template</h2>
+<p style="margin-top: 1.5em"><a href="{% url 'subscription' %}">Subscription Options</a></p>
+
+<h2 id="id_summ">Summary Table for Voluntary Product Accessibility Template (VPAT)</h2>
 
 <table class="details table table-striped table-hover" aria-labelledby="id_summ">
   <thead>
