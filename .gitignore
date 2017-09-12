@@ -5,7 +5,6 @@ fae2/fae2/static/
 fae2/fae-util/test/
 !fae2/fae-util/test.properties
 fae2/fae-util/*.properties
-fae2/fae-util/openajax_a11y/scripts.txt
 *.class
 *.pyc
 *~
