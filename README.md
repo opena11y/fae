@@ -13,28 +13,29 @@ Development is primarily supported by the [University of Illinois at Urbana-Cham
 ## Apache 2.0 License
 FAE may be used and distributed based on the terms and conditions of the [Apache License Version 2.0](http://www.apache.org/licenses/LICENSE-2.0). 
 
-## Server requirements
+## Server requirements for Linux
 
 * Apache2 Web Server
 * Python 2.7.x
 * Java 1.8
 * Python development package (`python-dev` in Debian/Ubuntu)
 * postgresql-devel (`libpq-dev` in Debian/Ubuntu)
+* `psycopg2` package for python to talk to postgres
 
 ### Python modules
 
 Here is the [requirements.txt] file to use with pip
 
 ```
-  Django==1.9
-  django-password-reset==0.9
-  django-registration==2.0.4
-  django-timezone-field==1.3
-  future==0.15.2
-  Markdown==2.6.5
-  psycopg2==2.6.1
-  pytz==2015.7
-  requests==2.10.0
+Django==1.9
+django-password-reset==0.9
+django-registration==2.0.4
+django-timezone-field==1.3
+psycopg2
+future==0.15.2
+Markdown==2.6.5
+pytz==2015.7
+requests==2.10.0
 ```
 
 ### Creating a <code>secrets.json</code> file
@@ -47,79 +48,73 @@ The "secretes.json" file must be created and provides:
 
 ```
 {
-  	"FILENAME": "secrets.json",
-    "PROCESSING_THREADS": 4, 
-    "SITE_URL": "[your site URL]",
-    "SITE_NAME": "FAE 2.0",
-   	"SECRET_KEY": "",
-    "SELF_REGISTRATION_ENABLED": true,
-    "ANONYMOUS_ENABLED": true,
-    "SHIBBOLETH_ENABLED": false,
-    "SHIBBOLETH_URL": "",
-    "SHIBBOLETH_NAME": "",
-    "SHIBBOLETH_SUPERUSER": "",
-    "DEBUG": false,
-    "LOGGER_LEVEL": "INFO",
-   	"DATABASE_HOST": "[ip address]",
-   	"DATABASE_PORT": "[port]",
-   	"DATABASE_NAME": "[DB name]",
-    "DATABASE_USER": "[DB username]",
-    "DATABASE_PASSWORD": "[DB password]",
-    "ALLOWED_HOSTS": ["[your site URL]"],
-    "EMAIL_HOST": "[mailserver]",
-    "EMAIL_PORT": 587,
-    "EMAIL_USE_TLS": true,
-    "EMAIL_HOST_USER": "[email]",
-    "EMAIL_HOST_USER_PASSWORD": "[mail password]",
-    "ACCOUNT_ACTIVATION_DAYS" : 3,
-    "CONTACT_EMAIL" : "[email]"
-    "ADMIN_USER_NAME" : "[username]",
-    "ADMIN_FIRST_NAME" : "[first name]",
-    "ADMIN_LAST_NAME" : "[last name]",
-    "ADMIN_PASSWORD": "[admin password]",
-    "ADMIN_EMAIL": "[email]",
-    "ANONYMOUS_PASSWORD" : "[anonymous password]",
-    "DEFAULT_ACCOUNT_TYPE" : 2    
+  "FILENAME": "secrets.json",
+  "PROCESSING_THREADS": 4, 
+  "SITE_URL": "[your site URL]",
+  "SITE_NAME": "FAE 2.0 for [your organization]",
+  "SECRET_KEY": "[random string of 40-50 characters used by django]",
+  "SELF_REGISTRATION_ENABLED": true,
+  "ANONYMOUS_ENABLED": true,
+  "DEBUG": false,
+  "LOGGER_LEVEL": "INFO",
+  "DATABASE_HOST": "[ip address or localhost if database on same server]",
+  "DATABASE_PORT": "[port, typicall 5432]",
+  "DATABASE_NAME": "[DB name]",
+  "DATABASE_USER": "[DB username]",
+  "DATABASE_PASSWORD": "[DB password]",
+  "ALLOWED_HOSTS": ["[your site URL]"],
+  "EMAIL_HOST": "[mailserver]",
+  "EMAIL_PORT": 25,
+  "EMAIL_USE_TLS": true,
+  "EMAIL_HOST_USER": "[email used for sending registration information and announcements]",
+  "EMAIL_HOST_USER_PASSWORD": "[email password]",
+  "ACCOUNT_ACTIVATION_DAYS" : 3,
+  "CONTACT_EMAIL" : "[email notification when a contact form is submitted]",
+  "ADMIN_USER_NAME" : "[username of admin user]",
+  "ADMIN_FIRST_NAME" : "[first name of admin]",
+  "ADMIN_LAST_NAME" : "[last name of admin]",
+  "ADMIN_PASSWORD": "[password for admin]",
+  "ADMIN_EMAIL": "[email for admin]",
+  "ANONYMOUS_PASSWORD" : "[anonymous password, use random characters]",
+  "DEFAULT_ACCOUNT_TYPE" : 2
 }
 ```
 
 ### Apache 2.0 configuration notes
 
 * MOD_WSGI must be installed and support Python 2.7
-* Helpful MOD_WSGI Resources
-  * [Deploy a python3.4-based Django project on Centos 6.5 with mod_wsgi: doable?](http://stackoverflow.com/questions/32642937/deploy-a-python3-4-based-django-project-on-centos-6-5-with-mod-wsgi-doable)
-  * [How to deploy a python3 wsgi application with apache2 and debian](http://devmartin.com/blog/2015/02/How-to-deploy-a-python3-wsgi-application-with-apache2-and-debian/)
-  * [How To Serve Django Applications with Apache and mod_wsgi on CentOS 7](https://www.digitalocean.com/community/tutorials/how-to-serve-django-applications-with-apache-and-mod_wsgi-on-centos-7)
-  * [How to Run Django with mod_wsgi and Apache with a virtualenv Python environment on a Debian VPS](https://www.digitalocean.com/community/tutorials/how-to-run-django-with-mod_wsgi-and-apache-with-a-virtualenv-python-environment-on-a-debian-vps)
 
-#### Example Apache configuration gile
-<pre>
-&lt;VirtualHost *:80 >
-	     Servername  fae.<em>[domain]</em>
-	     ServerAlias fae.<em>[domain]</em>
+#### Sample Apache configuration gile
 
-  Alias /static <em>[absolute path]</em>/fae2/fae2/static/
+```
+<VirtualHost *:80 >
 
-  &lt;Directory <em>[absolute path]</em>/fae2/fae2/static>
+  Servername  [fae.somedomain.org]
+  ServerAlias [fae.somedomain.org]
+
+  Alias /static /var/www/fae2/fae2/fae2/fae2/static/
+
+  <Directory /var/www/fae2/fae2/fae2/fae2/static>
     Require all granted
-  &lt;/Directory>
+  </Directory>
 
-  &lt;Directory <em>[absolute path]</em>/fae2>
-    &lt;Files wsgi.py>
+  <Directory /var/www/fae2/fae2/fae2>
+    <Files wsgi.py>
      Require all granted
-    &lt;/Files>
-  &lt;/Directory>
+    </Files>
+  </Directory>
 
-  WSGIDaemonProcess fae2 python-path=<em>[absolute path]</em>/fae2/:<em>[absolute path]</em>/virtual-en
-vironments/fae2/lib/python3.4/site-packages/
+  WSGIDaemonProcess fae2 python-path=/var/www/fae2/fae2/fae2:/var/www/fae2/fae2env/lib/python2.7/site-packages
   WSGIProcessGroup  fae2
-  WSGIScriptAlias <em>[absolute path]</em>/fae2/fae2/wsgi.py
-&lt;/VirtualHost>
-</pre>
+
+  WSGIScriptAlias / /var/www/fae2/fae2/fae2/fae2/wsgi.py process-group=fae2
+
+</VirtualHost>
+```
 
 ### Setting up fae directories for read/write access
-* Need to create "data/" with write permissions for fae-util, typically "root" 
-* Need to create "logs/" with write permissions for "apache" user
+* Need to create `data` directory with write permissions for `apache` user and group `root` user
+* Need to create `logs` direcotry with write permissions for `apache` user and group `root` user
 
 
 ### Multiple Django Apps and mod_wsgi 
@@ -155,7 +150,7 @@ vironments/fae2/lib/python3.4/site-packages/
 * The shell script contains the following command lines:
 <pre>
 #!/usr/bin/env bash
-<path to virtual environment>/python <path to script>/process_achive_reports.py
+<path to virtual environment>/python <path to fae-util>/fae-util/process_achive_reports.py
 </pre>
 
 ## InCommon (Shibboleth) Configuration
@@ -181,19 +176,6 @@ Enityt IDs: [https://www.incommon.org/federation/info/all-entities.html#IdPs]
     ....
 
 ```
-## SELinux issues (e.g. CENTOS, REDHAT)
-
-### FAE directory permissions
-* Need to set application permissions on fae2 files to allow apache to execute the python scripts 
-* Need to set application permissions on "fae2/logs" and "fae2/data" directories to allow reading and writing ([http://www.serverlab.ca/tutorials/linux/web-servers-linux/configuring-selinux-policies-for-apache-web-servers/])
-
-### Self registration and sendmail configuration
-* Enable send mail 
-  * [http://tecadmin.net/install-sendmail-server-on-centos-rhel-server/
-  * [https://sachinsharm.wordpress.com/2013/08/19/setting-up-sendmail-on-centosrhel-6-3/]
-  * [http://wpguru.co.uk/2015/04/how-to-open-smtp-port-587-to-send-emails-in-plesk/]
-* If you are using self registration make sure you enable Apache to send emails using sendmail ([http://www.sufinawaz.com/selinux-apache-sendmail/])
-* Setup e-mail on CENTOS 7 operating system ([http://www.krizna.com/centos/setup-mail-server-centos-7/])
 
 ## Development Resources
 

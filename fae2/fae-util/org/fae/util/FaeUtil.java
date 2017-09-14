@@ -466,7 +466,7 @@ class FaeUtil {
       BROWSER_VERSION = BrowserVersion.INTERNET_EXPLORER;
     }
     else {
-      BROWSER_VERSION = BrowserVersion.FIREFOX_45;
+      BROWSER_VERSION = BrowserVersion.FIREFOX_52;
     }
     //System.out.println("browser version: " + BROWSER_VERSION.getNickname());
 
@@ -714,6 +714,15 @@ class FaeUtil {
       webClient.setIncorrectnessListener(new NoOpIncListener());
     }
 
+    //PJ added - turn off htmlunit warnings
+    //Logger logger = Logger.getRootLogger();
+    Logger.getLogger("com.gargoylesoftware.htmlunit.javascript.host.css.CSSStyleSheet").setLevel(Level.OFF);
+    Logger.getLogger("com.gargoylesoftware.htmlunit.WebConsole").setLevel(Level.OFF);
+    Logger.getLogger("com.gargoylesoftware.htmlunit.javascript.JavaScriptEngine").setLevel(Level.OFF);
+    Logger.getLogger("com.gargoylesoftware.htmlunit.html.HtmlScript").setLevel(Level.OFF);
+    Logger.getLogger("com.gargoylesoftware.htmlunit.javascript.StrictErrorReporter").setLevel(Level.OFF);
+    Logger.getLogger("com.gargoylesoftware.htmlunit.javascript.background.JavaScriptJobManagerImpl").setLevel(Level.OFF);
+    
     // Disallow exceptions of these types when getPage() is called
     webClient.getOptions().setThrowExceptionOnFailingStatusCode(false);
     webClient.setRefreshHandler(new RefreshHandler() {
@@ -1182,7 +1191,7 @@ class FaeUtil {
   public Properties m_props = null;
   public static Controller m_ctrl = new Controller("java org.fae.util.FaeUtil <options>");
   
-  public static BrowserVersion BROWSER_VERSION = BrowserVersion.FIREFOX_45;
+  public static BrowserVersion BROWSER_VERSION = BrowserVersion.FIREFOX_52;
   public boolean DEBUG = false;
   public int DEPTH = 1;
   public String OUTPUT_DIRECTORY;

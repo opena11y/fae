@@ -187,14 +187,17 @@ WAIT_TIME_CHOICES = (
 )   
 
 MAX_PAGES_CHOICES = (
-  (   5, '   5 pages'),
-  (  10, '  10 pages'),
-  (  25, '  25 pages'),
-  (  50, '  50 pages'),
-  ( 100, ' 100 pages'),
-  ( 200, ' 200 pages'),
-  ( 400, ' 400 pages'),
-  ( 800, ' 800 pages')
+  (    5, '    5 pages'),
+  (   10, '   10 pages'),
+  (   25, '   25 pages'),
+  (   50, '   50 pages'),
+  (  100, '  100 pages'),
+  (  200, '  200 pages'),
+  (  400, '  400 pages'),
+  (  800, '  800 pages'),
+  ( 1600, ' 1600 pages'),
+  ( 3200, ' 3200 pages'),
+  ( 6400, ' 6400 pages')
 )  
 
 LAST_REPORT_TYPE_CHOICES = (

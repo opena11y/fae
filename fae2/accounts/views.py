@@ -169,16 +169,34 @@ class ShibbolethLogin(RedirectView):
 
         profile = get_profile(user)    
 
-
-        # Try to populate user information from shibboleth information
-        if user.first_name == '' or user.last_name == '' or user.email == '':
+        # Try to populate user information from shibboleth header information
+        if user.first_name == '':
             try:
                 user.first_name = self.request.META['givenName']
-                user.last_name  = self.request.META['sn']
-                user.email      = self.request.META['mail']
                 user.save()
             except:
                 pass    
+
+        if user.last_name == '':
+            try:
+                user.last_name  = self.request.META['sn']
+                user.save()
+            except:
+                pass 
+
+        if user.email == '':
+            try:
+                user.email      = self.request.META['mail']
+                user.save()
+            except:
+                try:
+                    if user.username.find('@') > 0 and user.username.find('.'):
+                        user.email = user.username
+                        user.save()                        
+                except:
+                    pass 
+
+        profile.update_institutional_subscription()
 
         self.url = SITE_URL
 

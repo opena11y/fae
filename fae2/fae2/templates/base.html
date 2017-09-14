@@ -67,9 +67,6 @@
                     <li><a href="{% url 'faqs'            %}">FAQs</a></li>
                     <li><a href="{% url 'sharing'         %}">Sharing Reports</a></li>
                     <li><a href="{% url 'concepts_terms'  %}">Concepts and Terms</a></li>
-                    <li><a href="{% url 'disclaimer'      %}">Disclaimer</a></li>
-                    <li><a href="{% url 'privacy'         %}">Privacy</a></li>
-                    <li><a href="{% url 'versions'        %}">Version History</a></li>
                     <li role="separator" class="divider"></li>  
                     <li><a href="{% url 'announcements'%}">Announcements</a></li>                  
                     <li><a href="{% url 'usage_statistics'%}">Usage Statistics</a></li>
@@ -287,7 +284,14 @@
       <div class="container">
         <div class="well well-sm">
           <div>
-            <div style="float: left">Copyright &copy; 2014&#8211;{% now "Y" %} University of Illinois</div>
+            <div style="float: left">
+              Copyright &copy; 2014&#8211;{% now "Y" %} <a href="http://illinois.edu">University of Illinois</a>
+              | <a href="{% url 'disclaimer' %}">Disclaimer</a>
+              | <a href="{% url 'privacy'    %}">Privacy</a>
+              | <a href="{% url 'vpat'       %}">Section 508 VPAT</a>
+              | <a href="{% url 'versions'   %}">Version History</a>
+
+            </div>
             <div class="text-right">Version {% include 'version.txt' %}</div>
           </div>
         </div>

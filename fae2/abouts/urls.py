@@ -31,6 +31,7 @@ from .views import ReportIssuesView
 from .views import SharingView
 from .views import VersionsView
 from .views import FAQView
+from .views import VPATView
 
 urlpatterns = [ 
     url(r'^$',            OverviewView.as_view(),       name='overview'),
@@ -41,4 +42,5 @@ urlpatterns = [
     url(r'^sharing/$',    SharingView.as_view(),        name='sharing'),
     url(r'^versions/$',   VersionsView.as_view(),       name='versions'),
     url(r'^faqs/$',       FAQView.as_view(),            name='faqs'),
+    url(r'^vpat/$',       VPATView.as_view(),           name='vpat'),
 ]
