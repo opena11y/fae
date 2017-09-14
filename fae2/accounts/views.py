@@ -82,6 +82,7 @@ from fae2.settings import PAYMENT_ACCOUNT
 from fae2.settings import DEFAULT_ACCOUNT_TYPE
 
 from fae2.settings import SITE_URL
+from fae2.settings import SHIB_URL
 from fae2.settings import SHIBBOLETH_SUPERUSER
 
 from fae2.settings import PROCESSING_THREADS
@@ -186,6 +187,22 @@ class ShibbolethLogin(RedirectView):
 class ShibbolethDiscovery(TemplateView):
     template_name = 'registration/shib_discovery.html'
 
+class ShibbolethInstitution(RedirectView):
+    def get_redirect_url(self, *args, **kwargs):
+
+        self.url = SHIB_URL
+
+        try:
+            ip = InstitutionalProfile.objects.get(domain=kwargs['domain'])
+            self.url += '/Shibboleth.sso/Login?entityID=' + ip.authentication + '&target=' + SITE_URL
+        except:
+            try:
+                ip =  InstitutionalProfile.objects.get(alt_domain=kwargs['domain'])     
+                self.url += '/Shibboleth.sso/Login?entityID=' + ip.authentication + '&target=' + SITE_URL
+            except:
+                ip =  None   
+  
+        return super(ShibbolethInstitution, self).get_redirect_url(*args, **kwargs)
 
 class Logout(FAENavigationMixin, TemplateView):
     template_name = 'registration/logout.html'

@@ -101,6 +101,11 @@ else:
 SITE_NAME = get_secret('SITE_NAME')
 SITE_URL  = get_secret('SITE_URL')
 
+try:
+    SHIB_URL  = get_secret('SHIB_URL')
+except:
+    SHIB_URL  = ''    
+
 ADMIN_USER_NAME          = get_secret('ADMIN_USER_NAME')
 ADMIN_FIRST_NAME         = get_secret('ADMIN_FIRST_NAME')
 ADMIN_LAST_NAME          = get_secret('ADMIN_LAST_NAME')
