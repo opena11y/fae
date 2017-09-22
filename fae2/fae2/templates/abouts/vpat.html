@@ -196,8 +196,10 @@ Section 508 VPAT
       </td>
       <td>
         <ul>
-          <li>Tables are only used for tabular data.</li>
-          <li>Tables also have accessible names using the <code>aria-labelledby</code> attribute to a corresponding heading.</li>
+          <li>Tables that have more than one level of headings use the <code>headings</code> attribute to identify headings for the data cell.</li>
+          <li>Each header cell in ables that have more than one level of headings Heading cells have unique <code>id</code>s.</li>
+          <li><code>th</code> elements are used to identify table header cells.</li>
+          <li>For complex data tables the <code>headers</code> attribute is used to identify table header cells.</li>
         </ul>
       </td>
     </tr>
@@ -212,6 +214,8 @@ Section 508 VPAT
         <ul>
           <li>Tables that have more than one level of headings use the <code>headings</code> attribute to identify headings for the data cell.</li>
           <li>Each header cell in ables that have more than one level of headings Heading cells have unique <code>id</code>s.</li>
+          <li><code>th</code> elements are used to identify table header cells.</li>
+          <li>For complex data tables the <code>headers</code> attribute is used to identify table header cells.</li>
         </ul>
       </td>
     </tr>
