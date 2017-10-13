@@ -97,3 +97,4 @@ create_institutional_profile(22,'University of Montana','umt', 'umontana', 'http
 create_institutional_profile(21,'Temple','temple', '', 'https://fim.temple.edu/idp/shibboleth', 'Brent Whiting','bwhiting@temple.edu','267-468-8380', '', '', '', '2017-01-05', '2017-09-15')
 create_institutional_profile(22,'Indiana University','iu', 'indiana', 'urn:mace:incommon:iu.edu', 'Kristy Muncy','marcgonz@iu.edu','317-274-7465', 'Brian Richwine', 'brichwin@iu.edu', '', '2017-02-08', '2017-09-15')
 create_institutional_profile(22,'The Ohio State University','osu', '', 'urn:mace:incommon:osu.edu', 'Peter Bossley','bossley.5@osu.edu','614-292-1760', '', '', '', '2017-06-01', '2018-06-01')
+create_institutional_profile(22,'Texas State','txstate', '', 'https://authentic.txstate.edu/idp/shibboleth', ', Milton C. Nielsen','mn11@txstate.edu','512-245-6858', '', '', '', '2017-10-12', '2018-10-11')
