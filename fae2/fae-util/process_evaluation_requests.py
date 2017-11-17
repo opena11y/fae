@@ -61,6 +61,8 @@ from fae2.settings import APP_DIR
 from fae2.settings import PROCESSING_THREADS
 
 from django.db       import models
+from django.contrib.auth.models import User
+
 from reports.models  import WebsiteReport
 from contact.models  import Announcement
 from userProfiles.models  import UserProfile
@@ -266,30 +268,38 @@ def process_announcements():
 
 def remove_pending_reports():
 
-  anonymous = False
-
-  try:
-    anonymous = User.objects.get(username='anonymous')
-  except:
-    error("Error getting anonymous user")
-
-
-  def remove_reports_with_status(status, anonymous_only):
+  def remove_reports_with_status(status, all_reports):
     # Delete reports with errors
     reports = WebsiteReport.objects.filter(status=status)
 
     for r in reports:
-      if not anonymous_only or (reports.user == anonymous):
+      if all_reports or (reports.user == anonymous):
         try:
           info("  Deleting '" + r.title + "' with status '" + status + "'")
           r.delete()
+          count += 1
         except:
           error("Error deleting  '" + r.title + "' with status '" + status + "'")
 
-  remove_reports_with_status('E', False)
-  remove_reports_with_status('A', False)
-  remove_reports_with_status('S', False)
-  remove_reports_with_status('-', True)
+  anonymous = False
+  count = 0
+
+  info("-----------------------")
+  info("Checking for and removing unstable or uneeded reports")
+
+  try:
+    anonymous = User.objects.get(username='anonymous')
+    info("Found anonymous user")
+  except:
+    error("Error getting anonymous user")
+
+  remove_reports_with_status('E', True)
+  remove_reports_with_status('A', True)
+  remove_reports_with_status('S', True)
+  remove_reports_with_status('-', False)
+
+  info("Removed " + str(count) + " reports")
+  info("-----------------------")
 
 def main(argv):
 
