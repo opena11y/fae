@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo Running java -Xmx2048m org.fae.util.FaeUtil $@
+echo Running java -Xmx4096m org.fae.util.FaeUtil $@
 
 [ -z "$FAE_HOME" ] && FAE_HOME="."
 
@@ -13,4 +13,4 @@ else
 fi
 
 . $FAE_HOME/org/fae/util/classpath
-java -Xmx2048m org.fae.util.FaeUtil $@
+java -Xmx4096m org.fae.util.FaeUtil $@
