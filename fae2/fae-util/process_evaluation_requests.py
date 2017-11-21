@@ -273,7 +273,7 @@ def remove_pending_reports():
     reports = WebsiteReport.objects.filter(status=status)
 
     for r in reports:
-      if all_reports or (reports.user == anonymous):
+      if all_reports or (r.user == anonymous):
         try:
           info("  Deleting '" + r.title + "' with status '" + status + "'")
           r.delete()
