@@ -40,7 +40,7 @@ requests==2.10.0
 
 ### Creating a <code>secrets.json</code> file
 
-The "secretes.json" file must be created and provides:
+The "secrets.json" file must be created and provides:
 * Security information for Django
 * Information for Django to access and manage the database
 * Information on on e-mail commmunications for registration and announcements.
