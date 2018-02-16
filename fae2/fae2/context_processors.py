@@ -22,7 +22,7 @@ Author: Jon Gunderson
 from __future__ import absolute_import
 from django.contrib.sites.models import Site
 from userProfiles.models import UserProfile
-from django.contrib.auth.models import AnonymousUser 
+from django.contrib.auth.models import AnonymousUser
 
 
 from fae2.settings import ANONYMOUS_ENABLED

@@ -62,11 +62,11 @@ if FAE_DISABLED:
         url(r'^(?P<item1>\w+)/(?P<item2>\w+)/(?P<item3>\w+)/(?P<item4>\w+)/$',  DisabledView.as_view()),
         url(r'^(?P<item1>\w+)/(?P<item2>\w+)/(?P<item3>\w+)/(?P<item4>\w+)/(?P<item5>\w+)/$',  DisabledView.as_view()),
         url(r'^(?P<item1>\w+)/(?P<item2>\w+)/(?P<item3>\w+)/(?P<item4>\w+)/(?P<item6>\w+)/(?P<item7>\w+)/$',  DisabledView.as_view()),
-    ]  
-else:  
+    ]
+else:
   urlpatterns = [
       url(r'^admin/',   include(admin.site.urls)),
-      # fae2 specific 
+      # fae2 specific
       url(r'^',           include('reports.urls')),
       url(r'^abouts/',    include('abouts.urls')),
       url(r'^contact/',   include('contact.urls')),
@@ -76,7 +76,7 @@ else:
       url(r'^usage/',     include('stats.urls')),
   ]
 
-  if SHIBBOLETH_ENABLED: 
+  if SHIBBOLETH_ENABLED:
     urlpatterns += [
         url(r'^login/$',              ShibbolethLogin.as_view(),     name='login'),
         url(r'^logout/$',             ShibbolethLogout.as_view(),    name='logout'),
