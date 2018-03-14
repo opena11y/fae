@@ -9,7 +9,7 @@ Rulesets
 {% endblock %}
 
 {% block content %}
-    <p>The Functional Accessibility Evaluator and AInspector Sidebar use the <a href="http://www.openajax.org/member/wiki/Accessibility">OpenAjax Evaluation Library and Rulesets</a>.  The ruleset section of FAE provides details of the Openajax Evaluation Library rules and rulesets.</p> 
+    <p>The Functional Accessibility Evaluator and AInspector Sidebar use the <a href="https://aitg.disability.illinois.edu/openajax/member/wiki/accessibility.html">OpenAjax Evaluation Library and Rulesets</a>.  The ruleset section of FAE provides details of the Openajax Evaluation Library rules and rulesets.</p>
 
     {% for rs in rulesets %}
         <h2>
@@ -25,18 +25,18 @@ Rulesets
         <details>
         <summary>{{rs.tooltip}}</summary>
 
-        <p>{{rs.description_html|safe}}</p>            
+        <p>{{rs.description_html|safe}}</p>
 
         <ul>
-            <li class="text"><strong>Version:</strong> {{rs.version}}</li>            
-            <li class="num"><strong>Total Rules:</strong> {{rs.get_number_of_rules}}</li>            
-            <li class="num"><strong>Required Rules:</strong> {{rs.get_number_of_required_rules}}</li>            
-            <li class="num"><strong>Recommended Rules:</strong> {{rs.get_number_of_recommended_rules}}</li>            
-        </ul>  
+            <li class="text"><strong>Version:</strong> {{rs.version}}</li>
+            <li class="num"><strong>Total Rules:</strong> {{rs.get_number_of_rules}}</li>
+            <li class="num"><strong>Required Rules:</strong> {{rs.get_number_of_required_rules}}</li>
+            <li class="num"><strong>Recommended Rules:</strong> {{rs.get_number_of_recommended_rules}}</li>
+        </ul>
         </details>
     {% endfor %}
 
-    <h2>Ruleset Comparison</h2>  
+    <h2>Ruleset Comparison</h2>
 
     <nav aria-label="Ruleset Comparison Options">
         <ul class="nav nav-tabs">
