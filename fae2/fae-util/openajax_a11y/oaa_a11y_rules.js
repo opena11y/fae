@@ -64,7 +64,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 /* --------------------------------------------------------------------------- */
 /*       OpenAjax Alliance Rules National Language Support (NLS): English      */
 /* --------------------------------------------------------------------------- */
-   
+
 
 OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 
@@ -84,7 +84,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               MANUAL_CHECK_P: 'Verify the %N_MC @audio@ elements are audio only have either a caption or text transcript of the audio.',
               HIDDEN_S:       'The @audio@ element that is hidden was not analyzed for accessible audio.',
               HIDDEN_P:       'The %N_H @audio@ elements that are hidden were not analyzed for accessible audio.',
-              NOT_APPLICABLE: 'No @audio@ elements found on this page.'              
+              NOT_APPLICABLE: 'No @audio@ elements found on this page.'
             },
             NODE_RESULT_MESSAGES: {
               ELEMENT_PASS_1:    '@audio@ element has caption.',
@@ -92,7 +92,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_FAIL_1:    'Add caption or text transcript to @audio@ element.',
               ELEMENT_MC_1:      'Verify the @audio@ element has captions or text transcript.',
               ELEMENT_HIDDEN_1:  'The @audio@ element is hidden and was not evaluated.'
-            },  
+            },
             PURPOSE: [
               'Captions and text transcripts provide a means for people cannot hear the audio to understand the audio content.',
               'Some types of learning disabilities affect speech perception, captions and text transcripts provide an alternative way to understand the audio content.',
@@ -109,22 +109,22 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               'If there is a text transcript make sure the transcript accurately represents the audio content.'
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HMTL 5: The audio element', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HMTL 5: The audio element',
                 url:   'http://www.w3.org/TR/html5/embedded-content-0.html#the-audio-element'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HMTL 5: The track element', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HMTL 5: The track element',
                 url:   'http://www.w3.org/TR/html5/embedded-content-0.html#the-track-element'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'WebVTT: The Web Video Text Tracks Format', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'WebVTT: The Web Video Text Tracks Format',
                 url:   'http://dev.w3.org/html5/webvtt/'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (ARIA) 1.0: aria-describedby', 
-                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-describedby'
-              }                            
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (ARIA) 1.0: aria-describedby',
+                url:   'http://www.w3.org/TR/wai-aria/#aria-describedby'
+              }
             ]
         },
         AUDIO_2: {
@@ -139,7 +139,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               MANUAL_CHECK_P:     'Check if any of the %N_MC @object@ elements are audio only. If any are audio only make sure they have either a caption or text transcript of the audio.',
               HIDDEN_S: 'The @object@ element that is hidden was not analyzed for accessible audio.',
               HIDDEN_P: 'The %N_H @object@ elements that are hidden were not analyzed for accessible audio.',
-              NOT_APPLICABLE:  'No @embed@ elements found on this page.'              
+              NOT_APPLICABLE:  'No @embed@ elements found on this page.'
             },
             NODE_RESULT_MESSAGES: {
               ELEMENT_PASS_1:   '@object@ element references text transcript.',
@@ -147,7 +147,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_MC_1:     'Verify the @object@ element has synchronous captions.',
               ELEMENT_MC_2:     'Verify the @object@ element only renders audio only, if it is audio only verify that it has captions or text transcript.',
               ELEMENT_HIDDEN_1: 'The @object@ element is hidden and was not evaluated.'
-            },  
+            },
             PURPOSE: [
               'Captions and text transcripts provide a means for people cannot hear the audio to understand the audio content.',
               'Some types of learning disabilities affect speech perception, captions and text transcripts provide an alternative way to understand the audio content.',
@@ -164,13 +164,13 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               'In some cases "open" captions might be used, this means the captions are alway "on" as part of the video.'
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HMTL 5: The object element', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HMTL 5: The object element',
                 url:   'http://www.w3.org/TR/html5/embedded-content-0.html#the-object-element'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (ARIA) 1.0: aria-describedby', 
-                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-describedby'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (ARIA) 1.0: aria-describedby',
+                url:   'http://www.w3.org/TR/wai-aria/#aria-describedby'
               }
             ]
         },
@@ -186,7 +186,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               MANUAL_CHECK_P:  'Check if any of the %N_MC @embed@ elements are audio only. If any are audio only make sure they have either a caption or text transcript of the audio.',
               HIDDEN_S:        'The @embed@ element that is hidden was not analyzed for accessible audio.',
               HIDDEN_P:        'The %N_H @embed@ elements that are hidden were not analyzed for accessibile audio.',
-              NOT_APPLICABLE:  'No @embed@ elements found on this page'              
+              NOT_APPLICABLE:  'No @embed@ elements found on this page'
             },
             NODE_RESULT_MESSAGES: {
               ELEMENT_PASS_1:   '@embed@ element references text transcript.',
@@ -194,7 +194,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_MC_1:     'Verify the @embed@ element has synchronous captions.',
               ELEMENT_MC_2:     'Verify the @embed@ element only renders audio only, if it is audio only verify that it has captions or text transcript.',
               ELEMENT_HIDDEN_1: 'The @object@ element is hidden and was not evaluated.'
-            },  
+            },
             PURPOSE: [
               'Captions and text transcripts provide a means for people cannot hear the audio to understand the audio content.',
               'Some types of learning disabilities affect speech perception, captions and text transcripts provide an alternative way to understand the audio content.',
@@ -211,14 +211,14 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               'In some cases "open" captions might be used, this means the captions are alway "on" as part of the video.'
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HMTL 5: The embed element', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HMTL 5: The embed element',
                 url:   'http://www.w3.org/TR/html5/embedded-content-0.html#the-embed-element'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (ARIA) 1.0: aria-describedby', 
-                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-describedby'
-              }                            
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (ARIA) 1.0: aria-describedby',
+                url:   'http://www.w3.org/TR/wai-aria/#aria-describedby'
+              }
             ]
         },
         AUDIO_4: {
@@ -232,7 +232,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             },
             NODE_RESULT_MESSAGES: {
               PAGE_MC_1:   'Verify that there is no media content that plays automatically and includes audio content that lasts longer than 3 seconds.  If the audio content lasts longer than 3 seconds, verify the user can pause, stop or mute the audio.'
-            },  
+            },
             PURPOSE:        [ 'Audio content interferes with people using speech based assistive technologies like screen readers.'
                             ],
             TECHNIQUES:     [ 'Remove or disable the auto playing of media that includes audio content.',
@@ -241,17 +241,17 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
                             ],
             MANUAL_CHECKS:  [ 'Verify that there is no media content that plays automatically and includes audio content that lasts longer than 3 seconds.  If the audio content lasts longer than 3 seconds, verify the user can pause, stop or mute the audio.'
                             ],
-            INFORMATIONAL_LINKS: [{ type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                               title: 'WCAG 2.0 Success Criterion 1.4.2 Audio Control', 
+            INFORMATIONAL_LINKS: [{ type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                               title: 'WCAG 2.0 Success Criterion 1.4.2 Audio Control',
                                url:   'http://www.w3.org/TR/WCAG20/#visual-audio-contrast-dis-audio'
                              },
-                             { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                               title: 'How to meet Success Criterion 1.4.2 Audio Control', 
+                             { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                               title: 'How to meet Success Criterion 1.4.2 Audio Control',
                                url:   'http://www.w3.org/WAI/WCAG20/quickref/#qr-visual-audio-contrast-dis-audio'
                              }
                             ]
-        }        
-    }     
+        }
+    }
 });
 /*
  * Copyright 2011-2017  OpenAjax Alliance
@@ -479,7 +479,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 /* --------------------------------------------------------------------------- */
 /*       OpenAjax Alliance Rules National Language Support (NLS): English      */
 /* --------------------------------------------------------------------------- */
-   
+
 
 OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 
@@ -499,7 +499,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               MANUAL_CHECK_P:     'If the %N_MC form controls can be validated make sure they indicates invalid values when invalid.',
               HIDDEN_S: 'The control element that is hidden does not need to be tested for indicating invalid values.',
               HIDDEN_P: 'The %N_H control elements that are hidden do not need to be tested for indicating invalid values.',
-              NOT_APPLICABLE:  'No form controls on this page'                                          
+              NOT_APPLICABLE:  'No form controls on this page'
             },
             NODE_RESULT_MESSAGES: {
               ELEMENT_FAIL_1:       '@%1@ is invalid (i.e. validity.valid property of the control is "false") change the value of "@aria-invalid@ attribute from @false@ to @true@.',
@@ -510,9 +510,9 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_PASS_1:         '@%1@ is invalid (i.e. validity.valid property of the control is "false") and the "@aria-invalid=true@" has been set.',
               ELEMENT_PASS_2:         '@%1@ is valid (i.e. validity.valid property of the control is "true") and the "@aria-invalid=false@" has been set.',
               ELEMENT_HIDDEN_1:       '%1 form control was not tested for indicating invalid values because it is hidden from assistive technologies.'
-            },  
+            },
             PURPOSE: [
-              'Users must be able to identify form control values which are invalid in order to successfully correct the values and submit the form.'                   
+              'Users must be able to identify form control values which are invalid in order to successfully correct the values and submit the form.'
             ],
             TECHNIQUES: [
               'Add the text "invalid" to the label of the form control, the text can be placed off screen using CSS.',
@@ -524,22 +524,22 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               'For the form controls with invalid values check to make sure the technique for indicating the invalid value is present.'
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HTML 4.01 Specification: The @label@ element', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML 4.01 Specification: The @label@ element',
                 url:   'http://www.w3.org/TR/html4/interact/forms.html#edef-LABEL'
-              },                             
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: aria-invalid', 
-                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-invalid'
               },
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'H44: Using label elements to associate text labels with form controls', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: aria-invalid',
+                url:   'http://www.w3.org/TR/wai-aria/#aria-invalid'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'H44: Using label elements to associate text labels with form controls',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/H44'
               },
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'ARIA21: Using Aria-invalid to Indicate An Error Field', 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'ARIA21: Using Aria-invalid to Indicate An Error Field',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/ARIA21'
-              }                            
+              }
             ]
         },
         ERROR_2: {
@@ -566,7 +566,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_MC_2:     'If the %1 element is a required, add the @required@ attribute to the control.',
               ELEMENT_HIDDEN_1: 'The @input[type="%1"]@ element was not tested because it is hidden from assistive technologies.',
               ELEMENT_HIDDEN_2: 'The @%1@ element was not tested because it is hidden from assistive technologies.'
-            },  
+            },
             PURPOSE: [
               'Users benefit from information being informed if a input to a control is required for form submission or task completion.'
             ],
@@ -579,18 +579,18 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             MANUAL_CHECKS: [
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HTML5: required attribute', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML5: required attribute',
                 url:   'http://www.w3.org/TR/html5/forms.html#attr-input-required'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: aria-required', 
-                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-required'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: aria-required',
+                url:   'http://www.w3.org/TR/wai-aria/#aria-required'
               },
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'ARIA2: Identifying a required field with the aria-required property', 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'ARIA2: Identifying a required field with the aria-required property',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/ARIA2'
-              } 
+              }
             ]
         },
         ERROR_3: {
@@ -609,7 +609,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_PASS_1:   'The @%1[role="%2"]@ widget is identified as required though the use of @aria-required="true"@ attribute.',
               ELEMENT_MC_1:     'If the @%1[role="%2"]@ widget is a required, add the @aria-required="true"@ attribute to the control.',
               ELEMENT_HIDDEN_1: 'The @%1[role="%2"]@ element was not tested because it is hidden from assistive technologies.'
-            },  
+            },
             PURPOSE: [
               'Users benefit from information being informed if a input to a widget is required for form submission or task completion.'
             ],
@@ -621,10 +621,10 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             MANUAL_CHECKS: [
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: aria-required', 
-                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-required'
-              }                            
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: aria-required',
+                url:   'http://www.w3.org/TR/wai-aria/#aria-required'
+              }
             ]
         },
         ERROR_4: {
@@ -637,7 +637,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               MANUAL_CHECK_P: 'If the %N_MC form control elements and/or widgets can automatically detect errors and suggest corrections, make sure that at least one accessible technique is used to present the suggestion to the user.',
               HIDDEN_S:       'The form control element and/or widget that is hidden does not need to be tested for accessible suggestions.',
               HIDDEN_P:       'The %N_H form control elements and/or widgets that are hidden does not need to be tested for accessible suggestions.',
-              NOT_APPLICABLE: 'No form controls or widgets on this page that typically can provide suggestions.'                                          
+              NOT_APPLICABLE: 'No form controls or widgets on this page that typically can provide suggestions.'
             },
             NODE_RESULT_MESSAGES: {
               ELEMENT_MC_1:     'If the @input[type="%1"]@ element can automatically detect errors and suggest corrections, use at least one accessible technique to provide the information to users.',
@@ -646,9 +646,9 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_HIDDEN_1: 'The @input[type="%1"]@ element was not tested because it is hidden from assistive technologies.',
               ELEMENT_HIDDEN_2: 'The @%1@ element was not tested because it is hidden from assistive technologies.',
               ELEMENT_HIDDEN_3: 'The @%1@ widget was not tested because it is hidden from assistive technologies.'
-            },  
+            },
             PURPOSE: [
-              'Users benefit from being informed of invalid input and on how to correct invalid input.'                   
+              'Users benefit from being informed of invalid input and on how to correct invalid input.'
             ],
             TECHNIQUES: [
               'Add @aria-describedby@ reference on the form control or widget to the suggestion information.',
@@ -657,24 +657,24 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             MANUAL_CHECKS: [
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HTML 4.01 Specification: The @label@ element', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML 4.01 Specification: The @label@ element',
                 url:   'http://www.w3.org/TR/html4/interact/forms.html#edef-LABEL'
-              },                             
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: aria-invalid', 
-                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-invalid'
               },
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'H44: Using label elements to associate text labels with form controls', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: aria-invalid',
+                url:   'http://www.w3.org/TR/wai-aria/#aria-invalid'
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'H44: Using label elements to associate text labels with form controls',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/H44'
               },
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'ARIA1: Using the aria-describedby property to provide a descriptive label for user interface controls', 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'ARIA1: Using the aria-describedby property to provide a descriptive label for user interface controls',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/ARIA1.html'
               },
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'ARIA19: Using ARIA role=alert or Live Regions to Identify Errors', 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'ARIA19: Using ARIA role=alert or Live Regions to Identify Errors',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/ARIA19.html'
               }             ]
         },
@@ -688,13 +688,13 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               MANUAL_CHECK_P: 'If the %N_MC form controls and widgets on this page are used for legal and/or financial transactions, make sure the actions are either reversible or requires the user to confirm the information before the transaction is finalized.',
               HIDDEN_S:       'The form control element and/or widget that is hidden does not need to be tested for accessible suggestions.',
               HIDDEN_P:       'The %N_H form control elements and/or widgets that are hidden does not need to be tested for accessible suggestions.',
-              NOT_APPLICABLE: 'No form controls or widgets on this page that typically can provide suggestions.'                                          
+              NOT_APPLICABLE: 'No form controls or widgets on this page that typically can provide suggestions.'
             },
             NODE_RESULT_MESSAGES: {
               ELEMENT_MC_1:     'If the form control or widget is used as part of a legal and/or financial transaction, make sure the information this control provides can be changed and/or confirmed before the transaction is finalized.',
               PAGE_MC_1:        'If form controls and widgets on this page are used for legal and/or financial transactions, make sure the actions are either reversible or requires the user to confirm the information before the transaction is finalized.',
               ELEMENT_HIDDEN_1: 'The form control or widget was not tested because it is hidden from assistive technologies.'
-            },  
+            },
             PURPOSE: [
               'The intent of this rule is to help users with disabilities avoid serious consequences as the result of a mistake when performing an action that cannot be reversed. For example, purchasing non-refundable airline tickets or submitting an order to purchase stock in a brokerage account are financial transactions with serious consequences.'
             ],
@@ -706,45 +706,45 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             MANUAL_CHECKS: [
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'Understanding SC 3.3.4 Error Prevention (Legal, Financial, Data.)', 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'Understanding SC 3.3.4 Error Prevention (Legal, Financial, Data.)',
                 url:   'http://www.w3.org/TR/UNDERSTANDING-WCAG20/minimize-error-reversible.html'
               },
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'G164: Providing a stated time within which an online request (or transaction) may be amended or canceled by the user after making the request.', 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G164: Providing a stated time within which an online request (or transaction) may be amended or canceled by the user after making the request.',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/G164'
               },
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'G98: Providing the ability for the user to review and correct answers before submitting.', 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G98: Providing the ability for the user to review and correct answers before submitting.',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/G98'
               },
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'G155: Providing a checkbox in addition to a submit button.', 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G155: Providing a checkbox in addition to a submit button.',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/G155'
               },
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'G99: Providing the ability to recover deleted information.', 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G99: Providing the ability to recover deleted information.',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/G99'
               },
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'G168: Requesting confirmation to continue with selected action.', 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G168: Requesting confirmation to continue with selected action.',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/G168'
               },
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'G155: Providing a checkbox in addition to a submit button.', 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G155: Providing a checkbox in addition to a submit button.',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/G155'
               },
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'G98: Providing the ability for the user to review and correct answers before submitting.', 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G98: Providing the ability for the user to review and correct answers before submitting.',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/G98'
               },
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: ' G168: Requesting confirmation to continue with selected action.', 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: ' G168: Requesting confirmation to continue with selected action.',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/G168'
               }
             ]
         }
-    }     
+    }
 });
 /*
  * Copyright 2011-2017  OpenAjax Alliance
@@ -765,7 +765,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 /* --------------------------------------------------------------------------- */
 /*       OpenAjax Alliance Rules National Language Support (NLS): English      */
 /* --------------------------------------------------------------------------- */
-   
+
 
 OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 
@@ -794,7 +794,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_MC_4:     '%1 element has a @tabindex@="%2", so it is NOT part of the sequential focus order of the page.',
               ELEMENT_HIDDEN_1: '%1 element with @role@="%2" is hidden, so NOT a part of the sequential focus order of the page.',
               ELEMENT_HIDDEN_2: '%1 element is hidden, so NOT a part of the sequential focus order of the page.'
-            },  
+            },
             PURPOSE: [
               'The "tab" key is the primary key many browsers use to navigate the interactive elements on a web page.',
               'The sequential order of the elements receiving focus can help a user understand the features on a web page.',
@@ -810,14 +810,14 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               'Does the sequence of elements receiving focus make sense (i.e. related items on the page are navigated sequentially as a group).'
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'G59: Placing the interactive elements in an order that follows sequences and relationships within the content', 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G59: Placing the interactive elements in an order that follows sequences and relationships within the content',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/G59'
-              },                             
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'H4: Creating a logical tab order through links, form controls, and objects', 
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'H4: Creating a logical tab order through links, form controls, and objects',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/H4'
-              }                            
+              }
             ]
         },
         FOCUS_2: {
@@ -839,7 +839,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_MC_2:     '%1 element is part of the keyboard focus styling manual check.',
               ELEMENT_HIDDEN_1: '%1 element with @role@="%2" is hidden, so is not visible for changing the focus styling.',
               ELEMENT_HIDDEN_2: '%1 element is hidden, so is not visible for changing the focus styling.'
-            },  
+            },
             PURPOSE: [
               'Many browsers don\'t provide a prominent or consistent visible keyboard focus styling for interactive elements, making it difficult for users to identify and track the element with keyboard focus.',
               'Author defined visible keyboard focus style makes it easier for users to know which interactive element has keyboard focus and provides more consistent user experience between browsers and operating systems.'
@@ -856,16 +856,16 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               'Test keyboard focus styling using more than one browser and operating system, since there is a wide varability of between operating systems and browsers for styling keyboard focus.'
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'C15: Using CSS to change the presentation of a user interface component when it receives focus ', 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'C15: Using CSS to change the presentation of a user interface component when it receives focus ',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/C15'
-              },                             
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'G195: Using an author-supplied, highly visible focus indicator', 
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G195: Using an author-supplied, highly visible focus indicator',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/G195'
-              }                            
+              }
             ]
-        },    
+        },
         FOCUS_3: {
             ID:                    'Focus 3',
             DEFINITION:            'The target of a link %s result in focus the content the window if the target results in more than one window opening.',
@@ -881,7 +881,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             NODE_RESULT_MESSAGES: {
               ELEMENT_MC_1: 'If the target of the link opens multiple windows (i.e. typically advertisements or other promotional information) make sure keyboard focus is on the content window.',
               ELEMENT_HIDDEN_1:       '%1 element is hidden, so cannot open any new windows.'
-            },  
+            },
             PURPOSE: [
               'User\'s can become disoriented if the focus causes unpredicatable actions, including new URLs and popup windows for advertisements or promotions.'
             ],
@@ -892,18 +892,18 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               'After selecting a link and if it opens multiple windows, make sure the keyboard focus is in the content window.'
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'G200: Opening new windows and tabs from a link only when necessary', 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G200: Opening new windows and tabs from a link only when necessary',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/G200'
-              },                             
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'G201: Giving users advanced warning when opening a new window', 
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G201: Giving users advanced warning when opening a new window',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/G201'
-              },                             
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'F52: Failure of Success Criterion 3.2.1 and 3.2.5 due to opening a new window as soon as a new page is loaded', 
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'F52: Failure of Success Criterion 3.2.1 and 3.2.5 due to opening a new window as soon as a new page is loaded',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/F52'
-              }                            
+              }
             ]
         },
         FOCUS_4: {
@@ -921,7 +921,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             NODE_RESULT_MESSAGES: {
               ELEMENT_MC_1: 'Check to make sure moving keyboard focus between options in the @select@ box does not move focus from the list of options.',
               ELEMENT_HIDDEN_1:       '@select@ element is hidden.'
-            },  
+            },
             PURPOSE: [
               'User\'s can become disoriented if the focus changes cause unpredicatable actions.',
               'When the user is using the kyboard to explore @select@ box options, the focus must stay on the options, until the user selects one of the options.'
@@ -934,18 +934,18 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               'Move focus to the @selection@ box and use the keyboard to move the focus between options, check to make sure the focus changes are not causing the context to change (i.e. focus movig to a new window or focus moving from the current option in the select box).'
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'G200: Opening new windows and tabs from a link only when necessary', 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G200: Opening new windows and tabs from a link only when necessary',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/G200'
-              },                             
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'G201: Giving users advanced warning when opening a new window', 
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G201: Giving users advanced warning when opening a new window',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/G201'
-              },                             
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'F52: Failure of Success Criterion 3.2.1 and 3.2.5 due to opening a new window as soon as a new page is loaded', 
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'F52: Failure of Success Criterion 3.2.1 and 3.2.5 due to opening a new window as soon as a new page is loaded',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/F52'
-              }                            
+              }
             ]
         },
         FOCUS_5: {
@@ -1031,11 +1031,11 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: Checkbox Role',
-                url:   'http://www.w3.org/TR/wai-aria/roles#checkbox'
+                url:   'http://www.w3.org/TR/wai-aria/#checkbox'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: Radio Role',
-                url:   'http://www.w3.org/TR/wai-aria/roles#radio'
+                url:   'http://www.w3.org/TR/wai-aria/#radio'
               },
               { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
                 title: 'H32: Providing submit buttons',
@@ -1043,7 +1043,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               }
             ]
         }
-    }     
+    }
 });
 /*
  * Copyright 2011-2017  OpenAjax Alliance
@@ -1108,11 +1108,11 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-label@ attribute',
-                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-label'
+                url:   'http://www.w3.org/TR/wai-aria/#aria-label'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-labelledby@ attribute',
-                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-labelledby'
+                url:   'http://www.w3.org/TR/wai-aria/#aria-labelledby'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'HTML 4.01 Specification: The @title@ attribute',
@@ -1172,11 +1172,11 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-label@ attribute',
-                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-label'
+                url:   'http://www.w3.org/TR/wai-aria/#aria-label'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-labelledby@ attribute',
-                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-labelledby'
+                url:   'http://www.w3.org/TR/wai-aria/#aria-labelledby'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'HTML 4.01 Specification: The @title@ attribute',
@@ -1543,11 +1543,11 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-label@ attribute',
-                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-label'
+                url:   'http://www.w3.org/TR/wai-aria/#aria-label'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-labelledby@ attribute',
-                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-labelledby'
+                url:   'http://www.w3.org/TR/wai-aria/#aria-labelledby'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'HTML 4.01 Specification: The @title@ attribute',
@@ -1806,15 +1806,15 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
           title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @img@ role',
-          url:   'http://www.w3.org/TR/wai-aria/roles#img'
+          url:   'http://www.w3.org/TR/wai-aria/#img'
         },
         { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
           title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-label@ attribute',
-          url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-label'
+          url:   'http://www.w3.org/TR/wai-aria/#aria-label'
         },
         { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
           title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-labelledby@ attribute',
-          url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-labelledby'
+          url:   'http://www.w3.org/TR/wai-aria/#aria-labelledby'
         },
         { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
           title: 'HTML 4.01 Specification: 13.8 How to specify alternate text',
@@ -1886,15 +1886,15 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
           title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @img@ role',
-          url:   'http://www.w3.org/TR/wai-aria/roles#img'
+          url:   'http://www.w3.org/TR/wai-aria/#img'
         },
         { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
           title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-label@ attribute',
-          url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-label'
+          url:   'http://www.w3.org/TR/wai-aria/#aria-label'
         },
         { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
           title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-labelledby@ attribute',
-          url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-labelledby'
+          url:   'http://www.w3.org/TR/wai-aria/#aria-labelledby'
         },
         { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
           title: 'HTML 4.01 Specification: 13.8 How to specify alternate text',
@@ -2057,7 +2057,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
           title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @presentation@ role',
-          url:   'http://www.w3.org/TR/wai-aria/roles#presentation'
+          url:   'http://www.w3.org/TR/wai-aria/#presentation'
         },
         { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
           title: 'CSS Backgrounds and Borders Module Level 3: The @background-image@ property',
@@ -2118,11 +2118,11 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
           title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @img@ role',
-          url:   'http://www.w3.org/TR/wai-aria/roles#img'
+          url:   'http://www.w3.org/TR/wai-aria/#img'
         },
         { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
           title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-describedby@ attribute',
-          url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-describedby'
+          url:   'http://www.w3.org/TR/wai-aria/#aria-describedby'
         },
         { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
           title: 'HTML5 Image Description Extension (longdesc)',
@@ -2265,7 +2265,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
       PURPOSE: [
         'An @h1@ heading provides an important navigation point for users of assistive technologies, allowing them to easily find the main content of the page.',
         'An @h1@ heading is often also used in the banner of a web page to identify and describe the website.',
-        'Home pages of websites often have a variety of "main" sections (e.g. navigation links, news, calendars, ...) that could be considered having somewhat equal potential interest by a visitor, these sections could each be identified using @h1@ headings.' 
+        'Home pages of websites often have a variety of "main" sections (e.g. navigation links, news, calendars, ...) that could be considered having somewhat equal potential interest by a visitor, these sections could each be identified using @h1@ headings.'
       ],
       TECHNIQUES: [
         'Include an @h1@ element at the beginning of the main content.',
@@ -2333,11 +2333,11 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
           title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: @main@ role',
-          url:   'http://www.w3.org/TR/wai-aria/roles#main'
+          url:   'http://www.w3.org/TR/wai-aria/#main'
         },
         { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
           title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: @banner@ role',
-          url:   'http://www.w3.org/TR/wai-aria/roles#banner'
+          url:   'http://www.w3.org/TR/wai-aria/#banner'
         }
       ]
     },
@@ -2510,7 +2510,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
       INFORMATIONAL_LINKS: [
         { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
           title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: landmark roles',
-          url:   'http://www.w3.org/TR/wai-aria/roles#landmark'
+          url:   'http://www.w3.org/TR/wai-aria/#landmark'
         },
         { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
           title: 'HTML 4.01 Specification: Headings: The H2 elements',
@@ -2559,11 +2559,11 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: contentinfo role',
-                url:   'http://www.w3.org/TR/wai-aria/roles#contentinfo'
+                url:   'http://www.w3.org/TR/wai-aria/#contentinfo'
               }
             ]
         }
-    }    
+    }
 });
 /*
  * Copyright 2011-2017  OpenAjax Alliance
@@ -2914,7 +2914,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: main role',
-                url:   'http://www.w3.org/TR/wai-aria/roles#main'
+                url:   'http://www.w3.org/TR/wai-aria/#main'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'HTML5: The MAIN element',
@@ -2980,7 +2980,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Landmark Roles',
-                url:   'http://www.w3.org/TR/wai-aria/roles#landmark_roles'
+                url:   'http://www.w3.org/TR/wai-aria/#landmark_roles'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'HTML5: Sections',
@@ -3045,7 +3045,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: navigation role',
-                url:   'http://www.w3.org/TR/wai-aria/roles#navigation'
+                url:   'http://www.w3.org/TR/wai-aria/#navigation'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'HTML5: The NAV element',
@@ -3106,11 +3106,11 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: banner role',
-                url:   'http://www.w3.org/TR/wai-aria/roles#banner'
+                url:   'http://www.w3.org/TR/wai-aria/#banner'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'HTML5: The HEADER element',
-                url:   'http://www.w3.org/TR/html5/sections.html#the-header-element'
+                title: 'HTML5: The FOOTER element',
+                url:   'http://www.w3.org/TR/html5/sections.html#the-footer-element'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'HTML5: Sectioning content',
@@ -3176,11 +3176,11 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: banner role',
-                url:   'http://www.w3.org/TR/wai-aria/roles#banner'
+                url:   'http://www.w3.org/TR/wai-aria/#banner'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'HTML5: The HEADER element',
-                url:   'http://www.w3.org/TR/html5/sections.html#the-header-element'
+                title: 'HTML5: The FOOTER element',
+                url:   'http://www.w3.org/TR/html5/sections.html#the-footer-element'
               },
               { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
                 title: 'ARIA11: Using ARIA landmarks to identify regions of a page',
@@ -3238,7 +3238,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: contentinfo role',
-                url:   'http://www.w3.org/TR/wai-aria/roles#contentinfo'
+                url:   'http://www.w3.org/TR/wai-aria/#contentinfo'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'HTML5: The FOOTER element',
@@ -3310,7 +3310,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: contentinfo role',
-                url:   'http://www.w3.org/TR/wai-aria/roles#contentinfo'
+                url:   'http://www.w3.org/TR/wai-aria/#contentinfo'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'HTML5: The FOOTER element',
@@ -3370,7 +3370,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: banner role',
-                url:   'http://www.w3.org/TR/wai-aria/roles#banner'
+                url:   'http://www.w3.org/TR/wai-aria/#banner'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'HTML5: The HEADER element',
@@ -3429,7 +3429,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: banner role',
-                url:   'http://www.w3.org/TR/wai-aria/roles#banner'
+                url:   'http://www.w3.org/TR/wai-aria/#banner'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'HTML5: The HEADER element',
@@ -3441,7 +3441,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Landmark Roles',
-                url:   'http://www.w3.org/TR/wai-aria/roles#landmark_roles'
+                url:   'http://www.w3.org/TR/wai-aria/#landmark_roles'
               }
             ]
         },
@@ -3484,7 +3484,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: navigation role',
-                url:   'http://www.w3.org/TR/wai-aria/roles#navigation'
+                url:   'http://www.w3.org/TR/wai-aria/#navigation'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'HTML5: The NAV element',
@@ -3531,7 +3531,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: main role',
-                url:   'http://www.w3.org/TR/wai-aria/roles#main'
+                url:   'http://www.w3.org/TR/wai-aria/#main'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'HTML5: The MAIN element',
@@ -3582,7 +3582,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: contentinfo role',
-                url:   'http://www.w3.org/TR/wai-aria/roles#contentinfo'
+                url:   'http://www.w3.org/TR/wai-aria/#contentinfo'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'HTML5: The FOOTER element',
@@ -3633,7 +3633,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: contentinfo role',
-                url:   'http://www.w3.org/TR/wai-aria/roles#contentinfo'
+                url:   'http://www.w3.org/TR/wai-aria/#contentinfo'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'HTML5: The FOOTER element',
@@ -3645,7 +3645,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Landmark Roles',
-                url:   'http://www.w3.org/TR/wai-aria/roles#landmark_roles'
+                url:   'http://www.w3.org/TR/wai-aria/#landmark_roles'
               }
             ]
         },
@@ -3691,7 +3691,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: search role',
-                url:   'http://www.w3.org/TR/wai-aria/roles#search'
+                url:   'http://www.w3.org/TR/wai-aria/#search'
               },
               { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
                 title: 'ARIA11: Using ARIA landmarks to identify regions of a page',
@@ -3751,7 +3751,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: form role',
-                url:   'http://www.w3.org/TR/wai-aria/roles#form'
+                url:   'http://www.w3.org/TR/wai-aria/#form'
               },
               { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
                 title: 'ARIA11: Using ARIA landmarks to identify regions of a page',
@@ -3807,7 +3807,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: region role',
-                url:   'http://www.w3.org/TR/wai-aria/roles#region'
+                url:   'http://www.w3.org/TR/wai-aria/#region'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'HTML5: The SECTION element',
@@ -3871,7 +3871,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: region role',
-                url:   'http://www.w3.org/TR/wai-aria/roles#region'
+                url:   'http://www.w3.org/TR/wai-aria/#region'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'HTML5: Sections',
@@ -3937,7 +3937,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Landmark Roles',
-                url:   'http://www.w3.org/TR/wai-aria/roles#landmark_roles'
+                url:   'http://www.w3.org/TR/wai-aria/#landmark_roles'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'HTML5: Sections',
@@ -3999,7 +3999,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: complementary role',
-                url:   'http://www.w3.org/TR/wai-aria/roles#complementary'
+                url:   'http://www.w3.org/TR/wai-aria/#complementary'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'HTML5: The ASIDE element',
@@ -4455,15 +4455,15 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
           title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-label@ attribute',
-          url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-label'
+          url:   'http://www.w3.org/TR/wai-aria/#aria-label'
         },
         { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
           title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-labelledby@ attribute',
-          url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-labelledby'
+          url:   'http://www.w3.org/TR/wai-aria/#aria-labelledby'
         },
         { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
           title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-describedby@ attribute',
-          url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-describedby'
+          url:   'http://www.w3.org/TR/wai-aria/#aria-describedby'
         },
         { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
           title: 'HTML 4.01 Specification: The @title@ attribute',
@@ -4512,15 +4512,15 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
           title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-label@ attribute',
-          url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-label'
+          url:   'http://www.w3.org/TR/wai-aria/#aria-label'
         },
         { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
           title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-labelledby@ attribute',
-          url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-labelledby'
+          url:   'http://www.w3.org/TR/wai-aria/#aria-labelledby'
         },
         { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
           title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-describedby@ attribute',
-          url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-describedby'
+          url:   'http://www.w3.org/TR/wai-aria/#aria-describedby'
         },
         { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
           title: 'HTML 4.01 Specification: The @title@ attribute',
@@ -4642,23 +4642,23 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0; group role',
-                url:   'http://www.w3.org/TR/wai-aria/roles#group'
+                url:   'http://www.w3.org/TR/wai-aria/#group'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0; list role',
-                url:   'http://www.w3.org/TR/wai-aria/roles#list'
+                url:   'http://www.w3.org/TR/wai-aria/#list'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0; listitem role',
-                url:   'http://www.w3.org/TR/wai-aria/roles#listitem'
+                url:   'http://www.w3.org/TR/wai-aria/#listitem'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0; aria-posinset',
-                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-posinset'
+                url:   'http://www.w3.org/TR/wai-aria/#aria-posinset'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0; aria-setsize',
-                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-setsize'
+                url:   'http://www.w3.org/TR/wai-aria/#aria-setsize'
               }
             ]
         },
@@ -4704,19 +4704,19 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0; group role',
-                url:   'http://www.w3.org/TR/wai-aria/roles#group'
+                url:   'http://www.w3.org/TR/wai-aria/#group'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0; list role',
-                url:   'http://www.w3.org/TR/wai-aria/roles#list'
+                url:   'http://www.w3.org/TR/wai-aria/#list'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-label@ attribute',
-                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-label'
+                url:   'http://www.w3.org/TR/wai-aria/#aria-label'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-labelledby@ attribute',
-                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-labelledby'
+                url:   'http://www.w3.org/TR/wai-aria/#aria-labelledby'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'HTML 4.01 Specification: The @title@ attribute',
@@ -4785,7 +4785,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: Landmark Roles',
-                url:   'http://www.w3.org/TR/wai-aria/roles#landmark_roles'
+                url:   'http://www.w3.org/TR/wai-aria/#landmark_roles'
               },
               { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
                 title: 'G63: Providing a site map',
@@ -4846,7 +4846,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: Landmark Roles',
-                url:   'http://www.w3.org/TR/wai-aria/roles#landmark_roles'
+                url:   'http://www.w3.org/TR/wai-aria/#landmark_roles'
               },
               { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
                 title: 'G61: Presenting repeated components in the same relative order each time they appear',
@@ -4885,7 +4885,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: Landmark Roles',
-                url:   'http://www.w3.org/TR/wai-aria/roles#landmark_roles'
+                url:   'http://www.w3.org/TR/wai-aria/#landmark_roles'
               },
               { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
                 title: 'G61: Presenting repeated components in the same relative order each time they appear',
@@ -4931,7 +4931,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: Landmark Roles',
-                url:   'http://www.w3.org/TR/wai-aria/roles#landmark_roles'
+                url:   'http://www.w3.org/TR/wai-aria/#landmark_roles'
               },
               { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
                 title: 'G61: Presenting repeated components in the same relative order each time they appear',
@@ -4970,7 +4970,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: Landmark Roles',
-                url:   'http://www.w3.org/TR/wai-aria/roles#landmark_roles'
+                url:   'http://www.w3.org/TR/wai-aria/#landmark_roles'
               },
               { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
                 title: 'G61: Presenting repeated components in the same relative order each time they appear',
@@ -5125,7 +5125,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 /* --------------------------------------------------------------------------- */
 /*       OpenAjax Alliance Rules National Language Support (NLS): English      */
 /* --------------------------------------------------------------------------- */
-   
+
 
 OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 
@@ -5151,7 +5151,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_FAIL_1:   'Remove the attribute @role="%1"@ to support the default semantics of a @main@ landmark or if the element does not identify the primary content change the role to @role="presentation"@ or use a different element that does identify the semantics of content.',
               ELEMENT_MC_1:     'Verify the @main@ element with @role="presentation"@ does not contain the primary content of the page.',
               ELEMENT_HIDDEN_1: '@main@ element was not evaluated because it is hidden from assistive technologies.'
-            },  
+            },
             PURPOSE: [
               'The @main@ element has role restrictions as part of its definition in the W3C HTML5 Specification.',
               'The @main@ element semantics are to identify the primary content on the page.',
@@ -5165,21 +5165,21 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             MANUAL_CHECKS: [
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HTML 5 Specification: The main element', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML 5 Specification: The main element',
                 url:   'http://www.w3.org/TR/html5/grouping-content.html#the-main-element'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Using WAI-ARIA in HTML', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Using WAI-ARIA in HTML',
                 url:   'http://www.w3.org/TR/aria-in-html/'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: main role', 
-                url:   'http://www.w3.org/TR/wai-aria/roles#main'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: main role',
+                url:   'http://www.w3.org/TR/wai-aria/#main'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: presentation role', 
-                url:   'http://www.w3.org/TR/wai-aria/roles#presentation'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: presentation role',
+                url:   'http://www.w3.org/TR/wai-aria/#presentation'
               }
             ]
         },
@@ -5194,7 +5194,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             },
             NODE_RESULT_MESSAGES: {
               ELEMENT_FAIL_1: 'Change the attribute @role="%1"@ to @role="document"@ or @role="application"@, or remove the @role@ attribute all together.'
-            },  
+            },
             PURPOSE: [
               'The @body@ element has role restrictions as part of its definition in the W3C HTML5 Specification.',
               'The @body@ element should only be used to indicate whether the page is primarily has @document@ or @application@ semantics.',
@@ -5207,20 +5207,20 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             MANUAL_CHECKS: [
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HTML 5 Specification: The body element', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML 5 Specification: The body element',
                 url:   'http://www.w3.org/TR/html5/sections.html#the-body-element'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: document role', 
-                url:   'http://www.w3.org/TR/wai-aria/roles#document'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: document role',
+                url:   'http://www.w3.org/TR/wai-aria/#document'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: application role', 
-                url:   'http://www.w3.org/TR/wai-aria/roles#application'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: application role',
+                url:   'http://www.w3.org/TR/wai-aria/#application'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Using WAI-ARIA in HTML', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Using WAI-ARIA in HTML',
                 url:   'http://www.w3.org/TR/aria-in-html/'
               }
             ]
@@ -5243,7 +5243,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_FAIL_1:   'Remove the @role@ attribute on the @%1@ element, change the attribute @role="%2"@ to an allowed role, or use a different element that represents the semantics of the content.',
               ELEMENT_MC_1:     'Verify the @%1@ element with @role="presentation"@ does not contain content that could be considered part of a list.',
               ELEMENT_HIDDEN_1: '@%1@ element with @role="%2"@ was not evaluated because it is hidden from assistive technologies.'
-            },  
+            },
             PURPOSE: [
               'The @ol@ and @ul@ elements have role restrictions as part of their definition in the W3C HTML5 Specification.',
               'When @ol@ and @ul@ elements only need to use the @role@ attribute when they are part of interactive widgets and are restricted to widget grouping roles.',
@@ -5258,14 +5258,14 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             MANUAL_CHECKS: [
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HTML 5 Specification: The ol element', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML 5 Specification: The ol element',
                 url:   'http://www.w3.org/TR/html5/grouping-content.html#the-ol-element'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HTML 5 Specification: The ul element', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML 5 Specification: The ul element',
                 url:   'http://www.w3.org/TR/html5/grouping-content.html#the-ul-element'
-              }             
+              }
             ]
         },
         ROLE_4: {
@@ -5283,13 +5283,13 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             NODE_RESULT_MESSAGES: {
               ELEMENT_FAIL_1:   'Remove the @role@ attribute, change the attribute @role="%1"@ to one of the allowed roles, or use a different element that does semantically identify the content',
               ELEMENT_HIDDEN_1: '@article@ element with @role="%1"@ was not evaluated because it is hidden from assistive technologies.'
-            },  
+            },
             PURPOSE: [
               'The @article@ element has role restrictions as part of its definition in the W3C HTML5 Specification.',
               'The @article@ element can be primarily be used to identify news paper or magazine articles, a list or nested messages in a comment or discussion list.',
               'The @article@ element might also be used to identify static text and image content in a web application using the @region@ or @document@ role.',
               'The @article@ element might also be used to identify a section of form controls and widgets in a web application using the @region@ or @application@ role.'
-              
+
             ],
             TECHNIQUES: [
               'If the content of the @article@ element is primarily form controls and/or widgets use @role="application"@ on the @article@ element.',
@@ -5301,27 +5301,27 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             MANUAL_CHECKS: [
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HTML 5 Specification: The article element', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML 5 Specification: The article element',
                 url:   'http://www.w3.org/TR/html5/sections.html#the-article-element'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: document role', 
-                url:   'http://www.w3.org/TR/wai-aria/roles#document'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: document role',
+                url:   'http://www.w3.org/TR/wai-aria/#document'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: application role', 
-                url:   'http://www.w3.org/TR/wai-aria/roles#application'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: application role',
+                url:   'http://www.w3.org/TR/wai-aria/#application'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: main role', 
-                url:   'http://www.w3.org/TR/wai-aria/roles#main'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: main role',
+                url:   'http://www.w3.org/TR/wai-aria/#main'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: article role', 
-                url:   'http://www.w3.org/TR/wai-aria/roles#article'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: article role',
+                url:   'http://www.w3.org/TR/wai-aria/#article'
               }
-              
+
             ]
         },
         ROLE_5: {
@@ -5339,7 +5339,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             NODE_RESULT_MESSAGES: {
               ELEMENT_FAIL_1:   'Remove the @role@ attribute, change the attribute @role="%1"@ to one of the allowed roles, or use a different element that does semantically identify the content',
               ELEMENT_HIDDEN_1: '@section@ element with @role="%1"@ was not evaluated because it is hidden from assistive technologies.'
-            },  
+            },
             PURPOSE: [
               'The @section@ element has role restrictions as part of its definition in the W3C HTML5 Specification.',
               'The @section@ element can be used to for identifying many types of of sections and sub sections within a web page and a limited number of widget roles, review the techniques for the possible uses of the section element with ARIA @role@ semantics.',
@@ -5354,7 +5354,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               'If the content of the @section@ element is used as the container for footer information that is repeated on most pages of the website use @role="contentinfo"@ on the @section@ element.',
               'If the content of the @section@ element is used to create a non-error message related dialog box use the @role="dialog"@ on the @section@ element.',
               'If the content of the @section@ element is primarily composed of non interactive text and images and the @section@ element is embedded inside an container element with @role="application""@ use the @role="document"@ attribute on the @section@ element.',
-              'If the content of the @section@ element is used as the container a list of messages use @role="log"@ on the @section@ element.',              
+              'If the content of the @section@ element is used as the container a list of messages use @role="log"@ on the @section@ element.',
               'If the content of the @section@ element is used as the container for the main content of the page use @role="main"@ on the @section@ element.',
               'If the content of the @section@ element is used as for periodically changing text on the page that is considered more informational (e.g. news tag line) use @role="marquee"@ on the @section@ element.',
               'If the content of the @section@ element is NOT being used as the container for a region landmark use @role="presentation"@ on the @section@ element to remove it from landmark navigation.',
@@ -5366,60 +5366,60 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             MANUAL_CHECKS: [
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HTML 5 Specification: The article element', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML 5 Specification: The article element',
                 url:   'http://www.w3.org/TR/html5/sections.html#the-article-element'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: alert role', 
-                url:   'http://www.w3.org/TR/wai-aria/roles#alert'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: alert role',
+                url:   'http://www.w3.org/TR/wai-aria/#alert'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: alertdialog role', 
-                url:   'http://www.w3.org/TR/wai-aria/roles#alertdialog'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: alertdialog role',
+                url:   'http://www.w3.org/TR/wai-aria/#alertdialog'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: application role', 
-                url:   'http://www.w3.org/TR/wai-aria/roles#application'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: application role',
+                url:   'http://www.w3.org/TR/wai-aria/#application'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0:contentinfo role', 
-                url:   'http://www.w3.org/TR/wai-aria/roles#contentinfo'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0:contentinfo role',
+                url:   'http://www.w3.org/TR/wai-aria/#contentinfo'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: dialog role', 
-                url:   'http://www.w3.org/TR/wai-aria/roles#dialog'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: dialog role',
+                url:   'http://www.w3.org/TR/wai-aria/#dialog'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: document role', 
-                url:   'http://www.w3.org/TR/wai-aria/roles#document'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: document role',
+                url:   'http://www.w3.org/TR/wai-aria/#document'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: log role', 
-                url:   'http://www.w3.org/TR/wai-aria/roles#log'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: log role',
+                url:   'http://www.w3.org/TR/wai-aria/#log'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: main role', 
-                url:   'http://www.w3.org/TR/wai-aria/roles#main'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: main role',
+                url:   'http://www.w3.org/TR/wai-aria/#main'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: marquee role', 
-                url:   'http://www.w3.org/TR/wai-aria/roles#marquee'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: marquee role',
+                url:   'http://www.w3.org/TR/wai-aria/#marquee'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: presentation role', 
-                url:   'http://www.w3.org/TR/wai-aria/roles#presentation'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: presentation role',
+                url:   'http://www.w3.org/TR/wai-aria/#presentation'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: search role', 
-                url:   'http://www.w3.org/TR/wai-aria/roles#search'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: search role',
+                url:   'http://www.w3.org/TR/wai-aria/#search'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: status role', 
-                url:   'http://www.w3.org/TR/wai-aria/roles#status'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: status role',
+                url:   'http://www.w3.org/TR/wai-aria/#status'
               }
             ]
-        },    
+        },
         ROLE_6: {
             ID:               'Role 6',
             DEFINITION:       'Overriding a @nav@ element\'s default @role@ of @navigation@ landmark %s only be done in special cases.',
@@ -5436,7 +5436,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_FAIL_1:   'Remove the @role@ attribute, change the attribute @role="%1"@ to @navigation@ or @role="presentation"@ or use a different element that represents the semantics of the content.',
               ELEMENT_MC_1:     'Verify the @nav[role="presentation"]@ does not contain content that represents a @navigation@ landmark.',
               ELEMENT_HIDDEN_1: '@nav@ element with @role="%1"@ was not evaluated because it is hidden from assistive technologies.'
-            },  
+            },
             PURPOSE: [
               'A @nav@ element has role restrictions as part of its definition in the W3C HTML5 Specification to help ensure the @nav@ element semantics of identifying @navigation@ landmark content.',
               'A @nav@ element should only use @role="presentation"@ if the content of the @nav@ element is not being used to identify @navigation@ landmark content (e.g. repairing poor page semantics).'
@@ -5450,21 +5450,21 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             MANUAL_CHECKS: [
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HTML 5 Specification: The nav element', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML 5 Specification: The nav element',
                 url:   'http://www.w3.org/TR/html5/sections.html#the-nav-element'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: navigation role', 
-                url:   'http://www.w3.org/TR/wai-aria/roles#navigation'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: navigation role',
+                url:   'http://www.w3.org/TR/wai-aria/#navigation'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: presentation role', 
-                url:   'http://www.w3.org/TR/wai-aria/roles#presentation'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: presentation role',
+                url:   'http://www.w3.org/TR/wai-aria/#presentation'
               }
-              
+
             ]
-        },    
+        },
         ROLE_7: {
             ID:               'Role 7',
             DEFINITION:       '@aside@ element %s only have role semantics of @complementary@ (default do not set), @note@, @region@, @search@ or @presentation@.',
@@ -5480,7 +5480,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             NODE_RESULT_MESSAGES: {
               ELEMENT_FAIL_1:   'Remove the @role@ attribute, change the attribute @role="%1"@ to one of the allowed roles, or use a different element that does semantically identify the content',
               ELEMENT_HIDDEN_1: '@aside@ element with @role="%1"@ was not evaluated because it is hidden from assistive technologies.'
-            },  
+            },
             PURPOSE: [
               'The @aside@ element has role restrictions as part of its definition in the W3C HTML5 Specification.',
               'The @aside@ element is used for tangentially related content to main content of the page and are often represented as sidebars in printed typography.',
@@ -5498,25 +5498,25 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             MANUAL_CHECKS: [
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HTML 5 Specification: The aside element', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML 5 Specification: The aside element',
                 url:   'http://www.w3.org/TR/html5/sections.html#the-aside-element'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: complementary role', 
-                url:   'http://www.w3.org/TR/wai-aria/roles#complementary'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: complementary role',
+                url:   'http://www.w3.org/TR/wai-aria/#complementary'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: note role', 
-                url:   'http://www.w3.org/TR/wai-aria/roles#note'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: note role',
+                url:   'http://www.w3.org/TR/wai-aria/#note'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: search role', 
-                url:   'http://www.w3.org/TR/wai-aria/roles#search'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: search role',
+                url:   'http://www.w3.org/TR/wai-aria/#search'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: presentation role', 
-                url:   'http://www.w3.org/TR/wai-aria/roles#presentation'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: presentation role',
+                url:   'http://www.w3.org/TR/wai-aria/#presentation'
               }
             ]
         },
@@ -5552,17 +5552,17 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             MANUAL_CHECKS: [
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HTML 5 Specification: The main element', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML 5 Specification: The main element',
                 url:   'http://www.w3.org/TR/html5/grouping-content.html#the-main-element'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: banner role', 
-                url:   'http://www.w3.org/TR/wai-aria/roles#banner'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: banner role',
+                url:   'http://www.w3.org/TR/wai-aria/#banner'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: presentation role', 
-                url:   'http://www.w3.org/TR/wai-aria/roles#presentation'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: presentation role',
+                url:   'http://www.w3.org/TR/wai-aria/#presentation'
               }
             ]
         },
@@ -5584,7 +5584,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_FAIL_1:   'Remove the @role@ attribute, change the attribute @role="%1"@ to @contentinfo@ or @role="presentation"@, or use a different element that represents the semantics of the content.',
               ELEMENT_MC_1:     'Verify the @footer[role="presentation"]@ does not contain content that represents a @contentinfo@ landmark.',
               ELEMENT_HIDDEN_1: '@footer@ element with @role="%1"@ was not evaluated because it is hidden from assistive technologies.'
-            },  
+            },
             PURPOSE: [
               'A top-level @footer@ element has role restrictions as part of its definition in the W3C HTML5 Specification to help ensure the @footer@ element semantics of identifying @contentinfo@ landmark content.',
               'A top-level @footer@ element should only use @role="presentation"@ if the content of the @footer@ element is not being used to identify @contentinfo@ landmark content (e.g. repairing poor page semantics).'
@@ -5598,17 +5598,17 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             MANUAL_CHECKS: [
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HTML 5 Specification: The main element', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML 5 Specification: The main element',
                 url:   'http://www.w3.org/TR/html5/grouping-content.html#the-main-element'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: contentinfo role', 
-                url:   'http://www.w3.org/TR/wai-aria/roles#contentinfo'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: contentinfo role',
+                url:   'http://www.w3.org/TR/wai-aria/#contentinfo'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: presentation role', 
-                url:   'http://www.w3.org/TR/wai-aria/roles#presentation'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: presentation role',
+                url:   'http://www.w3.org/TR/wai-aria/#presentation'
               }
             ]
         },
@@ -5630,7 +5630,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_FAIL_1:   'Remove the @role@ attribute form the %1 element to support the default semantics of @heading@, change the attribute @[role="%2"]@ to @tab@ or @presentation@, or use a different element that represents the semantics of the content.',
               ELEMENT_MC_1:     'Verify the @%1[role="presentation"]@ does not contain content that represents a @heading@ semantics.',
               ELEMENT_HIDDEN_1: '@%1[role="%2"]@ was not evaluated because it is hidden from assistive technologies.'
-            },  
+            },
             PURPOSE: [
               'Heading elements (@h1-h6@) have role restrictions as part of its definition in the W3C HTML5 Specification to help ensure the heading element semantics of identifying @heading@ and @tab@ content.',
               'Heading elements (@h1-h6@) should only use @role="presentation"@ if the content of the heading element is not being used to identify @heading@ and @tab@ content (e.g. repairing poor page semantics).'
@@ -5643,21 +5643,21 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             MANUAL_CHECKS: [
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HTML 5 Specification: The main element', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML 5 Specification: The main element',
                 url:   'http://www.w3.org/TR/html5/grouping-content.html#the-main-element'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: heading role', 
-                url:   'http://www.w3.org/TR/wai-aria/roles#heading'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: heading role',
+                url:   'http://www.w3.org/TR/wai-aria/#heading'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: tab role', 
-                url:   'http://www.w3.org/TR/wai-aria/roles#tab'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: tab role',
+                url:   'http://www.w3.org/TR/wai-aria/#tab'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: presentation role', 
-                url:   'http://www.w3.org/TR/wai-aria/roles#presentation'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: presentation role',
+                url:   'http://www.w3.org/TR/wai-aria/#presentation'
               }
             ]
         },
@@ -5679,7 +5679,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_FAIL_1:   'Remove the @role@ attribute on the @li@ element, change the attribute @role="%1"@ to an allowed role, or use a different element that represents the semantics of the content.',
               ELEMENT_MC_1:   'Verify the @li@ element with @role="presentation"@ does not contain content that could be considered part of a list.',
               ELEMENT_HIDDEN_1: '@li@ element with @role="%1"@ was not evaluated because it is hidden from assistive technologies.'
-            },  
+            },
             PURPOSE: [
               'The @li@ element have role restrictions as part of their definition in the W3C HTML5 Specification.',
               'When @li@ elements only need to use the @role@ attribute when they are part of interactive widgets and are restricted to widget group item roles.',
@@ -5692,10 +5692,10 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             MANUAL_CHECKS: [
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HTML 5 Specification: The li element', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML 5 Specification: The li element',
                 url:   'http://www.w3.org/TR/html5/grouping-content.html#the-li-element'
-              }              
+              }
             ]
         },
         ROLE_12: {
@@ -5714,7 +5714,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_PASS_1:   'The @role=%1@ is an allowed role value for the @a[href]@ element.',
               ELEMENT_FAIL_1:   'Remove the @role@ attribute on the @a[href]@ element, change the attribute @role="%1"@ to an allowed role, or use a different element that represents the semantics of the content.',
               ELEMENT_HIDDEN_1: '@a[href]@ element with @role="%1"@ was not evaluated because it is hidden from assistive technologies.'
-            },  
+            },
             PURPOSE: [
               'The @a[href]@ has a default role of @link@ and the browser natively supports the behavior of being part of the tab order of the page (e.g. @tabindex=0@) and will repsond to click events and the enter key.',
               'When @a[href]@ elements only need to use the @role@ attribute when they are part of interactive widgets and are restricted to subset of widget roles: @button@, @checkbox@, @menuitem@, @menuitemcheckbox@, @menuitemradio@, @tab@, @switch@ or @treeitem@.'
@@ -5725,8 +5725,8 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             MANUAL_CHECKS: [
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HTML 5 Specification: The a element', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML 5 Specification: The a element',
                 url:   'http://www.w3.org/TR/html51/semantics.html#the-a-element'
               }
             ]
@@ -5747,7 +5747,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_PASS_1:   'The @role=%1@ is an allowed role value for the @select@ element.',
               ELEMENT_FAIL_1:   'Remove the @role@ attribute on the @select@ element, change the attribute @role="%1"@ to an allowed role, or use a different element that represents the semantics of the content.',
               ELEMENT_HIDDEN_1: '@select@ element with @role="%1"@ was not evaluated because it is hidden from assistive technologies.'
-            },  
+            },
             PURPOSE: [
               'The @select@ element has a default role of @listbox@ and the browser natively supports the behavior of being part of the tab order of the page (e.g. @tabindex=0@) and will repsond to click events and the enter key.',
               'When @select@ elements only need to use the @role@ attribute when it semantics are a @menu@ instead of a @listbox@.'
@@ -5758,8 +5758,8 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             MANUAL_CHECKS: [
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HTML 5 Specification: The select element', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML 5 Specification: The select element',
                 url:   'http://www.w3.org/TR/html51/semantics.html#the-select-element'
               }
             ]
@@ -5780,7 +5780,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_PASS_1:   'The @role=%1@ is an allowed role value for the @textarea@ element, but it should be removed since a @textarea@ element can only have the semantics of a @textbox@.',
               ELEMENT_FAIL_1:   'Remove the @role@ attribute on the @textarea@ element, either remove the role to allow the default role of @textbox@, or use a different element that represents the semantics of the content.',
               ELEMENT_HIDDEN_1: '@textarea@ element with @role="%1"@ was not evaluated because it is hidden from assistive technologies.'
-            },  
+            },
             PURPOSE: [
               'The @textarea@ element has a default role of @textbox@ can have no other role value.'
             ],
@@ -5790,13 +5790,13 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             MANUAL_CHECKS: [
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HTML 5 Specification: The textarea element', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML 5 Specification: The textarea element',
                 url:   'http://www.w3.org/TR/html51/semantics.html#the-textarea-element'
               }
             ]
         }
-   }     
+   }
 });
 /*
  * Copyright 2011-2017  OpenAjax Alliance
@@ -5992,11 +5992,11 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-label@ attribute',
-                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-label'
+                url:   'http://www.w3.org/TR/wai-aria/#aria-label'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-labelledby@ attribute',
-                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-labelledby'
+                url:   'http://www.w3.org/TR/wai-aria/#aria-labelledby'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'HTML 4.01 Specification: The @title@ attribute',
@@ -6068,7 +6068,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-describedby@ attribute',
-                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-describedby'
+                url:   'http://www.w3.org/TR/wai-aria/#aria-describedby'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'HTML 4.01 Specification: The @title@ attribute',
@@ -6132,11 +6132,11 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-label@ attribute',
-                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-label'
+                url:   'http://www.w3.org/TR/wai-aria/#aria-label'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-labelledby@ attribute',
-                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-labelledby'
+                url:   'http://www.w3.org/TR/wai-aria/#aria-labelledby'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'HTML 4.01 Specification: The @title@ attribute',
@@ -6211,7 +6211,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: presentation role',
-                url:   'http://www.w3.org/TR/wai-aria/roles#presentation'
+                url:   'http://www.w3.org/TR/wai-aria/#presentation'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'HTML 4.01 Specification: 11.2.6 Table cells: The TH and TD elements',
@@ -6662,7 +6662,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 /* --------------------------------------------------------------------------- */
 /*       OpenAjax Alliance Rules National Language Support (NLS): English      */
 /* --------------------------------------------------------------------------- */
-   
+
 
 OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 
@@ -6680,14 +6680,14 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               MANUAL_CHECK_P:     'Verify if any of the %N_MC @video@ elements with the @aria-describedby@ attributes are used for video only content.   If so, verify the text description reference using the @aria-describedby@ describes the video only content.',
               HIDDEN_S: 'The @video@ element that is hidden was not evaluated.',
               HIDDEN_P: 'The %N_H @video@ elements that are hidden were not evaluated.',
-              NOT_APPLICABLE:  'No @video@ elements found on this page.'              
+              NOT_APPLICABLE:  'No @video@ elements found on this page.'
             },
             NODE_RESULT_MESSAGES: {
               ELEMENT_PASS_1:    '@video@ element has audio description track',
               ELEMENT_MC_1:      'Verify the @video@ element is used for video only content.   If so, verify the text description reference using the @aria-describedby@ describes the video only content.',
               ELEMENT_MC_2:      'Verify the @video@ element is used for video only content provides an audio track to describe the video content or text description of the video.',
               ELEMENT_HIDDEN_1:  'The @video@ element is hidden and therefore not evaluated.'
-            },  
+            },
             PURPOSE: [
               'Text and audio descriptions provide a means for people who cannot see the video to understand the video content.',
               'Some types of learning disabilities affect visual processing, text and audio descriptions provide an alternative way to understand the video content.'
@@ -6695,7 +6695,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             TECHNIQUES: [
               'Use the @track@ element to add audio descriptions to the video content.',
               'Use @aria-describedby@ to reference a text description of the video content.',
-              'Include an audio sound track that describes the video content.'              
+              'Include an audio sound track that describes the video content.'
             ],
             MANUAL_CHECKS: [
               'When audio descriptions are enabled on the media player, check to make sure the audio description can be heard.',
@@ -6703,18 +6703,18 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               'If there is a text description make sure the description accurately describes the video content.'
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HMTL 5: The video element', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HMTL 5: The video element',
                 url:   'http://www.w3.org/TR/html5/embedded-content-0.html#the-video-element'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HMTL 5: The track element', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HMTL 5: The track element',
                 url:   'http://www.w3.org/TR/html5/embedded-content-0.html#the-track-element'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (ARIA) 1.0: aria-describedby', 
-                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-describedby'
-              }                            
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (ARIA) 1.0: aria-describedby',
+                url:   'http://www.w3.org/TR/wai-aria/#aria-describedby'
+              }
             ]
         },
         VIDEO_2: {
@@ -6727,7 +6727,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               MANUAL_CHECK_P:     'Verify if any of the %N_MC @object@ elements are used for prerecorded video only content.  If any are used for video only, verify they have either a text or audio description of the video content.',
               HIDDEN_S: 'The @object@ element that is hidden was not evaluated.',
               HIDDEN_P: 'The %N_H @object@ elements that are hidden were not evaluated.',
-              NOT_APPLICABLE:  'No @object@ elements found on this page.'              
+              NOT_APPLICABLE:  'No @object@ elements found on this page.'
             },
             NODE_RESULT_MESSAGES: {
               ELEMENT_MC_1: 'Verify the @object@ element with @video@ in its @type@ attrbute is used for video only content.  If so verify the @aria-describedby@ references a text description of the video only content.',
@@ -6735,7 +6735,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_MC_3: 'Verify if the @object@ element is used for video only content.  If so verify the @aria-describedby@ references a text description of the video only content.',
               ELEMENT_MC_4: 'Verify if the @object@ element is used for video only content.  If so verify the video only content has a text or audio description.',
               ELEMENT_HIDDEN_1:       'The @object@ element is hidden and cannot render video content.'
-            },  
+            },
             PURPOSE: [
               'Text and audio descriptions provide a means for people who cannot see the video to understand the video content.',
               'Some types of learning disabilities affect visual processing, text and audio descriptions provide an alternative way to understand the video content.'
@@ -6751,13 +6751,13 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               'If there is a text description make sure the description accurately describes the video content.'
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HMTL 5: The object element', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HMTL 5: The object element',
                 url:   'http://www.w3.org/TR/html5/embedded-content-0.html#the-object-element'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (ARIA) 1.0: aria-describedby', 
-                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-describedby'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (ARIA) 1.0: aria-describedby',
+                url:   'http://www.w3.org/TR/wai-aria/#aria-describedby'
               }
             ]
         },
@@ -6771,7 +6771,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               MANUAL_CHECK_P:     'Verify if any of the %N_MC @embed@ elements are used for prerecorded video only content.  If any are used for video only, verify they have either a text or audio description of the video content.',
               HIDDEN_S: 'The @embed@ element that is hidden was not evaluated.',
               HIDDEN_P: 'The %N_H @embed@ elements that are hidden were not evaluated.',
-              NOT_APPLICABLE:  'No @embed@ elements found on this page.'              
+              NOT_APPLICABLE:  'No @embed@ elements found on this page.'
             },
             NODE_RESULT_MESSAGES: {
               ELEMENT_MC_1: 'Verify the @embed@ element with @video@ in its @type@ attribute is used for video only content.  If so verify the @aria-describedby@ references a text description of the video only content.',
@@ -6779,7 +6779,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_MC_3: 'Verify if the @embed@ element is used for video only content.  If so verify the @aria-describedby@ references a text description of the video only content.',
               ELEMENT_MC_4: 'Verify if the @embed@ element is used for video only content.  If so verify the video only content has a text or audio description.',
               ELEMENT_HIDDEN_1:       'The @embed@ element is hidden and cannot render video content.'
-            },  
+            },
             PURPOSE: [
               'Text and audio descriptions provide a means for people who cannot see the video to understand the video content.',
               'Some types of learning disabilities affect visual processing, text and audio descriptions provide an alternative way to understand the video content.'
@@ -6795,16 +6795,16 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               'If there is a text description make sure the description accurately describes the video content.'
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HMTL 5: The embed element', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HMTL 5: The embed element',
                 url:   'http://www.w3.org/TR/html5/embedded-content-0.html#the-embed-element'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (ARIA) 1.0: aria-describedby', 
-                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-describedby'
-              }                            
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (ARIA) 1.0: aria-describedby',
+                url:   'http://www.w3.org/TR/wai-aria/#aria-describedby'
+              }
             ]
-        },    
+        },
         VIDEO_4: {
             ID:                    'Video 4',
             DEFINITION:            'Live and prerecorded video with synchronized audio (i.e. a movie, lecture) using the @video@ element %s have synchronized captions.',
@@ -6817,14 +6817,14 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               MANUAL_CHECK_P:     'Verify that the %N_MC @video@ elements without caption tracks have open captions.',
               HIDDEN_S: 'The @video@ element that is hidden was not evaluated.',
               HIDDEN_P: 'The %N_H @video@ elements that are hidden were not evaluated.',
-              NOT_APPLICABLE:  'No @video@ elements found on this page.'              
+              NOT_APPLICABLE:  'No @video@ elements found on this page.'
             },
             NODE_RESULT_MESSAGES: {
               ELEMENT_PASS_1:         '@video@ element has caption track.',
               ELEMENT_FAIL_1:       'Add caption @track@ element to @video@ element.',
-              ELEMENT_MC_1: 'Verify the video content includes open captions.', 
+              ELEMENT_MC_1: 'Verify the video content includes open captions.',
               ELEMENT_HIDDEN_1:       'The @video@ element is hidden and cannot render content.'
-            },  
+            },
             PURPOSE: [
               'Synchronized captions provide a means for people who cannot hear the audio content of a video to understand the audio content of the video.',
               'Some types of learning disabilities affect auditory processing, captions provide an alternative way to understand the audio content of a video.',
@@ -6841,14 +6841,14 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               'Verify that the captions accurately represent and are synchronized with the speech and sounds in the video.'
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HMTL 5: The video element', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HMTL 5: The video element',
                 url:   'http://www.w3.org/TR/html5/embedded-content-0.html#the-video-element'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HMTL 5: The track element', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HMTL 5: The track element',
                 url:   'http://www.w3.org/TR/html5/embedded-content-0.html#the-track-element'
-              }                            
+              }
             ]
         },
         VIDEO_5: {
@@ -6861,13 +6861,13 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               MANUAL_CHECK_P:     'Verify if any of the %N_MC @object@ elements are used for video content with synchronized audio (i.e movie, lecture).  If any are used for video with synchronized audio, verify it has open or closed captioning of the audio content.',
               HIDDEN_S: 'The @object@ element that is hidden was not evaluated.',
               HIDDEN_P: 'The %N_H @object@ elements that are hidden were not evaluated.',
-              NOT_APPLICABLE:  'No @object@ elements found on this page.'              
+              NOT_APPLICABLE:  'No @object@ elements found on this page.'
             },
             NODE_RESULT_MESSAGES: {
               ELEMENT_MC_1: 'Verify the @object@ element with @video@ in its @type@ attribute has synchronized audio (i.e. movie, lecture).  If so, verify there is open or closed captioning of the audio content.',
               ELEMENT_MC_2: 'Verify the @object@ element renders video content with synchronized audio (i.e. movie, lecture).  If so, verify there is open or closed captioning of the audio content.',
               ELEMENT_HIDDEN_1: 'The @object@ element is hidden and cannot render video content.'
-            },  
+            },
             PURPOSE: [
               'Synchronized captions provide a means for people who cannot hear the audio content of a video to have access to the speech and sounds of the video.',
               'Some types of learning disabilities effect auditory processing, captions provide an alternative way to understand the audio content of a video.',
@@ -6884,8 +6884,8 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               'Verify that the captions accurately represent and are synchronized with the speech and sounds in the video.'
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HMTL 5: The object element', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HMTL 5: The object element',
                 url:   'http://www.w3.org/TR/html5/embedded-content-0.html#the-object-element'
               }
             ]
@@ -6900,13 +6900,13 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               MANUAL_CHECK_P:     'Verify if any of the %N_MC @embed@ elements are used for video content with synchronized audio (i.e movie, lecture).  If any are used for video with synchronized audio, verify it has captions of the audio content.',
               HIDDEN_S: 'The @embed@ element that is hidden was not evaluated.',
               HIDDEN_P: 'The %N_H @embed@ elements that are hidden were not evaluated.',
-              NOT_APPLICABLE:  'No @embed@ elements found on this page'              
+              NOT_APPLICABLE:  'No @embed@ elements found on this page'
             },
             NODE_RESULT_MESSAGES: {
               ELEMENT_MC_1: 'Verify the @embed@ element with @video@ in its @type@ attribute has synchronized audio (i.e. movie, lecture).  If so, verify their are captions avialble for the audio content.',
               ELEMENT_MC_2: 'Verify the @embed@ element renders video content with synchronized audio (i.e. movie, lecture).  If so, verify their are captions avialble for the audio content.',
               ELEMENT_HIDDEN_1:       'The @embed@ element is hidden and cannot render video content.'
-            },  
+            },
             PURPOSE: [
               'Synchronized captions provide a means for people who cannot hear the audio content of a video to have access to the speech and sounds of the video.',
               'Some types of learning disabilities effect auditory processing, captoins provide an alternative way to understand the audio content of a video.',
@@ -6923,8 +6923,8 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               'Verify that the captions accurately represent and are synchronized with the speech and sounds in the video.'
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HMTL 5: The embed element', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HMTL 5: The embed element',
                 url:   'http://www.w3.org/TR/html5/embedded-content-0.html#the-embed-element'
               }
             ]
@@ -6941,14 +6941,14 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               MANUAL_CHECK_P:     'Verify if any of the %N_MC @video@ elements are used for prerecorded video with synchronized audio.   If so, verify each of the videos includes an audio description of the video content.',
               HIDDEN_S: 'The @video@ element that is hidden was not evaluated.',
               HIDDEN_P: 'The %N_H @video@ elements that are hidden were not evaluated.',
-              NOT_APPLICABLE:  'No @video@ elements found on this page.'              
+              NOT_APPLICABLE:  'No @video@ elements found on this page.'
             },
             NODE_RESULT_MESSAGES: {
               ELEMENT_PASS_1:         '@video@ element has audio description track.',
               ELEMENT_FAIL_1:       'Add audio description track to @video@ element.',
               ELEMENT_MC_1: 'Verify an audio description of the video content is included in the audio track of the video.',
               ELEMENT_HIDDEN_1:       'The @video@ element is hidden and cannot render content.'
-            },  
+            },
             PURPOSE: [
               'Text and audio descriptions provide a means for people who cannot see the video to understand the video content.',
               'Some types of learning disabilities affect visual processing, text and audio descriptions provide an alternative way to understand the video content.',
@@ -6964,18 +6964,18 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               'If there is a text description make sure the description accurately describes the video content.'
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HMTL 5: The video element', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HMTL 5: The video element',
                 url:   'http://www.w3.org/TR/html5/embedded-content-0.html#the-video-element'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HMTL 5: The track element', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HMTL 5: The track element',
                 url:   'http://www.w3.org/TR/html5/embedded-content-0.html#the-track-element'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (ARIA) 1.0: aria-describedby', 
-                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-describedby'
-              }                            
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (ARIA) 1.0: aria-describedby',
+                url:   'http://www.w3.org/TR/wai-aria/#aria-describedby'
+              }
             ]
         },
         VIDEO_8: {
@@ -6988,13 +6988,13 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               MANUAL_CHECK_P:     'Verify if any of the %N_MC @object@ elements are used for prerecorded video with synchronized audio (i.e. a movie, archived lecture).  If so, verify each video includes an audio description of the video content.',
               HIDDEN_S: 'The @object@ element that is hidden was not evaluated.',
               HIDDEN_P: 'The %N_H @object@ elements that are hidden were not evaluated.',
-              NOT_APPLICABLE:  'No @object@ elements found on this page'              
+              NOT_APPLICABLE:  'No @object@ elements found on this page'
             },
             NODE_RESULT_MESSAGES: {
               ELEMENT_MC_1: 'Verify the @object@ element with @video@ in its @type@ attrbute is used for prerecorded video with synchronized audio (i.e. a movie, archived lecture).  If so verify an audio description of the video content is available.',
               ELEMENT_MC_2: 'Verify if the @object@ element is used for prerecorded video with synchronized audio (i.e. a movie, archived lecture).  If so verify an audio description of the video content is available.',
               ELEMENT_HIDDEN_1:       'The @object@ element is hidden and cannot render video content.'
-            },  
+            },
             PURPOSE: [
               'Text and audio descriptions provide a means for people who cannot see the video to understand the video content.',
               'Some types of learning disabilities affect visual processing, text and audio descriptions provide an alternative way to understand the video content.',
@@ -7011,13 +7011,13 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               'If there is a text description make sure the description accurately describes the video content.'
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HMTL 5: The object element', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HMTL 5: The object element',
                 url:   'http://www.w3.org/TR/html5/embedded-content-0.html#the-object-element'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (ARIA) 1.0: aria-describedby', 
-                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-describedby'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (ARIA) 1.0: aria-describedby',
+                url:   'http://www.w3.org/TR/wai-aria/#aria-describedby'
               }
             ]
         },
@@ -7031,13 +7031,13 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               MANUAL_CHECK_P:     'Verify if any of the %N_MC @embed@ elements are used for prerecorded video with synchronized audio (i.e. a movie, archived lecture).   If so, verify each of the videos include an audio description of the video content.',
               HIDDEN_S: 'The @embed@ element that is hidden was not evaluated.',
               HIDDEN_P: 'The %N_H @embed@ elements that are hidden were not evaluated.',
-              NOT_APPLICABLE:  'No @embed@ elements found on this page.'              
+              NOT_APPLICABLE:  'No @embed@ elements found on this page.'
             },
             NODE_RESULT_MESSAGES: {
               ELEMENT_MC_1: 'Verify the @embed@ element with @video@ in its @type@ attrbute is used for video with synchronized audio (i.e. a movie, archived lecture).  If so, verify the video includes an audio description of the video content.',
               ELEMENT_MC_2: 'Verify if the @embed@ element is used for video with synchronized audio (i.e. a movie, archived lecture).  If so, verify the video includes an audio description of the video content.',
               ELEMENT_HIDDEN_1:       'The @embed@ element is hidden and cannot render video content.'
-            },  
+            },
             PURPOSE: [
               'Text and audio descriptions provide a means for people who cannot see the video to understand the video content.',
               'Some types of learning disabilities affect visual processing, text and audio descriptions provide an alternative way to understand the video content.',
@@ -7054,17 +7054,17 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               'If there is a text description make sure the description accurately describes the video content.'
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HMTL 5: The embed element', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HMTL 5: The embed element',
                 url:   'http://www.w3.org/TR/html5/embedded-content-0.html#the-embed-element'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (ARIA) 1.0: aria-describedby', 
-                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-describedby'
-              }                            
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (ARIA) 1.0: aria-describedby',
+                url:   'http://www.w3.org/TR/wai-aria/#aria-describedby'
+              }
             ]
-        }    
-   }     
+        }
+   }
 });
 /*
  * Copyright 2011-2017  OpenAjax Alliance
@@ -7085,7 +7085,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 /* --------------------------------------------------------------------------- */
 /*       OpenAjax Alliance Rules National Language Support (NLS): English      */
 /* --------------------------------------------------------------------------- */
-   
+
 
 OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 
@@ -7105,7 +7105,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               MANUAL_CHECK_P: '%N_MC out of %N_T element with widget roles may need a label.',
               HIDDEN_S:       'An element defined as a widget role that is hidden and was not evaluated.',
               HIDDEN_P:       '%N_H elements defined with widget roles that are hidden were not evaluated.',
-              NOT_APPLICABLE: 'No elements with widget roles on this page'              
+              NOT_APPLICABLE: 'No elements with widget roles on this page'
             },
             NODE_RESULT_MESSAGES: {
               ELEMENT_PASS_1: '@%1@ element with @%2@ widget role has label: %3.',
@@ -7129,42 +7129,42 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               'When there is more than one widget of the same type on a page, they need an label for users to uniquely identify the form control.'
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Accessible Name (e.g. label) Calculation', 
-                url:   'http://www.w3.org/TR/wai-aria/roles#namecalculation'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Accessible Name (e.g. label) Calculation',
+                url:   'http://www.w3.org/TR/wai-aria/#namecalculation'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: aria-labelledby', 
-                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-labelledby'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: aria-labelledby',
+                url:   'http://www.w3.org/TR/wai-aria/#aria-labelledby'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: aria-label', 
-                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-label'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: aria-label',
+                url:   'http://www.w3.org/TR/wai-aria/#aria-label'
               },
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes', 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/G108'
               },
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'ARIA6: Using aria-label to provide labels for objects', 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'ARIA6: Using aria-label to provide labels for objects',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/ARIA6'
               },
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'ARIA9: Using aria-labelledby to concatenate a label from several text nodes', 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'ARIA9: Using aria-labelledby to concatenate a label from several text nodes',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/ARIA9'
-              },                             
-              { type:  OpenAjax.a11y.REFERENCES.TECHNIQUE, 
-                title: 'WAI-ARIA 1.0 Authoring Practices', 
+              },
+              { type:  OpenAjax.a11y.REFERENCES.TECHNIQUE,
+                title: 'WAI-ARIA 1.0 Authoring Practices',
                 url:   'http://www.w3.org/TR/wai-aria-practices/'
               },
-              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
-                title: 'OAA Web Accessibility ARIA Examples', 
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
+                title: 'OAA Web Accessibility ARIA Examples',
                 url:   'http://oaa-accessibility.org/examples/'
               },
-              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
-                title: 'Accessible jQuery-ui Components Demonstration', 
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
+                title: 'Accessible jQuery-ui Components Demonstration',
                 url:   'http://access.aol.com/aegis/#goto_slider'
-              }                            
+              }
             ]
         },
         WIDGET_2: {
@@ -7179,7 +7179,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               MANUAL_CHECK_P:     'Verify that any child elements that can respond to %N_MC elements with an @onclick@ event handler are a link, form control or has a widget role, and can be accessed with the keyboard alone.',
               HIDDEN_S: 'The element with an @onClick@ event handler that is hidden and was not evaluated.',
               HIDDEN_P: '%N_H elements with @onClick@ events handler that are hidden were not evaluated.',
-              NOT_APPLICABLE:  'No elements with @onClick@ event handlers on the page'              
+              NOT_APPLICABLE:  'No elements with @onClick@ event handlers on the page'
             },
             NODE_RESULT_MESSAGES: {
               ELEMENT_PASS_1:   '@%1@ element has a widget role.',
@@ -7190,7 +7190,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_HIDDEN_1: 'Elements with onClick events having a @role@ was not tested because %1 element with @onClick@ event handler is hidden from assistive technologies and/or not visible on screen.'
             },
             PURPOSE: [
-              'Elements with @onClick@ event handlers must be a link, form control or have a widget role.'                   
+              'Elements with @onClick@ event handlers must be a link, form control or have a widget role.'
             ],
             TECHNIQUES: [
               'Use ARIA widget role on non-form controls to describe their function on the page.'
@@ -7198,30 +7198,30 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             MANUAL_CHECKS: [
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Widget Roles', 
-                url:   'http://www.w3.org/TR/wai-aria/roles#widget_roles'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Widget Roles',
+                url:   'http://www.w3.org/TR/wai-aria/#widget_roles'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'WAI-ARIA 1.0 Authoring Practices: Tabindex for managing focus', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'WAI-ARIA 1.0 Authoring Practices: Tabindex for managing focus',
                 url:   'http://www.w3.org/TR/2010/WD-wai-aria-practices-20100916/#kbd_focus'
               },
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes', 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/G108'
               },
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'ARIA4: Using a WAI-ARIA role to expose the role of a user interface component', 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'ARIA4: Using a WAI-ARIA role to expose the role of a user interface component',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/ARIA4.html'
               },
-              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
-                title: 'OAA Web Accessibility ARIA Examples', 
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
+                title: 'OAA Web Accessibility ARIA Examples',
                 url:   'http://oaa-accessibility.org/examples/'
               },
-              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
-                title: 'Accessible jQuery-ui Components Demonstration', 
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
+                title: 'Accessible jQuery-ui Components Demonstration',
                 url:   'http://access.aol.com/aegis/#goto_slider'
-              }                            
+              }
             ]
         },
         WIDGET_3: {
@@ -7234,7 +7234,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               FAIL_P:   'Add a valid widget, section, landmark or live region role values to %N_F out of %N_T elements with @role@ attributes.',
               HIDDEN_S: 'The element with a role that is hidden and was not evaluated.',
               HIDDEN_P: '%N_H elements with a role that are hidden were not evaluated.',
-              NOT_APPLICABLE:  'No elements with @role@ attribute on this page'              
+              NOT_APPLICABLE:  'No elements with @role@ attribute on this page'
             },
             NODE_RESULT_MESSAGES: {
               ELEMENT_PASS_1:     '@%1@ is a widget role.',
@@ -7247,7 +7247,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_HIDDEN_1:   '@role@ attribute value was not validated because the %1 element is hidden from assistive technologies and/or not visible on screen.'
             },
             PURPOSE: [
-              'Elements with @role@ attributes describe the section of a document (i.e landmarks) and the types of interactive elements (i.e. widgets) to users of assistive technologies, especially screen reader users.'                   
+              'Elements with @role@ attributes describe the section of a document (i.e landmarks) and the types of interactive elements (i.e. widgets) to users of assistive technologies, especially screen reader users.'
             ],
             TECHNIQUES: [
               'Use ARIA landmark roles to describe the sections of a web page.',
@@ -7256,34 +7256,34 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             MANUAL_CHECKS: [
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Widget Roles', 
-                url:   'http://www.w3.org/TR/wai-aria/roles#widget_roles'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Widget Roles',
+                url:   'http://www.w3.org/TR/wai-aria/#widget_roles'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Landmark Roles', 
-                url:   'http://www.w3.org/TR/wai-aria/roles#landmark_roles'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Landmark Roles',
+                url:   'http://www.w3.org/TR/wai-aria/#landmark_roles'
               },
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes', 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/G108'
               },
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'ARIA4: Using a WAI-ARIA role to expose the role of a user interface component', 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'ARIA4: Using a WAI-ARIA role to expose the role of a user interface component',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/ARIA4.html'
               },
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'ARIA19: Using ARIA role=alert or Live Regions to Identify Errors', 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'ARIA19: Using ARIA role=alert or Live Regions to Identify Errors',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/ARIA19.html'
               },
-              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
-                title: 'OAA Web Accessibility ARIA Examples', 
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
+                title: 'OAA Web Accessibility ARIA Examples',
                 url:   'http://oaa-accessibility.org/examples/'
               },
-              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
-                title: 'Accessible jQuery-ui Components Demonstration', 
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
+                title: 'Accessible jQuery-ui Components Demonstration',
                 url:   'http://access.aol.com/aegis/#goto_slider'
-              }                            
+              }
             ]
         },
         WIDGET_4: {
@@ -7296,7 +7296,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               FAIL_P:   'Change %N_F out of %N_T ARIA attributes to a valid types.',
               HIDDEN_S: 'The widget that is hidden and was not evaluated.',
               HIDDEN_P: '%N_H widgets that are hidden were not evaluated.',
-              NOT_APPLICABLE:  'No ARIA attributes on this page'              
+              NOT_APPLICABLE:  'No ARIA attributes on this page'
             },
             NODE_RESULT_MESSAGES: {
               ELEMENT_PASS_1:   'The @%1@ attribute with the value "@%2@" is a valid token.',
@@ -7307,7 +7307,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_HIDDEN_1: 'ARIA attribute value was not tested for validity because the @%1@ attribute with the value "@%2@" is hidden from assistive technologies and not visible on screen.'
             },
             PURPOSE: [
-              'ARIA attributes must be a valid type to accurately describe web content to users of assistive technologies, especially screen reader users.'                   
+              'ARIA attributes must be a valid type to accurately describe web content to users of assistive technologies, especially screen reader users.'
             ],
             TECHNIQUES: [
               'Use valid values for ARIA attributes.',
@@ -7316,26 +7316,26 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             MANUAL_CHECKS: [
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Supported Property and States', 
-                url:   'http://www.w3.org/TR/wai-aria/states_and_properties'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Supported Property and States',
+                url:   'http://www.w3.org/TR/wai-aria/#states_and_properties'
               },
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes', 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/G108'
               },
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component', 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/ARIA5.html'
               },
-              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
-                title: 'OAA Web Accessibility ARIA Examples', 
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
+                title: 'OAA Web Accessibility ARIA Examples',
                 url:   'http://oaa-accessibility.org/examples/'
               },
-              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
-                title: 'Accessible jQuery-ui Components Demonstration', 
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
+                title: 'Accessible jQuery-ui Components Demonstration',
                 url:   'http://access.aol.com/aegis/#goto_slider'
-              }                            
+              }
             ]
       },
       WIDGET_5: {
@@ -7348,7 +7348,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               FAIL_P:   'Change all %N_F out of %N_T ARIA attributes to a defined properties or states.',
               HIDDEN_S: 'The widget that is hidden and was not evaluated.',
               HIDDEN_P: '%N_H widgets that are hidden were not evaluated.',
-              NOT_APPLICABLE:  'No undefined ARIA attributes on this page.'              
+              NOT_APPLICABLE:  'No undefined ARIA attributes on this page.'
             },
             NODE_RESULT_MESSAGES: {
               ELEMENT_PASS_1:    'The @%1@ attribute is a defined ARIA property or state.',
@@ -7356,7 +7356,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_HIDDEN_1:  'Valid ARIA attribute was not tested becasue the @%1@ attribute with the value "@%2@" is hidden from assistive technologies and/or not visible on screen.'
             },
             PURPOSE: [
-              'ARIA attributes must be defined properties or states to accurately describe web content to users of assistive technologies, especially screen reader users'                   
+              'ARIA attributes must be defined properties or states to accurately describe web content to users of assistive technologies, especially screen reader users'
             ],
             TECHNIQUES: [
               'Use defined ARIA properties and states in the ARIA specification.',
@@ -7365,26 +7365,26 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             MANUAL_CHECKS: [
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Supported Property and States', 
-                url:   'http://www.w3.org/TR/wai-aria/states_and_properties'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Supported Property and States',
+                url:   'http://www.w3.org/TR/wai-aria/#states_and_properties'
               },
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes', 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/G108'
               },
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component', 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/ARIA5.html'
               },
-              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
-                title: 'OAA Web Accessibility ARIA Examples', 
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
+                title: 'OAA Web Accessibility ARIA Examples',
                 url:   'http://oaa-accessibility.org/examples/'
               },
-              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
-                title: 'Accessible jQuery-ui Components Demonstration', 
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
+                title: 'Accessible jQuery-ui Components Demonstration',
                 url:   'http://access.aol.com/aegis/#goto_slider'
-              }                            
+              }
             ]
       },
       WIDGET_6: {
@@ -7397,7 +7397,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               FAIL_P:   'Add required properties and states to the %N_F of the %N_T widgets with required properties and/or states on the page.',
               HIDDEN_S: 'The widget with required properties and states that is hidden and was not evaluated.',
               HIDDEN_P: '%N_H widgets that have required properties and states that are hidden were not evaluated.',
-              NOT_APPLICABLE:  'No widgets with required properties and states on this page.'              
+              NOT_APPLICABLE:  'No widgets with required properties and states on this page.'
             },
             NODE_RESULT_MESSAGES: {
               ELEMENT_PASS_1:   '@%1@ widget has the following required ARIA properties and states: %2.',
@@ -7405,7 +7405,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_HIDDEN_1: 'Required ARA properties and states was not tested because the %1 widget is hidden from assistive technologies and/or not visible on screen.'
             },
             PURPOSE: [
-              'ARIA roles, properties and states describes the features of interactive widgets to users of assistive technologies, especially screen reader users.'                   
+              'ARIA roles, properties and states describes the features of interactive widgets to users of assistive technologies, especially screen reader users.'
             ],
             TECHNIQUES: [
               'Use required ARIA properties to describe the features and options of a widget.'
@@ -7413,26 +7413,26 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             MANUAL_CHECKS: [
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Widget Roles', 
-                url:   'http://www.w3.org/TR/wai-aria/roles#widget_roles'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Widget Roles',
+                url:   'http://www.w3.org/TR/wai-aria/#widget_roles'
               },
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes', 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/G108'
               },
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component', 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/ARIA5.html'
               },
-              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
-                title: 'OAA Web Accessibility ARIA Examples', 
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
+                title: 'OAA Web Accessibility ARIA Examples',
                 url:   'http://oaa-accessibility.org/examples/'
               },
-              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
-                title: 'Accessible jQuery-ui Components Demonstration', 
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
+                title: 'Accessible jQuery-ui Components Demonstration',
                 url:   'http://access.aol.com/aegis/#goto_slider'
-              }                            
+              }
             ]
         },
       WIDGET_7: {
@@ -7445,7 +7445,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               FAIL_P:   'Add required child roles to child elements in the %N_F out of %N_T widgets with required child elements.',
               HIDDEN_S: 'The widget that requires child widget roles that is hidden and was not evaluated.',
               HIDDEN_P: '%N_H widgets that require child widget roles that are hidden were not evaluated.',
-              NOT_APPLICABLE:  'No widgets with required child ARIA elements on this page.'              
+              NOT_APPLICABLE:  'No widgets with required child ARIA elements on this page.'
             },
             NODE_RESULT_MESSAGES: {
               ELEMENT_PASS_1:    '@%1@ widget has at least one required owned elements: %2.',
@@ -7453,7 +7453,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_HIDDEN_1:  'Required child widgets was not tested because the %1 widget is hidden from assistive technologies and not visible on screen.'
             },
             PURPOSE: [
-              'ARIA roles, properties and states describes the features of interactive widgets to users of assistive technologies, especially screen reader users.'                   
+              'ARIA roles, properties and states describes the features of interactive widgets to users of assistive technologies, especially screen reader users.'
             ],
             TECHNIQUES: [
               'Use required ARIA owned elements to describe the features and options of a widget.'
@@ -7461,26 +7461,26 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             MANUAL_CHECKS: [
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Widget Roles', 
-                url:   'http://www.w3.org/TR/wai-aria/roles#widget_roles'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Widget Roles',
+                url:   'http://www.w3.org/TR/wai-aria/#widget_roles'
               },
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes', 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/G108'
               },
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'ARIA4: Using a WAI-ARIA role to expose the role of a user interface component', 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'ARIA4: Using a WAI-ARIA role to expose the role of a user interface component',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/ARIA4.html'
               },
-              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
-                title: 'OAA Web Accessibility ARIA Examples', 
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
+                title: 'OAA Web Accessibility ARIA Examples',
                 url:   'http://oaa-accessibility.org/examples/'
               },
-              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
-                title: 'Accessible jQuery-ui Components Demonstration', 
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
+                title: 'Accessible jQuery-ui Components Demonstration',
                 url:   'http://access.aol.com/aegis/#goto_slider'
-              }                            
+              }
             ]
         },
      WIDGET_8: {
@@ -7493,7 +7493,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               FAIL_P:   'Add required parent role to the %N_F of the %N_T widgets that require a parent role.',
               HIDDEN_S: 'The widget that requires a parent role that is hidden and was not evaluated.',
               HIDDEN_P: '%N_H widgets that require a parent roles that are hidden were not evaluated.',
-              NOT_APPLICABLE:  'No widgets with required parent role on this page'              
+              NOT_APPLICABLE:  'No widgets with required parent role on this page'
             },
             NODE_RESULT_MESSAGES: {
               ELEMENT_PASS_1:   '@%1@ widget is a child of the a @%2@ role.',
@@ -7502,7 +7502,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_HIDDEN_1: 'Required parent widgets was not tested because the %1 widget is hidden from assistive technologies and/or not visible on screen.'
             },
             PURPOSE: [
-              'ARIA roles, properties and states describes the features of interactive widgets to users of assistive technologies, especially screen reader users.'                   
+              'ARIA roles, properties and states describes the features of interactive widgets to users of assistive technologies, especially screen reader users.'
             ],
             TECHNIQUES: [
               'Use required parent roles to describe the features and options of a widget.'
@@ -7510,26 +7510,26 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             MANUAL_CHECKS: [
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Widget Roles', 
-                url:   'http://www.w3.org/TR/wai-aria/roles#widget_roles'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Widget Roles',
+                url:   'http://www.w3.org/TR/wai-aria/#widget_roles'
               },
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes', 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/G108'
               },
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'ARIA4: Using a WAI-ARIA role to expose the role of a user interface component', 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'ARIA4: Using a WAI-ARIA role to expose the role of a user interface component',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/ARIA4.html'
               },
-              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
-                title: 'OAA Web Accessibility ARIA Examples', 
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
+                title: 'OAA Web Accessibility ARIA Examples',
                 url:   'http://oaa-accessibility.org/examples/'
               },
-              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
-                title: 'Accessible jQuery-ui Components Demonstration', 
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
+                title: 'Accessible jQuery-ui Components Demonstration',
                 url:   'http://access.aol.com/aegis/#goto_slider'
-              }                            
+              }
             ]
         },
      WIDGET_9: {
@@ -7542,7 +7542,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               FAIL_P:   'Update %N_F out of %N_T widgets with aria-owns to make sure they reference a child widget only once.',
               HIDDEN_S: 'The widget with @aria-owns@ that is hidden and was not evaluated.',
               HIDDEN_P: '%N_H widgets with @aria-owns@ that are hidden were not evaluated.',
-              NOT_APPLICABLE:  'No widgets using aria-owns on this page.'              
+              NOT_APPLICABLE:  'No widgets using aria-owns on this page.'
             },
             NODE_RESULT_MESSAGES: {
               ELEMENT_PASS_1:   '@%1@ child widget is referenced only by @%2@ parent widget with aria-owns.',
@@ -7550,7 +7550,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_HIDDEN_1: 'Widgets owned by more than one parent widget was not tested becasue the %1 parent widget with aria-owns is hidden from assistive technologies and not visible on screen.'
             },
             PURPOSE: [
-              'ARIA roles, properties and states describes the features of interactive widgets to users of assistive technologies, especially screen reader users.'                   
+              'ARIA roles, properties and states describes the features of interactive widgets to users of assistive technologies, especially screen reader users.'
             ],
             TECHNIQUES: [
               'Parent widget roles with aria-owns must accurately describe the parent relationships, a child widget can only have one parent widget.'
@@ -7558,18 +7558,18 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             MANUAL_CHECKS: [
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Widget Roles', 
-                url:   'http://www.w3.org/TR/wai-aria/roles#widget_roles'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Widget Roles',
+                url:   'http://www.w3.org/TR/wai-aria/#widget_roles'
               },
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes', 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/G108'
               },
-              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
-                title: 'OAA Web Accessibility ARIA Examples', 
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
+                title: 'OAA Web Accessibility ARIA Examples',
                 url:   'http://oaa-accessibility.org/examples/'
-              }                            
+              }
             ]
         },
      WIDGET_10: {
@@ -7582,7 +7582,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               FAIL_P:   'Update @range@ widget attributes of the %N_F out of %N_T range widgets so the @aria-valuenow@ attribute of each widget is in the range defined by @aria-valuemin@ and @aria-valuemax@ attributes.',
               HIDDEN_S: 'The @range@ widget that is hidden and was not evaluated.',
               HIDDEN_P: '%N_H @range@ widgets that are hidden were not evaluated.',
-              NOT_APPLICABLE:  'No @range@ widgets on the page.'              
+              NOT_APPLICABLE:  'No @range@ widgets on the page.'
             },
             NODE_RESULT_MESSAGES: {
               ELEMENT_PASS_1:    '@%1@ widget is using @aria-valuetext@ attribute which overrides the @aria-valuenow@ attribute for describing the value of the range.',
@@ -7596,7 +7596,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_HIDDEN_1:  'Widget range values were not tested becasue the %1 range widget is hidden from assistive technologies.'
             },
             PURPOSE: [
-              'ARIA roles, properties and states describes the features of interactive widgets to users of assistive technologies, especially screen reader users.'                   
+              'ARIA roles, properties and states describes the features of interactive widgets to users of assistive technologies, especially screen reader users.'
             ],
             TECHNIQUES: [
               'Use the @aria-valuenow@, @aria-valuemin@ and @aria-valuemax@ are accurately defined.'
@@ -7604,22 +7604,22 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             MANUAL_CHECKS: [
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Widget Roles', 
-                url:   'http://www.w3.org/TR/wai-aria/roles#widget_roles'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Widget Roles',
+                url:   'http://www.w3.org/TR/wai-aria/#widget_roles'
               },
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes', 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/G108'
               },
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component', 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/ARIA5.html'
               },
-              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
-                title: 'OAA Web Accessibility ARIA Examples', 
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
+                title: 'OAA Web Accessibility ARIA Examples',
                 url:   'http://oaa-accessibility.org/examples/'
-              }                            
+              }
             ]
         },
      WIDGET_11: {
@@ -7634,7 +7634,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               MANUAL_CHECK_P:  'Verify the user interactions associated with the %N_MC interactive elements with one or more event handlers are accurately described by each element\'s widget role and/or their descendants.',
               HIDDEN_S:        'The hidden interactive element with event handlers was not evaluated.',
               HIDDEN_P:        'The %N_H interactive elements with event handlers were not evaluated.',
-              NOT_APPLICABLE:  'No interactive elements with event handlers found on this page.'              
+              NOT_APPLICABLE:  'No interactive elements with event handlers found on this page.'
             },
             NODE_RESULT_MESSAGES: {
               ELEMENT_MANUAL_CHECK_1:  'Verify the user options and actions available through the "@%2@" event handler(s) are accurately described by the @%1@ widget role.',
@@ -7647,7 +7647,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               'ARIA widget roles describe the user options and actions, or more generally, the expected behavior, of interactive elements to users of assistive technologies.',
               'Standard HTML form controls and links have default widget roles that describe their behavior.',
               'When UI event handlers are used to create user options and actions that change the expected behavior of an interactive element, ensure that the appropriate widget role is assigned to the element.',
-              'Conversely, ensure that the event handlers are adding appropriate behaviors that align with the ARIA widget role.'                   
+              'Conversely, ensure that the event handlers are adding appropriate behaviors that align with the ARIA widget role.'
             ],
             TECHNIQUES: [
               'Use the @role@ attribute with an ARIA widget role value to describe the user options, actions and expected behavior of custom interactive elements.',
@@ -7657,48 +7657,48 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             MANUAL_CHECKS: [
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Widget Roles', 
-                url:   'http://www.w3.org/TR/wai-aria/roles#widget_roles'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Widget Roles',
+                url:   'http://www.w3.org/TR/wai-aria/#widget_roles'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HTML5: INPUT element widget role semantics', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML5: INPUT element widget role semantics',
                 url:   'https://www.w3.org/TR/html51/sec-forms.html#state-of-the-type-attribute'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HTML5: SELECT element widget role semantics', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML5: SELECT element widget role semantics',
                 url:   'https://www.w3.org/TR/html51/sec-forms.html#the-select-element'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HTML5: TEXTAREA element widget role semantics', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML5: TEXTAREA element widget role semantics',
                 url:   'https://www.w3.org/TR/html51/sec-forms.html#the-textarea-element'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HTML5: BUTTON element widget role semantics', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML5: BUTTON element widget role semantics',
                 url:   'https://www.w3.org/TR/html51/sec-forms.html#the-button-element'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HTML5: A element widget role semantics', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML5: A element widget role semantics',
                 url:   'https://www.w3.org/TR/html51/textlevel-semantics.html#the-a-element'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'UI Events Specification', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'UI Events Specification',
                 url:   'https://www.w3.org/TR/DOM-Level-3-Events/'
               },
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes.', 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes.',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/G108'
               },
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes.', 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes.',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/G108'
               },
-              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
-                title: 'OAA Web Accessibility ARIA Examples', 
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
+                title: 'OAA Web Accessibility ARIA Examples',
                 url:   'http://oaa-accessibility.org/examples/'
-              }                            
+              }
             ]
-        },     
+        },
         WIDGET_12: {
             ID:         'Widget 12',
             DEFINITION: 'The label for elements with a widget roles on a page %s sufficiently describe its purpose.',
@@ -7741,11 +7741,11 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-label@ attribute',
-                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-label'
+                url:   'http://www.w3.org/TR/wai-aria/#aria-label'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-labelledby@ attribute',
-                url:   'http://www.w3.org/TR/wai-aria/states_and_properties#aria-labelledby'
+                url:   'http://www.w3.org/TR/wai-aria/#aria-labelledby'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'HTML 4.01 Specification: The @title@ attribute',
@@ -7755,12 +7755,12 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
                 title: 'H65: Using the title attribute to identify form controls when the label element cannot be used',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/H65'
               },
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'ARIA6: Using aria-label to provide labels for objects', 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'ARIA6: Using aria-label to provide labels for objects',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/ARIA6'
               },
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'ARIA9: Using aria-labelledby to concatenate a label from several text nodes', 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'ARIA9: Using aria-labelledby to concatenate a label from several text nodes',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/ARIA9'
               },
               { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
@@ -7783,7 +7783,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               FAIL_P:   'Remove widget role from the %N_F elements until you are confident that you understand the ARIA properties, states, focus management and keyboard support needed by the widget.',
               HIDDEN_S: 'The element with an widget role that is hidden and was not evaluated.',
               HIDDEN_P: '%N_H elements with widget roles that are hidden were not evaluated.',
-              NOT_APPLICABLE:  'No elements with widget toles on the page.'              
+              NOT_APPLICABLE:  'No elements with widget toles on the page.'
             },
             NODE_RESULT_MESSAGES: {
               ELEMENT_FAIL_1:    'Remove @%1@ widget role from the %2 element.',
@@ -7802,26 +7802,26 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             MANUAL_CHECKS: [
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Widget Roles', 
-                url:   'http://www.w3.org/TR/wai-aria/roles#widget_roles'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Widget Roles',
+                url:   'http://www.w3.org/TR/wai-aria/#widget_roles'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'WAI-ARIA 1.0 Authoring Practices: Tabindex for managing focus', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'WAI-ARIA 1.0 Authoring Practices: Tabindex for managing focus',
                 url:   'http://www.w3.org/TR/2010/WD-wai-aria-practices-20100916/#kbd_focus'
               },
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes', 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/G108'
               },
-              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
-                title: 'OAA Web Accessibility ARIA Examples', 
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
+                title: 'OAA Web Accessibility ARIA Examples',
                 url:   'http://oaa-accessibility.org/examples/'
               },
-              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE, 
-                title: 'Accessible jQuery-ui Components Demonstration', 
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
+                title: 'Accessible jQuery-ui Components Demonstration',
                 url:   'http://access.aol.com/aegis/#goto_slider'
-              }                            
+              }
             ]
         },
         WIDGET_14: {
@@ -7836,7 +7836,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               MANUAL_CHECK_S:  'Verify the element identified as a live region has the appropriate ARIA markup for the type of informational change that can occur.',
               MANUAL_CHECK_P:  'Verify the %N_MC elements identified as live regions have the appropriate ARIA markup for the type of informational changes that can occur in those regions.',
               HIDDEN_P:        '%N_H elements identified as live regions are hidden and were not evaluated.',
-              NOT_APPLICABLE:  'No elements were identified as live regions on the page.'              
+              NOT_APPLICABLE:  'No elements were identified as live regions on the page.'
             },
             NODE_RESULT_MESSAGES: {
               ELEMENT_FAIL_1:     'The @aria-live@ attribute value of @%1@ conflicts with the default value of @%2@ for the @aria-live@ property of the @%3@ role.',
@@ -7865,37 +7865,37 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             MANUAL_CHECKS: [
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.OTHER, 
-                title: 'Mozilla Developer Network: ARIA Live Regions', 
+              { type:  OpenAjax.a11y.REFERENCES.OTHER,
+                title: 'Mozilla Developer Network: ARIA Live Regions',
                 url:   'https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Alert Role', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Alert Role',
                 url:   'https://www.w3.org/TR/wai-aria/roles#alert'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Log Role', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Log Role',
                 url:   'https://www.w3.org/TR/wai-aria/roles#log'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Status Role', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Status Role',
                 url:   'https://www.w3.org/TR/wai-aria/roles#status'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: aria-live', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: aria-live',
                 url:   'https://www.w3.org/TR/wai-aria/states_and_properties#aria-live'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: aria-atomic', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: aria-atomic',
                 url:   'https://www.w3.org/TR/wai-aria/states_and_properties#aria-atomic'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: aria-relevant', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: aria-relevant',
                 url:   'https://www.w3.org/TR/wai-aria/states_and_properties#aria-relevant'
-              } 
+              }
 
             ]
-        }   
+        }
     }
 });
 /**
