@@ -2,25 +2,25 @@
     z-index: 1050;
 }
 
-main h1 { 
-    font-size: 250%; 
+main h1 {
+    font-size: 250%;
     margin: 0;
     padding: 0;
 }
 
-main h2 { 
-    font-size: 175%; 
+main h2 {
+    font-size: 175%;
     margin: 0;
     padding: 0;
 }
 
-main h3 { 
-    font-size: 150%; 
+main h3 {
+    font-size: 150%;
 }
 
-main h4 { 
+main h4 {
     margin-top: 1.5em;
-    font-size: 125%; 
+    font-size: 125%;
 }
 
 main section h2 {
@@ -112,7 +112,7 @@ nav#id_breadcrumbs ul {
 nav#id_breadcrumbs ul li:before {
   padding: 0 5px;
   color: #999;
-  content: "/\00a0";    
+  content: "/\00a0";
 }
 
 nav#id_breadcrumbs {
@@ -163,7 +163,7 @@ nav h2 {
 .navbar-inverse .navbar-nav > li > a:hover,
 .navbar-inverse .navbar-header a:hover {
     border-bottom: thin solid white;
-    background-color: 
+    background-color:
 }
 
 .nav-pills > li > a {
@@ -329,7 +329,7 @@ table tbody td ol li  {
 
 #information .highlight {
 /*  color: #FF443A; */
-  color: #FF170B;     
+  color: #FF170B;
 }
 
 #id_table_show_summary_default {
@@ -422,7 +422,6 @@ main ul.result_messages li {
 }
 
 main div.redirect,
-main div.error,
 main div.success {
     margin: 2em;
     margin-top: 4em;
@@ -433,11 +432,12 @@ main div.success {
 }
 
 main div.error {
-    border: red solid thin; 
+    padding: 0.25em;
+    border: red solid thin;
 }
 
 main div.success {
-    border: #337ab7 solid thin; 
+    border: #337ab7 solid thin;
 }
 
 main .fae_checkbox label input,
@@ -483,11 +483,11 @@ main input[disabled] .fae_hover {
 
 main input[type=button],
 main input[type=submit] {
-    padding: 5px 15px; 
+    padding: 5px 15px;
     border: 1px solid #337ab7;
     cursor:pointer;
     -webkit-border-radius: 5px;
-    border-radius: 4px; 
+    border-radius: 4px;
     background-color: #EEEEEE;
     font-weight: bold;
 }
@@ -496,18 +496,18 @@ main input[type=button]:focus,
 main input[type=submit]:focus,
 main input[type=button]:hover,
 main input[type=submit]:hover {
-    padding: 4px 14px; 
+    padding: 4px 14px;
     border-width: 2px;
     border-color: black;
 }
 
 main input[type=button].sort-button,
 main input[type=submit].sort-button {
-    padding: 2px 2px; 
+    padding: 2px 2px;
     border: 1px solid black;
     cursor:pointer;
     -webkit-border-radius: 5px;
-    border-radius: 4px; 
+    border-radius: 4px;
     background-color: #EEEEEE;
     font-weight: normal;
 }
@@ -517,7 +517,7 @@ main input[type=button].sort-button:focus,
 main input[type=submit].sort-button:focus,
 main input[type=button].sort-button:hover,
 main input[type=submit].sort-button:hover {
-    padding: 1px 1px; 
+    padding: 1px 1px;
     border-width: 2px;
     border-color: #337ab7;
 }
@@ -529,7 +529,7 @@ main input[type=button][disabled].sort-button {
 
 main input[type="button"]:focus,
 main input[type="submit"]:focus {
-    border-width: 2px;    
+    border-width: 2px;
 }
 
 main .fae_focus,
