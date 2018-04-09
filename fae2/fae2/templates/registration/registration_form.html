@@ -24,33 +24,33 @@
       {% include "forms/input_text.html" with input=form.last_name name="last_name" label="Last Name"%}
 
       {% include "forms/input_text.html" with input=form.email size=30 %}
-      
+
   </fieldset>
 
   <fieldset class="fae_group">
     <legend title="This information will be how you log in">Login Information</legend>
 
       {% include "forms/input_text.html" with input=form.username name="username" label="User Name" %}
- 
-      {% include "forms/input_text.html" with input=form.username name="password1" label="Password" type="password" %}
 
-      {% include "forms/input_text.html" with input=form.username name="password2" label="Re-enter Password" type="password" %}
-       
-  </fieldset>      
-      
+      {% include "forms/input_text.html" with input=form.password1 name="password1" label="Password" type="password" %}
+
+      {% include "forms/input_text.html" with input=form.password2 name="password2" label="Re-enter Password" type="password" %}
+
+  </fieldset>
+
   <div class="fae_button">
     <input id="id_submit" type="submit" value="Submit - Step 1"/>
-  </div>    
+  </div>
 
   <div class="input" style="position: absolute; top: -30em; left: -300em">
     <label for="id_email_verify">E-mail Verify</label>
     <input tabindex="-1"
         required
-        id="id_email_verify" 
-        name="email_verify" 
+        id="id_email_verify"
+        name="email_verify"
         value="do not change, used for security"
-        oninput="disableSubmit(event)" 
-    /> 
+        oninput="disableSubmit(event)"
+    />
   </div>
 
 </form>
