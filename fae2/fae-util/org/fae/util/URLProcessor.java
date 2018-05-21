@@ -1155,8 +1155,6 @@ public class URLProcessor {
 						m_findEventsTime = endTime - startTime;
 						m_faeUtil.verbose("\t" + m_findEventsTime + " msec.");
 					}
-					
-					//TODO: Wait some time before executing evaluation script.
 
 					// ------------------------------------------------------------------------
 					// ------------------------------------------------------------------------
