@@ -156,44 +156,59 @@ public class URLProcessor {
 				String newBase = baseURL;
 				if (faeUtil.m_ctrl.PATH != null
 						&& !faeUtil.m_ctrl.PATH.toString().isEmpty()) {
+					String path = faeUtil.m_ctrl.PATH;
+					if (path.startsWith("/")) {
+						path = path.substring(1);
+					}
+					if (path.endsWith("/")) {
+						path = path.substring(0, path.length() - 1);
+					}
+					if (link.startsWith("/")) {
+						link = link.substring(1);
+					}
+					if (link.endsWith("/")) {
+						link = link.substring(0, link.length() - 1);
+					}
 					//TODO need to add starts with path logic, need to discuss with Jon first
 					
-					if (link.startsWith(baseURL + faeUtil.m_ctrl.PATH)) {
+					if (link.startsWith(baseURL + path)) {
 						faeUtil.debug(urlNum + ":" + cnt + ": depth:" + depth
 								+ ": found " + link);
 						newBase = link;
 					} else if (!link.startsWith("http") && !link.contains("www")) {
 						faeUtil.debug(urlNum + ":" + cnt + ": depth:" + depth
 								+ ": found1 " + link);
-						if (link.startsWith("/")) {
+						//if (link.startsWith("/")) {
+						if(!link.equals(path)){
 							if (baseURL.endsWith("/")){
-								if (link.contains(faeUtil.m_ctrl.PATH)) {
-									link = baseURL.toString() + link.substring(1);
+								if (link.contains(path)) {
+									link = baseURL.toString() + link;
 								}else {
-									link = baseURL.toString() + faeUtil.m_ctrl.PATH + link;
+									link = baseURL.toString() + path + "/" + link;
 								}
 							} else {
-								if (link.contains(faeUtil.m_ctrl.PATH)) {
+								if (link.contains(path)) {
 									link = baseURL.toString() + link;
 								}else {
-									link = baseURL.toString() + "/" + faeUtil.m_ctrl.PATH + link;
+									link = baseURL.toString() + "/" + path + "/" + link;
 								}								
 							}
-						} else {
-							if (baseURL.endsWith("/")) {
-								if (link.contains(faeUtil.m_ctrl.PATH)) {
-									link = baseURL.toString() + link;
-								}else {
-									link = baseURL.toString() + faeUtil.m_ctrl.PATH + "/" + link;
-								}
-							} else {								
-								if (link.contains(faeUtil.m_ctrl.PATH)) {
-									link = baseURL.toString() + "/" + link;
-								}else {
-									link = baseURL.toString() + "/" + faeUtil.m_ctrl.PATH + "/" + link;
-								}
-							}
 						}
+//						} else {
+//							if (baseURL.endsWith("/")) {
+//								if (link.contains(faeUtil.m_ctrl.PATH)) {
+//									link = baseURL.toString() + link;
+//								}else {
+//									link = baseURL.toString() + faeUtil.m_ctrl.PATH + "/" + link;
+//								}
+//							} else {								
+//								if (link.contains(faeUtil.m_ctrl.PATH)) {
+//									link = baseURL.toString() + "/" + link;
+//								}else {
+//									link = baseURL.toString() + "/" + faeUtil.m_ctrl.PATH + "/" + link;
+//								}
+//							}
+//						}
 						faeUtil.debug(urlNum + ":" + cnt + ": depth:" + depth
 								+ ": found2 " + link);
 					}
@@ -561,7 +576,7 @@ public class URLProcessor {
 						match = true;
 						break;
 					}
-					if (url.indexOf(tok + "/") != -1) {
+					if (url.contains("http") && url.indexOf(tok + "/") != -1) {
 						URL t = new URL(url);
 						if (t.getHost().indexOf(tok) != -1){
 							String prefix = t.getHost().substring(0,
@@ -1155,6 +1170,8 @@ public class URLProcessor {
 						m_findEventsTime = endTime - startTime;
 						m_faeUtil.verbose("\t" + m_findEventsTime + " msec.");
 					}
+					
+					//TODO: Wait some time before executing evaluation script.
 
 					// ------------------------------------------------------------------------
 					// ------------------------------------------------------------------------

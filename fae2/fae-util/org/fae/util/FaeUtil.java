@@ -576,10 +576,17 @@ class FaeUtil {
           //Updating url if path is provided
         	if (m_ctrl.PATH != null
 					&& !m_ctrl.PATH.toString().isEmpty()) {
+        		String path = m_ctrl.PATH;
+        		if (path.startsWith("/")) {
+        			path = path.substring(1);
+        		}
+        		if (path.endsWith("/")) {
+        			path = path.substring(0, path.length() - 1);
+        		}
 	        	if (url_str.endsWith("/")) {
-	        		url_str = url_str + m_ctrl.PATH + "/";
+	        		url_str = url_str + path + "/";
 				} else {
-					url_str = url_str + "/" + m_ctrl.PATH + "/";
+					url_str = url_str + "/" + path + "/";
 				}	
         	}
         	
