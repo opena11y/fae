@@ -143,8 +143,19 @@ def archive_process_eval_logs():
   f = open(process_eval_log_current, 'w')
   f.close()
 
+def archive_fae2_logs():
+  fae2_log_current = os.path.join(APP_DIR + 'logs/fae2_log')
+  fae2_log_backup  = os.path.join(APP_DIR + 'logs/fae2_log.yesterday')
+
+  # Copy current log to history
+  shutil.copy(fae2_log_current, fae2_log_backup)
+
+  # Empty current log file
+  f = open(fae2_log_current, 'w')
+  f.close()
 
 
 if __name__ == "__main__":
   archive_reports()
   archive_process_eval_logs()
+  archive_fae2_logs()
