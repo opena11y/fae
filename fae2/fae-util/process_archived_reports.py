@@ -108,7 +108,7 @@ def archive_reports():
       info("  Deleting:" + r.title)
       r.delete()
     except:
-      count++;
+      count += 1
       error("Error deleting (error): " + str(count))
 
   # Delete reports with marked for deletion
@@ -120,6 +120,7 @@ def archive_reports():
       info("  Summary (marked):" + r.title)
       r.set_status_summary()
     except:
+      count += 1
       error("Error summary (marked): " + str(count))
 
   for user_profile in UserProfile.objects.all():
@@ -135,6 +136,7 @@ def archive_reports():
         info("  Summary (other):" + r.title)
         r.set_status_summary()
       except:
+        count += 1
         error("Error summary (other): " + str(count))
 
 def archive_process_eval_logs():
