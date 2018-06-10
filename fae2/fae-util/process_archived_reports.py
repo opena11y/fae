@@ -32,6 +32,7 @@ import time
 import getopt
 import shutil
 import datetime
+import shutil
 
 import django
 
@@ -74,7 +75,7 @@ log = open(os.path.join(APP_DIR + 'logs/archived-reports.log'), 'w')
 def debug(s):
   if DEBUG and log:
     log.write("[ARCHIVED REPORTS][debug]: " + str(s) + "\n")
-    log.flush()  
+    log.flush()
     print("[ARCHIVED REPORTS][debug]: " + str(s) + "\n")
 
 
@@ -105,7 +106,7 @@ def archive_reports():
       info("  Deleting:" + r.title)
       r.delete()
     except:
-      error("Error deleting (error): " + str(r))  
+      error("Error deleting (error): " + str(r))
 
   # Delete reports with marked for deletion
   reports_marked_for_deletion = WebsiteReport.objects.filter(status='D')
@@ -115,10 +116,10 @@ def archive_reports():
       info("  Summary (marked):" + r.title)
       r.set_status_summary()
     except:
-      error("Error summary (marked): " + str(r))  
+      error("Error summary (marked): " + str(r))
 
   for user_profile in UserProfile.objects.all():
-    
+
     if user_profile.user.username == 'anonymous':
       continue
     else:
@@ -129,7 +130,21 @@ def archive_reports():
         info("  Summary (other):" + r.title)
         r.set_status_summary()
       except:
-        error("Error summary (other): " + str(r))          
+        error("Error summary (other): " + str(r))
+
+def archive_process_eval_logs():
+  process_eval_log_current = os.path.join(APP_DIR + 'logs/process-evaluation.log')
+  process_eval_log_backup  = os.path.join(APP_DIR + 'logs/process-evaluation.yesterday')
+
+  # Copy current log to history
+  shutil.copy(process_eval_log_current, process_eval_log_backup)
+
+  # Empty current log file
+  f = open(process_eval_log_current, 'w')
+  f.close()
+
+
 
 if __name__ == "__main__":
   archive_reports()
+  archive_process_eval_logs()
