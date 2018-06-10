@@ -101,22 +101,26 @@ def archive_reports():
   # Delete reports with errors
   error_reports = WebsiteReport.objects.filter(status='E')
 
+  count = 0
+
   for r in error_reports:
     try:
       info("  Deleting:" + r.title)
       r.delete()
     except:
-      error("Error deleting (error): " + str(r))
+      count++;
+      error("Error deleting (error): " + str(count))
 
   # Delete reports with marked for deletion
   reports_marked_for_deletion = WebsiteReport.objects.filter(status='D')
 
+  count = 0
   for r in reports_marked_for_deletion:
     try:
       info("  Summary (marked):" + r.title)
       r.set_status_summary()
     except:
-      error("Error summary (marked): " + str(r))
+      error("Error summary (marked): " + str(count))
 
   for user_profile in UserProfile.objects.all():
 
@@ -125,12 +129,13 @@ def archive_reports():
     else:
       [reports, other_reports] = user_profile.get_active_reports()
 
+    count = 0
     for r in other_reports:
       try:
         info("  Summary (other):" + r.title)
         r.set_status_summary()
       except:
-        error("Error summary (other): " + str(r))
+        error("Error summary (other): " + str(count))
 
 def archive_process_eval_logs():
   process_eval_log_current = os.path.join(APP_DIR + 'logs/process-evaluation.log')
