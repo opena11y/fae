@@ -109,7 +109,7 @@ def archive_reports():
       r.delete()
     except:
       count += 1
-      error("Error deleting (error): " + str(count))
+      error("Error deleting (error): " + str(count) + " user: " + str(r.user))
 
   # Delete reports with marked for deletion
   reports_marked_for_deletion = WebsiteReport.objects.filter(status='D')
@@ -121,7 +121,7 @@ def archive_reports():
       r.set_status_summary()
     except:
       count += 1
-      error("Error summary (marked): " + str(count))
+      error("Error summary (marked): " + str(count) + " user: " + str(r.user))
 
   for user_profile in UserProfile.objects.all():
 
@@ -137,7 +137,7 @@ def archive_reports():
         r.set_status_summary()
       except:
         count += 1
-        error("Error summary (other): " + str(count))
+        error("Error summary (other): " + str(count) + " user: " + str(r.user))
 
 def archive_process_eval_logs():
   process_eval_log_current = os.path.join(APP_DIR + 'logs/process-evaluation.log')
