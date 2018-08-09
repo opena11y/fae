@@ -28,17 +28,17 @@
 
 {% block title %}
     Page {{page.page_number}} Summary
-{% endblock %}    
+{% endblock %}
 
 {% block content %}
 
     <div class="rule_summary">
-      Page {{page.page_number}}: 
+      Page {{page.page_number}}:
       <a href="{{page.url}}">
-        {{page.title}}
+        {{page.get_title}}
       </a>
     </div>
-    
+
   {% include "reports/page_summary.html" %}
 
 	<nav id="view_options" aria-label="Result View Options">
@@ -76,10 +76,10 @@
                 <th id="id_pas" class="num" title="Passed">P</th>
                 <th id="id_ovr" class="num sep"   title="Pass/Fail/manual Checks Implementation Score">Score</th>
                 <th id="id_sta" class="text"   title="Implementation Status">Status</th>
-              </tr>  
+              </tr>
             </thead>
             <tbody>
-                {% for g in groups %} 
+                {% for g in groups %}
                 <tr>
                     <td id="id_r{{forloop.counter}}" class="text" headers="id_grp">
                       <a href="{% url 'report_page_group' report.slug view g.slug page.page_number  %}">
@@ -131,7 +131,7 @@
                     {% include 'reports/implementation_status.html' with is=g.implementation_status %}
                     </td>
 
-                </tr>    
+                </tr>
                 {% endfor %}
                 <tr class="summary">
                     <td id="id_summ" class="text" headers="id_grp">All Rule Groups</td>
@@ -180,11 +180,11 @@
                     {% include 'reports/implementation_status.html' with is=summary.implementation_status pfs=summary.implementation_pass_fail_score pfmcs=summary.implementation_score %}
                     </td>
 
-                </tr>  
+                </tr>
              </tbody>
 
-            
-        </table>    
+
+        </table>
     </section>
 
 {% include "reports/information_ainspector_sidebar.html" %}

@@ -25,7 +25,7 @@ public class DepthTest {
     try {
       FaeUtil faeUtil = new FaeUtil();
 
-      WebClient webClient = new WebClient(BrowserVersion.FIREFOX_45);
+      WebClient webClient = new WebClient(BrowserVersion.FIREFOX_60);
 
       // Suppress CSS, HTML Parser and Incorrectness warnings and errors
       webClient.setCssErrorHandler(new SilentCssErrorHandler());

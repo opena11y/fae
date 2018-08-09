@@ -55,7 +55,7 @@ class PageResult(RuleGroupResult):
   ws_report        = models.ForeignKey(WebsiteReport, on_delete=models.CASCADE, related_name="page_all_results")
 
   # Page identification information
-  
+
   page_number   = models.IntegerField(default=-1)
 
   url            = models.URLField( 'Page URL',           max_length=4096, default="")
@@ -71,26 +71,29 @@ class PageResult(RuleGroupResult):
     return self.url
 
   def get_title(self):
-    return "Page Result: " + self.title   
+    if len(self.title):
+      return self.title
+    else:
+      return "NO TITLE: " + self.url[0:50]
 
   def get_id(self):
-    return 'pr_' + str(self.id)   
+    return 'pr_' + str(self.id)
 
-  def to_json_results(self):  
+  def to_json_results(self):
     json = {}
     json['id']        = self.get_id()
     json['num']       = self.page_number
     json['title']     = self.title
     json['url']       = self.url
 
-    json['rules_violation']    = self.rules_violation 
-    json['rules_warning']      = self.rules_warning 
-    json['rules_manual_check'] = self.rules_manual_check 
-    json['rules_passed']       = self.rules_passed 
-    json['rules_na']           = self.rules_na 
+    json['rules_violation']    = self.rules_violation
+    json['rules_warning']      = self.rules_warning
+    json['rules_manual_check'] = self.rules_manual_check
+    json['rules_passed']       = self.rules_passed
+    json['rules_na']           = self.rules_na
 
     json['implementation_pass_fail_score'] = self.implementation_pass_fail_score
-    json['implementation_score']           = self.implementation_score 
+    json['implementation_score']           = self.implementation_score
 
     json['implementation_pass_fail_status'] = self.implementation_pass_fail_status
     json['implementation_status']           = self.implementation_status
@@ -129,14 +132,14 @@ class PageRuleCategoryResult(RuleGroupResult):
     return self.rule_category.title
 
   def get_id(self):
-    return 'prcr_' + self.id   
+    return 'prcr_' + self.id
 
 
 # ---------------------------------------------------------------
 #
 # PageGuidelineResult
 #
-# ---------------------------------------------------------------    
+# ---------------------------------------------------------------
 
 class PageGuidelineResult(RuleGroupResult):
   id                 = models.AutoField(primary_key=True)
@@ -155,10 +158,10 @@ class PageGuidelineResult(RuleGroupResult):
     ordering = ['guideline']
 
   def __str__(self):
-    return str(self.guideline) 
+    return str(self.guideline)
 
   def get_title(self):
-    return self.guideline.title   
+    return self.guideline.title
 
   def get_id(self):
     return 'pglr_' + self.id
@@ -178,7 +181,7 @@ class PageRuleScopeResult(RuleGroupResult):
 
   ws_rs_result  = models.ForeignKey(WebsiteRuleScopeResult, related_name="page_rs_results", blank=True, null=True)
 
-  rule_scope    = models.ForeignKey(RuleScope)  
+  rule_scope    = models.ForeignKey(RuleScope)
 
 
   class Meta:
@@ -187,13 +190,13 @@ class PageRuleScopeResult(RuleGroupResult):
     ordering = ['-rule_scope']
 
   def __str__(self):
-    return self.rule_scope.title 
-    
+    return self.rule_scope.title
+
   def get_title(self):
-    return self.rule_scope.title   
+    return self.rule_scope.title
 
   def get_id(self):
-    return 'prsr_' + self.id   
+    return 'prsr_' + self.id
 
 
 
@@ -210,7 +213,7 @@ class PageRuleResult(RuleResult):
   rule_required  = models.BooleanField(default=False)
 
   slug            = models.SlugField(max_length=32, default="none", blank=True, editable=False)
-  
+
   ws_rule_result  = models.ForeignKey(WebsiteRuleResult,      related_name="page_rule_results", blank=True)
 
   page_result     = models.ForeignKey(PageResult, on_delete=models.CASCADE, related_name="page_rule_results")
@@ -245,17 +248,17 @@ class PageRuleResult(RuleResult):
 
       if total and self.implementation_score <= score:
         if pass_fail_total == 0:
-          self.implementation_status = "MC"  
-        elif total == pass_fail_total:  
+          self.implementation_status = "MC"
+        elif total == pass_fail_total:
           self.implementation_status = label
-        else:    
+        else:
           self.implementation_status = label + "-MC"
-      else:      
+      else:
         self.implementation_status = label
 
-    self.implementation_pass_fail_score  = -1  
-    self.implementation_score       = -1  
-    self.implementation_status      = "U"  
+    self.implementation_pass_fail_score  = -1
+    self.implementation_score       = -1
+    self.implementation_status      = "U"
 
 #    debug('V: ' + str(self.elements_violation) + ' W: ' + str(self.elements_warning) + ' MC: ' + str(self.elements_manual_check) + ' P: ' + str(self.elements_passed))
 
@@ -271,7 +274,7 @@ class PageRuleResult(RuleResult):
 
     if pass_fail_total:
       self.implementation_pass_fail_score  =  (100 * passed) / pass_fail_total
-      
+
     if total:
       self.implementation_score            =  (100 * passed) / total
 
@@ -281,7 +284,7 @@ class PageRuleResult(RuleResult):
     set_status(100, 'C')
 
 
-    self.save()  
+    self.save()
 
 
   def __str__(self):
@@ -289,7 +292,7 @@ class PageRuleResult(RuleResult):
 
 
   def get_id(self):
-    return 'prr_' + self.id   
+    return 'prr_' + self.id
 
 
 

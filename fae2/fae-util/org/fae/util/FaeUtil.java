@@ -466,7 +466,7 @@ class FaeUtil {
       BROWSER_VERSION = BrowserVersion.INTERNET_EXPLORER;
     }
     else {
-      BROWSER_VERSION = BrowserVersion.FIREFOX_52;
+      BROWSER_VERSION = BrowserVersion.FIREFOX_60;
     }
     //System.out.println("browser version: " + BROWSER_VERSION.getNickname());
 
@@ -1198,7 +1198,7 @@ class FaeUtil {
   public Properties m_props = null;
   public static Controller m_ctrl = new Controller("java org.fae.util.FaeUtil <options>");
   
-  public static BrowserVersion BROWSER_VERSION = BrowserVersion.FIREFOX_52;
+  public static BrowserVersion BROWSER_VERSION = BrowserVersion.FIREFOX_60;
   public boolean DEBUG = false;
   public int DEPTH = 1;
   public String OUTPUT_DIRECTORY;

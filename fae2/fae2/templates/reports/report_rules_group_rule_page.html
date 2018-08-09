@@ -24,21 +24,21 @@
 {% block content %}
 
 <div class="rule_summary">
-  Page {{page_rule_result.page_result.page_number}}: 
+  Page {{page_rule_result.page_result.page_number}}:
   <a href="{{page_rule_result.page_result.url}}">
-    {{page_rule_result.page_result.title}}
+    {{page_rule_result.page_result.get_title}}
   </a>
 </div>
 
 
 {% include "reports/result_messages.html" %}
- 
+
   <nav id="view_options" aria-label="Page view options">
     <ul class="nav nav-tabs hide-show">
       <li><a href="#id_rule_details">Rule Details</a></li>
       <li class="active"><a href="#id_element_results">Element Results</a></li>
     </ul>
-  </nav>  
+  </nav>
 
   {% include "reports/rule_details.html" with rule=page_rule_result.rule %}
 

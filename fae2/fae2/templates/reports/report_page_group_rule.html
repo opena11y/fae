@@ -27,7 +27,7 @@
     {% include "reports/page_information.html" %}
 
     {% endif %}
-    
+
 {% endblock %}
 
 
@@ -38,9 +38,9 @@
 {% block content %}
 
    <div class="rule_summary">
-      Page {{page.page_number}}: 
+      Page {{page.page_number}}:
       <a href="{{page.url}}">
-        {{page.title}}
+        {{page.get_title}}
       </a>
     </div>
 
@@ -51,7 +51,7 @@
       <li><a href="#shp1">Rule Details</a></li>
       <li class="active"><a href="#shp2">Element Results</a></li>
     </ul>
-  </nav>  
+  </nav>
 
   <div id="shp1">
     {% include "reports/rule_details.html" with rule=page_rule_result.rule %}

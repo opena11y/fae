@@ -1,15 +1,15 @@
 <section id="information" aria-label="Page Information">
 
   {% if page %}
-  <div class="title" title="Page Title">Page Title: <strong>{{page.title}}</strong></div>
+  <div class="title" title="Page Title">Page Title: <strong>{{page.get_title}}</strong></div>
   {% else %}
   <div class="title">Anonymous Report</div>
   {% endif %}
-  
+
   <div class="date">
     {{ report.created|date:"F d, Y H:i" }}
   </div>
-  
+
   <div class="eval_info">
       <ul>
           {% if page.ws_report.page_count > 1 %}
@@ -19,8 +19,8 @@
           {% endif %}
           <li>Ruleset:   <a title="{{report.ruleset.title_text}}" href="{% url 'ruleset' report.ruleset.slug %}">{{ report.ruleset }}</a></li>
 
-      </ul>  
-  </div>    
-    
+      </ul>
+  </div>
+
 
 </section>

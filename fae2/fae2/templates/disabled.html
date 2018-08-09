@@ -6,11 +6,11 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>{{site.name}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <meta name="description" content="The Functional Accessibility Evalutor (FAE) evaluates a website or a single web page based on the W3C Web Content Accessibility Guidelines (WCAG) 2.0 Level A and AA requirements.">
 
     <meta name="keywords" content="wcag web content accessibility guidelines section 508 disability evaluation evalutor disability ada report">
-    
+
     <meta name="author" content="Jon Gunderson, Nicholas Hoyt, University of Illinois">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -54,9 +54,9 @@
           <ul class="nav navbar-nav navbar-right">
 
             <li class="dropdown">
-              <a  href="#" 
-                  class="dropdown-toggle" 
-                  data-toggle="dropdown" 
+              <a  href="#"
+                  class="dropdown-toggle"
+                  data-toggle="dropdown"
                   role="button"
                   aria-haspopup="true"
                   aria-expanded="false">
@@ -70,11 +70,11 @@
                     <li><a href="{% url 'disclaimer'      %}">Disclaimer</a></li>
                     <li><a href="{% url 'privacy'         %}">Privacy</a></li>
                     <li><a href="{% url 'versions'        %}">Version History</a></li>
-                    <li role="separator" class="divider"></li>  
-                    <li><a href="{% url 'announcements'%}">Announcements</a></li>                  
+                    <li role="separator" class="divider"></li>
+                    <li><a href="{% url 'announcements'%}">Announcements</a></li>
                     <li><a href="{% url 'usage_statistics'%}">Usage Statistics</a></li>
                     <li><a href="{% url 'report_issues'   %}">Create Issue</a></li>
-                    <li role="separator" class="divider"></li>                    
+                    <li role="separator" class="divider"></li>
                     <li><a href="http://ainspector.github.io">AInspector Sidebar</a></li>
                     <li role="separator" class="divider"></li>
                     {% if payment_enabled or shibboleth.enabled %}
@@ -85,9 +85,9 @@
             </li>
             {% if user.is_superuser %}
             <li class="dropdown">
-              <a  href="#" 
-                  class="dropdown-toggle" 
-                  data-toggle="dropdown" 
+              <a  href="#"
+                  class="dropdown-toggle"
+                  data-toggle="dropdown"
                   role="button"
                   aria-haspopup="true"
                   aria-expanded="false">
@@ -101,7 +101,7 @@
                     <li><a href="{% url 'payment_information' %}">Payment Information</a></li>
                     <li><a href="{% url 'create_announcement' %}">Create Announcement</a></li>
               </ul>
-            </li>        
+            </li>
             {% endif %}
             <li><a href="{% url 'rulesets'    %}">Rulesets</a></li>
             {% if user.is_authenticated %}
@@ -111,11 +111,11 @@
             {% else %}
               {% if self_registration_enabled %}
                 <li><a href="{% url 'registration_register' %}" >Register</a></li>
-              {% endif %}  
+              {% endif %}
               <li><a href="{% url 'login' %}" >Login</a></li>
-            {% endif %}              
+            {% endif %}
           </ul>
-        </div>  
+        </div>
       </div>
     </nav>
 
@@ -127,9 +127,9 @@
           <li><a href="{% url 'run_report' %}">Home</a></li>
           {% block breadcrumb %}
           {% endblock %}
-        </ul>  
-      </div>  
-    </nav>  <!-- /container --> 
+        </ul>
+      </div>
+    </nav>  <!-- /container -->
 
     <div class="container">
 
@@ -149,7 +149,7 @@
                 <li><a href="{% url 'processing_reports'  %}">Report Processing</a></li>
                 <li><a href="{% url 'archived_reports'    %}">Archived Reports</a></li>
                 <li><a href="{% url 'manage_reports'      %}">Manage Reports</a></li>
-             </ul> 
+             </ul>
           </nav>
 
         {% else %}
@@ -160,45 +160,45 @@
              <ul class="nav nav-pills nav-stacked">
                 {% if anonymous_enabled %}
                   <li><a href="{% url 'run_anonymous_report'  %}">Run FAE</a></li>
-                {% else %}  
+                {% else %}
                 <li><a href="{% url 'login'   %}">Login</a></li>
-                {% endif %}  
+                {% endif %}
             </ul>
           </nav>
         {% endif %}
 
-          
+
           {% if report_nav.page_count > 1 %}
 
-          <nav id="id_nav_reports" aria-labelledby="id_nav_reports_label">  
+          <nav id="id_nav_reports" aria-labelledby="id_nav_reports_label">
 
             <h2 id="id_nav_reports_label">Reports</h2>
 
-            <ul class="nav nav-pills nav-stacked">  
+            <ul class="nav nav-pills nav-stacked">
                 <li><a href="{% url 'report_rules' report_nav.slug  report_nav.view %}">Summary</a></li>
                 <li><a href="{% url 'report_pages' report_nav.slug  report_nav.view %}">All Pages</a></li>
                 <li><a href="{% url 'report_page'  report_nav.slug  report_nav.view report_nav.page %}">Page {{report_nav.page}}</a></li>
-            </ul>  
+            </ul>
           </nav>
 
-          <nav id="id_view_nav" aria-labelledby="id_view_nav_label">  
+          <nav id="id_view_nav" aria-labelledby="id_view_nav_label">
 
             <h2 id="id_view_nav_label">Current View</h2>
 
-            <ul class="nav nav-pills nav-stacked">  
+            <ul class="nav nav-pills nav-stacked">
             {% if report_nav.current_url %}
                 <li id="id_view_current"><a href="{{report_nav.current_url}}">{{report_nav.current_label}}</a></li>
-            {% else %}    
+            {% else %}
                 <li id="id_view_current"><a class="disabled">None</a></li>
-            {% endif %}    
+            {% endif %}
 
                 <li class="side_by_side">
                 {% if report_nav.previous_url %}
                     <a href="{{report_nav.previous_url}}" class="left"  title="{{report_nav.previous_label}}">
                 {% else %}
-                    <a class="disabled left"> 
+                    <a class="disabled left">
                 {% endif %}
-                        <span class="glyphicon glyphicon-step-backward"></span> 
+                        <span class="glyphicon glyphicon-step-backward"></span>
                         Prev
                     </a>
 
@@ -211,29 +211,29 @@
                         <span class="glyphicon glyphicon-step-forward"></span>
                     </a>
                 </li>
-            </ul>    
+            </ul>
           </nav>
 
-          <nav id="id_view_filters" aria-labelledby="id_view_filters_label" class="hidden-xs">  
+          <nav id="id_view_filters" aria-labelledby="id_view_filters_label" class="hidden-xs">
 
             <h2 id="id_view_filters_label">View Filters</h2>
 
-            <ul class="nav nav-pills nav-stacked">  
+            <ul class="nav nav-pills nav-stacked">
             {% for fi in report_nav.filters %}
                 <li><a href="{{fi.url}}">{{fi.label}}</a></li>
-            {% endfor %}    
+            {% endfor %}
             </ul>
           </nav>
           {% else %}
 
             {% if report_nav.slug %}
-            <nav id="id_nav_reports" aria-labelledby="id_nav_reports_label">  
+            <nav id="id_nav_reports" aria-labelledby="id_nav_reports_label">
 
               <h2 id="id_nav_reports_label">Reports</h2>
 
-              <ul class="nav nav-pills nav-stacked">  
+              <ul class="nav nav-pills nav-stacked">
                   <li><a href="{% url 'report_page' report_nav.slug  report_nav.view  1 %}">Page Summary</a></li>
-              </ul>  
+              </ul>
             </nav>
             {% endif %}
 
@@ -249,7 +249,7 @@
               {% for message in messages %}
                 <div class="alert {% if message.tags %}alert-{{ message.tags }}"{% endif %}>{{ message|safe }}</div>
               {% endfor %}
-          </section>    
+          </section>
         {% endif %}
 
         <section id="content">
@@ -265,7 +265,7 @@
           <div id="sendto" >
             <a href="mailto:?cc={{report.user.email}}&amp;subject=FAE report for {{report.title}}&amp;body=FAE Report%0D%0DTitle:%20{{report.title}}%0DURL:%20{{report.url}}%0DRuleset:%20{{report.ruleset}}%0DDepth:%20{{report.depth}}%0DCreated: {{report.created}}%0DFrom:%20{{report.user.first_name}}%20{{report.user.last_name}}%0D%0DFAE Report:%20{{site.domain}}/{{report_nav.current_url}}" title="Share report URL using e-mail">
             <span class="glyphicon glyphicon-envelope" style="width: 1.2em;"></span>E-mail Report
-            </a> 
+            </a>
           </div>
           {% endif %}
 
@@ -275,7 +275,7 @@
           </section>
         </main>
 
-      </div>  
+      </div>
 
     </div>  <!-- /container -->
 
@@ -435,4 +435,4 @@
    {% endblock javascript %}
   </body>
 </html>
- 
+

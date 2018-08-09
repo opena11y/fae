@@ -22,7 +22,7 @@ Author: Jon Gunderson
 # accounts/views.py
 from __future__ import absolute_import
 from django.http import HttpResponse
-from django.contrib.auth import logout 
+from django.contrib.auth import logout
 from django.contrib import messages
 
 from django.core.exceptions import ObjectDoesNotExist
@@ -33,9 +33,9 @@ from django.db.models import Q
 
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic          import TemplateView
-from django.views.generic          import FormView 
-from django.views.generic          import CreateView 
-from django.views.generic          import RedirectView 
+from django.views.generic          import FormView
+from django.views.generic          import CreateView
+from django.views.generic          import RedirectView
 from django.contrib.auth.mixins    import LoginRequiredMixin
 
 
@@ -114,7 +114,7 @@ def getExpirationDate(dt, months):
         month = 1
         year += 1
 
-    return 
+    return
 # Utilities
 
 def parse_result(result):
@@ -167,7 +167,7 @@ class ShibbolethLogin(RedirectView):
             user.is_superuser = True
             user.save()
 
-        profile = get_profile(user)    
+        profile = get_profile(user)
 
         # Try to populate user information from shibboleth header information
         if user.first_name == '':
@@ -175,14 +175,14 @@ class ShibbolethLogin(RedirectView):
                 user.first_name = self.request.META['givenName']
                 user.save()
             except:
-                pass    
+                pass
 
         if user.last_name == '':
             try:
                 user.last_name  = self.request.META['sn']
                 user.save()
             except:
-                pass 
+                pass
 
         if user.email == '':
             try:
@@ -192,9 +192,9 @@ class ShibbolethLogin(RedirectView):
                 try:
                     if user.username.find('@') > 0 and user.username.find('.'):
                         user.email = user.username
-                        user.save()                        
+                        user.save()
                 except:
-                    pass 
+                    pass
 
         profile.update_institutional_subscription()
 
@@ -215,11 +215,11 @@ class ShibbolethInstitution(RedirectView):
             self.url += '/Shibboleth.sso/Login?entityID=' + ip.authentication + '&target=' + SITE_URL
         except:
             try:
-                ip =  InstitutionalProfile.objects.get(alt_domain=kwargs['domain'])     
+                ip =  InstitutionalProfile.objects.get(alt_domain=kwargs['domain'])
                 self.url += '/Shibboleth.sso/Login?entityID=' + ip.authentication + '&target=' + SITE_URL
             except:
-                ip =  None   
-  
+                ip =  None
+
         return super(ShibbolethInstitution, self).get_redirect_url(*args, **kwargs)
 
 class Logout(FAENavigationMixin, TemplateView):
@@ -239,8 +239,8 @@ class Login(FAENavigationMixin, TemplateView):
           context['user']     = self.request.user
         except:
           context['user']     = 'none'
-          
-        return context  
+
+        return context
 
 class MyAccountView(FAENavigationMixin, TemplateView):
     template_name = 'accounts/my_account.html'
@@ -254,8 +254,8 @@ class MyAccountView(FAENavigationMixin, TemplateView):
 
         context['user_stats'] = StatsUser.objects.get(user=self.request.user)
         context['user_profile'] = user_profile
-          
-        return context  
+
+        return context
 
 
 class UserProfileForm(forms.Form):
@@ -296,7 +296,7 @@ class UpdateUserProfileView(LoginRequiredMixin, FAENavigationMixin, SuccessMessa
         profile.save()
 
         return super(UpdateUserProfileView, self).form_valid(form)
-  
+
 
 
     def get_initial(self):
@@ -322,8 +322,8 @@ class UpdateUserProfileView(LoginRequiredMixin, FAENavigationMixin, SuccessMessa
 
         context['user_stats'] = StatsUser.objects.get(user=self.request.user)
         context['user_profile'] = user_profile
-        
-        return context  
+
+        return context
 
 
 class UpdateSubscriptionView(LoginRequiredMixin, FAENavigationMixin, CreateView):
@@ -346,7 +346,7 @@ class UpdateSubscriptionView(LoginRequiredMixin, FAENavigationMixin, CreateView)
         try:
             p = UserProfile.objects.get(user=user)
             form.instance.profile_subscription_end = p.subscription_end
-        except:    
+        except:
             pass
 
         if actual_subscription_cost > 0:
@@ -362,7 +362,7 @@ class UpdateSubscriptionView(LoginRequiredMixin, FAENavigationMixin, CreateView)
 
             if form.instance.register_response_code == '0':
                 form.instance.status = 'PMT_REGISTERED'
-            else:  
+            else:
                 form.instance.status = 'PMT_ERROR'
         else:
 
@@ -403,11 +403,11 @@ class UpdateSubscriptionView(LoginRequiredMixin, FAENavigationMixin, CreateView)
         context['user_profile']      = user_profile
         context['self_regs']         = AccountType.objects.filter(self_registration=True)
         context['shibboleths']       = AccountType.objects.filter(shibboleth=True)
-        
-        return context  
+
+        return context
 
     def get_success_url(self):
-        return reverse('payment_register', args=[self.object.reference_id])    
+        return reverse('payment_register', args=[self.object.reference_id])
 
 
     def register(self, amount):
@@ -437,12 +437,12 @@ class UpdateSubscriptionView(LoginRequiredMixin, FAENavigationMixin, CreateView)
 
             try:
                 ro['TIMESTAMP'] = format_timestamp(ro['TIMESTAMP'])
-            except:    
+            except:
                 ro['TIMESTAMP'] = datetime.datetime.utcnow()
 
             return ro
         except:
-            return False         
+            return False
 
 # ==============================================================
 #
@@ -458,7 +458,7 @@ class RegisterView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
 
         context['payment'] = Payment.objects.get(reference_id=kwargs['reference_id'])
 
-        return context  
+        return context
 
 
 class PaymentView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
@@ -472,7 +472,7 @@ class PaymentView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
         try:
             profile = UserProfile.objects.get(user=user)
         except:
-            profile = False    
+            profile = False
 
         try:
             token  = self.request.GET['token']
@@ -484,7 +484,7 @@ class PaymentView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
         except:
             reason = False
 
-        try: 
+        try:
             payment = Payment.objects.get(token=token)
 
             if payment.actual_subscription_cost > 0:
@@ -512,16 +512,16 @@ class PaymentView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
                             payment.status = 'PMT_CANCELLED'
                         elif reason == 'maxattempts':
                             payment.status = 'PMT_MAX_ATTEMPT'
-                        elif reason == 'tokenexpired': 
+                        elif reason == 'tokenexpired':
                             payment.status = 'PMT_EXPIRED'
-                        else: 
+                        else:
                             payment.status = 'PMT_ERROR'
                     else:
-                        payment.status = 'PMT_SESSION'                            
-                else:        
+                        payment.status = 'PMT_SESSION'
+                else:
                     payment.status = 'PMT_ERROR'
 
-            payment.save()  
+            payment.save()
 
             if profile:
                 if payment.status == 'PMT_APPROV':
@@ -534,33 +534,33 @@ class PaymentView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
                         if not profile.subscription_start:
                             profile.subscription_start  = datetime.datetime.utcnow()
 
-                    else:    
+                    else:
                         print("Changing subscription")
                         profile.account_type        = payment.account_type
                         profile.subscription_start  = datetime.datetime.utcnow()
                         profile.subscription_end    = payment.subscription_end
                         profile.set_payments(payment.subscription_cost)
 
-    
+
                 if payment.status == 'PMT_NOCOST':
                     profile.account_type = payment.account_type
                     profile.subscription_start  = datetime.datetime.utcnow()
                     profile.subscription_end    = payment.subscription_end
-                    profile.subtract_payment(payment.subscription_cost)       
- 
+                    profile.subtract_payment(payment.subscription_cost)
+
 
                 profile.save()
 
 
         except:
-            payment = False     
+            payment = False
 
 
         context['token']   = token
         context['reason']  = reason
         context['payment'] = payment
 
-        return context  
+        return context
 
     def capture(self, payment):
         try:
@@ -602,14 +602,14 @@ class PaymentView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
 
             try:
                 ro['TIMESTAMP'] = format_timestamp(ro['TIMESTAMP'])
-            except:    
+            except:
                 ro['TIMESTAMP'] = datetime.datetime.utcnow()
 
             print(str(ro))
 
             return ro
         except:
-            return False          
+            return False
 
 # ==============================================================
 #
@@ -636,7 +636,7 @@ class DonateView(FAENavigationMixin, SuccessMessageMixin, FormView):
         user = self.request.user
 
         if user.is_anonymous():
-            user = User.objects.get(username='anonymous')    
+            user = User.objects.get(username='anonymous')
 
         name           = form.cleaned_data['donor_name']
         email          = form.cleaned_data['donor_email']
@@ -644,7 +644,7 @@ class DonateView(FAENavigationMixin, SuccessMessageMixin, FormView):
         show_donation  = form.cleaned_data['show_donation']
 
 
-        return super(DonateView, self).form_valid(form) 
+        return super(DonateView, self).form_valid(form)
 
     def get_initial(self):
         # Populate ticks in BooleanFields
@@ -660,7 +660,7 @@ class DonateView(FAENavigationMixin, SuccessMessageMixin, FormView):
             initial['donor_email'] = user.email
             initial['show_donation']   = True
 
-        return initial        
+        return initial
 
 
 class DonateSuccessView(FAENavigationMixin, TemplateView):
@@ -669,8 +669,8 @@ class DonateSuccessView(FAENavigationMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super(DonateSuccessView, self).get_context_data(**kwargs)
 
-        
-        return context  
+
+        return context
 
 class DonateFailView(FAENavigationMixin, TemplateView):
     template_name = 'accounts/donate_fail.html'
@@ -678,10 +678,10 @@ class DonateFailView(FAENavigationMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super(DonateFailView, self).get_context_data(**kwargs)
 
-        return context  
+        return context
 
 
- 
+
 
 
 # ==============================================================
@@ -705,8 +705,8 @@ class StatusView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
         context['errors']      = reports.filter(status='E')
 
         context['processing_threads'] = PROCESSING_THREADS
-        
-        return context  
+
+        return context
 
 
 class AllUserInformationView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
@@ -728,7 +728,7 @@ class AllUserInformationView(LoginRequiredMixin, FAENavigationMixin, TemplateVie
                 active += 1
 
             if su.user.profile.account_type.type_id > 1:
-                subscribers += 1 
+                subscribers += 1
 
             registered += 1
 
@@ -736,14 +736,14 @@ class AllUserInformationView(LoginRequiredMixin, FAENavigationMixin, TemplateVie
 
         context['include_announcements']  = user_profiles.filter(email_announcements=True)
         context['exclude_announcements']  = user_profiles.filter(email_announcements=False)
-        context['stats_users']            = stats_users 
+        context['stats_users']            = stats_users
 
 
         context['registered']  = registered
         context['subscribers'] = subscribers
         context['active']      = active
-        
-        return context  
+
+        return context
 
 
 class UserInformationView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
@@ -758,8 +758,8 @@ class UserInformationView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
 
         context['user_profile'] = user_profile
         context['stats_user']   = stats_user
-        
-        return context  
+
+        return context
 
 class InstitutionalInformationView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
     template_name = 'accounts/institutional_information.html'
@@ -770,8 +770,8 @@ class InstitutionalInformationView(LoginRequiredMixin, FAENavigationMixin, Templ
         institutions = InstitutionalProfile.objects.all()
 
         context['institutions'] = institutions
-        
-        return context          
+
+        return context
 
 class PaymentInformationView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
     template_name = 'accounts/payment_information.html'
@@ -782,8 +782,8 @@ class PaymentInformationView(LoginRequiredMixin, FAENavigationMixin, TemplateVie
         approved_payments  = Payment.objects.filter(status='PMT_APPROV')
 
         context['approved_payments'] = approved_payments
-        
-        return context  
+
+        return context
 
 
 class DisabledView(TemplateView):
@@ -794,6 +794,6 @@ class DisabledView(TemplateView):
 
         context['fae_disabled_url'] = FAE_DISABLED_URL
 
-          
-        return context 
+
+        return context
 
