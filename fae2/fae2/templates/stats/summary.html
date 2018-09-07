@@ -30,8 +30,8 @@
         </tr>
         <tr>
             <th class="text">Last 7 Days</th>
-            <td class="num">{{stats_seven_days.ws_report_group.num_total_reports}}</td>
-            <td class="num">{{stats_seven_days.ws_report_group.num_total_pages}}</td>
+            <td class="num">{{stats_seven_days.num_total_reports}}</td>
+            <td class="num">{{stats_seven_days.num_total_pages}}</td>
         </tr>
         <tr>
             <th class="text">Month</th>
@@ -49,7 +49,7 @@
             <td class="num">{{stats_all.ws_report_group.num_total_pages}}</td>
         </tr>
     </tbody>
-</table>    
+</table>
 </section>
 
 <section aria-labelledby="id_user_info">
@@ -78,7 +78,7 @@
             <td class="num">{{stats_anonymous.ws_report_group.num_total_pages}}</td>
         </tr>
     </tbody>
-</table>    
+</table>
 </section>
 
 <section aria-labelledby="id_rulesets">
@@ -99,9 +99,9 @@
             <td class="num">{{rs.ws_report_group.num_total_reports}}</td>
             <td class="num">{{rs.ws_report_group.num_total_pages}}</td>
         </tr>
-    {% endfor %}    
+    {% endfor %}
     </tbody>
-</table>    
+</table>
 </section>
 
 

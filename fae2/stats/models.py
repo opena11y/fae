@@ -73,6 +73,14 @@ class StatsYear(models.Model):
     def __str__(self):
         return 'Year: ' + str(self.year)
 
+    def get_previous_year(self):
+        previous_year = StatsYear.objects.filter(year=(self.year-1))
+
+        if len(previous_year) == 1:
+            return previous_year[0]
+        else:
+            return False
+
 # ---------------------------------------------------------------
 #
 # StatsMonth
@@ -94,6 +102,19 @@ class StatsMonth(models.Model):
 
     def __str__(self):
         return 'Month: %d-%02d' % (self.stats_year.year, self.month)
+
+    def get_previous_month(self):
+        if self.month > 1:
+            previous_month = StatsMonth.objects.filter(stats_year=self.stats_year, month=(self.month-1))
+        else:
+            previous_year = self.stats_year.get_previous_year()
+            if previous_year:
+                previous_month = StatsMonth.objects.filter(stats_year=self.previous_year, month=12)
+
+        if len(previous_month) == 1:
+            return previous_month[0]
+        else:
+            return False
 
 
 # ---------------------------------------------------------------
@@ -120,13 +141,31 @@ class StatsDay(models.Model):
     def __str__(self):
         return 'Day: %d-%02d-%02d' % (self.stats_month.stats_year.year, self.stats_month.month, self.day)
 
+    def get_previous_day(self):
+        if self.day > 1:
+            previous_day = StatsDay.objects.filter(stats_month=self.stats_month, day=(self.day-1))
+            if len(previous_day) == 1:
+                previous_day = previous_day[0]
+            else:
+                previous_day = False
+        else:
+            previous_month = self.stats_month.get_previous_month()
+            if previous_month:
+                previous_day = StatsDay.objects.filter(stats_year=self.previous_month)
+
+                if len(previous_day):
+                    previous_day = previous_day[-1]
+                else:
+                    previous_day = False
+
+
 
 
 class UsageInfo:
 
     def __init__(self):
         self.num_reports = 0
-        self.num_pages = 0;            
+        self.num_pages = 0;
 
 
 # ---------------------------------------------------------------

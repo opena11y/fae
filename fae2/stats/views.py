@@ -97,15 +97,32 @@ class ShowUsageStatistics(FAENavigationMixin, TemplateView):
         except  MultipleObjectsReturned:
             pass
 
-        seven_days   = StatsDay.objects.all()[:7]
+        days = []
+        days.append(day)
+        d = day.get_previous_day()
+        if d:
+            days.append(d)
+            d = d.get_previous_day()
+            if d:
+                days.append(d)
+                d = d.get_previous_day()
+                if d:
+                    days.append(d)
+                    d = d.get_previous_day()
+                    if d:
+                        days.append(d)
+                        d = day.get_previous_day()
+                        if d:
+                            days.append(d)
+                            d = d.get_previous_day()
+                            if d:
+                                days.append(d)
 
-        wsrg =  WebsiteReportGroup(title="Summary of last seven days")
+        seven_days =  WebsiteReportGroup(title="Summary of last seven days")
 
-        for d in seven_days:
-            wsrg.num_total_reports += d.ws_report_group.num_total_reports
-            wsrg.num_total_pages   += d.ws_report_group.num_total_pages
-
-        seven_days.ws_report_group = wsrg
+        for d in days:
+            seven_days.num_total_reports += d.ws_report_group.num_total_reports
+            seven_days.num_total_pages   += d.ws_report_group.num_total_pages
 
         stats_reg_users = StatsRegisteredUsers.objects.all()
         if len(stats_reg_users) > 0:
