@@ -1696,6 +1696,8 @@ def saveResultsToDjango(ws_report, l):
       wsrg.save()
       year = StatsYear(year=today.year, ws_report_group=wsrg, stats_all=stats_all)
       year.save()
+    except MultipleObjectsReturned:
+      year = StatsYear.objects.filter(year=today.year)[0]
 
     info("[SAVE_WEBSITE_RESULTS] Saving StatsYear: " + str(year))
     year.ws_report_group.add_website_report(ws_report)
@@ -1707,6 +1709,8 @@ def saveResultsToDjango(ws_report, l):
       wsrg.save()
       month = StatsMonth(stats_year=year, month=today.month, ws_report_group=wsrg)
       month.save()
+    except MultipleObjectsReturned:
+      month = StatsMonth.objects.filter(stats_year=year, month=today.month)[0]
 
     info("[SAVE_WEBSITE_RESULTS] Saving StatsMonth: " + str(month))
     month.ws_report_group.add_website_report(ws_report)
@@ -1718,6 +1722,8 @@ def saveResultsToDjango(ws_report, l):
       wsrg.save()
       day = StatsDay(stats_month=month, day=today.day, date=today, ws_report_group=wsrg)
       day.save()
+    except MultipleObjectsReturned:
+      day = StatsDay.objects.filter(stats_month=month, day=today.day)[0]
 
     info("[SAVE_WEBSITE_RESULTS] Saving StatsDay: " + str(day))
     day.ws_report_group.add_website_report(ws_report)
