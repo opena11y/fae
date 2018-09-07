@@ -1711,8 +1711,8 @@ def saveResultsToDjango(ws_report, l):
 
     try:
       debug('[A]')
-      month = StatsMonth.objects.get(stats_year=year, month=today.month)
-      debug('[AA]')
+      month = StatsMonth.objects.filter(stats_year=year, month=today.month)
+      debug('[AA]: ' + len(month))
     except ObjectDoesNotExist:
       debug('[B]')
       wsrg =  WebsiteReportGroup(title="Summary of results month: %d-%02d" % (today.year, today.month))
