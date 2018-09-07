@@ -109,7 +109,7 @@ class RULE_RESULT:
   WARNING        = 4
   VIOLATION      = 5
 
-DEBUG=True
+DEBUG=False
 INFO=True
 ERROR=True
 
@@ -1707,6 +1707,7 @@ def saveResultsToDjango(ws_report, l):
 
     info("[SAVE_WEBSITE_RESULTS] Saving StatsYear: " + str(year))
     year.ws_report_group.add_website_report(ws_report)
+    info("[SAVE_WEBSITE_RESULTS] Saving StatsYear: Done")
 
     try:
       month = StatsMonth.objects.get(stats_year=year, month=today.month)
@@ -1720,6 +1721,7 @@ def saveResultsToDjango(ws_report, l):
 
     info("[SAVE_WEBSITE_RESULTS] Saving StatsMonth: " + str(month))
     month.ws_report_group.add_website_report(ws_report)
+    info("[SAVE_WEBSITE_RESULTS] Saving StatsMonth: Done")
 
     try:
       day = StatsDay.objects.get(stats_month=month, day=today.day)
@@ -1733,6 +1735,7 @@ def saveResultsToDjango(ws_report, l):
 
     info("[SAVE_WEBSITE_RESULTS] Saving StatsDay: " + str(day))
     day.ws_report_group.add_website_report(ws_report)
+    info("[SAVE_WEBSITE_RESULTS] Saving StatsDay: Done")
 
     try:
       stats_reg_users = StatsRegisteredUsers.objects.all()[0]
