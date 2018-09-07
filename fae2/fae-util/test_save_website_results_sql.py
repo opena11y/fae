@@ -67,6 +67,7 @@ def main():
     ws_report.ws_gl_results.all().delete()
     ws_report.ws_rc_results.all().delete()
     ws_report.ws_rs_results.all().delete()
+    ws_report.ws_rule_results.all().delete()
 
     ws_report.page_all_results.all().delete()
 
