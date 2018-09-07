@@ -1670,6 +1670,12 @@ def saveResultsToDjango(ws_report, l):
     info("           Total Time: " + total)
     info("Average time per page: " + str(ave_time))
 
+  except:
+    ws_report.set_status_error()
+    error("Error: saving to django")
+
+  try:
+
     try:
       stats_all = StatsAll.objects.all()
       if len(stats_all) > 0:
@@ -1772,6 +1778,5 @@ def saveResultsToDjango(ws_report, l):
     info("[SAVE_WEBSITE_RESULTS] Done Saving Stats")
 
   except:
-    ws_report.set_status_error()
-    error("Error: saving to django")
+    error("Error: saving stats ")
 
