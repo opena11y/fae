@@ -1710,13 +1710,16 @@ def saveResultsToDjango(ws_report, l):
     info("[SAVE_WEBSITE_RESULTS] Saving StatsYear: Done")
 
     try:
+      debug('[A]')
       month = StatsMonth.objects.get(stats_year=year, month=today.month)
     except ObjectDoesNotExist:
+      debug('[B]')
       wsrg =  WebsiteReportGroup(title="Summary of results month: %d-%02d" % (today.year, today.month))
       wsrg.save()
       month = StatsMonth(stats_year=year, month=today.month, ws_report_group=wsrg)
       month.save()
     except MultipleObjectsReturned:
+      debug('[C]')
       month = StatsMonth.objects.filter(stats_year=year, month=today.month)[0]
 
     info("[SAVE_WEBSITE_RESULTS] Saving StatsMonth: " + str(month))
