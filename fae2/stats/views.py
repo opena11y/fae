@@ -63,39 +63,36 @@ class ShowUsageStatistics(FAENavigationMixin, TemplateView):
 
         today= datetime.date.today()
 
-        try:
-            year   = StatsYear.objects.get(year=today.year)
-        except ObjectDoesNotExist:
+        year   = StatsYear.objects.filter(year=today.year)
+        if len(year) == 0:
             wsrg =  WebsiteReportGroup(title="Summary of results year: " + str(today.year))
             wsrg.save()
             year = StatsYear(year=today.year, ws_report_group=wsrg, stats_all=stats_all)
             year.save()
-        except  MultipleObjectsReturned:
-            pass
+        else:
+            year = year[0]
 
         years  = StatsYear.objects.all()
 
-        try:
-            month  = StatsMonth.objects.get(stats_year=year, month=today.month)
-        except ObjectDoesNotExist:
+        month  = StatsMonth.objects.filter(stats_year=year, month=today.month)
+        if len(month) == 0:
             wsrg =  WebsiteReportGroup(title="Summary of results month: " + str(today.year) + "-" + str(today.month))
             wsrg.save()
             month = StatsMonth(stats_year=year, month=today.month, ws_report_group=wsrg)
             month.save()
-        except  MultipleObjectsReturned:
-            pass
+        else:
+            month = month[0]
 
         months = StatsMonth.objects.all()
 
-        try:
-            day  = StatsDay.objects.get(stats_month=month, day=today.day)
-        except ObjectDoesNotExist:
+        day  = StatsDay.objects.filter(stats_month=month, day=today.day)
+        if len(day) == 0:
             wsrg =  WebsiteReportGroup(title="Summary of results day: " + str(today.year) + "-" + str(today.month) + "-" + str(today.day))
             wsrg.save()
             day = StatsDay(stats_month=month, day=today.day, date=today, ws_report_group=wsrg)
             day.save()
-        except  MultipleObjectsReturned:
-            pass
+        else:
+            day = day[0]
 
         days = []
         days.append(day)

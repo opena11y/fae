@@ -158,6 +158,8 @@ class StatsDay(models.Model):
                 else:
                     previous_day = False
 
+        return previous_day
+
 
 
 
