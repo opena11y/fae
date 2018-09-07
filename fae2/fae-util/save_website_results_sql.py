@@ -1694,54 +1694,6 @@ def saveResultsToDjango(ws_report, l):
     info("[SAVE_WEBSITE_RESULTS] Saving StatsAll: " + str(stats_all))
     stats_all.ws_report_group.add_website_report(ws_report)
 
-    today = datetime.date.today()
-    try:
-      year = StatsYear.objects.get(year=today.year)
-    except ObjectDoesNotExist:
-      wsrg =  WebsiteReportGroup(title="Summary of results year: " + str(today.year))
-      wsrg.save()
-      year = StatsYear(year=today.year, ws_report_group=wsrg, stats_all=stats_all)
-      year.save()
-    except MultipleObjectsReturned:
-      year = StatsYear.objects.filter(year=today.year)[0]
-
-    info("[SAVE_WEBSITE_RESULTS] Saving StatsYear: " + str(year))
-    year.ws_report_group.add_website_report(ws_report)
-    info("[SAVE_WEBSITE_RESULTS] Saving StatsYear: Done")
-
-    try:
-      debug('[A]')
-      month = StatsMonth.objects.filter(stats_year=year, month=today.month)
-      debug('[AA]: ' + len(month))
-    except ObjectDoesNotExist:
-      debug('[B]')
-      wsrg =  WebsiteReportGroup(title="Summary of results month: %d-%02d" % (today.year, today.month))
-      wsrg.save()
-      month = StatsMonth(stats_year=year, month=today.month, ws_report_group=wsrg)
-      month.save()
-      debug('[BB]')
-    except MultipleObjectsReturned:
-      debug('[C]')
-      month = StatsMonth.objects.filter(stats_year=year, month=today.month)[0]
-
-    info("[SAVE_WEBSITE_RESULTS] Saving StatsMonth: " + str(month))
-    month.ws_report_group.add_website_report(ws_report)
-    info("[SAVE_WEBSITE_RESULTS] Saving StatsMonth: Done")
-
-    try:
-      day = StatsDay.objects.get(stats_month=month, day=today.day)
-    except ObjectDoesNotExist:
-      wsrg =  WebsiteReportGroup(title="Summary of results day: %d-%02d-%02d" % (today.year, today.month, today.day))
-      wsrg.save()
-      day = StatsDay(stats_month=month, day=today.day, date=today, ws_report_group=wsrg)
-      day.save()
-    except MultipleObjectsReturned:
-      day = StatsDay.objects.filter(stats_month=month, day=today.day)[0]
-
-    info("[SAVE_WEBSITE_RESULTS] Saving StatsDay: " + str(day))
-    day.ws_report_group.add_website_report(ws_report)
-    info("[SAVE_WEBSITE_RESULTS] Saving StatsDay: Done")
-
     try:
       stats_reg_users = StatsRegisteredUsers.objects.all()[0]
     except ObjectDoesNotExist:
@@ -1771,7 +1723,6 @@ def saveResultsToDjango(ws_report, l):
         stats_reg_users.user_stats.add(user_stats)
         stats_reg_users.save()
 
-
     try:
       ruleset_stats = StatsRuleset.objects.get(ruleset=ws_report.ruleset)
     except ObjectDoesNotExist:
@@ -1782,6 +1733,57 @@ def saveResultsToDjango(ws_report, l):
 
     info("[SAVE_WEBSITE_RESULTS] Saving StatsRuleset: " + str(ruleset_stats))
     ruleset_stats.ws_report_group.add_website_report(ws_report)
+
+
+    today = datetime.date.today()
+    try:
+      year = StatsYear.objects.get(year=today.year)
+    except ObjectDoesNotExist:
+      wsrg =  WebsiteReportGroup(title="Summary of results year: " + str(today.year))
+      wsrg.save()
+      year = StatsYear(year=today.year, ws_report_group=wsrg, stats_all=stats_all)
+      year.save()
+    except MultipleObjectsReturned:
+      year = StatsYear.objects.filter(year=today.year)[0]
+
+    info("[SAVE_WEBSITE_RESULTS] Saving StatsYear: " + str(year))
+    year.ws_report_group.add_website_report(ws_report)
+    info("[SAVE_WEBSITE_RESULTS] Saving StatsYear: Done")
+
+    try:
+      debug('[A]')
+      months = StatsMonth.objects.filter(stats_year=year, month=today.month)
+      debug('[AA]: ' + str(len(months)))
+      month = months[0]
+    except ObjectDoesNotExist:
+      debug('[B]')
+      wsrg =  WebsiteReportGroup(title="Summary of results month: %d-%02d" % (today.year, today.month))
+      wsrg.save()
+      month = StatsMonth(stats_year=year, month=today.month, ws_report_group=wsrg)
+      month.save()
+      debug('[BB]')
+    except MultipleObjectsReturned:
+      debug('[C]')
+      month = StatsMonth.objects.filter(stats_year=year, month=today.month)[0]
+
+    info("[SAVE_WEBSITE_RESULTS] Saving StatsMonth: " + str(month))
+    month.ws_report_group.add_website_report(ws_report)
+    info("[SAVE_WEBSITE_RESULTS] Saving StatsMonth: Done")
+
+    try:
+      day = StatsDay.objects.get(stats_month=month, day=today.day)
+    except ObjectDoesNotExist:
+      wsrg =  WebsiteReportGroup(title="Summary of results day: %d-%02d-%02d" % (today.year, today.month, today.day))
+      wsrg.save()
+      day = StatsDay(stats_month=month, day=today.day, date=today, ws_report_group=wsrg)
+      day.save()
+    except MultipleObjectsReturned:
+      day = StatsDay.objects.filter(stats_month=month, day=today.day)[0]
+
+    info("[SAVE_WEBSITE_RESULTS] Saving StatsDay: " + str(day))
+    day.ws_report_group.add_website_report(ws_report)
+    info("[SAVE_WEBSITE_RESULTS] Saving StatsDay: Done")
+
 
     info("[SAVE_WEBSITE_RESULTS] Done Saving Stats")
 
