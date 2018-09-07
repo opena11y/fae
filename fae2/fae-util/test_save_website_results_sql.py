@@ -44,17 +44,19 @@ django.setup()
 
 from save_website_results_sql import saveResultsToDjango
 
-from reports.models import WebsiteReport
+from reports.models              import WebsiteReport
+from django.contrib.auth.models  import User
 from fae2.settings import APP_DIR
 
 log = open(os.path.join(APP_DIR + 'logs/process-evaluation.log'), 'w')
-    
+
 def main():
 
   message_flag = True
 
-  ws_reports = WebsiteReport.objects.all()
-  
+  jongund = User.objects.get(username='jongund')
+  ws_reports = WebsiteReport.objects.filter(user=jongund)
+
   if len(ws_reports):
     ws_report = ws_reports.latest('created')
 
@@ -75,6 +77,6 @@ def main():
     print("Saving Data: " + str(ws_report))
     saveResultsToDjango(ws_report, log)
 
-          
+
 if __name__ == "__main__":
   main()
