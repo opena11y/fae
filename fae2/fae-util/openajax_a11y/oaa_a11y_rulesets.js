@@ -1,5 +1,5 @@
 /**
- * Copyright 2011-2017  OpenAjax Alliance
+ * Copyright 2011-2018 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,7 @@
 var createARIATestRuleset = function () {
 
   var ruleset_info = {
-    ruleset_id    : "TEST",  
+    ruleset_id    : "TEST",
     version       : "1.1.0",
     last_updated  : "2017-02-01",
     author        : "OpenAjax Accessibility Task Force",
@@ -34,10 +34,10 @@ var createARIATestRuleset = function () {
          tooltip         : "Ruleset for use the the testsuite",
          description     : "Test ruleset used for the test suite to make sure all rules are tested.",
          description_url : ""
-      }   
-    }   
+      }
+    }
   };
-  
+
   var rule_mappings = {
    AUDIO_1 : {
        required : true,
@@ -579,30 +579,30 @@ var createARIATestRuleset = function () {
        required : true,
        enabled  : true
      }
-  };  
+  };
 
   try {
     // Create a Ruleset and add it to the RulesetManager
-    
+
     var as_ruleset_factory = OpenAjax.a11y.RulesetFactory.newInstance();
-    
+
     as_ruleset_factory.setParameter('rulesetInfo', ruleset_info);
     as_ruleset_factory.setParameter('ruleMappingInfo', rule_mappings);
     as_ruleset_factory.setFeature('locale', 'en-us');
 
-    var as_ruleset = as_ruleset_factory.newRuleset();    
+    var as_ruleset = as_ruleset_factory.newRuleset();
 
     OpenAjax.a11y.RulesetManager.addRuleset(as_ruleset);
   }
   catch (err) {
     OpenAjax.a11y.logger.error("[TEST Ruleset] ** Error creating ARIA Test Ruleset");
-  } 
-  
+  }
+
 }();
 
-   
+
 /**
- * Copyright 2011-2017  OpenAjax Alliance
+ * Copyright 2011-2018 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -624,7 +624,7 @@ var createARIATestRuleset = function () {
 var createARIATransitionalRuleset = function () {
 
   var ruleset_info = {
-    ruleset_id    : "ARIA_TRANS",  
+    ruleset_id    : "ARIA_TRANS",
     version       : "1.1.0",
     last_updated  : "2017-02-01",
     author        : "OpenAjax Accessibility Task Force",
@@ -637,10 +637,10 @@ var createARIATransitionalRuleset = function () {
          tooltip         : "WCAG 2.0 Level A and AA requirements primarily using HTML4 techniques, but allows HTML5 and ARIA accessibility techniques.",
          description     : "Evaluation of W3C Web Content Accessibility Guidelines 2.0 Level A and AA conformance using HTML4 accessibility techniques, but allows for the use of HTML5 and ARIA techniques.  ARIA landmarks are NOT required, but if used must follow landmark and sectioning element requirements as outlined in HTML5 and ARIA.  The ruleset does NOT require the use of ARIA widget roles for identifying and describing interactive elements (e.g. popup menus, grids, trees, etc...) that cannot be not described by the native semantics of HTML4 and HTML5 form control and link elements.  This means the developer will need to do more manual checking and have a high level understanding of assistive technology to describe widgets typically using offscreen text and/or small images (e.g. with ALT text) to define and manage the roles, properties and states of interactive elements. ",
          description_url : ""
-      }   
-    }   
+      }
+    }
   };
-  
+
   var rule_mappings = {
    AUDIO_1 : {
        required : true,
@@ -782,7 +782,7 @@ var createARIATransitionalRuleset = function () {
        required : true,
        enabled  : true
      },
-   IMAGE_1 : {  
+   IMAGE_1 : {
        required : true,
        enabled  : true
      },
@@ -1130,29 +1130,29 @@ var createARIATransitionalRuleset = function () {
        required : true,
        enabled  : true
      }
-  };  
+  };
 
   try {
     // Create a Ruleset and add it to the RulesetManager
-    
+
     var as_ruleset_factory = OpenAjax.a11y.RulesetFactory.newInstance();
-    
+
     as_ruleset_factory.setParameter('rulesetInfo', ruleset_info);
     as_ruleset_factory.setParameter('ruleMappingInfo', rule_mappings);
-    
+
     as_ruleset_factory.setFeature('locale', 'en-us');
 
-    var as_ruleset = as_ruleset_factory.newRuleset();    
+    var as_ruleset = as_ruleset_factory.newRuleset();
 
     OpenAjax.a11y.RulesetManager.addRuleset(as_ruleset);
   }
   catch (err) {
     OpenAjax.a11y.logger.error("[ARIA TRANS Ruleset] ** Error creating ARIA Strict Ruleset");
-  } 
-  
+  }
+
 }();
 /**
- * Copyright 2011-2017  OpenAjax Alliance
+ * Copyright 2011-2018 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1170,12 +1170,12 @@ var createARIATransitionalRuleset = function () {
 /* --------------------------------------------------------------------------- */
 /* OpenAjax Alliance (OAA) ARIA Strict Rule Mapping (Beta)                     */
 /* --------------------------------------------------------------------------- */
-   
+
 
 var createARIAStrictRuleset = function () {
 
   var ruleset_info = {
-    ruleset_id    : "ARIA_STRICT",  
+    ruleset_id    : "ARIA_STRICT",
     version       : "1.1.0",
     last_updated  : "2017-02-01",
     author        : "OpenAjax Accessibility Task Force",
@@ -1188,10 +1188,10 @@ var createARIAStrictRuleset = function () {
          tooltip         : "WCAG 2.0 Level A and AA requirements using ARIA and HTML5 accessibility features.",
          description     : "Evaluation of W3C Web Content Accessibility Guidelines 2.0 Level A and AA conformance using HTML5 and ARIA accessibility techniques.  ARIA Landmarks are required for the identification and labeling of the sections of content on a web page. The ruleset requires the use of ARIA widget roles for identifying and describing interactive elements (e.g. popup menus, grids, trees, etc...) that cannot be not described by the native semantics of HTML5 form control and links elements.",
          description_url : ""
-      }   
-    }   
+      }
+    }
   };
-  
+
   var rule_mappings = {
       AUDIO_1 : {
         required : true,
@@ -1721,25 +1721,25 @@ var createARIAStrictRuleset = function () {
        required : true,
        enabled  : true
      }
-  };  
+  };
 
   try {
     // Create a Ruleset and add it to the RulesetManager
-    
+
     var as_ruleset_factory = OpenAjax.a11y.RulesetFactory.newInstance();
-    
+
     as_ruleset_factory.setParameter('rulesetInfo', ruleset_info);
     as_ruleset_factory.setParameter('ruleMappingInfo', rule_mappings);
-    
+
     as_ruleset_factory.setFeature('locale', 'en-us');
 
-    var as_ruleset = as_ruleset_factory.newRuleset();    
+    var as_ruleset = as_ruleset_factory.newRuleset();
 
     OpenAjax.a11y.RulesetManager.addRuleset(as_ruleset);
   }
   catch (err) {
     OpenAjax.a11y.logger.error("[ARIA STRICT Ruleset] ** Error creating ARIA Strict Ruleset");
-  } 
-  
+  }
+
 }();
 

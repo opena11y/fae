@@ -1,5 +1,5 @@
 /*
- * Copyright 2011-2017  OpenAjax Alliance
+ * Copyright 2011-2018 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,20 +17,20 @@
 /* --------------------------------------------------------------------------- */
 /*       OpenAjax Alliance Rules National Language Support (NLS): English      */
 /* --------------------------------------------------------------------------- */
-   
+
 
 OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 
     rule_scope: ['unknown', 'Element', 'Page', 'Website'],
-    
+
     message_severities: {
-      MUST  : 'must', 
+      MUST  : 'must',
       SHOULD: 'should'
     },
-    
+
     rule_categories: {
            '1': 'Audio and Video',
-           '2': 'Tables',  
+           '2': 'Tables',
            '4': 'Forms',
            '8': 'Images',
           '16': 'Keyboard Support',
@@ -42,11 +42,11 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
     },
 
     ACTION_NONE: 'None',
-    
+
     NOT_APPLICABLE: 'N/A'
-    
+
 });/*
- * Copyright 2011-2017  OpenAjax Alliance
+ * Copyright 2011-2018 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -254,7 +254,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
     }
 });
 /*
- * Copyright 2011-2017  OpenAjax Alliance
+ * Copyright 2011-2018 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -272,7 +272,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 /* --------------------------------------------------------------------------- */
 /*       OpenAjax Alliance Rules National Language Support (NLS): English      */
 /* --------------------------------------------------------------------------- */
-   
+
 
 OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 
@@ -304,7 +304,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               PAGE_FAIL_1:      'Link does not reference a valid target on the page.',
               PAGE_MC_1:        'Verify that that the target of the "skip to main content" link is focusable.',
               PAGE_MC_2:        'Verify that the page provides a link or other means of skipping to the main content of the page.'
-            },  
+            },
             PURPOSE: [
               'Most pages of websites typically have navigation menus, page headers and other repeated content before the main content of the page.',
               'For keyboard-only and screen reader users, a link or other means of skipping these types of content blocks makes it easy to go directly to the main content of the page, without first having to tab through the repeated content.'
@@ -322,24 +322,24 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               'After moving focus to the main content, the next tab should move you to the first link, form control or other interactive element after the main content.'
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HTML 4.01 Specification: 12.2 The A element', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML 4.01 Specification: 12.2 The A element',
                 url:   'http://www.w3.org/TR/html4/struct/links.html#edef-A'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'WAI-ARIA 1.0 Authoring Practices: Using Tabindex to Manage Focus among Widgets', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'WAI-ARIA 1.0 Authoring Practices: Using Tabindex to Manage Focus among Widgets',
                 url:   'http://www.w3.org/TR/2013/WD-wai-aria-practices-20130307/#focus_tabindex'
               },
-              { type:  OpenAjax.a11y.REFERENCES.TECHNIQUE, 
-                title: 'SkipTo plugin by PayPal Accessibility Team', 
+              { type:  OpenAjax.a11y.REFERENCES.TECHNIQUE,
+                title: 'SkipTo plugin by PayPal Accessibility Team',
                 url:   'http://paypal.github.io/skipto/'
-              }                            
+              }
             ]
       }
-    }     
+    }
 });
 /*
- * Copyright 2011-2017  OpenAjax Alliance
+ * Copyright 2011-2018 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -357,7 +357,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 /* --------------------------------------------------------------------------- */
 /*       OpenAjax Alliance Rules National Language Support (NLS): English      */
 /* --------------------------------------------------------------------------- */
-   
+
 
 OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 
@@ -389,8 +389,8 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_MC_3:     'CCR of %1 is greater than 3.1 for large or bolded text, but background image may reduce color contrast.',
               ELEMENT_MC_4:     'CCR of %1 is less than or equal to 3.1 for large and bolded text, but background image may improve color contrast.',
               ELEMENT_HIDDEN_1: 'CCR was not tested since the text is hidden from assistive technologies.'
-            },  
-            PURPOSE:        [ 'The higher the color contrast of text the more easy it is to read, especially for people with visual impairments.'                   
+            },
+            PURPOSE:        [ 'The higher the color contrast of text the more easy it is to read, especially for people with visual impairments.'
                             ],
             TECHNIQUES:     [ 'Change the foreground color to a more complementary color to the background color.',
                               'Change the background color to a more complementary color to the foreground color.',
@@ -399,12 +399,12 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             MANUAL_CHECKS:  [ 'Use graphic editing tools to analyze the color(s) of the background image and then recacluate the CCR with the range of colors in the background image.',
                               'Verify the range of colors that could be part of the background of text is have a CCR > 4.5.'
             ],
-            INFORMATIONAL_LINKS: [{ type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                               title: 'WCAG 2.0 Success Criterion 1.4.3 Contrast (Minimum): The visual presentation of text and images of text has a contrast ratio of at least 4.5:1', 
+            INFORMATIONAL_LINKS: [{ type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                               title: 'WCAG 2.0 Success Criterion 1.4.3 Contrast (Minimum): The visual presentation of text and images of text has a contrast ratio of at least 4.5:1',
                                url:   'http://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast'
                              },
-                             { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                               title: 'How to meet Success Criterion 1.4.3 Contrast (Minimum): The visual presentation of text and images of text has a contrast ratio of at least 4.5:1', 
+                             { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                               title: 'How to meet Success Criterion 1.4.3 Contrast (Minimum): The visual presentation of text and images of text has a contrast ratio of at least 4.5:1',
                                url:   'http://www.w3.org/WAI/WCAG20/quickref/#qr-visual-audio-contrast'
                              },
                             { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
@@ -435,7 +435,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             },
             NODE_RESULT_MESSAGES: {
               PAGE_MC_1: 'Verify color is not used as the only visual means of conveying information, indicating an action, prompting a response, or distinguishing a visual element on the page.'
-            },  
+            },
             PURPOSE:        [ 'For people with color blindness and other forms of visual impairments will not be able to see colors or color differences.',
                               'This requirement also includes references to color of content on page to identify some type of information, there should be redundant labeling of the content, for example using text labels to also identify and refer to the information.'
                             ],
@@ -444,12 +444,12 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
                             ],
             MANUAL_CHECKS:  [ 'Verify the page does not use color alone to identify or refer to information on the page.'
                             ],
-            INFORMATIONAL_LINKS: [{ type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                               title: 'WCAG 2.0 Success Criterion 1.4.1 Use of Color', 
+            INFORMATIONAL_LINKS: [{ type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                               title: 'WCAG 2.0 Success Criterion 1.4.1 Use of Color',
                                url:   'http://www.w3.org/TR/WCAG20/#visual-audio-contrast-without-color'
                              },
-                             { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                               title: 'How to meet Success Criterion 1.4.1 Use of Color', 
+                             { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                               title: 'How to meet Success Criterion 1.4.1 Use of Color',
                                url:   'http://www.w3.org/WAI/WCAG20/quickref/#qr-visual-audio-contrast-without-color'
                              },
                             { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
@@ -458,10 +458,10 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
                             }
                             ]
         }
-   }     
+   }
 });
 /*
- * Copyright 2011-2017  OpenAjax Alliance
+ * Copyright 2011-2018 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -747,7 +747,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
     }
 });
 /*
- * Copyright 2011-2017  OpenAjax Alliance
+ * Copyright 2011-2018 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1046,7 +1046,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
     }
 });
 /*
- * Copyright 2011-2017  OpenAjax Alliance
+ * Copyright 2011-2018 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1625,7 +1625,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         }    }
 });
 /*
- * Copyright 2011-2017  OpenAjax Alliance
+ * Copyright 2011-2018 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -1738,7 +1738,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
   }
 });
 /*
- * Copyright 2011-2017  OpenAjax Alliance
+ * Copyright 2011-2018 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -2219,7 +2219,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
   }
 });
 /*
- * Copyright 2011-2017  OpenAjax Alliance
+ * Copyright 2011-2018 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -2332,11 +2332,11 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
           url:   'http://www.w3.org/TR/html4/struct/global.html#edef-H1'
         },
         { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-          title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: @main@ role',
+          title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: @main@ role',
           url:   'http://www.w3.org/TR/wai-aria/#main'
         },
         { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-          title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: @banner@ role',
+          title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: @banner@ role',
           url:   'http://www.w3.org/TR/wai-aria/#banner'
         }
       ]
@@ -2509,7 +2509,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
       ],
       INFORMATIONAL_LINKS: [
         { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-          title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: landmark roles',
+          title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: landmark roles',
           url:   'http://www.w3.org/TR/wai-aria/#landmark'
         },
         { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
@@ -2558,7 +2558,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: contentinfo role',
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: contentinfo role',
                 url:   'http://www.w3.org/TR/wai-aria/#contentinfo'
               }
             ]
@@ -2566,7 +2566,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
     }
 });
 /*
- * Copyright 2011-2017  OpenAjax Alliance
+ * Copyright 2011-2018 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -2584,7 +2584,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 /* --------------------------------------------------------------------------- */
 /*       OpenAjax Alliance Rules National Language Support (NLS): English      */
 /* --------------------------------------------------------------------------- */
-   
+
 
 OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 
@@ -2609,7 +2609,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_HIDDEN_1: '@b@ element is hidden, but should be changed to a @strong@ element or to a heading element (i.e. @h1-h6@), depending on its purpose in the page, in case it becomes visible.',
               ELEMENT_FAIL_2: 'Change the @i@ element to an @em@ element or to a heading element (i.e. @h1-h6@), depending on its purpose in the page.',
               ELEMENT_HIDDEN_2: '@i@ element is hidden, but should be changed to an @em@ element or to a heading element (i.e. @h1-h6@), depending on its purpose in the page, in case it becomes visible.'
-            },  
+            },
             PURPOSE: [
               'In inline formatting use, the @b@ and @i@ elements do not convey the semantics of the text content.',
               'The @b@ and @i@ elements are often misused for emphasizing words in a sentence, or to change the styling of content being used as a section header in the page.'
@@ -2622,16 +2622,16 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             MANUAL_CHECKS: [
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HTML 4.01 Specification: Headings: The em and strong elements', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML 4.01 Specification: Headings: The em and strong elements',
                 url:   'http://www.w3.org/TR/html4/struct/text.html#edef-EM'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HTML 4.01 Specification: Headings: The H1-H6 elements', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML 4.01 Specification: Headings: The H1-H6 elements',
                 url:   'http://www.w3.org/TR/html4/struct/global.html#edef-H2'
               }
             ]
-        },    
+        },
         HTML_2: {
             ID:                    'HTML 2',
             DEFINITION:            '@marquee@ elements %s be removed to improve readability of content.',
@@ -2647,7 +2647,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             NODE_RESULT_MESSAGES: {
               ELEMENT_FAIL_1: 'Change the @marquee@ element to a standard HTML element. Use CSS techniques to style the content, and JavaScript to provide controls that stop and start the scrolling.',
               ELEMENT_HIDDEN_1: '@marquee@ element is hidden, but should be changed to a standard HTML element, in case it becomes visible. Use CSS techniques to style the content, and JavaScript to provide controls that stop and start the scrolling.'
-            },  
+            },
             PURPOSE: [
               'Automatically moving text cannot be read by many people with visual impairments or by people with learning disabilities that affect reading.'
             ],
@@ -2667,7 +2667,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
    }
 });
 /*
- * Copyright 2011-2017  OpenAjax Alliance
+ * Copyright 2011-2018 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -2738,7 +2738,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
           title: 'Mozilla Developer Network: DOM on-event handlers',
           url:   'https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Event_handlers'
-        },       
+        },
         { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
           title: 'Mozilla Developer Network: EventTarget.addEventListener()',
           url:   'https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener'
@@ -2848,7 +2848,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
   }
 });
 /*
- * Copyright 2011-2017  OpenAjax Alliance
+ * Copyright 2011-2018 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -2913,7 +2913,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: main role',
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: main role',
                 url:   'http://www.w3.org/TR/wai-aria/#main'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
@@ -2979,7 +2979,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Landmark Roles',
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: Landmark Roles',
                 url:   'http://www.w3.org/TR/wai-aria/#landmark_roles'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
@@ -3044,7 +3044,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: navigation role',
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: navigation role',
                 url:   'http://www.w3.org/TR/wai-aria/#navigation'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
@@ -3105,7 +3105,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: banner role',
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: banner role',
                 url:   'http://www.w3.org/TR/wai-aria/#banner'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
@@ -3175,7 +3175,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: banner role',
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: banner role',
                 url:   'http://www.w3.org/TR/wai-aria/#banner'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
@@ -3237,7 +3237,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: contentinfo role',
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: contentinfo role',
                 url:   'http://www.w3.org/TR/wai-aria/#contentinfo'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
@@ -3309,7 +3309,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: contentinfo role',
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: contentinfo role',
                 url:   'http://www.w3.org/TR/wai-aria/#contentinfo'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
@@ -3369,7 +3369,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: banner role',
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: banner role',
                 url:   'http://www.w3.org/TR/wai-aria/#banner'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
@@ -3428,7 +3428,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: banner role',
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: banner role',
                 url:   'http://www.w3.org/TR/wai-aria/#banner'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
@@ -3440,7 +3440,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
                 url:   'http://www.w3.org/TR/html5/sections.html#sections'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Landmark Roles',
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: Landmark Roles',
                 url:   'http://www.w3.org/TR/wai-aria/#landmark_roles'
               }
             ]
@@ -3483,7 +3483,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: navigation role',
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: navigation role',
                 url:   'http://www.w3.org/TR/wai-aria/#navigation'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
@@ -3530,7 +3530,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: main role',
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: main role',
                 url:   'http://www.w3.org/TR/wai-aria/#main'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
@@ -3581,7 +3581,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: contentinfo role',
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: contentinfo role',
                 url:   'http://www.w3.org/TR/wai-aria/#contentinfo'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
@@ -3632,7 +3632,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: contentinfo role',
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: contentinfo role',
                 url:   'http://www.w3.org/TR/wai-aria/#contentinfo'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
@@ -3644,7 +3644,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
                 url:   'http://www.w3.org/TR/html5/sections.html#sections'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Landmark Roles',
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: Landmark Roles',
                 url:   'http://www.w3.org/TR/wai-aria/#landmark_roles'
               }
             ]
@@ -3690,7 +3690,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: search role',
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: search role',
                 url:   'http://www.w3.org/TR/wai-aria/#search'
               },
               { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
@@ -3750,7 +3750,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: form role',
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: form role',
                 url:   'http://www.w3.org/TR/wai-aria/#form'
               },
               { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
@@ -3806,7 +3806,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: region role',
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: region role',
                 url:   'http://www.w3.org/TR/wai-aria/#region'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
@@ -3870,7 +3870,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: region role',
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: region role',
                 url:   'http://www.w3.org/TR/wai-aria/#region'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
@@ -3936,7 +3936,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Landmark Roles',
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: Landmark Roles',
                 url:   'http://www.w3.org/TR/wai-aria/#landmark_roles'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
@@ -3998,7 +3998,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: complementary role',
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: complementary role',
                 url:   'http://www.w3.org/TR/wai-aria/#complementary'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
@@ -4022,7 +4022,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
    }
 });
 /*
- * Copyright 2011-2017  OpenAjax Alliance
+ * Copyright 2011-2018 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -4040,7 +4040,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 /* --------------------------------------------------------------------------- */
 /*       OpenAjax Alliance Rules National Language Support (NLS): English      */
 /* --------------------------------------------------------------------------- */
-   
+
 
 OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 
@@ -4060,7 +4060,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               PAGE_PASS_1: 'The @html@ element defines the \'%1\' language code.',
               PAGE_FAIL_1: 'Add a @lang@ attribute with a valid IANA code to the  @html@ element of the page.',
               PAGE_FAIL_2: 'Change the language code \'%1\' defined in the @lang@ attribute of the @html@ element to a valid IANA code.'
-            },  
+            },
             PURPOSE: [
               'Assistive technologies like screen readers and other speech output technologies need to know the languages represented by the characters in order to speak the text content correctly.'
             ],
@@ -4071,28 +4071,28 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             MANUAL_CHECKS: [
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HTML4: Specifying the language of content: the lang attribute', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML4: Specifying the language of content: the lang attribute',
                 url:   'http://www.w3.org/TR/html4/struct/dirlang.html#adef-lang'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HTML5: The lang and xml:lang attributes', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML5: The lang and xml:lang attributes',
                 url:   'http://www.w3.org/TR/html5/dom.html#the-lang-and-xml:lang-attributes'
               },
-              { type:  OpenAjax.a11y.REFERENCES.OTHER, 
-                title: 'W3C Internationalization: Language tags in HTML and XML', 
+              { type:  OpenAjax.a11y.REFERENCES.OTHER,
+                title: 'W3C Internationalization: Language tags in HTML and XML',
                 url:   'http://www.w3.org/International/articles/language-tags/'
               },
-              { type:  OpenAjax.a11y.REFERENCES.OTHER, 
-                title: 'W3C Internationalization: Choosing a Language Tag', 
+              { type:  OpenAjax.a11y.REFERENCES.OTHER,
+                title: 'W3C Internationalization: Choosing a Language Tag',
                 url:   'http://www.w3.org/International/questions/qa-choosing-language-tags'
               },
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'H57: Using language attributes on the html element', 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'H57: Using language attributes on the html element',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/H57'
-              }                            
+              }
             ]
-        },    
+        },
         LANGUAGE_2: {
             ID:                    'Language 2',
             DEFINITION:            'Elements with text content in a different language from the principal language of the page %s use the @lang@ attribute with a valid IANA language code to identify the change.',
@@ -4113,7 +4113,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_PASS_1: 'The @%1@ element has the valid language code of \'%2\'',
               ELEMENT_FAIL_1: 'Change the value \'%2\' defined for the @lang@ attribute on the @%1@ element to a valid IANA language code.',
               ELEMENT_HIDDEN_1: 'The @%1@ element with the language code \'%2\' is hidden'
-            },  
+            },
             PURPOSE: [
               'Assistive technologies like screen readers and other speech output technologies need to know the language of the characters of an element to speak the text content correctly.'
             ],
@@ -4126,41 +4126,41 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               'If any changes in language are found, use the @lang@ attribute to identify them.'
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HTML4: Specifying the language of content: the lang attribute', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML4: Specifying the language of content: the lang attribute',
                 url:   'http://www.w3.org/TR/html4/struct/dirlang.html#adef-lang'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HTML5: The lang and xml:lang attributes', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML5: The lang and xml:lang attributes',
                 url:   'http://www.w3.org/TR/html5/dom.html#the-lang-and-xml:lang-attributes'
               },
-              { type:  OpenAjax.a11y.REFERENCES.OTHER, 
-                title: 'W3C Internationalization: Language tags in HTML and XML', 
+              { type:  OpenAjax.a11y.REFERENCES.OTHER,
+                title: 'W3C Internationalization: Language tags in HTML and XML',
                 url:   'http://www.w3.org/International/articles/language-tags/'
               },
-              { type:  OpenAjax.a11y.REFERENCES.OTHER, 
-                title: 'W3C Internationalization: Choosing a Language Tag', 
+              { type:  OpenAjax.a11y.REFERENCES.OTHER,
+                title: 'W3C Internationalization: Choosing a Language Tag',
                 url:   'http://www.w3.org/International/questions/qa-choosing-language-tags'
               },
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'H58: Using language attributes to identify changes in the human language', 
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'H58: Using language attributes to identify changes in the human language',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/H58'
-              }                             
+              }
             ]
-        },    
+        },
         LANGUAGE_3: {
             ID:                    'Language 3',
             DEFINITION:            'Elements with @lang@ attribute %s have valid IANA language codes.',
             SUMMARY:               'Valid IANA language codes',
             TARGET_RESOURCES_DESC: 'Elements with lang attributes',
             RULE_RESULT_MESSAGES: {
-              NOT_APPLICABLE: 'No elements with @lang@ attribute defined'             
+              NOT_APPLICABLE: 'No elements with @lang@ attribute defined'
             },
             NODE_RESULT_MESSAGES: {
               ELEMENT_PASS_1:   'The @%1@ element defines the \'%2\' language code.',
               ELEMENT_FAIL_1: 'Change the language code \'%2\' defined in the @lang@ attribute of the @%1@ element to a valid IANA language code.',
               ELEMENT_HIDDEN_1: 'The @%1@ element with the language code \'%2\' is hidden.'
-            },  
+            },
             PURPOSE: [
               'Assistive technologies like screen readers and other speech output technologies need to know the language of the characters of an element in order to speak the text content correctly.'
             ],
@@ -4171,28 +4171,28 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             MANUAL_CHECKS: [
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HTML4: Specifying the language of content: the lang attribute', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML4: Specifying the language of content: the lang attribute',
                 url:   'http://www.w3.org/TR/html4/struct/dirlang.html#adef-lang'
               },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HTML5: The lang and xml:lang attributes', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML5: The lang and xml:lang attributes',
                 url:   'http://www.w3.org/TR/html5/dom.html#the-lang-and-xml:lang-attributes'
               },
-              { type:  OpenAjax.a11y.REFERENCES.OTHER, 
-                title: 'W3C Internationalization: Language tags in HTML and XML', 
+              { type:  OpenAjax.a11y.REFERENCES.OTHER,
+                title: 'W3C Internationalization: Language tags in HTML and XML',
                 url:   'http://www.w3.org/International/articles/language-tags/'
               },
-              { type:  OpenAjax.a11y.REFERENCES.OTHER, 
-                title: 'W3C Internationalization: Choosing a Language Tag', 
+              { type:  OpenAjax.a11y.REFERENCES.OTHER,
+                title: 'W3C Internationalization: Choosing a Language Tag',
                 url:   'http://www.w3.org/International/questions/qa-choosing-language-tags'
-              }                            
+              }
             ]
         }
-   }     
+   }
 });
 /*
- * Copyright 2011-2017  OpenAjax Alliance
+ * Copyright 2011-2018 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -4210,7 +4210,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 /* --------------------------------------------------------------------------- */
 /*       OpenAjax Alliance Rules National Language Support (NLS): English      */
 /* --------------------------------------------------------------------------- */
-   
+
 
 OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 
@@ -4226,8 +4226,8 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             RULE_RESULT_MESSAGES: {
               MANUAL_CHECK_S:    'Verify document has a meaningful sequence when layout table markup is disabled.  If content does not have a meaningful sequence, reorganize content on the page to have a meaningful sequence when layout tables are disabled.',
               HIDDEN_S:          'One @table@ element that is hidden was not evaluated.',
-              HIDDEN_P:          '%N_H @table@ elements that are hidden were not evaluated.',   
-              NOT_APPLICABLE: 'No layout tables found on this page.'             
+              HIDDEN_P:          '%N_H @table@ elements that are hidden were not evaluated.',
+              NOT_APPLICABLE: 'No layout tables found on this page.'
             },
             NODE_RESULT_MESSAGES: {
               PAGE_PASS_1:      'Page does not have any tables or layout tables are only one column wide.',
@@ -4237,10 +4237,10 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_MC_2:     'Verify the content in the %1x%2 layout table has a meaningful sequence of content when table markup is disabled, if the table is actually a data table add data table markup to give the table an effective caption and the data tables headings.',
               ELEMENT_MC_3:     'Verify the nesting of tables for layout of content maintains a meaningful sequence of content when table markup is disabled.',
               ELEMENT_HIDDEN_1: 'Meaningful sequence was not tested The layout @table@ is hidden from assistive technologies.'
-            },  
+            },
             PURPOSE: [
               'The sequence of the content (i.e. reading order) in a web page affects the conveyed meaning, especially for users of assistive technologies who cannot see the relationships between sections of content as provided by the visual cues in a graphical layout.',
-              'Using table markup for page layout is one way in which the DOM order of web content can be altered such that it makes sense visually, but the reading order rendered by assistive technologies is no longer meaningful.'     
+              'Using table markup for page layout is one way in which the DOM order of web content can be altered such that it makes sense visually, but the reading order rendered by assistive technologies is no longer meaningful.'
             ],
             TECHNIQUES: [
               'Use CSS and web standards techniques for the coding of content, and the graphical styling and positioning of content.',
@@ -4253,51 +4253,51 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               'With layout tables disabled, view the content to make sure the reading order and structure of the document makes sense.'
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification: Visual formatting model', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification: Visual formatting model',
                 url:   'http://www.w3.org/TR/CSS21/visuren.html'
-              }, 
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'G57: Ordering the content in a meaningful sequence', 
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G57: Ordering the content in a meaningful sequence',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/G57'
-              }, 
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'C6: Positioning content based on structural markup', 
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'C6: Positioning content based on structural markup',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/C6'
-              }, 
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'C8: Using CSS letter-spacing to control spacing within a word', 
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'C8: Using CSS letter-spacing to control spacing within a word',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/C8'
-              }, 
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'C27: Making the DOM order match the visual order', 
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'C27: Making the DOM order match the visual order',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/C27'
-              }, 
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'F1: Failure of Success Criterion 1.3.2 due to changing the meaning of content by positioning information with CSS', 
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'F1: Failure of Success Criterion 1.3.2 due to changing the meaning of content by positioning information with CSS',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/F1'
-              }, 
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'F33: Failure of Success Criterion 1.3.1 and 1.3.2 due to using white space characters to create multiple columns in plain text content', 
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'F33: Failure of Success Criterion 1.3.1 and 1.3.2 due to using white space characters to create multiple columns in plain text content',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/F33'
-              }, 
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'F34: Failure of Success Criterion 1.3.1 and 1.3.2 due to using white space characters to format tables in plain text content', 
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'F34: Failure of Success Criterion 1.3.1 and 1.3.2 due to using white space characters to format tables in plain text content',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/F34'
-              }, 
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'F49: Failure of Success Criterion 1.3.2 due to using an HTML layout table that does not make sense when linearized', 
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'F49: Failure of Success Criterion 1.3.2 due to using an HTML layout table that does not make sense when linearized',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/F49'
-              }, 
-              { type:  OpenAjax.a11y.REFERENCES.OTHER, 
-                title: 'Web Standards Group', 
+              },
+              { type:  OpenAjax.a11y.REFERENCES.OTHER,
+                title: 'Web Standards Group',
                 url:   'http://webstandardsgroup.org/standards/'
-              }, 
-              { type:  OpenAjax.a11y.REFERENCES.OTHER, 
-                title: 'W3C Standards', 
+              },
+              { type:  OpenAjax.a11y.REFERENCES.OTHER,
+                title: 'W3C Standards',
                 url:   'http://www.w3.org/standards/'
               }
-            ]   
+            ]
         },
         LAYOUT_2: {
             ID:                    'Layout 2',
@@ -4309,16 +4309,16 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               FAIL_P:   'Update the markup and CSS on this page to remove the nesting of %N_F layout tables that are nested.',
               HIDDEN_S: 'One table element that is hidden was not evaluated.',
               HIDDEN_P: '%N_H table elements that are hidden were not evaluated.',
-              NOT_APPLICABLE:  'No table elements used for layout.'              
+              NOT_APPLICABLE:  'No table elements used for layout.'
             },
             NODE_RESULT_MESSAGES: {
               ELEMENT_PASS_1:    'Table is not nested with another layout table.',
               ELEMENT_PASS_2:    'Table is one column wide, and will have the same document sequence when table markup is disabled.',
               ELEMENT_FAIL_1:  'Update the markup and CSS on this page to remove the nesting of this layout table.',
               ELEMENT_HIDDEN_1:  'Table nesting was not tested beacuse the @table@ is hidden from assistive technology.'
-            },  
+            },
             PURPOSE: [
-              'The sequence of content (i.e. order) in the document code affects its meaning, nesting layout tables often makes the sequence of content less understandable.'                   
+              'The sequence of content (i.e. order) in the document code affects its meaning, nesting layout tables often makes the sequence of content less understandable.'
             ],
             TECHNIQUES: [
               'Use CSS and web standards techniques for the coding of content, and the graphical styling and positioning of content.',
@@ -4329,27 +4329,27 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             MANUAL_CHECKS: [
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification: Visual formatting model', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Cascading Style Sheets Level 2 Revision 1 (CSS 2.1) Specification: Visual formatting model',
                 url:   'http://www.w3.org/TR/CSS21/visuren.html'
-              }, 
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'F33: Failure of Success Criterion 1.3.1 and 1.3.2 due to using white space characters to create multiple columns in plain text content', 
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'F33: Failure of Success Criterion 1.3.1 and 1.3.2 due to using white space characters to create multiple columns in plain text content',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/F33'
-              }, 
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'F49: Failure of Success Criterion 1.3.2 due to using an HTML layout table that does not make sense when linearized', 
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'F49: Failure of Success Criterion 1.3.2 due to using an HTML layout table that does not make sense when linearized',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/F49'
-              }, 
-              { type:  OpenAjax.a11y.REFERENCES.OTHER, 
-                title: 'Web Standards Group', 
+              },
+              { type:  OpenAjax.a11y.REFERENCES.OTHER,
+                title: 'Web Standards Group',
                 url:   'http://webstandardsgroup.org/standards/'
-              }, 
-              { type:  OpenAjax.a11y.REFERENCES.OTHER, 
-                title: 'W3C Standards', 
+              },
+              { type:  OpenAjax.a11y.REFERENCES.OTHER,
+                title: 'W3C Standards',
                 url:   'http://www.w3.org/standards/'
               }
-            ]   
+            ]
         },
         LAYOUT_3: {
             ID:                    'Layout 3',
@@ -4357,21 +4357,21 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             SUMMARY:               'Verify @aria-flowto@ supports reading order',
             TARGET_RESOURCES_DESC: 'Elements with @aria-flowto@ attribute',
             RULE_RESULT_MESSAGES: {
-              MANUAL_CHECK_S:    'Verify the element with the @aria-flowto@ attribute contributes to the intended reading order of content on the page.',   
+              MANUAL_CHECK_S:    'Verify the element with the @aria-flowto@ attribute contributes to the intended reading order of content on the page.',
               MANUAL_CHECK_P:    'Verify the %N_MC elements with the @aria-flowto@ attributes contribute to the intended reading order of content on the page.',
               HIDDEN_S:          'One element with @aria-flowto@ attribute that is hidden was not evaluated.',
-              HIDDEN_P:          '%N_H elements with @aria-flowto@ attribute that are hidden were not evaluated.',                 
-              NOT_APPLICABLE:  'No elements with @aria-flowto@ attribute found.'              
+              HIDDEN_P:          '%N_H elements with @aria-flowto@ attribute that are hidden were not evaluated.',
+              NOT_APPLICABLE:  'No elements with @aria-flowto@ attribute found.'
             },
             NODE_RESULT_MESSAGES: {
               ELEMENT_MC_1:     'Verify the content reflow defined by the @aria-flowto@ attribute on the  @%1@ element creates a meaningful reading order.',
               ELEMENT_HIDDEN_1: '@%1@ element with @aria-flowto@ attribute was not evaluated because it is hidden from assistive technologies.'
-            },  
+            },
             PURPOSE: [
               'The reading order of content on the page can, in some cases, be made easier to understand by users of assistive technology with the use of @aria-flowto@.',
               'By default the reading order used by assisitive technologies is the same as the DOM ordering of content.',
               'When the DOM order of content is interspersed with unrelated content, @aria-flowto@ can be used to keep related content together.  For example a multi-column newspaper where an article spans several columns, @aria-flowto@ can be used to make it look like one continuous column to assistive technology.',
-              'The @aria-flowto@ reorganizes the content by changing the order of how the content is represented in accessibility Application Programming Interfaces (APIs) used by operating systems to communicate to screen readers.'                
+              'The @aria-flowto@ reorganizes the content by changing the order of how the content is represented in accessibility Application Programming Interfaces (APIs) used by operating systems to communicate to screen readers.'
             ],
             TECHNIQUES: [
               'The @aria-flowto@ attribute value contains a sequence of @idrefs@ that changes the reading order of content on the page as rendered by assistive technologies.',
@@ -4381,15 +4381,15 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: flowto property',
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: flowto property',
                 url:   'https://www.w3.org/TR/wai-aria/states_and_properties#aria-flowto'
               }
-            ]   
+            ]
         }
-   }     
+   }
 });
 /*
- * Copyright 2011-2017  OpenAjax Alliance
+ * Copyright 2011-2018 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -4551,7 +4551,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
   }
 });
 /*
- * Copyright 2011-2017  OpenAjax Alliance
+ * Copyright 2011-2018 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -4728,7 +4728,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 });
 
 /*
- * Copyright 2011-2017  OpenAjax Alliance
+ * Copyright 2011-2018 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -4981,7 +4981,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
    }
 });
 /*
- * Copyright 2011-2017  OpenAjax Alliance
+ * Copyright 2011-2018 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -5050,7 +5050,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
   }
 });
 /*
- * Copyright 2011-2017 OpenAjax Alliance
+ * Copyright 2011-2018 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -5068,7 +5068,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 /* --------------------------------------------------------------------------- */
 /*       OpenAjax Alliance Rules National Language Support (NLS): English      */
 /* --------------------------------------------------------------------------- */
-   
+
 
 OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 
@@ -5083,10 +5083,10 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             TARGET_RESOURCES_DESC: 'All pages',
             RULE_RESULT_MESSAGES: {
               MANUAL_CHECK_S:  'Resize the text using the zoom feature of the browser to check to make sure text content is visible (e.g. text is not clipped by iframe sizes or CSS overflow limits).'
-            },            
+            },
             NODE_RESULT_MESSAGES: {
               PAGE_MC_1:      'Resize the text using the zoom feature of the browser to check to make sure text content is visible (e.g. text is not clipped by iframe sizes or CSS overflow limits).'
-            },  
+            },
             PURPOSE: [
               'People with visual impairments may increase the size of text and the text should reflow to fit the available viewing area to make it easier to read.',
               'If text is clipped by limits on iframe sizes or CSS overflow properties some text content will be impossible to view.'
@@ -5104,10 +5104,10 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               }
             ]
         }
-    }       
+    }
 });
 /*
- * Copyright 2011-2017  OpenAjax Alliance
+ * Copyright 2011-2018 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -5799,7 +5799,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
    }
 });
 /*
- * Copyright 2011-2017  OpenAjax Alliance
+ * Copyright 2011-2018 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -5817,7 +5817,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 /* --------------------------------------------------------------------------- */
 /*       OpenAjax Alliance Rules National Language Support (NLS): English      */
 /* --------------------------------------------------------------------------- */
-   
+
 
 OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 
@@ -5835,7 +5835,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             },
             NODE_RESULT_MESSAGES: {
               ELEMENT_MC_1: 'Verify that understanding the content, navigation of links and operation of controls and widgets does not depend solely on the shape, size, visual location, orientation, or sound.'
-            },  
+            },
             PURPOSE:        [ 'People with visual impairments and learning disabilities that affect the visual processing of information may not be able to perceive the content or identify the purpose of links and controls.',
                               'People with hearing impairments and learning disabilities that affect the auditory processing of information may not be able to perceive the content or identify the purpose of links and controls.'
                             ],
@@ -5843,20 +5843,20 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
                             ],
             MANUAL_CHECKS:  [ 'Verify that understanding the content, navigation of links and operation of controls and widgets does not depend solely on the shape, size, visual location, orientation, or sound.'
                             ],
-            INFORMATIONAL_LINKS: [{ type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                               title: 'WCAG 2.0 Success Criterion 1.3.3 Sensory Characteristics', 
+            INFORMATIONAL_LINKS: [{ type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                               title: 'WCAG 2.0 Success Criterion 1.3.3 Sensory Characteristics',
                                url:   'http://www.w3.org/TR/WCAG20/#content-structure-separation-understanding'
                              },
-                             { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                               title: 'How to meet Success Criterion 1.3.3 Sensory Characteristics', 
+                             { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                               title: 'How to meet Success Criterion 1.3.3 Sensory Characteristics',
                                url:   'http://www.w3.org/WAI/WCAG20/quickref/#qr-content-structure-separation-understanding'
                              }
                             ]
         }
-    }  
+    }
 });
 /*
- * Copyright 2011-2017  OpenAjax Alliance
+ * Copyright 2011-2018 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -6394,7 +6394,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
    }
 });
 /*
- * Copyright 2011-2017 OpenAjax Alliance
+ * Copyright 2011-2018 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -6412,7 +6412,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 /* --------------------------------------------------------------------------- */
 /*       OpenAjax Alliance Rules National Language Support (NLS): English      */
 /* --------------------------------------------------------------------------- */
-   
+
 
 OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 
@@ -6427,10 +6427,10 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             TARGET_RESOURCES_DESC: 'Pages with scripting or other embedded technologies to control the response time for input or the amount of time to view content',
             RULE_RESULT_MESSAGES: {
               MANUAL_CHECK_S:  'If the page contains time limits, verify that there is a way to turn off, adjust or extend the time limits; or that one of the three exceptions applies.'
-            },            
+            },
             NODE_RESULT_MESSAGES: {
               PAGE_MC_1:      'If the page contains time limits, verify that there is a way to turn off, adjust or extend the time limits; or that one of the three exceptions applies.'
-            },  
+            },
             PURPOSE: [
               'People with physical disabilities may need more time to respond to web sites with time limits for selecting an option.',
               'People with visual impairments and visual processing learning disabilities may need more time to read material if the rendering of the material is automatically removed or obscured after a time period.',
@@ -6467,7 +6467,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_MC_1:     'If the %1 element includes moving, blinking, scrolling or auto-updating content, verify there has a mechanism to pause, stop, or hide the information.',
               ELEMENT_HIDDEN_1: 'The %1 element has not evaluated for moving, blinking, scrolling or auto-updating content',
               PAGE_MC_1:        'If the page includes moving, blinking, scrolling or auto-updating content, verify there has a mechanism to pause, stop, or hide the information.'
-            },  
+            },
             PURPOSE: [
               'People with visual impairments and visual processing learning disabilities may not be able to read or understand content that is blinking, scrolling or auto updating'
             ],
@@ -6498,7 +6498,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_MC_1:     'Verify the %1 element does not include content that flashes more than three times in one second, unless below general flash and red flash thresholds.',
               ELEMENT_HIDDEN_1: 'The %1 element has not evaluated for moving, blinking, scrolling or auto-updating content',
               PAGE_MC_1:        'Verify the page does not include any content that flashes more than three times in one second, unless below general flash and red flash thresholds.'
-            },  
+            },
             PURPOSE: [
               'People who have photosensitive seizure disorders can have a seizure triggered by content that flashes at certain frequencies for more than a few flashes.',
               'People are even more sensitive to red flashing than to other colors.',
@@ -6516,10 +6516,10 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               }
             ]
         }
-    }     
+    }
 });
 /*
- * Copyright 2011-2017  OpenAjax Alliance
+ * Copyright 2011-2018 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -6537,7 +6537,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 /* --------------------------------------------------------------------------- */
 /*       OpenAjax Alliance Rules National Language Support (NLS): English      */
 /* --------------------------------------------------------------------------- */
-   
+
 
 OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 
@@ -6558,7 +6558,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               PAGE_MC_1:   'Verify that the @title@ element identifies both the website (if applicable) and the page content.',
               PAGE_FAIL_1: 'Add content to the @title@ element that identifies both the website (if applicable) and the page content.',
               PAGE_FAIL_2: 'Add a @title@ element to the page that identifies both the website (if applicable) and the page content.'
-            },  
+            },
             PURPOSE: [
               'The @title@ element content can be accessed by assistive technologies to orient the user to the website and page content.'
             ],
@@ -6572,16 +6572,16 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               'If the page is part of a sequence of web pages, verify that the title describes which step it is in the sequence.'
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HTML TITLE Element Specification', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML TITLE Element Specification',
                 url:   'http://www.w3.org/TR/html4/struct/global.html#edef-TITLE'
-              }, 
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'G88: Providing descriptive titles for Web pages', 
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G88: Providing descriptive titles for Web pages',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/G88'
-              }, 
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'H25: Providing a title using the title element', 
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'H25: Providing a title using the title element',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/H25'
               }
             ]
@@ -6612,7 +6612,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_FAIL_1: 'The @h1@ element does NOT have the same or similar content as the @title@ element.',
               ELEMENT_FAIL_2: 'Add content to the @h1@ element, or remove it from the page.',
               ELEMENT_HIDDEN_1: 'The @h1@ element is hidden from assistive technology and therefore does not describe the purpose or content of the page.'
-            },  
+            },
             PURPOSE: [
               '@h1@ elements can be accessed by assistive technologies to identify the page content and to orient users within the website. The @h1@ element may also be used to identify the website.'
             ],
@@ -6624,27 +6624,27 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             MANUAL_CHECKS: [
               'Verify that the @h1@ content identifies the page content.',
               'If applicable, verify that the @h1@ content of the page identifies the website to which it belongs.',
-              'If the web page is part of a sequence of web pages, verify that the @h1@ content indicates the step number of the sequence.'              
+              'If the web page is part of a sequence of web pages, verify that the @h1@ content indicates the step number of the sequence.'
             ],
             INFORMATIONAL_LINKS: [
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION, 
-                title: 'HTML TITLE Element Specification', 
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'HTML TITLE Element Specification',
                 url:   'http://www.w3.org/TR/html4/struct/global.html#edef-TITLE'
-              }, 
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'G88: Providing descriptive titles for Web pages', 
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'G88: Providing descriptive titles for Web pages',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/G88'
-              }, 
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE, 
-                title: 'H25: Providing a title using the title element', 
+              },
+              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
+                title: 'H25: Providing a title using the title element',
                 url:   'http://www.w3.org/TR/WCAG20-TECHS/H25'
               }
             ]
         }
-   }     
+   }
 });
 /*
- * Copyright 2011-2017  OpenAjax Alliance
+ * Copyright 2011-2018 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -7067,7 +7067,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
    }
 });
 /*
- * Copyright 2011-2017  OpenAjax Alliance
+ * Copyright 2011-2018 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -7130,15 +7130,15 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Accessible Name (e.g. label) Calculation',
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: Accessible Name (e.g. label) Calculation',
                 url:   'http://www.w3.org/TR/wai-aria/#namecalculation'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: aria-labelledby',
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: aria-labelledby',
                 url:   'http://www.w3.org/TR/wai-aria/#aria-labelledby'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: aria-label',
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: aria-label',
                 url:   'http://www.w3.org/TR/wai-aria/#aria-label'
               },
               { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
@@ -7199,7 +7199,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Widget Roles',
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: Widget Roles',
                 url:   'http://www.w3.org/TR/wai-aria/#widget_roles'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
@@ -7257,11 +7257,11 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Widget Roles',
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: Widget Roles',
                 url:   'http://www.w3.org/TR/wai-aria/#widget_roles'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Landmark Roles',
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: Landmark Roles',
                 url:   'http://www.w3.org/TR/wai-aria/#landmark_roles'
               },
               { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
@@ -7317,7 +7317,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Supported Property and States',
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: Supported Property and States',
                 url:   'http://www.w3.org/TR/wai-aria/#states_and_properties'
               },
               { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
@@ -7366,7 +7366,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Supported Property and States',
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: Supported Property and States',
                 url:   'http://www.w3.org/TR/wai-aria/#states_and_properties'
               },
               { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
@@ -7414,7 +7414,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Widget Roles',
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: Widget Roles',
                 url:   'http://www.w3.org/TR/wai-aria/#widget_roles'
               },
               { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
@@ -7462,7 +7462,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Widget Roles',
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: Widget Roles',
                 url:   'http://www.w3.org/TR/wai-aria/#widget_roles'
               },
               { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
@@ -7511,7 +7511,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Widget Roles',
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: Widget Roles',
                 url:   'http://www.w3.org/TR/wai-aria/#widget_roles'
               },
               { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
@@ -7559,7 +7559,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Widget Roles',
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: Widget Roles',
                 url:   'http://www.w3.org/TR/wai-aria/#widget_roles'
               },
               { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
@@ -7605,7 +7605,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Widget Roles',
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: Widget Roles',
                 url:   'http://www.w3.org/TR/wai-aria/#widget_roles'
               },
               { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
@@ -7658,7 +7658,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Widget Roles',
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: Widget Roles',
                 url:   'http://www.w3.org/TR/wai-aria/#widget_roles'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
@@ -7803,7 +7803,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Widget Roles',
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: Widget Roles',
                 url:   'http://www.w3.org/TR/wai-aria/#widget_roles'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
@@ -7870,27 +7870,27 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
                 url:   'https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Alert Role',
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: Alert Role',
                 url:   'https://www.w3.org/TR/wai-aria/roles#alert'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Log Role',
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: Log Role',
                 url:   'https://www.w3.org/TR/wai-aria/roles#log'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: Status Role',
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: Status Role',
                 url:   'https://www.w3.org/TR/wai-aria/roles#status'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: aria-live',
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: aria-live',
                 url:   'https://www.w3.org/TR/wai-aria/states_and_properties#aria-live'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: aria-atomic',
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: aria-atomic',
                 url:   'https://www.w3.org/TR/wai-aria/states_and_properties#aria-atomic'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.0 Specification: aria-relevant',
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: aria-relevant',
                 url:   'https://www.w3.org/TR/wai-aria/states_and_properties#aria-relevant'
               }
 
@@ -7899,7 +7899,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
     }
 });
 /**
- * Copyright 2011-2017 OpenAjax Alliance
+ * Copyright 2011-2018 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -7915,7 +7915,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
  */
 
 /* ---------------------------------------------------------------- */
-/*            OpenAjax Alliance Media Rules                         */ 
+/*            OpenAjax Alliance Media Rules                         */
 /* ---------------------------------------------------------------- */
 
 OpenAjax.a11y.RuleManager.addRulesFromJSON([
@@ -7924,10 +7924,10 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * @object AUDIO_1
  *
  * @desc Audio elements must have captions or text transcripts
- */ 
- 
-{ rule_id             : 'AUDIO_1', 
-  last_updated        : '2014-11-21', 
+ */
+
+{ rule_id             : 'AUDIO_1',
+  last_updated        : '2014-11-21',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.AUDIO_VIDEO,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
@@ -7942,7 +7942,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
     var MEDIA       = OpenAjax.a11y.MEDIA;
-  
+
     var audio_elements     = dom_cache.media_cache.audio_elements;
     var audio_elements_len = audio_elements.length;
 
@@ -7952,13 +7952,13 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
       var cs = de.computed_style;
 
       if ((cs.is_visible_to_at === VISIBILITY.VISIBLE) ||
-          (ae.has_autoplay)) {        
-        if (ae.getTextTracks().length) rule_result.addResult(TEST_RESULT.PASS, ae, 'ELEMENT_PASS_1', []);               
+          (ae.has_autoplay)) {
+        if (ae.getTextTracks().length) rule_result.addResult(TEST_RESULT.PASS, ae, 'ELEMENT_PASS_1', []);
         else if (de.has_aria_describedby) rule_result.addResult(TEST_RESULT.PASS, ae, 'ELEMENT_PASS_2', []);
-        else rule_result.addResult(TEST_RESULT.FAIL, ae, 'ELEMENT_FAIL_1', []);    
+        else rule_result.addResult(TEST_RESULT.FAIL, ae, 'ELEMENT_FAIL_1', []);
       }
       else {
-       rule_result.addResult(TEST_RESULT.HIDDEN, ae, 'ELEMENT_HIDDEN_1', []);     
+       rule_result.addResult(TEST_RESULT.HIDDEN, ae, 'ELEMENT_HIDDEN_1', []);
       }
     }
   } // end validate function
@@ -7968,10 +7968,10 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * @object AUDIO_2
  *
  * @desc If object element is used for audio only, object must have captions or text transcript
- */ 
- 
-{ rule_id             : 'AUDIO_2', 
-  last_updated        : '2014-11-21', 
+ */
+
+{ rule_id             : 'AUDIO_2',
+  last_updated        : '2014-11-21',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.AUDIO_VIDEO,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
@@ -7982,11 +7982,11 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   resource_properties : ['data', 'name', 'value', 'valuetype'],
   language_dependency : "",
   validate          : function (dom_cache, rule_result) {
-    
+
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
     var MEDIA       = OpenAjax.a11y.MEDIA;
-  
+
     var object_elements     = dom_cache.media_cache.object_elements;
     var object_elements_len = object_elements.length;
 
@@ -8000,17 +8000,17 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
           rule_result.addResult(TEST_RESULT.PASS, oe, 'ELEMENT_PASS_1', []);
         }
         else {
-          if ((typeof oe.type === 'string') && 
-               (oe.type.indexOf('audio') >= 0)) { 
-            rule_result.addResult(TEST_RESULT.MANUAL_CHECK, oe, 'ELEMENT_MC_1', []);     
-          }  
-          else {
-            rule_result.addResult(TEST_RESULT.MANUAL_CHECK, oe, 'ELEMENT_MC_2', []);   
+          if ((typeof oe.type === 'string') &&
+               (oe.type.indexOf('audio') >= 0)) {
+            rule_result.addResult(TEST_RESULT.MANUAL_CHECK, oe, 'ELEMENT_MC_1', []);
           }
-        }  
+          else {
+            rule_result.addResult(TEST_RESULT.MANUAL_CHECK, oe, 'ELEMENT_MC_2', []);
+          }
+        }
       }
       else {
-       rule_result.addResult(TEST_RESULT.HIDDEN, oe, 'ELEMENT_HIDDEN_1', []);     
+       rule_result.addResult(TEST_RESULT.HIDDEN, oe, 'ELEMENT_HIDDEN_1', []);
       }
     }
   } // end validate function
@@ -8020,10 +8020,10 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * @object AUDIO_3
  *
  * @desc If embed element is used for audio only, embed  must have captions or text transcript
- */ 
- 
-{ rule_id             : 'AUDIO_3', 
-  last_updated        : '2014-11-21', 
+ */
+
+{ rule_id             : 'AUDIO_3',
+  last_updated        : '2014-11-21',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.AUDIO_VIDEO,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
@@ -8038,7 +8038,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
     var MEDIA       = OpenAjax.a11y.MEDIA;
-  
+
     var embed_elements     = dom_cache.media_cache.embed_elements;
     var embed_elements_len = embed_elements.length;
 
@@ -8052,17 +8052,17 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
           rule_result.addResult(TEST_RESULT.PASS, ee, 'ELEMENT_PASS_1', []);
         }
         else {
-          if ((typeof ee.type === 'string') && 
+          if ((typeof ee.type === 'string') &&
               (ee.type.indexOf('audio') >= 0)) {
-            rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ee, 'ELEMENT_MC_1', []);     
-          }  
-          else {
-            rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ee, 'ELEMENT_MC_2', []);   
+            rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ee, 'ELEMENT_MC_1', []);
           }
-        }  
+          else {
+            rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ee, 'ELEMENT_MC_2', []);
+          }
+        }
       }
       else {
-       rule_result.addResult(TEST_RESULT.HIDDEN, ee, 'ELEMENT_HIDDEN_1', []);     
+       rule_result.addResult(TEST_RESULT.HIDDEN, ee, 'ELEMENT_HIDDEN_1', []);
       }
     }
   } // end validate function
@@ -8072,10 +8072,10 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
    * @object AUDIO_4
    *
    * @desc  Audio automatically starts
-   */ 
- 
-{ rule_id             : 'AUDIO_4', 
-  last_updated        : '2014-11-21', 
+   */
+
+{ rule_id             : 'AUDIO_4',
+  last_updated        : '2014-11-21',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.PAGE,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.AUDIO_VIDEO,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
@@ -8086,21 +8086,21 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   resource_properties : [],
   language_dependency : "",
   validate            : function (dom_cache, rule_result) {
-  
+
       var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
-   
+
       var page_element = dom_cache.media_cache.page_element;
 
       if (page_element) {
-         rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MC_1', []);      
-       }   
-      
+         rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MC_1', []);
+       }
+
     } // end validate function
   }
 
 ]);
 /**
- * Copyright 2011-2017  OpenAjax Alliance
+ * Copyright 2011-2018 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -8116,19 +8116,19 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  */
 
 /* ---------------------------------------------------------------- */
-/*            OpenAjax Alliance List Rules                         */ 
+/*            OpenAjax Alliance List Rules                         */
 /* ---------------------------------------------------------------- */
 
 OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
 /**
- * @object BYPASS_1 
- * 
+ * @object BYPASS_1
+ *
  * @desc Looking for links or that support bypassing blocks of content
 */
- 
-{ rule_id             : 'BYPASS_1', 
-  last_updated        : '2015-02-19', 
+
+{ rule_id             : 'BYPASS_1',
+  last_updated        : '2015-02-19',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.PAGE,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.KEYBOARD_SUPPORT,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
@@ -8148,9 +8148,9 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     var control_elements     = dom_cache.controls_cache.control_elements;
     var control_elements_len = control_elements.length;
-    
+
     var page_element = dom_cache.headings_landmarks_cache.page_element;
-    
+
     var bypass_links = [];
     var bypass_link = false;
     var skipto_link = false;
@@ -8158,7 +8158,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     var missing     = false;
 
     var i, ce, cs, de, le, id;
-    
+
     for (i = 0; i < control_elements_len; i++) {
 
       ce = control_elements[i];
@@ -8171,25 +8171,25 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
         break;
       }
     }
-    
+
     for (i = 0; (!skipto_link && (i < link_elements_len) && (i < 2)); i++) {
-       
+
       le = link_elements[i];
       de = le.dom_element;
       cs = de.computed_style;
-      
+
       if (le.href && le.href.length && (le.href.indexOf('#') >= 0 )) {
         id = le.href.substring((le.href.indexOf('#')+1), le.href.length);
-        
+
         if (id.length) {
           bypass_link = true;
-        
+
           // check for id first
           de = dom_cache.element_with_id_cache.getDOMElementById(id);
-          
+
           // check for name second
           if (!de) de = dom_cache.element_cache.getDOMElementByName(id);
-          
+
           if (de) {
             if (cs.is_visible_to_at == VISIBILITY.VISIBLE) {
               if ((de.tab_index >= 0) || de.has_tabindex || de.is_interactive) {
@@ -8197,26 +8197,26 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
                 rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_2', []);
 
 //                OpenAjax.a11y.logger.debug("[BYPASS 1] tag: " + de.tag_name + " tabindex: " + de.tab_index  + " has tabindex: " + de.has_tabindex + " has href: " + de.has_href );
-                
-                if ((de.tag_name !== 'a') || 
-                    (de.tab_index < 0) || 
-                    (de.tab_index > 0) || 
+
+                if ((de.tag_name !== 'a') ||
+                    (de.tab_index < 0) ||
+                    (de.tab_index > 0) ||
                      de.has_href) {
                   focusable = true;
                   rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_3', []);
                 }
                 else {
                   rule_result.addResult(TEST_RESULT.MANUAL_CHECK, de, 'ELEMENT_MC_1', []);
-                }  
+                }
               }
               else {
                 rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_2', [id]);
                 rule_result.addResult(TEST_RESULT.MANUAL_CHECK, de, 'ELEMENT_MC_1', []);
-              }  
+              }
             }
             else {
               rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', []);
-            }  
+            }
           }
           else {
             missing = true;
@@ -8234,26 +8234,26 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
       else if (bypass_link) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MC_1', []);
       else rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MC_2', []);
     }
-    
+
   } // end validation function  }
-}  
+}
 ]);
 
 //
-// OpenAjax Alliance Rules 
+// OpenAjax Alliance Rules
 // Rule group: Styling Rules
 //
 OpenAjax.a11y.RuleManager.addRulesFromJSON([
-      
+
 
   /**
    * @object COLOR_1
    *
    * @desc  Color contrast ratio must be > 4.5 for normal text, or > 3.1 for large text
-   */ 
- 
-  { rule_id             : 'COLOR_1', 
-    last_updated        : '2014-11-21', 
+   */
+
+  { rule_id             : 'COLOR_1',
+    last_updated        : '2014-11-21',
     rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
     rule_category       : OpenAjax.a11y.RULE_CATEGORIES.STYLES_READABILITY,
     rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
@@ -8264,16 +8264,16 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     resource_properties : ['color_hex', 'background_color_hex', 'background_image', 'is_large_font'],
     language_dependency : "",
     validate            : function (dom_cache, rule_result) {
-  
+
       var MIN_CCR_NORMAL_FONT = 4.5;
       var MIN_CCR_LARGE_FONT  = 3.1;
-  
+
       var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
       var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
-   
+
       var cc_items     = dom_cache.text_cache.text_nodes;
       var cc_items_len = cc_items.length;
-     
+
       for (var i = 0; i < cc_items_len; i++) {
 
         var test_result = TEST_RESULT.PASS;
@@ -8294,20 +8294,20 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
               // Passes color contrast requirements
               if (cs.background_image != "none") {
                 rule_result.addResult(TEST_RESULT.MANUAL_CHECK, cc_item, 'ELEMENT_MC_1', [cs.color_contrast_ratio]);
-              }           
+              }
               else {
                 rule_result.addResult(TEST_RESULT.PASS, cc_item, 'ELEMENT_PASS_1', [cs.color_contrast_ratio]);
               }
             }
             else {
-          
+
               // Fails color contrast requirements
               if (cs.background_image === "none") {
                 rule_result.addResult(TEST_RESULT.FAIL, cc_item, 'ELEMENT_FAIL_1', [cs.color_contrast_ratio]);
               }
               else {
                 rule_result.addResult(TEST_RESULT.MANUAL_CHECK, cc_item, 'ELEMENT_MC_2', [cs.color_contrast_ratio]);
-              }     
+              }
             }
           }
           else {
@@ -8315,7 +8315,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
               // Passes color contrast requirements
               if (cs.background_image != "none") {
                 rule_result.addResult(TEST_RESULT.MANUAL_CHECK, cc_item, 'ELEMENT_MC_3', [cs.color_contrast_ratio]);
-              }           
+              }
               else {
                 rule_result.addResult(TEST_RESULT.PASS, cc_item, 'ELEMENT_PASS_2', [cs.color_contrast_ratio]);
               }
@@ -8327,16 +8327,16 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
               }
               else {
                 rule_result.addResult(TEST_RESULT.MANUAL_CHECK, cc_item, 'ELEMENT_MC_4', [cs.color_contrast_ratio]);
-              }     
+              }
             }
           }
         }
         else {
-          rule_result.addResult(TEST_RESULT.HIDDEN, cc_item, 'ELEMENT_HIDDEN_1', []);        
+          rule_result.addResult(TEST_RESULT.HIDDEN, cc_item, 'ELEMENT_HIDDEN_1', []);
         }
-        
-      } // end loop  
-      
+
+      } // end loop
+
     } // end validate function
   },
 
@@ -8344,10 +8344,10 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
    * @object COLOR_1
    *
    * @desc  Use of color
-   */ 
- 
-  { rule_id             : 'COLOR_2', 
-    last_updated        : '2014-04-04', 
+   */
+
+  { rule_id             : 'COLOR_2',
+    last_updated        : '2014-04-04',
     rule_scope          : OpenAjax.a11y.RULE_SCOPE.PAGE,
     rule_category       : OpenAjax.a11y.RULE_CATEGORIES.STYLES_READABILITY,
     rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
@@ -8358,38 +8358,38 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     resource_properties : [],
     language_dependency : "",
     validate            : function (dom_cache, rule_result) {
-  
+
       var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
-   
+
       var page_element = dom_cache.headings_landmarks_cache.page_element;
 
       if (page_element) {
-         rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MC_1', []);      
-       }   
-      
+         rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MC_1', []);
+       }
+
     } // end validate function
   }
- 
-]); 
+
+]);
 
 
-    
+
 
 /* ---------------------------------------------------------------- */
-/*  OpenAjax Alliance Control Rules                                 */ 
+/*  OpenAjax Alliance Control Rules                                 */
 /* ---------------------------------------------------------------- */
 
 OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
 /**
  * @object ERROR_1
- * 
+ *
  * @desc Identify form controls with invalid values
- * 
+ *
  */
- 
-{ rule_id             : 'ERROR_1', 
-  last_updated        : '2014-11-21', 
+
+{ rule_id             : 'ERROR_1',
+  last_updated        : '2014-11-21',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.FORMS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -8403,60 +8403,60 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY = OpenAjax.a11y.VISIBILITY;
-   
+
     var control_elements   = dom_cache.controls_cache.control_elements;
     var control_elements_len = control_elements.length;
     var ces   = [];
 
     // Check to see if valid cache reference
     if (control_elements && control_elements_len) {
-     
-      // collect all the visible controls 
+
+      // collect all the visible controls
       for (var i = 0; i < control_elements_len; i++) {
         var ce = control_elements[i];
         var de = ce.dom_element;
         var cs = de.computed_style;
-  
+
         if (ce.has_validity) {
-          if (cs.is_visible_to_at === VISIBILITY.VISIBLE) { 
+          if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
             if (!ce.is_valid) {
               if (de.has_aria_invalid) {
                 if (de.aria_invalid) rule_result.addResult(TEST_RESULT.PASS, ce, 'ELEMENT_PASS_1', [ce.toString()]);
                 else rule_result.addResult(TEST_RESULT.FAIL, ce, 'ELEMENT_FAIL_1', [ce.toString()]);
-              }  
+              }
               else {
-                rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_1', [ce.toString()]);               
-              }  
+                rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_1', [ce.toString()]);
+              }
             }
             else {
               if (de.has_aria_invalid) {
                 if (de.aria_invalid) rule_result.addResult(TEST_RESULT.FAIL, ce, 'ELEMENT_FAIL_2', [ce.toString()]);
                 else rule_result.addResult(TEST_RESULT.PASS, ce, 'ELEMENT_PASS_2', [ce.toString()]);
-              }  
+              }
               else {
                 if (ce.has_pattern) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_2', [ce.toString()]);
-                else rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_3', [ce.toString()]);                
-              }  
-            }             
+                else rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_3', [ce.toString()]);
+              }
+            }
           }
           else {
-            rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_1', [ce].toString());                                    
-          }          
+            rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_1', [ce].toString());
+          }
         }
-      } // end loop          
-    }        
+      } // end loop
+    }
   } // end validate function
 },
 
 /**
  * @object ERROR_2
- * 
+ *
  * @desc Use required attribute on required standard form controls
- * 
+ *
  */
- 
-{ rule_id             : 'ERROR_2', 
-  last_updated        : '2014-11-21', 
+
+{ rule_id             : 'ERROR_2',
+  last_updated        : '2014-11-21',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.FORMS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -8470,11 +8470,11 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY = OpenAjax.a11y.VISIBILITY;
-   
+
     var control_elements   = dom_cache.controls_cache.control_elements;
     var control_elements_len = control_elements.length;
-    
-    // collect all the visible controls 
+
+    // collect all the visible controls
     for (var i = 0; i < control_elements_len; i++) {
       var ce = control_elements[i];
       var de = ce.dom_element;
@@ -8492,10 +8492,10 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
           control_type === OpenAjax.a11y.CONTROL_TYPE.TEL       ||
           control_type === OpenAjax.a11y.CONTROL_TYPE.TEXT      ||
           control_type === OpenAjax.a11y.CONTROL_TYPE.URL ) {
-        
-        var input_type = de.node.getAttribute('type');    
-            
-        if (cs.is_visible_to_at === VISIBILITY.VISIBLE) { 
+
+        var input_type = de.node.getAttribute('type');
+
+        if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
           if (de.has_required || de.has_aria_required) {
             if (de.has_required && de.has_aria_required && !de.aria_required) {
               rule_result.addResult(TEST_RESULT.FAIL, ce, 'ELEMENT_FAIL_1', [input_type]);
@@ -8503,22 +8503,22 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
             else {
               if (de.has_required) rule_result.addResult(TEST_RESULT.PASS, ce, 'ELEMENT_PASS_1', [input_type]);
               else rule_result.addResult(TEST_RESULT.PASS, ce, 'ELEMENT_PASS_2', [input_type]);
-            }  
+            }
           }
           else {
-            rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_1', [input_type]);          
-          }  
+            rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_1', [input_type]);
+          }
         }
         else {
           rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_1', [input_type]);
-        }  
+        }
       }
       else {
         if ((control_type === OpenAjax.a11y.CONTROL_TYPE.TEXTAREA) ||
             (control_type === OpenAjax.a11y.CONTROL_TYPE.SELECT)) {
-          
+
           var tag_name = de.tag_name;
-            
+
           if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
             if (de.has_required || de.has_aria_required) {
               if (de.has_required && de.has_aria_required && !de.aria_required) {
@@ -8527,31 +8527,31 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
               else {
                 if (de.has_required) rule_result.addResult(TEST_RESULT.PASS, ce, 'ELEMENT_PASS_3', [tag_name]);
                 else rule_result.addResult(TEST_RESULT.PASS, ce, 'ELEMENT_PASS_4', [tag_name]);
-              }  
+              }
             }
             else {
-              rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_2', [tag_name]);          
-            }  
+              rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_2', [tag_name]);
+            }
           }
           else {
             rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_2', [de.tag_name]);
-          }  
+          }
         }
       }
-    }   
+    }
 
   } // end validate function
 },
 
 /**
  * @object ERROR_3
- * 
+ *
  * @desc Use aria-required attribute widgets
- * 
+ *
  */
- 
-{ rule_id             : 'ERROR_3', 
-  last_updated        : '2014-11-21', 
+
+{ rule_id             : 'ERROR_3',
+  last_updated        : '2014-11-21',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.WIDGETS_SCRIPTS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -8565,11 +8565,11 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY = OpenAjax.a11y.VISIBILITY;
-   
+
     var widget_elements     = dom_cache.controls_cache.widget_elements;
     var widget_elements_len = widget_elements.length;
 
-    // collect all the visible controls 
+    // collect all the visible controls
     for (var i = 0; i < widget_elements_len; i++) {
       var we = widget_elements[i];
       var de = we.dom_element;
@@ -8586,32 +8586,32 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
           role === 'tree'         ||
           role === 'textbox'    ||
           role === 'treegrid') {
-        
-        if (cs.is_visible_to_at === VISIBILITY.VISIBLE) { 
+
+        if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
           if (de.has_aria_required) {
             rule_result.addResult(TEST_RESULT.PASS, we, 'ELEMENT_PASS_1', [de.tag_name, role]);
           }
           else {
-            rule_result.addResult(TEST_RESULT.MANUAL_CHECK, we, 'ELEMENT_MC_1', [de.tag_name, role]);          
-          }  
+            rule_result.addResult(TEST_RESULT.MANUAL_CHECK, we, 'ELEMENT_MC_1', [de.tag_name, role]);
+          }
         }
         else {
           rule_result.addResult(TEST_RESULT.HIDDEN, we, 'ELEMENT_HIDDEN_1', [de.tag_name, role]);
-        }  
+        }
       }
-    }   
+    }
   } // end validate function
 },
 
 /**
  * @object ERROR_4
- * 
+ *
  * @desc Provide correction suggestions
- * 
+ *
  */
- 
-{ rule_id             : 'ERROR_4', 
-  last_updated        : '2014-11-21', 
+
+{ rule_id             : 'ERROR_4',
+  last_updated        : '2014-11-21',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.FORMS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -8625,7 +8625,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY = OpenAjax.a11y.VISIBILITY;
-   
+
     var control_elements   = dom_cache.controls_cache.control_elements;
     var control_elements_len = control_elements.length;
 
@@ -8634,8 +8634,8 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
 
     var target_controls = [];
-    
-    // collect all the visible controls 
+
+    // collect all the visible controls
     for (var i = 0; i < control_elements_len; i++) {
       var ce = control_elements[i];
       var de = ce.dom_element;
@@ -8651,38 +8651,38 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
             control_type === OpenAjax.a11y.CONTROL_TYPE.TEL       ||
             control_type === OpenAjax.a11y.CONTROL_TYPE.TEXT      ||
             control_type === OpenAjax.a11y.CONTROL_TYPE.URL ) {
-        if (cs.is_visible_to_at === VISIBILITY.VISIBLE) { 
+        if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_1', [de.node.getAttribute('type')]);
         }
         else {
           rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_1', [de.node.getAttribute('type')]);
-        }  
+        }
       }
       else {
         if ((control_type === OpenAjax.a11y.CONTROL_TYPE.TEXTAREA) ||
             (control_type === OpenAjax.a11y.CONTROL_TYPE.SELECT)) {
-          if (cs.is_visible_to_at === VISIBILITY.VISIBLE) { 
+          if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
             rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_2', [de.tag_name]);
           }
           else {
             rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_2', [de.tag_name]);
-          }  
+          }
         }
       }
-    }   
+    }
 
   } // end validate function
 },
 
 /**
  * @object ERROR_5
- * 
+ *
  * @desc Provide error prevention
- * 
+ *
  */
 
-{ rule_id             : 'ERROR_5', 
-  last_updated        : '2015-04-09', 
+{ rule_id             : 'ERROR_5',
+  last_updated        : '2015-04-09',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.PAGE,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.FORMS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -8709,7 +8709,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
       var control_type = ce.control_type;
 
-      if (cs.is_visible_to_at === VISIBILITY.VISIBLE) { 
+      if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
         rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_1', [de.node.getAttribute('type')]);
         control_count += 1;
       }
@@ -8727,25 +8727,25 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 }
 
 
-]); 
+]);
 
 
-    
+
 
 /* ---------------------------------------------------------------- */
-/*  OpenAjax Alliance Control Rules                                 */ 
+/*  OpenAjax Alliance Control Rules                                 */
 /* ---------------------------------------------------------------- */
 
 OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
 /**
  * @object FOCUS_1
- * 
+ *
  * @desc Focus order
  */
-     
-{ rule_id             : 'FOCUS_1', 
-  last_updated        : '2014-11-21', 
+
+{ rule_id             : 'FOCUS_1',
+  last_updated        : '2014-11-21',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.PAGE,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.KEYBOARD_SUPPORT,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
@@ -8756,11 +8756,11 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   resource_properties : [],
   language_dependency : "",
   validate            : function (dom_cache, rule_result) {
-  
-     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;   
+
+     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
      var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
-      
-     var page_element = dom_cache.keyboard_focus_cache.page_element;  
+
+     var page_element = dom_cache.keyboard_focus_cache.page_element;
 
 //     OpenAjax.a11y.logger.debug(" Page Element: " + page_element + "  " + page_element.dom_element);
 
@@ -8771,20 +8771,20 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
      var visible_count = 0;
 
      for (var i = 0; i < interactive_elements_len; i++) {
-     
+
        var ie = interactive_elements[i];
-       
+
        var de = ie.dom_element;
        if (!de) de =ie;
-       
+
        var cs = de.computed_style;
-       
+
        if ((cs.is_visible_to_at    === VISIBILITY.VISIBLE) ||
            (cs.is_visible_onscreen === VISIBILITY.VISIBLE)) {
-           
+
          visible_count++;
-         
-         if (de.tab_index >= 0) { 
+
+         if (de.tab_index >= 0) {
            if (de.is_widget) {
              // only include widgets that can be part of the tab order
              if (de.is_tab_stoppable) {
@@ -8806,49 +8806,49 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
            }
            else {
              rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ie, 'ELEMENT_MC_4', [de.tag_name, de.tab_index]);
-           }         
+           }
          }
-         
-       }     
+
+       }
        else {
-       
+
          if (de.is_widget) {
            // only include widgets that can be part of the tab order
            if (de.is_tab_stoppable) {
-             rule_result.addResult(TEST_RESULT.HIDDEN, ie, 'ELEMENT_HIDDEN_1', [de.tag_name, de.role]);      
+             rule_result.addResult(TEST_RESULT.HIDDEN, ie, 'ELEMENT_HIDDEN_1', [de.tag_name, de.role]);
            }
          }
          else {
-           rule_result.addResult(TEST_RESULT.HIDDEN, ie, 'ELEMENT_HIDDEN_2', [de.tag_name]);                
+           rule_result.addResult(TEST_RESULT.HIDDEN, ie, 'ELEMENT_HIDDEN_2', [de.tag_name]);
          }
-       }  
+       }
      }  // endfor
- 
+
  //    OpenAjax.a11y.logger.debug(" Visible count: " + visible_count + "  Tab count: " + tab_count);
 
-     if (visible_count > 1) { 
- 
+     if (visible_count > 1) {
+
        if (tab_count === visible_count) {
          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MC_1', [tab_count]);
        }
        else {
-         rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MC_2', [tab_count, (visible_count-tab_count)]);             
+         rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MC_2', [tab_count, (visible_count-tab_count)]);
        }
-     
+
      }
 
 
-   } // end validation function   
+   } // end validation function
 },
 
 /**
  * @object FOCUS_2
- * 
+ *
  * @desc Focus style
  */
-     
-{ rule_id             : 'FOCUS_2', 
-  last_updated        : '2014-11-21', 
+
+{ rule_id             : 'FOCUS_2',
+  last_updated        : '2014-11-21',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.PAGE,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.KEYBOARD_SUPPORT,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
@@ -8860,10 +8860,10 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   language_dependency : "",
   validate            : function (dom_cache, rule_result) {
 
-     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;   
+     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
      var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
-      
-     var page_element = dom_cache.keyboard_focus_cache.page_element;  
+
+     var page_element = dom_cache.keyboard_focus_cache.page_element;
 
 //     OpenAjax.a11y.logger.debug(" Page Element: " + page_element + "  " + page_element.dom_element);
 
@@ -8873,64 +8873,64 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
      var visible_interactive_count = 0;
 
      for (var i = 0; i < interactive_elements_len; i++) {
-     
+
        var ie = interactive_elements[i];
-       
+
        var de = ie.dom_element;
        if (!de) de =ie;
-       
+
        var cs = de.computed_style;
-       
+
        if (cs.is_visible_onscreen === VISIBILITY.VISIBLE) {
-       
+
          visible_interactive_count++;
-           
-         if (de.is_widget) {             
+
+         if (de.is_widget) {
            rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ie, 'ELEMENT_MC_1', [de.tag_name, de.role]);
          }
          else {
            rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ie, 'ELEMENT_MC_2', [de.tag_name]);
          }
-         
+
        }
        else {
 
-         if (de.is_widget) {             
+         if (de.is_widget) {
            rule_result.addResult(TEST_RESULT.HIDDEN, ie, 'ELEMENT_HIDDEN_1', [de.tag_name, de.role]);
          }
          else {
            rule_result.addResult(TEST_RESULT.HIDDEN, ie, 'ELEMENT_HIDDEN_2', [de.tag_name]);
          }
 
-       }  
+       }
      }  // endfor
- 
+
 //     OpenAjax.a11y.logger.debug(" Visible Interactive Count: " + visible_interactive_count);
 
-     if (visible_interactive_count > 1) { 
- 
+     if (visible_interactive_count > 1) {
+
        if (visible_interactive_count === interactive_elements_len) {
          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MC_1', [interactive_elements_len]);
        }
        else {
-         rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MC_2', [visible_interactive_count, (interactive_elements_len - visible_interactive_count)]);             
+         rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MC_2', [visible_interactive_count, (interactive_elements_len - visible_interactive_count)]);
        }
-     
+
      }
 
 
-   } // end validation function   
+   } // end validation function
 
 },
 
 /**
  * @object FOCUS_3
- * 
+ *
  * @desc Target of a link does not go to a page with popup windows
  */
-     
-{ rule_id             : 'FOCUS_3', 
-  last_updated        : '2014-11-21', 
+
+{ rule_id             : 'FOCUS_3',
+  last_updated        : '2014-11-21',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LINKS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -8942,9 +8942,9 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   language_dependency : "",
   validate            : function (dom_cache, rule_result) {
 
-     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;   
+     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
      var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
-      
+
 //     OpenAjax.a11y.logger.debug(" Page Element: " + page_element + "  " + page_element.dom_element);
 
      var link_elements     = dom_cache.links_cache.link_elements;
@@ -8953,35 +8953,35 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
      var visible_interactive_count = 0;
 
      for (var i = 0; i < link_elements_len; i++) {
-     
+
        var le = link_elements[i];
-       
+
        var de = le.dom_element;
        if (!de) de =le;
-       
+
        var cs = de.computed_style;
-       
+
        if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
-       
+
          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, le, 'ELEMENT_MC_1', [de.tag_name]);
-         
+
        }
        else {
          rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [de.tag_name, de.role]);
-       }  
+       }
      }  // endfor
- 
-   } // end validation function   
+
+   } // end validation function
 },
 
 /**
  * @object FOCUS_4
- * 
+ *
  * @desc Select elements with onchange events
  */
-     
-{ rule_id             : 'FOCUS_4', 
-  last_updated        : '2014-11-21', 
+
+{ rule_id             : 'FOCUS_4',
+  last_updated        : '2014-11-21',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.FORMS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
@@ -8993,46 +8993,46 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   language_dependency : "",
   validate            : function (dom_cache, rule_result) {
 
-     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;   
+     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
      var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
-      
+
 //     OpenAjax.a11y.logger.debug(" Page Element: " + page_element + "  " + page_element.dom_element);
 
      var control_elements     = dom_cache.controls_cache.control_elements;
      var control_elements_len = control_elements.length;
 
      for (var i = 0; i < control_elements_len; i++) {
-     
+
        var ce = control_elements[i];
-       
+
        var de = ce.dom_element;
-       
+
        var cs = de.computed_style;
-       
+
        if ((de.tag_name === 'select') &&
             de.events.has_change) {
-       
-         if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {   
+
+         if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
            rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_1', [de.tag_name]);
          }
          else {
            rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_1', [de.tag_name, de.role]);
-         }  
-       }  
+         }
+       }
      }  // endfor
- 
-   } // end validation function   
+
+   } // end validation function
 },
 
 /**
  * @object FOCUS_5
- * 
+ *
  * @desc Form include a submit button
- * 
+ *
  */
- 
-{ rule_id             : 'FOCUS_5', 
-  last_updated        : '2014-11-21', 
+
+{ rule_id             : 'FOCUS_5',
+  last_updated        : '2014-11-21',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.FORMS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
@@ -9045,142 +9045,142 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   validate            : function (dom_cache, rule_result) {
 
     function has_submit_button(control) {
-  
+
       var cce = control.child_cache_elements;
       var cce_len = cce.length;
-      
+
       var has_submit = false;
-      
+
       for(var i = 0; i < cce_len; i++) {
         var ce = cce[i];
         var de = ce.dom_element;
         var cs = de.computed_style;
-        
+
         if(ce.control_type === OpenAjax.a11y.CONTROL_TYPE.SUBMIT) {
           if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
-            rule_result.addResult(TEST_RESULT.PASS, ce, 'ELEMENT_PASS_2', []);                
+            rule_result.addResult(TEST_RESULT.PASS, ce, 'ELEMENT_PASS_2', []);
             has_submit = true;
           }
           else {
-           rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_2', []);                          } 
+           rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_2', []);                          }
         }
-        
+
         if (ce.child_cache_elements && ce.child_cache_elements.length) {
           has_submit = has_submit || has_submit_button(ce);
         }
-        
+
       }
-    
+
       return has_submit;
-      
+
     }
 
     function has_other_button(control, count) {
-  
+
       var cee = control.child_cache_elements;
       var cee_len = cee.length;
-      
+
       for(var i = 0; i < cee_len; i++) {
         var ce = cee[i];
         var de = ce.dom_element;
         var cs = de.computed_style;
-        
+
 //        OpenAjax.a11y.logger.debug("Control: " + ce + " de: " + de + " cs: " + cs);
-        
+
         if (ce.control_type === CONTROL_TYPE.BUTTON_INPUT) {
           if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
-            rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_3', ['button']);                
+            rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_3', ['button']);
             count += 1;
           }
           else {
-            rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_3', ['button']);                
-          } 
+            rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_3', ['button']);
+          }
         }
         else {
            if (ce.control_type === CONTROL_TYPE.IMAGE) {
              if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
-               rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_3', ['image']);                
+               rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_3', ['image']);
                count += 1;
              }
              else {
-               rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_3', ['image']);                
-             } 
+               rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_3', ['image']);
+             }
            }
-           else {  
+           else {
              if (ce.control_type === CONTROL_TYPE.BUTTON_ELEMENT) {
                if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
-                 rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_4', []);                
+                 rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_4', []);
                  count += 1;
                }
                else {
-                 rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_4', []);                
-               }  
+                 rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_4', []);
+               }
              }
-             else {  
+             else {
                if (de.has_role && (de.role === 'button')) {
                  if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
-                  rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_5', [de.tag_name]);                
+                  rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_5', [de.tag_name]);
                    count += 1;
                  }
                  else {
-                  rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_5', [de.tag_name]);                
-                 }  
+                  rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_5', [de.tag_name]);
+                 }
                }
              }
            }
         }
-        
+
         if (ce.child_cache_elements && ce.child_cache_elements.length) {
           count += has_other_button(ce, count);
         }
-      
+
       }
-    
+
       return count;
-      
+
     }
-    
+
     function hasVisibleFormControls(controls) {
-    
+
       for (var i = 0; i < controls.length; i++) {
-      
+
         var ce = controls[i];
         if (ce.control_type === CONTROL_TYPE.LABEL) continue;
-        
+
         var de = ce.dom_element;
         var cs = de.computed_style;
-      
+
         if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
           return true;
         }
-        else {  
+        else {
           if (ce.child_cache_elements && ce.child_cache_elements.length) {
             var result = hasVisibleFormControls(ce.child_cache_elements);
             if (result) return true;
-          }  
-        }    
+          }
+        }
       }
 
-      return false;    
+      return false;
     }
-    
+
     var TEST_RESULT  = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY   = OpenAjax.a11y.VISIBILITY;
     var CONTROL_TYPE =  OpenAjax.a11y.CONTROL_TYPE;
-  
+
     var form_elements   = dom_cache.controls_cache.form_elements;
     var form_elements_len = form_elements.length;
     var fes   = [];
 
     // Check to see if valid cache reference
     if (form_elements && form_elements_len) {
-     
-      // collect all the visible controls 
+
+      // collect all the visible controls
       for (var i = 0; i < form_elements_len; i++) {
         var fe = form_elements[i];
         var de = fe.dom_element;
         var cs = de.computed_style;
-  
+
         var control_type = fe.control_type;
 
 //        OpenAjax.a11y.logger.debug("Form: " + fe + " controls: " + fe.number_of_controls + " cache elements: " + fe.child_cache_elements);
@@ -9189,10 +9189,10 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
             (fe.number_of_controls > 0) &&
             (hasVisibleFormControls(fe.child_cache_elements))) {
 
-          if (cs.is_visible_to_at === VISIBILITY.VISIBLE) { 
-          
+          if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+
             if (has_submit_button(fe)) {
-              rule_result.addResult(TEST_RESULT.PASS, fe, 'ELEMENT_PASS_1', []);                
+              rule_result.addResult(TEST_RESULT.PASS, fe, 'ELEMENT_PASS_1', []);
             }
             else {
               var button_count = has_other_button(fe, 0);
@@ -9203,7 +9203,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
               else {
                 if (button_count > 1) {
                   rule_result.addResult(TEST_RESULT.MANUAL_CHECK, fe, 'ELEMENT_MC_2', [button_count]);
-                }  
+                }
                 else {
                   rule_result.addResult(TEST_RESULT.FAIL, fe, 'ELEMENT_FAIL_1', []);
                 }
@@ -9211,23 +9211,23 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
             }
           }
           else {
-            rule_result.addResult(TEST_RESULT.HIDDEN, fe, 'ELEMENT_HIDDEN_1', []);                                    
-          }          
+            rule_result.addResult(TEST_RESULT.HIDDEN, fe, 'ELEMENT_HIDDEN_1', []);
+          }
         }
-      } // end loop          
-    }    
+      } // end loop
+    }
   } // end validate function
 },
 
 /**
  * @object FOCUS_6
- * 
+ *
  * @desc Checkbox and radio button events cause a change in context
- * 
+ *
  */
- 
-{ rule_id             : 'FOCUS_6', 
-  last_updated        : '2014-08-25', 
+
+{ rule_id             : 'FOCUS_6',
+  last_updated        : '2014-08-25',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.FORMS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP3,
@@ -9238,76 +9238,76 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   resource_properties : [],
   language_dependency : "",
   validate            : function (dom_cache, rule_result) {
-  
+
     var TEST_RESULT  = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY   = OpenAjax.a11y.VISIBILITY;
     var CONTROL_TYPE =  OpenAjax.a11y.CONTROL_TYPE;
-  
+
     var control_elements   = dom_cache.controls_cache.control_elements;
     var control_elements_len = control_elements.length;
     var ces   = [];
 
     // Check to see if valid cache reference
     if (control_elements && control_elements_len) {
-     
-      // collect all the visible controls 
+
+      // collect all the visible controls
       for (var i = 0; i < control_elements_len; i++) {
         var ce = control_elements[i];
         var de = ce.dom_element;
         var cs = de.computed_style;
-  
+
         var control_type = ce.control_type;
 
 //        OpenAjax.a11y.logger.debug(fe);
 
-        if ((control_type === OpenAjax.a11y.CONTROL_TYPE.CHECKBOX) || 
+        if ((control_type === OpenAjax.a11y.CONTROL_TYPE.CHECKBOX) ||
             (control_type === OpenAjax.a11y.CONTROL_TYPE.RADIO)) {
-            
+
           if ((de.role === 'checkbox') || (de.role === 'radio')) {
-            if (cs.is_visible_to_at === VISIBILITY.VISIBLE) { 
+            if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
               rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_2', [de.tag_name, de.role]);
             }
             else {
               rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_2', [de.tag_name, de.role]);
-            }  
+            }
           }
           else {
-            if (cs.is_visible_to_at === VISIBILITY.VISIBLE) { 
+            if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
               rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_1', [ce.type]);
             }
             else {
-              rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_1', [ce.type]);                                    
-            }  
-          }          
+              rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_1', [ce.type]);
+            }
+          }
         }
-      } // end loop          
-    }    
+      } // end loop
+    }
   } // end validate function
 }
 
 
-]); 
+]);
 
 
-    
+
 
 /* ---------------------------------------------------------------- */
-/*  OpenAjax Alliance Control Rules                                 */ 
+/*  OpenAjax Alliance Control Rules                                 */
 /* ---------------------------------------------------------------- */
 
 OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
 /**
  * @object CONTROL_1
- * 
- * @desc textarea, select and input elements of type text, 
- *       password, checkbox, radio and file must have an 
+ *
+ * @desc textarea, select and input elements of type text,
+ *       password, checkbox, radio and file must have an
  *       accessible label
- * 
+ *
  */
-    
+
 { rule_id             : 'CONTROL_1',
-  last_updated        : '2014-11-25', 
+  last_updated        : '2014-11-25',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.FORMS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
@@ -9318,51 +9318,51 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   resource_properties : ['computed_label_source', 'name_attribute', 'fieldset_element'],
   language_dependency : "",
   validate            : function (dom_cache, rule_result) {
-  
+
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
-  
+
     var tag_name;
     var type;
-  
+
     var control_elements   = dom_cache.controls_cache.control_elements;
     var control_elements_len = control_elements.length;
-      
+
     // Check to see if valid cache reference
     if (control_elements && control_elements_len) {
-    
+
       for (var i = 0; i < control_elements_len; i++) {
         var ce = control_elements[i];
-  
+
         var control_type = ce.control_type;
 
         if (ce.needs_label) {
-            
+
           if (ce.dom_element.computed_style.is_visible_to_at == OpenAjax.a11y.VISIBILITY.VISIBLE) {
-    
+
             if (ce.computed_label && ce.computed_label.length) {
-              rule_result.addResult(TEST_RESULT.PASS, ce, 'ELEMENT_PASS_1', [ce.toString(), ce.computed_label]);     
+              rule_result.addResult(TEST_RESULT.PASS, ce, 'ELEMENT_PASS_1', [ce.toString(), ce.computed_label]);
             }
             else {
-              rule_result.addResult(TEST_RESULT.FAIL, ce, 'ELEMENT_FAIL_1', [ce.toString()]);     
+              rule_result.addResult(TEST_RESULT.FAIL, ce, 'ELEMENT_FAIL_1', [ce.toString()]);
             }
           }
           else {
-            rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_1', [ce.toString()]);     
+            rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_1', [ce.toString()]);
           }
-        }  
+        }
       } // end loop
-    } 
-  } // end validation function   
+    }
+  } // end validation function
 },
 
 /**
  * @object CONTROL_2
- * 
+ *
  * @desc Every input type image must have an accessible name attribute with content
  */
-    
-{ rule_id             : 'CONTROL_2', 
-  last_updated        : '2014-11-25', 
+
+{ rule_id             : 'CONTROL_2',
+  last_updated        : '2014-11-25',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.FORMS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
@@ -9373,55 +9373,55 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   resource_properties : ['computed_label_source', 'alt', 'aria_label', 'aria_labelledby', 'title'],
   language_dependency : "",
   validate            : function (dom_cache, rule_result) {
-  
+
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
-  
+
     var tag_name;
-  
+
     var control_elements   = dom_cache.controls_cache.control_elements;
     var control_elements_len = control_elements.length;
-      
+
     // Check to see if valid cache reference
     if (control_elements && control_elements_len) {
-    
+
       for (var i = 0; i < control_elements_len; i++) {
         var ce = control_elements[i];
         var de = ce.dom_element;
-  
+
         var type = control_elements[i].type;
-    
+
         if (type === 'image') {
-     
+
           if (de.computed_style.is_visible_to_at == OpenAjax.a11y.VISIBILITY.VISIBLE) {
-    
+
             if (ce.computed_label) {
               if (ce.computed_label.length) {
                 rule_result.addResult(TEST_RESULT.PASS, ce, 'ELEMENT_PASS_1', [ce.computed_label]);
               }
               else {
-                rule_result.addResult(TEST_RESULT.FAIL, ce, 'ELEMENT_FAIL_2', []);                    
+                rule_result.addResult(TEST_RESULT.FAIL, ce, 'ELEMENT_FAIL_2', []);
               }
             }
             else {
-              rule_result.addResult(TEST_RESULT.FAIL, ce, 'ELEMENT_FAIL_1', []);     
+              rule_result.addResult(TEST_RESULT.FAIL, ce, 'ELEMENT_FAIL_1', []);
             }
           }
           else {
-            rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_1', []);     
+            rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_1', []);
           }
         }
       } // end loop
-    } 
-  } // end validation function   
+    }
+  } // end validation function
  },
- 
+
 /**
  * @object CONTROL_3
  *
  * @desc Groups of radio buttons should be contained in fieldset/legend or have some other group label
  */
-{ rule_id             : 'CONTROL_3', 
-  last_updated        : '2014-11-25', 
+{ rule_id             : 'CONTROL_3',
+  last_updated        : '2014-11-25',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.FORMS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
@@ -9432,27 +9432,27 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   resource_properties : [''],
   language_dependency : "",
   validate            : function (dom_cache, rule_result) {
-  
+
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
-  
+
     var control_elements   = dom_cache.controls_cache.control_elements;
     var control_elements_len = control_elements.length;
-      
+
     // Check to see if valid cache reference
     if (control_elements && control_elements_len) {
-    
+
       for (var i = 0; i < control_elements_len; i++) {
         var ce = control_elements[i];
         var de = ce.dom_element;
         var cs = de.computed_style;
-  
+
         var type = control_elements[i].control_type;
-    
+
         if (type == OpenAjax.a11y.CONTROL_TYPE.RADIO) {
-     
+
           if (cs.is_visible_to_at == VISIBILITY.VISIBLE) {
-    
+
             if (ce.grouping_element) {
               var ge = ce.grouping_element;
               var dge = ge.dom_element;
@@ -9482,11 +9482,11 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
             }
           }
           else {
-            rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_1', []);     
+            rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_1', []);
           }
         }
       } // end loop
-    }   
+    }
   } // end validate function
 },
 
@@ -9495,8 +9495,8 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  *
  * @desc Button elements must have text content and input type button must have a value attribute with content
  */
-{ rule_id             : 'CONTROL_4', 
-  last_updated        : '2014-11-25', 
+{ rule_id             : 'CONTROL_4',
+  last_updated        : '2014-11-25',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.FORMS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
@@ -9511,60 +9511,60 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     var TEST_RESULT  = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY   = OpenAjax.a11y.VISIBILITY;
     var CONTROL_TYPE = OpenAjax.a11y.CONTROL_TYPE;
-     
+
     var control_elements     = dom_cache.controls_cache.control_elements;
     var control_elements_len = control_elements.length;
-      
+
     // Check to see if valid cache reference
     if (control_elements && control_elements_len) {
-    
+
       for (var i = 0; i < control_elements_len; i++) {
         var ce = control_elements[i];
         var de = ce.dom_element;
         var cs = de.computed_style;
-        
-        
+
+
         if (ce.control_type === CONTROL_TYPE.BUTTON_ELEMENT) {
-     
+
           if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
-    
+
             if (ce.computed_label_for_comparison.length > 0) {
-              rule_result.addResult(TEST_RESULT.PASS, ce, 'ELEMENT_PASS_1', []);     
+              rule_result.addResult(TEST_RESULT.PASS, ce, 'ELEMENT_PASS_1', []);
             }
             else {
-              rule_result.addResult(TEST_RESULT.FAIL, ce, 'ELEMENT_FAIL_1', []);     
+              rule_result.addResult(TEST_RESULT.FAIL, ce, 'ELEMENT_FAIL_1', []);
             }
           }
           else {
-            rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_1', []);     
+            rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_1', []);
           }
-          
+
         }
         else {
-        
+
           if (ce.control_type === CONTROL_TYPE.BUTTON_INPUT) {
-     
+
             if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
-    
+
               if (ce.value && (ce.value.length > 0)) {
-                rule_result.addResult(TEST_RESULT.PASS, ce, 'ELEMENT_PASS_1', []);     
+                rule_result.addResult(TEST_RESULT.PASS, ce, 'ELEMENT_PASS_1', []);
               }
               else {
-                rule_result.addResult(TEST_RESULT.FAIL, ce, 'ELEMENT_FAIL_1', []);     
+                rule_result.addResult(TEST_RESULT.FAIL, ce, 'ELEMENT_FAIL_1', []);
               }
             }
             else {
-              rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_1', []);     
+              rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_1', []);
             }
           }
         }
-        
+
       } // end loop
-    }   
+    }
 
   } // end validate function
 },
- 
+
 
 /**
  * @object CONTROL_5
@@ -9573,8 +9573,8 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  *
  * @note Do not need to test for invisible elements, since getElementById searches all elements int he DOM
  */
-{ rule_id             : 'CONTROL_5', 
-  last_updated        : '2014-11-25', 
+{ rule_id             : 'CONTROL_5',
+  last_updated        : '2014-11-25',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.FORMS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
@@ -9589,48 +9589,48 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
     var ID          = OpenAjax.a11y.ID;
-  
+
     var control_elements      = dom_cache.controls_cache.control_elements;
     var control_elements_len  = control_elements.length;
-      
+
     // Check to see if valid cache reference
     if (control_elements && control_elements_len) {
-    
+
       for (var i = 0; i < control_elements_len; i++) {
         var ce = control_elements[i];
         var de = ce.dom_element;
         var cs = de.computed_style;
 
-        switch (de.id_unique) { 
+        switch (de.id_unique) {
         case ID.NOT_UNIQUE:
           if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
             rule_result.addResult(TEST_RESULT.FAIL, ce, 'ELEMENT_FAIL_1', [de.tag_name, de.id]);
           }
           else {
             rule_result.addResult(TEST_RESULT.FAIL, ce, 'ELEMENT_FAIL_2', [de.tag_name, de.id]);
-          }  
-          break;          
-         
-        case ID.UNIQUE:
-          rule_result.addResult(TEST_RESULT.PASS, ce, 'ELEMENT_PASS_1', [de.id]);               
+          }
           break;
-         
+
+        case ID.UNIQUE:
+          rule_result.addResult(TEST_RESULT.PASS, ce, 'ELEMENT_PASS_1', [de.id]);
+          break;
+
         default:
-          break;       
+          break;
         } // end switch
-        
+
      } // end loop
-   }     
+   }
   } // end validate function
 },
- 
+
 /**
  * @object CONTROL_6
- * 
+ *
  * @desc Label element with a for attribute reference does not reference a form control
  */
-{ rule_id             : 'CONTROL_6', 
-  last_updated        : '2014-11-25', 
+{ rule_id             : 'CONTROL_6',
+  last_updated        : '2014-11-25',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.FORMS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -9644,13 +9644,13 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
    var TEST_RESULT   = OpenAjax.a11y.TEST_RESULT;
    var VISIBILITY = OpenAjax.a11y.VISIBILITY;
-  
+
    var label_elements      = dom_cache.controls_cache.label_elements;
    var label_elements_len  = label_elements.length;
-      
+
    // Check to see if valid cache reference
    if (label_elements && label_elements_len) {
-    
+
      for (var i = 0; i < label_elements_len; i++) {
        var le = label_elements[i];
        var de = le.dom_element;
@@ -9661,29 +9661,29 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
          if (de.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {
            if (le.unused_label) {
               rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_1', [le.for_id]);
-           } 
+           }
            else {
               if (le.duplicate_label) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, le, 'ELEMENT_MC_1', [le.for_id]);
               else rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_1', [le.for_id]);
-           }   
+           }
          }
          else {
-           rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', []);        
+           rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', []);
          }
-      }   
+      }
      } // end loop
-   }     
+   }
   } // end validate function
 },
 
-/** 
+/**
  * @object CONTROL_7
  *
- * @desc Label or legend element must contain content 
+ * @desc Label or legend element must contain content
  */
- 
-{ rule_id             : 'CONTROL_7', 
-  last_updated        : '2014-11-25', 
+
+{ rule_id             : 'CONTROL_7',
+  last_updated        : '2014-11-25',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.FORMS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -9697,44 +9697,44 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
    var TEST_RESULT   = OpenAjax.a11y.TEST_RESULT;
    var VISIBILITY = OpenAjax.a11y.VISIBILITY;
-  
+
    var label_elements      = dom_cache.controls_cache.label_elements;
    var label_elements_len  = label_elements.length;
-   
+
    // Check to see if valid cache reference
    if (label_elements && label_elements_len) {
-    
+
      for (var i = 0; i < label_elements_len; i++) {
        var le = label_elements[i];
        var de = le.dom_element;
        var cs = de.computed_style;
-       
+
        if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
-       
+
          if (le.computed_label_for_comparison.length === 0) {
            rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_1', [le.tag_name]);
          }
          else {
-           rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_1', [le.tag_name]);        
+           rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_1', [le.tag_name]);
          }
        }
        else {
-         rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [le.tag_name]);                
+         rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [le.tag_name]);
        }
      } // end loop
-   } 
+   }
   } // end validate function
 },
 
 
-/** 
+/**
  * @object CONTROL 8
  *
- * @desc Fieldset must contain exactly one legend element 
+ * @desc Fieldset must contain exactly one legend element
  */
- 
-{ rule_id             : 'CONTROL_8', 
-  last_updated        : '2014-11-25', 
+
+{ rule_id             : 'CONTROL_8',
+  last_updated        : '2014-11-25',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.FORMS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
@@ -9748,13 +9748,13 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
    var TEST_RESULT   = OpenAjax.a11y.TEST_RESULT;
    var VISIBILITY = OpenAjax.a11y.VISIBILITY;
-  
+
    var grouping_elements      = dom_cache.controls_cache.grouping_elements;
    var grouping_elements_len  = grouping_elements.length;
-      
+
    // Check to see if valid cache reference
    if (grouping_elements && grouping_elements_len) {
-    
+
      for (var i = 0; i < grouping_elements_len; i++) {
        var fe = grouping_elements[i];
 
@@ -9765,41 +9765,41 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
        if (de.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {
 
          if (fe.legend_count === 0 || !fe.legend_element ) {
-           rule_result.addResult(TEST_RESULT.FAIL, fe, 'ELEMENT_FAIL_1', []);        
+           rule_result.addResult(TEST_RESULT.FAIL, fe, 'ELEMENT_FAIL_1', []);
          }
          else {
            if (fe.legend_count > 1) {
-             rule_result.addResult(TEST_RESULT.FAIL, fe, 'ELEMENT_FAIL_2', [(fe.legend_count-1)]);        
+             rule_result.addResult(TEST_RESULT.FAIL, fe, 'ELEMENT_FAIL_2', [(fe.legend_count-1)]);
            }
            else {
              de = fe.legend_element.dom_element;
-             
+
              if (de.computed_style.is_visible_to_at == VISIBILITY.VISIBLE) {
-               rule_result.addResult(TEST_RESULT.PASS, fe, 'ELEMENT_PASS_1', []);                
+               rule_result.addResult(TEST_RESULT.PASS, fe, 'ELEMENT_PASS_1', []);
              }
              else {
-               rule_result.addResult(TEST_RESULT.FAIL, fe, 'ELEMENT_FAIL_3', []);                                  
+               rule_result.addResult(TEST_RESULT.FAIL, fe, 'ELEMENT_FAIL_3', []);
              }
            }
          }
        }
        else {
-         rule_result.addResult(TEST_RESULT.HIDDEN, fe, 'ELEMENT_HIDDEN_1', []);                          
+         rule_result.addResult(TEST_RESULT.HIDDEN, fe, 'ELEMENT_HIDDEN_1', []);
        }
      } // end loop
-   } 
+   }
 
   } // end validate function
 },
 
-/** 
+/**
  * @object CONTROL_9
  *
  * @desc Check form controls labeled using the TITLE attribute for accessible name
  */
- 
-{ rule_id             : 'CONTROL_9', 
-  last_updated        : '2014-11-25', 
+
+{ rule_id             : 'CONTROL_9',
+  last_updated        : '2014-11-25',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.FORMS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -9816,38 +9816,38 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
    var control_elements      = dom_cache.controls_cache.control_elements;
    var control_elements_len  = control_elements.length;
-      
+
    // Check to see if valid cache reference
    if (control_elements && control_elements_len) {
-    
+
      for (var i = 0; i < control_elements_len; i++) {
        var ce = control_elements[i];
        var de = ce.dom_element;
-       
+
        if (ce.computed_label_source === OpenAjax.a11y.SOURCE.TITLE_ATTRIBUTE) {
           if (de.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {
-           rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_1', [de.tag_name]);        
+           rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ce, 'ELEMENT_MC_1', [de.tag_name]);
          }
          else {
-           rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_1', [de.tag_name]);                        
-         }  
+           rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_1', [de.tag_name]);
+         }
        }
      } // end loop
-   } 
+   }
 
   } // end validate function
 },
 
 /**
  * @object CONTROL_10
- * 
- * @desc Accessible labels must be unique for every textarea, 
- *       select and input element of type text, password, radio, 
+ *
+ * @desc Accessible labels must be unique for every textarea,
+ *       select and input element of type text, password, radio,
  *       and checkbox on a page
  */
- 
-{ rule_id             : 'CONTROL_10', 
-  last_updated        : '2014-11-25', 
+
+{ rule_id             : 'CONTROL_10',
+  last_updated        : '2014-11-25',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.FORMS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
@@ -9861,7 +9861,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
    var VISIBILITY = OpenAjax.a11y.VISIBILITY;
-  
+
    var control_elements   = dom_cache.controls_cache.control_elements;
    var control_elements_len = control_elements.length;
    var ces   = [];
@@ -9870,67 +9870,67 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
    // Check to see if valid cache reference
    if (control_elements && control_elements_len) {
-    
-     // collect all the visible controls 
+
+     // collect all the visible controls
      for (i = 0; i < control_elements_len; i++) {
        var ce = control_elements[i];
        var de = ce.dom_element;
-  
+
        if (ce.needs_label) {
 
          var control_type = ce.toString();
 
-         if (de.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {  
+         if (de.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {
            // Only test form controls with labels
            if (ce.computed_label && ce.computed_label.length) {
              ces.push(ce);
            }
          }
          else {
-           rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_1', [control_type]);                                    
+           rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_1', [control_type]);
          }
        }
-     } // end loop    
-     
+     } // end loop
+
      // sort labels
 
-     ces = dom_cache.sortArrayOfObjects(ces,'computed_label_for_comparison', true); 
-     ces = dom_cache.getDuplicateObjects(ces,'computed_label_for_comparison'); 
+     ces = dom_cache.sortArrayOfObjects(ces,'computed_label_for_comparison', true);
+     ces = dom_cache.getDuplicateObjects(ces,'computed_label_for_comparison');
 
      for (i = 0; i < ces.length; i++) {
        ces_len = ces[i].length;
-       
+
        ce      = ces[i][0];
        de      = ce.dom_element;
 
 //       console.debug("ROLE: " + ce.computed_label_for_comparison + " " + ces_len + " TEST 1: " + (ces_len === 1) + " TEST 2: " + ((ces_len === 2) && ((de.role === 'tab') || (de.role === 'tabpanel'))));
-       
-       if ((ces_len === 1) || 
+
+       if ((ces_len === 1) ||
            ((ces_len === 2) && ((de.role === 'tab') || (de.role === 'tabpanel')))) {
-         rule_result.addResult(TEST_RESULT.PASS, ce, 'ELEMENT_PASS_1', []);        
-         if (ces_len === 2) rule_result.addResult(TEST_RESULT.PASS, ces[i][1], 'ELEMENT_PASS_1', []);        
+         rule_result.addResult(TEST_RESULT.PASS, ce, 'ELEMENT_PASS_1', []);
+         if (ces_len === 2) rule_result.addResult(TEST_RESULT.PASS, ces[i][1], 'ELEMENT_PASS_1', []);
        }
        else {
          for (j = 0; j < ces_len; j++) {
-           rule_result.addResult(TEST_RESULT.FAIL, ces[i][j], 'ELEMENT_FAIL_1', []);                
-         }  
+           rule_result.addResult(TEST_RESULT.FAIL, ces[i][j], 'ELEMENT_FAIL_1', []);
+         }
        }
      }
-     
-   } 
+
+   }
   } // end validate function
 },
 
 /**
  * @object CONTROL_11
- * 
- * @desc If there is more than one form on page, input element of type 
+ *
+ * @desc If there is more than one form on page, input element of type
  *       submit and reset must have unique labels in each form using the value attribute
- * 
+ *
  */
- 
-{ rule_id             : 'CONTROL_11', 
-  last_updated        : '2014-11-25', 
+
+{ rule_id             : 'CONTROL_11',
+  last_updated        : '2014-11-25',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.FORMS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -9943,65 +9943,65 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   validate            : function (dom_cache, rule_result) {
 
    function get_input_by_type(list, form, type) {
-   
+
    }
 
    var TEST_RESULT  = OpenAjax.a11y.TEST_RESULT;
    var VISIBILITY   = OpenAjax.a11y.VISIBILITY;
    var CONTROL_TYPE =  OpenAjax.a11y.CONTROL_TYPE;
-  
+
    var form_elements   = dom_cache.controls_cache.form_elements;
    var form_elements_len = form_elements.length;
    var fes   = [];
-   
+
    var input_submit_info = [];
    var input_reset_info  = [];
 
    // Check to see if valid cache reference
    if (form_elements && form_elements_len) {
-    
-     // collect all the visible submit and reset buttons controls 
+
+     // collect all the visible submit and reset buttons controls
      for (var i = 0; i < form_elements_len; i++) {
        var fe = form_elements[i];
        var de = fe.dom_element;
        var cs = de.computed_style;
-  
+
        var control_type = fe.control_type;
 
        if (control_type === OpenAjax.a11y.CONTROL_TYPE.FORM) {
 
-         if (cs.is_visible_to_at === VISIBILITY.VISIBLE) { 
-         
+         if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
+
            get_input_by_type(input_submit_info, fe, 'submit');
            get_input_by_type(input_reset_info, fe, 'reset');
-           
+
          }
        }
-     } // end loop          
-   }    
+     } // end loop
+   }
   } // end validate function
 
 }
-]); 
+]);
 
 
-   
+
 
 //
-// OpenAjax Alliance Rules 
+// OpenAjax Alliance Rules
 // Rule group: Styling Rules
 //
 OpenAjax.a11y.RuleManager.addRulesFromJSON([
-      
+
 
   /**
    * @object FRAME_1
    *
    * @desc  Evaluate frame elements for a title attribute
-   */ 
- 
-  { rule_id             : 'FRAME_1', 
-    last_updated        : '2015-07-31', 
+   */
+
+  { rule_id             : 'FRAME_1',
+    last_updated        : '2015-07-31',
     rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
     rule_category       : OpenAjax.a11y.RULE_CATEGORIES.STYLES_READABILITY,
     rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
@@ -10015,38 +10015,38 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
       var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
       var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
-  
+
       var frame_elements     = dom_cache.frames_cache.frame_elements;
       var frame_elements_len = frame_elements.length;
-      
+
       // Check to see if valid cache reference
       if (frame_elements && frame_elements_len) {
-    
+
         for (var i = 0; i < frame_elements_len; i++) {
           var fe = frame_elements[i];
           var de = fe.dom_element;
           var cs = de.computed_style;
-          
+
           // if no content in frame ignore
           if (fe.src.length === 0) continue;
-  
-          if ((cs.is_visible_to_at === VISIBILITY.VISIBLE) && 
+
+          if ((cs.is_visible_to_at === VISIBILITY.VISIBLE) &&
               (cs.is_visible_onscreen === VISIBILITY.VISIBLE)){
-  
+
             if (de.has_title && de.title.length) {
-              rule_result.addResult(TEST_RESULT.PASS, fe, 'ELEMENT_PASS_1', [de.title]);     
+              rule_result.addResult(TEST_RESULT.PASS, fe, 'ELEMENT_PASS_1', [de.title]);
             }
             else {
-              rule_result.addResult(TEST_RESULT.FAIL, fe, 'ELEMENT_FAIL_1', []);     
+              rule_result.addResult(TEST_RESULT.FAIL, fe, 'ELEMENT_FAIL_1', []);
             }
-            
+
           }
           else {
-            rule_result.addResult(TEST_RESULT.HIDDEN, fe, 'ELEMENT_HIDDEN_1', []);     
+            rule_result.addResult(TEST_RESULT.HIDDEN, fe, 'ELEMENT_HIDDEN_1', []);
           }
         } // end loop
-      } 
-        
+      }
+
     } // end validate function
   },
 
@@ -10054,10 +10054,10 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
    * @object FRAME_2
    *
    * @desc  Evaluate iframe elements for an accessible name
-   */ 
- 
-  { rule_id             : 'FRAME_2', 
-    last_updated        : '2015-07-31', 
+   */
+
+  { rule_id             : 'FRAME_2',
+    last_updated        : '2015-07-31',
     rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
     rule_category       : OpenAjax.a11y.RULE_CATEGORIES.STYLES_READABILITY,
     rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
@@ -10068,63 +10068,63 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     resource_properties : ['title', 'aria_label', 'aria_labelledby'],
     language_dependency : "",
     validate            : function (dom_cache, rule_result) {
-  
+
       var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
       var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
-  
+
       var iframe_elements     = dom_cache.frames_cache.iframe_elements;
       var iframe_elements_len = iframe_elements.length;
-      
+
       // Check to see if valid cache reference
       if (iframe_elements && iframe_elements_len) {
-    
+
         for (var i = 0; i < iframe_elements_len; i++) {
           var fe = iframe_elements[i];
           var de = fe.dom_element;
-          
+
           // if no content in frame ignore
           if (fe.src.length === 0) continue;
-  
-          if ((fe.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) && 
+
+          if ((fe.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) &&
               (fe.dom_element.computed_style.is_visible_onscreen === VISIBILITY.VISIBLE)){
-  
+
             if (fe.computed_label.length) {
-              rule_result.addResult(TEST_RESULT.PASS, fe, 'ELEMENT_PASS_1', [fe.computed_label]);     
+              rule_result.addResult(TEST_RESULT.PASS, fe, 'ELEMENT_PASS_1', [fe.computed_label]);
             }
             else {
-              rule_result.addResult(TEST_RESULT.FAIL, fe, 'ELEMENT_FAIL_1', []);     
+              rule_result.addResult(TEST_RESULT.FAIL, fe, 'ELEMENT_FAIL_1', []);
             }
-            
+
           }
           else {
-            rule_result.addResult(TEST_RESULT.HIDDEN, fe, 'ELEMENT_HIDDEN_1', []);     
+            rule_result.addResult(TEST_RESULT.HIDDEN, fe, 'ELEMENT_HIDDEN_1', []);
           }
         } // end loop
-      } 
+      }
 
-        
+
     } // end validate function
   }
- 
-]); 
+
+]);
 
 
-    
+
 
 /* ---------------------------------------------------------------- */
 /* OpenAjax Alliance IMG and AREA element Rules                     */
 /* ---------------------------------------------------------------- */
 
 OpenAjax.a11y.RuleManager.addRulesFromJSON([
-      
+
 /**
  * @object IMAGE_1
  *
  * @desc Images must have a source for an accessible name or be identified as decorative
  */
- 
-{ rule_id             : 'IMAGE_1', 
-  last_updated        : '2014-11-28', 
+
+{ rule_id             : 'IMAGE_1',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.IMAGES,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
@@ -10135,55 +10135,55 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   resource_properties : ['accessible_name_source', 'alt', 'aria_label', 'aria_labelledby', 'title', 'is_visible_to_at', 'role'],
   language_dependency : "",
   validate            : function (dom_cache, rule_result) {
- 
+
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
     var SOURCE      = OpenAjax.a11y.SOURCE;
 
     var image_elements   = dom_cache.images_cache.image_elements;
     var image_elements_len = image_elements.length;
-       
+
     // Check to see if valid cache reference
     if (image_elements && image_elements_len) {
-     
+
       for (var i = 0; i < image_elements_len; i++) {
         var ie = image_elements[i];
         var de = ie.dom_element;
-        
+
         if (de.tag_name === 'area') continue;
-        
+
 //        OpenAjax.a11y.logger.debug("Image is visibile to AT: " + de.computed_style.is_visible_to_at);
 
         if ((de.computed_style.is_visible_to_at === VISIBILITY.VISIBLE ) &&
             (!de.has_role || (de.role !== 'presentation'))){
-          
+
           if (ie.accessible_name_source !== SOURCE.NONE) {
             if (ie.accessible_name_source === SOURCE.ALT_ATTRIBUTE) {
               if (de.tag_name === "img") rule_result.addResult(TEST_RESULT.PASS, ie, 'ELEMENT_PASS_1', [de.tag_name]);
-              else rule_result.addResult(TEST_RESULT.FAIL, ie, 'ELEMENT_FAIL_2', [de.tag_name]); 
+              else rule_result.addResult(TEST_RESULT.FAIL, ie, 'ELEMENT_FAIL_2', [de.tag_name]);
             } else if (ie.accessible_name_source === SOURCE.ARIA_LABELLEDBY) rule_result.addResult(TEST_RESULT.PASS, ie, 'ELEMENT_PASS_2', [de.tag_name]);
             else if (ie.accessible_name_source === SOURCE.ARIA_LABEL)      rule_result.addResult(TEST_RESULT.PASS, ie, 'ELEMENT_PASS_3', [de.tag_name]);
             else rule_result.addResult(TEST_RESULT.PASS, ie, 'ELEMENT_PASS_4', [de.tag_name]);
           }
           else {
-            rule_result.addResult(TEST_RESULT.FAIL, ie, 'ELEMENT_FAIL_1', [de.tag_name]);     
+            rule_result.addResult(TEST_RESULT.FAIL, ie, 'ELEMENT_FAIL_1', [de.tag_name]);
           }
         }
         else {
-          rule_result.addResult(TEST_RESULT.HIDDEN, ie, 'ELEMENT_HIDDEN_1', [de.tag_name]);     
+          rule_result.addResult(TEST_RESULT.HIDDEN, ie, 'ELEMENT_HIDDEN_1', [de.tag_name]);
         }
       } // end loop
-    } 
-  } // end validation function  
-}, 
- 
+    }
+  } // end validation function
+},
+
 /**
  * @object IMAGE_2
  *
  * @desc Text alternatives accurately describe images
  */
-{ rule_id             : 'IMAGE_2', 
-  last_updated        : '2015-09-11', 
+{ rule_id             : 'IMAGE_2',
+  last_updated        : '2015-09-11',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.IMAGES,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
@@ -10194,7 +10194,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   resource_properties : ['tag_name', 'alt', 'title', 'role', 'is_visible_to_at'],
   language_dependency : "",
   validate            : function (dom_cache, rule_result) {
-    
+
     var TEST_RESULT   = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY    = OpenAjax.a11y.VISIBILITY;
 
@@ -10203,34 +10203,34 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     // Check to see if valid cache reference
     if (image_elements && image_elements_len) {
-     
+
       for (var i = 0; i < image_elements_len; i++) {
         var ie = image_elements[i];
         var de = ie.dom_element;
         var cs = de.computed_style;
-        
+
         if (ie.is_presentation || (ie.accessible_name_length === 0)) continue;
 
         if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
           if (de.tag_name === 'img') rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ie, 'ELEMENT_MC_1', [], ie.toString('short'));
           else rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ie, 'ELEMENT_MC_2', [de.tag_name], ie.toString('short'));
-        }    
+        }
         else {
-          if (de.tag_name === 'img') rule_result.addResult(TEST_RESULT.HIDDEN, ie, 'ELEMENT_HIDDEN_1', [], ie.toString('short'));     
+          if (de.tag_name === 'img') rule_result.addResult(TEST_RESULT.HIDDEN, ie, 'ELEMENT_HIDDEN_1', [], ie.toString('short'));
           else rule_result.addResult(TEST_RESULT.HIDDEN, ie, 'ELEMENT_HIDDEN_2', [de.tag_name], ie.toString('short'));
         }
       } // end loop
-    } 
+    }
   } // end validation function
-}, 
+},
 
 /**
  * @object IMAGE_3
  *
  * @desc The file name of the image should not be part of the accessible name content (it must have an image file extension)
  */
-{ rule_id             : 'IMAGE_3', 
-  last_updated        : '2014-11-28', 
+{ rule_id             : 'IMAGE_3',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.IMAGES,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
@@ -10248,49 +10248,49 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     var image_elements   = dom_cache.images_cache.image_elements;
     var image_elements_len = image_elements.length;
-       
+
     // Check to see if valid cache reference
     if (image_elements && image_elements_len) {
-     
+
       for (var i = 0; i < image_elements_len; i++) {
         var ie = image_elements[i];
         var de = ie.dom_element;
 
         if (ie.accessible_name_source !== SOURCE.NONE && (ie.accessible_name_for_comparison.length > 0)) {
-          
+
           if ((de.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) &&
               (!de.has_role || (de.role !== 'presentation'))){
-          
+
             // make sure it has a file extension, will assume extension is for an image
             if (ie.file_name.indexOf('.') >= 0) {
-         
+
               if (ie.accessible_name_for_comparison.indexOf(ie.file_name) >= 0 ) {
-                rule_result.addResult(TEST_RESULT.FAIL, ie, 'ELEMENT_FAIL_1', [], ie.toString('short'));                 
+                rule_result.addResult(TEST_RESULT.FAIL, ie, 'ELEMENT_FAIL_1', [], ie.toString('short'));
               }
               else {
-                rule_result.addResult(TEST_RESULT.PASS, ie, 'ELEMENT_PASS_1', [], ie.toString('short'));                 
+                rule_result.addResult(TEST_RESULT.PASS, ie, 'ELEMENT_PASS_1', [], ie.toString('short'));
               }
             }
             else {
-              rule_result.addResult(TEST_RESULT.PASS, ie, 'ELEMENT_PASS_1', [], ie.toString('short'));                              
+              rule_result.addResult(TEST_RESULT.PASS, ie, 'ELEMENT_PASS_1', [], ie.toString('short'));
             }
           }
           else {
-            rule_result.addResult(TEST_RESULT.HIDDEN, ie, 'ELEMENT_HIDDEN_1', [de.tag_name], ie.toString('short'));     
+            rule_result.addResult(TEST_RESULT.HIDDEN, ie, 'ELEMENT_HIDDEN_1', [de.tag_name], ie.toString('short'));
           }
-        }      
+        }
       } // end loop
-    } 
-  } // end validation function  
- }, 
+    }
+  } // end validation function
+ },
 
 /**
  * @object IMAGE_4_EN (English)
  *
  * @desc If the accessible name contains content, it should be less than 100 characters long, longer descriptions should use long description techniques (English only)
  */
-{ rule_id             : 'IMAGE_4_EN', 
-  last_updated        : '2014-11-28', 
+{ rule_id             : 'IMAGE_4_EN',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.IMAGES,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
@@ -10310,10 +10310,10 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     var image_elements   = dom_cache.images_cache.image_elements;
     var image_elements_len = image_elements.length;
-       
+
     // Check to see if valid cache reference
     if (image_elements && image_elements_len) {
-     
+
       for (var i = 0; i < image_elements_len; i++) {
         var ie = image_elements[i];
         var de = ie.dom_element;
@@ -10324,28 +10324,28 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
               (!de.has_role || (de.role !== 'presentation'))){
 
             if (ie.accessible_name_for_comparison.length > MAX_ACCESSIBLE_NAME_LENGTH) {
-              rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ie, 'ELEMENT_MC_1', [ie.accessible_name_for_comparison.length], ie.toString('short'));     
+              rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ie, 'ELEMENT_MC_1', [ie.accessible_name_for_comparison.length], ie.toString('short'));
             }
-            else {     
-              rule_result.addResult(TEST_RESULT.PASS, ie, 'ELEMENT_PASS_1', [ie.accessible_name_for_comparison.length], ie.toString('short'));     
+            else {
+              rule_result.addResult(TEST_RESULT.PASS, ie, 'ELEMENT_PASS_1', [ie.accessible_name_for_comparison.length], ie.toString('short'));
             }
           }
           else {
-            rule_result.addResult(TEST_RESULT.HIDDEN, ie, 'ELEMENT_HIDDEN_1', [de.tag_name], ie.toString('short'));     
+            rule_result.addResult(TEST_RESULT.HIDDEN, ie, 'ELEMENT_HIDDEN_1', [de.tag_name], ie.toString('short'));
           }
         }
       } // end loop
-    } 
+    }
   } // end validation function
-}, 
- 
+},
+
 /**
  * @object IMAGE_5
  *
  * @desc Verify the image is decorative
  */
-{ rule_id             : 'IMAGE_5', 
-  last_updated        : '2015-09-11', 
+{ rule_id             : 'IMAGE_5',
+  last_updated        : '2015-09-11',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.IMAGES,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
@@ -10356,7 +10356,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   resource_properties : ['tag_name', 'alt', 'role', 'is_visible_to_at'],
   language_dependency : "",
   validate            : function (dom_cache, rule_result) {
-    
+
     var TEST_RESULT   = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY    = OpenAjax.a11y.VISIBILITY;
 
@@ -10365,26 +10365,26 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     // Check to see if valid cache reference
     if (image_elements && image_elements_len) {
-     
+
       for (var i = 0; i < image_elements_len; i++) {
         var ie = image_elements[i];
         var de = ie.dom_element;
         var cs = de.computed_style;
 
         if (ie.accessible_name_source !== OpenAjax.a11y.SOURCE.NONE || ie.is_presentation) {
-          if (ie.accessible_name_for_comparison.length === 0 || ie.is_presentation) {  
+          if (ie.accessible_name_for_comparison.length === 0 || ie.is_presentation) {
             if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
               if (de.tag_name === 'img') rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ie, 'ELEMENT_MC_1', []);
               else rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ie, 'ELEMENT_MC_2', [de.tag_name]);
             }
             else {
-              if (de.tag_name === 'img') rule_result.addResult(TEST_RESULT.HIDDEN, ie, 'ELEMENT_HIDDEN_1', []);     
+              if (de.tag_name === 'img') rule_result.addResult(TEST_RESULT.HIDDEN, ie, 'ELEMENT_HIDDEN_1', []);
               else rule_result.addResult(TEST_RESULT.HIDDEN, ie, 'ELEMENT_HIDDEN_2', [de.tag_name]);
             }
-          }  
-        }    
+          }
+        }
       } // end loop
-    } 
+    }
   } // end validation function
 },
 
@@ -10393,8 +10393,8 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  *
  * @desc For complex images, charts or graphs provide long description
  */
-{ rule_id             : 'IMAGE_6', 
-  last_updated        : '2014-11-28', 
+{ rule_id             : 'IMAGE_6',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.IMAGES,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -10405,7 +10405,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   resource_properties : ['tag_name', 'longdesc', 'aria_describedby', 'title', 'calculated_aria_description', 'undefined_aria_describedby_ids', 'is_visible_to_at'],
   language_dependency : "",
   validate            : function (dom_cache, rule_result) {
-    
+
     function isSimilar(alt, title) {
 
       if (typeof alt   !== 'string') return false;
@@ -10416,12 +10416,12 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
       if (alt === title) return true;
 
-      if ((alt.length >= title.length) && 
+      if ((alt.length >= title.length) &&
           (alt.indexOf(title) >= 0)) return true;
 
       return false;
     }
-    
+
     var TEST_RESULT   = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY    = OpenAjax.a11y.VISIBILITY;
 
@@ -10430,12 +10430,12 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     // Check to see if valid cache reference
     if (image_elements && image_elements_len) {
-     
+
       for (var i = 0; i < image_elements_len; i++) {
         var ie = image_elements[i];
         var de = ie.dom_element;
         var cs = de.computed_style;
-        
+
         if (ie.is_presentation || (ie.accessible_name_length === 0) || ie.accessible_name_source === OpenAjax.a11y.SOURCE.NONE) continue;
 
         if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
@@ -10446,7 +10446,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
             else {
               if (de.tag_name === 'img') rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ie, 'ELEMENT_MC_1', [de.aria_describedby], ie.toString('long'));
               else rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ie, 'ELEMENT_MC_2', [de.tag_name, de.aria_describedby], ie.toString('long'));
-            } 
+            }
           } else if (de.has_title && (ie.accessible_name_source !== OpenAjax.a11y.SOURCE.TITLE)) {
               if (de.tag_name === 'img') {
                 if (isSimilar(de.alt, de.title)) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ie, 'ELEMENT_MC_3A', [], ie.toString('long'));
@@ -10456,28 +10456,28 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
             else if (ie.has_longdesc) {
               if (de.tag_name === 'img') rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ie, 'ELEMENT_MC_5', [ie.longdesc], ie.toString('long'));
               else rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ie, 'ELEMENT_MC_6', [de.tag_name. ie.longdesc], ie.toString('long'));
-            }  
+            }
           else {
             if (de.tag_name === 'img') rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ie, 'ELEMENT_MC_7', [], ie.toString('long'));
             else rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ie, 'ELEMENT_MC_8', [de.tag_name], ie.toString('long'));
-          }  
-        }    
+          }
+        }
         else {
-          if (de.tag_name === 'img') rule_result.addResult(TEST_RESULT.HIDDEN, ie, 'ELEMENT_HIDDEN_1', [], ie.toString('long'));     
+          if (de.tag_name === 'img') rule_result.addResult(TEST_RESULT.HIDDEN, ie, 'ELEMENT_HIDDEN_1', [], ie.toString('long'));
           else rule_result.addResult(TEST_RESULT.HIDDEN, ie, 'ELEMENT_HIDDEN_2', [de.tag_name], ie.toString('long'));
         }
       } // end loop
-    } 
+    }
   } // end validation function
-}, 
- 
+},
+
 /**
  * @object IMAGE_7
  *
  * @desc MathML for mathematical expressions
  */
-{ rule_id             : 'IMAGE_7', 
-  last_updated        : '2015-09-15', 
+{ rule_id             : 'IMAGE_7',
+  last_updated        : '2015-09-15',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.IMAGES,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
@@ -10488,7 +10488,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   resource_properties : ['tag_name', 'alt', 'role', 'is_visible_to_at'],
   language_dependency : "",
   validate            : function (dom_cache, rule_result) {
-    
+
     var TEST_RESULT   = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY    = OpenAjax.a11y.VISIBILITY;
 
@@ -10497,40 +10497,40 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     // Check to see if valid cache reference
     if (image_elements && image_elements_len) {
-     
+
       for (var i = 0; i < image_elements_len; i++) {
         var ie = image_elements[i];
         var de = ie.dom_element;
         var cs = de.computed_style;
-        
+
         if (ie.is_presentation || (ie.accessible_name_length === 0)) continue;
 
         if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
           if (de.tag_name === 'img') rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ie, 'ELEMENT_MC_1', [], ie.toString('short'));
           else rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ie, 'ELEMENT_MC_2', [de.tag_name], ie.toString('short'));
-        }    
+        }
         else {
-          if (de.tag_name === 'img') rule_result.addResult(TEST_RESULT.HIDDEN, ie, 'ELEMENT_HIDDEN_1', [], ie.toString('short'));     
+          if (de.tag_name === 'img') rule_result.addResult(TEST_RESULT.HIDDEN, ie, 'ELEMENT_HIDDEN_1', [], ie.toString('short'));
           else rule_result.addResult(TEST_RESULT.HIDDEN, ie, 'ELEMENT_HIDDEN_2', [de.tag_name], ie.toString('short'));
         }
       } // end loop
-    } 
+    }
   } // end validation function
-}]); 
- 
+}]);
+
 /* ---------------------------------------------------------------- */
-/*  OpenAjax Alliance Heading and Landmark Rules                    */ 
+/*  OpenAjax Alliance Heading and Landmark Rules                    */
 /* ---------------------------------------------------------------- */
 
 OpenAjax.a11y.RuleManager.addRulesFromJSON([
-      
+
 /**
  * @object HEADING_1
  *
  * @desc Page contains at least one H1 element and each H1 element has content
- */               
-{ rule_id             : 'HEADING_1', 
-  last_updated        : '2014-11-25', 
+ */
+{ rule_id             : 'HEADING_1',
+  last_updated        : '2014-11-25',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.PAGE,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.HEADINGS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
@@ -10541,24 +10541,24 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   resource_properties : ['tag_name', 'name_length'],
   language_dependency : "",
   validate            : function (dom_cache, rule_result) {
- 
+
       var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
       var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
-  
+
       var h1_elements     = dom_cache.headings_landmarks_cache.h1_elements;
       var h1_elements_len = h1_elements.length;
-      
+
       var page_element = dom_cache.headings_landmarks_cache.page_element;
-      
+
       var h1_count = 0;
-      
+
       if (h1_elements && h1_elements_len) {
-      
+
         for (var i = 0; i < h1_elements_len; i++ ) {
           var he = h1_elements[i];
 
           if (he.dom_element.computed_style.is_visible_to_at === VISIBILITY.HIDDEN) {
-            rule_result.addResult(TEST_RESULT.HIDDEN, he, 'ELEMENT_HIDDEN_1', []);                      
+            rule_result.addResult(TEST_RESULT.HIDDEN, he, 'ELEMENT_HIDDEN_1', []);
           }
           else {
             if (he.name && he.name.length) {
@@ -10568,7 +10568,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
             else {
               rule_result.addResult(TEST_RESULT.FAIL, he, 'ELEMENT_FAIL_1', []);
             }
-          }  
+          }
         }
       }
 
@@ -10576,19 +10576,19 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
        // Test if no h1s
        if (h1_count === 0) rule_result.addResult(TEST_RESULT.FAIL, page_element, 'PAGE_FAIL_1', []);
        else rule_result.addResult(TEST_RESULT.PASS, page_element, 'PAGE_PASS_1', []);
-     } 
+     }
   } // end validate function
-}, 
+},
 
 /**
  * @object HEADING_2
  *
- * @desc If there are main and/or banner landmarks and H1 elements, 
- *       H1 elements should be children of main or banner landmarks 
+ * @desc If there are main and/or banner landmarks and H1 elements,
+ *       H1 elements should be children of main or banner landmarks
  *
- */               
-{ rule_id             : 'HEADING_2', 
-  last_updated        : '2014-11-25', 
+ */
+{ rule_id             : 'HEADING_2',
+  last_updated        : '2014-11-25',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.HEADINGS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
@@ -10599,22 +10599,22 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   resource_properties : ['tag_name', 'name'],
   language_dependency : "",
   validate            : function (dom_cache, rule_result) {
-  
+
     function checkForAnscetorRole(he, landmark) {
       var pl = he.dom_element.parent_landmark;
-      
-      while (pl) { 
+
+      while (pl) {
          if (pl.landmark === landmark) return true;
          pl = pl.dom_element.parent_landmark;
       }
-      
+
       return false;
     }
 
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
     var SOURCE      = OpenAjax.a11y.SOURCE;
-  
+
     var h1_elements     = dom_cache.headings_landmarks_cache.h1_elements;
     var h1_elements_len = h1_elements.length;
 
@@ -10622,29 +10622,29 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     var main_elements_len = main_elements.length;
 
     if (main_elements && h1_elements && main_elements_len && h1_elements_len) {
-      
+
       for (var i = 0; i < h1_elements_len; i++) {
         var he = h1_elements[i];
         var de = he.dom_element;
         var cs = de.computed_style;
-        
+
         if (cs.is_visible_to_at === VISIBILITY.HIDDEN) {
-          rule_result.addResult(TEST_RESULT.HIDDEN, he, 'ELEMENT_HIDDEN_1', []);                      
+          rule_result.addResult(TEST_RESULT.HIDDEN, he, 'ELEMENT_HIDDEN_1', []);
         }
         else {
           if (checkForAnscetorRole(he, 'main')) {
             rule_result.addResult(TEST_RESULT.PASS, he, 'ELEMENT_PASS_1', []);
           }
-          else {  
+          else {
             if (checkForAnscetorRole(he, 'banner')) {
               rule_result.addResult(TEST_RESULT.PASS, he, 'ELEMENT_PASS_2', []);
-            } 
-            else {  
+            }
+            else {
               rule_result.addResult(TEST_RESULT.FAIL, he, 'ELEMENT_FAIL_1', []);
             }
-          }  
+          }
         }
-        
+
       }
     }
   } // end validate function
@@ -10654,12 +10654,12 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * @object HEADING_3
  *
  * @desc Sibling headings of the same level that share the same parent heading should be unique
- *       This rule applies only when there are no main landmarks on the page and at least one 
+ *       This rule applies only when there are no main landmarks on the page and at least one
  *       sibling heading
  *
- */               
-{ rule_id             : 'HEADING_3', 
-  last_updated        : '2014-11-25', 
+ */
+{ rule_id             : 'HEADING_3',
+  last_updated        : '2014-11-25',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.HEADINGS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -10672,53 +10672,53 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   validate            : function (dom_cache, rule_result) {
 
     function getSiblingHeadings(index, heading_element) {
-   
+
       var list = [];
-      var flag = true; 
-      
+      var flag = true;
+
       tested_list.push(heading_element);
-                  
+
       for (var i = (index+1); i < heading_elements_len; i++) {
-        
+
         var he = heading_elements[i];
-        
+
         if (he.dom_element.computed_style.is_visible_to_at === VISIBILITY.HIDDEN) {
           tested_list.push(he);
           continue;
         }
-        
+
         if (heading_element.level > he.level) return list;
-        
+
         if (heading_element.level === he.level) {
           if (flag) list.push(heading_element);
           flag = false;
-          
+
           list.push(he);
           tested_list.push(he);
-        }  
+        }
 
       }
-        
+
       if (list.length > 1) return list;
       else return[];
-   
+
     }
 
     function notInTestedList(he) {
-    
+
       for (var i = 0; i < tested_list.length; i++) {
         if (tested_list[i] === he) return false;
       }
-    
+
       return true;
     }
 
     function notInDoneList(he) {
-    
+
       for (var i = 0; i < done_list.length; i++) {
         if (done_list[i] === he) return false;
       }
-    
+
       return true;
     }
 
@@ -10726,13 +10726,13 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
     var SOURCE      = OpenAjax.a11y.SOURCE;
-  
+
     var heading_elements     = dom_cache.headings_landmarks_cache.heading_elements;
     var heading_elements_len = heading_elements.length;
 
     var main_elements     = dom_cache.headings_landmarks_cache.main_elements;
     var main_elements_len = main_elements.length;
-    
+
     var tested_list = [];
     var done_list   = [];
     var i, j, k;
@@ -10741,48 +10741,48 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
 //    if (main_elements_len === 0 && heading_elements_len > 1) {
     if (heading_elements_len > 1) {
-    
+
       for (i = 0; i < (heading_elements_len-1); i++) {
-      
+
         var he = heading_elements[i];
-        
+
         if (notInTestedList(he)) sibling_headings = getSiblingHeadings(i, he);
-        
+
         sibling_headings_len = sibling_headings.length;
-      
+
         if (sibling_headings_len > 1) {
-        
+
           for (j = 0; j < (sibling_headings_len-1); j++) {
-          
+
             var sh1 = sibling_headings[j];
             var first_flag = true;
-            
+
             if (notInDoneList(sh1) && sh1.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {
-            
+
               for (k = j+1; k < sibling_headings_len; k++) {
                 var sh2 = sibling_headings[k];
-                
+
                 if (sh1.name_for_comparison === sh2.name_for_comparison) {
-                  if (first_flag) { 
-                    rule_result.addResult(TEST_RESULT.FAIL, sh1, 'ELEMENT_FAIL_1', [sh1.dom_element.tag_name]); 
+                  if (first_flag) {
+                    rule_result.addResult(TEST_RESULT.FAIL, sh1, 'ELEMENT_FAIL_1', [sh1.dom_element.tag_name]);
                     done_list.push(sh1);
-                  }  
+                  }
                   rule_result.addResult(TEST_RESULT.FAIL, sh2, 'ELEMENT_FAIL_1', [sh2.dom_element.tag_name]);
                   done_list.push(sh2);
                   first_flag = false;
                 }
-              }      
-            }  
+              }
+            }
           }
-          
+
           for (j = 0; j < sibling_headings_len; j++) {
             var sh = sibling_headings[j];
-            if (notInDoneList(sh)) { 
+            if (notInDoneList(sh)) {
               if (sh.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {
                 rule_result.addResult(TEST_RESULT.PASS, sh, 'ELEMENT_PASS_1', [sh.dom_element.tag_name]);
               }
               done_list.push(sh);
-            }  
+            }
           }
         }
       }
@@ -10795,9 +10795,9 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  *
  * @desc Headings must be properly nested
  *
- */               
-{ rule_id             : 'HEADING_5', 
-  last_updated        : '2014-11-25', 
+ */
+{ rule_id             : 'HEADING_5',
+  last_updated        : '2014-11-25',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.HEADINGS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -10808,19 +10808,19 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   resource_properties : ['tag_name', 'name'],
   language_dependency : "",
   validate            : function (dom_cache, rule_result) {
-  
+
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
     var SOURCE      = OpenAjax.a11y.SOURCE;
-  
+
     var heading_elements     = dom_cache.headings_landmarks_cache.heading_elements;
     var heading_elements_len = heading_elements.length;
 
     for (var i = 0; i < heading_elements_len; i++) {
-    
+
       var he = heading_elements[i];
       var tag_name = he.dom_element.tag_name;
-   
+
       if (he.is_visible) {
         if (he.has_content) {
           if ((he.nesting_parent_heading === he.last_parent_heading)) {
@@ -10831,22 +10831,22 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
               he.global_properly_nested = true;
             }
             else {
-              rule_result.addResult(TEST_RESULT.FAIL, he, 'ELEMENT_FAIL_1', [tag_name]);                     
+              rule_result.addResult(TEST_RESULT.FAIL, he, 'ELEMENT_FAIL_1', [tag_name]);
               he.global_properly_nested = false;
             }
           }
           else {
-            rule_result.addResult(TEST_RESULT.FAIL, he, 'ELEMENT_FAIL_1', [tag_name]);                     
+            rule_result.addResult(TEST_RESULT.FAIL, he, 'ELEMENT_FAIL_1', [tag_name]);
             he.global_properly_nested = false;
           }
         }
         else {
-          rule_result.addResult(TEST_RESULT.HIDDEN, he, 'ELEMENT_HIDDEN_2', [tag_name]);             
+          rule_result.addResult(TEST_RESULT.HIDDEN, he, 'ELEMENT_HIDDEN_2', [tag_name]);
         }
       }
       else {
-        rule_result.addResult(TEST_RESULT.HIDDEN, he, 'ELEMENT_HIDDEN_1', [tag_name]);       
-      }    
+        rule_result.addResult(TEST_RESULT.HIDDEN, he, 'ELEMENT_HIDDEN_1', [tag_name]);
+      }
     }
 
 //    var page_element = dom_cache.headings_landmarks_cache.page_element;
@@ -10862,9 +10862,9 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  *
  * @desc Headings should not consist only of image content
  *
- */               
-{ rule_id             : 'HEADING_6', 
-  last_updated        : '2014-11-25', 
+ */
+{ rule_id             : 'HEADING_6',
+  last_updated        : '2014-11-25',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.HEADINGS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -10879,7 +10879,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
     var SOURCE      = OpenAjax.a11y.SOURCE;
-  
+
     var heading_elements     = dom_cache.headings_landmarks_cache.heading_elements;
     var heading_elements_len = heading_elements.length;
 
@@ -10887,9 +10887,9 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
       var  he = heading_elements[i];
       var de = he.dom_element;
       var cs = de.computed_style;
-      
+
       if (cs.is_visible_to_at === VISIBILITY.HIDDEN) {
-        rule_result.addResult(TEST_RESULT.HIDDEN, he, 'ELEMENT_HIDDEN_1', [de.tag_name]);                      
+        rule_result.addResult(TEST_RESULT.HIDDEN, he, 'ELEMENT_HIDDEN_1', [de.tag_name]);
       }
       else {
         if (he.name.length) {
@@ -10897,9 +10897,9 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
           else rule_result.addResult(TEST_RESULT.PASS, he, 'ELEMENT_PASS_1', [de.tag_name]);
         }
         else {
-          rule_result.addResult(TEST_RESULT.FAIL, he, 'ELEMENT_FAIL_2', [de.tag_name]);        
+          rule_result.addResult(TEST_RESULT.FAIL, he, 'ELEMENT_FAIL_2', [de.tag_name]);
         }
-      }  
+      }
     }
   } // end validate function
 },
@@ -10908,9 +10908,9 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * @object HEADING_7
  *
  * @desc First heading in contentinfo, complementary, form, navigation and search landmark must be an h2, except main landmark h1
- */               
-{ rule_id             : 'HEADING_7', 
-  last_updated        : '2014-11-25', 
+ */
+{ rule_id             : 'HEADING_7',
+  last_updated        : '2014-11-25',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.HEADINGS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -10925,10 +10925,10 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
     var SOURCE      = OpenAjax.a11y.SOURCE;
-  
+
     var landmark_elements     = dom_cache.headings_landmarks_cache.landmark_elements;
     var landmark_elements_len = landmark_elements.length;
-    
+
     for (var i = 0; i < landmark_elements_len; i++ ) {
       var le = landmark_elements[i];
       var cs = le.dom_element.computed_style;
@@ -10938,26 +10938,26 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
           (le.landmark === 'form') ||
           (le.landmark === 'navigation') ||
           (le.landmark === 'search')) {
-          
+
         if (cs.is_visible_to_at) {
-      
+
           var heading_elements = le.getHeadings();
           var heading_elements_len = heading_elements.length;
-          
+
           if (heading_elements.length) {
             var he = heading_elements[0];
-            if (he.level === 2) { 
+            if (he.level === 2) {
 //              rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_1', [le.landmark]);
               rule_result.addResult(TEST_RESULT.PASS, he, 'ELEMENT_PASS_1', [le.landmark]);
-            } 
+            }
             else {
 //              rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_1', [le.landmark, he.level]);
-              rule_result.addResult(TEST_RESULT.FAIL, he, 'ELEMENT_FAIL_1', [le.landmark, he.level]);            
+              rule_result.addResult(TEST_RESULT.FAIL, he, 'ELEMENT_FAIL_1', [le.landmark, he.level]);
             }
-          }  
+          }
         }
-      }  
-    }  
+      }
+    }
   } // end validate function
 },
 
@@ -10965,9 +10965,9 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * @object HEADING_8
  *
  * @desc Headings should be properly nested in a landmark
- */               
-{ rule_id             : 'HEADING_8', 
-  last_updated        : '2014-11-25', 
+ */
+{ rule_id             : 'HEADING_8',
+  last_updated        : '2014-11-25',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.HEADINGS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -10982,42 +10982,42 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
     var SOURCE      = OpenAjax.a11y.SOURCE;
-  
+
     var landmark_elements     = dom_cache.headings_landmarks_cache.landmark_elements;
     var landmark_elements_len = landmark_elements.length;
-    
+
     for (var i = 0; i < landmark_elements_len; i++ ) {
       var le = landmark_elements[i];
       var cs = le.dom_element.computed_style;
 
       if (cs.is_visible_to_at) {
-      
+
         var heading_elements = le.getHeadings();
         var heading_elements_len = heading_elements.length;
-             
+
         for (var j = 0; j < heading_elements_len; j++) {
-    
+
           var he = heading_elements[j];
           var tag_name = he.dom_element.tag_name;
-    
+
           if (he.is_visible) {
 
 //            OpenAjax.a11y.logger.debug(" Heading: " + he + " (" + le + ")");
-//            OpenAjax.a11y.logger.debug("  LPH: " + he.landmark_parent_heading + "  LLPH: " + he.last_landmark_parent_heading);            
+//            OpenAjax.a11y.logger.debug("  LPH: " + he.landmark_parent_heading + "  LLPH: " + he.last_landmark_parent_heading);
 //            if (he.landmark_parent_heading) OpenAjax.a11y.logger.debug("  LPH nested: " + he.landmark_parent_heading.landmark_properly_nested );
-        
+
             if (he.has_content) {
-            
+
               if (he.landmark_parent_heading === he.last_landmark_parent_heading) {
-                
-                if (!he.last_landmark_parent_heading || 
+
+                if (!he.last_landmark_parent_heading ||
                     (he.landmark_parent_heading &&
                      he.landmark_parent_heading.landmark_properly_nested)) {
                   rule_result.addResult(TEST_RESULT.PASS, he, 'ELEMENT_PASS_1', [tag_name, le.toString()]);
                   he.landmark_properly_nested = true;
                 }
                 else {
-                  rule_result.addResult(TEST_RESULT.FAIL, he, 'ELEMENT_FAIL_1', [tag_name, le.toString()]);                     
+                  rule_result.addResult(TEST_RESULT.FAIL, he, 'ELEMENT_FAIL_1', [tag_name, le.toString()]);
                   he.landmark_properly_nested = false;
                 }
               }
@@ -11027,29 +11027,29 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
               }
             }
             else {
-              rule_result.addResult(TEST_RESULT.FAIL, he, 'ELEMENT_FAIL_2', [tag_name, le.toString()]);             
+              rule_result.addResult(TEST_RESULT.FAIL, he, 'ELEMENT_FAIL_2', [tag_name, le.toString()]);
               he.landmark_properly_nested = false;
             }
           }
           else {
-            rule_result.addResult(TEST_RESULT.HIDDEN, he, 'ELEMENT_HIDDEN_1', [tag_name, le.toString()]);       
-          }    
-        }      
+            rule_result.addResult(TEST_RESULT.HIDDEN, he, 'ELEMENT_HIDDEN_1', [tag_name, le.toString()]);
+          }
+        }
       }
       else {
-        rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_2', [le.toString()]);      
+        rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_2', [le.toString()]);
       }
-    }  
+    }
   } // end validate function
 }
 
-]); 
+]);
 
 
-    
+
 
 /**
- * Copyright 2011-2017  OpenAjax Alliance
+ * Copyright 2011-2018  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -11065,13 +11065,13 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  */
 
 /* ---------------------------------------------------------------- */
-/*            OpenAjax Alliance Media Rules                         */ 
+/*            OpenAjax Alliance Media Rules                         */
 /* ---------------------------------------------------------------- */
 
 OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
-{ rule_id             : 'HTML_1', 
-  last_updated        : '2014-11-28', 
+{ rule_id             : 'HTML_1',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.STYLES_READABILITY,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -11085,7 +11085,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     var TEST_RESULT    = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY     = OpenAjax.a11y.VISIBILITY;
-    
+
     var dom_elements     = dom_cache.element_cache.dom_elements;
     var dom_elements_len = dom_elements.length;
 
@@ -11093,25 +11093,25 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
       var de = dom_elements[i];
 
       if (de.tag_name === 'b') {
-        if (de.computed_style.is_visible_to_at === VISIBILITY.VISIBLE ) {      
-           rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [de.tag_name, de.lang]);    
-        }   
+        if (de.computed_style.is_visible_to_at === VISIBILITY.VISIBLE ) {
+           rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [de.tag_name, de.lang]);
+        }
         else {
           rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.tag_name, de.lang]);
         }
       }
       else {
         if (de.tag_name === 'i') {
-          if (de.computed_style.is_visible_to_at === VISIBILITY.VISIBLE ) {      
-             rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_2', [de.tag_name, de.lang]);    
-          }   
+          if (de.computed_style.is_visible_to_at === VISIBILITY.VISIBLE ) {
+             rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_2', [de.tag_name, de.lang]);
+          }
           else {
             rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_2', [de.tag_name, de.lang]);
           }
-        }  
-      }  
-    } 
-    
+        }
+      }
+    }
+
   } // end validate function
 },
 
@@ -11119,10 +11119,10 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * @object HTML_2
  *
  * @desc Change marquee elements to use accessible techniques
- */ 
- 
-{ rule_id             : 'HTML_2', 
-  last_updated        : '2014-11-28', 
+ */
+
+{ rule_id             : 'HTML_2',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.STYLES_READABILITY,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
@@ -11136,7 +11136,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     var TEST_RESULT    = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY     = OpenAjax.a11y.VISIBILITY;
-    
+
     var dom_elements     = dom_cache.element_cache.dom_elements;
     var dom_elements_len = dom_elements.length;
 
@@ -11144,33 +11144,33 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
       var de = dom_elements[i];
 
       if (de.tag_name === 'marquee') {
-        if (de.computed_style.is_visible_to_at === VISIBILITY.VISIBLE ) {      
-           rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [de.tag_name, de.lang]);    
-        }   
+        if (de.computed_style.is_visible_to_at === VISIBILITY.VISIBLE ) {
+           rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [de.tag_name, de.lang]);
+        }
         else {
           rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.tag_name, de.lang]);
         }
       }
-    } 
-    
+    }
+
   } // end validate function
 }
 ]);
 /* ---------------------------------------------------------------- */
-/*  OpenAjax Alliance Control Rules                                 */ 
+/*  OpenAjax Alliance Control Rules                                 */
 /* ---------------------------------------------------------------- */
 
 OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
 /**
  * @object KEYBOARD_1
- * 
- * @desc Widget elements on non-interactive elements or that override the default role of an interactive element 
+ *
+ * @desc Widget elements on non-interactive elements or that override the default role of an interactive element
  *       need keyboard event handlers on the widget element or a parent element of the widget
  */
-     
-{ rule_id             : 'KEYBOARD_1', 
-  last_updated        : '2017-02-08', 
+
+{ rule_id             : 'KEYBOARD_1',
+  last_updated        : '2017-02-08',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.KEYBOARD_SUPPORT,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP3,
@@ -11181,20 +11181,20 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   resource_properties : ['tab_index', 'is_owned', 'has_key_down', 'has_key_press', 'has_key_up', 'ancestor_has_key_down', 'ancestor_has_key_press', 'ancestor_has_key_up'],
   language_dependency : "",
   validate            : function (dom_cache, rule_result) {
-    
+
     function checkForKeyboardOnRequiredChildren(widget) {
 
       function checkChildren(children) {
 
         if (!children || !children.length) return false;
-       
+
         var children_len = children.length;
-         
+
         for (var i = 0; (i < children_len); i++) {
 
           var we = children[i];
           var de = we.dom_element;
-         
+
           kbd_events = getEventsOnElementOrAncestors(de);
 
           if (kbd_events.length) return kbd_events;
@@ -11202,8 +11202,8 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 //           OpenAjax.a11y.logger.debug("[checkForKeyboardOnRequiredChildren] " + widget + ": " + we + " ("+ flag + ")");
 
 
-          if (de.role_info && de.role_info.reqChildren && de.role_info.reqChildren.length) { 
-            kbd_events = checkChildren(we.child_cache_elements); 
+          if (de.role_info && de.role_info.reqChildren && de.role_info.reqChildren.length) {
+            kbd_events = checkChildren(we.child_cache_elements);
             if (kbd_events.length) return kbd_events;
           }
         }
@@ -11211,7 +11211,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
       }
 
       return checkChildren(widget.child_cache_elements);
-    }  
+    }
 
     function getEventsOnElement(de) {
 
@@ -11220,7 +11220,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
       if (de.events.has_key_down)  kbd_events = "keydown ";
       if (de.events.has_key_press) kbd_events += "keypress ";
       if (de.events.has_key_up)    kbd_events += "keyup ";
-       
+
       return kbd_events.trim();
     }
 
@@ -11231,7 +11231,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
       if (de.events.ancestor_has_key_down)  kbd_events = "keydown ";
       if (de.events.ancestor_has_key_press) kbd_events += "keypress ";
       if (de.events.ancestor_has_key_up)    kbd_events += "keyup ";
-       
+
       return kbd_events.trim();
     }
 
@@ -11242,18 +11242,18 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
       if (de.events.has_key_down  || de.events.ancestor_has_key_down)  kbd_events = "keydown ";
       if (de.events.has_key_press || de.events.ancestor_has_key_press) kbd_events += "keypress ";
       if (de.events.has_key_up    || de.events.ancestor_has_key_up)    kbd_events += "keyup ";
-       
+
       return kbd_events.trim();
     }
 
-    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;   
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
-      
+
     var widget_elements     = dom_cache.controls_cache.widget_elements;
     var widget_elements_len = widget_elements.length;
-     
+
     if (widget_elements && widget_elements) {
-     
+
       for (var i = 0; i < widget_elements_len; i++) {
         var we = widget_elements[i];
         var de = we.dom_element;
@@ -11266,53 +11266,53 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
         if (de.role_info.roleType === 'widget') {
 
           if (style.is_visible_to_at === VISIBILITY.VISIBLE) {
-             
+
             kbd_events = getEventsOnElement(de);
 
             if (kbd_events.length) {
-              rule_result.addResult(TEST_RESULT.MANUAL_CHECK, we, 'ELEMENT_MC_1', [kbd_events, de.role]);     
+              rule_result.addResult(TEST_RESULT.MANUAL_CHECK, we, 'ELEMENT_MC_1', [kbd_events, de.role]);
             }
             else {
 
               kbd_events = getEventsOnElementAncestors(de);
-                   
-              if (kbd_events.length) { 
+
+              if (kbd_events.length) {
                 rule_result.addResult(TEST_RESULT.MANUAL_CHECK, we, 'ELEMENT_MC_2', [kbd_events, de.role]);
-              }  
+              }
               else {
                 if (we.parent_widget && we.parent_widget.dom_element) {
                   kbd_events = getEventsOnElementOrAncestors(we.parent_widget.dom_element);
-                  if (kbd_events.length) { 
+                  if (kbd_events.length) {
                     rule_result.addResult(TEST_RESULT.MANUAL_CHECK, we, 'ELEMENT_MC_3', [kbd_events, we.parent_widget.dom_element.toString(), de.role]);
                     continue;
-                  }  
+                  }
                 }
 
                 kbd_events = checkForKeyboardOnRequiredChildren(we);
 
                 if (kbd_events.length) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, we, 'ELEMENT_MC_4', [kbd_events, de.role]);
                 else rule_result.addResult(TEST_RESULT.MANUAL_CHECK, we, 'ELEMENT_MC_5', [de.role]);
-                 
-              }  
-            }             
+
+              }
+            }
           }
           else {
-             rule_result.addResult(TEST_RESULT.HIDDEN, we, 'ELEMENT_HIDDEN_1', [we.toString()]);     
+             rule_result.addResult(TEST_RESULT.HIDDEN, we, 'ELEMENT_HIDDEN_1', [we.toString()]);
           }
-        }  
+        }
       } // end loop
-    } 
-  } // end validation function   
-   
+    }
+  } // end validation function
+
 },
 /**
  * @object KEYBOARD_2
- * 
+ *
  * @desc All operations available through the keyboard
  */
-     
-{ rule_id             : 'KEYBOARD_2', 
-  last_updated        : '2014-11-28', 
+
+{ rule_id             : 'KEYBOARD_2',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.PAGE,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.KEYBOARD_SUPPORT,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
@@ -11323,32 +11323,32 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   resource_properties : [],
   language_dependency : "",
   validate            : function (dom_cache, rule_result) {
-  
-     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;   
+
+     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
      var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
-      
-     var page_element = dom_cache.keyboard_focus_cache.page_element;  
+
+     var page_element = dom_cache.keyboard_focus_cache.page_element;
 
 //     OpenAjax.a11y.logger.debug(" Page Element: " + page_element + "  " + page_element.dom_element);
 
      var interactive_elements      = dom_cache.controls_cache.interactive_elements;
      var interactive_elements_len  = interactive_elements.length;
-     
+
      var interactive_count = 0;
-     
+
      for (var i = 0; i < interactive_elements_len; i++) {
-     
+
 //       OpenAjax.a11y.logger.debug(" Interactive element: " + interactive_elements[i] + " (" + i + ")");
 
        var ie =interactive_elements[i];
        var de = ie.dom_element;
        var cs = de.computed_style;
        var tab_index = parseInt(de.tab_index,10);
-       
+
        if ((cs.is_visible_to_at    === VISIBILITY.VISIBLE) ||
            (cs.is_visible_onscreen === VISIBILITY.VISIBLE)) {
-         
-         if (de.hasEvents() || de.has_tabindex || ie.is_embedded_app) {  
+
+         if (de.hasEvents() || de.has_tabindex || ie.is_embedded_app) {
            interactive_count++;
            if (de.hasEvents()) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ie, 'ELEMENT_MC_1', [de.tag_name]);
            else if (de.has_tabindex) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ie, 'ELEMENT_MC_2', [de.tab_index, de.tag_name]);
@@ -11356,16 +11356,16 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
          }
          else {
            rule_result.addResult(TEST_RESULT.PASS, ie, 'ELEMENT_PASS_1', [de.tag_name]);
-         }  
-       }     
+         }
+       }
        else {
-         rule_result.addResult(TEST_RESULT.HIDDEN, ie, 'ELEMENT_HIDDEN_1', [de.tag_name]);                
+         rule_result.addResult(TEST_RESULT.HIDDEN, ie, 'ELEMENT_HIDDEN_1', [de.tag_name]);
        }
      }  // endfor
-     
+
 //     OpenAjax.a11y.logger.debug(" Interactive count: " + interactive_count + " (" + interactive_elements_len + ")");
- 
-     if (interactive_count > 1) { 
+
+     if (interactive_count > 1) {
        if (interactive_count === 1) {
          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MC_1', []);
        }
@@ -11380,23 +11380,23 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
              }
              else {
                rule_result.addResult(TEST_RESULT.PASS, page_element, 'PAGE_PASS_2', [interactive_elements_len]);
-             }  
-           }  
+             }
+           }
          }
-       }     
+       }
      }
 
-   } // end validation function   
+   } // end validation function
 },
 
 /**
  * @object KEYBOARD_3
- * 
+ *
  * @desc No keyboard trap
  */
-     
-{ rule_id             : 'KEYBOARD_3', 
-  last_updated        : '2014-11-28', 
+
+{ rule_id             : 'KEYBOARD_3',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.KEYBOARD_SUPPORT,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
@@ -11407,11 +11407,11 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   resource_properties : [],
   language_dependency : "",
   validate            : function (dom_cache, rule_result) {
-  
 
-     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;   
+
+     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
      var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
-      
+
 //     OpenAjax.a11y.logger.debug(" Page Element: " + page_element + "  " + page_element.dom_element);
 
      var media_elements      = dom_cache.media_cache.media_elements;
@@ -11419,46 +11419,46 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
 
      for (var i = 0; i < media_elements_len; i++) {
-     
+
        var me = media_elements[i];
-       
+
        var de = me.dom_element;
        if (!de) de =me;
-       
+
        var cs = de.computed_style;
-       
+
        if ((cs.is_visible_to_at    === VISIBILITY.VISIBLE) ||
            (cs.is_visible_onscreen === VISIBILITY.VISIBLE)) {
          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, me, 'ELEMENT_MC_1', [me.tag_name]);
-       }     
+       }
        else {
-         rule_result.addResult(TEST_RESULT.HIDDEN, me, 'ELEMENT_HIDDEN_1', [me.tag_name]);                
+         rule_result.addResult(TEST_RESULT.HIDDEN, me, 'ELEMENT_HIDDEN_1', [me.tag_name]);
        }
      }  // endfor
 
-   } // end validation function   
+   } // end validation function
 }
 
 
-]); 
+]);
 
 
-    
+
 
 /* ---------------------------------------------------------------- */
-/*  OpenAjax Alliance Heading and Landmark Rules                    */ 
+/*  OpenAjax Alliance Heading and Landmark Rules                    */
 /* ---------------------------------------------------------------- */
 
 OpenAjax.a11y.RuleManager.addRulesFromJSON([
-      
+
 /**
  * @object LANDMARK_1
  *
  * @desc Each page should have at least one main landmark
  *
- */               
-{ rule_id             : 'LANDMARK_1', 
-  last_updated        : '2014-11-28', 
+ */
+{ rule_id             : 'LANDMARK_1',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.PAGE,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LANDMARKS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -11473,7 +11473,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
     var SOURCE      = OpenAjax.a11y.SOURCE;
-  
+
     var main_elements     = dom_cache.headings_landmarks_cache.main_elements;
     var main_elements_len = main_elements.length;
 
@@ -11482,16 +11482,16 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     for (var i = 0; i < main_elements_len; i++ ) {
       var me = main_elements[i];
       var de = me.dom_element;
-      
+
       if (me.dom_element.computed_style.is_visible_to_at === VISIBILITY.HIDDEN) {
-        if (de.has_role) rule_result.addResult(TEST_RESULT.HIDDEN, me, 'ELEMENT_HIDDEN_1', [de.tag_name]);                      
+        if (de.has_role) rule_result.addResult(TEST_RESULT.HIDDEN, me, 'ELEMENT_HIDDEN_1', [de.tag_name]);
         else rule_result.addResult(TEST_RESULT.HIDDEN, me, 'ELEMENT_HIDDEN_2', []);
       }
       else {
         if (de.has_role) rule_result.addResult(TEST_RESULT.PASS, me, 'ELEMENT_PASS_1', [de.tag_name]);
-        else rule_result.addResult(TEST_RESULT.PASS, me, 'ELEMENT_PASS_2', []);                      
+        else rule_result.addResult(TEST_RESULT.PASS, me, 'ELEMENT_PASS_2', []);
         main_count++;
-      }  
+      }
     }
 
     var page_element = dom_cache.headings_landmarks_cache.page_element;
@@ -11501,8 +11501,8 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
       if (main_count === 0) rule_result.addResult(TEST_RESULT.FAIL, page_element, 'PAGE_FAIL_1', []);
       else if (main_count === 1) rule_result.addResult(TEST_RESULT.PASS, page_element, 'PAGE_PASS_1', []);
       else rule_result.addResult(TEST_RESULT.PASS, page_element, 'PAGE_PASS_2', [main_count]);
-    } 
-    
+    }
+
   } // end validate function
 },
 
@@ -11510,9 +11510,9 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * @object LANDMARK_2
  *
  * @desc All rendered content should be contained in a landmark
- */               
-{ rule_id             : 'LANDMARK_2', 
-  last_updated        : '2014-11-28', 
+ */
+{ rule_id             : 'LANDMARK_2',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LANDMARKS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -11523,30 +11523,30 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   resource_properties : ['tag_name'],
   language_dependency : "",
   validate            : function (dom_cache, rule_result) {
-  
+
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
     var SOURCE      = OpenAjax.a11y.SOURCE;
-  
+
     var elements_with_content    = dom_cache.headings_landmarks_cache.elements_with_content;
     var elements_with_content_len = elements_with_content.length;
-    
+
     var pass_count   = 0;
     var fail_count   = 0;
     var mc_count     = 0;
-    
+
     var tag_name = "";
 
     for (var i = 0; i < elements_with_content_len; i++ ) {
       var de =elements_with_content[i];
-      
+
       if (de.tag_name) tag_name = de.tag_name;
       else tag_name = de.parent_element.tag_name;
 
 //      OpenAjax.a11y.logger.debug("  Content: " + de.toString()  +  " " + de.may_have_renderable_content);
-      
+
       if (de.computed_style.is_visible_to_at === VISIBILITY.HIDDEN) {
-        rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [tag_name]);                      
+        rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [tag_name]);
       }
       else {
         if (de.parent_landmark) {
@@ -11557,15 +11557,15 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
           if (de.may_have_renderable_content) {
             rule_result.addResult(TEST_RESULT.MANUAL_CHECK, de, 'ELEMENT_MC_1', [tag_name]);
             mc_count++;
-          }  
+          }
           else {
             rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [tag_name]);
             fail_count++;
-          }  
-        }  
-      }  
-    }        
-    
+          }
+        }
+      }
+    }
+
   } // end validate function
 },
 
@@ -11574,9 +11574,9 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  *
  * @desc Each page within a website should have at least one navigation landmark
  *
- */               
-{ rule_id             : 'LANDMARK_3', 
-  last_updated        : '2014-11-28', 
+ */
+{ rule_id             : 'LANDMARK_3',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.WEBSITE,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LANDMARKS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -11591,7 +11591,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
     var SOURCE      = OpenAjax.a11y.SOURCE;
-  
+
     var landmark_elements     = dom_cache.headings_landmarks_cache.landmark_elements;
     var landmark_elements_len = landmark_elements.length;
 
@@ -11604,24 +11604,24 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
 
     var navigation_count = 0;
-    
+
     for (i = 0; i < landmark_elements_len; i++ ) {
       le = landmark_elements[i];
       de = le.dom_element;
       cs = de.computed_style;
-      
+
       var tag_name = le.dom_element.tag_name;
-      
+
       if (le.landmark === 'navigation') {
         if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
           navigation_count++;
           if (de.has_role) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_1', [tag_name]);
           else rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_2', []);
-        }  
+        }
         else {
          rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [tag_name]);
-        } 
-      }  
+        }
+      }
     }
 
     if (page_element) {
@@ -11629,37 +11629,37 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
       if (navigation_count === 0) {
 
         var list_of_links_count = 0;
-    
+
         var MINIMUM_LINKS = 4;
-    
+
         for (i = 0; i < container_elements_len; i++) {
           ci = container_elements[i];
           de = ci.dom_element;
           cs = de.computed_style;
-      
+
           var li_count       = ci.getListItemCount();
           var one_link_count = ci.getListItemCountOneLink();
           var sublist_count  = ci.getSublistCount();
-      
+
           if (li_count <= (1 + one_link_count + sublist_count)) {
             if (!ci.parent_landmark && (one_link_count > MINIMUM_LINKS)) {
               list_of_links_count += 1;
               rule_result.addResult(TEST_RESULT.FAIL, ci, 'ELEMENT_FAIL_1', [de.tag_name, one_link_count]);
-            }  
-          }  
-        }      
-        
+            }
+          }
+        }
+
         // Are there any list of links on the page
         if (list_of_links_count > 0) {
           rule_result.addResult(TEST_RESULT.FAIL, page_element, 'WEBSITE_FAIL_1', []);
-        }  
+        }
       }
-      else {  
+      else {
         if (navigation_count === 1) rule_result.addResult(TEST_RESULT.PASS, page_element, 'WEBSITE_PASS_1', []);
         else rule_result.addResult(TEST_RESULT.PASS, page_element, 'WEBSITE_PASS_2', [navigation_count]);
       }
-    } 
-    
+    }
+
   } // end validate function
 },
 
@@ -11669,9 +11669,9 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * @desc Each page may have one banner landmark
  *
  */
- 
-{ rule_id             : 'LANDMARK_4', 
-  last_updated        : '2014-11-28', 
+
+{ rule_id             : 'LANDMARK_4',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.WEBSITE,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LANDMARKS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -11686,7 +11686,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
     var SOURCE      = OpenAjax.a11y.SOURCE;
-  
+
     var landmark_elements     = dom_cache.headings_landmarks_cache.landmark_elements;
     var landmark_elements_len = landmark_elements.length;
 
@@ -11694,48 +11694,48 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     var landmark_count = 0;
     var les = [];
-    
+
     var le, de, cs, tag_name;
-    
+
     for (var i = 0; i < landmark_elements_len; i++ ) {
       le = landmark_elements[i];
       de = le.dom_element;
       cs = de.computed_style;
       tag_name = de.tag_name;
-      
+
       if (le.landmark === 'banner') {
         if (cs.is_visible_to_at === VISIBILITY.HIDDEN) {
           if (de.has_role) rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [tag_name]);
-          else rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_2', []);                  
+          else rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_2', []);
         }
         else {
           landmark_count++;
           les.push(le);
-        }  
-      }  
+        }
+      }
     }
 
     if (page_element) {
       // Test if no banner landmarks
       if (landmark_count === 0) {
         rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'WEBSITE_MC_1', []);
-      } 
+      }
       else {
         if (landmark_count === 1) {
           rule_result.addResult(TEST_RESULT.PASS, page_element, 'WEBSITE_PASS_1', []);
         }
-        else {    
+        else {
           rule_result.addResult(TEST_RESULT.PASS, page_element, 'WEBSITE_PASS_2', [landmark_count]);
-        }  
+        }
         for (i = 0; i < les.length; i++) {
           le = les[i];
           de = le.dom_element;
           if (de.has_role) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_1', [tag_name]);
           else rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_2', []);
-        }  
-      }  
-    } 
-    
+        }
+      }
+    }
+
   } // end validate function
 },
 
@@ -11745,9 +11745,9 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * @desc Each page may have only one banner landmark
  *
  */
- 
-{ rule_id             : 'LANDMARK_5', 
-  last_updated        : '2014-11-28', 
+
+{ rule_id             : 'LANDMARK_5',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.PAGE,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LANDMARKS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -11762,7 +11762,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
     var SOURCE      = OpenAjax.a11y.SOURCE;
-  
+
     var landmark_elements     = dom_cache.headings_landmarks_cache.landmark_elements;
     var landmark_elements_len = landmark_elements.length;
 
@@ -11772,25 +11772,25 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     var les = [];
 
     var le, de, cs, tag_name;
-    
+
     for (var i = 0; i < landmark_elements_len; i++ ) {
       le = landmark_elements[i];
       de = le.dom_element;
       cs = de.computed_style;
       tag_name = de.tag_name;
-      
+
       if (le.landmark === 'banner') {
         if (cs.is_visible_to_at === VISIBILITY.HIDDEN) {
           if (de.has_role) rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [tag_name]);
-          else rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_2', []);                  
+          else rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_2', []);
         }
         else {
           if (!de.body_element) {
             landmark_count++;
             les.push(le);
-          }  
-        }  
-      }  
+          }
+        }
+      }
     }
 
     if (page_element) {
@@ -11806,15 +11806,15 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
       else {
         if (landmark_count === 1) {
           rule_result.addResult(TEST_RESULT.PASS, page_element, 'PAGE_PASS_1', []);
-          
+
           le = les[0];
           de = le.dom_element;
           if (de.has_role) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_1', [tag_name]);
           else rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_2', []);
         }
-      }  
-    } 
-    
+      }
+    }
+
   } // end validate function
 },
 
@@ -11823,9 +11823,9 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  *
  * @desc Each page may have one contentinfo landmark
  *
- */               
-{ rule_id             : 'LANDMARK_6', 
-  last_updated        : '2014-11-28', 
+ */
+{ rule_id             : 'LANDMARK_6',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.WEBSITE,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LANDMARKS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -11840,7 +11840,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
     var SOURCE      = OpenAjax.a11y.SOURCE;
-  
+
     var landmark_elements     = dom_cache.headings_landmarks_cache.landmark_elements;
     var landmark_elements_len = landmark_elements.length;
 
@@ -11848,30 +11848,30 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     var landmark_count = 0;
     var les = [];
-    
+
     for (var i = 0; i < landmark_elements_len; i++ ) {
       var le = landmark_elements[i];
       var de = le.dom_element;
       var cs = de.computed_style;
       var tag_name = de.tag_name;
-      
+
       if (le.landmark === 'contentinfo') {
         if (cs.is_visible_to_at === VISIBILITY.HIDDEN) {
           if(de.has_role) rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [tag_name]);
-          else rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_2', []);                  
+          else rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_2', []);
         }
         else {
           landmark_count++;
           les.push(le);
-        }  
-      }  
+        }
+      }
     }
 
     if (page_element) {
       // Test if no contentinfo landmarks
       if (landmark_count === 0) {
         rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'WEBSITE_MC_1', []);
-      } 
+      }
       else {
         if (landmark_count === 1) {
           de = les[0].dom_element;
@@ -11879,18 +11879,18 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
           if (de.has_role) rule_result.addResult(TEST_RESULT.PASS, les[0], 'ELEMENT_PASS_1', [tag_name]);
           else rule_result.addResult(TEST_RESULT.PASS, les[0], 'ELEMENT_PASS_2', []);
         }
-        else {    
+        else {
           rule_result.addResult(TEST_RESULT.PASS, page_element, 'WEBSITE_PASS_2', [landmark_count]);
           for (i = 0; i < les.length; i++) {
             le = les[i];
             de = les[i].dom_element;
             if (de.has_role) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_1', [tag_name]);
             else rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_2', []);
-          }  
-        }  
-      }  
-    } 
-    
+          }
+        }
+      }
+    }
+
   } // end validate function
 },
 
@@ -11899,9 +11899,9 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  *
  * @desc Each page may have only one contentinfo landmark
  *
- */               
-{ rule_id             : 'LANDMARK_7', 
-  last_updated        : '2014-11-28', 
+ */
+{ rule_id             : 'LANDMARK_7',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.PAGE,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LANDMARKS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -11916,7 +11916,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
     var SOURCE      = OpenAjax.a11y.SOURCE;
-  
+
     var landmark_elements     = dom_cache.headings_landmarks_cache.landmark_elements;
     var landmark_elements_len = landmark_elements.length;
 
@@ -11924,7 +11924,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     var landmark_count = 0;
     var les = [];
-    
+
     var LANDMARK_ROLE = 'contentinfo';
 
     for (var i = 0; i < landmark_elements_len; i++ ) {
@@ -11932,19 +11932,19 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
       var de = le.dom_element;
       var cs = de.computed_style;
       var tag_name = de.tag_name;
-      
+
       if (le.landmark === 'contentinfo') {
         if (cs.is_visible_to_at === VISIBILITY.HIDDEN) {
           if(de.has_role) rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [tag_name]);
-          else rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_2', []);                  
+          else rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_2', []);
         }
         else {
           if (!de.body_element) {
             landmark_count++;
             les.push(le);
-          }  
-        }  
-      }  
+          }
+        }
+      }
     }
 
     if (page_element) {
@@ -11956,20 +11956,20 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
           de = le.dom_element;
           if (de.has_role) rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_1', [tag_name]);
           else rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_2', []);
-        } 
-      }  
+        }
+      }
       else {
         if (landmark_count === 1) {
           rule_result.addResult(TEST_RESULT.PASS, page_element, 'PAGE_PASS_1', []);
-          
+
           le = les[0];
           de = le.dom_element;
           if (de.has_role) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_1', [tag_name]);
           else rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_2', []);
         }
-      }  
-    } 
-    
+      }
+    }
+
   } // end validate function
 },
 
@@ -11977,9 +11977,9 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * @object LANDMARK_8
  *
  * @desc banner landmark must be a top level landmark
- */               
-{ rule_id             : 'LANDMARK_8', 
-  last_updated        : '2014-11-28', 
+ */
+{ rule_id             : 'LANDMARK_8',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LANDMARKS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -11997,14 +11997,14 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     var landmark_elements     = dom_cache.headings_landmarks_cache.landmark_elements;
     var landmark_elements_len = landmark_elements.length;
-    
+
     for (var i = 0; i < landmark_elements_len; i++ ) {
       var le = landmark_elements[i];
       var de = le.dom_element;
       var cs = de.computed_style;
 
       if (le.landmark === 'banner') {
-      
+
         if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
 
           if (de.parent_landmark === null) {
@@ -12012,9 +12012,9 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
             else rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_3', []);
           }
           else {
-              
+
             var de1 = de.parent_landmark.dom_element;
-            
+
             if (de1 && (de.body_element !== de1.body_element)) {
               if (de.has_role) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_2', [de.tag_name]);
               else rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_4', []);
@@ -12022,16 +12022,16 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
             else {
               if (de.has_role) rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_1', [de.tag_name, de.parent_landmark.landmark]);
               else  rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_2', [de.parent_landmark.landmark]);
-            }  
+            }
           }
-          
-        }  
+
+        }
         else {
           if (de.has_role) rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [de.tag_name]);
           else rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_2', []);
         }
-      }      
-    }  
+      }
+    }
   } // end validate function
 },
 
@@ -12039,9 +12039,9 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * @object LANDMARK_9
  *
  * @desc Banner landmark should only contain only search and navigation landmarks
- */               
-{ rule_id             : 'LANDMARK_9', 
-  last_updated        : '2014-11-28', 
+ */
+{ rule_id             : 'LANDMARK_9',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LANDMARKS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -12058,49 +12058,49 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     var SOURCE      = OpenAjax.a11y.SOURCE;
 
     function checkLandmarkChildren(landmark) {
-      
+
       var cces     = landmark.child_cache_elements;
       var cces_len = cces.length;
       var fail_count = 0;
-    
+
       for (var i = 0; i < cces_len; i++) {
-      
+
         var cce = cces[i];
         var de = cce.dom_element;
         var cs = de.computed_style;
         landmark_count++;
-      
+
         if (!cce.landmark) continue;
-      
+
         if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
-          if ((cce.landmark === 'navigation') || 
-              (cce.landmark === 'region') || 
-              (cce.landmark === 'search')|| 
+          if ((cce.landmark === 'navigation') ||
+              (cce.landmark === 'region') ||
+              (cce.landmark === 'search')||
               (cce.landmark === 'application')) {
-            if (de.has_role) rule_result.addResult(TEST_RESULT.PASS, cce, 'ELEMENT_PASS_1', [de.role]);     
-            else rule_result.addResult(TEST_RESULT.PASS, cce, 'ELEMENT_PASS_1', [de.tag_name]);  
+            if (de.has_role) rule_result.addResult(TEST_RESULT.PASS, cce, 'ELEMENT_PASS_1', [de.role]);
+            else rule_result.addResult(TEST_RESULT.PASS, cce, 'ELEMENT_PASS_1', [de.tag_name]);
             pass_list += ' ' + cce.landmark;
           }
           else {
-            if (de.has_role) rule_result.addResult(TEST_RESULT.FAIL, cce, 'ELEMENT_FAIL_1', [de.role]);     
-            else rule_result.addResult(TEST_RESULT.FAIL, cce, 'ELEMENT_FAIL_1', [de.tag_name]); 
+            if (de.has_role) rule_result.addResult(TEST_RESULT.FAIL, cce, 'ELEMENT_FAIL_1', [de.role]);
+            else rule_result.addResult(TEST_RESULT.FAIL, cce, 'ELEMENT_FAIL_1', [de.tag_name]);
             fail_count++;
             fail_list += ' ' + cce.landmark;
           }
-          if (cce.landmark) fail_count += checkLandmarkChildren(cce);        
+          if (cce.landmark) fail_count += checkLandmarkChildren(cce);
         }
         else {
-          rule_result.addResult(TEST_RESULT.HIDDEN, cce, 'ELEMENT_HIDDEN_1', [de.tag_name]);     
+          rule_result.addResult(TEST_RESULT.HIDDEN, cce, 'ELEMENT_HIDDEN_1', [de.tag_name]);
         }
       }
-      
+
       return fail_count;
     }
 
     var landmark_elements     = dom_cache.headings_landmarks_cache.landmark_elements;
     var landmark_elements_len = landmark_elements.length;
     var fail_count = 0;
-    
+
     for (var i = 0; i < landmark_elements_len; i++ ) {
       var le = landmark_elements[i];
       var de = le.dom_element;
@@ -12111,22 +12111,22 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
         var fail_list = '';
         var pass_list = '';
         var landmark_count = 0;
-      
+
         if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
           fail_count = checkLandmarkChildren(le);
-          
+
           if (fail_count === 1) rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_2', [fail_list.toUpperCase()]);
           else if (fail_count > 1) rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_3', [fail_count, fail_list.toUpperCase()]);
-          else if (landmark_count === 0) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_2', []); 
-          else if (landmark_count === 1) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_3', [pass_list.toUpperCase()]); 
+          else if (landmark_count === 0) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_2', []);
+          else if (landmark_count === 1) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_3', [pass_list.toUpperCase()]);
           else rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_4', [landmark_count, pass_list.toUpperCase()]);
-        }  
+        }
         else {
           if (de.has_role) rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [de.tag_name]);
           else rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_2', [de.tag_name]);
-        }  
-      }  
-    }  
+        }
+      }
+    }
   } // end validate function
 },
 
@@ -12134,9 +12134,9 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * @object LANDMARK_10
  *
  * @desc Navigation landmark should only contain only region and search landmarks
- */               
-{ rule_id             : 'LANDMARK_10', 
-  last_updated        : '2014-11-28', 
+ */
+{ rule_id             : 'LANDMARK_10',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LANDMARKS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -12157,38 +12157,38 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
       var cces     = landmark.child_cache_elements;
       var cces_len = cces.length;
       var fail_count = 0;
-    
+
       for (var i = 0; i < cces_len; i++) {
         var cce = cces[i];
         var de = cce.dom_element;
         var cs = de.computed_style;
-      
+
         if (!cce.landmark) continue;
-     
+
         landmark_count++;
-        
+
 //        OpenAjax.a11y.logger.debug("Landmarks: " +  landmark.landmark + " -> " + cce.landmark);
-      
+
         if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
-          if ((cce.landmark === 'region') || 
-              (cce.landmark === 'search')|| 
+          if ((cce.landmark === 'region') ||
+              (cce.landmark === 'search')||
               (cce.landmark === 'application')) {
-             rule_result.addResult(TEST_RESULT.PASS, cce, 'ELEMENT_PASS_1', [cce.landmark]);     
+             rule_result.addResult(TEST_RESULT.PASS, cce, 'ELEMENT_PASS_1', [cce.landmark]);
              pass_list += ' ' + cce.landmark;
           }
           else {
-            rule_result.addResult(TEST_RESULT.FAIL, cce, 'ELEMENT_FAIL_1', [cce.landmark]); 
+            rule_result.addResult(TEST_RESULT.FAIL, cce, 'ELEMENT_FAIL_1', [cce.landmark]);
             fail_count++;
             fail_list += ' ' + cce.landmark;
           }
-          fail_count += checkLandmarkChildren(cce);        
+          fail_count += checkLandmarkChildren(cce);
         }
         else {
           if (de.has_role) rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [de.tag_name]);
           else rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_2', [de.tag_name]);
         }
       }
-      
+
       return fail_count;
     }
 
@@ -12196,7 +12196,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     var landmark_elements     = dom_cache.headings_landmarks_cache.landmark_elements;
     var landmark_elements_len = landmark_elements.length;
     var fail_count = 0;
-    
+
     for (var i = 0; i < landmark_elements_len; i++ ) {
       var le = landmark_elements[i];
       var de = le.dom_element;
@@ -12204,25 +12204,25 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
 
       if (le.landmark === 'navigation') {
-      
+
         var fail_list = '';
         var pass_list = '';
         var landmark_count = 0;
-      
+
         if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
           fail_count = checkLandmarkChildren(le);
-          
+
           if (fail_count === 1) rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_2', [fail_list.toUpperCase()]);
           else if (fail_count > 1) rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_3', [fail_count, fail_list.toUpperCase()]);
-          else if (landmark_count === 0) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_2', []); 
-          else if (landmark_count === 1) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_3', [pass_list.toUpperCase()]); 
+          else if (landmark_count === 0) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_2', []);
+          else if (landmark_count === 1) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_3', [pass_list.toUpperCase()]);
           else rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_4', [landmark_count, pass_list.toUpperCase()]);
-        }  
+        }
         else {
           rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [de.tag_name]);
-        }  
-      }  
-    }  
+        }
+      }
+    }
   } // end validate function
 },
 
@@ -12230,9 +12230,9 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * @object LANDMARK_11
  *
  * @desc Main landmark must be a top level lanmark
- */               
-{ rule_id             : 'LANDMARK_11', 
-  last_updated        : '2014-11-28', 
+ */
+{ rule_id             : 'LANDMARK_11',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LANDMARKS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -12250,7 +12250,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     var landmark_elements     = dom_cache.headings_landmarks_cache.landmark_elements;
     var landmark_elements_len = landmark_elements.length;
-    
+
     for (var i = 0; i < landmark_elements_len; i++ ) {
       var le = landmark_elements[i];
       var de = le.dom_element;
@@ -12261,27 +12261,27 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
           if (de.parent_landmark) {
             var de1 = de.parent_landmark.dom_element;
-            
+
             if (de1 && (de.body_element !== de1.body_element)) {
               if (de.has_role) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_2', [de.tag_name]);
               else rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_4', []);
-            }  
+            }
             else {
               if (de.has_role) rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_1', [de.tag_name, de.parent_landmark.landmark]);
               else rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_2', [de.parent_landmark.landmark]);
-            }  
+            }
           }
           else {
             if (de.has_role) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_1', [de.tag_name]);
             else rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_3', []);
-          }  
-        }  
+          }
+        }
         else {
           if (de.has_role) rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [de.tag_name]);
           else rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_2', []);
         }
-      }      
-    }  
+      }
+    }
   } // end validate function
 },
 
@@ -12289,9 +12289,9 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * @object LANDMARK_12
  *
  * @desc Contentinfo landmark must be a top level landmark
- */               
-{ rule_id             : 'LANDMARK_12', 
-  last_updated        : '2014-11-28', 
+ */
+{ rule_id             : 'LANDMARK_12',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LANDMARKS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -12309,14 +12309,14 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     var landmark_elements     = dom_cache.headings_landmarks_cache.landmark_elements;
     var landmark_elements_len = landmark_elements.length;
-    
+
     for (var i = 0; i < landmark_elements_len; i++ ) {
       var le = landmark_elements[i];
       var de = le.dom_element;
       var cs = de.computed_style;
 
       if (le.landmark === 'contentinfo') {
-      
+
         if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
 
           if (de.parent_landmark === null) {
@@ -12324,26 +12324,26 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
             else rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_3', []);
           }
           else {
-              
+
             var de1 = de.parent_landmark.dom_element;
-            
+
             if (de1 && (de.body_element !== de1.body_element)) {
               if (de.has_role) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_2', [de.tag_name]);
               else rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_4', []);
-            }  
+            }
             else {
               if (de.has_role) rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_1', [de.tag_name, de.parent_landmark.landmark]);
               else  rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_2', [de.parent_landmark.landmark]);
-            }  
+            }
           }
-          
-        }  
+
+        }
         else {
           if (de.has_role) rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [de.tag_name]);
           else rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_2', []);
         }
-      }      
-    }  
+      }
+    }
   } // end validate function
 },
 
@@ -12351,9 +12351,9 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * @object LANDMARK_13
  *
  * @desc Contentinfo landmark should only contain only search, region and navigation landmarks
- */               
-{ rule_id             : 'LANDMARK_13', 
-  last_updated        : '2014-11-28', 
+ */
+{ rule_id             : 'LANDMARK_13',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LANDMARKS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -12370,49 +12370,49 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     var SOURCE      = OpenAjax.a11y.SOURCE;
 
     function checkLandmarkChildren(landmark) {
-      
+
       var cces     = landmark.child_cache_elements;
       var cces_len = cces.length;
       var fail_count = 0;
-    
+
       for (var i = 0; i < cces_len; i++) {
-      
+
         var cce = cces[i];
         var de = cce.dom_element;
         var cs = de.computed_style;
         landmark_count++;
-      
+
         if (!cce.landmark) continue;
-      
+
         if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
-          if ((cce.landmark === 'navigation') || 
-              (cce.landmark === 'region') || 
-              (cce.landmark === 'search') || 
+          if ((cce.landmark === 'navigation') ||
+              (cce.landmark === 'region') ||
+              (cce.landmark === 'search') ||
               (cce.landmark === 'application')) {
-            if (de.has_role) rule_result.addResult(TEST_RESULT.PASS, cce, 'ELEMENT_PASS_1', [de.role]);     
-            else rule_result.addResult(TEST_RESULT.PASS, cce, 'ELEMENT_PASS_1', [de.tag_name]);  
+            if (de.has_role) rule_result.addResult(TEST_RESULT.PASS, cce, 'ELEMENT_PASS_1', [de.role]);
+            else rule_result.addResult(TEST_RESULT.PASS, cce, 'ELEMENT_PASS_1', [de.tag_name]);
             pass_list += ' ' + cce.landmark;
           }
           else {
-            if (de.has_role) rule_result.addResult(TEST_RESULT.FAIL, cce, 'ELEMENT_FAIL_1', [de.role]);     
-            else rule_result.addResult(TEST_RESULT.FAIL, cce, 'ELEMENT_FAIL_1', [de.tag_name]); 
+            if (de.has_role) rule_result.addResult(TEST_RESULT.FAIL, cce, 'ELEMENT_FAIL_1', [de.role]);
+            else rule_result.addResult(TEST_RESULT.FAIL, cce, 'ELEMENT_FAIL_1', [de.tag_name]);
             fail_count++;
             fail_list += ' ' + cce.landmark;
           }
-          if (cce.landmark) fail_count += checkLandmarkChildren(cce);        
+          if (cce.landmark) fail_count += checkLandmarkChildren(cce);
         }
         else {
-          rule_result.addResult(TEST_RESULT.HIDDEN, cce, 'ELEMENT_HIDDEN_1', [de.tag_name]);     
+          rule_result.addResult(TEST_RESULT.HIDDEN, cce, 'ELEMENT_HIDDEN_1', [de.tag_name]);
         }
       }
-      
+
       return fail_count;
     }
 
     var landmark_elements     = dom_cache.headings_landmarks_cache.landmark_elements;
     var landmark_elements_len = landmark_elements.length;
     var fail_count = 0;
-    
+
     for (var i = 0; i < landmark_elements_len; i++ ) {
       var le = landmark_elements[i];
       var de = le.dom_element;
@@ -12423,22 +12423,22 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
         var fail_list = '';
         var pass_list = '';
         var landmark_count = 0;
-      
+
         if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
           fail_count = checkLandmarkChildren(le);
-          
+
           if (fail_count === 1) rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_2', [fail_list.toUpperCase()]);
           else if (fail_count > 1) rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_3', [fail_count, fail_list.toUpperCase()]);
-          else if (landmark_count === 0) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_2', []); 
-          else if (landmark_count === 1) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_3', [pass_list.toUpperCase()]); 
+          else if (landmark_count === 0) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_2', []);
+          else if (landmark_count === 1) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_3', [pass_list.toUpperCase()]);
           else rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_4', [landmark_count, pass_list.toUpperCase()]);
-        }  
+        }
         else {
           if (de.has_role) rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [de.tag_name]);
           else rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_2', [de.tag_name]);
-        }  
-      }  
-    }  
+        }
+      }
+    }
   } // end validate function
 },
 
@@ -12446,9 +12446,9 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * @object LANDMARK_14
  *
  * @desc Search landmark should only contain only region landmarks
- */               
-{ rule_id             : 'LANDMARK_14', 
-  last_updated        : '2014-11-28', 
+ */
+{ rule_id             : 'LANDMARK_14',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LANDMARKS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -12465,40 +12465,40 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     var SOURCE      = OpenAjax.a11y.SOURCE;
 
     function checkLandmarkChildren(landmark) {
-    
+
       var cces     = landmark.child_cache_elements;
       var cces_len = cces.length;
       var fail_count = 0;
-    
+
       for (var i = 0; i < cces_len; i++) {
-      
+
         var cce = cces[i];
         var de = cce.dom_element;
         var cs = de.computed_style;
-       
+
         if (!cce.landmark) continue;
-        
+
         landmark_count++;
-      
+
         if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
-          if ((cce.landmark === 'region') || 
+          if ((cce.landmark === 'region') ||
               (cce.landmark === 'application')) {
-             rule_result.addResult(TEST_RESULT.PASS, cce, 'ELEMENT_PASS_1', [cce.landmark]);  
-             
-             pass_list += ' ' + cce.landmark;   
+             rule_result.addResult(TEST_RESULT.PASS, cce, 'ELEMENT_PASS_1', [cce.landmark]);
+
+             pass_list += ' ' + cce.landmark;
           }
           else {
-            rule_result.addResult(TEST_RESULT.FAIL, cce, 'ELEMENT_FAIL_1', [cce.landmark]); 
+            rule_result.addResult(TEST_RESULT.FAIL, cce, 'ELEMENT_FAIL_1', [cce.landmark]);
             fail_count++;
-            fail_list += ' ' + cce.landmark;   
+            fail_list += ' ' + cce.landmark;
           }
-          fail_count += checkLandmarkChildren(cce);        
+          fail_count += checkLandmarkChildren(cce);
         }
         else {
-          rule_result.addResult(TEST_RESULT.HIDDEN, cce, 'ELEMENT_HIDDEN_2', [de.tag_name, de.landmark]);     
+          rule_result.addResult(TEST_RESULT.HIDDEN, cce, 'ELEMENT_HIDDEN_2', [de.tag_name, de.landmark]);
         }
       }
-      
+
       return fail_count;
     }
 
@@ -12508,35 +12508,35 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     var fail_count = 0;
 
 //    OpenAjax.a11y.logger.debug("  LANDMARK 14 Rule");
-    
+
     for (var i = 0; i < landmark_elements_len; i++ ) {
-    
+
       var le = landmark_elements[i];
       var de = le.dom_element;
       var cs = de.computed_style;
 
       if (le.landmark === 'search') {
-      
+
         var fail_list = '';
         var pass_list = '';
         var landmark_count = 0;
-        
-      
+
+
         if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
           fail_count = checkLandmarkChildren(le);
 
           if (fail_count === 1) rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_2', [fail_list.toUpperCase()]);
           else if (fail_count > 1) rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_3', [fail_count, fail_list.toUpperCase()]);
-          else if (landmark_count === 0) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_2', []); 
-          else if (landmark_count === 1) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_3', [pass_list.toUpperCase()]); 
+          else if (landmark_count === 0) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_2', []);
+          else if (landmark_count === 1) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_3', [pass_list.toUpperCase()]);
           else rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_4', [landmark_count, pass_list.toUpperCase()]);
 
-        }  
+        }
         else {
           rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [de.tag_name]);
-        }  
-      }  
-    }  
+        }
+      }
+    }
   } // end validate function
 },
 
@@ -12544,9 +12544,9 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * @object LANDMARK_15
  *
  * @desc Form landmark should only contain only region landmarks
- */               
-{ rule_id             : 'LANDMARK_15', 
-  last_updated        : '2014-11-28', 
+ */
+{ rule_id             : 'LANDMARK_15',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LANDMARKS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -12567,33 +12567,33 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
       var cces     = landmark.child_cache_elements;
       var cces_len = cces.length;
       var fail_count = 0;
-    
+
       for (var i = 0; i < cces_len; i++) {
-      
+
         var cce = cces[i];
         var de = cce.dom_element;
         var cs = de.computed_style;
-        
+
         if (!cce.landmark) continue;
-     
+
         landmark_count++;
-      
+
         if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
-          if ((cce.landmark === 'region') || 
+          if ((cce.landmark === 'region') ||
               (cce.landmark === 'application')) {
-             rule_result.addResult(TEST_RESULT.PASS, cce, 'ELEMENT_PASS_1', [cce.landmark]);     
+             rule_result.addResult(TEST_RESULT.PASS, cce, 'ELEMENT_PASS_1', [cce.landmark]);
           }
           else {
-            rule_result.addResult(TEST_RESULT.FAIL, cce, 'ELEMENT_FAIL_1', [cce.landmark]); 
+            rule_result.addResult(TEST_RESULT.FAIL, cce, 'ELEMENT_FAIL_1', [cce.landmark]);
             fail_count++;
           }
-          fail_count += checkLandmarkChildren(cce);        
+          fail_count += checkLandmarkChildren(cce);
         }
         else {
-          rule_result.addResult(TEST_RESULT.HIDDEN, cce, 'ELEMENT_HIDDEN_3', [cce.dom_element.tag_name, cce.landmark]);     
+          rule_result.addResult(TEST_RESULT.HIDDEN, cce, 'ELEMENT_HIDDEN_3', [cce.dom_element.tag_name, cce.landmark]);
         }
       }
-      
+
       return fail_count;
     }
 
@@ -12601,33 +12601,33 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     var landmark_elements     = dom_cache.headings_landmarks_cache.landmark_elements;
     var landmark_elements_len = landmark_elements.length;
     var fail_count = 0;
-    
+
     for (var i = 0; i < landmark_elements_len; i++ ) {
-    
+
       var le = landmark_elements[i];
       var de = le.dom_element;
       var cs = de.computed_style;
 
       if (le.landmark === 'form') {
-      
+
         var landmark_count = 0;
-      
+
         if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
           fail_count = checkLandmarkChildren(le);
 
 //          OpenAjax.a11y.logger.debug("  Search: " + fail_count);
-          
+
           if (fail_count > 0) rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_2', []);
-          else if (landmark_count === 0) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_2', []); 
-          else if (landmark_count === 1) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_3', []); 
+          else if (landmark_count === 0) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_2', []);
+          else if (landmark_count === 1) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_3', []);
           else rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_4', [landmark_count]);
-        }  
+        }
         else {
           if (de.has_role) rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [de.tag_name]);
           else rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_2', []);
-        }  
-      }  
-    }  
+        }
+      }
+    }
   } // end validate function
 },
 
@@ -12635,9 +12635,9 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * @object LANDMARK_16
  *
  * @desc Elements with the role=region must have accessible name to be considered a landmark
- */               
-{ rule_id             : 'LANDMARK_16', 
-  last_updated        : '2014-11-28', 
+ */
+{ rule_id             : 'LANDMARK_16',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LANDMARKS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -12656,9 +12656,9 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     var landmark_elements     = dom_cache.headings_landmarks_cache.landmark_elements;
     var landmark_elements_len = landmark_elements.length;
     var fail_count = 0;
-    
+
     for (var i = 0; i < landmark_elements_len; i++ ) {
-    
+
       var le = landmark_elements[i];
       var de = le.dom_element;
       var cs = de.computed_style;
@@ -12666,38 +12666,38 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
       if (le.landmark === 'region') {
 
 //        OpenAjax.a11y.logger.debug("  Region: " + fail_count);
-      
+
         if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
 
-          if ((le.computed_label_source !== OpenAjax.a11y.SOURCE.NONE) && 
+          if ((le.computed_label_source !== OpenAjax.a11y.SOURCE.NONE) &&
               (le.computed_label.length > 0)) {
             if (de.has_role) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_1', [ de.tag_name]);
             else rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_2', []);
-          }  
+          }
           else {
             if (de.has_role) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, le, 'ELEMENT_MC_1', [de.tag_name]);
             else rule_result.addResult(TEST_RESULT.MANUAL_CHECK, le, 'ELEMENT_MC_2', []);
-          }  
-        }  
+          }
+        }
         else {
           if (de.has_role) rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [de.tag_name]);
           else rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_2', []);
-        }  
-      }  
-    }  
-    
+        }
+      }
+    }
+
     var section_elements     = dom_cache.headings_landmarks_cache.all_section_elements;
     var section_elements_len = section_elements.length;
-    
+
     for (i = 0; i < section_elements_len; i++ ) {
-    
+
       le = section_elements[i];
       de = le.dom_element;
       cs = de.computed_style;
-      
+
 //       OpenAjax.a11y.logger.debug("TAG NAME: " + de.tag_name);
-      
-      if (de.tag_name === 'section' && 
+
+      if (de.tag_name === 'section' &&
           !de.has_role &&
           !de.has_aria_labelledby &&
           !de.has_aria_label &&
@@ -12708,9 +12708,9 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
         else {
           rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_2', []);
         }
-      }  
-    }  
-    
+      }
+    }
+
   } // end validate function
 },
 
@@ -12718,10 +12718,10 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * @object LANDMARK_17
  *
  * @desc Landmark must have unique labels
- */     
-           
-{ rule_id             : 'LANDMARK_17', 
-  last_updated        : '2014-11-28', 
+ */
+
+{ rule_id             : 'LANDMARK_17',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LANDMARKS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -12744,34 +12744,34 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     var les   = [];
 
     for (i = 0; i < landmark_elements_len; i++ ) {
-    
+
       var le = landmark_elements[i];
       var de = le.dom_element;
       var cs = de.computed_style;
-      
+
       if (cs.is_visible_to_at === VISIBILITY.VISIBLE) les.push(le);
-      else rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [de.tag_name, de.landmark]);                                    
-      
-    } // end loop    
-      
+      else rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [de.tag_name, de.landmark]);
+
+    } // end loop
+
     // sort labels
 
-    les = dom_cache.sortArrayOfObjects(les,'computed_label_for_comparison', true); 
+    les = dom_cache.sortArrayOfObjects(les,'computed_label_for_comparison', true);
 
     for (i = 0; i < les.length; i++) {
-    
+
       le = les[i];
 
-      if (le.duplicate) rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_1', [le.computed_label, le.landmark]);                
-      else rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_1', [le.landmark]);        
-      
-    }  
-    
+      if (le.duplicate) rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_1', [le.computed_label, le.landmark]);
+      else rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_1', [le.landmark]);
+
+    }
+
   } // end validate function
 },
 
-{ rule_id             : 'LANDMARK_18', 
-  last_updated        : '2015-08-07', 
+{ rule_id             : 'LANDMARK_18',
+  last_updated        : '2015-08-07',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LANDMARKS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -12786,7 +12786,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
     var SOURCE      = OpenAjax.a11y.SOURCE;
-  
+
     var landmark_elements     = dom_cache.headings_landmarks_cache.landmark_elements;
     var landmark_elements_len = landmark_elements.length;
 
@@ -12794,11 +12794,11 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
       var le = landmark_elements[i];
       var de = le.dom_element;
       if (de.computed_style.is_visible_to_at === VISIBILITY.HIDDEN) {
-        rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [le.landmark]);                      
+        rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [le.landmark]);
       }
       else {
         rule_result.addResult(TEST_RESULT.MANUAL_CHECK, le, 'ELEMENT_MC_1', [le.landmark, le.computed_label]);
-      }  
+      }
     }
   } // end validate function
 },
@@ -12806,10 +12806,10 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 /**
  * @object LANDMARK_19
  *
- * @desc Complementary landmark must be a top level landmark 
- */               
-{ rule_id             : 'LANDMARK_19', 
-  last_updated        : '2014-11-28', 
+ * @desc Complementary landmark must be a top level landmark
+ */
+{ rule_id             : 'LANDMARK_19',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LANDMARKS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -12827,57 +12827,57 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     var landmark_elements     = dom_cache.headings_landmarks_cache.landmark_elements;
     var landmark_elements_len = landmark_elements.length;
-    
+
     for (var i = 0; i < landmark_elements_len; i++ ) {
       var le = landmark_elements[i];
       var de = le.dom_element;
       var cs = de.computed_style;
 
       if (le.landmark === 'complementary') {
-      
+
         if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
 
           if (!de.parent_landmark) {
             if (de.has_role) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_1', [de.tag_name]);
-            else rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_3', []);          
+            else rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_3', []);
           }
           else {
             var de1 = de.parent_landmark.dom_element;
-            
+
             if (de1 && (de.body_element !== de1.body_element)) {
               if (de.has_role) rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_2', [de.tag_name]);
               else rule_result.addResult(TEST_RESULT.PASS, le, 'ELEMENT_PASS_4', []);
-            }  
+            }
             else {
               if (de.has_role) rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_1', [de.tag_name, de.parent_landmark.landmark]);
               else rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_2', [de.parent_landmark.landmark]);
             }
           }
-        }  
+        }
         else {
           if (de.has_role) rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [de.tag_name]);
           else rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_2', []);
         }
-      }      
-    }  
+      }
+    }
   } // end validate function
 }
 
-]); 
+]);
 /* ---------------------------------------------------------------- */
-/*  OpenAjax Alliance Control Rules                                 */ 
+/*  OpenAjax Alliance Control Rules                                 */
 /* ---------------------------------------------------------------- */
 
 OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
 /**
  * @object LANGUAGE_1
- * 
+ *
  * @desc HTML element must have a lang attribute
  */
-     
-{ rule_id             : 'LANGUAGE_1', 
-  last_updated        : '2014-11-28', 
+
+{ rule_id             : 'LANGUAGE_1',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.PAGE,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.STYLES_READABILITY,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -12890,9 +12890,9 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   validate            : function (dom_cache, rule_result) {
 
     var TEST_RESULT    = OpenAjax.a11y.TEST_RESULT;
-   
+
 //    OpenAjax.a11y.logger.debug( "Language Codes: " + typeof OpenAjax.a11y.LANGUAGE_CODES);
-    
+
     var page_element = dom_cache.headings_landmarks_cache.page_element;
 
     if (page_element) {
@@ -12901,26 +12901,26 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
            rule_result.addResult(TEST_RESULT.PASS, page_element, 'PAGE_PASS_1', [dom_cache.lang]);
          }
          else {
-           rule_result.addResult(TEST_RESULT.FAIL, page_element, 'PAGE_FAIL_2', [dom_cache.lang]);       
+           rule_result.addResult(TEST_RESULT.FAIL, page_element, 'PAGE_FAIL_2', [dom_cache.lang]);
          }
        }
        else {
-         rule_result.addResult(TEST_RESULT.FAIL, page_element, 'PAGE_FAIL_1', []);       
+         rule_result.addResult(TEST_RESULT.FAIL, page_element, 'PAGE_FAIL_1', []);
        }
-    } 
-       
+    }
 
-  } // end validation function   
+
+  } // end validation function
 },
 
 /**
  * @object LANGUAGE_2
- * 
+ *
  * @desc Identify the elements on the page where the text content is different language from the primary content
  */
-     
-{ rule_id             : 'LANGUAGE_2', 
-  last_updated        : '2014-11-28', 
+
+{ rule_id             : 'LANGUAGE_2',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.PAGE,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.STYLES_READABILITY,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -12934,7 +12934,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     var TEST_RESULT    = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY     = OpenAjax.a11y.VISIBILITY;
-    
+
     var dom_elements     = dom_cache.languages_cache.dom_elements;
     var dom_elements_len = dom_elements.length;
 
@@ -12945,40 +12945,40 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     for (var i = 0; i < dom_elements_len; i++) {
       var de = dom_elements[i];
-        
+
       if (de.computed_style.is_visible_to_at === VISIBILITY.VISIBLE ) {
-        
+
          if (OpenAjax.a11y.util.validLanguageCode(de.lang)) {
            rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_1', [de.tag_name, de.lang]);
            pass_count++;
          }
          else {
-           rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [de.tag_name, de.lang]);    
+           rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [de.tag_name, de.lang]);
            fail_count++;
          }
-                   
+
       }
       else {
         rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.tag_name, de.lang]);
       }
-    }  
-    
+    }
+
     var page_element = dom_cache.headings_landmarks_cache.page_element;
 
     if (page_element) {
       if (fail_count === 1) rule_result.addResult(TEST_RESULT.FAIL, page_element, 'PAGE_FAIL_1', []);
       else if (fail_count > 1) rule_result.addResult(TEST_RESULT.FAIL, page_element, 'PAGE_FAIL_2', [fail_count]);
-      else if (pass_count === 1) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MC_1', []); 
-      else if (pass_count > 1) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MC_2', [pass_count]);    
-      else rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MC_3', []); 
-    } 
-    
-  } // end validation function   
+      else if (pass_count === 1) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MC_1', []);
+      else if (pass_count > 1) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MC_2', [pass_count]);
+      else rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MC_3', []);
+    }
+
+  } // end validation function
 }
-]); 
+]);
 
 
-    
+
 
 /**
  * Copyright 2011-2017  OpenAjax Alliance
@@ -13001,18 +13001,18 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 /* ---------------------------------------------------------------- */
 
 OpenAjax.a11y.RuleManager.addRulesFromJSON([
-      
-/** 
+
+/**
 
    **
  * @object LAYOUT_1
  *
  * @desc     Make sure content is in a meaningful sequence
- *           tables used for layout must be checked for 
+ *           tables used for layout must be checked for
  *           maintaining meanful sequence
  */
-{ rule_id             : 'LAYOUT_1', 
-  last_updated        : '2014-11-28', 
+{ rule_id             : 'LAYOUT_1',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.PAGE,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.TABLES,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -13023,15 +13023,15 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   resource_properties : ['max_column', 'max_row', 'nesting_level'],
   language_dependency : "",
   validate            : function (dom_cache, rule_result) {
-     
+
      function getNestingLevel(table_element, level) {
-     
+
        var l = level;
        var pte = table_element.parent_table_element;
-     
+
        if (pte) {
          if ((pte.table_role === OpenAjax.a11y.TABLE_ROLE.DATA) || pte.max_column == 1) {
-           l = getNestingLevel(pte, level);           
+           l = getNestingLevel(pte, level);
          }
          else {
            l = getNestingLevel(pte, (level+1));
@@ -13039,13 +13039,13 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
        }
        return l;
      }
-     
+
      var TEST_RESULT   = OpenAjax.a11y.TEST_RESULT;
      var VISIBILITY    = OpenAjax.a11y.VISIBILITY;
-    
+
      var table_elements     = dom_cache.tables_cache.table_elements;
      var table_elements_len = table_elements.length;
-     
+
      var page_element = dom_cache.headings_landmarks_cache.page_element;
      var layout_pass = 0;
      var layout_mc   = 0;
@@ -13053,64 +13053,64 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
      // Check to see if valid cache reference
      if (table_elements && table_elements_len) {
-     
+
        for (var i = 0; i < table_elements_len; i++) {
-       
+
          var te = table_elements[i];
          var de = te.dom_element;
          var cs = de.computed_style;
-         
+
          if (te.table_role === OpenAjax.a11y.TABLE_ROLE.LAYOUT) {
 
            if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
-         
+
              var nesting_level = getNestingLevel(te, 0);
-             
+
              te.nesting_level = nesting_level;
 
              if (te.max_column === 1)  {
-               rule_result.addResult(TEST_RESULT.PASS, te, 'ELEMENT_PASS_1', []);          
+               rule_result.addResult(TEST_RESULT.PASS, te, 'ELEMENT_PASS_1', []);
                layout_pass++;
-             }  
+             }
              else {
-         
+
                if (nesting_level === 0) {
-                 rule_result.addResult(TEST_RESULT.MANUAL_CHECK, te, 'ELEMENT_MC_2', [te.max_row, te.max_column]);               
+                 rule_result.addResult(TEST_RESULT.MANUAL_CHECK, te, 'ELEMENT_MC_2', [te.max_row, te.max_column]);
                  layout_mc++;
-               } 
+               }
                else {
                  rule_result.addResult(TEST_RESULT.MANUAL_CHECK, te, 'ELEMENT_MC_3', [te.nesting_level]);
                  layout_mc++;
-               }  
+               }
              }
            }
            else {
              rule_result.addResult(TEST_RESULT.HIDDEN, te, 'ELEMENT_HIDDEN_1', []);
            }
-         } 
+         }
        } // end loop
-     }  
+     }
 
      if (layout_mc) {
-       rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MC_1', []); 
+       rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MC_1', []);
      }
      else {
        if (layout_pass) {
-         rule_result.addResult(TEST_RESULT.PASS, page_element, 'PAGE_PASS_1', []); 
-       }  
-     }   
-     
+         rule_result.addResult(TEST_RESULT.PASS, page_element, 'PAGE_PASS_1', []);
+       }
+     }
+
    }  // end validation function
  },
- 
+
 /**
  * @object LAYOUT_2
  *
- * @desc     Do not use nested tables more than 1 column wide for positioning content 
+ * @desc     Do not use nested tables more than 1 column wide for positioning content
  *           Fails with one or more one levels of nesting.
  */
-{ rule_id             : 'LAYOUT_2', 
-  last_updated        : '2014-11-28', 
+{ rule_id             : 'LAYOUT_2',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.STYLES_READABILITY,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -13121,54 +13121,54 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   resource_properties : ['is_data_table', 'max_column', 'max_row'],
   language_dependency : "",
   validate          : function (dom_cache, rule_result) {
-   
+
      var TEST_RESULT   = OpenAjax.a11y.TEST_RESULT;
      var VISIBILITY    = OpenAjax.a11y.VISIBILITY;
-    
+
      var i;
      var te;
      var nesting_level;
-    
+
      var table_elements     = dom_cache.tables_cache.table_elements;
      var table_elements_len = table_elements.length;
-     
+
 
      // Check to see if valid cache reference
      if (table_elements && table_elements_len) {
-     
+
        for (i=0; i < table_elements_len; i++) {
-       
+
          te = table_elements[i];
-         
+
          if (te.table_role === OpenAjax.a11y.TABLE_ROLE.LAYOUT) {
-                      
+
            if (te.dom_element.computed_style.is_visible_to_at == VISIBILITY.VISIBLE) {
-         
+
              if (te.max_column > 1) {
-             
+
                if (te.nesting_level > 0) rule_result.addResult(TEST_RESULT.FAIL, te, 'ELEMENT_FAIL_1', [te.max_row, te.max_column, te.nesting_level]);
-               else rule_result.addResult(TEST_RESULT.PASS, te, 'ELEMENT_PASS_1', []);                       
-             }  
+               else rule_result.addResult(TEST_RESULT.PASS, te, 'ELEMENT_PASS_1', []);
+             }
              else {
-               rule_result.addResult(TEST_RESULT.PASS, te, 'ELEMENT_PASS_2', []);          
+               rule_result.addResult(TEST_RESULT.PASS, te, 'ELEMENT_PASS_2', []);
              }
            }
            else {
              rule_result.addResult(TEST_RESULT.HIDDEN, te, 'ELEMENT_HIDDEN_1', []);
-           } 
-         }  
+           }
+         }
        } // end loop
-     }  
-  } // end validation function        
+     }
+  } // end validation function
 },
- 
+
 /**
  * @object LAYOUT_3
  *
  * @desc     Check to see if aria-flowto property ordering makes sense to AT users.
  */
-{ rule_id             : 'LAYOUT_3', 
-  last_updated        : '2017-01-17', 
+{ rule_id             : 'LAYOUT_3',
+  last_updated        : '2017-01-17',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.STYLES_READABILITY,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -13182,7 +13182,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
-  
+
     var dom_elements     = dom_cache.element_cache.dom_elements;
     var dom_elements_len = dom_elements.length;
 
@@ -13193,19 +13193,19 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
       if (de.type != Node.ELEMENT_NODE) continue;
 
 //      OpenAjax.a11y.logger.debug('[RULE][LAYOUT 3]: ' + de.tag_name + ' (' + de.has_aria_flowto + ')');
-      
+
       if (de.has_aria_flowto) {
         if (de.computed_style.is_visible_to_at === VISIBILITY.HIDDEN) {
-          rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.tag_name]);                      
+          rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.tag_name]);
         }
         else {
           rule_result.addResult(TEST_RESULT.MANUAL_CHECK, de, 'ELEMENT_MC_1', [de.tag_name]);
-        }  
+        }
       }
-    }      
-  } // end validation function        
+    }
+  } // end validation function
 }
-]); /**
+]);/**
  * Copyright 2011-2017  OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -13222,19 +13222,19 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  */
 
 /* ---------------------------------------------------------------- */
-/*            OpenAjax Alliance Link Rules                         */ 
+/*            OpenAjax Alliance Link Rules                          */
 /* ---------------------------------------------------------------- */
 
 OpenAjax.a11y.RuleManager.addRulesFromJSON([
-      
+
 /**
- * @object LINK_1 
- * 
+ * @object LINK_1
+ *
  * @desc Link should describe the target of a link
  */
- 
-{ rule_id             : 'LINK_1', 
-  last_updated        : '2012-11-28', 
+
+{ rule_id             : 'LINK_1',
+  last_updated        : '2012-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LINKS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -13248,33 +13248,33 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
-    
+
     var link_elements     = dom_cache.links_cache.link_elements;
     var link_elements_len = link_elements.length;
 
     var visible_link_elements = [];
-    
+
     for (var i = 0; i < link_elements_len; i++) {
-      
+
       var le = link_elements[i];
       var tag_name = le.dom_element.tag_name;
-      
-      if (le.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE && 
+
+      if (le.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE &&
           le.is_link) {
         visible_link_elements.push(le);
       }
       else {
-        rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [tag_name]);                  
+        rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [tag_name]);
       }
-      
+
     }
-    
+
     var visible_link_elements_len = visible_link_elements.length;
 
     for (i = 0; i < visible_link_elements_len; i++) {
 
       le = visible_link_elements[i];
-      
+
       var name        = le.accessible_name_for_comparison;
       var description = le.accessible_description_for_comparison;
       tag_name        = le.dom_element.tag_name;
@@ -13282,14 +13282,14 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
       if (name.length) {
         if (description.length) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, le, 'ELEMENT_MC_2', [tag_name, name, description]);
         else rule_result.addResult(TEST_RESULT.MANUAL_CHECK, le, 'ELEMENT_MC_1', [tag_name, name]);
-      }  
+      }
       else {
         rule_result.addResult(TEST_RESULT.FAIL, le, 'ELEMENT_FAIL_1', [tag_name]);
       }
-      
-    }  // end loop  
-    
-    
+
+    }  // end loop
+
+
   } // end valifdation function
 },
 
@@ -13297,10 +13297,10 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * @object LINK_2
  *
  * @desc Links with the different HREFs should have the unique accessible names
- */ 
-     
-{ rule_id             : 'LINK_2', 
-  last_updated        : '2014-11-28', 
+ */
+
+{ rule_id             : 'LINK_2',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LINKS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -13314,30 +13314,30 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   validate            : function (dom_cache, rule_result) {
 
     function updateResults(links, test_result, message) {
-    
+
       for (var i = 0; i < links.length; i++) {
-      
+
         var le = links[i];
         var links_len = links[i].length;
-      
+
 //        OpenAjax.a11y.logger.debug("  Update Item: " + i + " of " + end + " le: " + le.toString());
 
         var tag_name  = le.dom_element.tag_name;
-              
-        rule_result.addResult(test_result, le,  message, [tag_name, links_len]);        
+
+        rule_result.addResult(test_result, le,  message, [tag_name, links_len]);
       }
-      
+
     }
 
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
-    
+
     var same_names     = dom_cache.links_cache.getLinksThatShareTheSameName();
     var same_names_len = same_names.length;
 
     for (var i = 0; i < same_names_len; i++) {
-      
+
       var same_name = same_names[i];
-      
+
       if (same_name.same_hrefs) {
         updateResults(same_name.links, TEST_RESULT.PASS, 'ELEMENT_PASS_1');
       } else {
@@ -13345,18 +13345,18 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
           updateResults(same_name.links, TEST_RESULT.PASS, 'ELEMENT_PASS_2');
         } else {
           updateResults(same_name.links, TEST_RESULT.FAIL, 'ELEMENT_FAIL_1');
-        }  
-      }            
-    }  // end loop  
+        }
+      }
+    }  // end loop
 
   } // end validate function
  }
 
-      
-]); 
+
+]);
 
 
-    
+
 
 /**
  * Copyright 2011-2017  OpenAjax Alliance
@@ -13375,19 +13375,19 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  */
 
 /* ---------------------------------------------------------------- */
-/*            OpenAjax Alliance List Rules                         */ 
+/*            OpenAjax Alliance List Rules                          */
 /* ---------------------------------------------------------------- */
 
 OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
 /**
- * @object LIST_1 
- * 
+ * @object LIST_1
+ *
  * @desc Verify list elements are used semantically
 */
- 
-{ rule_id             : 'LIST_1', 
-  last_updated        : '2015-08-14', 
+
+{ rule_id             : 'LIST_1',
+  last_updated        : '2015-08-14',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.PAGE,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.STYLES_READABILITY,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -13402,7 +13402,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
       var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
       var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
 
-      var page_element = dom_cache.keyboard_focus_cache.page_element;  
+      var page_element = dom_cache.keyboard_focus_cache.page_element;
 
       var list_elements     = dom_cache.lists_cache.list_elements;
       var list_elements_len = list_elements.length; // loop control
@@ -13414,35 +13414,35 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
         var tag_name = de.tag_name;
         if (de.has_role) tag_name += '[role=' + de.role + ']';
-       
+
         if (cs.is_visible_to_at  === VISIBILITY.VISIBLE) {
           if (le.list_type === OpenAjax.a11y.LIST.CONTAINER) {
             rule_result.addResult(TEST_RESULT.MANUAL_CHECK, le, 'ELEMENT_MC_1', [tag_name]);
           }
           else  {
             rule_result.addResult(TEST_RESULT.MANUAL_CHECK, le, 'ELEMENT_MC_2', [tag_name]);
-          } 
-        }     
+          }
+        }
         else {
-          rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [tag_name]);                
-        }        
+          rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [tag_name]);
+        }
 
       } // end loop
 
       if (list_elements_len > 0) {
         rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MC_1', [list_elements_len]);
       }
-      
+
     } // end validate function
   },
 /**
- * @object LIST_2 
- * 
+ * @object LIST_2
+ *
  * @desc Verify list benefits from an accessible name
 */
-  
-{ rule_id             : 'LIST_2', 
-  last_updated        : '2015-08-14', 
+
+{ rule_id             : 'LIST_2',
+  last_updated        : '2015-08-14',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.STYLES_READABILITY,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -13464,21 +13464,21 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
         var le = container_elements[i];
         var de = le.dom_element;
         var cs = de.computed_style;
-        
+
         var tag_name = de.tag_name;
         if (de.has_role) tag_name += '[role=' + de.role + ']';
-       
+
         if (cs.is_visible_to_at  === VISIBILITY.VISIBLE) {
           if (le.accessible_name.length) {
             rule_result.addResult(TEST_RESULT.MANUAL_CHECK, le, 'ELEMENT_MC_1', [le.accessible_name]);
           }
           else {
             rule_result.addResult(TEST_RESULT.MANUAL_CHECK, le, 'ELEMENT_MC_2', [tag_name]);
-          }  
-        }     
+          }
+        }
         else {
-          rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [tag_name]);                
-        }        
+          rule_result.addResult(TEST_RESULT.HIDDEN, le, 'ELEMENT_HIDDEN_1', [tag_name]);
+        }
 
       } // end loop
     } // end validate function
@@ -13486,20 +13486,20 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 ]);
 
 /* ---------------------------------------------------------------- */
-/*  OpenAjax Alliance Control Rules                                 */ 
+/*  OpenAjax Alliance Control Rules                                 */
 /* ---------------------------------------------------------------- */
 
 OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
 /**
  * @object NAVIGATION_1
- * 
- * @desc Page has at least two of the following resources: table of contents, site map, 
+ *
+ * @desc Page has at least two of the following resources: table of contents, site map,
  *       search, navigation links, sand trail
  */
-     
-{ rule_id             : 'NAVIGATION_1', 
-  last_updated        : '2014-11-28', 
+
+{ rule_id             : 'NAVIGATION_1',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.WEBSITE,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.SITE_NAVIGATION,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -13514,7 +13514,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
     var SOURCE      = OpenAjax.a11y.SOURCE;
-  
+
     var landmark_elements     = dom_cache.headings_landmarks_cache.landmark_elements;
     var landmark_elements_len = landmark_elements.length;
 
@@ -13523,47 +13523,47 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     var landmark_count = 0;
     var navigation_count = 0;
     var search_count     = 0;
-    
+
     var LANDMARK_ROLE = 'navigation';
 
     for (var i = 0; i < landmark_elements_len; i++ ) {
       var le = landmark_elements[i];
       var tag_name = le.dom_element.tag_name;
-      
+
       if (le.role === 'navigation') {
         if (le.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {
           rule_result.addResult(TEST_RESULT.MANUAL_CHECK, le, 'ELEMENT_MC_1', []);
           navigation_count++;
         }
-      }  
-      
+      }
+
       if (le.role === 'search') {
         if (le.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {
           rule_result.addResult(TEST_RESULT.MANUAL_CHECK, le, 'ELEMENT_MC_2', []);
           search_count++;
-        }  
-      }  
-      
+        }
+      }
+
     }
 
     if (page_element) {
       if ((navigation_count > 0) && (search_count > 0)) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'WEBSITE_MC_1', []);
       else rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'WEBSITE_MC_2', []);
-    } 
-       
+    }
 
-  } // end validation function   
+
+  } // end validation function
 },
 
 /**
  * @object NAVIGATION_2
- * 
- * @desc  Landmarks are in the same relative order when used to identify sections of web pages within the same website 
+ *
+ * @desc  Landmarks are in the same relative order when used to identify sections of web pages within the same website
  *
  */
-     
-{ rule_id             : 'NAVIGATION_2', 
-  last_updated        : '2014-11-28', 
+
+{ rule_id             : 'NAVIGATION_2',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.WEBSITE,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.SITE_NAVIGATION,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -13578,7 +13578,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
     var SOURCE      = OpenAjax.a11y.SOURCE;
-  
+
     var landmark_elements     = dom_cache.headings_landmarks_cache.landmark_elements;
     var landmark_elements_len = landmark_elements.length;
 
@@ -13590,108 +13590,108 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     var contentinfo_count   = 0;
     var search_count        = 0;
     var complementary_count = 0;
-    
+
     var landmark_count    = 0;
-    
+
     var les = [];
 
     for (var i = 0; i < landmark_elements_len; i++ ) {
       var le = landmark_elements[i];
-      
+
       if (le.role === 'main') {
         if (le.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {
           rule_result.addResult(TEST_RESULT.MANUAL_CHECK, le, 'ELEMENT_MC_1', []);
-          
+
           if (main_count === 0) les.push('main');
-          
+
           main_count += 1;
           landmark_count += 1;
-        }  
-      }  
-      
+        }
+      }
+
       if (le.role === 'navigation') {
         if (le.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {
           rule_result.addResult(TEST_RESULT.MANUAL_CHECK, le, 'ELEMENT_MC_2', []);
-          
+
           if (navigation_count === 0) les.push('navigation');
-          
+
           navigation_count += 1;
           landmark_count += 1;
         }
-      }  
-      
+      }
+
       if (le.role === 'banner') {
         if (le.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {
           rule_result.addResult(TEST_RESULT.MANUAL_CHECK, le, 'ELEMENT_MC_3', []);
-          
+
           if (banner_count === 0) les.push('banner');
-          
+
           banner_count += 1;
           landmark_count += 1;
-        }  
-      }  
+        }
+      }
 
       if (le.role === 'contentinfo') {
         if (le.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {
           rule_result.addResult(TEST_RESULT.MANUAL_CHECK, le, 'ELEMENT_MC_4', []);
-          
+
           if (contentinfo_count === 0) les.push('contentinfo');
-          
+
           contentinfo_count += 1;
           landmark_count += 1;
-        }  
-      }  
-      
+        }
+      }
+
       if (le.role === 'search') {
         if (le.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {
           rule_result.addResult(TEST_RESULT.MANUAL_CHECK, le, 'ELEMENT_MC_5', []);
-          
+
           if (search_count === 0) les.push('search');
-          
+
           search_count += 1;
           landmark_count += 1;
-        }  
-      }  
+        }
+      }
 
       if (le.role === 'complementary') {
         if (le.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {
           rule_result.addResult(TEST_RESULT.MANUAL_CHECK, le, 'ELEMENT_MC_6', []);
-          
+
           if (complementary_count === 0) les.push('complementary');
-          
+
           complementary_count += 1;
           landmark_count += 1;
-        }  
-      }  
-      
-      
+        }
+      }
+
+
     }
 
     if (page_element) {
       if (landmark_count > 0) {
-          
+
         var last = les.length - 1;
         var landmark_list = les[0];
-        
+
         for (i = 1; i < les.length; i++) {
           if (i === last) landmark_list += " and " + les[i];
           else landmark_list += ", " + les[i];
         }
         rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'WEBSITE_MC_1', [landmark_list]);
-      }  
-    } 
-  } // end validation function   
+      }
+    }
+  } // end validation function
 },
 
 /**
  * @object NAVIGATION_3
- * 
- * @desc  h2 elements are in the same relative order when used to identify sections of web pages within the same website 
+ *
+ * @desc  h2 elements are in the same relative order when used to identify sections of web pages within the same website
  *
  */
-     
-{ rule_id             : 'NAVIGATION_3', 
-  last_updated        : '2014-11-28', 
+
+{ rule_id             : 'NAVIGATION_3',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.WEBSITE,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.SITE_NAVIGATION,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -13705,14 +13705,14 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
-  
+
     var heading_elements     = dom_cache.headings_landmarks_cache.heading_elements;
     var heading_elements_len = heading_elements.length;
 
     var page_element = dom_cache.headings_landmarks_cache.page_element;
 
     var heading_count = 0;
-    
+
     for (var i = 0; i < heading_elements_len; i++ ) {
       var he = heading_elements[i];
 
@@ -13720,33 +13720,33 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
          (he.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE)) {
           rule_result.addResult(TEST_RESULT.MANUAL_CHECK, he, 'ELEMENT_MC_1', []);
           heading_count += 1;
-      }        
+      }
 
       if ((he.level === 2) &&
          (he.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE)) {
           rule_result.addResult(TEST_RESULT.MANUAL_CHECK, he, 'ELEMENT_MC_2', []);
           heading_count += 1;
-      }        
+      }
     }
 
     if (page_element) {
        if (heading_count) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'WEBSITE_MC_1', []);
        else rule_result.addResult(TEST_RESULT.FAIL, page_element, 'WEBSITE_FAIL_1', []);
-    } 
-       
+    }
 
-  } // end validation function   
+
+  } // end validation function
 },
 
 /**
  * @object NAVIGATION_4
- * 
+ *
  * @desc  landmarks identifying the same sections in a website have the same accessible name
  *
  */
-     
-{ rule_id             : 'NAVIGATION_4', 
-  last_updated        : '2014-11-28', 
+
+{ rule_id             : 'NAVIGATION_4',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.WEBSITE,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.SITE_NAVIGATION,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -13761,78 +13761,78 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
     var SOURCE      = OpenAjax.a11y.SOURCE;
-  
+
     var landmark_elements     = dom_cache.headings_landmarks_cache.landmark_elements;
     var landmark_elements_len = landmark_elements.length;
 
     var page_element = dom_cache.headings_landmarks_cache.page_element;
 
     var landmark_count = 0;
-    
+
     for (var i = 0; i < landmark_elements_len; i++ ) {
       var le = landmark_elements[i];
-      
+
       if (le.role === 'main') {
         if (le.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {
           rule_result.addResult(TEST_RESULT.MANUAL_CHECK, le, 'ELEMENT_MC_1', []);
           landmark_count += 1;
-        }  
-      }  
-      
+        }
+      }
+
       if (le.role === 'navigation') {
         if (le.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {
           rule_result.addResult(TEST_RESULT.MANUAL_CHECK, le, 'ELEMENT_MC_2', []);
           landmark_count += 1;
         }
-      }  
-      
+      }
+
       if (le.role === 'search') {
         if (le.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {
           rule_result.addResult(TEST_RESULT.MANUAL_CHECK, le, 'ELEMENT_MC_3', []);
           landmark_count += 1;
-        }  
-      }  
-      
+        }
+      }
+
       if (le.role === 'banner') {
         if (le.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {
           rule_result.addResult(TEST_RESULT.MANUAL_CHECK, le, 'ELEMENT_MC_4', []);
           landmark_count += 1;
-        }  
-      }  
+        }
+      }
 
       if (le.role === 'contentinfo') {
         if (le.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {
           rule_result.addResult(TEST_RESULT.MANUAL_CHECK, le, 'ELEMENT_MC_5', []);
           landmark_count += 1;
-        }  
-      }  
-      
+        }
+      }
+
       if (le.role === 'complementary') {
         if (le.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {
           rule_result.addResult(TEST_RESULT.MANUAL_CHECK, le, 'ELEMENT_MC_6', []);
           landmark_count += 1;
-        }  
-      }  
-      
+        }
+      }
+
     }
 
     if (page_element  && landmark_count) {
       rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'WEBSITE_MC_1', []);
-    } 
-       
+    }
 
-  } // end validation function   
+
+  } // end validation function
 },
 
 /**
  * @object NAVIGATION_5
- * 
+ *
  * @desc  h2 elements used to identify sections of web pages within the same accessible name
  *
  */
-     
-{ rule_id             : 'NAVIGATION_5', 
-  last_updated        : '2014-11-28', 
+
+{ rule_id             : 'NAVIGATION_5',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.WEBSITE,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.SITE_NAVIGATION,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -13846,14 +13846,14 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
-  
+
     var heading_elements     = dom_cache.headings_landmarks_cache.heading_elements;
     var heading_elements_len = heading_elements.length;
 
     var page_element = dom_cache.headings_landmarks_cache.page_element;
 
     var heading_count = 0;
-    
+
     for (var i = 0; i < heading_elements_len; i++ ) {
       var he = heading_elements[i];
 
@@ -13861,30 +13861,30 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
          (he.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE)) {
           rule_result.addResult(TEST_RESULT.MANUAL_CHECK, he, 'ELEMENT_MC_1', []);
           heading_count += 1;
-      }        
+      }
 
       if ((he.level === 2) &&
          (he.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE)) {
           rule_result.addResult(TEST_RESULT.MANUAL_CHECK, he, 'ELEMENT_MC_2', []);
           heading_count += 1;
-      }        
+      }
     }
 
     if (page_element) {
        if (heading_count) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'WEBSITE_MC_1', []);
        else rule_result.addResult(TEST_RESULT.FAIL, page_element, 'WEBSITE_FAIL_1', []);
-    } 
-       
-  } // end validation function   
+    }
+
+  } // end validation function
 }
 
-]); 
+]);
 
 
-    
+
 
 /**
- * Copyright 2011-2017  OpenAjax Alliance
+ * Copyright 2011-2018 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13900,7 +13900,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  */
 
 /* ---------------------------------------------------------------- */
-/*            OpenAjax Alliance Media Rules                         */ 
+/*            OpenAjax Alliance Media Rules                         */
 /* ---------------------------------------------------------------- */
 
 OpenAjax.a11y.RuleManager.addRulesFromJSON([
@@ -13908,16 +13908,16 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   /**
    * @object ORDER_1
    *
-   * @desc Reading order is meaningful when content is positioned using CSS 
-   */ 
- 
-{ rule_id             : 'ORDER_1', 
-  last_updated        : '2015-08-15', 
+   * @desc Reading order is meaningful when content is positioned using CSS
+   */
+
+{ rule_id             : 'ORDER_1',
+  last_updated        : '2015-08-15',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.PAGE,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.STYLES_READABILITY,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
   wcag_primary_id     : '1.3.2',
-  wcag_related_ids    : [],       
+  wcag_related_ids    : [],
   target_resources    : [],
   primary_property    : 'position',
   resource_properties : ['display', 'height', 'width', 'area'],
@@ -13926,37 +13926,37 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
-   
+
     var dom_elements     = dom_cache.element_cache.dom_elements;
     var dom_elements_len = dom_elements.length;
-    
+
     for (var i = 0; i < dom_elements_len; i++) {
 
       var de = dom_elements[i];
       var cs = de.computed_style;
       var tag_name = de.tag_name;
-      
+
 
       if (cs.position === 'absolute' || cs.position === 'relative' || cs.position === 'fixed') {
 
         if (cs.is_visible_to_at  === VISIBILITY.VISIBLE) {
           rule_result.addResult(TEST_RESULT.MANUAL_CHECK, de, 'ELEMENT_MC_1', [de.tag_name, cs.position]);
-        }     
+        }
         else {
-          rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.tag_name, cs.position]);                
+          rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.tag_name, cs.position]);
         }
 
       }
-        
+
     }
 
   } // end validate function
-} 
- 
+}
+
 
 ]);
 /**
- * Copyright 2011-2017  OpenAjax Alliance
+ * Copyright 2011-2018 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13972,7 +13972,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  */
 
 /* ---------------------------------------------------------------- */
-/*            OpenAjax Alliance Media Rules                         */ 
+/*            OpenAjax Alliance Media Rules                         */
 /* ---------------------------------------------------------------- */
 
 OpenAjax.a11y.RuleManager.addRulesFromJSON([
@@ -13981,10 +13981,10 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * @object RESIZE_1
  *
  * @desc Timing adjustable for pages with interactive elements
- */ 
- 
-{ rule_id             : 'RESIZE_1', 
-  last_updated        : '2014-11-28', 
+ */
+
+{ rule_id             : 'RESIZE_1',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.STYLES_READABILITY,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP3,
@@ -13998,7 +13998,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
 
-    var page_element = dom_cache.timing_cache.page_element;      
+    var page_element = dom_cache.timing_cache.page_element;
 
 //    OpenAjax.a11y.logger.debug("  [Resize 1][page_element][dom_element]: " + page_element.dom_element);
 
@@ -14011,7 +14011,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
 ]);
 /**
- * Copyright 2011-2017  OpenAjax Alliance
+ * Copyright 2011-2018 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14027,7 +14027,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  */
 
 /* ---------------------------------------------------------------- */
-/*            OpenAjax Alliance Media Rules                         */ 
+/*            OpenAjax Alliance Media Rules                         */
 /* ---------------------------------------------------------------- */
 
 OpenAjax.a11y.RuleManager.addRulesFromJSON([
@@ -14036,10 +14036,10 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * @object ROLE_1
  *
  * @desc main element may only have roles 'main' or 'presentation'
- */ 
- 
-{ rule_id             : 'ROLE_1', 
-  last_updated        : '2015-05-14', 
+ */
+
+{ rule_id             : 'ROLE_1',
+  last_updated        : '2015-05-14',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.STYLES_READABILITY,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -14053,17 +14053,17 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     var TEST_RESULT    = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY     = OpenAjax.a11y.VISIBILITY;
-    
+
     var dom_elements     = dom_cache.element_cache.dom_elements;
     var dom_elements_len = dom_elements.length;
-    
+
     for (var i = 0; i < dom_elements_len; i++) {
       var de = dom_elements[i];
 
       if (de.tag_name === 'main') {
-      
-        if (de.computed_style.is_visible_to_at === VISIBILITY.VISIBLE ) {      
-           
+
+        if (de.computed_style.is_visible_to_at === VISIBILITY.VISIBLE ) {
+
            if (de.role && de.role.length > 0) {
              if (de.role.indexOf('presentation') >= 0) {
                rule_result.addResult(TEST_RESULT.MANUAL_CHECK, de, 'ELEMENT_MC_1', []);
@@ -14071,17 +14071,17 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
              else {
                if (de.role.indexOf('main') < 0) {
 //                 OpenAjax.a11y.logger.debug("FAIL 1: " + de.role );
-                 rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [de.role]);               
+                 rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [de.role]);
                }
-             }  
+             }
            }
-        }   
+        }
         else {
           rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', []);
         }
       }
-    } 
-    
+    }
+
   } // end validate function
 },
 
@@ -14089,10 +14089,10 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * @object ROLE_2
  *
  * @desc body element role restrictions
- */ 
- 
-{ rule_id             : 'ROLE_2', 
-  last_updated        : '2015-05-14', 
+ */
+
+{ rule_id             : 'ROLE_2',
+  last_updated        : '2015-05-14',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.STYLES_READABILITY,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -14107,7 +14107,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     var TEST_RESULT    = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY     = OpenAjax.a11y.VISIBILITY;
-    
+
     var section_elements     = dom_cache.headings_landmarks_cache.getListOfSectionElements();
     var section_elements_len = section_elements.length;
 
@@ -14116,18 +14116,18 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     for (var i = 0; i < section_elements_len; i++) {
       var se = section_elements[i];
       var de = se.dom_element;
-      
+
 //      OpenAjax.a11y.logger.debug("ROLE 2: " + de.tag_name + "[" + de.has_role + "]");
 
       if (de.has_role && de.tag_name === 'body') {
-          
+
         var role = de.role;
-          
+
         if ((role !== 'application') && (role !== 'document')) {
-          rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [role]);               
+          rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [role]);
         }
       }
-    } 
+    }
   } // end validate function
 },
 
@@ -14135,10 +14135,10 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * @object ROLE_3
  *
  * @desc List container element role restrictions
- */ 
- 
-{ rule_id             : 'ROLE_3', 
-  last_updated        : '2015-05-04', 
+ */
+
+{ rule_id             : 'ROLE_3',
+  last_updated        : '2015-05-04',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.STYLES_READABILITY,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -14152,7 +14152,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     var TEST_RESULT    = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY     = OpenAjax.a11y.VISIBILITY;
-    
+
     var dom_elements     = dom_cache.element_cache.dom_elements;
     var dom_elements_len = dom_elements.length;
 
@@ -14161,24 +14161,24 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
       var cs = de.computed_style;
 
       if ((de.tag_name === 'ul' || de.tag_name === 'ol') && de.has_role) {
-      
-        if (cs.is_visible_to_at === VISIBILITY.VISIBLE ) {     
-        
+
+        if (cs.is_visible_to_at === VISIBILITY.VISIBLE ) {
+
           if (de.role && de.role.length > 0) {
             if (de.role.indexOf('presentation') >= 0) {
               rule_result.addResult(TEST_RESULT.MANUAL_CHECK, de, 'ELEMENT_MC_1', [de.tag_name]);
             }
             else {
               if ('directory group listbox menu menubar presentation radiogroup tablist toolbar tree '.indexOf(de.role + ' ') < 0) {
-                rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [de.tag_name, de.role]);               
-              }  
+                rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [de.tag_name, de.role]);
+              }
             }
-          }  
-        }   
+          }
+        }
         else {
           rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.tag_name]);
         }
-      }   
+      }
     }
 
   } // end validate function
@@ -14188,10 +14188,10 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * @object ROLE_4
  *
  * @desc article element role restrictions
- */ 
- 
-{ rule_id             : 'ROLE_4', 
-  last_updated        : '2015-05-14', 
+ */
+
+{ rule_id             : 'ROLE_4',
+  last_updated        : '2015-05-14',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.STYLES_READABILITY,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -14206,7 +14206,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     var TEST_RESULT    = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY     = OpenAjax.a11y.VISIBILITY;
-    
+
     var section_elements     = dom_cache.headings_landmarks_cache.getListOfSectionElements();
     var section_elements_len = section_elements.length;
 
@@ -14215,24 +14215,24 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     for (var i = 0; i < section_elements_len; i++) {
       var se = section_elements[i];
       var de = se.dom_element;
-      
+
 //      OpenAjax.a11y.logger.debug("ROLE 4: " + de.tag_name + "[" + de.has_role + "]");
 
       if (de.tag_name === 'article' && de.has_role) {
-          
+
         var role = de.role;
         var cs   = de.computed_style;
-          
+
         if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
           if ('application article document main region '.indexOf(role + ' ') < 0) {
             rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [role]);
-          }          
-        } 
+          }
+        }
         else {
           rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [role]);
-        } 
+        }
       }
-    } 
+    }
   } // end validate function
 },
 
@@ -14240,10 +14240,10 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * @object ROLE_5
  *
  * @desc section element role restrictions
- */ 
- 
-{ rule_id             : 'ROLE_5', 
-  last_updated        : '2015-05-14', 
+ */
+
+{ rule_id             : 'ROLE_5',
+  last_updated        : '2015-05-14',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.STYLES_READABILITY,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -14258,23 +14258,23 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     var TEST_RESULT    = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY     = OpenAjax.a11y.VISIBILITY;
-    
+
     var section_elements     = dom_cache.headings_landmarks_cache.getListOfSectionElements();
     var section_elements_len = section_elements.length;
 
     for (var i = 0; i < section_elements_len; i++) {
       var se = section_elements[i];
       var de = se.dom_element;
-      
+
 //      OpenAjax.a11y.logger.debug("ROLE 5: " + de.tag_name + "[" + de.has_role + "]");
 
       if (de.has_role && de.tag_name === 'section') {
-          
+
         var role = de.role;
         var cs   = de.computed_style;
-          
+
         if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
-           
+
           if ((role !== 'alert'       ) &&
               (role !== 'alertdialog' ) &&
               (role !== 'application' ) &&
@@ -14288,14 +14288,14 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
               (role !== 'region'      ) &&
               (role !== 'search'      ) &&
               (role !== 'status'      )) {
-            rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [role]);               
-          }          
-        } 
+            rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [role]);
+          }
+        }
         else {
-          rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [role]);                       
-        } 
+          rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [role]);
+        }
       }
-    } 
+    }
   } // end validate function
 },
 
@@ -14303,10 +14303,10 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * @object ROLE_6
  *
  * @desc nav element role restrictions
- */ 
- 
-{ rule_id             : 'ROLE_6', 
-  last_updated        : '2015-05-14', 
+ */
+
+{ rule_id             : 'ROLE_6',
+  last_updated        : '2015-05-14',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.STYLES_READABILITY,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -14321,37 +14321,37 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     var TEST_RESULT    = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY     = OpenAjax.a11y.VISIBILITY;
-    
+
     var section_elements     = dom_cache.headings_landmarks_cache.getListOfSectionElements();
     var section_elements_len = section_elements.length;
 
     for (var i = 0; i < section_elements_len; i++) {
       var se = section_elements[i];
       var de = se.dom_element;
-      
+
 //      OpenAjax.a11y.logger.debug("ROLE 6: " + de.tag_name + "[" + de.has_role + "]");
 
-      if (de.tag_name === 'nav' && de.has_role) {  
+      if (de.tag_name === 'nav' && de.has_role) {
         var cs   = de.computed_style;
-        
+
         if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
-        
+
           var role = de.role;
-          
+
           if (role === 'presentation') {
-            rule_result.addResult(TEST_RESULT.MANUAL_CHECK, de, 'ELEMENT_MC_1', []);               
+            rule_result.addResult(TEST_RESULT.MANUAL_CHECK, de, 'ELEMENT_MC_1', []);
           }
           else {
             if (role !== 'navigation') {
-              rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [role]);               
+              rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [role]);
             }
           }
-        }   
+        }
         else {
-          rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [role]);                       
+          rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [role]);
         }
       }
-    } 
+    }
   } // end validate function
 },
 
@@ -14359,10 +14359,10 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * @object ROLE_7
  *
  * @desc aside element role restrictions
- */ 
- 
-{ rule_id             : 'ROLE_7', 
-  last_updated        : '2015-05-14', 
+ */
+
+{ rule_id             : 'ROLE_7',
+  last_updated        : '2015-05-14',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.STYLES_READABILITY,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -14377,37 +14377,37 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     var TEST_RESULT    = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY     = OpenAjax.a11y.VISIBILITY;
-    
+
     var section_elements     = dom_cache.headings_landmarks_cache.getListOfSectionElements();
     var section_elements_len = section_elements.length;
 
     for (var i = 0; i < section_elements_len; i++) {
       var se = section_elements[i];
       var de = se.dom_element;
-      
+
 //      OpenAjax.a11y.logger.debug("ROLE 7: " + de.tag_name + "[" + de.has_role + "]");
 
       if (de.has_role && de.tag_name === 'aside') {
-          
+
         var cs   = de.computed_style;
-          
+
         if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
-          
+
           var role = de.role;
-            
+
           if ((role !== 'complementary') &&
               (role !== 'region'       ) &&
               (role !== 'note'         ) &&
               (role !== 'search'       ) &&
               (role !== 'presentation' )) {
-            rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [role]);               
+            rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [role]);
           }
-        } 
+        }
         else {
-          rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [role]);                       
-        } 
+          rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [role]);
+        }
       }
-    } 
+    }
   } // end validate function
 },
 
@@ -14415,10 +14415,10 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * @object ROLE_8
  *
  * @desc header element role restrictions
- */ 
- 
-{ rule_id             : 'ROLE_8', 
-  last_updated        : '2015-05-14', 
+ */
+
+{ rule_id             : 'ROLE_8',
+  last_updated        : '2015-05-14',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.STYLES_READABILITY,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -14433,40 +14433,40 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     var TEST_RESULT    = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY     = OpenAjax.a11y.VISIBILITY;
-    
+
     var section_elements     = dom_cache.headings_landmarks_cache.getListOfSectionElements();
     var section_elements_len = section_elements.length;
 
     for (var i = 0; i < section_elements_len; i++) {
       var se = section_elements[i];
       var de = se.dom_element;
-      
+
 //      OpenAjax.a11y.logger.debug("[ROLE RULE 8] tag: " + de.tag_name + "[" + de.has_role + "]");
 
       if (de.has_role && de.tag_name === 'header') {
-          
+
         var cs   = de.computed_style;
-          
+
         if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
-          
-          if (de.has_role) { 
+
+          if (de.has_role) {
             var role = de.role;
-            
+
             if (role === 'presentation') {
-              rule_result.addResult(TEST_RESULT.MANUAL_CHECK, de, 'ELEMENT_MC_1', []);               
+              rule_result.addResult(TEST_RESULT.MANUAL_CHECK, de, 'ELEMENT_MC_1', []);
             }
             else {
               if (role !== 'banner') {
-                rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [role]);               
+                rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [role]);
               }
             }
           }
-        } 
+        }
         else {
-          rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [role]);                       
-        } 
+          rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [role]);
+        }
       }
-    } 
+    }
   } // end validate function
 },
 
@@ -14474,10 +14474,10 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * @object ROLE_9
  *
  * @desc footer element role restrictions
- */ 
- 
-{ rule_id             : 'ROLE_9', 
-  last_updated        : '2015-05-14', 
+ */
+
+{ rule_id             : 'ROLE_9',
+  last_updated        : '2015-05-14',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.STYLES_READABILITY,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -14492,25 +14492,25 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     var TEST_RESULT    = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY     = OpenAjax.a11y.VISIBILITY;
-    
+
     var section_elements     = dom_cache.headings_landmarks_cache.getListOfSectionElements();
     var section_elements_len = section_elements.length;
 
     for (var i = 0; i < section_elements_len; i++) {
       var se = section_elements[i];
       var de = se.dom_element;
-      
+
 //      OpenAjax.a11y.logger.debug("ROLE 9: " + de.tag_name + "[" + de.has_role + "]");
 
       if (de.has_role && de.tag_name === 'footer') {
-          
+
         var cs   = de.computed_style;
-          
+
         if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
-          
-          if (de.has_role) { 
+
+          if (de.has_role) {
             var role = de.role;
-            
+
             if (role === 'presentation') {
               rule_result.addResult(TEST_RESULT.MANUAL_CHECK, de, 'ELEMENT_MC_1', []);
             }
@@ -14520,12 +14520,12 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
               }
             }
           }
-        } 
+        }
         else {
-          rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [role]);                       
-        } 
+          rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [role]);
+        }
       }
-    } 
+    }
   } // end validate function
 },
 
@@ -14533,10 +14533,10 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * @object ROLE_10
  *
  * @desc h1, h2, h3, h4, h5 and h6 element role restrictions
- */ 
- 
-{ rule_id             : 'ROLE_10', 
-  last_updated        : '2015-05-14', 
+ */
+
+{ rule_id             : 'ROLE_10',
+  last_updated        : '2015-05-14',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.HEADINGS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -14551,22 +14551,22 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     var TEST_RESULT    = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY     = OpenAjax.a11y.VISIBILITY;
-    
+
     var dom_elements     = dom_cache.element_cache.dom_elements;
     var dom_elements_len = dom_elements.length;
-    
+
     for (var i = 0; i < dom_elements_len; i++) {
       var de = dom_elements[i];
       var cs = de.computed_style;
-      
-      if (de.has_role && ('h1 h2 h3 h4 h5 h6 '.indexOf(de.tag_name + ' ') >= 0)) { 
-      
+
+      if (de.has_role && ('h1 h2 h3 h4 h5 h6 '.indexOf(de.tag_name + ' ') >= 0)) {
+
         if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
-        
+
           var role = de.role;
-            
+
           if (role === 'presentation') {
-            rule_result.addResult(TEST_RESULT.MANUAL_CHECK, de, 'ELEMENT_MC_1', [de.tag_name]);              
+            rule_result.addResult(TEST_RESULT.MANUAL_CHECK, de, 'ELEMENT_MC_1', [de.tag_name]);
           }
           else {
             if ((role !== 'heading') &&
@@ -14576,10 +14576,10 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
           }
         }
         else {
-          rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.tag_name, role]);                        
+          rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.tag_name, role]);
         }
-      } 
-    } 
+      }
+    }
   } // end validate function
 },
 
@@ -14587,10 +14587,10 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * @object ROLE_11
  *
  * @desc List element role restrictions
- */ 
- 
-{ rule_id             : 'ROLE_11', 
-  last_updated        : '2015-05-04', 
+ */
+
+{ rule_id             : 'ROLE_11',
+  last_updated        : '2015-05-04',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.STYLES_READABILITY,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -14604,7 +14604,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     var TEST_RESULT    = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY     = OpenAjax.a11y.VISIBILITY;
-    
+
     var dom_elements     = dom_cache.element_cache.dom_elements;
     var dom_elements_len = dom_elements.length;
 
@@ -14613,24 +14613,24 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
       var cs = de.computed_style;
 
       if ((de.tag_name === 'li') && de.has_role) {
-      
-        if (cs.is_visible_to_at === VISIBILITY.VISIBLE ) {     
-        
+
+        if (cs.is_visible_to_at === VISIBILITY.VISIBLE ) {
+
           if (de.role && de.role.length > 0) {
             if (de.role.indexOf('presentation') >= 0) {
               rule_result.addResult(TEST_RESULT.MANUAL_CHECK, de, 'ELEMENT_MC_1', []);
             }
             else {
               if ('listitem menuitem menuitemcheckbox menuitemradio option tab treeitem '.indexOf(de.role + ' ') < 0) {
-                rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [de.role]);               
-              }  
+                rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [de.role]);
+              }
             }
-          }  
-        }   
+          }
+        }
         else {
           rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.role]);
         }
-      }   
+      }
     }
 
   } // end validate function
@@ -14640,10 +14640,10 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * @object ROLE_12
  *
  * @desc a element role semantic restrictions
- */ 
- 
-{ rule_id             : 'ROLE_12', 
-  last_updated        : '2015-05-04', 
+ */
+
+{ rule_id             : 'ROLE_12',
+  last_updated        : '2015-05-04',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.LINKS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -14657,7 +14657,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     var TEST_RESULT    = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY     = OpenAjax.a11y.VISIBILITY;
-    
+
     var dom_elements     = dom_cache.element_cache.dom_elements;
     var dom_elements_len = dom_elements.length;
 
@@ -14666,22 +14666,22 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
       var cs = de.computed_style;
 
       if ((de.tag_name === 'a') && de.has_href && de.has_role) {
-      
-        if (cs.is_visible_to_at === VISIBILITY.VISIBLE ) {     
-        
+
+        if (cs.is_visible_to_at === VISIBILITY.VISIBLE ) {
+
           if (de.role && de.role.length > 0) {
             if (' button checkbox link menuitem menuitemcheckbox menuitemradio tab switch treeitem '.indexOf(' ' + de.role + ' ') < 0) {
-              rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [de.role]);               
+              rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [de.role]);
             }
             else {
-              rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_1', [de.role]);               
+              rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_1', [de.role]);
             }
-          }  
-        }   
+          }
+        }
         else {
           rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.role]);
         }
-      }   
+      }
     }
 
   } // end validate function
@@ -14691,10 +14691,10 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * @object ROLE_13
  *
  * @desc select element role semantic restrictions
- */ 
- 
-{ rule_id             : 'ROLE_13', 
-  last_updated        : '2016-05-21', 
+ */
+
+{ rule_id             : 'ROLE_13',
+  last_updated        : '2016-05-21',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.FORMS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -14708,7 +14708,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     var TEST_RESULT    = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY     = OpenAjax.a11y.VISIBILITY;
-    
+
     var dom_elements     = dom_cache.element_cache.dom_elements;
     var dom_elements_len = dom_elements.length;
 
@@ -14717,22 +14717,22 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
       var cs = de.computed_style;
 
       if ((de.tag_name === 'select') && de.has_role) {
-      
-        if (cs.is_visible_to_at === VISIBILITY.VISIBLE ) {     
-        
+
+        if (cs.is_visible_to_at === VISIBILITY.VISIBLE ) {
+
           if (de.role && de.role.length > 0) {
             if (' listbox menu '.indexOf(' ' + de.role + ' ') < 0) {
-              rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [de.role]);               
+              rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [de.role]);
             }
             else {
-              rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_1', [de.role]);               
+              rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_1', [de.role]);
             }
-          }  
-        }   
+          }
+        }
         else {
           rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.role]);
         }
-      }   
+      }
     }
 
   } // end validate function
@@ -14742,10 +14742,10 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * @object ROLE_14
  *
  * @desc textarea element role semantic restrictions
- */ 
- 
-{ rule_id             : 'ROLE_14', 
-  last_updated        : '2016-05-21', 
+ */
+
+{ rule_id             : 'ROLE_14',
+  last_updated        : '2016-05-21',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.FORMS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -14759,7 +14759,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     var TEST_RESULT    = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY     = OpenAjax.a11y.VISIBILITY;
-    
+
     var dom_elements     = dom_cache.element_cache.dom_elements;
     var dom_elements_len = dom_elements.length;
 
@@ -14768,22 +14768,22 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
       var cs = de.computed_style;
 
       if ((de.tag_name === 'textarea') && de.has_role) {
-      
-        if (cs.is_visible_to_at === VISIBILITY.VISIBLE ) {     
-        
+
+        if (cs.is_visible_to_at === VISIBILITY.VISIBLE ) {
+
           if (de.role && de.role.length > 0) {
             if (' textbox '.indexOf(' ' + de.role + ' ') < 0) {
-              rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [de.role]);               
+              rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [de.role]);
             }
             else {
-              rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_1', [de.role]);               
+              rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_1', [de.role]);
             }
-          }  
-        }   
+          }
+        }
         else {
           rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.role]);
         }
-      }   
+      }
     }
 
   } // end validate function
@@ -14796,7 +14796,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
 ]);
 /**
- * Copyright 2011-2017  OpenAjax Alliance
+ * Copyright 2011-2018 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14812,7 +14812,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  */
 
 /* ---------------------------------------------------------------- */
-/*            OpenAjax Alliance Media Rules                         */ 
+/*            OpenAjax Alliance Media Rules                         */
 /* ---------------------------------------------------------------- */
 
 OpenAjax.a11y.RuleManager.addRulesFromJSON([
@@ -14821,10 +14821,10 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
    * @object SENSORY_1
    *
    * @desc Content does not rely solely on sensory characteristics
-   */ 
- 
-{ rule_id             : 'SENSORY_1', 
-  last_updated        : '2014-11-28', 
+   */
+
+{ rule_id             : 'SENSORY_1',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.PAGE,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.STYLES_READABILITY,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -14837,18 +14837,18 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   validate          : function (dom_cache, rule_result) {
 
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
-   
+
     var page_element = dom_cache.headings_landmarks_cache.page_element;
 
     if (page_element) {
-      rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MANUAL_CHECK_1', []);      
-    }   
+      rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MANUAL_CHECK_1', []);
+    }
   } // end validate function
-} 
+}
 
 ]);
 /**
- * Copyright 2011-2017  OpenAjax Alliance
+ * Copyright 2011-2018 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14868,14 +14868,14 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 /* ---------------------------------------------------------------- */
 
 OpenAjax.a11y.RuleManager.addRulesFromJSON([
-     
-/** 
+
+/**
  * @object TABLE_1
- * 
+ *
  * @desc If a table is a data table, if each data cell has headers
  */
-{ rule_id             : 'TABLE_1', 
-  last_updated        : '2014-11-28', 
+{ rule_id             : 'TABLE_1',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.TABLES,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -14886,37 +14886,37 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   resource_properties : ['headers', 'header_source'],
   language_dependency : "",
   validate          : function (dom_cache, rule_result) {
-  
+
     function allReadyDone(span_cell) {
-    
+
       var span_cells_len = span_cells.length;
-    
+
       for (var i = 0; i < span_cells_len; i++) {
         if (span_cell === span_cells[i]) return true;
       }
-      
+
       span_cells.push(span_cell);
       return false;
     }
-  
+
     var TEST_RESULT   = OpenAjax.a11y.TEST_RESULT;
     var HEADER_SOURCE = OpenAjax.a11y.HEADER_SOURCE;
     var VISIBILITY    = OpenAjax.a11y.VISIBILITY;
     var TABLE_ROLE    = OpenAjax.a11y.TABLE_ROLE;
-  
+
     var span_cells = [];
-  
+
     var info_row;
     var info_column;
-     
+
     var table_elements   = dom_cache.tables_cache.table_elements;
     var table_elements_len = table_elements.length;
-    
+
 //     OpenAjax.a11y.logger.debug("[Table Rule 1] Table Elements on page: " + table_elements_len);
-    
+
     // Check to see if valid cache reference
     if (table_elements && table_elements_len) {
-    
+
       for (var i=0; i < table_elements_len; i++) {
         var te = table_elements[i];
         var is_visible_to_at = te.dom_element.computed_style.is_visible_to_at;
@@ -14924,19 +14924,19 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 //         OpenAjax.a11y.logger.debug("[Table Rule 1] Table Element: " + te + "   is data table: " + te.table_role);
 
         if (te.table_role === TABLE_ROLE.DATA) {
-    
+
           var max_row    = te.max_row;
           var max_column = te.max_column;
           var cells      = te.cells;
 
           for (var r = 0; r < max_row; r++) {
             for (var c = 0; c < max_column; c++) {
-          
+
               var cell = cells[r][c];
-            
-              if (cell && 
+
+              if (cell &&
                   (cell.table_type === OpenAjax.a11y.TABLE.TD_ELEMENT)) {
-                
+
                 if (is_visible_to_at == VISIBILITY.VISIBLE) {
 
                   if(cell.has_spans && allReadyDone(cell)) continue;
@@ -14950,7 +14950,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
                     }
                     else {
                       if (cell.header_source === HEADER_SOURCE.ROW_OR_COLUMN_HEADERS) {
-                        rule_result.addResult(TEST_RESULT.FAIL, cell, 'ELEMENT_FAIL_1', []);                       
+                        rule_result.addResult(TEST_RESULT.FAIL, cell, 'ELEMENT_FAIL_1', []);
                       }
                       else {
                         rule_result.addResult(TEST_RESULT.FAIL, cell, 'ELEMENT_FAIL_2', []);
@@ -14959,7 +14959,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
                   }
                 }
                 else {
-                 rule_result.addResult(TEST_RESULT.HIDDEN, cell, 'ELEMENT_HIDDEN_1', []);     
+                 rule_result.addResult(TEST_RESULT.HIDDEN, cell, 'ELEMENT_HIDDEN_1', []);
                 }
               }
             }
@@ -14969,14 +14969,14 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     }
   } // end validation function
  },
- 
-/** 
- * @object TABLE_2 
+
+/**
+ * @object TABLE_2
  *
  * @desc Data table %s have an accessible name
  */
-{ rule_id             : 'TABLE_2', 
-  last_updated        : '2014-11-28', 
+{ rule_id             : 'TABLE_2',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.TABLES,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -14987,7 +14987,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   resource_properties : ['accessible_name_source', 'accessible_description', 'summary', 'title', 'aria-label', 'aria-labelledby'],
   language_dependency : "",
   validate            : function (dom_cache, rule_result) {
-  
+
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
     var SOURCE      = OpenAjax.a11y.SOURCE;
     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
@@ -14997,84 +14997,84 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     var data_tables = [];
     var visible_data_tables = 0;
-    
+
     var i, te, de, cs;
 
 //     OpenAjax.a11y.logger.debug("[Table Rule 2] Number of tables: " + table_elements_len);
 
     // Check to see if valid cache reference
     if (table_elements && table_elements_len) {
-      
+
       for (i = 0; i < table_elements_len; i++) {
         te = table_elements[i];
         de = te.dom_element;
         cs = de.computed_style;
 
-        if ((te.table_role === OpenAjax.a11y.TABLE_ROLE.DATA) || 
-            (te.table_role === OpenAjax.a11y.TABLE_ROLE.COMPLEX)) { 
+        if ((te.table_role === OpenAjax.a11y.TABLE_ROLE.DATA) ||
+            (te.table_role === OpenAjax.a11y.TABLE_ROLE.COMPLEX)) {
           data_tables.push(te);
           if (cs.is_visible_to_at === VISIBILITY.VISIBLE) visible_data_tables += 1;
         }
       } // end loop
 
       if (visible_data_tables > 0) {
-      
+
         for (i = 0; i < data_tables.length; i++) {
           te = table_elements[i];
           de = te.dom_element;
           cs = de.computed_style;
-      
+
           if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
-          
+
             if (te.accessible_name.length > 0) {
-            
+
                switch (te.accessible_name_source) {
-               
+
                case SOURCE.TABLE_CAPTION:
                   rule_result.addResult(TEST_RESULT.PASS, te, 'ELEMENT_PASS_1', [te.accessible_name]);
                   break;
-                  
+
                case SOURCE.TABLE_SUMMARY:
                   rule_result.addResult(TEST_RESULT.PASS, te, 'ELEMENT_PASS_2', [te.aaccessible_name]);
                   break;
-                  
+
                case SOURCE.ARIA_LABEL:
                   rule_result.addResult(TEST_RESULT.PASS, te, 'ELEMENT_PASS_3', [te.accessible_name]);
                   break;
-                  
+
                case SOURCE.ARIA_LABELLEDBY:
                   rule_result.addResult(TEST_RESULT.PASS, te, 'ELEMENT_PASS_4', [te.accessible_name]);
                   break;
-                  
+
                case SOURCE.TITLE_ATTRIBUTE:
                   rule_result.addResult(TEST_RESULT.PASS, te, 'ELEMENT_PASS_5', [te.accessible_name]);
                   break;
                default:
-               
+
                   break;
               }
-            }  
+            }
             else {
               rule_result.addResult(TEST_RESULT.FAIL, te, 'ELEMENT_FAIL_1', []);
-            }  
+            }
           }
           else {
-            rule_result.addResult(TEST_RESULT.HIDDEN, te, 'ELEMENT_HIDDEN_1', []);     
+            rule_result.addResult(TEST_RESULT.HIDDEN, te, 'ELEMENT_HIDDEN_1', []);
           }
         } // end loop
       }
-    } 
+    }
   } // end validation function
  },
 
 /**
  * @object TABLE_3
  *
- * @desc  Complex data tables should have a text description or summary of data in the table 
+ * @desc  Complex data tables should have a text description or summary of data in the table
  */
- 
-{ rule_id             : 'TABLE_3', 
-  last_updated        : '2014-11-28', 
+
+{ rule_id             : 'TABLE_3',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.TABLES,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -15085,45 +15085,45 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   resource_properties : ['accessible_description_source', 'accessible_name', 'summary', 'title', 'aria-describedby'],
   language_dependency : "",
   validate          : function (dom_cache, rule_result) {
-  
+
     var TEST_RESULT        = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY         = OpenAjax.a11y.VISIBILITY;
     var DESCRIPTION_SOURCE = OpenAjax.a11y.DESCRIPTION_SOURCE;
     var TABLE_ROLE         = OpenAjax.a11y.TABLE_ROLE;
-    
+
     var LARGE_TABLE_CELL_COUNT = 64;
-    
+
     var table_elements     = dom_cache.tables_cache.table_elements;
     var table_elements_len = table_elements.length;
 
     // Check to see if valid cache reference
     if (table_elements && table_elements_len) {
-    
+
       for (var i = 0; i < table_elements_len; i++) {
         var te = table_elements[i];
         var is_visible_to_at = te.dom_element.computed_style.is_visible_to_at;
 
-        if ((te.table_role === OpenAjax.a11y.TABLE_ROLE.DATA) || 
+        if ((te.table_role === OpenAjax.a11y.TABLE_ROLE.DATA) ||
             (te.table_role === OpenAjax.a11y.TABLE_ROLE.COMPLEX)) {
 
           if (is_visible_to_at == VISIBILITY.VISIBLE) {
 
             if (te.accessible_description.length > 0) {
-            
+
               switch (te.accessible_description_source) {
-               
+
               case DESCRIPTION_SOURCE.TABLE_SUMMARY:
                 rule_result.addResult(TEST_RESULT.PASS, te, 'ELEMENT_PASS_1', []);
                 break;
-                  
+
               case DESCRIPTION_SOURCE.ARIA_DESCRIBEDBY:
                 rule_result.addResult(TEST_RESULT.PASS, te, 'ELEMENT_PASS_2', []);
                 break;
-              
+
               default:
                 rule_result.addResult(TEST_RESULT.PASS, te, 'ELEMENT_PASS_3', []);
                 break;
-              }      
+              }
             }
             else {
               if (te.table_role === TABLE_ROLE.COMPLEX) {
@@ -15131,11 +15131,11 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
               }
               else {
                 rule_result.addResult(TEST_RESULT.MANUAL_CHECK, te, 'ELEMENT_MC_1', []);
-              }  
-            }   
+              }
+            }
           }
           else {
-            rule_result.addResult(TEST_RESULT.HIDDEN, te, 'ELEMENT_HIDDEN_1', []);     
+            rule_result.addResult(TEST_RESULT.HIDDEN, te, 'ELEMENT_HIDDEN_1', []);
           }
         }
       } // end loop
@@ -15143,14 +15143,14 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   } // end validation function
  },
 
-/** 
+/**
  * @object TABLE_4
  *
- * @desc   Data tables with accessible names must be unique 
+ * @desc   Data tables with accessible names must be unique
  */
- 
-{ rule_id             : 'TABLE_4', 
-  last_updated        : '2014-11-28', 
+
+{ rule_id             : 'TABLE_4',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.TABLES,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -15161,47 +15161,47 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   resource_properties : ['accessible_name_source', 'accessible_name_for_comparison'],
   language_dependency : "",
   validate          : function (dom_cache, rule_result) {
-  
+
     var TEST_RESULT   = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY    = OpenAjax.a11y.VISIBILITY;
-  
+
     var span_cells = [];
-  
+
     var info_row;
     var info_column;
-     
+
     var table_elements   = dom_cache.tables_cache.table_elements;
     var table_elements_len = table_elements.length;
-    
+
     var table_visible = [];
     var i;
     var j;
-    
+
     // Check to see if valid cache reference
     if (table_elements && table_elements_len) {
-    
+
       for (i = 0; i < table_elements_len; i++) {
         var te = table_elements[i];
         var is_visible_to_at = te.dom_element.computed_style.is_visible_to_at;
 
         if (((te.table_role === OpenAjax.a11y.TABLE_ROLE.DATA) ||
-             (te.table_role === OpenAjax.a11y.TABLE_ROLE.COMPLEX)) && 
+             (te.table_role === OpenAjax.a11y.TABLE_ROLE.COMPLEX)) &&
              te.accessible_name_length) {
-          if (is_visible_to_at == VISIBILITY.VISIBLE) { 
-            if (te.accessible_name_for_comparison.length) {             
-              table_visible.push(te);                          
+          if (is_visible_to_at == VISIBILITY.VISIBLE) {
+            if (te.accessible_name_for_comparison.length) {
+              table_visible.push(te);
             }
             else {
               rule_result.addResult(TEST_RESULT.FAIL, te, 'ELEMENT_FAIL_2', []);
             }
           }
           else {
-            rule_result.addResult(TEST_RESULT.HIDDEN, te, 'ELEMENT_HIDDEN_1', []);              
+            rule_result.addResult(TEST_RESULT.HIDDEN, te, 'ELEMENT_HIDDEN_1', []);
           }
-        }   
+        }
       } // end loop
-      
-      
+
+
       for (i = 0; i < table_visible.length; i++) {
         var te1 = table_visible[i];
         var count = 0;
@@ -15215,7 +15215,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
             count += 1;
             if (count > 1) break;
           }
-        }  
+        }
 
 //        OpenAjax.a11y.logger.debug("[Table Rule 4]: " + te1.accessible_name + " '" + te1.accessible_name_for_comparison + "' " + te1.accessible_name_for_comparison.length + " "+ count);
 
@@ -15223,21 +15223,21 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
           rule_result.addResult(TEST_RESULT.PASS, te1, 'ELEMENT_PASS_1', [te1.accessible_name]);
         }
         else {
-            rule_result.addResult(TEST_RESULT.FAIL, te1, 'ELEMENT_FAIL_1', [te1.accessible_name]);          
-        }  
+            rule_result.addResult(TEST_RESULT.FAIL, te1, 'ELEMENT_FAIL_1', [te1.accessible_name]);
+        }
       }
-    }   
-  } // end validation function  
+    }
+  } // end validation function
 },
- 
+
 /**
  * @object TABLE_5
  *
  * @desc  Identifies a table is being used for layout or tabular data, or cannot be determined form markup
  */
- 
- { rule_id             : 'TABLE_5', 
-  last_updated        : '2014-11-28', 
+
+ { rule_id             : 'TABLE_5',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.TABLES,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -15248,16 +15248,16 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   resource_properties : ['accessible_name', 'accessible_description'],
   language_dependency : "",
   validate          : function (dom_cache, rule_result) {
-  
+
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
-    
+
     var table_elements     = dom_cache.tables_cache.table_elements;
     var table_elements_len = table_elements.length;
 
     // Check to see if valid cache reference
     if (table_elements && table_elements_len) {
-    
+
       for (var i = 0; i < table_elements_len; i++) {
         var te = table_elements[i];
         var es = te.effective_summary_for_comparison;
@@ -15271,24 +15271,24 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
           else if (te.table_role === OpenAjax.a11y.TABLE_ROLE.LAYOUT)  rule_result.addResult(TEST_RESULT.PASS, te, 'ELEMENT_PASS_2', []);
           else if (te.max_row    < 2) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, te, 'ELEMENT_MC_1', []);
           else if (te.max_column < 2) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, te, 'ELEMENT_MC_2', []);
-          else rule_result.addResult(TEST_RESULT.FAIL, te, 'ELEMENT_FAIL_1', []);    
+          else rule_result.addResult(TEST_RESULT.FAIL, te, 'ELEMENT_FAIL_1', []);
         }
         else {
-          rule_result.addResult(TEST_RESULT.HIDDEN, te, 'ELEMENT_HIDDEN_1', []);     
+          rule_result.addResult(TEST_RESULT.HIDDEN, te, 'ELEMENT_HIDDEN_1', []);
         }
       } // end loop
     }
   } // end validation function
  },
 
-/** 
+/**
  * @object TABLE_6
  *
  * @desc    Tests if table headers use TH elements instead of TD with SCOPE
  */
- 
-{ rule_id             : 'TABLE_6', 
-  last_updated        : '2014-11-28', 
+
+{ rule_id             : 'TABLE_6',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.TABLES,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -15301,77 +15301,77 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   validate          : function (dom_cache, rule_result) {
 
     function allReadyDone(span_cell) {
-    
+
       var span_cells_len = span_cells.length;
-    
+
       for (var i = 0; i < span_cells_len; i++) {
         if (span_cell === span_cells[i]) return true;
       }
-      
+
       span_cells.push(span_cell);
       return false;
     }
-  
+
     var TEST_RESULT   = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY    = OpenAjax.a11y.VISIBILITY;
-  
+
     var span_cells = [];
-  
+
     var info_row;
     var info_column;
-     
+
     var table_elements   = dom_cache.tables_cache.table_elements;
     var table_elements_len = table_elements.length;
-    
+
     // Check to see if valid cache reference
     if (table_elements && table_elements_len) {
-    
+
       for (var i=0; i < table_elements_len; i++) {
         var te = table_elements[i];
         var is_visible_to_at = te.dom_element.computed_style.is_visible_to_at;
 
         if ((te.table_role === OpenAjax.a11y.TABLE_ROLE.DATA) ||
             (te.table_role === OpenAjax.a11y.TABLE_ROLE.COMPLEX)) {
-    
+
           var max_row    = te.max_row;
           var max_column = te.max_column;
           var cells      = te.cells;
 
           for (var r = 0; r < max_row; r++) {
             for (var c = 0; c < max_column; c++) {
-          
+
               var cell = cells[r][c];
-            
+
               if (cell && cell.table_type  === OpenAjax.a11y.TABLE.TH_ELEMENT) {
-                
+
                 if (is_visible_to_at == VISIBILITY.VISIBLE) {
-          
+
                   if(cell.has_spans && allReadyDone(cell)) continue;
-                
+
                   if(cell.dom_element.tag_name === 'th') rule_result.addResult(TEST_RESULT.PASS, cell, 'ELEMENT_PASS_1', []);
                   else rule_result.addResult(TEST_RESULT.FAIL, cell, 'ELEMENT_FAIL_1', []);
-                  
+
                 }
                 else {
-                 rule_result.addResult(TEST_RESULT.HIDDEN, cell, 'ELEMENT_HIDDEN_1', []);     
+                 rule_result.addResult(TEST_RESULT.HIDDEN, cell, 'ELEMENT_HIDDEN_1', []);
                 }
               }
-            }             
+            }
           }
-        }   
+        }
       } // end loop
-    }   
-  } // end validation function  
+    }
+  } // end validation function
 },
 
-/** 
+/**
  * @object TABLE_7
  *
  * @desc  Data cells in complex table must use headers attributes
  */
- 
-{ rule_id             : 'TABLE_7', 
-  last_updated        : '2015-02-20', 
+
+{ rule_id             : 'TABLE_7',
+  last_updated        : '2015-02-20',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.TABLES,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -15382,15 +15382,15 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   resource_properties : ['headers', 'header_source'],
   language_dependency : "",
   validate          : function (dom_cache, rule_result) {
-  
+
     function allReadyDone(span_cell) {
-    
+
       var span_cells_len = span_cells.length;
-    
+
       for (var i = 0; i < span_cells_len; i++) {
         if (span_cell === span_cells[i]) return true;
       }
-      
+
       span_cells.push(span_cell);
       return false;
     }
@@ -15404,15 +15404,15 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     var info_row;
     var info_column;
-     
+
     var table_elements   = dom_cache.tables_cache.table_elements;
     var table_elements_len = table_elements.length;
-    
+
 //     OpenAjax.a11y.logger.debug("[Table Rule 7] Table Elements on page: " + table_elements_len);
-    
+
     // Check to see if valid cache reference
     if (table_elements && table_elements_len) {
-    
+
       for (var i=0; i < table_elements_len; i++) {
         var te = table_elements[i];
         var is_visible_to_at = te.dom_element.computed_style.is_visible_to_at;
@@ -15420,7 +15420,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 //         OpenAjax.a11y.logger.debug("[Table Rule 1] Table Element: " + te + "   is data table: " + te.table_role);
 
         if (te.table_role === TABLE_ROLE.COMPLEX) {
-    
+
           var max_row    = te.max_row;
           var max_column = te.max_column;
           var cells      = te.cells;
@@ -15430,12 +15430,12 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
           for (var r = 0; r < max_row; r++) {
             for (var c = 0; c < max_column; c++) {
-          
+
               var cell = cells[r][c];
-            
-              if (cell && 
+
+              if (cell &&
                   (cell.table_type === OpenAjax.a11y.TABLE.TD_ELEMENT)) {
-                
+
                 if (is_visible_to_at == VISIBILITY.VISIBLE) {
 
                   if(cell.has_spans && allReadyDone(cell)) continue;
@@ -15449,7 +15449,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
                         rule_result.addResult(TEST_RESULT.PASS, cell, 'ELEMENT_PASS_1', [cell.headers]);
                       }
                       else {
-                        rule_result.addResult(TEST_RESULT.FAIL, cell, 'ELEMENT_FAIL_1', [cell.headers]);                       
+                        rule_result.addResult(TEST_RESULT.FAIL, cell, 'ELEMENT_FAIL_1', [cell.headers]);
                       }
                     }
                     else {
@@ -15463,7 +15463,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
                   }
                 }
                 else {
-                 rule_result.addResult(TEST_RESULT.HIDDEN, cell, 'ELEMENT_HIDDEN_1', []);     
+                 rule_result.addResult(TEST_RESULT.HIDDEN, cell, 'ELEMENT_HIDDEN_1', []);
                 }
               }
             }
@@ -15471,17 +15471,17 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
         }
       } // end loop
     }
-  }  
+  }
 },
 
-/** 
+/**
  * @object TABLE_8
  *
  * @desc    Accessible name and description must be different, description longer than name
  */
- 
-{ rule_id             : 'TABLE_8', 
-  last_updated        : '2015-02-20', 
+
+{ rule_id             : 'TABLE_8',
+  last_updated        : '2015-02-20',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.TABLES,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -15492,8 +15492,8 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   resource_properties : ['accessible_name_source', 'accessible_description', 'accessible_description_source'],
   language_dependency : "",
   validate          : function (dom_cache, rule_result) {
-  
-  
+
+
     var TEST_RESULT   = OpenAjax.a11y.TEST_RESULT;
     var HEADER_SOURCE = OpenAjax.a11y.HEADER_SOURCE;
     var VISIBILITY    = OpenAjax.a11y.VISIBILITY;
@@ -15503,13 +15503,13 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     var info_row;
     var info_column;
-     
+
     var table_elements   = dom_cache.tables_cache.table_elements;
     var table_elements_len = table_elements.length;
-    
+
     // Check to see if valid cache reference
     if (table_elements && table_elements_len) {
-    
+
       for (var i=0; i < table_elements_len; i++) {
         var te = table_elements[i];
         var is_visible_to_at = te.dom_element.computed_style.is_visible_to_at;
@@ -15522,35 +15522,35 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
              (te.table_role === TABLE_ROLE.COMPLEX)) &&
             te.accessible_name_for_comparison.length &&
             te.accessible_description_for_comparison.length) {
-          
+
           if (is_visible_to_at === VISIBILITY.VISIBLE) {
             if (te.accessible_name_for_comparison === te.accessible_description_for_comparison ) {
-              rule_result.addResult(TEST_RESULT.FAIL, te, 'ELEMENT_FAIL_1', []);     
+              rule_result.addResult(TEST_RESULT.FAIL, te, 'ELEMENT_FAIL_1', []);
             }
             else {
               if (te.accessible_name_for_comparison.length >= te.accessible_description_for_comparison.length) {
-                rule_result.addResult(TEST_RESULT.MANUAL_CHECK, te, 'ELEMENT_MC_1', []);  
+                rule_result.addResult(TEST_RESULT.MANUAL_CHECK, te, 'ELEMENT_MC_1', []);
               }
               else {
-                rule_result.addResult(TEST_RESULT.PASS, te, 'ELEMENT_PASS_1', []);  
-              }     
+                rule_result.addResult(TEST_RESULT.PASS, te, 'ELEMENT_PASS_1', []);
+              }
             }
           }
           else {
-            rule_result.addResult(TEST_RESULT.HIDDEN, te, 'ELEMENT_HIDDEN_1', []);     
+            rule_result.addResult(TEST_RESULT.HIDDEN, te, 'ELEMENT_HIDDEN_1', []);
           }
         }
       }
-    }    
-  } // end validation function  
+    }
+  } // end validation function
 }
-]); 
+]);
 
 
-   
+
 
 /**
- * Copyright 2011-2017  OpenAjax Alliance
+ * Copyright 2011-2018 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15566,7 +15566,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  */
 
 /* ---------------------------------------------------------------- */
-/*            OpenAjax Alliance Media Rules                         */ 
+/*            OpenAjax Alliance Media Rules                         */
 /* ---------------------------------------------------------------- */
 
 OpenAjax.a11y.RuleManager.addRulesFromJSON([
@@ -15575,10 +15575,10 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * @object TIMING_1
  *
  * @desc Timing adjustable for pages with interactive elements
- */ 
- 
-{ rule_id             : 'TIMING_1', 
-  last_updated        : '2014-11-28', 
+ */
+
+{ rule_id             : 'TIMING_1',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.TIMING,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -15592,9 +15592,9 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
 
-    var page_element = dom_cache.timing_cache.page_element;      
+    var page_element = dom_cache.timing_cache.page_element;
 
-    rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MC_1', []);                        
+    rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MC_1', []);
 
   } // end validate function
 },
@@ -15603,10 +15603,10 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * @object TIMING_2
  *
  * @desc Stop, puase or hide content that is moving, scrolling, flashing or auto updating
- */ 
- 
-{ rule_id             : 'TIMING_2', 
-  last_updated        : '2014-11-28', 
+ */
+
+{ rule_id             : 'TIMING_2',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.TIMING,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -15617,14 +15617,14 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   resource_properties : [],
   language_dependency : "",
   validate          : function (dom_cache, rule_result) {
-    
+
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
-  
+
     var timing_elements     = dom_cache.timing_cache.timing_elements;
     var timing_elements_len = timing_elements.length;
 
-    var page_element = dom_cache.timing_cache.page_element;      
+    var page_element = dom_cache.timing_cache.page_element;
 
     for (var i = 0; i < timing_elements_len; i++) {
       var mbe = timing_elements[i];
@@ -15632,15 +15632,15 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
       var cs = de.computed_style;
 
       if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
-        rule_result.addResult(TEST_RESULT.MANUAL_CHECK, mbe, 'ELEMENT_MC_1', [de.tag_name]);     
-      }  
+        rule_result.addResult(TEST_RESULT.MANUAL_CHECK, mbe, 'ELEMENT_MC_1', [de.tag_name]);
+      }
       else {
-       rule_result.addResult(TEST_RESULT.HIDDEN, mbe, 'ELEMENT_HIDDEN_1', [de.tag_name]);     
+       rule_result.addResult(TEST_RESULT.HIDDEN, mbe, 'ELEMENT_HIDDEN_1', [de.tag_name]);
       }
     }
 
-    rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MC_1', []);                        
-    
+    rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MC_1', []);
+
   } // end validate function
 },
 
@@ -15648,10 +15648,10 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * @object TIMING_3
  *
  * @desc Web pages do not contain anything that flashes more than three times in any one second period
- */ 
- 
-{ rule_id             : 'TIMING_3', 
-  last_updated        : '2014-11-28', 
+ */
+
+{ rule_id             : 'TIMING_3',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.TIMING,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -15662,14 +15662,14 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   resource_properties : [],
   language_dependency : "",
   validate          : function (dom_cache, rule_result) {
-    
+
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
-  
+
     var timing_elements     = dom_cache.timing_cache.timing_elements;
     var timing_elements_len = timing_elements.length;
 
-    var page_element = dom_cache.timing_cache.page_element;      
+    var page_element = dom_cache.timing_cache.page_element;
 
     for (var i = 0; i < timing_elements_len; i++) {
       var mbe = timing_elements[i];
@@ -15677,34 +15677,34 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
       var cs = de.computed_style;
 
       if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
-        rule_result.addResult(TEST_RESULT.MANUAL_CHECK, mbe, 'ELEMENT_MC_1', [de.tag_name]);     
-      }  
+        rule_result.addResult(TEST_RESULT.MANUAL_CHECK, mbe, 'ELEMENT_MC_1', [de.tag_name]);
+      }
       else {
-       rule_result.addResult(TEST_RESULT.HIDDEN, mbe, 'ELEMENT_HIDDEN_1', [de.tag_name]);     
+       rule_result.addResult(TEST_RESULT.HIDDEN, mbe, 'ELEMENT_HIDDEN_1', [de.tag_name]);
       }
     }
 
-    rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MC_1', []);                       
-    
+    rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MC_1', []);
+
   } // end validate function
 }
 
 ]);
 /* ---------------------------------------------------------------- */
-/*  OpenAjax Alliance Heading and Landmark Rules                    */ 
+/*  OpenAjax Alliance Heading and Landmark Rules                    */
 /* ---------------------------------------------------------------- */
 
 OpenAjax.a11y.RuleManager.addRulesFromJSON([
-      
+
 
 /**
  * @object TITLE_1
  *
  * @desc the title element text content must describe the purpose or content of the page
- */               
- 
-{ rule_id             : 'TITLE_1', 
-  last_updated        : '2014-11-28', 
+ */
+
+{ rule_id             : 'TITLE_1',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.PAGE,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.SITE_NAVIGATION,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
@@ -15715,36 +15715,36 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   resource_properties : ['tag_name', 'name_for_comparison'],
   language_dependency : "",
   validate            : function (dom_cache, rule_result) {
-  
+
       var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
-  
+
       var title_element  = dom_cache.headings_landmarks_cache.title_element;
-      
+
       if (dom_cache.document_has_title) {
-      
+
         if (title_element.name_for_comparison.length) {
-          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, title_element, 'PAGE_MC_1', []);                        
+          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, title_element, 'PAGE_MC_1', []);
         }
         else {
-          rule_result.addResult(TEST_RESULT.FAIL, title_element, 'PAGE_FAIL_1', []);        
+          rule_result.addResult(TEST_RESULT.FAIL, title_element, 'PAGE_FAIL_1', []);
         }
       }
       else {
         rule_result.addResult(TEST_RESULT.FAIL, title_element, 'PAGE_FAIL_2', []);
       }
-        
+
     } // end validate function
 },
-  
+
 /**
  * @object TITLE_2
  *
  * @desc The words in the @h1@ content must be part of the title element text content.
  *
- */               
- 
-{ rule_id             : 'TITLE_2', 
-  last_updated        : '2014-11-28', 
+ */
+
+{ rule_id             : 'TITLE_2',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.PAGE,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.SITE_NAVIGATION,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -15755,9 +15755,9 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   resource_properties : ['tag_name', 'name_for_comparison'],
   language_dependency : "",
   validate            : function (dom_cache, rule_result) {
-  
+
       function compareTextContent(s1, s2) {
-      
+
         var words = s2.split(' ');
         var words_len = words.length;
         var words_match = 0;
@@ -15772,43 +15772,43 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
           if (s1.indexOf(w) >= 0) {
             characters_match += w.length;
             words_match++;
-          }  
+          }
           else {
             characters_not_matched += w.length;
             words_not_matched++;
-          }  
+          }
         }
 
 //        OpenAjax.a11y.logger.debug("Match Information: " + (characters_match * words_match) + "/" + (characters_not_matched * words_not_matched));
 
         if (characters_not_matched === 0) return true;
-        
+
         var p = (100 * characters_match * words_match) / ((characters_match  * words_match) + (characters_not_matched * words_not_matched ));
 
 //        OpenAjax.a11y.logger.debug("Match Percentage: " + p);
 
         if (p > 80) return true;
-        
+
         return false;
       }
-  
+
       var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
       var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
-  
+
       var title_element  = dom_cache.headings_landmarks_cache.title_element;
       var page_element   = dom_cache.headings_landmarks_cache.page_element;
       var h1_elements    = dom_cache.headings_landmarks_cache.h1_elements;
       var visible_h1_element_count = 0;
       var passed_h1_element_count  = 0;
       var i, h1, de, cs;
-      
+
 //      OpenAjax.a11y.logger.debug('[RULE][TITLE 2] Title: ' + title_element.name_for_comparison + '(' + title_element.name_for_comparison.length + ')');
-      
+
       if (title_element.name_for_comparison.length === 0) {
-        rule_result.addResult(TEST_RESULT.FAIL, page_element, 'PAGE_FAIL_1', []);        
+        rule_result.addResult(TEST_RESULT.FAIL, page_element, 'PAGE_FAIL_1', []);
       }
       else {
-      
+
         var h1_count = h1_elements.length;
 
         for(i = 0; i < h1_count; i++) {
@@ -15817,7 +15817,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
           cs = de.computed_style;
           if (cs.is_visible_to_at === VISIBILITY.VISIBLE) visible_h1_element_count += 1;
         }
-      
+
         for(i = 0; i < h1_count; i++) {
           h1 = h1_elements[i];
           de = h1.dom_element;
@@ -15828,38 +15828,38 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
           if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
             if (h1.name_for_comparison.length) {
               if (compareTextContent(title_element.name_for_comparison, h1.name_for_comparison)) {
-                rule_result.addResult(TEST_RESULT.PASS, h1, 'ELEMENT_PASS_1', []);                        
+                rule_result.addResult(TEST_RESULT.PASS, h1, 'ELEMENT_PASS_1', []);
                 passed_h1_element_count++;
               }
               else {
                 if (visible_h1_element_count > 2) {
-                  rule_result.addResult(TEST_RESULT.MANUAL_CHECK, h1, 'ELEMENT_MC_1', []);        
+                  rule_result.addResult(TEST_RESULT.MANUAL_CHECK, h1, 'ELEMENT_MC_1', []);
                 }
                 else {
-                  rule_result.addResult(TEST_RESULT.FAIL, h1, 'ELEMENT_FAIL_1', []);        
-                }  
+                  rule_result.addResult(TEST_RESULT.FAIL, h1, 'ELEMENT_FAIL_1', []);
+                }
               }
             }
             else {
-              rule_result.addResult(TEST_RESULT.FAIL, h1, 'ELEMENT_FAIL_2', []);        
+              rule_result.addResult(TEST_RESULT.FAIL, h1, 'ELEMENT_FAIL_2', []);
             }
           }
           else {
-            rule_result.addResult(TEST_RESULT.HIDDEN, h1, 'ELEMENT_HIDDEN_1', []);        
-          }  
-        }  
-        
+            rule_result.addResult(TEST_RESULT.HIDDEN, h1, 'ELEMENT_HIDDEN_1', []);
+          }
+        }
+
         if (visible_h1_element_count === 0) rule_result.addResult(TEST_RESULT.FAIL, page_element, 'PAGE_FAIL_2', []);
         else if (visible_h1_element_count > 2) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'PAGE_MC_1', []);
         else if (visible_h1_element_count !== passed_h1_element_count) rule_result.addResult(TEST_RESULT.FAIL, page_element, 'PAGE_FAIL_4', []);
         else if (visible_h1_element_count === 1) rule_result.addResult(TEST_RESULT.PASS, page_element, 'PAGE_PASS_1', []);
         else rule_result.addResult(TEST_RESULT.PASS, page_element, 'PAGE_PASS_2', []);
-      }  
+      }
     } // end validate function
   }
- ]); 
+ ]);
 /**
- * Copyright 2011-2017  OpenAjax Alliance
+ * Copyright 2011-2018 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15875,7 +15875,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  */
 
 /* ---------------------------------------------------------------- */
-/*            OpenAjax Alliance Media Rules                         */ 
+/*            OpenAjax Alliance Media Rules                         */
 /* ---------------------------------------------------------------- */
 
 OpenAjax.a11y.RuleManager.addRulesFromJSON([
@@ -15883,11 +15883,11 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 /**
  * @object VIDEO_1
  *
- * @desc Video elements used for prerecorded video only content using the video element must have text or audio description 
- */ 
- 
-{ rule_id             : 'VIDEO_1', 
-  last_updated        : '2014-11-28', 
+ * @desc Video elements used for prerecorded video only content using the video element must have text or audio description
+ */
+
+{ rule_id             : 'VIDEO_1',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.AUDIO_VIDEO,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
@@ -15902,7 +15902,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
     var MEDIA       = OpenAjax.a11y.MEDIA;
-  
+
     var video_elements     = dom_cache.media_cache.video_elements;
     var video_elements_len = video_elements.length;
 
@@ -15912,13 +15912,13 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
       var cs = de.computed_style;
 
       if ((cs.is_visible_to_at === VISIBILITY.VISIBLE) ||
-          (ve.has_autoplay)) {        
-        if (ve.getTextTracks().length) rule_result.addResult(TEST_RESULT.PASS, ve, 'ELEMENT_PASS_1', []);               
+          (ve.has_autoplay)) {
+        if (ve.getTextTracks().length) rule_result.addResult(TEST_RESULT.PASS, ve, 'ELEMENT_PASS_1', []);
         else if (de.has_aria_describedby) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ve, 'ELEMENT_MC_1', []);
-        else rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ve, 'ELEMENT_MC_2', []);    
+        else rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ve, 'ELEMENT_MC_2', []);
       }
       else {
-       rule_result.addResult(TEST_RESULT.HIDDEN, ve, 'ELEMENT_HIDDEN_1', []);     
+       rule_result.addResult(TEST_RESULT.HIDDEN, ve, 'ELEMENT_HIDDEN_1', []);
       }
     }
   } // end validate function
@@ -15927,11 +15927,11 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 /**
  * @object VIDEO_2
  *
- * @desc Video elements used for prerecorded video only content using the object element must have text or audio description 
- */ 
- 
-{ rule_id             : 'VIDEO_2', 
-  last_updated        : '2014-11-28', 
+ * @desc Video elements used for prerecorded video only content using the object element must have text or audio description
+ */
+
+{ rule_id             : 'VIDEO_2',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.AUDIO_VIDEO,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
@@ -15942,11 +15942,11 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   resource_properties : ['data', 'type', 'name', 'value', 'valuetype'],
   language_dependency : "",
   validate          : function (dom_cache, rule_result) {
-    
+
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
     var MEDIA       = OpenAjax.a11y.MEDIA;
-  
+
     var object_elements     = dom_cache.media_cache.object_elements;
     var object_elements_len = object_elements.length;
 
@@ -15958,15 +15958,15 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
       if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
         if (oe.isTypeVideo()) {
           if (de.has_aria_describedby) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, oe, 'ELEMENT_MC_1', []);
-          else rule_result.addResult(TEST_RESULT.MANUAL_CHECK, oe, 'ELEMENT_MC_2', []);     
-        }  
+          else rule_result.addResult(TEST_RESULT.MANUAL_CHECK, oe, 'ELEMENT_MC_2', []);
+        }
         else {
           if (de.has_aria_describedby) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, oe, 'ELEMENT_MC_3', []);
-          else rule_result.addResult(TEST_RESULT.MANUAL_CHECK, oe, 'ELEMENT_MC_4', []);     
-        }  
+          else rule_result.addResult(TEST_RESULT.MANUAL_CHECK, oe, 'ELEMENT_MC_4', []);
+        }
       }
       else {
-       rule_result.addResult(TEST_RESULT.HIDDEN, oe, 'ELEMENT_HIDDEN_1', []);     
+       rule_result.addResult(TEST_RESULT.HIDDEN, oe, 'ELEMENT_HIDDEN_1', []);
       }
     }
   } // end validate function
@@ -15975,11 +15975,11 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 /**
  * @object VIDEO_3
  *
- * @desc Video elements used for prerecorded video only content using the embed element must have text or audio description 
- */ 
- 
-{ rule_id             : 'VIDEO_3', 
-  last_updated        : '2014-11-28', 
+ * @desc Video elements used for prerecorded video only content using the embed element must have text or audio description
+ */
+
+{ rule_id             : 'VIDEO_3',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.AUDIO_VIDEO,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
@@ -15994,7 +15994,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
     var MEDIA       = OpenAjax.a11y.MEDIA;
-  
+
     var embed_elements     = dom_cache.media_cache.embed_elements;
     var embed_elements_len = embed_elements.length;
 
@@ -16005,14 +16005,14 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
       if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
         if (ee.isTypeVideo()) {
-          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ee, 'ELEMENT_MC_1', []);     
-        }  
+          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ee, 'ELEMENT_MC_1', []);
+        }
         else {
-          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ee, 'ELEMENT_MC_2', []);     
-        }  
+          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ee, 'ELEMENT_MC_2', []);
+        }
       }
       else {
-       rule_result.addResult(TEST_RESULT.HIDDEN, ee, 'ELEMENT_HIDDEN_1', []);     
+       rule_result.addResult(TEST_RESULT.HIDDEN, ee, 'ELEMENT_HIDDEN_1', []);
       }
     }
   } // end validate function
@@ -16022,10 +16022,10 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * @object VIDEO_4
  *
  * @desc Live and prerecorded video with synchronized audio (i.e. movie, lecture) using the video element must have captions
- */ 
- 
-{ rule_id             : 'VIDEO_4', 
-  last_updated        : '2014-11-28', 
+ */
+
+{ rule_id             : 'VIDEO_4',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.AUDIO_VIDEO,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
@@ -16040,7 +16040,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
     var MEDIA       = OpenAjax.a11y.MEDIA;
-  
+
     var video_elements     = dom_cache.media_cache.video_elements;
     var video_elements_len = video_elements.length;
 
@@ -16050,11 +16050,11 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
       var cs = de.computed_style;
 
       if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
-        if (ve.hasCaptionTrack() || ve.hasSubtitleTrack()) rule_result.addResult(TEST_RESULT.PASS, ve, 'ELEMENT_PASS_1', []);               
-        else rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ve, 'ELEMENT_MC_1', []);    
+        if (ve.hasCaptionTrack() || ve.hasSubtitleTrack()) rule_result.addResult(TEST_RESULT.PASS, ve, 'ELEMENT_PASS_1', []);
+        else rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ve, 'ELEMENT_MC_1', []);
       }
       else {
-       rule_result.addResult(TEST_RESULT.HIDDEN, ve, 'ELEMENT_HIDDEN_1', []);     
+       rule_result.addResult(TEST_RESULT.HIDDEN, ve, 'ELEMENT_HIDDEN_1', []);
       }
     }
   } // end validate function
@@ -16064,10 +16064,10 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * @object VIDEO_5
  *
  * @desc Live and prerecorded video with synchronized audio (i.e. movie, lecture) using the object element must have captions
- */ 
- 
-{ rule_id             : 'VIDEO_5', 
-  last_updated        : '2014-11-28', 
+ */
+
+{ rule_id             : 'VIDEO_5',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.AUDIO_VIDEO,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
@@ -16078,11 +16078,11 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   resource_properties : ['data', 'type', 'name', 'value', 'valuetype'],
   language_dependency : "",
   validate          : function (dom_cache, rule_result) {
-    
+
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
     var MEDIA       = OpenAjax.a11y.MEDIA;
-  
+
     var object_elements     = dom_cache.media_cache.object_elements;
     var object_elements_len = object_elements.length;
 
@@ -16093,14 +16093,14 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
       if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
         if (oe.isTypeVideo()) {
-          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, oe, 'ELEMENT_MC_1', []);     
-        }  
+          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, oe, 'ELEMENT_MC_1', []);
+        }
         else {
-          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, oe, 'ELEMENT_MC_2', []);     
-        }  
+          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, oe, 'ELEMENT_MC_2', []);
+        }
       }
       else {
-       rule_result.addResult(TEST_RESULT.HIDDEN, oe, 'ELEMENT_HIDDEN_1', []);     
+       rule_result.addResult(TEST_RESULT.HIDDEN, oe, 'ELEMENT_HIDDEN_1', []);
       }
     }
   } // end validate function
@@ -16110,10 +16110,10 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * @object VIDEO_6
  *
  * @desc Live and prerecorded video with synchronized audio (i.e. movie, lecture) using the embed element must have captions
- */ 
- 
-{ rule_id             : 'VIDEO_6', 
-  last_updated        : '2014-11-28', 
+ */
+
+{ rule_id             : 'VIDEO_6',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.AUDIO_VIDEO,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
@@ -16128,7 +16128,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
     var MEDIA       = OpenAjax.a11y.MEDIA;
-  
+
     var embed_elements     = dom_cache.media_cache.embed_elements;
     var embed_elements_len = embed_elements.length;
 
@@ -16140,13 +16140,13 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
       if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
         if (ee.isTypeVideo()) {
           rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ee, 'ELEMENT_MC_1', []);
-        }  
+        }
         else {
-          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ee, 'ELEMENT_MC_2', []);     
-        }  
+          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ee, 'ELEMENT_MC_2', []);
+        }
       }
       else {
-       rule_result.addResult(TEST_RESULT.HIDDEN, ee, 'ELEMENT_HIDDEN_1', []);     
+       rule_result.addResult(TEST_RESULT.HIDDEN, ee, 'ELEMENT_HIDDEN_1', []);
       }
     }
   } // end validate function
@@ -16155,11 +16155,11 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 /**
  * @object VIDEO_7
  *
- * @desc Prerecorded video with synchronized audio (i.e. movie) using the video element must have audio description 
- */ 
- 
-{ rule_id             : 'VIDEO_7', 
-  last_updated        : '2014-11-28', 
+ * @desc Prerecorded video with synchronized audio (i.e. movie) using the video element must have audio description
+ */
+
+{ rule_id             : 'VIDEO_7',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.AUDIO_VIDEO,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
@@ -16174,7 +16174,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
     var MEDIA       = OpenAjax.a11y.MEDIA;
-  
+
     var video_elements     = dom_cache.media_cache.video_elements;
     var video_elements_len = video_elements.length;
 
@@ -16185,10 +16185,10 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
       if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
         if (ve.hasDescriptionTrack()) rule_result.addResult(TEST_RESULT.PASS, ve, 'ELEMENT_PASS_1', []);
-        else rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ve, 'ELEMENT_MC_1', []);    
+        else rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ve, 'ELEMENT_MC_1', []);
       }
       else {
-       rule_result.addResult(TEST_RESULT.HIDDEN, ve, 'ELEMENT_HIDDEN_1', []);     
+       rule_result.addResult(TEST_RESULT.HIDDEN, ve, 'ELEMENT_HIDDEN_1', []);
       }
     }
   } // end validate function
@@ -16197,11 +16197,11 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 /**
  * @object VIDEO_8
  *
- * @desc Prerecorded video with synchronized audio (i.e. movie) using the object element must have audio description 
- */ 
- 
-{ rule_id             : 'VIDEO_8', 
-  last_updated        : '2014-11-28', 
+ * @desc Prerecorded video with synchronized audio (i.e. movie) using the object element must have audio description
+ */
+
+{ rule_id             : 'VIDEO_8',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.AUDIO_VIDEO,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
@@ -16212,11 +16212,11 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   resource_properties : ['data', 'type', 'name', 'value', 'valuetype'],
   language_dependency : "",
   validate          : function (dom_cache, rule_result) {
-    
+
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
     var MEDIA       = OpenAjax.a11y.MEDIA;
-  
+
     var object_elements     = dom_cache.media_cache.object_elements;
     var object_elements_len = object_elements.length;
 
@@ -16227,14 +16227,14 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
       if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
         if (oe.isTypeVideo()) {
-          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, oe, 'ELEMENT_MC_1', []);     
-        }  
+          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, oe, 'ELEMENT_MC_1', []);
+        }
         else {
-          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, oe, 'ELEMENT_MC_2', []);     
-        }  
+          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, oe, 'ELEMENT_MC_2', []);
+        }
       }
       else {
-       rule_result.addResult(TEST_RESULT.HIDDEN, oe, 'ELEMENT_HIDDEN_1', []);     
+       rule_result.addResult(TEST_RESULT.HIDDEN, oe, 'ELEMENT_HIDDEN_1', []);
       }
     }
   } // end validate function
@@ -16243,11 +16243,11 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 /**
  * @object VIDEO_9
  *
- * @desc Prerecorded video with synchronized audio (i.e. movie) using the embed element must have audio description 
- */ 
- 
-{ rule_id             : 'VIDEO_9', 
-  last_updated        : '2014-11-28', 
+ * @desc Prerecorded video with synchronized audio (i.e. movie) using the embed element must have audio description
+ */
+
+{ rule_id             : 'VIDEO_9',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.AUDIO_VIDEO,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP1,
@@ -16262,7 +16262,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
     var MEDIA       = OpenAjax.a11y.MEDIA;
-  
+
     var embed_elements     = dom_cache.media_cache.embed_elements;
     var embed_elements_len = embed_elements.length;
 
@@ -16273,34 +16273,34 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
       if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
         if (ee.isTypeVideo()) {
-          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ee, 'ELEMENT_MC_1', []);     
-        }  
+          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ee, 'ELEMENT_MC_1', []);
+        }
         else {
-          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ee, 'ELEMENT_MC_2', []);     
-        }  
+          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, ee, 'ELEMENT_MC_2', []);
+        }
       }
       else {
-       rule_result.addResult(TEST_RESULT.HIDDEN, ee, 'ELEMENT_HIDDEN_1', []);     
+       rule_result.addResult(TEST_RESULT.HIDDEN, ee, 'ELEMENT_HIDDEN_1', []);
       }
-    }  
+    }
   } // end validate function
 }
- 
+
 ]);
 /* ---------------------------------------------------------------- */
-/*  OpenAjax Alliance Control Rules                                 */ 
+/*  OpenAjax Alliance Control Rules                                 */
 /* ---------------------------------------------------------------- */
 
 OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
 /**
  * @object WIDGET_1
- * 
+ *
  * @desc ARIA Widgets must have accessible names
  */
-     
-{ rule_id             : 'WIDGET_1', 
-  last_updated        : '2014-11-28', 
+
+{ rule_id             : 'WIDGET_1',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.WIDGETS_SCRIPTS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP3,
@@ -16311,49 +16311,49 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   resource_properties : ['accessible_description', 'computed_label_source'],
   language_dependency : "",
   validate            : function (dom_cache, rule_result) {
-   
-     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;   
+
+     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
      var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
-      
+
      var widgets     = dom_cache.controls_cache.widget_elements;
      var widgets_len = widgets.length;
-       
+
      // Check to see if valid cache reference
      if (widgets && widgets_len) {
-     
+
        for (var i = 0; i < widgets_len; i++) {
          var we = widgets[i];
          var de = we.dom_element;
-  
+
          if (de.is_widget) {
-         
+
            if (de.computed_style.is_visible_to_at == VISIBILITY.VISIBLE) {
-     
+
              if (we.computed_label && we.computed_label.length) {
-               rule_result.addResult(TEST_RESULT.PASS, we, 'ELEMENT_PASS_1', [de.tag_name, de.role, we.computed_label]);     
+               rule_result.addResult(TEST_RESULT.PASS, we, 'ELEMENT_PASS_1', [de.tag_name, de.role, we.computed_label]);
              }
              else {
-               if (!de.role_info.reqName) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, we, 'ELEMENT_MC_1', [de.tag_name, de.role]);  
-               else rule_result.addResult(TEST_RESULT.FAIL, we, 'ELEMENT_FAIL_1', [de.tag_name, de.role]);     
+               if (!de.role_info.reqName) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, we, 'ELEMENT_MC_1', [de.tag_name, de.role]);
+               else rule_result.addResult(TEST_RESULT.FAIL, we, 'ELEMENT_FAIL_1', [de.tag_name, de.role]);
              }
            }
            else {
-             rule_result.addResult(TEST_RESULT.HIDDEN, we, 'ELEMENT_HIDDEN_1', [de.tag_name, de.role]);     
+             rule_result.addResult(TEST_RESULT.HIDDEN, we, 'ELEMENT_HIDDEN_1', [de.tag_name, de.role]);
            }
-         }  
+         }
        } // end loop
-     } 
-   } // end validation function   
+     }
+   } // end validation function
 },
 
 /**
  * @object WIDGET_2
- * 
- * @desc Elements with onClick event handlers event handlers need role 
+ *
+ * @desc Elements with onClick event handlers event handlers need role
  */
-     
-{ rule_id             : 'WIDGET_2', 
-  last_updated        : '2014-11-28', 
+
+{ rule_id             : 'WIDGET_2',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.WIDGETS_SCRIPTS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP3,
@@ -16364,65 +16364,65 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   resource_properties : ['tag_name', 'role', 'is_widget'],
   language_dependency : "",
   validate            : function (dom_cache, rule_result) {
-    
+
      function hasDecendantWidgetRole(dom_element) {
-       
+
        function checkChildren(list) {
-       
+
          if (!list) return false;
-       
+
          var flag = false;
-       
+
          for (var i = 0; (i < list.length) && !flag; i++) {
-           
+
            var de = list[i];
-           
+
            if (de.type != Node.ELEMENT_NODE) continue;
-           
-           if (de.is_widget || 
+
+           if (de.is_widget ||
                "input textarea button select".indexOf(de.tag_name) ||
                de.tag_name === "a" ||
                de.tag_name === "area") return true;
 
            if (de.child_dom_elements.length) flag = checkChildren(de.child_dom_elements);
-            
+
          }
-         
+
          return flag;
-       
+
        }
-          
-       return checkChildren(dom_element.child_dom_elements);     
-     }  
-   
-    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;   
+
+       return checkChildren(dom_element.child_dom_elements);
+     }
+
+    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
-      
+
     var dom_elements     = dom_cache.element_cache.dom_elements;
     var dom_elements_len = dom_elements.length;
-       
+
     if (dom_elements && dom_elements_len) {
-     
+
       for (var i = 0; i < dom_elements_len; i++) {
         var de = dom_elements[i];
         var style = de.computed_style;
-       
-        if (de.events.has_click && 
+
+        if (de.events.has_click &&
             ((de.tag_name !== 'body') &&
              (de.tag_name !== 'frame') &&
              (de.tag_name !== 'iframe') &&
              (de.tag_name !== 'embed') &&
              (de.tag_name !== 'object') &&
-             (de.tag_name !== 'applet'))) { 
-        
+             (de.tag_name !== 'applet'))) {
+
           if (style.is_visible_to_at == VISIBILITY.VISIBLE || style.is_visible_onscreen == VISIBILITY.VISIBLE ) {
-          
+
             if (de.is_widget) {
-              rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_1', [de.tag_name]);     
+              rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_1', [de.tag_name]);
             }
             else {
               if ("input textarea button select".indexOf(de.tag_name) >= 0) {
-                rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_2', [de.tag_name]);     
+                rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_2', [de.tag_name]);
               }
               else {
                 if ("a area".indexOf(de.tag_name) >= 0) {
@@ -16432,26 +16432,26 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
                   if (hasDecendantWidgetRole(de)) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, de, 'ELEMENT_MC_1', [de.tag_name]);
                   else rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [de.tag_name]);
                 }
-              }  
+              }
             }
           }
           else {
-            rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.tag_name]);     
+            rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.tag_name]);
           }
-        }  
+        }
       } // end loop
-    } 
-  } // end validation function   
+    }
+  } // end validation function
 },
 
 /**
  * @object WIDGET_3
- * 
- * @desc Elements with role values must have valid widget or landmark roles 
+ *
+ * @desc Elements with role values must have valid widget or landmark roles
  */
-     
-{ rule_id             : 'WIDGET_3', 
-  last_updated        : '2014-11-28', 
+
+{ rule_id             : 'WIDGET_3',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.WIDGETS_SCRIPTS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP3,
@@ -16462,22 +16462,22 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   resource_properties : [],
   language_dependency : "",
   validate            : function (dom_cache, rule_result) {
-   
-     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;   
+
+     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
      var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
-      
+
      var elements_with_role     = dom_cache.controls_cache.elements_with_role;
      var elements_with_role_len = elements_with_role.length;
-     
+
      if (elements_with_role && elements_with_role_len) {
-     
+
        for (var i = 0; i < elements_with_role_len; i++) {
          var de = elements_with_role[i];
          var style = de.computed_style;
-       
+
          if (style.is_visible_to_at == VISIBILITY.VISIBLE || style.is_visible_onscreen == VISIBILITY.VISIBLE ) {
-           
-           if (de.is_widget) rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_1', [de.role]);     
+
+           if (de.is_widget) rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_1', [de.role]);
            else if (de.is_landmark) rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_2', [de.role]);
            else if (de.is_live) rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_3', [de.role]);
            else if (de.is_section) rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_4', [de.role]);
@@ -16486,150 +16486,150 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
            else rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_3', [de.role]);
          }
          else {
-           rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.tag_name, de.role]);     
-         }         
+           rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.tag_name, de.role]);
+         }
        } // end loop
-     } 
-   } // end validation function   
+     }
+   } // end validation function
 },
 
 /**
  * @object WIDGET_4
- * 
+ *
  * @desc Elements with ARIA attributes have valid values
  */
-     
-{ rule_id             : 'WIDGET_4', 
-  last_updated        : '2014-11-28', 
+
+{ rule_id             : 'WIDGET_4',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.WIDGETS_SCRIPTS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP3,
   wcag_primary_id     : '4.1.2',
   wcag_related_ids    : ['1.3.1', '3.3.2'],
-  target_resources    : ['[aria-atomic]', 
-                         '[aria-autocomplete]', 
-                         '[aria-busy]', 
-                         '[aria-checked]', 
-                         '[aria-colcount]', 
-                         '[aria-colindex]', 
-                         '[aria-colspan]', 
-                         '[aria-current]', 
-                         '[aria-disabled]', 
-                         '[aria-dropeffect]', 
-                         '[aria-expanded]', 
-                         '[aria-grabbed]', 
-                         '[aria-haspopup]', 
-                         '[aria-hidden]', 
-                         '[aria-invalid]', 
-                         '[aria-label]', 
-                         '[aria-labelledby]', 
-                         '[aria-live]', 
-                         '[aria-modal]', 
-                         '[aria-multiline]', 
-                         '[aria-multiselectable]', 
-                         '[aria-orientation]', 
-                         '[aria-pressed]', 
-                         '[aria-readonly]', 
+  target_resources    : ['[aria-atomic]',
+                         '[aria-autocomplete]',
+                         '[aria-busy]',
+                         '[aria-checked]',
+                         '[aria-colcount]',
+                         '[aria-colindex]',
+                         '[aria-colspan]',
+                         '[aria-current]',
+                         '[aria-disabled]',
+                         '[aria-dropeffect]',
+                         '[aria-expanded]',
+                         '[aria-grabbed]',
+                         '[aria-haspopup]',
+                         '[aria-hidden]',
+                         '[aria-invalid]',
+                         '[aria-label]',
+                         '[aria-labelledby]',
+                         '[aria-live]',
+                         '[aria-modal]',
+                         '[aria-multiline]',
+                         '[aria-multiselectable]',
+                         '[aria-orientation]',
+                         '[aria-pressed]',
+                         '[aria-readonly]',
                          '[aria-relevant]',
                          '[aria-required]',
-                         '[aria-rowcount]', 
-                         '[aria-rowindex]', 
-                         '[aria-rowspan]', 
+                         '[aria-rowcount]',
+                         '[aria-rowindex]',
+                         '[aria-rowspan]',
                          '[aria-selected]',
                          '[aria-sort]'],
   primary_property    : '',
   resource_properties : [],
   language_dependency : "",
   validate            : function (dom_cache, rule_result) {
-  
+
      function makeProp(label, value) {
-     
+
        var p = {};
-       
+
        p.label = label;
        p.value = value;
        p.description = "";
-       
+
        return p;
-     
+
      }
-   
-     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;   
+
+     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
      var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
-      
+
      var elements_with_aria_attributes     = dom_cache.controls_cache.elements_with_aria_attributes;
      var elements_with_aria_attributes_len = elements_with_aria_attributes.length;
-     
+
      if (elements_with_aria_attributes && elements_with_aria_attributes_len) {
-     
+
        for (var i = 0; i < elements_with_aria_attributes_len; i++) {
          var de = elements_with_aria_attributes[i];
          var style = de.computed_style;
          var aria_attrs = de.aria_attributes;
-         var aria_attrs_len = aria_attrs.length;         
+         var aria_attrs_len = aria_attrs.length;
 
          for (var j = 0; j < aria_attrs_len; j++) {
-         
+
            var attr = aria_attrs[j];
-           
+
            var prop = makeProp(attr.name, attr.value);
-         
+
            if (style.is_visible_to_at == VISIBILITY.VISIBLE || style.is_visible_onscreen == VISIBILITY.VISIBLE ) {
-           
+
              if (attr.is_value_valid && attr.tokens) rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_1', [attr.name, attr.value], [prop]);
              else if (attr.is_value_valid) rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_2', [attr.name, attr.value, attr.type], [prop]);
              else if (attr.type === 'nmtoken' || attr.type === 'boolean') rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [attr.name, attr.value, attr.tokens], [prop]);
              else if (attr.type === 'nmtokens') rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_2', [attr.name, attr.value, attr.tokens], [prop]);
              else rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_3', [attr.name, attr.value, attr.type], [prop]);
-           
+
            }
            else {
-             rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [attr.name, attr.value], [prop]);     
+             rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [attr.name, attr.value], [prop]);
            }
-           
-         } // end loop 
+
+         } // end loop
        } // end loop
-     } 
-   } // end validation function   
+     }
+   } // end validation function
 },
 
 /**
  * @object WIDGET_5
- * 
+ *
  * @desc Elements with ARIA attributes have valid values
  */
-     
-{ rule_id             : 'WIDGET_5', 
-  last_updated        : '2014-11-28', 
+
+{ rule_id             : 'WIDGET_5',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.WIDGETS_SCRIPTS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP3,
   wcag_primary_id     : '4.1.2',
   wcag_related_ids    : ['1.3.1', '3.3.2'],
-  target_resources    : ['[aria-atomic]', 
-                         '[aria-autocomplete]', 
-                         '[aria-busy]', 
-                         '[aria-checked]', 
-                         '[aria-controls]', 
-                         '[aria-describedby]', 
-                         '[aria-disabled]', 
-                         '[aria-dropeffect]', 
-                         '[aria-expanded]', 
-                         '[aria-flowto]', 
-                         '[aria-grabbed]', 
-                         '[aria-haspopup]', 
-                         '[aria-hidden]', 
-                         '[aria-invalid]', 
-                         '[aria-label]', 
-                         '[aria-labelledby]', 
-                         '[aria-level]', 
-                         '[aria-live]', 
-                         '[aria-multiline]', 
-                         '[aria-multiselectable]', 
-                         '[aria-orientation]', 
-                         '[aria-owns]', 
-                         '[aria-pressed]', 
-                         '[aria-readonly]', 
+  target_resources    : ['[aria-atomic]',
+                         '[aria-autocomplete]',
+                         '[aria-busy]',
+                         '[aria-checked]',
+                         '[aria-controls]',
+                         '[aria-describedby]',
+                         '[aria-disabled]',
+                         '[aria-dropeffect]',
+                         '[aria-expanded]',
+                         '[aria-flowto]',
+                         '[aria-grabbed]',
+                         '[aria-haspopup]',
+                         '[aria-hidden]',
+                         '[aria-invalid]',
+                         '[aria-label]',
+                         '[aria-labelledby]',
+                         '[aria-level]',
+                         '[aria-live]',
+                         '[aria-multiline]',
+                         '[aria-multiselectable]',
+                         '[aria-orientation]',
+                         '[aria-owns]',
+                         '[aria-pressed]',
+                         '[aria-readonly]',
                          '[aria-relevant]',
                          '[aria-required]',
                          '[aria-selected]',
@@ -16642,63 +16642,63 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   resource_properties : [],
   language_dependency : "",
   validate            : function (dom_cache, rule_result) {
-  
+
      function makeProp(label, value) {
-     
+
        var p = {};
-       
+
        p.label = label;
        p.value = value;
        p.description = "";
-       
+
        return p;
-     
+
      }
-   
-     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;   
+
+     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
      var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
-      
+
      var elements_with_aria_attributes     = dom_cache.controls_cache.elements_with_aria_attributes;
      var elements_with_aria_attributes_len = elements_with_aria_attributes.length;
-     
+
      if (elements_with_aria_attributes && elements_with_aria_attributes_len) {
-     
+
        for (var i = 0; i < elements_with_aria_attributes_len; i++) {
          var de = elements_with_aria_attributes[i];
          var style = de.computed_style;
          var aria_attrs = de.aria_attributes;
-         var aria_attrs_len = aria_attrs.length;         
+         var aria_attrs_len = aria_attrs.length;
 
          for (var j = 0; j < aria_attrs_len; j++) {
-         
+
            var attr = aria_attrs[j];
-           
+
            var prop = makeProp(attr.name, attr.value);
-         
+
            if (style.is_visible_to_at == VISIBILITY.VISIBLE || style.is_visible_onscreen == VISIBILITY.VISIBLE ) {
-           
+
              if (attr.is_valid_attribute) rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_1', [attr.name], [prop]);
              else rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [attr.name], [prop]);
-           
+
            }
            else {
-             rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [attr.name, attr.value], [prop]);     
+             rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [attr.name, attr.value], [prop]);
            }
-           
-         } // end loop 
+
+         } // end loop
        } // end loop
-     } 
-   } // end validation function   
+     }
+   } // end validation function
 },
 
 /**
  * @object WIDGET_6
- * 
+ *
  * @desc Widgets must have required properties
  */
-     
-{ rule_id             : 'WIDGET_6', 
-  last_updated        : '2014-11-28', 
+
+{ rule_id             : 'WIDGET_6',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.WIDGETS_SCRIPTS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP3,
@@ -16711,107 +16711,107 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   validate            : function (dom_cache, rule_result) {
 
      function getRequiredPropertiesAndValues(dom_element, required_props) {
-    
+
        var rps = [];
-     
+
        var attrs     = dom_element.aria_attributes;
        var attrs_len = attrs.length;
-     
+
        for (var i = 0; i < required_props.length; i++) {
-       
+
          var prop = required_props[i];
-       
+
          var flag = false;
-       
+
          for (var j = 0; j <attrs_len; j++) {
-           if (prop === attrs[j].name) { 
+           if (prop === attrs[j].name) {
              flag = true;
              break;
            }
          }
-         
+
          var rp = {};
          rp.label = prop;
          rp.description = "";
          rp.defined = flag;
-         
+
          if (flag) {
            rp.value  = attrs[j].value;
          }
          else {
-           rp.value  = "undefined";       
+           rp.value  = "undefined";
          }
-         
+
          rps.push(rp);
-       
+
        }
-       
+
        return rps;
-     
+
      }
 
      function getPropsString(props) {
-     
+
        var str = "";
        var prop_max = props.length - 1;
-       
+
        for (var i = 0; i < props.length; i++ ) {
          str += props[i];
          if (i !== prop_max) str += ", ";
        }
-       
+
        return str;
-     
+
      }
-   
-     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;   
+
+     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
      var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
-      
+
      var widget_elements     = dom_cache.controls_cache.widget_elements;
      var widget_elements_len = widget_elements.length;
-     
+
      if (widget_elements && widget_elements) {
-     
+
        for (var i = 0; i < widget_elements_len; i++) {
          var we = widget_elements[i];
          var de = we.dom_element;
          var style = de.computed_style;
-       
+
 //         OpenAjax.a11y.logger.debug("  RULE WIDGET 6: " + de.role + " ("+ de.role_info + ")");
-       
+
          var required_properties = de.role_info.reqProps;
-             
+
          if (required_properties) {
-             
+
            if (style.is_visible_to_at == VISIBILITY.VISIBLE || style.is_visible_onscreen == VISIBILITY.VISIBLE ) {
-           
+
              var props_string   = getPropsString(required_properties);
              var required_props = getRequiredPropertiesAndValues(de, required_properties);
-             
+
              var flag = true;
-             
+
              for (var j = 0; (j < required_props.length) && flag; j++) flag = flag && required_props[j].defined;
-             
-             if (flag) rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_1', [de.role, props_string], required_props);     
+
+             if (flag) rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_1', [de.role, props_string], required_props);
              else rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [de.role, props_string], required_props);
            }
            else {
-             rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.role]);     
+             rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.role]);
            }
          }
        } // end loop
-     } 
-   } // end validation function   
+     }
+   } // end validation function
 },
 
 /**
  * @object WIDGET_7
- * 
+ *
  * @desc Widgets must have required owned elements
  */
-     
-{ rule_id             : 'WIDGET_7', 
-  last_updated        : '2014-11-28', 
+
+{ rule_id             : 'WIDGET_7',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.WIDGETS_SCRIPTS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP3,
@@ -16822,73 +16822,73 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   resource_properties : [],
   language_dependency : "",
   validate            : function (dom_cache, rule_result) {
-  
-  
+
+
      function getRequiredChildRolesString(required_children) {
-     
+
        var str = "";
        var required_children_max = required_children.length - 1;
-       
+
        for (var i = 0; i < required_children.length; i++ ) {
          str += required_children[i];
          if (i !== required_children_max) str += ", ";
        }
-       
+
        return str;
-     
+
      }
-   
-     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;   
+
+     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
      var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
-      
+
      var widget_elements     = dom_cache.controls_cache.widget_elements;
      var widget_elements_len = widget_elements.length;
-     
+
      if (widget_elements && widget_elements) {
-     
+
        for (var i = 0; i < widget_elements_len; i++) {
          var we = widget_elements[i];
          var de = we.dom_element;
          var style = de.computed_style;
-       
+
          var required_child_roles = de.role_info.reqChildren;
-             
+
          if (required_child_roles) {
-             
+
            if (style.is_visible_to_at == VISIBILITY.VISIBLE || style.is_visible_onscreen == VISIBILITY.VISIBLE ) {
-           
+
              var flag = false;
-             
+
              for (var j = 0; (j < required_child_roles.length) && !flag; j++) {
-               
+
                var role = required_child_roles[j];
-               
+
                flag = we.hasChildRole(role);
-                              
+
              }
-             
+
              var required_child_roles_string = getRequiredChildRolesString(required_child_roles);
-             
-             if (flag) rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_1', [de.role, required_child_roles_string]);     
+
+             if (flag) rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_1', [de.role, required_child_roles_string]);
              else rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [de.role, required_child_roles_string]);
            }
            else {
-             rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.role]);     
+             rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.role]);
            }
          }
        } // end loop
-     } 
-   } // end validation function   
+     }
+   } // end validation function
 },
 
 /**
  * @object WIDGET_8
- * 
+ *
  * @desc Widgets must have required parent roles
  */
-     
-{ rule_id             : 'WIDGET_8', 
-  last_updated        : '2014-11-28', 
+
+{ rule_id             : 'WIDGET_8',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.WIDGETS_SCRIPTS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP3,
@@ -16899,72 +16899,72 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   resource_properties : [],
   language_dependency : "",
   validate            : function (dom_cache, rule_result) {
-  
-  
+
+
      function getRequiredRolesString(required_roles) {
-     
+
        var str = "";
        var required_roles_max = required_roles.length - 1;
-       
+
        for (var i = 0; i < required_roles.length; i++ ) {
          str += required_roles[i];
          if (i !== required_roles_max) str += ", ";
        }
-       
+
        return str;
-     
+
      }
-   
-     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;   
+
+     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
      var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
-      
+
      var widget_elements     = dom_cache.controls_cache.widget_elements;
      var widget_elements_len = widget_elements.length;
-     
+
      if (widget_elements && widget_elements) {
-     
+
        for (var i = 0; i < widget_elements_len; i++) {
          var we = widget_elements[i];
          var de = we.dom_element;
          var style = de.computed_style;
-       
+
          var required_parent_roles = de.role_info.container;
-             
+
          if (required_parent_roles) {
-             
+
            if (style.is_visible_to_at == VISIBILITY.VISIBLE || style.is_visible_onscreen == VISIBILITY.VISIBLE ) {
-           
+
              var flag = false;
-             
+
              for (var j = 0; (j < required_parent_roles.length) && !flag; j++) {
-               
+
                var role = required_parent_roles[j];
-               
+
                flag = we.hasParentRole(role);
-                              
+
              }
-             
+
              var required_roles_string = getRequiredRolesString(required_parent_roles);
-             
-             if (flag) rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_1', [de.role, role]);     
+
+             if (flag) rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_1', [de.role, role]);
              else rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [required_roles_string, de.role]);
            }
            else {
-             rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.role]);     
+             rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.role]);
            }
          }
        } // end loop
-     } 
-   } // end validation function   
+     }
+   } // end validation function
 },
 /**
  * @object WIDGET_9
- * 
+ *
  * @desc Widgets cannot be owned by more than one widget
  */
-     
-{ rule_id             : 'WIDGET_9', 
-  last_updated        : '2014-11-28', 
+
+{ rule_id             : 'WIDGET_9',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.WIDGETS_SCRIPTS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP3,
@@ -16977,58 +16977,58 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   validate            : function (dom_cache, rule_result) {
 
      function getParentWidgetString(list) {
-     
+
        var str = "";
        list_max = list.length - 1;
-       
+
        for (var i = 0; i < list.length; i++ ) {
          str += list[i].toString();
          if (i !== list_max) str += "; ";
        }
-       
+
        return str;
-     
+
      }
-   
-     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;   
+
+     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
      var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
-      
+
      var widget_elements     = dom_cache.controls_cache.widget_elements;
      var widget_elements_len = widget_elements.length;
-     
+
      if (widget_elements && widget_elements) {
-     
+
        for (var i = 0; i < widget_elements_len; i++) {
          var we = widget_elements[i];
          var de = we.dom_element;
          var style = de.computed_style;
 
          if (we.is_owned) {
-             
+
            if (style.is_visible_to_at == VISIBILITY.VISIBLE || style.is_visible_onscreen == VISIBILITY.VISIBLE ) {
-           
+
              var parent_string = getParentWidgetString(we.owner_controls);
-             
-             if (we.owner_controls.length === 1) rule_result.addResult(TEST_RESULT.PASS, we, 'ELEMENT_PASS_1', [we.toString(), parent_string]);     
+
+             if (we.owner_controls.length === 1) rule_result.addResult(TEST_RESULT.PASS, we, 'ELEMENT_PASS_1', [we.toString(), parent_string]);
              else if (we.owner_controls.length > 1) rule_result.addResult(TEST_RESULT.FAIL, we, 'ELEMENT_FAIL_1', [parent_string, we.toString()]);
            }
            else {
-             rule_result.addResult(TEST_RESULT.HIDDEN, we, 'ELEMENT_HIDDEN_1', [we.toString()]);     
+             rule_result.addResult(TEST_RESULT.HIDDEN, we, 'ELEMENT_HIDDEN_1', [we.toString()]);
            }
          }
        } // end loop
-     } 
-   } // end validation function   
+     }
+   } // end validation function
 },
 
 /**
  * @object WIDGET_10
- * 
+ *
  * @desc Range widgets with ariavaluenow mut be in range of aria-valuemin and aria-valuemax
  */
-     
-{ rule_id             : 'WIDGET_10', 
-  last_updated        : '2014-11-28', 
+
+{ rule_id             : 'WIDGET_10',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.WIDGETS_SCRIPTS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP3,
@@ -17041,28 +17041,28 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   validate            : function (dom_cache, rule_result) {
 
      function getNotNumbersString() {
-     
+
        var str = "";
-       
+
        if (isNaN(min)) str += 'aria-valuemin';
-       
+
        if (isNaN(max)) {
          if (str.length > 0) str += ", ";
          str += 'aria-valuemax';
-       }  
-       
+       }
+
        if (isNaN(value)) {
          if (str.length > 0) str += ", ";
          str += 'aria-valuenow';
-       }  
+       }
 
        return str;
      }
 
      function getNumberCount() {
-     
+
        var count = 0;
-       
+
        if (!isNaN(min)) count++;
        if (!isNaN(max)) count++;
        if (!isNaN(value)) count++;
@@ -17071,32 +17071,32 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
      }
 
      function hasMaxMin() {
-     
+
        var count = 0;
-       
+
        if (!isNaN(min)) count++;
        if (!isNaN(max)) count++;
- 
+
        return count === 2;
      }
 
-     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;   
+     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
      var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
-      
+
      var widget_elements     = dom_cache.controls_cache.widget_elements;
      var widget_elements_len = widget_elements.length;
-     
+
      if (widget_elements && widget_elements) {
-     
+
        for (var i = 0; i < widget_elements_len; i++) {
          var we = widget_elements[i];
          var de = we.dom_element;
          var style = de.computed_style;
 
          if (de.has_range) {
-             
+
            if (style.is_visible_to_at === VISIBILITY.VISIBLE) {
-           
+
              var valuetext = de.node.getAttribute('aria-valuetext');
              var min       = parseInt(de.node.getAttribute('aria-valuemin'), 10);
              var max       = parseInt(de.node.getAttribute('aria-valuemax'), 10);
@@ -17104,13 +17104,13 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
              var number_count = getNumberCount();
              var has_max_min  = hasMaxMin();
 
-             if (typeof valuetext === 'string' && (valuetext.length > 0)) { 
-               rule_result.addResult(TEST_RESULT.PASS, we, 'ELEMENT_PASS_1', [we, valuetext]);     
-             }  
+             if (typeof valuetext === 'string' && (valuetext.length > 0)) {
+               rule_result.addResult(TEST_RESULT.PASS, we, 'ELEMENT_PASS_1', [we, valuetext]);
+             }
              else {
                if (number_count === 3 || (de.role === 'progressbar' && has_max_min)) {
                  if (min < max) {
-                   if ((min <= value) && (value <= max)) rule_result.addResult(TEST_RESULT.PASS, we, 'ELEMENT_PASS_2', [we, value, min, max]);     
+                   if ((min <= value) && (value <= max)) rule_result.addResult(TEST_RESULT.PASS, we, 'ELEMENT_PASS_2', [we, value, min, max]);
                    else if (de.role === 'progressbar' && has_max_min)  rule_result.addResult(TEST_RESULT.PASS, we, 'ELEMENT_PASS_3', [min, max]);
                    else rule_result.addResult(TEST_RESULT.FAIL, we, 'ELEMENT_FAIL_1', [value, min, max]);
                  }
@@ -17119,36 +17119,36 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
                  }
                }
                else {
-               
+
                   if (de.role === 'progressbar' && !has_max_min) {
                     rule_result.addResult(TEST_RESULT.FAIL, we, 'ELEMENT_FAIL_3', [value, min, max]);
                   }
-                  else { 
+                  else {
                     var not_numbers_string = getNotNumbersString();
 
                    if (number_count === 1) rule_result.addResult(TEST_RESULT.FAIL, we, 'ELEMENT_FAIL_4', [not_numbers_string]);
                    else rule_result.addResult(TEST_RESULT.FAIL, we, 'ELEMENT_FAIL_5', [not_numbers_string]);
-                 }  
+                 }
                }
-             }    
+             }
            }
            else {
-             rule_result.addResult(TEST_RESULT.HIDDEN, we, 'ELEMENT_HIDDEN_1', [we.toString()]);     
+             rule_result.addResult(TEST_RESULT.HIDDEN, we, 'ELEMENT_HIDDEN_1', [we.toString()]);
            }
          }
        } // end loop
-     } 
-   } // end validation function   
+     }
+   } // end validation function
 },
 
 /**
  * @object WIDGET_11
- * 
+ *
  * @desc Elements with mouse down, mouse move and mouse up events must have roles
  */
-     
-{ rule_id             : 'WIDGET_11', 
-  last_updated        : '2014-11-28', 
+
+{ rule_id             : 'WIDGET_11',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.WIDGETS_SCRIPTS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP3,
@@ -17161,64 +17161,64 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   validate            : function (dom_cache, rule_result) {
 
      function getUIEvents(dom_element) {
-     
+
         var events = dom_element.getMouseEvents();
         events += dom_element.getClickEvents();
         events += dom_element.getDragEvents();
         events += dom_element.getKeyboardEvents();
-        
+
         return events;
      }
 
-     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;   
+     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
      var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
-      
+
      var dom_elements_with_events     = dom_cache.controls_cache.elements_with_events;
      var dom_elements_with_events_len = dom_elements_with_events.length;
-     
+
      if (dom_elements_with_events_len) {
-     
+
        for (var i = 0; i < dom_elements_with_events_len; i++) {
          var de = dom_elements_with_events[i];
-         
+
          var style = de.computed_style;
          var events = getUIEvents(de);
 
-         if (events.length && 
-             (de.tag_name !== 'embed') && 
-             (de.tag_name !== 'applet') && 
-             (de.tag_name !== 'object') && 
-             (de.tag_name !== 'video') && 
+         if (events.length &&
+             (de.tag_name !== 'embed') &&
+             (de.tag_name !== 'applet') &&
+             (de.tag_name !== 'object') &&
+             (de.tag_name !== 'video') &&
              (de.tag_name !== 'audio')) {
-         
+
            if (style.is_visible_to_at === VISIBILITY.VISIBLE) {
-           
-             if (de.is_widget) { 
-               rule_result.addResult(TEST_RESULT.MANUAL_CHECK, de, 'ELEMENT_MANUAL_CHECK_1', [de.role, events]);     
-             }  
+
+             if (de.is_widget) {
+               rule_result.addResult(TEST_RESULT.MANUAL_CHECK, de, 'ELEMENT_MANUAL_CHECK_1', [de.role, events]);
+             }
              else {
                if (de.is_interactive) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, de, 'ELEMENT_MANUAL_CHECK_2', [de.tag_name, events]);
                else if (de.containsInteractiveElements()) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, de, 'ELEMENT_MANUAL_CHECK_3', [de.tag_name, events]);
                else rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [de.tag_name, events]);
-             }  
+             }
            }
            else {
-             rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.tag_name]);     
+             rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.tag_name]);
            }
          }
        } // end loop
-     } 
-   } // end validation function   
+     }
+   } // end validation function
 },
 /**
  * @object WIDGET_12
- * 
+ *
  * @desc Element with widget role label should describe the purpose of the widget
- * 
+ *
  */
- 
-{ rule_id             : 'WIDGET_12', 
-  last_updated        : '2015-08-10', 
+
+{ rule_id             : 'WIDGET_12',
+  last_updated        : '2015-08-10',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.WIDGETS_SCRIPTS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -17229,49 +17229,49 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   resource_properties : ['accessible_description', 'computed_label_source'],
   language_dependency : "",
   validate            : function (dom_cache, rule_result) {
-   
-     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;   
+
+     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
      var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
-      
+
      var widgets     = dom_cache.controls_cache.widget_elements;
      var widgets_len = widgets.length;
-       
+
      // Check to see if valid cache reference
      if (widgets && widgets_len) {
-     
+
        for (var i = 0; i < widgets_len; i++) {
          var we = widgets[i];
          var de = we.dom_element;
-  
+
          if (de.is_widget) {
-         
+
            if (de.computed_style.is_visible_to_at == VISIBILITY.VISIBLE) {
-     
+
              if (we.computed_label && we.computed_label.length) {
-               rule_result.addResult(TEST_RESULT.MANUAL_CHECK, we, 'ELEMENT_MC_1', [we.computed_label, de.tag_name, de.role]);     
+               rule_result.addResult(TEST_RESULT.MANUAL_CHECK, we, 'ELEMENT_MC_1', [we.computed_label, de.tag_name, de.role]);
              }
              else {
-               if (!de.role_info.reqName) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, we, 'ELEMENT_MC_2', [de.tag_name, de.role]);  
-               else rule_result.addResult(TEST_RESULT.FAIL, we, 'ELEMENT_FAIL_1', [de.tag_name, de.role]);     
+               if (!de.role_info.reqName) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, we, 'ELEMENT_MC_2', [de.tag_name, de.role]);
+               else rule_result.addResult(TEST_RESULT.FAIL, we, 'ELEMENT_FAIL_1', [de.tag_name, de.role]);
              }
            }
            else {
-             rule_result.addResult(TEST_RESULT.HIDDEN, we, 'ELEMENT_HIDDEN_1', [de.tag_name, de.role]);     
+             rule_result.addResult(TEST_RESULT.HIDDEN, we, 'ELEMENT_HIDDEN_1', [de.tag_name, de.role]);
            }
-         }  
+         }
        } // end loop
-     } 
-   } // end validation function   
+     }
+   } // end validation function
 },
 
 /**
  * @object WIDGET_13
- * 
+ *
  * @desc Warning about using widget roles
  */
-     
-{ rule_id             : 'WIDGET_13', 
-  last_updated        : '2014-11-28', 
+
+{ rule_id             : 'WIDGET_13',
+  last_updated        : '2014-11-28',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.WIDGETS_SCRIPTS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP3,
@@ -17284,38 +17284,38 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   validate            : function (dom_cache, rule_result) {
 
 
-     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;   
+     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
      var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
-      
+
      var elements_with_role     = dom_cache.controls_cache.elements_with_role;
      var elements_with_role_len = elements_with_role.length;
-     
+
      if (elements_with_role && elements_with_role_len) {
-     
+
        for (var i = 0; i < elements_with_role_len; i++) {
          var de = elements_with_role[i];
          var style = de.computed_style;
-       
+
          if (de.is_widget) {
            if (style.is_visible_to_at == VISIBILITY.VISIBLE || style.is_visible_onscreen == VISIBILITY.VISIBLE ) {
-             rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [de.role, de.tag_name]);     
+             rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [de.role, de.tag_name]);
            }
            else {
-             rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.tag_name, de.role]);     
+             rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.tag_name, de.role]);
            }
-         }           
+         }
        } // end loop
-     } 
-   } // end validation function   
+     }
+   } // end validation function
 },
- 
+
 /**
  * @object WIDGET_14
  *
  * @desc     Verify live regions are being used properly
  */
-{ rule_id             : 'WIDGET_14', 
-  last_updated        : '2017-02-08', 
+{ rule_id             : 'WIDGET_14',
+  last_updated        : '2017-02-08',
   rule_scope          : OpenAjax.a11y.RULE_SCOPE.ELEMENT,
   rule_category       : OpenAjax.a11y.RULE_CATEGORIES.WIDGETS_SCRIPTS,
   rule_group          : OpenAjax.a11y.RULE_GROUP.GROUP2,
@@ -17329,7 +17329,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
-  
+
     var dom_elements     = dom_cache.element_cache.dom_elements;
     var dom_elements_len = dom_elements.length;
 
@@ -17344,10 +17344,10 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
       var has_live_role =  de.role && de.role.length && (" alert log status".indexOf(de.role) > 0);
 
-      
+
       if (de.has_aria_live) {
         if (de.computed_style.is_visible_to_at === VISIBILITY.HIDDEN) {
-          rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.tag_name, de.aria_live]);                      
+          rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.tag_name, de.aria_live]);
         }
         else {
           if (has_live_role) {
@@ -17377,7 +17377,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
           else {
             rule_result.addResult(TEST_RESULT.MANUAL_CHECK, de, 'ELEMENT_MC_1', [de.tag_name, de.aria_live]);
           }
-        }  
+        }
       }
 
       if (de.has_aria_atomic && has_live_role && (de.role === 'alert' || de.role === 'status')) {
@@ -17395,41 +17395,41 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
           case 'alert':
             if (de.computed_style.is_visible_to_at === VISIBILITY.HIDDEN) {
-              rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_2', [de.tag_name, de.role]);                      
+              rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_2', [de.tag_name, de.role]);
             }
             else {
               rule_result.addResult(TEST_RESULT.MANUAL_CHECK, de, 'ELEMENT_MC_2', [de.tag_name]);
-            }  
+            }
             break;
 
           case 'log':
             if (de.computed_style.is_visible_to_at === VISIBILITY.HIDDEN) {
-              rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_2', [de.tag_name, de.role]);                      
+              rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_2', [de.tag_name, de.role]);
             }
             else {
               rule_result.addResult(TEST_RESULT.MANUAL_CHECK, de, 'ELEMENT_MC_3', [de.tag_name]);
-            }  
+            }
             break;
 
           case 'status':
             if (de.computed_style.is_visible_to_at === VISIBILITY.HIDDEN) {
-              rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_2', [de.tag_name, de.role]);                      
+              rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_2', [de.tag_name, de.role]);
             }
             else {
               rule_result.addResult(TEST_RESULT.MANUAL_CHECK, de, 'ELEMENT_MC_4', [de.tag_name]);
-            }  
+            }
             break;
 
           default:
             break;
-        } 
+        }
       }
-    }      
-  } // end validation function        
+    }
+  } // end validation function
 }
 
-]); 
+]);
 
 
-    
+
 
