@@ -251,9 +251,11 @@ class MyAccountView(FAENavigationMixin, TemplateView):
         user_profile = UserProfile.objects.get(user=self.request.user)
         user_profile.update_subscription_status()
         user_profile.check_for_subscription_messages(self.request)
+        payments     = Payment.objects.filter(user=self.request.user, status='PMT_APPROV')
 
         context['user_stats'] = StatsUser.objects.get(user=self.request.user)
         context['user_profile'] = user_profile
+        context['payments']     = payments
 
         return context
 

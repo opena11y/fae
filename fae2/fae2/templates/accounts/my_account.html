@@ -122,7 +122,7 @@
       </tr>
     </thead>
     <tbody>
-        {% for payment in user_profile.user.payments.all %}
+        {% for payment in payments %}
         <tr>
             <th class="text">{{payment.reference_time|date:"Y-m-d"}}</th>
             <td class="text">{{payment.account_type}}</td>
