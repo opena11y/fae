@@ -11,7 +11,7 @@ Payment Information
 
 {% block content %}
 
-  
+
   <table class="details table table-striped table-hover sortable" aria-labelledby="id_title">
     <thead>
       <tr>
@@ -19,27 +19,29 @@ Payment Information
         <th class="text">date</th>
         <th class="text">Account Type</th>
         <th class="num">Amount</th>
+        <th class="text">Invoice</th>
       </tr>
     </thead>
     <tbody>
-      {% if approved_payments.count %}
       {% for p in approved_payments %}
       <tr>
         <td class="text">{{p.user}}</td>
         <td class="text">{{p.reference_time|date:"Y-m-d"}}</td>
         <td class="text">{{p.account_type}}</td>
         <td class="num">${{p.actual_subscription_cost}}</td>
+        <td class="text"><a href="{% url 'invoice' p.reference_id %}" >{{p.invoice_number}}</a></td>
       </tr>
-      {% endfor %}
-      {% else %}
+      {% empty %}
       <tr>
         <td>none</td>
         <td></td>
         <td></td>
+        <td></td>
+        <td></td>
       </tr>
-      {% endif %}
+      {% endfor %}
     </tbody>
-  </table> 
+  </table>
 
 
 {% endblock %}

@@ -1,0 +1,121 @@
+{% load staticfiles i18n %}
+<html>
+
+<head>
+  <title>Functional Accessibility Evaluator Invoice: {{payment.invoice_number}}</title>
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+  <link rel="stylesheet" href="{% static 'css/bootstrap-theme.css' %}">
+
+  <!-- Your stuff: Third-party css libraries go here -->
+  <link rel="stylesheet" href="{% static 'css/bootstrap-accessibility.css' %}">
+  <link rel="stylesheet" href="{% static 'css/bootstrap-sortable.css' %}">
+
+  <style>
+  body {
+    margin: 1em;
+  }
+
+  main section {
+    margin-top: 2em;
+  }
+
+  main section .title {
+    font-weight: bold;
+  }
+
+  main table {
+    width: 20em;
+  }
+å
+  main table thead th.num,
+  main table tbody td.num {    width: 5em;
+    text-align: right;
+  }
+
+
+  main table tbody td[colspan] {
+    text-align: right;
+  }
+
+  main h2 {
+    font-size: 150%;
+  }
+
+</style>
+
+</head>
+
+<body>
+
+  <header>
+    <imFunctional Accessibility Evaluator
+  </header>
+
+  <main>
+
+    <h1>Invoice</h1>
+
+    <div>Invoice Number: {{payment.invoice_number}}</div>
+    <div>Issue Date: {{payment.reference_time|date:"j M Y"}}</div>
+
+    <section class="contact">
+      <div class="title">From:</div>
+      <div>Division of Disability Resources Education Services</div>
+      <div>College of Applied Health Sciences</div>
+      <div>University of Illinois</div>
+      <div>1207 S. Oak Street</div>
+      <div>Champaign, IL 61820</div>
+      <div>(217) 244-5870</div>
+    </section>
+
+    <section class="contact">
+      <div class="title">To:</div>
+      <div>{{payment.user.first_name}} {{payment.user.last_name}}</div>
+      {% if user_profile.dept %}<div>{{user_profile.dept}}</div>{% endif %}
+      {% if user_profile.org  %}<div>{{user_profile.org }}</div>{% endif %}
+    </section>
+
+    <h2>Charges and Payment</h2>
+
+    <table class="table table-striped" style="max-width: 40em">
+      <thead>
+        <tr>
+          <th id="date"  class="date">Date</th>
+          <th id="type"  class="desc">Subscription Type</th>
+          <th id="price" class="num">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td headers="date">{{payment.reference_time|date:"j M Y"}}</td>
+          <td headers="type">{{payment.account_type}}
+            <br/>Permanent Archived Reports: {{payment.account_type.max_permanent}}
+            <br/>Max Depth of Spidering: {{payment.account_type.max_depth}}
+            <br/>Max web pages per report: {{payment.account_type.max_pages}}
+            <br/>Subscription end date: {{payment.subscription_end|date:"j M Y"}}
+          </td>
+          <td headers="price" class="num">${{payment.subscription_cost}}</td>
+        </tr>
+        <tr>
+          <td id="paym" colspan="2" class="payment">Payment</td>
+          <td headers="paym" class="num">${{payment.subscription_cost}}</td>
+        </tr>
+        <tr>
+          <td id="balance" colspan="2">Balance</td>
+          <td headers="balence" class="num">$0</td>
+        </tr>
+      </tbody>
+    </table>
+
+   <main>
+
+  <footer>
+
+  </footer>
+
+</body>
+</html>
+
+

@@ -26,7 +26,7 @@ Payment Error
 </div>
 
 {% else %}
-    
+
   {% if payment.status == 'PMT_MAX_ATTEMPT' %}
 
 <div class="error">
@@ -54,7 +54,7 @@ Payment Error
         {% if payment.status == 'PMT_SESSION' %}
 
 <div class="error">
-  <p>Your account has been updated since starting this payment session.  
+  <p>Your account has been updated since starting this payment session.
      Check <a href="(% url 'my_account' %}">your account</a> information before trying to update or extend your subscription.
      You may want to close other browsers and other browser windows before proceeding with another payment attempt.
   </p>
@@ -65,24 +65,24 @@ Payment Error
 
 <div class="success">
     <p>There was <strong>no</strong> cost associated with updating your subscription.</p>
-    <p><a href="{% url 'my_account' %}">View updated account information.</a></p> 
-</div>  
+    <p><a href="{% url 'my_account' %}">View updated account information.</a></p>
+</div>
 
           {% else %}
 
 <div class="success">
     <p>Your payment of ${{payment.actual_subscription_cost}} was approved.</p>
     <p>Thank you for your extending or updating your subscription!</p>
-    <p><a href="{% url 'my_account' %}">View updated account information.</a></p> 
-</div>  
+    <p><a target="_invoice" href="{% url 'invoice' payment.reference_id%}">View Invoice.</a></p>
+</div>
           {% endif %}
         {% endif %}
       {% endif %}
     {% endif %}
   {% endif %}
-{% endif %}    
+{% endif %}
 
- 
+
 {% endblock %}
 
 
@@ -90,7 +90,7 @@ Payment Error
 
 <script type="text/javascript">
 
- 
+
 </script>
 
 {% endblock %}

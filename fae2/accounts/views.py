@@ -785,6 +785,17 @@ class PaymentInformationView(LoginRequiredMixin, FAENavigationMixin, TemplateVie
 
         return context
 
+class InvoiceView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
+    template_name = 'accounts/invoice.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(InvoiceView, self).get_context_data(**kwargs)
+
+        payment = Payment.objects.get(reference_id=kwargs['reference_id'])
+
+        context['payment'] = payment
+
+        return context
 
 class DisabledView(TemplateView):
     template_name = 'accounts/disabled.html'

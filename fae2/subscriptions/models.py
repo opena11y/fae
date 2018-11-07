@@ -56,16 +56,16 @@ class SubscriptionRate(models.Model):
         verbose_name        = "Subscription Rate"
         verbose_name_plural = "Subscription Rates"
         ordering = ['account_type']
-    
+
     def __str__(self):
         return 'Subscription Rate: ' + self.account_type.title
 
     def save(self):
-      
-        if self.description:   
+
+        if self.description:
             self.description_html  = markdown.markdown(self.description)
-      
-        super(SubscriptionRate, self).save() # Call the "real" save() method.  
+
+        super(SubscriptionRate, self).save() # Call the "real" save() method.
 
 
 PAYMENT_STATUS = (
@@ -95,7 +95,7 @@ class Payment(models.Model):
     status           = models.CharField(max_length=16, choices=PAYMENT_STATUS, default='NEW')
 
     # used to verify that a payment has not been made in abother session
-    subscription_balance     = models.IntegerField(default=0) 
+    subscription_balance     = models.IntegerField(default=0)
 
     account_type             = models.ForeignKey(AccountType, related_name="payments", null=True, blank=True, on_delete=models.CASCADE)
 
@@ -126,18 +126,19 @@ class Payment(models.Model):
         verbose_name        = "Payment"
         verbose_name_plural = "Payments"
         ordering = ['reference_time', 'capture_time']
-    
+
     def __str__(self):
-        return 'Payment: ' + str(self.user) + ' (' + str(self.reference_time) 
+        return 'Payment: ' + str(self.user) + ' (' + str(self.reference_time)
 
     def save(self):
 
         if self.reference_id == '':
             self.reference_id = id_generator(50)
 
-        super(Payment, self).save() # Call the "real" save() method.         
+        super(Payment, self).save() # Call the "real" save() method.
 
 
-   
-            
-     
+    def invoice_number(self):
+        return "FAE-" + self.reference_time.strftime('%Y') + "-" + str(self.id)
+
+
