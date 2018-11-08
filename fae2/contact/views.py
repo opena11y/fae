@@ -25,9 +25,9 @@ from django.core.mail import send_mail
 from django.core.urlresolvers import reverse_lazy, reverse
 
 from django.contrib.messages.views import SuccessMessageMixin
-from django.views.generic       import CreateView 
-from django.views.generic       import UpdateView 
-from django.views.generic       import TemplateView 
+from django.views.generic       import CreateView
+from django.views.generic       import UpdateView
+from django.views.generic       import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from django.contrib.auth.models import User
@@ -47,7 +47,7 @@ class ContactFormView(LoginRequiredMixin, FAENavigationMixin, SuccessMessageMixi
     template_name = 'contact/contact_form.html'
 
     success_url = reverse_lazy('contact_form')
-    success_message = "Message on \"%(topic)s\" was sent succesfully sent"
+    success_message = "Message on \"%(topic)s\" was sent successfully sent"
 
     login_url = reverse_lazy('login')
     redirect_field_name = "Login"
@@ -57,13 +57,13 @@ class ContactFormView(LoginRequiredMixin, FAENavigationMixin, SuccessMessageMixi
         user = self.request.user
         form.instance.user = user
 
-        message = "The following message was submitted to the FAE contact system" 
+        message = "The following message was submitted to the FAE contact system"
         message += "\n\nUser: " + user.first_name + " " + user.last_name
         message += "\nUsername: " + user.username
         message += "\nE-mail: " + user.email
-        message += "\n\nTopic: " + form.instance.topic 
+        message += "\n\nTopic: " + form.instance.topic
         message += "\n\nMessage:\n" + form.instance.message
-        
+
         contact_topic = "FAE: " + form.instance.topic
 
         send_mail(contact_topic, message, EMAIL_HOST_USER, [ADMIN_EMAIL], fail_silently=False)
@@ -86,15 +86,15 @@ class ResponseFormView(LoginRequiredMixin, FAENavigationMixin, UpdateView):
         user = contact.user
         form.instance.user = user
 
-        message = "The following message was submitted to the FAE contact system" 
+        message = "The following message was submitted to the FAE contact system"
         message += "\n\nUser: "      + user.first_name + " " + user.last_name
         message += "\nUsername: "    + user.username
         message += "\nE-mail: "      + user.email
-        message += "\n\nTopic: "     + form.instance.topic 
+        message += "\n\nTopic: "     + form.instance.topic
         message += "\n\nStatus:\n"   + form.instance.show_status()
         message += "\n\nMessage:\n"  + form.instance.message
         message += "\n\nResponse:\n" + form.instance.comments
-        
+
         contact_topic = "FAE: " + form.instance.topic
 
         send_mail(contact_topic, message, EMAIL_HOST_USER, [contact.user.email], fail_silently=False)
@@ -121,8 +121,8 @@ class ResponsesView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
 
         context['new_contacts']  = Contact.objects.filter(status='NR')
         context['old_contacts']  = Contact.objects.exclude(status='NR')
-        
-        return context            
+
+        return context
 
 
 class AnnouncementFormView(LoginRequiredMixin, FAENavigationMixin, SuccessMessageMixin, CreateView):
@@ -151,5 +151,5 @@ class AnnouncementsView(FAENavigationMixin, TemplateView):
 
         context['current']  = Announcement.objects.exclude(status='Arch')
         context['archived'] = Announcement.objects.filter(status='Arch')
-        
-        return context            
+
+        return context

@@ -72,9 +72,10 @@
 
     <section class="contact">
       <div class="title">To:</div>
-      <div>{{payment.user.first_name}} {{payment.user.last_name}}</div>
-      {% if user_profile.dept %}<div>{{user_profile.dept}}</div>{% endif %}
-      {% if user_profile.org  %}<div>{{user_profile.org }}</div>{% endif %}
+      <div>Username: {{payment.user.username}}</div>
+      <div>Name: {{payment.user.first_name}} {{payment.user.last_name}}</div>
+      {% if user_profile.dept %}<div>Department: {{user_profile.dept}}</div>{% endif %}
+      {% if user_profile.org  %}<div>Organization: {{user_profile.org }}</div>{% endif %}
     </section>
 
     <h2>Charges and Payment</h2>

@@ -20,23 +20,23 @@
                 <th class="text" style="width: 8em">Account Type</th>
                 <td>{{user_profile.account_type}}</td>
             </tr>
-            <tr>    
+            <tr>
                 <th class="text">Started</th>
                 <td>
                 {% if user_profile.subscription_status == 'CURRENT' %}{{user_profile.subscription_start|date:"n/j/Y"}}{% else %}-{% endif %}
                 </td>
             </tr>
-            <tr>    
+            <tr>
                 <th class="text">Ends</th>
                 <td>
                 {% if user_profile.subscription_status == 'CURRENT' %}{{user_profile.subscription_end|date:"n/j/Y"}}{% else %}-{% endif %}
                 </td>
             </tr>
             {% if user_profile.subscription_status == 'EXPIRED' and last_subscription %}
-            <tr>    
+            <tr>
                 <th class="text">Last Subscription</th>
                 <td>
-                    <ul>            
+                    <ul>
                     {{last_subscription.account_type}}<br/>
                     Ended on {{ user_profile.subscription_end|date:"n/j/Y"}}
                     </ul>
@@ -44,7 +44,7 @@
             </tr>
             {% endif %}
         </tbody>
-    </table>    
+    </table>
 
 
 
@@ -89,7 +89,7 @@
                 </div>
                 {% endif %}
             {% endfor %}
-        </fieldset>    
+        </fieldset>
 
         <fieldset id="id_subscription_duration" {% if form.subscription_duration.errors|length %}class="error"{% endif %} class="fae_group">
             {% if form.subscription_duration.errors|length %}
@@ -109,18 +109,18 @@
                         {% endif %}
                         onclick="updateSubscriptionCost()"
                     />
-                    <label  for="id_subscription_duration_{{ forloop.counter }}">{{choice.1}} 
+                    <label  for="id_subscription_duration_{{ forloop.counter }}">{{choice.1}}
                         (<span id="id_subscription_cost_{{ forloop.counter }}"></span>)
                     </label>
                 </div>
             {% endfor %}
-        </fieldset>                
+        </fieldset>
 
         <div class="fae_group" >
             <label for="id_subscription_end">End Date</label>
             <div {% if form.subscription_end.errors|length %}class="error"{% endif %}>
             <div class="fae_textbox">
-            <input 
+            <input
                 type="text"
                 readonly
                 id="id_subscription_end"
@@ -128,14 +128,14 @@
                 value="{{form.subscription_end.value|slugify}}"
                 {% if form.subscription_end.errors|length %}aria-invalid="true"{% endif %}
                 size="12"/>
-            </div>    
+            </div>
             {% if form.subscription_end.errors|length %}
             <label class="error" for="id_subscription_end">{% for error in form.subscription_end.errors %}{{error}}{% endfor %}</label>
             {% endif %}
             </div>
         </div>
 
-        <input 
+        <input
             type="hidden"
             id="id_subscription_cost"
             name="subscription_cost"
@@ -145,7 +145,7 @@
             <label for="id_actual_subscription_cost">Actual Cost</label>
             <div {% if form.actual_subscription_cost.errors|length %}class="error"{% endif %}>
             <div class="fae_textbox">
-            <input 
+            <input
                 type="text"
                 readonly
                 id="id_actual_subscription_cost"
@@ -154,7 +154,7 @@
                 {% if form.subscription_cost.errors|length %}aria-invalid="true"{% endif %}
                 size="6"
                 aria-describedby="id_explain_cost id_us_dollars"/>
-            </div>    
+            </div>
             <span id="id_explain_cost"></span>
             {% if form.subscription_cost.errors|length %}
             <label class="error" for="id_actual_subscription_cost">{% for error in form.subscription_cost.errors %}{{error}}{% endfor %}</label>
@@ -215,7 +215,7 @@
             // Convert back to days and return
             return Math.round(difference_ms/ONE_DAY);
 
-        }        
+        }
 
         var days = days_between();
 
@@ -234,10 +234,10 @@
 
             for(var i = 0; i < choices.length; i++) {
                 var choice = choices[i];
-                if (choice.checked) { 
+                if (choice.checked) {
                     isCurrentAccountType = choice.getAttribute('data-current') === 'true';
                     return subscriptionCosts[choice.value];
-                }    
+                }
             }
 
             return subscriptionCosts['2'];
@@ -252,7 +252,7 @@
                     if (value > 0) {
                         node.innerHTML = '$' + value.toString();
                         node.parentNode.previousElementSibling.setAttribute('data-value', value + '.' + duration);
-                    } 
+                    }
                     else {
                         if (credit > 0 ) {
                             node.innerHTML = 'no cost, using credit from current subscription';
@@ -261,8 +261,8 @@
                         else {
                             node.innerHTML = 'no cost';
                             node.parentNode.previousElementSibling.setAttribute('data-value', '0.0');
-                        }    
-                    }    
+                        }
+                    }
                 }
             }
 
@@ -341,14 +341,14 @@
             if (actualCost > 0 && credit > 0) {
                 // if new account type apply balance to new account and use today as start date
                 actualCost = cost - credit;
-                if (actualCost < 0 ) { 
+                if (actualCost < 0 ) {
                     actualCost = 0;
                     credit = cost;
-                }    
+                }
 
                 explainCost.innerHTML = "Actual cost includes $" + credit + " credit for current subscription payments.";
             }
-        }    
+        }
 
         end.setDate(end.getDate()+ (parseInt(duration)));
 
