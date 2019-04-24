@@ -121,16 +121,16 @@ The "secrets.json" file must be created and provides:
 * [Configuring wsgi.py for multiple Django apps](https://docs.djangoproject.com/en/1.9/howto/deployment/wsgi/modwsgi/)
 
 ### Setup Static Files
-* Enable the virtual environment for fae so it is available from the command prompt, `source [path to virtual environment]/bin/activate`.
+* Enable the virtual environment for fae so it is available from the command prompt:<br/>`source [path to virtual environment]/bin/activate`.
 * Change directory to the fae directory with the file `manage.py'.
 * You will need to run <code>python manage.py collectstatic</code> to copy static files to the static directory
 
 ### Initialize database tables
-* Enable the virtual environment for fae so it is available from the command prompt, `source [path to virtual environment]/bin/activate`.
+* If not enabled, enable the virtual environment for fae so it is available from the command prompt:<br/>`source [path to virtual environment]/bin/activate`.
 * Change directory to the fae directory with the file `manage.py'.
-* You will need to run <code>python manage.py migrate</code> to create the tables in the database
+* You will need create the tables in the database:<br/><code>python manage.py migrate</code>
 * After the tables in the database are created, go to the "populate" directory
-* In the populate directory run <code>python pop_all.py</code> to initialize the tables
+* In the populate directory run to initialize the tables:<br/><code>python pop_all.py</code> 
 
 ### fae-util configuration and testing
 * Purpose of fae-util
