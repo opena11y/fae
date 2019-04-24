@@ -123,14 +123,14 @@ The "secrets.json" file must be created and provides:
 ### Setup Static Files
 * Enable the virtual environment for fae so it is available from the command prompt:<br/>`source [path to virtual environment]/bin/activate`.
 * Change directory to the fae directory with the file `manage.py'.
-* You will need to run <code>python manage.py collectstatic</code> to copy static files to the static directory
+* You will need to run the following command to copy static files to the static directory:<br/><code>python manage.py collectstatic</code> 
 
 ### Initialize database tables
-* If not enabled, enable the virtual environment for fae so it is available from the command prompt:<br/>`source [path to virtual environment]/bin/activate`.
+* If not already enabled, enable the virtual environment for fae so it is available from the command prompt:<br/>`source [path to virtual environment]/bin/activate`.
 * Change directory to the fae directory with the file `manage.py'.
-* You will need create the tables in the database:<br/><code>python manage.py migrate</code>
-* After the tables in the database are created, go to the "populate" directory
-* In the populate directory run to initialize the tables:<br/><code>python pop_all.py</code> 
+* Run the following command to create the tables in the database:<br/><code>python manage.py migrate</code>
+* After the tables in the database are created, go to the "populate" directory.
+* In the populate directory initialize the tables using the following command:<br/><code>python pop_all.py</code> 
 
 ### fae-util configuration and testing
 * Purpose of fae-util
