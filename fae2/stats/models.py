@@ -154,7 +154,7 @@ class StatsDay(models.Model):
                 previous_day = StatsDay.objects.filter(stats_month=previous_month)
 
                 if len(previous_day):
-                    previous_day = previous_day[-1]
+                    previous_day = previous_day[len(previous_day)-1]
                 else:
                     previous_day = False
 
