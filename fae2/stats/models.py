@@ -151,7 +151,7 @@ class StatsDay(models.Model):
         else:
             previous_month = self.stats_month.get_previous_month()
             if previous_month:
-                previous_day = StatsDay.objects.filter(stats_year=self.previous_month)
+                previous_day = StatsDay.objects.filter(stats_month=previous_month)
 
                 if len(previous_day):
                     previous_day = previous_day[-1]
