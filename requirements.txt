@@ -1,4 +1,4 @@
-Django==1.9
+Django==1.11.23
 django-password-reset==0.9
 django-registration==2.0.4
 django-timezone-field==1.3
