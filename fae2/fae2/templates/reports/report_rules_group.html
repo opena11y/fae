@@ -28,7 +28,7 @@
 {% endblock %}
 
 {% block content %}
-    
+
   {% include "reports/rules_summary.html" %}
 
 <section class="report" aria-labelledby="id_result_label">
@@ -50,33 +50,33 @@
             <th id="id_pas" class="num"   title="Not Applicable">N/A</th>
             <th id="id_ovr" class="num sep"   title="Pass/Fail/manual Checks Implementation Score">Score</th>
             <th id="id_sta" class="text"   title="Implementation Status">Status</th>
-          </tr>  
+          </tr>
         </thead>
         <tbody>
-            {% for rr in group.ws_rule_results.all %} 
+            {% for rr in group.ws_rule_results.all %}
             <tr>
                 <td id="id_r{{forloop.counter}}" class="text" headers="id_rid">
                   {{rr.rule.nls_rule_id}}
-                </a>  
+                </a>
                 <td class="text" headers="id_grp">
                   <a href="{% url 'report_rules_group_rule' report.slug view group.slug rr.slug %}">
                     {{rr.get_title}}
                   </a>
                 </td>
 
-                {% if rr.result_value = 5 %}
+                {% if rr.result_value == 5 %}
                 <td class="text violation"  headers="id_r{{forloop.counter}} id_res">
                 Violation
-                {% elif rr.result_value = 4 %}
+                {% elif rr.result_value == 4 %}
                 <td class="text warning"  headers="id_r{{forloop.counter}} id_res">
                 Warning
-                {% elif rr.result_value = 3 %}
+                {% elif rr.result_value == 3 %}
                 <td class="text manual_check"  headers="id_r{{forloop.counter}} id_res">
                 Manual Check
-                {% elif rr.result_value = 2 %}
+                {% elif rr.result_value == 2 %}
                 <td class="text passed"  headers="id_r{{forloop.counter}} id_res">
                 Passed
-                {% elif rr.result_value = 1 %}
+                {% elif rr.result_value == 1 %}
                 <td class="text not_applicable"  headers="id_r{{forloop.counter}} id_res">
                 Not Applicable
                 {% else %}
@@ -136,10 +136,10 @@
                 {% include 'reports/implementation_status.html' with is=rr.implementation_status %}
                 </td>
 
-            </tr>    
+            </tr>
             {% endfor %}
          </tbody>
-    </table>    
+    </table>
 </section>
 
 {% include "reports/implementation_information.html" %}

@@ -43,18 +43,18 @@
 
 	<nav id="view_options" aria-label="Result View Options">
     	<ul class="nav nav-tabs">
-         	<li {% if view = 'rc' %}class="active"{% endif %}><a href="{% url 'report_page' report.slug 'rc' page.page_number %}">Rule Category</a></li>
-         	<li {% if view = 'gl' %}class="active"{% endif %}><a href="{% url 'report_page' report.slug 'gl' page.page_number %}">WCAG Guidelines</a></li>
-         	<li {% if view = 'rs' %}class="active"{% endif %}><a href="{% url 'report_page' report.slug 'rs' page.page_number %}">Rule Scope</a></li>
+         	<li {% if view == 'rc' %}class="active"{% endif %}><a href="{% url 'report_page' report.slug 'rc' page.page_number %}">Rule Category</a></li>
+         	<li {% if view == 'gl' %}class="active"{% endif %}><a href="{% url 'report_page' report.slug 'gl' page.page_number %}">WCAG Guidelines</a></li>
+         	<li {% if view == 'rs' %}class="active"{% endif %}><a href="{% url 'report_page' report.slug 'rs' page.page_number %}">Rule Scope</a></li>
     	</ul>
 	</nav>
 
     <section class="report" aria-labelledby="id_result_label">
         <h2 id="id_result_label" class="sr-only">
-        {% if view = 'gl' %}
+        {% if view == 'gl' %}
           Results by WCAG 2.0 Guideline
         {% else %}
-          {% if view = 'rs' %}
+          {% if view == 'rs' %}
           Results by Rule Scope
           {% else %}
           Results by Rule Category
