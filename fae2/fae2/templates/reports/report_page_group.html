@@ -5,8 +5,8 @@
 {% block breadcrumb %}
     {% if report.page_count > 1 %}
     <li><a href="{% url 'report_pages'       report.slug view %}">All Pages</a></li>
-    <li><a href="{% url 'report_pages_group' report.slug view group.slug %}">{{group.get_title}} Rules</a></li>
     <li>Page {{page.page_number}}</li>
+    <li>{{group.get_title}} Rules</li>
     {% else %}
     <li><a href="{% url 'report_page'       report.slug view 1 %}">Page Summary</a></li>
     <li>{{group.get_title}} Rules</li>
