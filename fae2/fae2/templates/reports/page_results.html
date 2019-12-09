@@ -18,10 +18,10 @@
             <th id="id_pas" class="num"  title="Passed">P</th>
             <th id="id_ovr" class="num sep" title="Pass/Fail/manual Checks Implementation Score">Score</th>
             <th id="id_sta" class="text" title="Implementation Status">Status</th>
-          </tr>  
+          </tr>
         </thead>
         <tbody>
-            {% for prr in ws_rule_result.page_rule_results.all %} 
+            {% for prr in ws_rule_result.page_rule_results.all %}
             <tr>
                 <td id="id_r{{forloop.counter}}" class="text" headers="id_pgn">
                     {{prr.page_result.page_number}}
@@ -33,19 +33,19 @@
                   </a>
                 </td>
 
-                {% if prr.result_value = 5 %}
+                {% if prr.result_value == 5 %}
                 <td class="text violation"  headers="id_r{{forloop.counter}} id_res">
                 Violation
-                {% elif prr.result_value = 4 %}
+                {% elif prr.result_value == 4 %}
                 <td class="text warning"  headers="id_r{{forloop.counter}} id_res">
                 Warning
-                {% elif prr.result_value = 3 %}
+                {% elif prr.result_value == 3 %}
                 <td class="text manual_check"  headers="id_r{{forloop.counter}} id_res">
                 Manual Check
-                {% elif prr.result_value = 2 %}
+                {% elif prr.result_value == 2 %}
                 <td class="text passed"  headers="id_r{{forloop.counter}} id_res">
                 Passed
-                {% elif prr.result_value = 1 %}
+                {% elif prr.result_value == 1 %}
                 <td class="text not_applicable"  headers="id_r{{forloop.counter}} id_res">
                 Not Applicable
                 {% else %}
@@ -98,32 +98,32 @@
                 {% include 'reports/implementation_status.html' with is=prr.implementation_status %}
                 </td>
 
-            </tr>    
+            </tr>
             {% endfor %}
         </tbody>
-        <tbody>    
+        <tbody>
             <tr class="summary">
                 <td class="text">
-                    
+
                 </td>
 
                 <td id="id_all" class="text" headers="id_pgn">
                 All Pages
                 </td>
 
-               {% if ws_rule_result.result_value = 5 %}
+               {% if ws_rule_result.result_value == 5 %}
                 <td class="text violation"  headers="id_all id_res">
                 Violation
-                {% elif ws_rule_result.result_value = 4 %}
+                {% elif ws_rule_result.result_value == 4 %}
                 <td class="text warning"  headers="id_all id_res">
                 Warning
-                {% elif ws_rule_result.result_value = 3 %}
+                {% elif ws_rule_result.result_value == 3 %}
                 <td class="text manual_check"  headers="id_all id_res">
                 Manual Check
-                {% elif ws_rule_result.result_value = 2 %}
+                {% elif ws_rule_result.result_value == 2 %}
                 <td class="text passed"  headers="id_all id_res">
                 Passed
-                {% elif ws_rule_result.result_value = 1 %}
+                {% elif ws_rule_result.result_value == 1 %}
                 <td class="text not_applicable"  headers="id_all id_res">
                 Not Applicable
                 {% else %}
@@ -176,7 +176,7 @@
                 {% include 'reports/implementation_status.html' with is=ws_rule_result.implementation_status%}
                 </td>
 
-            </tr>    
+            </tr>
          </tbody>
-    </table>    
-</section>    
+    </table>
+</section>
