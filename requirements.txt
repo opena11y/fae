@@ -1,9 +1,11 @@
-Django==1.9
-django-password-reset==0.9
-django-registration==2.0.4
-django-timezone-field==1.3
-psycopg2
+confusable-homoglyphs==3.2.0
+Django==2.2.7
+django-password-reset==2.0
+django-registration==2.4.1
+django-timezone-field==3.1
 future==0.15.2
 Markdown==2.6.5
-pytz==2015.7
+psycopg2==2.8.4
+pytz==2019.3
 requests==2.10.0
+sqlparse==0.3.0

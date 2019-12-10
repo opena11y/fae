@@ -22,12 +22,12 @@ Author: Jon Gunderson
 # contact/views.py
 from __future__ import absolute_import
 from django.core.mail import send_mail
-from django.core.urlresolvers import reverse_lazy, reverse
+from django.urls import reverse_lazy, reverse
 
 from django.contrib.messages.views import SuccessMessageMixin
-from django.views.generic       import CreateView
-from django.views.generic       import UpdateView
-from django.views.generic       import TemplateView
+from django.views.generic import CreateView
+from django.views.generic import UpdateView
+from django.views.generic import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 from django.contrib.auth.models import User
@@ -39,6 +39,7 @@ from reports.views import FAENavigationMixin
 
 from fae2.settings import EMAIL_HOST_USER
 from fae2.settings import ADMIN_EMAIL
+
 
 # Create your views here.
 class ContactFormView(LoginRequiredMixin, FAENavigationMixin, SuccessMessageMixin, CreateView):
@@ -81,18 +82,17 @@ class ResponseFormView(LoginRequiredMixin, FAENavigationMixin, UpdateView):
     redirect_field_name = "Anonymous Report"
 
     def form_valid(self, form):
-
         contact = self.get_object()
         user = contact.user
         form.instance.user = user
 
         message = "The following message was submitted to the FAE contact system"
-        message += "\n\nUser: "      + user.first_name + " " + user.last_name
-        message += "\nUsername: "    + user.username
-        message += "\nE-mail: "      + user.email
-        message += "\n\nTopic: "     + form.instance.topic
-        message += "\n\nStatus:\n"   + form.instance.show_status()
-        message += "\n\nMessage:\n"  + form.instance.message
+        message += "\n\nUser: " + user.first_name + " " + user.last_name
+        message += "\nUsername: " + user.username
+        message += "\nE-mail: " + user.email
+        message += "\n\nTopic: " + form.instance.topic
+        message += "\n\nStatus:\n" + form.instance.show_status()
+        message += "\n\nMessage:\n" + form.instance.message
         message += "\n\nResponse:\n" + form.instance.comments
 
         contact_topic = "FAE: " + form.instance.topic
@@ -105,7 +105,6 @@ class ResponseFormView(LoginRequiredMixin, FAENavigationMixin, UpdateView):
         return reverse('responses', kwargs={})
 
     def get_context_data(self, **kwargs):
-
         context = super(ResponseFormView, self).get_context_data(**kwargs)
         context['action'] = reverse('response_form',
                                     kwargs={'pk': self.get_object().id})
@@ -119,8 +118,8 @@ class ResponsesView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super(ResponsesView, self).get_context_data(**kwargs)
 
-        context['new_contacts']  = Contact.objects.filter(status='NR')
-        context['old_contacts']  = Contact.objects.exclude(status='NR')
+        context['new_contacts'] = Contact.objects.filter(status='NR')
+        context['old_contacts'] = Contact.objects.exclude(status='NR')
 
         return context
 
@@ -133,14 +132,11 @@ class AnnouncementFormView(LoginRequiredMixin, FAENavigationMixin, SuccessMessag
     success_url = reverse_lazy('create_announcement')
     success_message = "Announcement on \"%(topic)s\" was sent succesfully created"
 
-
     login_url = reverse_lazy('run_anonymous_report')
     redirect_field_name = "Anonymous Report"
 
     def form_valid(self, form):
-
         return super(AnnouncementFormView, self).form_valid(form)
-
 
 
 class AnnouncementsView(FAENavigationMixin, TemplateView):
@@ -149,7 +145,7 @@ class AnnouncementsView(FAENavigationMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super(AnnouncementsView, self).get_context_data(**kwargs)
 
-        context['current']  = Announcement.objects.exclude(status='Arch')
+        context['current'] = Announcement.objects.exclude(status='Arch')
         context['archived'] = Announcement.objects.filter(status='Arch')
 
         return context

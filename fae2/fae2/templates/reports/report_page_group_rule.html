@@ -1,12 +1,12 @@
 {% extends "base.html" %}
-{% load staticfiles i18n %}
+{% load static i18n %}
 {% load tz %}
 
 {% block breadcrumb %}
     {% if report.page_count > 1 %}
     <li><a href="{% url 'report_pages'       report.slug view %}">All Pages</a></li>
+    <li><a href="{% url 'report_pages_group' report.slug view group.slug %}">{{group.get_title}} Rules</a></li>
     <li><a href="{% url 'report_page_group'  report.slug view group.slug page.page_number   %}">Page {{page.page_number}}</a></li>
-    <li>{{group.get_title}} Rules</li>
     <li>{{page_rule_result.rule.nls_rule_id}}</li>
     {% else %}
     <li><a href="{% url 'report_page'       report.slug view 1 %}">Page Summary</a></li>

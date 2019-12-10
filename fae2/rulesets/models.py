@@ -31,7 +31,7 @@ import markdown
 
 from ruleCategories.models import RuleCategory
 from wcag20.models import Guideline
-
+from django.urls import reverse
 
 
 ## Rule Sets (e.g. WCAG20_ARIA_STRICT)
@@ -80,10 +80,9 @@ class Ruleset(models.Model):
       self.description_html  = markdown.markdown(self.description)
       
     super(Ruleset, self).save() # Call the "real" save() method.  
-    
-  @models.permalink
+
   def get_show_ruleset_url(self):
-    return ('ruleset', [self.slug, 'rc'])     
+    return reverse('ruleset', [self.slug, 'rc'])
     
   def get_number_of_rules(self):
     return len(self.rule_mappings.all())

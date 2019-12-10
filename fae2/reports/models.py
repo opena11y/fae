@@ -32,7 +32,7 @@ from django.db import models
 from future.standard_library import install_aliases
 install_aliases()
 from urllib.parse import urlparse
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from pytz import timezone
 from django.contrib.sites.models import Site
 
@@ -503,7 +503,7 @@ class WebsiteReport(RuleGroupResult):
 
       for pr in self.page_all_results.all():
         if view == 'rs':
-          pr = pr.page_rs_results.get(rule_scope__slug=group)
+          pr = pr.page_rs_results.get(rule_category__slug=group)
         elif view == 'gl':
           pr = pr.page_gl_results.get(guideline__slug=group)
         elif view == 'rc':

@@ -20,6 +20,7 @@ Author: Jon Gunderson
 """
 
 from __future__ import absolute_import
+
 """
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.8/topics/http/urls/
@@ -41,7 +42,6 @@ from django.contrib import admin
 from fae2.settings import SHIBBOLETH_ENABLED
 from fae2.settings import FAE_DISABLED
 
-
 from reports import views
 
 from accounts.views import Logout
@@ -55,39 +55,40 @@ from accounts.views import DisabledView
 
 if FAE_DISABLED:
     urlpatterns = [
-        url(r'^$',  DisabledView.as_view()),
-        url(r'^(?P<item1>\w+)/$',  DisabledView.as_view()),
-        url(r'^(?P<item1>\w+)/(?P<item2>\w+)/$',  DisabledView.as_view()),
-        url(r'^(?P<item1>\w+)/(?P<item2>\w+)/(?P<item3>\w+)/$',  DisabledView.as_view()),
-        url(r'^(?P<item1>\w+)/(?P<item2>\w+)/(?P<item3>\w+)/(?P<item4>\w+)/$',  DisabledView.as_view()),
-        url(r'^(?P<item1>\w+)/(?P<item2>\w+)/(?P<item3>\w+)/(?P<item4>\w+)/(?P<item5>\w+)/$',  DisabledView.as_view()),
-        url(r'^(?P<item1>\w+)/(?P<item2>\w+)/(?P<item3>\w+)/(?P<item4>\w+)/(?P<item6>\w+)/(?P<item7>\w+)/$',  DisabledView.as_view()),
+        url(r'^$', DisabledView.as_view()),
+        url(r'^(?P<item1>\w+)/$', DisabledView.as_view()),
+        url(r'^(?P<item1>\w+)/(?P<item2>\w+)/$', DisabledView.as_view()),
+        url(r'^(?P<item1>\w+)/(?P<item2>\w+)/(?P<item3>\w+)/$', DisabledView.as_view()),
+        url(r'^(?P<item1>\w+)/(?P<item2>\w+)/(?P<item3>\w+)/(?P<item4>\w+)/$', DisabledView.as_view()),
+        url(r'^(?P<item1>\w+)/(?P<item2>\w+)/(?P<item3>\w+)/(?P<item4>\w+)/(?P<item5>\w+)/$', DisabledView.as_view()),
+        url(r'^(?P<item1>\w+)/(?P<item2>\w+)/(?P<item3>\w+)/(?P<item4>\w+)/(?P<item6>\w+)/(?P<item7>\w+)/$',
+            DisabledView.as_view()),
     ]
 else:
-  urlpatterns = [
-      url(r'^admin/',   include(admin.site.urls)),
-      # fae2 specific
-      url(r'^',           include('reports.urls')),
-      url(r'^abouts/',    include('abouts.urls')),
-      url(r'^contact/',   include('contact.urls')),
-      url(r'^account/',   include('accounts.urls')),
-      url(r'^subscription/',   include('subscriptions.urls')),
-      url(r'^rulesets/',  include('rulesets.urls')),
-      url(r'^usage/',     include('stats.urls')),
-  ]
+    urlpatterns = [
+        url(r'^admin/', admin.site.urls),
+        # fae2 specific
+        url(r'^', include('reports.urls')),
+        url(r'^abouts/', include('abouts.urls')),
+        url(r'^contact/', include('contact.urls')),
+        url(r'^account/', include('accounts.urls')),
+        url(r'^subscription/', include('subscriptions.urls')),
+        url(r'^rulesets/', include('rulesets.urls')),
+        url(r'^usage/', include('stats.urls')),
+    ]
 
-  if SHIBBOLETH_ENABLED:
-    urlpatterns += [
-        url(r'^login/$',              ShibbolethLogin.as_view(),     name='login'),
-        url(r'^logout/$',             ShibbolethLogout.as_view(),    name='logout'),
-        url(r'^shib-discovery/$',     ShibbolethDiscovery.as_view(), name='shib_discovery'),
-        url(r'^inst/(?P<domain>\w+)/$', ShibbolethInstitution.as_view(), name='shib_institution'),
-        url(r'^header-info/$',        HeaderInfo.as_view(),          name='header_info'), # debug information
-    ]
-  else:
-    urlpatterns += [
-      url(r'^accounts/',     include('registration.backends.hmac.urls')),
-      url(r'^registration/', include('django.contrib.auth.urls')),
-      url(r'^logout/$',      Logout.as_view(), name='logout'),
-      url(r'^reset/',        include('password_reset.urls')),
-    ]
+    if SHIBBOLETH_ENABLED:
+        urlpatterns += [
+            url(r'^login/$', ShibbolethLogin.as_view(), name='login'),
+            url(r'^logout/$', ShibbolethLogout.as_view(), name='logout'),
+            url(r'^shib-discovery/$', ShibbolethDiscovery.as_view(), name='shib_discovery'),
+            url(r'^inst/(?P<domain>\w+)/$', ShibbolethInstitution.as_view(), name='shib_institution'),
+            url(r'^header-info/$', HeaderInfo.as_view(), name='header_info'),  # debug information
+        ]
+    else:
+        urlpatterns += [
+            url(r'^accounts/', include('django_registration.backends.activation.urls')),
+            url(r'^registration/', include('django.contrib.auth.urls')),
+            url(r'^logout/$', Logout.as_view(), name='logout'),
+            url(r'^reset/', include('password_reset.urls')),
+        ]

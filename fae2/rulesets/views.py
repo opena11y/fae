@@ -22,7 +22,7 @@ Author: Jon Gunderson
 from __future__ import absolute_import
 from django.http import HttpResponse
 from django.views.generic import TemplateView
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 
 from ruleCategories.models import RuleCategory
 from rules.models   import Rule

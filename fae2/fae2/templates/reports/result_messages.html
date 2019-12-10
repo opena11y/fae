@@ -11,10 +11,10 @@
     {% for rm in result_messages %}
         <tr>
             <td class="text {{rm.style}}">{{rm.severity|safe}}</td>
-            <td class="text">{{rm.message|safe}}</td>
+            <td class="text">{{rm.message}}</td>
         </tr>
     {% endfor %}
     </tbody>
   </table>
-</section>
-
+</section>  
+ 
