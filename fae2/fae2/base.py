@@ -32,7 +32,7 @@ SITE_ID = 1
 DEFAULT_CHARSET = 'utf-8'
 
 here = lambda *dirs: join(abspath(dirname(__file__)), *dirs)
-root = lambda *dirs: join(abspath(here("", "..")), *dirs)
+root = lambda *dirs: join(abspath(here("", "../../")), *dirs)
 
 BASE_DIR = here("", "")
 print("BASE_DIR: " + BASE_DIR)
@@ -299,7 +299,7 @@ STATIC_ROOT = join(BASE_DIR, 'static/')
 print('STATIC ROOT: ' + STATIC_ROOT)
 
 STATICFILES_DIRS = (
-    join(APP_DIR, "static"),
+    join(APP_DIR, "fae2/static"),
 )
 
 LOGIN_REDIRECT_URL = '/'

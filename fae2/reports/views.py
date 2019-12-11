@@ -1217,7 +1217,7 @@ class ReportPageGroupRuleView(FAENavigationMixin, TemplateView):
                                        args=[report.slug, view, group_slug, page_slug, rule_slug]))
 
         [previous_rule, next_rule] = getPreviousNextRule(group.page_rule_results.all().order_by('slug'), rule_slug)
-        if previous_rule > 1:
+        if previous_rule:
             report_nav.set_previous("Page " + page_slug + " - " + previous_rule.nls_rule_id,
                                     reverse('report_page_group_rule',
                                             args=[report.slug, view, group_slug, page_slug, previous_rule.slug]))
