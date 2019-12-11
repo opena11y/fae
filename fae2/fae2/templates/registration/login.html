@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static  %}
+{% load staticfiles i18n %}
 
 {% block title %}
   Login
@@ -28,7 +28,7 @@
 
     <p><a href="{% url 'password_reset_recover' %}">Lost password?</a></p>
 
-    <form method="post" action="{% url 'login' %}">
+    <form method="post" action="{% url 'django.contrib.auth.views.login' %}">
         {% csrf_token %}
 
         {% include "forms/input_text.html" with input=form.username size=20  %}

@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static  %}
+{% load staticfiles i18n %}
 {% load tz %}
 
 {% block breadcrumb %}
@@ -45,9 +45,9 @@
 
 <nav id="view_options" aria-label="Result View Options">
     <ul class="nav nav-tabs">
-        <li {% if view = 'rc' %}class="active"{% endif %}><a href="{% url 'report_pages' report.slug 'rc' %}">Rule Category</a></li>
-        <li {% if view = 'gl' %}class="active"{% endif %}><a href="{% url 'report_pages' report.slug 'gl' %}">WCAG Guidelines</a></li>
-        <li {% if view = 'rs' %}class="active"{% endif %}><a href="{% url 'report_pages' report.slug 'rs' %}">Rule Scope</a></li>
+        <li {% if view == 'rc' %}class="active"{% endif %}><a href="{% url 'report_pages' report.slug 'rc' %}">Rule Category</a></li>
+        <li {% if view == 'gl' %}class="active"{% endif %}><a href="{% url 'report_pages' report.slug 'gl' %}">WCAG Guidelines</a></li>
+        <li {% if view == 'rs' %}class="active"{% endif %}><a href="{% url 'report_pages' report.slug 'rs' %}">Rule Scope</a></li>
     </ul>
 </nav>
 
@@ -87,19 +87,19 @@
                   </a>
                 </td>
 
-                {% if pr.result_value = 5 %}
+                {% if pr.result_value == 5 %}
                 <td class="text violation"  headers="id_r{{forloop.counter}} id_res">
                 Violation
-                {% elif pr.result_value = 4 %}
+                {% elif pr.result_value == 4 %}
                 <td class="text warning"  headers="id_r{{forloop.counter}} id_res">
                 Warning
-                {% elif pr.result_value = 3 %}
+                {% elif pr.result_value == 3 %}
                 <td class="text manual_check"  headers="id_r{{forloop.counter}} id_res">
                 Manual Check
-                {% elif pr.result_value = 2 %}
+                {% elif pr.result_value == 2 %}
                 <td class="text passed"  headers="id_r{{forloop.counter}} id_res">
                 Passed
-                {% elif pr.result_value = 1 %}
+                {% elif pr.result_value == 1 %}
                 <td class="text not_applicable"  headers="id_r{{forloop.counter}} id_res">
                 Not Applicable
                 {% else %}

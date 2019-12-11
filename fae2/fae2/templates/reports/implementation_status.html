@@ -1,25 +1,25 @@
-{% if is = 'C' %}
+{% if is == 'C' %}
 <a href="#res_c" title="Complete" class="complete">C</a>
 {% else %}
-{% if is = 'AC' %}
+{% if is == 'AC' %}
 <a href="#res_ac" title="Almost Complete" class="almost_complete">AC</a>
 {% else %}
-{% if is = 'AC-MC' %}
+{% if is == 'AC-MC' %}
 <a href="#res_ac"  title="Almost Complete with required manual checks" class="almost_complete">AC-R</a>
 {% else %}
-{% if is = 'PI' %}
+{% if is == 'PI' %}
 <a href="#res_pi"  title="Partial Implementation" class="partial_implementation">PI</a>
 {% else %}
-{% if is = 'PI-MC' %}
+{% if is == 'PI-MC' %}
 <a href="#res_pi" title="Partial Implementation with required manual checks" class="partial_implementation">PI-R</a>
 {% else %}
-{% if is = 'NI' %}
+{% if is == 'NI' %}
 <a href="#res_ni" title="Not Implemented" class="not_implemented">NI</a>
 {% else %}
-{% if is = 'NI-MC' %}
+{% if is == 'NI-MC' %}
 <a href="#res_ni" title="Not Implemented with required manual checks" class="not_implemented">NI-R</a>
 {% else %}
-{% if is = 'MC' %}
+{% if is == 'MC' %}
 <a href="#res_r" title="Required manual checks" class="not_implemented">R</a>
 {% else %}
 <a href="#res_na" title="Not Applicable" class="not_applicable">na</a>

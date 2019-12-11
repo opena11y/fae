@@ -10,55 +10,55 @@
         </thead>
         <tbody>
             <tr>
-                <th title="Number of pages with rule result" class="first">Number of Rules</th>               
-                
-                {% if summary.rules_violation = 0 %}
+                <th title="Number of pages with rule result" class="first">Number of Rules</th>
+
+                {% if summary.rules_violation == 0 %}
                 <td class="violation" title="No rules with violations on any pages">-</td>
                 {% else %}
-                {% if summary.rules_violation = 1 %}
+                {% if summary.rules_violation == 1 %}
                 <td class="violation" title="One rule with violations on at least one page">1</td>
                 {% else %}
                 <td class="violation" title="{{summary.rules_violation}} rules with violations on at least one page">{{summary.rules_violation}}</td>
                 {% endif %}
                 {% endif %}
 
-                {% if summary.rules_warning = 0 %}
+                {% if summary.rules_warning == 0 %}
                 <td class="warning" title="No rules with warnings on any pages">-</td>
                 {% else %}
-                {% if summary.rules_warning = 1 %}
+                {% if summary.rules_warning == 1 %}
                 <td class="warning" title="One page with warnings on at least one page">1</td>
                 {% else %}
                 <td class="warning" title="{{summary.rules_warning}} pages with warnings on at least one page">{{summary.rules_warning}}</td>
                 {% endif %}
                 {% endif %}
-                
-                {% if summary.rules_manual_check = 0 %}
+
+                {% if summary.rules_manual_check == 0 %}
                 <td class="manual_check" title="No rules with manual checks on any pages">-</td>
                 {% else %}
-                {% if summary.rules_manual_check = 1 %}
+                {% if summary.rules_manual_check == 1 %}
                 <td class="manual_check" title="One rule with manual checks on at least one page">1</td>
                 {% else %}
                 <td class="manual_check" title="{{summary.rules_manual_check}} rules with manual checks on at least one page">{{summary.rules_manual_check}}</td>
                 {% endif %}
                 {% endif %}
 
-                {% if summary.rules_passed = 0 %}
+                {% if summary.rules_passed == 0 %}
                 <td class="passed" title="No rules with all pass on any pages">-</td>
                 {% else %}
-                {% if summary.rules_passed = 1 %}
+                {% if summary.rules_passed == 1 %}
                 <td class="passed" title="One rule with all pass on all pages">1</td>
                 {% else %}
                 <td class="passed" title="{{summary.rules_passed}} rules with all pass on all pages">{{summary.rules_passed}}</td>
                 {% endif %}
-                {% endif %}                
-                
+                {% endif %}
+
             </tr>
         </tbody>
-    </table>  
-    
+    </table>
+
 
     <div id="id_result_description" class="sr-only">
-    
+
                 {% if summary.rules_violation > 0 %}
                 {% if summary.rules_violation == 1 %}
                 1 rule with violations;
@@ -66,15 +66,15 @@
                 {{ summary.rules_violation }} rules with violations;
                 {% endif %}
                 {% endif %}
-                
+
                 {% if summary.rules_warning > 0 %}
                 {% if summary.rules_warning == 1 %}
-                1 rule with warnings; 
+                1 rule with warnings;
                 {% else %}
                 {{ summary.rules_warning }} rules with warnings;
                 {% endif %}
                 {% endif %}
-                
+
                 {% if summary.rules_manual_check > 0 %}
                 {% if summary.rules_manual_check == 1 %}
                 1 rule with manual checks;
@@ -82,7 +82,7 @@
                 {{ summary.rules_manual_check }} rules with manual checks;
                 {% endif %}
                 {% endif %}
-                
+
                 {% if summary.rules_passed > 0 %}
                 {% if summary.rules_passed == 1 %}
                 1 rule with all passed;
@@ -91,8 +91,8 @@
                 {% endif %}
                 {% endif %}
 
-                
+
     </div>
 
-      
+
 </div>
