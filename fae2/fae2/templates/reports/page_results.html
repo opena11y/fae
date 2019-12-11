@@ -95,7 +95,7 @@
                 </td>
 
                <td class="text"  headers="id_r{{forloop.counter}} id_sta">
-                {% include 'reports/implementation_status.html' with is=prr.implementation_status %}
+                {% include 'reports/implementation_status.html' with impl_status=prr.implementation_status %}
                 </td>
 
             </tr>
@@ -173,7 +173,7 @@
                 </td>
 
                <td class="text"  headers="id_all id_sta">
-                {% include 'reports/implementation_status.html' with is=ws_rule_result.implementation_status%}
+                {% include 'reports/implementation_status.html' with impl_status=ws_rule_result.implementation_status%}
                 </td>
 
             </tr>
