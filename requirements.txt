@@ -1,7 +1,7 @@
 confusable-homoglyphs==3.2.0
 Django==2.2.7
 django-password-reset==2.0
-django-registration==2.4.1
+django-registration==3.0
 django-timezone-field==3.1
 future==0.15.2
 Markdown==2.6.5

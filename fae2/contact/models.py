@@ -91,8 +91,8 @@ class Announcement(models.Model):
     topic = models.CharField(max_length=1024)
     scope = models.CharField(max_length=8, choices=ANNOUNCEMENT_SCOPE, default="All")
     status = models.CharField(max_length=8, choices=ANNOUNCEMENT_STATUS, default="New")
-    email = models.BooleanField(verbose_name="E-mail to users", default="True")
-    web = models.BooleanField(verbose_name="Show in web views", default="True")
+    email = models.BooleanField(verbose_name="E-mail to users", default=True)
+    web = models.BooleanField(verbose_name="Show in web views", default=True)
     end_date = models.DateField(verbose_name="End date for showing in web views", null=True,
                                 blank=True)  # Show as a message in selected views and login screen, if black does not show
     message_text = models.TextField(blank=True, default="")

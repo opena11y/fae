@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='announcement',
             name='email',
-            field=models.BooleanField(default=b'True', verbose_name=b'E-mail to users'),
+            field=models.BooleanField(default=True, verbose_name=b'E-mail to users'),
         ),
         migrations.AddField(
             model_name='announcement',
@@ -25,7 +25,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='announcement',
             name='web',
-            field=models.BooleanField(default=b'True', verbose_name=b'Show in web views'),
+            field=models.BooleanField(default=True, verbose_name=b'Show in web views'),
         ),
         migrations.AlterField(
             model_name='announcement',
