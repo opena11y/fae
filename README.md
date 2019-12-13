@@ -141,6 +141,7 @@ The "secrets.json" file must be created and provides:
   * After all pages are analyzed the information in the JSON files is moved to the database
 * Testing fae-util
   * Go to the "fae-util" directory
+  * Use "./build" function to build the java classes
   * Use <code>./run -c test.properties</code> to test if the utility is properly installed and configured
   * It will output URL processing information to the console
   * It will create a directory called "test" that contains *.json files of evaluaiton results
