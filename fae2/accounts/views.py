@@ -633,7 +633,7 @@ class DonateView(FAENavigationMixin, SuccessMessageMixin, FormView):
 
         user = self.request.user
 
-        if user.is_anonymous():
+        if user.is_anonymous:
             user = User.objects.get(username='anonymous')
 
         name = form.cleaned_data['donor_name']
@@ -651,7 +651,7 @@ class DonateView(FAENavigationMixin, SuccessMessageMixin, FormView):
         initial['donor_email'] = ''
         initial['show_donation'] = False
 
-        if not self.request.user.is_anonymous():
+        if not self.request.user.is_anonymous:
             user = self.request.user
             initial['donor_name'] = user.first_name + ' ' + user.last_name
             initial['donor_email'] = user.email
