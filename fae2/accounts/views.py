@@ -410,16 +410,27 @@ class UpdateSubscriptionView(LoginRequiredMixin, FAENavigationMixin, CreateView)
         return reverse('payment_register', args=[self.object.reference_id])
 
     def register(self, amount):
+
+        print('register: ' + str(amount))
+
         try:
 
-            certification_maker = hmac.new(str(PAYMENT_SEND_KEY), digestmod=hashlib.sha1)
+            print('register[A]')
+
+            certification_maker = hmac.new(str(PAYMENT_SEND_KEY), digestmod=hashlib.sha1())
+
+            print('register[B]')
 
             now = datetime.datetime.utcnow()
             ts = now.strftime("%m-%d-%Y %H:%M:%S")
             amount = amount + '.00'
             code = amount + '|' + str(PAYMENT_SITE_ID) + '|' + ts
 
+            print('register[C]')
+
             certification_maker.update(code)
+
+            print('register[D]')
 
             payload = {'action': 'registerccpayment',
                        'siteid': PAYMENT_SITE_ID,
@@ -431,6 +442,8 @@ class UpdateSubscriptionView(LoginRequiredMixin, FAENavigationMixin, CreateView)
                        }
 
             r = requests.post(PAYMENT_URL, data=payload)
+
+            print('r: ' + str(r))
 
             ro = parse_result(r.text)
 
