@@ -121,6 +121,7 @@ The "secrets.json" file must be created and provides:
 ### Initializing and updating the database tables
 * You will need to run django `makemigrations` and `migrate` commands to update any changes (or to create the initial database) for the django apps used in FAE.
 * This needs to be done after updating to a new version of FAE.
+* For your convience there is a script `init_apps` that can be used to setup the initial migrations and run migrate
 
 
 ```
