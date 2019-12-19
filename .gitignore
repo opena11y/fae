@@ -10,4 +10,4 @@ fae2/fae-util/*.properties
 *.pyc
 *~
 .idea/
-*/migrations/
+**/migrations/
