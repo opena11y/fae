@@ -374,7 +374,7 @@ class UpdateSubscriptionView(LoginRequiredMixin, FAENavigationMixin, CreateView)
 
     def form_invalid(self, form):
 
-        return super(UpdateAccountView, self).form_invalid(form)
+        return super(UpdateSubscriptionView, self).form_invalid(form)
 
     def get_initial(self):
         # Populate ticks in BooleanFields
