@@ -423,7 +423,7 @@ class UpdateSubscriptionView(LoginRequiredMixin, FAENavigationMixin, CreateView)
             c = bytearray()
             c.extend(map(ord, code))
 
-            certification_maker = hmac.new(b, c, hashlib.sha1)
+            certification_maker = hmac.new(p, c, hashlib.sha1)
 
             payload = {'action': 'registerccpayment',
                        'siteid': PAYMENT_SITE_ID,
@@ -575,7 +575,7 @@ class PaymentView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
             c = bytearray()
             c.extend(map(ord, code))
 
-            certification_maker = hmac.new(b, c, hashlib.sha1)
+            certification_maker = hmac.new(p, c, hashlib.sha1)
 
             account = PAYMENT_ACCOUNT.split('|')
 
