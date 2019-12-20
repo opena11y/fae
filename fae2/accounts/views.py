@@ -411,26 +411,19 @@ class UpdateSubscriptionView(LoginRequiredMixin, FAENavigationMixin, CreateView)
 
     def register(self, amount):
 
-        print('register: ' + str(amount))
-
         try:
-
-            print('register[A]')
-
-            certification_maker = hmac.new(str(PAYMENT_SEND_KEY), digestmod=hashlib.sha1())
-
-            print('register[B]')
+            p = bytearray()
+            p.extend(map(ord, PAYMENT_SEND_KEY))
 
             now = datetime.datetime.utcnow()
             ts = now.strftime("%m-%d-%Y %H:%M:%S")
             amount = amount + '.00'
             code = amount + '|' + str(PAYMENT_SITE_ID) + '|' + ts
 
-            print('register[C]')
+            c = bytearray()
+            c.extend(map(ord, code))
 
-            certification_maker.update(code)
-
-            print('register[D]')
+            certification_maker = hmac.new(b, c, hashlib.sha1)
 
             payload = {'action': 'registerccpayment',
                        'siteid': PAYMENT_SITE_ID,
@@ -442,8 +435,6 @@ class UpdateSubscriptionView(LoginRequiredMixin, FAENavigationMixin, CreateView)
                        }
 
             r = requests.post(PAYMENT_URL, data=payload)
-
-            print('r: ' + str(r))
 
             ro = parse_result(r.text)
 
@@ -540,7 +531,6 @@ class PaymentView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
                 if payment.status == 'PMT_APPROV':
 
                     if profile.account_type == payment.account_type:
-                        print("Updating subscription")
                         profile.subscription_end = payment.subscription_end
                         profile.add_payment(payment.subscription_cost)
 
@@ -548,7 +538,6 @@ class PaymentView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
                             profile.subscription_start = datetime.datetime.utcnow()
 
                     else:
-                        print("Changing subscription")
                         profile.account_type = payment.account_type
                         profile.subscription_start = datetime.datetime.utcnow()
                         profile.subscription_end = payment.subscription_end
@@ -575,18 +564,20 @@ class PaymentView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
     def capture(self, payment):
         try:
 
-            certification_maker = hmac.new(str(PAYMENT_SEND_KEY), digestmod=hashlib.sha1)
+            p = bytearray()
+            p.extend(map(ord, PAYMENT_SEND_KEY))
 
             now = datetime.datetime.utcnow()
             ts = now.strftime("%m-%d-%Y %H:%M:%S")
             amount = str(payment.actual_subscription_cost) + '.00'
             code = payment.token + '|' + amount + '|' + ts + '|1|' + PAYMENT_ACCOUNT + '|' + amount
 
-            print("CODE: " + code)
+            c = bytearray()
+            c.extend(map(ord, code))
+
+            certification_maker = hmac.new(b, c, hashlib.sha1)
 
             account = PAYMENT_ACCOUNT.split('|')
-
-            certification_maker.update(code)
 
             payload = {'action': 'captureccpayment',
                        'token': payment.token,
@@ -602,11 +593,7 @@ class PaymentView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
                        'certification': certification_maker.hexdigest()
                        }
 
-            print(str(payload))
-
             r = requests.post(PAYMENT_URL, data=payload)
-
-            print(r.text)
 
             ro = parse_result(r.text)
 

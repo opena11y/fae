@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load staticfiles i18n %}
+
+{% block title %}
+  Login
+{% endblock %}
+
+{% block content %}
+
+{% if shibboleth.enabled %}
+   <p>user: {{user}}</p>
+
+    <p><a href="{{shibboleth.url}}">{{shibboleth.name}}</a></p>
+    
+{% else %}
+    {% if form.errors %}
+    <p>Your username and password didn't match. Please try again.</p>
+    {% endif %}
+
+    {% if next %}
+        {% if user.is_authenticated %}
+        <p>Your account doesn't have access to this page. To proceed,
+        please login with an account that has access.</p>
+        {% else %}
+        <p>Please login to see this page.</p>
+        {% endif %}
+    {% endif %}
+
+    <p><a href="{% url 'password_reset_recover' %}">Lost password?</a></p>
+
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+
+        {% include "forms/input_text.html" with input=form.username size=20  %}
+        {% include "forms/input_text.html" with input=form.password size=30 type='password' %}
+      
+        <div class="fae_button">
+            <input type="submit" value="login">
+        </div>
+
+
+        <input type="hidden" name="next" value="{{ next }}">
+
+    </form>
+
+    {# Assumes you setup the password_reset view in your URLconf #}
+{% endif %}
+
+{% include "accounts/support_information.html" %}
+
+{% endblock %}
+
+{% block javascript %}
+
+<script src="{% static 'js/form-control-focus.js' %}" type="text/javascript"></script>
+
+{% endblock %}

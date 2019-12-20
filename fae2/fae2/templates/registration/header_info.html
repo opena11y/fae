@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load staticfiles i18n %}
+
+{% block title %}
+  HTTP Header Information
+{% endblock %}
+
+{% block content %}
+
+{{request.META}}
+
+{% endblock %}

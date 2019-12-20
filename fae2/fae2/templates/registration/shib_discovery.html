@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load staticfiles i18n %}
+
+{% block title %}
+  Shibboleth Discovery Page
+{% endblock %}
+
+{% block css %}
+  <link rel="stylesheet" type="text/css" href="/shibboleth-ds/idpselect.css">
+{% endblock %}
+
+{% block content %}
+
+<div id="idpSelect"></div>
+
+{% endblock %}
+
+{% block javascript %}
+  <script src="/shibboleth-ds/idpselect_config.js" type="text/javascript" language="javascript"></script>
+  <script src="/shibboleth-ds/idpselect.js" type="text/javascript" language="javascript"></script>
+
+  <script type="text/javascript" language="javascript">
+
+    var matches = document.querySelectorAll("[src='blank.gif']");
+
+    for(var i = 0; i < matches.length; i++) {
+      var m = matches[i];
+      m.setAttribute("src", "../static/images/default-icon.png");
+      m.setAttribute("alt", "");
+      m.setAttribute("width", "");
+      m.setAttribute("height", "100%");
+    }
+
+  </script>
+{% endblock %}

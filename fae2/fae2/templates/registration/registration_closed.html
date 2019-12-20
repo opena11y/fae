@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% load staticfiles i18n %}
+{% block content %}
+<h1>Registration is Closed</h1>
+
+<p>This site, the <strong>{{ installation }}</strong> version of {{ site.name }}, is not currently accepting account registration requests.</p>
+
+<p>Please visit the public version of {{ site.name }} at <strong><a style="text-decoration:underline" href="{{ public_url }}">{{ public_url }}</a></strong>.</p>
+{% endblock %}
