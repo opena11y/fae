@@ -354,7 +354,10 @@
 
         end.setDate(end.getDate()+ (parseInt(duration)));
 
-        subscriptionEnd.value        = (end.getMonth() +1)  + '/' + end.getDate() + '/' + end.getFullYear();
+        subscriptionEnd.value        = (end.getMonth()+1)  + '/' + end.getDate() + '/' + end.getFullYear();
+        if (subscriptionEnd.value.indexOf('NaN') >= 0) {
+            subscriptionEnd.value = '';
+        }
         subscriptionCost.value       = cost;
         actualSubscriptionCost.value = actualCost;
 
