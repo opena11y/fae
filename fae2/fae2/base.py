@@ -179,42 +179,38 @@ INSTALLED_APPS = (
     'stats.apps.StatsConfig',
 )
 
-MIDDLEWARE = [
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-]
-
 if SHIBBOLETH_ENABLED:
-    MIDDLEWARE_CLASSES = (
+    MIDDLEWARE = [
         'django.contrib.sessions.middleware.SessionMiddleware',
         'django.middleware.common.CommonMiddleware',
         'django.middleware.csrf.CsrfViewMiddleware',
         'django.contrib.auth.middleware.AuthenticationMiddleware',
         'django.contrib.auth.middleware.PersistentRemoteUserMiddleware',
         'django.contrib.messages.middleware.MessageMiddleware',
+        'django.contrib.messages.middleware.MessageMiddleware',
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
         'django.middleware.security.SecurityMiddleware',
-    )
+    ]
 
-    AUTHENTICATION_BACKENDS = (
+    AUTHENTICATION_BACKENDS = [
         'django.contrib.auth.backends.RemoteUserBackend',
-    )
+    ]
 
     LOGIN_URL = SHIBBOLETH_URL
 
 
 else:
-    MIDDLEWARE_CLASSES = (
+    MIDDLEWARE = [
         'django.contrib.sessions.middleware.SessionMiddleware',
         'django.middleware.common.CommonMiddleware',
         'django.middleware.csrf.CsrfViewMiddleware',
         'django.contrib.auth.middleware.AuthenticationMiddleware',
         'django.contrib.auth.middleware.RemoteUserMiddleware',
+       'django.contrib.messages.middleware.MessageMiddleware',
         'django.contrib.messages.middleware.MessageMiddleware',
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
         'django.middleware.security.SecurityMiddleware',
-    )
+    ]
 
 ROOT_URLCONF = 'fae2.urls'
 
