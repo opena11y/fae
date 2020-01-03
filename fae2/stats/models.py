@@ -109,7 +109,7 @@ class StatsMonth(models.Model):
         else:
             previous_year = self.stats_year.get_previous_year()
             if previous_year:
-                previous_month = StatsMonth.objects.filter(stats_year=self.previous_year, month=12)
+                previous_month = StatsMonth.objects.filter(stats_year=previous_year, month=12)
 
         if len(previous_month) == 1:
             return previous_month[0]
