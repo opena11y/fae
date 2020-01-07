@@ -50,9 +50,24 @@ from userProfiles.models         import UserProfile
 from websiteResultGroups.models  import WebsiteReportGroup
 from stats.models                import StatsUser
 from stats.models                import StatsRegisteredUsers
+from reports.models              import WebsiteReport
+
 
 users_total = 0
 users_no_reports = 0
+users_one_report = 0
 users_no_reports_in_last_year = 0
 
 print('Total Users: ' + str(User.objects.all().count()))
+
+
+for u in User.object.all():
+  count = Report.objects.get(user=u).count()
+  if count == 0:
+    users_no_reports += 1
+
+  if count == 1:
+    users_one_report += 1
+
+print('Users with no report: ' + users_no_reports)
+print('Users with one report: ' + users_one_report)
