@@ -61,7 +61,7 @@ users_no_reports_in_last_year = 0
 print('Total Users: ' + str(User.objects.all().count()))
 
 
-for u in User.object.all():
+for u in User.objects.all():
   count = Report.objects.get(user=u).count()
   if count == 0:
     users_no_reports += 1
