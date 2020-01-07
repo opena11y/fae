@@ -51,6 +51,11 @@ from websiteResultGroups.models  import WebsiteReportGroup
 from stats.models                import StatsUser
 from stats.models                import StatsRegisteredUsers
 
+users_total = 0
+users_no_reports = 0
+users_no_reports_in_last_year = 0
 
 for u in User.objects.all():
-  print('username: ' + u.username)
+  user_total += 1
+
+print('Total Users: ' + users_total)
