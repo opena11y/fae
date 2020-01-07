@@ -56,6 +56,6 @@ users_no_reports = 0
 users_no_reports_in_last_year = 0
 
 for u in User.objects.all():
-  user_total += 1
+  users_total += 1
 
 print('Total Users: ' + users_total)
