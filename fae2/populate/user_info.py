@@ -25,7 +25,7 @@ import sys
 import os
 import django
 from django.core.exceptions import ObjectDoesNotExist
-import json
+from datetime import datetime
 
 fp = os.path.realpath(__file__)
 path, filename = os.path.split(fp)
