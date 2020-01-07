@@ -69,5 +69,5 @@ for u in User.objects.all():
   if count == 1:
     users_one_report += 1
 
-print('Users with no report: ' + users_no_reports)
-print('Users with one report: ' + users_one_report)
+print('Users with no report: ' + str(users_no_reports))
+print('Users with one report: ' + str(users_one_report))
