@@ -62,7 +62,7 @@ print('Total Users: ' + str(User.objects.all().count()))
 
 
 for u in User.objects.all():
-  count = WebsiteReport.objects.get(user=u).count()
+  count = WebsiteReport.objects.filter(user=u).count()
   if count == 0:
     users_no_reports += 1
 
