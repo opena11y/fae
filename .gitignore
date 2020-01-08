@@ -12,3 +12,4 @@ fae2/fae-util/*.properties
 .idea/
 **/migrations/
 venv/
+*.bak
