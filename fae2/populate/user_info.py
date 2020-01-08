@@ -26,6 +26,7 @@ import os
 import django
 from django.core.exceptions import ObjectDoesNotExist
 import datetime
+import pytz
 
 fp = os.path.realpath(__file__)
 path, filename = os.path.split(fp)
@@ -52,145 +53,44 @@ from stats.models                import StatsUser
 from stats.models                import StatsRegisteredUsers
 from reports.models              import WebsiteReport
 
+
+def user_information(date, label):
+  users_no_reports = 0
+  users_one_report = 0
+  users_more_than_one_report = 0
+  users_more_than_five_reports = 0
+  users_more_than_ten_reports = 0
+
+  for u in User.objects.all():
+    count = WebsiteReport.objects.filter(user=u).filter(created__gte=date).count()
+
+    if count == 0:
+      users_no_reports += 1
+
+    if count == 1:
+      users_one_report += 1
+
+    if count > 1:
+      users_more_than_one_report += 1
+
+    if count > 5:
+      users_more_than_five_reports += 1
+
+    if count > 10:
+      users_more_than_ten_reports += 1
+
+  print('\n' + label)
+  print('Users with no report: ' + str(users_no_reports))
+  print('Users with one report: ' + str(users_one_report))
+  print('Users with more than one report: ' + str(users_more_than_one_report))
+
+
 users_total = 0
 print('Total Users: ' + str(User.objects.all().count()))
 
-users_no_reports = 0
-users_one_report = 0
-users_more_than_one_report = 0
-users_more_than_five_reports = 0
-users_more_than_ten_reports = 0
+user_information(datetime.datetime(2019, 7, 1, tzinfo=pytz.UTC), 'Last 6 months')
+user_information(datetime.datetime(2019, 1, 1, tzinfo=pytz.UTC), 'Last 12 months')
+user_information(datetime.datetime(2018, 7, 1, tzinfo=pytz.UTC), 'Last 18 months')
+user_information(datetime.datetime(2018, 1, 1, tzinfo=pytz.UTC), 'Last 24 months')
+user_information(datetime.datetime(2013, 1, 1, tzinfo=pytz.UTC), 'All time')
 
-for u in User.objects.all():
-  count = WebsiteReport.objects.filter(user=u).filter(created__gte=datetime.date(2019,7,1)).count()
-  if count == 0:
-    users_no_reports += 1
-
-  if count == 1:
-    users_one_report += 1
-
-  if count > 1:
-    users_more_than_one_report += 1
-
-  if count > 5:
-    users_more_than_five_reports += 1
-
-  if count > 10:
-    users_more_than_ten_reports += 1
-
-
-print('\nIn last Six Months')
-print('Users with no report: ' + str(users_no_reports))
-print('Users with one report: ' + str(users_one_report))
-print('Users with more than one report: ' + str(users_more_than_one_report))
-
-users_no_reports = 0
-users_one_report = 0
-users_more_than_one_report = 0
-users_more_than_five_reports = 0
-users_more_than_ten_reports = 0
-
-for u in User.objects.all():
-  count = WebsiteReport.objects.filter(user=u).filter(created__gte=datetime.date(2019,1,1)).count()
-  if count == 0:
-    users_no_reports += 1
-
-  if count == 1:
-    users_one_report += 1
-
-  if count > 1:
-    users_more_than_one_report += 1
-
-  if count > 5:
-    users_more_than_five_reports += 1
-
-  if count > 10:
-    users_more_than_ten_reports += 1
-
-print('\nIn last Year')
-print('Users with no report: ' + str(users_no_reports))
-print('Users with one report: ' + str(users_one_report))
-print('Users with more than one report: ' + str(users_more_than_one_report))
-print('Users with more than five reports: ' + str(users_more_than_five_reports))
-print('Users with more than ten reports: ' + str(users_more_than_ten_reports))
-
-users_no_reports = 0
-users_one_report = 0
-users_more_than_one_report = 0
-users_more_than_five_reports = 0
-users_more_than_ten_reports = 0
-
-for u in User.objects.all():
-  count = WebsiteReport.objects.filter(user=u).filter(created__gte=datetime.date(2018,7,1)).count()
-  if count == 0:
-    users_no_reports += 1
-
-  if count == 1:
-    users_one_report += 1
-
-  if count > 1:
-    users_more_than_one_report += 1
-
-  if count > 5:
-    users_more_than_five_reports += 1
-
-  if count > 10:
-    users_more_than_ten_reports += 1
-
-
-print('\nIn last 18 months')
-print('Users with no report: ' + str(users_no_reports))
-print('Users with one report: ' + str(users_one_report))
-print('Users with more than one report: ' + str(users_more_than_one_report))
-
-users_no_reports = 0
-users_one_report = 0
-users_more_than_one_report = 0
-users_more_than_five_reports = 0
-users_more_than_ten_reports = 0
-
-for u in User.objects.all():
-  count = WebsiteReport.objects.filter(user=u).filter(created__gte=datetime.date(2018,1,1)).count()
-  if count == 0:
-    users_no_reports += 1
-
-  if count == 1:
-    users_one_report += 1
-
-  if count > 1:
-    users_more_than_one_report += 1
-
-  if count > 5:
-    users_more_than_five_reports += 1
-
-  if count > 10:
-    users_more_than_ten_reports += 1
-
-
-print('\nIn last 2 Years')
-print('Users with no report: ' + str(users_no_reports))
-print('Users with one report: ' + str(users_one_report))
-print('Users with more than one report: ' + str(users_more_than_one_report))
-
-
-users_no_reports = 0
-users_one_report = 0
-users_more_than_one_report = 0
-users_more_than_five_reports = 0
-users_more_than_ten_reports = 0
-
-for u in User.objects.all():
-  count = WebsiteReport.objects.filter(user=u).count()
-  if count == 0:
-    users_no_reports += 1
-
-  if count == 1:
-    users_one_report += 1
-
-  if count > 1:
-    users_more_than_one_report += 1
-
-print('\nAt any time since start of service')
-print('Users with no report: ' + str(users_no_reports))
-print('Users with one report: ' + str(users_one_report))
-print('Users with more than one report: ' + str(users_more_than_one_report))
