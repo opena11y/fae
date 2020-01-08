@@ -70,10 +70,10 @@ def user_information(date, label):
     if count == 1:
       users_one_report += 1
 
-    if count > 1:
+    if count > 1 and count <= 5:
       users_more_than_one_report += 1
 
-    if count > 5:
+    if count > 5 and count <= 10:
       users_more_than_five_reports += 1
 
     if count > 10:
