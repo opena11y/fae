@@ -83,6 +83,8 @@ def user_information(date, label):
   print('Users with no report: ' + str(users_no_reports))
   print('Users with one report: ' + str(users_one_report))
   print('Users with more than one report: ' + str(users_more_than_one_report))
+  print('Users with more than five reports: ' + str(users_more_than_five_reports))
+  print('Users with more than ten reports: ' + str(users_more_than_ten_reports))
 
 
 users_total = 0
