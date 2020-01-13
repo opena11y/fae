@@ -22,7 +22,7 @@ Author: Jon Gunderson
 from __future__ import absolute_import
 from django.db import models
 
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 
 from reports.models import RuleResult
 from reports.models import RuleGroupResult

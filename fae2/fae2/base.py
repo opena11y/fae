@@ -26,23 +26,22 @@ import json
 
 from django.core.exceptions import ImproperlyConfigured
 from os.path import join, abspath, dirname
-import registration.backends.default
+import django_registration.backends.activation
 
 SITE_ID = 1
-DEFAULT_CHARSET='utf-8'
+DEFAULT_CHARSET = 'utf-8'
 
 here = lambda *dirs: join(abspath(dirname(__file__)), *dirs)
-root = lambda *dirs: join(abspath(here("..","..")), *dirs)
+root = lambda *dirs: join(abspath(here("", "../../")), *dirs)
 
 BASE_DIR = here("", "")
 print("BASE_DIR: " + BASE_DIR)
 
-APP_DIR  = root("")
+APP_DIR = root("")
 print(" APP_DIR: " + APP_DIR)
 
-
 # JSON-based secrets module
-with open(join(BASE_DIR,"secrets.json")) as f:
+with open(join(BASE_DIR, "secrets.json")) as f:
     secrets = json.loads(f.read())
 
 
@@ -64,60 +63,59 @@ SECRET_KEY = get_secret('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = get_secret('DEBUG')
 
-EMAIL_HOST               = get_secret('EMAIL_HOST')
+EMAIL_HOST = get_secret('EMAIL_HOST')
 
-EMAIL_PORT               = get_secret('EMAIL_PORT')
-EMAIL_USE_TLS            = get_secret('EMAIL_USE_TLS')
+EMAIL_PORT = get_secret('EMAIL_PORT')
+EMAIL_USE_TLS = get_secret('EMAIL_USE_TLS')
 
-EMAIL_HOST_USER          = get_secret('EMAIL_HOST_USER')
+EMAIL_HOST_USER = get_secret('EMAIL_HOST_USER')
 EMAIL_HOST_USER_PASSWORD = get_secret('EMAIL_HOST_USER_PASSWORD')
 
-DEFAULT_FROM_EMAIL       = get_secret('EMAIL_HOST_USER')
-SERVER_EMAIL             = get_secret('EMAIL_HOST_USER')
+DEFAULT_FROM_EMAIL = get_secret('EMAIL_HOST_USER')
+SERVER_EMAIL = get_secret('EMAIL_HOST_USER')
 
 if get_secret('SITE_URL').find('127.0.0.1') >= 0 or get_secret('SITE_URL').find('localhost') >= 0:
-  EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-else:  
-  EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 ACCOUNT_ACTIVATION_DAYS = get_secret('ACCOUNT_ACTIVATION_DAYS')
 REGISTRATION_EMAIL_HTML = False
 
 ALLOWED_HOSTS = get_secret('ALLOWED_HOSTS')
 
-ANONYMOUS_ENABLED         = get_secret('ANONYMOUS_ENABLED')
+ANONYMOUS_ENABLED = get_secret('ANONYMOUS_ENABLED')
 SELF_REGISTRATION_ENABLED = get_secret('SELF_REGISTRATION_ENABLED')
 
-
 try:
-    SHIBBOLETH_ENABLED        = get_secret('SHIBBOLETH_ENABLED')
+    SHIBBOLETH_ENABLED = get_secret('SHIBBOLETH_ENABLED')
 except:
-    SHIBBOLETH_ENABLED        = False
+    SHIBBOLETH_ENABLED = False
 
 if SHIBBOLETH_ENABLED:
-    SHIBBOLETH_URL            = get_secret('SHIBBOLETH_URL')
-    SHIBBOLETH_NAME           = get_secret('SHIBBOLETH_NAME')
-    SHIBBOLETH_SUPERUSER      = get_secret('SHIBBOLETH_SUPERUSER')
-else:    
-    SHIBBOLETH_URL            = ''
-    SHIBBOLETH_NAME           = ''
-    SHIBBOLETH_SUPERUSER      = ''
+    SHIBBOLETH_URL = get_secret('SHIBBOLETH_URL')
+    SHIBBOLETH_NAME = get_secret('SHIBBOLETH_NAME')
+    SHIBBOLETH_SUPERUSER = get_secret('SHIBBOLETH_SUPERUSER')
+else:
+    SHIBBOLETH_URL = ''
+    SHIBBOLETH_NAME = ''
+    SHIBBOLETH_SUPERUSER = ''
 
 SITE_NAME = get_secret('SITE_NAME')
-SITE_URL  = get_secret('SITE_URL')
+SITE_URL = get_secret('SITE_URL')
 
 try:
-    SHIB_URL  = get_secret('SHIB_URL')
+    SHIB_URL = get_secret('SHIB_URL')
 except:
-    SHIB_URL  = ''    
+    SHIB_URL = ''
 
-ADMIN_USER_NAME          = get_secret('ADMIN_USER_NAME')
-ADMIN_FIRST_NAME         = get_secret('ADMIN_FIRST_NAME')
-ADMIN_LAST_NAME          = get_secret('ADMIN_LAST_NAME')
-ADMIN_PASSWORD           = get_secret('ADMIN_PASSWORD')
-ADMIN_EMAIL              = get_secret('ADMIN_EMAIL')
-ANONYMOUS_PASSWORD       = get_secret('ANONYMOUS_PASSWORD')
-DEFAULT_ACCOUNT_TYPE     = get_secret('DEFAULT_ACCOUNT_TYPE')
+ADMIN_USER_NAME = get_secret('ADMIN_USER_NAME')
+ADMIN_FIRST_NAME = get_secret('ADMIN_FIRST_NAME')
+ADMIN_LAST_NAME = get_secret('ADMIN_LAST_NAME')
+ADMIN_PASSWORD = get_secret('ADMIN_PASSWORD')
+ADMIN_EMAIL = get_secret('ADMIN_EMAIL')
+ANONYMOUS_PASSWORD = get_secret('ANONYMOUS_PASSWORD')
+DEFAULT_ACCOUNT_TYPE = get_secret('DEFAULT_ACCOUNT_TYPE')
 
 try:
     FAE_DISABLED = get_secret('FAE_DISABLED')
@@ -130,23 +128,28 @@ except:
     FAE_DISABLED_URL = ""
 
 try:
-    PAYMENT_ENABLED     = True
-    PAYMENT_SITE_ID     = get_secret('PAYMENT_SITE_ID')
-    PAYMENT_URL         = get_secret('PAYMENT_URL')
-    PAYMENT_SEND_KEY    = get_secret('PAYMENT_SEND_KEY')
+    PAYMENT_ENABLED = True
+    PAYMENT_SITE_ID = get_secret('PAYMENT_SITE_ID')
+    PAYMENT_URL = get_secret('PAYMENT_URL')
+    PAYMENT_SEND_KEY = get_secret('PAYMENT_SEND_KEY')
     PAYMENT_RECEIVE_KEY = get_secret('PAYMENT_RECEIVE_KEY')
-    PAYMENT_ACCOUNT     = get_secret('PAYMENT_ACCOUNT')
+    PAYMENT_ACCOUNT = get_secret('PAYMENT_ACCOUNT')
 except:
-    PAYMENT_ENABLED     = False
-    PAYMENT_SITE_ID     = False
-    PAYMENT_URL         = False
-    PAYMENT_SEND_KEY    = False
+    PAYMENT_ENABLED = False
+    PAYMENT_SITE_ID = False
+    PAYMENT_URL = False
+    PAYMENT_SEND_KEY = False
     PAYMENT_RECEIVE_KEY = False
-    PAYMENT_ACCOUNT     = False
+    PAYMENT_ACCOUNT = False
 
 # Application definition
 
 PROCESSING_THREADS = get_secret('PROCESSING_THREADS')
+
+# Allow django-bootstrap3 to use jquery
+BOOTSTRAP3 = {
+    'include_jquery': True,
+}
 
 INSTALLED_APPS = (
     'django.contrib.admin',
@@ -156,8 +159,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'registration',
-    'password_reset',    
+    'django_registration',
+    'password_reset',
     'abouts.apps.AboutsConfig',
     'accounts.apps.AccountsConfig',
     'subscriptions.apps.SubscriptionsConfig',
@@ -177,38 +180,34 @@ INSTALLED_APPS = (
 )
 
 if SHIBBOLETH_ENABLED:
-    MIDDLEWARE_CLASSES = (
+    MIDDLEWARE = [
         'django.contrib.sessions.middleware.SessionMiddleware',
         'django.middleware.common.CommonMiddleware',
         'django.middleware.csrf.CsrfViewMiddleware',
         'django.contrib.auth.middleware.AuthenticationMiddleware',
-        'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
         'django.contrib.auth.middleware.PersistentRemoteUserMiddleware',
         'django.contrib.messages.middleware.MessageMiddleware',
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
         'django.middleware.security.SecurityMiddleware',
-    )
+    ]
 
-    AUTHENTICATION_BACKENDS = (
+    AUTHENTICATION_BACKENDS = [
         'django.contrib.auth.backends.RemoteUserBackend',
-    )
-
+    ]
 
     LOGIN_URL = SHIBBOLETH_URL
 
 
 else:
-    MIDDLEWARE_CLASSES = (
+    MIDDLEWARE = [
         'django.contrib.sessions.middleware.SessionMiddleware',
         'django.middleware.common.CommonMiddleware',
         'django.middleware.csrf.CsrfViewMiddleware',
         'django.contrib.auth.middleware.AuthenticationMiddleware',
-        'django.contrib.auth.middleware.RemoteUserMiddleware',    
-        'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
         'django.contrib.messages.middleware.MessageMiddleware',
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
         'django.middleware.security.SecurityMiddleware',
-    )
+    ]
 
 ROOT_URLCONF = 'fae2.urls'
 
@@ -237,18 +236,18 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'fae2.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
 DATABASES = {
     'default': {
-          'ENGINE' : 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-            'NAME' : get_secret('DATABASE_NAME'),              # Or path to database file if using sqlite3.
-            'USER' : get_secret('DATABASE_USER'),              # Not used with sqlite3.
-        'PASSWORD' : get_secret('DATABASE_PASSWORD'),          # Not used with sqlite3.
-            'HOST' : get_secret('DATABASE_HOST'),              # Set to empty string for localhost. Not used with sqlite3.
-            'PORT' : get_secret('DATABASE_PORT'),              # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': get_secret('DATABASE_NAME'),  # Or path to database file if using sqlite3.
+        'USER': get_secret('DATABASE_USER'),  # Not used with sqlite3.
+        'PASSWORD': get_secret('DATABASE_PASSWORD'),  # Not used with sqlite3.
+        'HOST': get_secret('DATABASE_HOST'),  # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': get_secret('DATABASE_PORT'),  # Set to empty string for default. Not used with sqlite3.
     }
 }
 
@@ -284,7 +283,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
@@ -294,7 +292,7 @@ STATIC_ROOT = join(BASE_DIR, 'static/')
 print('STATIC ROOT: ' + STATIC_ROOT)
 
 STATICFILES_DIRS = (
-  join(APP_DIR, "fae2/static"),
+    join(APP_DIR, "fae2/static"),
 )
 
-LOGIN_REDIRECT_URL='/'
+LOGIN_REDIRECT_URL = '/'

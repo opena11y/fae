@@ -32,7 +32,7 @@ from django.db import models
 from future.standard_library import install_aliases
 install_aliases()
 from urllib.parse import urlparse
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from pytz import timezone
 from django.contrib.sites.models import Site
 

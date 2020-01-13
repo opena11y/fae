@@ -37,7 +37,7 @@ import csv
 
 import urllib
 
-from urlparse import urlparse
+from urllib.parse import urlparse
 
 sys.path.append(os.path.abspath('..'))
 

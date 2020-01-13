@@ -19,18 +19,16 @@ Author: Jon Gunderson
 
 """
 
-
 from __future__ import absolute_import
 from datetime import datetime, timedelta
 
 from django.db import models
 
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.contrib.auth.models import User
 
 from websiteResultGroups.models import WebsiteReportGroup
-from rulesets.models            import Ruleset
-
+from rulesets.models import Ruleset
 
 
 # ---------------------------------------------------------------
@@ -40,16 +38,17 @@ from rulesets.models            import Ruleset
 # ---------------------------------------------------------------
 
 class StatsAll(models.Model):
-    id   = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
 
-    ws_report_group = models.OneToOneField(WebsiteReportGroup)
+    ws_report_group = models.OneToOneField(WebsiteReportGroup, on_delete=models.CASCADE)
 
     class Meta:
-        verbose_name        = 'Stats All'
+        verbose_name = 'Stats All'
         verbose_name_plural = 'Stats All'
 
     def __str__(self):
         return "All Years"
+
 
 # ---------------------------------------------------------------
 #
@@ -58,15 +57,15 @@ class StatsAll(models.Model):
 # ---------------------------------------------------------------
 
 class StatsYear(models.Model):
-    id    = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
 
-    stats_all = models.ForeignKey(StatsAll, null=True, default=None, related_name='years')
-    year      = models.IntegerField(default=2016)
+    stats_all = models.ForeignKey(StatsAll, null=True, default=None, related_name='years', on_delete=models.CASCADE)
+    year = models.IntegerField(default=2016)
 
-    ws_report_group = models.OneToOneField(WebsiteReportGroup)
+    ws_report_group = models.OneToOneField(WebsiteReportGroup, on_delete=models.CASCADE)
 
     class Meta:
-        verbose_name        = 'Stats Year'
+        verbose_name = 'Stats Year'
         verbose_name_plural = 'Stats Years'
         ordering = ['-year']
 
@@ -74,12 +73,13 @@ class StatsYear(models.Model):
         return 'Year: ' + str(self.year)
 
     def get_previous_year(self):
-        previous_year = StatsYear.objects.filter(year=(self.year-1))
+        previous_year = StatsYear.objects.filter(year=(self.year - 1))
 
         if len(previous_year) == 1:
             return previous_year[0]
         else:
             return False
+
 
 # ---------------------------------------------------------------
 #
@@ -88,15 +88,15 @@ class StatsYear(models.Model):
 # ---------------------------------------------------------------
 
 class StatsMonth(models.Model):
-    id    = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
 
-    stats_year = models.ForeignKey(StatsYear, null=False, related_name='months')
-    month      = models.IntegerField(default=1)
+    stats_year = models.ForeignKey(StatsYear, null=False, related_name='months', on_delete=models.CASCADE)
+    month = models.IntegerField(default=1)
 
-    ws_report_group = models.OneToOneField(WebsiteReportGroup)
+    ws_report_group = models.OneToOneField(WebsiteReportGroup, on_delete=models.CASCADE)
 
     class Meta:
-        verbose_name        = 'Stats Month'
+        verbose_name = 'Stats Month'
         verbose_name_plural = 'Stats Months'
         ordering = ['-stats_year', '-month']
 
@@ -105,7 +105,7 @@ class StatsMonth(models.Model):
 
     def get_previous_month(self):
         if self.month > 1:
-            previous_month = StatsMonth.objects.filter(stats_year=self.stats_year, month=(self.month-1))
+            previous_month = StatsMonth.objects.filter(stats_year=self.stats_year, month=(self.month - 1))
         else:
             previous_year = self.stats_year.get_previous_year()
             if previous_year:
@@ -124,17 +124,17 @@ class StatsMonth(models.Model):
 # ---------------------------------------------------------------
 
 class StatsDay(models.Model):
-    id   = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
 
-    date  = models.DateField(auto_now=True, editable=False)
+    date = models.DateField(auto_now=True, editable=False)
 
-    stats_month = models.ForeignKey(StatsMonth, null=False, related_name='days')
-    day         = models.IntegerField(default=1)
+    stats_month = models.ForeignKey(StatsMonth, null=False, related_name='days', on_delete=models.CASCADE)
+    day = models.IntegerField(default=1)
 
-    ws_report_group = models.OneToOneField(WebsiteReportGroup)
+    ws_report_group = models.OneToOneField(WebsiteReportGroup, on_delete=models.CASCADE)
 
     class Meta:
-        verbose_name        = 'Stats Day'
+        verbose_name = 'Stats Day'
         verbose_name_plural = 'Stats Day'
         ordering = ['-stats_month', '-day']
 
@@ -143,7 +143,7 @@ class StatsDay(models.Model):
 
     def get_previous_day(self):
         if self.day > 1:
-            previous_day = StatsDay.objects.filter(stats_month=self.stats_month, day=(self.day-1))
+            previous_day = StatsDay.objects.filter(stats_month=self.stats_month, day=(self.day - 1))
             if len(previous_day) == 1:
                 previous_day = previous_day[0]
             else:
@@ -154,13 +154,11 @@ class StatsDay(models.Model):
                 previous_day = StatsDay.objects.filter(stats_month=previous_month)
 
                 if len(previous_day):
-                    previous_day = previous_day[len(previous_day)-1]
+                    previous_day = previous_day[len(previous_day) - 1]
                 else:
                     previous_day = False
 
         return previous_day
-
-
 
 
 class UsageInfo:
@@ -177,16 +175,14 @@ class UsageInfo:
 # ---------------------------------------------------------------
 
 class StatsUser(models.Model):
-
-
-    id   = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="stats")
 
-    ws_report_group = models.OneToOneField(WebsiteReportGroup)
+    ws_report_group = models.OneToOneField(WebsiteReportGroup, on_delete=models.CASCADE)
 
     class Meta:
-        verbose_name        = 'Stats User'
+        verbose_name = 'Stats User'
         verbose_name_plural = 'Stats User'
         ordering = ['user']
 
@@ -194,7 +190,6 @@ class StatsUser(models.Model):
         return str(self.user)
 
     def get_last_30_days(self):
-
         usage = UsageInfo()
 
         last_month = datetime.today() - timedelta(days=30)
@@ -207,9 +202,6 @@ class StatsUser(models.Model):
         return usage
 
 
-
-
-
 # ---------------------------------------------------------------
 #
 # StatsRegisteredUsers
@@ -217,18 +209,19 @@ class StatsUser(models.Model):
 # ---------------------------------------------------------------
 
 class StatsRegisteredUsers(models.Model):
-    id   = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
 
-    ws_report_group = models.OneToOneField(WebsiteReportGroup)
+    ws_report_group = models.OneToOneField(WebsiteReportGroup, on_delete=models.CASCADE)
 
     user_stats = models.ManyToManyField(StatsUser, blank=True, default=None, related_name="stats_registered_users")
 
     class Meta:
-        verbose_name        = 'Stats Registered Users'
+        verbose_name = 'Stats Registered Users'
         verbose_name_plural = 'Stats Registered Users'
 
     def __str__(self):
         return "Stats Registered Users"
+
 
 # ---------------------------------------------------------------
 #
@@ -237,16 +230,16 @@ class StatsRegisteredUsers(models.Model):
 # ---------------------------------------------------------------
 
 class StatsRuleset(models.Model):
-    id   = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
 
     stats_all = models.ForeignKey(StatsAll, on_delete=models.SET_NULL, null=True, related_name='rulesets')
 
     ruleset = models.ForeignKey(Ruleset, on_delete=models.SET_NULL, null=True, related_name='stats')
 
-    ws_report_group = models.OneToOneField(WebsiteReportGroup)
+    ws_report_group = models.OneToOneField(WebsiteReportGroup, on_delete=models.CASCADE)
 
     class Meta:
-        verbose_name        = 'Stats Ruleset'
+        verbose_name = 'Stats Ruleset'
         verbose_name_plural = 'Stats Rulesets'
         ordering = ['ruleset']
 
