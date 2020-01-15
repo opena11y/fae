@@ -1,3 +1,0 @@
-/var/www/fae21/fae-self-reg-dev/fae2/fae-util/openajax_a11y/oaa_a11y_evaluation.js
-/var/www/fae21/fae-self-reg-dev/fae2/fae-util/openajax_a11y/oaa_a11y_rules.js
-/var/www/fae21/fae-self-reg-dev/fae2/fae-util/openajax_a11y/oaa_a11y_rulesets.js
