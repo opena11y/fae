@@ -80,6 +80,9 @@ class StatsYear(models.Model):
         else:
             return False
 
+    def title(self):
+        return self.year
+
 
 # ---------------------------------------------------------------
 #
@@ -115,6 +118,11 @@ class StatsMonth(models.Model):
             return previous_month[0]
         else:
             return False
+
+    def title(self):
+        months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+
+        return months[self.month-1] + ' ' + str(self.stats_year.title())
 
 
 # ---------------------------------------------------------------

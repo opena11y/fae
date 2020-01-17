@@ -13,7 +13,7 @@
 {% block content %}
 
 <section aria-labelledby="id_ytd">
-<h2 id="id_ytd">Time</h2>
+<h2 id="id_ytd">Summary</h2>
 <table  class="details table table-striped table-hover"  aria-labelledby="id_ytd">
     <thead>
       <tr>
@@ -34,12 +34,12 @@
             <td class="num">{{stats_seven_days.num_total_pages}}</td>
         </tr>
         <tr>
-            <th class="text">Month</th>
+            <th class="text">Month to date</th>
             <td class="num">{{stats_month.ws_report_group.num_total_reports}}</td>
             <td class="num">{{stats_month.ws_report_group.num_total_pages}}</td>
         </tr>
         <tr>
-            <th class="text">Year</th>
+            <th class="text">Year to date</th>
             <td class="num">{{stats_year.ws_report_group.num_total_reports}}</td>
             <td class="num">{{stats_year.ws_report_group.num_total_pages}}</td>
         </tr>
@@ -53,7 +53,7 @@
 </section>
 
 <section aria-labelledby="id_user_info">
-<h2 id="id_user_info">User Stats</h2>
+<h2 id="id_user_info">Registered and Anonymous</h2>
 
 <table  class="details table table-striped table-hover"  aria-labelledby="id_user_info">
     <thead>
@@ -82,7 +82,7 @@
 </section>
 
 <section aria-labelledby="id_rulesets">
-<h2 id="id_rulesets">Ruleset Stats</h2>
+<h2 id="id_rulesets">Rulesets</h2>
 
 <table  class="details table table-striped table-hover"  aria-labelledby="id_rulesets">
     <thead>
@@ -102,6 +102,52 @@
     {% endfor %}
     </tbody>
 </table>
+
+<section aria-label="Details">
+
+  <h2 id="id_yearly_details">Years</h2>
+  <table  class="details table table-striped table-hover"  aria-labelledby="id_yearly_details">
+    <thead>
+      <tr>
+        <th class="text">Year</th>
+        <th class="num">Reports</th>
+        <th class="num">Pages</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for s in stats_all_years %}
+        <tr>
+            <th class="text">{{s.title}}</th>
+            <td class="num">{{s.ws_report_group.num_total_reports}}</td>
+            <td class="num">{{s.ws_report_group.num_total_pages}}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+
+  <h2 id="id_monthly_details">Monthly</h2>
+  <table  class="details table table-striped table-hover"  aria-labelledby="id_monthly_details">
+    <thead>
+      <tr>
+        <th class="text">Num</th>
+        <th class="num">Reports</th>
+        <th class="num">Pages</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for s in stats_all_months %}
+        <tr>
+            <th class="text">{{s.title}}</th>
+            <td class="num">{{s.ws_report_group.num_total_reports}}</td>
+            <td class="num">{{s.ws_report_group.num_total_pages}}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+
+</section>
+
+
 </section>
 
 
