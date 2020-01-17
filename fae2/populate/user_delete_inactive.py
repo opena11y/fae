@@ -53,15 +53,19 @@ from stats.models                import StatsUser
 from stats.models                import StatsRegisteredUsers
 from reports.models              import WebsiteReport
 
+min_reports = 5
 
 def delete_users(date):
 
   num_users_deleted = 0
 
   for u in User.objects.all():
-    count = WebsiteReport.objects.filter(user=u).filter(created__gte=date).count()
+    reports1 = WebsiteReport.objects.filter(user=u)
+    count1 = reports1.count()
+    reports2 = reports1.filter(created__gte=date)
+    count2 = reports2.count()
 
-    if count == 0:
+    if count2 == 0 and count1 < min_reports:
       try:
         u.delete()
         num_users_deleted += 1
@@ -70,10 +74,11 @@ def delete_users(date):
 
   print('Users deleted: ' + str(num_users_deleted))
 
-users_total = 0
-d = datetime.datetime(2018, 7, 1, tzinfo=pytz.UTC)
-print('Total Users: ' + str(User.objects.all().count()))
-print('Deleting users with no new reports from this date: ' + str(d.date()))
+users_total = User.objects.all().count()
+d = datetime.datetime(2018, 1, 1, tzinfo=pytz.UTC)
+
+print('Total Users: ' + str(users_total))
+print('Deleting users with no new reports from ' + str(d.date()) + ' and less than a total of ' + str(min_reports) + ' for all time. ')
 
 delete_users(d)
 
