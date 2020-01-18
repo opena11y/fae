@@ -94,7 +94,7 @@ def id_generator(size=6, chars=string.ascii_uppercase + string.digits):
 
 def getExpirationDate(dt, months):
     if (not dt):
-        dt = datetime.datetime.now()
+        dt = datetime.datetime.utcnow()
 
     year = dt.year
     month = dt.month + months
