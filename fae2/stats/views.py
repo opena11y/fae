@@ -140,7 +140,7 @@ class ShowUsageStatistics(FAENavigationMixin, TemplateView):
         context['stats_day']        = day
         context['stats_seven_days'] = seven_days
         context['stats_all_years']  = StatsYear.objects.all();
-        context['stats_all_months']  = StatsMonth.objects.all().reverse();
+        context['stats_all_months']  = StatsMonth.objects.all();
 
         context['stats_reg_users'] = stats_reg_users
         context['stats_anonymous'] = stats_anonymous
