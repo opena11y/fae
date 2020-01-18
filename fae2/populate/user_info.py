@@ -53,6 +53,8 @@ from stats.models                import StatsUser
 from stats.models                import StatsRegisteredUsers
 from reports.models              import WebsiteReport
 
+min_reports = 5
+users_total = User.objects.all().count()
 
 def user_information(date, label):
   users_no_reports = 0
@@ -62,33 +64,41 @@ def user_information(date, label):
   users_more_than_ten_reports = 0
 
   for u in User.objects.all():
-    count = WebsiteReport.objects.filter(user=u).filter(created__gte=date).count()
+    reports1 = WebsiteReport.objects.filter(user=u)
+    count1 = reports1.count()
+    reports2 = reports1.filter(created__gte=date)
+    count2 = reports2.count()
 
-    if count == 0:
+    if count2 == 0 and count1 < min_reports:
       users_no_reports += 1
 
-    if count >= 1:
+    if count2 > 0 or count1 >= min_reports:
       users_one_report += 1
 
-    if count > 1:
+    if count2 > 1 or count1 >= min_reports:
       users_more_than_one_report += 1
 
-    if count > 5:
+    if count2 > 5 or count1 >= min_reports:
       users_more_than_five_reports += 1
 
-    if count > 10:
+    if count2 > 10 or count1 >= min_reports:
       users_more_than_ten_reports += 1
 
+  users_no_reports_percent             = 100*users_no_reports/users_total
+  users_one_report_percent             = 100*users_one_report/users_total
+  users_more_than_one_report_percent   = 100*users_more_than_one_report/users_total
+  users_more_than_five_reports_percent = 100*users_more_than_five_reports/users_total
+  users_more_than_ten_reports_percent  = 100*users_more_than_ten_reports/users_total
+
   print('\n' + label)
-  print('Users with no report: ' + str(users_no_reports))
-  print('Users with at least one report: ' + str(users_one_report))
-  print('Users with more than one report: ' + str(users_more_than_one_report))
-  print('Users with more than five reports: ' + str(users_more_than_five_reports))
-  print('Users with more than ten reports: ' + str(users_more_than_ten_reports))
+  print('Users with no report since '              + str(date.date()) + ' and less than ' + str(min_reports) + ' reports for all time: ' + str(users_no_reports)             + '  (' + str(users_no_reports_percent) + ')')
+  print('Users with at least one report since '    + str(date.date()) + ' or at least '   + str(min_reports) + ' reports for all time: ' + str(users_one_report)             + '  (' + str(users_one_report_percent) + ')')
+  print('Users with more than one report since '   + str(date.date()) + ' or at least '   + str(min_reports) + ' reports for all time: ' + str(users_more_than_one_report)   + '  (' + str(users_more_than_one_report_percent) + ')')
+  print('Users with more than five reports since ' + str(date.date()) + ' or at least '   + str(min_reports) + ' reports for all time: ' + str(users_more_than_five_reports) + '  (' + str(users_more_than_five_reports_percent) + ')')
+  print('Users with more than ten reports since  ' + str(date.date()) + ' or at least '   + str(min_reports) + ' reports for all time: ' + str(users_more_than_ten_reports)  + '  (' + str(users_more_than_ten_reports_percent) + ')')
 
 
-users_total = 0
-print('Total Users: ' + str(User.objects.all().count()))
+print('Total Users: ' + str(users_total))
 
 user_information(datetime.datetime(2019, 7, 1, tzinfo=pytz.UTC), 'Last 6 months')
 user_information(datetime.datetime(2019, 1, 1, tzinfo=pytz.UTC), 'Last 12 months')
