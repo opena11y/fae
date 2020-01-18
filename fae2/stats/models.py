@@ -101,7 +101,7 @@ class StatsMonth(models.Model):
     class Meta:
         verbose_name = 'Stats Month'
         verbose_name_plural = 'Stats Months'
-        ordering = ['-stats_year', '-month']
+        ordering = ['-stats_year__year', '-month']
 
     def __str__(self):
         return 'Month: %d-%02d' % (self.stats_year.year, self.month)
