@@ -205,7 +205,7 @@ class ShibbolethDiscovery(TemplateView):
 class ShibbolethInstitution(RedirectView):
     def get_redirect_url(self, *args, **kwargs):
 
-        self.url = SHIB_URL
+        self.url = SITE_URL
 
         try:
             ip = InstitutionalProfile.objects.get(domain=kwargs['domain'])
