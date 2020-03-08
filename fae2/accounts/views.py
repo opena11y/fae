@@ -752,6 +752,22 @@ class UserInformationView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
 
         return context
 
+class InstitutionalAdminView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
+    template_name = 'accounts/user_information_institution.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(InstitutionalAdminView, self).get_context_data(**kwargs)
+
+        user = User.objects.get(id=kwargs['user_id'])
+        user_profile = UserProfile.objects.get(user=user)
+
+        stats_user = StatsUser.objects.get(user=user)
+
+        context['user_profile'] = user_profile
+        context['stats_user'] = stats_user
+
+        return context
+
 
 class InstitutionalInformationView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
     template_name = 'accounts/institutional_information.html'
