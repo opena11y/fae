@@ -209,8 +209,29 @@ class StatsUser(models.Model):
 
         return usage
 
-    def getLastTenReports(self):
+    def get_last_ten_reports(self):
         return self.ws_report_group.ws_reports.all()[:10]
+
+    def get_last_ten_reports_stats(self):
+        usage = UsageInfo()
+
+        wsrs = self.ws_report_group.ws_reports.all()[:10]
+
+        for wsr in wsrs:
+            usage.num_reports += 1
+            usage.num_pages += wsr.page_count
+
+        return usage
+
+    def get_name(self):
+        name = (self.user.first_name + ' ' + self.user.last_name).strip()
+        parts = self.user.email.split('@')
+        if not len(name):
+            if len(parts) > 1:
+                name = parts[0]
+            else:
+                name = parts
+        return name
 
 # ---------------------------------------------------------------
 #
