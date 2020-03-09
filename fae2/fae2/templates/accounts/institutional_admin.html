@@ -50,7 +50,7 @@ Institutional User Information
 
     <h3 id="h3_{{us.user.id}}">{{us.user.first_name}} {{us.user.last_name}}</h3>
 
-    {% include "reports/archived_report_list.html" with label_id="h3_{{us.user.id}}" report_list=us.getLastTenReports %}
+    {% include "reports/archived_report_list.html" with label_id="h3_{{us.user.id}}" report_list=us.getLastTenReports nosort=True%}
 
     {% endfor %}
 {% endblock %}
