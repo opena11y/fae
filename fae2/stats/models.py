@@ -209,6 +209,8 @@ class StatsUser(models.Model):
 
         return usage
 
+    def getLastTenReports(self):
+        return self.ws_report_group.ws_reports.all()[:10]
 
 # ---------------------------------------------------------------
 #
