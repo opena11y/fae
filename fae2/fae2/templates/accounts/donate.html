@@ -61,8 +61,6 @@
 
         var c = String.fromCharCode(event.charCode);
 
-        console.log(c + ' ' + event.charCode);
-
         if (c < '0' || c > '9') {
             event.preventDefault();
             event.stopPropagation();
@@ -78,7 +76,7 @@
        var s  = node_amount.value;
        s = s.trim();
 
-       return s.length > 0 && /^[0-9.]+$/.test(s);;
+       return s.length > 0 && /^[0-9.]+$/.test(s) && (parseInt(s) > 4);
 
      }
 
