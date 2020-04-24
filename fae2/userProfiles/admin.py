@@ -26,8 +26,8 @@ from userProfiles.models import UserProfile
 from userProfiles.models import InstitutionalProfile
 
 class UserProfileAdmin(admin.ModelAdmin):
-    list_display = ('user', 'account_type', 'top_level_domain', 'domain', 'subscription_status')
-    list_filter  = ('org', 'account_type', 'subscription_status')
+    list_display = ('user', 'role', 'account_type', 'top_level_domain', 'domain', 'subscription_status')
+    list_filter  = ('org', 'role', 'account_type', 'subscription_status')
 
 admin.site.register(UserProfile, UserProfileAdmin)
 

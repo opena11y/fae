@@ -30,6 +30,8 @@ import datetime
 import string
 import random
 
+from django.conf import settings
+from django.utils.timezone import make_aware
 
 def id_generator(size=6, chars=string.ascii_uppercase + string.digits):
     return ''.join(random.choice(chars) for _ in range(size))

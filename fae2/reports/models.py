@@ -25,6 +25,9 @@ import fnmatch
 import os
 from datetime import datetime
 
+from django.conf import settings
+from django.utils.timezone import make_aware
+
 
 from os.path import join
 

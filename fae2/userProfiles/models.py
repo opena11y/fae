@@ -55,6 +55,8 @@ from datetime import datetime
 
 from datetime import date
 
+from django.conf import settings
+from django.utils.timezone import make_aware
 
 def get_profile(user):
     try:
@@ -82,6 +84,11 @@ SUBSCRIPTION_STATUS_CHOICES = (
     ('CURRENT', 'Current'),
     ('EXPIRED', 'Expired'),
     ('SPECIAL', 'Special')
+)
+
+USER_ROLES = (
+    ('STANDARD', 'Standard User'),
+    ('ADMIN', 'Institutional Administrator')
 )
 
 
@@ -190,6 +197,7 @@ class UserProfile(models.Model):
     org = models.CharField(max_length=128, blank=True)
     dept = models.CharField(max_length=128, blank=True)
     email_announcements = models.BooleanField(default=True)
+    role = models.CharField(max_length=8, choices=USER_ROLES, default="STANDARD")
 
     timezone = TimeZoneField(default='America/Chicago')
 
@@ -373,6 +381,10 @@ class UserProfile(models.Model):
         old_reports = user_reports[self.account_type.max_archive:]
 
         return [reports, old_reports]
+
+    def is_inst_admin(self):
+        return self.role == 'ADMIN'
+
 
     # creates new UserProfile when new user registers
 

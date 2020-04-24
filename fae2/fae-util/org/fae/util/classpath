@@ -1,15 +1,19 @@
 #!/bin/bash
 
-CP=$FAE_HOME/lib/commons-cli-1.2
-HP=$FAE_HOME/lib/htmlunit-2.36/lib
+echo $FAE_HOME
+
+HP=$FAE_HOME/lib/htmlunit-2.39.0/lib/*.jar
+
+echo $HP
 
 CLASSPATH=$FAE_HOME
+echo $CLASSPATH
 
-CLASSPATH=$CLASSPATH:$FAE_HOME/lib/log4j.jar
-
-CLASSPATH=$CLASSPATH:$CP/commons-cli-1.2.jar
-
-for f in $HP/*.jar; do echo "Adding $f to classpath"; CLASSPATH=$CLASSPATH:$f; done
+for f in $HP;
+do
+  echo "Adding $f to classpath";
+  CLASSPATH=$CLASSPATH:$f;
+done
 
 export CLASSPATH
 

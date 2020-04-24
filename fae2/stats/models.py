@@ -30,6 +30,8 @@ from django.contrib.auth.models import User
 from websiteResultGroups.models import WebsiteReportGroup
 from rulesets.models import Ruleset
 
+from django.conf import settings
+from django.utils.timezone import make_aware
 
 # ---------------------------------------------------------------
 #
