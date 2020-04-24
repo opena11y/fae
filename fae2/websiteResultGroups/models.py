@@ -57,13 +57,13 @@ class WebsiteReportGroup(RuleGroupResult):
   def add_website_report(self, ws_report):
 #    print('[WebsiteReportGroup][add_website_report] ws_report: ' + str(ws_report))
     try:
-      self.num_total_reports = self.num_total_reports + 1  
+      self.num_total_reports = self.num_total_reports + 1
       self.num_total_pages   = self.num_total_pages + ws_report.page_count
 
       self.ws_reports.add(ws_report)
       self.save()
     except:
-      pass   
+      pass
 
 # ---------------------------------------------------------------
 #
@@ -86,13 +86,13 @@ class WebsiteRuleCategoryResultGroup(RuleGroupResult):
     ordering            = ['rule_category']
 
   def __unicode__(self):
-      return self.rule_category.title_plural 
+      return self.rule_category.title_plural
 
   def get_title(self):
-    return self.rule_category.title   
+    return self.rule_category.title
 
   def get_id(self):
-    return 'wsrcrg_' + self.rule_category.id   
+    return 'wsrcrg_' + self.rule_category.id
 
 # ---------------------------------------------------------------
 #
@@ -115,13 +115,13 @@ class WebsiteGuidelineResultGroup(RuleGroupResult):
     ordering = ['guideline']
 
   def __unicode__(self):
-    return str(self.guideline) 
+    return str(self.guideline)
 
   def get_title(self):
-    return self.guideline.title   
+    return self.guideline.title
 
   def get_id(self):
-    return 'wsglrg_' + self.guideline.id   
+    return 'wsglrg_' + self.guideline.id
 
 # ---------------------------------------------------------------
 #
@@ -136,7 +136,7 @@ class WebsiteRuleScopeResultGroup(RuleGroupResult):
 
   wsr_group      = models.ForeignKey(WebsiteReportGroup, on_delete=models.CASCADE, related_name="ws_rs_result_groups")
 
-  rule_scope       = models.ForeignKey(RuleScope, on_delete=models.SET_NULL, null=True, default=None)  
+  rule_scope       = models.ForeignKey(RuleScope, on_delete=models.SET_NULL, null=True, default=None)
 
   class Meta:
     verbose_name        = "Website Rule Scope Result Group"
@@ -144,13 +144,13 @@ class WebsiteRuleScopeResultGroup(RuleGroupResult):
     ordering = ['-rule_scope']
 
   def __unicode__(self):
-    return self.rule_scope.title 
-  
+    return self.rule_scope.title
+
   def get_id(self):
-    return 'wsrsr_' + self.rule_scope.id   
+    return 'wsrsr_' + self.rule_scope.id
 
   def get_title(self):
-    return self.rule_scope.title   
+    return self.rule_scope.title
 
 
 # ---------------------------------------------------------------
@@ -162,11 +162,11 @@ class WebsiteRuleScopeResultGroup(RuleGroupResult):
 class WebsiteRuleResultGroup(RuleResult):
 
   wsr_group  = models.ForeignKey(WebsiteReportGroup, on_delete=models.CASCADE, related_name="ws_rule_result_groups")
- 
+
   slug         = models.SlugField(max_length=16, default="none", editable=False)
 
   rule         = models.ForeignKey(Rule, on_delete=models.SET_NULL, null=True, default=None)
-  
+
   pages_violation    = models.IntegerField(default=0)
   pages_warning      = models.IntegerField(default=0)
   pages_manual_check = models.IntegerField(default=0)
