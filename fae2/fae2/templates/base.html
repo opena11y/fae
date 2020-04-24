@@ -89,10 +89,10 @@
                   role="button"
                   aria-haspopup="true"
                   aria-expanded="false">
-                Institution Admin
+                Institutional Admin
                 <span class="caret"></span>
               </a>
-              <ul class="dropdown-menu" role="menu" aria-label="Administration Options">
+              <ul class="dropdown-menu" role="menu" aria-label="Institutional Administrator Options">
                     <li><a href="{% url 'institutional_admin' user.profile.domain %}">User Information</a></li>
               </ul>
             </li>
@@ -108,7 +108,7 @@
                 FAE Admin
                 <span class="caret"></span>
               </a>
-              <ul class="dropdown-menu" role="menu" aria-label="Administration Options">
+              <ul class="dropdown-menu" role="menu" aria-label="FAE Administrator Options">
                     <li><a href="{% url 'fae_status'       %}">Processing Status</a></li>
                     <li><a href="{% url 'responses'        %}">Respond to Contacts</a></li>
                     <li><a href="{% url 'all_user_information' %}">User Information</a></li>
