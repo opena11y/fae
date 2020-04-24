@@ -89,11 +89,11 @@
                   role="button"
                   aria-haspopup="true"
                   aria-expanded="false">
-                Institutional Admin
+                Institution Admin
                 <span class="caret"></span>
               </a>
               <ul class="dropdown-menu" role="menu" aria-label="Administration Options">
-                    <li><a href="{% url 'institutional_admin' user.profile.domain %}">Institutional Information</a></li>
+                    <li><a href="{% url 'institutional_admin' user.profile.domain %}">User Information</a></li>
               </ul>
             </li>
             {% endif %}
