@@ -177,8 +177,6 @@ def ReportRulesGroupRuleViewCSV(request, report, view, group, rule):
 
     addReportInformation(report_obj, writer, request.path.replace('/csv/', ''))
 
-    addRuleInformation(page_rule_result.rule, writer)
-
     if view == 'gl':
         group = report_obj.ws_gl_results.get(slug=group)
     elif view == 'rs':
@@ -188,8 +186,11 @@ def ReportRulesGroupRuleViewCSV(request, report, view, group, rule):
 
     ws_rule_result = group.ws_rule_results.get(slug=rule)
 
+    addRuleInformation(ws_rule_result.rule, writer)
+
+
     writer.writerow(
-        ['Page', 'Page Title', 'Result', 'Violations', 'Warnings', 'Manual Check', 'Passed', 'Score', 'Status'])
+        ['Page', 'Page Title', 'Result', 'Elements Violation', 'Elements Warning', 'Elements Manual Check', 'Elements Passed', 'Score', 'Status'])
 
     for wsr in ws_rule_result.page_rule_results.all():
         writer.writerow(
@@ -226,6 +227,7 @@ def ReportRulesGroupRulePageViewCSV(request, report, view, group, rule, page):
     page_rule_result = ws_rule_result.page_rule_results.get(page_result__page_number=page)
 
     addRuleInformation(page_rule_result.rule, writer)
+    addPageInformation(page_rule_result.page_result, writer)
 
     writer.writerow(['Element Identifier', 'Result', 'Element Position', 'Message'])
 
