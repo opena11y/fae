@@ -238,8 +238,5 @@ def ReportPageGroupViewCSV(request, report, view, group, page):
     return response
 
 def ReportPageGroupRuleViewCSV(request, report, view, group, page, rule):
-    response = HttpResponse(content_type='text/csv')
-    response['Content-Disposition'] = 'attachment; filename="' + request.path.replace('/csv/', '').replace('/', '-').strip('-') + '.csv"'
-
-    return response
+    return ReportRulesGroupRulePageViewCSV(request, report, view, group, rule, page)
 
