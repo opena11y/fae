@@ -90,6 +90,12 @@ def addPageInformation(page, writer):
     writer.writerow([])
 
 
+def cleanMessage(message):
+
+    message = message.replace('<code>', '\'')
+    message = message.replace('</code>', '\'')
+
+    return message
 
 
 def ReportRulesViewCSV(request, report, view):
@@ -234,7 +240,7 @@ def ReportRulesGroupRulePageViewCSV(request, report, view, group, rule, page):
     for prr in json.loads(page_rule_result.element_results_json):
         writer.writerow(
             [prr['element_identifier'], get_element_result(int(prr['result_value'])), prr['ordinal_position'],
-             prr['message']])
+             cleanMessage(prr['message'])])
 
     return response
 
