@@ -9,25 +9,23 @@
     <meta name="description" content="{% block meta_description %}The Web Accessibility Compliance Checker by ADA First uses the most thorough and reliable automated testing software available, the Functional Accessibility Evaluator (FAE) to check websites and web pages for compliance with Web Content Accessibility Guidlelines (WCAG) 2.0{% endblock %}">
     <meta name="keywords" content="{% block meta_keywords %}ADA, americans with disabilities act, website checker, WCAG, web content accessibility guidelines, section 508, website audit, compliance tools{% endblock %}">
     <meta name="robots" content="{% block meta_robots %}index,follow{% endblock %}">
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <![endif]-->
+
+    <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script> <![endif]-->
+
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href="{% static 'css/bootstrap-plugins.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/fae2.css' %}" rel="stylesheet">
     {% block css %}
     {% endblock %}
-    <!-- Google Tag Manager -->
-    {% gtm_head %}
-    <!-- End Google Tag Manager -->
+
+    {% gtm_head %} <!-- Google Tag Manager -->
   </head>
   <body>
     <nav id="top-navbar-container" class="navbar navbar-inverse" aria-labelledby="top-navbar-label">
       <h2 id="top-navbar-label" class="sr-only">Main Navigation</h2>
-      <!-- Google Tag Manager (noscript) -->
-      {% gtm_body %}
-      <!-- End Google Tag Manager (noscript) -->
+
+      {% gtm_body %} <!-- Google Tag Manager (noscript) -->
+
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#top-navbar" aria-controls="top-navbar">
