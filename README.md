@@ -46,6 +46,7 @@ django-google-tag-manager==0.0.5
 django-extensions==2.2.9
 django-debug-toolbar==2.2
 Werkzeug==1.0.1
+mod-wsgi==4.7.1
 ```
 
 ### Creating a <code>secrets.json</code> file
