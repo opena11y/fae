@@ -24,7 +24,7 @@ FAE may be used and distributed based on the terms and conditions of the [Apache
 * Java 1.8
 * Python development package (`python-dev` in Debian/Ubuntu)
 * postgresql-devel (`libpq-dev` in Debian/Ubuntu)
-* `psycopg2` package for python to talk to postgres
+* `python3-psycopg2` package for python to talk to postgres
 
 ### Python modules
 
