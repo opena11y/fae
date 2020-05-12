@@ -32,16 +32,20 @@ Here is the [requirements.txt] file to use with pip
 
 ```
 confusable-homoglyphs==3.2.0
-Django==2.2.7
+Django==2.2.12
 django-password-reset==2.0
-django-registration==3.0
-django-timezone-field==3.1
-future==0.15.2
-Markdown==2.6.5
-psycopg2==2.8.4
-pytz==2019.3
-requests==2.10.0
-sqlparse==0.3.0
+django-registration==3.1
+django-timezone-field==4.0
+future==0.18.2
+Markdown==3.2.2
+psycopg2==2.8.5
+pytz==2020.1
+requests==2.23.0
+sqlparse==0.3.1
+django-google-tag-manager==0.0.5
+django-extensions==2.2.9
+django-debug-toolbar==2.2
+Werkzeug==1.0.1
 ```
 
 ### Creating a <code>secrets.json</code> file
@@ -54,36 +58,36 @@ The "secrets.json" file must be created and provides:
 
 ```
 {
-  "FILENAME": "secrets.json",
-  "PROCESSING_THREADS": 4,
-  "SITE_URL": "[your site URL]",
-  "SITE_NAME": "FAE 2.0 for [your organization]",
-  "SECRET_KEY": "[random string of 50 characters used by django]",
-  "SELF_REGISTRATION_ENABLED": true,
-  "ANONYMOUS_ENABLED": true,
-  "DEBUG": false,
-  "LOGGER_LEVEL": "INFO",
-  "DATABASE_HOST": "[ip address or localhost if database on same server]",
-  "DATABASE_PORT": "[port, typically 5432]",
-  "DATABASE_NAME": "[DB name]",
-  "DATABASE_USER": "[DB username]",
-  "DATABASE_PASSWORD": "[DB password]",
-  "ALLOWED_HOSTS": ["[your site URL]"],
-  "EMAIL_HOST": "[mailserver]",
-  "EMAIL_PORT": 25,
-  "EMAIL_USE_TLS": true,
-  "EMAIL_HOST_USER": "[email used for sending registration information and announcements]",
-  "EMAIL_HOST_USER_PASSWORD": "[email password]",
-  "ACCOUNT_ACTIVATION_DAYS" : 3,
-  "CONTACT_EMAIL" : "[email notification when a contact form is submitted]",
-  "ADMIN_USER_NAME" : "[username of admin user]",
-  "ADMIN_FIRST_NAME" : "[first name of admin]",
-  "ADMIN_LAST_NAME" : "[last name of admin]",
-  "ADMIN_PASSWORD": "[password for admin]",
-  "ADMIN_EMAIL": "[email for admin]",
-  "ANONYMOUS_PASSWORD" : "[anonymous password, use random characters]",
-  "DEFAULT_ACCOUNT_TYPE" : 2,
-  "GOOGLE_TAG_ID" : "[GTM-_______]"
+    "FILENAME": "secrets.json",
+    "PROCESSING_THREADS": [number, typically 4, depending on how much processing power is available],
+    "SITE_URL": "site url including protocol, for example http://fae.somedomain.org",
+    "SITE_NAME": "[Name that appears in banner of FAE]",
+    "DEBUG": false,
+    "LOGGER_LEVEL": "INFO",
+    "SELF_REGISTRATION_ENABLED": true,
+    "ANONYMOUS_ENABLED": true,
+    "SECRET_KEY": "[random string of 50 characters, used by Django framework]",
+    "DATABASE_HOST": "[domain or localhost]",
+    "DATABASE_PORT": "[port, typically 5432 for postgres]",
+    "DATABASE_NAME": "[name of database]",
+    "DATABASE_USER": "[database user account name]",
+    "DATABASE_PASSWORD": "[password for database user]",
+    "ALLOWED_HOSTS": ["fae.disability.illinois.edu"],
+    "EMAIL_HOST": "[domain of host, localhost can be used if e-mail address is on same server]",
+    "EMAIL_PORT": [port number, typically 25],
+    "EMAIL_USE_TLS": false,
+    "EMAIL_HOST_USER": "[registration e-mail address]",
+    "EMAIL_HOST_USER_PASSWORD": "[password for registration e-mail]",
+    "ACCOUNT_ACTIVATION_DAYS" : 3,
+    "CONTACT_EMAIL" : "[email for sending contact messages, typically admin]",
+    "ADMIN_USER_NAME" : "[admin user name]",
+    "ADMIN_FIRST_NAME" : "[first name of admin]",
+    "ADMIN_LAST_NAME" : "[last name of admin]",
+    "ADMIN_PASSWORD": "[password for admin account]",
+    "ADMIN_EMAIL": "[email address for admin]",
+    "ANONYMOUS_PASSWORD" : "[random password]",
+    "DEFAULT_ACCOUNT_TYPE" : 2,
+    "GOOGLE_TAG_ID" : "[GTM-_______]"
 }
 ```
 
