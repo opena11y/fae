@@ -55,7 +55,7 @@ def get_secret(setting, secrets=secrets):
 
 
 # Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
+# See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = get_secret('SECRET_KEY')
@@ -245,7 +245,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'fae2.wsgi.application'
 
 # Database
-# https://docs.djangoproject.com/en/1.8/ref/settings/#databases
+# https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
     'default': {
@@ -289,7 +289,7 @@ INTERNAL_IPS = [
 GOOGLE_TAG_ID = get_secret('GOOGLE_TAG_ID')
 
 # Internationalization
-# https://docs.djangoproject.com/en/1.8/topics/i18n/
+# https://docs.djangoproject.com/en/2.2/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
@@ -303,8 +303,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
-# Best explanation I have found
-# https://rahmonov.me/posts/django-static-files/
 
 
 STATIC_URL = '/static/'
@@ -314,7 +312,7 @@ STATIC_ROOT = join(APP_DIR, 'fae2/staticroot/')
 print('STATIC ROOT: ' + STATIC_ROOT)
 
 STATICFILES_DIRS = (
-    (join(APP_DIR, "staticfiles/"),
+    (join(APP_DIR, "fae2/staticfiles/"),
 )
 
 LOGIN_REDIRECT_URL = '/'

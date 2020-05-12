@@ -160,7 +160,7 @@ python manage.py migrate
 
 
 ### Multiple Django Apps and mod_wsgi
-* [Configuring wsgi.py for multiple Django apps](https://docs.djangoproject.com/en/1.9/howto/deployment/wsgi/modwsgi/)
+* [Configuring wsgi.py for multiple Django apps](https://docs.djangoproject.com/en/2.2/howto/deployment/wsgi/modwsgi/)
 
 ### Setup Static Files
 * Enable the virtual environment for fae so it is available from the command prompt:<br/>`source [path to virtual environment]/bin/activate`.
