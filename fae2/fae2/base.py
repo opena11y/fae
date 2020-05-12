@@ -183,6 +183,7 @@ INSTALLED_APPS = [
     'websiteResultGroups.apps.WebsiteresultgroupsConfig',
     'stats.apps.StatsConfig',
     'gtm',
+    'logentry_admin',
 ] + DEBUG_APPS
 
 if SHIBBOLETH_ENABLED:

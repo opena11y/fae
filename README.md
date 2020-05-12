@@ -47,6 +47,7 @@ django-extensions==2.2.9
 django-debug-toolbar==2.2
 Werkzeug==1.0.1
 mod-wsgi==4.7.1
+django-logentry-admin==1.0.6
 ```
 
 ### Creating a <code>secrets.json</code> file
@@ -61,7 +62,7 @@ The "secrets.json" file must be created and provides:
 {
     "FILENAME": "secrets.json",
     "PROCESSING_THREADS": [number, typically 4, depending on how much processing power is available],
-    "SITE_URL": "site url including protocol, for example http://fae.somedomain.org",
+    "SITE_URL": "site url with protocol, like https://fae.somedomain.org",
     "SITE_NAME": "[Name that appears in banner of FAE]",
     "DEBUG": false,
     "LOGGER_LEVEL": "INFO",
