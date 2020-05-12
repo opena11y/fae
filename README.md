@@ -97,6 +97,8 @@ The "secrets.json" file must be created and provides:
 
 ### Apache 2.0 configuration notes
 
+If using Ubuntu (or Debian), please read `ubuntu-18-04-conf.md` for distro specific instructions.
+
 * MOD_WSGI (which is installed by the `requirements.txt` file as `mod-wsgi`)must be installed and support Python 3.6 (as long as your virtual environment uses Python 3.6, this is supposed to work automagically).
 * Ubuntu 18.04 ships with Python 3.6 and readily installs Java 8 via `apt` and is highly recommended (Centos doesn't ship with Python at all, which makes it easy to install 3.6 and avoid conflicts and Centos 8 [or maybe it was 7] readily installs Java 8 via `yum` but as that is a Red Hat-based distro if you want to use that you should read `centos7-configuration.md`...actually, regardless of what OS you use, you should read that too, it includes some details that this one doesn't about getting things set up correctly).
 * The Django documentation suggests using another server for serving static files than the server (presumably Apache) that serves the application and suggests Nginx so that is worth keeping in mind (due to the complexity of this application, I suggest getting it up and running on Apache before trying to add the additional complexity of Nginx as a reverse proxy).
