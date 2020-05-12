@@ -290,7 +290,7 @@ GOOGLE_TAG_ID = get_secret('GOOGLE_TAG_ID')
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
