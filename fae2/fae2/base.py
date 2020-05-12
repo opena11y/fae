@@ -301,15 +301,19 @@ USE_L10N = True
 USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.8/howto/static-files/
+# https://docs.djangoproject.com/en/2.2/howto/static-files/
+# Best explanation I have found
+# https://rahmonov.me/posts/django-static-files/
+
 
 STATIC_URL = '/static/'
-STATIC_ROOT = join(BASE_DIR, 'static/')
+
+STATIC_ROOT = join(APP_DIR, 'fae2/staticroot/')
 
 print('STATIC ROOT: ' + STATIC_ROOT)
 
 STATICFILES_DIRS = (
-    join(APP_DIR, "fae2/static"),
+    (join(APP_DIR, "staticfiles/"),
 )
 
 LOGIN_REDIRECT_URL = '/'

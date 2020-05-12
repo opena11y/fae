@@ -10,7 +10,7 @@ Development is primarily supported by the [University of Illinois at Urbana-Cham
 
 ## What is Functional Accessibility Evaluator (FAE)?
 * FAE analyzes a website based on the requirements of the W3C Web Content Accessibility Guidelines 2.0 Single A and AA Success Criteria.
-* Every rule used in FAE 2.0 references at primary WCAG 2.0 Success Criterion requirement it is based on.
+* Every rule used in FAE 2.1 references at primary WCAG 2.0 Success Criterion requirement it is based on.
 * The rules support not only accessibility, but also usable web design for people with disabilities.
 * The rules support accessible and usable design by enforcing the accessible coding practices and techniques of the Accessible Rich Internet Application (ARIA) 1.0 and W3C HTML5 specifications.
 
@@ -97,9 +97,20 @@ The "secrets.json" file must be created and provides:
 
 ### Apache 2.0 configuration notes
 
-* MOD_WSGI must be installed and support Python 3.6
+* MOD_WSGI (which is installed by the `requirements.txt` file as `mod-wsgi`)must be installed and support Python 3.6 (as long as your virtual environment uses Python 3.6, this is supposed to work automagically).
+* Ubuntu 18.04 ships with Python 3.6 and readily installs Java 8 via `apt` and is highly recommended (Centos doesn't ship with Python at all, which makes it easy to install 3.6 and avoid conflicts and Centos 8 [or maybe it was 7] readily installs Java 8 via `yum` but as that is a Red Hat-based distro if you want to use that you should read `centos7-configuration.md`...actually, regardless of what OS you use, you should read that too, it includes some details that this one doesn't about getting things set up correctly).
+* The Django documentation suggests using another server for serving static files than the server (presumably Apache) that serves the application and suggests Nginx so that is worth keeping in mind (due to the complexity of this application, I suggest getting it up and running on Apache before trying to add the additional complexity of Nginx as a reverse proxy).
 
-#### Sample Apache configuration gile
+While much of the original FAE2 documentation and examples use the traditional `/var/www` paths that are standard for Apache serving websites, it is apparently also customary to put applications in `/opt` so this fork of FAE2 is configured to use a directory structure as follows:
+
+`/opt/fae2` (everything is contained within this folder)
+
+The virtual environment is `/opt/fae2/venv/...`
+The application itself is in `/opt/fae2/app/...` so the full path to `wsgi.py` (for example) is `/opt/fae2/app/fae2/fae2/fae2/wsgi.py`
+
+There are a few places that this path needs updated and I often forget to update the documentation so anyone using this fork should search in the entire code base for ` var/www ` and  ` opt/fae2 ` (and replace it with the path that's correct for them), then search for  ` fae2env ` and ` venv ` and correct the paths to their virtual environment.
+
+#### Sample Apache configuration file
 
 ```
 <VirtualHost *:80 >
@@ -142,6 +153,7 @@ python manage.py migrate
 ### Setting up fae directories for read/write access
 * Need to create `data` directory with write permissions for `apache` user and group `root` user
 * Need to create `logs` direcotry with write permissions for `apache` user and group `root` user
+* * Note: the `www-data` user seems to be the default user Apache runs as on recent Ubuntu and Debian distros--it's not hard to change, just make sure the user that Apache runs as matches the user that owns the `data` and `logs` directories.
 
 
 ### Multiple Django Apps and mod_wsgi
