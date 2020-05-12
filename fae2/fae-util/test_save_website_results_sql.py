@@ -41,7 +41,6 @@ sys.path.append(os.path.abspath('..'))
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'fae2.settings')
 django.setup()
 
-
 from save_website_results_sql import saveResultsToDjango
 
 from reports.models              import WebsiteReport
@@ -76,7 +75,6 @@ def main():
     print("=======================")
     print("Saving Data: " + str(ws_report))
     saveResultsToDjango(ws_report, log)
-
 
 if __name__ == "__main__":
   main()

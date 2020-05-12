@@ -78,7 +78,6 @@ def debug(s):
     log.flush()
     print("[ARCHIVED REPORTS][debug]: " + str(s) + "\n")
 
-
 def info(s):
   if INFO and log:
     log.write("[ARCHIVED REPORTS][info]: " + str(s) + "\n")
@@ -92,7 +91,6 @@ def error(s):
     log.flush()
     if DEBUG:
       print("[ARCHIVED REPORTS][**ERROR]: " + str(s) + "\n")
-
 
 def archive_reports():
 
@@ -160,7 +158,6 @@ def archive_fae2_logs():
   # Empty current log file
   f = open(fae2_log_current, 'w')
   f.close()
-
 
 if __name__ == "__main__":
   archive_reports()

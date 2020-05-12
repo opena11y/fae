@@ -1,4 +1,4 @@
-   
+
     function getParsedURL() {
 
         var node_url = document.getElementById('id_input_url');
@@ -37,18 +37,18 @@
 
         var s  = node_url.value;
         s = s.trim();
-       
+
         return s.length > 0;
-     
+
       }
 
       function test_title() {
-  
+
         var s  = node_title.value;
         s = s.trim();
-       
+
         return s.length > 0;
-   
+
       }
 
       var node_url      = document.getElementById('id_input_url');
@@ -59,22 +59,21 @@
 
       if (test_url() && test_title()) {
         node_submit.disabled = false;
-        node_submit.setAttribute('title', 'Submit form to start evaluation');     
+        node_submit.setAttribute('title', 'Submit form to start evaluation');
       }
       else {
         node_submit.disabled = true;
-        node_submit.setAttribute('title', 'You must enter a valid URL and a title before you can request a report');     
+        node_submit.setAttribute('title', 'You must enter a valid URL and a title before you can request a report');
       }
     }
-   
-   
+
   function disableSubmit() {
-     
-    var node_submit = document.getElementById('id_submit');     
+
+    var node_submit = document.getElementById('id_submit');
     node_submit.disabled = true;
-    node_submit.setAttribute('title', 'Report request has already been sent');     
+    node_submit.setAttribute('title', 'Report request has already been sent');
   }
-   
+
   function disableFollowOptions () {
 
     var follow1   = document.getElementById("id_follow_1");
@@ -93,7 +92,7 @@
     if (follow3) {
       follow3.disabled = true;
       disableAdvancedOptions();
-    }  
+    }
 
   }
 
@@ -109,9 +108,9 @@
         updatePathOption();
       }
       else {
-        disablePathOption();     
-      } 
-    }  
+        disablePathOption();
+      }
+    }
 
     if (follow2) {
       follow2.disabled = false;
@@ -144,8 +143,8 @@
           n = document.getElementById("id_input_require_path");
           if (n) n.removeAttribute('disabled');
           n = document.getElementById("id_input_require_path_label");
-          if (n) n.classList.remove('disabled');          
-        
+          if (n) n.classList.remove('disabled');
+
         }
       }
       else {
@@ -169,15 +168,15 @@
       checkbox = document.getElementById("id_enable_next_level_sub_domains");
       if (checkbox) {
         checkbox.disabled = false;
-        
+
         label = document.getElementById("id_label_next_level_sub_domains");
         if (label) label.classList.remove('disabled');
-      }  
+      }
 
       checkbox = document.getElementById("id_enable_span_sub_domains");
       if (checkbox) {
         checkbox.disabled = false;
-        
+
         label = document.getElementById("id_label_span_sub_domains");
         if (label) label.classList.remove('disabled');
 
@@ -191,7 +190,7 @@
       checkbox = document.getElementById("id_enable_exclude_domains");
       if (checkbox) {
         checkbox.disabled = false;
-        
+
         label = document.getElementById("id_label_exclude_domains");
         if (label) label.classList.remove('disabled');
 
@@ -205,7 +204,7 @@
       checkbox = document.getElementById("id_enable_include_domains");
       if (checkbox) {
         checkbox.disabled = false;
-        
+
         label = document.getElementById("id_label_include_domains");
         if (label) label.classList.remove('disabled');
 
@@ -228,7 +227,6 @@
       label = document.getElementById("id_label_next_level_sub_domains");
       if (label) label.classList.add('disabled');
 
-
       checkbox = document.getElementById("id_enable_span_sub_domains");
       if (checkbox) checkbox.disabled = true;
 
@@ -238,7 +236,6 @@
       textbox = document.getElementById("id_input_span_sub_domains");
       if (textbox) textbox.disabled = true;
 
-
       checkbox = document.getElementById("id_enable_exclude_domains");
       if (checkbox) checkbox.disabled = true;
 
@@ -247,7 +244,6 @@
 
       textbox = document.getElementById("id_input_exclude_domains");
       if (textbox) textbox.disabled = true;
-
 
       checkbox = document.getElementById("id_enable_include_domains");
       if (checkbox) checkbox.disabled = true;
@@ -259,7 +255,6 @@
       if (textbox) textbox.disabled = true;
 
     }
-
 
   function updateFollow(event) {
 
@@ -279,11 +274,11 @@
       }
 
       if (follow3 && follow3.checked) {
-        disablePathOption();          
+        disablePathOption();
         enableAdvancedOptions();
-      }        
+      }
 
-   } 
+   }
 
    function updateDomainTextbox (event) {
 
@@ -304,31 +299,30 @@
 
    }
 
-
    function enableMaxPages() {
-    
+
       var i;
       var c;
 
-      var mps = document.getElementById("id_max_pages");      
+      var mps = document.getElementById("id_max_pages");
 
       controls = mps.getElementsByTagName("input");
-      
-      for(i = 1; i < controls.length; i++) {
-        controls[i].disabled = false;     
-      }      
 
-   } 
+      for(i = 1; i < controls.length; i++) {
+        controls[i].disabled = false;
+      }
+
+   }
 
    function disableMaxPages() {
 
       var i;
       var c;
 
-      var mps = document.getElementById("id_max_pages");      
+      var mps = document.getElementById("id_max_pages");
 
       controls = mps.getElementsByTagName("input");
-      
+
       for(i = 0; i < controls.length; i++) {
         c = controls[i];
         if (i === 0) {
@@ -338,26 +332,23 @@
         else {
            c.disabled = true;
          }
-      }      
-    } 
-
+      }
+    }
 
    function updateDepth(event) {
 
-    
       var depth1 = document.getElementById("id_depth_1");
 
       if (depth1.checked) {
         disableMaxPages();
         disableFollowOptions();
-      }  
+      }
       else {
         enableMaxPages();
         enableFollowOptions();
-      }  
+      }
 
     };
-
 
     function initRun () {
 
@@ -394,17 +385,17 @@
 
       c = document.getElementById('id_follow_1');
       if (c) {
-        c.addEventListener('click', updateFollow);        
+        c.addEventListener('click', updateFollow);
       }
 
       c = document.getElementById('id_follow_2');
       if (c) {
-        c.addEventListener('click', updateFollow);        
+        c.addEventListener('click', updateFollow);
       }
 
       c = document.getElementById('id_follow_3');
       if (c) {
-        c.addEventListener('click', updateFollow);        
+        c.addEventListener('click', updateFollow);
       }
 
       updateDepth();
@@ -412,5 +403,3 @@
     }
 
 window.addEventListener('load', initRun);
-
-

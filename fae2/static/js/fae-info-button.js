@@ -30,7 +30,7 @@ InformationButton.prototype.init = function () {
     if (!e) {
       e = this.domNode.parentNode;
       if (e && e.innerText.length) {
-        e.setAttribute('aria-label', e.innerText);        
+        e.setAttribute('aria-label', e.innerText);
       }
     }
 
@@ -111,7 +111,6 @@ InformationButton.prototype.handleBlur = function (event) {
   this.domNode.classList.remove('focus');
 };
 
-
 (function() {
 
   var ibs = document.getElementsByClassName('fae_info_button');
@@ -122,4 +121,3 @@ InformationButton.prototype.handleBlur = function (event) {
   }
 
 })();
-

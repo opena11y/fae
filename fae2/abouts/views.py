@@ -19,7 +19,6 @@ Author: Jon Gunderson
 
 """
 
-
 # abouts/views.py
 
 from __future__ import absolute_import
@@ -43,9 +42,8 @@ class OverviewView(FAENavigationMixin, TemplateView):
         context = super(OverviewView, self).get_context_data(**kwargs)
 
         context['rule_categories'] = RuleCategory.objects.all()
-        
-        return context            
 
+        return context
 
 class PrivacyView(FAENavigationMixin, TemplateView):
     template_name = 'abouts/privacy.html'
@@ -69,5 +67,5 @@ class FAQView(FAENavigationMixin, TemplateView):
         context = super(FAQView, self).get_context_data(**kwargs)
 
         context['faqs'] = FAQ.objects.all()
-        
-        return context  
+
+        return context

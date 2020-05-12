@@ -33,8 +33,6 @@ import datetime
 from django.conf import settings
 from django.utils.timezone import make_aware
 
-
-
 class AccountType(models.Model):
     id = models.AutoField(primary_key=True)
 

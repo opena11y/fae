@@ -42,7 +42,6 @@ from .views import AllUserInformationView
 from .views import PaymentInformationView
 from .views import InvoiceView
 
-
 urlpatterns = [
     url(r'^$',         MyAccountView.as_view(),          name='my_account'),
     url(r'^profile/$', UpdateUserProfileView.as_view(),  name='update_profile'),
@@ -63,5 +62,3 @@ urlpatterns = [
     url(r'^payments/$',  PaymentInformationView.as_view(),   name='payment_information'),
     url(r'^invoice/(?P<reference_id>\w+)/$',  InvoiceView.as_view(),   name='invoice'),
 ]
-
-

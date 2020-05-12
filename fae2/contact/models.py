@@ -49,7 +49,6 @@ CONTACT_STATUS = (
     ('R', 'Responded'),
 )
 
-
 # User Contact (associated with contact form)
 class Contact(models.Model):
     id = models.AutoField(primary_key=True)
@@ -70,7 +69,6 @@ class Contact(models.Model):
             if shortp == self.status:
                 return longp
 
-
 ANNOUNCEMENT_SCOPE = (
     ('All', 'All Users'),
     ('Sub', 'Users who have a paid subscription'),
@@ -83,7 +81,6 @@ ANNOUNCEMENT_STATUS = (
     ('Visible', 'Announcement is visible in web views.'),
     ('Arch', 'Announcement is only available in the archive.'),
 )
-
 
 class Announcement(models.Model):
     id = models.AutoField(primary_key=True)

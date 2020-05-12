@@ -39,5 +39,3 @@ class SuccessCriterionAdmin(admin.ModelAdmin):
     list_filter  = ('level', )
 
 admin.site.register(SuccessCriterion, SuccessCriterionAdmin)
-
-

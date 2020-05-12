@@ -597,9 +597,7 @@ var createARIATestRuleset = function () {
   catch (err) {
     OpenAjax.a11y.logger.error("[TEST Ruleset] ** Error creating ARIA Test Ruleset");
   }
-
 }();
-
 
 /**
  * Copyright 2011-2018 OpenAjax Alliance
@@ -1171,7 +1169,6 @@ var createARIATransitionalRuleset = function () {
 /* OpenAjax Alliance (OAA) ARIA Strict Rule Mapping (Beta)                     */
 /* --------------------------------------------------------------------------- */
 
-
 var createARIAStrictRuleset = function () {
 
   var ruleset_info = {
@@ -1740,6 +1737,4 @@ var createARIAStrictRuleset = function () {
   catch (err) {
     OpenAjax.a11y.logger.error("[ARIA STRICT Ruleset] ** Error creating ARIA Strict Ruleset");
   }
-
 }();
-

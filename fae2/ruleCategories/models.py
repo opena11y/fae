@@ -28,12 +28,12 @@ import re
 
 import const
 
-## Rule Categories (e.g. abbrev, audio, headings, images, links...)  
+## Rule Categories (e.g. abbrev, audio, headings, images, links...)
 class RuleCategory(models.Model):
   id = models.AutoField(primary_key=True)
-  
+
   rule_category_code  = models.IntegerField(unique=True)
-  category_id         = models.CharField(max_length=64) 
+  category_id         = models.CharField(max_length=64)
   title               = models.CharField(max_length=256)
   title_plural        = models.CharField("Title Plural", max_length=256)
   description         = models.TextField(null=True,blank=True)
@@ -44,7 +44,7 @@ class RuleCategory(models.Model):
     verbose_name        = "Rule Category"
     verbose_name_plural = "Rule Categories"
     ordering = ['order','title']
-    
+
   def __str__(self):
     return self.title_plural
 
@@ -54,11 +54,8 @@ class RuleCategory(models.Model):
   def get_rules(self):
 
     rules = []
-    
+
     for r in self.rules.all():
       rules.append(r)
 
     return rules
-
-
-

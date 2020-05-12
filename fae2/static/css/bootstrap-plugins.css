@@ -712,7 +712,6 @@ table.sortable span.reversed {
     }
 
 
-
 table.sortable span.az:before {
     content: "a .. z";
 }

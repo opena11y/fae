@@ -7497,22 +7497,20 @@ table.sortable span.arrow, span.reversed {
     margin-top: -2px;
 }
 
-    table.sortable span.arrow.up {
-        border-color: transparent transparent #ccc transparent;
-        margin-top: -7px;
-    }
+table.sortable span.arrow.up {
+    border-color: transparent transparent #ccc transparent;
+    margin-top: -7px;
+}
 
 table.sortable span.reversed {
     border-color: transparent transparent #ccc transparent;
     margin-top: -7px;
 }
 
-    table.sortable span.reversed.up {
-        border-color: #ccc transparent transparent transparent;
-        margin-top: -2px;
-    }
-
-
+table.sortable span.reversed.up {
+    border-color: #ccc transparent transparent transparent;
+    margin-top: -2px;
+}
 
 table.sortable span.az:before {
     content: "a .. z";

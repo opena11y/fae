@@ -42,11 +42,10 @@ $(document).ready(function() {
         var node = event.currentTarget;
         if (node.tagName !== 'DIV') node = node.parentNode;
         if (hasDisabled(node)) style='fae_disabled';
-        node.classList.remove(style);  
+        node.classList.remove(style);
 
         event.stopPropagation();
         event.preventDefault();
-
 
     };
 

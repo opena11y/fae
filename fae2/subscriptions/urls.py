@@ -28,5 +28,3 @@ from .views import SubscriptionOptionsView
 urlpatterns = [
     url(r'^$',        SubscriptionOptionsView.as_view(),  name='subscription'),
 ]
-
-

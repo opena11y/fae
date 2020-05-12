@@ -30,7 +30,6 @@ import markdown
 
 import datetime
 
-
 class FAQ(models.Model):
     id = models.AutoField(primary_key=True)
 

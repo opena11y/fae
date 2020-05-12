@@ -24,7 +24,6 @@ from django.contrib.sites.models import Site
 from userProfiles.models import UserProfile
 from django.contrib.auth.models import AnonymousUser
 
-
 from fae2.settings import ANONYMOUS_ENABLED
 from fae2.settings import SELF_REGISTRATION_ENABLED
 
@@ -33,7 +32,6 @@ from fae2.settings import SHIBBOLETH_URL
 from fae2.settings import SHIBBOLETH_NAME
 
 from fae2.settings import PAYMENT_ENABLED
-
 
 def site(request):
     return {

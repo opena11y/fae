@@ -19,7 +19,6 @@ Author: Jon Gunderson
 
 """
 
-
 # abouts/urls.py
 from __future__ import absolute_import
 from django.conf.urls import url
@@ -33,7 +32,7 @@ from .views import VersionsView
 from .views import FAQView
 from .views import VPATView
 
-urlpatterns = [ 
+urlpatterns = [
     url(r'^$',            OverviewView.as_view(),       name='overview'),
     url(r'^concepts/$',   ConceptsTermsView.as_view(),  name='concepts_terms'),
     url(r'^disclaimer/$', DisclaimerView.as_view(),     name='disclaimer'),

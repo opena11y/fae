@@ -55,10 +55,10 @@ def create_spec(title, abbr, url, url_slug, link_text, flag):
     spec.element_based = flag
   except ObjectDoesNotExist:
     spec = LanguageSpec(title=title, abbr=abbr, url=url, url_slug=url_slug, link_text=link_text, element_based=flag)
-    print("  Creating Testsuite Spec " + title) 
+    print("  Creating Testsuite Spec " + title)
   spec.save()
   return spec
-  
+
 def create_element_definition(s, e, a, v, url, d, t):
 
   try:
@@ -106,7 +106,6 @@ html_all_keydown    = create_element_definition( html, "",   "onkeydown",    "",
 html_all_keyup      = create_element_definition( html, "",   "onkeyup",      "", "https://www.w3.org/TR/uievents/#event-type-keyup",      "", "E")
 html_all_keypress   = create_element_definition( html, "",   "onkeypress",   "", "https://www.w3.org/TR/uievents/#event-type-keypress",   "", "E")
 
-
 html_html_lang = create_element_definition( html, "html",  "lang",    "", "http://www.w3.org/TR/html4/struct/global.html#adef-lang",         "", "")
 html_all_lang  = create_element_definition( html, "",      "lang",    "", "http://www.w3.org/TR/html4/struct/global.html#adef-lang",         "", "")
 
@@ -117,7 +116,6 @@ html_area_href      = create_element_definition( html, "area", "href",     "", "
 html_object        = create_element_definition( html, "object",    "",         "", "http://www.w3.org/TR/html4/struct/objects.html#edef-object",      "", "")
 html_applet        = create_element_definition( html, "applet",    "",         "", "http://www.w3.org/TR/html4/struct/objects.html#edef-applet",      "", "")
 html_embed         = create_element_definition( html, "embed",    "",         "", "http://msdn.microsoft.com/en-us/library/ms535245%28v=vs.85%29.aspx",   "", "")
-
 
 html_area         = create_element_definition( html, "area",   "",         "", "http://www.w3.org/TR/html4/struct/objects.html#edef-area",   "", "")
 html_area_alt     = create_element_definition( html, "area",   "alt",      "", "http://www.w3.org/TR/html4/struct/objects.html#adef-alt",    "", "")
@@ -203,8 +201,6 @@ html5_audio    = create_element_definition( html5, "audio", "", "", "http://www.
 html5_video    = create_element_definition( html5, "video", "", "", "http://www.whatwg.org/specs/web-apps/current-work/multipage/the-video-element.html#the-video-element",   "", "")
 html5_track    = create_element_definition( html5, "track", "", "", "http://www.whatwg.org/specs/web-apps/current-work/multipage/the-video-element.html#the-track-element",   "", "")
 
-
-
 aria = create_spec("Accessible Rich Internet Application Specification", "ARIA 1.0", "http://www.w3.org/TR/wai-aria/", "aria10", "ARIA 1.0", True)
 
 aria_role              = create_element_definition( aria, "", "role", "", "http://www.w3.org/TR/wai-aria/roles", "User interface widget","R")
@@ -254,7 +250,6 @@ aria_role_toolbar      = create_element_definition( aria, "", "role", "toolbar",
 aria_role_tree         = create_element_definition( aria, "", "role", "tree", "http://www.w3.org/TR/wai-aria/roles#tree", "Composite user interface widget","R")
 aria_role_treegrid     = create_element_definition( aria, "", "role", "treegrid", "http://www.w3.org/TR/wai-aria/roles#treegrid", "Composite user interface widget","R")
 aria_role_article      = create_element_definition( aria, "", "role", "article", "http://www.w3.org/TR/wai-aria/roles#article", "Document structure","R")
-
 
 aria_role_cell         = create_element_definition( aria, "", "role", "cell", "https://www.w3.org/TR/wai-aria-1.1/#cell", "Document structure","R")
 aria_role_columnheader = create_element_definition( aria, "", "role", "columnheader", "http://www.w3.org/TR/wai-aria/roles#columnheader", "Document structure","R")
@@ -373,5 +368,3 @@ css_content       = create_element_definition( css, "content",      "", "", "htt
 css_focus         = create_element_definition( css, ":focus",  "", "", "http://www.w3.org/TR/CSS21/selector.html#x38",        "", 'H')
 css_hover         = create_element_definition( css, ":hover",  "", "", "http://www.w3.org/TR/CSS21/selector.html#x38",        "", 'H')
 css_active        = create_element_definition( css, ":active", "", "", "http://www.w3.org/TR/CSS21/selector.html#x38",        "", 'H')
-
-    

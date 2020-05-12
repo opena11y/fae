@@ -24,6 +24,3 @@ Author: Jon Gunderson
 NLS_LANGUAGES = (
     ('en', 'English'),
 )
-
-
-   

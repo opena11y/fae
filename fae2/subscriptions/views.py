@@ -21,7 +21,7 @@ Author: Jon Gunderson
 
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.contrib.auth import logout 
+from django.contrib.auth import logout
 from django.contrib import messages
 
 from django.core.exceptions import ObjectDoesNotExist
@@ -34,7 +34,6 @@ from reports.views          import FAENavigationMixin
 
 from accounts.models        import AccountType
 
-
 # Create your views here.
 
 class SubscriptionOptionsView(FAENavigationMixin, TemplateView):
@@ -46,4 +45,4 @@ class SubscriptionOptionsView(FAENavigationMixin, TemplateView):
         context['self_regs']   = AccountType.objects.filter(self_registration=True)
         context['shibboleths'] = AccountType.objects.filter(shibboleth=True)
 
-        return context  
+        return context

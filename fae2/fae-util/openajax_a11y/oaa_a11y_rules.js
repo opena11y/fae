@@ -18,7 +18,6 @@
 /*       OpenAjax Alliance Rules National Language Support (NLS): English      */
 /* --------------------------------------------------------------------------- */
 
-
 OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 
     rule_scope: ['unknown', 'Element', 'Page', 'Website'],
@@ -64,7 +63,6 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 /* --------------------------------------------------------------------------- */
 /*       OpenAjax Alliance Rules National Language Support (NLS): English      */
 /* --------------------------------------------------------------------------- */
-
 
 OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 
@@ -273,7 +271,6 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 /*       OpenAjax Alliance Rules National Language Support (NLS): English      */
 /* --------------------------------------------------------------------------- */
 
-
 OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 
     //
@@ -357,7 +354,6 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 /* --------------------------------------------------------------------------- */
 /*       OpenAjax Alliance Rules National Language Support (NLS): English      */
 /* --------------------------------------------------------------------------- */
-
 
 OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 
@@ -479,7 +475,6 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 /* --------------------------------------------------------------------------- */
 /*       OpenAjax Alliance Rules National Language Support (NLS): English      */
 /* --------------------------------------------------------------------------- */
-
 
 OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 
@@ -765,7 +760,6 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 /* --------------------------------------------------------------------------- */
 /*       OpenAjax Alliance Rules National Language Support (NLS): English      */
 /* --------------------------------------------------------------------------- */
-
 
 OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 
@@ -1064,7 +1058,6 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 /* --------------------------------------------------------------------------- */
 /*       OpenAjax Alliance Rules National Language Support (NLS): English      */
 /* --------------------------------------------------------------------------- */
-
 
 OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 
@@ -1756,7 +1749,6 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 /* --------------------------------------------------------------------------- */
 /*       OpenAjax Alliance Rules National Language Support (NLS): English      */
 /* --------------------------------------------------------------------------- */
-
 
 OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 
@@ -2585,7 +2577,6 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 /*       OpenAjax Alliance Rules National Language Support (NLS): English      */
 /* --------------------------------------------------------------------------- */
 
-
 OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 
     //
@@ -2866,7 +2857,6 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 /* --------------------------------------------------------------------------- */
 /*       OpenAjax Alliance Rules National Language Support (NLS): English      */
 /* --------------------------------------------------------------------------- */
-
 
 OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 
@@ -4041,7 +4031,6 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 /*       OpenAjax Alliance Rules National Language Support (NLS): English      */
 /* --------------------------------------------------------------------------- */
 
-
 OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 
     //
@@ -4210,7 +4199,6 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 /* --------------------------------------------------------------------------- */
 /*       OpenAjax Alliance Rules National Language Support (NLS): English      */
 /* --------------------------------------------------------------------------- */
-
 
 OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 
@@ -4570,7 +4558,6 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 /*       OpenAjax Alliance Rules National Language Support (NLS): English      */
 /* --------------------------------------------------------------------------- */
 
-
 OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 
     //
@@ -4746,7 +4733,6 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 /* --------------------------------------------------------------------------- */
 /*       OpenAjax Alliance Rules National Language Support (NLS): English      */
 /* --------------------------------------------------------------------------- */
-
 
 OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 
@@ -5069,7 +5055,6 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 /*       OpenAjax Alliance Rules National Language Support (NLS): English      */
 /* --------------------------------------------------------------------------- */
 
-
 OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 
     //
@@ -5125,7 +5110,6 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 /* --------------------------------------------------------------------------- */
 /*       OpenAjax Alliance Rules National Language Support (NLS): English      */
 /* --------------------------------------------------------------------------- */
-
 
 OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 
@@ -5818,7 +5802,6 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 /*       OpenAjax Alliance Rules National Language Support (NLS): English      */
 /* --------------------------------------------------------------------------- */
 
-
 OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 
     //
@@ -5874,7 +5857,6 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 /* --------------------------------------------------------------------------- */
 /*       OpenAjax Alliance Rules National Language Support (NLS): English      */
 /* --------------------------------------------------------------------------- */
-
 
 OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 
@@ -6413,7 +6395,6 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 /*       OpenAjax Alliance Rules National Language Support (NLS): English      */
 /* --------------------------------------------------------------------------- */
 
-
 OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 
     //
@@ -6538,7 +6519,6 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 /*       OpenAjax Alliance Rules National Language Support (NLS): English      */
 /* --------------------------------------------------------------------------- */
 
-
 OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 
     //
@@ -6662,7 +6642,6 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 /* --------------------------------------------------------------------------- */
 /*       OpenAjax Alliance Rules National Language Support (NLS): English      */
 /* --------------------------------------------------------------------------- */
-
 
 OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 
@@ -7085,7 +7064,6 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 /* --------------------------------------------------------------------------- */
 /*       OpenAjax Alliance Rules National Language Support (NLS): English      */
 /* --------------------------------------------------------------------------- */
-
 
 OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
 
@@ -8245,7 +8223,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 //
 OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
-
   /**
    * @object COLOR_1
    *
@@ -8371,7 +8348,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   }
 
 ]);
-
 
 
 
@@ -8632,7 +8608,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     var widget_elements     = dom_cache.controls_cache.widget_elements;
     var widget_elements_len = widget_elements.length;
 
-
     var target_controls = [];
 
     // collect all the visible controls
@@ -8726,9 +8701,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   } // end validate function
 }
 
-
 ]);
-
 
 
 
@@ -8837,7 +8810,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
      }
 
-
    } // end validation function
 },
 
@@ -8917,7 +8889,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
        }
 
      }
-
 
    } // end validation function
 
@@ -9285,9 +9256,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   } // end validate function
 }
 
-
 ]);
-
 
 
 
@@ -9523,7 +9492,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
         var de = ce.dom_element;
         var cs = de.computed_style;
 
-
         if (ce.control_type === CONTROL_TYPE.BUTTON_ELEMENT) {
 
           if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
@@ -9564,7 +9532,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
   } // end validate function
 },
-
 
 /**
  * @object CONTROL_5
@@ -9725,7 +9692,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
    }
   } // end validate function
 },
-
 
 /**
  * @object CONTROL 8
@@ -9986,13 +9952,11 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
 
 
-
 //
 // OpenAjax Alliance Rules
 // Rule group: Styling Rules
 //
 OpenAjax.a11y.RuleManager.addRulesFromJSON([
-
 
   /**
    * @object FRAME_1
@@ -10102,12 +10066,10 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
         } // end loop
       }
 
-
     } // end validate function
   }
 
 ]);
-
 
 
 
@@ -10722,7 +10684,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
       return true;
     }
 
-
     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
     var SOURCE      = OpenAjax.a11y.SOURCE;
@@ -11047,7 +11008,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
 
 
-
 /**
  * Copyright 2011-2018  OpenAjax Alliance
  *
@@ -11200,7 +11160,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
           if (kbd_events.length) return kbd_events;
 
 //           OpenAjax.a11y.logger.debug("[checkForKeyboardOnRequiredChildren] " + widget + ": " + we + " ("+ flag + ")");
-
 
           if (de.role_info && de.role_info.reqChildren && de.role_info.reqChildren.length) {
             kbd_events = checkChildren(we.child_cache_elements);
@@ -11408,7 +11367,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   language_dependency : "",
   validate            : function (dom_cache, rule_result) {
 
-
      var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
      var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
 
@@ -11416,7 +11374,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
      var media_elements      = dom_cache.media_cache.media_elements;
      var media_elements_len  = media_elements.length;
-
 
      for (var i = 0; i < media_elements_len; i++) {
 
@@ -11439,9 +11396,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
    } // end validation function
 }
 
-
 ]);
-
 
 
 
@@ -11601,7 +11556,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     var page_element = dom_cache.headings_landmarks_cache.page_element;
 
     var i, ci, le, de, cs, li;
-
 
     var navigation_count = 0;
 
@@ -12192,7 +12146,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
       return fail_count;
     }
 
-
     var landmark_elements     = dom_cache.headings_landmarks_cache.landmark_elements;
     var landmark_elements_len = landmark_elements.length;
     var fail_count = 0;
@@ -12201,7 +12154,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
       var le = landmark_elements[i];
       var de = le.dom_element;
       var cs = de.computed_style;
-
 
       if (le.landmark === 'navigation') {
 
@@ -12502,7 +12454,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
       return fail_count;
     }
 
-
     var landmark_elements     = dom_cache.headings_landmarks_cache.landmark_elements;
     var landmark_elements_len = landmark_elements.length;
     var fail_count = 0;
@@ -12520,7 +12471,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
         var fail_list = '';
         var pass_list = '';
         var landmark_count = 0;
-
 
         if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {
           fail_count = checkLandmarkChildren(le);
@@ -12596,7 +12546,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
       return fail_count;
     }
-
 
     var landmark_elements     = dom_cache.headings_landmarks_cache.landmark_elements;
     var landmark_elements_len = landmark_elements.length;
@@ -12909,7 +12858,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
        }
     }
 
-
   } // end validation function
 },
 
@@ -12976,7 +12924,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   } // end validation function
 }
 ]);
-
 
 
 
@@ -13131,7 +13078,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
      var table_elements     = dom_cache.tables_cache.table_elements;
      var table_elements_len = table_elements.length;
-
 
      // Check to see if valid cache reference
      if (table_elements && table_elements_len) {
@@ -13289,7 +13235,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
     }  // end loop
 
-
   } // end valifdation function
 },
 
@@ -13352,9 +13297,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   } // end validate function
  }
 
-
 ]);
-
 
 
 
@@ -13551,7 +13494,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
       else rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'WEBSITE_MC_2', []);
     }
 
-
   } // end validation function
 },
 
@@ -13664,7 +13606,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
         }
       }
 
-
     }
 
     if (page_element) {
@@ -13733,7 +13674,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
        if (heading_count) rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'WEBSITE_MC_1', []);
        else rule_result.addResult(TEST_RESULT.FAIL, page_element, 'WEBSITE_FAIL_1', []);
     }
-
 
   } // end validation function
 },
@@ -13820,7 +13760,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
       rule_result.addResult(TEST_RESULT.MANUAL_CHECK, page_element, 'WEBSITE_MC_1', []);
     }
 
-
   } // end validation function
 },
 
@@ -13882,7 +13821,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
 
 
-
 /**
  * Copyright 2011-2018 OpenAjax Alliance
  *
@@ -13936,7 +13874,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
       var cs = de.computed_style;
       var tag_name = de.tag_name;
 
-
       if (cs.position === 'absolute' || cs.position === 'relative' || cs.position === 'fixed') {
 
         if (cs.is_visible_to_at  === VISIBILITY.VISIBLE) {
@@ -13952,7 +13889,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
   } // end validate function
 }
-
 
 ]);
 /**
@@ -14104,7 +14040,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   language_dependency : '',
   validate          : function (dom_cache, rule_result) {
 
-
     var TEST_RESULT    = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY     = OpenAjax.a11y.VISIBILITY;
 
@@ -14203,7 +14138,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   language_dependency : '',
   validate          : function (dom_cache, rule_result) {
 
-
     var TEST_RESULT    = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY     = OpenAjax.a11y.VISIBILITY;
 
@@ -14254,7 +14188,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   resource_properties : [],
   language_dependency : '',
   validate          : function (dom_cache, rule_result) {
-
 
     var TEST_RESULT    = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY     = OpenAjax.a11y.VISIBILITY;
@@ -14318,7 +14251,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   language_dependency : '',
   validate          : function (dom_cache, rule_result) {
 
-
     var TEST_RESULT    = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY     = OpenAjax.a11y.VISIBILITY;
 
@@ -14374,7 +14306,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   language_dependency : '',
   validate          : function (dom_cache, rule_result) {
 
-
     var TEST_RESULT    = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY     = OpenAjax.a11y.VISIBILITY;
 
@@ -14429,7 +14360,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   resource_properties : ['role'],
   language_dependency : '',
   validate          : function (dom_cache, rule_result) {
-
 
     var TEST_RESULT    = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY     = OpenAjax.a11y.VISIBILITY;
@@ -14489,7 +14419,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   language_dependency : '',
   validate          : function (dom_cache, rule_result) {
 
-
     var TEST_RESULT    = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY     = OpenAjax.a11y.VISIBILITY;
 
@@ -14547,7 +14476,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   resource_properties : [],
   language_dependency : '',
   validate          : function (dom_cache, rule_result) {
-
 
     var TEST_RESULT    = OpenAjax.a11y.TEST_RESULT;
     var VISIBILITY     = OpenAjax.a11y.VISIBILITY;
@@ -14788,8 +14716,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
   } // end validate function
 }
-
-
 
 
 
@@ -15201,7 +15127,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
         }
       } // end loop
 
-
       for (i = 0; i < table_visible.length; i++) {
         var te1 = table_visible[i];
         var count = 0;
@@ -15209,7 +15134,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
         for(j = 0; j < table_visible.length; j++) {
 
           var te2 = table_visible[j];
-
 
           if (te1.accessible_name_for_comparison === te2.accessible_name_for_comparison) {
             count += 1;
@@ -15427,7 +15351,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
 //         OpenAjax.a11y.logger.debug("[Table Rule 1] Cell: " + cell + " headers: " + cell.headers);
 
-
           for (var r = 0; r < max_row; r++) {
             for (var c = 0; c < max_column; c++) {
 
@@ -15493,7 +15416,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   language_dependency : "",
   validate          : function (dom_cache, rule_result) {
 
-
     var TEST_RESULT   = OpenAjax.a11y.TEST_RESULT;
     var HEADER_SOURCE = OpenAjax.a11y.HEADER_SOURCE;
     var VISIBILITY    = OpenAjax.a11y.VISIBILITY;
@@ -15545,7 +15467,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   } // end validation function
 }
 ]);
-
 
 
 
@@ -15695,7 +15616,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 /* ---------------------------------------------------------------- */
 
 OpenAjax.a11y.RuleManager.addRulesFromJSON([
-
 
 /**
  * @object TITLE_1
@@ -16823,7 +16743,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   language_dependency : "",
   validate            : function (dom_cache, rule_result) {
 
-
      function getRequiredChildRolesString(required_children) {
 
        var str = "";
@@ -16899,7 +16818,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   resource_properties : [],
   language_dependency : "",
   validate            : function (dom_cache, rule_result) {
-
 
      function getRequiredRolesString(required_roles) {
 
@@ -17283,7 +17201,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
   language_dependency : "",
   validate            : function (dom_cache, rule_result) {
 
-
      var VISIBILITY  = OpenAjax.a11y.VISIBILITY;
      var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;
 
@@ -17333,7 +17250,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     var dom_elements     = dom_cache.element_cache.dom_elements;
     var dom_elements_len = dom_elements.length;
 
-
     for (var i = 0; i < dom_elements_len; i++ ) {
 
       var de =dom_elements[i];
@@ -17343,7 +17259,6 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
       var has_failure = false;
 
       var has_live_role =  de.role && de.role.length && (" alert log status".indexOf(de.role) > 0);
-
 
       if (de.has_aria_live) {
         if (de.computed_style.is_visible_to_at === VISIBILITY.HIDDEN) {
@@ -17427,9 +17342,4 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
     }
   } // end validation function
 }
-
 ]);
-
-
-
-

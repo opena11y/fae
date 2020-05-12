@@ -35,7 +35,6 @@ main section.report h2
     margin-bottom: 0.25em;
 }
 
-
 main section.report {
     margin-top: 2em;
 }
@@ -52,7 +51,6 @@ main section.report {
     top: .125em;
 }
 
-
 main p img {
     height: 1.6em;
 }
@@ -61,7 +59,6 @@ main p img {
     position: relative;
     top: -.5em;
 }
-
 
 main div.login a {
     padding: 0.25em;
@@ -124,7 +121,6 @@ nav#id_breadcrumbs a:focus {
     outline-offset: 2px;
     outline: solid 1px black;
 }
-
 
 nav h2 {
     margin-top: 1em;
@@ -224,7 +220,6 @@ main .input_subgroup .fae_textbox {
     padding: 0;
     margin-left: 1.5em;
 }
-
 
 main input#id_get_last {
     float: right;
@@ -450,7 +445,6 @@ main label > input[type="checkbox"] {
     margin-right: 0.125em;
 }
 
-
 main .fae_checkbox label span,
 main .fae_radio label span {
     margin-right: 0.25em;
@@ -511,7 +505,6 @@ main input[type=submit].sort-button {
     background-color: #EEEEEE;
     font-weight: normal;
 }
-
 
 main input[type=button].sort-button:focus,
 main input[type=submit].sort-button:focus,
@@ -603,7 +596,6 @@ main div.subscription {
     color: black;
 }
 
-
 #rule_result {
     font-size: 250%;
 }
@@ -646,7 +638,6 @@ span.violation {
     padding-right: 0.25em;
 }
 
-
 fieldset input[disabled] + label,
 input[disabled] + label,
 label.disabled {
@@ -674,7 +665,6 @@ div.checkbox label {
     font-weight: bold;
 }
 
-
 input[type="button"] {
     font-size: 120%;
 }
@@ -691,7 +681,6 @@ main input[type="submit"][disabled] {
   background-color: #ffe5e5;
   border-color: red;
 }
-
 
 
 input[type="button"].sort-button {
@@ -733,7 +722,6 @@ main .rule_summary {
     font-size: 135%;
 }
 
-
 footer {
     margin-top: 4em;
 }
@@ -772,7 +760,6 @@ main table .manual_checks {
 main table .not_applicable {
     color: gray;
 }
-
 
 table td.text input[type=button] {
     font-size: 95%;

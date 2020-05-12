@@ -24,13 +24,10 @@ from django.contrib import admin
 from subscriptions.models import SubscriptionRate
 from subscriptions.models import Payment
 
-
 class SubscriptionRateAdmin(admin.ModelAdmin):
     list_display = ('id', 'one_month', 'three_month', 'six_month', 'twelve_month')
 
 admin.site.register(SubscriptionRate, SubscriptionRateAdmin)
-
-
 
 class PaymentAdmin(admin.ModelAdmin):
     list_display = ('reference_id', 'reference_time', 'capture_time', 'subscription_cost', 'subscription_end', 'reconciliation', 'status')

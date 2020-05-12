@@ -6,7 +6,6 @@ window.addEventListener('load', function() {
 
 // Functions for tabular data
 
-
 var fae2TableUtils = {};
 
 fae2TableUtils.addRow = function (tbody, id, class_name) {
@@ -23,11 +22,11 @@ fae2TableUtils.addRow = function (tbody, id, class_name) {
       	  	tr.className = class_name;
           if (tbody.firstChild) {
             tbody.insertBefore(tr, tbody.firstChild);
-          } 
+          }
           else {
             tbody.appendChild(tr);
-        } 
-    	}  
+        }
+    	}
 
     	return tr;
 	};
@@ -47,7 +46,7 @@ fae2TableUtils.addCell = function (row, text, id, class_name) {
       		row.appendChild(td);
       		td.innerHTML = text;
       		td.setAttribute('data-value', text)
-    	}  
+    	}
 
     	return td;
 	};
@@ -65,7 +64,7 @@ fae2TableUtils.addCellLink = function (row, text, href, id, class_name) {
       	  	td.className = class_name;
       		row.appendChild(td);
       		td.setAttribute('data-value', text)
-    	}  
+    	}
 
     	link = document.createElement('a');
     	if (td && link) {
@@ -77,7 +76,6 @@ fae2TableUtils.addCellLink = function (row, text, href, id, class_name) {
 
     	return link;
 	};
-
 
 fae2TableUtils.addCellButton = function (row, value, label, class_name, evnt) {
 
@@ -91,7 +89,7 @@ fae2TableUtils.addCellButton = function (row, value, label, class_name, evnt) {
             td.className = class_name;
           row.appendChild(td);
           td.setAttribute('data-value', '')
-      }  
+      }
 
       button = document.createElement('input');
       if (td && button) {
@@ -104,7 +102,6 @@ fae2TableUtils.addCellButton = function (row, value, label, class_name, evnt) {
 
       return button;
   };
-
 
 fae2TableUtils.addCellCheckbox = function (row, checked, id, label, class_name, evnt) {
 
@@ -119,7 +116,7 @@ fae2TableUtils.addCellCheckbox = function (row, checked, id, label, class_name, 
       	  	td.className = class_name;
       		row.appendChild(td);
       		td.setAttribute('data-value', checked)
-    	}  
+    	}
 
     	checkbox = document.createElement('input');
     	if (td && checkbox) {
@@ -142,7 +139,7 @@ fae2TableUtils.updateCheckbox = function (id, checked) {
         	if (checked) checkbox.setAttribute('checked', '');
  	        else checkbox.removeAttribute('checked');
  	    }
- 	        
+
 	};
 
 fae2TableUtils.formatDate = function(date) {
@@ -156,7 +153,7 @@ fae2TableUtils.formatDate = function(date) {
 
 fae2TableUtils.getJSON = function(url, callback) {
    		var http_request = new XMLHttpRequest();
-   
+
 	   	try {
     		// Opera 8.0+, Firefox, Chrome, Safari
       		http_request = new XMLHttpRequest();
@@ -174,16 +171,16 @@ fae2TableUtils.getJSON = function(url, callback) {
          		}
       		}
    		}
-   
+
    		http_request.onreadystatechange  = function(){
       		if (http_request.readyState == 4) {
 		        // Javascript function JSON.parse to parse JSON data
             var response = http_request.responseText;
         		var json_array = JSON.parse(response);
         		if (callback) callback(json_array);
-      		}  
+      		}
    		}
-   
+
  		http_request.open("GET", url, true);
    		http_request.send();
 	};

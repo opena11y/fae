@@ -18,7 +18,7 @@
     var expires = "expires="+d.toUTCString();
     document.cookie = $prefix + cname + "=" + cvalue + "; " + expires;
   }
-  
+
   function getCookie(cname) {
     var name = $prefix + cname + "=";
     var ca = document.cookie.split(';');
@@ -45,10 +45,10 @@
 
         // set attributes needed for sorting
         $('table.sortable').each(function () {
-        
+
             var $this = $(this);
-            
-            // Added by JRG 
+
+            // Added by JRG
             // Adds a default sort button before the table
             if ($this.attr('id')) {
               $this.before('<input id="' + $this.attr('id') + '_default"  class="sort-button" type="button" value="Default Sort" disabled>');
@@ -56,19 +56,19 @@
                  restoreDefaultSort($this.attr('id'));
                 }
               );
-              
+
               if ($this.attr('aria-labelledby')) {
                 $('#' + $this.attr('id') + '_default').attr('aria-describedby', $this.attr('aria-labelledby'));
               }
               else if ($this.attr('aria-label')) {
                 $('#' + $this.attr('id') + '_default').attr('title', $this.attr('aria-label'));
               }
-              
-              
+
+
               var i = 1;
-              
+
               var col_id = $this.attr('id') + "_col_";
-              
+
               $this.find('th').each(function() {
                 if (!$(this).attr('id')) {
                   $(this).attr('id', col_id + i);
@@ -76,8 +76,8 @@
                 }
               });
             }
-            
-            
+
+
             applyLast = (applyLast === true);
             $this.find('span.sign').remove();
             $this.find('thead tr').each(function (rowIndex) {
@@ -91,7 +91,7 @@
                     }
                 });
             });
-            
+
             $this.find('td').each(function () {
                 var $this = $(this);
                 if ($this.attr('data-dateformat') != undefined && momentJsAvailable) {
@@ -112,16 +112,16 @@
                     bsSort[sortKey] = bsSort[sortKey] == 'asc' ? 'desc' : 'asc';
                     doSort($this, $sortTable);
                 }
-                
+
                 // added by JRG
                 $this.attr('tabindex', '0');
                 $this.attr('role', 'columnheader');
                 $this.attr('aria-sort', 'none');
             });
             $onloadSort = $this.find('[data-loadsort]');
-            
+
             if ($onloadSort) doSort($onloadSort, $this);
-            
+
             $this.trigger('sorted');
         });
     };
@@ -140,7 +140,7 @@
         var $this = $(this), $table = $this.data('sortTable') || $this.closest('table.sortable');
         doSort($this, $table);
         $table.trigger('sorted');
-      } 
+      }
     });
 
     // added by JRG
@@ -155,7 +155,6 @@
         $(this).removeClass('focus');
     });
 
-
     //Sorting mechanism separated
     function doSort($this, $table) {
         var cn, cv;
@@ -163,7 +162,7 @@
         var sortColumn = $this.attr('data-sortcolumn');
 
         if ($table.attr('id')) {
-          if (sortColumn) { 
+          if (sortColumn) {
             // enable default sort button
             $("#" + $table.attr('id') + "_default").removeAttr('disabled');
           }
@@ -185,7 +184,7 @@
        }
 
         var colspan = $this.attr('colspan');
-        
+
         if (colspan) {
             var selector;
             for (var i = parseFloat(sortColumn) ; i < parseFloat(sortColumn) + parseFloat(colspan) ; i++) {
@@ -216,36 +215,35 @@
             $this.append('<span class="sign ' + localSignClass + '"></span>');
         }
 
-
         // sort direction
         var sortKey = $this.attr('data-sortkey');
-        
+
         var initialDirection = 'desc';
-        
+
         if ($this.attr('data-loadsort') === 'desc') initialDirection = 'asc';
         else if ($this.attr('data-firstsort') === 'desc') initialDirection = 'asc';
 
         lastSort = sortKey;
         bsSort[sortKey] = (bsSort[sortKey] || initialDirection) == 'asc' ? 'desc' : 'asc';
-        
+
         if ($last_header) {
-          $last_header.attr('aria-sort', 'none'); 
+          $last_header.attr('aria-sort', 'none');
         }
         //Modified by JRG to add aria-sort
-        if (bsSort[sortKey] == 'desc') { 
-          $this.find('span.sign').addClass('up'); 
-          $this.attr('aria-sort', 'ascending'); 
-        } 
-        else {
-          $this.attr('aria-sort', 'descending');         
+        if (bsSort[sortKey] == 'desc') {
+          $this.find('span.sign').addClass('up');
+          $this.attr('aria-sort', 'ascending');
         }
-        
+        else {
+          $this.attr('aria-sort', 'descending');
+        }
+
         $last_header = $this;
-          
-        if ($table.attr('id') && $this.attr('id') ) { 
+
+        if ($table.attr('id') && $this.attr('id') ) {
           setCookie($table.attr('id'), $this.attr('id'), 365);
           setCookie($table.attr('id') + "_key",bsSort[sortKey], 365);
-        }  
+        }
 
         // sort rows
         var rows = $table.find('tbody tr');
@@ -266,7 +264,4 @@
     // Initialise on DOM ready
     $($.bootstrapSortable);
 
-    
-
 }(jQuery));
-

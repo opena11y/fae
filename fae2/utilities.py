@@ -23,13 +23,12 @@ from __future__ import absolute_import
 import re
 # Formatter
 
-
 def OAAMarkupToHTML(str):
   str1 = ""
-  
+
   if str and len(str):
     str = str.replace("%s", "must")
-  
+
     code = "<code>"
     for c in str:
       if c == '@':
@@ -39,7 +38,7 @@ def OAAMarkupToHTML(str):
         else:
           code = "<code>"
       else:
-        str1 += c      
+        str1 += c
   return str1
 
 def OAAMarkupToText(str):
@@ -47,13 +46,9 @@ def OAAMarkupToText(str):
 
   if str and len(str):
     str = str.replace("%s", "must")
-  
+
     for c in str:
       if c != '@':
-        str1 += c    
-          
+        str1 += c
+
   return str1
-
-
-
-   

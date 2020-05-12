@@ -97,7 +97,6 @@ def user_information(date, label):
   print('Users with more than five reports since ' + str(date.date()) + ' or at least '   + str(min_reports) + ' reports for all time: ' + str(users_more_than_five_reports) + '  (' + str(users_more_than_five_reports_percent) + ')')
   print('Users with more than ten reports since  ' + str(date.date()) + ' or at least '   + str(min_reports) + ' reports for all time: ' + str(users_more_than_ten_reports)  + '  (' + str(users_more_than_ten_reports_percent) + ')')
 
-
 print('Total Users: ' + str(users_total))
 
 user_information(datetime.datetime(2019, 7, 1, tzinfo=pytz.UTC), 'Last 6 months')
@@ -105,4 +104,3 @@ user_information(datetime.datetime(2019, 1, 1, tzinfo=pytz.UTC), 'Last 12 months
 user_information(datetime.datetime(2018, 7, 1, tzinfo=pytz.UTC), 'Last 18 months')
 user_information(datetime.datetime(2018, 1, 1, tzinfo=pytz.UTC), 'Last 24 months')
 user_information(datetime.datetime(2013, 1, 1, tzinfo=pytz.UTC), 'All time')
-

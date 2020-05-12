@@ -40,7 +40,6 @@ from reports.views import FAENavigationMixin
 from fae2.settings import EMAIL_HOST_USER
 from fae2.settings import ADMIN_EMAIL
 
-
 # Create your views here.
 class ContactFormView(LoginRequiredMixin, FAENavigationMixin, SuccessMessageMixin, CreateView):
     model = Contact
@@ -70,7 +69,6 @@ class ContactFormView(LoginRequiredMixin, FAENavigationMixin, SuccessMessageMixi
         send_mail(contact_topic, message, EMAIL_HOST_USER, [ADMIN_EMAIL], fail_silently=False)
 
         return super(ContactFormView, self).form_valid(form)
-
 
 # Create your views here.
 class ResponseFormView(LoginRequiredMixin, FAENavigationMixin, UpdateView):
@@ -111,7 +109,6 @@ class ResponseFormView(LoginRequiredMixin, FAENavigationMixin, UpdateView):
 
         return context
 
-
 class ResponsesView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
     template_name = 'contact/responses.html'
 
@@ -122,7 +119,6 @@ class ResponsesView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
         context['old_contacts'] = Contact.objects.exclude(status='NR')
 
         return context
-
 
 class AnnouncementFormView(LoginRequiredMixin, FAENavigationMixin, SuccessMessageMixin, CreateView):
     model = Announcement
@@ -137,7 +133,6 @@ class AnnouncementFormView(LoginRequiredMixin, FAENavigationMixin, SuccessMessag
 
     def form_valid(self, form):
         return super(AnnouncementFormView, self).form_valid(form)
-
 
 class AnnouncementsView(FAENavigationMixin, TemplateView):
     template_name = 'contact/announcements.html'

@@ -135,7 +135,6 @@
       </div>
     </nav>
 
-
     <nav id="id_breadcrumbs" aria-labelledby="breadcrumb-nav-label"  class="hidden-xs">
       <h2 id="breadcrumb-nav-label" class="sr-only">Breadcrumb Navigation</h2>
       <div class="container">
@@ -179,7 +178,6 @@
             </ul>
           </nav>
         {% endif %}
-
 
           {% if report_nav.page_count > 1 %}
 
@@ -287,11 +285,8 @@
             {% endblock content %}
           </section>
         </main>
-
       </div>
-
     </div>  <!-- /container -->
-
 
     <footer role="contentinfo" class="container">
       <nav class="navbar navbar-default">
@@ -336,7 +331,6 @@
       <script type="text/javascript" src="{% static 'js/SkipTo.min.js' %}"></script>
       <script type="text/javascript" src="{% static 'js/fae-info-button.js' %}"></script>
       <script type="text/javascript">
-
         window.addEventListener('load', function() {
 
           function cleanURL(u) {
@@ -368,9 +362,7 @@
             }
             return false;
           }
-
           function setActiveLink(url) {
-
 
             checkLinks(url, document.querySelectorAll('#top-navbar       a[href]'), 'active');
             checkLinks(url, document.querySelectorAll('#id_report_manage a[href]'), 'active');
@@ -378,11 +370,8 @@
             flag_filters = checkLinks(url, document.querySelectorAll('#id_view_filters  a[href]'), 'active');
 
           }
-
           function setHighlightLink(url) {
-
           }
-
           var flag_report  = false;
           var flag_filters = false;
           var flag_nav     = false;
@@ -394,7 +383,6 @@
           if (!flag_reports && !flag_filters) {
             flag_nav = checkLinks(url, document.querySelectorAll('#id_view_nav a[href]'), 'active');
           }
-
           var breadcrumbs = document.querySelectorAll('#id_breadcrumbs a[href]')
 
           for (var i =(breadcrumbs.length-1); 0 < i; i--) {
@@ -403,30 +391,20 @@
             if (!flag_report)  flag_report  = checkLinks(url, document.querySelectorAll('#id_nav_reports   a[href]'), 'highlight');
             if (!flag_filters) flag_filters = checkLinks(url, document.querySelectorAll('#id_view_filters  a[href]'), 'highlight');
           }
-
           if (!flag_reports && !flag_filters && !flag_nav && {% if report_nav.page_count %}({{report_nav.page_count}} > 1){% else %}false{% endif %}) {
             document.getElementById('id_view_current').className = 'highlight';
           }
-
-
         });
-
         window.addEventListener('load', function() {
 
           var tablist = document.querySelectorAll('[role=tablist]');
 
           for (var i = 0; i < tablist.length; i++) {
             tablist[i].removeAttribute('role');
-
           }
-
         });
-
-
 </script>
-
    {% block javascript %}
-
    {% endblock javascript %}
   </body>
 </html>

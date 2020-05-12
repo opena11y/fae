@@ -81,10 +81,8 @@ urlpatterns = [
     url(r'^processing/status/all/$',              ProcessingStatusAllJSON.as_view(), name='processing_status_all'),
     url(r'^processing/status/(?P<report>\w+)/$',  ProcessingStatusJSON.as_view(),    name='processing_status'),
 
-
     url(r'^archived/$',              ArchivedReportView.as_view(),     name='archived_reports'),
     url(r'^manage/$',                ManageReportView.as_view(),       name='manage_reports'),
-
 
     url(r'^report/(?P<report>\w+)/permanent/(?P<value>\w+)/$',   SetReportPermanentView.as_view(),  name='report_permanent'),
     url(r'^report/(?P<report>\w+)/delete/$',    DeleteReportView.as_view(),        name='report_delete'),

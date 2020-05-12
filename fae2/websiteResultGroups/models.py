@@ -152,7 +152,6 @@ class WebsiteRuleScopeResultGroup(RuleGroupResult):
   def get_title(self):
     return self.rule_scope.title
 
-
 # ---------------------------------------------------------------
 #
 # WebsiteRuleResultGroup
@@ -174,4 +173,3 @@ class WebsiteRuleResultGroup(RuleResult):
   pages_na           = models.IntegerField(default=0)
 
   pages_with_hidden_content  = models.IntegerField(default=0)
-

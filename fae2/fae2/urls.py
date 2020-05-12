@@ -54,7 +54,6 @@ from accounts.views import ShibbolethInstitution
 from accounts.views import HeaderInfo
 from accounts.views import DisabledView
 
-
 if settings.DEBUG:
     import debug_toolbar
     urlpatterns = [

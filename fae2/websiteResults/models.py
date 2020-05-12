@@ -33,7 +33,6 @@ from wcag20.models import Guideline
 from rules.models import RuleScope
 from rules.models import Rule
 
-
 # ---------------------------------------------------------------
 #
 # WebsiteRuleCategoryResult
@@ -63,13 +62,11 @@ class WebsiteRuleCategoryResult(RuleGroupResult):
     def get_id(self):
         return 'wsrcr_' + self.rule_category.id
 
-    # ---------------------------------------------------------------
-
-
+# ---------------------------------------------------------------
 #
 # WebsiteGuidelineResult
 #
-# ---------------------------------------------------------------    
+# ---------------------------------------------------------------
 
 class WebsiteGuidelineResult(RuleGroupResult):
     id = models.AutoField(primary_key=True)
@@ -94,9 +91,7 @@ class WebsiteGuidelineResult(RuleGroupResult):
     def get_id(self):
         return 'wsglr_' + self.guideline.id
 
-    # ---------------------------------------------------------------
-
-
+# ---------------------------------------------------------------
 #
 # WebsiteRuleScopeResult
 #
@@ -125,9 +120,7 @@ class WebsiteRuleScopeResult(RuleGroupResult):
     def get_title(self):
         return self.rule_scope.title
 
-    # ---------------------------------------------------------------
-
-
+# ---------------------------------------------------------------
 #
 # WebsiteRuleResult
 #

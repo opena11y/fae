@@ -19,7 +19,6 @@ Author: Jon Gunderson
 
 """
 
-
 from __future__ import print_function
 from __future__ import absolute_import
 import sys
@@ -38,9 +37,7 @@ from django.conf import settings
 
 from fae2.settings import SHIBBOLETH_ENABLED
 
-
 django.setup()
-
 
 """This file is for populating the database with markup information
 I empty it. Run as a standalone script!"""
@@ -77,9 +74,8 @@ def update_user_profiles():
 
       if u.username == 'anonymous':
         p.account_type = AccountType.objects.get(type_id=0)
-      else:  
+      else:
         p.account_type = AccountType.objects.get(type_id=DEFAULT_ACCOUNT_TYPE)
       p.save()
-
 
 update_user_profiles()
