@@ -25,33 +25,36 @@ NameVirtualHost *:80
     ServerName www.your-domain.com
     ServerAlias your-domain.com
 
-    Alias /static /path/to/your/project/static
+    Alias /static /opt/fae2/app/fae2/staticroot
 
     # DocumentRoot is required for a virtual host
-    DocumentRoot /path/to/your/project
+    DocumentRoot /opt/fae2/app/fae2
 
-    WSGIScriptAlias / /path/to/your/project/apache/django.wsgi
+    WSGIScriptAlias / /opt/fae2/app/fae2/fae2/fae2/wsgi.py
     ErrorLog /var/log/apache2/error.log
-    # Possible values include: debug, info, notice, warn, error, crit,
-    # alert, emerg.
-    LogLevel warn
+
+    LogLevel debug
     CustomLog /var/log/apache2/access.log combined 
 </VirtualHost>
 ```
+
+If you are still in development (not in production) `LogLevel debug` is or `info` is likely to be what you want. 
+
+Possible `LogLevel` values include: `debug`, `info`, `notice`, `warn`, `error`, `crit`, `alert`, `emerg`.
 
 Create the symlink via `sudo a2ensite fae2`
 
 Disable the default site via `sudo a2dissite default`
 
-Double check ports in `ports.conf`
+Double check ports in `/etc/apache2/ports.conf`
 
-Comment out code in `urls.py` that is serving static files
+Comment out code in `urls.py` that is serving static files (while this is part of the book, I don't think this code is in use in FAE2)
 ```
 #(r'^static/(?P<path>.*)$', 'django.views.static.serve',
 #    { 'document_root' : os.path.join(settings.CURRENT_PATH, 'static') }), 
 ```
 
-Restart Apache
+Restart Apache via `sudo apache2ctl restart`
 
 ## Nginx Configuration
 
@@ -61,14 +64,14 @@ server {
     listen 80;
     server_name www.your-domain.com your-domain.com;
     location / {
-        access_log /var/log/nginx/localhost.access.log;
+        access_log /var/log/nginx/fae2.log;
         proxy_pass http://127.0.0.1:8080;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header Host $host;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     }
     location /static {
-        root /path/to/your/project;
+        root /opt/fae2/app/fae2;
     }
 }
 ```
@@ -110,6 +113,8 @@ And configure `mod_rpaf` via editing `/etc/apache/fae2.conf` to include the foll
 
 Modify `/etc/apache2/ports.conf` from `Listen 80` to `Listen 8080`
 
+When finished, restart Apache and restart Nginx
+
 ## HTTPS Configuration
 
 It's now time to configure HTTPS settings in Nginx (assuming you have installed an SSL cert) so edit `/etc/nginx/sites-available/fae2.conf` by appending the following code:
@@ -124,7 +129,7 @@ server {
     server_name www.your-domain.com your-domain.com;
 
     location / {
-        access_log /var/log/nginx/localhost.access.log;
+        access_log /var/log/nginx/fae2.log;
         proxy_pass http://127.0.0.1:8080;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header Host $host;
@@ -132,20 +137,22 @@ server {
     }
 
     location /static {
-        root /path/to/your/project;
+        root /opt/fae2/app/fae2;
     }
 }
 ```
 
 There are a few key differences between this and the other server entry in the file. The first is the port number on which we’re listening for incoming requests. Right after that, there are three new entries that enable SSL on our site. These three lines configure the ssl setting to on, and then point the virtual host to the locations of the certificate and private key files on our machine.
 
+**NOTE:** I don't think any of the code below here is currently in use in FAE2.
+
 The final key difference of which you should be aware if the additional `proxy_set_header` entry we’ve added to our code. This is because of a small bug that arises in the `SSLRedirect` class due to our server configuration.
 
-Right now, our Django application has its pages served by Apache, which is currently ignorant of any of the SSL settings we’ve set up in NginX. A secure request that comes into the site at an HTTPS URL will be forwarded from NginX to Apache, which will send the request to our Django project.
+Right now, our Django application has its pages served by Apache, which is currently ignorant of any of the SSL settings we’ve set up in Nginx. A secure request that comes into the site at an HTTPS URL will be forwarded from Nginx to Apache, which will send the request to our Django project.
 
-The `SSLMiddleware` will catch the request and check if it is secure by using the `request.is_secure()` method. However, because the request coming into Apache from NginX is notsecure, the `SSLRedirect` will assume that the request should be insecure and attempt to redirect our request to an insecure URL.
+The `SSLMiddleware` will catch the request and check if it is secure by using the `request.is_secure()` method. However, because the request coming into Apache from Nginx is notsecure, the `SSLRedirect` will assume that the request should be insecure and attempt to redirect our request to an insecure URL.
 
-However, when this happens, the `SSLRedirect` will catch the redirect, find that the SSL parameter in the URL entry is set to True, and attempt to redirect to a secure page. What we have here is an infinite loop that will redirect back and forth between secure and insecure until your web server or browser gets fed up and stops trying to serve the request. This is fixed by adding the header to all requests from NginX to Apache. If you open the `SSLMiddleware.py` file and scroll down to the `_is_secure()` method, you should see the following two lines:
+However, when this happens, the `SSLRedirect` will catch the redirect, find that the SSL parameter in the URL entry is set to True, and attempt to redirect to a secure page. What we have here is an infinite loop that will redirect back and forth between secure and insecure until your web server or browser gets fed up and stops trying to serve the request. This is fixed by adding the header to all requests from Nginx to Apache. If you open the `SSLMiddleware.py` file and scroll down to the `_is_secure()` method, you should see the following two lines:
 
 ```
 if 'HTTP_X_FORWARDED_SSL' in request.META:
@@ -154,4 +161,4 @@ if 'HTTP_X_FORWARDED_SSL' in request.META:
 
 This checks each request for an HTTP header called `HTTP_X_FORWARDED_SSL`.
 
-As long as we add this header to each request that is proxied from NginX to Apache, the `_is_secure()` method will return `True`, our pages will be served securely, and the infinite loop can be safely avoided. Now that you have this configured in your virtual host files, go into `settings.py` and set the `ENABLE_SSL` configuration variable to `True`. After restarting both Apache and NginX, you should now be able to see your secure pages served over HTTPS in the browser instead of HTTP.
+As long as we add this header to each request that is proxied from Nginx to Apache, the `_is_secure()` method will return `True`, our pages will be served securely, and the infinite loop can be safely avoided. Now that you have this configured in your virtual host files, go into `settings.py` and set the `ENABLE_SSL` configuration variable to `True`. After restarting both Apache and Nginx, you should now be able to see your secure pages served over HTTPS in the browser instead of HTTP.

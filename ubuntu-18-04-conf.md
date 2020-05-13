@@ -14,22 +14,19 @@ The database is fae2, the database user is fae2, the process-group that Apache r
 
 This is fine and dandy for testing on a localhost server (in DEBUG mode, nonetheless), and might be acceptable in production if your not very security conscious but in general you don't want to have usernames, database names or passwords that are easy to guess.
 
+### Examples of things you DO NOT want to do:
+- Remove the `.gitignore` entries that exclude `secrets.json` from version control so you'd end up commiting a file with all your credentials and secrets (especially if you're using a public repository service like Github).
 - Don't use 'postgres' for the database user and 'password' as the databse password.
 - Don't use 'admin' as the username of your administrator account.
-- Don't use a password for your administartor account that you have used elsewhere for anything; use a password manager and generate a unique password.
-- Genrate a random, unique SECRET_KEY that is long (50 characters)
+- Don't use a password for your administartor account that you have used elsewhere for anything.
 
-There are a couple of files that contain paths to the virtual environment and absolute server paths so make sure to read the full README.md for the strings to find and replace to make sure everything matches your setup.
+### Things you DO want to do:
+- Genrate a random, unique SECRET_KEY that is long (50 characters).
+- Use a password manager and generate a unique password for your admin account.
 
-## Google Cloud
+### Configuration settings to double check:
 
-I'm not new to managing Linux servers but my first attempts to get this application running were using Docker on Google Kubernetes Engine (that was overkill and I couldn't get costs lower than about $150/mo), which is why I started off with Debian.
-
-I then tried to switch to Google Cloud Run only to realize this application isn't a good fit for that because `fae-util` needs to run as a background process until this application calls it.
-
-After weeks struggling with Google Cloud, I realized it just wasn't ideal: I want logs to be where I expect them; I want changes I make to persist; I want to be able to use `sudo` etc.
-
-Then I finally realized that I could just use a regular old cloud computing provider and get exactly what I wanted at a much lower cost so I abandoned Google Cloud (I'll use Kubernetes again when I need to scale but I had no clue what I was getting into when I started using it).
+There are a couple of files that contain paths to the virtual environment and absolute server paths so make sure to read the full `README.md` for the strings to find and replace to make sure everything matches your setup.
 
 ## Software Libraries to Install (Overkill Warning)
 
@@ -58,7 +55,9 @@ Ubuntu 18.04.4 also ships with quite a bit of software that isn't critical so ke
 
 I have always installed `mod_wsgi` via `apt` (listed above as `libapache2-mod-wsgi-py3`) but apparently it is simpler to install it via pip so while it is included above, it isn't needed because it is installed by pip because as is listed in `requirements.txt`.
 
-The [Django docs recommend Nginx for serving static files](https://docs.djangoproject.com/en/2.2/howto/deployment/wsgi/modwsgi/) but the version that `apt search nginx` returns is 1.14.0 (the current latest "mainline" version is 1.18.0). Similarly, the current version of Postgres is 12.2.
+The [Django docs recommend Nginx for serving static files](https://docs.djangoproject.com/en/2.2/howto/deployment/wsgi/modwsgi/) but the version that `apt search nginx` returns is 1.14.0 (the current latest "mainline" version is 1.18.0). 
+
+Similarly, the current version of Postgres is 12.2.
 
 To upgrade to more recent versions of Nginx and Postgres, you'd need to edit the "apt sources list" and while I recommend that (I plan to use Nginx as a reverse proxy in front of Apache), I'll try to explain those steps in another document later.
 
@@ -85,6 +84,8 @@ If it does you're good to go and you'll type:
 virtualenv --python /usr/bin/python3.6 venv
 source venv/bin/activate
 ```
+
+This will create a virtual environment named "venv" using Python 3.6 with the path of `/opt/fae2/venv` and activate that environment for that shell.
 
 You should then see something in your shell prompt, usually at the start of the command prompt line, like `(venv)`
 
@@ -173,6 +174,16 @@ The `STATIC_ROOT` (which I named 'staticroot') should be empty!
 
 The static files (i.e. CSS and JS assets) from your apps and those that are contained in the `STATICFILES_DIRS` will be gathered and copied into that directory when you run `python manage.py collectstatic`.
 
-Regardless of the actual path to and name of that directory, setting the `STATIC_ROOT` to "/static/" ensure that when the assets are served they are served as if they were in `example.com/static/...`.
+Regardless of the actual path to (and name of) that directory, setting the `STATIC_ROOT` to "/static/" ensures that when the assets are served they are served as if they were in `example.com/static/...`.
 
 This is also why the Apache config file above has a line setting the `Alias` for `/static/` to the actual path to the `STATIC_ROOT`. The settings are arbitrary but they need to match so if you change one, you'll need almost certainly need to change another.
+
+## Considerations for Google Cloud and Similar Service Providers
+
+I'm not new to managing Linux servers but my first attempts to get this application running were using Docker on **Google Kubernetes Engine** (that was overkill and I couldn't get costs lower than about $150/mo), which is why I started off with Debian.
+
+I then tried to switch to **Google Cloud Run** only to realize this application isn't a good fit for that because `fae-util` needs to run as a background process until this application calls it.
+
+After weeks struggling with Google Cloud, I realized it just wasn't ideal: I want logs to be where I expect them; I want changes I make to persist; I want to be able to use `sudo`, etc.
+
+Then I finally realized that I could just use a regular old cloud computing provider and get exactly what I wanted at a much lower cost so I abandoned Google Cloud (I'll use Kubernetes again when I need to scale but I had no clue what I was getting into when I started using it).
