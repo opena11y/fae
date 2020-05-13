@@ -305,12 +305,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = join(APP_DIR, 'fae2/staticroot/')
+STATIC_ROOT = join(APP_DIR, 'staticroot/')
 
 print('STATIC ROOT: ' + STATIC_ROOT)
 
 STATICFILES_DIRS = (
-    (join(APP_DIR, "fae2/staticfiles/"),
+    (join(APP_DIR, "staticfiles/"),
 )
 
 LOGIN_REDIRECT_URL = '/'
