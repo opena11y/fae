@@ -9,7 +9,7 @@ This utility is used to analyze web pages using the OpenAjax Evaluation library 
 
 The following libraries must be in the CLASSPATH:
 
-* HTMLUnit version 2.13 (http://sourceforge.net/projects/htmlunit/)
+* HTMLUnit version 2.39 (http://sourceforge.net/projects/htmlunit/)
 * Apache Commons CLI 1.2 (http://commons.apache.org/cli/)
 
 ## Build Information
