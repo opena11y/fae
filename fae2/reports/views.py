@@ -160,7 +160,7 @@ def getPreviousNextGroup(groups, current_slug):
 
 # ==============================================================
 #
-# FAE 2.0 Navigation Mixin
+# FAE 2.1 Navigation Mixin
 #
 # ==============================================================
 

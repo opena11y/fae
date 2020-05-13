@@ -96,7 +96,7 @@ The "secrets.json" file must be created and provides:
 *Make sure the last 'key : value' pair doesn't have a trailing comma.*
 
 
-### Apache 2.0 configuration notes
+### Apache 2.x configuration notes
 
 If using Ubuntu (or Debian), please read `ubuntu-18-04-conf.md` for distro specific instructions.
 

@@ -118,9 +118,8 @@
     {% endif %}
 
     {% if report.processed_urls.all|length %}
-        <p> The number of urls evaluated will usually be larger than the number of pages identified in the Summary Report.
-            The difference is due to redirects causing the same page being evaluated more than once (e.g. http://www.somewhere.org and http://somewhere.org return
-            the same URL).  FAE 2.0 will only include the same returned URL once in the evaluation.
+        <p>
+            The number of urls evaluated will usually be larger than the number of pages identified in the Summary Report. The difference is due to redirects causing the same page being evaluated more than once (e.g. https://www.example.com and https://example.com return the same URL).  FAE 2.1 will only include the same returned URL once in the evaluation.
         </p>
 
         <table  id="id_table_show_summary_urls_1" class="details table table-striped table-hover sortable"  aria-labelledby="id_processed_urls_label" aria-describedby="id_table_summ">
@@ -240,7 +239,7 @@
         </table>
 
     {% else %}
-    <p class="message">No problem URLs.</p>
+    <p class="message">No problem URLs</p>
     {% endif %}
 
     </section>
@@ -252,8 +251,9 @@
         <h2 id="id_failed_urls_label">{{ report.unprocessed_urls.all|length }} Evaluation Failed URLs</h2>
         {% endif %}
 
-    <p>URLs that were found and should have been evaluated for accessibility, but for some reason could not be evaluated (e.g. extensive html coding errors, signifcant Javascript errors on page being loaded...).
-            The processing engine timed out its evaluation of the page or other javascript error from the page that stopped the evaluation.</p>
+        <p>
+          URLs that were found and should have been evaluated for accessibility, but for some reason could not be evaluated (e.g. extensive html coding errors, signifcant Javascript errors on page being loaded...). The processing engine timed out its evaluation of the page or other javascript error from the page that stopped the evaluation.
+        </p>
 
     {% if report.unprocessed_urls.all|length %}
 
