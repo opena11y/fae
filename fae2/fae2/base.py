@@ -182,6 +182,7 @@ INSTALLED_APPS = [
     'stats.apps.StatsConfig',
     'gtm',
     'logentry_admin',
+    'timezone_field',
 ] + DEBUG_APPS
 
 if SHIBBOLETH_ENABLED:
@@ -212,6 +213,7 @@ else:
         'django.contrib.messages.middleware.MessageMiddleware',
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
         'django.middleware.security.SecurityMiddleware',
+        'fakebotdetector.middleware.FakeBotDetectorMiddleware',
     ]
 
 ROOT_URLCONF = 'fae2.urls'
@@ -312,3 +314,15 @@ STATICFILES_DIRS = (
 )
 
 LOGIN_REDIRECT_URL = '/'
+
+# Fake Bot Detector
+# https://pypi.org/project/django-fake-bot-detector/
+
+FAKE_BOT_DETECTOR_ENABLED = True
+
+FAKE_BOT_RESPONSE_CODE = 403
+
+## Pro tip: if you are running django behind an NGINX proxy,
+## you can set FAKE_BOT_RESPONSE_CODE to 444 to have NGINX close the connection
+## immediately without sending an HTTP response at all.
+

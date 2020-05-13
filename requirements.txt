@@ -15,3 +15,4 @@ django-debug-toolbar==2.2
 Werkzeug==1.0.1
 mod-wsgi==4.7.1
 django-logentry-admin==1.0.6
+django-fake-bot-detector==0.2
