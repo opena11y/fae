@@ -1,4 +1,3 @@
-
     function getParsedURL() {
         var node_url = document.getElementById('id_input_url');
         var parser = document.createElement('a'),

@@ -1,4 +1,3 @@
-
 var InformationButton = function (node) {
   this.domNode  = node;
   this.infoNode = false;
