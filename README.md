@@ -22,7 +22,7 @@ FAE may be used and distributed based on the terms and conditions of the [Apache
 * Apache2 Web Server
 * Python 3.6
 * Java 1.8
-* Python development package (`python-dev` in Debian/Ubuntu)
+* Python development package (`python3-dev` in Debian/Ubuntu)
 * postgresql-devel (`libpq-dev` in Debian/Ubuntu)
 * `python3-psycopg2` package for python to talk to postgres
 
@@ -32,13 +32,13 @@ Here is the [requirements.txt] file to use with pip
 
 ```
 confusable-homoglyphs==3.2.0
-Django==2.2.12
+Django~=2.2.12
 django-password-reset==2.0
 django-registration==3.1
 django-timezone-field==4.0
 future==0.18.2
 Markdown==3.2.2
-psycopg2==2.8.5
+psycopg2~=2.8.5
 pytz==2020.1
 requests==2.23.0
 sqlparse==0.3.1
@@ -46,8 +46,9 @@ django-google-tag-manager==0.0.5
 django-extensions==2.2.9
 django-debug-toolbar==2.2
 Werkzeug==1.0.1
-mod-wsgi==4.7.1
+mod-wsgi~=4.7.1
 django-logentry-admin==1.0.6
+django-fake-bot-detector==0.2
 ```
 
 ### Creating a <code>secrets.json</code> file
@@ -100,7 +101,7 @@ The "secrets.json" file must be created and provides:
 
 If using Ubuntu (or Debian), please read `ubuntu-18-04-conf.md` for distro specific instructions.
 
-* MOD_WSGI (which is installed by the `requirements.txt` file as `mod-wsgi`)must be installed and support Python 3.6 (as long as your virtual environment uses Python 3.6, this is supposed to work automagically).
+* MOD_WSGI (which is installed by the `requirements.txt` file as `mod-wsgi`)must be installed and support Python 3.6 (as long as your virtual environment uses Python 3.6, this is supposed to work).
 * Ubuntu 18.04 ships with Python 3.6 and readily installs Java 8 via `apt` and is highly recommended (Centos doesn't ship with Python at all, which makes it easy to install 3.6 and avoid conflicts and Centos 8 [or maybe it was 7] readily installs Java 8 via `yum` but as that is a Red Hat-based distro if you want to use that you should read `centos7-configuration.md`...actually, regardless of what OS you use, you should read that too, it includes some details that this one doesn't about getting things set up correctly).
 * The Django documentation suggests using another server for serving static files than the server (presumably Apache) that serves the application and suggests Nginx so that is worth keeping in mind (due to the complexity of this application, I suggest getting it up and running on Apache before trying to add the additional complexity of Nginx as a reverse proxy).
 
@@ -109,7 +110,7 @@ While much of the original FAE2 documentation and examples use the traditional `
 `/opt/fae2` (everything is contained within this folder)
 
 The virtual environment is `/opt/fae2/venv/...`
-The application itself is in `/opt/fae2/app/...` so the full path to `wsgi.py` (for example) is `/opt/fae2/app/fae2/fae2/fae2/wsgi.py`
+The application itself is in `/opt/fae2` so the full path to `wsgi.py` (for example) is `/opt/fae2/fae2/fae2/wsgi.py`
 
 There are a few places that this path needs updated and I often forget to update the documentation so anyone using this fork should search in the entire code base for ` var/www ` and  ` opt/fae2 ` (and replace it with the path that's correct for them), then search for  ` fae2env ` and ` venv ` and correct the paths to their virtual environment.
 
@@ -121,22 +122,44 @@ There are a few places that this path needs updated and I often forget to update
   Servername  [fae.somedomain.org]
   ServerAlias [fae.somedomain.org]
 
-  Alias /static /var/www/fae2/fae2/fae2/fae2/static/
+  DocumentRoot /opt/fae2/public_html
+  
+  Alias /robots.txt /opt/fae2/public_html/static/robots.txt
+  Alias /humans.txt /opt/fae2/public_html/static/humans.txt
+  Alias /favicon.ico /opt/fae2/public_html/static/favicon.ico
 
-  <Directory /var/www/fae2/fae2/fae2/fae2/static>
-    Require all granted
+  Alias /static /opt/fae2/public_html/static
+  
+  <Directory /opt/fae2/public_html>
+    <IfVersion < 2.4>
+      Order allow,deny
+      Allow from all
+    </IfVersion>
+    <IfVersion >= 2.4>
+      Require all granted
+    </IfVersion>
   </Directory>
 
-  <Directory /var/www/fae2/fae2/fae2>
-    <Files wsgi.py>
-     Require all granted
-    </Files>
-  </Directory>
+  WSGIDaemonProcess fae2 processes=4 python-home=/opt/fae2/venv python-path=/opt/fae2/fae2/fae2 display-name=%{GROUP}
 
-  WSGIDaemonProcess fae2 python-path=/var/www/fae2/fae2/fae2:/var/www/fae2/fae2env/lib/python2.7/site-packages
+  WSGIScriptAlias / /opt/fae2/fae2/fae2/wsgi.py process-group=fae2
+
   WSGIProcessGroup  fae2
+  WSGIApplicationGroup %{GLOBAL}
 
-  WSGIScriptAlias / /var/www/fae2/fae2/fae2/fae2/wsgi.py process-group=fae2
+  <Directory /opt/fae2/fae2/fae2>
+    <IfVersion < 2.4>
+      <Files wsgi.py>
+        Order allow,deny
+        Allow from all
+      </Files>
+    </IfVersion>
+    <IfVersion >= 2.4>
+      <Files wsgi.py>
+        Require all granted
+      </Files>
+    </IfVersion>
+  </Directory>
 
 </VirtualHost>
 ```
