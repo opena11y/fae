@@ -38,3 +38,7 @@ Icon
 
 # Scratch folder for notes and snippets while working
 scratch/
+
+# Move the scratch folder into the documentation folder...
+# and exclude it
+documentation/scratch/
