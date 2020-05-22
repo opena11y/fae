@@ -203,16 +203,93 @@ The original **README.md** file should be sufficient to explain what to do from 
 
 ## Configuring Apache
 
+Currently testing:
+```
+<VirtualHost 127.0.0.1:8000>
+
+  ServerName  127.0.0.1:8000
+  ServerAlias localhost localhost:8000
+  DocumentRoot /opt/fae2/public_html
+  
+  Alias /robots.txt /opt/fae2/public_html/static/robots.txt
+  Alias /humans.txt /opt/fae2/public_html/static/humans.txt
+  Alias /favicon.ico /opt/fae2/public_html/static/favicon.ico
+  Alias /static/ /opt/fae2/public_html/static/
+  
+  <Directory /opt/fae2/public_html>
+    <IfVersion < 2.4>
+      Order allow,deny
+      Allow from all
+    </IfVersion>
+    <IfVersion >= 2.4>
+      Require all granted
+    </IfVersion>
+  </Directory>
+
+  WSGIDaemonProcess fae2 processes=4 python-home=/opt/fae2/venv python-path=/opt/fae2/fae2/fae2 lang='en_US.UTF-8' locale='en_US.UTF-8' queue-timeout=45 socket-timeout=60 connect-timeout=15 request-timeout=600 startup-timeout=15 deadlock-timeout=60 graceful-timeout=15 restart-interval=86400 shutdown-timeout=5 maximum-requests=10000 display-name=%{GROUP}
+
+  WSGIScriptAlias / /opt/fae2/fae2/fae2/wsgi.py process-group=fae2
+
+  WSGIProcessGroup fae2
+  WSGIApplicationGroup %{GLOBAL}
+
+  <Directory /opt/fae2/fae2/fae2>
+    <IfVersion < 2.4>
+      <Files wsgi.py>
+        Order allow,deny
+        Allow from all
+      </Files>
+    </IfVersion>
+    <IfVersion >= 2.4>
+      <Files wsgi.py>
+        Require all granted
+      </Files>
+    </IfVersion>
+   </Directory>
+
+  RemoteIPHeader X-Client-IP
+  RemoteIPInternalProxy 127.0.0.1
+  RemoteIPInternalProxy localhost
+
+  # The ServerName directive sets the request scheme, hostname and port that
+  # the server uses to identify itself. This is used when creating
+  # redirection URLs. In the context of virtual hosts, the ServerName
+  # specifies what hostname must appear in the request's Host: header to
+  # match this virtual host. For the default virtual host (this file) this
+  # value is not decisive as it is used as a last resort host regardless.
+  # However, you must set it for any further virtual host explicitly.
+  #ServerName www.example.com
+
+  # Available loglevels: trace8, ..., trace1, debug, info, notice, warn,
+  # error, crit, alert, emerg.
+  # It is also possible to configure the loglevel for particular
+  # modules, e.g.
+  #LogLevel info ssl:warn
+
+  ErrorLog ${APACHE_LOG_DIR}/error.log
+  CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+   # For most configuration files from conf-available/, which are
+   # enabled or disabled at a global level, it is possible to
+   # include a line for only one particular virtual host. For example the
+   # following line enables the CGI configuration for this host only
+   # after it has been globally disabled with "a2disconf".
+   #Include conf-available/serve-cgi-bin.conf
+
+</VirtualHost>
+
+```
+
 ```
 <VirtualHost *:80>
 
   ServerName  fae2.example.com  # Replace with your domain
   DocumentRoot /opt/fae2/public_html
   
-  Alias /static/ /opt/fae2/public_html/static/
   Alias /robots.txt /opt/fae2/public_html/static/robots.txt
   Alias /humans.txt /opt/fae2/public_html/static/humans.txt
   Alias /favicon.ico /opt/fae2/public_html/static/favicon.ico
+  Alias /static/ /opt/fae2/public_html/static/
   
   <Directory /opt/fae2/public_html>
     <IfVersion < 2.4>
@@ -276,3 +353,110 @@ I then tried to switch to **Google Cloud Run** only to realize this application 
 After weeks struggling with Google Cloud, I realized it just wasn't ideal: I want logs to be where I expect them; I want changes I make to persist; I want to be able to use `sudo`, etc.
 
 Then I finally realized that I could just use a regular old cloud computing provider and get exactly what I wanted at a much lower cost so I abandoned Google Cloud (I'll use Kubernetes again when I need to scale but I had no clue what I was getting into when I started using it).
+
+
+-------------------------------
+
+Blog about Nginx Postgres and Gunicorn on Ubunut 18.04 published June 2018
+https://linuxconfig.org/how-to-host-django-with-nginx-on-ubuntu-18-04-bionic-beaver-linux
+
+```
+$ sudo su postgres
+```
+
+```
+psql
+```
+
+```
+postgres=# ALTER USER postgres WITH ENCRYPTED PASSWORD 'yourpassword';
+```
+
+```
+postgres=# CREATE DATABASE your_db;
+```
+
+```
+postgres=# CREATE ROLE django_user WITH ENCRYPTED PASSWORD 'yourpassword';
+```
+
+```
+postgres=# GRANT ALL PRIVILEGES ON DATABASE your_db TO django_user;
+```
+
+```
+\q
+```
+
+Upgrade Pip to latest with:
+`python3 -m pip install --upgrade pip`
+
+Install `virtualenv`, with `pip3 install virtualenv`
+
+Check where Python 3.6 is with `which python3.6`
+
+Include that location after the `-p` in the command below:
+Create virtual environment with `virtualenv -p /usr/bin/python3.6 venv`
+
+Activate virtual environment with `source venv/bin/activate`
+
+Install requirements into virtual environment with 
+```
+pip install -r requirements.txt
+```
+
+Change directories to the Nginx configs with `cd /etc/nginx/sites-available`
+
+then `sudo nano fae2.conf` and put this in the file you just created
+
+```
+upstream apache {
+  server unix:/opt/fae2/fae2.sock fail_timeout=0;
+}
+
+server {
+  listen 80;
+  server_name compliance.adafirst.test;
+
+  client_max_body_size 4G;
+  keepalive_timeout 70;
+
+  access_log /var/log/nginx/fae2.access_log main;
+  error_log /var/log/nginx/fae2.error_log info;
+
+  root /opt/fae2/public_html
+
+  location /static/ {
+    autoindex on;
+    alias /opt/fae2/public_html/static/;
+    expires 1M;
+    # access_log off;
+    add_header Cache-Control "public";
+    proxy_ignore_headers "Set-Cookie";
+  }
+  location @proxy_to_apache {
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header Host $http_host;
+    # or is it: 
+    # proxy_set_header Host $host;
+
+    proxy_redirect off; # not sure about this
+
+    proxy_pass   http://apache;
+    # or if not using a unix socket:
+    # proxy_pass http://127.0.0.1:8080;
+  }
+  location / {
+    try_files $uri @proxy_to_apache;
+  }
+}
+```
+
+Code used in other tutorial that could possibly be integrated:
+```
+  access_log /var/log/nginx/fae2.log;
+  proxy_pass http://127.0.0.1:8080;
+  proxy_set_header X-Client-IP $remote_addr;
+  proxy_set_header Host $host;
+  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+```

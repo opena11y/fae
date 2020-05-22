@@ -35,6 +35,8 @@ NameVirtualHost *:80
 
     LogLevel debug
     CustomLog /var/log/apache2/access.log combined 
+
+    EnableSendfile Off # while in development using VirtualBox due to a bug
 </VirtualHost>
 ```
 
@@ -62,17 +64,18 @@ Restart Apache via `sudo apache2ctl restart`
 ```
 server {
     listen 80;
-    server_name www.your-domain.com your-domain.com;
+    server_name compliance.adafirst.test;
     location / {
         access_log /var/log/nginx/fae2.log;
         proxy_pass http://127.0.0.1:8080;
-        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Client-IP $remote_addr;
         proxy_set_header Host $host;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     }
-    location /static {
-        root /opt/fae2/app/fae2;
+    location /static/ {
+        root /opt/fae2/public_html/;
     }
+    sendfile off; # while in development using VirtualBox due to a bug
 }
 ```
 
@@ -131,7 +134,7 @@ server {
     location / {
         access_log /var/log/nginx/fae2.log;
         proxy_pass http://127.0.0.1:8080;
-        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Client-IP $remote_addr;
         proxy_set_header Host $host;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;       proxy_set_header X-Forwarded-Ssl on;
     }

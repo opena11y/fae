@@ -305,12 +305,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = join(APP_DIR, 'staticroot/')
+STATIC_ROOT = join(APP_DIR, 'public_html/static')
 
 print('STATIC ROOT: ' + STATIC_ROOT)
 
 STATICFILES_DIRS = (
-    (join(APP_DIR, "staticfiles/"),
+    (join(APP_DIR, 'public_html/staticfiles'),
 )
 
 LOGIN_REDIRECT_URL = '/'
