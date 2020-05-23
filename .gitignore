@@ -11,6 +11,7 @@ fae2/fae-util/*.properties
 fae2/fae-util/openajax_a11y/scripts.txt
 *.class
 *.pyc
+*.pyo
 *~
 .idea/
 **/migrations/
@@ -42,3 +43,25 @@ scratch/
 # Move the scratch folder into the documentation folder...
 # and exclude it
 documentation/scratch/
+
+# Favicons
+favicon.ico
+mstile-150x150.png
+mstile-310x310.png
+safari-pinned-tab.svg
+site.webmanifest
+apple-touch-icon-60x60.png
+apple-touch-icon-76x76.png
+apple-touch-icon.png
+browserconfig.xml
+favicon-16x16.png
+favicon-32x32.png
+android-chrome-192x192.png
+android-chrome-512x512.png
+apple-touch-icon-120x120.png
+apple-touch-icon-152x152.png
+apple-touch-icon-180x180.png
+
+# Search Engine related files
+robots.txt
+sitemap.xml
