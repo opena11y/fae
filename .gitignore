@@ -31,6 +31,7 @@ venv/
 *.DS_Store?
 .AppleDouble
 .LSOverride
+
 # Icon must end with two \r
 Icon
 
@@ -39,32 +40,31 @@ Icon
 
 # Scratch folder for notes and snippets while working
 scratch/
-
-# Move the scratch folder into the documentation folder...
-# and exclude it
 documentation/scratch/
 
 # Favicons
-favicon.ico
-mstile-150x150.png
-mstile-310x310.png
-safari-pinned-tab.svg
-site.webmanifest
+android-chrome-192x192.png
+android-chrome-512x512.png
+apple-touch-icon-120x120.png
+apple-touch-icon-152x152.png
+apple-touch-icon-180x180.png
 apple-touch-icon-60x60.png
 apple-touch-icon-76x76.png
 apple-touch-icon.png
 browserconfig.xml
 favicon-16x16.png
 favicon-32x32.png
-android-chrome-192x192.png
-android-chrome-512x512.png
-apple-touch-icon-120x120.png
-apple-touch-icon-152x152.png
-apple-touch-icon-180x180.png
+favicon.ico
+mstile-150x150.png
+mstile-310x310.png
+safari-pinned-tab.svg
+site.webmanifest
 
 # Search Engine related files
+# Not sure what the django.contrib setting would yield
+# so I created this one manually using Screaming Frog SEO Spider
 sitemap.xml
 
 # Files related to vagrant
-/Vagrantfile
 /bootstrap.sh
+/Vagrantfile
