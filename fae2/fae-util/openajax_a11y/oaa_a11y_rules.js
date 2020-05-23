@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -51,7 +51,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -117,7 +117,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'WebVTT: The Web Video Text Tracks Format',
-                url:   'http://dev.w3.org/html5/webvtt/'
+                url:   'https://dev.w3.org/html5/webvtt/'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (ARIA) 1.0: aria-describedby',
@@ -258,7 +258,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -329,7 +329,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.TECHNIQUE,
                 title: 'SkipTo plugin by PayPal Accessibility Team',
-                url:   'http://paypal.github.io/skipto/'
+                url:   'https://paypal.github.io/skipto/'
               }
             ]
       }
@@ -342,7 +342,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -463,7 +463,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -748,7 +748,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -1046,7 +1046,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -1125,7 +1125,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.TECHNIQUE,
                 title: 'iCITA Best Practices: Labels for Form Controls Overview',
-                url:   'http://html.cita.illinois.edu/nav/form/'
+                url:   'https://html.cita.illinois.edu/nav/form/'
               }
             ]
         },
@@ -1181,7 +1181,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.TECHNIQUE,
                 title: 'iCITA Best Practices: Labels for Form Controls Overview',
-                url:   'http://html.cita.illinois.edu/nav/form/'
+                url:   'https://html.cita.illinois.edu/nav/form/'
               }
             ]
         },
@@ -1230,11 +1230,11 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'iCITA: Example 7: Fieldset/Legend for providing a grouping label for radio buttons',
-                url:   'http://html.cita.illinois.edu/nav/form/radio/index.php?example=6'
+                url:   'https://html.cita.illinois.edu/nav/form/radio/index.php?example=6'
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'IBM Web checklist: HTML example 6',
-                url:   'http://www-03.ibm.com/able/guidelines/web/webstructure.html'
+                url:   'https://www-03.ibm.com/able/guidelines/web/webstructure.html'
               }
             ]
         },
@@ -1352,7 +1352,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.TECHNIQUE,
                 title: 'iCITA: Using @label@ Element for Labeling Form Controls',
-                url:   'http://html.cita.illinois.edu/nav/form/form-label-markup.php'
+                url:   'https://html.cita.illinois.edu/nav/form/form-label-markup.php'
               }
             ]
         },
@@ -1396,7 +1396,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.TECHNIQUE,
                 title: 'iCITA: Using @label@ element for Labeling Form Controls',
-                url:   'http://html.cita.illinois.edu/nav/form/form-label-markup.php'
+                url:   'https://html.cita.illinois.edu/nav/form/form-label-markup.php'
               }
             ]
         },
@@ -1442,7 +1442,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.TECHNIQUE,
                 title: 'iCITA: Using @label@ element for Labeling Form Controls',
-                url:   'http://html.cita.illinois.edu/nav/form/form-label-markup.php'
+                url:   'https://html.cita.illinois.edu/nav/form/form-label-markup.php'
               }
             ]
         },
@@ -1489,7 +1489,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.TECHNIQUE,
                 title: 'iCITA: Using @label@ element for Labeling Form Controls',
-                url:   'http://html.cita.illinois.edu/nav/form/form-label-markup.php'
+                url:   'https://html.cita.illinois.edu/nav/form/form-label-markup.php'
               }
             ]
         },
@@ -1560,7 +1560,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.TECHNIQUE,
                 title: 'iCITA Best Practices: Labels for Form Controls Overview',
-                url:   'http://html.cita.illinois.edu/nav/form/'
+                url:   'https://html.cita.illinois.edu/nav/form/'
               }
             ]
         },
@@ -1612,7 +1612,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.TECHNIQUE,
                 title: 'iCITA Best Practices: Labels for Form Controls Overview',
-                url:   'http://html.cita.illinois.edu/nav/form/'
+                url:   'https://html.cita.illinois.edu/nav/form/'
               }
             ]
         }    }
@@ -1624,7 +1624,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -1737,7 +1737,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -1822,11 +1822,11 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         { type:  OpenAjax.a11y.REFERENCES.TECHNIQUE,
           title: 'WebAIM: Alternative Text',
-          url:   'http://webaim.org/techniques/alttext/'
+          url:   'https://webaim.org/techniques/alttext/'
         },
         { type:  OpenAjax.a11y.REFERENCES.TECHNIQUE,
           title: 'Accessibility at Penn State: Text Equivalents for Images',
-          url:   'http://accessibility.psu.edu/images/'
+          url:   'https://accessibility.psu.edu/images/'
         },
         { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
           title: 'CSS Backgrounds and Borders Module Level 3: The @background-image@ property',
@@ -1902,15 +1902,15 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         { type:  OpenAjax.a11y.REFERENCES.TECHNIQUE,
           title: 'WebAIM: Alternative Text',
-          url:   'http://webaim.org/techniques/alttext/'
+          url:   'https://webaim.org/techniques/alttext/'
         },
         { type:  OpenAjax.a11y.REFERENCES.TECHNIQUE,
           title: 'Accessibility at Penn State: Text Equivalents for Images',
-          url:   'http://accessibility.psu.edu/images/'
+          url:   'https://accessibility.psu.edu/images/'
         },
         { type:  OpenAjax.a11y.REFERENCES.TECHNIQUE,
           title: 'Diagram Center: Digital Image And Graphic Resources for Accessible Materials',
-          url:   'http://diagramcenter.org/'
+          url:   'https://diagramcenter.org/'
         }
 
       ]
@@ -2130,15 +2130,15 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         { type:  OpenAjax.a11y.REFERENCES.TECHNIQUE,
           title: 'WebAIM: Alternative Text',
-          url:   'http://webaim.org/techniques/alttext/'
+          url:   'https://webaim.org/techniques/alttext/'
         },
         { type:  OpenAjax.a11y.REFERENCES.TECHNIQUE,
           title: 'Accessibility at Penn State: Text Equivalents for Images',
-          url:   'http://accessibility.psu.edu/images/'
+          url:   'https://accessibility.psu.edu/images/'
         },
         { type:  OpenAjax.a11y.REFERENCES.TECHNIQUE,
           title: 'Diagram Center: Digital Image And Graphic Resources for Accessible Materials',
-          url:   'http://diagramcenter.org/'
+          url:   'https://diagramcenter.org/'
         }
       ]
     },
@@ -2184,23 +2184,23 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         {type:  OpenAjax.a11y.REFERENCES.REFERENCE,
           title: 'PSU Accessibility: MathML and MathJax',
-          url:   'http://accessibility.psu.edu/math/mathml/'
+          url:   'https://accessibility.psu.edu/math/mathml/'
         },
         {type:  OpenAjax.a11y.REFERENCES.REFERENCE,
           title: 'Design Science: Math Type',
-          url:   'http://www.dessci.com/en/products/mathtype/'
+          url:   'https://www.dessci.com/en/products/mathtype/'
         },
         {type:  OpenAjax.a11y.REFERENCES.REFERENCE,
           title: 'Design Science: Math Player',
-          url:   'http://www.dessci.com/en/products/mathplayer/'
+          url:   'https://www.dessci.com/en/products/mathplayer/'
         },
         {type:  OpenAjax.a11y.REFERENCES.REFERENCE,
           title: 'MathML in Daisy',
-          url:   'http://www.daisy.org/project/mathml'
+          url:   'https://www.daisy.org/project/mathml'
         },
         {type:  OpenAjax.a11y.REFERENCES.REFERENCE,
           title: 'EPUB 3 Accessibility Guidelines: MathML',
-          url:   'http://www.idpf.org/accessibility/guidelines/content/mathml/desc.php'
+          url:   'https://www.idpf.org/accessibility/guidelines/content/mathml/desc.php'
         },
         {type:  OpenAjax.a11y.REFERENCES.REFERENCE,
           title: 'W3C Math Wiki: MathML Tools',
@@ -2217,7 +2217,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -2282,7 +2282,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         { type:  OpenAjax.a11y.REFERENCES.TECHNIQUE,
           title: 'iCITA Best Practices: Unique Title',
-          url:   'http://html.cita.illinois.edu/nav/title/'
+          url:   'https://html.cita.illinois.edu/nav/title/'
         }
       ]
     },
@@ -2372,11 +2372,11 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         { type:  OpenAjax.a11y.REFERENCES.TECHNIQUE,
           title: 'iCITA Best Practices: Unique Title',
-          url:   'http://html.cita.illinois.edu/nav/title/'
+          url:   'https://html.cita.illinois.edu/nav/title/'
         },
         { type:  OpenAjax.a11y.REFERENCES.TECHNIQUE,
           title: 'iCITA Best Practices: Sub Headings',
-          url:   'http://html.cita.illinois.edu/nav/heading/'
+          url:   'https://html.cita.illinois.edu/nav/heading/'
         }
       ]
     },
@@ -2426,11 +2426,11 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         { type:  OpenAjax.a11y.REFERENCES.TECHNIQUE,
           title: 'iCITA Best Practices: Unique Title',
-          url:   'http://html.cita.illinois.edu/nav/title/'
+          url:   'https://html.cita.illinois.edu/nav/title/'
         },
         { type:  OpenAjax.a11y.REFERENCES.TECHNIQUE,
           title: 'iCITA Best Practices: Sub Headings',
-          url:   'http://html.cita.illinois.edu/nav/heading/'
+          url:   'https://html.cita.illinois.edu/nav/heading/'
         }
       ]
     },
@@ -2564,7 +2564,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -2664,7 +2664,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -2740,7 +2740,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
           title: 'OAA Web Accessibility ARIA Examples',
-          url:   'http://oaa-accessibility.org/examples/'
+          url:   'https://oaa-accessibility.org/examples/'
         }
       ]
     },
@@ -2790,11 +2790,11 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
           title: 'OAA Web Accessibility ARIA Examples',
-          url:   'http://oaa-accessibility.org/examples/'
+          url:   'https://oaa-accessibility.org/examples/'
         },
         { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
           title: 'Accessible jQuery-ui Components Demonstration',
-          url:   'http://access.aol.com/aegis/'
+          url:   'https://access.aol.com/aegis/'
         }
       ]
     },
@@ -2832,7 +2832,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
           title: 'OAA Web Accessibility ARIA Examples',
-          url:   'http://oaa-accessibility.org/examples/'
+          url:   'https://oaa-accessibility.org/examples/'
         }
       ]
     }
@@ -2845,7 +2845,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -4018,7 +4018,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -4187,7 +4187,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -4279,7 +4279,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.OTHER,
                 title: 'Web Standards Group',
-                url:   'http://webstandardsgroup.org/standards/'
+                url:   'https://webstandardsgroup.org/standards/'
               },
               { type:  OpenAjax.a11y.REFERENCES.OTHER,
                 title: 'W3C Standards',
@@ -4331,7 +4331,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.OTHER,
                 title: 'Web Standards Group',
-                url:   'http://webstandardsgroup.org/standards/'
+                url:   'https://webstandardsgroup.org/standards/'
               },
               { type:  OpenAjax.a11y.REFERENCES.OTHER,
                 title: 'W3C Standards',
@@ -4383,7 +4383,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -4463,7 +4463,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
           title: 'OAA Example 44 - Using aria-describedby to satisfy WCAG 2.4.4 Link Purpose in Context',
-          url:   'http://oaa-accessibility.org/example/44/'
+          url:   'https://oaa-accessibility.org/example/44/'
         }
       ]
     },
@@ -4532,7 +4532,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
           title: 'OAA Example 44 - Using aria-describedby to satisfy WCAG 2.4.4 Link Purpose in Context',
-          url:   'http://oaa-accessibility.org/example/44/'
+          url:   'https://oaa-accessibility.org/example/44/'
         }
       ]
     }
@@ -4545,7 +4545,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -4721,7 +4721,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -4973,7 +4973,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -5042,7 +5042,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -5098,7 +5098,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -5789,7 +5789,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -5845,7 +5845,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -5918,11 +5918,11 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'IBM Web checklist Checkpoint 1.3e: Tables',
-                url:   'http://www-03.ibm.com/able/guidelines/web/webtableheaders.html'
+                url:   'https://www-03.ibm.com/able/guidelines/web/webtableheaders.html'
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'iCITA HTML Best Practices: Simple Data Table Example',
-                url:   'http://html.cita.illinois.edu/nav/dtable/dtable-example-simple.php'
+                url:   'https://html.cita.illinois.edu/nav/dtable/dtable-example-simple.php'
               }
             ]
         },
@@ -5998,15 +5998,15 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'IBM Web checklist Checkpoint 1.3e: Tables',
-                url:   'http://www-03.ibm.com/able/guidelines/web/webtableheaders.html'
+                url:   'https://www-03.ibm.com/able/guidelines/web/webtableheaders.html'
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'iCITA HTML Best Practices: Simple Data Table Example',
-                url:   'http://html.cita.illinois.edu/nav/dtable/dtable-example-simple.php'
+                url:   'https://html.cita.illinois.edu/nav/dtable/dtable-example-simple.php'
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'iCITA HTML Best Practices: Complex Data Table Example',
-                url:   'http://html.cita.illinois.edu/nav/dtable/dtable-example-complex.php'
+                url:   'https://html.cita.illinois.edu/nav/dtable/dtable-example-complex.php'
               }
             ]
         },
@@ -6058,15 +6058,15 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'IBM Web checklist Checkpoint 1.3e: Tables',
-                url:   'http://www-03.ibm.com/able/guidelines/web/webtableheaders.html'
+                url:   'https://www-03.ibm.com/able/guidelines/web/webtableheaders.html'
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'iCITA HTML Best Practices: Simple Data Table Example',
-                url:   'http://html.cita.illinois.edu/nav/dtable/dtable-example-simple.php'
+                url:   'https://html.cita.illinois.edu/nav/dtable/dtable-example-simple.php'
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'iCITA HTML Best Practices: Complex Data Table Example',
-                url:   'http://html.cita.illinois.edu/nav/dtable/dtable-example-complex.php'
+                url:   'https://html.cita.illinois.edu/nav/dtable/dtable-example-complex.php'
               }
             ]
         },
@@ -6138,15 +6138,15 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'IBM Web checklist Checkpoint 1.3e: Tables',
-                url:   'http://www-03.ibm.com/able/guidelines/web/webtableheaders.html'
+                url:   'https://www-03.ibm.com/able/guidelines/web/webtableheaders.html'
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'iCITA HTML Best Practices: Simple Data Table Example',
-                url:   'http://html.cita.illinois.edu/nav/dtable/dtable-example-simple.php'
+                url:   'https://html.cita.illinois.edu/nav/dtable/dtable-example-simple.php'
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'iCITA HTML Best Practices: Complex Data Table Example',
-                url:   'http://html.cita.illinois.edu/nav/dtable/dtable-example-complex.php'
+                url:   'https://html.cita.illinois.edu/nav/dtable/dtable-example-complex.php'
               }
             ]
         },
@@ -6217,15 +6217,15 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'IBM Web checklist Checkpoint 1.3e: Tables',
-                url:   'http://www-03.ibm.com/able/guidelines/web/webtableheaders.html'
+                url:   'https://www-03.ibm.com/able/guidelines/web/webtableheaders.html'
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'iCITA HTML Best Practices: Simple Data Table Example',
-                url:   'http://html.cita.illinois.edu/nav/dtable/dtable-example-simple.php'
+                url:   'https://html.cita.illinois.edu/nav/dtable/dtable-example-simple.php'
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'iCITA HTML Best Practices: Complex Data Table Example',
-                url:   'http://html.cita.illinois.edu/nav/dtable/dtable-example-complex.php'
+                url:   'https://html.cita.illinois.edu/nav/dtable/dtable-example-complex.php'
               }
             ]
         },
@@ -6272,15 +6272,15 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'IBM Web checklist Checkpoint 1.3e: Tables',
-                url:   'http://www-03.ibm.com/able/guidelines/web/webtableheaders.html'
+                url:   'https://www-03.ibm.com/able/guidelines/web/webtableheaders.html'
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'iCITA HTML Best Practices: Simple Data Table Example',
-                url:   'http://html.cita.illinois.edu/nav/dtable/dtable-example-simple.php'
+                url:   'https://html.cita.illinois.edu/nav/dtable/dtable-example-simple.php'
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'iCITA HTML Best Practices: Complex Data Table Example',
-                url:   'http://html.cita.illinois.edu/nav/dtable/dtable-example-complex.php'
+                url:   'https://html.cita.illinois.edu/nav/dtable/dtable-example-complex.php'
               }
             ]
         },
@@ -6324,11 +6324,11 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'IBM Web checklist Checkpoint 1.3e: Tables',
-                url:   'http://www-03.ibm.com/able/guidelines/web/webtableheaders.html'
+                url:   'https://www-03.ibm.com/able/guidelines/web/webtableheaders.html'
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'iCITA HTML Best Practices: Complex Data Table Example',
-                url:   'http://html.cita.illinois.edu/nav/dtable/dtable-example-complex.php'
+                url:   'https://html.cita.illinois.edu/nav/dtable/dtable-example-complex.php'
               }
             ]
         },
@@ -6382,7 +6382,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -6506,7 +6506,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -6630,7 +6630,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -7052,7 +7052,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -7137,11 +7137,11 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'OAA Web Accessibility ARIA Examples',
-                url:   'http://oaa-accessibility.org/examples/'
+                url:   'https://oaa-accessibility.org/examples/'
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'Accessible jQuery-ui Components Demonstration',
-                url:   'http://access.aol.com/aegis/#goto_slider'
+                url:   'https://access.aol.com/aegis/#goto_slider'
               }
             ]
         },
@@ -7194,11 +7194,11 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'OAA Web Accessibility ARIA Examples',
-                url:   'http://oaa-accessibility.org/examples/'
+                url:   'https://oaa-accessibility.org/examples/'
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'Accessible jQuery-ui Components Demonstration',
-                url:   'http://access.aol.com/aegis/#goto_slider'
+                url:   'https://access.aol.com/aegis/#goto_slider'
               }
             ]
         },
@@ -7256,11 +7256,11 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'OAA Web Accessibility ARIA Examples',
-                url:   'http://oaa-accessibility.org/examples/'
+                url:   'https://oaa-accessibility.org/examples/'
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'Accessible jQuery-ui Components Demonstration',
-                url:   'http://access.aol.com/aegis/#goto_slider'
+                url:   'https://access.aol.com/aegis/#goto_slider'
               }
             ]
         },
@@ -7308,11 +7308,11 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'OAA Web Accessibility ARIA Examples',
-                url:   'http://oaa-accessibility.org/examples/'
+                url:   'https://oaa-accessibility.org/examples/'
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'Accessible jQuery-ui Components Demonstration',
-                url:   'http://access.aol.com/aegis/#goto_slider'
+                url:   'https://access.aol.com/aegis/#goto_slider'
               }
             ]
       },
@@ -7357,11 +7357,11 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'OAA Web Accessibility ARIA Examples',
-                url:   'http://oaa-accessibility.org/examples/'
+                url:   'https://oaa-accessibility.org/examples/'
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'Accessible jQuery-ui Components Demonstration',
-                url:   'http://access.aol.com/aegis/#goto_slider'
+                url:   'https://access.aol.com/aegis/#goto_slider'
               }
             ]
       },
@@ -7405,11 +7405,11 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'OAA Web Accessibility ARIA Examples',
-                url:   'http://oaa-accessibility.org/examples/'
+                url:   'https://oaa-accessibility.org/examples/'
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'Accessible jQuery-ui Components Demonstration',
-                url:   'http://access.aol.com/aegis/#goto_slider'
+                url:   'https://access.aol.com/aegis/#goto_slider'
               }
             ]
         },
@@ -7453,11 +7453,11 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'OAA Web Accessibility ARIA Examples',
-                url:   'http://oaa-accessibility.org/examples/'
+                url:   'https://oaa-accessibility.org/examples/'
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'Accessible jQuery-ui Components Demonstration',
-                url:   'http://access.aol.com/aegis/#goto_slider'
+                url:   'https://access.aol.com/aegis/#goto_slider'
               }
             ]
         },
@@ -7502,11 +7502,11 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'OAA Web Accessibility ARIA Examples',
-                url:   'http://oaa-accessibility.org/examples/'
+                url:   'https://oaa-accessibility.org/examples/'
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'Accessible jQuery-ui Components Demonstration',
-                url:   'http://access.aol.com/aegis/#goto_slider'
+                url:   'https://access.aol.com/aegis/#goto_slider'
               }
             ]
         },
@@ -7546,7 +7546,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'OAA Web Accessibility ARIA Examples',
-                url:   'http://oaa-accessibility.org/examples/'
+                url:   'https://oaa-accessibility.org/examples/'
               }
             ]
         },
@@ -7596,7 +7596,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'OAA Web Accessibility ARIA Examples',
-                url:   'http://oaa-accessibility.org/examples/'
+                url:   'https://oaa-accessibility.org/examples/'
               }
             ]
         },
@@ -7673,7 +7673,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'OAA Web Accessibility ARIA Examples',
-                url:   'http://oaa-accessibility.org/examples/'
+                url:   'https://oaa-accessibility.org/examples/'
               }
             ]
         },
@@ -7747,7 +7747,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.TECHNIQUE,
                 title: 'iCITA Best Practices: Labels for Form Controls Overview',
-                url:   'http://html.cita.illinois.edu/nav/form/'
+                url:   'https://html.cita.illinois.edu/nav/form/'
               }
             ]
         },
@@ -7794,11 +7794,11 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'OAA Web Accessibility ARIA Examples',
-                url:   'http://oaa-accessibility.org/examples/'
+                url:   'https://oaa-accessibility.org/examples/'
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'Accessible jQuery-ui Components Demonstration',
-                url:   'http://access.aol.com/aegis/#goto_slider'
+                url:   'https://access.aol.com/aegis/#goto_slider'
               }
             ]
         },
@@ -7883,7 +7883,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -8084,7 +8084,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -11015,7 +11015,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -12934,7 +12934,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -13158,7 +13158,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -13308,7 +13308,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -13828,7 +13828,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -13898,7 +13898,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -13953,7 +13953,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -14728,7 +14728,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -14780,7 +14780,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -15477,7 +15477,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -15785,7 +15785,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
