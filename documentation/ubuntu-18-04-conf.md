@@ -80,7 +80,7 @@ sudo apt-get update
 
 If you would like to use mainline nginx packages, run the following command:
 ```
-echo "deb http://nginx.org/packages/mainline/ubuntu `lsb_release -cs` nginx" \
+echo "deb https://nginx.org/packages/mainline/ubuntu `lsb_release -cs` nginx" \
    | sudo tee /etc/apt/sources.list.d/nginx.list
 ```
 Next, import an official nginx signing key so apt could verify the packages authenticity:
@@ -107,7 +107,7 @@ sudo apt install nginx
 #### Postgres
 
 Create the file `/etc/apt/sources.list.d/pgdg.list` and add a line for the repository:
-`deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main`
+`deb https://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main`
 
 ```
 wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
@@ -115,7 +115,7 @@ sudo apt-get update
 apt-get install postgresql-12
 ```
 
-Installing this on Ubuntu includes:
+Installing this on Ubuntu include the ability to readily install any of the following packages via apt:
 
 `postgresql-client-12`
 `postgresql-12`
@@ -442,7 +442,7 @@ server {
 
     proxy_redirect off; # not sure about this
 
-    proxy_pass   http://apache;
+    proxy_pass   https://apache;
     # or if not using a unix socket:
     # proxy_pass http://127.0.0.1:8080;
   }
