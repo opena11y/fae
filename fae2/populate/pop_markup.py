@@ -115,7 +115,7 @@ html_area_href      = create_element_definition( html, "area", "href",     "", "
 
 html_object        = create_element_definition( html, "object",    "",         "", "https://www.w3.org/TR/html4/struct/objects.html#edef-object",      "", "")
 html_applet        = create_element_definition( html, "applet",    "",         "", "https://www.w3.org/TR/html4/struct/objects.html#edef-applet",      "", "")
-html_embed         = create_element_definition( html, "embed",    "",         "", "http://msdn.microsoft.com/en-us/library/ms535245%28v=vs.85%29.aspx",   "", "")
+html_embed         = create_element_definition( html, "embed",    "",         "", "https://developer.mozilla.org/en-US/docs/Web/HTML/Element/embed",   "", "")
 
 html_area         = create_element_definition( html, "area",   "",         "", "https://www.w3.org/TR/html4/struct/objects.html#edef-area",   "", "")
 html_area_alt     = create_element_definition( html, "area",   "alt",      "", "https://www.w3.org/TR/html4/struct/objects.html#adef-alt",    "", "")
@@ -125,17 +125,17 @@ html_img_alt      = create_element_definition( html, "img",    "alt",      "", "
 html_img_title    = create_element_definition( html, "img",    "title",    "", "https://www.w3.org/TR/html4/struct/global.html#adef-title",   "", "")
 html_img_longdesc = create_element_definition( html, "img",    "longdesc", "",  "https://www.w3.org/TR/html4/struct/global.html#adef-longdesc",   "", "")
 
-html_title     = create_element_definition( html, "title",  "",        "", "hhttps://www.w3.org/TR/html4/struct/global.html#edef-TITLE",      "", "")
-html_h1        = create_element_definition( html, "h1",      "",        "", "hhttps://www.w3.org/TR/html4/struct/global.html#edef-H1",      "", "")
-html_h2        = create_element_definition( html, "h2",   "",        "", "hhttps://www.w3.org/TR/html4/struct/global.html#edef-H2",      "", "")
+html_title     = create_element_definition( html, "title",  "",        "", "https://www.w3.org/TR/html4/struct/global.html#edef-TITLE",      "", "")
+html_h1        = create_element_definition( html, "h1",      "",        "", "https://www.w3.org/TR/html4/struct/global.html#edef-H1",      "", "")
+html_h2        = create_element_definition( html, "h2",   "",        "", "https://www.w3.org/TR/html4/struct/global.html#edef-H2",      "", "")
 
-html_h3        = create_element_definition( html, "h3",   "",        "", "hhttps://www.w3.org/TR/html4/struct/global.html#edef-H3",      "", "")
+html_h3        = create_element_definition( html, "h3",   "",        "", "https://www.w3.org/TR/html4/struct/global.html#edef-H3",      "", "")
 
-html_h4        = create_element_definition( html, "h4",   "",        "", "hhttps://www.w3.org/TR/html4/struct/global.html#edef-H4",      "", "")
+html_h4        = create_element_definition( html, "h4",   "",        "", "https://www.w3.org/TR/html4/struct/global.html#edef-H4",      "", "")
 
-html_h5        = create_element_definition( html, "h5",   "",        "", "hhttps://www.w3.org/TR/html4/struct/global.html#edef-H5",      "", "")
+html_h5        = create_element_definition( html, "h5",   "",        "", "https://www.w3.org/TR/html4/struct/global.html#edef-H5",      "", "")
 
-html_h6        = create_element_definition( html, "h6",   "",        "", "hhttps://www.w3.org/TR/html4/struct/global.html#edef-H6",      "", "")
+html_h6        = create_element_definition( html, "h6",   "",        "", "https://www.w3.org/TR/html4/struct/global.html#edef-H6",      "", "")
 
 html_all_id         = create_element_definition( html, "",        "id",      "",         "https://www.w3.org/TR/html4/struct/global.html#adef-id",   "", "")
 html_input_title    = create_element_definition( html, "input",   "title",   "", "https://www.w3.org/TR/html4/",         "", "")
@@ -184,22 +184,22 @@ html_font           = create_element_definition( html, "font",    "",  "",   "ht
 html_marquee        = create_element_definition( html, "marquee", "",  "",   "",    "", "")
 html_blink          = create_element_definition( html, "blink",   "",  "",   "",    "", "")
 
-html5 = create_spec("html 5", "html 5", "http://www.whatwg.org/specs/web-apps/current-work/multipage/", "html5", "html5", True)
+html5 = create_spec("html 5", "html 5", "https://www.whatwg.org/specs/web-apps/current-work/multipage/", "html5", "html5", True)
 
-html5_nav      = create_element_definition( html5, "nav",      "", "", "http://www.whatwg.org/specs/web-apps/current-work/multipage/sections.html#the-nav-element",          "", "")
-html5_article  = create_element_definition( html5, "article",  "", "", "http://www.whatwg.org/specs/web-apps/current-work/multipage/sections.html#the-article-element",      "", "")
-html5_section  = create_element_definition( html5, "section",  "", "", "http://www.whatwg.org/specs/web-apps/current-work/multipage/sections.html#the-section-element",      "", "")
-html5_main     = create_element_definition( html5, "main",     "", "", "http://www.whatwg.org/specs/web-apps/current-work/multipage/grouping-content.html#the-main-element", "", "")
-html5_aside    = create_element_definition( html5, "aside",    "", "", "http://www.whatwg.org/specs/web-apps/current-work/multipage/sections.html#the-aside-element",        "", "")
-html5_footer   = create_element_definition( html5, "footer",   "", "", "http://www.whatwg.org/specs/web-apps/current-work/multipage/sections.html#the-footer-element",       "", "")
-html5_header   = create_element_definition( html5, "header",   "", "", "http://www.whatwg.org/specs/web-apps/current-work/multipage/sections.html#the-header-element",       "", "")
+html5_nav      = create_element_definition( html5, "nav",      "", "", "https://www.whatwg.org/specs/web-apps/current-work/multipage/sections.html#the-nav-element",          "", "")
+html5_article  = create_element_definition( html5, "article",  "", "", "https://www.whatwg.org/specs/web-apps/current-work/multipage/sections.html#the-article-element",      "", "")
+html5_section  = create_element_definition( html5, "section",  "", "", "https://www.whatwg.org/specs/web-apps/current-work/multipage/sections.html#the-section-element",      "", "")
+html5_main     = create_element_definition( html5, "main",     "", "", "https://www.whatwg.org/specs/web-apps/current-work/multipage/grouping-content.html#the-main-element", "", "")
+html5_aside    = create_element_definition( html5, "aside",    "", "", "https://www.whatwg.org/specs/web-apps/current-work/multipage/sections.html#the-aside-element",        "", "")
+html5_footer   = create_element_definition( html5, "footer",   "", "", "https://www.whatwg.org/specs/web-apps/current-work/multipage/sections.html#the-footer-element",       "", "")
+html5_header   = create_element_definition( html5, "header",   "", "", "https://www.whatwg.org/specs/web-apps/current-work/multipage/sections.html#the-header-element",       "", "")
 
-html5_figure      = create_element_definition( html5, "figure",     "", "", "http://www.whatwg.org/specs/web-apps/current-work/multipage/grouping-content.html#the-figure-element",   "", "")
-html5_figcaption  = create_element_definition( html5, "figcaption", "", "", "http://www.whatwg.org/specs/web-apps/current-work/multipage/grouping-content.html#the-figcaption-element",   "", "")
+html5_figure      = create_element_definition( html5, "figure",     "", "", "https://www.whatwg.org/specs/web-apps/current-work/multipage/grouping-content.html#the-figure-element",   "", "")
+html5_figcaption  = create_element_definition( html5, "figcaption", "", "", "https://www.whatwg.org/specs/web-apps/current-work/multipage/grouping-content.html#the-figcaption-element",   "", "")
 
-html5_audio    = create_element_definition( html5, "audio", "", "", "http://www.whatwg.org/specs/web-apps/current-work/multipage/the-video-element.html#the-audio-element",   "", "")
-html5_video    = create_element_definition( html5, "video", "", "", "http://www.whatwg.org/specs/web-apps/current-work/multipage/the-video-element.html#the-video-element",   "", "")
-html5_track    = create_element_definition( html5, "track", "", "", "http://www.whatwg.org/specs/web-apps/current-work/multipage/the-video-element.html#the-track-element",   "", "")
+html5_audio    = create_element_definition( html5, "audio", "", "", "https://www.whatwg.org/specs/web-apps/current-work/multipage/the-video-element.html#the-audio-element",   "", "")
+html5_video    = create_element_definition( html5, "video", "", "", "https://www.whatwg.org/specs/web-apps/current-work/multipage/the-video-element.html#the-video-element",   "", "")
+html5_track    = create_element_definition( html5, "track", "", "", "https://www.whatwg.org/specs/web-apps/current-work/multipage/the-video-element.html#the-track-element",   "", "")
 
 aria = create_spec("Accessible Rich Internet Application Specification", "ARIA 1.0", "https://www.w3.org/TR/wai-aria/", "aria10", "ARIA 1.0", True)
 
