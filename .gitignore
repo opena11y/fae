@@ -64,3 +64,7 @@ apple-touch-icon-180x180.png
 
 # Search Engine related files
 sitemap.xml
+
+# Files related to vagrant
+/Vagrantfile
+/bootstrap.sh
