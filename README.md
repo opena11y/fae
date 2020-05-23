@@ -114,7 +114,7 @@ The application itself is in `/opt/fae2` so the full path to `wsgi.py` (for exam
 
 There are a few places that this path needs updated and I often forget to update the documentation so anyone using this fork should search in the entire code base for ` var/www ` and  ` opt/fae2 ` (and replace it with the path that's correct for them), then search for  ` fae2env ` and ` venv ` and correct the paths to their virtual environment.
 
-#### Sample Apache configuration file
+#### Sample Apache configuration file (if not using Nginx as a Reverse Proxy)
 
 ```
 <VirtualHost *:80 >
@@ -163,6 +163,88 @@ There are a few places that this path needs updated and I often forget to update
 
 </VirtualHost>
 ```
+
+#### Sample Apache 2.4 Config File with Nginx Reverse Proxy
+
+```
+<VirtualHost 127.0.0.1:8000>
+
+  ServerName  127.0.0.1:8000
+  ServerAlias localhost localhost:8000
+  DocumentRoot /opt/fae2/public_html
+  
+  Alias /robots.txt /opt/fae2/public_html/static/robots.txt
+  Alias /humans.txt /opt/fae2/public_html/static/humans.txt
+  Alias /favicon.ico /opt/fae2/public_html/static/favicon.ico
+  Alias /static/ /opt/fae2/public_html/static/
+  
+  <Directory /opt/fae2/public_html>
+    <IfVersion < 2.4>
+      Order allow,deny
+      Allow from all
+    </IfVersion>
+    <IfVersion >= 2.4>
+      Require all granted
+    </IfVersion>
+  </Directory>
+
+  WSGIDaemonProcess fae2 processes=4 python-home=/opt/fae2/venv python-path=/opt/fae2/fae2/fae2 lang='en_US.UTF-8' locale='en_US.UTF-8' queue-timeout=45 socket-timeout=60 connect-timeout=15 request-timeout=600 startup-timeout=15 deadlock-timeout=60 graceful-timeout=15 restart-interval=86400 shutdown-timeout=5 maximum-requests=10000 display-name=%{GROUP}
+
+  WSGIScriptAlias / /opt/fae2/fae2/fae2/wsgi.py process-group=fae2
+
+  WSGIProcessGroup fae2
+  WSGIApplicationGroup %{GLOBAL}
+
+  <Directory /opt/fae2/fae2/fae2>
+    <IfVersion < 2.4>
+      <Files wsgi.py>
+        Order allow,deny
+        Allow from all
+      </Files>
+    </IfVersion>
+    <IfVersion >= 2.4>
+      <Files wsgi.py>
+        Require all granted
+      </Files>
+    </IfVersion>
+   </Directory>
+
+  RemoteIPHeader X-Client-IP
+  RemoteIPInternalProxy 127.0.0.1
+  RemoteIPInternalProxy localhost
+
+  # The ServerName directive sets the request scheme, hostname and port that
+  # the server uses to identify itself. This is used when creating
+  # redirection URLs. In the context of virtual hosts, the ServerName
+  # specifies what hostname must appear in the request's Host: header to
+  # match this virtual host. For the default virtual host (this file) this
+  # value is not decisive as it is used as a last resort host regardless.
+  # However, you must set it for any further virtual host explicitly.
+  #ServerName www.example.com
+
+  # Available loglevels: trace8, ..., trace1, debug, info, notice, warn,
+  # error, crit, alert, emerg.
+  # It is also possible to configure the loglevel for particular
+  # modules, e.g.
+  #LogLevel info ssl:warn
+
+  ErrorLog ${APACHE_LOG_DIR}/error.log
+  CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+   # For most configuration files from conf-available/, which are
+   # enabled or disabled at a global level, it is possible to
+   # include a line for only one particular virtual host. For example the
+   # following line enables the CGI configuration for this host only
+   # after it has been globally disabled with "a2disconf".
+   #Include conf-available/serve-cgi-bin.conf
+
+</VirtualHost>
+
+```
+
+### See the `documentation` directory for more info on how to set up Apache 2.2 vs 2.4, Nginx (as a Reverse Proxy) and how to install, set up and configure Postgres, Python 3.6, a virtual environment and more.
+
+------------------------ 
 
 ### Initializing and updating the database tables
 * You will need to run django `makemigrations` and `migrate` commands to update any changes (or to create the initial database) for the django apps used in FAE.
