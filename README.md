@@ -1,6 +1,6 @@
 # Functional Accessibility Evaluator, version 2.1
 
-Development is primarily supported by the [University of Illinois at Urbana-Champaign](http://illinois.edu).  The development is lead by [Accessible IT Group](http://disability.illinois.edu/academic-support/aitg) which is a unit of [Disability Resources and Educational Servcies](http://www.disability.illinois.edu) which is part fo the [College of Applied Health Sciences](http://www.ahs.illinois.edu).  Additional contributions for the [HTMLUnit](http://htmlunit.sourceforge.net/) based web site analysis engine are provided by [Administrative Information Technology Services (ATIS)](https://www.aits.uillinois.edu/) of University Administration.
+Development is primarily supported by the [University of Illinois at Urbana-Champaign](https://illinois.edu).  The development is lead by [Accessible IT Group](https://disability.illinois.edu/academic-support/aitg) which is a unit of [Disability Resources and Educational Servcies](https://www.disability.illinois.edu) which is part fo the [College of Applied Health Sciences](https://www.ahs.illinois.edu).  Additional contributions for the [HTMLUnit](https://htmlunit.sourceforge.net/) based web site analysis engine are provided by [Administrative Information Technology Services (ATIS)](https://www.aits.uillinois.edu/) of University Administration.
 
 
 ## Important major changes from Version 2.0
@@ -15,7 +15,7 @@ Development is primarily supported by the [University of Illinois at Urbana-Cham
 * The rules support accessible and usable design by enforcing the accessible coding practices and techniques of the Accessible Rich Internet Application (ARIA) 1.0 and W3C HTML5 specifications.
 
 ## Apache 2.0 License
-FAE may be used and distributed based on the terms and conditions of the [Apache License Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
+FAE may be used and distributed based on the terms and conditions of the [Apache License Version 2.0](https://www.apache.org/licenses/LICENSE-2.0).
 
 ## Server requirements for Linux
 
@@ -178,7 +178,7 @@ python manage.py migrate
 
 ### Setting up fae directories for read/write access
 * Need to create `data` directory with write permissions for `apache` user and group `root` user
-* Need to create `logs` direcotry with write permissions for `apache` user and group `root` user
+* Need to create `logs` directory with write permissions for `apache` user and group `root` user
 * * Note: the `www-data` user seems to be the default user Apache runs as on recent Ubuntu and Debian distros--it's not hard to change, just make sure the user that Apache runs as matches the user that owns the `data` and `logs` directories.
 
 
@@ -214,7 +214,7 @@ python manage.py migrate
 * Creating a service to run evaluation requests
   * IMPORTANT: Must run <code>fae-util/python process_evaluation_requests.py</code> to process website evaluations in the background
   * There are a number of ways to make this program run in parallel with django application depending on your operating system
-    * Linux: How to write a System V init script to start, stop, and restart my own application or service(http://www.cyberciti.biz/tips/linux-write-sys-v-init-script-to-start-stop-service.html)
+    * Linux: How to write a System V init script to start, stop, and restart my own application or service(https://www.cyberciti.biz/tips/linux-write-sys-v-init-script-to-start-stop-service.html)
 
 
 ### Utility to clean up reports and update summary statistics
