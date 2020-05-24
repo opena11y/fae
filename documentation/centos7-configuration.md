@@ -258,7 +258,7 @@ $ git clone https://github.com/opena11y/fae2.git
 * FAE 2.1 need Python 2.7.x to run
 * The virtual environment is need for Apache configuration
 
-[Hitchhicke Guide to Virtual Environments](https://python-guide-pt-br.readthedocs.io/en/latest/dev/virtualenvs/)
+[Hitchhicker's Guide to Virtual Environments](https://python-guide-cn.readthedocs.io/en/latest/dev/virtualenvs.html)
 
 Install virtualenv via pip:
 
