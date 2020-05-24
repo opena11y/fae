@@ -2794,7 +2794,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
           title: 'Accessible jQuery-ui Components Demonstration',
-          url:   'https://access.aol.com/aegis/'
+          url:   'https://ecd.clark.edu/_resources/js/jquery/ui-accessable/'
         }
       ]
     },
@@ -7141,7 +7141,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'Accessible jQuery-ui Components Demonstration',
-                url:   'https://access.aol.com/aegis/#goto_slider'
+                url:   'https://ecd.clark.edu/_resources/js/jquery/ui-accessable/#goto_slider'
               }
             ]
         },
@@ -7198,7 +7198,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'Accessible jQuery-ui Components Demonstration',
-                url:   'https://access.aol.com/aegis/#goto_slider'
+                url:   'https://ecd.clark.edu/_resources/js/jquery/ui-accessable/#goto_slider'
               }
             ]
         },
@@ -7260,7 +7260,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'Accessible jQuery-ui Components Demonstration',
-                url:   'https://access.aol.com/aegis/#goto_slider'
+                url:   'https://ecd.clark.edu/_resources/js/jquery/ui-accessable/#goto_slider'
               }
             ]
         },
@@ -7312,7 +7312,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'Accessible jQuery-ui Components Demonstration',
-                url:   'https://access.aol.com/aegis/#goto_slider'
+                url:   'https://ecd.clark.edu/_resources/js/jquery/ui-accessable/#goto_slider'
               }
             ]
       },
@@ -7361,7 +7361,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'Accessible jQuery-ui Components Demonstration',
-                url:   'https://access.aol.com/aegis/#goto_slider'
+                url:   'https://ecd.clark.edu/_resources/js/jquery/ui-accessable/#goto_slider'
               }
             ]
       },
@@ -7409,7 +7409,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'Accessible jQuery-ui Components Demonstration',
-                url:   'https://access.aol.com/aegis/#goto_slider'
+                url:   'https://ecd.clark.edu/_resources/js/jquery/ui-accessable/#goto_slider'
               }
             ]
         },
@@ -7457,7 +7457,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'Accessible jQuery-ui Components Demonstration',
-                url:   'https://access.aol.com/aegis/#goto_slider'
+                url:   'https://ecd.clark.edu/_resources/js/jquery/ui-accessable/#goto_slider'
               }
             ]
         },
@@ -7506,7 +7506,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'Accessible jQuery-ui Components Demonstration',
-                url:   'https://access.aol.com/aegis/#goto_slider'
+                url:   'https://ecd.clark.edu/_resources/js/jquery/ui-accessable/#goto_slider'
               }
             ]
         },
@@ -7798,7 +7798,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'Accessible jQuery-ui Components Demonstration',
-                url:   'https://access.aol.com/aegis/#goto_slider'
+                url:   'https://ecd.clark.edu/_resources/js/jquery/ui-accessable/#goto_slider'
               }
             ]
         },
