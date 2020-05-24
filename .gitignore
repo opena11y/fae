@@ -68,3 +68,7 @@ sitemap.xml
 # Files related to vagrant
 /bootstrap.sh
 /Vagrantfile
+
+# Byte-compiled
+__pycache__/
+
