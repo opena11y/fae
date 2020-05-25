@@ -245,7 +245,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
                              },
                              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
                                title: 'How to meet Success Criterion 1.4.2 Audio Control',
-                               url:   'https://www.w3.org/WAI/WCAG20/quickref/#qr-visual-audio-contrast-dis-audio'
+                               url:   'https://www.w3.org/WAI/WCAG21/quickref/?versions=2.0#qr-visual-audio-contrast-dis-audio'
                              }
                             ]
         }
@@ -401,7 +401,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
                              },
                              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
                                title: 'How to meet Success Criterion 1.4.3 Contrast (Minimum): The visual presentation of text and images of text has a contrast ratio of at least 4.5:1',
-                               url:   'https://www.w3.org/WAI/WCAG20/quickref/#qr-visual-audio-contrast'
+                               url:   'https://www.w3.org/WAI/WCAG21/quickref/?versions=2.0#qr-visual-audio-contrast'
                              },
                             { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
                               title: 'G17: Ensuring that a contrast ratio of at least 7:1 exists between text (and images of text) and background behind the text',
@@ -446,7 +446,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
                              },
                              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
                                title: 'How to meet Success Criterion 1.4.1 Use of Color',
-                               url:   'https://www.w3.org/WAI/WCAG20/quickref/#qr-visual-audio-contrast-without-color'
+                               url:   'https://www.w3.org/WAI/WCAG21/quickref/?versions=2.0#qr-visual-audio-contrast-without-color'
                              },
                             { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
                               title: 'G14: Ensuring that information conveyed by color differences is also available in text',
@@ -5085,7 +5085,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
                 title: 'How to meet 1.4.4 Resize Text',
-                url:   'https://www.w3.org/WAI/WCAG20/quickref/#qr-visual-audio-contrast-scale'
+                url:   'https://www.w3.org/WAI/WCAG21/quickref/?versions=2.0#qr-visual-audio-contrast-scale'
               }
             ]
         }
@@ -5832,7 +5832,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
                              },
                              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
                                title: 'How to meet Success Criterion 1.3.3 Sensory Characteristics',
-                               url:   'https://www.w3.org/WAI/WCAG20/quickref/#qr-content-structure-separation-understanding'
+                               url:   'https://www.w3.org/WAI/WCAG21/quickref/?versions=2.0#qr-content-structure-separation-understanding'
                              }
                             ]
         }
@@ -6431,7 +6431,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
                 title: 'How to meet 2.2.1 Timing Adjustable',
-                url:   'https://www.w3.org/WAI/WCAG20/quickref/#qr-time-limits-required-behaviors'
+                url:   'https://www.w3.org/WAI/WCAG21/quickref/?versions=2.0#qr-time-limits-required-behaviors'
               }
             ]
         },
@@ -6462,7 +6462,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
                 title: 'How to meet 2.2.2 Pause, Stop, Hide',
-                url:   'https://www.w3.org/WAI/WCAG20/quickref/#qr-time-limits-pause'
+                url:   'https://www.w3.org/WAI/WCAG21/quickref/?versions=2.0#qr-time-limits-pause'
               }
             ]
         },
@@ -6493,7 +6493,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
                 title: 'How to meet 2.3.1 Three Flashes or Below Threshold',
-                url:   'https://www.w3.org/WAI/WCAG20/quickref/#qr-seizure-does-not-violate'
+                url:   'https://www.w3.org/WAI/WCAG21/quickref/?versions=2.0#qr-seizure-does-not-violate'
               }
             ]
         }

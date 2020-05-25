@@ -82,7 +82,7 @@ def create_wcag20(wcag20):
 
             for requirement in guideline[3]:
                 requirement_url = 'https://www.w3.org/TR/WCAG20/#' + requirement[2]
-                meet_url        = 'https://www.w3.org/WAI/WCAG20/quickref/#qr-' + requirement[2] + '.html'
+                meet_url        = 'https://www.w3.org/WAI/WCAG21/quickref/?versions=2.0#qr-' + requirement[2] + '.html'
                 understand_url  = 'https://www.w3.org/TR/WCAG20/' + requirement[2] + '.html'
                 requirement_slug = guideline_slug + 'sc' + str(requirement[0])
 
