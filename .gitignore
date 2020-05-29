@@ -23,6 +23,7 @@ venv/
 *.log
 *.sql
 *.sqlite
+*.sqlite3
 
 # Mac OS stuff #
 ################
@@ -63,6 +64,7 @@ site.webmanifest
 # Search Engine related files
 # Not sure what the django.contrib setting would yield
 # so I created this one manually using Screaming Frog SEO Spider
+# Yours will be different from mine so this one is excluded
 sitemap.xml
 
 # Files related to vagrant

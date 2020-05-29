@@ -70,6 +70,6 @@ Vagrant.configure("2") do |config|
     config.vm.provision :shell, path: "bootstrap.sh"
     #config.vm.network :forwarded_port, guest: 80, host: 8080
     config.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "127.0.0.1"
-    config.vm.hostname "compliance.adafirst.test"
+    config.vm.hostname = "compliance.adafirst.test"
     config.vm.synced_folder "fae2", "/opt/fae2"
 end
