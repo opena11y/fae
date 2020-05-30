@@ -5,7 +5,7 @@ apt-get update
 apt-get remove -y apache2 postgresql postgresql-10
 
 # Install libraries we are likely to need
-apt-get install -y build-essential libbz2-dev libgdbm-dev liblzma-dev libncurses5-dev libreadline-dev libsqlite3-dev libssl-dev software-properties-common zlib1g-dev
+apt-get install -y build-essential libbz2-dev libgdbm-dev liblzma-dev libncurses5-dev libreadline-dev libsqlite3-dev libssl-dev software-properties-common sqlite3 zlib1g-dev
 
 
 # Install latest stable Postgres (by updating apt sources lists)
