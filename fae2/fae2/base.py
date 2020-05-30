@@ -23,6 +23,7 @@ Author: Jon Gunderson
 from __future__ import print_function
 from __future__ import absolute_import
 import json
+import os
 
 from django.core.exceptions import ImproperlyConfigured
 from os.path import join, abspath, dirname
@@ -316,9 +317,9 @@ STATIC_ROOT = join(APP_DIR, 'public_html/static')
 
 print('STATIC ROOT: ' + STATIC_ROOT)
 
-STATICFILES_DIRS = (
-    (join(APP_DIR, 'public_html/staticfiles'),
-)
+STATICFILES_DIRS = [
+    '/opt/fae2/public_html/staticfiles',
+]
 
 LOGIN_REDIRECT_URL = '/'
 

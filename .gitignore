@@ -74,3 +74,13 @@ sitemap.xml
 # Byte-compiled
 __pycache__/
 
+# Publicly available files that have been copied in /static
+# via 'collectstatic' (that directory needs to be empty when command is run)
+public_html/static/admin/
+public_html/static/css/
+public_html/static/debug_toolbar/
+public_html/static/django_extensions/
+public_html/static/favicons/
+public_html/static/js/
+public_html/static/robots.txt
+

@@ -38,6 +38,7 @@ Including another URLconf
 
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.conf import settings
 from django.urls import include, path
 
 from fae2.settings import SHIBBOLETH_ENABLED
@@ -54,11 +55,6 @@ from accounts.views import ShibbolethInstitution
 from accounts.views import HeaderInfo
 from accounts.views import DisabledView
 
-if settings.DEBUG:
-    import debug_toolbar
-    urlpatterns = [
-        path('__debug__/', include(debug_toolbar.urls)),
-    ] + urlpatterns
 
 if FAE_DISABLED:
     urlpatterns = [
@@ -99,3 +95,9 @@ else:
             url(r'^logout/$', Logout.as_view(), name='logout'),
             url(r'^reset/', include('password_reset.urls')),
         ]
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+        path('__debug__/', include(debug_toolbar.urls)),
+    ] + urlpatterns

@@ -33,7 +33,7 @@ apt remove -y apache2 postgresql postgresql-10
 Install dependencies:
 
 ```
-apt-get install -y build-essential libbz2-dev libgdbm-dev liblzma-dev libncurses5-dev libreadline-dev libsqlite3-dev libssl-dev software-properties-common zlib1g-dev
+apt-get install -y build-essential libbz2-dev libgdbm-dev liblzma-dev libncurses5-dev libreadline-dev libsqlite3-dev libssl-dev software-properties-common sqlite3 zlib1g-dev
 
 ```
 
@@ -395,3 +395,83 @@ sudo certbot --nginx
 ```
 sudo certbot renew --dry-run
 ```
+
+---------------
+
+## Database(s)
+
+For development, I'm using SQLite3, but for production I'm using Postgres.
+
+As such there will be some duplication in the next few steps.
+
+Because you should always test things in a development settings before switching to a production setting, let's dive right in:
+
+### Steps Needed For SQLite3:
+1. Make sure you have SQLite3 and related libraries installed (if you followed the steps above, they'll already be installed, if not you can install them with `apt install sqlite3 libsqlite3-dev`)
+2. Create the directories and log file:
+```
+cd /opt/fae2/fae2
+mkdir data
+chown www-data:www-data /opt/fae2/data 
+mkdir logs
+touch logs/fae2_log
+chown -R www-data:www-data /opt/fae2/logs 
+```
+
+As a reminder, your virtual environment should already be activate so the above commands will probably be prefixed by `(venv)` in your shell.
+
+We are also assuming you are doing this as `root` so your shell prompt will probably be indicated by a `#`.
+
+It is easiest to do this as `root` so in a local development environment, that's what we're doing...but it's always better to use a less privledged user (even a user that can `sudo` is still less privledged as `root`).
+
+So when we do this again in production we will have create a less privledged user/group with `sudo` capabilities and we will switch to that user (typically the shell prompt for non-root users will be indicated by `$`) and prefix the commands with `sudo`.
+
+The last block of code doesn't actually matter if your python virtual environment is active or not because it isn't using any python; the next steps do so make sure you have activated your virtual environment.
+
+### Getting Django Up and Running:
+```
+(venv) cd /opt/fae2/fae2
+(venv) python manage.py collectstatic
+(venv) python manage.py makemigrations
+(venv) python manage.py migrate
+```
+
+The above sets up the basic Django apps, not the apps specific to this application so next you'll need to execute the code in `/opt/fae2/init_apps`.
+
+I'm sure there is some easy way to do that in one simple command but it didn't work for me so I manually copied the text in the file and pasted it into my shell and that was:
+```
+python manage.py makemigrations abouts
+python manage.py makemigrations accounts
+python manage.py makemigrations contact
+python manage.py makemigrations markup
+python manage.py makemigrations markupInfo
+python manage.py makemigrations pageResults
+python manage.py makemigrations reports
+python manage.py makemigrations ruleCategories
+python manage.py makemigrations rules
+python manage.py makemigrations rulesets
+python manage.py makemigrations stats
+python manage.py makemigrations subscriptions
+python manage.py makemigrations userProfiles
+python manage.py makemigrations wcag20
+python manage.py makemigrations websiteResultGroups
+python manage.py makemigrations websiteResults
+python manage.py migrate
+```
+
+You won't see that whole block because each line will execute one after another, with an additional "ENTER" keypress needed after the last line (when all the others are done).
+
+The next step is probably not needed, unless you have "static" assets in your apps but just to be safe you might want to `python manage.py collectstatic`
+
+Just to be thorough, I then `chown -R www-data:www-data /opt/fae2/public_html` (this apparently has no effect in Vagrant ... moving on). On Ubuntu, recent versions of Apache (and often Nginx) frequently run as `www-data` but this can easily be changed and varies from distro to distro so to check what user Apache runs as you can use: `ps aux | egrep '(apache|httpd)'` you can do the same for Nginx with `ps aux | egrep nginx`
+
+By having the "user" that both Apache and Nginx run as both be `www-data`, and having that user also be the owner of `/opt/fae2/public_html` (which is the only directory that is publicly exposed) you should avoid problems with permissions and enhance the security of the application.
+
+Now, to populate the database tables:
+```
+python manage.py populate/pop_all.py
+```
+
+
+
+

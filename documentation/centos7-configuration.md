@@ -317,7 +317,7 @@ $ (fae2env) nano secrets.json
 Edit the `secrets.json` file for your specific installation
 
 The `secrets.json` file is a JSON formatted file that contains configuration information for your local version of FAE 2.1.
-A template of the contents of the file is in `secrets_template.json`.  You can copy this file to `secretes.json` and then edit the file for you local configuration with the `nano` or other text editor.
+A template of the contents of the file is in `secrets_template.json`.  You can copy this file to `secrets.json` and then edit the file for you local configuration with the `nano` or other text editor.
 
 ### Create and set file permissions for log and data directories
 * The `data` directory is where `fae-util` stores evaluation results
