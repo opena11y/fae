@@ -33,3 +33,6 @@ import pop_rule_categories
 import pop_rules
 import pop_rulesets
 import pop_faqs
+
+#import fix_rc_slugs
+#import pop_institutional_profiles
