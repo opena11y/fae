@@ -306,7 +306,7 @@ class UserProfile(models.Model):
                     self.account_type = ip.account_type
 
                 if ip.subscription_status == 'EXPIRED':
-                    self.account_type = 'FREE'
+                    self.account_type = AccountType.objects.get(title='Free')
 
                 self.save()
 

@@ -56,7 +56,6 @@ def create_acount_type(type_id, self, shib, host, sponsor, title, permanent, arc
     atype = AccountType.objects.get(type_id=type_id)
     print("  Updating Account Type: " + title)
 
-    atype.type   = type_id
     atype.title  = title
 
     atype.self_registration = self
@@ -144,7 +143,7 @@ a66 = create_acount_type(66, False, False, False, True, 'Special III', 40, 80, 4
 set_account_type_description(1, """The Free version provides basic website evaluation for any user.  If you use FAE and/or AInspector Sidebar on a regular basis we ask that you help support the development and maintenance of the tools by purchasing a paid level subscriptions.""")
 set_account_type_description(2, """The Standard subscription provides an inidividual, educational and/or other organization with more extensive website evaluation services including deeper spidering of pages in a website, higher maximum number of pages, more saved and permanent reports than the Free account type.""")
 set_account_type_description(3, """The Advanced subscription provides an inidividual, educational and/or other organization with more extensive website evaluation services including deeper spidering of pages in a website, higher maximum number of pages, more saved and permanent reports than the Standard II subscription and also includes more advanced control over website spidering through the specification of include and exclude domain names.""")
-  
+
 set_account_type_description(16, """Free version for educational institutions.""")
 set_account_type_description(17, """For educational institutions of less than 2,000 students.""")
 set_account_type_description(18, """For educational institutions of 2,000-3,999 students.""")
