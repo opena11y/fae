@@ -214,6 +214,18 @@ class StatsUser(models.Model):
 
         return usage
 
+    def get_activity(self, days=90):
+        usage = UsageInfo()
+
+        last_month = timezone.now() - timedelta(days=days)
+        wsrs = self.ws_report_group.ws_reports.filter(created__gte=last_month)
+
+        for wsr in wsrs:
+            usage.num_reports += 1
+            usage.num_pages += wsr.page_count
+
+        return usage
+
     def get_last_ten_reports(self):
         return self.ws_report_group.ws_reports.all()[:10]
 

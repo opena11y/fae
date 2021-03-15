@@ -113,7 +113,7 @@ subscribers = 0
 registered = 0
 for su in stats_users:
     print('User: ' + str(su.user))
-    u = su.get_last_30_days()
+    u = su.get_activity()
     if u.num_reports > 0:
         active += 1
 
