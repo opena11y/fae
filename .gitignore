@@ -14,3 +14,4 @@ fae2/fae-util/openajax_a11y/scripts.txt
 **/migrations/
 venv/
 *.bak
+*.DS_Store
