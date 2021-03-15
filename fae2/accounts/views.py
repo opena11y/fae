@@ -720,7 +720,7 @@ class AllUserInformationView(LoginRequiredMixin, FAENavigationMixin, TemplateVie
         subscribers = 0
         registered = 0
         for su in stats_users:
-            u = su.get_last_30_days()
+            u = su.get_activity(120)
             if u.num_reports > 0:
                 active += 1
 

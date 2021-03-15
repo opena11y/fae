@@ -217,8 +217,8 @@ class StatsUser(models.Model):
     def get_activity(self, days=90):
         usage = UsageInfo()
 
-        last_month = timezone.now() - timedelta(days=days)
-        wsrs = self.ws_report_group.ws_reports.filter(created__gte=last_month)
+        last_day = timezone.now() - timedelta(days=days)
+        wsrs = self.ws_report_group.ws_reports.filter(created__gte=last_day)
 
         for wsr in wsrs:
             usage.num_reports += 1
