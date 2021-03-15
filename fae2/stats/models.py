@@ -202,8 +202,12 @@ class StatsUser(models.Model):
     def get_last_30_days(self):
         usage = UsageInfo()
 
-        last_month = datetime.today() - timedelta(days=30)
-        wsrs = self.ws_report_group.ws_reports.filter(created__gte=last_month)
+
+        try:
+            last_month = timezone.today() - timedelta(days=30)
+            wsrs = self.ws_report_group.ws_reports.filter(created__gte=last_month)
+        except:
+            wsrs = self.ws_report_group.ws_reports.all()
 
         for wsr in wsrs:
             usage.num_reports += 1
