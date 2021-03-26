@@ -22,10 +22,11 @@
             for(var i = 0; i < element_results.length; i++ ) {
 
                 var er = element_results[i];
+                var elem_identifier = er['element_identifier'].replace('<', '&lt;');
 
-                document.write('<tr>\n');
+                document.write('<tr>\n')
 
-                document.write('<td class="text">' + er['element_identifier'] + '</td>\n');
+                document.write('<td class="text">' + elem_identifier + '</td>\n');
 
                 var rv = er['result_value'];
                 if (rv == 5) document.write('<td class="text violation">Violation</td>\n');
@@ -40,14 +41,14 @@
 
                 document.write('</tr>\n');
             }
-         }   
+         }
          else {
                 document.write('<tr>\n');
                 document.write('<td class="none"><em>no element results</em></td>\n');
                 document.write('<td></td>\n');
                 document.write('<td></td>\n');
                 document.write('<td></td>\n');
-                document.write('</tr>\n');            
+                document.write('</tr>\n');
          }
 
         </script>
@@ -61,14 +62,14 @@
             <dd>Information about the element associated with the result.</dd>
             <dd>The information typically includes the tag name, accessible name or other information related to the rule requirements.</dd>
             <dd>"Page" means that the result applied to the page.  For example, the rule "One main landmark on the page" is a page level rule.</dd>
-        </dl>    
+        </dl>
         <dl>
             <dt>Element Position</dt>
             <dd>The element position is based on the DOM order of elements in the page.</dd>
             <dd>The element position maybe useful in helping to locate a specific element on the page evaluated (e.g smaller numbers are typically toward the beginning of a page and larger numbers typically toward the end of a page).</dd>
             <dd>Element position 1 is the first element.</dd>
-            <dd>The highest element position is the last element.</dd> 
-            <dd>Element position values for most rule/page results will not be consecutive since a rule only applies to a sub set of elements found on a page.</dd> 
-        </dl>    
+            <dd>The highest element position is the last element.</dd>
+            <dd>Element position values for most rule/page results will not be consecutive since a rule only applies to a sub set of elements found on a page.</dd>
+        </dl>
     </section>
-</section>    
+</section>

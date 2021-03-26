@@ -88,6 +88,11 @@ ANONYMOUS_ENABLED = get_secret('ANONYMOUS_ENABLED')
 SELF_REGISTRATION_ENABLED = get_secret('SELF_REGISTRATION_ENABLED')
 
 try:
+    PAID_SUBSCRIPTION_ENABLED = get_secret('PAID_SUBSCRIPTION_ENABLED')
+except:
+    PAID_SUBSCRIPTION_ENABLED = False
+
+try:
     SHIBBOLETH_ENABLED = get_secret('SHIBBOLETH_ENABLED')
 except:
     SHIBBOLETH_ENABLED = False
@@ -226,6 +231,7 @@ TEMPLATES = [
                 'fae2.context_processors.site',
                 'fae2.context_processors.anonymous',
                 'fae2.context_processors.self_registration',
+                'fae2.context_processors.paid_subscription',
                 'fae2.context_processors.shibboleth',
                 'fae2.context_processors.payment_enabled',
                 'fae2.context_processors.user_profile'

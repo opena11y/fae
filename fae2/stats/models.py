@@ -189,6 +189,11 @@ class StatsUser(models.Model):
     id = models.AutoField(primary_key=True)
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="stats")
+    reports_last_30_days  = models.IntegerField(default=0)
+    reports_last_90_days  = models.IntegerField(default=0)
+    reports_last_6_months = models.IntegerField(default=0)
+    reports_last_year     = models.IntegerField(default=0)
+
 
     ws_report_group = models.OneToOneField(WebsiteReportGroup, on_delete=models.CASCADE)
 
@@ -225,6 +230,14 @@ class StatsUser(models.Model):
             usage.num_pages += wsr.page_count
 
         return usage
+
+    def update_activity(self):
+        self.reports_last_30_days  = self.get_activity(30).num_reports
+        print('[last 30 days]: ' + str(self.reports_last_30_days))
+        self.reports_last_90_days  = self.get_activity(90).num_reports
+        self.reports_last_6_months = self.get_activity(183).num_reports
+        self.reports_last_year     = self.get_activity(365).num_reports
+        self.save()
 
     def get_last_ten_reports(self):
         return self.ws_report_group.ws_reports.all()[:10]

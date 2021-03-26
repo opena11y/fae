@@ -61,6 +61,8 @@ from fae2.settings import PROCESSING_THREADS
 from django.db       import models
 from reports.models  import WebsiteReport
 from django.contrib.auth.models import User
+from stats.models import StatsUser
+
 
 from django.core.exceptions     import ObjectDoesNotExist
 
@@ -161,8 +163,20 @@ def archive_fae2_logs():
   f = open(fae2_log_current, 'w')
   f.close()
 
+def update_user_activity():
+
+  for u in User.objects.all():
+    stats = StatsUser.objects.get(user=u);
+    print('[stats]: ' + str(stats))
+
+    if stats:
+      try:
+        stats.update_activity()
+      except:
+        error("Error updating activity: No user stat object for user '" + str(u) + "'")
 
 if __name__ == "__main__":
   archive_reports()
   archive_process_eval_logs()
   archive_fae2_logs()
+  update_user_activity()

@@ -27,6 +27,7 @@ from django.contrib.auth.models import AnonymousUser
 
 from fae2.settings import ANONYMOUS_ENABLED
 from fae2.settings import SELF_REGISTRATION_ENABLED
+from fae2.settings import PAID_SUBSCRIPTION_ENABLED
 
 from fae2.settings import SHIBBOLETH_ENABLED
 from fae2.settings import SHIBBOLETH_URL
@@ -49,6 +50,11 @@ def self_registration(request):
 	return {
 		'self_registration_enabled': SELF_REGISTRATION_ENABLED
 	}
+
+def paid_subscription(request):
+    return {
+        'paid_subscription_enabled': PAID_SUBSCRIPTION_ENABLED
+    }
 
 def shibboleth(request):
 	return {

@@ -29,6 +29,7 @@ from .uid import generate
 
 from fae2.settings import ANONYMOUS_ENABLED
 from fae2.settings import SELF_REGISTRATION_ENABLED
+from fae2.settings import PAID_SUBSCRIPTION_ENABLED
 from fae2.settings import SHIBBOLETH_ENABLED
 from fae2.settings import PAYMENT_ENABLED
 

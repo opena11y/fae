@@ -12,7 +12,7 @@ All User Information
 
 <section aria-labelledby="id_user_info">
   <h2 id="id_user_info">User Information</h2>
-  
+
   <ul>
     <li>Registered: {{registered}}</li>
     <li>Subscribers: {{subscribers}}</li>
@@ -21,16 +21,22 @@ All User Information
 
   <table class="details table table-striped table-hover sortable" aria-labelledby="id_user_info">
     <thead>
+      <tr>
+        <th class="num"  rowspan="2" title="Used to indicate relative date of registering">ID</th>
+        <th class="text" rowspan="2">Username</th>
+        <th class="text" rowspan="2">Name</th>
+        <th class="text" rowspan="2">Account</th>
+        <th class="text" rowspan="2"><abbr title="Announcements">Ann.</abbr></th>
+        <th colspan="6" class="text">Reports</th>
+        <th class="num" rowspan="2">Comments</th>
+      </tr>
       <tr >
-        <th class="num" title="Used to indicate relative date of registering">ID</th>
-        <th class="text">Username</th>
-        <th class="text">Name</th>
-        <th class="text">E-mail</th>
-        <th class="text">Account</th>
-        <th class="text">Announcements</th>
-        <th class="num">Reports Run</th>
-        <th class="num">Pages Evaluated</th>
-        <th class="num">Comments</th>
+        <th class="num">Last 30 Days</th>
+        <th class="num">Last 90 Days</th>
+        <th class="num">Last 6 Months</th>
+        <th class="num">Last Year</th>
+        <th class="num">All Reports</th>
+        <th class="num">All Pages</th>
       </tr>
     </thead>
     <tbody>
@@ -39,32 +45,41 @@ All User Information
                 <td class="num">
                     {{su.user.id}}
                 </td>
-                
+
                 <td class="text">
                     <a href="{% url 'user_information' su.user.id %}">{{ su.user.username }}</a>
                 </td>
 
                 <td class="text">
-                    {{ su.user.first_name }} {{ su.user.last_name }}
-                </td>
-
-                <td class="text"  >{% if su.user.email %}<a href="mailto:{{ email }}">{{ su.user.email }}{% else %}<em>none</em>{% endif %}</a></td>
+                  {% if su.user.email %}
+                   <a href="mailto:{{ su.user.email }}">{{ su.user.first_name }} {{ su.user.last_name }}</a></td>
+                  {% else %}
+                  {{ su.user.first_name }} {{ su.user.last_name }}
+                  {% endif %}
 
                 <td class="text">
                     {{ su.user.profile.account_type }}
                 </td>
-                
+
                 <td class="text"  >{{ su.user.profile.email_announcements }}</td>
-                
+
+                <td class="num"  >{{ su.reports_last_30_days }}</td>
+
+                <td class="num"  >{{ su.reports_last_90_days }}</td>
+
+                <td class="num"  >{{ su.reports_last_6_months }}</td>
+
+                <td class="num"  >{{ su.reports_last_year }}</td>
+
                 <td class="num"  >{{ su.ws_report_group.num_total_reports }}</td>
-                
+
                 <td class="num"   >{{ su.ws_report_group.num_total_pages }}</td>
 
                 <td class="num"   >{{ su.user.contacts.count }}</td>
-                                
+
             </tr>
             {% endfor %}
-      </tbody>       
+      </tbody>
     </table>
 
 
