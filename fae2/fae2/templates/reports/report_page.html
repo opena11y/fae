@@ -63,13 +63,16 @@
         </h2>
 
         <table  id="id_table_show_summary" class="details table table-striped table-hover sortable"  aria-labelledby="id_result_label"  aria-describedby="id_result_description">
-            <thead>
+          <thead>
               <tr>
-                <th id="id_grp" class="text"  rowspan="2">Rule Group</th>
+                <th class="empty"></th>
                 <th id="id_nor" class="text"  colspan="4">Number of Rules</th>
                 <th id="id_imp" class="text"  colspan="2">Implementation Level</th>
               </tr>
+          </thead>
+          <thead>
               <tr>
+                <th id="id_grp" class="text">Rule Group</th>
                 <th id="id_vio" class="num"   title="Violations">V</th>
                 <th id="id_war" class="num"   title="Warnings">W</th>
                 <th id="id_man" class="num"   title="Manual Checks">MC</th>
@@ -133,6 +136,8 @@
 
                 </tr>
                 {% endfor %}
+            </tbody>
+            <tbody>
                 <tr class="summary">
                     <td id="id_summ" class="text" headers="id_grp">All Rule Groups</td>
 

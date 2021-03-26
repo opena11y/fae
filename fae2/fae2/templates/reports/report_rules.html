@@ -67,11 +67,14 @@
 <table  id="id_table_show_summary" class="details table table-striped table-hover sortable"  aria-labelledby="id_result_label"  aria-describedby="id_result_description">
     <thead>
       <tr>
-        <th id="id_grp" class="text"  rowspan="2">Rule Group</th>
+        <th class="empty"></th>
         <th id="id_nor" class="text"  colspan="5">Number of Rules</th>
         <th id="id_imp" class="text"  colspan="2">Implementation Level</th>
       </tr>
+    </thead>
+    <thead>
       <tr>
+        <th id="id_grp" class="text">Rule Group</th>
         <th id="id_vio" class="num"   title="Violations">V</th>
         <th id="id_war" class="num"   title="Warnings">W</th>
         <th id="id_man" class="num"   title="Manual Checks">MC</th>
@@ -143,10 +146,12 @@
 
         </tr>
         {% endfor %}
+    </tbody>
+    <tbody>
         <tr class="summary">
             <td id="id_summ" class="text" headers="id_grp">All Rule Groups</td>
 
-            <td class="text"  headers="id_summ id_vio">
+            <td class="num"  headers="id_summ id_vio">
             {% if summary.rules_violation > 0 %}
             {{summary.rules_violation}}
             {% else %}
@@ -154,7 +159,7 @@
             {% endif %}
             </td>
 
-            <td class="text"  headers="id_summ id_war">
+            <td class="num"  headers="id_summ id_war">
             {% if summary.rules_warning > 0 %}
             {{summary.rules_warning}}
             {% else %}
@@ -162,7 +167,7 @@
             {% endif %}
             </td>
 
-            <td class="text"  headers="id_summ id_man">
+            <td class="num"  headers="id_summ id_man">
             {% if summary.rules_manual_check > 0 %}
             {{summary.rules_manual_check}}
             {% else %}
@@ -170,7 +175,7 @@
             {% endif %}
             </td>
 
-            <td class="text"  headers="id_summ id_pas">
+            <td class="num"  headers="id_summ id_pas">
             {% if summary.rules_passed > 0 %}
             {{summary.rules_passed}}
             {% else %}
@@ -178,7 +183,7 @@
             {% endif %}
             </td>
 
-            <td class="text"  headers="id_summ id_not">
+            <td class="num"  headers="id_summ id_not">
             {% if summary.rules_na > 0 %}
             {{summary.rules_na}}
             {% else %}

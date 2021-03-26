@@ -47,13 +47,16 @@
     <table  id="id_table_show_summary" class="details table table-striped table-hover sortable"  aria-labelledby="id_result_label"  aria-describedby="id_result_description">
         <thead>
           <tr>
-            <th id="id_pgn" class="num"  rowspan="2">Page</th>
-            <th id="id_ttl" class="text"  rowspan="2">Page Title</th>
-            <th id="id_res" class="text"  rowspan="2">Result</th>
+            <th class="empty"  colspan="3"></th>
             <th id="id_nor" class="text"  colspan="5">Rule Results</th>
             <th id="id_imp" class="text"  colspan="2">Implementation Level</th>
           </tr>
+        </thead>
+        <thead>
           <tr>
+            <th id="id_pgn" class="num"  >Page</th>
+            <th id="id_ttl" class="text" >Page Title</th>
+            <th id="id_res" class="text" >Result</th>
             <th id="id_vio" class="num"   title="Violations">V</th>
             <th id="id_war" class="num"   title="Warnings">W</th>
             <th id="id_man" class="num"   title="Manual Checks">MC</th>

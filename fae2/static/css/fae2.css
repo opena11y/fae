@@ -274,6 +274,10 @@ table tbody td ol li  {
     padding: 0;
 }
 
+table.table thead tr th.empty {
+    border-bottom: white 2px solid;
+}
+
 #information {
     padding: 0.5em;
     margin: 0;
