@@ -76,8 +76,8 @@ table.sortable thead th:not([data-defaultsort=disabled]) {
 }
 
 /* NEXT LINE  JRG */
-table.sortable thead th:focus:not([data-defaultsort=disabled]),
-table.sortable thead th:hover:not([data-defaultsort=disabled]) {
+table.sortable thead tr:last-child th:focus:not([data-defaultsort=disabled]),
+table.sortable thead tr:last-child th:hover:not([data-defaultsort=disabled]) {
     background: #efefef;
     outline: 1px solid black;
 }
