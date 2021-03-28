@@ -1,5 +1,14 @@
-#skipToMenu {
-    z-index: 1050;
+.skip-to-fae .skip-to [role=menuitem] .label {
+    text-align: left;
+    font-size: 100%;
+    font-weight: normal;
+    color: black;
+    line-height: inherit;
+}
+
+.skip-to-fae .skip-to [role=menuitem]:focus .label,
+.skip-to-fae .skip-to [role=menuitem]:hover .label {
+    color: white;
 }
 
 main h1 {
