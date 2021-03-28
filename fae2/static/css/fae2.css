@@ -241,14 +241,13 @@ main input#id_get_last {
     top: -3.55em;
 }
 
-button[aria-controls="top-navbar"] {
-    outline: solid 2px transparent;
+button.navbar-toggle {
     z-index: 1050;
 }
 
-button[aria-controls="top-navbar"]:focus,
-button[aria-controls="top-navbar"]:hover {
-    outline-color: white;
+button.navbar-toggle:focus,
+button.navbar-toggle:hover {
+    outline: solid 2px white !important;
 }
 
 #top-navbar-container {
