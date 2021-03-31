@@ -44,6 +44,7 @@ from django.contrib.sites.models import Site
 
 from contact.models import Announcement
 
+from fae2.settings import PAID_SUBSCRIPTION_ENABLED
 from fae2.settings import DEFAULT_ACCOUNT_TYPE
 from fae2.settings import SHIBBOLETH_ENABLED
 
@@ -52,11 +53,13 @@ from fae2.settings import EMAIL_HOST_USER
 from fae2.settings import ADMIN_EMAIL
 
 from datetime import datetime
-
 from datetime import date
+from datetime import timedelta
 
 from django.conf import settings
 from django.utils.timezone import make_aware
+
+ADDITIONAL_DAYS = 14
 
 def get_profile(user):
     try:
@@ -142,9 +145,14 @@ class InstitutionalProfile(models.Model):
             if self.subscription_days >= 0:
                 self.subscription_status = 'CURRENT'
             else:
-                self.subscription_status = 'EXPIRED'
-                self.subscription_payments = 0
-                self.account_type = AccountType.objects.get(type_id=16)
+                if PAID_SUBSCRIPTION_ENABLED:
+                    self.subscription_status = 'EXPIRED'
+                    self.subscription_payments = 0
+                    self.account_type = AccountType.objects.get(type_id=16)
+                else:
+                    self.subscription_status = 'CURRENT'
+                    self.subscription_end = date.today() + timedelta(days=ADDITIONAL_DAYS)
+                    self.subscription_days = ADDITIONAL_DAYS
 
         self.save()
 
@@ -152,30 +160,31 @@ class InstitutionalProfile(models.Model):
 
         topic = ""
 
-        if self.subscription_status == 'CURRENT':
-            if self.subscription_days == 7 or self.subscription_days == 14:
-                topic = "FAE Institutional Subscription expires in " + str(self.subscription_days) + "days"
-            elif self.subscription_days == 1:
-                topic = "FAE Institutional Subscription expires in one day"
-            elif self.subscription_days == 0:
-                topic = "FAE Institutional Subscription expires today"
+        if PAID_SUBSCRIPTION_ENABLED:
+            if self.subscription_status == 'CURRENT':
+                if self.subscription_days == 7 or self.subscription_days == 14:
+                    topic = "FAE Institutional Subscription expires in " + str(self.subscription_days) + "days"
+                elif self.subscription_days == 1:
+                    topic = "FAE Institutional Subscription expires in one day"
+                elif self.subscription_days == 0:
+                    topic = "FAE Institutional Subscription expires today"
 
-        if self.subscription_status == 'EXPIRED' and self.subscription_days == -1:
-            topic = "FAE Institutional Subscription expired yesterday"
+            if self.subscription_status == 'EXPIRED' and self.subscription_days == -1:
+                topic = "FAE Institutional Subscription expired yesterday"
 
-        if topic:
-            emails = []
-            if self.contact1_email:
-                emails.append(self.contact1_email)
-            if self.contact2_email:
-                emails.append(self.contact2_email)
+            if topic:
+                emails = []
+                if self.contact1_email:
+                    emails.append(self.contact1_email)
+                if self.contact2_email:
+                    emails.append(self.contact2_email)
 
-            site = Site.objects.get_current()
-            message = render_to_string('accounts/email_institutional_message.txt', {'institutional_profile': self,
-                                                                                    'subscription_url': str(
-                                                                                        site) + reverse(
-                                                                                        'contact_form')})
-            send_mail(topic, message, EMAIL_HOST_USER, emails, fail_silently=False)
+                site = Site.objects.get_current()
+                message = render_to_string('accounts/email_institutional_message.txt', {'institutional_profile': self,
+                                                                                        'subscription_url': str(
+                                                                                            site) + reverse(
+                                                                                            'contact_form')})
+                send_mail(topic, message, EMAIL_HOST_USER, emails, fail_silently=False)
 
 
 class UserProfile(models.Model):
@@ -261,10 +270,15 @@ class UserProfile(models.Model):
             if self.subscription_days >= 0:
                 self.subscription_status = 'CURRENT'
             else:
-                self.subscription_status = 'EXPIRED'
-                self.subscription_payments = 0
-                self.subscription_daily_rate = 0
-                self.account_type = AccountType.objects.get(type_id=1)
+                if PAID_SUBSCRIPTION_ENABLED:
+                    self.subscription_status = 'EXPIRED'
+                    self.subscription_payments = 0
+                    self.subscription_daily_rate = 0
+                    self.account_type = AccountType.objects.get(type_id=1)
+                else:
+                    self.subscription_status = 'CURRENT'
+                    self.subscription_end = date.today() + timedelta(days=ADDITIONAL_DAYS)
+                    self.subscription_days = ADDITIONAL_DAYS
 
             if self.subscription_days < 7:
                 self.enable_any_account_types = True
@@ -341,25 +355,25 @@ class UserProfile(models.Model):
 
         topic = ""
 
-        if self.subscription_status == 'CURRENT':
-            if self.subscription_days == 7:
-                topic = "FAE subscription expires in " + str(self.subscription_days) + "days"
-            elif self.subscription_days == 1:
-                topic = "FAE subscription expires in one day"
-            elif self.subscription_days == 0:
-                topic = "FAE subscription expires today"
+        if PAID_SUBSCRIPTION_ENABLED:
 
-        if self.subscription_status == 'EXPIRED' and self.subscription_days == -1:
-            topic = "FAE subscription expired yesterday"
+            if self.subscription_status == 'CURRENT':
+                if self.subscription_days == 7:
+                    topic = "FAE subscription expires in " + str(self.subscription_days) + "days"
+                elif self.subscription_days == 1:
+                    topic = "FAE subscription expires in one day"
+                elif self.subscription_days == 0:
+                    topic = "FAE subscription expires today"
 
-        if topic:
-            site = Site.objects.get_current()
-            message = render_to_string('accounts/email_message.txt', {'user_profile': self,
-                                                                      'subscription_url': str(site) + reverse(
-                                                                          'update_subscription')})
-            send_mail(topic, message, EMAIL_HOST_USER, [self.user.email], fail_silently=False)
+            if self.subscription_status == 'EXPIRED' and self.subscription_days == -1:
+                topic = "FAE subscription expired yesterday"
 
-        return
+            if topic:
+                site = Site.objects.get_current()
+                message = render_to_string('accounts/email_message.txt', {'user_profile': self,
+                                                                          'subscription_url': str(site) + reverse(
+                                                                              'update_subscription')})
+                send_mail(topic, message, EMAIL_HOST_USER, [self.user.email], fail_silently=False)
 
     def update_daily_rate(self):
         self.subscription_daily_rate = 0;

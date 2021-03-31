@@ -61,13 +61,14 @@
 
     {% include "subscriptions/option_institutional.html"  with id="id_inst" %}
 
+    {% include "subscriptions/refund_policy.html" %}
+
     {% else %}
 
     {% include "subscriptions/suspended.html"  %}
 
     {% endif %}
 
-    {% include "subscriptions/refund_policy.html" %}
 
 
 {% endblock %}

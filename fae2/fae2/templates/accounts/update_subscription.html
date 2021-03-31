@@ -172,11 +172,15 @@
 
     {% include "subscriptions/option_individual.html"  with id="id1"  %}
 
+    {% include "subscriptions/refund_policy.html" %}
+
     {% else %}
 
     <p style="color: red; font-size: 125%">Contact the service administrator for registration options.</p>
 
     {% include "subscriptions/option_institutional.html"  with id="id1"  %}
+
+    {% include "subscriptions/refund_policy.html" %}
 
     {% endif %}
 
@@ -186,7 +190,6 @@
 
     {% endif %}
 
-    {% include "subscriptions/refund_policy.html" %}
 
 {% endblock %}
 

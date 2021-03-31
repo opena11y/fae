@@ -1,3 +1,10 @@
+@media (max-width: 750px) {
+    .skip-to.fae2.popup.focus {
+        right: 25% !important;
+        left: auto;
+    }
+}
+
 main h1 {
     font-size: 250%;
     margin: 0;

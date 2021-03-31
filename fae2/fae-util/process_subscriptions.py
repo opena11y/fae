@@ -71,23 +71,23 @@ log = open(os.path.join(APP_DIR + 'logs/subscriptions-reports.log'), 'w')
 def debug(s):
   if DEBUG and log:
     log.write("[SUBSCRIPTIONS][debug]: " + str(s) + "\n")
-    log.flush()  
+    log.flush()
     print("[SUBSCRIPTIONS][debug]: " + str(s))
 
 
 def info(s):
   if INFO and log:
-    log.write("[SUBSCRIPTIONS][info]: " + str(s) + "\n")
+    log.write("[SUBSCRIPTIONS][info]" + str(s) + "\n")
     log.flush()
     if DEBUG:
-      print("[SUBSCRIPTIONS][info]: " + str(s))
+      print("[SUBSCRIPTIONS][info]" + str(s))
 
 def error(s):
   if ERROR and log:
-    log.write("[SUBSCRIPTIONS][**ERROR]: " + str(s) + "\n")
+    log.write("[SUBSCRIPTIONS][**ERROR**]" + str(s) + "\n")
     log.flush()
     if DEBUG:
-      print("[SUBSCRIPTIONS][**ERROR]: " + str(s))
+      print("[SUBSCRIPTIONS][**ERROR**]" + str(s))
 
 
 def update_subscriptions():
@@ -103,10 +103,10 @@ def update_subscriptions():
       ip.check_for_email_subscription_notifications()
 
       info("== " + str(ip) + " ==")
-      info("  Status: " + str(ip.subscription_status))
-      info("    Days: " + str(ip.subscription_days))
-      info("   Start: " + str(ip.subscription_start))
-      info("     End: " + str(ip.subscription_end))
+      info("[Status]: " + str(ip.subscription_status))
+      info("[  Days]: " + str(ip.subscription_days))
+      info("[ Start]: " + str(ip.subscription_start))
+      info("[   End]: " + str(ip.subscription_end))
 
   # Get all users
   user_profiles = UserProfile.objects.all()
@@ -117,23 +117,23 @@ def update_subscriptions():
 
     if SHIBBOLETH_ENABLED:
       up.update_institutional_subscription()
-    else:  
+    else:
       up.update_subscription_status()
       up.check_for_email_subscription_notifications()
 
     if up.subscription_status == 'EXPIRED':
       if up.subscription_days == -1:
-        info(str(up) + ": Expired 1 day ago")
-      else:  
-        info(str(up) + ": Expired " + str(abs(up.subscription_days)) + " days ago")
+        info("[" + str(up.user) + "]: Expired 1 day ago")
+      else:
+        info("[" + str(up.user) + "]: Expired " + str(abs(up.subscription_days)) + " days ago")
     else:
       if up.subscription_status == 'CURRENT':
         if up.subscription_days == 1:
-          info(str(up) + ": Current, 1 day left")
-        else:  
-          info(str(up) + ": Current, " + str(up.subscription_days) + " days left")
+          info("[" + str(up.user) + "]: Current, 1 day left")
+        else:
+          info("[" + str(up.user) + "]: Current, " + str(up.subscription_days) + " days left")
       else:
-        info(str(up) + ": Free")
+        info("[" + str(up.user) + "]: Free")
 
 
 
