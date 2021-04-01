@@ -1,0 +1,64 @@
+  <table class="details table table-striped table-hover sortable" aria-labelledby="{{id}}">
+    <thead>
+      <tr>
+        <th colspan="5" class="empty"></th>
+        <th colspan="6" class="text">Reports</th>
+        <th colspan="1" class="empty"></th>
+      </tr>
+      <tr >
+        <th class="num" title="Used to indicate relative date of registering">ID</th>
+        <th class="text">Username</th>
+        <th class="text">Name</th>
+        <th class="text">Account</th>
+        <th class="text"><abbr title="Announcements">Ann.</abbr></th>
+        <th class="num">Last 30 Days</th>
+        <th class="num">Last 90 Days</th>
+        <th class="num">Last 6 Months</th>
+        <th class="num">Last Year</th>
+        <th class="num">All Reports</th>
+        <th class="num">All Pages</th>
+        <th class="num">Comments</th>
+      </tr>
+    </thead>
+    <tbody>
+  {% for su in stats_users %}
+         <tr>
+                <td class="num">
+                    {{su.user.id}}
+                </td>
+
+                <td class="text">
+                    <a href="{% url 'user_information' su.user.id %}">{{ su.user.username }}</a>
+                </td>
+
+                <td class="text">
+                  {% if su.user.email %}
+                   <a href="mailto:{{ su.user.email }}">{{ su.user.first_name }} {{ su.user.last_name }}</a></td>
+                  {% else %}
+                  {{ su.user.first_name }} {{ su.user.last_name }}
+                  {% endif %}
+
+                <td class="text">
+                    {{ su.user.profile.account_type }}
+                </td>
+
+                <td class="text"  >{{ su.user.profile.email_announcements }}</td>
+
+                <td class="num"  >{{ su.reports_last_30_days }}</td>
+
+                <td class="num"  >{{ su.reports_last_90_days }}</td>
+
+                <td class="num"  >{{ su.reports_last_6_months }}</td>
+
+                <td class="num"  >{{ su.reports_last_year }}</td>
+
+                <td class="num"  >{{ su.ws_report_group.num_total_reports }}</td>
+
+                <td class="num"   >{{ su.ws_report_group.num_total_pages }}</td>
+
+                <td class="num"   >{{ su.user.contacts.count }}</td>
+
+            </tr>
+            {% endfor %}
+      </tbody>
+    </table>

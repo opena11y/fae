@@ -11,46 +11,19 @@ Institutional User Information
 
 {% block content %}
 
-  <h2 id="h2_activity">Summary of User Activity</h2>
+  <h2 id="id_user_details">Summary of User Activity</h2>
 
-  <p>Recent reports and pages include reports generated in the last 30 days.</p>
+  {% include "accounts/user_information_table.html" with id="id_user_details" %}
 
-  <table class="details table table-striped table-hover sortable" aria-labelledby="h2_activity">
-    <thead>
-      <tr>
-        <th class="text">Name</th>
-        <th class="text">E-mail</th>
-        <th class="text">Domain</th>
-        <th class="num" title="Last 30 Days">Recent Reports</th>
-        <th class="num" title="Last 30 Days">Recent Pages</th>
-        <th class="num">All Reports</th>
-        <th class="num">All Pages</th>
-      </tr>
-    </thead>
-    <tbody>
-    {% for us in user_stats %}
-      <tr>
-        <td class="text"><a href="#h3_{{us.user.id}}">{{us.get_name}}</a></td>
-        <td class="text">{{us.user.email}}</td>
-        <td class="text">{{us.user.profile.domain}}</td>
-        <td class="num">{{us.get_last_30_days.num_reports}}</td>
-        <td class="num">{{us.get_last_30_days.num_pages}}</td>
-        <td class="num">{{us.ws_report_group.num_total_reports}}</td>
-        <td class="num">{{us.ws_report_group.num_total_pages}}</td>
-    </tr>
-    {% endfor %}
-    </tbody>
-  </table>
+  <h2>Recent Reports</h2>
 
-   <h2>Recent Reports</h2>
+  {% for us in user_stats %}
 
-    {% for us in user_stats %}
+  <h3 id="h3_{{us.user.id}}">{{us.get_name}}</h3>
 
-    <h3 id="h3_{{us.user.id}}">{{us.get_name}}</h3>
+  {% include "reports/archived_report_list.html" with label_id="h3_{{us.user.id}}" report_list=us.get_last_ten_reports nosort=True%}
 
-    {% include "reports/archived_report_list.html" with label_id="h3_{{us.user.id}}" report_list=us.get_last_ten_reports nosort=True%}
-
-    {% endfor %}
+  {% endfor %}
 {% endblock %}
 
 
