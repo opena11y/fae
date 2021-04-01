@@ -712,7 +712,7 @@ class AllUserInformationView(LoginRequiredMixin, FAENavigationMixin, TemplateVie
     def get_context_data(self, **kwargs):
         context = super(AllUserInformationView, self).get_context_data(**kwargs)
 
-        user_profiles = UserProfile.objects.all()
+        user_profiles = UserProfile.objects.exclude(user__username="anonymous")
 
         stats_users = StatsUser.objects.exclude(user__username="anonymous")
 
@@ -720,8 +720,9 @@ class AllUserInformationView(LoginRequiredMixin, FAENavigationMixin, TemplateVie
         active90days   = stats_users.exclude(reports_last_90_days=0).count()
         active6months  = stats_users.exclude(reports_last_6_months=0).count();
         active_last_year = stats_users.exclude(reports_last_year=0).count();
-        subscribers = 0
-        registered = 0
+
+        registered = user_profiles.count()
+        subscribers = user_profiles.filter(subscription_status='CURRENT').count()
 
         context['include_announcements'] = user_profiles.filter(email_announcements=True)
         context['exclude_announcements'] = user_profiles.filter(email_announcements=False)
@@ -729,6 +730,7 @@ class AllUserInformationView(LoginRequiredMixin, FAENavigationMixin, TemplateVie
 
         context['registered'] = registered
         context['subscribers'] = subscribers
+
         context['active30days'] = active30days
         context['active90days'] = active90days
         context['active6months'] = active6months
