@@ -1,3 +1,7 @@
+.skip-to.fae2.popup.focus {
+    left: 35%;
+}
+
 @media (max-width: 750px) {
     .skip-to.fae2.popup.focus {
         right: 25% !important;
