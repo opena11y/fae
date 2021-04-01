@@ -16,10 +16,18 @@ All User Information
   <ul>
     <li>Registered: {{registered}}</li>
     <li>Subscribers: {{subscribers}}</li>
-    <li>Active: {{active}}</li>
   </ul>
 
-  <table class="details table table-striped table-hover sortable" aria-labelledby="id_user_info">
+  <h3>Current Active Users</h3>
+  <ul>
+    <li>Last 30 days: {{active30days}}</li>
+    <li>Last 90 days: {{active90days}}</li>
+    <li>Last 6 months: {{active6months}}</li>
+    <li>Last year: {{active_last_year}}</li>
+  </ul>
+
+  <h3 id="id_user_details">User Activity Details</h3>
+  <table class="details table table-striped table-hover sortable" aria-labelledby="id_user_details">
     <thead>
       <tr>
         <th colspan="5" class="empty"></th>

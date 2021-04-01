@@ -716,18 +716,12 @@ class AllUserInformationView(LoginRequiredMixin, FAENavigationMixin, TemplateVie
 
         stats_users = StatsUser.objects.exclude(user__username="anonymous")
 
-        active = 0
+        active30days   = stats_users.exclude(reports_last_30_days=0).count()
+        active90days   = stats_users.exclude(reports_last_90_days=0).count()
+        active6months  = stats_users.exclude(reports_last_6_months=0).count();
+        active_last_year = stats_users.exclude(reports_last_year=0).count();
         subscribers = 0
         registered = 0
-        for su in stats_users:
-            u = su.get_activity(120)
-            if u.num_reports > 0:
-                active += 1
-
-            if su.user.profile.account_type.type_id > 1:
-                subscribers += 1
-
-            registered += 1
 
         context['include_announcements'] = user_profiles.filter(email_announcements=True)
         context['exclude_announcements'] = user_profiles.filter(email_announcements=False)
@@ -735,7 +729,10 @@ class AllUserInformationView(LoginRequiredMixin, FAENavigationMixin, TemplateVie
 
         context['registered'] = registered
         context['subscribers'] = subscribers
-        context['active'] = active
+        context['active30days'] = active30days
+        context['active90days'] = active90days
+        context['active6months'] = active6months
+        context['active_last_year'] = active_last_year
 
         return context
 
