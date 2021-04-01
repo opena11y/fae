@@ -33,7 +33,7 @@ If HTMLUnit was part of the update it needs to be configured
 1. Change to the `fae2` directory with `manage.py`
 1. Update static files directory `python manage.py collectstatic`
 
-## Changes to static files
+## Configuration changes
 1. Update `secrets.jon` file with any configuration changes.
 
 ## Restart FAE background evaluation services
