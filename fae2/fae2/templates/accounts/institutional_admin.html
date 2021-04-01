@@ -17,11 +17,11 @@ Institutional User Information
 
   <h2>Recent Reports</h2>
 
-  {% for us in user_stats %}
+  {% for su in stats_users %}
 
-  <h3 id="h3_{{us.user.id}}">{{us.get_name}}</h3>
+  <h3 id="h3_{{us.user.id}}">{{su.get_name}}</h3>
 
-  {% include "reports/archived_report_list.html" with label_id="h3_{{us.user.id}}" report_list=us.get_last_ten_reports nosort=True%}
+  {% include "reports/archived_report_list.html" with label_id="h3_{{su.user.id}}" report_list=su.get_last_ten_reports nosort=True%}
 
   {% endfor %}
 {% endblock %}

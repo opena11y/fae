@@ -760,8 +760,8 @@ class InstitutionalAdminView(LoginRequiredMixin, FAENavigationMixin, TemplateVie
     def get_context_data(self, **kwargs):
         context = super(InstitutionalAdminView, self).get_context_data(**kwargs)
 
-        user_stats = StatsUser.objects.filter(user__profile__domain=kwargs['domain'])
-        context['user_stats'] = user_stats
+        stats_users = StatsUser.objects.filter(user__profile__domain=kwargs['domain'])
+        context['stats_users'] = stats_users
 
         return context
 
