@@ -125,8 +125,10 @@ class Announcement(models.Model):
 
         if self.email:
             for p in profiles:
-                if p.email_announcements and p.user.email and p.user.email.find('@'):
-                    send_mail(self.topic, self.message_text, EMAIL_HOST_USER, [p.user.email], fail_silently=False)
+                if (self.scope == 'All' or (p.account_type.type_id == 1 and self.scope == 'Free') or (
+                    p.account_type.type_id > 1 and self.scope == 'Sub')):
+                    if p.email_announcements and p.user.email and p.user.email.find('@'):
+                        send_mail(self.topic, self.message_text, EMAIL_HOST_USER, [p.user.email], fail_silently=False)
 
         if self.web:
             self.status = "Visible"
@@ -145,8 +147,8 @@ class Announcement(models.Model):
                 self.save()
 
         if self.web and (self.status != 'Arch') and profile and (
-                self.scope == 'All' or (profile.account_type == 1 and self.scope == 'Free') or (
-                profile.account_type > 1 and self.scope == 'Sub')):
+                self.scope == 'All' or (profile.account_type.type_id == 1 and self.scope == 'Free') or (
+                profile.account_type.type_id > 1 and self.scope == 'Sub')):
             messages.info(request, render_to_string('contact/announcement.txt', {'announcement': self}))
         else:
             if not profile:
