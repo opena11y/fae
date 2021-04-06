@@ -3,12 +3,12 @@
     {% if list %}
     {% for item in list %}
     <h2>{{item.topic}}</h2>
-    <p>Date: {{item.date|date:"Y-m-d"}}</p>
+    <p>Posted: {{item.date|date:"Y-m-d"}}</p>
     {{item.message_html|safe}}
     <hr style="margin-bottom: 4em;">
     {% endfor %}
     {% else %}
-    <p>None</p>    
+    <p>None</p>
     {% endif %}
 </section>
 
