@@ -210,7 +210,6 @@ class StatsUser(models.Model):
 
 
         last_month = timezone.now() - timedelta(days=30)
-        print('[last_month]: ' + str(last_month))
         wsrs = self.ws_report_group.ws_reports.filter(created__gte=last_month)
 
         for wsr in wsrs:
@@ -233,7 +232,6 @@ class StatsUser(models.Model):
 
     def update_activity(self):
         self.reports_last_30_days  = self.get_activity(30).num_reports
-        print('[last 30 days]: ' + str(self.reports_last_30_days))
         self.reports_last_90_days  = self.get_activity(90).num_reports
         self.reports_last_6_months = self.get_activity(183).num_reports
         self.reports_last_year     = self.get_activity(365).num_reports
