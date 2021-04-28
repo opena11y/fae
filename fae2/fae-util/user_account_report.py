@@ -127,7 +127,7 @@ for su in stats_users:
     flag = False
 
     count = WebsiteReport.objects.filter(user=su.user).count()
-    if count > 0:
+    if count > 1:
       any_saved_reports += 1
       flag = True
 
