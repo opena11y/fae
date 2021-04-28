@@ -108,21 +108,44 @@ user_profiles = UserProfile.objects.all()
 
 stats_users = StatsUser.objects.exclude(user__username="anonymous")
 
-active = 0
+last_30_days  = 0
+last_90_days  = 0
+last_6_months = 0
+last_year     = 0
+
 subscribers = 0
 registered = 0
+
+inactive = []
+
 for su in stats_users:
-    print('User: ' + str(su.user))
-    u = su.get_activity()
-    if u.num_reports > 0:
-        active += 1
+
+    last_30_days  += su.reports_last_30_days
+    last_90_days  += su.reports_last_90_days
+    last_6_months += su.reports_last_6_months
+    last_year     += su.reports_last_year
 
     if su.user.profile.account_type.type_id > 1:
         subscribers += 1
+    else:
+
+      count = su.reports_last_30_days
+      count += su.reports_last_90_days
+      count += su.reports_last_6_months
+      count += su.reports_last_year
+
+      if count == 0:
+        inactive.append(su.user)
+
 
     registered += 1
 
+print('  30 days: ' + str(last_30_days))
+print('  90 days: ' + str(last_90_days))
+print(' 6 months: ' + str(last_6_months))
+print('last year: ' + str(last_year))
 
-print('     Active: ' + str(active))
+
+print('   Inactive: ' + str(len(inactive)))
 print('Subscribers: ' + str(subscribers))
 print(' Registered: ' + str(registered))
