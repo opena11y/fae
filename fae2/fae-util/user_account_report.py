@@ -120,23 +120,31 @@ inactive = []
 
 for su in stats_users:
 
-    last_30_days  += su.reports_last_30_days
-    last_90_days  += su.reports_last_90_days
-    last_6_months += su.reports_last_6_months
-    last_year     += su.reports_last_year
+    flag = False
+
+    if su.reports_last_30_days > 0:
+      last_30_days += 1
+      flag = True
+
+    if su.reports_last_90_days  > 0:
+      last_90_days  += 1
+      flag = True
+
+    if su.reports_last_6_months > 0:
+      last_6_months += 1
+      flag = True
+
+    if su.reports_last_year > 0:
+      last_year += 1
+      flag = True
 
     if su.user.profile.account_type.type_id > 1:
-        subscribers += 1
+      subscribers += 1
+      flag = True
     else:
 
-      count = su.reports_last_30_days
-      count += su.reports_last_90_days
-      count += su.reports_last_6_months
-      count += su.reports_last_year
-
-      if count == 0:
+      if not flag:
         inactive.append(su.user)
-
 
     registered += 1
 
