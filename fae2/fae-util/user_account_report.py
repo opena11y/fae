@@ -73,7 +73,7 @@ from websiteResultGroups.models import WebsiteReportGroup
 
 from reports.models import WebsiteReport
 
-from datetime import datetime
+from datetime import datetime, timedelta
 from django.utils.timezone import make_aware
 from django.utils import timezone
 import pytz
@@ -120,6 +120,7 @@ subscribers = 0
 registered = 0
 
 inactive = []
+new_inactive = []
 
 for su in stats_users:
 
@@ -149,10 +150,9 @@ for su in stats_users:
     if su.user.profile.account_type.type_id > 1:
       subscribers += 1
       flag = True
-    else:
 
-      if not flag:
-        inactive.append(su.user)
+    if not flag:
+      inactive.append(su.user)
 
     registered += 1
 
@@ -163,6 +163,7 @@ print('       last year: ' + str(last_year))
 print('any saved report: ' + str(any_saved_reports))
 
 
-print('   Inactive: ' + str(len(inactive)))
-print('Subscribers: ' + str(subscribers))
-print(' Registered: ' + str(registered))
+print('    Inactive: ' + str(len(inactive)))
+print('New Inactive: ' + str(len(new_inactive)))
+print(' Subscribers: ' + str(subscribers))
+print('  Registered: ' + str(registered))
