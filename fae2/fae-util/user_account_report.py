@@ -71,6 +71,8 @@ from accounts.models import AccountType
 from stats.models import StatsUser
 from websiteResultGroups.models import WebsiteReportGroup
 
+from reports.models import WebsiteReport
+
 from datetime import datetime
 from django.utils.timezone import make_aware
 from django.utils import timezone
@@ -112,6 +114,7 @@ last_30_days  = 0
 last_90_days  = 0
 last_6_months = 0
 last_year     = 0
+any_saved_reports = 0
 
 subscribers = 0
 registered = 0
@@ -121,6 +124,11 @@ inactive = []
 for su in stats_users:
 
     flag = False
+
+    count = WebsiteReport.objects.all().count()
+    if count > 0:
+      any_saved_reports += 1
+      flag = True
 
     if su.reports_last_30_days > 0:
       last_30_days += 1
@@ -148,10 +156,11 @@ for su in stats_users:
 
     registered += 1
 
-print('  30 days: ' + str(last_30_days))
-print('  90 days: ' + str(last_90_days))
-print(' 6 months: ' + str(last_6_months))
-print('last year: ' + str(last_year))
+print('         30 days: ' + str(last_30_days))
+print('         90 days: ' + str(last_90_days))
+print('        6 months: ' + str(last_6_months))
+print('       last year: ' + str(last_year))
+print('any saved report: ' + str(any_saved_reports))
 
 
 print('   Inactive: ' + str(len(inactive)))
