@@ -724,8 +724,79 @@ class AllUserInformationView(LoginRequiredMixin, FAENavigationMixin, TemplateVie
         registered = user_profiles.count()
         subscribers = user_profiles.filter(subscription_status='CURRENT').count()
 
-        context['include_announcements'] = user_profiles.filter(email_announcements=True)
-        context['exclude_announcements'] = user_profiles.filter(email_announcements=False)
+        context['org_id'] = 'All';
+
+        context['stats_users'] = stats_users
+
+        context['registered'] = registered
+        context['subscribers'] = subscribers
+
+        context['active30days'] = active30days
+        context['active90days'] = active90days
+        context['active6months'] = active6months
+        context['active_last_year'] = active_last_year
+
+        return context
+
+class Org1UserInformationView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
+    template_name = 'accounts/all_user_information.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(Org1UserInformationView, self).get_context_data(**kwargs)
+
+        top_level = kwargs['top_level'];
+        org_id = top_level
+
+        user_profiles = UserProfile.objects.filter(Q(user__email__endswith=org_id))
+
+        stats_users = StatsUser.objects.filter(Q(user__email__endswith=org_id))
+
+        active30days   = stats_users.exclude(reports_last_30_days=0).count()
+        active90days   = stats_users.exclude(reports_last_90_days=0).count()
+        active6months  = stats_users.exclude(reports_last_6_months=0).count();
+        active_last_year = stats_users.exclude(reports_last_year=0).count();
+
+        registered = user_profiles.count()
+        subscribers = user_profiles.filter(subscription_status='CURRENT').count()
+
+        context['org_id'] = org_id
+
+        context['stats_users'] = stats_users
+
+        context['registered'] = registered
+        context['subscribers'] = subscribers
+
+        context['active30days'] = active30days
+        context['active90days'] = active90days
+        context['active6months'] = active6months
+        context['active_last_year'] = active_last_year
+
+        return context
+
+class Org2UserInformationView(LoginRequiredMixin, FAENavigationMixin, TemplateView):
+    template_name = 'accounts/all_user_information.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(Org2UserInformationView, self).get_context_data(**kwargs)
+
+        top_level = kwargs['top_level'];
+        second_level = kwargs['second_level'];
+        org_id = second_level + '.' + top_level
+
+        user_profiles = UserProfile.objects.filter(Q(user__email__endswith=org_id))
+
+        stats_users = StatsUser.objects.filter(Q(user__email__endswith=org_id))
+
+        active30days   = stats_users.exclude(reports_last_30_days=0).count()
+        active90days   = stats_users.exclude(reports_last_90_days=0).count()
+        active6months  = stats_users.exclude(reports_last_6_months=0).count();
+        active_last_year = stats_users.exclude(reports_last_year=0).count();
+
+        registered = user_profiles.count()
+        subscribers = user_profiles.filter(subscription_status='CURRENT').count()
+
+        context['org_id'] = org_id
+
         context['stats_users'] = stats_users
 
         context['registered'] = registered

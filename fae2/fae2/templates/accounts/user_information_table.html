@@ -21,7 +21,7 @@
       </tr>
     </thead>
     <tbody>
-  {% for su in stats_users %}
+    {% for su in stats_users %}
          <tr>
                 <td class="num">
                     {{su.user.id}}
@@ -59,6 +59,10 @@
                 <td class="num"   >{{ su.user.contacts.count }}</td>
 
             </tr>
-            {% endfor %}
+      {% empty %}
+         <tr>
+          <td colspan="12"><em>no results</em></td>
+        </tr>
+      {% endfor %}
       </tbody>
     </table>

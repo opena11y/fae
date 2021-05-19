@@ -11,7 +11,7 @@ All User Information
 {% block content %}
 
 <section aria-labelledby="id_user_info">
-  <h2 id="id_user_info">User Information</h2>
+  <h2 id="id_user_info">User Information: {{org_id}}</h2>
 
   <ul>
     <li>Registered: {{registered}}</li>
@@ -29,22 +29,6 @@ All User Information
   <h3 id="id_user_details">User Activity Details</h3>
 
   {% include "accounts/user_information_table.html" with id="id_user_details" %}
-
-  <h2 id="id_email_inc">E-mails to Include in Announcements</h2>
-  {% if include_announcements.count %}
-  <textarea rows="10" cols="80" aria-labelledby="id_email_inc" readonly>{% for up in include_announcements %}{% if up.user.email %}{{up.user.email}} {{up.user.first_name}} {{up.user.last_name}}
-  {% endif %}{% endfor %}</textarea>
-  {% else %}
-  <p>none</p>
-  {% endif %}
-
-  <h2 id="id_email_excl">E-mails to  Exclude in Announcements</h2>
-  {% if exclude_announcements.count %}
-  <textarea rows="10" cols="80" aria-labelledby="id_email_excl" readonly>{% for up in exclude_announcements %}{% if up.user.email %}{{up.user.email}} {{up.user.first_name}} {{up.user.last_name}}
-  {% endif %}{% endfor %}</textarea>
-  {% else %}
-  <p>none</p>
-  {% endif %}
 
 {% endblock %}
 
