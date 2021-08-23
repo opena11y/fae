@@ -20,6 +20,28 @@ Version History
     </thead>
     <tbody>
      <tr>
+        <td class="text">2.2</td>
+        <td class="text">2021-08-23</td>
+        <td class="text">
+          <ul>
+            <li>Updated Django 2.2.24.</li>
+            <li>Update OpenAjax evaluation library to support ARIA 1.2 and ARIA in HTML requirements, which included updating and adding the following rules:
+              <ul>
+                <li>Updated Widget rule references to use ARIA 1.2 spec, ARIA Authoring Practices, MDN resources for ARIA and Web Foundation references for ARIA.</li>
+                <li>Fixed bugs in WIDGET 7 rule on owned elements.</li>
+                <li>Fixed bugs in WIDGET 8 rule related to being owned by another element.</li>
+                <li>Fixed bugs in WIDGET 9 rule related to having required parent roles.</li>
+                <li>Fixed bugs in WIDGET 10 related to range control attributes.</li>
+                <li>Changed WIDGET 13 to test for name prohibitied requirement (from prohibiting any ARIA markup and was not included in any ruleset).</li>
+                <li>Added HTML 3 rule to support W3C ARIA in HTML specification.</li>
+                <li>Added WIDGET 15 rule to test for use of deprecated ARIA states and properties on selected roles.</li>
+                <li>Added WIDGET 16 rule to raise awareness of web components being user on a page and the need for manual checking.</li>
+              </ul>
+            </li>
+          </ul>
+        </td>
+      </tr>
+     <tr>
         <td class="text">2.1.3</td>
         <td class="text">2021-04-28</td>
         <td class="text">
