@@ -6218,7 +6218,7 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
         },
         "footer[contentinfo]": {
             "tagName": "footer",
-            "defaultRole": "contentInfo",
+            "defaultRole": "contentinfo",
             "noRoleAllowed": false,
             "anyRoleAllowed": false,
             "allowedRoles": [
@@ -15607,6 +15607,8 @@ OpenAjax.a11y.cache.DOMText.prototype.toString = function(option) {
  * @property {String}     calculated_aria_description  - If aria-describedby defined this is a string of the
  *                                                       description content
  *
+ * @property {String}     role                - Implicit or set role on the element
+ * @property {String}     implicit_role       - Implict role of the elements based on ARIA in HTML spec
  * @property {Boolean}    has_role            - True if element has a role value, otherwise false
  * @property {Boolean}    has_aria_owns            - True if element has a aria-owns property, otherwise false
  * @property {Boolean}    has_aria-attributes - True if element has a aria attributes, otherwise false
@@ -15920,7 +15922,7 @@ OpenAjax.a11y.cache.DOMElement = function (node, parent_dom_element, doc) {
   this.has_title                 = false;
 
 
-  this.inplicit_role    = "";
+  this.implicit_role  = this.element_aria_info.defaultRole;
   this.role           = "";
   this.role_info      = null;
   this.aria_invalid   = false;
@@ -20061,10 +20063,12 @@ OpenAjax.a11y.cache.HeadingsLandmarksCache.prototype.addLandmarkElement = functi
 
     if (de.tag_name === 'header') {
       de.element_aria_info = OpenAjax.a11y.ariaInHTML.elementInfo['header[banner]'];
+      de.implicit_role = de.element_aria_info.defaultRole;
     }
 
     if (de.tag_name === 'footer') {
       de.element_aria_info = OpenAjax.a11y.ariaInHTML.elementInfo['footer[contentinfo]'];
+      de.implicit_role = de.element_aria_info.defaultRole;
     }
 
   }
@@ -20582,6 +20586,8 @@ OpenAjax.a11y.cache.HeadingsLandmarksCache.prototype.updateCacheItems = function
             break;
 
           case 'footer':
+            dom_element.element_aria_info = OpenAjax.a11y.ariaInHTML.elementInfo['footer[contentinfo]'];
+            dom_element.implicit_role = dom_element.element_aria_info.defaultRole;
             le = new OpenAjax.a11y.cache.LandmarkElement(dom_element, 'contentinfo');
             this.dom_cache.getNameFromARIALabel(le, "CONTENTINFO");
             break;
@@ -20593,6 +20599,7 @@ OpenAjax.a11y.cache.HeadingsLandmarksCache.prototype.updateCacheItems = function
 
           case 'header':
             dom_element.element_aria_info = OpenAjax.a11y.ariaInHTML.elementInfo['header[banner]'];
+            dom_element.implicit_role = dom_element.element_aria_info.defaultRole;
             le = new OpenAjax.a11y.cache.LandmarkElement(dom_element, 'banner');
             this.dom_cache.getNameFromARIALabel(le, "BANNER");
             break;
@@ -29259,6 +29266,7 @@ OpenAjax.a11y.cache.TableRowElement = function (dom_element, table_info) {
 
   if (te && (te.table_role !== OpenAjax.a11y.TABLE_ROLE.LAYOUT)) {
     de.element_aria_info = OpenAjax.a11y.ariaInHTML.elementInfo['tr[table]'];
+    de.implicit_role = de.element_aria_info.defaultRole;
   }
 
 
@@ -29519,6 +29527,7 @@ OpenAjax.a11y.cache.TableCellElement = function (dom_element, table_info) {
         de.element_aria_info = OpenAjax.a11y.ariaInHTML.elementInfo['td[cell]'];
       }
     }
+    de.implicit_role = de.element_aria_info.defaultRole;
   }
 
   if (table_info.table_row_element) {
