@@ -7562,42 +7562,45 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
       WIDGET_7: {
             ID:                    'Widget 7',
-            DEFINITION:            'Widgets %s have required child roles.',
-            SUMMARY:               'Widgets %s have child roles',
+            DEFINITION:            'Container widgets %s have required owned elements.',
+            SUMMARY:               'Widgets %s have owned elements',
             TARGET_RESOURCES_DESC: 'Widgets with required owned elements',
             RULE_RESULT_MESSAGES: {
-              FAIL_S:   'Add required child roles to child elements in the widget.',
-              FAIL_P:   'Add required child roles to child elements in the %N_F out of %N_T widgets with required child elements.',
-              HIDDEN_S: 'The widget that requires child widget roles that is hidden and was not evaluated.',
-              HIDDEN_P: '%N_H widgets that require child widget roles that are hidden were not evaluated.',
-              NOT_APPLICABLE:  'No widgets with required child ARIA elements on this page.'
+              FAIL_S:   'Add required child element to the widget.',
+              FAIL_P:   'Add required child elements for the %N_F out of %N_T widgets missing required child elements.',
+              HIDDEN_S: 'The widget with requires child elements that is is hidden and was not evaluated.',
+              HIDDEN_P: '%N_H hidden widgets that require child elements were not evaluated.',
+              NOT_APPLICABLE:  'No widgets with required child elements on this page.'
             },
             NODE_RESULT_MESSAGES: {
-              ELEMENT_PASS_1:    '@%1@ widget has at least one required owned elements: %2.',
-              ELEMENT_PASS_2:    'When @aria-busy@ is set to @true@, the @%1@ widget is not required to have required owned elements.',
-              ELEMENT_FAIL_1:  '@%1@ widget is MISSING one or more of following required owned elements: %2.',
-              ELEMENT_HIDDEN_1:  'Required child widgets was not tested because the %1 widget is hidden from assistive technologies and not visible on screen.'
+              ELEMENT_PASS_1:    '@%1@ widget contains at least one required owned element: @%2@.',
+              ELEMENT_PASS_2:    'When @aria-busy@ is set to @true@, the @%1@ widget is not required to contain required owned elements.',
+              ELEMENT_FAIL_1:  '@%1@ widget does not contain one or more of following required owned elements: @%2@.',
+              ELEMENT_HIDDEN_1:  'Required owned elements was not tested because the @%1@ widget is hidden from assistive technologies and not visible on screen.'
             },
             PURPOSE: [
-              'ARIA roles, properties and states describes the features of interactive widgets to users of assistive technologies, especially screen reader users.'
+              'ARIA roles, properties and states describes the features of interactive widgets to users of assistive technologies, especially screen reader users.',
+              'Roles that are associated with container widgets have important parent/child relationships with other roles.',
+              'Parent/Child relationships are used by assistive technologies for computing the number of items in a container and the item position.',
+              'Container roles are also used by assistive technologies to provide enhanced navigation features for moving between items in lists, tables, grids and treegrids.'
             ],
             TECHNIQUES: [
-              'Use required ARIA owned elements to describe the features and options of a widget.'
+              'Required owned elements  can be defined using the HTML DOM structure or the @aria-owns@ attribute.',
+              'Use the DOM structure to add required owned elements by making them a descendant of the container role.',
+              'Use the @aria-owns@ attribute on the container role to reference owned elements.',
+              'When @aria-busy@ attribute is set to @true@ on the container element, the container element does not need to own any required elements.  @aria-busy@ should be used when a container element is being dynamically updated.',
+              'NOTE: The DOM structure technique is preferred over the @aria-owns@ technique, since it is less likely to result in authoring errors associated with creating and referencing elements with unique @id@s.'
             ],
             MANUAL_CHECKS: [
             ],
             INFORMATIONAL_LINKS: [
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.2 Specification: Widget Roles',
-                url:   'https://www.w3.org/TR/wai-aria-1.2/#widget_roles'
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.2 Specification: Owned Element definition',
+                url:   'https://www.w3.org/TR/wai-aria-1.2/#dfn-owned-element'
               },
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
-                title: 'G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes',
-                url:   'https://www.w3.org/TR/WCAG20-TECHS/G108'
-              },
-              { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
-                title: 'ARIA4: Using a WAI-ARIA role to expose the role of a user interface component',
-                url:   'https://www.w3.org/TR/WCAG20-TECHS/ARIA4.html'
+              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
+                title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.2 Specification: aria-owns attribute',
+                url:   'https://www.w3.org/TR/wai-aria-1.2/#aria-owns'
               },
               { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
                 title: 'ARIA Authoring Practices',
@@ -7627,12 +7630,14 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             },
             NODE_RESULT_MESSAGES: {
               ELEMENT_PASS_1:   '@%1@ role is a child of the a @%2@ role.',
-              ELEMENT_FAIL_1:   'The @%2@ role requires a parent @%1@ role, check your HTML DOM structure to ensure an ancestor element or an @aria-owns@ attributes defines a required parent role.',
+              ELEMENT_FAIL_1:   'The @%2@ role requires a parent @%1@ role, check your HTML DOM structure to ensure an ancestor element or an @aria-owns@ attributes identifies a required parent role.',
               ELEMENT_HIDDEN_1: 'Required parent role was not tested because the @%1@ widget is hidden from assistive technologies and/or not visible on screen.'
             },
             PURPOSE: [
               'ARIA roles, properties and states describes the features of interactive widgets to users of assistive technologies, especially screen reader users.',
-              'Roles that are part of more complicated widgets have important parent/child relationships with other roles.'
+              'Roles that are associated with container widgets have important parent/child relationships with other roles.',
+              'Parent/child relationships are used by assistive technologies for computing the number of items owned by a container and the position of an item (e.g. "third of five links").',
+              'Container roles are also used by assistive technologies to provide enhanced navigation features for moving between items in lists, tables, grids and treegrids.'
             ],
             TECHNIQUES: [
               'Parent roles can be defined using the HTML DOM structure or the @aria-owns@ attribute.',
@@ -7732,17 +7737,28 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               ELEMENT_FAIL_2:  'Update the numeric values of @aria-valuemin@ (%1) and @aria-valuemax@ (%2) so the @aria-valuemin@ value is less than the @aria-valuemax@ value.',
               ELEMENT_FAIL_3:  'Update the @%1@ widget values for @aria-valuemin@ ("%2") and/or @aria-valuemax@ ("%3") attributes to be valid numbers.',
               ELEMENT_FAIL_4:  '@%1@ widget is missing or has an invalid value for @aria-valuenow@.',
-              ELEMENT_HIDDEN_1:  'Widget range values were not tested becasue the @%1@ range widget is hidden from assistive technologies.'
+              ELEMENT_HIDDEN_1:  'Widget range values were not tested because the @%1@ range widget is hidden from assistive technologies.'
             },
             PURPOSE: [
-              'ARIA roles, properties and states describes the features of interactive widgets to users of assistive technologies, especially screen reader users.'
+              'Range roles identify a value between a minimum or maximum value and whether the value can be changed by the user (e.g. @scrollbar@, @slider@ or @spinbutton).',
+              'Screen readers typcially render the value of a range widget as a percentage of the total range defined by the minimum and maximum values.',
+              '@aria-valuetext@ can be used to render an alternative to the percentage when a numerical values and/or a units of measure are more descriptive.',
+              'Some range roles (e.g. @progress@ and @spinbutton@) allow an unknown current value indicating indeterminate or no value.'
             ],
             TECHNIQUES: [
-              'Use the @aria-valuenow@, @aria-valuemin@ and @aria-valuemax@ are accurately defined.'
+              'Use the @aria-valuenow@ attributes numerical value must be in the range defined by @aria-valuemin@ and @aria-valuemax@.',
+              'Screen reader typically render the slider value as a percentage, requiring a valid @aria-valuenow@ attribute.',
+              'Use the @aria-valuetext@ to provide an alternative to the percentage typically spoken by assistive technologies (e.g. "32 dollars", "78 degrees")',
+              'For most range roles, if @aria-valuemin@ is not defined it\'s default value is 0.',
+              'For most range roles, if @aria-valuemax@ is not defined it\'s default value is 100.'
             ],
             MANUAL_CHECKS: [
             ],
             INFORMATIONAL_LINKS: [
+              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
+                title: 'ARIA Authoring Practices: Communicating Value and Limits for Range Widgets',
+                url:   'https://w3c.github.io/aria-practices/#range_related_properties'
+              },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.2 Specification: Meter',
                 url:   'https://www.w3.org/TR/wai-aria-1.2/#meter'
@@ -7770,10 +7786,6 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
                 title: 'ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component',
                 url:   'https://www.w3.org/TR/WCAG20-TECHS/ARIA5.html'
-              },
-              { type:  OpenAjax.a11y.REFERENCES.EXAMPLE,
-                title: 'ARIA Authoring Practices: Using aria-valuemin, aria-valuemx and aria-valuenow',
-                url:   'https://w3c.github.io/aria-practices/#range_related_properties'
               }
             ]
         },
@@ -7961,8 +7973,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             PURPOSE: [
               'Providing an accessible name for elements or roles provides a way for users to identify the purpose of each landmark, widget, link, table and form control on a web page.',
               'Versions of the ARIA specification before 1.2 allowed @aria-label@ or @aria-labelledby@  to be used on any element, even if an accessible name was not useful .',
-              'For example, defining an accessible name on a @p@ element or an element with @role=none@ does not provide any useful accessibility information to assistive technologies.',
-              'The text content of the @p@ element is the only part that is needed by assisitve technologies.'
+              'For example, defining an accessible name on a @p@ element or an element with @role=none@ does not provide any useful accessibility information to assistive technologies.  For a @p@ element the text content is the only part that is needed by assistive technologies.'
             ],
             TECHNIQUES: [
               'Remove @aria-label@ or @aria-labelledby@ attribute from the element.'
@@ -7973,10 +7984,6 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
                 title: 'Accessible Rich Internet Applications (WAI-ARIA) 1.2 Specification: Widget Roles',
                 url:   'https://www.w3.org/TR/wai-aria-1.2/#widget_roles'
-              },
-              { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'WAI-ARIA 1.0 Authoring Practices: Tabindex for managing focus',
-                url:   'https://www.w3.org/TR/2010/WD-wai-aria-practices-20100916/#kbd_focus'
               },
               { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
                 title: 'G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes',
@@ -17329,7 +17336,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
                          '[tree]',
                          '[treegrid]'],
   primary_property    : 'role',
-  resource_properties : [],
+  resource_properties : ['aria_busy', 'aria_owns'],
   language_dependency : "",
   validate            : function (dom_cache, rule_result) {
 
@@ -17425,7 +17432,7 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
                           "treeitem"
                       ],
   primary_property    : 'role',
-  resource_properties : [],
+  resource_properties : ['aria_owns'],
   language_dependency : "",
   validate            : function (dom_cache, rule_result) {
 
