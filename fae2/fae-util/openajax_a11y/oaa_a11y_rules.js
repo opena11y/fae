@@ -7585,10 +7585,10 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               'Container roles are also used by assistive technologies to provide enhanced navigation features for moving between items in lists, tables, grids and treegrids.'
             ],
             TECHNIQUES: [
-              'Required owned elements  can be defined using the HTML DOM structure or the @aria-owns@ attribute.',
-              'Use the DOM structure to add required owned elements by making them a descendant of the container role.',
-              'Use the @aria-owns@ attribute on the container role to reference owned elements.',
-              'When @aria-busy@ attribute is set to @true@ on the container element, the container element does not need to own any required elements.  @aria-busy@ should be used when a container element is being dynamically updated.',
+              'Required owned elements can be defined using the HTML DOM structure or the @aria-owns@ attribute.',
+              'Use the DOM structure to add required owned elements by making them a descendant of the container element.',
+              'When the owned elements are not descendants of the container element, use the @aria-owns@ attribute on the container element to reference the owned elements.',
+              'When @aria-busy@ attribute is set to @true@ on the container element, the container element does not need to own any required elements.  @aria-busy@ should be used when a container element is being dynamically populated.',
               'NOTE: The DOM structure technique is preferred over the @aria-owns@ technique, since it is less likely to result in authoring errors associated with creating and referencing elements with unique @id@s.'
             ],
             MANUAL_CHECKS: [
@@ -7643,7 +7643,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               'Parent roles can be defined using the HTML DOM structure or the @aria-owns@ attribute.',
               'Required parent role is a DOM ancestor of the element.',
               'Required parent role references the element using the @aria-owns@ attribute.',
-              'NOTE: HTML DOM parent/child relationships for defining relationships is preferred over the use of @aria-owns@ attribute.'
+              'NOTE: HTML DOM parent/child relationships for defining relationships is preferred over the use of @aria-owns@ attribute, since it is less likely to result in authoring errors associated with creating and referencing elements with unique @id@s.'
             ],
             MANUAL_CHECKS: [
             ],
@@ -7676,21 +7676,24 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             SUMMARY:               'Only one owner',
             TARGET_RESOURCES_DESC: 'Widgets with required parent roles',
             RULE_RESULT_MESSAGES: {
-              FAIL_S:   'Update widgets with aria-owns to make sure a dom element is only referenced once.',
-              FAIL_P:   'Update %N_F out of %N_T widgets with aria-owns to make sure they reference a dom element only once.',
-              NOT_APPLICABLE:  'No dom elements are referenced using aria-owns on this page.'
+              FAIL_S:   'Update widgets with aria-owns to make sure a element is only referenced once.',
+              FAIL_P:   'Update %N_F out of %N_T widgets with aria-owns to make sure they reference a element only once.',
+              NOT_APPLICABLE:  'No elements are referenced using aria-owns on this page.'
             },
             NODE_RESULT_MESSAGES: {
-              ELEMENT_PASS_1:   '@%2@ dom element is referenced only by @%1@ widget with aria-owns.',
-              ELEMENT_FAIL_1: 'Check the @%1@ @aria-owns@ reference to @%2@ dom element so it is only referenced by one widget.',
+              ELEMENT_PASS_1:   '@%2@ element is referenced only by @%1@ container element using aria-owns.',
+              ELEMENT_FAIL_1: 'Check the @%1@ @aria-owns@ reference to @%2@ element so it is only referenced by one container element.',
             },
             PURPOSE: [
-              'Some ARIA widgets have require child roles and when the HTML DOM parent/child relationships does not identify the elements nodes with the associated roles, @aria-owns@ attribute can be used to identify the associated elements.'
+              'ARIA container elements  have require child elements.',
+              'When the HTML DOM parent/child relationships do not identify the child elements the @aria-owns@ attribute can be used to reference the child elements.',
+              'A child element can only be referenced using @aria-owns@ by one container element.'
             ],
             TECHNIQUES: [
-              'Parent widget roles defined using @aria-owns@ attribute must accurately describe the parent/child relationship.',
-              'An element can only be referenced once using the @aria-owns@ attribute.',
-              'NOTE: HTML DOM parent/child relationships for defining relationships is preferred over the use of @aria-owns@ attribute.'
+              'Container elements using @aria-owns@ attribute must accurately reference the associated child elements.',
+              'A child element can only be referenced by one container element using the @aria-owns@ attribute.',
+              'Update the application to use the DOM parent/child relationships instead of using @aria-owns@ technique.',
+              'NOTE: HTML DOM parent/child relationships for defining relationships is preferred over the use of @aria-owns@ attribute, since it is less likely to result in authoring errors associated with creating and referencing elements with unique @id@s.'
             ],
             MANUAL_CHECKS: [
             ],
@@ -7743,7 +7746,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
               'Range roles identify a value between a minimum or maximum value and whether the value can be changed by the user (e.g. @scrollbar@, @slider@ or @spinbutton).',
               'Screen readers typcially render the value of a range widget as a percentage of the total range defined by the minimum and maximum values.',
               '@aria-valuetext@ can be used to render an alternative to the percentage when a numerical values and/or a units of measure are more descriptive.',
-              'Some range roles (e.g. @progress@ and @spinbutton@) allow an unknown current value indicating indeterminate or no value.'
+              'Some range roles (e.g. @progress@ and @spinbutton@) allow an unknown current value indicating indeterminate or no current value.'
             ],
             TECHNIQUES: [
               'Use the @aria-valuenow@ attributes numerical value must be in the range defined by @aria-valuemin@ and @aria-valuemax@.',

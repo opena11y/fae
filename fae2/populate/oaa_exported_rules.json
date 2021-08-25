@@ -9202,32 +9202,35 @@
           "target_resources" : ["[feed]","[grid]","[list]","[listbox]","[menu]","[menubar]","[radiogroup]","[row]","[rowgroup]","[table]","[tablist]","[tree]","[treegrid]"],
           "language_dependency" : "",
           "primary_property" : "role",
-          "resource_properties" : [],
+          "resource_properties" : ["aria_busy","aria_owns"],
           "validate" : "function (dom_cache, rule_result) {\r\n\r\n\r\n     function getRequiredChildRolesString(required_children) {\r\n\r\n       var str = \"\";\r\n       var required_children_max = required_children.length - 1;\r\n\r\n       for (var i = 0; i < required_children.length; i++ ) {\r\n         str += required_children[i];\r\n         if (i !== required_children_max) str += \", \";\r\n       }\r\n\r\n       return str;\r\n\r\n     }\r\n\r\n     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;\r\n     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;\r\n\r\n     var widget_elements     = dom_cache.controls_cache.widget_elements;\r\n     var widget_elements_len = widget_elements.length;\r\n\r\n     if (widget_elements && widget_elements) {\r\n\r\n       for (var i = 0; i < widget_elements_len; i++) {\r\n         var we = widget_elements[i];\r\n         var de = we.dom_element;\r\n         var style = de.computed_style;\r\n\r\n         var required_child_roles = de.role_info.requiredChildren;\r\n\r\n         if (required_child_roles && required_child_roles.length) {\r\n\r\n//           console.log(\"[WIDGET 7]: \" + de + \" [reqOwned]: \"+ required_child_roles.toString());\r\n\r\n           if (style.is_visible_to_at == VISIBILITY.VISIBLE || style.is_visible_onscreen == VISIBILITY.VISIBLE ) {\r\n\r\n             if (we.aria_busy) {\r\n               rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_2', [de.role]);\r\n             } else {\r\n               var flag = false;\r\n\r\n               for (var j = 0; (j < required_child_roles.length) && !flag; j++) {\r\n                 flag = we.hasRequiredChildRole(required_child_roles[j]);\r\n               }\r\n\r\n               var required_child_roles_string = getRequiredChildRolesString(required_child_roles);\r\n\r\n               if (flag) {\r\n                rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_1', [de.role, required_child_roles_string]);\r\n               } else {\r\n                rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [de.role, required_child_roles_string]);\r\n              }\r\n             }\r\n           }\r\n           else {\r\n             rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.role]);\r\n           }\r\n         }\r\n       } // end loop\r\n     }\r\n   }",
           "nls_rule_id" : "Widget 7",
-          "definition" : "Widgets %s have required child roles.",
-          "summary" : "Widgets %s have child roles",
+          "definition" : "Container widgets %s have required owned elements.",
+          "summary" : "Widgets %s have owned elements",
           "target_resource_desc" : "Widgets with required owned elements",
           "purpose" : [
-          "ARIA roles, properties and states describes the features of interactive widgets to users of assistive technologies, especially screen reader users."
+          "ARIA roles, properties and states describes the features of interactive widgets to users of assistive technologies, especially screen reader users.",
+          "Roles that are associated with container widgets have important parent/child relationships with other roles.",
+          "Parent/Child relationships are used by assistive technologies for computing the number of items in a container and the item position.",
+          "Container roles are also used by assistive technologies to provide enhanced navigation features for moving between items in lists, tables, grids and treegrids."
           ],
           "techniques" : [
-          "Use required ARIA owned elements to describe the features and options of a widget."
+          "Required owned elements  can be defined using the HTML DOM structure or the @aria-owns@ attribute.",
+          "Use the DOM structure to add required owned elements by making them a descendant of the container role.",
+          "Use the @aria-owns@ attribute on the container role to reference owned elements.",
+          "When @aria-busy@ attribute is set to @true@ on the container element, the container element does not need to own any required elements.  @aria-busy@ should be used when a container element is being dynamically updated.",
+          "NOTE: The DOM structure technique is preferred over the @aria-owns@ technique, since it is less likely to result in authoring errors associated with creating and referencing elements with unique @id@s."
           ],
           "manual_checks" : [
           ],
           "informational_links" : [
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2 Specification: Widget Roles",
-              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#widget_roles"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2 Specification: Owned Element definition",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#dfn-owned-element"
             },
-            { "type"  : 11,
-              "title" : "G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes",
-              "url"   : "https://www.w3.org/TR/WCAG20-TECHS/G108"
-            },
-            { "type"  : 11,
-              "title" : "ARIA4: Using a WAI-ARIA role to expose the role of a user interface component",
-              "url"   : "https://www.w3.org/TR/WCAG20-TECHS/ARIA4.html"
+            { "type"  : 9,
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2 Specification: aria-owns attribute",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#aria-owns"
             },
             { "type"  : 2,
               "title" : "ARIA Authoring Practices",
@@ -9243,17 +9246,17 @@
             }
           ],
           "rule_result_messages" : {
-           "FAIL_S": "Add required child roles to child elements in the widget.",
-          "FAIL_P": "Add required child roles to child elements in the %N_F out of %N_T widgets with required child elements.",
-          "HIDDEN_S": "The widget that requires child widget roles that is hidden and was not evaluated.",
-          "HIDDEN_P": "%N_H widgets that require child widget roles that are hidden were not evaluated.",
-          "NOT_APPLICABLE": "No widgets with required child ARIA elements on this page."
+           "FAIL_S": "Add required child element to the widget.",
+          "FAIL_P": "Add required child elements for the %N_F out of %N_T widgets missing required child elements.",
+          "HIDDEN_S": "The widget with requires child elements that is is hidden and was not evaluated.",
+          "HIDDEN_P": "%N_H hidden widgets that require child elements were not evaluated.",
+          "NOT_APPLICABLE": "No widgets with required child elements on this page."
           },
           "node_result_messages" : {
-           "ELEMENT_PASS_1": "@%1@ widget has at least one required owned elements: %2.",
-          "ELEMENT_PASS_2": "When @aria-busy@ is set to @true@, the @%1@ widget is not required to have required owned elements.",
-          "ELEMENT_FAIL_1": "@%1@ widget is MISSING one or more of following required owned elements: %2.",
-          "ELEMENT_HIDDEN_1": "Required child widgets was not tested because the %1 widget is hidden from assistive technologies and not visible on screen."
+           "ELEMENT_PASS_1": "@%1@ widget contains at least one required owned element: @%2@.",
+          "ELEMENT_PASS_2": "When @aria-busy@ is set to @true@, the @%1@ widget is not required to contain required owned elements.",
+          "ELEMENT_FAIL_1": "@%1@ widget does not contain one or more of following required owned elements: @%2@.",
+          "ELEMENT_HIDDEN_1": "Required owned elements was not tested because the @%1@ widget is hidden from assistive technologies and not visible on screen."
           }
         },
         {
@@ -9269,7 +9272,7 @@
           "target_resources" : ["caption","cell","columnheader","gridcell","listitem","menuitem","menuitemcheckbox","menuitemradio","option","row","rowgroup","rowheader","tab","treeitem"],
           "language_dependency" : "",
           "primary_property" : "role",
-          "resource_properties" : [],
+          "resource_properties" : ["aria_owns"],
           "validate" : "function (dom_cache, rule_result) {\r\n\r\n\r\n     function getRequiredRolesString(required_roles) {\r\n\r\n       var str = \"\";\r\n       var required_roles_max = required_roles.length - 1;\r\n\r\n       for (var i = 0; i < required_roles.length; i++ ) {\r\n         if (i > 0) {\r\n          if ( i === required_roles_max) {\r\n            str += \"@ or @\" + required_roles[i];\r\n          } else {\r\n            str += \"@, @\" + required_roles[i];\r\n;\r\n          }\r\n         } else {\r\n           str += required_roles[i];\r\n         }\r\n       }\r\n\r\n       return str;\r\n\r\n     }\r\n\r\n     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;\r\n     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;\r\n\r\n     var widget_elements     = dom_cache.controls_cache.widget_elements;\r\n     var widget_elements_len = widget_elements.length;\r\n\r\n     if (widget_elements && widget_elements) {\r\n\r\n       for (var i = 0; i < widget_elements_len; i++) {\r\n         var we = widget_elements[i];\r\n         var de = we.dom_element;\r\n         var style = de.computed_style;\r\n\r\n         var required_parent_roles = de.role_info.requiredParents;\r\n\r\n         if (required_parent_roles && required_parent_roles.length) {\r\n\r\n           if (style.is_visible_to_at == VISIBILITY.VISIBLE || style.is_visible_onscreen == VISIBILITY.VISIBLE ) {\r\n\r\n             var flag = false;\r\n\r\n             for (var j = 0; (j < required_parent_roles.length) && !flag; j++) {\r\n                var role = required_parent_roles[j];\r\n                flag = we.isOwnedByRole(role);\r\n             }\r\n\r\n             var required_roles_string = getRequiredRolesString(required_parent_roles);\r\n\r\n             if (flag) {\r\n               rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_1', [de.role, role]);\r\n             } else {\r\n               rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [required_roles_string, de.role]);\r\n             }\r\n           }\r\n           else {\r\n             rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.role]);\r\n           }\r\n         }\r\n       } // end loop\r\n     }\r\n   }",
           "nls_rule_id" : "Widget 8",
           "definition" : "Role %s have a required parent role using the HTML DOM structure or the @aria-owns@ attribute.",
@@ -9277,7 +9280,9 @@
           "target_resource_desc" : "Role with required parent role",
           "purpose" : [
           "ARIA roles, properties and states describes the features of interactive widgets to users of assistive technologies, especially screen reader users.",
-          "Roles that are part of more complicated widgets have important parent/child relationships with other roles."
+          "Roles that are associated with container widgets have important parent/child relationships with other roles.",
+          "Parent/child relationships are used by assistive technologies for computing the number of items owned by a container and the position of an item (e.g. \"third of five links\").",
+          "Container roles are also used by assistive technologies to provide enhanced navigation features for moving between items in lists, tables, grids and treegrids."
           ],
           "techniques" : [
           "Parent roles can be defined using the HTML DOM structure or the @aria-owns@ attribute.",
@@ -9318,7 +9323,7 @@
           },
           "node_result_messages" : {
            "ELEMENT_PASS_1": "@%1@ role is a child of the a @%2@ role.",
-          "ELEMENT_FAIL_1": "The @%2@ role requires a parent @%1@ role, check your HTML DOM structure to ensure an ancestor element or an @aria-owns@ attributes defines a required parent role.",
+          "ELEMENT_FAIL_1": "The @%2@ role requires a parent @%1@ role, check your HTML DOM structure to ensure an ancestor element or an @aria-owns@ attributes identifies a required parent role.",
           "ELEMENT_HIDDEN_1": "Required parent role was not tested because the @%1@ widget is hidden from assistive technologies and/or not visible on screen."
           }
         },
@@ -9403,14 +9408,25 @@
           "summary" : "Value in range",
           "target_resource_desc" : "Range widgets",
           "purpose" : [
-          "ARIA roles, properties and states describes the features of interactive widgets to users of assistive technologies, especially screen reader users."
+          "Range roles identify a value between a minimum or maximum value and whether the value can be changed by the user (e.g. @scrollbar@, @slider@ or @spinbutton).",
+          "Screen readers typcially render the value of a range widget as a percentage of the total range defined by the minimum and maximum values.",
+          "@aria-valuetext@ can be used to render an alternative to the percentage when a numerical values and/or a units of measure are more descriptive.",
+          "Some range roles (e.g. @progress@ and @spinbutton@) allow an unknown current value indicating indeterminate or no value."
           ],
           "techniques" : [
-          "Use the @aria-valuenow@, @aria-valuemin@ and @aria-valuemax@ are accurately defined."
+          "Use the @aria-valuenow@ attributes numerical value must be in the range defined by @aria-valuemin@ and @aria-valuemax@.",
+          "Screen reader typically render the slider value as a percentage, requiring a valid @aria-valuenow@ attribute.",
+          "Use the @aria-valuetext@ to provide an alternative to the percentage typically spoken by assistive technologies (e.g. \"32 dollars\", \"78 degrees\")",
+          "For most range roles, if @aria-valuemin@ is not defined it's default value is 0.",
+          "For most range roles, if @aria-valuemax@ is not defined it's default value is 100."
           ],
           "manual_checks" : [
           ],
           "informational_links" : [
+            { "type"  : 2,
+              "title" : "ARIA Authoring Practices: Communicating Value and Limits for Range Widgets",
+              "url"   : "https://w3c.github.io/aria-practices/#range_related_properties"
+            },
             { "type"  : 9,
               "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2 Specification: Meter",
               "url"   : "https://www.w3.org/TR/wai-aria-1.2/#meter"
@@ -9438,10 +9454,6 @@
             { "type"  : 11,
               "title" : "ARIA5: Using WAI-ARIA state and property attributes to expose the state of a user interface component",
               "url"   : "https://www.w3.org/TR/WCAG20-TECHS/ARIA5.html"
-            },
-            { "type"  : 2,
-              "title" : "ARIA Authoring Practices: Using aria-valuemin, aria-valuemx and aria-valuenow",
-              "url"   : "https://w3c.github.io/aria-practices/#range_related_properties"
             }
           ],
           "rule_result_messages" : {
@@ -9459,7 +9471,7 @@
           "ELEMENT_FAIL_2": "Update the numeric values of @aria-valuemin@ (%1) and @aria-valuemax@ (%2) so the @aria-valuemin@ value is less than the @aria-valuemax@ value.",
           "ELEMENT_FAIL_3": "Update the @%1@ widget values for @aria-valuemin@ (\"%2\") and/or @aria-valuemax@ (\"%3\") attributes to be valid numbers.",
           "ELEMENT_FAIL_4": "@%1@ widget is missing or has an invalid value for @aria-valuenow@.",
-          "ELEMENT_HIDDEN_1": "Widget range values were not tested becasue the @%1@ range widget is hidden from assistive technologies."
+          "ELEMENT_HIDDEN_1": "Widget range values were not tested because the @%1@ range widget is hidden from assistive technologies."
           }
         },
         {
@@ -9675,8 +9687,7 @@
           "purpose" : [
           "Providing an accessible name for elements or roles provides a way for users to identify the purpose of each landmark, widget, link, table and form control on a web page.",
           "Versions of the ARIA specification before 1.2 allowed @aria-label@ or @aria-labelledby@  to be used on any element, even if an accessible name was not useful .",
-          "For example, defining an accessible name on a @p@ element or an element with @role=none@ does not provide any useful accessibility information to assistive technologies.",
-          "The text content of the @p@ element is the only part that is needed by assisitve technologies."
+          "For example, defining an accessible name on a @p@ element or an element with @role=none@ does not provide any useful accessibility information to assistive technologies.  For a @p@ element the text content is the only part that is needed by assistive technologies."
           ],
           "techniques" : [
           "Remove @aria-label@ or @aria-labelledby@ attribute from the element."
@@ -9687,10 +9698,6 @@
             { "type"  : 9,
               "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2 Specification: Widget Roles",
               "url"   : "https://www.w3.org/TR/wai-aria-1.2/#widget_roles"
-            },
-            { "type"  : 9,
-              "title" : "WAI-ARIA 1.0 Authoring Practices: Tabindex for managing focus",
-              "url"   : "https://www.w3.org/TR/2010/WD-wai-aria-practices-20100916/#kbd_focus"
             },
             { "type"  : 11,
               "title" : "G108: Using markup features to expose the name and role, allow user-settable properties to be directly set, and provide notification of changes",

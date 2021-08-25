@@ -2,6 +2,10 @@
 <table class="table table-striped table-hover rule" aria-label="Information on rule, {{rule.summary_text}}" style="margin-top: 1em">
     <tbody>
         <tr>
+            <th>Rule ID</th>
+            <td>{{ rule.nls_rule_id }}</td>
+        </tr>
+        <tr>
             <th>Definition</th>
             <td>{{ rule.definition_html|safe }}</td>
         </tr>
