@@ -5917,38 +5917,44 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
                 "tab",
                 "treeitem"
             ],
-            "attr1": "href"
+            "attr1": "href",
+            "id": "a[href]"
         },
         "a": {
             "tagName": "a",
             "defaultRole": "generic",
             "noRoleAllowed": false,
-            "anyRoleAllowed": true
+            "anyRoleAllowed": true,
+            "id": "a"
         },
         "abbr": {
             "tagName": "abbr",
             "defaultRole": "generic",
             "noRoleAllowed": false,
-            "anyRoleAllowed": true
+            "anyRoleAllowed": true,
+            "id": "abbr"
         },
         "address": {
             "tagName": "address",
             "defaultRole": "generic",
             "noRoleAllowed": false,
-            "anyRoleAllowed": true
+            "anyRoleAllowed": true,
+            "id": "address"
         },
         "area[href]": {
             "tagName": "area",
             "defaultRole": "link",
             "noRoleAllowed": true,
             "anyRoleAllowed": false,
-            "attr1": "href"
+            "attr1": "href",
+            "id": "area[href]"
         },
         "area": {
             "tagName": "area",
             "defaultRole": "generic",
             "noRoleAllowed": true,
-            "anyRoleAllowed": false
+            "anyRoleAllowed": false,
+            "id": "area"
         },
         "article": {
             "tagName": "article",
@@ -5963,7 +5969,8 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
                 "none",
                 "presentation",
                 "region"
-            ]
+            ],
+            "id": "article"
         },
         "aside": {
             "tagName": "aside",
@@ -5977,7 +5984,8 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
                 "presentation",
                 "region",
                 "search"
-            ]
+            ],
+            "id": "aside"
         },
         "audio": {
             "tagName": "audio",
@@ -5986,44 +5994,51 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
             "anyRoleAllowed": false,
             "allowedRoles": [
                 "application"
-            ]
+            ],
+            "id": "audio"
         },
         "b": {
             "tagName": "b",
             "defaultRole": "generic",
             "noRoleAllowed": false,
-            "anyRoleAllowed": true
+            "anyRoleAllowed": true,
+            "id": "b"
         },
         "base": {
             "tagName": "base",
             "defaultRole": "generic",
             "noRoleAllowed": false,
             "anyRoleAllowed": false,
-            "allowedRoles": []
+            "allowedRoles": [],
+            "id": "base"
         },
         "bdi": {
             "tagName": "bdi",
             "defaultRole": "generic",
             "noRoleAllowed": false,
-            "anyRoleAllowed": true
+            "anyRoleAllowed": true,
+            "id": "bdi"
         },
         "bdo": {
             "tagName": "bdo",
             "defaultRole": "generic",
             "noRoleAllowed": false,
-            "anyRoleAllowed": true
+            "anyRoleAllowed": true,
+            "id": "bdo"
         },
         "blockquote": {
             "tagName": "blockquote",
             "defaultRole": "generic",
             "noRoleAllowed": false,
-            "anyRoleAllowed": true
+            "anyRoleAllowed": true,
+            "id": "blockquote"
         },
         "body": {
             "tagName": "body",
             "defaultRole": "generic",
             "noRoleAllowed": true,
-            "anyRoleAllowed": false
+            "anyRoleAllowed": false,
+            "id": "body"
         },
         "br": {
             "tagName": "br",
@@ -6033,7 +6048,8 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
             "allowedRoles": [
                 "presentation",
                 "none"
-            ]
+            ],
+            "id": "br"
         },
         "button": {
             "tagName": "button",
@@ -6050,81 +6066,94 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
                 "radio",
                 "switch",
                 "tab"
-            ]
+            ],
+            "id": "button"
         },
         "canvas": {
             "tagName": "canvas",
             "defaultRole": "generic",
             "noRoleAllowed": false,
-            "anyRoleAllowed": true
+            "anyRoleAllowed": true,
+            "id": "canvas"
         },
         "caption": {
             "tagName": "caption",
             "defaultRole": "generic",
             "noRoleAllowed": true,
-            "anyRoleAllowed": false
+            "anyRoleAllowed": false,
+            "id": "caption"
         },
         "cite": {
             "tagName": "cite",
             "defaultRole": "generic",
             "noRoleAllowed": false,
-            "anyRoleAllowed": true
+            "anyRoleAllowed": true,
+            "id": "cite"
         },
         "code": {
             "tagName": "code",
             "defaultRole": "generic",
             "noRoleAllowed": false,
-            "anyRoleAllowed": true
+            "anyRoleAllowed": true,
+            "id": "code"
         },
         "col": {
             "tagName": "col",
             "defaultRole": "generic",
             "noRoleAllowed": false,
             "anyRoleAllowed": false,
-            "allowedRoles": []
+            "allowedRoles": [],
+            "id": "col"
         },
         "colgroup": {
             "tagName": "colgroup",
             "defaultRole": "generic",
             "noRoleAllowed": false,
             "anyRoleAllowed": false,
-            "allowedRoles": []
+            "allowedRoles": [],
+            "id": "colgroup"
         },
         "data": {
             "tagName": "data",
             "defaultRole": "generic",
             "noRoleAllowed": false,
-            "anyRoleAllowed": true
+            "anyRoleAllowed": true,
+            "id": "data"
         },
         "datalist": {
             "tagName": "datalist",
             "defaultRole": "listbox",
             "noRoleAllowed": true,
-            "anyRoleAllowed": false
+            "anyRoleAllowed": false,
+            "id": "datalist"
         },
         "dd": {
             "tagName": "dd",
             "defaultRole": "definition",
             "noRoleAllowed": true,
-            "anyRoleAllowed": false
+            "anyRoleAllowed": false,
+            "id": "dd"
         },
         "del": {
             "tagName": "del",
             "defaultRole": "generic",
             "noRoleAllowed": false,
-            "anyRoleAllowed": true
+            "anyRoleAllowed": true,
+            "id": "del"
         },
         "dfn": {
             "tagName": "dfn",
             "defaultRole": "term",
             "noRoleAllowed": false,
-            "anyRoleAllowed": true
+            "anyRoleAllowed": true,
+            "id": "dfn"
         },
         "details": {
             "tagName": "details",
             "defaultRole": "group",
             "noRoleAllowed": true,
-            "anyRoleAllowed": false
+            "anyRoleAllowed": false,
+            "id": "details"
         },
         "dialog": {
             "tagName": "dialog",
@@ -6133,13 +6162,15 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
             "anyRoleAllowed": false,
             "allowedRoles": [
                 "alertdialog"
-            ]
+            ],
+            "id": "dialog"
         },
         "div": {
             "tagName": "div",
             "defaultRole": "generic",
             "noRoleAllowed": false,
-            "anyRoleAllowed": true
+            "anyRoleAllowed": true,
+            "id": "div"
         },
         "dl": {
             "tagName": "dl",
@@ -6151,7 +6182,8 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
                 "list",
                 "presentation",
                 "none"
-            ]
+            ],
+            "id": "dl"
         },
         "dt": {
             "tagName": "dt",
@@ -6160,13 +6192,15 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
             "anyRoleAllowed": false,
             "allowedRoles": [
                 "listitem"
-            ]
+            ],
+            "id": "dt"
         },
         "em": {
             "tagName": "em",
             "defaultRole": "generic",
             "noRoleAllowed": false,
-            "anyRoleAllowed": true
+            "anyRoleAllowed": true,
+            "id": "em"
         },
         "embed": {
             "tagName": "embed",
@@ -6179,7 +6213,8 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
                 "img",
                 "presentation",
                 "none"
-            ]
+            ],
+            "id": "embed"
         },
         "fieldset": {
             "tagName": "fieldset",
@@ -6190,7 +6225,8 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
                 "none",
                 "presentation",
                 "radiogroup"
-            ]
+            ],
+            "id": "fieldset"
         },
         "figcaption": {
             "tagName": "figcaption",
@@ -6201,20 +6237,23 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
                 "group",
                 "presentation",
                 "none"
-            ]
+            ],
+            "id": "figcaption"
         },
         "figure[figcaption]": {
             "tagName": "figure",
             "defaultRole": "figure",
             "noRoleAllowed": true,
             "anyRoleAllowed": false,
-            "hasFigcaption": true
+            "hasFigcaption": true,
+            "id": "figure[figcaption]"
         },
         "figure": {
             "tagName": "figure",
             "defaultRole": "figure",
             "noRoleAllowed": false,
-            "anyRoleAllowed": true
+            "anyRoleAllowed": true,
+            "id": "figure"
         },
         "footer[contentinfo]": {
             "tagName": "footer",
@@ -6226,7 +6265,8 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
                 "none",
                 "presentation"
             ],
-            "isLandmark": true
+            "isLandmark": true,
+            "id": "footer[contentinfo]"
         },
         "footer": {
             "tagName": "footer",
@@ -6237,7 +6277,8 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
                 "group",
                 "none",
                 "presentation"
-            ]
+            ],
+            "id": "footer"
         },
         "form": {
             "tagName": "form",
@@ -6248,7 +6289,8 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
                 "search",
                 "none",
                 "presentation"
-            ]
+            ],
+            "id": "form"
         },
         "h1": {
             "tagName": "h1",
@@ -6259,7 +6301,8 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
                 "none",
                 "presentation",
                 "tab"
-            ]
+            ],
+            "id": "h1"
         },
         "h2": {
             "tagName": "h2",
@@ -6270,7 +6313,8 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
                 "none",
                 "presentation",
                 "tab"
-            ]
+            ],
+            "id": "h2"
         },
         "h3": {
             "tagName": "h3",
@@ -6281,7 +6325,8 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
                 "none",
                 "presentation",
                 "tab"
-            ]
+            ],
+            "id": "h3"
         },
         "h4": {
             "tagName": "h4",
@@ -6292,7 +6337,8 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
                 "none",
                 "presentation",
                 "tab"
-            ]
+            ],
+            "id": "h4"
         },
         "h5": {
             "tagName": "h5",
@@ -6303,7 +6349,8 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
                 "none",
                 "presentation",
                 "tab"
-            ]
+            ],
+            "id": "h5"
         },
         "h6": {
             "tagName": "h6",
@@ -6314,14 +6361,16 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
                 "none",
                 "presentation",
                 "tab"
-            ]
+            ],
+            "id": "h6"
         },
         "head": {
             "tagName": "head",
             "defaultRole": "generic",
             "noRoleAllowed": false,
             "anyRoleAllowed": false,
-            "allowedRoles": []
+            "allowedRoles": [],
+            "id": "head"
         },
         "header[banner]": {
             "tagName": "header",
@@ -6333,7 +6382,8 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
                 "none",
                 "presentation"
             ],
-            "isLandmark": true
+            "isLandmark": true,
+            "id": "header[banner]"
         },
         "header": {
             "tagName": "header",
@@ -6344,13 +6394,15 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
                 "group",
                 "none",
                 "presentation"
-            ]
+            ],
+            "id": "header"
         },
         "hgroup": {
             "tagName": "hgroup",
             "defaultRole": "generic",
             "noRoleAllowed": false,
-            "anyRoleAllowed": true
+            "anyRoleAllowed": true,
+            "id": "hgroup"
         },
         "hr": {
             "tagName": "hr",
@@ -6360,20 +6412,23 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
             "allowedRoles": [
                 "none",
                 "presentation"
-            ]
+            ],
+            "id": "hr"
         },
         "html": {
             "tagName": "html",
             "defaultRole": "document",
             "noRoleAllowed": false,
             "anyRoleAllowed": false,
-            "allowedRoles": []
+            "allowedRoles": [],
+            "id": "html"
         },
         "i": {
             "tagName": "i",
             "defaultRole": "generic",
             "noRoleAllowed": false,
-            "anyRoleAllowed": true
+            "anyRoleAllowed": true,
+            "id": "i"
         },
         "iframe": {
             "tagName": "iframe",
@@ -6386,7 +6441,8 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
                 "img",
                 "none",
                 "presentation"
-            ]
+            ],
+            "id": "iframe"
         },
         "img[accname]": {
             "tagName": "img",
@@ -6409,7 +6465,8 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
                 "tab",
                 "treeitem"
             ],
-            "hasAccname": true
+            "hasAccname": true,
+            "id": "img[accname]"
         },
         "img[alt]": {
             "tagName": "img",
@@ -6432,20 +6489,23 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
                 "tab",
                 "treeitem"
             ],
-            "attr1": "alt"
+            "attr1": "alt",
+            "id": "img[alt]"
         },
         "img[emptyalt]": {
             "tagName": "img",
             "defaultRole": "presentation",
             "noRoleAllowed": true,
             "anyRoleAllowed": false,
-            "attr1": "alt=\"\""
+            "attr1": "alt=\"\"",
+            "id": "img[emptyalt]"
         },
         "img": {
             "tagName": "img",
-            "defaultRole": "generic",
+            "defaultRole": "img",
             "noRoleAllowed": true,
-            "anyRoleAllowed": false
+            "anyRoleAllowed": false,
+            "id": "img"
         },
         "input[type=button]": {
             "tagName": "input",
@@ -6462,7 +6522,8 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
                 "switch",
                 "tab"
             ],
-            "attr1": "type=button"
+            "attr1": "type=button",
+            "id": "input[type=button]"
         },
         "input[type=checkbox]": {
             "tagName": "input",
@@ -6475,28 +6536,32 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
                 "switch",
                 "button"
             ],
-            "attr1": "type=checkbox"
+            "attr1": "type=checkbox",
+            "id": "input[type=checkbox]"
         },
         "input[type=color]": {
             "tagName": "input",
             "defaultRole": "generic",
             "noRoleAllowed": true,
             "anyRoleAllowed": false,
-            "attr1": "type=color"
+            "attr1": "type=color",
+            "id": "input[type=color]"
         },
         "input[type=date]": {
             "tagName": "input",
             "defaultRole": "generic",
             "noRoleAllowed": true,
             "anyRoleAllowed": false,
-            "attr1": "type=date"
+            "attr1": "type=date",
+            "id": "input[type=date]"
         },
         "input[type=datetime-local]": {
             "tagName": "input",
             "defaultRole": "generic",
             "noRoleAllowed": true,
             "anyRoleAllowed": false,
-            "attr1": "type=datetime-local"
+            "attr1": "type=datetime-local",
+            "id": "input[type=datetime-local]"
         },
         "input[type=email][list]": {
             "tagName": "input",
@@ -6504,21 +6569,24 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
             "noRoleAllowed": true,
             "anyRoleAllowed": false,
             "attr1": "type=email",
-            "attr2": "list"
+            "attr2": "list",
+            "id": "input[type=email][list]"
         },
         "input[type=email]": {
             "tagName": "input",
             "defaultRole": "textbox",
             "noRoleAllowed": true,
             "anyRoleAllowed": false,
-            "attr1": "type=email"
+            "attr1": "type=email",
+            "id": "input[type=email]"
         },
         "input[type=file]": {
             "tagName": "input",
             "defaultRole": "generic",
             "noRoleAllowed": true,
             "anyRoleAllowed": false,
-            "attr1": "type=file"
+            "attr1": "type=file",
+            "id": "input[type=file]"
         },
         "input[type=hidden]": {
             "tagName": "input",
@@ -6526,7 +6594,8 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
             "noRoleAllowed": false,
             "anyRoleAllowed": false,
             "allowedRoles": [],
-            "attr1": "type=hidden"
+            "attr1": "type=hidden",
+            "id": "input[type=hidden]"
         },
         "input[type=image]": {
             "tagName": "input",
@@ -6541,28 +6610,32 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
                 "radio",
                 "switch"
             ],
-            "attr1": "type=image"
+            "attr1": "type=image",
+            "id": "input[type=image]"
         },
         "input[type=month]": {
             "tagName": "input",
             "defaultRole": "generic",
             "noRoleAllowed": true,
             "anyRoleAllowed": false,
-            "attr1": "type=month"
+            "attr1": "type=month",
+            "id": "input[type=month]"
         },
         "input[type=number]": {
             "tagName": "input",
             "defaultRole": "spinbutton",
             "noRoleAllowed": true,
             "anyRoleAllowed": false,
-            "attr1": "type=number"
+            "attr1": "type=number",
+            "id": "input[type=number]"
         },
         "input[type=password]": {
             "tagName": "input",
             "defaultRole": "generic",
             "noRoleAllowed": true,
             "anyRoleAllowed": false,
-            "attr1": "type=password"
+            "attr1": "type=password",
+            "id": "input[type=password]"
         },
         "input[type=radio]": {
             "tagName": "input",
@@ -6572,21 +6645,24 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
             "allowedRoles": [
                 "menuitemradio"
             ],
-            "attr1": "type=radio"
+            "attr1": "type=radio",
+            "id": "input[type=radio]"
         },
         "input[type=range]": {
             "tagName": "input",
             "defaultRole": "slider",
             "noRoleAllowed": true,
             "anyRoleAllowed": false,
-            "attr1": "type=range"
+            "attr1": "type=range",
+            "id": "input[type=range]"
         },
         "input[type=reset]": {
             "tagName": "input",
             "defaultRole": "button",
             "noRoleAllowed": true,
             "anyRoleAllowed": false,
-            "attr1": "type=reset"
+            "attr1": "type=reset",
+            "id": "input[type=reset]"
         },
         "input[type=search][list]": {
             "tagName": "input",
@@ -6594,21 +6670,24 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
             "noRoleAllowed": true,
             "anyRoleAllowed": false,
             "attr1": "type=search",
-            "attr2": "list"
+            "attr2": "list",
+            "id": "input[type=search][list]"
         },
         "input[type=search]": {
             "tagName": "input",
             "defaultRole": "searchbox",
             "noRoleAllowed": true,
             "anyRoleAllowed": false,
-            "attr1": "type=search"
+            "attr1": "type=search",
+            "id": "input[type=search]"
         },
         "input[type=submit]": {
             "tagName": "input",
             "defaultRole": "button",
             "noRoleAllowed": true,
             "anyRoleAllowed": false,
-            "attr1": "type=submit"
+            "attr1": "type=submit",
+            "id": "input[type=submit]"
         },
         "input[type=tel][list]": {
             "tagName": "input",
@@ -6616,14 +6695,16 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
             "noRoleAllowed": true,
             "anyRoleAllowed": false,
             "attr1": "type=tel",
-            "attr2": "list"
+            "attr2": "list",
+            "id": "input[type=tel][list]"
         },
         "input[type=tel]": {
             "tagName": "input",
             "defaultRole": "textbox",
             "noRoleAllowed": true,
             "anyRoleAllowed": false,
-            "attr1": "type=tel"
+            "attr1": "type=tel",
+            "id": "input[type=tel]"
         },
         "input[type=text][list]": {
             "tagName": "input",
@@ -6631,7 +6712,8 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
             "noRoleAllowed": true,
             "anyRoleAllowed": false,
             "attr1": "type=text",
-            "attr2": "list"
+            "attr2": "list",
+            "id": "input[type=text][list]"
         },
         "input[type=text]": {
             "tagName": "input",
@@ -6643,14 +6725,16 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
                 "searchbox",
                 "spinbutton"
             ],
-            "attr1": "type=text"
+            "attr1": "type=text",
+            "id": "input[type=text]"
         },
         "input[type=time]": {
             "tagName": "input",
             "defaultRole": "generic",
             "noRoleAllowed": true,
             "anyRoleAllowed": false,
-            "attr1": "type=time"
+            "attr1": "type=time",
+            "id": "input[type=time]"
         },
         "input[type=url][list]": {
             "tagName": "input",
@@ -6658,45 +6742,52 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
             "noRoleAllowed": true,
             "anyRoleAllowed": false,
             "attr1": "type=url",
-            "attr2": "list"
+            "attr2": "list",
+            "id": "input[type=url][list]"
         },
         "input[type=url]": {
             "tagName": "input",
             "defaultRole": "textbox",
             "noRoleAllowed": true,
             "anyRoleAllowed": false,
-            "attr1": "type=url"
+            "attr1": "type=url",
+            "id": "input[type=url]"
         },
         "input[type=week]": {
             "tagName": "input",
             "defaultRole": "generic",
             "noRoleAllowed": true,
             "anyRoleAllowed": false,
-            "attr1": "type=week"
+            "attr1": "type=week",
+            "id": "input[type=week]"
         },
         "ins": {
             "tagName": "ins",
             "defaultRole": "generic",
             "noRoleAllowed": false,
-            "anyRoleAllowed": true
+            "anyRoleAllowed": true,
+            "id": "ins"
         },
         "kbd": {
             "tagName": "kbd",
             "defaultRole": "generic",
             "noRoleAllowed": false,
-            "anyRoleAllowed": true
+            "anyRoleAllowed": true,
+            "id": "kbd"
         },
         "label": {
             "tagName": "label",
             "defaultRole": "generic",
             "noRoleAllowed": true,
-            "anyRoleAllowed": false
+            "anyRoleAllowed": false,
+            "id": "label"
         },
         "legend": {
             "tagName": "legend",
             "defaultRole": "generic",
             "noRoleAllowed": true,
-            "anyRoleAllowed": false
+            "anyRoleAllowed": false,
+            "id": "legend"
         },
         "li": {
             "tagName": "li",
@@ -6714,39 +6805,45 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
                 "separator",
                 "tab",
                 "treeitem"
-            ]
+            ],
+            "id": "li"
         },
         "link": {
             "tagName": "link",
             "defaultRole": "generic",
             "noRoleAllowed": false,
             "anyRoleAllowed": false,
-            "allowedRoles": []
+            "allowedRoles": [],
+            "id": "link"
         },
         "main": {
             "tagName": "main",
             "defaultRole": "main",
             "noRoleAllowed": true,
-            "anyRoleAllowed": false
+            "anyRoleAllowed": false,
+            "id": "main"
         },
         "map": {
             "tagName": "map",
             "defaultRole": "generic",
             "noRoleAllowed": false,
             "anyRoleAllowed": false,
-            "allowedRoles": []
+            "allowedRoles": [],
+            "id": "map"
         },
         "math": {
             "tagName": "math",
             "defaultRole": "math",
             "noRoleAllowed": true,
-            "anyRoleAllowed": false
+            "anyRoleAllowed": false,
+            "id": "math"
         },
         "mark": {
             "tagName": "mark",
             "defaultRole": "generic",
             "noRoleAllowed": false,
-            "anyRoleAllowed": true
+            "anyRoleAllowed": true,
+            "id": "mark"
         },
         "menu": {
             "tagName": "menu",
@@ -6765,20 +6862,23 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
                 "tablist",
                 "toolbar",
                 "tree"
-            ]
+            ],
+            "id": "menu"
         },
         "meta": {
             "tagName": "meta",
             "defaultRole": "generic",
             "noRoleAllowed": false,
             "anyRoleAllowed": false,
-            "allowedRoles": []
+            "allowedRoles": [],
+            "id": "meta"
         },
         "meter": {
             "tagName": "meter",
             "defaultRole": "generic",
             "noRoleAllowed": true,
-            "anyRoleAllowed": false
+            "anyRoleAllowed": false,
+            "id": "meter"
         },
         "nav": {
             "tagName": "nav",
@@ -6789,14 +6889,16 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
                 "menu",
                 "menubar",
                 "tablist"
-            ]
+            ],
+            "id": "nav"
         },
         "noscript": {
             "tagName": "noscript",
             "defaultRole": "generic",
             "noRoleAllowed": false,
             "anyRoleAllowed": false,
-            "allowedRoles": []
+            "allowedRoles": [],
+            "id": "noscript"
         },
         "object": {
             "tagName": "object",
@@ -6807,7 +6909,8 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
                 "application",
                 "document",
                 "img"
-            ]
+            ],
+            "id": "object"
         },
         "ol": {
             "tagName": "ol",
@@ -6826,100 +6929,116 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
                 "tablist",
                 "toolbar",
                 "tree"
-            ]
+            ],
+            "id": "ol"
         },
         "optgroup": {
             "tagName": "optgroup",
             "defaultRole": "group",
             "noRoleAllowed": true,
-            "anyRoleAllowed": false
+            "anyRoleAllowed": false,
+            "id": "optgroup"
         },
         "option": {
             "tagName": "option",
             "defaultRole": "option",
             "noRoleAllowed": true,
-            "anyRoleAllowed": false
+            "anyRoleAllowed": false,
+            "id": "option"
         },
         "output": {
             "tagName": "output",
             "defaultRole": "status",
             "noRoleAllowed": false,
-            "anyRoleAllowed": true
+            "anyRoleAllowed": true,
+            "id": "output"
         },
         "p": {
             "tagName": "p",
             "defaultRole": "generic",
             "noRoleAllowed": false,
-            "anyRoleAllowed": true
+            "anyRoleAllowed": true,
+            "id": "p"
         },
         "param": {
             "tagName": "param",
             "defaultRole": "generic",
             "noRoleAllowed": false,
             "anyRoleAllowed": false,
-            "allowedRoles": []
+            "allowedRoles": [],
+            "id": "param"
         },
         "picture": {
             "tagName": "picture",
             "defaultRole": "generic",
             "noRoleAllowed": false,
             "anyRoleAllowed": false,
-            "allowedRoles": []
+            "allowedRoles": [],
+            "id": "picture"
         },
         "pre": {
             "tagName": "pre",
             "defaultRole": "generic",
             "noRoleAllowed": false,
-            "anyRoleAllowed": true
+            "anyRoleAllowed": true,
+            "id": "pre"
         },
         "progress": {
             "tagName": "progress",
             "defaultRole": "progressbar",
             "noRoleAllowed": true,
-            "anyRoleAllowed": false
+            "anyRoleAllowed": false,
+            "id": "progress"
         },
         "q": {
             "tagName": "q",
             "defaultRole": "generic",
             "noRoleAllowed": false,
-            "anyRoleAllowed": true
+            "anyRoleAllowed": true,
+            "id": "q"
         },
         "rp": {
             "tagName": "rp",
             "defaultRole": "generic",
             "noRoleAllowed": false,
-            "anyRoleAllowed": true
+            "anyRoleAllowed": true,
+            "id": "rp"
         },
         "rt": {
             "tagName": "rt",
             "defaultRole": "generic",
             "noRoleAllowed": false,
-            "anyRoleAllowed": true
+            "anyRoleAllowed": true,
+            "id": "rt"
         },
         "ruby": {
             "tagName": "ruby",
             "defaultRole": "generic",
             "noRoleAllowed": false,
-            "anyRoleAllowed": true
+            "anyRoleAllowed": true,
+            "id": "ruby"
         },
         "s": {
             "tagName": "s",
             "defaultRole": "generic",
             "noRoleAllowed": false,
-            "anyRoleAllowed": true
+            "anyRoleAllowed": true,
+            "id": "s"
         },
         "samp": {
             "tagName": "samp",
             "defaultRole": "generic",
             "noRoleAllowed": false,
-            "anyRoleAllowed": true
+            "anyRoleAllowed": true,
+            "id": "samp"
         },
         "script": {
             "tagName": "script",
             "defaultRole": "generic",
             "noRoleAllowed": false,
             "anyRoleAllowed": false,
-            "allowedRoles": []
+            "allowedRoles": [],
+            "id": "script"
         },
         "section[accname]": {
             "tagName": "section",
@@ -6947,7 +7066,8 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
                 "status",
                 "tabpanel"
             ],
-            "hasAccname": true
+            "hasAccname": true,
+            "id": "section[accname]"
         },
         "section": {
             "tagName": "section",
@@ -6974,7 +7094,8 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
                 "search",
                 "status",
                 "tabpanel"
-            ]
+            ],
+            "id": "section"
         },
         "select": {
             "tagName": "select",
@@ -6983,134 +7104,155 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
             "anyRoleAllowed": false,
             "allowedRoles": [
                 "menu"
-            ]
+            ],
+            "id": "select"
         },
         "select[size-or-multiple]": {
             "tagName": "select",
             "defaultRole": "listbox",
             "noRoleAllowed": true,
             "anyRoleAllowed": false,
-            "hasSizeOrMultiple": true
+            "hasSizeOrMultiple": true,
+            "id": "select[size-or-multiple]"
         },
         "slot": {
             "tagName": "slot",
             "defaultRole": "generic",
             "noRoleAllowed": false,
             "anyRoleAllowed": false,
-            "allowedRoles": []
+            "allowedRoles": [],
+            "id": "slot"
         },
         "small": {
             "tagName": "small",
             "defaultRole": "generic",
             "noRoleAllowed": false,
-            "anyRoleAllowed": true
+            "anyRoleAllowed": true,
+            "id": "small"
         },
         "source": {
             "tagName": "source",
             "defaultRole": "generic",
             "noRoleAllowed": false,
             "anyRoleAllowed": false,
-            "allowedRoles": []
+            "allowedRoles": [],
+            "id": "source"
         },
         "span": {
             "tagName": "span",
             "defaultRole": "generic",
             "noRoleAllowed": false,
-            "anyRoleAllowed": true
+            "anyRoleAllowed": true,
+            "id": "span"
         },
         "strong": {
             "tagName": "strong",
             "defaultRole": "generic",
             "noRoleAllowed": false,
-            "anyRoleAllowed": true
+            "anyRoleAllowed": true,
+            "id": "strong"
         },
         "style": {
             "tagName": "style",
             "defaultRole": "generic",
             "noRoleAllowed": false,
             "anyRoleAllowed": false,
-            "allowedRoles": []
-        },
-        "SVG": {
-            "tagName": "SVG",
-            "defaultRole": "graphics-document",
-            "noRoleAllowed": false,
-            "anyRoleAllowed": true
+            "allowedRoles": [],
+            "id": "style"
         },
         "sub": {
             "tagName": "sub",
             "defaultRole": "generic",
             "noRoleAllowed": false,
-            "anyRoleAllowed": true
+            "anyRoleAllowed": true,
+            "id": "sub"
         },
         "summary": {
             "tagName": "summary",
             "defaultRole": "button",
             "noRoleAllowed": true,
-            "anyRoleAllowed": false
+            "anyRoleAllowed": false,
+            "id": "summary"
         },
         "sup": {
             "tagName": "sup",
             "defaultRole": "generic",
             "noRoleAllowed": false,
-            "anyRoleAllowed": true
+            "anyRoleAllowed": true,
+            "id": "sup"
+        },
+        "SVG": {
+            "tagName": "SVG",
+            "defaultRole": "graphics-document",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": true,
+            "id": "SVG"
         },
         "table": {
             "tagName": "table",
             "defaultRole": "table",
             "noRoleAllowed": false,
-            "anyRoleAllowed": true
+            "anyRoleAllowed": true,
+            "id": "table"
         },
         "tbody": {
             "tagName": "tbody",
             "defaultRole": "rowgroup",
             "noRoleAllowed": false,
-            "anyRoleAllowed": true
+            "anyRoleAllowed": true,
+            "id": "tbody"
         },
         "template": {
             "tagName": "template",
             "defaultRole": "generic",
             "noRoleAllowed": false,
             "anyRoleAllowed": false,
-            "allowedRoles": []
+            "allowedRoles": [],
+            "id": "template"
         },
         "textarea": {
             "tagName": "textarea",
             "defaultRole": "textbox",
             "noRoleAllowed": true,
-            "anyRoleAllowed": false
+            "anyRoleAllowed": false,
+            "id": "textarea"
         },
         "tfoot": {
             "tagName": "tfoot",
             "defaultRole": "rowgroup",
             "noRoleAllowed": false,
-            "anyRoleAllowed": true
+            "anyRoleAllowed": true,
+            "id": "tfoot"
         },
         "thead": {
             "tagName": "thead",
             "defaultRole": "rowgroup",
             "noRoleAllowed": false,
-            "anyRoleAllowed": true
+            "anyRoleAllowed": true,
+            "id": "thead"
         },
         "time": {
             "tagName": "time",
             "defaultRole": "generic",
             "noRoleAllowed": false,
-            "anyRoleAllowed": true
+            "anyRoleAllowed": true,
+            "id": "time"
         },
         "title": {
             "tagName": "title",
             "defaultRole": "generic",
             "noRoleAllowed": false,
             "anyRoleAllowed": false,
-            "allowedRoles": []
+            "allowedRoles": [],
+            "id": "title"
         },
         "td[cell]": {
             "tagName": "td",
             "defaultRole": "cell",
             "noRoleAllowed": true,
             "anyRoleAllowed": false,
-            "ownedbyTable": true
+            "ownedbyTable": true,
+            "id": "td[cell]"
         },
         "td[gridcell]": {
             "tagName": "td",
@@ -7118,20 +7260,23 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
             "noRoleAllowed": true,
             "anyRoleAllowed": false,
             "ownedbyGrid": true,
-            "ownedbyTreegrid": true
+            "ownedbyTreegrid": true,
+            "id": "td[gridcell]"
         },
         "td": {
             "tagName": "td",
             "defaultRole": "generic",
             "noRoleAllowed": false,
-            "anyRoleAllowed": true
+            "anyRoleAllowed": true,
+            "id": "td"
         },
         "th[cell]": {
             "tagName": "th",
             "defaultRole": "cell",
             "noRoleAllowed": true,
             "anyRoleAllowed": false,
-            "ownedbyTable": true
+            "ownedbyTable": true,
+            "id": "th[cell]"
         },
         "th[gridcell]": {
             "tagName": "th",
@@ -7139,7 +7284,8 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
             "noRoleAllowed": true,
             "anyRoleAllowed": false,
             "ownedbyGrid": true,
-            "ownedbyTreegrid": true
+            "ownedbyTreegrid": true,
+            "id": "th[gridcell]"
         },
         "th[colheder]": {
             "tagName": "th",
@@ -7148,13 +7294,15 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
             "anyRoleAllowed": false,
             "ownedbyTable": true,
             "ownedbyGrid": true,
-            "ownedbyTreegrid": true
+            "ownedbyTreegrid": true,
+            "id": "th[colheder]"
         },
         "th": {
             "tagName": "th",
             "defaultRole": "generic",
             "noRoleAllowed": false,
-            "anyRoleAllowed": true
+            "anyRoleAllowed": true,
+            "id": "th"
         },
         "tr[table]": {
             "tagName": "tr",
@@ -7163,26 +7311,30 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
             "anyRoleAllowed": false,
             "ownedbyTable": true,
             "ownedbyGrid": true,
-            "ownedbyTreegrid": true
+            "ownedbyTreegrid": true,
+            "id": "tr[table]"
         },
         "tr": {
             "tagName": "tr",
             "defaultRole": "generic",
             "noRoleAllowed": false,
-            "anyRoleAllowed": true
+            "anyRoleAllowed": true,
+            "id": "tr"
         },
         "track": {
             "tagName": "track",
             "defaultRole": "generic",
             "noRoleAllowed": false,
             "anyRoleAllowed": false,
-            "allowedRoles": []
+            "allowedRoles": [],
+            "id": "track"
         },
         "u": {
             "tagName": "u",
             "defaultRole": "generic",
             "noRoleAllowed": false,
-            "anyRoleAllowed": true
+            "anyRoleAllowed": true,
+            "id": "u"
         },
         "ul": {
             "tagName": "ul",
@@ -7201,13 +7353,15 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
                 "tablist",
                 "toolbar",
                 "tree"
-            ]
+            ],
+            "id": "ul"
         },
         "var": {
             "tagName": "var",
             "defaultRole": "generic",
             "noRoleAllowed": false,
-            "anyRoleAllowed": true
+            "anyRoleAllowed": true,
+            "id": "var"
         },
         "video": {
             "tagName": "video",
@@ -7216,15 +7370,18 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
             "anyRoleAllowed": false,
             "allowedRoles": [
                 "application"
-            ]
+            ],
+            "id": "video"
         },
         "wbr": {
             "tagName": "wbr",
             "defaultRole": "generic",
             "noRoleAllowed": false,
-            "anyRoleAllowed": true
+            "anyRoleAllowed": true,
+            "id": "wbr"
         }
     },
+
     getElementAriaInfo : function (node) {
 
         var tagName = node.tagName.toLowerCase();
@@ -7248,16 +7405,16 @@ if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
                 break;
 
             case 'img':
-                if (node.alt) {
-                    if (node.alt.trim().length) {
-                        elemInfo = this.elementInfo['img[alt]'];
-                    } else {
-                        elemInfo = this.elementInfo['img[emptyalt]'];
-                    }
+                if (node.hasAttribute('aria-label') ||
+                    node.hasAttribute('aria-labelledby')) {
+                    elemInfo = this.elementInfo['img[accname]'];
                 } else {
-                    if (node.hasAttribute('aria-label') ||
-                        node.hasAttribute('aria-labelledby')) {
-                        elemInfo = this.elementInfo['img[accname]'];
+                    if (node.hasAttribute('alt')) {
+                        if (node.alt.trim().length) {
+                            elemInfo = this.elementInfo['img[alt]'];
+                        } else {
+                            elemInfo = this.elementInfo['img[emptyalt]'];
+                        }
                     } else {
                         elemInfo = this.elementInfo['img'];
                     }
@@ -9266,6 +9423,12 @@ OpenAjax.a11y.cache.ControlsCache.prototype.updateCacheItems = function (dom_ele
 
         if (control_info.form_element) {
           control_info.form_element.number_of_controls += 1;
+          if (ie.type === 'submit') {
+            control_info.form_element.submit_button = ie;
+          }
+          if (ie.type === 'reset') {
+            control_info.form_element.reset_button = ie;
+          }
         }
 
         if (control_info.grouping_element) {
@@ -9317,6 +9480,14 @@ OpenAjax.a11y.cache.ControlsCache.prototype.updateCacheItems = function (dom_ele
 
       if (control_info.form_element) {
         control_info.form_element.number_of_controls += 1;
+
+        if (be.type === 'submit') {
+          control_info.form_element.submit_button = be;
+        }
+        if (be.type === 'reset') {
+          control_info.form_element.reset_button = be;
+        }
+
       }
 
       if (control_info.grouping_element) {
@@ -10449,6 +10620,9 @@ OpenAjax.a11y.cache.FormElement = function (dom_element) {
   this.has_validity = false;
   this.has_pattern  = false;
   this.is_valid     = true;
+  this.submit_button = null;
+  this.reset_button  = null;
+
 
   this.control_type = OpenAjax.a11y.CONTROL_TYPE.FORM;
   this.number_of_controls = 0;
@@ -10474,6 +10648,9 @@ OpenAjax.a11y.cache.FormElement.prototype.addChildControl = function (child_cont
 
   if (child_control) {
    this.child_cache_elements.push(child_control);
+
+
+
   }
 };
 
@@ -11945,6 +12122,8 @@ OpenAjax.a11y.cache.ButtonElement = function (dom_element, control_info) {
   this.has_validity = false;
   this.has_pattern  = false;
   this.is_valid     = true;
+
+  this.type = node.type;
 
 };
 
@@ -20061,16 +20240,6 @@ OpenAjax.a11y.cache.HeadingsLandmarksCache.prototype.addLandmarkElement = functi
     landmark_element.cache_id = "landmark_" + this.landmark_length;
     this.landmark_elements.push(landmark_element);
 
-    if (de.tag_name === 'header') {
-      de.element_aria_info = OpenAjax.a11y.ariaInHTML.elementInfo['header[banner]'];
-      de.implicit_role = de.element_aria_info.defaultRole;
-    }
-
-    if (de.tag_name === 'footer') {
-      de.element_aria_info = OpenAjax.a11y.ariaInHTML.elementInfo['footer[contentinfo]'];
-      de.implicit_role = de.element_aria_info.defaultRole;
-    }
-
   }
 
 
@@ -20352,8 +20521,17 @@ OpenAjax.a11y.cache.HeadingsLandmarksCache.prototype.updateCacheItems = function
   var li = new OpenAjax.a11y.cache.LandmarkInfo(landmark_info);
   var tag_name = dom_element.tag_name;
 
-  dom_element.parent_landmark = landmark_info.landmark_element;
-  dom_element.body_element    = landmark_info.body_element;
+  if (typeof landmark_info.landmark_element === 'object') {
+    dom_element.parent_landmark = landmark_info.landmark_element;
+  } else {
+    dom_element.parent_landmark = null;
+  }
+
+  if (typeof landmark_info.body_element === 'object') {
+    dom_element.body_element    = landmark_info.body_element;
+  } else {
+    dom_element.body_landmark = null;
+  }
 
 //  OpenAjax.a11y.logger.debug("Body Element: " +  dom_element.body_element);
 
@@ -20543,8 +20721,8 @@ OpenAjax.a11y.cache.HeadingsLandmarksCache.prototype.updateCacheItems = function
           dom_element.has_aria_labelledby ||
           dom_element.has_title)) ||
         (!landmark_info.inside_sectioning_element && (
-         (dom_element.tag_name === 'footer' && !dom_element.has_role) ||
-         (dom_element.tag_name === 'header' && !dom_element.has_role)))) {
+         (dom_element.tag_name === 'footer' && !dom_element.has_role)) ||
+         (dom_element.tag_name === 'header' && !dom_element.has_role))) {
 
       if (dom_element.role == 'main' || (dom_element.tag_name === 'main'  && !dom_element.has_role)) {
 
@@ -20586,8 +20764,6 @@ OpenAjax.a11y.cache.HeadingsLandmarksCache.prototype.updateCacheItems = function
             break;
 
           case 'footer':
-            dom_element.element_aria_info = OpenAjax.a11y.ariaInHTML.elementInfo['footer[contentinfo]'];
-            dom_element.implicit_role = dom_element.element_aria_info.defaultRole;
             le = new OpenAjax.a11y.cache.LandmarkElement(dom_element, 'contentinfo');
             this.dom_cache.getNameFromARIALabel(le, "CONTENTINFO");
             break;
@@ -20598,8 +20774,6 @@ OpenAjax.a11y.cache.HeadingsLandmarksCache.prototype.updateCacheItems = function
             break;
 
           case 'header':
-            dom_element.element_aria_info = OpenAjax.a11y.ariaInHTML.elementInfo['header[banner]'];
-            dom_element.implicit_role = dom_element.element_aria_info.defaultRole;
             le = new OpenAjax.a11y.cache.LandmarkElement(dom_element, 'banner');
             this.dom_cache.getNameFromARIALabel(le, "BANNER");
             break;
@@ -21101,6 +21275,20 @@ OpenAjax.a11y.cache.SectionElement.prototype.toString = function () {
  */
 
 OpenAjax.a11y.cache.LandmarkElement = function (dom_element, landmark) {
+
+  if ((dom_element.tag_name === 'footer') &&
+      (dom_element.parent_landmark === null) &&
+      (!dom_element.has_role || (dom_element.role === 'contentinfo'))) {
+    dom_element.element_aria_info = OpenAjax.a11y.ariaInHTML.elementInfo['footer[contentinfo]'];
+    dom_element.implicit_role = dom_element.element_aria_info.defaultRole;
+  }
+
+  if ((dom_element.tag_name === 'header') &&
+      (dom_element.parent_landmark === null) &&
+      (!dom_element.has_role || (dom_element.role === 'banner'))) {
+    dom_element.element_aria_info = OpenAjax.a11y.ariaInHTML.elementInfo['header[banner]'];
+    dom_element.implicit_role = dom_element.element_aria_info.defaultRole;
+  }
 
   this.dom_element           = dom_element;
   this.cache_id              = "";

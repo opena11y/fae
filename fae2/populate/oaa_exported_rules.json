@@ -1976,6 +1976,10 @@
               "url"   : "https://www.w3.org/TR/html4/struct/global.html#adef-title"
             },
             { "type"  : 11,
+              "title" : "W3C WAI Accessibility Tutorials: Forms Concepts",
+              "url"   : "https://www.w3.org/WAI/tutorials/forms/"
+            },
+            { "type"  : 11,
               "title" : "H44: Using label elements to associate text labels with form controls",
               "url"   : "https://www.w3.org/TR/WCAG20-TECHS/H44"
             },
@@ -1986,10 +1990,6 @@
             { "type"  : 11,
               "title" : "H71: Providing a description for groups of form controls using fieldset and legend elements",
               "url"   : "https://www.w3.org/TR/WCAG20-TECHS/H71"
-            },
-            { "type"  : 10,
-              "title" : "iCITA Best Practices: Labels for Form Controls Overview",
-              "url"   : "https://html.cita.illinois.edu/nav/form/"
             }
           ],
           "rule_result_messages" : {
@@ -2053,12 +2053,12 @@
               "url"   : "https://www.w3.org/TR/html4/struct/global.html#adef-title"
             },
             { "type"  : 11,
+              "title" : "W3C WAI Accessibility Tutorials: Forms Concepts",
+              "url"   : "https://www.w3.org/WAI/tutorials/forms/"
+            },
+            { "type"  : 11,
               "title" : "H36: Using alt attributes on images used as submit buttons",
               "url"   : "https://www.w3.org/TR/WCAG20-TECHS/H36"
-            },
-            { "type"  : 10,
-              "title" : "iCITA Best Practices: Labels for Form Controls Overview",
-              "url"   : "https://html.cita.illinois.edu/nav/form/"
             }
           ],
           "rule_result_messages" : {
@@ -2114,12 +2114,12 @@
               "url"   : "https://www.w3.org/TR/wai-aria/roles#group"
             },
             { "type"  : 11,
+              "title" : "W3C WAI Accessibility Tutorials: Forms Concepts",
+              "url"   : "https://www.w3.org/WAI/tutorials/forms/"
+            },
+            { "type"  : 11,
               "title" : "H71: Providing a description for groups of form controls using fieldset and legend elements",
               "url"   : "https://www.w3.org/TR/WCAG20-TECHS/H71"
-            },
-            { "type"  : 2,
-              "title" : "iCITA: Example 7: Fieldset/Legend for providing a grouping label for radio buttons",
-              "url"   : "https://html.cita.illinois.edu/nav/form/radio/index.php?example=6"
             },
             { "type"  : 2,
               "title" : "IBM Web checklist: HTML example 6",
@@ -2173,6 +2173,10 @@
             { "type"  : 9,
               "title" : "HTML 4.01 Specification: The @button@ elements",
               "url"   : "https://www.w3.org/TR/html4/interact/forms.html#edef-BUTTON"
+            },
+            { "type"  : 11,
+              "title" : "W3C WAI Accessibility Tutorials: Forms Concepts",
+              "url"   : "https://www.w3.org/WAI/tutorials/forms/"
             }
           ],
           "rule_result_messages" : {
@@ -2220,6 +2224,10 @@
             { "type"  : 9,
               "title" : "HTML 4.01 Specification: @id@ attribute",
               "url"   : "https://www.w3.org/TR/html4/struct/global.html#adef-id"
+            },
+            { "type"  : 11,
+              "title" : "W3C WAI Accessibility Tutorials: Forms Concepts",
+              "url"   : "https://www.w3.org/WAI/tutorials/forms/"
             },
             { "type"  : 11,
               "title" : "F77: Failure of Success Criterion 4.1.1 due to duplicate values of type ID",
@@ -2277,12 +2285,12 @@
               "url"   : "https://www.w3.org/TR/html4/interact/forms.html#adef-for"
             },
             { "type"  : 11,
+              "title" : "W3C WAI Accessibility Tutorials: Forms Concepts",
+              "url"   : "https://www.w3.org/WAI/tutorials/forms/"
+            },
+            { "type"  : 11,
               "title" : "H44: Using label elements to associate text labels with form controls",
               "url"   : "https://www.w3.org/TR/WCAG20-TECHS/H44"
-            },
-            { "type"  : 10,
-              "title" : "iCITA: Using @label@ Element for Labeling Form Controls",
-              "url"   : "https://html.cita.illinois.edu/nav/form/form-label-markup.php"
             }
           ],
           "rule_result_messages" : {
@@ -2334,16 +2342,16 @@
               "url"   : "https://www.w3.org/TR/html4/interact/forms.html#adef-for"
             },
             { "type"  : 11,
+              "title" : "W3C WAI Accessibility Tutorials: Forms Concepts",
+              "url"   : "https://www.w3.org/WAI/tutorials/forms/"
+            },
+            { "type"  : 11,
               "title" : "H44: Using @label@ elements to associate text labels with form controls",
               "url"   : "https://www.w3.org/TR/WCAG20-TECHS/H44"
             },
             { "type"  : 11,
               "title" : "H88: Using HTML according to spec",
               "url"   : "https://www.w3.org/TR/WCAG20-TECHS/H88"
-            },
-            { "type"  : 10,
-              "title" : "iCITA: Using @label@ element for Labeling Form Controls",
-              "url"   : "https://html.cita.illinois.edu/nav/form/form-label-markup.php"
             }
           ],
           "rule_result_messages" : {
@@ -2392,16 +2400,16 @@
               "url"   : "https://www.w3.org/TR/html4/interact/forms.html#edef-FIELDSET"
             },
             { "type"  : 11,
+              "title" : "W3C WAI Accessibility Tutorials: Forms Concepts",
+              "url"   : "https://www.w3.org/WAI/tutorials/forms/"
+            },
+            { "type"  : 11,
               "title" : "H71: Providing a description for groups of form controls using fieldset and legend elements",
               "url"   : "https://www.w3.org/TR/WCAG20-TECHS/H71"
             },
             { "type"  : 11,
               "title" : "H88: Using HTML according to spec",
               "url"   : "https://www.w3.org/TR/WCAG20-TECHS/H88"
-            },
-            { "type"  : 10,
-              "title" : "iCITA: Using @label@ element for Labeling Form Controls",
-              "url"   : "https://html.cita.illinois.edu/nav/form/form-label-markup.php"
             }
           ],
           "rule_result_messages" : {
@@ -2459,12 +2467,12 @@
               "url"   : "https://www.w3.org/TR/html4/interact/forms.html#edef-FIELDSET"
             },
             { "type"  : 11,
+              "title" : "W3C WAI Accessibility Tutorials: Forms Concepts",
+              "url"   : "https://www.w3.org/WAI/tutorials/forms/"
+            },
+            { "type"  : 11,
               "title" : "H88: Using HTML according to spec",
               "url"   : "https://www.w3.org/TR/WCAG20-TECHS/H88"
-            },
-            { "type"  : 10,
-              "title" : "iCITA: Using @label@ element for Labeling Form Controls",
-              "url"   : "https://html.cita.illinois.edu/nav/form/form-label-markup.php"
             }
           ],
           "rule_result_messages" : {
@@ -2494,7 +2502,7 @@
           "language_dependency" : "",
           "primary_property" : "computed_label",
           "resource_properties" : ["computed_label","fieldset_element","computed_label_source","name_attribute"],
-          "validate" : "function (dom_cache, rule_result) {\r\n\r\n   var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;\r\n   var VISIBILITY = OpenAjax.a11y.VISIBILITY;\r\n\r\n   var control_elements   = dom_cache.controls_cache.control_elements;\r\n   var control_elements_len = control_elements.length;\r\n   var ces   = [];\r\n   var ces_len = 0;\r\n   var i, j;\r\n\r\n   // Check to see if valid cache reference\r\n   if (control_elements && control_elements_len) {\r\n\r\n     // collect all the visible controls\r\n     for (i = 0; i < control_elements_len; i++) {\r\n       var ce = control_elements[i];\r\n       var de = ce.dom_element;\r\n\r\n//      console.debug(\"[CONTROL_10][element]: \" + de.tag_name + \" [role]: \" + de.role + \" [accname]: \" + ce.computed_label + ' [needs_label]: ' + ce.needs_label);\r\n\r\n       if (ce.needs_label) {\r\n\r\n         var control_type = ce.toString();\r\n\r\n         if (de.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {\r\n           // Only test form controls with labels\r\n           if (ce.computed_label && ce.computed_label.length) {\r\n             ces.push(ce);\r\n           }\r\n         }\r\n         else {\r\n           rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_1', [control_type]);\r\n         }\r\n       }\r\n     } // end loop\r\n\r\n     // sort labels\r\n\r\n     ces = dom_cache.sortArrayOfObjects(ces,'computed_label_for_comparison', true);\r\n     ces = dom_cache.getDuplicateObjects(ces,'computed_label_for_comparison');\r\n\r\n     for (i = 0; i < ces.length; i++) {\r\n       ces_len = ces[i].length;\r\n\r\n       ce      = ces[i][0];\r\n       de      = ce.dom_element;\r\n\r\n       if ((ces_len === 1) ||\r\n           ((ces_len === 2) && ((de.role === 'tab') || (de.role === 'tabpanel')))) {\r\n         rule_result.addResult(TEST_RESULT.PASS, ce, 'ELEMENT_PASS_1', []);\r\n         if (ces_len === 2) rule_result.addResult(TEST_RESULT.PASS, ces[i][1], 'ELEMENT_PASS_1', []);\r\n       }\r\n       else {\r\n         for (j = 0; j < ces_len; j++) {\r\n           rule_result.addResult(TEST_RESULT.FAIL, ces[i][j], 'ELEMENT_FAIL_1', []);\r\n         }\r\n       }\r\n     }\r\n\r\n   }\r\n  }",
+          "validate" : "function (dom_cache, rule_result) {\r\n\r\n   var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;\r\n   var VISIBILITY = OpenAjax.a11y.VISIBILITY;\r\n\r\n   var control_elements   = dom_cache.controls_cache.control_elements;\r\n   var control_elements_len = control_elements.length;\r\n   var ces   = [];\r\n   var ces_len = 0;\r\n   var i, j;\r\n\r\n   // Check to see if valid cache reference\r\n   if (control_elements && control_elements_len) {\r\n\r\n     // collect all the visible controls\r\n     for (i = 0; i < control_elements_len; i++) {\r\n       var ce = control_elements[i];\r\n       var de = ce.dom_element;\r\n\r\n       if (ce.needs_label) {\r\n\r\n         var control_type = ce.toString();\r\n\r\n         if (de.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {\r\n           // Only test form controls with labels\r\n           if (ce.computed_label && ce.computed_label.length) {\r\n             ces.push(ce);\r\n           }\r\n         }\r\n         else {\r\n           rule_result.addResult(TEST_RESULT.HIDDEN, ce, 'ELEMENT_HIDDEN_1', [control_type]);\r\n         }\r\n       }\r\n     } // end loop\r\n\r\n     // sort labels\r\n\r\n     ces = dom_cache.sortArrayOfObjects(ces,'computed_label_for_comparison', true);\r\n     ces = dom_cache.getDuplicateObjects(ces,'computed_label_for_comparison');\r\n\r\n     for (i = 0; i < ces.length; i++) {\r\n       ces_len = ces[i].length;\r\n\r\n       ce      = ces[i][0];\r\n       de      = ce.dom_element;\r\n\r\n       if ((ces_len === 1) ||\r\n           ((ces_len === 2) && ((de.role === 'tab') || (de.role === 'tabpanel')))) {\r\n         rule_result.addResult(TEST_RESULT.PASS, ce, 'ELEMENT_PASS_1', []);\r\n         if (ces_len === 2) rule_result.addResult(TEST_RESULT.PASS, ces[i][1], 'ELEMENT_PASS_1', []);\r\n       }\r\n       else {\r\n         for (j = 0; j < ces_len; j++) {\r\n           rule_result.addResult(TEST_RESULT.FAIL, ces[i][j], 'ELEMENT_FAIL_1', []);\r\n         }\r\n       }\r\n     }\r\n\r\n   }\r\n  }",
           "nls_rule_id" : "Control 10",
           "definition" : "Each standard HTML form control and ARIA widget role must have a label that is unique on the page.",
           "summary" : "Labels %s be unique",
@@ -2536,6 +2544,10 @@
               "url"   : "https://www.w3.org/TR/html4/struct/global.html#adef-title"
             },
             { "type"  : 11,
+              "title" : "W3C WAI Accessibility Tutorials: Forms Concepts",
+              "url"   : "https://www.w3.org/WAI/tutorials/forms/"
+            },
+            { "type"  : 11,
               "title" : "H44: Using label elements to associate text labels with form controls",
               "url"   : "https://www.w3.org/TR/WCAG20-TECHS/H44"
             },
@@ -2546,10 +2558,6 @@
             { "type"  : 11,
               "title" : "H71: Providing a description for groups of form controls using fieldset and legend elements",
               "url"   : "https://www.w3.org/TR/WCAG20-TECHS/H71"
-            },
-            { "type"  : 10,
-              "title" : "iCITA Best Practices: Labels for Form Controls Overview",
-              "url"   : "https://html.cita.illinois.edu/nav/form/"
             }
           ],
           "rule_result_messages" : {
@@ -2575,15 +2583,15 @@
           "wcag_primary" : "2.4.6",
           "wcag_related" : ["1.3.1","3.3.2"],
           "last_updated" : "2014-11-25",
-          "target_resources" : ["input[type=\"submit\"]","input[type=\"reset\"]"],
+          "target_resources" : ["input[type=\"submit\"]","input[type=\"reset\"]","button[type=\"submit\"]","button[type=\"reset\"]"],
           "language_dependency" : "",
           "primary_property" : "computed_label",
           "resource_properties" : ["value"],
-          "validate" : "function (/* dom_cache, rule_result */) {\r\n\r\n/* This rule needs to be completed\r\n   function get_input_by_type(list, form, type) {\r\n\r\n   }\r\n\r\n   var TEST_RESULT  = OpenAjax.a11y.TEST_RESULT;\r\n   var VISIBILITY   = OpenAjax.a11y.VISIBILITY;\r\n   var CONTROL_TYPE =  OpenAjax.a11y.CONTROL_TYPE;\r\n\r\n   var form_elements   = dom_cache.controls_cache.form_elements;\r\n   var form_elements_len = form_elements.length;\r\n   var fes   = [];\r\n\r\n   var input_submit_info = [];\r\n   var input_reset_info  = [];\r\n\r\n   // Check to see if valid cache reference\r\n   if (form_elements && form_elements_len) {\r\n\r\n     // collect all the visible submit and reset buttons controls\r\n     for (var i = 0; i < form_elements_len; i++) {\r\n       var fe = form_elements[i];\r\n       var de = fe.dom_element;\r\n       var cs = de.computed_style;\r\n\r\n       var control_type = fe.control_type;\r\n\r\n       if (control_type === OpenAjax.a11y.CONTROL_TYPE.FORM) {\r\n\r\n         if (cs.is_visible_to_at === VISIBILITY.VISIBLE) {\r\n\r\n           get_input_by_type(input_submit_info, fe, 'submit');\r\n           get_input_by_type(input_reset_info, fe, 'reset');\r\n\r\n         }\r\n       }\r\n     } // end loop\r\n   }\r\n*/\r\n  }",
+          "validate" : "function (dom_cache, rule_result) {\r\n\r\n    function checkButtons(fe1) {\r\n\r\n      var flag1 = false;\r\n      var flag2 = false;\r\n\r\n      var sb1 = fe1.submit_button ? fe1.submit_button : null;\r\n      var rb1 = fe1.reset_button ? fe1.reset_button : null;\r\n\r\n      for (var j = 0; j < form_elements_len; j += 1) {\r\n        var fe2 = form_elements[j];\r\n\r\n        if (fe1.cache_id === fe2.cache_id) {\r\n          continue;\r\n        }\r\n\r\n        var sb2 = fe2.submit_button ? fe2.submit_button : null;\r\n        var rb2 = fe2.reset_button  ? fe2.reset_button : null;\r\n\r\n        if (!flag1 && sb1 && sb2 && (sb1.computed_label_for_comparison === sb2.computed_label_for_comparison)) {\r\n\r\n          if (sb2.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {\r\n            if (sb1.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {\r\n              if (sb1.dom_element.tag_name === 'button') {\r\n                rule_result.addResult(TEST_RESULT.FAIL, sb1, 'ELEMENT_FAIL_1', ['submit']);\r\n              } else {\r\n                rule_result.addResult(TEST_RESULT.FAIL, sb1, 'ELEMENT_FAIL_2', ['submit']);\r\n              }\r\n            } else {\r\n             rule_result.addResult(TEST_RESULT.HIDDEN, sb1, 'ELEMENT_HIDDEN_1', ['submit']);\r\n            }\r\n            flag1 = true;\r\n          }\r\n        }\r\n\r\n        if (!flag2 && rb1 && rb2 && (rb1.computed_label_for_comparison === rb2.computed_label_for_comparison)) {\r\n\r\n          if (rb2.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {\r\n            if (rb1.dom_element.computed_style.is_visible_to_at === VISIBILITY.VISIBLE) {\r\n              if (rb1.dom_element.tag_name === 'button') {\r\n                rule_result.addResult(TEST_RESULT.FAIL, rb1, 'ELEMENT_FAIL_1', ['reset']);\r\n              } else {\r\n                rule_result.addResult(TEST_RESULT.FAIL, rb1, 'ELEMENT_FAIL_2', ['reset']);\r\n              }\r\n            } else {\r\n             rule_result.addResult(TEST_RESULT.HIDDEN, rb1, 'ELEMENT_HIDDEN_1', ['reset']);\r\n            }\r\n            flag2 = true;\r\n          }\r\n        }\r\n\r\n        if (flag1 && flag2) {\r\n          return;\r\n        }\r\n      } // end loop\r\n    }\r\n\r\n   var TEST_RESULT  = OpenAjax.a11y.TEST_RESULT;\r\n   var VISIBILITY   = OpenAjax.a11y.VISIBILITY;\r\n   var CONTROL_TYPE =  OpenAjax.a11y.CONTROL_TYPE;\r\n\r\n   var form_elements   = dom_cache.controls_cache.form_elements;\r\n   var form_elements_len = form_elements.length;\r\n   var fes   = [];\r\n\r\n   var input_submit_info = [];\r\n   var input_reset_info  = [];\r\n\r\n   // Check to see if valid cache reference\r\n   if (form_elements && form_elements_len) {\r\n\r\n     for (var i = 0; i < form_elements_len; i += 1) {\r\n       var fe = form_elements[i];\r\n       checkButtons(fe);\r\n     } // end loop\r\n   }\r\n  }",
           "nls_rule_id" : "Control 11",
-          "definition" : "If there is more than one form on a page, each @input@ element of type @submit@ or @reset@ %s have a unique label, specified using its @value@ attribute.",
-          "summary" : "@submit@ and @reset@ buttons %s be unique",
-          "target_resource_desc" : "@submit@ and @reset@ buttons",
+          "definition" : "If there is more than one form on a page, each submit and reset button %s have a unique label.",
+          "summary" : "Ssubmit and reset button labels %s be unique",
+          "target_resource_desc" : "submit and reset buttons",
           "purpose" : [
           "Labels that are unique make it possible for people to understand the different purposes of form controls on the same page.",
           "@submit@ and @reset@ form controls have default labels and if these are present on more than one form on a page, the user may not understand which form they are submitting."
@@ -2601,34 +2609,25 @@
               "url"   : "https://www.w3.org/TR/html4/interact/forms.html#edef-FORM"
             },
             { "type"  : 11,
+              "title" : "W3C WAI Accessibility Tutorials: Forms Concepts",
+              "url"   : "https://www.w3.org/WAI/tutorials/forms/"
+            },
+            { "type"  : 11,
               "title" : "H44: Using label elements to associate text labels with form controls",
               "url"   : "https://www.w3.org/TR/WCAG20-TECHS/H44"
-            },
-            { "type"  : 11,
-              "title" : "H65: Using the title attribute to identify form controls when the label element cannot be used",
-              "url"   : "https://www.w3.org/TR/WCAG20-TECHS/H65"
-            },
-            { "type"  : 11,
-              "title" : "H71: Providing a description for groups of form controls using fieldset and legend elements",
-              "url"   : "https://www.w3.org/TR/WCAG20-TECHS/H71"
-            },
-            { "type"  : 10,
-              "title" : "iCITA Best Practices: Labels for Form Controls Overview",
-              "url"   : "https://html.cita.illinois.edu/nav/form/"
             }
           ],
           "rule_result_messages" : {
-           "FAIL_S": "Change the labeling of the @submit@ or @reset@ buttons to uniquely identify the purpose of each on the page.",
-          "FAIL_P": "Change the labeling of %N_F @submit@ or @reset@ buttons to uniquely identify the purpose of each on the page.",
-          "HIDDEN_S": "The @submit@ or @reset@ control element that is hidden was not evaluated.",
-          "HIDDEN_P": "The %N_H @submit@ and/or @reset@ control elements that are hidden were not evaluated.",
-          "NOT_APPLICABLE": "No forms or only one form on this page."
+           "FAIL_S": "Change the labeling of the submit or reset button to uniquely identify which form on the page will be sumnitted or reset on the page.",
+          "FAIL_P": "Change the labeling of the %N_F submit or reset buttons to uniquely identify which form on the page will be sumnitted or reset on the page.",
+          "HIDDEN_S": "The submit or reset button that is hidden was not evaluated.",
+          "HIDDEN_P": "The %N_H submit and/or reset buttons that are hidden were not evaluated.",
+          "NOT_APPLICABLE": "No forms or only one form with submit or reset buttons on this page."
           },
           "node_result_messages" : {
-           "ELEMENT_PASS_1": "Label is unique.",
-          "ELEMENT_FAIL_1": "Add label to %1 control.",
-          "ELEMENT_FAIL_2": "Change the @value@ attribute content, or use an ARIA technique to make the @submit@ or @reset@ labels unique on the page.",
-          "ELEMENT_HIDDEN_1": "%1 control element was not evaluated because it is hidden from assistive technologies."
+           "ELEMENT_FAIL_1": "Change the text content of the @button@ element to create a unique label, or use @aria-label@ or @aria-labelledby@ to make the @%1@ button accessible names unique on the page.",
+          "ELEMENT_FAIL_2": "Change the @value@ attribute of the @input@ element to create a unique label, or use @aria-label@ or @aria-labelledby@ to make the @%1@ button accessible names unique on the page.",
+          "ELEMENT_HIDDEN_1": "@%1@ button was not evaluated because it is hidden from assistive technologies."
           }
         },
         {
@@ -3338,8 +3337,8 @@
               "url"   : "https://www.w3.org/TR/WCAG20-TECHS/G141"
             },
             { "type"  : 10,
-              "title" : "iCITA Best Practices: Unique Title",
-              "url"   : "https://html.cita.illinois.edu/nav/title/"
+              "title" : "W3C Web Accessibility Tutorials: Headings",
+              "url"   : "https://www.w3.org/WAI/tutorials/page-structure/headings/"
             }
           ],
           "rule_result_messages" : {
@@ -3401,6 +3400,10 @@
             { "type"  : 9,
               "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: @banner@ role",
               "url"   : "https://www.w3.org/TR/wai-aria/#banner"
+            },
+            { "type"  : 10,
+              "title" : "W3C Web Accessibility Tutorials: Page Structure",
+              "url"   : "https://www.w3.org/WAI/tutorials/page-structure/"
             }
           ],
           "rule_result_messages" : {
@@ -3458,12 +3461,8 @@
               "url"   : "https://www.w3.org/TR/WCAG20-TECHS/G141"
             },
             { "type"  : 10,
-              "title" : "iCITA Best Practices: Unique Title",
-              "url"   : "https://html.cita.illinois.edu/nav/title/"
-            },
-            { "type"  : 10,
-              "title" : "iCITA Best Practices: Sub Headings",
-              "url"   : "https://html.cita.illinois.edu/nav/heading/"
+              "title" : "W3C Web Accessibility Tutorials: Headings",
+              "url"   : "https://www.w3.org/WAI/tutorials/page-structure/headings/"
             }
           ],
           "rule_result_messages" : {
@@ -3522,12 +3521,8 @@
               "url"   : "https://www.w3.org/TR/WCAG20-TECHS/G141"
             },
             { "type"  : 10,
-              "title" : "iCITA Best Practices: Unique Title",
-              "url"   : "https://html.cita.illinois.edu/nav/title/"
-            },
-            { "type"  : 10,
-              "title" : "iCITA Best Practices: Sub Headings",
-              "url"   : "https://html.cita.illinois.edu/nav/heading/"
+              "title" : "W3C Web Accessibility Tutorials: Headings",
+              "url"   : "https://www.w3.org/WAI/tutorials/page-structure/headings/"
             }
           ],
           "rule_result_messages" : {
@@ -3581,6 +3576,10 @@
             { "type"  : 11,
               "title" : "C22: Using CSS to control visual presentation of text",
               "url"   : "https://www.w3.org/TR/WCAG20-TECHS/C22"
+            },
+            { "type"  : 10,
+              "title" : "W3C Web Accessibility Tutorials: Headings",
+              "url"   : "https://www.w3.org/WAI/tutorials/page-structure/headings/"
             }
           ],
           "rule_result_messages" : {
@@ -3629,7 +3628,7 @@
           ],
           "informational_links" : [
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: landmark roles",
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2 Specification: landmark roles",
               "url"   : "https://www.w3.org/TR/wai-aria/#landmark"
             },
             { "type"  : 9,
@@ -3685,6 +3684,10 @@
             { "type"  : 9,
               "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: contentinfo role",
               "url"   : "https://www.w3.org/TR/wai-aria/#contentinfo"
+            },
+            { "type"  : 10,
+              "title" : "W3C Web Accessibility Tutorials: Page Structure",
+              "url"   : "https://www.w3.org/WAI/tutorials/page-structure/"
             }
           ],
           "rule_result_messages" : {
@@ -3817,7 +3820,7 @@
           "language_dependency" : "",
           "primary_property" : "tag_name",
           "resource_properties" : [],
-          "validate" : "function (dom_cache, rule_result) {\r\n\r\n    var TEST_RESULT    = OpenAjax.a11y.TEST_RESULT;\r\n    var VISIBILITY     = OpenAjax.a11y.VISIBILITY;\r\n\r\n    var dom_elements     = dom_cache.element_cache.dom_elements;\r\n    var dom_elements_len = dom_elements.length;\r\n\r\n    for (var i = 0; i < dom_elements_len; i++) {\r\n      var de = dom_elements[i];\r\n      var eai = de.element_aria_info;\r\n\r\n      if (de.role && !de.is_implied_role) {\r\n\r\n        if (eai.noRoleAllowed) {\r\n          if (de.computed_style.is_visible_to_at === VISIBILITY.VISIBLE ) {\r\n\r\n            if (de.role === de.implicit_role) {\r\n              rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_9', [de.role, eai.tagName]);\r\n            } else {\r\n              if (eai.attr2) {\r\n                rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [eai.tagName, eai.attr1, eai.attr2, de.role]);\r\n              } else {\r\n                if (eai.attr1) {\r\n                  rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_2', [eai.tagName, eai.attr1, de.role]);\r\n                } else {\r\n                  if (eai.hasAccname) {\r\n                    rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_3', [eai.tagName, de.role]);\r\n                  } else {\r\n                    rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_4', [eai.tagName, de.role]);\r\n                  }\r\n                }\r\n              }\r\n            }\r\n          } else {\r\n            rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [eai.tagName, de.role]);\r\n          }\r\n        } else {\r\n          if (de.computed_style.is_visible_to_at === VISIBILITY.VISIBLE ) {\r\n\r\n            if (!eai.anyRoleAllowed && eai.allowedRoles && (eai.allowedRoles.indexOf(de.role) < 0)) {\r\n              var allowedRoles = eai.allowedRoles.join(', ');\r\n\r\n              if (de.role === de.implicit_role) {\r\n                rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_10', [de.role, eai.tagName, allowedRoles]);\r\n              } else {\r\n                if (eai.attr2) {\r\n                  rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_5', [eai.tagName, eai.attr1, eai.attr2, allowedRoles]);\r\n                } else {\r\n                  if (eai.attr1) {\r\n                    rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_6', [eai.tagName, eai.attr1, de.role, allowedRoles]);\r\n                  } else {\r\n                    if (eai.hasAccname) {\r\n                      rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_7', [eai.tagName, de.role, allowedRoles]);\r\n                  } else {\r\n                      rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_8', [eai.tagName, de.role, allowedRoles]);\r\n                    }\r\n                  }\r\n                }\r\n              }\r\n            }\r\n          } else {\r\n            rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_2', [de.tag_name, de.role]);\r\n          }\r\n        }\r\n      }\r\n    }\r\n\r\n  }",
+          "validate" : "function (dom_cache, rule_result) {\r\n\r\n    function isImplicitRole(d, e) {\r\n\r\n      if (e.defaultRole === 'generic') {\r\n        return false;\r\n      }\r\n      if (d.role === e.defaultRole) {\r\n        return true;\r\n      }\r\n      if (d.role === 'none' && e.defaultRole === 'presentation') {\r\n        return true;\r\n      }\r\n\r\n      return false;\r\n    }\r\n\r\n    function checkAnyRoleAllowed (d, e) {\r\n      if (isImplicitRole(d, e)) {\r\n        if (d.computed_style.is_visible_to_at === VISIBILITY.VISIBLE ) {\r\n          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, d, 'ELEMENT_MC_1', [d.role, e.tagName]);\r\n        } else {\r\n          rule_result.addResult(TEST_RESULT.HIDDEN, d, 'ELEMENT_HIDDEN_1', [e.tagName, d.role]);\r\n        }\r\n      }\r\n    }\r\n\r\n    function checkNoRoleAllowed (d, e) {\r\n      if (d.computed_style.is_visible_to_at === VISIBILITY.VISIBLE ) {\r\n\r\n        if (isImplicitRole(d, e)) {\r\n          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, d, 'ELEMENT_MC_1', [d.role, e.tagName]);\r\n        } else {\r\n          if (e.attr2) {\r\n            rule_result.addResult(TEST_RESULT.FAIL, d, 'ELEMENT_FAIL_1', [e.tagName, e.attr1, e.attr2, d.role]);\r\n          } else {\r\n            if (e.attr1) {\r\n              rule_result.addResult(TEST_RESULT.FAIL, d, 'ELEMENT_FAIL_2', [e.tagName, e.attr1, d.role]);\r\n            } else {\r\n              if (e.hasAccname) {\r\n                rule_result.addResult(TEST_RESULT.FAIL, d, 'ELEMENT_FAIL_3', [e.tagName, d.role]);\r\n              } else {\r\n                rule_result.addResult(TEST_RESULT.FAIL, d, 'ELEMENT_FAIL_4', [e.tagName, d.role]);\r\n              }\r\n            }\r\n          }\r\n        }\r\n      } else {\r\n        rule_result.addResult(TEST_RESULT.HIDDEN, d, 'ELEMENT_HIDDEN_1', [e.tagName, d.role]);\r\n      }\r\n    }\r\n\r\n    function checkSomeRolesAllowed (d, e) {\r\n      if (!e.anyRoleAllowed && e.allowedRoles && (e.allowedRoles.indexOf(d.role) < 0)) {\r\n        if (d.computed_style.is_visible_to_at === VISIBILITY.VISIBLE ) {\r\n          var strAllowedRoles = e.allowedRoles.join(', ');\r\n\r\n          if (isImplicitRole(d, e)) {\r\n            rule_result.addResult(TEST_RESULT.MANUAL_CHECK, d, 'ELEMENT_MC_1', [d.role, e.tagName]);\r\n          } else {\r\n            if (e.attr2) {\r\n              rule_result.addResult(TEST_RESULT.FAIL, d, 'ELEMENT_FAIL_5', [e.tagName, e.attr1, e.attr2, strAllowedRoles]);\r\n            } else {\r\n              if (e.attr1) {\r\n                rule_result.addResult(TEST_RESULT.FAIL, d, 'ELEMENT_FAIL_6', [e.tagName, e.attr1, d.role, strAllowedRoles]);\r\n              } else {\r\n                if (e.hasAccname) {\r\n                  rule_result.addResult(TEST_RESULT.FAIL, d, 'ELEMENT_FAIL_7', [e.tagName, d.role, strAllowedRoles]);\r\n              } else {\r\n                  rule_result.addResult(TEST_RESULT.FAIL, d, 'ELEMENT_FAIL_8', [e.tagName, d.role, strAllowedRoles]);\r\n                }\r\n              }\r\n            }\r\n          }\r\n        } else {\r\n          rule_result.addResult(TEST_RESULT.HIDDEN, d, 'ELEMENT_HIDDEN_2', [d.tag_name, d.role]);\r\n        }\r\n      }\r\n    }\r\n\r\n    var TEST_RESULT    = OpenAjax.a11y.TEST_RESULT;\r\n    var VISIBILITY     = OpenAjax.a11y.VISIBILITY;\r\n\r\n    var dom_elements     = dom_cache.element_cache.dom_elements;\r\n    var dom_elements_len = dom_elements.length;\r\n\r\n    for (var i = 0; i < dom_elements_len; i++) {\r\n      var de = dom_elements[i];\r\n      var eai = de.element_aria_info;\r\n\r\n      if (de.role && !de.is_implied_role) {\r\n        if (eai.anyRoleAllowed) {\r\n          checkAnyRoleAllowed(de, eai);\r\n        } else {\r\n          if (eai.noRoleAllowed) {\r\n            checkNoRoleAllowed(de, eai);\r\n          } else {\r\n            checkSomeRolesAllowed(de, eai);\r\n          }\r\n        }\r\n      }\r\n    }\r\n\r\n  }",
           "nls_rule_id" : "HTML 3",
           "definition" : "Some HTML elements are restricted in the role allowed based on the semantics of the element (e.g. @li@ elements can only have list related ARIA roles).",
           "summary" : "Role is not allowed",
@@ -3830,7 +3833,7 @@
           "techniques" : [
           "Some HTML elements do not allow any role to override of the implicit role, in this case the role must be removed.",
           "Some HTML elements only allow certain roles to override of the implicit role, in this case only the allowed roles can be used to override the implicit role.",
-          "When the explict role is the same as the implicit role for an HTML element the explict role must be removed to insure the native semantics of the element are properly represented in accessibility APIs."
+          "When the explict role is the same as the implicit role for an HTML element, the explict role should be removed to insure the native semantics of the element are properly represented in accessibility APIs."
           ],
           "manual_checks" : [
           ],
@@ -3851,6 +3854,8 @@
           "rule_result_messages" : {
            "FAIL_S": "Remove or update the role to an allowed role on the element",
           "FAIL_P": "Remove or update the roles to an allowed role on the %N_F elements",
+          "MANUAL_CHECK_S": "The explict role on the element can be removed, since it is redundant with the implict role of the element.",
+          "MANUAL_CHECK_P": "The explict role on the %N_MC elements can be removed, since they are redundant with the implict role of each element.",
           "HIDDEN_S": "If the hidden element becomes visible, it's role must be removed or updated.",
           "HIDDEN_P": "If any of the %N_H hidden elements become visible, it's role must be removed or updated to an allowed role.",
           "NOT_APPLICABLE": "No elements with role restrictions found on the page."
@@ -3864,8 +3869,7 @@
           "ELEMENT_FAIL_6": "The @%1@ element with the @%2@ attribute does not allow the @%3@ role.  Either remove the role or change it to one of the following allowed values: @%4@.",
           "ELEMENT_FAIL_7": "The @%1@ element with an accessible name (e.g. using @aria-label@ or @aria-labelledby@) does not allow @%2@ role. Either remove the role or change it to one of the following allowed values: @%3@.",
           "ELEMENT_FAIL_8": "The @%1@ element does not allow the @%2@ role.  Either remove the role or change it to one of the following allowed values: @%3@.",
-          "ELEMENT_FAIL_9": "The explict @%1@ role is the same as the native semantic role of the @%2@ element.  The explict role must be removed to ensure the semantics of the element are properly represented in accessibility APIs.",
-          "ELEMENT_FAIL_10": "The explict @%1@ role is the same as the native semantic role of the @%2@ element.  The explict role must be removed to ensure the semantics of the element are properly represented in accessibility APIs or use one of the other allowed roles (if appropriate): @%3@.",
+          "ELEMENT_MC_1": "The explict @%1@ role is the same as the native semantic role of the @%2@ element.  Defining the explict role is not recommended, and should be removed to ensure the semantics of the element are properly represented in accessibility APIs.",
           "ELEMENT_HIDDEN_1": "@%1@ element is hidden, the @%2@ role must be removed before it becomes visible.",
           "ELEMENT_HIDDEN_2": "@%1@ element is hidden, the @%2@ role must be removed or changed to an allowed role before it becomes visible."
           }
@@ -4104,6 +4108,18 @@
               "url"   : "https://www.w3.org/TR/html5/sections.html#the-main-element"
             },
             { "type"  : 11,
+              "title" : "WAI-ARIA Authoring Practices 1.2: Landmarks",
+              "url"   : "https://w3c.github.io/aria-practices/#aria_landmark"
+            },
+            { "type"  : 11,
+              "title" : "WAI-ARIA Authoring Practices 1.2: Landmark Example",
+              "url"   : "https://w3c.github.io/aria-practices/examples/landmarks/"
+            },
+            { "type"  : 10,
+              "title" : "W3C Web Accessibility Tutorials: Page Structure",
+              "url"   : "https://www.w3.org/WAI/tutorials/page-structure/"
+            },
+            { "type"  : 11,
               "title" : "ARIA11: Using ARIA landmarks to identify regions of a page",
               "url"   : "https://www.w3.org/TR/WCAG20-TECHS/ARIA11"
             },
@@ -4174,6 +4190,18 @@
             { "type"  : 9,
               "title" : "HTML5: Sections",
               "url"   : "https://www.w3.org/TR/html5/sections.html#sections"
+            },
+            { "type"  : 11,
+              "title" : "WAI-ARIA Authoring Practices 1.2: Landmarks",
+              "url"   : "https://w3c.github.io/aria-practices/#aria_landmark"
+            },
+            { "type"  : 11,
+              "title" : "WAI-ARIA Authoring Practices 1.2: Landmark Example",
+              "url"   : "https://w3c.github.io/aria-practices/examples/landmarks/"
+            },
+            { "type"  : 10,
+              "title" : "W3C Web Accessibility Tutorials: Page Structure",
+              "url"   : "https://www.w3.org/WAI/tutorials/page-structure/"
             },
             { "type"  : 11,
               "title" : "ARIA11: Using ARIA landmarks to identify regions of a page",
@@ -4252,6 +4280,18 @@
               "url"   : "https://www.w3.org/TR/html5/sections.html#the-nav-element"
             },
             { "type"  : 11,
+              "title" : "WAI-ARIA Authoring Practices 1.2: Landmarks",
+              "url"   : "https://w3c.github.io/aria-practices/#aria_landmark"
+            },
+            { "type"  : 11,
+              "title" : "WAI-ARIA Authoring Practices 1.2: Landmark Example",
+              "url"   : "https://w3c.github.io/aria-practices/examples/landmarks/"
+            },
+            { "type"  : 10,
+              "title" : "W3C Web Accessibility Tutorials: Page Structure",
+              "url"   : "https://www.w3.org/WAI/tutorials/page-structure/"
+            },
+            { "type"  : 11,
               "title" : "H97: Grouping related links using the nav element",
               "url"   : "https://www.w3.org/TR/WCAG20-TECHS/H97.html"
             },
@@ -4321,6 +4361,18 @@
             { "type"  : 9,
               "title" : "HTML5: The FOOTER element",
               "url"   : "https://www.w3.org/TR/html5/sections.html#the-footer-element"
+            },
+            { "type"  : 11,
+              "title" : "WAI-ARIA Authoring Practices 1.2: Landmarks",
+              "url"   : "https://w3c.github.io/aria-practices/#aria_landmark"
+            },
+            { "type"  : 11,
+              "title" : "WAI-ARIA Authoring Practices 1.2: Landmark Example",
+              "url"   : "https://w3c.github.io/aria-practices/examples/landmarks/"
+            },
+            { "type"  : 10,
+              "title" : "W3C Web Accessibility Tutorials: Page Structure",
+              "url"   : "https://www.w3.org/WAI/tutorials/page-structure/"
             },
             { "type"  : 9,
               "title" : "HTML5: Sectioning content",
@@ -4401,6 +4453,18 @@
               "url"   : "https://www.w3.org/TR/html5/sections.html#the-footer-element"
             },
             { "type"  : 11,
+              "title" : "WAI-ARIA Authoring Practices 1.2: Landmarks",
+              "url"   : "https://w3c.github.io/aria-practices/#aria_landmark"
+            },
+            { "type"  : 11,
+              "title" : "WAI-ARIA Authoring Practices 1.2: Landmark Example",
+              "url"   : "https://w3c.github.io/aria-practices/examples/landmarks/"
+            },
+            { "type"  : 10,
+              "title" : "W3C Web Accessibility Tutorials: Page Structure",
+              "url"   : "https://www.w3.org/WAI/tutorials/page-structure/"
+            },
+            { "type"  : 11,
               "title" : "ARIA11: Using ARIA landmarks to identify regions of a page",
               "url"   : "https://www.w3.org/TR/WCAG20-TECHS/ARIA11"
             },
@@ -4475,6 +4539,18 @@
             { "type"  : 9,
               "title" : "HTML5: Sectioning content",
               "url"   : "https://www.w3.org/TR/html5/dom.html#sectioning-content-0"
+            },
+            { "type"  : 11,
+              "title" : "WAI-ARIA Authoring Practices 1.2: Landmarks",
+              "url"   : "https://w3c.github.io/aria-practices/#aria_landmark"
+            },
+            { "type"  : 11,
+              "title" : "WAI-ARIA Authoring Practices 1.2: Landmark Example",
+              "url"   : "https://w3c.github.io/aria-practices/examples/landmarks/"
+            },
+            { "type"  : 10,
+              "title" : "W3C Web Accessibility Tutorials: Page Structure",
+              "url"   : "https://www.w3.org/WAI/tutorials/page-structure/"
             },
             { "type"  : 9,
               "title" : "HTML5: Sectioning root",
@@ -4553,6 +4629,18 @@
               "url"   : "https://www.w3.org/TR/html5/sections.html#the-footer-element"
             },
             { "type"  : 11,
+              "title" : "WAI-ARIA Authoring Practices 1.2: Landmarks",
+              "url"   : "https://w3c.github.io/aria-practices/#aria_landmark"
+            },
+            { "type"  : 11,
+              "title" : "WAI-ARIA Authoring Practices 1.2: Landmark Example",
+              "url"   : "https://w3c.github.io/aria-practices/examples/landmarks/"
+            },
+            { "type"  : 10,
+              "title" : "W3C Web Accessibility Tutorials: Page Structure",
+              "url"   : "https://www.w3.org/WAI/tutorials/page-structure/"
+            },
+            { "type"  : 11,
               "title" : "ARIA11: Using ARIA landmarks to identify regions of a page",
               "url"   : "https://www.w3.org/TR/WCAG20-TECHS/ARIA11"
             },
@@ -4619,6 +4707,18 @@
             { "type"  : 9,
               "title" : "HTML5: The HEADER element",
               "url"   : "https://www.w3.org/TR/html5/sections.html#the-header-element"
+            },
+            { "type"  : 11,
+              "title" : "WAI-ARIA Authoring Practices 1.2: Landmarks",
+              "url"   : "https://w3c.github.io/aria-practices/#aria_landmark"
+            },
+            { "type"  : 11,
+              "title" : "WAI-ARIA Authoring Practices 1.2: Landmark Example",
+              "url"   : "https://w3c.github.io/aria-practices/examples/landmarks/"
+            },
+            { "type"  : 10,
+              "title" : "W3C Web Accessibility Tutorials: Page Structure",
+              "url"   : "https://www.w3.org/WAI/tutorials/page-structure/"
             },
             { "type"  : 11,
               "title" : "ARIA11: Using ARIA landmarks to identify regions of a page",
@@ -4691,6 +4791,18 @@
               "title" : "HTML5: Sections",
               "url"   : "https://www.w3.org/TR/html5/sections.html#sections"
             },
+            { "type"  : 11,
+              "title" : "WAI-ARIA Authoring Practices 1.2: Landmarks",
+              "url"   : "https://w3c.github.io/aria-practices/#aria_landmark"
+            },
+            { "type"  : 11,
+              "title" : "WAI-ARIA Authoring Practices 1.2: Landmark Example",
+              "url"   : "https://w3c.github.io/aria-practices/examples/landmarks/"
+            },
+            { "type"  : 10,
+              "title" : "W3C Web Accessibility Tutorials: Page Structure",
+              "url"   : "https://www.w3.org/WAI/tutorials/page-structure/"
+            },
             { "type"  : 9,
               "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: Landmark Roles",
               "url"   : "https://www.w3.org/TR/wai-aria/#landmark_roles"
@@ -4750,6 +4862,18 @@
             { "type"  : 9,
               "title" : "HTML5: The NAV element",
               "url"   : "https://www.w3.org/TR/html5/sections.html#the-nav-element"
+            },
+            { "type"  : 11,
+              "title" : "WAI-ARIA Authoring Practices 1.2: Landmarks",
+              "url"   : "https://w3c.github.io/aria-practices/#aria_landmark"
+            },
+            { "type"  : 10,
+              "title" : "W3C Web Accessibility Tutorials: Page Structure",
+              "url"   : "https://www.w3.org/WAI/tutorials/page-structure/"
+            },
+            { "type"  : 11,
+              "title" : "WAI-ARIA Authoring Practices 1.2: Landmark Example",
+              "url"   : "https://w3c.github.io/aria-practices/examples/landmarks/"
             }
           ],
           "rule_result_messages" : {
@@ -4807,6 +4931,18 @@
             { "type"  : 9,
               "title" : "HTML5: The MAIN element",
               "url"   : "https://www.w3.org/TR/html5/sections.html#the-main-element"
+            },
+            { "type"  : 11,
+              "title" : "WAI-ARIA Authoring Practices 1.2: Landmarks",
+              "url"   : "https://w3c.github.io/aria-practices/#aria_landmark"
+            },
+            { "type"  : 11,
+              "title" : "WAI-ARIA Authoring Practices 1.2: Landmark Example",
+              "url"   : "https://w3c.github.io/aria-practices/examples/landmarks/"
+            },
+            { "type"  : 10,
+              "title" : "W3C Web Accessibility Tutorials: Page Structure",
+              "url"   : "https://www.w3.org/WAI/tutorials/page-structure/"
             },
             { "type"  : 11,
               "title" : "ARIA11: Using ARIA landmarks to identify regions of a page",
@@ -4867,6 +5003,18 @@
             { "type"  : 9,
               "title" : "HTML5: The FOOTER element",
               "url"   : "https://www.w3.org/TR/html5/sections.html#the-footer-element"
+            },
+            { "type"  : 11,
+              "title" : "WAI-ARIA Authoring Practices 1.2: Landmarks",
+              "url"   : "https://w3c.github.io/aria-practices/#aria_landmark"
+            },
+            { "type"  : 11,
+              "title" : "WAI-ARIA Authoring Practices 1.2: Landmark Example",
+              "url"   : "https://w3c.github.io/aria-practices/examples/landmarks/"
+            },
+            { "type"  : 10,
+              "title" : "W3C Web Accessibility Tutorials: Page Structure",
+              "url"   : "https://www.w3.org/WAI/tutorials/page-structure/"
             },
             { "type"  : 11,
               "title" : "ARIA11: Using ARIA landmarks to identify regions of a page",
@@ -4934,6 +5082,18 @@
             { "type"  : 9,
               "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: Landmark Roles",
               "url"   : "https://www.w3.org/TR/wai-aria/#landmark_roles"
+            },
+            { "type"  : 11,
+              "title" : "WAI-ARIA Authoring Practices 1.2: Landmarks",
+              "url"   : "https://w3c.github.io/aria-practices/#aria_landmark"
+            },
+            { "type"  : 11,
+              "title" : "WAI-ARIA Authoring Practices 1.2: Landmark Example",
+              "url"   : "https://w3c.github.io/aria-practices/examples/landmarks/"
+            },
+            { "type"  : 10,
+              "title" : "W3C Web Accessibility Tutorials: Page Structure",
+              "url"   : "https://www.w3.org/WAI/tutorials/page-structure/"
             }
           ],
           "rule_result_messages" : {
@@ -4989,6 +5149,18 @@
             { "type"  : 9,
               "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: search role",
               "url"   : "https://www.w3.org/TR/wai-aria/#search"
+            },
+            { "type"  : 11,
+              "title" : "WAI-ARIA Authoring Practices 1.2: Landmarks",
+              "url"   : "https://w3c.github.io/aria-practices/#aria_landmark"
+            },
+            { "type"  : 11,
+              "title" : "WAI-ARIA Authoring Practices 1.2: Landmark Example",
+              "url"   : "https://w3c.github.io/aria-practices/examples/landmarks/"
+            },
+            { "type"  : 10,
+              "title" : "W3C Web Accessibility Tutorials: Page Structure",
+              "url"   : "https://www.w3.org/WAI/tutorials/page-structure/"
             },
             { "type"  : 11,
               "title" : "ARIA11: Using ARIA landmarks to identify regions of a page",
@@ -5058,6 +5230,18 @@
             { "type"  : 9,
               "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: form role",
               "url"   : "https://www.w3.org/TR/wai-aria/#form"
+            },
+            { "type"  : 11,
+              "title" : "WAI-ARIA Authoring Practices 1.2: Landmarks",
+              "url"   : "https://w3c.github.io/aria-practices/#aria_landmark"
+            },
+            { "type"  : 11,
+              "title" : "WAI-ARIA Authoring Practices 1.2: Landmark Example",
+              "url"   : "https://w3c.github.io/aria-practices/examples/landmarks/"
+            },
+            { "type"  : 10,
+              "title" : "W3C Web Accessibility Tutorials: Page Structure",
+              "url"   : "https://www.w3.org/WAI/tutorials/page-structure/"
             },
             { "type"  : 11,
               "title" : "ARIA11: Using ARIA landmarks to identify regions of a page",
@@ -5130,6 +5314,18 @@
             { "type"  : 9,
               "title" : "HTML5: The SECTION element",
               "url"   : "https://www.w3.org/TR/html5/sections.html#the-section-element"
+            },
+            { "type"  : 11,
+              "title" : "WAI-ARIA Authoring Practices 1.2: Landmarks",
+              "url"   : "https://w3c.github.io/aria-practices/#aria_landmark"
+            },
+            { "type"  : 11,
+              "title" : "WAI-ARIA Authoring Practices 1.2: Landmark Example",
+              "url"   : "https://w3c.github.io/aria-practices/examples/landmarks/"
+            },
+            { "type"  : 10,
+              "title" : "W3C Web Accessibility Tutorials: Page Structure",
+              "url"   : "https://www.w3.org/WAI/tutorials/page-structure/"
             },
             { "type"  : 11,
               "title" : "ARIA11: Using ARIA landmarks to identify regions of a page",
@@ -5205,6 +5401,18 @@
             { "type"  : 9,
               "title" : "HTML5: Sections",
               "url"   : "https://www.w3.org/TR/html5/sections.html#sections"
+            },
+            { "type"  : 11,
+              "title" : "WAI-ARIA Authoring Practices 1.2: Landmarks",
+              "url"   : "https://w3c.github.io/aria-practices/#aria_landmark"
+            },
+            { "type"  : 11,
+              "title" : "WAI-ARIA Authoring Practices 1.2: Landmark Example",
+              "url"   : "https://w3c.github.io/aria-practices/examples/landmarks/"
+            },
+            { "type"  : 10,
+              "title" : "W3C Web Accessibility Tutorials: Page Structure",
+              "url"   : "https://www.w3.org/WAI/tutorials/page-structure/"
             },
             { "type"  : 11,
               "title" : "ARIA11: Using ARIA landmarks to identify regions of a page",
@@ -5283,6 +5491,18 @@
               "url"   : "https://www.w3.org/TR/html5/sections.html#sections"
             },
             { "type"  : 11,
+              "title" : "WAI-ARIA Authoring Practices 1.2: Landmarks",
+              "url"   : "https://w3c.github.io/aria-practices/#aria_landmark"
+            },
+            { "type"  : 11,
+              "title" : "WAI-ARIA Authoring Practices 1.2: Landmark Example",
+              "url"   : "https://w3c.github.io/aria-practices/examples/landmarks/"
+            },
+            { "type"  : 10,
+              "title" : "W3C Web Accessibility Tutorials: Page Structure",
+              "url"   : "https://www.w3.org/WAI/tutorials/page-structure/"
+            },
+            { "type"  : 11,
               "title" : "ARIA11: Using ARIA landmarks to identify regions of a page",
               "url"   : "https://www.w3.org/TR/WCAG20-TECHS/ARIA11"
             },
@@ -5345,6 +5565,18 @@
             { "type"  : 9,
               "title" : "HTML5: The ASIDE element",
               "url"   : "https://www.w3.org/TR/html5/sections.html#the-aside-element"
+            },
+            { "type"  : 11,
+              "title" : "WAI-ARIA Authoring Practices 1.2: Landmarks",
+              "url"   : "https://w3c.github.io/aria-practices/#aria_landmark"
+            },
+            { "type"  : 11,
+              "title" : "WAI-ARIA Authoring Practices 1.2: Landmark Example",
+              "url"   : "https://w3c.github.io/aria-practices/examples/landmarks/"
+            },
+            { "type"  : 10,
+              "title" : "W3C Web Accessibility Tutorials: Page Structure",
+              "url"   : "https://www.w3.org/WAI/tutorials/page-structure/"
             },
             { "type"  : 11,
               "title" : "ARIA11: Using ARIA landmarks to identify regions of a page",
@@ -7395,8 +7627,8 @@
               "url"   : "https://www-03.ibm.com/able/guidelines/web/webtableheaders.html"
             },
             { "type"  : 2,
-              "title" : "iCITA HTML Best Practices: Simple Data Table Example",
-              "url"   : "https://html.cita.illinois.edu/nav/dtable/dtable-example-simple.php"
+              "title" : "W3C Web Accessibility Tutorials: Tables",
+              "url"   : "https://www.w3.org/WAI/tutorials/tables/"
             }
           ],
           "rule_result_messages" : {
@@ -7472,6 +7704,10 @@
               "title" : "HTML 4.01 Specification: The @title@ attribute",
               "url"   : "https://www.w3.org/TR/html4/struct/global.html#adef-title"
             },
+            { "type"  : 2,
+              "title" : "W3C Web Accessibility Tutorials: Tables",
+              "url"   : "https://www.w3.org/WAI/tutorials/tables/"
+            },
             { "type"  : 11,
               "title" : "H39: Using caption elements to associate data table captions with data tables",
               "url"   : "https://www.w3.org/TR/WCAG20-TECHS/H39"
@@ -7487,14 +7723,6 @@
             { "type"  : 2,
               "title" : "IBM Web checklist Checkpoint 1.3e: Tables",
               "url"   : "https://www-03.ibm.com/able/guidelines/web/webtableheaders.html"
-            },
-            { "type"  : 2,
-              "title" : "iCITA HTML Best Practices: Simple Data Table Example",
-              "url"   : "https://html.cita.illinois.edu/nav/dtable/dtable-example-simple.php"
-            },
-            { "type"  : 2,
-              "title" : "iCITA HTML Best Practices: Complex Data Table Example",
-              "url"   : "https://html.cita.illinois.edu/nav/dtable/dtable-example-complex.php"
             }
           ],
           "rule_result_messages" : {
@@ -7560,16 +7788,12 @@
               "url"   : "https://www.w3.org/TR/html4/struct/global.html#adef-title"
             },
             { "type"  : 2,
+              "title" : "W3C Web Accessibility Tutorials: Tables",
+              "url"   : "https://www.w3.org/WAI/tutorials/tables/"
+            },
+            { "type"  : 2,
               "title" : "IBM Web checklist Checkpoint 1.3e: Tables",
               "url"   : "https://www-03.ibm.com/able/guidelines/web/webtableheaders.html"
-            },
-            { "type"  : 2,
-              "title" : "iCITA HTML Best Practices: Simple Data Table Example",
-              "url"   : "https://html.cita.illinois.edu/nav/dtable/dtable-example-simple.php"
-            },
-            { "type"  : 2,
-              "title" : "iCITA HTML Best Practices: Complex Data Table Example",
-              "url"   : "https://html.cita.illinois.edu/nav/dtable/dtable-example-complex.php"
             }
           ],
           "rule_result_messages" : {
@@ -7643,6 +7867,10 @@
               "title" : "HTML 4.01 Specification: The @title@ attribute",
               "url"   : "https://www.w3.org/TR/html4/struct/global.html#adef-title"
             },
+            { "type"  : 2,
+              "title" : "W3C Web Accessibility Tutorials: Tables",
+              "url"   : "https://www.w3.org/WAI/tutorials/tables/"
+            },
             { "type"  : 11,
               "title" : "H39: Using caption elements to associate data table captions with data tables",
               "url"   : "https://www.w3.org/TR/WCAG20-TECHS/H39"
@@ -7658,14 +7886,6 @@
             { "type"  : 2,
               "title" : "IBM Web checklist Checkpoint 1.3e: Tables",
               "url"   : "https://www-03.ibm.com/able/guidelines/web/webtableheaders.html"
-            },
-            { "type"  : 2,
-              "title" : "iCITA HTML Best Practices: Simple Data Table Example",
-              "url"   : "https://html.cita.illinois.edu/nav/dtable/dtable-example-simple.php"
-            },
-            { "type"  : 2,
-              "title" : "iCITA HTML Best Practices: Complex Data Table Example",
-              "url"   : "https://html.cita.illinois.edu/nav/dtable/dtable-example-complex.php"
             }
           ],
           "rule_result_messages" : {
@@ -7735,6 +7955,10 @@
               "title" : "HTML 4.01 Specification: summary attribute",
               "url"   : "https://www.w3.org/TR/html4/struct/tables.html#adef-summary"
             },
+            { "type"  : 2,
+              "title" : "W3C Web Accessibility Tutorials: Tables",
+              "url"   : "https://www.w3.org/WAI/tutorials/tables/"
+            },
             { "type"  : 11,
               "title" : "H51: Using table markup to present tabular information",
               "url"   : "https://www.w3.org/TR/WCAG20-TECHS/H51"
@@ -7746,14 +7970,6 @@
             { "type"  : 2,
               "title" : "IBM Web checklist Checkpoint 1.3e: Tables",
               "url"   : "https://www-03.ibm.com/able/guidelines/web/webtableheaders.html"
-            },
-            { "type"  : 2,
-              "title" : "iCITA HTML Best Practices: Simple Data Table Example",
-              "url"   : "https://html.cita.illinois.edu/nav/dtable/dtable-example-simple.php"
-            },
-            { "type"  : 2,
-              "title" : "iCITA HTML Best Practices: Complex Data Table Example",
-              "url"   : "https://html.cita.illinois.edu/nav/dtable/dtable-example-complex.php"
             }
           ],
           "rule_result_messages" : {
@@ -7810,6 +8026,10 @@
               "title" : "HTML 4.01 Specification: 11.2.6 Table cells: The TH and TD elements",
               "url"   : "https://www.w3.org/TR/html4/struct/tables.html#edef-TD"
             },
+            { "type"  : 2,
+              "title" : "W3C Web Accessibility Tutorials: Tables",
+              "url"   : "https://www.w3.org/WAI/tutorials/tables/"
+            },
             { "type"  : 11,
               "title" : "H51: Using table markup to present tabular information",
               "url"   : "https://www.w3.org/TR/WCAG20-TECHS/H51"
@@ -7821,14 +8041,6 @@
             { "type"  : 2,
               "title" : "IBM Web checklist Checkpoint 1.3e: Tables",
               "url"   : "https://www-03.ibm.com/able/guidelines/web/webtableheaders.html"
-            },
-            { "type"  : 2,
-              "title" : "iCITA HTML Best Practices: Simple Data Table Example",
-              "url"   : "https://html.cita.illinois.edu/nav/dtable/dtable-example-simple.php"
-            },
-            { "type"  : 2,
-              "title" : "iCITA HTML Best Practices: Complex Data Table Example",
-              "url"   : "https://html.cita.illinois.edu/nav/dtable/dtable-example-complex.php"
             }
           ],
           "rule_result_messages" : {
@@ -7880,12 +8092,12 @@
               "url"   : "https://www.w3.org/TR/html4/struct/tables.html#edef-TD"
             },
             { "type"  : 2,
-              "title" : "IBM Web checklist Checkpoint 1.3e: Tables",
-              "url"   : "https://www-03.ibm.com/able/guidelines/web/webtableheaders.html"
+              "title" : "W3C Web Accessibility Tutorials: Tables",
+              "url"   : "https://www.w3.org/WAI/tutorials/tables/"
             },
             { "type"  : 2,
-              "title" : "iCITA HTML Best Practices: Complex Data Table Example",
-              "url"   : "https://html.cita.illinois.edu/nav/dtable/dtable-example-complex.php"
+              "title" : "IBM Web checklist Checkpoint 1.3e: Tables",
+              "url"   : "https://www-03.ibm.com/able/guidelines/web/webtableheaders.html"
             }
           ],
           "rule_result_messages" : {
@@ -7943,6 +8155,10 @@
             { "type"  : 9,
               "title" : "HTML 4.01 Specification: 11.2.6 Table cells: The TH and TD elements",
               "url"   : "https://www.w3.org/TR/html4/struct/tables.html#edef-TD"
+            },
+            { "type"  : 2,
+              "title" : "W3C Web Accessibility Tutorials: Tables",
+              "url"   : "https://www.w3.org/WAI/tutorials/tables/"
             }
           ],
           "rule_result_messages" : {
@@ -9137,7 +9353,7 @@
           "language_dependency" : "",
           "primary_property" : "role",
           "resource_properties" : [],
-          "validate" : "function (dom_cache, rule_result) {\r\n\r\n     function getRequiredPropertiesAndValues(dom_element, required_props) {\r\n\r\n       var rps = [];\r\n\r\n       var attrs     = dom_element.aria_attributes;\r\n       var attrs_len = attrs.length;\r\n\r\n       for (var i = 0; i < required_props.length; i++) {\r\n\r\n         var prop = required_props[i];\r\n\r\n         var flag = false;\r\n\r\n         for (var j = 0; j <attrs_len; j++) {\r\n           if (prop === attrs[j].name) {\r\n             flag = true;\r\n             break;\r\n           }\r\n         }\r\n\r\n         var rp = {};\r\n         rp.label = prop;\r\n         rp.description = \"\";\r\n         rp.defined = flag;\r\n\r\n         if (flag) {\r\n           rp.value  = attrs[j].value;\r\n         }\r\n         else {\r\n           rp.value  = \"undefined\";\r\n         }\r\n\r\n         rps.push(rp);\r\n\r\n       }\r\n\r\n       return rps;\r\n\r\n     }\r\n\r\n     function getPropsString(props) {\r\n\r\n       var str = \"\";\r\n       var prop_max = props.length - 1;\r\n\r\n       for (var i = 0; i < props.length; i++ ) {\r\n         str += props[i];\r\n         if (i !== prop_max) str += \", \";\r\n       }\r\n\r\n       return str;\r\n\r\n     }\r\n\r\n     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;\r\n     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;\r\n\r\n     var widget_elements     = dom_cache.controls_cache.widget_elements;\r\n     var widget_elements_len = widget_elements.length;\r\n\r\n     if (widget_elements && widget_elements) {\r\n\r\n       for (var i = 0; i < widget_elements_len; i++) {\r\n         var we = widget_elements[i];\r\n         var de = we.dom_element;\r\n         var style = de.computed_style;\r\n\r\n         var required_properties = de.role_info.requiredProps;\r\n\r\n//         console.log(\"[WIDGET 6]: \" + de + \" [reqProps]: \"+ de.role_info.requiredProps);\r\n\r\n//         for (var k = 0; k < de.aria_attributes.length; k += 1) {\r\n//           var attr = de.aria_attributes[k];\r\n//           console.log(\"  [props]: \"+ attr.name + '=' + attr.value);\r\n//         }\r\n\r\n\r\n         if (required_properties && required_properties.length) {\r\n\r\n           if (style.is_visible_to_at == VISIBILITY.VISIBLE || style.is_visible_onscreen == VISIBILITY.VISIBLE ) {\r\n\r\n             var props_string   = getPropsString(required_properties);\r\n             var required_props = getRequiredPropertiesAndValues(de, required_properties);\r\n\r\n             var flag = true;\r\n\r\n             for (var j = 0; (j < required_props.length) && flag; j++) flag = flag && required_props[j].defined;\r\n\r\n             if (flag) rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_1', [de.role, props_string], required_props);\r\n             else rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [de.role, props_string], required_props);\r\n           }\r\n           else {\r\n             rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.role]);\r\n           }\r\n         }\r\n       } // end loop\r\n     }\r\n   }",
+          "validate" : "function (dom_cache, rule_result) {\r\n\r\n     function getRequiredPropertiesAndValues(dom_element, required_props) {\r\n\r\n       var rps = [];\r\n\r\n       var attrs     = dom_element.aria_attributes;\r\n       var attrs_len = attrs.length;\r\n\r\n       for (var i = 0; i < required_props.length; i++) {\r\n\r\n         var prop = required_props[i];\r\n\r\n         var flag = false;\r\n\r\n         for (var j = 0; j <attrs_len; j++) {\r\n           if (prop === attrs[j].name) {\r\n             flag = true;\r\n             break;\r\n           }\r\n         }\r\n\r\n         var rp = {};\r\n         rp.label = prop;\r\n         rp.description = \"\";\r\n         rp.defined = flag;\r\n\r\n         if (flag) {\r\n           rp.value  = attrs[j].value;\r\n         }\r\n         else {\r\n           rp.value  = \"undefined\";\r\n         }\r\n\r\n         rps.push(rp);\r\n\r\n       }\r\n\r\n       return rps;\r\n\r\n     }\r\n\r\n     function getPropsString(props) {\r\n\r\n       var str = \"\";\r\n       var prop_max = props.length - 1;\r\n\r\n       for (var i = 0; i < props.length; i++ ) {\r\n         str += props[i];\r\n         if (i !== prop_max) str += \", \";\r\n       }\r\n\r\n       return str;\r\n\r\n     }\r\n\r\n     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;\r\n     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;\r\n\r\n     var widget_elements     = dom_cache.controls_cache.widget_elements;\r\n     var widget_elements_len = widget_elements.length;\r\n\r\n     if (widget_elements && widget_elements) {\r\n\r\n       for (var i = 0; i < widget_elements_len; i++) {\r\n         var we = widget_elements[i];\r\n         var de = we.dom_element;\r\n         var style = de.computed_style;\r\n\r\n         var required_properties = de.role_info.requiredProps;\r\n\r\n         if (required_properties && required_properties.length) {\r\n\r\n           if (style.is_visible_to_at == VISIBILITY.VISIBLE || style.is_visible_onscreen == VISIBILITY.VISIBLE ) {\r\n\r\n             var props_string   = getPropsString(required_properties);\r\n             var required_props = getRequiredPropertiesAndValues(de, required_properties);\r\n\r\n             var flag = true;\r\n\r\n             for (var j = 0; (j < required_props.length) && flag; j++) flag = flag && required_props[j].defined;\r\n\r\n             if (flag) rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_1', [de.role, props_string], required_props);\r\n             else rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [de.role, props_string], required_props);\r\n           }\r\n           else {\r\n             rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.role]);\r\n           }\r\n         }\r\n       } // end loop\r\n     }\r\n   }",
           "nls_rule_id" : "Widget 6",
           "definition" : "Widgets %s define required properties and states.",
           "summary" : "Widgets %s have properties",
@@ -9203,7 +9419,7 @@
           "language_dependency" : "",
           "primary_property" : "role",
           "resource_properties" : ["aria_busy","aria_owns"],
-          "validate" : "function (dom_cache, rule_result) {\r\n\r\n\r\n     function getRequiredChildRolesString(required_children) {\r\n\r\n       var str = \"\";\r\n       var required_children_max = required_children.length - 1;\r\n\r\n       for (var i = 0; i < required_children.length; i++ ) {\r\n         str += required_children[i];\r\n         if (i !== required_children_max) str += \", \";\r\n       }\r\n\r\n       return str;\r\n\r\n     }\r\n\r\n     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;\r\n     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;\r\n\r\n     var widget_elements     = dom_cache.controls_cache.widget_elements;\r\n     var widget_elements_len = widget_elements.length;\r\n\r\n     if (widget_elements && widget_elements) {\r\n\r\n       for (var i = 0; i < widget_elements_len; i++) {\r\n         var we = widget_elements[i];\r\n         var de = we.dom_element;\r\n         var style = de.computed_style;\r\n\r\n         var required_child_roles = de.role_info.requiredChildren;\r\n\r\n         if (required_child_roles && required_child_roles.length) {\r\n\r\n//           console.log(\"[WIDGET 7]: \" + de + \" [reqOwned]: \"+ required_child_roles.toString());\r\n\r\n           if (style.is_visible_to_at == VISIBILITY.VISIBLE || style.is_visible_onscreen == VISIBILITY.VISIBLE ) {\r\n\r\n             if (we.aria_busy) {\r\n               rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_2', [de.role]);\r\n             } else {\r\n               var flag = false;\r\n\r\n               for (var j = 0; (j < required_child_roles.length) && !flag; j++) {\r\n                 flag = we.hasRequiredChildRole(required_child_roles[j]);\r\n               }\r\n\r\n               var required_child_roles_string = getRequiredChildRolesString(required_child_roles);\r\n\r\n               if (flag) {\r\n                rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_1', [de.role, required_child_roles_string]);\r\n               } else {\r\n                rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [de.role, required_child_roles_string]);\r\n              }\r\n             }\r\n           }\r\n           else {\r\n             rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.role]);\r\n           }\r\n         }\r\n       } // end loop\r\n     }\r\n   }",
+          "validate" : "function (dom_cache, rule_result) {\r\n\r\n\r\n     function getRequiredChildRolesString(required_children) {\r\n\r\n       var str = \"\";\r\n       var required_children_max = required_children.length - 1;\r\n\r\n       for (var i = 0; i < required_children.length; i++ ) {\r\n         str += required_children[i];\r\n         if (i !== required_children_max) str += \", \";\r\n       }\r\n\r\n       return str;\r\n\r\n     }\r\n\r\n     var VISIBILITY  = OpenAjax.a11y.VISIBILITY;\r\n     var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;\r\n\r\n     var widget_elements     = dom_cache.controls_cache.widget_elements;\r\n     var widget_elements_len = widget_elements.length;\r\n\r\n     if (widget_elements && widget_elements) {\r\n\r\n       for (var i = 0; i < widget_elements_len; i++) {\r\n         var we = widget_elements[i];\r\n         var de = we.dom_element;\r\n         var style = de.computed_style;\r\n\r\n         var required_child_roles = de.role_info.requiredChildren;\r\n\r\n         if (required_child_roles && required_child_roles.length) {\r\n\r\n           if (style.is_visible_to_at == VISIBILITY.VISIBLE || style.is_visible_onscreen == VISIBILITY.VISIBLE ) {\r\n\r\n             if (we.aria_busy) {\r\n               rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_2', [de.role]);\r\n             } else {\r\n               var flag = false;\r\n\r\n               for (var j = 0; (j < required_child_roles.length) && !flag; j++) {\r\n                 flag = we.hasRequiredChildRole(required_child_roles[j]);\r\n               }\r\n\r\n               var required_child_roles_string = getRequiredChildRolesString(required_child_roles);\r\n\r\n               if (flag) {\r\n                rule_result.addResult(TEST_RESULT.PASS, de, 'ELEMENT_PASS_1', [de.role, required_child_roles_string]);\r\n               } else {\r\n                rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [de.role, required_child_roles_string]);\r\n              }\r\n             }\r\n           }\r\n           else {\r\n             rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.role]);\r\n           }\r\n         }\r\n       } // end loop\r\n     }\r\n   }",
           "nls_rule_id" : "Widget 7",
           "definition" : "Container widgets %s have required owned elements.",
           "summary" : "Widgets %s have owned elements",
@@ -9941,7 +10157,7 @@
       "ruleset_tooltip"         : "Ruleset for use the the testsuite",
       "ruleset_description"     : "Test ruleset used for the test suite to make sure all rules are tested.",
       "ruleset_description_url" : "",
-      "ruleset_required_rules"    : 133,
+      "ruleset_required_rules"    : 134,
       "ruleset_recommended_rules" : 4,
     "wcag20_level"        : 6,
     "rec_rules_enabled"   : true,
@@ -10011,6 +10227,10 @@
         "required"   : true
     },
       "CONTROL_10" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "CONTROL_11" : {
         "enabled"    : true,
         "required"   : true
     },
@@ -10508,7 +10728,7 @@
       "ruleset_tooltip"         : "WCAG 2.0 Level A and AA requirements primarily using HTML4 techniques, but allows HTML5 and ARIA accessibility techniques.",
       "ruleset_description"     : "Evaluation of W3C Web Content Accessibility Guidelines 2.0 Level A and AA conformance using HTML4 accessibility techniques, but allows for the use of HTML5 and ARIA techniques.  ARIA landmarks are NOT required, but if used must follow landmark and sectioning element requirements as outlined in HTML5 and ARIA.  The ruleset does NOT require the use of ARIA widget roles for identifying and describing interactive elements (e.g. popup menus, grids, trees, etc...) that cannot be not described by the native semantics of HTML4 and HTML5 form control and link elements.  This means the developer will need to do more manual checking and have a high level understanding of assistive technology to describe widgets typically using offscreen text and/or small images (e.g. with ALT text) to define and manage the roles, properties and states of interactive elements. ",
       "ruleset_description_url" : "",
-      "ruleset_required_rules"    : 82,
+      "ruleset_required_rules"    : 83,
       "ruleset_recommended_rules" : 43,
     "wcag20_level"        : 6,
     "rec_rules_enabled"   : true,
@@ -10578,6 +10798,10 @@
         "required"   : true
     },
       "CONTROL_10" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "CONTROL_11" : {
         "enabled"    : true,
         "required"   : true
     },
@@ -11027,7 +11251,7 @@
       "ruleset_tooltip"         : "WCAG 2.0 Level A and AA requirements using ARIA and HTML5 accessibility features.",
       "ruleset_description"     : "Evaluation of W3C Web Content Accessibility Guidelines 2.0 Level A and AA conformance using HTML5 and ARIA accessibility techniques.  ARIA Landmarks are required for the identification and labeling of the sections of content on a web page. The ruleset requires the use of ARIA widget roles for identifying and describing interactive elements (e.g. popup menus, grids, trees, etc...) that cannot be not described by the native semantics of HTML5 form control and links elements.",
       "ruleset_description_url" : "",
-      "ruleset_required_rules"    : 122,
+      "ruleset_required_rules"    : 123,
       "ruleset_recommended_rules" : 13,
     "wcag20_level"        : 6,
     "rec_rules_enabled"   : true,
@@ -11097,6 +11321,10 @@
         "required"   : true
     },
       "CONTROL_10" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "CONTROL_11" : {
         "enabled"    : true,
         "required"   : true
     },
