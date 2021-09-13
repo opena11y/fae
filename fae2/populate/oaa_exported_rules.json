@@ -856,7 +856,15 @@
             },
             { "type"  : 9,
               "title" : "Accessible Rich Internet Applications (ARIA) 1.0: aria-describedby",
-              "url"   : "https://www.w3.org/TR/wai-aria/#aria-describedby"
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#aria-describedby"
+            },
+            { "type"  : 10,
+              "title" : "University of Washington: Creating Accessible Videos",
+              "url"   : "https://www.washington.edu/accessibility/videos/"
+            },
+            { "type"  : 10,
+              "title" : "WebAIM: Captions, Transcripts, and Audio Descriptions",
+              "url"   : "https://webaim.org/techniques/captions/"
             }
           ],
           "rule_result_messages" : {
@@ -917,7 +925,15 @@
             },
             { "type"  : 9,
               "title" : "Accessible Rich Internet Applications (ARIA) 1.0: aria-describedby",
-              "url"   : "https://www.w3.org/TR/wai-aria/#aria-describedby"
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#aria-describedby"
+            },
+            { "type"  : 10,
+              "title" : "University of Washington: Creating Accessible Videos",
+              "url"   : "https://www.washington.edu/accessibility/videos/"
+            },
+            { "type"  : 10,
+              "title" : "WebAIM: Captions, Transcripts, and Audio Descriptions",
+              "url"   : "https://webaim.org/techniques/captions/"
             }
           ],
           "rule_result_messages" : {
@@ -978,7 +994,15 @@
             },
             { "type"  : 9,
               "title" : "Accessible Rich Internet Applications (ARIA) 1.0: aria-describedby",
-              "url"   : "https://www.w3.org/TR/wai-aria/#aria-describedby"
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#aria-describedby"
+            },
+            { "type"  : 10,
+              "title" : "University of Washington: Creating Accessible Videos",
+              "url"   : "https://www.washington.edu/accessibility/videos/"
+            },
+            { "type"  : 10,
+              "title" : "WebAIM: Captions, Transcripts, and Audio Descriptions",
+              "url"   : "https://webaim.org/techniques/captions/"
             }
           ],
           "rule_result_messages" : {
@@ -1036,6 +1060,14 @@
             { "type"  : 11,
               "title" : "How to meet Success Criterion 1.4.2 Audio Control",
               "url"   : "https://www.w3.org/WAI/WCAG20/quickref/#qr-visual-audio-contrast-dis-audio"
+            },
+            { "type"  : 10,
+              "title" : "University of Washington: Creating Accessible Videos",
+              "url"   : "https://www.washington.edu/accessibility/videos/"
+            },
+            { "type"  : 10,
+              "title" : "WebAIM: Captions, Transcripts, and Audio Descriptions",
+              "url"   : "https://webaim.org/techniques/captions/"
             }
           ],
           "rule_result_messages" : {
@@ -1282,8 +1314,8 @@
               "url"   : "https://www.w3.org/TR/html4/interact/forms.html#edef-LABEL"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: aria-invalid",
-              "url"   : "https://www.w3.org/TR/wai-aria/#aria-invalid"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: aria-invalid",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#aria-invalid"
             },
             { "type"  : 11,
               "title" : "H44: Using label elements to associate text labels with form controls",
@@ -1350,8 +1382,8 @@
               "url"   : "https://www.w3.org/TR/html5/forms.html#attr-input-required"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: aria-required",
-              "url"   : "https://www.w3.org/TR/wai-aria/#aria-required"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: aria-required",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#aria-required"
             },
             { "type"  : 11,
               "title" : "ARIA2: Identifying a required field with the aria-required property",
@@ -1410,8 +1442,8 @@
           ],
           "informational_links" : [
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: aria-required",
-              "url"   : "https://www.w3.org/TR/wai-aria/#aria-required"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: aria-required",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#aria-required"
             }
           ],
           "rule_result_messages" : {
@@ -1461,8 +1493,8 @@
               "url"   : "https://www.w3.org/TR/html4/interact/forms.html#edef-LABEL"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: aria-invalid",
-              "url"   : "https://www.w3.org/TR/wai-aria/#aria-invalid"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: aria-invalid",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#aria-invalid"
             },
             { "type"  : 11,
               "title" : "H44: Using label elements to associate text labels with form controls",
@@ -1901,12 +1933,12 @@
               "url"   : "https://www.w3.org/TR/html4/interact/forms.html#edef-INPUT"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: Checkbox Role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#checkbox"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: Checkbox Role",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#checkbox"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: Radio Role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#radio"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: Radio Role",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#radio"
             },
             { "type"  : 11,
               "title" : "H32: Providing submit buttons",
@@ -1964,12 +1996,12 @@
               "url"   : "https://www.w3.org/TR/html4/interact/forms.html#edef-LABEL"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-label@ attribute",
-              "url"   : "https://www.w3.org/TR/wai-aria/#aria-label"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: The @aria-label@ attribute",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#aria-label"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-labelledby@ attribute",
-              "url"   : "https://www.w3.org/TR/wai-aria/#aria-labelledby"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: The @aria-labelledby@ attribute",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#aria-labelledby"
             },
             { "type"  : 9,
               "title" : "HTML 4.01 Specification: The @title@ attribute",
@@ -2041,12 +2073,12 @@
               "url"   : "https://www.w3.org/TR/html4/interact/forms.html#adef-type-INPUT"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-label@ attribute",
-              "url"   : "https://www.w3.org/TR/wai-aria/#aria-label"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: The @aria-label@ attribute",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#aria-label"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-labelledby@ attribute",
-              "url"   : "https://www.w3.org/TR/wai-aria/#aria-labelledby"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: The @aria-labelledby@ attribute",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#aria-labelledby"
             },
             { "type"  : 9,
               "title" : "HTML 4.01 Specification: The @title@ attribute",
@@ -2110,8 +2142,8 @@
               "url"   : "https://www.w3.org/TR/html4/interact/forms.html#edef-FIELDSET"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @group@ role",
-              "url"   : "https://www.w3.org/TR/wai-aria/roles#group"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: The @group@ role",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/roles#group"
             },
             { "type"  : 11,
               "title" : "W3C WAI Accessibility Tutorials: Forms Concepts",
@@ -2532,12 +2564,12 @@
               "url"   : "https://www.w3.org/TR/html4/interact/forms.html#edef-LABEL"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-label@ attribute",
-              "url"   : "https://www.w3.org/TR/wai-aria/#aria-label"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: The @aria-label@ attribute",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#aria-label"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-labelledby@ attribute",
-              "url"   : "https://www.w3.org/TR/wai-aria/#aria-labelledby"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: The @aria-labelledby@ attribute",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#aria-labelledby"
             },
             { "type"  : 9,
               "title" : "HTML 4.01 Specification: The @title@ attribute",
@@ -2787,20 +2819,28 @@
               "url"   : "https://www.w3.org/TR/html5/embedded-content-0.html#the-img-element"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @img@ role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#img"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: The @img@ role",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#img"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-label@ attribute",
-              "url"   : "https://www.w3.org/TR/wai-aria/#aria-label"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: The @aria-label@ attribute",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#aria-label"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-labelledby@ attribute",
-              "url"   : "https://www.w3.org/TR/wai-aria/#aria-labelledby"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: The @aria-labelledby@ attribute",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#aria-labelledby"
             },
             { "type"  : 9,
               "title" : "HTML 4.01 Specification: 13.8 How to specify alternate text",
               "url"   : "https://www.w3.org/TR/html4/struct/objects.html#adef-alt"
+            },
+            { "type"  : 10,
+              "title" : "Web Accessibility Tutorials : Images",
+              "url"   : "https://www.w3.org/WAI/tutorials/images/"
+            },
+            { "type"  : 10,
+              "title" : "Diagram Center: Image Description",
+              "url"   : "http://diagramcenter.org/making-images-accessible.html"
             },
             { "type"  : 11,
               "title" : "G94: Providing text alternative for non-text content that serves the same purpose and presents the same information as the non-text content",
@@ -2817,10 +2857,6 @@
             { "type"  : 10,
               "title" : "Accessibility at Penn State: Text Equivalents for Images",
               "url"   : "https://accessibility.psu.edu/images/"
-            },
-            { "type"  : 9,
-              "title" : "CSS Backgrounds and Borders Module Level 3: The @background-image@ property",
-              "url"   : "https://www.w3.org/TR/css3-background/#the-background-image"
             }
           ],
           "rule_result_messages" : {
@@ -2883,20 +2919,28 @@
               "url"   : "https://www.w3.org/TR/html5/embedded-content-0.html#the-img-element"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @img@ role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#img"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: The @img@ role",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#img"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-label@ attribute",
-              "url"   : "https://www.w3.org/TR/wai-aria/#aria-label"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: The @aria-label@ attribute",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#aria-label"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-labelledby@ attribute",
-              "url"   : "https://www.w3.org/TR/wai-aria/#aria-labelledby"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: The @aria-labelledby@ attribute",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#aria-labelledby"
             },
             { "type"  : 9,
               "title" : "HTML 4.01 Specification: 13.8 How to specify alternate text",
               "url"   : "https://www.w3.org/TR/html4/struct/objects.html#adef-alt"
+            },
+            { "type"  : 10,
+              "title" : "Web Accessibility Tutorials : Images",
+              "url"   : "https://www.w3.org/WAI/tutorials/images/"
+            },
+            { "type"  : 10,
+              "title" : "Diagram Center: Image Description",
+              "url"   : "http://diagramcenter.org/making-images-accessible.html"
             },
             { "type"  : 11,
               "title" : "G94: Providing text alternative for non-text content that serves the same purpose and presents the same information as the non-text content",
@@ -3092,8 +3136,8 @@
               "url"   : "https://www.w3.org/TR/html5/embedded-content-0.html#the-img-element"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @presentation@ role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#presentation"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: The @presentation@ role",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#presentation"
             },
             { "type"  : 9,
               "title" : "CSS Backgrounds and Borders Module Level 3: The @background-image@ property",
@@ -3156,12 +3200,12 @@
               "url"   : "https://www.w3.org/TR/html5/embedded-content-0.html#the-img-element"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @img@ role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#img"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: The @img@ role",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#img"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-describedby@ attribute",
-              "url"   : "https://www.w3.org/TR/wai-aria/#aria-describedby"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: The @aria-describedby@ attribute",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#aria-describedby"
             },
             { "type"  : 9,
               "title" : "HTML5 Image Description Extension (longdesc)",
@@ -3171,7 +3215,15 @@
               "title" : "HTML 4.01 Specification: 13.8 How to specify alternate text",
               "url"   : "https://www.w3.org/TR/html4/struct/objects.html#adef-alt"
             },
-            { "type"  : 11,
+            { "type"  : 10,
+              "title" : "Web Accessibility Tutorials : Images",
+              "url"   : "https://www.w3.org/WAI/tutorials/images/"
+            },
+            { "type"  : 10,
+              "title" : "Diagram Center: Image Description",
+              "url"   : "http://diagramcenter.org/making-images-accessible.html"
+            },
+            { "type"  : 10,
               "title" : "G94: Providing text alternative for non-text content that serves the same purpose and presents the same information as the non-text content",
               "url"   : "https://www.w3.org/TR/WCAG20-TECHS/G94"
             },
@@ -3395,11 +3447,11 @@
             },
             { "type"  : 9,
               "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: @main@ role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#main"
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#main"
             },
             { "type"  : 9,
               "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: @banner@ role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#banner"
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#banner"
             },
             { "type"  : 10,
               "title" : "W3C Web Accessibility Tutorials: Page Structure",
@@ -3629,7 +3681,7 @@
           "informational_links" : [
             { "type"  : 9,
               "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2 Specification: landmark roles",
-              "url"   : "https://www.w3.org/TR/wai-aria/#landmark"
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#landmark"
             },
             { "type"  : 9,
               "title" : "HTML 4.01 Specification: Headings: The H2 elements",
@@ -3683,7 +3735,7 @@
           "informational_links" : [
             { "type"  : 9,
               "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: contentinfo role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#contentinfo"
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#contentinfo"
             },
             { "type"  : 10,
               "title" : "W3C Web Accessibility Tutorials: Page Structure",
@@ -4101,7 +4153,7 @@
           "informational_links" : [
             { "type"  : 9,
               "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: main role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#main"
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#main"
             },
             { "type"  : 9,
               "title" : "HTML5: The MAIN element",
@@ -4185,7 +4237,7 @@
           "informational_links" : [
             { "type"  : 9,
               "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: Landmark Roles",
-              "url"   : "https://www.w3.org/TR/wai-aria/#landmark_roles"
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#landmark_roles"
             },
             { "type"  : 9,
               "title" : "HTML5: Sections",
@@ -4273,7 +4325,7 @@
           "informational_links" : [
             { "type"  : 9,
               "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: navigation role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#navigation"
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#navigation"
             },
             { "type"  : 9,
               "title" : "HTML5: The NAV element",
@@ -4356,7 +4408,7 @@
           "informational_links" : [
             { "type"  : 9,
               "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: banner role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#banner"
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#banner"
             },
             { "type"  : 9,
               "title" : "HTML5: The FOOTER element",
@@ -4446,7 +4498,7 @@
           "informational_links" : [
             { "type"  : 9,
               "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: banner role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#banner"
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#banner"
             },
             { "type"  : 9,
               "title" : "HTML5: The FOOTER element",
@@ -4530,7 +4582,7 @@
           "informational_links" : [
             { "type"  : 9,
               "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: contentinfo role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#contentinfo"
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#contentinfo"
             },
             { "type"  : 9,
               "title" : "HTML5: The FOOTER element",
@@ -4622,7 +4674,7 @@
           "informational_links" : [
             { "type"  : 9,
               "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: contentinfo role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#contentinfo"
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#contentinfo"
             },
             { "type"  : 9,
               "title" : "HTML5: The FOOTER element",
@@ -4702,7 +4754,7 @@
           "informational_links" : [
             { "type"  : 9,
               "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: banner role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#banner"
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#banner"
             },
             { "type"  : 9,
               "title" : "HTML5: The HEADER element",
@@ -4781,7 +4833,7 @@
           "informational_links" : [
             { "type"  : 9,
               "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: banner role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#banner"
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#banner"
             },
             { "type"  : 9,
               "title" : "HTML5: The HEADER element",
@@ -4805,7 +4857,7 @@
             },
             { "type"  : 9,
               "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: Landmark Roles",
-              "url"   : "https://www.w3.org/TR/wai-aria/#landmark_roles"
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#landmark_roles"
             }
           ],
           "rule_result_messages" : {
@@ -4857,7 +4909,7 @@
           "informational_links" : [
             { "type"  : 9,
               "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: navigation role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#navigation"
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#navigation"
             },
             { "type"  : 9,
               "title" : "HTML5: The NAV element",
@@ -4926,7 +4978,7 @@
           "informational_links" : [
             { "type"  : 9,
               "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: main role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#main"
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#main"
             },
             { "type"  : 9,
               "title" : "HTML5: The MAIN element",
@@ -4998,7 +5050,7 @@
           "informational_links" : [
             { "type"  : 9,
               "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: contentinfo role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#contentinfo"
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#contentinfo"
             },
             { "type"  : 9,
               "title" : "HTML5: The FOOTER element",
@@ -5069,7 +5121,7 @@
           "informational_links" : [
             { "type"  : 9,
               "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: contentinfo role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#contentinfo"
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#contentinfo"
             },
             { "type"  : 9,
               "title" : "HTML5: The FOOTER element",
@@ -5081,7 +5133,7 @@
             },
             { "type"  : 9,
               "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: Landmark Roles",
-              "url"   : "https://www.w3.org/TR/wai-aria/#landmark_roles"
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#landmark_roles"
             },
             { "type"  : 11,
               "title" : "WAI-ARIA Authoring Practices 1.2: Landmarks",
@@ -5148,7 +5200,7 @@
           "informational_links" : [
             { "type"  : 9,
               "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: search role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#search"
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#search"
             },
             { "type"  : 11,
               "title" : "WAI-ARIA Authoring Practices 1.2: Landmarks",
@@ -5229,7 +5281,7 @@
           "informational_links" : [
             { "type"  : 9,
               "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: form role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#form"
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#form"
             },
             { "type"  : 11,
               "title" : "WAI-ARIA Authoring Practices 1.2: Landmarks",
@@ -5309,7 +5361,7 @@
           "informational_links" : [
             { "type"  : 9,
               "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: region role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#region"
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#region"
             },
             { "type"  : 9,
               "title" : "HTML5: The SECTION element",
@@ -5396,7 +5448,7 @@
           "informational_links" : [
             { "type"  : 9,
               "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: region role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#region"
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#region"
             },
             { "type"  : 9,
               "title" : "HTML5: Sections",
@@ -5484,7 +5536,7 @@
           "informational_links" : [
             { "type"  : 9,
               "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: Landmark Roles",
-              "url"   : "https://www.w3.org/TR/wai-aria/#landmark_roles"
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#landmark_roles"
             },
             { "type"  : 9,
               "title" : "HTML5: Sections",
@@ -5560,7 +5612,7 @@
           "informational_links" : [
             { "type"  : 9,
               "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: complementary role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#complementary"
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#complementary"
             },
             { "type"  : 9,
               "title" : "HTML5: The ASIDE element",
@@ -5932,7 +5984,7 @@
           "informational_links" : [
             { "type"  : 9,
               "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.1 Specification: flowto property",
-              "url"   : "https://www.w3.org/TR/wai-aria/states_and_properties#aria-flowto"
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/states_and_properties#aria-flowto"
             }
           ],
           "rule_result_messages" : {
@@ -5985,16 +6037,16 @@
               "url"   : "https://www.w3.org/TR/html4/struct/links.html#edef-A"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-label@ attribute",
-              "url"   : "https://www.w3.org/TR/wai-aria/#aria-label"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: The @aria-label@ attribute",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#aria-label"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-labelledby@ attribute",
-              "url"   : "https://www.w3.org/TR/wai-aria/#aria-labelledby"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: The @aria-labelledby@ attribute",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#aria-labelledby"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-describedby@ attribute",
-              "url"   : "https://www.w3.org/TR/wai-aria/#aria-describedby"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: The @aria-describedby@ attribute",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#aria-describedby"
             },
             { "type"  : 9,
               "title" : "HTML 4.01 Specification: The @title@ attribute",
@@ -6061,16 +6113,16 @@
               "url"   : "https://www.w3.org/TR/html4/struct/links.html#edef-A"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-label@ attribute",
-              "url"   : "https://www.w3.org/TR/wai-aria/#aria-label"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: The @aria-label@ attribute",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#aria-label"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-labelledby@ attribute",
-              "url"   : "https://www.w3.org/TR/wai-aria/#aria-labelledby"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: The @aria-labelledby@ attribute",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#aria-labelledby"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-describedby@ attribute",
-              "url"   : "https://www.w3.org/TR/wai-aria/#aria-describedby"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: The @aria-describedby@ attribute",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#aria-describedby"
             },
             { "type"  : 9,
               "title" : "HTML 4.01 Specification: The @title@ attribute",
@@ -6171,24 +6223,24 @@
               "url"   : "https://www.w3.org/TR/html5/grouping-content.html#the-dd-element"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0; group role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#group"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: group role",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#group"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0; list role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#list"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: list role",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#list"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0; listitem role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#listitem"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: listitem role",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#listitem"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0; aria-posinset",
-              "url"   : "https://www.w3.org/TR/wai-aria/#aria-posinset"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: aria-posinset",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#aria-posinset"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0; aria-setsize",
-              "url"   : "https://www.w3.org/TR/wai-aria/#aria-setsize"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: aria-setsize",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#aria-setsize"
             }
           ],
           "rule_result_messages" : {
@@ -6248,20 +6300,20 @@
               "url"   : "https://www.w3.org/TR/html5/grouping-content.html#the-dl-element"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0; group role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#group"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: group role",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#group"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0; list role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#list"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: list role",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#list"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-label@ attribute",
-              "url"   : "https://www.w3.org/TR/wai-aria/#aria-label"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: The @aria-label@ attribute",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#aria-label"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-labelledby@ attribute",
-              "url"   : "https://www.w3.org/TR/wai-aria/#aria-labelledby"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: The @aria-labelledby@ attribute",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#aria-labelledby"
             },
             { "type"  : 9,
               "title" : "HTML 4.01 Specification: The @title@ attribute",
@@ -6314,8 +6366,8 @@
           ],
           "informational_links" : [
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: Landmark Roles",
-              "url"   : "https://www.w3.org/TR/wai-aria/#landmark_roles"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: Landmark Roles",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#landmark_roles"
             },
             { "type"  : 11,
               "title" : "G63: Providing a site map",
@@ -6386,8 +6438,8 @@
           ],
           "informational_links" : [
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: Landmark Roles",
-              "url"   : "https://www.w3.org/TR/wai-aria/#landmark_roles"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: Landmark Roles",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#landmark_roles"
             },
             { "type"  : 11,
               "title" : "G61: Presenting repeated components in the same relative order each time they appear",
@@ -6440,8 +6492,8 @@
           ],
           "informational_links" : [
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: Landmark Roles",
-              "url"   : "https://www.w3.org/TR/wai-aria/#landmark_roles"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: Landmark Roles",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#landmark_roles"
             },
             { "type"  : 11,
               "title" : "G61: Presenting repeated components in the same relative order each time they appear",
@@ -6499,8 +6551,8 @@
           ],
           "informational_links" : [
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: Landmark Roles",
-              "url"   : "https://www.w3.org/TR/wai-aria/#landmark_roles"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: Landmark Roles",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#landmark_roles"
             },
             { "type"  : 11,
               "title" : "G61: Presenting repeated components in the same relative order each time they appear",
@@ -6553,8 +6605,8 @@
           ],
           "informational_links" : [
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: Landmark Roles",
-              "url"   : "https://www.w3.org/TR/wai-aria/#landmark_roles"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: Landmark Roles",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#landmark_roles"
             },
             { "type"  : 11,
               "title" : "G61: Presenting repeated components in the same relative order each time they appear",
@@ -6711,12 +6763,12 @@
               "url"   : "https://www.w3.org/TR/aria-in-html/"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: main role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#main"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: main role",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#main"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: presentation role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#presentation"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: presentation role",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#presentation"
             }
           ],
           "rule_result_messages" : {
@@ -6770,12 +6822,12 @@
               "url"   : "https://www.w3.org/TR/html5/sections.html#the-body-element"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: document role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#document"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: document role",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#document"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: application role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#application"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: application role",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#application"
             },
             { "type"  : 9,
               "title" : "Using WAI-ARIA in HTML",
@@ -6887,20 +6939,20 @@
               "url"   : "https://www.w3.org/TR/html5/sections.html#the-article-element"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: document role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#document"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: document role",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#document"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: application role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#application"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: application role",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#application"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: main role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#main"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: main role",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#main"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: article role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#article"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: article role",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#article"
             }
           ],
           "rule_result_messages" : {
@@ -6965,52 +7017,52 @@
               "url"   : "https://www.w3.org/TR/html5/sections.html#the-article-element"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: alert role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#alert"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: alert role",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#alert"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: alertdialog role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#alertdialog"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: alertdialog role",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#alertdialog"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: application role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#application"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: application role",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#application"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0:contentinfo role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#contentinfo"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2:contentinfo role",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#contentinfo"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: dialog role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#dialog"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: dialog role",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#dialog"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: document role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#document"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: document role",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#document"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: log role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#log"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: log role",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#log"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: main role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#main"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: main role",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#main"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: marquee role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#marquee"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: marquee role",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#marquee"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: presentation role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#presentation"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: presentation role",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#presentation"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: search role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#search"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: search role",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#search"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: status role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#status"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: status role",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#status"
             }
           ],
           "rule_result_messages" : {
@@ -7062,12 +7114,12 @@
               "url"   : "https://www.w3.org/TR/html5/sections.html#the-nav-element"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: navigation role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#navigation"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: navigation role",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#navigation"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: presentation role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#presentation"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: presentation role",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#presentation"
             }
           ],
           "rule_result_messages" : {
@@ -7124,20 +7176,20 @@
               "url"   : "https://www.w3.org/TR/html5/sections.html#the-aside-element"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: complementary role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#complementary"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: complementary role",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#complementary"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: note role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#note"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: note role",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#note"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: search role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#search"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: search role",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#search"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: presentation role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#presentation"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: presentation role",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#presentation"
             }
           ],
           "rule_result_messages" : {
@@ -7189,12 +7241,12 @@
               "url"   : "https://www.w3.org/TR/html5/grouping-content.html#the-main-element"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: banner role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#banner"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: banner role",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#banner"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: presentation role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#presentation"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: presentation role",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#presentation"
             }
           ],
           "rule_result_messages" : {
@@ -7249,12 +7301,12 @@
               "url"   : "https://www.w3.org/TR/html5/grouping-content.html#the-main-element"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: contentinfo role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#contentinfo"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: contentinfo role",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#contentinfo"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: presentation role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#presentation"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: presentation role",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#presentation"
             }
           ],
           "rule_result_messages" : {
@@ -7308,16 +7360,16 @@
               "url"   : "https://www.w3.org/TR/html5/grouping-content.html#the-main-element"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: heading role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#heading"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: heading role",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#heading"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: tab role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#tab"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: tab role",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#tab"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: presentation role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#presentation"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: presentation role",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#presentation"
             }
           ],
           "rule_result_messages" : {
@@ -7693,12 +7745,12 @@
               "url"   : "https://www.w3.org/TR/html4/struct/tables.html#adef-summary"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-label@ attribute",
-              "url"   : "https://www.w3.org/TR/wai-aria/#aria-label"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: The @aria-label@ attribute",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#aria-label"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-labelledby@ attribute",
-              "url"   : "https://www.w3.org/TR/wai-aria/#aria-labelledby"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: The @aria-labelledby@ attribute",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#aria-labelledby"
             },
             { "type"  : 9,
               "title" : "HTML 4.01 Specification: The @title@ attribute",
@@ -7780,8 +7832,8 @@
               "url"   : "https://www.w3.org/TR/html4/struct/tables.html#adef-summary"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-describedby@ attribute",
-              "url"   : "https://www.w3.org/TR/wai-aria/#aria-describedby"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: The @aria-describedby@ attribute",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#aria-describedby"
             },
             { "type"  : 9,
               "title" : "HTML 4.01 Specification: The @title@ attribute",
@@ -7856,12 +7908,12 @@
               "url"   : "https://www.w3.org/TR/html4/struct/tables.html#adef-summary"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-label@ attribute",
-              "url"   : "https://www.w3.org/TR/wai-aria/#aria-label"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: The @aria-label@ attribute",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#aria-label"
             },
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: The @aria-labelledby@ attribute",
-              "url"   : "https://www.w3.org/TR/wai-aria/#aria-labelledby"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: The @aria-labelledby@ attribute",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#aria-labelledby"
             },
             { "type"  : 9,
               "title" : "HTML 4.01 Specification: The @title@ attribute",
@@ -7940,8 +7992,8 @@
           ],
           "informational_links" : [
             { "type"  : 9,
-              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.0: presentation role",
-              "url"   : "https://www.w3.org/TR/wai-aria/#presentation"
+              "title" : "Accessible Rich Internet Applications (WAI-ARIA) 1.2: presentation role",
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#presentation"
             },
             { "type"  : 9,
               "title" : "HTML 4.01 Specification: 11.2.6 Table cells: The TH and TD elements",
@@ -8483,7 +8535,15 @@
             },
             { "type"  : 9,
               "title" : "Accessible Rich Internet Applications (ARIA) 1.0: aria-describedby",
-              "url"   : "https://www.w3.org/TR/wai-aria/#aria-describedby"
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#aria-describedby"
+            },
+            { "type"  : 10,
+              "title" : "University of Washington: Creating Accessible Videos",
+              "url"   : "https://www.washington.edu/accessibility/videos/"
+            },
+            { "type"  : 10,
+              "title" : "WebAIM: Captions, Transcripts, and Audio Descriptions",
+              "url"   : "https://webaim.org/techniques/captions/"
             }
           ],
           "rule_result_messages" : {
@@ -8540,7 +8600,15 @@
             },
             { "type"  : 9,
               "title" : "Accessible Rich Internet Applications (ARIA) 1.0: aria-describedby",
-              "url"   : "https://www.w3.org/TR/wai-aria/#aria-describedby"
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#aria-describedby"
+            },
+            { "type"  : 10,
+              "title" : "University of Washington: Creating Accessible Videos",
+              "url"   : "https://www.washington.edu/accessibility/videos/"
+            },
+            { "type"  : 10,
+              "title" : "WebAIM: Captions, Transcripts, and Audio Descriptions",
+              "url"   : "https://webaim.org/techniques/captions/"
             }
           ],
           "rule_result_messages" : {
@@ -8598,7 +8666,15 @@
             },
             { "type"  : 9,
               "title" : "Accessible Rich Internet Applications (ARIA) 1.0: aria-describedby",
-              "url"   : "https://www.w3.org/TR/wai-aria/#aria-describedby"
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#aria-describedby"
+            },
+            { "type"  : 10,
+              "title" : "University of Washington: Creating Accessible Videos",
+              "url"   : "https://www.washington.edu/accessibility/videos/"
+            },
+            { "type"  : 10,
+              "title" : "WebAIM: Captions, Transcripts, and Audio Descriptions",
+              "url"   : "https://webaim.org/techniques/captions/"
             }
           ],
           "rule_result_messages" : {
@@ -8658,6 +8734,14 @@
             { "type"  : 9,
               "title" : "HMTL 5: The track element",
               "url"   : "https://www.w3.org/TR/html5/embedded-content-0.html#the-track-element"
+            },
+            { "type"  : 10,
+              "title" : "University of Washington: Creating Accessible Videos",
+              "url"   : "https://www.washington.edu/accessibility/videos/"
+            },
+            { "type"  : 10,
+              "title" : "WebAIM: Captions, Transcripts, and Audio Descriptions",
+              "url"   : "https://webaim.org/techniques/captions/"
             }
           ],
           "rule_result_messages" : {
@@ -8714,6 +8798,14 @@
             { "type"  : 9,
               "title" : "HMTL 5: The object element",
               "url"   : "https://www.w3.org/TR/html5/embedded-content-0.html#the-object-element"
+            },
+            { "type"  : 10,
+              "title" : "University of Washington: Creating Accessible Videos",
+              "url"   : "https://www.washington.edu/accessibility/videos/"
+            },
+            { "type"  : 10,
+              "title" : "WebAIM: Captions, Transcripts, and Audio Descriptions",
+              "url"   : "https://webaim.org/techniques/captions/"
             }
           ],
           "rule_result_messages" : {
@@ -8767,6 +8859,14 @@
             { "type"  : 9,
               "title" : "HMTL 5: The embed element",
               "url"   : "https://www.w3.org/TR/html5/embedded-content-0.html#the-embed-element"
+            },
+            { "type"  : 10,
+              "title" : "University of Washington: Creating Accessible Videos",
+              "url"   : "https://www.washington.edu/accessibility/videos/"
+            },
+            { "type"  : 10,
+              "title" : "WebAIM: Captions, Transcripts, and Audio Descriptions",
+              "url"   : "https://webaim.org/techniques/captions/"
             }
           ],
           "rule_result_messages" : {
@@ -8826,7 +8926,15 @@
             },
             { "type"  : 9,
               "title" : "Accessible Rich Internet Applications (ARIA) 1.0: aria-describedby",
-              "url"   : "https://www.w3.org/TR/wai-aria/#aria-describedby"
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#aria-describedby"
+            },
+            { "type"  : 10,
+              "title" : "University of Washington: Creating Accessible Videos",
+              "url"   : "https://www.washington.edu/accessibility/videos/"
+            },
+            { "type"  : 10,
+              "title" : "WebAIM: Captions, Transcripts, and Audio Descriptions",
+              "url"   : "https://webaim.org/techniques/captions/"
             }
           ],
           "rule_result_messages" : {
@@ -8886,7 +8994,15 @@
             },
             { "type"  : 9,
               "title" : "Accessible Rich Internet Applications (ARIA) 1.0: aria-describedby",
-              "url"   : "https://www.w3.org/TR/wai-aria/#aria-describedby"
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#aria-describedby"
+            },
+            { "type"  : 10,
+              "title" : "University of Washington: Creating Accessible Videos",
+              "url"   : "https://www.washington.edu/accessibility/videos/"
+            },
+            { "type"  : 10,
+              "title" : "WebAIM: Captions, Transcripts, and Audio Descriptions",
+              "url"   : "https://webaim.org/techniques/captions/"
             }
           ],
           "rule_result_messages" : {
@@ -8943,7 +9059,15 @@
             },
             { "type"  : 9,
               "title" : "Accessible Rich Internet Applications (ARIA) 1.0: aria-describedby",
-              "url"   : "https://www.w3.org/TR/wai-aria/#aria-describedby"
+              "url"   : "https://www.w3.org/TR/wai-aria-1.2/#aria-describedby"
+            },
+            { "type"  : 10,
+              "title" : "University of Washington: Creating Accessible Videos",
+              "url"   : "https://www.washington.edu/accessibility/videos/"
+            },
+            { "type"  : 10,
+              "title" : "WebAIM: Captions, Transcripts, and Audio Descriptions",
+              "url"   : "https://webaim.org/techniques/captions/"
             }
           ],
           "rule_result_messages" : {
