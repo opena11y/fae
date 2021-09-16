@@ -5,6 +5,7 @@ Development is primarily supported by the [University of Illinois at Urbana-Cham
 ## Version 2.2
 * Updated OpenAjax library to support W3C ARIA 1.2 and ARIA in HTML requirements.
 * Updated to support Django 2.2.24.
+* Updated HTMLUnit to 2.52.
 
 ## Version 2.1
 * Updated to support Python 3.6.
