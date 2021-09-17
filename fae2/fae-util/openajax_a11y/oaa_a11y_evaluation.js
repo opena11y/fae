@@ -38686,8 +38686,6 @@ OpenAjax.a11y.Rule.prototype.toJSON = function (prefix, required) {
 
   var rule_nls = this.rule_nls;
 
-  OpenAjax.a11y.logger.debug("[RULE] Exporting rule: " + this.rule_id);
-
   json += prefix + "  {\n";
 
   stringItem(    'rule_id',             this.rule_id);
@@ -38984,8 +38982,6 @@ OpenAjax.a11y.RuleManager = function () {
         if (typeof prefix !== 'string') prefix = "";
 
         var json = "";
-
-        OpenAjax.a11y.logger.debug("[RuleManager] Number of rules: " + rules.length);
 
         json += prefix + "[\n";
 

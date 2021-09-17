@@ -10220,7 +10220,7 @@
           "rule_group_nls" : "Group 2",
           "wcag_primary" : "4.1.1",
           "wcag_related" : ["4.1.2"],
-          "last_updated" : "2021-08-12",
+          "last_updated" : "2021-09-12",
           "target_resources" : ["Custom elements using web component APIs"],
           "language_dependency" : "",
           "primary_property" : "",
