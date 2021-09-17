@@ -31,7 +31,7 @@ from .models import SuccessCriterionRuleMapping
 from .models import NodeResultMessage
 
 class RuleAdmin(admin.ModelAdmin):
-    list_display = ('nls_rule_id', 'slug', 'summary', 'wcag_primary', 'category', 'scope', 'group')
+    list_display = ('nls_rule_id', 'slug', 'summary', 'wcag_primary', 'category', 'scope', 'updated_date')
     list_filter = ('wcag_primary', 'category', 'scope', 'group')
     exclude = ('purpose_1_html', 'purpose_2_html', 'purpose_3_html', 'purpose_4_html', 'definition_html', 'summary_html', 'target_resource_desc_html')
     

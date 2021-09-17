@@ -10229,7 +10229,7 @@
           "nls_rule_id" : "Widget 16",
           "definition" : "Custom elements using web components API %s be manually checked for accessibility requirements.",
           "summary" : "Custom element manual check.",
-          "target_resource_desc" : "Custom elements.",
+          "target_resource_desc" : "Custom elements using web components API.",
           "purpose" : [
           "Custom elements using the web compnents API technology is used to create user interface components by packaging HTML, CSS and Javascript in a single loadable file using a DOM template.",
           "Custom elements cannot be analyzed by the evaluation library because they have their own isolated \"shadow\" DOM that cannot be accessed by the library.",
