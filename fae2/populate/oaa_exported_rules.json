@@ -10227,9 +10227,9 @@
           "resource_properties" : [],
           "validate" : "function (dom_cache, rule_result) {\r\n\r\n    var VISIBILITY  = OpenAjax.a11y.VISIBILITY;\r\n    var TEST_RESULT = OpenAjax.a11y.TEST_RESULT;\r\n\r\n    var dom_elements     = dom_cache.element_cache.dom_elements;\r\n    var dom_elements_len = dom_elements.length;\r\n\r\n    for (var i = 0; i < dom_elements_len; i++) {\r\n      var de = dom_elements[i];\r\n      var style = de.computed_style;\r\n\r\n      if (de.tag_name.indexOf('-') >= 0) {\r\n        if (style.is_visible_to_at == VISIBILITY.VISIBLE || style.is_visible_onscreen == VISIBILITY.VISIBLE ) {\r\n          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, de, 'ELEMENT_MC_1', [de.tag_name]);\r\n        } else {\r\n        rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.tag_name]);\r\n        }\r\n      }\r\n    }\r\n  }",
           "nls_rule_id" : "Widget 16",
-          "definition" : "Custom elements using web components API %s be manually checked for accessibility requirements.",
+          "definition" : "Custom elements (HTML elements created using the Web Components APIs) %s be manually checked for accessibility requirements.",
           "summary" : "Custom element requires manual check.",
-          "target_resource_desc" : "Custom elements using web components API.",
+          "target_resource_desc" : "Custom elements created using web components API.",
           "purpose" : [
           "Custom elements, defined using the Web Components APIs of HTML 5, are typically used for creating interactive widgets on a web page. A custom element effectively creates a self-scoped package of HTML, CSS and JavaScript that uses the Shadow DOM to insulate itself from other CSS and JavaScript defined by the parent document.",
           "Because custom elements use the Shadow DOM and thus are not part of the legacy DOM, they cannot be accessed by the evaluation library for programmatic checking of accessibility features.",
@@ -10269,8 +10269,8 @@
           "rule_result_messages" : {
            "MANUAL_CHECK_S": "Verify the custom element meets WCAG accessibility requirments.",
           "MANUAL_CHECK_P": "Verify the %N_MC custom elements meet WCAG accessibility requirments.",
-          "HIDDEN_S": "A custom element is hidden and was not evaluated.",
-          "HIDDEN_P": "%N_H custom elements are hidden and were not evaluated.",
+          "HIDDEN_S": "A custom element is hidden and only needs to be checked if has features that become visible need to be checked for accessbility.",
+          "HIDDEN_P": "%N_H custom elements are hidden and only the custom elements with features that may become visible need to be checked for accessibility.",
           "NOT_APPLICABLE": "No custom elements found on the page."
           },
           "node_result_messages" : {
