@@ -8445,7 +8445,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
                 url:   'https://www.w3.org/TR/wai-aria-1.2/#widget_roles'
               },
               { type:  OpenAjax.a11y.REFERENCES.SPECIFICATION,
-                title: 'ARIA in HTML Specification',
+                title: 'ARIA in HTML',
                 url:   'https://www.w3.org/TR/html-aria/'
               },
               { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
@@ -8477,7 +8477,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
             PURPOSE: [
               'Custom elements, defined using the Web Components APIs of HTML 5, are typically used for creating interactive widgets on a web page. A custom element effectively creates a self-scoped package of HTML, CSS and JavaScript that uses the Shadow DOM to insulate itself from other CSS and JavaScript defined by the parent document.',
               'Because custom elements use the Shadow DOM and thus are not part of the legacy DOM, they cannot be accessed by the evaluation library for programmatic checking of accessibility features.',
-              'The evaluation library is able to report the presence of custom elements, but can only recommend that they be manually checked for accessibility, possible by using other DOM inspection tools to identify accessibility issues and features.'
+              'The evaluation library is able to report the presence of custom elements, but can only recommend that they be manually checked for accessibility, possibly by using other DOM inspection tools to identify accessibility issues and features.'
             ],
             TECHNIQUES: [
               'In evaluating custom elements that render as interactive widgets, the most important manual checks involve keyboard navigation and operability, and focus styling, which are related to the various ways a user may interact with the widget.',
