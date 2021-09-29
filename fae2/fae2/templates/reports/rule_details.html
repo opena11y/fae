@@ -5,6 +5,10 @@
     <table class="details table table-striped table-hover rule" aria-labelledby="id_rule_label">
         <tbody>
             <tr>
+                <th>Rule ID</th>
+                <td class="rule">{{ rule.nls_rule_id }}</td>
+            </tr>
+            <tr>
                 <th>Definition</th>
                 <td class="rule">{{ rule.definition_html|safe }}</td>
             </tr>

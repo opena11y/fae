@@ -21,18 +21,22 @@ Version History
     <tbody>
      <tr>
         <td class="text">2.2</td>
-        <td class="text">2021-08-23</td>
+        <td class="text">2021-09-29</td>
         <td class="text">
           <ul>
             <li>Updated Django 2.2.24.</li>
-            <li>Update OpenAjax evaluation library to support ARIA 1.2 and ARIA in HTML requirements, which included updating and adding the following rules:
+            <li>Update evalution library to Version 1.2 to support W3C <a href="https://www.w3.org/TR/wai-aria-1.2/">ARIA 1.2</a> and <a href="https://www.w3.org/TR/html-aria/">ARIA in HTML</a> Specifications, which includes:
               <ul>
                 <li>Updated Widget rule references to use ARIA 1.2 spec, ARIA Authoring Practices, MDN resources for ARIA and Web Foundation references for ARIA.</li>
+                <li>Updated references to remove references to iCITA website.</li>
+                <li>Updated references to include W3C WAI Web Accessibility Tutorials.</li>
+                <li>Updated regression tests based on ARIA 1.2 changes</li>
+                <li>Fixed bugs in CONTROL 11 rule on unique names for submit and reset buttons when there are multiple forms.</li>
                 <li>Fixed bugs in WIDGET 7 rule on owned elements.</li>
                 <li>Fixed bugs in WIDGET 8 rule related to being owned by another element.</li>
                 <li>Fixed bugs in WIDGET 9 rule related to having required parent roles.</li>
-                <li>Fixed bugs in WIDGET 10 related to range control attributes.</li>
-                <li>Changed WIDGET 13 to test for name prohibitied requirement (from prohibiting any ARIA markup and was not included in any ruleset).</li>
+                <li>Fixed bugs in WIDGET 10 rule related to range control attributes.</li>
+                <li>Changed WIDGET 13 to test for name prohibitied requirement (from prohibiting any ARIA markup and this original rule was not included in any rulesets).</li>
                 <li>Added HTML 3 rule to support W3C ARIA in HTML specification.</li>
                 <li>Added WIDGET 15 rule to test for use of deprecated ARIA states and properties on selected roles.</li>
                 <li>Added WIDGET 16 rule to raise awareness of web components being user on a page and the need for manual checking.</li>

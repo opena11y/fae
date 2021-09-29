@@ -5,7 +5,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -17,6 +17,7 @@
 /*
  * Support IE and Node constant
  */
+
 
 try {
     if (Node.ELEMENT_NODE != 1) {
@@ -51,12 +52,14 @@ catch(e) {
 
 var OpenAjax = OpenAjax || {};
 
+// export { OpenAjax };
+
 /**
  * @namespace OpenAjax.a11y
  */
 
 OpenAjax.a11y = OpenAjax.a11y || {};
-OpenAjax.a11y.VERSION = "1.1.2";
+OpenAjax.a11y.VERSION = "1.2.0";
 
 /**
  * @method getVersion
@@ -1045,7 +1048,7 @@ OpenAjax.a11y.LANGUAGE_CODES = OpenAjax.a11y.LANGUAGE_CODES || {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -1054,6 +1057,7 @@ OpenAjax.a11y.LANGUAGE_CODES = OpenAjax.a11y.LANGUAGE_CODES || {
  * limitations under the License.
  */
 
+// import {OpenAjax} from '../openajax_a11y_constants.js';
 
 /* ---------------------------------------------------------------- */
 /*              ARIA Defintions and Validation Methods              */
@@ -1063,195 +1067,511 @@ OpenAjax.a11y.LANGUAGE_CODES = OpenAjax.a11y.LANGUAGE_CODES || {
 if (typeof OpenAjax.a11y.aria == "undefined") {
   OpenAjax.a11y.aria = {
 
-    /*
-     * array of WAI-ARIA global states and properties
-     * @see http://www.w3.org/TR/wai-aria/#global_states
-     */
-    globalProperties : [
-            "aria-atomic",
-            "aria-busy",
-            "aria-controls",
-            "aria-current",
-            "aria-describedby",
-            "aria-disabled",
-            "aria-dropeffect",
-            "aria-flowto",
-            "aria-grabbed",
-            "aria-haspopup",
-            "aria-hidden",
-            "aria-invalid",
-            "aria-label",
-            "aria-labelledby",
-            "aria-live",
-            "aria-owns",
-            "aria-relevant"
-        ],
-
         /*
          * XSD data types for all WAI-ARIA properties
          * along with valid values when the data type is NMTOKEN
          */
-        propertyDataTypes : {
-           "aria-activedescendant" : {
-             type : "idref"
-           },
-           "aria-atomic" : {
-             type : "boolean"
-           },
-           "aria-autocomplete" : {
-             type : "nmtoken",
-             values : ["inline", "list", "both", "none"]
-           },
-           "aria-busy" : {
-             type : "boolean"
-           },
-           "aria-checked" : {
-             type : "nmtoken",
-             values : ["true", "false", "mixed", "undefined"]
-           },
-           "aria-colcount" : {
-             type : "number"
-           },
-           "aria-colindex" : {
-             type : "positive"
-           },
-           "aria-colspan" : {
-             type : "positive"
-           },
-           "aria-controls" : {
-             type : "idrefs"
-           },
-           "aria-current" : {
-             type : "nmtoken",
-             values : ["page", "step", "location", "date", "time", "true", "false"]
-           },
-           "aria-describedby" : {
-             type : "idrefs"
-           },
-           "aria-details" : {
-             type : "idref"
-           },
-           "aria-disabled" : {
-             type : "boolean"
-           },
-           "aria-dropeffect" : {
-             type : "nmtokens",
-             values : ["copy", "move", "link", "execute", "popup", "none"]
-           },
-           "aria-errormessage" : {
-             type : "idref"
-           },
-           "aria-expanded" : {
-             type : "nmtoken",
-             values : ["true", "false", "undefined"]
-           },
-           "aria-flowto" : {
-             type : "idrefs"
-           },
-           "aria-grabbed" : {
-             type : "nmtoken",
-             values : ["true", "false", "undefined"]
-           },
-           "aria-haspopup" : {
-             type : "boolean"
-           },
-           "aria-hidden" : {
-             type : "boolean"
-           },
-           "aria-invalid" : {
-             type : "nmtoken",
-             values : ["true", "false", "spelling", "grammar"]
-           },
-           "aria-label" : {
-             type : "string"
-           },
-           "aria-labelledby" : {
-             type : "idrefs"
-           },
-           "aria-level" : {
-             type : "integer"
-           },
-           "aria-live" : {
-             type : "nmtoken",
-             values : ["off", "polite", "assertive"]
-           },
-           "aria-modal" : {
-             type : "boolean"
-           },
-           "aria-multiline" : {
-             type : "boolean"
-           },
-           "aria-multiselectable" : {
-             type : "boolean"
-           },
-           "aria-orientation" : {
-             type : "nmtoken",
-             values : ["vertical", "horizontal"]
-           },
-           "aria-owns" : {
-             type : "idrefs"
-           },
-           "aria-placeholder" : {
-             type : "string"
-           },
-           "aria-posinset" : {
-             type : "integer"
-           },
-           "aria-pressed" : {
-             type : "nmtoken",
-             values : ["true", "false", "mixed", "undefined"]
-           },
-           "aria-readonly" : {
-             type : "boolean"
-           },
-           "aria-relevant" : {
-             type : "nmtokens",
-             values : ["additions", "removals", "text", "all", "additions text"]
-           },
-           "aria-required" : {
-             type : "boolean"
-           },
-           "aria-roledescription" : {
-             type : "string"
-           },
-           "aria-rowcount" : {
-             type : "number"
-           },
-           "aria-rowindex" : {
-             type : "positive"
-           },
-           "aria-rowspan" : {
-             type : "positive"
-           },
-           "aria-selected" : {
-             type : "nmtoken",
-             values : ["true", "false", "undefined"]
-           },
-           "aria-setsize" : {
-             type : "integer"
-           },
-           "aria-sort" : {
-             type : "nmtoken",
-             values : ["ascending", "descending", "other", "none"]
-           },
-           "aria-valuemax" : {
-             type : "number"
-           },
-           "aria-valuemin" : {
-             type : "number"
-           },
-           "aria-valuenow" : {
-             type : "number"
-           },
-           "aria-valuetext" : {
-             type : "string"
-           }
+    "propertyDataTypes": {
+        "aria-activedescendant": {
+            "propType": "property",
+            "type": "idref",
+            "values": [],
+            "defaultValue": "",
+            "deprecated": false,
+            "idlAttribute": ""
         },
-
+        "aria-atomic": {
+            "propType": "property",
+            "type": "boolean",
+            "values": [
+                "false",
+                "true"
+            ],
+            "defaultValue": "false",
+            "deprecated": false,
+            "idlAttribute": "ariaAtomic"
+        },
+        "aria-autocomplete": {
+            "propType": "property",
+            "type": "nmtoken",
+            "values": [
+                "inline",
+                "list",
+                "both",
+                "none"
+            ],
+            "defaultValue": "none",
+            "deprecated": false,
+            "idlAttribute": "ariaAutoComplete"
+        },
+        "aria-busy": {
+            "propType": "state",
+            "type": "boolean",
+            "values": [
+                "false",
+                "true"
+            ],
+            "defaultValue": "false",
+            "deprecated": false,
+            "idlAttribute": "ariaBusy"
+        },
+        "aria-checked": {
+            "propType": "state",
+            "type": "tristate",
+            "values": [
+                "false",
+                "mixed",
+                "true",
+                "undefined"
+            ],
+            "defaultValue": "undefined",
+            "deprecated": false,
+            "idlAttribute": "ariaChecked"
+        },
+        "aria-colcount": {
+            "propType": "property",
+            "type": "integer",
+            "allowUndeterminedValue": true,
+            "values": [],
+            "defaultValue": "",
+            "deprecated": false,
+            "idlAttribute": "ariaColCount"
+        },
+        "aria-colindex": {
+            "propType": "property",
+            "type": "integer",
+            "allowUndeterminedValue": false,
+            "values": [],
+            "defaultValue": "",
+            "deprecated": false,
+            "idlAttribute": "ariaColIndex"
+        },
+        "aria-colspan": {
+            "propType": "property",
+            "type": "integer",
+            "allowUndeterminedValue": false,
+            "values": [],
+            "defaultValue": "",
+            "deprecated": false,
+            "idlAttribute": "ariaColSpan"
+        },
+        "aria-controls": {
+            "propType": "property",
+            "type": "idrefs",
+            "values": [],
+            "defaultValue": "",
+            "deprecated": false,
+            "idlAttribute": ""
+        },
+        "aria-current": {
+            "propType": "state",
+            "type": "nmtoken",
+            "values": [
+                "page",
+                "step",
+                "location",
+                "date",
+                "time",
+                "true",
+                "false"
+            ],
+            "defaultValue": "false",
+            "deprecated": false,
+            "idlAttribute": "ariaCurrent"
+        },
+        "aria-describedby": {
+            "propType": "property",
+            "type": "idrefs",
+            "values": [],
+            "defaultValue": "",
+            "deprecated": false,
+            "idlAttribute": ""
+        },
+        "aria-details": {
+            "propType": "property",
+            "type": "idref",
+            "values": [],
+            "defaultValue": "",
+            "deprecated": false,
+            "idlAttribute": ""
+        },
+        "aria-disabled": {
+            "propType": "state",
+            "type": "boolean",
+            "values": [
+                "false",
+                "true"
+            ],
+            "defaultValue": "false",
+            "deprecated": false,
+            "idlAttribute": "ariaDisabled"
+        },
+        "aria-dropeffect": {
+            "propType": "property",
+            "type": "nmtokens",
+            "values": [
+                "copy",
+                "execute",
+                "link",
+                "move",
+                "none",
+                "popup"
+            ],
+            "defaultValue": "none",
+            "deprecated": true,
+            "idlAttribute": ""
+        },
+        "aria-errormessage": {
+            "propType": "property",
+            "type": "idref",
+            "values": [],
+            "defaultValue": "",
+            "deprecated": false,
+            "idlAttribute": ""
+        },
+        "aria-expanded": {
+            "propType": "state",
+            "type": "nmtoken",
+            "values": [
+                "false",
+                "true",
+                "undefined"
+            ],
+            "defaultValue": "undefined",
+            "deprecated": false,
+            "idlAttribute": "ariaExpanded"
+        },
+        "aria-flowto": {
+            "propType": "property",
+            "type": "idrefs",
+            "values": [],
+            "defaultValue": "",
+            "deprecated": false,
+            "idlAttribute": ""
+        },
+        "aria-grabbed": {
+            "propType": "state",
+            "type": "nmtoken",
+            "values": [
+                "false",
+                "true",
+                "undefined"
+            ],
+            "defaultValue": "undefined",
+            "deprecated": true,
+            "idlAttribute": ""
+        },
+        "aria-haspopup": {
+            "propType": "property",
+            "type": "nmtoken",
+            "values": [
+                "false",
+                "true",
+                "menu",
+                "listbox",
+                "tree",
+                "grid",
+                "dialog"
+            ],
+            "defaultValue": "false",
+            "deprecated": false,
+            "idlAttribute": "ariaHasPopup"
+        },
+        "aria-hidden": {
+            "propType": "state",
+            "type": "nmtoken",
+            "values": [
+                "false",
+                "true",
+                "undefined"
+            ],
+            "defaultValue": "undefined",
+            "deprecated": false,
+            "idlAttribute": "ariaHidden"
+        },
+        "aria-invalid": {
+            "propType": "state",
+            "type": "nmtoken",
+            "values": [
+                "grammar",
+                "false",
+                "spelling",
+                "true"
+            ],
+            "defaultValue": "false",
+            "deprecated": false,
+            "idlAttribute": "ariaInvalid"
+        },
+        "aria-keyshortcuts": {
+            "propType": "property",
+            "type": "string",
+            "values": [],
+            "defaultValue": "",
+            "deprecated": false,
+            "idlAttribute": "ariaKeyShortcuts"
+        },
+        "aria-label": {
+            "propType": "property",
+            "type": "string",
+            "values": [],
+            "defaultValue": "",
+            "deprecated": false,
+            "idlAttribute": "ariaLabel"
+        },
+        "aria-labelledby": {
+            "propType": "property",
+            "type": "idrefs",
+            "values": [],
+            "defaultValue": "",
+            "deprecated": false,
+            "idlAttribute": ""
+        },
+        "aria-level": {
+            "propType": "property",
+            "type": "integer",
+            "allowUndeterminedValue": false,
+            "values": [],
+            "defaultValue": "",
+            "deprecated": false,
+            "idlAttribute": "ariaLevel"
+        },
+        "aria-live": {
+            "propType": "property",
+            "type": "nmtoken",
+            "values": [
+                "assertive",
+                "off",
+                "polite"
+            ],
+            "defaultValue": "off",
+            "deprecated": false,
+            "idlAttribute": "ariaLive"
+        },
+        "aria-modal": {
+            "propType": "property",
+            "type": "boolean",
+            "values": [
+                "false",
+                "true"
+            ],
+            "defaultValue": "false",
+            "deprecated": false,
+            "idlAttribute": "ariaModal"
+        },
+        "aria-multiline": {
+            "propType": "property",
+            "type": "boolean",
+            "values": [
+                "false",
+                "true"
+            ],
+            "defaultValue": "false",
+            "deprecated": false,
+            "idlAttribute": "ariaMultiLine"
+        },
+        "aria-multiselectable": {
+            "propType": "property",
+            "type": "boolean",
+            "values": [
+                "false",
+                "true"
+            ],
+            "defaultValue": "false",
+            "deprecated": false,
+            "idlAttribute": "ariaMultiSelectable"
+        },
+        "aria-orientation": {
+            "propType": "property",
+            "type": "nmtoken",
+            "values": [
+                "horizontal",
+                "undefined",
+                "vertical"
+            ],
+            "defaultValue": "undefined",
+            "deprecated": false,
+            "idlAttribute": "ariaOrientation"
+        },
+        "aria-owns": {
+            "propType": "property",
+            "type": "idrefs",
+            "values": [],
+            "defaultValue": "",
+            "deprecated": false,
+            "idlAttribute": ""
+        },
+        "aria-placeholder": {
+            "propType": "property",
+            "type": "string",
+            "values": [],
+            "defaultValue": "",
+            "deprecated": false,
+            "idlAttribute": "ariaPlaceholder"
+        },
+        "aria-posinset": {
+            "propType": "property",
+            "type": "integer",
+            "allowUndeterminedValue": false,
+            "values": [],
+            "defaultValue": "",
+            "deprecated": false,
+            "idlAttribute": "ariaPosInSet"
+        },
+        "aria-pressed": {
+            "propType": "state",
+            "type": "tristate",
+            "values": [
+                "false",
+                "mixed",
+                "true",
+                "undefined"
+            ],
+            "defaultValue": "undefined",
+            "deprecated": false,
+            "idlAttribute": "ariaPressed"
+        },
+        "aria-readonly": {
+            "propType": "property",
+            "type": "boolean",
+            "values": [
+                "false",
+                "true"
+            ],
+            "defaultValue": "false",
+            "deprecated": false,
+            "idlAttribute": "ariaReadOnly"
+        },
+        "aria-relevant": {
+            "propType": "property",
+            "type": "nmtokens",
+            "values": [
+                "additions",
+                "additions",
+                "all",
+                "removals",
+                "text"
+            ],
+            "defaultValue": "additions",
+            "deprecated": false,
+            "idlAttribute": ""
+        },
+        "aria-required": {
+            "propType": "property",
+            "type": "boolean",
+            "values": [
+                "false",
+                "true"
+            ],
+            "defaultValue": "false",
+            "deprecated": false,
+            "idlAttribute": "ariaRequired"
+        },
+        "aria-roledescription": {
+            "propType": "property",
+            "type": "string",
+            "values": [],
+            "defaultValue": "",
+            "deprecated": false,
+            "idlAttribute": "ariaRoleDescription"
+        },
+        "aria-rowcount": {
+            "propType": "property",
+            "type": "integer",
+            "allowUndeterminedValue": true,
+            "values": [],
+            "defaultValue": "",
+            "deprecated": false,
+            "idlAttribute": "ariaRowCount"
+        },
+        "aria-rowindex": {
+            "propType": "property",
+            "type": "integer",
+            "allowUndeterminedValue": false,
+            "values": [],
+            "defaultValue": "",
+            "deprecated": false,
+            "idlAttribute": "ariaRowIndex"
+        },
+        "aria-rowspan": {
+            "propType": "property",
+            "type": "integer",
+            "allowUndeterminedValue": false,
+            "values": [],
+            "defaultValue": "",
+            "deprecated": false,
+            "idlAttribute": "ariaRowSpan"
+        },
+        "aria-selected": {
+            "propType": "state",
+            "type": "nmtoken",
+            "values": [
+                "false",
+                "true",
+                "undefined"
+            ],
+            "defaultValue": "undefined",
+            "deprecated": false,
+            "idlAttribute": "ariaSelected"
+        },
+        "aria-setsize": {
+            "propType": "property",
+            "type": "integer",
+            "allowUndeterminedValue": true,
+            "values": [],
+            "defaultValue": "",
+            "deprecated": false,
+            "idlAttribute": "ariaSetSize"
+        },
+        "aria-sort": {
+            "propType": "property",
+            "type": "nmtoken",
+            "values": [
+                "ascending",
+                "descending",
+                "none",
+                "other"
+            ],
+            "defaultValue": "none",
+            "deprecated": false,
+            "idlAttribute": "ariaSort"
+        },
+        "aria-valuemax": {
+            "propType": "property",
+            "type": "number",
+            "values": [],
+            "defaultValue": "100",
+            "deprecated": false,
+            "idlAttribute": "ariaValueMax"
+        },
+        "aria-valuemin": {
+            "propType": "property",
+            "type": "number",
+            "values": [],
+            "defaultValue": "0",
+            "deprecated": false,
+            "idlAttribute": "ariaValueMin"
+        },
+        "aria-valuenow": {
+            "propType": "property",
+            "type": "number",
+            "values": [],
+            "defaultValue": "",
+            "deprecated": false,
+            "idlAttribute": "ariaValueNow"
+        },
+        "aria-valuetext": {
+            "propType": "property",
+            "type": "string",
+            "values": [],
+            "defaultValue": "",
+            "deprecated": false,
+            "idlAttribute": "ariaValueText"
+        }
+    },
         /*
          * list of abstract roles - used to support the WAI-ARIA role taxonomy and
          * not to be used by content authors
-         * @see http://www.w3.org/TR/wai-aria/roles#isAbstract
+         * @see https://www.w3.org/TR/wai-aria/roles#isAbstract
          */
         abstractRoles : [
             "command",
@@ -1275,892 +1595,4242 @@ if (typeof OpenAjax.a11y.aria == "undefined") {
            * - container: appropriate container(s) for that role
            * - props: states and properties that may be associated with this role (in addition to the global states and properties listed above)
            * - reqProps: required states or properties for this role
-           * - reqChildren: required children for this role
+           * - requiredChildren: required children for this role
            * - htmlEquiv: HTML equivalent for this role
            * - roleType: one of widget, landmark, or null
            */
-        designPatterns : {
-
-           "alert" : {
-             reqName : false,
-             container : null,
-             props : ["aria-expanded"],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : null,
-             nameFromContent: false,
-             roleType : "live"
-           },
-
-           "alertdialog" : {
-             reqName : true,
-             container : null,
-             props : ["aria-expanded"],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : null,
-             nameFromContent: false,
-             supportOnClick: true,
-             roleType : "widget"
-           },
-
-           "application" : {
-             reqName : true,
-             container : null,
-             props : ["aria-expanded"],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : null,
-             nameFromContent: false,
-             roleType : "landmark"
-           },
-
-           "article" : {
-             reqName : false,
-             container : null,
-             props : ["aria-expanded", "aria-posinset", "aria-setsize"],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : null,
-              nameFromContent: false,
-             roleType : "section"
-          },
-
-           "banner" : {
-             reqName : false,
-             container : null,
-             props : ["aria-expanded"],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : null,
-             nameFromContent: false,
-             roleType : "landmark"
-           },
-
-           "button" : {
-             reqName : true,
-             container : null,
-             props : ["aria-expanded", "aria-pressed"],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : "input[@type='button']",
-             nameFromContent: true,
-             supportOnClick: true,
-             roleType : "widget"
-           },
-
-           "cell" : {
-             reqName : true,
-             container : ["row"],
-             props : ["aria-readonly", "aria-selected", "aria-expanded", "aria-required"],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : "td",
-             nameFromContent: true,
-             roleType : "section"
-           },
-
-           "checkbox" : {
-             reqName : true,
-             container : null,
-             props : null,
-             reqProps : ["aria-checked"],
-             reqChildren : null,
-             htmlEquiv : "input[@type='checkbox']",
-             nameFromContent: true,
-             supportOnClick: true,
-             roleType : "widget"
-           },
-          "columnheader" : {
-             reqName : true,
-             container : ["row"],
-             props : ["aria-expanded", "aria-sort", "aria-readonly", "aria-selected", "aria-required"],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : 'th[scope="col"]',
-             nameFromContent: true,
-             roleType : "section"
-           },
-           "combobox" : {
-             reqName : true,
-             container : null,
-             props : ["aria-autocomplete", "aria-required", "aria-activedescendant"],
-             reqProps : ["aria-expanded"],
-             reqChildren : ["listbox", "textbox"],
-             htmlEquiv : "select",
-             nameFromContent: false,
-             roleType : "widget"
-           },
-           "command" : {
-            reqName : false,
-            container: null,
-            props : null,
-            reqProps: null,
-            reqChildren : null,
-            htmlEquiv : null,
-            nameFromContent: false,
-            roleType: "abstract"
-          },
-           "complementary" : {
-             reqName : false,
-             container : null,
-             props : ["aria-expanded"],
-             reqProps : ["aria-labelledby"],
-             reqChildren : null,
-             htmlEquiv : null,
-             nameFromContent: false,
-             roleType : "landmark"
-           },
-           "composite" : {
-             reqName : false,
-             container : null,
-             props : ["aria-activedescendant"],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : null,
-             nameFromContent: false,
-             roleType : "abstract"
-           },
-           "contentinfo" : {
-             reqName : false,
-             container : null,
-             props : ["aria-expanded"],
-             reqProps : ["aria-labelledby"],
-             reqChildren : null,
-             htmlEquiv : null,
-             nameFromContent: false,
-             roleType : "landmark"
-           },
-
-           "definition" : {
-             reqName : false,
-             container : null,
-             props : ["aria-expanded"],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : "dd",
-             nameFromContent: false,
-             roleType : "section"
-           },
-
-           "dialog" : {
-             reqName : true,
-             container : null,
-             props : ["aria-expanded"],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : null,
-             nameFromContent: false,
-             roleType : "widget"
-           },
-
-           "directory" : {
-             reqName : false,
-             container : null,
-             props : ["aria-expanded"],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : null,
-             nameFromContent: true,
-             roleType : "section"
-           },
-
-           "document" : {
-             reqName : true,
-             container : null,
-             props : ["aria-expanded"],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : null,
-              nameFromContent: false,
-             roleType : "section"
-          },
-
-           "figure" : {
-             reqName : false,
-             container : null,
-             props : ["aria-expanded"],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : "figure",
-             nameFromContent: false,
-             roleType : "section"
-          },
-
-           "form" : {
-             reqName : false,
-             container : null,
-             props : ["aria-expanded"],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : "form",
-             nameFromContent: false,
-             roleType : "landmark"
-           },
-
-           "grid" : {
-             reqName : true,
-             container : null,
-             props : ["aria-level", "aria-multiselectable", "aria-readonly", "aria-activedescendant", "aria-expanded"],
-             reqProps : null,
-             reqChildren : ["row", "rowgroup"],
-             htmlEquiv : null,
-             nameFromContent: false,
-             roleType : "widget"
-           },
-
-           "gridcell" : {
-             reqName : true,
-             container : ["row"],
-             props : ["aria-readonly", "aria-selected", "aria-expanded", "aria-required"],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : "td",
-             nameFromContent: true,
-             roleType : "widget"
-           },
-
-           "group" : {
-             reqName : false,
-             container : null,
-             props : ["aria-activedescendant", "aria-expanded"],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : "fieldset",
-             nameFromContent: false,
-             roleType : "section"
-           },
-
-           "heading" : {
-             reqName : true,
-             container : null,
-             props : ["aria-level", "aria-expanded"],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : "h1 | h2 | h3 | h4 | h5 |h6",
-             nameFromContent: true,
-             roleType : "section"
-           },
-           "input" : {
-             reqName : true,
-             container : null,
-             props : null,
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : "input",
-             nameFromContent: false,
-             roleType : "abstract"
-           },
-
-           "img" : {
-             reqName : true,
-             container : null,
-             props : ["aria-expanded"],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : "img",
-             nameFromContent: false,
-             roleType : "section"
-           },
-           "landmark" : {
-             reqName : false,
-             container : null,
-             props : null,
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : null,
-             nameFromContent: false,
-             roleType : "abstract"
-           },
-
-           "link" : {
-             reqName : true,
-             container : null,
-             props : ["aria-expanded"],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : "a",
-             nameFromContent: true,
-             supportOnClick: true,
-             roleType : "widget"
-           },
-
-           "list" : {
-             reqName : false,
-             container : null,
-             props : ["aria-expanded"],
-             reqProps : null,
-             reqChildren : ["group", "listitem"],
-             htmlEquiv : "ul | ol",
-             nameFromContent: false,
-             roleType : "section"
-           },
-
-           "listbox" : {
-             reqName : true,
-             container : null,
-             props : ["aria-expanded", "aria-activedescendant", "aria-multiselectable", "aria-required"],
-             reqProps : null,
-             reqChildren : ["option"],
-             htmlEquiv : "select",
-             nameFromContent: false,
-             supportOnClick: true,
-             roleType : "widget"
-           },
-
-           "listitem" : {
-             reqName : true,
-             container : ["list"],
-             props : ["aria-expanded", "aria-level", "aria-posinset", "aria-setsize"],
-             reqProps : null,
-             reqChildren : null,
-             nameFromContent: true,
-             htmlEquiv : "section",
-             supportOnClick: true,
-             roleType : "widget"
-           },
-
-           "log" : {
-             reqName : true,
-             container : null,
-             props : ["aria-expanded"],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : null,
-             nameFromContent: false,
-             roleType : "widget"
-           },
-
-           "main" : {
-             reqName : false,
-             container : null,
-             props : ["aria-expanded"],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : null,
-             nameFromContent: false,
-             roleType : "landmark"
-           },
-
-           "marquee" : {
-             reqName : true,
-             container : null,
-             props : ["aria-expanded"],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : null,
-             nameFromContent: false,
-             roleType : "widget"
-           },
-
-           "math" : {
-             reqName : false,
-             container : null,
-             props : ["aria-expanded"],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : null,
-             nameFromContent: false,
-             roleType : "section"
-           },
-
-           "menu" : {
-             reqName : true,
-             container : null,
-             props : ["aria-expanded", "aria-activedescendant"],
-             reqProps : null,
-             reqChildren : ["menuitem", "menuitemcheckbox", "menuitemradio", "group"],
-             htmlEquiv : null,
-             nameFromContent: false,
-             roleType : "widget"
-           },
-
-           "menubar" : {
-             reqName : false,
-             container : null,
-             props : ["aria-activedescendant", "aria-expanded"],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : null,
-             nameFromContent: false,
-             roleType : "widget"
-           },
-
-           "menuitem" : {
-             reqName : true,
-             container : ["group", "menu", "menubar"],
-             props : null,
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : null,
-             nameFromContent: true,
-             roleType : "widget"
-           },
-
-           "menuitemcheckbox" : {
-             reqName : true,
-             container : ["menu", "menubar"],
-             props : null,
-             reqProps : ["aria-checked"],
-             reqChildren : null,
-             htmlEquiv : null,
-             nameFromContent: true,
-             supportOnClick: true,
-             roleType : "widget"
-           },
-
-           "menuitemradio" : {
-             reqName : true,
-             container : ["group", "menu", "menubar"],
-             props : ["aria-selected", "aria-posinset", "aria-setsize"],
-             reqProps : ["aria-checked"],
-             reqChildren : null,
-             htmlEquiv : null,
-             nameFromContent: true,
-             supportOnClick: true,
-             roleType : "widget"
-           },
-
-           "navigation" : {
-             reqName : false,
-             container : null,
-             props : ["aria-expanded"],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : null,
-             nameFromContent: false,
-             roleType : "landmark"
-           },
-
-           "none" : {
-             reqName : false,
-             container : null,
-             props : null,
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : null,
-             nameFromContent: false,
-             roleType : "section"
-           },
-
-           "note" : {
-             reqName : false,
-             container : null,
-             props : ["aria-expanded"],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : null,
-             nameFromContent: false,
-             roleType : "section"
-           },
-
-           "option" : {
-             reqName : true,
-             container : ["listbox"],
-             props : ["aria-expanded", "aria-checked", "aria-selected", "aria-posinset", "aria-setsize"],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : null,
-             nameFromContent: true,
-             supportOnClick: true,
-             roleType : "widget"
-           },
-
-           "presentation" : {
-             reqName : false,
-             container : null,
-             props : null,
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : null,
-             nameFromContent: false,
-             roleType : "section"
-           },
-
-           "progressbar" : {
-             reqName : true,
-             container : null,
-             props : ["aria-valuetext", "aria-valuenow", "aria-valuemax", "aria-valuemin"],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : null,
-             nameFromContent: false,
-             roleType : "widget",
-             hasRange: true
-           },
-
-           "radio" : {
-             reqName : true,
-             container : null,
-             props : ["aria-selected", "aria-posinset", "aria-setsize"],
-             reqProps : ["aria-checked"],
-             reqChildren : null,
-             htmlEquiv : "input[@type='radio']",
-             nameFromContent: true,
-             supportOnClick: true,
-             roleType : "widget"
-           },
-
-           "radiogroup" : {
-             reqName : true,
-             container : null,
-             props : ["aria-activedescendant", "aria-expanded", "aria-required"],
-             reqProps : null,
-             reqChildren : ["radio"],
-             htmlEquiv : null,
-             nameFromContent: false,
-             supportOnClick: true,
-             roleType : "widget"
-           },
-           "range" : {
-             reqName : false,
-             container : null,
-             props : ["aria-valuemax", "aria-valuemin", "aria-valuenow", "aria-valuetext"],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : null,
-             nameFromContent: false,
-             roleType : "abstract"
-           },
-           "region" : {
-             reqName : false,
-             container : null,
-             props : ["aria-expanded"],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : "frame",
-             nameFromContent: false,
-             roleType : "landmark"
-           },
-           "roletype" : {
-             reqName : false,
-             container : null,
-             props : null,
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : null,
-             nameFromContent: false,
-             roleType : "abstract"
-           },
-           "row" : {
-             reqName : false,
-             container : ["grid", "treegrid", "rowgroup"],
-             props : ["aria-level", "aria-selected", "aria-activedescendant", "aria-expanded"],
-             reqProps : null,
-             reqChildren : ["gridcell", "rowheader", "columnheader"],
-             htmlEquiv : "tr",
-             nameFromContent: true,
-             roleType : "widget"
-           },
-           "rowgroup" : {
-             reqName : false,
-             container : ["grid"],
-             props : ["aria-expanded", "aria-activedescendant"],
-             reqProps : null,
-             reqChildren : ["row"],
-             htmlEquiv : "thead | tfoot | tbody",
-             nameFromContent: true,
-             roleType : "section"
-           },
-
-           "rowheader" : {
-             reqName : true,
-             container : ["row"],
-             props : ["aria-expanded", "aria-sort", "aria-required", "aria-readonly", "aria-selected"],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : "th[scope='row']",
-             nameFromContent: true,
-             roleType : "section"
-           },
-           "scrollbar" : {
-             reqName : false,
-             container : null,
-             props : ["aria-valuetext"],
-             reqProps : ["aria-controls", "aria-orientation", "aria-valuenow", "aria-valuemax", "aria-valuemin"],
-             reqChildren : null,
-             htmlEquiv : null,
-             nameFromContent: false,
-             roleType : "widget",
-             hasRange: true
-           },
-           "search" : {
-             reqName : false,
-             container : null,
-             props : ["aria-expanded"],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : null,
-             nameFromContent: false,
-             roleType : "landmark"
-           },
-           "searchbox" : {
-             reqName : true,
-             container : null,
-             props : ["aria-activedescendant", "aria-autocomplete", "aria-multiline", "aria-readonly", "aria-required"],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : "input[@type='search']",
-             nameFromContent: false,
-             roleType : "widget"
-           },
-           "section" : {
-             reqName : false,
-             container : null,
-             props : ["aria-expanded"],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : null,
-             nameFromContent: true,
-             roleType : "abstract"
-           },
-           "sectionhead" : {
-             reqName : false,
-             container : null,
-             props : ["aria-expanded"],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : null,
-             nameFromContent: true,
-             roleType : "abstract"
-           },
-           "select" : {
-             reqName : false,
-             container : null,
-             props : ["aria-activedescendant"],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : null,
-             nameFromContent: false,
-             roleType : "abstract"
-           },
-           "separator" : {
-             reqName : false,
-             container : null,
-             props : ["aria-expanded", "aria-orientation"],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : "hr",
-             nameFromContent: false,
-             roleType : "section"
-           },
-           "slider" : {
-             reqName : true,
-             container : null,
-             props : ["aria-orientation", "aria-valuetext"],
-             reqProps : ["aria-valuemax", "aria-valuenow", "aria-valuemin"],
-             reqChildren : null,
-             htmlEquiv : null,
-             nameFromContent: false,
-             roleType : "widget",
-             hasRange: true
-           },
-           "spinbutton" : {
-             reqName : true,
-             container : null,
-             props : ["aria-required", "aria-valuetext"],
-             reqProps : ["aria-valuemax", "aria-valuenow", "aria-valuemin"],
-             reqChildren : null,
-             htmlEquiv : null,
-             nameFromContent: false,
-             roleType : "widget",
-             hasRange: true
-           },
-           "status" : {
-             reqName : false,
-             container : null,
-             props : ["aria-expanded"],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : null,
-             nameFromContent: false,
-             roleType : "live"
-           },
-           "structure" : {
-             reqName : false,
-             container : null,
-             props : null,
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : null,
-             nameFromContent: false,
-             roleType : "abstract"
-           },
-
-           "switch" : {
-             reqName : true,
-             container : null,
-             props : null,
-             reqProps : ["aria-checked"],
-             reqChildren : null,
-             htmlEquiv : "",
-             nameFromContent: true,
-             supportOnClick: true,
-             roleType : "widget"
-           },
-           "tab" : {
-             reqName : true,
-             container : ["tablist"],
-             props : ["aria-selected", "aria-expanded"],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : null,
-             nameFromContent: true,
-             roleType : "widget"
-           },
-           "table" : {
-             reqName : true,
-             container : null,
-             props : ["aria-colcount", "aria-rowcount"],
-             reqProps : null,
-             reqChildren : ["row", "rowgroup"],
-             htmlEquiv : null,
-             nameFromContent: false,
-             roleType : "section"
-           },
-           "tablist" : {
-             reqName : false,
-             container : null,
-             props : ["aria-activedescendant", "aria-expanded", "aria-level", "aria-multiselectable"],
-             reqProps : null,
-             reqChildren : ["tab"],
-             htmlEquiv : null,
-             nameFromContent: false,
-             roleType : "widget"
-           },
-
-           "tabpanel" : {
-             reqName : true,
-             container : null,
-             props : ["aria-expanded"],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : null,
-             nameFromContent: false,
-             roleType : "widget"
-           },
-
-           "term" : {
-             reqName : false,
-             container : null,
-             props : ["aria-expanded"],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : "dt",
-             nameFromContent: false,
-             roleType : "section"
-           },
-
-           "text" : {
-             reqName : false,
-             container : null,
-             props : [],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : "",
-             nameFromContent: true,
-             roleType : "section"
-           },
-
-           "textbox" : {
-             reqName : true,
-             container : null,
-             props : ["aria-activedescendant", "aria-autocomplete", "aria-multiline", "aria-readonly", "aria-required"],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : "input[@type='text'] | textarea",
-             nameFromContent: false,
-             roleType : "widget"
-           },
-
-           "timer" : {
-             reqName : true,
-             container : null,
-             props : ["aria-expanded"],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : null,
-             nameFromContent: false,
-             roleType : "widget"
-           },
-
-           "toolbar" : {
-             reqName : false,
-             container : null,
-             props : ["aria-activedescendant", "aria-expanded"],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : null,
-             nameFromContent: false,
-             supportOnClick: true,
-             roleType : "widget"
-           },
-
-           "tooltip" : {
-             reqName : true,
-             container : null,
-             props : ["aria-expanded"],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : null,
-             nameFromContent: true,
-             roleType : "widget"
-           },
-
-           "tree" : {
-             reqName : true,
-             container : null,
-             props : ["aria-multiselectable", "aria-activedescendant", "aria-expanded", "aria-required"],
-             reqProps : null,
-             reqChildren : ["group", "treeitem"],
-             htmlEquiv : null,
-             nameFromContent: false,
-             roleType : "widget"
-           },
-
-           "treegrid" : {
-             reqName : true,
-             container : null,
-             props : ["aria-activedescendant", "aria-expanded", "aria-level", "aria-multiselectable", "aria-readonly", "aria-required"],
-             reqProps : null,
-             reqChildren : ["row"],
-             htmlEquiv : null,
-             nameFromContent: false,
-             roleType : "widget"
-           },
-
-           "treeitem" : {
-             reqName : true,
-             container : ["group", "tree"],
-             props : ["aria-checked", "aria-selected", "aria-expanded", "aria-level", "aria-posinset", "aria-setsize"],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : null,
-             nameFromContent: true,
-             supportOnClick: true,
-             roleType : "widget"
-          },
-           "widget" : {
-             reqName : false,
-             container : null,
-             props : null,
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : null,
-             nameFromContent: false,
-             roleType : "abstract"
-           },
-           "window" : {
-             reqName : false,
-             container : null,
-             props : ["aria-expanded"],
-             reqProps : null,
-             reqChildren : null,
-             htmlEquiv : null,
-             nameFromContent: false,
-             roleType : "abstract"
-           }
-        }, // end designPatterns
+    "designPatterns": {
+        "alert": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "structure live",
+            "isAbstract": false
+        },
+        "alertdialog": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-modal",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": true,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "structure window",
+            "isAbstract": false
+        },
+        "application": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-dropeffect",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-hidden",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription",
+                "aria-activedescendant",
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-expanded",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "deprecatedProps": [],
+            "props": [
+                "aria-activedescendant",
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-expanded",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": true,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "structure widget",
+            "isAbstract": false
+        },
+        "article": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription",
+                "aria-posinset",
+                "aria-setsize"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [
+                "aria-posinset",
+                "aria-setsize"
+            ],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "structure section",
+            "isAbstract": false
+        },
+        "banner": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "landmark",
+            "isAbstract": false
+        },
+        "blockquote": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "structure",
+            "isAbstract": false
+        },
+        "button": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription",
+                "aria-disabled",
+                "aria-haspopup",
+                "aria-expanded",
+                "aria-pressed"
+            ],
+            "deprecatedProps": [
+                "aria-errormessage",
+                "aria-invalid"
+            ],
+            "props": [
+                "aria-disabled",
+                "aria-haspopup",
+                "aria-expanded",
+                "aria-pressed"
+            ],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": true,
+            "nameFromContent": true,
+            "nameProhibited": false,
+            "childrenPresentational": true,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "widget",
+            "isAbstract": false
+        },
+        "caption": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": true,
+            "childrenPresentational": false,
+            "requiredParents": [
+                "figure",
+                "grid",
+                "table",
+                "treegrid"
+            ],
+            "requiredChildren": [],
+            "roleType": "structure",
+            "isAbstract": false
+        },
+        "cell": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription",
+                "aria-colindex",
+                "aria-colspan",
+                "aria-rowindex",
+                "aria-rowspan"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [
+                "aria-colindex",
+                "aria-colspan",
+                "aria-rowindex",
+                "aria-rowspan"
+            ],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": true,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [
+                "row"
+            ],
+            "requiredChildren": [],
+            "roleType": "structure section",
+            "isAbstract": false
+        },
+        "checkbox": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription",
+                "aria-checked",
+                "aria-errormessage",
+                "aria-expanded",
+                "aria-invalid",
+                "aria-readonly",
+                "aria-required"
+            ],
+            "deprecatedProps": [
+                "aria-haspopup"
+            ],
+            "props": [
+                "aria-errormessage",
+                "aria-expanded",
+                "aria-invalid",
+                "aria-readonly",
+                "aria-required"
+            ],
+            "hasRange": false,
+            "requiredProps": [
+                "aria-checked"
+            ],
+            "nameRequired": true,
+            "nameFromContent": true,
+            "nameProhibited": false,
+            "childrenPresentational": true,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "widget",
+            "isAbstract": false
+        },
+        "code": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": true,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "structure",
+            "isAbstract": false
+        },
+        "columnheader": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-colindex",
+                "aria-colspan",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-expanded",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-readonly",
+                "aria-relevant",
+                "aria-required",
+                "aria-roledescription",
+                "aria-rowindex",
+                "aria-rowspan",
+                "aria-selected"
+            ],
+            "deprecatedProps": [],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": true,
+            "nameFromContent": true,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [
+                "row"
+            ],
+            "requiredChildren": [],
+            "roleType": "structure widget",
+            "isAbstract": false
+        },
+        "combobox": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-hidden",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription",
+                "aria-controls",
+                "aria-expanded",
+                "aria-activedescendant",
+                "aria-autocomplete",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid",
+                "aria-readonly",
+                "aria-required"
+            ],
+            "deprecatedProps": [],
+            "props": [
+                "aria-activedescendant",
+                "aria-autocomplete",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid",
+                "aria-readonly",
+                "aria-required"
+            ],
+            "hasRange": false,
+            "requiredProps": [
+                "aria-controls",
+                "aria-expanded"
+            ],
+            "nameRequired": true,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "widget",
+            "isAbstract": false
+        },
+        "command": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "abstract",
+            "isAbstract": true
+        },
+        "complementary": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "landmark",
+            "isAbstract": false
+        },
+        "composite": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription",
+                "aria-activedescendant",
+                "aria-disabled"
+            ],
+            "deprecatedProps": [
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [
+                "aria-activedescendant",
+                "aria-disabled"
+            ],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "abstract",
+            "isAbstract": true
+        },
+        "contentinfo": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "landmark",
+            "isAbstract": false
+        },
+        "definition": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "structure",
+            "isAbstract": false
+        },
+        "deletion": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": true,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "structure",
+            "isAbstract": false
+        },
+        "dialog": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-modal",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": true,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "window",
+            "isAbstract": false
+        },
+        "directory": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "structure",
+            "isAbstract": false
+        },
+        "document": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "structure",
+            "isAbstract": false
+        },
+        "emphasis": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": true,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "structure",
+            "isAbstract": false
+        },
+        "feed": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [
+                "article"
+            ],
+            "roleType": "structure",
+            "isAbstract": false
+        },
+        "figure": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "structure",
+            "isAbstract": false
+        },
+        "form": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": true,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "landmark",
+            "isAbstract": false
+        },
+        "generic": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": true,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "structure",
+            "isAbstract": false
+        },
+        "grid": {
+            "allowedProps": [
+                "aria-activedescendant",
+                "aria-atomic",
+                "aria-busy",
+                "aria-colcount",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription",
+                "aria-rowcount",
+                "aria-multiselectable",
+                "aria-readonly"
+            ],
+            "deprecatedProps": [
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [
+                "aria-multiselectable",
+                "aria-readonly"
+            ],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": true,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [
+                "row",
+                "rowgroup"
+            ],
+            "roleType": "widget structure",
+            "isAbstract": false
+        },
+        "gridcell": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-colindex",
+                "aria-colspan",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-dropeffect",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-hidden",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription",
+                "aria-rowindex",
+                "aria-rowspan",
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-expanded",
+                "aria-haspopup",
+                "aria-invalid",
+                "aria-readonly",
+                "aria-required",
+                "aria-selected"
+            ],
+            "deprecatedProps": [],
+            "props": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-expanded",
+                "aria-haspopup",
+                "aria-invalid",
+                "aria-readonly",
+                "aria-required",
+                "aria-selected"
+            ],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": true,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [
+                "row"
+            ],
+            "requiredChildren": [],
+            "roleType": "structure widget",
+            "isAbstract": false
+        },
+        "group": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription",
+                "aria-activedescendant",
+                "aria-disabled"
+            ],
+            "deprecatedProps": [
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [
+                "aria-activedescendant",
+                "aria-disabled"
+            ],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "structure",
+            "isAbstract": false
+        },
+        "heading": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": true,
+            "nameFromContent": true,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "structure",
+            "isAbstract": false
+        },
+        "img": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": true,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": true,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "structure",
+            "isAbstract": false
+        },
+        "input": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "abstract",
+            "isAbstract": true
+        },
+        "insertion": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": true,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "structure",
+            "isAbstract": false
+        },
+        "landmark": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "abstract",
+            "isAbstract": true
+        },
+        "link": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription",
+                "aria-disabled",
+                "aria-expanded",
+                "aria-haspopup"
+            ],
+            "deprecatedProps": [
+                "aria-errormessage",
+                "aria-invalid"
+            ],
+            "props": [
+                "aria-disabled",
+                "aria-expanded",
+                "aria-haspopup"
+            ],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": true,
+            "nameFromContent": true,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "widget",
+            "isAbstract": false
+        },
+        "list": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [
+                "listitem"
+            ],
+            "roleType": "structure",
+            "isAbstract": false
+        },
+        "listbox": {
+            "allowedProps": [
+                "aria-activedescendant",
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-orientation",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription",
+                "aria-errormessage",
+                "aria-expanded",
+                "aria-invalid",
+                "aria-multiselectable",
+                "aria-readonly",
+                "aria-required"
+            ],
+            "deprecatedProps": [
+                "aria-haspopup"
+            ],
+            "props": [
+                "aria-errormessage",
+                "aria-expanded",
+                "aria-invalid",
+                "aria-multiselectable",
+                "aria-readonly",
+                "aria-required"
+            ],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": true,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [
+                "group",
+                "option"
+            ],
+            "roleType": "widget structure",
+            "isAbstract": false
+        },
+        "listitem": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription",
+                "aria-level",
+                "aria-posinset",
+                "aria-setsize"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [
+                "aria-level",
+                "aria-posinset",
+                "aria-setsize"
+            ],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [
+                "directory",
+                "list"
+            ],
+            "requiredChildren": [],
+            "roleType": "structure",
+            "isAbstract": false
+        },
+        "log": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "structure widget live",
+            "isAbstract": false
+        },
+        "main": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "landmark",
+            "isAbstract": false
+        },
+        "marquee": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": true,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "structure widget live",
+            "isAbstract": false
+        },
+        "math": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "structure",
+            "isAbstract": false
+        },
+        "meter": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription",
+                "aria-valuemax",
+                "aria-valuemin",
+                "aria-valuetext"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": true,
+            "requiredProps": [],
+            "nameRequired": true,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": true,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "range",
+            "isAbstract": false
+        },
+        "menu": {
+            "allowedProps": [
+                "aria-activedescendant",
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-orientation",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [
+                "group",
+                "menuitem",
+                "menuitemcheckbox",
+                "menuitemradio"
+            ],
+            "roleType": "widget structure",
+            "isAbstract": false
+        },
+        "menubar": {
+            "allowedProps": [
+                "aria-activedescendant",
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-orientation",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [
+                "group",
+                "menuitem",
+                "menuitemcheckbox",
+                "menuitemradio"
+            ],
+            "roleType": "widget structure",
+            "isAbstract": false
+        },
+        "menuitem": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription",
+                "aria-disabled",
+                "aria-expanded",
+                "aria-haspopup",
+                "aria-posinset",
+                "aria-setsize"
+            ],
+            "deprecatedProps": [
+                "aria-errormessage",
+                "aria-invalid"
+            ],
+            "props": [
+                "aria-disabled",
+                "aria-expanded",
+                "aria-haspopup",
+                "aria-posinset",
+                "aria-setsize"
+            ],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": true,
+            "nameFromContent": true,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [
+                "group",
+                "menu",
+                "menubar"
+            ],
+            "requiredChildren": [],
+            "roleType": "widget",
+            "isAbstract": false
+        },
+        "menuitemcheckbox": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-expanded",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-posinset",
+                "aria-relevant",
+                "aria-roledescription",
+                "aria-setsize",
+                "aria-checked"
+            ],
+            "deprecatedProps": [
+                "aria-errormessage",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [
+                "aria-checked"
+            ],
+            "nameRequired": true,
+            "nameFromContent": true,
+            "nameProhibited": false,
+            "childrenPresentational": true,
+            "requiredParents": [
+                "group",
+                "menu",
+                "menubar"
+            ],
+            "requiredChildren": [],
+            "roleType": "widget",
+            "isAbstract": false
+        },
+        "menuitemradio": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-checked",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-expanded",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-posinset",
+                "aria-relevant",
+                "aria-roledescription",
+                "aria-setsize"
+            ],
+            "deprecatedProps": [
+                "aria-checked",
+                "aria-errormessage",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": true,
+            "nameFromContent": true,
+            "nameProhibited": false,
+            "childrenPresentational": true,
+            "requiredParents": [
+                "group",
+                "menu",
+                "menubar"
+            ],
+            "requiredChildren": [],
+            "roleType": "widget",
+            "isAbstract": false
+        },
+        "navigation": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "landmark",
+            "isAbstract": false
+        },
+        "note": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "structure",
+            "isAbstract": false
+        },
+        "option": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription",
+                "aria-selected",
+                "aria-checked",
+                "aria-posinset",
+                "aria-setsize"
+            ],
+            "deprecatedProps": [
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [
+                "aria-checked",
+                "aria-posinset",
+                "aria-setsize"
+            ],
+            "hasRange": false,
+            "requiredProps": [
+                "aria-selected"
+            ],
+            "nameRequired": true,
+            "nameFromContent": true,
+            "nameProhibited": false,
+            "childrenPresentational": true,
+            "requiredParents": [
+                "group",
+                "listbox"
+            ],
+            "requiredChildren": [],
+            "roleType": "widget",
+            "isAbstract": false
+        },
+        "paragraph": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": true,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "structure",
+            "isAbstract": false
+        },
+        "presentation": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": true,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "structure",
+            "isAbstract": false
+        },
+        "progressbar": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription",
+                "aria-valuemax",
+                "aria-valuemin",
+                "aria-valuenow",
+                "aria-valuetext"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": true,
+            "requiredProps": [],
+            "nameRequired": true,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": true,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "range widget",
+            "isAbstract": false
+        },
+        "radio": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription",
+                "aria-checked",
+                "aria-posinset",
+                "aria-setsize"
+            ],
+            "deprecatedProps": [
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [
+                "aria-posinset",
+                "aria-setsize"
+            ],
+            "hasRange": false,
+            "requiredProps": [
+                "aria-checked"
+            ],
+            "nameRequired": true,
+            "nameFromContent": true,
+            "nameProhibited": false,
+            "childrenPresentational": true,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "widget",
+            "isAbstract": false
+        },
+        "radiogroup": {
+            "allowedProps": [
+                "aria-activedescendant",
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-orientation",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription",
+                "aria-errormessage",
+                "aria-invalid",
+                "aria-readonly",
+                "aria-required"
+            ],
+            "deprecatedProps": [
+                "aria-haspopup"
+            ],
+            "props": [
+                "aria-errormessage",
+                "aria-invalid",
+                "aria-readonly",
+                "aria-required"
+            ],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": true,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [
+                "radio"
+            ],
+            "roleType": "widget structure",
+            "isAbstract": false
+        },
+        "range": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription",
+                "aria-valuemax",
+                "aria-valuemin",
+                "aria-valuenow",
+                "aria-valuetext"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [
+                "aria-valuemax",
+                "aria-valuemin",
+                "aria-valuenow",
+                "aria-valuetext"
+            ],
+            "hasRange": true,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "abstract",
+            "isAbstract": true
+        },
+        "region": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": true,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "landmark",
+            "isAbstract": false
+        },
+        "row": {
+            "allowedProps": [
+                "aria-activedescendant",
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription",
+                "aria-colindex",
+                "aria-expanded",
+                "aria-level",
+                "aria-posinset",
+                "aria-rowindex",
+                "aria-setsize",
+                "aria-selected"
+            ],
+            "deprecatedProps": [
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [
+                "aria-colindex",
+                "aria-expanded",
+                "aria-level",
+                "aria-posinset",
+                "aria-rowindex",
+                "aria-setsize",
+                "aria-selected"
+            ],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": true,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [
+                "grid",
+                "rowgroup",
+                "table",
+                "treegrid"
+            ],
+            "requiredChildren": [
+                "cell",
+                "columnheader",
+                "gridcell",
+                "rowheader"
+            ],
+            "roleType": "structure widget",
+            "isAbstract": false
+        },
+        "rowgroup": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [
+                "grid",
+                "table",
+                "treegrid"
+            ],
+            "requiredChildren": [
+                "row"
+            ],
+            "roleType": "structure",
+            "isAbstract": false
+        },
+        "rowheader": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-colindex",
+                "aria-colspan",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-readonly",
+                "aria-relevant",
+                "aria-required",
+                "aria-roledescription",
+                "aria-rowindex",
+                "aria-rowspan",
+                "aria-selected",
+                "aria-expanded",
+                "aria-sort"
+            ],
+            "deprecatedProps": [],
+            "props": [
+                "aria-expanded",
+                "aria-sort"
+            ],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": true,
+            "nameFromContent": true,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [
+                "row"
+            ],
+            "requiredChildren": [],
+            "roleType": "structure widget",
+            "isAbstract": false
+        },
+        "scrollbar": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription",
+                "aria-valuetext",
+                "aria-controls",
+                "aria-valuenow",
+                "aria-disabled",
+                "aria-orientation",
+                "aria-valuemax",
+                "aria-valuemin"
+            ],
+            "deprecatedProps": [
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [
+                "aria-disabled",
+                "aria-orientation",
+                "aria-valuemax",
+                "aria-valuemin"
+            ],
+            "hasRange": true,
+            "requiredProps": [
+                "aria-controls",
+                "aria-valuenow"
+            ],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": true,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "range widget",
+            "isAbstract": false
+        },
+        "search": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "landmark",
+            "isAbstract": false
+        },
+        "searchbox": {
+            "allowedProps": [
+                "aria-activedescendant",
+                "aria-atomic",
+                "aria-autocomplete",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-multiline",
+                "aria-owns",
+                "aria-placeholder",
+                "aria-readonly",
+                "aria-relevant",
+                "aria-required",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": true,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "widget",
+            "isAbstract": false
+        },
+        "section": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "abstract",
+            "isAbstract": true
+        },
+        "sectionhead": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": true,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "abstract",
+            "isAbstract": true
+        },
+        "select": {
+            "allowedProps": [
+                "aria-activedescendant",
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "abstract",
+            "isAbstract": true
+        },
+        "separator": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription",
+                "aria-disabled",
+                "aria-orientation",
+                "aria-valuemax",
+                "aria-valuemin",
+                "aria-valuetext"
+            ],
+            "deprecatedProps": [
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [
+                "aria-disabled",
+                "aria-orientation",
+                "aria-valuemax",
+                "aria-valuemin",
+                "aria-valuetext"
+            ],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": true,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "structure widget",
+            "isAbstract": false
+        },
+        "slider": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-hidden",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription",
+                "aria-valuetext",
+                "aria-valuenow",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid",
+                "aria-orientation",
+                "aria-readonly",
+                "aria-valuemax",
+                "aria-valuemin"
+            ],
+            "deprecatedProps": [],
+            "props": [
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid",
+                "aria-orientation",
+                "aria-readonly",
+                "aria-valuemax",
+                "aria-valuemin"
+            ],
+            "hasRange": true,
+            "requiredProps": [
+                "aria-valuenow"
+            ],
+            "nameRequired": true,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": true,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "widget range",
+            "isAbstract": false
+        },
+        "spinbutton": {
+            "allowedProps": [
+                "aria-activedescendant",
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription",
+                "aria-errormessage",
+                "aria-invalid",
+                "aria-readonly",
+                "aria-required",
+                "aria-valuemax",
+                "aria-valuemin",
+                "aria-valuenow",
+                "aria-valuetext"
+            ],
+            "deprecatedProps": [
+                "aria-haspopup"
+            ],
+            "props": [
+                "aria-errormessage",
+                "aria-invalid",
+                "aria-readonly",
+                "aria-required",
+                "aria-valuemax",
+                "aria-valuemin",
+                "aria-valuenow",
+                "aria-valuetext"
+            ],
+            "hasRange": true,
+            "requiredProps": [],
+            "nameRequired": true,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "widget range",
+            "isAbstract": false
+        },
+        "status": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "structure live",
+            "isAbstract": false
+        },
+        "strong": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": true,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "structure",
+            "isAbstract": false
+        },
+        "structure": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "abstract",
+            "isAbstract": true
+        },
+        "subscript": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": true,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "structure",
+            "isAbstract": false
+        },
+        "superscript": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": true,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "structure",
+            "isAbstract": false
+        },
+        "switch": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-expanded",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-readonly",
+                "aria-relevant",
+                "aria-required",
+                "aria-roledescription",
+                "aria-checked"
+            ],
+            "deprecatedProps": [
+                "aria-haspopup"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [
+                "aria-checked"
+            ],
+            "nameRequired": true,
+            "nameFromContent": true,
+            "nameProhibited": false,
+            "childrenPresentational": true,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "widget",
+            "isAbstract": false
+        },
+        "tab": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription",
+                "aria-disabled",
+                "aria-expanded",
+                "aria-haspopup",
+                "aria-posinset",
+                "aria-selected",
+                "aria-setsize"
+            ],
+            "deprecatedProps": [
+                "aria-errormessage",
+                "aria-invalid"
+            ],
+            "props": [
+                "aria-disabled",
+                "aria-expanded",
+                "aria-haspopup",
+                "aria-posinset",
+                "aria-selected",
+                "aria-setsize"
+            ],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": true,
+            "nameFromContent": true,
+            "nameProhibited": false,
+            "childrenPresentational": true,
+            "requiredParents": [
+                "tablist"
+            ],
+            "requiredChildren": [],
+            "roleType": "structure widget",
+            "isAbstract": false
+        },
+        "table": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription",
+                "aria-colcount",
+                "aria-rowcount"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [
+                "aria-colcount",
+                "aria-rowcount"
+            ],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": true,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [
+                "row",
+                "rowgroup"
+            ],
+            "roleType": "structure",
+            "isAbstract": false
+        },
+        "tablist": {
+            "allowedProps": [
+                "aria-activedescendant",
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription",
+                "aria-multiselectable",
+                "aria-orientation"
+            ],
+            "deprecatedProps": [
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [
+                "aria-multiselectable",
+                "aria-orientation"
+            ],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [
+                "tab"
+            ],
+            "roleType": "widget",
+            "isAbstract": false
+        },
+        "tabpanel": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": true,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "structure widget",
+            "isAbstract": false
+        },
+        "term": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "structure",
+            "isAbstract": false
+        },
+        "textbox": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-hidden",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription",
+                "aria-activedescendant",
+                "aria-autocomplete",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid",
+                "aria-multiline",
+                "aria-placeholder",
+                "aria-readonly",
+                "aria-required"
+            ],
+            "deprecatedProps": [],
+            "props": [
+                "aria-activedescendant",
+                "aria-autocomplete",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid",
+                "aria-multiline",
+                "aria-placeholder",
+                "aria-readonly",
+                "aria-required"
+            ],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": true,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "widget",
+            "isAbstract": false
+        },
+        "time": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "structure widget live",
+            "isAbstract": false
+        },
+        "timer": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "structure widget live",
+            "isAbstract": false
+        },
+        "toolbar": {
+            "allowedProps": [
+                "aria-activedescendant",
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "structure",
+            "isAbstract": false
+        },
+        "tooltip": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": true,
+            "nameFromContent": true,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "structure widget",
+            "isAbstract": false
+        },
+        "tree": {
+            "allowedProps": [
+                "aria-activedescendant",
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-orientation",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription",
+                "aria-errormessage",
+                "aria-invalid",
+                "aria-multiselectable",
+                "aria-required"
+            ],
+            "deprecatedProps": [
+                "aria-haspopup"
+            ],
+            "props": [
+                "aria-errormessage",
+                "aria-invalid",
+                "aria-multiselectable",
+                "aria-required"
+            ],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": true,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [
+                "group",
+                "treeitem"
+            ],
+            "roleType": "widget structure",
+            "isAbstract": false
+        },
+        "treegrid": {
+            "allowedProps": [
+                "aria-activedescendant",
+                "aria-atomic",
+                "aria-busy",
+                "aria-colcount",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-multiselectable",
+                "aria-orientation",
+                "aria-owns",
+                "aria-readonly",
+                "aria-relevant",
+                "aria-required",
+                "aria-roledescription",
+                "aria-rowcount"
+            ],
+            "deprecatedProps": [
+                "aria-haspopup"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": true,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [
+                "row",
+                "rowgroup"
+            ],
+            "roleType": "widget structure",
+            "isAbstract": false
+        },
+        "treeitem": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-checked",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-level",
+                "aria-live",
+                "aria-owns",
+                "aria-posinset",
+                "aria-relevant",
+                "aria-roledescription",
+                "aria-selected",
+                "aria-setsize",
+                "aria-expanded",
+                "aria-haspopup"
+            ],
+            "deprecatedProps": [
+                "aria-errormessage",
+                "aria-invalid",
+                "aria-selected"
+            ],
+            "props": [
+                "aria-expanded",
+                "aria-haspopup"
+            ],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": true,
+            "nameFromContent": true,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [
+                "group",
+                "tree"
+            ],
+            "requiredChildren": [],
+            "roleType": "structure widget",
+            "isAbstract": false
+        },
+        "widget": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "abstract",
+            "isAbstract": true
+        },
+        "window": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-label",
+                "aria-labelledby",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": false,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "abstract",
+            "isAbstract": true
+        },
+        "none": {
+            "allowedProps": [
+                "aria-atomic",
+                "aria-busy",
+                "aria-controls",
+                "aria-current",
+                "aria-describedby",
+                "aria-details",
+                "aria-disabled",
+                "aria-dropeffect",
+                "aria-errormessage",
+                "aria-flowto",
+                "aria-grabbed",
+                "aria-haspopup",
+                "aria-hidden",
+                "aria-invalid",
+                "aria-keyshortcuts",
+                "aria-live",
+                "aria-owns",
+                "aria-relevant",
+                "aria-roledescription"
+            ],
+            "deprecatedProps": [
+                "aria-disabled",
+                "aria-errormessage",
+                "aria-haspopup",
+                "aria-invalid"
+            ],
+            "props": [],
+            "hasRange": false,
+            "requiredProps": [],
+            "nameRequired": false,
+            "nameFromContent": false,
+            "nameProhibited": true,
+            "childrenPresentational": false,
+            "requiredParents": [],
+            "requiredChildren": [],
+            "roleType": "structure",
+            "isAbstract": false
+        }
+    }, // end designPatterns
 
         getRoleObject : function(role) {
 
@@ -2187,14 +5857,14 @@ if (typeof OpenAjax.a11y.aria == "undefined") {
     };
 
 }
-/**
- * Copyright 2011-2018 OpenAjax Alliance
+/*
+ * Copyright 2021 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -2202,6 +5872,1636 @@ if (typeof OpenAjax.a11y.aria == "undefined") {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+// import {OpenAjax} from '../openajax_a11y_constants.js';
+
+/* ---------------------------------------------------------------- */
+/*              ARIA In HTML                                        */
+/* ---------------------------------------------------------------- */
+
+/*
+* design patterns for ARIA in HTML
+* legitimate keys for each role include:
+*
+* {Boolean} noRoleAllowed     : No role can be set for the element (required)
+* {Boolean} anyRoleAllowed    : Any role can be set for the element (required)
+* {String}  defaultRole       : Default role for the element (required)
+* {Array}   allowedRoles      : Array of allowed role values (optional)
+* {String}  reqAttribute      : Required attribute is present (optional)
+* {String   reqAttributeValue : Required attribute value (optional)
+* {Boolean} hasAccName        : ELement has an accessible name (optional)
+* {Boolean} hasNoRole         : ELement has no role attribute (optional)
+* {Boolean} hasListAttribute  : Element has a datalist (optional)
+* - :
+* - :
+*/
+
+
+if (typeof OpenAjax.a11y.ariaInHTML == "undefined") {
+  OpenAjax.a11y.ariaInHTML = {
+    "elementInfo": {
+        "a[href]": {
+            "tagName": "a",
+            "defaultRole": "link",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [
+                "button",
+                "checkbox",
+                "menuitem",
+                "menuitemcheckbox",
+                "menuitemradio",
+                "option",
+                "radio",
+                "switch",
+                "tab",
+                "treeitem"
+            ],
+            "attr1": "href",
+            "id": "a[href]"
+        },
+        "a": {
+            "tagName": "a",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": true,
+            "id": "a"
+        },
+        "abbr": {
+            "tagName": "abbr",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": true,
+            "id": "abbr"
+        },
+        "address": {
+            "tagName": "address",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": true,
+            "id": "address"
+        },
+        "area[href]": {
+            "tagName": "area",
+            "defaultRole": "link",
+            "noRoleAllowed": true,
+            "anyRoleAllowed": false,
+            "attr1": "href",
+            "id": "area[href]"
+        },
+        "area": {
+            "tagName": "area",
+            "defaultRole": "generic",
+            "noRoleAllowed": true,
+            "anyRoleAllowed": false,
+            "id": "area"
+        },
+        "article": {
+            "tagName": "article",
+            "defaultRole": "article",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [
+                "application",
+                "document",
+                "feed",
+                "main",
+                "none",
+                "presentation",
+                "region"
+            ],
+            "id": "article"
+        },
+        "aside": {
+            "tagName": "aside",
+            "defaultRole": "complementary",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [
+                "feed",
+                "none",
+                "note",
+                "presentation",
+                "region",
+                "search"
+            ],
+            "id": "aside"
+        },
+        "audio": {
+            "tagName": "audio",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [
+                "application"
+            ],
+            "id": "audio"
+        },
+        "b": {
+            "tagName": "b",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": true,
+            "id": "b"
+        },
+        "base": {
+            "tagName": "base",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [],
+            "id": "base"
+        },
+        "bdi": {
+            "tagName": "bdi",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": true,
+            "id": "bdi"
+        },
+        "bdo": {
+            "tagName": "bdo",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": true,
+            "id": "bdo"
+        },
+        "blockquote": {
+            "tagName": "blockquote",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": true,
+            "id": "blockquote"
+        },
+        "body": {
+            "tagName": "body",
+            "defaultRole": "generic",
+            "noRoleAllowed": true,
+            "anyRoleAllowed": false,
+            "id": "body"
+        },
+        "br": {
+            "tagName": "br",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [
+                "presentation",
+                "none"
+            ],
+            "id": "br"
+        },
+        "button": {
+            "tagName": "button",
+            "defaultRole": "button",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [
+                "checkbox",
+                "link",
+                "menuitem",
+                "menuitemcheckbox",
+                "menuitemradio",
+                "option",
+                "radio",
+                "switch",
+                "tab"
+            ],
+            "id": "button"
+        },
+        "canvas": {
+            "tagName": "canvas",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": true,
+            "id": "canvas"
+        },
+        "caption": {
+            "tagName": "caption",
+            "defaultRole": "generic",
+            "noRoleAllowed": true,
+            "anyRoleAllowed": false,
+            "id": "caption"
+        },
+        "cite": {
+            "tagName": "cite",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": true,
+            "id": "cite"
+        },
+        "code": {
+            "tagName": "code",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": true,
+            "id": "code"
+        },
+        "col": {
+            "tagName": "col",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [],
+            "id": "col"
+        },
+        "colgroup": {
+            "tagName": "colgroup",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [],
+            "id": "colgroup"
+        },
+        "data": {
+            "tagName": "data",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": true,
+            "id": "data"
+        },
+        "datalist": {
+            "tagName": "datalist",
+            "defaultRole": "listbox",
+            "noRoleAllowed": true,
+            "anyRoleAllowed": false,
+            "id": "datalist"
+        },
+        "dd": {
+            "tagName": "dd",
+            "defaultRole": "definition",
+            "noRoleAllowed": true,
+            "anyRoleAllowed": false,
+            "id": "dd"
+        },
+        "del": {
+            "tagName": "del",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": true,
+            "id": "del"
+        },
+        "dfn": {
+            "tagName": "dfn",
+            "defaultRole": "term",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": true,
+            "id": "dfn"
+        },
+        "details": {
+            "tagName": "details",
+            "defaultRole": "group",
+            "noRoleAllowed": true,
+            "anyRoleAllowed": false,
+            "id": "details"
+        },
+        "dialog": {
+            "tagName": "dialog",
+            "defaultRole": "dialog",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [
+                "alertdialog"
+            ],
+            "id": "dialog"
+        },
+        "div": {
+            "tagName": "div",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": true,
+            "id": "div"
+        },
+        "dl": {
+            "tagName": "dl",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [
+                "group",
+                "list",
+                "presentation",
+                "none"
+            ],
+            "id": "dl"
+        },
+        "dt": {
+            "tagName": "dt",
+            "defaultRole": "term",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [
+                "listitem"
+            ],
+            "id": "dt"
+        },
+        "em": {
+            "tagName": "em",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": true,
+            "id": "em"
+        },
+        "embed": {
+            "tagName": "embed",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [
+                "application",
+                "document",
+                "img",
+                "presentation",
+                "none"
+            ],
+            "id": "embed"
+        },
+        "fieldset": {
+            "tagName": "fieldset",
+            "defaultRole": "group",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [
+                "none",
+                "presentation",
+                "radiogroup"
+            ],
+            "id": "fieldset"
+        },
+        "figcaption": {
+            "tagName": "figcaption",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [
+                "group",
+                "presentation",
+                "none"
+            ],
+            "id": "figcaption"
+        },
+        "figure[figcaption]": {
+            "tagName": "figure",
+            "defaultRole": "figure",
+            "noRoleAllowed": true,
+            "anyRoleAllowed": false,
+            "hasFigcaption": true,
+            "id": "figure[figcaption]"
+        },
+        "figure": {
+            "tagName": "figure",
+            "defaultRole": "figure",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": true,
+            "id": "figure"
+        },
+        "footer[contentinfo]": {
+            "tagName": "footer",
+            "defaultRole": "contentinfo",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [
+                "group",
+                "none",
+                "presentation"
+            ],
+            "isLandmark": true,
+            "id": "footer[contentinfo]"
+        },
+        "footer": {
+            "tagName": "footer",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [
+                "group",
+                "none",
+                "presentation"
+            ],
+            "id": "footer"
+        },
+        "form": {
+            "tagName": "form",
+            "defaultRole": "form",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [
+                "search",
+                "none",
+                "presentation"
+            ],
+            "id": "form"
+        },
+        "h1": {
+            "tagName": "h1",
+            "defaultRole": "heading",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [
+                "none",
+                "presentation",
+                "tab"
+            ],
+            "id": "h1"
+        },
+        "h2": {
+            "tagName": "h2",
+            "defaultRole": "heading",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [
+                "none",
+                "presentation",
+                "tab"
+            ],
+            "id": "h2"
+        },
+        "h3": {
+            "tagName": "h3",
+            "defaultRole": "heading",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [
+                "none",
+                "presentation",
+                "tab"
+            ],
+            "id": "h3"
+        },
+        "h4": {
+            "tagName": "h4",
+            "defaultRole": "heading",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [
+                "none",
+                "presentation",
+                "tab"
+            ],
+            "id": "h4"
+        },
+        "h5": {
+            "tagName": "h5",
+            "defaultRole": "heading",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [
+                "none",
+                "presentation",
+                "tab"
+            ],
+            "id": "h5"
+        },
+        "h6": {
+            "tagName": "h6",
+            "defaultRole": "heading",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [
+                "none",
+                "presentation",
+                "tab"
+            ],
+            "id": "h6"
+        },
+        "head": {
+            "tagName": "head",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [],
+            "id": "head"
+        },
+        "header[banner]": {
+            "tagName": "header",
+            "defaultRole": "banner",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [
+                "group",
+                "none",
+                "presentation"
+            ],
+            "isLandmark": true,
+            "id": "header[banner]"
+        },
+        "header": {
+            "tagName": "header",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [
+                "group",
+                "none",
+                "presentation"
+            ],
+            "id": "header"
+        },
+        "hgroup": {
+            "tagName": "hgroup",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": true,
+            "id": "hgroup"
+        },
+        "hr": {
+            "tagName": "hr",
+            "defaultRole": "separator",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [
+                "none",
+                "presentation"
+            ],
+            "id": "hr"
+        },
+        "html": {
+            "tagName": "html",
+            "defaultRole": "document",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [],
+            "id": "html"
+        },
+        "i": {
+            "tagName": "i",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": true,
+            "id": "i"
+        },
+        "iframe": {
+            "tagName": "iframe",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [
+                "application",
+                "document",
+                "img",
+                "none",
+                "presentation"
+            ],
+            "id": "iframe"
+        },
+        "img[accname]": {
+            "tagName": "img",
+            "defaultRole": "img",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [
+                "button",
+                "checkbox",
+                "link",
+                "menuitem",
+                "menuitemcheckbox",
+                "menuitemradio",
+                "option",
+                "progressbar",
+                "scrollbar",
+                "separator",
+                "slider",
+                "switch",
+                "tab",
+                "treeitem"
+            ],
+            "hasAccname": true,
+            "id": "img[accname]"
+        },
+        "img[alt]": {
+            "tagName": "img",
+            "defaultRole": "img",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [
+                "button",
+                "checkbox",
+                "link",
+                "menuitem",
+                "menuitemcheckbox",
+                "menuitemradio",
+                "option",
+                "progressbar",
+                "scrollbar",
+                "separator",
+                "slider",
+                "switch",
+                "tab",
+                "treeitem"
+            ],
+            "attr1": "alt",
+            "id": "img[alt]"
+        },
+        "img[emptyalt]": {
+            "tagName": "img",
+            "defaultRole": "presentation",
+            "noRoleAllowed": true,
+            "anyRoleAllowed": false,
+            "attr1": "alt=\"\"",
+            "id": "img[emptyalt]"
+        },
+        "img": {
+            "tagName": "img",
+            "defaultRole": "img",
+            "noRoleAllowed": true,
+            "anyRoleAllowed": false,
+            "id": "img"
+        },
+        "input[type=button]": {
+            "tagName": "input",
+            "defaultRole": "button",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [
+                "link",
+                "menuitem",
+                "menuitemcheckbox",
+                "menuitemradio",
+                "option",
+                "radio",
+                "switch",
+                "tab"
+            ],
+            "attr1": "type=button",
+            "id": "input[type=button]"
+        },
+        "input[type=checkbox]": {
+            "tagName": "input",
+            "defaultRole": "checkbox",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [
+                "menuitemcheckbox",
+                "option",
+                "switch",
+                "button"
+            ],
+            "attr1": "type=checkbox",
+            "id": "input[type=checkbox]"
+        },
+        "input[type=color]": {
+            "tagName": "input",
+            "defaultRole": "generic",
+            "noRoleAllowed": true,
+            "anyRoleAllowed": false,
+            "attr1": "type=color",
+            "id": "input[type=color]"
+        },
+        "input[type=date]": {
+            "tagName": "input",
+            "defaultRole": "generic",
+            "noRoleAllowed": true,
+            "anyRoleAllowed": false,
+            "attr1": "type=date",
+            "id": "input[type=date]"
+        },
+        "input[type=datetime-local]": {
+            "tagName": "input",
+            "defaultRole": "generic",
+            "noRoleAllowed": true,
+            "anyRoleAllowed": false,
+            "attr1": "type=datetime-local",
+            "id": "input[type=datetime-local]"
+        },
+        "input[type=email][list]": {
+            "tagName": "input",
+            "defaultRole": "combobox",
+            "noRoleAllowed": true,
+            "anyRoleAllowed": false,
+            "attr1": "type=email",
+            "attr2": "list",
+            "id": "input[type=email][list]"
+        },
+        "input[type=email]": {
+            "tagName": "input",
+            "defaultRole": "textbox",
+            "noRoleAllowed": true,
+            "anyRoleAllowed": false,
+            "attr1": "type=email",
+            "id": "input[type=email]"
+        },
+        "input[type=file]": {
+            "tagName": "input",
+            "defaultRole": "generic",
+            "noRoleAllowed": true,
+            "anyRoleAllowed": false,
+            "attr1": "type=file",
+            "id": "input[type=file]"
+        },
+        "input[type=hidden]": {
+            "tagName": "input",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [],
+            "attr1": "type=hidden",
+            "id": "input[type=hidden]"
+        },
+        "input[type=image]": {
+            "tagName": "input",
+            "defaultRole": "button",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [
+                "link",
+                "menuitem",
+                "menuitemcheckbox",
+                "menuitemradio",
+                "radio",
+                "switch"
+            ],
+            "attr1": "type=image",
+            "id": "input[type=image]"
+        },
+        "input[type=month]": {
+            "tagName": "input",
+            "defaultRole": "generic",
+            "noRoleAllowed": true,
+            "anyRoleAllowed": false,
+            "attr1": "type=month",
+            "id": "input[type=month]"
+        },
+        "input[type=number]": {
+            "tagName": "input",
+            "defaultRole": "spinbutton",
+            "noRoleAllowed": true,
+            "anyRoleAllowed": false,
+            "attr1": "type=number",
+            "id": "input[type=number]"
+        },
+        "input[type=password]": {
+            "tagName": "input",
+            "defaultRole": "generic",
+            "noRoleAllowed": true,
+            "anyRoleAllowed": false,
+            "attr1": "type=password",
+            "id": "input[type=password]"
+        },
+        "input[type=radio]": {
+            "tagName": "input",
+            "defaultRole": "radio",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [
+                "menuitemradio"
+            ],
+            "attr1": "type=radio",
+            "id": "input[type=radio]"
+        },
+        "input[type=range]": {
+            "tagName": "input",
+            "defaultRole": "slider",
+            "noRoleAllowed": true,
+            "anyRoleAllowed": false,
+            "attr1": "type=range",
+            "id": "input[type=range]"
+        },
+        "input[type=reset]": {
+            "tagName": "input",
+            "defaultRole": "button",
+            "noRoleAllowed": true,
+            "anyRoleAllowed": false,
+            "attr1": "type=reset",
+            "id": "input[type=reset]"
+        },
+        "input[type=search][list]": {
+            "tagName": "input",
+            "defaultRole": "combobox",
+            "noRoleAllowed": true,
+            "anyRoleAllowed": false,
+            "attr1": "type=search",
+            "attr2": "list",
+            "id": "input[type=search][list]"
+        },
+        "input[type=search]": {
+            "tagName": "input",
+            "defaultRole": "searchbox",
+            "noRoleAllowed": true,
+            "anyRoleAllowed": false,
+            "attr1": "type=search",
+            "id": "input[type=search]"
+        },
+        "input[type=submit]": {
+            "tagName": "input",
+            "defaultRole": "button",
+            "noRoleAllowed": true,
+            "anyRoleAllowed": false,
+            "attr1": "type=submit",
+            "id": "input[type=submit]"
+        },
+        "input[type=tel][list]": {
+            "tagName": "input",
+            "defaultRole": "combobox",
+            "noRoleAllowed": true,
+            "anyRoleAllowed": false,
+            "attr1": "type=tel",
+            "attr2": "list",
+            "id": "input[type=tel][list]"
+        },
+        "input[type=tel]": {
+            "tagName": "input",
+            "defaultRole": "textbox",
+            "noRoleAllowed": true,
+            "anyRoleAllowed": false,
+            "attr1": "type=tel",
+            "id": "input[type=tel]"
+        },
+        "input[type=text][list]": {
+            "tagName": "input",
+            "defaultRole": "combobox",
+            "noRoleAllowed": true,
+            "anyRoleAllowed": false,
+            "attr1": "type=text",
+            "attr2": "list",
+            "id": "input[type=text][list]"
+        },
+        "input[type=text]": {
+            "tagName": "input",
+            "defaultRole": "textbox",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [
+                "combobox",
+                "searchbox",
+                "spinbutton"
+            ],
+            "attr1": "type=text",
+            "id": "input[type=text]"
+        },
+        "input[type=time]": {
+            "tagName": "input",
+            "defaultRole": "generic",
+            "noRoleAllowed": true,
+            "anyRoleAllowed": false,
+            "attr1": "type=time",
+            "id": "input[type=time]"
+        },
+        "input[type=url][list]": {
+            "tagName": "input",
+            "defaultRole": "combobox",
+            "noRoleAllowed": true,
+            "anyRoleAllowed": false,
+            "attr1": "type=url",
+            "attr2": "list",
+            "id": "input[type=url][list]"
+        },
+        "input[type=url]": {
+            "tagName": "input",
+            "defaultRole": "textbox",
+            "noRoleAllowed": true,
+            "anyRoleAllowed": false,
+            "attr1": "type=url",
+            "id": "input[type=url]"
+        },
+        "input[type=week]": {
+            "tagName": "input",
+            "defaultRole": "generic",
+            "noRoleAllowed": true,
+            "anyRoleAllowed": false,
+            "attr1": "type=week",
+            "id": "input[type=week]"
+        },
+        "ins": {
+            "tagName": "ins",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": true,
+            "id": "ins"
+        },
+        "kbd": {
+            "tagName": "kbd",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": true,
+            "id": "kbd"
+        },
+        "label": {
+            "tagName": "label",
+            "defaultRole": "generic",
+            "noRoleAllowed": true,
+            "anyRoleAllowed": false,
+            "id": "label"
+        },
+        "legend": {
+            "tagName": "legend",
+            "defaultRole": "generic",
+            "noRoleAllowed": true,
+            "anyRoleAllowed": false,
+            "id": "legend"
+        },
+        "li": {
+            "tagName": "li",
+            "defaultRole": "listitem",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [
+                "menuitem",
+                "menuitemcheckbox",
+                "menuitemradio",
+                "option",
+                "none",
+                "presentation",
+                "radio",
+                "separator",
+                "tab",
+                "treeitem"
+            ],
+            "id": "li"
+        },
+        "link": {
+            "tagName": "link",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [],
+            "id": "link"
+        },
+        "main": {
+            "tagName": "main",
+            "defaultRole": "main",
+            "noRoleAllowed": true,
+            "anyRoleAllowed": false,
+            "id": "main"
+        },
+        "map": {
+            "tagName": "map",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [],
+            "id": "map"
+        },
+        "math": {
+            "tagName": "math",
+            "defaultRole": "math",
+            "noRoleAllowed": true,
+            "anyRoleAllowed": false,
+            "id": "math"
+        },
+        "mark": {
+            "tagName": "mark",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": true,
+            "id": "mark"
+        },
+        "menu": {
+            "tagName": "menu",
+            "defaultRole": "list",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [
+                "directory",
+                "group",
+                "listbox",
+                "menu",
+                "menubar",
+                "none",
+                "presentation",
+                "radiogroup",
+                "tablist",
+                "toolbar",
+                "tree"
+            ],
+            "id": "menu"
+        },
+        "meta": {
+            "tagName": "meta",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [],
+            "id": "meta"
+        },
+        "meter": {
+            "tagName": "meter",
+            "defaultRole": "generic",
+            "noRoleAllowed": true,
+            "anyRoleAllowed": false,
+            "id": "meter"
+        },
+        "nav": {
+            "tagName": "nav",
+            "defaultRole": "navigation",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [
+                "menu",
+                "menubar",
+                "tablist"
+            ],
+            "id": "nav"
+        },
+        "noscript": {
+            "tagName": "noscript",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [],
+            "id": "noscript"
+        },
+        "object": {
+            "tagName": "object",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [
+                "application",
+                "document",
+                "img"
+            ],
+            "id": "object"
+        },
+        "ol": {
+            "tagName": "ol",
+            "defaultRole": "list",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [
+                "directory",
+                "group",
+                "listbox",
+                "menu",
+                "menubar",
+                "none",
+                "presentation",
+                "radiogroup",
+                "tablist",
+                "toolbar",
+                "tree"
+            ],
+            "id": "ol"
+        },
+        "optgroup": {
+            "tagName": "optgroup",
+            "defaultRole": "group",
+            "noRoleAllowed": true,
+            "anyRoleAllowed": false,
+            "id": "optgroup"
+        },
+        "option": {
+            "tagName": "option",
+            "defaultRole": "option",
+            "noRoleAllowed": true,
+            "anyRoleAllowed": false,
+            "id": "option"
+        },
+        "output": {
+            "tagName": "output",
+            "defaultRole": "status",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": true,
+            "id": "output"
+        },
+        "p": {
+            "tagName": "p",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": true,
+            "id": "p"
+        },
+        "param": {
+            "tagName": "param",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [],
+            "id": "param"
+        },
+        "picture": {
+            "tagName": "picture",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [],
+            "id": "picture"
+        },
+        "pre": {
+            "tagName": "pre",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": true,
+            "id": "pre"
+        },
+        "progress": {
+            "tagName": "progress",
+            "defaultRole": "progressbar",
+            "noRoleAllowed": true,
+            "anyRoleAllowed": false,
+            "id": "progress"
+        },
+        "q": {
+            "tagName": "q",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": true,
+            "id": "q"
+        },
+        "rp": {
+            "tagName": "rp",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": true,
+            "id": "rp"
+        },
+        "rt": {
+            "tagName": "rt",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": true,
+            "id": "rt"
+        },
+        "ruby": {
+            "tagName": "ruby",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": true,
+            "id": "ruby"
+        },
+        "s": {
+            "tagName": "s",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": true,
+            "id": "s"
+        },
+        "samp": {
+            "tagName": "samp",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": true,
+            "id": "samp"
+        },
+        "script": {
+            "tagName": "script",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [],
+            "id": "script"
+        },
+        "section[accname]": {
+            "tagName": "section",
+            "defaultRole": "region",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [
+                "alert",
+                "alertdialog",
+                "application",
+                "banner",
+                "complementary",
+                "contentinfo",
+                "dialog",
+                "document",
+                "feed",
+                "log",
+                "main",
+                "marquee",
+                "navigation",
+                "none",
+                "note",
+                "presentation",
+                "search",
+                "status",
+                "tabpanel"
+            ],
+            "hasAccname": true,
+            "id": "section[accname]"
+        },
+        "section": {
+            "tagName": "section",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [
+                "alert",
+                "alertdialog",
+                "application",
+                "banner",
+                "complementary",
+                "contentinfo",
+                "dialog",
+                "document",
+                "feed",
+                "log",
+                "main",
+                "marquee",
+                "navigation",
+                "none",
+                "note",
+                "presentation",
+                "search",
+                "status",
+                "tabpanel"
+            ],
+            "id": "section"
+        },
+        "select": {
+            "tagName": "select",
+            "defaultRole": "combobox",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [
+                "menu"
+            ],
+            "id": "select"
+        },
+        "select[size-or-multiple]": {
+            "tagName": "select",
+            "defaultRole": "listbox",
+            "noRoleAllowed": true,
+            "anyRoleAllowed": false,
+            "hasSizeOrMultiple": true,
+            "id": "select[size-or-multiple]"
+        },
+        "slot": {
+            "tagName": "slot",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [],
+            "id": "slot"
+        },
+        "small": {
+            "tagName": "small",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": true,
+            "id": "small"
+        },
+        "source": {
+            "tagName": "source",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [],
+            "id": "source"
+        },
+        "span": {
+            "tagName": "span",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": true,
+            "id": "span"
+        },
+        "strong": {
+            "tagName": "strong",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": true,
+            "id": "strong"
+        },
+        "style": {
+            "tagName": "style",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [],
+            "id": "style"
+        },
+        "sub": {
+            "tagName": "sub",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": true,
+            "id": "sub"
+        },
+        "summary": {
+            "tagName": "summary",
+            "defaultRole": "button",
+            "noRoleAllowed": true,
+            "anyRoleAllowed": false,
+            "id": "summary"
+        },
+        "sup": {
+            "tagName": "sup",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": true,
+            "id": "sup"
+        },
+        "SVG": {
+            "tagName": "SVG",
+            "defaultRole": "graphics-document",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": true,
+            "id": "SVG"
+        },
+        "table": {
+            "tagName": "table",
+            "defaultRole": "table",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": true,
+            "id": "table"
+        },
+        "tbody": {
+            "tagName": "tbody",
+            "defaultRole": "rowgroup",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": true,
+            "id": "tbody"
+        },
+        "template": {
+            "tagName": "template",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [],
+            "id": "template"
+        },
+        "textarea": {
+            "tagName": "textarea",
+            "defaultRole": "textbox",
+            "noRoleAllowed": true,
+            "anyRoleAllowed": false,
+            "id": "textarea"
+        },
+        "tfoot": {
+            "tagName": "tfoot",
+            "defaultRole": "rowgroup",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": true,
+            "id": "tfoot"
+        },
+        "thead": {
+            "tagName": "thead",
+            "defaultRole": "rowgroup",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": true,
+            "id": "thead"
+        },
+        "time": {
+            "tagName": "time",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": true,
+            "id": "time"
+        },
+        "title": {
+            "tagName": "title",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [],
+            "id": "title"
+        },
+        "td[cell]": {
+            "tagName": "td",
+            "defaultRole": "cell",
+            "noRoleAllowed": true,
+            "anyRoleAllowed": false,
+            "ownedbyTable": true,
+            "id": "td[cell]"
+        },
+        "td[gridcell]": {
+            "tagName": "td",
+            "defaultRole": "gridcell",
+            "noRoleAllowed": true,
+            "anyRoleAllowed": false,
+            "ownedbyGrid": true,
+            "ownedbyTreegrid": true,
+            "id": "td[gridcell]"
+        },
+        "td": {
+            "tagName": "td",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": true,
+            "id": "td"
+        },
+        "th[cell]": {
+            "tagName": "th",
+            "defaultRole": "cell",
+            "noRoleAllowed": true,
+            "anyRoleAllowed": false,
+            "ownedbyTable": true,
+            "id": "th[cell]"
+        },
+        "th[gridcell]": {
+            "tagName": "th",
+            "defaultRole": "gridcell",
+            "noRoleAllowed": true,
+            "anyRoleAllowed": false,
+            "ownedbyGrid": true,
+            "ownedbyTreegrid": true,
+            "id": "th[gridcell]"
+        },
+        "th[colheder]": {
+            "tagName": "th",
+            "defaultRole": "colheader",
+            "noRoleAllowed": true,
+            "anyRoleAllowed": false,
+            "ownedbyTable": true,
+            "ownedbyGrid": true,
+            "ownedbyTreegrid": true,
+            "id": "th[colheder]"
+        },
+        "th": {
+            "tagName": "th",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": true,
+            "id": "th"
+        },
+        "tr[table]": {
+            "tagName": "tr",
+            "defaultRole": "row",
+            "noRoleAllowed": true,
+            "anyRoleAllowed": false,
+            "ownedbyTable": true,
+            "ownedbyGrid": true,
+            "ownedbyTreegrid": true,
+            "id": "tr[table]"
+        },
+        "tr": {
+            "tagName": "tr",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": true,
+            "id": "tr"
+        },
+        "track": {
+            "tagName": "track",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [],
+            "id": "track"
+        },
+        "u": {
+            "tagName": "u",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": true,
+            "id": "u"
+        },
+        "ul": {
+            "tagName": "ul",
+            "defaultRole": "list",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [
+                "directory",
+                "group",
+                "listbox",
+                "menu",
+                "menubar",
+                "none",
+                "presentation",
+                "radiogroup",
+                "tablist",
+                "toolbar",
+                "tree"
+            ],
+            "id": "ul"
+        },
+        "var": {
+            "tagName": "var",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": true,
+            "id": "var"
+        },
+        "video": {
+            "tagName": "video",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": false,
+            "allowedRoles": [
+                "application"
+            ],
+            "id": "video"
+        },
+        "wbr": {
+            "tagName": "wbr",
+            "defaultRole": "generic",
+            "noRoleAllowed": false,
+            "anyRoleAllowed": true,
+            "id": "wbr"
+        }
+    },
+
+    getElementAriaInfo : function (node) {
+
+        var tagName = node.tagName.toLowerCase();
+        var elemInfo, type;
+
+        switch (tagName) {
+            case 'a':
+                if (node.href) {
+                    elemInfo = this.elementInfo['a[href]'];
+                } else {
+                    elemInfo = this.elementInfo['a'];
+                }
+                break;
+
+            case 'area':
+                if (node.href) {
+                    elemInfo = this.elementInfo['area[href]'];
+                } else {
+                    elemInfo = this.elementInfo['area'];
+                }
+                break;
+
+            case 'img':
+                if (node.hasAttribute('aria-label') ||
+                    node.hasAttribute('aria-labelledby')) {
+                    elemInfo = this.elementInfo['img[accname]'];
+                } else {
+                    if (node.hasAttribute('alt')) {
+                        if (node.alt.trim().length) {
+                            elemInfo = this.elementInfo['img[alt]'];
+                        } else {
+                            elemInfo = this.elementInfo['img[emptyalt]'];
+                        }
+                    } else {
+                        elemInfo = this.elementInfo['img'];
+                    }
+                }
+                break;
+
+            case 'input':
+
+                type = node.getAttribute('type');
+
+                if (!type) {
+                    type = 'text';
+                }
+
+
+                tagName += '[type=' + type + ']';
+
+                if (node.hasAttribute('list')) {
+                    tagName += '[list]';
+                }
+
+                elemInfo = this.elementInfo[tagName];
+                break;
+
+            case 'section':
+                if (node.hasAttribute('aria-label') ||
+                    node.hasAttribute('aria-labelledby')) {
+                    elemInfo = this.elementInfo['section[accname]'];
+                } else {
+                    elemInfo = this.elementInfo['section'];
+                }
+                break;
+
+            case 'select':
+                if (node.multiple || (node.size > 1)) {
+                    elemInfo = this.elementInfo['select[size-or-multiple]'];
+                } else {
+                    elemInfo = this.elementInfo['select'];
+                }
+                break;
+
+            case 'figure':
+
+                if (node.querySelector('figcaption')) {
+                    elemInfo = this.elementInfo['figure[figcaption]'];
+                } else {
+                    elemInfo = this.elementInfo['figure'];
+                }
+
+                break;
+
+            default:
+                elemInfo = this.elementInfo[tagName];
+
+        }
+
+        if (!elemInfo) {
+            elemInfo = {
+              "tagName": node.tagName,
+              "defaultRole": "generic",
+              "noRoleAllowed": false,
+              "anyRoleAllowed": true
+            }
+        }
+
+        return elemInfo;
+    }
+  };
+}
+/**
+ * Copyright 2011-2018 OpenAjax Alliance
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+// import {OpenAjax} from '../openajax_a11y_constants.js';
+
 
 /* ---------------------------------------------------------------- */
 /*        Utilities and String Extensions                           */
@@ -2211,9 +7511,8 @@ if (typeof OpenAjax.a11y.aria == "undefined") {
  * @namespace OpenAjax.a11y.util
  */
 
-OpenAjax.a11y.util = OpenAjax.a11y.util || {};
-
-
+OpenAjax.a11y =  OpenAjax.a11y || {};
+OpenAjax.a11y.util =  OpenAjax.a11y.util || {};
 
 /**
  * @function cleanForUTF8
@@ -2252,7 +7551,7 @@ OpenAjax.a11y.util.cleanForUTF8 = function(str) {
  * @return {String}  Formatted date string
  */
 
-OpenAjax.a11y.util.getFormattedDate = function(str) {
+OpenAjax.a11y.util.getFormattedDate = function() {
 
   function leadingZero(n) {
     var n1 = n.toString();
@@ -2358,7 +7657,7 @@ OpenAjax.a11y.util.transformElementMarkup = function(str) {
 
   var new_str = "";
 
-  var transform_option = 2; // default is capitalize
+  var transform_option = 1; // default is capitalize
 
   if (OpenAjax.a11y.ELEMENT_FORMATING == "HTML") transform_option = 2; // transform to html
   if (OpenAjax.a11y.ELEMENT_FORMATING == "NONE") transform_option = 3; // just removes @ sign from string
@@ -2460,7 +7759,7 @@ OpenAjax.a11y.util.RGBToHEX = function( rgb_color ) {
 
  var hex = [];
  var color_hex = "000000";
- var components = rgb_color.match(/[\d\.]+/g);
+ var components = rgb_color.match(/[\d.]+/g);
 
  if (components && components.length) {
   length = components.length;
@@ -2551,12 +7850,11 @@ OpenAjax.a11y.util.normalizeSpace = function (s) {
  * @param {String}  s       - String to have replacements
  * @param {String}  str1    - String to replace
  * @param {String}  str2    - The replacement string
- * @param {Boolean} ignore  - True if ignore uppercase and lowercase
  *
  * @return  String
  */
 
-OpenAjax.a11y.util.replaceAll = function(s, str1, str2, ignore) {
+OpenAjax.a11y.util.replaceAll = function(s, str1, str2) {
 
   var len = s.length;
   var pos = s.indexOf(str1);
@@ -2585,7 +7883,7 @@ OpenAjax.a11y.util.replaceAll = function(s, str1, str2, ignore) {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -2594,6 +7892,7 @@ OpenAjax.a11y.util.replaceAll = function(s, str1, str2, ignore) {
  * limitations under the License.
  */
 
+// import {OpenAjax} from '../openajax_a11y_constants.js';
 
 /* ---------------------------------------------------------------- */
 /*                      AbbreviationsCache                          */
@@ -2980,12 +8279,10 @@ OpenAjax.a11y.cache.AbbreviationItem.prototype.getStyle = function () {
  *
  * @desc Returns an array of attributes for the element, sorted in alphabetical order
  *
- * @param {Boolean}  unsorted  - If defined and true the results will NOT be sorted alphabetically
- *
  * @return {Array} Returns a array of attribute display object
  */
 
-OpenAjax.a11y.cache.AbbreviationItem.prototype.getAttributes = function (unsorted) {
+OpenAjax.a11y.cache.AbbreviationItem.prototype.getAttributes = function () {
 
   return [];
 
@@ -2998,12 +8295,10 @@ OpenAjax.a11y.cache.AbbreviationItem.prototype.getAttributes = function (unsorte
  *
  * @desc Returns an array of cache properties sorted by property name
  *
- * @param {Boolean}  unsorted  - If defined and true the results will NOT be sorted alphabetically
- *
  * @return {Array} Returns a array of cache property display object
  */
 
-OpenAjax.a11y.cache.AbbreviationItem.prototype.getCacheProperties = function (unsorted) {
+OpenAjax.a11y.cache.AbbreviationItem.prototype.getCacheProperties = function () {
 
   return [];
 
@@ -3062,7 +8357,7 @@ OpenAjax.a11y.cache.AbbreviationItem.prototype.getEvents = function () {
 
 OpenAjax.a11y.cache.AbbreviationItem.prototype.toString = function () {
 
- return "Abbreviation: " + abbreviation_text;
+ return "Abbreviation: " + this.abbreviation_text;
 };
 
 
@@ -3074,7 +8369,7 @@ OpenAjax.a11y.cache.AbbreviationItem.prototype.toString = function () {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -3082,6 +8377,8 @@ OpenAjax.a11y.cache.AbbreviationItem.prototype.toString = function () {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+// import {OpenAjax} from '../openajax_a11y_constants.js';
 
 /* ---------------------------------------------------------------- */
 /*                       ColorContrstCache                          */
@@ -3417,8 +8714,6 @@ OpenAjax.a11y.cache.ColorContrastCache.prototype.toString = function () {
 
   var i;
 
-  var item;
-
   var str = "\n\nColor Contrast List Information\n";
 
   var list_length = this.color_contrast_items.length;
@@ -3561,12 +8856,10 @@ OpenAjax.a11y.cache.ColorContrastItem.prototype.getStyle = function () {
  *
  * @desc Returns an array of attributes for the element, sorted in alphabetical order
  *
- * @param {Boolean}  unsorted  - If defined and true the results will NOT be sorted alphabetically
- *
  * @return {Array} Returns a array of attribute display object
  */
 
-OpenAjax.a11y.cache.ColorContrastItem.prototype.getAttributes = function (unsorted) {
+OpenAjax.a11y.cache.ColorContrastItem.prototype.getAttributes = function () {
 
   return [];
 
@@ -3579,12 +8872,10 @@ OpenAjax.a11y.cache.ColorContrastItem.prototype.getAttributes = function (unsort
  *
  * @desc Returns an array of cache properties sorted by property name
  *
- * @param {Boolean}  unsorted  - If defined and true the results will NOT be sorted alphabetically
- *
  * @return {Array} Returns a array of cache property display object
  */
 
-OpenAjax.a11y.cache.ColorContrastItem.prototype.getCacheProperties = function (unsorted) {
+OpenAjax.a11y.cache.ColorContrastItem.prototype.getCacheProperties = function () {
 
   var cache_nls = OpenAjax.a11y.nls.Cache;
 
@@ -3660,7 +8951,7 @@ OpenAjax.a11y.cache.ColorContrastItem.prototype.toString = function () {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -3668,6 +8959,8 @@ OpenAjax.a11y.cache.ColorContrastItem.prototype.toString = function () {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+// import {OpenAjax} from '../openajax_a11y_constants.js';
 
 /* ---------------------------------------------------------------- */
 /*                       ControlInfo                                */
@@ -3829,7 +9122,7 @@ OpenAjax.a11y.cache.ControlsCache.prototype.addChildControl = function (control_
 
 OpenAjax.a11y.cache.ControlsCache.prototype.addControlElement = function (control_element) {
 
-//  OpenAjax.a11y.logger.debug("  Adding control element: " + control_element.dom_element.tag_name + " ("+ control_element.control_type + ")");
+//  OpenAjax.a11y.logger.debug("  Adding control element: " + control_element.dom_element.tag_name + " ("+ control_element.is_widget + ")");
 
   // item must exist and have the position property
   if (control_element) {
@@ -3839,9 +9132,7 @@ OpenAjax.a11y.cache.ControlsCache.prototype.addControlElement = function (contro
     this.control_elements.push( control_element );
     return true;
   }
-
   return this.control_length;
-
 };
 
 /**
@@ -3968,6 +9259,7 @@ OpenAjax.a11y.cache.ControlsCache.prototype.updateCacheItems = function (dom_ele
 
   var be;
   var fe;
+  var ge;
   var ie;
   var le;
   var me;
@@ -4030,6 +9322,7 @@ OpenAjax.a11y.cache.ControlsCache.prototype.updateCacheItems = function (dom_ele
     ci.control_element = we;
 
     if (!we.has_aria_owns) ci.parent_widget = we;
+
 
   }
   else {
@@ -4130,6 +9423,12 @@ OpenAjax.a11y.cache.ControlsCache.prototype.updateCacheItems = function (dom_ele
 
         if (control_info.form_element) {
           control_info.form_element.number_of_controls += 1;
+          if (ie.type === 'submit') {
+            control_info.form_element.submit_button = ie;
+          }
+          if (ie.type === 'reset') {
+            control_info.form_element.reset_button = ie;
+          }
         }
 
         if (control_info.grouping_element) {
@@ -4145,6 +9444,22 @@ OpenAjax.a11y.cache.ControlsCache.prototype.updateCacheItems = function (dom_ele
 
         this.interactive_elements.push(ie);
         interactive_element_added = true;
+      }
+
+      // For ARIA in HTML rule
+
+      var typeId = dom_element.node.getAttribute('type');
+      if (typeId) {
+        typeId = '[' + typeId + ']';
+      } else {
+        typeId = '';
+      }
+
+      var listId = dom_element.node.hasAttribute('list');
+      if (listId) {
+        listId = '[list]';
+      } else {
+        listId = '';
       }
 
       break;
@@ -4165,6 +9480,14 @@ OpenAjax.a11y.cache.ControlsCache.prototype.updateCacheItems = function (dom_ele
 
       if (control_info.form_element) {
         control_info.form_element.number_of_controls += 1;
+
+        if (be.type === 'submit') {
+          control_info.form_element.submit_button = be;
+        }
+        if (be.type === 'reset') {
+          control_info.form_element.reset_button = be;
+        }
+
       }
 
       if (control_info.grouping_element) {
@@ -4596,6 +9919,7 @@ OpenAjax.a11y.cache.ControlsCache.prototype.getRuleResults = function (filter) {
   }
 
   var RESULT_FILTER = OpenAjax.a11y.RESULT_FILTER;
+  var cache_items = [];
 
   var local_filter;
 
@@ -4603,8 +9927,6 @@ OpenAjax.a11y.cache.ControlsCache.prototype.getRuleResults = function (filter) {
     local_filter = RESULT_FILTER.ALL;
   else
     local_filter = filter;
-
-  var rule_results = [];
 
   var child_cache_elements     = this.child_cache_elements;
   var child_cache_elements_len = child_cache_elements.length;
@@ -4691,6 +10013,29 @@ OpenAjax.a11y.cache.ControlsCache.prototype.getControlElementById = function (id
   for (var i = 0; i < this.control_elements.length; i++) {
     if (this.control_elements[i].dom_element.id == id) {
       return this.control_elements[i];
+    }
+  }
+
+  return null;
+};
+
+/**
+ * @method getWidgetElementById
+ *
+ * @memberOf OpenAjax.a11y.cache.ControlsCache
+ *
+ * @desc Finds the the control cache element object with the matching id
+ *
+ * @param  {String }  id  - id of widget cache element object
+ *
+ * @return {Object} Returns cache widget element object if cache id is found, otherwise null
+ */
+
+OpenAjax.a11y.cache.ControlsCache.prototype.getWidgetElementById = function (id) {
+
+  for (var i = 0; i < this.widget_elements.length; i++) {
+    if (this.widget_elements[i].dom_element.id === id) {
+      return this.widget_elements[i];
     }
   }
 
@@ -4813,12 +10158,10 @@ OpenAjax.a11y.cache.ControlsCache.prototype.getElementTextContent = function (la
 
      case 'select':
      // *** need to add some code here to get
-       return;
        break;
 
      case 'textarea':
      // *** need to add some code here to get
-       return;
        break;
 
      default:
@@ -5183,8 +10526,6 @@ OpenAjax.a11y.cache.ControlsCache.prototype.applyAriaOwns = function () {
 
     if (widget.has_aria_owns) {
 
-//      OpenAjax.a11y.logger.debug("  Owned: " + widget.cache_id);
-
       var ids = widget.getOwnedIds();
       var ids_len = ids.length;
 
@@ -5192,15 +10533,10 @@ OpenAjax.a11y.cache.ControlsCache.prototype.applyAriaOwns = function () {
 
          var id = ids[j];
 
-         var ce = this.getControlElementById(id);
+         var de = this.dom_cache.element_cache.getDOMElementById(id);
 
-         if (ce) {
-
-           this.removeFromChildCacheElements(ce);
-           widget.addChildControl(ce, true);
-           ce.addOwnerControl(widget);
-           // update event information owned controls
-
+         if (de) {
+           de.addOwnedBy(widget);
          }
       }
     }
@@ -5253,7 +10589,6 @@ OpenAjax.a11y.cache.ControlsCache.prototype.removeFromChildCacheElements = funct
  * @desc Creates a FormElement object used to hold information about form elements
  *
  * @param  {DOMelement}   dom_element   - dom_element object references DOMElement of the form element
- * @param  {ControlInfo}  control_info  - Information about the parent control cache
  *
  * @property  {DOMElement}  dom_element           - DOMElement associated with the form element
  * @property  {String}      cache_id              - String that uniquely identifies the cache element in the DOMCache
@@ -5274,7 +10609,7 @@ OpenAjax.a11y.cache.ControlsCache.prototype.removeFromChildCacheElements = funct
  * @property  {String}  name_attribute  - The value of the name attribute of the form control
  */
 
-OpenAjax.a11y.cache.FormElement = function (dom_element, control_info) {
+OpenAjax.a11y.cache.FormElement = function (dom_element) {
 
   this.dom_element  = dom_element;
   this.child_cache_elements = [];
@@ -5285,6 +10620,9 @@ OpenAjax.a11y.cache.FormElement = function (dom_element, control_info) {
   this.has_validity = false;
   this.has_pattern  = false;
   this.is_valid     = true;
+  this.submit_button = null;
+  this.reset_button  = null;
+
 
   this.control_type = OpenAjax.a11y.CONTROL_TYPE.FORM;
   this.number_of_controls = 0;
@@ -5310,6 +10648,9 @@ OpenAjax.a11y.cache.FormElement.prototype.addChildControl = function (child_cont
 
   if (child_control) {
    this.child_cache_elements.push(child_control);
+
+
+
   }
 };
 
@@ -5356,7 +10697,6 @@ OpenAjax.a11y.cache.FormElement.prototype.getStyle = function () {
 
 OpenAjax.a11y.cache.FormElement.prototype.getAttributes = function (unsorted) {
 
-  var cache_nls = OpenAjax.a11y.nls.Cache;
   var attributes = this.dom_element.getAttributes();
 
   if (!unsorted) this.dom_element.sortItems(attributes);
@@ -5375,8 +10715,6 @@ OpenAjax.a11y.cache.FormElement.prototype.getAttributes = function (unsorted) {
  */
 
 OpenAjax.a11y.cache.FormElement.prototype.getCacheProperties = function () {
-
-  var cache_nls = OpenAjax.a11y.nls.Cache;
 
   var properties = this.dom_element.getCacheProperties();
 
@@ -5415,7 +10753,7 @@ OpenAjax.a11y.cache.FormElement.prototype.getCachePropertyValue = function (prop
  * @return {Array} Returns a array of event information
  */
 
-OpenAjax.a11y.cache.FormElement.prototype.getEvents = function (unsorted) {
+OpenAjax.a11y.cache.FormElement.prototype.getEvents = function () {
 
   return this.dom_element.getEvents();
 
@@ -5557,7 +10895,6 @@ OpenAjax.a11y.cache.FieldsetElement.prototype.getStyle = function () {
 
 OpenAjax.a11y.cache.FieldsetElement.prototype.getAttributes = function (unsorted) {
 
-  var cache_nls = OpenAjax.a11y.nls.Cache;
   var attributes = this.dom_element.getAttributes();
 
 //  cache_nls.addPropertyIfUndefined(attributes, this, 'tag_name');
@@ -5580,8 +10917,6 @@ OpenAjax.a11y.cache.FieldsetElement.prototype.getAttributes = function (unsorted
  */
 
 OpenAjax.a11y.cache.FieldsetElement.prototype.getCacheProperties = function (unsorted) {
-
-  var cache_nls = OpenAjax.a11y.nls.Cache;
 
   var properties = this.dom_element.getCacheProperties(unsorted);
 
@@ -5763,10 +11098,7 @@ OpenAjax.a11y.cache.GroupingElement.prototype.getStyle = function () {
 
 OpenAjax.a11y.cache.GroupingElement.prototype.getAttributes = function (unsorted) {
 
-  var cache_nls = OpenAjax.a11y.nls.Cache;
   var attributes = this.dom_element.getAttributes();
-
-//  cache_nls.addPropertyIfUndefined(attributes, this, 'tag_name');
 
   if (!unsorted) this.dom_element.sortItems(attributes);
 
@@ -5787,11 +11119,7 @@ OpenAjax.a11y.cache.GroupingElement.prototype.getAttributes = function (unsorted
 
 OpenAjax.a11y.cache.GroupingElement.prototype.getCacheProperties = function (unsorted) {
 
-  var cache_nls = OpenAjax.a11y.nls.Cache;
-
   var properties = this.dom_element.getCacheProperties(unsorted);
-
-//  cache_nls.addPropertyIfDefined(properties, this, 'tag_name');
 
   if (!unsorted) this.dom_element.sortItems(properties);
 
@@ -5977,10 +11305,7 @@ OpenAjax.a11y.cache.LegendElement.prototype.getStyle = function () {
 
 OpenAjax.a11y.cache.LegendElement.prototype.getAttributes = function (unsorted) {
 
-  var cache_nls = OpenAjax.a11y.nls.Cache;
   var attributes = this.dom_element.getAttributes();
-
-//  cache_nls.addPropertyIfUndefined(attributes, this, 'tag_name');
 
   if (!unsorted) this.dom_element.sortItems(attributes);
 
@@ -6001,11 +11326,7 @@ OpenAjax.a11y.cache.LegendElement.prototype.getAttributes = function (unsorted) 
 
 OpenAjax.a11y.cache.LegendElement.prototype.getCacheProperties = function (unsorted) {
 
-  var cache_nls = OpenAjax.a11y.nls.Cache;
-
   var properties = this.dom_element.getCacheProperties(unsorted);
-
-//  cache_nls.addPropertyIfDefined(properties, this, 'tag_name');
 
   if (!unsorted) this.dom_element.sortItems(properties);
 
@@ -6196,10 +11517,7 @@ OpenAjax.a11y.cache.LabelElement.prototype.getStyle = function () {
 
 OpenAjax.a11y.cache.LabelElement.prototype.getAttributes = function (unsorted) {
 
-  var cache_nls = OpenAjax.a11y.nls.Cache;
   var attributes = this.dom_element.getAttributes();
-
-//  cache_nls.addPropertyIfUndefined(attributes, this, 'for_id');
 
   if (!unsorted) this.dom_element.sortItems(attributes);
 
@@ -6593,7 +11911,6 @@ OpenAjax.a11y.cache.InputElement.prototype.getStyle = function () {
 
 OpenAjax.a11y.cache.InputElement.prototype.getAttributes = function (unsorted) {
 
-  var cache_nls = OpenAjax.a11y.nls.Cache;
   var attributes = this.dom_element.getAttributes();
 
   if (!unsorted) this.dom_element.sortItems(attributes);
@@ -6689,8 +12006,6 @@ OpenAjax.a11y.cache.InputElement.prototype.getLabelNLS = function () {
 
   var cache_nls = OpenAjax.a11y.nls.Cache;
 
-  var label_style = {};
-
   if (this.computed_label_length) {
     return this.computed_label;
   }
@@ -6771,7 +12086,7 @@ OpenAjax.a11y.cache.InputElement.prototype.toString = function () {
  *
  * @property  {String}     computed_label                  - Calculated label for the button element
  * @property  {Number}     computed_label_length           - Length of the label property
- * @property  {String}     computed_ label_for_comparison  - Label for comparison (lowercase, space normalization and trimmed)
+ * @property  {String}     computed_label_for_comparison  - Label for comparison (lowercase, space normalization and trimmed)
  *
  * @property  {String}     readonly              - The value of the readonly attribute
  * @property  {String}     disabled              - The value of the disabled attribute
@@ -6807,6 +12122,8 @@ OpenAjax.a11y.cache.ButtonElement = function (dom_element, control_info) {
   this.has_validity = false;
   this.has_pattern  = false;
   this.is_valid     = true;
+
+  this.type = node.type;
 
 };
 
@@ -6889,10 +12206,7 @@ OpenAjax.a11y.cache.ButtonElement.prototype.getStyle = function () {
 
 OpenAjax.a11y.cache.ButtonElement.prototype.getAttributes = function (unsorted) {
 
-  var cache_nls = OpenAjax.a11y.nls.Cache;
   var attributes = this.dom_element.getAttributes();
-
-//  cache_nls.addPropertyIfUnefined(attributes, this, 'name');
 
   if (!unsorted) this.dom_element.sortItems(attributes);
 
@@ -6983,8 +12297,6 @@ OpenAjax.a11y.cache.ButtonElement.prototype.getLabelNLS = function () {
 
   var cache_nls = OpenAjax.a11y.nls.Cache;
 
-  var label_style = {};
-
   if (this.computed_label_length) {
     return this.computed_label;
   }
@@ -7009,8 +12321,6 @@ OpenAjax.a11y.cache.ButtonElement.prototype.getLabelNLS = function () {
 OpenAjax.a11y.cache.ButtonElement.prototype.getLabelSourceNLS = function () {
 
   var cache_nls = OpenAjax.a11y.nls.Cache;
-
-  var label_style = {};
 
   return cache_nls.getValueNLS('computed_label_source', this.computed_label_source);
 
@@ -7316,7 +12626,7 @@ OpenAjax.a11y.cache.TextareaElement.prototype.getLabelSourceNLS = function () {
 OpenAjax.a11y.cache.TextareaElement.prototype.toString = function () {
   var str = "textarea";
 
-  if (this.rows && this.cols) str += "[" + this.rows + "x" + this.cols + "]";
+  if (this.rows && this.cols) str = "[" + this.rows + "x" + this.cols + "]";
 
   var label = "no label";
   if (this.computed_label_for_comparison.length) label = this.computed_label;
@@ -8327,10 +13637,7 @@ OpenAjax.a11y.cache.SelectElement.prototype.getStyle = function () {
 
 OpenAjax.a11y.cache.SelectElement.prototype.getAttributes = function (unsorted) {
 
-  var cache_nls = OpenAjax.a11y.nls.Cache;
   var attributes = this.dom_element.getAttributes();
-
-//  cache_nls.addPropertyIfUndefined(attributes, this, 'tag_name');
 
   if (!unsorted) this.dom_element.sortItems(attributes);
 
@@ -8421,8 +13728,6 @@ OpenAjax.a11y.cache.SelectElement.prototype.getLabelNLS = function () {
 
   var cache_nls = OpenAjax.a11y.nls.Cache;
 
-  var label_style = {};
-
   if (this.computed_label_length) {
     return this.computed_label;
   }
@@ -8448,8 +13753,6 @@ OpenAjax.a11y.cache.SelectElement.prototype.getLabelNLS = function () {
 OpenAjax.a11y.cache.SelectElement.prototype.getLabelSourceNLS = function () {
 
   var cache_nls = OpenAjax.a11y.nls.Cache;
-
-  var label_style = {};
 
   return cache_nls.getValueNLS('computed_label_source', this.computed_label_source);
 
@@ -8602,10 +13905,7 @@ OpenAjax.a11y.cache.OptgroupElement.prototype.getStyle = function () {
 
 OpenAjax.a11y.cache.OptgroupElement.prototype.getAttributes = function (unsorted) {
 
-  var cache_nls = OpenAjax.a11y.nls.Cache;
   var attributes = this.dom_element.getAttributes();
-
-//  cache_nls.addPropertyIfUndefined(attributes, this, 'tag_name');
 
   if (!unsorted) this.dom_element.sortItems(attributes);
 
@@ -8771,10 +14071,7 @@ OpenAjax.a11y.cache.OptionElement.prototype.getStyle = function () {
 
 OpenAjax.a11y.cache.OptionElement.prototype.getAttributes = function (unsorted) {
 
-  var cache_nls = OpenAjax.a11y.nls.Cache;
   var attributes = this.dom_element.getAttributes();
-
-//  cache_nls.addPropertyIfUndefined(attributes, this, 'tag_name');
 
   if (!unsorted) this.dom_element.sortItems(attributes);
 
@@ -8888,7 +14185,11 @@ OpenAjax.a11y.cache.OptionElement.prototype.toString = function () {
  * @property  {Boolean}     is_valid       - True if the control has a valid value, otherwise false
  * @property  {Boolean}     has_pattern    - True if the pattern attribute is defined, otherwise false
  *
- * @property  {String}      name_attribute        - Text content of the name attribute
+ * @property  {String}   name_attribute        - Text content of the name attribute
+ * @property  {String}   required       - The value of the required property
+ * @property  {String}   aria_required  - The value of the aria-required property
+ * @property  {String}   aria_invalid   - The value of the aria-invlaid property
+ * @property  {Boolean}  aria_busy      - The value of the aria-busy property
  *
  * @property  {String}  computed_label                 - Calculated label for the input element
  * @property  {Number}  computed_label_length          - Length of the label property
@@ -8900,16 +14201,19 @@ OpenAjax.a11y.cache.OptionElement.prototype.toString = function () {
  *
  * @property  {String}  readonly  - The value of the readonly attribute
  * @property  {String}  disabled  - The value of the disabled attribute
- * @property  {String}  value     - The value of the readonly attribute
- * @property  {String}  checked   - The value of the disabled attribute
+ * @property  {String}  value     - The value of value property
+ * @property  {String}  checked   - The true if checked property
  *
  * @property  {Boolean}  is_owned       - True if this widget is owned by another widget
  * @property  {Array}    owner_controls - Array of all the widgets that own this widget (NOTE: More than one owner is an error)
+ * @property  {Array}    owned_dom_elements - Array of all the dom elements referenced by aria-owns
  */
 
 OpenAjax.a11y.cache.WidgetElement = function (dom_element, control_info) {
 
   var node = dom_element.node;
+
+  dom_element.widget_element = this;
 
   this.dom_element    = dom_element;
   this.has_aria_owns       = dom_element.hasOwns();
@@ -8918,6 +14222,7 @@ OpenAjax.a11y.cache.WidgetElement = function (dom_element, control_info) {
   this.parent_widget  = control_info.parent_widget;
 
   this.child_cache_elements = [];
+  this.owned_dom_elements = [];
   this.type    = node.type;
   this.value   = node.value;
   this.checked = node.checked;
@@ -8926,6 +14231,10 @@ OpenAjax.a11y.cache.WidgetElement = function (dom_element, control_info) {
   this.required       = node.getAttribute('required');
   this.aria_required  = node.getAttribute('aria-required');
   this.aria_invalid   = node.getAttribute('aria-invalid');
+  this.aria_busy      = node.getAttribute('aria-busy');
+  if (this.aria_busy) {
+    this.aria_busy = this.aria_busy.toLowerCase() === 'true';
+  }
 
   this.control_type   = OpenAjax.a11y.CONTROL_TYPE.WIDGET;
 
@@ -8945,7 +14254,32 @@ OpenAjax.a11y.cache.WidgetElement = function (dom_element, control_info) {
   this.has_pattern  = false;
   this.is_valid     = true;
 
-  if (role_info && role_info.reqName) this.needs_label  = true;
+  if (role_info && role_info.nameRequired) this.needs_label  = true;
+
+  this.updateOwnedBy()
+
+};
+
+/**
+ * @method updateOwnedby
+ *
+ * @memberOf OpenAjax.a11y.cache.WidgetElement
+ *
+ * @desc Updates the associated dom element with parent widget information form the DOM tree
+ *
+ */
+
+OpenAjax.a11y.cache.WidgetElement.prototype.updateOwnedBy = function () {
+
+  var roles = this.dom_element.role_info.requiredParents;
+
+  for (var i = 0; i < roles.length; i += 1) {
+    var we = this.getParentWidgetElement(roles[i]);
+
+    if (we) {
+      this.dom_element.addOwnedBy(we);
+    }
+  }
 
 };
 
@@ -9019,7 +14353,7 @@ OpenAjax.a11y.cache.WidgetElement.prototype.getOwnedIds = function () {
 };
 
 /**
- * @method hasChildRole
+ * @method hasRequiedChildRole
  *
  * @memberOf OpenAjax.a11y.cache.WidgetElement
  *
@@ -9030,23 +14364,104 @@ OpenAjax.a11y.cache.WidgetElement.prototype.getOwnedIds = function () {
  * @return {Boolean} Returns true if widget has child element with role, otherwise false
  */
 
-OpenAjax.a11y.cache.WidgetElement.prototype.hasChildRole = function (role) {
+OpenAjax.a11y.cache.WidgetElement.prototype.hasRequiredChildRole = function (role) {
 
-   function checkCacheChildren(list) {
+  for (var i = 0; i < this.owned_dom_elements.length; i += 1) {
+    if (this.owned_dom_elements[i].role === role) {
+      return true;
+    }
+  }
+
+  return false;
+
+};
+
+/**
+ * @method isOwnedByRole
+ *
+ * @memberOf OpenAjax.a11y.cache.WidgetElement
+ *
+ * @desc Tests if a widget is owned by ARIA element with a certain role
+ *
+ * @param {String}  role -  Role to find
+ *
+ * @return {Boolean} Returns true if widget is owned by element with role, otherwise false
+ */
+
+OpenAjax.a11y.cache.WidgetElement.prototype.isOwnedByRole = function (role) {
+
+  for (var i = 0; i < this.dom_element.owned_by.length; i += 1) {
+    var we = this.dom_element.owned_by[i];
+    if (we.dom_element.role === role) {
+      return true;
+    }
+  }
+
+  return false;
+
+};
+
+/**
+ * @method getParentWidgetElement
+ *
+ * @memberOf OpenAjax.a11y.cache.WidgetElement
+ *
+ * @desc Get reference to a parent element with a certain role
+ *
+ * @param {String}  role -  Role to find
+ *
+ * @return {Object} Returns widget if parent element with role exists, otherwise false
+ */
+
+OpenAjax.a11y.cache.WidgetElement.prototype.getParentWidgetElement = function (role) {
+
+   function checkParentElementForRole(dom_element) {
+
+     if (!dom_element) return false;
+
+     if (dom_element.role === role) {
+       return dom_element.widget_element;
+     }
+     else {
+       return checkParentElementForRole(dom_element.parent_element);
+     }
+
+   }
+
+   return checkParentElementForRole(this.dom_element.parent_element);
+
+};
+
+
+/**
+ * @method hasOwnedRole
+ *
+ * @memberOf OpenAjax.a11y.cache.WidgetElement
+ *
+ * @desc Tests if a widget has a owned ARIA element with a certain role
+ *
+ * @param {String}  role -  Role to find
+ *
+ * @return {Boolean} Returns true if widget has owned element with role, otherwise false
+ */
+
+OpenAjax.a11y.cache.WidgetElement.prototype.hasOwnedRole = function (role) {
+
+   function checkOwnedChildren(dom_elements) {
 
      var flag = false;
 
-     for (var i = 0; (i < list.length); i++) {
+     for (var i = 0; i < dom_elements.length; i++) {
 
-       var item = list[i];
+       var dom_element = dom_elements[i];
 
-       if (item.dom_element.role === role) {
+       if (dom_element.role === role) {
          flag = true;
          break;
        }
        else {
-         if (item.child_cache_elements && item.child_cache_elements.length) {
-           flag = checkCacheChildren(item.child_cache_elements);
+         if (dom_element.child_dom_elements && dom_element.child_dom_elements.length) {
+           flag = checkOwnedChildren(dom_element.child_dom_elements);
          }
        }
      }
@@ -9055,35 +14470,7 @@ OpenAjax.a11y.cache.WidgetElement.prototype.hasChildRole = function (role) {
 
    }
 
-   return checkCacheChildren(this.child_cache_elements);
-
-};
-
-/**
- * @method hasParentRole
- *
- * @memberOf OpenAjax.a11y.cache.WidgetElement
- *
- * @desc Tests if a widget has a parent element with a certain role
- *
- * @param {String}  role -  Role to find
- *
- * @return {Boolean} Returns true if widget has child element with role, otherwise false
- */
-
-OpenAjax.a11y.cache.WidgetElement.prototype.hasParentRole = function (role) {
-
-   function checkParentRole(widget) {
-
-     if (!widget) return false;
-
-     if (widget.dom_element.role === role) return true;
-
-     return checkParentRole(widget.parent_widget);
-
-   }
-
-   return checkParentRole(this.parent_widget);
+   return checkOwnedChildren(this.owned_dom_elements);
 
 };
 
@@ -9131,10 +14518,7 @@ OpenAjax.a11y.cache.WidgetElement.prototype.getStyle = function () {
 
 OpenAjax.a11y.cache.WidgetElement.prototype.getAttributes = function (unsorted) {
 
-  var cache_nls = OpenAjax.a11y.nls.Cache;
   var attributes = this.dom_element.getAttributes();
-
-//  cache_nls.addPropertyIfUndefined(attributes, this, 'name');
 
   if (!unsorted) this.dom_element.sortItems(attributes);
 
@@ -9230,8 +14614,6 @@ OpenAjax.a11y.cache.WidgetElement.prototype.getLabelNLS = function () {
 
   var cache_nls = OpenAjax.a11y.nls.Cache;
 
-  var label_style = {};
-
   if (this.computed_label_length) {
     return this.computed_label;
   }
@@ -9310,8 +14692,8 @@ OpenAjax.a11y.cache.InteractiveElement = function (dom_element, has_tabindex, ha
   this.element_id = tag_name;
 
   if (tag_name === 'input') {
-    if (dom_element.has_type_attr) this.element_id += "input[type=" + dom_element.type_attr + "]";
-    else this.element_id += 'input[type=text]';
+    if (dom_element.has_type_attr) this.element_id = "input[type=" + dom_element.type_attr + "]";
+    else this.element_id = 'input[type=text]';
   }
 
   if (has_tabindex || dom_element.has_tabindex) {
@@ -9322,19 +14704,19 @@ OpenAjax.a11y.cache.InteractiveElement = function (dom_element, has_tabindex, ha
           (tag_name !== 'select') &&
           (tag_name !== 'textarea'))) {
 
-      this.element_id += tag_name + '[tabindex=' + dom_element.tabindex + ']';
+      this.element_id = tag_name + '[tabindex=' + dom_element.tabindex + ']';
       this.has_tabindex_behavior = true;
      }
   }
 
-  if (has_events || dom_element.hasEvents()) this.element_id +=  tag_name + "[events]";
+  if (has_events || dom_element.hasEvents()) this.element_id =  tag_name + "[events]";
 
   if (tag_name === 'object' ||
       tag_name === 'embed' ||
       tag_name === 'video' ||
       tag_name === 'audio') {
     this.is_embedded_app = true;
-    this.element_id += tag_name;
+    this.element_id = tag_name;
   }
 };
 
@@ -9369,10 +14751,7 @@ OpenAjax.a11y.cache.InteractiveElement.prototype.getStyle = function () {
 
 OpenAjax.a11y.cache.InteractiveElement.prototype.getAttributes = function (unsorted) {
 
-  var cache_nls = OpenAjax.a11y.nls.Cache;
   var attributes = this.dom_element.getAttributes();
-
-//  cache_nls.addPropertyIfUndefined(attributes, this, 'name');
 
   if (!unsorted) this.dom_element.sortItems(attributes);
 
@@ -9392,8 +14771,6 @@ OpenAjax.a11y.cache.InteractiveElement.prototype.getAttributes = function (unsor
  */
 
 OpenAjax.a11y.cache.InteractiveElement.prototype.getCacheProperties = function (unsorted) {
-
-  var cache_nls = OpenAjax.a11y.nls.Cache;
 
   var properties = this.dom_element.getCacheProperties(unsorted);
 
@@ -9458,8 +14835,6 @@ OpenAjax.a11y.cache.InteractiveElement.prototype.getLabelNLS = function () {
 
   var cache_nls = OpenAjax.a11y.nls.Cache;
 
-  var label_style = {};
-
   if (this.computed_label_length) {
     return this.computed_label;
   }
@@ -9516,14 +14891,16 @@ OpenAjax.a11y.cache.InteractiveElement.prototype.toString = function () {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
+ * See the License for the specific language governing permissions andf
  * limitations under the License.
  */
+
+// import {OpenAjax} from '../openajax_a11y_constants.js';
 
 /* ---------------------------------------------------------------- */
 /*                       DOMElementCache                            */
@@ -10120,7 +15497,7 @@ OpenAjax.a11y.cache.DOMText.prototype.getAccessibility = function () {
  * @return {Array} Returns a empty array
  */
 
-OpenAjax.a11y.cache.DOMText.prototype.getAttributes = function (unsorted) {
+OpenAjax.a11y.cache.DOMText.prototype.getAttributes = function () {
 
   return [];
 
@@ -10136,7 +15513,7 @@ OpenAjax.a11y.cache.DOMText.prototype.getAttributes = function (unsorted) {
  * @return {Array} Returns a empty array
  */
 
-OpenAjax.a11y.cache.DOMText.prototype.getEvents = function (unsorted) {
+OpenAjax.a11y.cache.DOMText.prototype.getEvents = function () {
 
   return [];
 
@@ -10385,8 +15762,8 @@ OpenAjax.a11y.cache.DOMText.prototype.toString = function(option) {
  *
  * @property {Number}     character_count  - Count of text charcters in the immediate child DOM text nodes
  *
- * @property {String}     class_name  - The value of the class attribute of the DOM node
- * @property {String}     role        - The value of the role attribute of the DOM node
+ * @property {String}     class_name     - The value of the class attribute of the DOM node
+ * @property {String}     role           - The value of the role attribute of the DOM node
  *
  * @property {String}     alt      - String   The value of the alt attribute of the DOM node
  * @property {Boolean}    has_alt  - true if the alt attribute is defined, otherwise false
@@ -10409,6 +15786,8 @@ OpenAjax.a11y.cache.DOMText.prototype.toString = function(option) {
  * @property {String}     calculated_aria_description  - If aria-describedby defined this is a string of the
  *                                                       description content
  *
+ * @property {String}     role                - Implicit or set role on the element
+ * @property {String}     implicit_role       - Implict role of the elements based on ARIA in HTML spec
  * @property {Boolean}    has_role            - True if element has a role value, otherwise false
  * @property {Boolean}    has_aria_owns            - True if element has a aria-owns property, otherwise false
  * @property {Boolean}    has_aria-attributes - True if element has a aria attributes, otherwise false
@@ -10425,7 +15804,10 @@ OpenAjax.a11y.cache.DOMText.prototype.toString = function(option) {
  * @property {Array}      aria_attributes_with_invlaid_values - Array of attributes who have
  *
  *
- * @property {Object}     role_info         - Object containing information about a widget
+ * @property {Object}     role_info       - Object containing information about a widget
+ * @property {Object}     owned_by        - Array of reference to Widget objects that own the dom element using aria-owns
+ * @property {Object}     widget_element  - Reference to the corresponding widget element
+ *
  *
  * @property {Object}     events              - Object that contains information about events associated with the node
  * @property {Object}     computed_style      - Object that contains information about run time styling of the node
@@ -10461,10 +15843,12 @@ OpenAjax.a11y.cache.DOMElement = function (node, parent_dom_element, doc) {
       return str;
     }
 
-    function validValue(value, type, values) {
+    function validValue(value, type, values, allowUndeterminedValue) {
 
       var i;
       var j;
+
+      var v = parseInt(value, 10);
 
       switch (type) {
 
@@ -10474,7 +15858,6 @@ OpenAjax.a11y.cache.DOMElement = function (node, parent_dom_element, doc) {
 
       case 'decimal':
         if (typeof parseFloat(value) === 'number') return true;
-        return true;
         break;
 
       case 'idref':
@@ -10486,8 +15869,11 @@ OpenAjax.a11y.cache.DOMElement = function (node, parent_dom_element, doc) {
         break;
 
       case 'integer':
-        if (!isNaN(value) &&
-            (parseInt(value, 10) >= 0)) return true;
+        if (!isNaN(v) &&
+            ( v > 0) ||
+            (allowUndeterminedValue && (v === -1 || v === 0))) {
+          return true;
+        }
         break;
 
       case 'nmtoken':
@@ -10496,6 +15882,7 @@ OpenAjax.a11y.cache.DOMElement = function (node, parent_dom_element, doc) {
         }
         break;
 
+      case 'tristate':
       case 'nmtokens':
         var tokens = [];
         tokens.push(value);
@@ -10510,7 +15897,6 @@ OpenAjax.a11y.cache.DOMElement = function (node, parent_dom_element, doc) {
           }
         }
         return flag;
-        break;
 
       case 'number':
         if (!isNaN(value) && value.length) return true;
@@ -10534,7 +15920,6 @@ OpenAjax.a11y.cache.DOMElement = function (node, parent_dom_element, doc) {
 
     }   // end addAriaAttribute function
 
-
     var property_info = OpenAjax.a11y.aria.propertyDataTypes[name];
 
     var av = {};
@@ -10547,11 +15932,15 @@ OpenAjax.a11y.cache.DOMElement = function (node, parent_dom_element, doc) {
 
     if (property_info) {
       av.type = property_info.type;
-      if (property_info.values) av.tokens = getTokens(property_info.values);
-      if (property_info.type === 'boolean') av.tokens = "true | false";
+      if (property_info.values && property_info.values.length) {
+        av.tokens = getTokens(property_info.values);
+      }
 
-      if (typeof property_info.values !== 'undefined') av.is_value_valid = validValue(av.value, av.type, property_info.values);
-      else av.is_value_valid = validValue(av.value, av.type, []);
+      if (typeof property_info.values !== 'undefined') {
+        av.is_value_valid = validValue(av.value, av.type, property_info.values, property_info.allowUndeterminedValue);
+      } else {
+        av.is_value_valid = validValue(av.value, av.type, []);
+      }
     }
     else {
       av.is_valid_attribute = false;
@@ -10585,7 +15974,6 @@ OpenAjax.a11y.cache.DOMElement = function (node, parent_dom_element, doc) {
   var i;
   var attr;
   var attributes;
-  var attributes_len;
   var role_info;
 
   // check to make sure it is a valid node
@@ -10603,6 +15991,14 @@ OpenAjax.a11y.cache.DOMElement = function (node, parent_dom_element, doc) {
   this.id             = node.id;
   this.name           = "";
 
+//  OpenAjax.a11y.logger.debug("[DOMElement][tag_name]: " + this.tag_name);
+
+  this.owned_by = [];
+  this.widget_element = null;
+
+  this.element_aria_info = OpenAjax.a11y.ariaInHTML.getElementAriaInfo(node);
+
+//  OpenAjax.a11y.logger.debug("[DOMElement][element_aria_info]: " + this.element_aria_info);
 
   if (!this.id || this.id.length === 0) {
     this.id_unique  = OpenAjax.a11y.ID.NOT_DEFINED;
@@ -10628,7 +16024,6 @@ OpenAjax.a11y.cache.DOMElement = function (node, parent_dom_element, doc) {
   i = 0;
   attr = null;
   attributes = node.attributes;
-  attributes_len = attributes.length;
 
   this.class_name = "";
 
@@ -10709,6 +16104,7 @@ OpenAjax.a11y.cache.DOMElement = function (node, parent_dom_element, doc) {
   this.has_title                 = false;
 
 
+  this.implicit_role  = this.element_aria_info.defaultRole;
   this.role           = "";
   this.role_info      = null;
   this.aria_invalid   = false;
@@ -10720,6 +16116,8 @@ OpenAjax.a11y.cache.DOMElement = function (node, parent_dom_element, doc) {
 
   this.ancestor_has_aria_activedescendant = false;
   if (parent_dom_element) this.ancestor_has_aria_activedescendant = parent_dom_element.ancestor_has_aria_activedescendant;
+
+  // Check for ARIA Attributes
 
   for (i = 0; i < attributes.length; i++) {
 
@@ -10890,46 +16288,28 @@ OpenAjax.a11y.cache.DOMElement = function (node, parent_dom_element, doc) {
       this.role_info = role_info;
 
       if (role === 'group') this.is_group = true;
+      if (role === 'none') this.is_presentation = true;
+      if (role === 'presentation') this.is_presentation = true;
 
-//      OpenAjax.a11y.logger.debug("role=" + role + " : " + role_info.roleType);
+      if (role_info.roleType.indexOf('range') >= 0) {
+        this.is_range = true;
+      }
 
-      switch (role_info.roleType) {
+      if (role_info.roleType.indexOf('widget') >= 0 ||
+          role_info.roleType.indexOf('window') >= 0) {
 
-      case 'widget':
         this.is_interactive = true;
         this.is_widget = true;
-        this.has_range = role_info.hasRange;
         this.is_tab_stoppable = true;
-        if (role_info.container && role_info.container.length) this.is_tab_stoppable = false;
+        if (role_info.container && role_info.container.length) {
+          this.is_tab_stoppable = false;
+        }
+      }
 
-        // Special case for log role
-        if (role === "log") this.is_live = true;
-        break;
-
-      case 'landmark':
-        this.is_landmark = true;
-        break;
-
-      case 'live':
-        this.is_live = true;
-        break;
-
-      case 'abstract':
-        this.is_abstract  = true;
-        break;
-
-      case 'section':
-        this.is_section  = true;
-        break;
-
-      case 'presentation':
-        this.is_presentation = true;
-        break;
-
-      default:
-        break;
-
-      } // end switch
+      this.is_landmark = role_info.roleType.indexOf('landmark') >= 0;
+      this.is_live = role_info.roleType.indexOf('live') >= 0;
+      this.is_section = role_info.roleType.indexOf('section') >= 0 || role_info.roleType.indexOf('structure') >= 0;
+      this.is_abstract = role_info.roleType.indexOf('abstract') >= 0;
 
       break;
 
@@ -10973,9 +16353,8 @@ OpenAjax.a11y.cache.DOMElement = function (node, parent_dom_element, doc) {
       break;
 
     } // end switch
-  } // end loop0
+  } // end loop
 
-//  OpenAjax.a11y.logger.debug("[DOMElement][Constructor] tag: " + this.tag_name + " tabindex: " + this.tab_index + " has tabindex: " + this.has_tabindex);
 
   this.aria_attributes          = aria_attributes;
   this.other_attributes         = other_attributes;
@@ -11008,7 +16387,187 @@ OpenAjax.a11y.cache.DOMElement = function (node, parent_dom_element, doc) {
   this.rules_passed                    = [];
   this.rules_hidden                    = [];
 
+//  OpenAjax.a11y.logger.debug("[DOMElement][done]");
+
   return this;
+
+};
+
+/**
+ * @method getAttributeValue
+ *
+ * @memberOf OpenAjax.a11y.cache.DOMElement
+ *
+ * @desc  Get attribute value, if not defined by author returns default value, if no default
+ *        value returns empty string
+ *
+ * @param  {String} attr          - ARIA Attribute to get value
+ *
+ * @return {String or Number} - Value of attribute based on the value type of the attribute,
+ *                              if not defined return empty string
+ }
+ */
+
+OpenAjax.a11y.cache.DOMElement.prototype.getAttributeValue = function (attr) {
+
+
+  function valueAsPropertyType(value) {
+
+    var v;
+
+    if (value) {
+      switch (attr_info.type) {
+        case 'decimal':
+          v = parseFloat(value);
+          if (!isNaN(v)) {
+            value = v;
+          }
+          break;
+
+        case 'number':
+        case 'integer':
+          v = parseInt(value, 10);
+          if (!isNaN(v)) {
+            value = v;
+          }
+          break;
+
+        default:
+          break;
+      }
+    }
+
+    return value;
+  }
+
+  var value = '';
+  var attr_info = OpenAjax.a11y.aria.propertyDataTypes[attr];
+
+  if (attr_info) {
+    // Try IDL first
+    if (attr_info.idlAttribute) {
+      value = this.node[attr_info.idlAttribute];
+    }
+
+    if (!value) {
+      value = this.node.getAttribute(attr);
+      if (!value) {
+        value = attr_info.defaultValue;
+      }
+    }
+  }
+
+  return valueAsPropertyType(value);
+}
+
+/**
+ * @method isAttributeValueValid
+ *
+ * @memberOf OpenAjax.a11y.cache.DOMElement
+ *
+ * @desc  Checkes the value based on the property information information
+ *        for a valid value
+ *
+ * @param  {String}           attr - ARIA Attribute to validate
+ * @param  {String or Number} value - Value to validate
+ *
+ * @return {Boolean} true if allowed value and type, otherwise false
+ */
+
+OpenAjax.a11y.cache.DOMElement.prototype.isAttributeValueValid = function (attr, value) {
+
+  var attr_info = OpenAjax.a11y.aria.propertyDataTypes[attr];
+
+  var flag = false;
+
+  var v = parseInt(value, 10);
+
+  switch (attr_info.type) {
+
+  case 'boolean':
+    flag = typeof value === 'boolean';
+    break;
+
+  case 'number':
+  case 'decimal':
+    flag = typeof value === 'number';
+    break;
+
+  case 'idref':
+  case 'idrefs':
+  case 'string':
+    flag = (typeof value === 'string') && (value.length > 0);
+    break;
+
+  case 'integer':
+  case 'positive':
+    if ((typeof v === 'number') &&
+        ((v > 0) ||
+         (attr_info.type.allowUndeterminedValue && (v === -1 || v === 0)))) {
+      flag = true;
+    }
+    break;
+
+  case 'tristate':
+  case 'nmtoken':
+    flag = attr_info.values.indexOf(value.toLowerCase()) >= 0;
+    break;
+
+  case 'nmtokens':
+    var values = value.split(' ');
+    flag = true;
+    for (var i = 0; i < values.length && flag; i += 1) {
+      flag = flag && (attr_info.values.indexOf(values[i]) >= 0);
+    }
+    break;
+
+  default:
+    break;
+
+  }
+
+//  console.log('[valid][' + attr + '][value]: ' + value + ' (' + (typeof value) + ')' + ' [flag]: ' + flag);
+
+  return flag;
+
+}
+
+/**
+ * @method addOwnedby
+ *
+ * @memberOf OpenAjax.a11y.cache.DOMElement
+ *
+ * @desc  Updates array of reference to widget elements that own this dom element
+ *
+ * @param  {object} widget_element - Widget element that owns
+ } r
+ */
+
+OpenAjax.a11y.cache.DOMElement.prototype.addOwnedBy = function (widget_element) {
+
+  function updateReferences(de) {
+    // a widget element can only own this node once
+    if (de.owned_by.indexOf(widget_element) < 0) {
+      var role = widget_element.dom_element.role;
+      if (de.role_info && de.role_info.requiredParents.indexOf(role) >= 0) {
+        de.owned_by.push(widget_element);
+      }
+    }
+
+    if (widget_element.owned_dom_elements.indexOf(de) < 0) {
+      widget_element.owned_dom_elements.push(de);
+    }
+
+    for (var i = 0; i < de.child_dom_elements.length; i += 1) {
+      var child_de = de.child_dom_elements[i];
+      if (child_de.type === Node.ELEMENT_NODE) {
+        updateReferences(child_de);
+      }
+    }
+
+  }
+
+  updateReferences(this);
 
 };
 
@@ -11026,7 +16585,7 @@ OpenAjax.a11y.cache.DOMElement.prototype.setImpliedRole = function (role) {
 
   if (!this.has_role && typeof role === 'string' && (role.length > 0)) {
 
-    role_info = OpenAjax.a11y.aria.getRoleObject(role);
+    var role_info = OpenAjax.a11y.aria.getRoleObject(role);
 
     if (!role_info) return;
 
@@ -11038,32 +16597,27 @@ OpenAjax.a11y.cache.DOMElement.prototype.setImpliedRole = function (role) {
 
     if (role_info && role_info.roleType) {
 
-      switch (role_info.roleType) {
-
-      case 'widget':
+      if (role_info.roleType.indexOf('widget') >= 0 ||
+          role_info.roleType.indexOf('window') >= 0) {
         this.is_widget = true;
-        break;
+      }
 
-      case 'landmark':
+      if (role_info.roleType.indexOf('landmark') >= 0) {
         this.is_landmark = true;
-        break;
+      }
 
-      case 'live':
+      if (role_info.roleType.indexOf('live') >= 0) {
         this.is_live = true;
-        break;
+      }
 
-      case 'abstract':
-        this.is_abstract  = true;
-        break;
+      if (role_info.roleType.indexOf('abstract') >= 0) {
+        this.is_abstract = true;
+      }
 
-      case 'section':
-        this.is_section  = true;
-        break;
+      if (role_info.roleType.indexOf('section') >= 0) {
+        this.is_section = true;
+      }
 
-      default:
-        break;
-
-      } // end switch
     }
   }
 };
@@ -11141,30 +16695,6 @@ OpenAjax.a11y.cache.DOMElement.prototype.getParentLandmark = function () {
 
 };
 
-
-/**
- * @method hasAttrWithValue
- *
- * @memberOf OpenAjax.a11y.cache.DOMElement
- *
- * @desc   Check DOMElement for presence of attribute with specified value
- *
- * @param  {String} name  - name of attribute
- * @param  {String} value - value of attribute
- *
- * @return {boolean} Indicates whether or not DOMElement has the specified
- *                   attribute with the specified value.
- */
-
-OpenAjax.a11y.cache.DOMElement.prototype.hasAttrWithValue = function (name, value) {
-
-  if (this.hasOwnProperty (name)) {
-    return this[name] === value;
-  }
-
-  return false;
-
-};
 
 /**
  * @method hasOwns
@@ -11255,37 +16785,6 @@ OpenAjax.a11y.cache.DOMElement.prototype.containsInteractiveElements = function 
 
 
 /**
- * @method hasParentRole
- *
- * @memberOf OpenAjax.a11y.cache.DOMElement
- *
- * @desc Tests if a widget has a parent element with a certain role
- *
- * @param {String}  role -  Role to find
- *
- * @return {Boolean} Returns true if widget has child element with role, otherwise false
- */
-
-OpenAjax.a11y.cache.DOMElement.prototype.hasParentRole = function (role) {
-
-   function checkParentElementForRole(dom_element) {
-
-     if (!dom_element) return false;
-
-     if (dom_element.role === role) {
-       return true;
-     }
-     else {
-       return checkParentElementForRole(dom_element.parent_element);
-     }
-
-   }
-
-   return checkParentElementForRole(this.parent_element);
-
-};
-
-/**
  * @method getHasDescribedBy
  *
  * @memberOf OpenAjax.a11y.cache.DOMElement
@@ -11320,11 +16819,6 @@ OpenAjax.a11y.cache.DOMElement.prototype.getAccessibility = function () {
   var RESULT_VALUE       = OpenAjax.a11y.RESULT_VALUE;
 
   var severity = cache_nls.getResultValueNLS(RESULT_VALUE.NONE);
-  a.label    = severity.label;
-
-//  if (this.rules_hidden.length) {
-//    severity = cache_nls.getResultValueNLS(RESULT_VALUE.HIDDEN);
-//  }
 
   if (this.rules_passed.length) {
     severity = cache_nls.getResultValueNLS(RESULT_VALUE.PASS);
@@ -11755,8 +17249,6 @@ OpenAjax.a11y.cache.DOMElement.prototype.hasDragEvents = function (prop_list) {
   }
 
   var has_event = false;
-
-  var de = this;
 
 //  OpenAjax.a11y.logger.debug("DRAG: " + de.toString());
 
@@ -12296,6 +17788,8 @@ OpenAjax.a11y.cache.DOMElement.prototype.EnumerateFirefoxEvents = function (node
   var i;
   var event_info;
 
+  var Components = Components || {};
+
   if (node.tagName && node.tagName.toLowerCase() === 'body') {
      event_info = this.EnumerateFirefoxEvents(this.document, null);
 //     OpenAjax.a11y.logger.debug('body: ' + event_info.has_key_down);
@@ -12588,6 +18082,9 @@ OpenAjax.a11y.cache.DOMElement.prototype.EnumerateInlineEvents = function (node,
   }
 
   function testForPropertyAndJQueryEvent(p) {
+
+    // If JQuery is defined
+    var $ = $ || {};
 
     if (typeof node['on' + p] === 'function') {
       events.supports_events = true;
@@ -13147,7 +18644,7 @@ OpenAjax.a11y.cache.DOMElement.prototype.toString = function() {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -13155,6 +18652,8 @@ OpenAjax.a11y.cache.DOMElement.prototype.toString = function() {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+// import {OpenAjax} from '../openajax_a11y_constants.js';
 
 /* ---------------------------------------------------------------- */
 /*                            DOMCache                              */
@@ -13256,7 +18755,6 @@ OpenAjax.a11y.cache.DOMCache.prototype.initCache = function () {
 
  this.frame_count = 0;
  this.iframe_count = 0;
- this.frame_error_count = 0;
 
  // Page information
  this.element_information         = new OpenAjax.a11y.cache.ElementInformation();
@@ -13425,8 +18923,6 @@ OpenAjax.a11y.cache.DOMCache.prototype.updateAllCaches = function () {
 
 OpenAjax.a11y.cache.DOMCache.prototype.updateDOMElementCache = function () {
 
- var de;
-
  this.initCache();
 
  // add title information to DOMElement Cache
@@ -13584,23 +19080,21 @@ OpenAjax.a11y.cache.DOMCache.prototype.updateDOMElements = function (node, paren
     case 'frame':
     case 'iframe':
 
+      if (dom_element.tag_name === 'frame') this.frame_count += 1;
+      else this.iframe_count += 1;
+
+//      OpenAjax.a11y.logger.debug("[updateDOMElements]iframe][found]");
+
       try {
-
         var frame_doc = node.contentWindow.document;
-
-        if (dom_element.tag_name === 'frame') this.frame_count += 1;
-        else this.iframe_count += 1;
-
-  //      OpenAjax.a11y.logger.debug("frame: " + node.src + " " + frame_doc);
 
         if (frame_doc && frame_doc.firstChild) {
           for (n = frame_doc.firstChild; n !== null; n = n.nextSibling) {
             this.updateDOMElements( n, dom_element, null);
           } // end loop
         }
-      }
-      catch (error) {
-        this.frame_error_count += 1;
+      } catch (e) {
+//        OpenAjax.a11y.logger.debug("[updateDOMElements][iframe][error]: " + e);
       }
 
       break;
@@ -13617,7 +19111,6 @@ OpenAjax.a11y.cache.DOMCache.prototype.updateDOMElements = function (node, paren
     } // end loop
 
     return dom_element;
-    break;
 
   case Node.TEXT_NODE:
    // OpenAjax.a11y.logger.debug("DOM node text: " + node.data);
@@ -13642,8 +19135,6 @@ OpenAjax.a11y.cache.DOMCache.prototype.updateDOMElements = function (node, paren
    else {
      return previous_sibling;
    }
-
-   break;
 
   default:
     break;
@@ -14079,7 +19570,7 @@ OpenAjax.a11y.cache.DOMCache.prototype.getDuplicateObjects = function(objects, p
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -14088,6 +19579,7 @@ OpenAjax.a11y.cache.DOMCache.prototype.getDuplicateObjects = function(objects, p
  * limitations under the License.
  */
 
+// import {OpenAjax} from '../openajax_a11y_constants.js';
 
 /* ---------------------------------------------------------------- */
 /*                              FrameInfo                            */
@@ -14212,7 +19704,7 @@ OpenAjax.a11y.cache.FramesCache.prototype.updateCacheItems = function (dom_eleme
     this.addFrameElement(fe);
 
     if (frame_info.parent_frame) {
-      list_info.parent_frame.addChildElement(fe);
+      frame_info.parent_frame.addChildElement(fe);
     }
     else {
       this.addChildElement(fe);
@@ -14415,14 +19907,11 @@ OpenAjax.a11y.cache.FrameElement.prototype.getStyle = function () {
  *
  * @desc Returns an array of attributes for the element, sorted in alphabetical order
  *
- * @param {Boolean}  unsorted  - If defined and true the results will NOT be sorted alphabetically
- *
  * @return {Array} Returns a array of attribute display object
  */
 
-OpenAjax.a11y.cache.FrameElement.prototype.getAttributes = function (unsorted) {
+OpenAjax.a11y.cache.FrameElement.prototype.getAttributes = function () {
 
-  var cache_nls = OpenAjax.a11y.nls.Cache;
   var attributes = this.dom_element.getAttributes();
 
   return attributes;
@@ -14531,7 +20020,7 @@ OpenAjax.a11y.cache.FrameElement.prototype.toString = function () {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -14539,6 +20028,8 @@ OpenAjax.a11y.cache.FrameElement.prototype.toString = function () {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+// import {OpenAjax} from '../openajax_a11y_constants.js';
 
 /* ---------------------------------------------------------------- */
 /*            OpenAjax Heading and Landmark Cache                   */
@@ -14611,12 +20102,12 @@ OpenAjax.a11y.cache.LandmarkInfo = function (landmark_info) {
 OpenAjax.a11y.cache.HeadingInfo = function (heading_info) {
 
   if (heading_info) {
-    this.is_past_first_h1 = landmark_info.is_past_first_h1;
-    this.nesting_h1       = landmark_info.nesting_h1;
-    this.nesting_h2       = landmark_info.nesting_h2;
-    this.nesting_h3       = landmark_info.nesting_h3;
-    this.nesting_h4       = landmark_info.nesting_h4;
-    this.nesting_h5       = landmark_info.nesting_h5;
+    this.is_past_first_h1 = heading_info.is_past_first_h1;
+    this.nesting_h1       = heading_info.nesting_h1;
+    this.nesting_h2       = heading_info.nesting_h2;
+    this.nesting_h3       = heading_info.nesting_h3;
+    this.nesting_h4       = heading_info.nesting_h4;
+    this.nesting_h5       = heading_info.nesting_h5;
   }
   else {
     this.is_past_first_h1 = false;
@@ -14751,11 +20242,15 @@ OpenAjax.a11y.cache.HeadingsLandmarksCache.prototype.addChildElement = function 
 OpenAjax.a11y.cache.HeadingsLandmarksCache.prototype.addLandmarkElement = function (landmark_element) {
 
   if (landmark_element) {
+    var de = landmark_element.dom_element;
+
     this.landmark_length = this.landmark_length + 1;
     landmark_element.document_order = this.landmark_length;
     landmark_element.cache_id = "landmark_" + this.landmark_length;
     this.landmark_elements.push(landmark_element);
+
   }
+
 
   return this.landmark_length;
 };
@@ -15035,8 +20530,17 @@ OpenAjax.a11y.cache.HeadingsLandmarksCache.prototype.updateCacheItems = function
   var li = new OpenAjax.a11y.cache.LandmarkInfo(landmark_info);
   var tag_name = dom_element.tag_name;
 
-  dom_element.parent_landmark = landmark_info.landmark_element;
-  dom_element.body_element    = landmark_info.body_element;
+  if (typeof landmark_info.landmark_element === 'object') {
+    dom_element.parent_landmark = landmark_info.landmark_element;
+  } else {
+    dom_element.parent_landmark = null;
+  }
+
+  if (typeof landmark_info.body_element === 'object') {
+    dom_element.body_element    = landmark_info.body_element;
+  } else {
+    dom_element.body_landmark = null;
+  }
 
 //  OpenAjax.a11y.logger.debug("Body Element: " +  dom_element.body_element);
 
@@ -15226,8 +20730,8 @@ OpenAjax.a11y.cache.HeadingsLandmarksCache.prototype.updateCacheItems = function
           dom_element.has_aria_labelledby ||
           dom_element.has_title)) ||
         (!landmark_info.inside_sectioning_element && (
-         (dom_element.tag_name === 'footer' && !dom_element.has_role) ||
-         (dom_element.tag_name === 'header' && !dom_element.has_role)))) {
+         (dom_element.tag_name === 'footer' && !dom_element.has_role)) ||
+         (dom_element.tag_name === 'header' && !dom_element.has_role))) {
 
       if (dom_element.role == 'main' || (dom_element.tag_name === 'main'  && !dom_element.has_role)) {
 
@@ -15298,7 +20802,6 @@ OpenAjax.a11y.cache.HeadingsLandmarksCache.prototype.updateCacheItems = function
 
           }
         }
-
 
         this.addLandmarkElement(le);
 
@@ -15445,6 +20948,7 @@ OpenAjax.a11y.cache.HeadingsLandmarksCache.prototype.traverseDOMElementsForLandm
 OpenAjax.a11y.cache.HeadingsLandmarksCache.prototype.updateCache = function () {
   var i;
   var li;
+  var hi;
   var children = this.dom_cache.element_cache.child_dom_elements;
   var children_len = children.length;
 
@@ -15656,10 +21160,7 @@ OpenAjax.a11y.cache.SectionElement.prototype.getElementResults = function () {
 
 OpenAjax.a11y.cache.SectionElement.prototype.getAttributes = function (unsorted) {
 
-  var cache_nls = OpenAjax.a11y.nls.Cache;
   var attributes = this.dom_element.getAttributes();
-
-//  cache_nls.addPropertyIfDefined(attributes, this, 'tag_name');
 
   if (!unsorted) this.dom_element.sortItems(attributes);
 
@@ -15783,6 +21284,20 @@ OpenAjax.a11y.cache.SectionElement.prototype.toString = function () {
  */
 
 OpenAjax.a11y.cache.LandmarkElement = function (dom_element, landmark) {
+
+  if ((dom_element.tag_name === 'footer') &&
+      (dom_element.parent_landmark === null) &&
+      (!dom_element.has_role || (dom_element.role === 'contentinfo'))) {
+    dom_element.element_aria_info = OpenAjax.a11y.ariaInHTML.elementInfo['footer[contentinfo]'];
+    dom_element.implicit_role = dom_element.element_aria_info.defaultRole;
+  }
+
+  if ((dom_element.tag_name === 'header') &&
+      (dom_element.parent_landmark === null) &&
+      (!dom_element.has_role || (dom_element.role === 'banner'))) {
+    dom_element.element_aria_info = OpenAjax.a11y.ariaInHTML.elementInfo['header[banner]'];
+    dom_element.implicit_role = dom_element.element_aria_info.defaultRole;
+  }
 
   this.dom_element           = dom_element;
   this.cache_id              = "";
@@ -15946,10 +21461,7 @@ OpenAjax.a11y.cache.LandmarkElement.prototype.getStyle = function () {
 
 OpenAjax.a11y.cache.LandmarkElement.prototype.getAttributes = function (unsorted) {
 
-  var cache_nls = OpenAjax.a11y.nls.Cache;
   var attributes = this.dom_element.getAttributes();
-
-//  cache_nls.addPropertyIfDefined(attributes, this, 'tag_name');
 
   if (!unsorted) this.dom_element.sortItems(attributes);
 
@@ -16282,10 +21794,7 @@ OpenAjax.a11y.cache.HeadingElement.prototype.getStyle = function () {
 
 OpenAjax.a11y.cache.HeadingElement.prototype.getAttributes = function (unsorted) {
 
-  var cache_nls = OpenAjax.a11y.nls.Cache;
   var attributes = this.dom_element.getAttributes();
-
-//  cache_nls.addPropertyIfDefined(attributes, this, 'tag_name');
 
   if (!unsorted) this.dom_element.sortItems(attributes);
 
@@ -16602,10 +22111,7 @@ OpenAjax.a11y.cache.MainElement.prototype.getStyle = function () {
 
 OpenAjax.a11y.cache.MainElement.prototype.getAttributes = function (unsorted) {
 
-  var cache_nls = OpenAjax.a11y.nls.Cache;
   var attributes = this.dom_element.getAttributes();
-
-//  cache_nls.addPropertyIfDefined(attributes, this, 'tag_name');
 
   if (!unsorted) this.dom_element.sortItems(attributes);
 
@@ -16850,10 +22356,7 @@ OpenAjax.a11y.cache.H1Element.prototype.getStyle = function () {
 
 OpenAjax.a11y.cache.H1Element.prototype.getAttributes = function (unsorted) {
 
-  var cache_nls = OpenAjax.a11y.nls.Cache;
   var attributes = this.dom_element.getAttributes();
-
-//  cache_nls.addPropertyIfDefined(attributes, this, 'tag_name');
 
   if (!unsorted) this.dom_element.sortItems(attributes);
 
@@ -17037,10 +22540,7 @@ OpenAjax.a11y.cache.TitleElement.prototype.getStyle = function () {
 
 OpenAjax.a11y.cache.TitleElement.prototype.getAttributes = function (unsorted) {
 
-  var cache_nls = OpenAjax.a11y.nls.Cache;
   var attributes = this.dom_element.getAttributes();
-
-//  cache_nls.addPropertyIfDefined(attributes, this, 'tag_name');
 
   if (!unsorted) this.dom_element.sortItems(attributes);
 
@@ -17237,10 +22737,7 @@ OpenAjax.a11y.cache.PageElementHeadingsLandmarks.prototype.getStyle = function (
 
 OpenAjax.a11y.cache.PageElementHeadingsLandmarks.prototype.getAttributes = function (unsorted) {
 
-  var cache_nls = OpenAjax.a11y.nls.Cache;
   var attributes = this.dom_element.getAttributes();
-
-//  cache_nls.addPropertyIfDefined(attributes, this, 'tag_name');
 
   if (!unsorted) this.dom_element.sortItems(attributes);
 
@@ -17260,8 +22757,6 @@ OpenAjax.a11y.cache.PageElementHeadingsLandmarks.prototype.getAttributes = funct
  */
 
 OpenAjax.a11y.cache.PageElementHeadingsLandmarks.prototype.getCacheProperties = function (unsorted) {
-
-  var cache_nls = OpenAjax.a11y.nls.Cache;
 
   var properties = this.dom_element.getCacheProperties(unsorted);
 
@@ -17330,7 +22825,7 @@ OpenAjax.a11y.cache.PageElementHeadingsLandmarks.prototype.toString = function (
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -17338,6 +22833,8 @@ OpenAjax.a11y.cache.PageElementHeadingsLandmarks.prototype.toString = function (
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+// import {OpenAjax} from '../openajax_a11y_constants.js';
 
 /* ---------------------------------------------------------------- */
 /*                            ImageCache                            */
@@ -17703,8 +23200,6 @@ OpenAjax.a11y.cache.ImagesCache.prototype.getNameForImage = function (image) {
 
 OpenAjax.a11y.cache.ImageElement = function (dom_element, base_url) {
 
-  var alt_value;
-
   if (!dom_element) return null;
 
   var node = dom_element.node;
@@ -17720,7 +23215,7 @@ OpenAjax.a11y.cache.ImageElement = function (dom_element, base_url) {
   this.is_presentation = false;
 
   if (dom_element.has_role && dom_element.role != 'img') this.is_image = false;
-  if (dom_element.has_role && dom_element.role === 'presentation') this.is_presentation = true;
+  if (dom_element.has_role && (dom_element.role === 'presentation' || dom_element.role === 'none')) this.is_presentation = true;
 
 //  OpenAjax.a11y.logger.debug("Image element: " + dom_element.toString() + " has: " + dom_element.has_role + " role: " + dom_element.role  + " image: " + this.is_image + " presentation: " + this.is_presentation);
 
@@ -17762,7 +23257,7 @@ OpenAjax.a11y.cache.ImageElement = function (dom_element, base_url) {
 
     this.longdesc_url = this.longdesc;
 
-    if (this.longdesc.indexOf('http:') == -1 ) {
+    if (this.longdesc.indexOf('https:') == -1 ) {
       this.longdesc_url = base_url + this.longdesc;
     }
 
@@ -17862,12 +23357,10 @@ OpenAjax.a11y.cache.ImageElement.prototype.getAttributes = function (unsorted) {
  *
  * @desc Returns an array of cache properties sorted by property name
  *
- * @param {Boolean}  unsorted  - If defined and true the results will NOT be sorted alphabetically
- *
  * @return {Array} Returns a array of cache property display object
  */
 
-OpenAjax.a11y.cache.ImageElement.prototype.getCacheProperties = function (unsorted) {
+OpenAjax.a11y.cache.ImageElement.prototype.getCacheProperties = function () {
 
   var cache_nls = OpenAjax.a11y.nls.Cache;
 
@@ -17944,8 +23437,6 @@ OpenAjax.a11y.cache.ImageElement.prototype.getEvents = function () {
 OpenAjax.a11y.cache.ImageElement.prototype.getAltTextNLS = function () {
 
   var cache_nls = OpenAjax.a11y.nls.Cache;
-
-  var alt_style = {};
 
   if (this.dom_element.has_alt) {
     if (this.alt_length) {
@@ -18182,12 +23673,10 @@ OpenAjax.a11y.cache.CanvasElement.prototype.getAttributes = function (unsorted) 
  *
  * @desc Returns an array of cache properties sorted by property name
  *
- * @param {Boolean}  unsorted  - If defined and true the results will NOT be sorted alphabetically
- *
  * @return {Array} Returns a array of cache property display object
  */
 
-OpenAjax.a11y.cache.CanvasElement.prototype.getCacheProperties = function (unsorted) {
+OpenAjax.a11y.cache.CanvasElement.prototype.getCacheProperties = function () {
 
   var cache_nls = OpenAjax.a11y.nls.Cache;
 
@@ -18306,7 +23795,7 @@ OpenAjax.a11y.cache.SVGElement = function (dom_element) {
   this.document_order = 0;
 
   this.is_presentation = false;
-  if (dom_element.has_role && dom_element.role === 'presentation') this.is_presentation = true;
+  if (dom_element.has_role && (dom_element.role === 'presentation' || dom_element.role === 'none')) this.is_presentation = true;
 
 //  OpenAjax.a11y.logger.debug("Canvas element: " + dom_element.toString() + " has: " + dom_element.has_role + " role: " + dom_element.role  + " image: " + this.is_image + " presentation: " + this.is_presentation);
 
@@ -18386,12 +23875,10 @@ OpenAjax.a11y.cache.SVGElement.prototype.getAttributes = function (unsorted) {
  *
  * @desc Returns an array of cache properties sorted by property name
  *
- * @param {Boolean}  unsorted  - If defined and true the results will NOT be sorted alphabetically
- *
  * @return {Array} Returns a array of cache property display object
  */
 
-OpenAjax.a11y.cache.SVGElement.prototype.getCacheProperties = function (unsorted) {
+OpenAjax.a11y.cache.SVGElement.prototype.getCacheProperties = function () {
 
   var cache_nls = OpenAjax.a11y.nls.Cache;
 
@@ -18483,7 +23970,7 @@ OpenAjax.a11y.cache.SVGElement.prototype.getEvents = function () {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -18492,6 +23979,7 @@ OpenAjax.a11y.cache.SVGElement.prototype.getEvents = function () {
  * limitations under the License.
  */
 
+// import {OpenAjax} from '../openajax_a11y_constants.js';
 
 /* ---------------------------------------------------------------- */
 /*                            LanguagesCache                        */
@@ -18663,7 +24151,7 @@ OpenAjax.a11y.cache.LanguagesCache.prototype.toString = function () {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -18671,6 +24159,8 @@ OpenAjax.a11y.cache.LanguagesCache.prototype.toString = function () {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+// import {OpenAjax} from '../openajax_a11y_constants.js';
 
 /* ---------------------------------------------------------------- */
 /*                            LinkCache                             */
@@ -18986,14 +24476,6 @@ OpenAjax.a11y.cache.LinksCache.prototype.getLinksThatShareTheSameHREF = function
 
   if (same_hrefs) list_of_same_hrefs.push(same_hrefs);
 
-
-//  OpenAjax.a11y.logger.debug( "Number of DUP HREF objects: " + list_of_same_hrefs.length);
-
-  for (i = 0; i < list_of_same_hrefs.length; i++ ) {
-    var item = list_of_same_hrefs[i];
-//    OpenAjax.a11y.logger.debug("[Cache Links] " + i  + " HREF: " + item.links[0].href + "  Number: " + item.links.length + "  Same Name: " + item.same_names);
-  }
-
   return list_of_same_hrefs;
 
 };
@@ -19238,7 +24720,7 @@ OpenAjax.a11y.cache.LinkElement = function (dom_element) {
 
     if (href === '#') return OpenAjax.a11y.LINK_TYPE.EMPTY;
 
-    if (href.indexOf('http://') >= 0) return OpenAjax.a11y.LINK_TYPE.HTTP;
+    if (href.indexOf('https://') >= 0) return OpenAjax.a11y.LINK_TYPE.HTTP;
     else
       if (href.indexOf('https://') >= 0) return OpenAjax.a11y.LINK_TYPE.HTTPS;
       else
@@ -19262,7 +24744,7 @@ OpenAjax.a11y.cache.LinkElement = function (dom_element) {
 
     if (typeof href != 'string') return false;
 
-    if (url.indexOf('http://') >= 0) return true;
+    if (url.indexOf('https://') >= 0) return true;
     else
       if (url.indexOf('https://') >= 0) return true;
       else
@@ -19514,7 +24996,7 @@ OpenAjax.a11y.cache.LinkElement.prototype.getLinkType = function () {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -19523,6 +25005,7 @@ OpenAjax.a11y.cache.LinkElement.prototype.getLinkType = function () {
  * limitations under the License.
  */
 
+// import {OpenAjax} from '../openajax_a11y_constants.js';
 
 /* ---------------------------------------------------------------- */
 /*                              ListInfo                            */
@@ -19971,7 +25454,6 @@ OpenAjax.a11y.cache.ListElement.prototype.getStyle = function () {
 
 OpenAjax.a11y.cache.ListElement.prototype.getAttributes = function (unsorted) {
 
-  var cache_nls = OpenAjax.a11y.nls.Cache;
   var attributes = this.dom_element.getAttributes();
 
   if (!unsorted) this.dom_element.sortItems(attributes);
@@ -20315,14 +25797,11 @@ OpenAjax.a11y.cache.ContainerElement.prototype.getStyle = function () {
  *
  * @desc Returns an array of attributes for the element, sorted in alphabetical order
  *
- * @param {Boolean}  unsorted  - If defined and true the results will NOT be sorted alphabetically
- *
  * @return {Array} Returns a array of attribute display object
  */
 
-OpenAjax.a11y.cache.ContainerElement.prototype.getAttributes = function (unsorted) {
+OpenAjax.a11y.cache.ContainerElement.prototype.getAttributes = function () {
 
-  var cache_nls = OpenAjax.a11y.nls.Cache;
   var attributes = this.dom_element.getAttributes();
 
   return attributes;
@@ -20433,7 +25912,7 @@ OpenAjax.a11y.cache.ContainerElement.prototype.toString = function () {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -20441,6 +25920,8 @@ OpenAjax.a11y.cache.ContainerElement.prototype.toString = function () {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+// import {OpenAjax} from '../openajax_a11y_constants.js';
 
 /* ---------------------------------------------------------------- */
 /*                      OpenAjax Media Cache                        */
@@ -20664,15 +26145,17 @@ OpenAjax.a11y.cache.MediaCache.prototype.updateCacheItems = function (dom_elemen
   else {
 
     if ((dom_element.tag_name === 'param') &&
-        (media_info.media_element && media_info.media_element.dom_element.tag_name === 'object')) {
+        (media_info.media_element &&
+         media_info.media_element.dom_element &&
+         media_info.media_element.dom_element.tag_name === 'object')) {
        media_element = new OpenAjax.a11y.cache.MediaChildElement(dom_element);
        media_info.media_element.addMediaElement(media_element);
     }
 
     if ((dom_element.tag_name === 'track') &&
-        (media_info.media_element &&
-         (media_info.media_element.dom_element.tag_name === 'video') ||
-         (media_info.media_element.dom_element.tag_name === 'audio'))) {
+        (media_info.media_element && media_info.media_element.dom_element &&
+         ((media_info.media_element.dom_element.tag_name === 'video') ||
+         (media_info.media_element.dom_element.tag_name === 'audio')))) {
        media_element = new OpenAjax.a11y.cache.MediaChildElement(dom_element);
        media_info.media_element.addMediaElement(media_element);
     }
@@ -20970,12 +26453,10 @@ OpenAjax.a11y.cache.MediaElement.prototype.getAttributes = function (unsorted) {
  *
  * @desc Returns an array of cache properties sorted by property name
  *
- * @param {Boolean}  unsorted  - If defined and true the results will NOT be sorted alphabetically
- *
  * @return {Array} Returns a array of cache property display object
  */
 
-OpenAjax.a11y.cache.MediaElement.prototype.getCacheProperties = function (unsorted) {
+OpenAjax.a11y.cache.MediaElement.prototype.getCacheProperties = function () {
 
   var cache_nls = OpenAjax.a11y.nls.Cache;
 
@@ -21255,12 +26736,10 @@ OpenAjax.a11y.cache.MediaChildElement.prototype.getStyle = function () {
  *
  * @desc Returns an array of attributes for the element, sorted in alphabetical order
  *
- * @param {Boolean}  unsorted  - If defined and true the results will NOT be sorted alphabetically
- *
  * @return {Array} Returns a array of attribute display object
  */
 
-OpenAjax.a11y.cache.MediaChildElement.prototype.getAttributes = function (unsorted) {
+OpenAjax.a11y.cache.MediaChildElement.prototype.getAttributes = function () {
 
   var cache_nls = OpenAjax.a11y.nls.Cache;
 
@@ -21285,14 +26764,10 @@ OpenAjax.a11y.cache.MediaChildElement.prototype.getAttributes = function (unsort
  *
  * @desc Returns an array of cache properties sorted by property name
  *
- * @param {Boolean}  unsorted  - If defined and true the results will NOT be sorted alphabetically
- *
  * @return {Array} Returns a array of cache property display object
  */
 
-OpenAjax.a11y.cache.MediaChildElement.prototype.getCacheProperties = function (unsorted) {
-
-  var cache_nls = OpenAjax.a11y.nls.Cache;
+OpenAjax.a11y.cache.MediaChildElement.prototype.getCacheProperties = function () {
 
   var properties = [];
 
@@ -21437,10 +26912,7 @@ OpenAjax.a11y.cache.PageElementMedia.prototype.getStyle = function () {
 
 OpenAjax.a11y.cache.PageElementMedia.prototype.getAttributes = function (unsorted) {
 
-  var cache_nls = OpenAjax.a11y.nls.Cache;
   var attributes = this.dom_element.getAttributes();
-
-//  cache_nls.addPropertyIfDefined(attributes, this, 'tag_name');
 
   if (!unsorted) this.dom_element.sortItems(attributes);
 
@@ -21460,8 +26932,6 @@ OpenAjax.a11y.cache.PageElementMedia.prototype.getAttributes = function (unsorte
  */
 
 OpenAjax.a11y.cache.PageElementMedia.prototype.getCacheProperties = function (unsorted) {
-
-  var cache_nls = OpenAjax.a11y.nls.Cache;
 
   var properties = this.dom_element.getCacheProperties(unsorted);
 
@@ -21530,7 +27000,7 @@ OpenAjax.a11y.cache.PageElementMedia.prototype.toString = function () {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -21539,6 +27009,7 @@ OpenAjax.a11y.cache.PageElementMedia.prototype.toString = function () {
  * limitations under the License.
  */
 
+// import {OpenAjax} from '../openajax_a11y_constants.js';
 
 /**
  * @constructor DOMElementComputedStyle
@@ -21977,7 +27448,7 @@ OpenAjax.a11y.cache.DOMElementComputedStyle.prototype.getLuminance = function (c
  * @return {String} Returns a text string representation of the computed style object
  */
 
-OpenAjax.a11y.cache.DOMElementComputedStyle.prototype.toString = function (color) {
+OpenAjax.a11y.cache.DOMElementComputedStyle.prototype.toString = function () {
   return "Computed style " + this.color_hex + " " + this.background_color_hex + " " + this.color_contrast_ratio;
 };
 /*
@@ -21987,7 +27458,7 @@ OpenAjax.a11y.cache.DOMElementComputedStyle.prototype.toString = function (color
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -21995,6 +27466,8 @@ OpenAjax.a11y.cache.DOMElementComputedStyle.prototype.toString = function (color
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+// import {OpenAjax} from '../openajax_a11y_constants.js';
 
 /* ---------------------------------------------------------------- */
 /*                            TableInfo                             */
@@ -22113,7 +27586,6 @@ OpenAjax.a11y.cache.TablesCache = function (dom_cache) {
  */
 
  OpenAjax.a11y.cache.TablesCache.prototype.addChild = function (table_element) {
-
    if (table_element) {
      this.child_cache_elements.push(table_element);
    }
@@ -22534,8 +28006,11 @@ OpenAjax.a11y.cache.TablesCache = function (dom_cache) {
    this.accessible_description_source         = OpenAjax.a11y.DESCRIPTION_SOURCE.NONE;
 
    if (dom_element.role &&
-       (dom_element.role === 'presentation')) this.table_role = OpenAjax.a11y.TABLE_ROLE.LAYOUT;
-   else this.table_role = OpenAjax.a11y.TABLE_ROLE.UNKNOWN;
+       (dom_element.role === 'presentation' || dom_element.role === 'none')) {
+      this.table_role = OpenAjax.a11y.TABLE_ROLE.LAYOUT;
+   } else {
+      this.table_role = OpenAjax.a11y.TABLE_ROLE.UNKNOWN;
+   }
 
    this.is_complex_data_table = false;
 
@@ -22574,7 +28049,7 @@ OpenAjax.a11y.cache.TableElement.prototype.setIsDataTable = function () {
 
   // if role=presentation this is a layout table
   if (this.dom_element.has_role  &&
-      (this.dom_element.role === 'presentation')) {
+      (this.dom_element.role === 'presentation' || this.dom_element.role === 'none')) {
 
     this.setIsLayoutTable();
     return;
@@ -22866,9 +28341,6 @@ OpenAjax.a11y.cache.TableElement.prototype.multipleTHInRow = function(row) {
    var th_count;
    var td_count;
 
-   var row_max = this.max_row;
-   var col_max = this.max_column;
-   var row_len;
    var cell;
 
    var c = 0;
@@ -23308,7 +28780,7 @@ OpenAjax.a11y.cache.TableElement.prototype.getAttributes = function (unsorted) {
  * @return {Array} Returns a array of event information
  */
 
-OpenAjax.a11y.cache.TableElement.prototype.getEvents = function (unsorted) {
+OpenAjax.a11y.cache.TableElement.prototype.getEvents = function () {
 
   return this.dom_element.getEvents();
 
@@ -23491,8 +28963,6 @@ OpenAjax.a11y.cache.CaptionElement.prototype.getElementResults = function () {
 
 OpenAjax.a11y.cache.CaptionElement.prototype.getAttributes = function () {
 
-  var cache_nls = OpenAjax.a11y.nls.Cache;
-
   var attributes = this.dom_element.getAttributes();
 
   return attributes;
@@ -23508,7 +28978,7 @@ OpenAjax.a11y.cache.CaptionElement.prototype.getAttributes = function () {
  * @return {Array} Returns a array of event information
  */
 
-OpenAjax.a11y.cache.CaptionElement.prototype.getEvents = function (unsorted) {
+OpenAjax.a11y.cache.CaptionElement.prototype.getEvents = function () {
 
   return this.dom_element.getEvents();
 
@@ -23541,8 +29011,6 @@ OpenAjax.a11y.cache.CaptionElement.prototype.getStyle = function () {
  */
 
 OpenAjax.a11y.cache.CaptionElement.prototype.getCacheProperties = function () {
-
-  var cache_nls = OpenAjax.a11y.nls.Cache;
 
   var properties = this.dom_element.getCacheProperties();
 
@@ -23708,8 +29176,6 @@ OpenAjax.a11y.cache.THeadElement.prototype.getStyle = function () {
 
 OpenAjax.a11y.cache.THeadElement.prototype.getCacheProperties = function () {
 
-  var cache_nls = OpenAjax.a11y.nls.Cache;
-
   var properties = this.dom_element.getCacheProperties();
 
   return properties;
@@ -23747,7 +29213,7 @@ OpenAjax.a11y.cache.THeadElement.prototype.getCachePropertyValue = function (pro
  * @return {Array} Returns a array of event information
  */
 
-OpenAjax.a11y.cache.THeadElement.prototype.getEvents = function (unsorted) {
+OpenAjax.a11y.cache.THeadElement.prototype.getEvents = function () {
 
   return this.dom_element.getEvents();
 
@@ -23890,8 +29356,6 @@ OpenAjax.a11y.cache.TBodyElement.prototype.getStyle = function () {
 
 OpenAjax.a11y.cache.TBodyElement.prototype.getCacheProperties = function () {
 
-  var cache_nls = OpenAjax.a11y.nls.Cache;
-
   var properties = this.dom_element.getCacheProperties();
 
   return properties;
@@ -23929,7 +29393,7 @@ OpenAjax.a11y.cache.TBodyElement.prototype.getCachePropertyValue = function (pro
  * @return {Array} Returns a array of event information
  */
 
-OpenAjax.a11y.cache.TBodyElement.prototype.getEvents = function (unsorted) {
+OpenAjax.a11y.cache.TBodyElement.prototype.getEvents = function () {
 
   return this.dom_element.getEvents();
 
@@ -23993,6 +29457,15 @@ OpenAjax.a11y.cache.TableRowElement = function (dom_element, table_info) {
 
   this.header_cell_count = 0;
   this.data_cell_count   = 0;
+
+  var te = table_info.table_element;
+  var de = dom_element;
+
+  if (te && (te.table_role !== OpenAjax.a11y.TABLE_ROLE.LAYOUT)) {
+    de.element_aria_info = OpenAjax.a11y.ariaInHTML.elementInfo['tr[table]'];
+    de.implicit_role = de.element_aria_info.defaultRole;
+  }
+
 
 };
 
@@ -24112,7 +29585,7 @@ OpenAjax.a11y.cache.TableRowElement.prototype.getCachePropertyValue = function (
  * @return {Array} Returns a array of event information
  */
 
-OpenAjax.a11y.cache.TableRowElement.prototype.getEvents = function (unsorted) {
+OpenAjax.a11y.cache.TableRowElement.prototype.getEvents = function () {
 
   return this.dom_element.getEvents();
 
@@ -24197,7 +29670,6 @@ OpenAjax.a11y.cache.TableRowElement.prototype.getEvents = function (unsorted) {
 
 OpenAjax.a11y.cache.TableCellElement = function (dom_element, table_info) {
 
-  var headers_array = [];  // array of id headers
   var is_th;
 
   this.dom_element  = dom_element;
@@ -24233,6 +29705,26 @@ OpenAjax.a11y.cache.TableCellElement = function (dom_element, table_info) {
        this.table_type = OpenAjax.a11y.TABLE.TH_ELEMENT;
       }
     }
+  }
+
+  var te = table_info.table_element;
+  var de = this.dom_element;
+
+  if (te && (te.table_role !== OpenAjax.a11y.TABLE_ROLE.LAYOUT)) {
+    if (is_th) {
+      if (te.dom_element.role && ('grid'.indexOf(te.dom_element.role) >= 0)) {
+        de.element_aria_info = OpenAjax.a11y.ariaInHTML.elementInfo['th[gridcell]'];
+      } else {
+        de.element_aria_info = OpenAjax.a11y.ariaInHTML.elementInfo['th[cell]'];
+      }
+    } else {
+      if (te.dom_element.role && ('grid'.indexOf(te.dom_element.role) >= 0)) {
+        de.element_aria_info = OpenAjax.a11y.ariaInHTML.elementInfo['td[gridcell]'];
+      } else {
+        de.element_aria_info = OpenAjax.a11y.ariaInHTML.elementInfo['td[cell]'];
+      }
+    }
+    de.implicit_role = de.element_aria_info.defaultRole;
   }
 
   if (table_info.table_row_element) {
@@ -24410,7 +29902,7 @@ OpenAjax.a11y.cache.TableCellElement.prototype.getCachePropertyValue = function 
  * @return {Array} Returns a array of event information
  */
 
-OpenAjax.a11y.cache.TableCellElement.prototype.getEvents = function (unsorted) {
+OpenAjax.a11y.cache.TableCellElement.prototype.getEvents = function () {
 
   return this.dom_element.getEvents();
 
@@ -24576,8 +30068,6 @@ OpenAjax.a11y.cache.PageElementLayout.prototype.getAttributes = function (unsort
 
 OpenAjax.a11y.cache.PageElementLayout.prototype.getCacheProperties = function (unsorted) {
 
-  var cache_nls = OpenAjax.a11y.nls.Cache;
-
   var properties = this.dom_element.getCacheProperties(unsorted);
 
   if (!unsorted) this.dom_element.sortItems(properties);
@@ -24644,7 +30134,7 @@ OpenAjax.a11y.cache.PageElementLayout.prototype.toString = function () {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -24652,6 +30142,8 @@ OpenAjax.a11y.cache.PageElementLayout.prototype.toString = function () {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+// import {OpenAjax} from '../openajax_a11y_constants.js';
 
 /* ---------------------------------------------------------------- */
 /*                            TextCache                            */
@@ -24858,7 +30350,7 @@ OpenAjax.a11y.cache.TextCache.prototype.updateCache = function () {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -24866,6 +30358,8 @@ OpenAjax.a11y.cache.TextCache.prototype.updateCache = function () {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+// import {OpenAjax} from '../openajax_a11y_constants.js';
 
 /* ---------------------------------------------------------------- */
 /*                            KeyboardFocus                             */
@@ -25031,10 +30525,7 @@ OpenAjax.a11y.cache.PageElementKeyboardFocus.prototype.getStyle = function () {
 
 OpenAjax.a11y.cache.PageElementKeyboardFocus.prototype.getAttributes = function (unsorted) {
 
-  var cache_nls = OpenAjax.a11y.nls.Cache;
   var attributes = this.dom_element.getAttributes();
-
-//  cache_nls.addPropertyIfDefined(attributes, this, 'tag_name');
 
   if (!unsorted) this.dom_element.sortItems(attributes);
 
@@ -25054,8 +30545,6 @@ OpenAjax.a11y.cache.PageElementKeyboardFocus.prototype.getAttributes = function 
  */
 
 OpenAjax.a11y.cache.PageElementKeyboardFocus.prototype.getCacheProperties = function (unsorted) {
-
-  var cache_nls = OpenAjax.a11y.nls.Cache;
 
   var properties = this.dom_element.getCacheProperties(unsorted);
 
@@ -25125,7 +30614,7 @@ OpenAjax.a11y.cache.PageElementKeyboardFocus.prototype.toString = function () {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -25133,6 +30622,8 @@ OpenAjax.a11y.cache.PageElementKeyboardFocus.prototype.toString = function () {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+// import {OpenAjax} from '../openajax_a11y_constants.js';
 
 /* ---------------------------------------------------------------- */
 /*                            TimingFlashing                             */
@@ -25299,10 +30790,7 @@ OpenAjax.a11y.cache.PageElementTimingFlashing.prototype.getStyle = function () {
 
 OpenAjax.a11y.cache.PageElementTimingFlashing.prototype.getAttributes = function (unsorted) {
 
-  var cache_nls = OpenAjax.a11y.nls.Cache;
   var attributes = this.dom_element.getAttributes();
-
-//  cache_nls.addPropertyIfDefined(attributes, this, 'tag_name');
 
   if (!unsorted) this.dom_element.sortItems(attributes);
 
@@ -25322,8 +30810,6 @@ OpenAjax.a11y.cache.PageElementTimingFlashing.prototype.getAttributes = function
  */
 
 OpenAjax.a11y.cache.PageElementTimingFlashing.prototype.getCacheProperties = function (unsorted) {
-
-  var cache_nls = OpenAjax.a11y.nls.Cache;
 
   var properties = this.dom_element.getCacheProperties(unsorted);
 
@@ -25393,7 +30879,7 @@ OpenAjax.a11y.cache.PageElementTimingFlashing.prototype.toString = function () {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -25402,7 +30888,7 @@ OpenAjax.a11y.cache.PageElementTimingFlashing.prototype.toString = function () {
  * limitations under the License.
  */
 
-
+// import {OpenAjax} from '../openajax_a11y_constants.js';
 
 /* ---------------------------------------------------------------- */
 /*                       ElementInformation                         */
@@ -25962,8 +31448,9 @@ OpenAjax.a11y.cache.ElementInformation.prototype.countElement = function (dom_el
     default:
       break;
    }
+   break;
 
-   case 'output':
+  case 'output':
     this.output_count++;
     this.all_forms_count++;
     if (dom_element.has_title)   this.title_attribute_count++;
@@ -26146,6 +31633,7 @@ OpenAjax.a11y.cache.ElementInformation.prototype.countElement = function (dom_el
         this.all_structures_count++;
         break;
 
+      case 'none':
       case 'presentation':
         this.role_presentation_count++;
         this.all_structures_count++;
@@ -26522,7 +32010,7 @@ OpenAjax.a11y.cache.ElementInformation.prototype.toJSON = function (add_comma, p
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -26530,6 +32018,8 @@ OpenAjax.a11y.cache.ElementInformation.prototype.toJSON = function (add_comma, p
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+// import {OpenAjax} from '../openajax_a11y_constants.js';
 
 /**
  * @namespace OpenAjax.a11y.info
@@ -26569,8 +32059,6 @@ OpenAjax.a11y.info = OpenAjax.a11y.info || {};
  */
 
 OpenAjax.a11y.info.InformationalLinkInfo = function (rt, t, u) {
-
-  var REFS = OpenAjax.a11y.REFERENCES;
 
   var reference_type = OpenAjax.a11y.REFERENCES.UNKNOWN;
   var title = "";
@@ -27134,7 +32622,7 @@ OpenAjax.a11y.info.PageInfo = function (dom_cache) {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -27143,7 +32631,7 @@ OpenAjax.a11y.info.PageInfo = function (dom_cache) {
  * limitations under the License.
  */
 
-
+// import {OpenAjax} from '../openajax_a11y_constants.js';
 
 /* ---------------------------------------------------------------- */
 /*                             ElementResultSummary                        */
@@ -27172,7 +32660,7 @@ OpenAjax.a11y.info.PageInfo = function (dom_cache) {
  *                                      (value >= 0)
  */
 
-OpenAjax.a11y.info.ElementResultsSummary = function (required) {
+OpenAjax.a11y.info.ElementResultsSummary = function () {
 
   // Element result counts
   var p   = 0;  // Pass result (p)
@@ -27448,7 +32936,7 @@ OpenAjax.a11y.info.RuleResultsSummary = function () {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -27457,6 +32945,7 @@ OpenAjax.a11y.info.RuleResultsSummary = function () {
  * limitations under the License.
  */
 
+// import {OpenAjax} from '../openajax_a11y_constants.js';
 
 /* ---------------------------------------------------------------- */
 /*                       EvaluationResult                           */
@@ -27718,7 +33207,7 @@ OpenAjax.a11y.EvaluationResult.prototype.getRuleResultsByGuideline = function (g
      var rr = this.rule_results[i];
      var r = rr.getRule();
 
-     OpenAjax.a11y.logger.debug("[EvaluationResult][getRuleResultsByGuideline] Compare: " + r.getGuideline() + " " + guideline_id + " " + (r.getGuideline() & guideline_id));
+//     OpenAjax.a11y.logger.debug("[EvaluationResult][getRuleResultsByGuideline] Compare: " + r.getGuideline() + " " + guideline_id + " " + (r.getGuideline() & guideline_id));
 
      if ((r.getGuideline() & guideline_id)&&
          (r.getGroup()     & group_filter)) {
@@ -27785,8 +33274,6 @@ OpenAjax.a11y.EvaluationResult.prototype.toJSON = function (include_element_resu
 
   if (typeof include_element_results !== 'boolean') include_element_results = false;
 
-  var wcag20_nls  = OpenAjax.a11y.nls.WCAG20.getNLS();
-
   var cleanForUTF8  = OpenAjax.a11y.util.cleanForUTF8;
 
   var ruleset = this.getRuleset();
@@ -27839,7 +33326,7 @@ OpenAjax.a11y.EvaluationResult.prototype.toJSON = function (include_element_resu
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -27847,6 +33334,8 @@ OpenAjax.a11y.EvaluationResult.prototype.toJSON = function (include_element_resu
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+// import {OpenAjax} from '../openajax_a11y_constants.js';
 
 /* ---------------------------------------------------------------- */
 /*                             RuleResult                           */
@@ -28736,7 +34225,7 @@ OpenAjax.a11y.RuleResult.prototype.toString = function () {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -28744,6 +34233,8 @@ OpenAjax.a11y.RuleResult.prototype.toString = function () {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+// import {OpenAjax} from '../openajax_a11y_constants.js';
 
 /* ---------------------------------------------------------------- */
 /*                      ElementInfo                                   */
@@ -29184,43 +34675,33 @@ OpenAjax.a11y.ElementResult.prototype.getAccessibleName = function () {
     switch(source) {
       case SOURCE.ALT_ATTRIBUTE:
         return "alt attribute";
-        break;
 
       case SOURCE.ARIA_LABELLEDBY:
         return "aria-labelledby attribute";
-        break;
 
       case SOURCE.ARIA_LABEL:
         return "aria-label attribute";
-        break;
 
       case SOURCE.LABEL_REFERENCE:
         return "label reference";
-        break;
 
       case SOURCE.LABEL_ENCAPSULATION:
         return "label encapsulation";
-        break;
 
       case SOURCE.TABLE_CAPTION:
         return "caption element";
-        break;
 
       case SOURCE.TABLE_SUMMARY:
         return "summary attribute";
-        break;
 
       case SOURCE.TEXT_CONTENT:
         return "text content";
-        break;
 
       case SOURCE.TITLE_ATTRIBUTE:
         return "title attribute";
-        break;
 
       case SOURCE.VALUE_ATTRIBUTE:
         return "value attribute";
-        break;
 
       default:
         break;
@@ -29231,7 +34712,6 @@ OpenAjax.a11y.ElementResult.prototype.getAccessibleName = function () {
   }
 
   var de = this.getDOMElement();
-  var source = '';
 
   if (this.cache_item.accessible_name) {
     if (this.cache_item.accessible_name_source) {
@@ -29272,7 +34752,6 @@ OpenAjax.a11y.ElementResult.prototype.getAccessibleName = function () {
             }
           }
           return ['none', '', de.src];
-          break;
 
         case 'a':
         case 'area':
@@ -29285,7 +34764,6 @@ OpenAjax.a11y.ElementResult.prototype.getAccessibleName = function () {
             }
           }
           return ['none', '', de.href];
-          break;
 
         default:
           if (text_content) {
@@ -29353,11 +34831,6 @@ OpenAjax.a11y.ElementResult.prototype.toString = function () {
  */
 
 OpenAjax.a11y.ElementResult.prototype.toJSON = function (prefix) {
-
-  var next_prefix = "";
-
-  if (typeof prefix !== 'string' || prefix.length === 0) prefix = "";
-  else next_prefix = prefix + "    ";
 
   var json = "";
 
@@ -29498,7 +34971,7 @@ OpenAjax.a11y.RelatedElements.prototype.toString = function () {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -29506,6 +34979,8 @@ OpenAjax.a11y.RelatedElements.prototype.toString = function () {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+// import {OpenAjax} from '../openajax_a11y_constants.js';
 
 /* ---------------------------------------------------------------- */
 /*                      FilteredCacheItemResults                    */
@@ -29731,8 +35206,6 @@ OpenAjax.a11y.FilteredCacheItemResults.prototype.updateSummary = function(cache_
 
 //  OpenAjax.a11y.logger.debug("FILTER: " + filter );
 
-  var total;
-
   var ELEMENT_TYPE = OpenAjax.a11y.ELEMENT_TYPE;
 
   this.element_type  = element_type;
@@ -29840,8 +35313,6 @@ OpenAjax.a11y.FilteredCacheItemResults.prototype.filterCacheItemsByElementResult
 
   this.is_tree = false;
 
-  var RESULT_FILTER = OpenAjax.a11y.RESULT_FILTER;
-
   var cache_items_len = cache_items.length;
 
   for (var i = 0; i < cache_items_len; i++) {
@@ -29913,8 +35384,6 @@ OpenAjax.a11y.FilteredCacheItemResults.prototype.filterCacheItemsByElementResult
 
   }
 
-  var RESULT_FILTER = OpenAjax.a11y.RESULT_FILTER;
-
   var is_tree = false;
 
   var filtered_cache_item_results = this;
@@ -29928,8 +35397,6 @@ OpenAjax.a11y.FilteredCacheItemResults.prototype.filterCacheItemsByElementResult
   var cache_item_results = [];
 
   var cache_items_len = cache_items.length;
-
-  var all_flag = (this.filter === RESULT_FILTER.ALL);
 
   for (var i = 0; i < cache_items_len; i++) {
     var ci = cache_items[i];
@@ -30105,8 +35572,6 @@ OpenAjax.a11y.FilteredCacheItemResults.prototype.toCSV = function(title) {
   var result_items_len = result_items.length;
 
   for (var i = 0; i < result_items_len; i++) {
-
-     var position = i+1;
 
      var result_item      = result_items[i];
      var node_results     = result_item.node_results;
@@ -30515,7 +35980,7 @@ OpenAjax.a11y.CacheItemResult.prototype.toJSON = function(prefix) {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -30524,6 +35989,7 @@ OpenAjax.a11y.CacheItemResult.prototype.toJSON = function(prefix) {
  * limitations under the License.
  */
 
+// import {OpenAjax} from '../openajax_a11y_constants.js';
 
 /* ---------------------------------------------------------------- */
 /*                      RuleGroupResult                             */
@@ -30790,13 +36256,9 @@ OpenAjax.a11y.RuleGroupResult.prototype.toJSON = function(prefix, flag) {
 
   if (typeof flag !== 'boolean') flag = true;
 
-  if (typeof prefix !== 'string' || prefix.length === 0) prefix = "";
-  else next_prefix = prefix + "    ";
-
   var rule_group_info = this.getRuleGroupInfo();
 
   var ruleset_title   = this.evaluation_result.ruleset_title;
-  var ruleset_abbrev  = this.evaluation_result.ruleset_abbrev;
   var ruleset_version = this.evaluation_result.ruleset_version;
   var ruleset_id      = this.evaluation_result.ruleset_id;
 
@@ -30835,7 +36297,7 @@ OpenAjax.a11y.RuleGroupResult.prototype.toJSON = function(prefix, flag) {
 
   var rule_results     = this.rule_results;
   var rule_results_len = rule_results.length;
-  var comma_len   = results_len - 1;
+  var comma_len   = rule_results_len - 1;
 
   for (var i = 0; i < rule_results_len; i++) {
     json += rule_results[i].toJSON(prefix + "  ", flag);
@@ -30860,7 +36322,7 @@ OpenAjax.a11y.RuleGroupResult.prototype.toJSON = function(prefix, flag) {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -30869,7 +36331,7 @@ OpenAjax.a11y.RuleGroupResult.prototype.toJSON = function(prefix, flag) {
  * limitations under the License.
  */
 
-OpenAjax.a11y.nls = OpenAjax.a11y.nls || {};
+// import {OpenAjax} from '../openajax_a11y_constants.js';
 
 /* ---------------------------------------------------------------- */
 /*                            Properties NLS                        */
@@ -31352,34 +36814,6 @@ OpenAjax.a11y.nls.Cache = function() {
       list.push(o);
     },
 
-    /**
-     * @method addInvalidValue
-     *
-     * @memberOf OpenAjax.a11y.nls.Cache
-     *
-     * @desc Adds an attribute with a value to a list of attributes
-     *
-     * @param  {Array}   list      - List of properties
-     * @param  {String}  attribute - Attribute of an element represented in the cache
-     * @param  {String}  value     - Value of an attribute
-     * @param  {String}  loc       - String representing the language
-     */
-
-    addInvalidValue : function (list, attribute, value, loc) {
-      var locale = "en-us";
-      if ((typeof loc === 'string') && loc.length) locale = loc;
-
-      var locale_nls = cache_nls[OpenAjax.a11y.locale];
-      var o = {};
-
-      o.label = attribute;
-      o.value = value + " " + locale_nls.invalid_value.value;
-      o.style = locale_nls.invalid_value.style;
-
-      list.push(o);
-
-    },
-
 
     /**
      * @method toJSON
@@ -31396,11 +36830,6 @@ OpenAjax.a11y.nls.Cache = function() {
     toJSON : function(prefix) {
 
       var locale_nls = cache_nls[OpenAjax.a11y.locale];
-
-      var next_prefix = "";
-
-      if (typeof prefix !== 'string' || prefix.length === 0) prefix = "";
-      else next_prefix = prefix + "  ";
 
       var json = "";
 
@@ -31426,14 +36855,15 @@ OpenAjax.a11y.nls.Cache = function() {
       return json;
     }
   };
-}();/*
+}();
+/*
  * Copyright 2011-2018 OpenAjax Alliance
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -31442,7 +36872,7 @@ OpenAjax.a11y.nls.Cache = function() {
  * limitations under the License.
  */
 
-OpenAjax.a11y.nls = OpenAjax.a11y.nls || {};
+// import {OpenAjax} from '../openajax_a11y_constants.js';
 
 
 /* ---------------------------------------------------------------- */
@@ -31683,7 +37113,7 @@ OpenAjax.a11y.nls.RuleCategoryNLS.prototype.toJSON = function(prefix) {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -31692,8 +37122,8 @@ OpenAjax.a11y.nls.RuleCategoryNLS.prototype.toJSON = function(prefix) {
  * limitations under the License.
  */
 
-OpenAjax.a11y.nls = OpenAjax.a11y.nls || {};
-
+// import {OpenAjax} from '../openajax_a11y_constants.js';
+var wcag20_nls = wcag20_nls || {};
 
 /* ---------------------------------------------------------------- */
 /*                       WCAG20                                     */
@@ -31729,7 +37159,6 @@ OpenAjax.a11y.nls.WCAG20 = function() {
 
       OpenAjax.a11y.logger.info("[WCAG20 NLS] Adding WCAG 2.0 NLS for locale: " + locale);
 
-      var item;
       var  p,  p_id,  np;  /* WCAG 2.0 Principle */
       var  g,  g_id,  ng;  /* WCAG 2.0 Guideline */
       var sc, sc_id, nsc;  /* WCAG 2.0 Success Criterion */
@@ -31923,15 +37352,15 @@ OpenAjax.a11y.nls.WCAG20NLS.prototype.getSuccessCriteriaLevel = function (sc_id)
 
   var principles = this.principles;
 
-  for (i = 0; i < principles.length; i++) {
+  for (var i = 0; i < principles.length; i++) {
 
     var p = wcag20_nls.principles[i];
 
-    for (j = 0; j < p.guidelines.length; j++) {
+    for (var j = 0; j < p.guidelines.length; j++) {
 
       var g = p.guidelines[i];
 
-      for (k = 0; k < g.success_criteria.length; k++) {
+      for (var k = 0; k < g.success_criteria.length; k++) {
 
         var sc = g.success_criteria[i];
 
@@ -32259,7 +37688,7 @@ OpenAjax.a11y.nls.WCAG20NLSSuccessCriterion.prototype.toJSON = function(prefix) 
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -32288,10 +37717,10 @@ OpenAjax.a11y.nls.WCAG20NLSSuccessCriterion.prototype.toJSON = function(prefix) 
  */
 
 OpenAjax.a11y.logger = OpenAjax.a11y.logger || {
-  debug: function (message) {},
-  info:  function (message) {},
-  warn:  function (message) {},
-  error: function (message) {}
+  debug: function (message) {console.log('[DEBUG]: ' + message)},
+  info:  function (message) {console.log('[ INFO]: ' + message)},
+  warn:  function (message) {console.log('[ WARN]: ' + message)},
+  error: function (message) {console.log('[ERROR]: ' + message)}
 };
 
 OpenAjax.a11y.setLogger = function (logger) {
@@ -32304,7 +37733,7 @@ OpenAjax.a11y.setLogger = function (logger) {
 
 // basic info about version of ruleset and rules
 OpenAjax.a11y.name = "OpenAjax Alliance Accessibility Tools Task Force";
-OpenAjax.a11y.baseUri = "http://www.openajax.org/member/wiki/Accessibility";
+OpenAjax.a11y.baseUri = "https://www.openajax.org/member/wiki/Accessibility";
 
 
 
@@ -32315,7 +37744,7 @@ OpenAjax.a11y.baseUri = "http://www.openajax.org/member/wiki/Accessibility";
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -32324,6 +37753,7 @@ OpenAjax.a11y.baseUri = "http://www.openajax.org/member/wiki/Accessibility";
  * limitations under the License.
  */
 
+// import {OpenAjax} from '../openajax_a11y_constants.js';
 
 /* ---------------------------------------------------------------- */
 /*                             Rule                                 */
@@ -32663,15 +38093,12 @@ OpenAjax.a11y.Rule.prototype.getGroupNLS = function () {
 
   case RULE_GROUP.GROUP1:
     return "Group 1";
-    break;
 
   case RULE_GROUP.GROUP2:
     return "Group 2";
-    break;
 
   case RULE_GROUP.GROUP3:
     return "Group 3";
-    break;
 
   default:
     break;
@@ -33168,14 +38595,6 @@ OpenAjax.a11y.Rule.prototype.toJSON = function (prefix, required) {
     else json += ",\n";
   }
 
-  function booleanItem(property, value, last) {
-    if (value) json += prefix + "    \"" + property + "\" : true";
-    else json += prefix + "    \"" + property + "\" : false";
-
-    if (last) json += "\n";
-    else json += ",\n";
-  }
-
   function stringListItem(property, list, last) {
     json += prefix + "    \"" + property + "\" : [";
 
@@ -33190,23 +38609,6 @@ OpenAjax.a11y.Rule.prototype.toJSON = function (prefix, required) {
     if (last) json += "]\n";
     else json += "],\n";
   }
-
-  function stringListItem2(property, list, last ) {
-    json += prefix + "    \"" + property + "\" : [";
-
-    if (list && list.length) {
-      var last_item = list.length - 1;
-      for (var i = 0; i < list.length; i++) {
-        if (last_item === i) json += "  " + JSON.stringify(list[i]) + "\n";
-        else json += "  " + JSON.stringify(list[i]) + ",\n";
-      }
-    }
-
-    if (last) json += "]\n";
-    else json += "],\n";
-
-  }
-
 
   function addListOfStrings(name, list, last) {
 
@@ -33263,7 +38665,7 @@ OpenAjax.a11y.Rule.prototype.toJSON = function (prefix, required) {
 
     if (list) {
       var first = true;
-      for (item in list) {
+      for (var item in list) {
         if (first) json += "           " + JSON.stringify(item) + ": " + JSON.stringify(list[item]);
         else json += ",\n          " + JSON.stringify(item) + ": " + JSON.stringify(list[item]);
         first = false;
@@ -33282,10 +38684,7 @@ OpenAjax.a11y.Rule.prototype.toJSON = function (prefix, required) {
 
   var json = "";
 
-  var rule     = this;
   var rule_nls = this.rule_nls;
-
-  OpenAjax.a11y.logger.debug("[RULE] Exporting rule: " + this.rule_id);
 
   json += prefix + "  {\n";
 
@@ -33458,18 +38857,11 @@ OpenAjax.a11y.RuleManager = function () {
 
         var rule_item;
 
-        OpenAjax.a11y.logger.info("[RuleManager] Loading Rules");
+//        OpenAjax.a11y.logger.info("[RuleManager] Loading Rules");
 
         for (var i = 0; i < rule_array.length; i++) {
 
           rule_item = rule_array[i];
-
-      //    OpenAjax.a11y.logger.debug("[RuleManager] Rule: " + rule_item.rule_id);
-      //    OpenAjax.a11y.logger.debug("  last update: " + rule_item.last_updated);
-      //    OpenAjax.a11y.logger.debug("   properties: " + typeof rule_item.resource_properties);
-      //    OpenAjax.a11y.logger.debug("     language: " + rule_item.language_dependency);
-      //    OpenAjax.a11y.logger.debug("     validate: " + typeof rule_item.validate);
-
           this.addRule(rule_item);
 
         }
@@ -33591,8 +38983,6 @@ OpenAjax.a11y.RuleManager = function () {
 
         var json = "";
 
-        OpenAjax.a11y.logger.debug("[RuleManager] Number of rules: " + rules.length);
-
         json += prefix + "[\n";
 
         var last = rules.length - 1;
@@ -33620,7 +39010,7 @@ OpenAjax.a11y.RuleManager = function () {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -33628,6 +39018,8 @@ OpenAjax.a11y.RuleManager = function () {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+// import {OpenAjax} from '../openajax_a11y_constants.js';
 
 /* ---------------------------------------------------------------- */
 /*                       RulesetFactory                             */
@@ -33695,7 +39087,6 @@ OpenAjax.a11y.RulesetFactory = {
           else {
             throw new Error("[OpenAjax A11y][Rulesetfactory] Invalid Ruleset Information Object");
           }
-          break;
 
         case 'rulemappinginfo':
           if (value) {
@@ -33705,13 +39096,10 @@ OpenAjax.a11y.RulesetFactory = {
           else {
             throw new Error("[OpenAjax A11y][Rulesetfactory] Invalid Rule Mapping Information Object");
           }
-          break;
 
         default:
           throw new Error("[OpenAjax A11y][Rulesetfactory] Unsupported paramater: " + name);
-          break;
         } // end switch
-        return false;
       }, // end setParameter
 
       /**
@@ -33744,16 +39132,12 @@ OpenAjax.a11y.RulesetFactory = {
           else {
             throw new Error("[OpenAjax A11y][Rulesetfactory] Locale is not a string");
           }
-          break;
 
         default:
           // throw exception to console
           throw new Error("[OpenAjax A11y][Rulesetfactory] Unsupported feature: " + name);
-          break;
 
         }
-
-        return false;
 
       },  // end setFeature
 
@@ -33817,7 +39201,7 @@ OpenAjax.a11y.Ruleset = function (ruleset_info, rule_mapping_info, loc) {
 
   var wcag20_nls = OpenAjax.a11y.nls.WCAG20.getNLS(locale);
 
-  if (typeof loc !== 'String') loc = "en-us";
+  if (typeof loc !== 'string') loc = "en-us";
 
   var locale = loc;
 
@@ -34104,43 +39488,6 @@ OpenAjax.a11y.Ruleset = function (ruleset_info, rule_mapping_info, loc) {
 
     toJSON : function (prefix) {
 
-      function referencesToJSON(name, refs, last) {
-
-        var title = "";
-        var url = "";
-
-        var refs_len = refs.length;
-        var refs_last = refs_len - 1;
-
-        if (refs_len > 0) {
-          json += next_prefix + "  " + JSON.stringify(name) + " : [\n";
-          for (var i = 0; i < refs_len; i++) {
-            var ref = refs[i];
-
-            if (typeof ref === 'string') {
-               title = ref;
-               url = "";
-            }
-            else {
-               title = ref.title;
-               url = ref.url;
-            }
-
-            if (i === refs_last) json += next_prefix_2 + "{ \"title\" : " + JSON.stringify(title) + ", \"url\" : " + JSON.stringify(url) + "}\n";
-            else json += next_prefix_2 + "{ \"title\" : " + JSON.stringify(title) + ", \"url\" : " + JSON.stringify(url) + "},\n";
-          }
-          json += next_prefix + "  ]";
-        }
-        else {
-          json += next_prefix + "  \"purpose\"    : []";
-        }
-
-        if (typeof last === 'undefined' || !last) json += ',\n';
-        else json += '\n';
-
-      } // end function
-
-
       if (typeof prefix !== 'string' || prefix.length === 0) {
         prefix = "";
       }
@@ -34167,7 +39514,6 @@ OpenAjax.a11y.Ruleset = function (ruleset_info, rule_mapping_info, loc) {
 
           var rule_mapping = rule_mappings[i];
           var rule = rule_mapping.rule;
-          var rule_definition  = rule.getDefinition(rule_mapping.required);
 
           json += next_prefix_2 + "\"" + rule.getId() + "\" : {\n";
           json += next_prefix_2 + "  \"enabled\"    : "  + rule_mapping.enabled + ",\n";
@@ -34314,12 +39660,10 @@ OpenAjax.a11y.RulesetManager = function() {
      *
      * @desc Creates a JSON representation of the rules in the ruleset
      *
-     * @param  {String}  prefix         - A prefix string typically spaces for formatting output
-     *
      * @return {String} JSON formatted string representing the ruleset
      */
 
-    toJSON : function (prefix) {
+    toJSON : function () {
 
       var json = "[\n";
 
@@ -34345,7 +39689,7 @@ OpenAjax.a11y.RulesetManager = function() {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -34354,6 +39698,7 @@ OpenAjax.a11y.RulesetManager = function() {
  * limitations under the License.
  */
 
+// import {OpenAjax} from '../openajax_a11y_constants.js';
 
 /* ---------------------------------------------------------------- */
 /*                       EvaluatorFactory                           */
@@ -34407,13 +39752,11 @@ OpenAjax.a11y.EvaluatorFactory = {
           else {
             throw new Error("[EvaluatorFactory] Invalid Ruleset Object");
           }
-          break;
 
         default:
           throw new Error("[EvaluatorFactory] " + name + " is not a supported parameterå");
-          break;
         } // end switch
-        return false;
+
       }, // end setParameter
 
       setFeature : function(name, value) {
@@ -34438,7 +39781,6 @@ OpenAjax.a11y.EvaluatorFactory = {
           else {
             throw new Error("[EvaluatorFactory] group is not a number or out of range");
           }
-          break;
 
 
         case 'eventprocessing':
@@ -34456,21 +39798,17 @@ OpenAjax.a11y.EvaluatorFactory = {
               OpenAjax.a11y.EVENT_HANDLER_PROCESSOR = value;
 //              OpenAjax.a11y.logger.debug("[EvaluatorFactory] event processing: " + event_processing);
               return true;
-            break;
 
             default:
               event_processing = "none";
               OpenAjax.a11y.EVENT_HANDLER_PROCESSOR = "none";
               throw new Error("[EvaluatorFactory] Invalid event processor: " + value);
-              return false;
-              break;
             } // end switch
 
           }
           else {
             throw new Error("[EvaluatorFactory] Event processor value is not a string ");
           }
-          break;
 
         case 'brokenlinktesting':
 
@@ -34483,7 +39821,6 @@ OpenAjax.a11y.EvaluatorFactory = {
 
         default:
           throw new Error("[EvaluatorFactory] " + name + " is not a supported feature");
-          break;
         } // end switch
         return false;
       },  // end setFeature
@@ -34558,11 +39895,10 @@ OpenAjax.a11y.Evaluator = function (r, blt, ep, grps) {
         url   = doc_1;
       }
 
-     // OpenAjax.a11y.logger.debug("Starting evaluation: " + this.ruleset_id + " " + this.default_name + " " + this.number_of_rules + " rules" );
-
       var dom_cache = new OpenAjax.a11y.cache.DOMCache(url, title, doc);
 
       dom_cache.updateDOMElementCache();
+
       dom_cache.updateAllCaches();
 
       var evaluation_result = new OpenAjax.a11y.EvaluationResult(doc, title, url, ruleset, dom_cache);
@@ -34604,7 +39940,7 @@ OpenAjax.a11y.Evaluator = function (r, blt, ep, grps) {
      * @desc Legacy support for FAE 2.0, remove when fae-util config scripts are updated
      */
 
-    setEventHandlerProcessor: function(value) {
+    setEventHandlerProcessor: function() {
 
     },
 
@@ -34660,7 +39996,7 @@ OpenAjax.a11y.Evaluator = function (r, blt, ep, grps) {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -34668,6 +40004,8 @@ OpenAjax.a11y.Evaluator = function (r, blt, ep, grps) {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+// import {OpenAjax} from '../../openajax_a11y_constants.js';
 
 /* -------------------------------------------------------------------------------------- */
 /* OpenAjax Alliance Cache Properties and Values National Language Support (NLS): English */
@@ -35263,7 +40601,7 @@ OpenAjax.a11y.nls.Cache.addCacheNLSFromJSON('en-us', {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -35271,6 +40609,8 @@ OpenAjax.a11y.nls.Cache.addCacheNLSFromJSON('en-us', {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+// import {OpenAjax} from '../../openajax_a11y_constants.js';
 
 /* --------------------------------------------------------------------------- */
 /* OpenAjax Alliance Rule Category National Language Support (NLS): English    */
@@ -35370,7 +40710,7 @@ OpenAjax.a11y.nls.RuleCategories.addNLS('en-us', {
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -35379,17 +40719,17 @@ OpenAjax.a11y.nls.RuleCategories.addNLS('en-us', {
  * limitations under the License.
  */
 
+// import {OpenAjax} from '../../openajax_a11y_constants.js';
+
 /* --------------------------------------------------------------------------- */
 /* OpenAjax Alliance WCAG 2.0 National Language Support (NLS): English         */
 /* --------------------------------------------------------------------------- */
-
-
 
 OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
 
   abbreviation : 'WCAG 2.0',
   title        : 'Web Content Accessibility Guidelines 2.0',
-  url          : 'http://www.w3c.org/TR/WCAG20',
+  url          : 'https://www.w3c.org/TR/WCAG20',
 
   level : "Level ",
 
@@ -35400,7 +40740,7 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
   all_guidelines : {
       title       : 'All Guidelines',
       description : 'All the rules related to WCAG 2.0.',
-      url_spec    : 'http://www.w3.org/TR/WCAG20/'
+      url_spec    : 'https://www.w3.org/TR/WCAG20/'
   },
 
   principles : {
@@ -35411,7 +40751,7 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
       id          : OpenAjax.a11y.WCAG20_PRINCIPLE.P_1,
       title       : '1. Perceivable',
       description : 'Information and user interface components must be presentable to users in ways they can perceive.',
-      url_spec    : 'http://www.w3.org/TR/WCAG20/#perceivable',
+      url_spec    : 'https://www.w3.org/TR/WCAG20/#perceivable',
       guidelines : {
         //
         // Guideline 1.1 Text Alternatives
@@ -35420,7 +40760,7 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
           id          : OpenAjax.a11y.WCAG20_GUIDELINE.G_1_1,
           title       : '1.1 Text Alternatives',
           description : 'Provide text alternatives for any non-text content so that it can be changed into other forms people need, such as large print, braille, speech, symbols or simpler language.',
-          url_spec    : 'http://www.w3.org/TR/WCAG20/#text-equiv',
+          url_spec    : 'https://www.w3.org/TR/WCAG20/#text-equiv',
           success_criteria : {
             //
             // Success Criterion 1.1.1 Non-text Content: All non-text content that is presented to the user has a text alternative that serves the equivalent purpose, except for the situations listed below.
@@ -35430,9 +40770,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.A,
               title          : '1.1.1 Non-text Content',
               description    : 'All non-text content that is presented to the user has a text alternative that serves the equivalent purpose, except for the situations listed below.',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#text-equiv',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-text-equiv-all',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/text-equiv-all.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#text-equiv',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-text-equiv-all',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/text-equiv-all.html',
               references     : []
             }
           }
@@ -35444,7 +40784,7 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
           id          : OpenAjax.a11y.WCAG20_GUIDELINE.G_1_2,
           title       : '1.2 Time-based Media',
           description : 'Provide alternatives for time-based media.',
-          url_spec    : 'http://www.w3.org/TR/WCAG20/#media-equiv',
+          url_spec    : 'https://www.w3.org/TR/WCAG20/#media-equiv',
           success_criteria : {
             //
             // Success Criterion 1.2.1 Audio-only and Video-only (Prerecorded)
@@ -35454,9 +40794,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level       : OpenAjax.a11y.WCAG20_LEVEL.A,
               title       : '1.2.1 Audio-only and Video-only (Prerecorded)',
               description : 'For prerecorded audio-only and prerecorded video-only media, the following are true, except when the audio or video is a media alternative for text and is clearly labeled as such: (1) Prerecorded Audio-only: An alternative for time-based media is provided that presents equivalent information for prerecorded audio-only content. (2) Prerecorded Video-only: Either an alternative for time-based media or an audio track is provided that presents equivalent information for prerecorded video-only content.',
-              url_spec    : 'http://www.w3.org/TR/WCAG20/#media-equiv-av-only-alt',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-media-equiv-av-only-alt',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/media-equiv-av-only-alt.html',
+              url_spec    : 'https://www.w3.org/TR/WCAG20/#media-equiv-av-only-alt',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-media-equiv-av-only-alt',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/media-equiv-av-only-alt.html',
               references     : []
             },
             //
@@ -35467,9 +40807,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level       : OpenAjax.a11y.WCAG20_LEVEL.A,
               title       : '1.2.2 Captions (Prerecorded)',
               description : 'Captions are provided for all prerecorded audio content in synchronized media, except when the media is a media alternative for text and is clearly labeled as such.',
-              url_spec    : 'http://www.w3.org/TR/WCAG20/#media-equiv-captions',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-media-equiv-captions',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/media-equiv-captions.html',
+              url_spec    : 'https://www.w3.org/TR/WCAG20/#media-equiv-captions',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-media-equiv-captions',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/media-equiv-captions.html',
               references     : []
             },
             //
@@ -35480,9 +40820,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level       : OpenAjax.a11y.WCAG20_LEVEL.A,
               title       : '1.2.3 Audio Description or Media Alternative (Prerecorded)',
               description : 'An alternative for time-based media or audio description of the prerecorded video content is provided for synchronized media, except when the media is a media alternative for text and is clearly labeled as such.',
-              url_spec    : 'http://www.w3.org/TR/WCAG20/#media-equiv-audio-desc',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-media-equiv-audio-desc',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/media-equiv-audio-desc.html',
+              url_spec    : 'https://www.w3.org/TR/WCAG20/#media-equiv-audio-desc',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-media-equiv-audio-desc',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/media-equiv-audio-desc.html',
               references     : []
             },
             //
@@ -35493,9 +40833,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level       : OpenAjax.a11y.WCAG20_LEVEL.AA,
               title       : '1.2.4 Captions (Live)',
               description : 'Captions are provided for all live audio content in synchronized media. ',
-              url_spec    : 'http://www.w3.org/TR/WCAG20/#media-equiv-real-time-captions',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-media-equiv-real-time-captions',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/media-equiv-real-time-captions.html',
+              url_spec    : 'https://www.w3.org/TR/WCAG20/#media-equiv-real-time-captions',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-media-equiv-real-time-captions',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/media-equiv-real-time-captions.html',
               references     : []
             },
             //
@@ -35506,9 +40846,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level       : OpenAjax.a11y.WCAG20_LEVEL.AA,
               title       : '1.2.5 Audio Description (Prerecorded)',
               description : 'Audio description is provided for all prerecorded video content in synchronized media.',
-              url_spec    : 'http://www.w3.org/TR/WCAG20/#media-equiv-audio-desc-only',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-media-equiv-audio-desc-only',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/media-equiv-audio-desc-only.html',
+              url_spec    : 'https://www.w3.org/TR/WCAG20/#media-equiv-audio-desc-only',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-media-equiv-audio-desc-only',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/media-equiv-audio-desc-only.html',
               references     : []
             },
             //
@@ -35519,9 +40859,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level       : OpenAjax.a11y.WCAG20_LEVEL.AAA,
               title       : '1.2.6 Sign Language (Prerecorded)',
               description : 'Sign language interpretation is provided for all prerecorded audio content in synchronized media.',
-              url_spec    : 'http://www.w3.org/TR/WCAG20/#media-equiv-sign',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-media-equiv-sign',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/media-equiv-sign.html',
+              url_spec    : 'https://www.w3.org/TR/WCAG20/#media-equiv-sign',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-media-equiv-sign',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/media-equiv-sign.html',
               references     : []
             },
             //
@@ -35532,9 +40872,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level       : OpenAjax.a11y.WCAG20_LEVEL.AAA,
               title       : '1.2.7 Extended Audio Description (Prerecorded)',
               description : 'Where pauses in foreground audio are insufficient to allow audio descriptions to convey the sense of the video, extended audio description is provided for all prerecorded video content in synchronized media.',
-              url_spec    : 'http://www.w3.org/TR/WCAG20/#media-equiv-extended-ad',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-media-equiv-extended-ad',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/media-equiv-extended-ad.html',
+              url_spec    : 'https://www.w3.org/TR/WCAG20/#media-equiv-extended-ad',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-media-equiv-extended-ad',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/media-equiv-extended-ad.html',
               references     : []
             },
             //
@@ -35545,9 +40885,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level       : OpenAjax.a11y.WCAG20_LEVEL.AAA,
               title       : '1.2.8 Media Alternative (Prerecorded)',
               description : 'An alternative for time-based media is provided for all prerecorded synchronized media and for all prerecorded video-only media.',
-              url_spec    : 'http://www.w3.org/TR/WCAG20/#media-equiv-text-doc',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-media-equiv-text-doc',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/media-equiv-text-doc.html',
+              url_spec    : 'https://www.w3.org/TR/WCAG20/#media-equiv-text-doc',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-media-equiv-text-doc',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/media-equiv-text-doc.html',
               references     : []
             },
             //
@@ -35558,9 +40898,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level       : OpenAjax.a11y.WCAG20_LEVEL.AAA,
               title       : '1.2.9 Audio-only (Live)',
               description : 'An alternative for time-based media that presents equivalent information for live audio-only content is provided. ',
-              url_spec    : 'http://www.w3.org/TR/WCAG20/#media-equiv-live-audio-only',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-media-equiv-live-audio-only',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/media-equiv-live-audio-only.html',
+              url_spec    : 'https://www.w3.org/TR/WCAG20/#media-equiv-live-audio-only',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-media-equiv-live-audio-only',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/media-equiv-live-audio-only.html',
               references     : []
             }
           }
@@ -35572,7 +40912,7 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
           id          : OpenAjax.a11y.WCAG20_GUIDELINE.G_1_3,
           title       : '1.3 Adaptable',
           description : 'Create content that can be presented in different ways (for example simpler layout) without losing information or structure.',
-          url_spec    : 'http://www.w3.org/TR/WCAG20/#content-structure-separation',
+          url_spec    : 'https://www.w3.org/TR/WCAG20/#content-structure-separation',
           success_criteria : {
             //
             // Success Criterion 1.3.1 Info and Relationships
@@ -35582,9 +40922,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level       : OpenAjax.a11y.WCAG20_LEVEL.A,
               title       : '1.3.1 Info and Relationships',
               description : 'Information, structure, and relationships conveyed through presentation can be programmatically determined or are available in text.',
-              url_spec    : 'http://www.w3.org/TR/WCAG20/#content-structure-separation-programmatic',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-content-structure-separation-programmatic',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/content-structure-separation-programmatic.html',
+              url_spec    : 'https://www.w3.org/TR/WCAG20/#content-structure-separation-programmatic',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-content-structure-separation-programmatic',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/content-structure-separation-programmatic.html',
               references     : []
             },
             //
@@ -35595,9 +40935,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level       : OpenAjax.a11y.WCAG20_LEVEL.A,
               title       : '1.3.2 Meaningful Sequence',
               description : 'When the sequence in which content is presented affects its meaning, a correct reading sequence can be programmatically determined.',
-              url_spec    : 'http://www.w3.org/TR/WCAG20/#content-structure-separation-sequence',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-content-structure-separation-sequence',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/content-structure-separation-sequence.html',
+              url_spec    : 'https://www.w3.org/TR/WCAG20/#content-structure-separation-sequence',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-content-structure-separation-sequence',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/content-structure-separation-sequence.html',
               references     : []
             },
             //
@@ -35608,9 +40948,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level       : OpenAjax.a11y.WCAG20_LEVEL.A,
               title       : '1.3.3 Sensory Characteristics',
               description : 'Instructions provided for understanding and operating content do not rely solely on sensory characteristics of components such as shape, size, visual location, orientation, or sound.',
-              url_spec    : 'http://www.w3.org/TR/WCAG20/#content-structure-separation-understanding',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-content-structure-separation-understanding',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/content-structure-separation-understanding.html',
+              url_spec    : 'https://www.w3.org/TR/WCAG20/#content-structure-separation-understanding',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-content-structure-separation-understanding',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/content-structure-separation-understanding.html',
               references     : []
             }
           }
@@ -35622,7 +40962,7 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
           id          : OpenAjax.a11y.WCAG20_GUIDELINE.G_1_4,
           title       : '1.4 Distinguishable',
           description : 'Make it easier for users to see and hear content including separating foreground from background.',
-          url_spec    : 'http://www.w3.org/TR/WCAG20/#visual-audio-contrast',
+          url_spec    : 'https://www.w3.org/TR/WCAG20/#visual-audio-contrast',
           success_criteria : {
             //
             // Success Criterion 1.4.1 Use of Color
@@ -35632,9 +40972,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.A,
               title          : '1.4.1 Use of Color',
               description    : 'Color is not used as the only visual means of conveying information, indicating an action, prompting a response, or distinguishing a visual element.',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#visual-audio-contrast-without-color',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-visual-audio-contrast-without-color',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-without-color.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#visual-audio-contrast-without-color',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-visual-audio-contrast-without-color',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-without-color.html',
               references     : []
             },
             //
@@ -35645,9 +40985,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.A,
               title          : '1.4.2 Audio Control',
               description    : 'If any audio on a Web page plays automatically for more than 3 seconds, either a mechanism is available to pause or stop the audio, or a mechanism is available to control audio volume independently from the overall system volume level.',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#visual-audio-contrast-dis-audio',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-visual-audio-contrast-dis-audio',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-dis-audio.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#visual-audio-contrast-dis-audio',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-visual-audio-contrast-dis-audio',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-dis-audio.html',
               references     : []
             },
             //
@@ -35658,9 +40998,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.AA,
               title          : '1.4.3 Contrast (Minimum)',
               description    : 'The visual presentation of text and images of text has a contrast ratio of at least 4.5:1, except for the following: \n(1) Large Text: Large-scale text and images of large-scale text have a contrast ratio of at least 3:1;\n(2) Incidental: Text or images of text that are part of an inactive user interface component, that are pure decoration, that are not visible to anyone, or that are part of a picture that contains significant other visual content, have no contrast requirement.\n(3) Logotypes: Text that is part of a logo or brand name has no minimum contrast requirement.',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-visual-audio-contrast-contrast',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#visual-audio-contrast-contrast',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-visual-audio-contrast-contrast',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html',
               references     : []
             },
             //
@@ -35671,9 +41011,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.AA,
               title          : '1.4.4 Resize text',
               description    : 'Except for captions and images of text, text can be resized without assistive technology up to 200 percent without loss of content or functionality.',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#visual-audio-contrast-scale',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-visual-audio-contrast-scale',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-scale.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#visual-audio-contrast-scale',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-visual-audio-contrast-scale',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-scale.html',
               references     : []
             },
             //
@@ -35684,9 +41024,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.AA,
               title          : '1.4.5 Images of Text',
               description    : 'If the technologies being used can achieve the visual presentation, text is used to convey information rather than images of text except for the following: (1) Customizable: The image of text can be visually customized to the user\'s requirements; (2) Essential: A particular presentation of text is essential to the information being conveyed.',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#visual-audio-contrast-text-presentation',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-visual-audio-contrast-text-presentation',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-text-presentation.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#visual-audio-contrast-text-presentation',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-visual-audio-contrast-text-presentation',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-text-presentation.html',
               references     : []
             },
             //
@@ -35697,9 +41037,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.AAA,
               title          : '1.4.6 Contrast (Enhanced)',
               description    : 'The visual presentation of text and images of text has a contrast ratio of at least 7:1, except for the following: (1) Large Text: Large-scale text and images of large-scale text have a contrast ratio of at least 4.5:1; (2) Incidental: Text or images of text that are part of an inactive user interface component, that are pure decoration, that are not visible to anyone, or that are part of a picture that contains significant other visual content, have no contrast requirement. (3) Logotypes: Text that is part of a logo or brand name has no minimum contrast requirement.',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#visual-audio-contrast7',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-visual-audio-contrast7',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast7.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#visual-audio-contrast7',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-visual-audio-contrast7',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast7.html',
               references     : []
             },
             //
@@ -35710,9 +41050,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.AAA,
               title          : '1.4.7 Low or No Background Audio',
               description    : 'For prerecorded audio-only content that (1) contains primarily speech in the foreground, (2) is not an audio CAPTCHA or audio logo, and (3) is not vocalization intended to be primarily musical expression such as singing or rapping, at least one of the following is true: (4a) No Background: The audio does not contain background sounds. (4b) Turn Off: The background sounds can be turned off. (4c) 20 dB: The background sounds are at least 20 decibels lower than the foreground speech content, with the exception of occasional sounds that last for only one or two seconds.',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#visual-audio-contrast-noaudio',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-visual-audio-contrast-noaudio',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-noaudio.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#visual-audio-contrast-noaudio',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-visual-audio-contrast-noaudio',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-noaudio.html',
               references     : []
             },
             //
@@ -35723,9 +41063,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.AAA,
               title          : '1.4.8 Visual Presentation',
               description    : 'For the visual presentation of blocks of text, a mechanism is available to achieve the following: (1) Foreground and background colors can be selected by the user; (2) Width is no more than 80 characters or glyphs (40 if CJK); (3) Text is not justified (aligned to both the left and the right margins); (4) Line spacing (leading) is at least space-and-a-half within paragraphs, and paragraph spacing is at least 1.5 times larger than the line spacing; (5) Text can be resized without assistive technology up to 200 percent in a way that does not require the user to scroll horizontally to read a line of text on a full-screen window.',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#visual-audio-contrast-visual-presentation',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-visual-audio-contrast-visual-presentation',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-visual-presentation.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#visual-audio-contrast-visual-presentation',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-visual-audio-contrast-visual-presentation',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-visual-presentation.html',
               references     : []
             },
             //
@@ -35736,9 +41076,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.AAA,
               title          : '1.4.9 Images of Text (No Exception)',
               description    : 'Images of text are only used for pure decoration or where a particular presentation of text is essential to the information being conveyed.',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#visual-audio-contrast-text-images',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-visual-audio-contrast-text-images',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-text-images.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#visual-audio-contrast-text-images',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-visual-audio-contrast-text-images',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-text-images.html',
               references     : []
             }
           }
@@ -35752,7 +41092,7 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
       id          : OpenAjax.a11y.WCAG20_PRINCIPLE.P_2,
       title       : '2. Operable',
       description : 'User interface components and navigation must be operable.',
-      url_spec    : 'http://www.w3.org/TR/WCAG20/#operable',
+      url_spec    : 'https://www.w3.org/TR/WCAG20/#operable',
       guidelines : {
         //
         // Guideline 2.1 Keyboard Accessible
@@ -35761,7 +41101,7 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
           id          : OpenAjax.a11y.WCAG20_GUIDELINE.G_2_1,
           title       : '2.1 Keyboard Accessible',
           description : 'Make all functionality available from a keyboard.',
-          url_spec    : 'http://www.w3.org/TR/WCAG20/#keyboard-operation',
+          url_spec    : 'https://www.w3.org/TR/WCAG20/#keyboard-operation',
           success_criteria : {
             //
             // Success Criterion 2.1.1 Keyboard
@@ -35771,9 +41111,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.A,
               title          : '2.1.1 Keyboard',
               description    : 'All functionality of the content is operable through a keyboard interface without requiring specific timings for individual keystrokes, except where the underlying function requires input that depends on the path of the user\'s movement and not just the endpoints.',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#keyboard-operation-keyboard-operable',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-keyboard-operation-keyboard-operable',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/keyboard-operation-keyboard-operable.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#keyboard-operation-keyboard-operable',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-keyboard-operation-keyboard-operable',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/keyboard-operation-keyboard-operable.html',
               references     : []
             },
             //
@@ -35784,9 +41124,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.A,
               title          : '2.1.2 No Keyboard Trap',
               description    : 'If keyboard focus can be moved to a component of the page using a keyboard interface, then focus can be moved away from that component using only a keyboard interface, and, if it requires more than unmodified arrow or tab keys or other standard exit methods, the user is advised of the method for moving focus away.',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#keyboard-operation-trapping',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-keyboard-operation-trapping',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/keyboard-operation-trapping.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#keyboard-operation-trapping',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-keyboard-operation-trapping',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/keyboard-operation-trapping.html',
               references     : []
             },
             //
@@ -35797,9 +41137,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.AAA,
               title          : '2.1.3 Keyboard (No Exception)',
               description    : 'All functionality of the content is operable through a keyboard interface without requiring specific timings for individual keystrokes.',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#keyboard-operation-all-funcs',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-keyboard-operation-all-funcs',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/keyboard-operation-all-funcs.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#keyboard-operation-all-funcs',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-keyboard-operation-all-funcs',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/keyboard-operation-all-funcs.html',
               references     : []
             }
           }
@@ -35811,7 +41151,7 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
           id          : OpenAjax.a11y.WCAG20_GUIDELINE.G_2_2,
           title       : '2.2 Enough Time',
           description : 'Provide users enough time to read and use content.',
-          url_spec    : 'http://www.w3.org/TR/WCAG20/#time-limits',
+          url_spec    : 'https://www.w3.org/TR/WCAG20/#time-limits',
           success_criteria : {
             //
             // Success Criterion 2.2.1 Timing Adjustable
@@ -35821,9 +41161,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.A,
               title          : '2.2.1 Timing Adjustable',
               description    : 'For each time limit that is set by the content, at least one of the following is true: (1) Turn off: The user is allowed to turn off the time limit before encountering it; or (2) Adjust: The user is allowed to adjust the time limit before encountering it over a wide range that is at least ten times the length of the default setting; or (3) Extend: The user is warned before time expires and given at least 20 seconds to extend the time limit with a simple action (for example, "press the space bar"), and the user is allowed to extend the time limit at least ten times; or (4) Real-time Exception: The time limit is a required part of a real-time event (for example, an auction), and no alternative to the time limit is possible; or (5) Essential Exception: The time limit is essential and extending it would invalidate the activity; or (6) 20 Hour Exception: The time limit is longer than 20 hours.',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#time-limits-required-behaviors',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-time-limits-required-behaviors',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/time-limits-required-behaviors.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#time-limits-required-behaviors',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-time-limits-required-behaviors',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/time-limits-required-behaviors.html',
               references     : []
             },
             //
@@ -35834,9 +41174,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.A,
               title          : '2.2.2 Pause, Stop, Hide',
               description    : 'For moving, blinking, scrolling, or auto-updating information, all of the following are true: Moving, blinking, scrolling: For any moving, blinking or scrolling information that (1) starts automatically, (2) lasts more than five seconds, and (3) is presented in parallel with other content, there is a mechanism for the user to pause, stop, or hide it unless the movement, blinking, or scrolling is part of an activity where it is essential; and Auto-updating: For any auto-updating information that (1) starts automatically and (2) is presented in parallel with other content, there is a mechanism for the user to pause, stop, or hide it or to control the frequency of the update unless the auto-updating is part of an activity where it is essential.',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#time-limits-pause',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-time-limits-pause',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/time-limits-pause.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#time-limits-pause',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-time-limits-pause',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/time-limits-pause.html',
               references     : []
             },
             //
@@ -35847,9 +41187,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.AAA,
               title          : '2.2.3 No Timing',
               description    : 'Timing is not an essential part of the event or activity presented by the content, except for non-interactive synchronized media and real-time events.',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#time-limits-no-exceptions',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-time-limits-no-exceptions',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/time-limits-no-exceptions.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#time-limits-no-exceptions',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-time-limits-no-exceptions',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/time-limits-no-exceptions.html',
               references     : []
             },
             //
@@ -35860,9 +41200,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.AAA,
               title          : '2.2.4 Interruptions',
               description    : 'Interruptions can be postponed or suppressed by the user, except interruptions involving an emergency.',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#time-limits-postponed',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-time-limits-postponed',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/time-limits-postponed.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#time-limits-postponed',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-time-limits-postponed',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/time-limits-postponed.html',
               references     : []
             },
             //
@@ -35873,9 +41213,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.AAA,
               title          : '2.2.5 Re-authenticating',
               description    : 'When an authenticated session expires, the user can continue the activity without loss of data after re-authenticating.',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#time-limits-server-timeout',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-time-limits-server-timeout',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/time-limits-server-timeout.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#time-limits-server-timeout',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-time-limits-server-timeout',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/time-limits-server-timeout.html',
               references     : []
             }
           }
@@ -35887,7 +41227,7 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
           id          : OpenAjax.a11y.WCAG20_GUIDELINE.G_2_3,
           title       : '2.3 Seizures',
           description : 'Do not design content in a way that is known to cause seizures.',
-          url_spec    : 'http://www.w3.org/TR/WCAG20/#seizure',
+          url_spec    : 'https://www.w3.org/TR/WCAG20/#seizure',
           success_criteria : {
             //
             // Success Criterion 2.3.1 Three Flashes or Below Threshold
@@ -35897,9 +41237,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.A,
               title          : '2.3.1 Three Flashes or Below Threshold',
               description    : 'Web pages do not contain anything that flashes more than three times in any one second period, or the flash is below the general flash and red flash thresholds.',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#seizure-does-not-violate',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-seizure-does-not-violate',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/seizure-does-not-violate.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#seizure-does-not-violate',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-seizure-does-not-violate',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/seizure-does-not-violate.html',
               references     : []
             },
             //
@@ -35910,9 +41250,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.AAA,
               title          : '2.3.2 Three Flashes',
               description    : 'Web pages do not contain anything that flashes more than three times in any one second period.',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#seizure-three-times',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-seizure-three-times',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/seizure-three-times.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#seizure-three-times',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-seizure-three-times',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/seizure-three-times.html',
               references     : []
             }
           }
@@ -35924,7 +41264,7 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
           id          : OpenAjax.a11y.WCAG20_GUIDELINE.G_2_4,
           title       : '2.4 Navigable',
           description : 'Provide ways to help users navigate, find content, and determine where they are.',
-          url_spec    : 'http://www.w3.org/TR/WCAG20/#navigation-mechanisms',
+          url_spec    : 'https://www.w3.org/TR/WCAG20/#navigation-mechanisms',
           success_criteria : {
             //
             // Success Criterion 2.4.1 Bypass Blocks
@@ -35934,9 +41274,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.A,
               title          : '2.4.1 Bypass Blocks',
               description    : 'A mechanism is available to bypass blocks of content that are repeated on multiple Web pages.',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#navigation-mechanisms-skip',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-navigation-mechanisms-skip',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-skip.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#navigation-mechanisms-skip',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-navigation-mechanisms-skip',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-skip.html',
               references     : []
             },
             //
@@ -35947,9 +41287,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.A,
               title          : '2.4.2 Page Titled',
               description    : 'Web pages have titles that describe topic or purpose.',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#navigation-mechanisms-title',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-navigation-mechanisms-title',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-title.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#navigation-mechanisms-title',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-navigation-mechanisms-title',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-title.html',
               references     : []
             },
             //
@@ -35960,9 +41300,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.A,
               title          : '2.4.3 Focus Order',
               description    : 'If a Web page can be navigated sequentially and the navigation sequences affect meaning or operation, focusable components receive focus in an order that preserves meaning and operability.',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#navigation-mechanisms-focus-order',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-navigation-mechanisms-focus-order',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-focus-order.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#navigation-mechanisms-focus-order',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-navigation-mechanisms-focus-order',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-focus-order.html',
               references     : []
             },
             //
@@ -35973,9 +41313,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.AA,
               title          : '2.4.4 Link Purpose (In Context)',
               description    : 'The purpose of each link can be determined from the link text alone or from the link text together with its programmatically determined link context, except where the purpose of the link would be ambiguous to users in general.',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#navigation-mechanisms-refs',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-navigation-mechanisms-refs',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-refs.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#navigation-mechanisms-refs',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-navigation-mechanisms-refs',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-refs.html',
               references     : []
             },
             //
@@ -35986,9 +41326,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.A,
               title          : '2.4.5 Multiple Ways',
               description    : 'More than one way is available to locate a Web page within a set of Web pages except where the Web Page is the result of, or a step in, a process.',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#navigation-mechanisms-mult-loc',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-navigation-mechanisms-mult-loc',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-mult-loc.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#navigation-mechanisms-mult-loc',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-navigation-mechanisms-mult-loc',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-mult-loc.html',
               references     : []
             },
             //
@@ -35999,9 +41339,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.AA,
               title          : '2.4.6 Headings and Labels',
               description    : 'Headings and labels describe topic or purpose.',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#navigation-mechanisms-descriptive',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-navigation-mechanisms-descriptive',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-descriptive.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#navigation-mechanisms-descriptive',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-navigation-mechanisms-descriptive',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-descriptive.html',
               references     : []
             },
             //
@@ -36012,9 +41352,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.AA,
               title          : '2.4.7 Focus Visible',
               description    : 'Any keyboard operable user interface has a mode of operation where the keyboard focus indicator is visible. ',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#navigation-mechanisms-focus-visible',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-navigation-mechanisms-focus-visible',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-focus-visible.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#navigation-mechanisms-focus-visible',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-navigation-mechanisms-focus-visible',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-focus-visible.html',
               references     : []
             },
             //
@@ -36025,9 +41365,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.AAA,
               title          : '2.4.8 Location',
               description    : 'Information about the user\'s location within a set of Web pages is available.',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#navigation-mechanisms-location',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-navigation-mechanisms-location',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-location.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#navigation-mechanisms-location',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-navigation-mechanisms-location',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-location.html',
               references     : []
             },
             //
@@ -36038,9 +41378,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.AAA,
               title          : '2.4.9 Link Purpose (Link Only)',
               description    : 'A mechanism is available to allow the purpose of each link to be identified from link text alone, except where the purpose of the link would be ambiguous to users in general.',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#navigation-mechanisms-link',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-navigation-mechanisms-link',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-link.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#navigation-mechanisms-link',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-navigation-mechanisms-link',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-link.html',
               references     : []
             },
             //
@@ -36051,9 +41391,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.AAA,
               title          : '2.4.10 Section Headings',
               description    : 'Section headings are used to organize the content.',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#navigation-mechanisms-headings',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-navigation-mechanisms-headings',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-headings.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#navigation-mechanisms-headings',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-navigation-mechanisms-headings',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-headings.html',
               references     : []
             }
           }
@@ -36067,7 +41407,7 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
       id          : OpenAjax.a11y.WCAG20_PRINCIPLE.P_3,
       title       : '3. Understandable',
       description : 'Information and the operation of user interface must be understandable.',
-      url_spec    : 'http://www.w3.org/TR/WCAG20/#understandable',
+      url_spec    : 'https://www.w3.org/TR/WCAG20/#understandable',
       guidelines : {
         //
         // Guideline 3.1 Readable
@@ -36076,7 +41416,7 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
           id          : OpenAjax.a11y.WCAG20_GUIDELINE.G_3_1,
           title       : '3.1 Readable',
           description : 'Make text content readable and understandable.',
-          url_spec    : 'http://www.w3.org/TR/WCAG20/#meaning',
+          url_spec    : 'https://www.w3.org/TR/WCAG20/#meaning',
           success_criteria : {
             //
             // Success Criterion 3.1.1 Language of Page
@@ -36086,9 +41426,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.A,
               title          : '3.1.1 Language of Page',
               description    : 'The default human language  of each Web page  can be programmatically determined. ',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#meaning-doc-lang-id',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-meaning-doc-lang-id',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/meaning-doc-lang-id.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#meaning-doc-lang-id',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-meaning-doc-lang-id',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/meaning-doc-lang-id.html',
               references     : []
             },
             //
@@ -36099,9 +41439,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.AA,
               title          : '3.1.2 Language of Parts',
               description    : 'The human language of each passage or phrase in the content can be programmatically determined except for proper names, technical terms, words of indeterminate language, and words or phrases that have become part of the vernacular of the immediately surrounding text.',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#meaning-other-lang-id',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-meaning-other-lang-id',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/meaning-other-lang-id.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#meaning-other-lang-id',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-meaning-other-lang-id',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/meaning-other-lang-id.html',
               references     : []
             },
             //
@@ -36112,9 +41452,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.AAA,
               title          : '3.1.3 Unusual Words',
               description    : 'A mechanism is available for identifying specific definitions of words or phrases used in an unusual or restricted way, including idioms and jargon.',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#meaning-idioms',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-meaning-idioms',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/meaning-idioms.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#meaning-idioms',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-meaning-idioms',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/meaning-idioms.html',
               references     : []
             },
             //
@@ -36125,9 +41465,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.AAA,
               title          : '3.1.4 Abbreviations',
               description    : 'A mechanism for identifying the expanded form or meaning of abbreviations is available. ',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#meaning-located',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-meaning-located',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/meaning-located.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#meaning-located',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-meaning-located',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/meaning-located.html',
               references     : []
             },
             //
@@ -36138,9 +41478,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.AAA,
               title          : '3.1.5 Reading Level',
               description    : 'When text requires reading ability more advanced than the lower secondary education level after removal of proper names and titles, supplemental content, or a version that does not require reading ability more advanced than the lower secondary education level, is available. ',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#meaning-supplements',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-meaning-supplements',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/meaning-supplements.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#meaning-supplements',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-meaning-supplements',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/meaning-supplements.html',
               references     : []
             },
             //
@@ -36151,9 +41491,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.AAA,
               title          : '3.1.6 Pronunciation',
               description    : 'A mechanism is available for identifying specific pronunciation of words where meaning of the words, in context, is ambiguous without knowing the pronunciation.',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#meaning-pronunciation',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-meaning-pronunciation',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/meaning-pronunciation.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#meaning-pronunciation',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-meaning-pronunciation',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/meaning-pronunciation.html',
               references     : []
             }
           }
@@ -36165,7 +41505,7 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
           id          : OpenAjax.a11y.WCAG20_GUIDELINE.G_3_2,
           title       : '3.2 Predictable',
           description : 'Make Web pages appear and operate in predictable ways.',
-          url_spec    : 'http://www.w3.org/TR/WCAG20/#consistent-behavior',
+          url_spec    : 'https://www.w3.org/TR/WCAG20/#consistent-behavior',
           success_criteria : {
             //
             // Success Criterion 3.2.1 On Focus
@@ -36175,9 +41515,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.A,
               title          : '3.2.1 On Focus',
               description    : 'When any component receives focus, it does not initiate a change of context.',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#consistent-behavior-receive-focus',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-consistent-behavior-receive-focus',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/consistent-behavior-receive-focus.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#consistent-behavior-receive-focus',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-consistent-behavior-receive-focus',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/consistent-behavior-receive-focus.html',
               references     : []
             },
             //
@@ -36188,9 +41528,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.A,
               title          : '3.2.2 On Input',
               description    : 'Changing the setting of any user interface component  does not automatically cause a change of context  unless the user has been advised of the behavior before using the component.',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#consistent-behavior-unpredictable-change',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-consistent-behavior-unpredictable-change',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/consistent-behavior-unpredictable-change.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#consistent-behavior-unpredictable-change',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-consistent-behavior-unpredictable-change',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/consistent-behavior-unpredictable-change.html',
               references     : []
             },
             //
@@ -36201,9 +41541,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.AA,
               title          : '3.2.3 Consistent Navigation',
               description    : 'Navigational mechanisms that are repeated on multiple Web pages within a set of Web pages  occur in the same relative order each time they are repeated, unless a change is initiated by the user.',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#consistent-behavior-consistent-locations',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-consistent-behavior-consistent-locations',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/consistent-behavior-consistent-locations.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#consistent-behavior-consistent-locations',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-consistent-behavior-consistent-locations',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/consistent-behavior-consistent-locations.html',
               references     : []
             },
             //
@@ -36214,9 +41554,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.AA,
               title          : '3.2.4 Consistent Identification',
               description    : 'Components that have the same functionality within a set of Web pages are identified consistently.',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#consistent-behavior-consistent-functionality',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-consistent-behavior-consistent-functionality',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/consistent-behavior-consistent-functionality.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#consistent-behavior-consistent-functionality',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-consistent-behavior-consistent-functionality',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/consistent-behavior-consistent-functionality.html',
               references     : []
             },
             //
@@ -36227,9 +41567,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.AAA,
               title          : '3.2.5 Change on Request',
               description    : 'Changes of context are initiated only by user request or a mechanism is available to turn off such changes.',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#consistent-behavior-no-extreme-changes-context',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-consistent-behavior-no-extreme-changes-context',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/consistent-behavior-no-extreme-changes-context.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#consistent-behavior-no-extreme-changes-context',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-consistent-behavior-no-extreme-changes-context',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/consistent-behavior-no-extreme-changes-context.html',
               references     : []
             }
           }
@@ -36241,7 +41581,7 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
           id          : OpenAjax.a11y.WCAG20_GUIDELINE.G_3_3,
           title       : '3.3 Input Assistance',
           description : 'Help users avoid and correct mistakes.',
-          url_spec    : 'http://www.w3.org/TR/WCAG20/#minimize-error',
+          url_spec    : 'https://www.w3.org/TR/WCAG20/#minimize-error',
           success_criteria : {
             //
             // Success Criterion 3.3.1 Error Identification
@@ -36251,9 +41591,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.A,
               title          : '3.3.1 Error Identification',
               description    : 'If an input error is automatically detected, the item that is in error is identified and the error is described to the user in text.',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#minimize-error-identified',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-minimize-error-identified',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/minimize-error-identified.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#minimize-error-identified',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-minimize-error-identified',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/minimize-error-identified.html',
               references     : []
             },
             //
@@ -36264,9 +41604,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.A,
               title          : '3.3.2 Labels or Instructions',
               description    : 'Labels or instructions are provided when content requires user input.',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#minimize-error-cues',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-minimize-error-cues',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/minimize-error-cues.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#minimize-error-cues',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-minimize-error-cues',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/minimize-error-cues.html',
               references     : []
             },
             //
@@ -36277,9 +41617,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.AA,
               title          : '3.3.3 Error Suggestion',
               description    : 'If an input error is automatically detected and suggestions for correction are known, then the suggestions are provided to the user, unless it would jeopardize the security or purpose of the content.',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#minimize-error-suggestions',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-minimize-error-suggestions',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/minimize-error-suggestions.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#minimize-error-suggestions',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-minimize-error-suggestions',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/minimize-error-suggestions.html',
               references     : []
             },
             //
@@ -36290,9 +41630,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.AA,
               title          : '3.3.4 Error Prevention (Legal, Financial, Data)',
               description    : 'For Web pages that cause legal commitments or financial transactions for the user to occur, that modify or delete user-controllable data in data storage systems, or that submit user test responses, at least one of the following is true:',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#minimize-error-reversible',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-minimize-error-reversible',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/minimize-error-reversible.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#minimize-error-reversible',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-minimize-error-reversible',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/minimize-error-reversible.html',
               references     : []
             },
             //
@@ -36303,9 +41643,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.AAA,
               title          : '3.3.5 Help',
               description    : 'Context-sensitive help is available.',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#minimize-error-context-help',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-minimize-error-context-help',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/minimize-error-context-help.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#minimize-error-context-help',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-minimize-error-context-help',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/minimize-error-context-help.html',
               references     : []
             },
             //
@@ -36316,9 +41656,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.AAA,
               title          : '3.3.6 Error Prevention (All)',
               description    : 'For Web pages that require the user to submit information, at least one of the following is true',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#minimize-error-reversible-all',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-minimize-error-reversible-all',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/minimize-error-reversible-all.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#minimize-error-reversible-all',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-minimize-error-reversible-all',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/minimize-error-reversible-all.html',
               references     : []
             }
           }
@@ -36332,7 +41672,7 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
       id          : OpenAjax.a11y.WCAG20_PRINCIPLE.P_4,
       title       : '4. Robust',
       description : 'Content must be robust enough that it can be interpreted reliably by a wide variety of user agents, including assistive technologies.',
-      url_spec    : 'http://www.w3.org/TR/WCAG20/#robust',
+      url_spec    : 'https://www.w3.org/TR/WCAG20/#robust',
       guidelines : {
         //
         // Guideline 4.1 Compatible
@@ -36341,7 +41681,7 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
           id          : OpenAjax.a11y.WCAG20_GUIDELINE.G_4_1,
           title       : '4.1 Compatible',
           description : 'Maximize compatibility with current and future user agents, including assistive technologies.',
-          url_spec    : 'http://www.w3.org/TR/WCAG20/#ensure-compat',
+          url_spec    : 'https://www.w3.org/TR/WCAG20/#ensure-compat',
           success_criteria : {
             //
             // Success Criterion 4.1.1 Parsing Content
@@ -36351,9 +41691,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.A,
               title          : '4.1.1 Parsing Content',
               description    : 'In content implemented using markup languages, elements have complete start and end tags, elements are nested according to their specifications, elements do not contain duplicate attributes, and any IDs are unique, except where the specifications allow these features.',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#ensure-compat-parses',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-ensure-compat-parses',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/ensure-compat-parses.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#ensure-compat-parses',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-ensure-compat-parses',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/ensure-compat-parses.html',
               references     : []
             },
             //
@@ -36364,9 +41704,9 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
               level          : OpenAjax.a11y.WCAG20_LEVEL.A,
               title          : '4.1.2 Name, Role, Value',
               description    : 'For all user interface components (including but not limited to: form elements, links and components generated by scripts), the name and role can be programmatically determined; states, properties, and values that can be set by the user can be programmatically set; and notification of changes to these items is available to user agents, including assistive technologies.',
-              url_spec       : 'http://www.w3.org/TR/WCAG20/#ensure-compat-rsv',
-              url_meet       : 'http://www.w3.org/WAI/WCAG20/quickref/#qr-ensure-compat-rsv',
-              url_understand : 'http://www.w3.org/TR/UNDERSTANDING-WCAG20/ensure-compat-rsv.html',
+              url_spec       : 'https://www.w3.org/TR/WCAG20/#ensure-compat-rsv',
+              url_meet       : 'https://www.w3.org/WAI/WCAG20/quickref/#qr-ensure-compat-rsv',
+              url_understand : 'https://www.w3.org/TR/UNDERSTANDING-WCAG20/ensure-compat-rsv.html',
               references     : []
             }
           }

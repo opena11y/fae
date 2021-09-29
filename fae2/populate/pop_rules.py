@@ -27,6 +27,10 @@ import django
 from django.core.exceptions import ObjectDoesNotExist
 import re
 
+from datetime import datetime
+from django.utils import timezone
+import pytz
+
 fp = os.path.realpath(__file__)
 path, filename = os.path.split(fp)
 
@@ -158,27 +162,31 @@ for r in data['rules']:
 
 #   print("  Getting rule group: " + str(r['rule_group']))
    group = RuleGroup.objects.get(rule_group_code=r['rule_group'])  
+
+   parts = r['last_updated'].split('-')
+   dt = datetime(int(parts[0]), int(parts[1]), int(parts[2]), 0, 0, tzinfo=pytz.UTC)
      
    try:
      print("  Updating Rule: " + r['nls_rule_id'])
-     
+
+
      rule = Rule.objects.get(rule_id=r['rule_id'])
      rule.scope=scope
-     rule.category = RuleCategory.objects.get(rule_category_code=r['rule_category'])
-     rule.group=group
-     rule.language_dependancy=r['language_dependency']
-     rule.primary_property=r['primary_property']
-     rule.resource_properties=resource_properties
-     rule.validation=r['validate']
-     rule.wcag_primary = SuccessCriterion.get_by_wcag_number(r['wcag_primary'])
-     rule.updated_date=r['last_updated']
+     rule.category            = RuleCategory.objects.get(rule_category_code=r['rule_category'])
+     rule.group               = group
+     rule.language_dependancy = r['language_dependency']
+     rule.primary_property    = r['primary_property']
+     rule.resource_properties = resource_properties
+     rule.validation          = r['validate']
+     rule.wcag_primary        = SuccessCriterion.get_by_wcag_number(r['wcag_primary'])
+     rule.updated_date        = dt
      
      NodeResultMessage.objects.filter(rule=rule).delete()  
      
    except ObjectDoesNotExist:  
      print("  Creating Rule: " + r['nls_rule_id'])
      resource_properties = ",".join(r['resource_properties'])
-     rule = Rule(rule_id=r['rule_id'],scope=scope,group=group,language_dependancy=r['language_dependency'],primary_property=r['primary_property'],resource_properties=resource_properties,validation=r['validate'],updated_date=r['last_updated'])
+     rule = Rule(rule_id=r['rule_id'],scope=scope,group=group,language_dependancy=r['language_dependency'],primary_property=r['primary_property'],resource_properties=resource_properties,validation=r['validate'],updated_date=dt)
      rule.wcag_primary = SuccessCriterion.get_by_wcag_number(r['wcag_primary'])
      rule.category = RuleCategory.objects.get(rule_category_code=r['rule_category'])
      
@@ -224,10 +232,10 @@ for r in data['rules']:
       rule.informational_links += '* [' + OAAMarkupToHTML(info['title']) + '](' + info['url'] + ')\n'    
 
    for message in r['rule_result_messages']:
-     addRuleResultMessage(rule, message, r['rule_result_messages'][message], r['last_updated'])
+     addRuleResultMessage(rule, message, r['rule_result_messages'][message], dt)
 
    for message in r['node_result_messages']:
-     addNodeResultMessage(rule, message, r['node_result_messages'][message], r['last_updated'])
+     addNodeResultMessage(rule, message, r['node_result_messages'][message], dt)
    
    try:
      rule.save()

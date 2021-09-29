@@ -1,16 +1,20 @@
-# Functional Accessibility Evaluator, version 2.1
+# Functional Accessibility Evaluator, version 2.2
 
-Development is primarily supported by the [University of Illinois at Urbana-Champaign](http://illinois.edu).  The development is lead by [Accessible IT Group](http://disability.illinois.edu/academic-support/aitg) which is a unit of [Disability Resources and Educational Servcies](http://www.disability.illinois.edu) which is part fo the [College of Applied Health Sciences](http://www.ahs.illinois.edu).  Additional contributions for the [HTMLUnit](http://htmlunit.sourceforge.net/) based web site analysis engine are provided by [Administrative Information Technology Services (ATIS)](https://www.aits.uillinois.edu/) of University Administration.
+Development is primarily supported by the [University of Illinois at Urbana-Champaign](https://illinois.edu).  The development is lead by [Accessible IT Group](https://accessibleit.disability.illinois.edu) which is a unit of [Disability Resources and Educational Servcies](https://www.disability.illinois.edu) which is part fo the [College of Applied Health Sciences](https://www.ahs.illinois.edu).  Additional contributions for the [HTMLUnit](http://htmlunit.sourceforge.net/) based web site analysis engine are provided by [Administrative Information Technology Services (ATIS)](https://www.aits.uillinois.edu/) of University Administration.
 
+## Version 2.2
+* Updated OpenAjax library to support W3C ARIA 1.2 and ARIA in HTML requirements.
+* Updated to support Django 2.2.24.
+* Updated HTMLUnit to 2.52.
 
-## Important major changes from Version 2.0
-* Updated to support Python 3.6
-* Updated to support Django 2.2.x
-* Removed migration files from app directories
+## Version 2.1
+* Updated to support Python 3.6.
+* Updated to support Django 2.2.x.
+* Removed migration files from app directories.
 
 ## What is Functional Accessibility Evaluator (FAE)?
 * FAE analyzes a website based on the requirements of the W3C Web Content Accessibility Guidelines 2.0 Single A and AA Success Criteria.
-* Every rule used in FAE 2.0 references at primary WCAG 2.0 Success Criterion requirement it is based on.
+* Every rule used in FAE 2.x references at primary WCAG 2.0 Success Criterion requirement it is based on.
 * The rules support not only accessibility, but also usable web design for people with disabilities.
 * The rules support accessible and usable design by enforcing the accessible coding practices and techniques of the Accessible Rich Internet Application (ARIA) 1.0 and W3C HTML5 specifications.
 
@@ -32,16 +36,17 @@ Here is the [requirements.txt] file to use with pip
 
 ```
 confusable-homoglyphs==3.2.0
-Django==2.2.7
+Django==2.2.24
 django-password-reset==2.0
-django-registration==3.0
+django-registration==3.1.2
 django-timezone-field==3.1
 future==0.15.2
 Markdown==2.6.5
-psycopg2==2.8.4
+psycopg2-binary
 pytz==2019.3
-requests==2.10.0
+requests==2.20.0
 sqlparse==0.3.0
+
 ```
 
 ### Creating a <code>secrets.json</code> file
