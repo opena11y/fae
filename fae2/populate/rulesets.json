@@ -1,0 +1,1660 @@
+{ "rulesets" : [
+  {
+      "ruleset_id"              : "TEST",
+      "ruleset_version"         : "1.1.0",
+      "ruleset_updated"         : "2017-02-01",
+      "ruleset_author_name"     : "OpenAjax Accessibility Task Force",
+      "ruleset_author_url"      : "https://www.openajax.org/member/wiki/Accessibility",
+      "ruleset_title"           : "TEST Ruleset: All rules in the library are included as required rules",
+      "ruleset_abbrev"          : "TEST",
+      "ruleset_tooltip"         : "Ruleset for use the the testsuite",
+      "ruleset_description"     : "Test ruleset used for the test suite to make sure all rules are tested.",
+      "ruleset_description_url" : "",
+      "ruleset_required_rules"    : 134,
+      "ruleset_recommended_rules" : 4,
+    "wcag20_level"        : 6,
+    "rec_rules_enabled"   : true,
+    "rule_mappings" : {
+      "AUDIO_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "AUDIO_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "AUDIO_3" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "AUDIO_4" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "BYPASS_1" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "COLOR_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "COLOR_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "CONTROL_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "CONTROL_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "CONTROL_3" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "CONTROL_4" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "CONTROL_5" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "CONTROL_6" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "CONTROL_7" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "CONTROL_8" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "CONTROL_9" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "CONTROL_10" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "CONTROL_11" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "ERROR_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "ERROR_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "ERROR_3" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "ERROR_4" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "ERROR_5" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "FOCUS_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "FOCUS_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "FOCUS_3" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "FOCUS_4" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "FOCUS_5" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "FRAME_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "FRAME_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "HEADING_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "HEADING_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "HEADING_3" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "HEADING_5" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "HEADING_6" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "HEADING_7" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "HEADING_8" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "HTML_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "HTML_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "HTML_3" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "IMAGE_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "IMAGE_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "IMAGE_3" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "IMAGE_4_EN" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "IMAGE_5" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "IMAGE_6" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "IMAGE_7" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "KEYBOARD_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "KEYBOARD_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "KEYBOARD_3" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LANDMARK_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LANDMARK_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LANDMARK_3" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LANDMARK_4" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LANDMARK_5" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LANDMARK_6" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LANDMARK_7" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LANDMARK_8" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LANDMARK_9" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LANDMARK_10" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LANDMARK_11" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LANDMARK_12" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LANDMARK_13" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LANDMARK_14" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LANDMARK_15" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LANDMARK_16" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LANDMARK_17" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LANDMARK_18" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LANDMARK_19" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LANGUAGE_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LANGUAGE_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LAYOUT_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LAYOUT_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LAYOUT_3" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LINK_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LINK_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LIST_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LIST_2" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "NAVIGATION_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "NAVIGATION_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "NAVIGATION_3" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "NAVIGATION_4" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "NAVIGATION_5" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "ORDER_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "RESIZE_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "ROLE_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "ROLE_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "ROLE_3" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "ROLE_4" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "ROLE_5" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "ROLE_6" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "ROLE_7" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "ROLE_8" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "ROLE_9" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "ROLE_10" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "ROLE_11" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "ROLE_12" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "ROLE_13" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "ROLE_14" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "SENSORY_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "TABLE_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "TABLE_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "TABLE_3" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "TABLE_4" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "TABLE_5" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "TABLE_6" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "TABLE_7" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "TABLE_8" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "TITLE_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "TITLE_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "TIMING_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "TIMING_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "TIMING_3" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "VIDEO_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "VIDEO_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "VIDEO_3" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "VIDEO_4" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "VIDEO_5" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "VIDEO_6" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "VIDEO_7" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "VIDEO_8" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "VIDEO_9" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "WIDGET_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "WIDGET_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "WIDGET_3" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "WIDGET_4" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "WIDGET_5" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "WIDGET_6" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "WIDGET_7" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "WIDGET_8" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "WIDGET_9" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "WIDGET_10" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "WIDGET_11" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "WIDGET_12" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "WIDGET_13" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "WIDGET_14" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "WIDGET_15" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "WIDGET_16" : {
+        "enabled"    : true,
+        "required"   : true
+    }
+      }
+  }
+,
+  {
+      "ruleset_id"              : "ARIA_TRANS",
+      "ruleset_version"         : "1.2.0",
+      "ruleset_updated"         : "2021-07-07",
+      "ruleset_author_name"     : "OpenAjax Accessibility Task Force",
+      "ruleset_author_url"      : "https://www.openajax.org/member/wiki/Accessibility",
+      "ruleset_title"           : "HTML4 Legacy Techniques",
+      "ruleset_abbrev"          : "HTML4",
+      "ruleset_tooltip"         : "WCAG 2.0 Level A and AA requirements primarily using HTML4 techniques, but allows HTML5 and ARIA accessibility techniques.",
+      "ruleset_description"     : "Evaluation of W3C Web Content Accessibility Guidelines 2.0 Level A and AA conformance using HTML4 accessibility techniques, but allows for the use of HTML5 and ARIA techniques.  ARIA landmarks are NOT required, but if used must follow landmark and sectioning element requirements as outlined in HTML5 and ARIA.  The ruleset does NOT require the use of ARIA widget roles for identifying and describing interactive elements (e.g. popup menus, grids, trees, etc...) that cannot be not described by the native semantics of HTML4 and HTML5 form control and link elements.  This means the developer will need to do more manual checking and have a high level understanding of assistive technology to describe widgets typically using offscreen text and/or small images (e.g. with ALT text) to define and manage the roles, properties and states of interactive elements. ",
+      "ruleset_description_url" : "",
+      "ruleset_required_rules"    : 83,
+      "ruleset_recommended_rules" : 43,
+    "wcag20_level"        : 6,
+    "rec_rules_enabled"   : true,
+    "rule_mappings" : {
+      "AUDIO_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "AUDIO_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "AUDIO_3" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "AUDIO_4" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "BYPASS_1" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "COLOR_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "COLOR_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "CONTROL_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "CONTROL_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "CONTROL_3" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "CONTROL_4" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "CONTROL_5" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "CONTROL_6" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "CONTROL_7" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "CONTROL_8" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "CONTROL_9" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "CONTROL_10" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "CONTROL_11" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "ERROR_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "ERROR_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "ERROR_4" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "ERROR_5" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "FOCUS_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "FOCUS_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "FOCUS_3" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "FOCUS_4" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "FOCUS_5" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "FRAME_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "FRAME_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "HEADING_1" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "HEADING_2" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "HEADING_3" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "HEADING_5" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "HEADING_6" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "HTML_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "HTML_3" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "IMAGE_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "IMAGE_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "IMAGE_3" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "IMAGE_4_EN" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "IMAGE_5" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "IMAGE_6" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "IMAGE_7" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "KEYBOARD_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "KEYBOARD_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "KEYBOARD_3" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LANDMARK_5" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "LANDMARK_7" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "LANDMARK_8" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "LANDMARK_9" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "LANDMARK_10" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "LANDMARK_11" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "LANDMARK_12" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "LANDMARK_13" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "LANDMARK_14" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "LANDMARK_15" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "LANDMARK_16" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "LANDMARK_17" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "LANDMARK_18" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LANDMARK_19" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "LANGUAGE_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LANGUAGE_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LAYOUT_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LAYOUT_2" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "LAYOUT_3" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LINK_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LINK_2" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "LIST_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LIST_2" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "NAVIGATION_1" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "NAVIGATION_2" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "NAVIGATION_3" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "NAVIGATION_4" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "NAVIGATION_5" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "ORDER_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "RESIZE_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "ROLE_1" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "ROLE_2" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "ROLE_3" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "ROLE_4" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "ROLE_5" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "ROLE_6" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "ROLE_7" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "ROLE_8" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "ROLE_9" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "ROLE_10" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "ROLE_11" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "ROLE_12" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "ROLE_13" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "ROLE_14" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "SENSORY_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "TABLE_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "TABLE_2" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "TABLE_3" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "TABLE_4" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "TABLE_5" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "TABLE_6" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "TABLE_7" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "TITLE_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "TIMING_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "TIMING_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "TIMING_3" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "VIDEO_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "VIDEO_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "VIDEO_3" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "VIDEO_4" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "VIDEO_5" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "VIDEO_6" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "VIDEO_7" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "VIDEO_8" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "VIDEO_9" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "WIDGET_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "WIDGET_3" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "WIDGET_4" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "WIDGET_5" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "WIDGET_6" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "WIDGET_7" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "WIDGET_8" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "WIDGET_9" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "WIDGET_10" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "WIDGET_11" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "WIDGET_12" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "WIDGET_13" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "WIDGET_14" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "WIDGET_15" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "WIDGET_16" : {
+        "enabled"    : true,
+        "required"   : true
+    }
+      }
+  }
+,
+  {
+      "ruleset_id"              : "ARIA_STRICT",
+      "ruleset_version"         : "1.2.0",
+      "ruleset_updated"         : "2021-07-07",
+      "ruleset_author_name"     : "OpenAjax Accessibility Task Force",
+      "ruleset_author_url"      : "https://www.openajax.org/member/wiki/Accessibility",
+      "ruleset_title"           : "HTML5 and ARIA Techniques",
+      "ruleset_abbrev"          : "HTML5+ARIA",
+      "ruleset_tooltip"         : "WCAG 2.0 Level A and AA requirements using ARIA and HTML5 accessibility features.",
+      "ruleset_description"     : "Evaluation of W3C Web Content Accessibility Guidelines 2.0 Level A and AA conformance using HTML5 and ARIA accessibility techniques.  ARIA Landmarks are required for the identification and labeling of the sections of content on a web page. The ruleset requires the use of ARIA widget roles for identifying and describing interactive elements (e.g. popup menus, grids, trees, etc...) that cannot be not described by the native semantics of HTML5 form control and links elements.",
+      "ruleset_description_url" : "",
+      "ruleset_required_rules"    : 123,
+      "ruleset_recommended_rules" : 13,
+    "wcag20_level"        : 6,
+    "rec_rules_enabled"   : true,
+    "rule_mappings" : {
+      "AUDIO_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "AUDIO_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "AUDIO_3" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "AUDIO_4" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "BYPASS_1" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "COLOR_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "COLOR_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "CONTROL_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "CONTROL_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "CONTROL_3" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "CONTROL_4" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "CONTROL_5" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "CONTROL_6" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "CONTROL_7" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "CONTROL_8" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "CONTROL_9" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "CONTROL_10" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "CONTROL_11" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "ERROR_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "ERROR_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "ERROR_3" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "ERROR_4" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "ERROR_5" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "FOCUS_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "FOCUS_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "FOCUS_3" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "FOCUS_4" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "FOCUS_5" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "FRAME_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "FRAME_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "HEADING_1" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "HEADING_2" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "HEADING_3" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "HEADING_5" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "HEADING_6" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "HEADING_7" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "HEADING_8" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "HTML_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "HTML_3" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "IMAGE_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "IMAGE_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "IMAGE_3" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "IMAGE_4_EN" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "IMAGE_5" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "IMAGE_6" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "IMAGE_7" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "KEYBOARD_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "KEYBOARD_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "KEYBOARD_3" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LANDMARK_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LANDMARK_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LANDMARK_3" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LANDMARK_4" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LANDMARK_5" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LANDMARK_6" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LANDMARK_7" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LANDMARK_8" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LANDMARK_9" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LANDMARK_10" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LANDMARK_11" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LANDMARK_12" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LANDMARK_13" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LANDMARK_14" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LANDMARK_15" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LANDMARK_16" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LANDMARK_17" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LANDMARK_18" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LANDMARK_19" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LANGUAGE_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LANGUAGE_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LAYOUT_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LAYOUT_2" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "LAYOUT_3" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LINK_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LINK_2" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "LIST_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "LIST_2" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "NAVIGATION_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "NAVIGATION_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "NAVIGATION_3" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "NAVIGATION_4" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "NAVIGATION_5" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "ORDER_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "RESIZE_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "ROLE_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "ROLE_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "ROLE_3" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "ROLE_4" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "ROLE_5" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "ROLE_6" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "ROLE_7" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "ROLE_8" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "ROLE_9" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "ROLE_10" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "ROLE_11" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "ROLE_12" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "ROLE_13" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "ROLE_14" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "SENSORY_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "TABLE_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "TABLE_2" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "TABLE_3" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "TABLE_4" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "TABLE_5" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "TABLE_6" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "TABLE_7" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "TABLE_8" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "TITLE_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "TIMING_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "TIMING_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "TIMING_3" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "VIDEO_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "VIDEO_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "VIDEO_3" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "VIDEO_4" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "VIDEO_5" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "VIDEO_6" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "VIDEO_7" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "VIDEO_8" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "VIDEO_9" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "WIDGET_1" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "WIDGET_2" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "WIDGET_3" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "WIDGET_4" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "WIDGET_5" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "WIDGET_6" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "WIDGET_7" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "WIDGET_8" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "WIDGET_9" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "WIDGET_10" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "WIDGET_11" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "WIDGET_12" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "WIDGET_13" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "WIDGET_14" : {
+        "enabled"    : true,
+        "required"   : true
+    },
+      "WIDGET_15" : {
+        "enabled"    : true,
+        "required"   : false
+    },
+      "WIDGET_16" : {
+        "enabled"    : true,
+        "required"   : true
+    }
+      }
+  }
+
+]
+}

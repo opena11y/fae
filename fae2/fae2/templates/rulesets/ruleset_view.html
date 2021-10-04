@@ -17,7 +17,7 @@
 <nav aria-label="Ruleset Comparison Options">
     <ul class="nav nav-tabs">
           <li class="active"><a id="rsc_rc"   href="{% url 'ruleset' ruleset.slug %}">by Rule Categories</a></li>
-          <li><a id="rsc_wcag" href="{% url 'ruleset_wcag' ruleset.slug %}">by WCAG 2.0 Success Criteria</a></li>
+          <li><a id="rsc_wcag" href="{% url 'ruleset_wcag' ruleset.slug %}">by WCAG Success Criteria</a></li>
     </ul>
 </nav>
 
@@ -30,7 +30,7 @@
         <th style="min-width: 6.5em">Rule ID</th>
         <th>Summary</th>
         <th>Level</th>
-        <th title="WCAG 2.0 Success Criterion">SC</th>
+        <th title="WCAG Success Criterion">SC</th>
         <th>Required</th>
     </tr>
    </thead>

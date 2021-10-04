@@ -1,0 +1,10 @@
+Searching 134 files for "Functional Accessibility Evaluator and AInspector WCAG" (case sensitive)
+
+/Users/jongunderson/aitg/fae2/fae2/fae2/templates/rulesets/rulesets_base.html:
+   10  
+   11  {% block content %}
+   12:     <p>The Functional Accessibility Evaluator and AInspector WCAG use the <a href="https://github.com/ainspector/a11y-evaluation-library">OpenAjax Evaluation Library and Rulesets</a>.  The ruleset section of FAE provides details of the OpenAjax Evaluation Library rules and rulesets and are based on the Level A and AA requirements defined in <a href="https://www.w3.org/TR/WCAG20/">W3C Web Content Guidelines 2.0</a>.</p>
+   13  
+   14      {% for rs in rulesets %}
+
+1 match in 1 file

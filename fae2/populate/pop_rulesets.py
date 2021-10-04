@@ -53,7 +53,7 @@ from rules.models import SuccessCriterionRuleMapping
 
 from django.contrib.auth.models import User
 
-json_data=open(os.path.join(path,'oaa_exported_rules.json'))
+json_data=open(os.path.join(path,'rulesets.json'))
 
 data = json.load(json_data)
 

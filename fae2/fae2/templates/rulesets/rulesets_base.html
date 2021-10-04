@@ -9,7 +9,10 @@ Rulesets
 {% endblock %}
 
 {% block content %}
-    <p>The Functional Accessibility Evaluator and AInspector WCAG use the <a href="https://aitg.disability.illinois.edu/openajax/member/wiki/accessibility.html">OpenAjax Evaluation Library and Rulesets</a>.  The ruleset section of FAE provides details of the OpenAjax Evaluation Library rules and rulesets.</p>
+    <p>
+        The Functional Accessibility Evaluator and AInspector WCAG use the <a href="https://github.com/ainspector/a11y-evaluation-library">OpenAjax Evaluation Library and Rulesets</a>.
+        The OpenAjax Evaluation Library rules and rulesets and are based on the Level A and AA success criteria defined in <a href="https://www.w3.org/TR/WCAG20/">W3C Web Content Guidelines 2.0</a> using best practices for implementing accessibility defined in the <a href="https://w3c.github.io/aria-practices/">W3C ARIA Authoring Practices</a> and the <a href="https://www.w3.org/TR/html-aria/">W3C ARIA in HTML</a> specifications.
+    </p>
 
     {% for rs in rulesets %}
         <h2>

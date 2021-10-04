@@ -1,0 +1,80 @@
+{
+    "1" : {
+      "id"           : 1,
+      "title"        : "Landmarks",
+      "description"  : "Use ARIA landmark roles to structure the content of each page and identify major sections of content, thus making them more findable and navigable. The use of landmarks will, in many cases, reflect the visual styling and page layouts that web designers utilize to set apart various sections of content.",
+      "url"          : ""
+    },
+    "2" : {
+      "id"           : 2,
+      "title"        : "Headings",
+      "description"  : "Use heading elements (H1-H6) to provide appropriate labels for landmarks, and to identify subsections of content within landmarks.",
+      "url"          : ""
+    },
+    "4" : {
+      "id"           : 4,
+      "title"        : "Styling/Content",
+      "description"  : "Use proper HTML markup to identify the semantics and language of text content. Ensure that text is readable by adhering to color contrast guidelines, and that information is not conveyed solely by the use of color, shape, location or sound.",
+      "url"          : ""
+    },
+    "8" : {
+      "id"           : 8,
+      "title"        : "Images",
+      "description"  : "Provide appropriate text alternatives for static images and graphics.",
+      "url"          : ""
+    },
+    "16" : {
+      "id"           : 16,
+      "title"        : "Links",
+      "description"  : "Use link text that properly describes the target of each link. Ensure consistency and uniqueness for links that are usable, predictable and understandable.",
+      "url"          : ""
+    },
+    "32" : {
+      "id"           : 32,
+      "title"        : "Tables",
+      "description"  : "Provide table captions or other meta-information as needed. Provide row and column header references for data cells of data tables. Ensure that tables used for layout properly linearize text content.",
+      "url"          : ""
+    },
+    "64" : {
+      "id"           : 64,
+      "title"        : "Forms",
+      "description"  : "Provide meaningful labels for form elements and usable and understandable error feedback as needed.",
+      "url"          : ""
+    },
+    "128" : {
+      "id"           : 128,
+      "title"        : "Widgets/Scripting",
+      "description"  : "Use appropriate event handlers on elements to support native interactivity using JavaScript. Ensure that custom widgets created using JavaScript support keyboard interaction and include ARIA markup to describe their roles, properties and states.",
+      "url"          : ""
+    },
+    "256" : {
+      "id"           : 256,
+      "title"        : "Audio/Video",
+      "description"  : "Provide appropriate text transcripts, captions or audio descriptions for elements used in rendering audio and video content.",
+      "url"          : ""
+    },
+    "512" : {
+      "id"           : 512,
+      "title"        : "Keyboard Support",
+      "description"  : "Provide logical and sequential keyboard navigation among interactive elements such as links and form controls. Use standard models of keyboard interaction for custom widgets.",
+      "url"          : ""
+    },
+    "1024" : {
+      "id"           : 1024,
+      "title"        : "Timing",
+      "description"  : "Eliminate accessibility problems caused by time limits on input and by content that moves, scrolls, flashes or auto-updates.",
+      "url"          : ""
+    },
+    "2048" : {
+      "id"           : 2048,
+      "title"        : "Site Navigation",
+      "description"  : "Ensure the consistent labeling and ordering of recurrent page sections across all pages within a website. Provide a meaningful title for each page within a website.",
+      "url"          : ""
+    },
+    "4095" : {
+      "id"           : 4095,
+      "title"        : "All Categories",
+      "description"  : "Includes all rules in the ruleset and provides a way to sort and compare the results of all the rules.",
+      "url"          : ""
+    }
+  }

@@ -1,5 +1,5 @@
 """
-Copyright 2014-2016 University of Illinois
+Copyright 2014-2021 University of Illinois
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -42,7 +42,7 @@ django.setup()
 from ruleCategories.models import RuleCategory
 
 import json
-json_data=open(os.path.join(path,'oaa_exported_rules.json'))
+json_data=open(os.path.join(path,'rule_categories.json'))
 data = json.load(json_data)
 json_data.close()
 
@@ -131,10 +131,10 @@ rc_info = {
        
  } 
 
-for rc_code in data['rule_categories']:
-   title = data['rule_categories'][rc_code]['title']
-   code = data['rule_categories'][rc_code]['id']
-   desc  = data['rule_categories'][rc_code]['description']
+for rc_code in data:
+   title = data[rc_code]['title']
+   code = data[rc_code]['id']
+   desc  = data[rc_code]['description']
    print("\nRule Category: " + title + " (" + str(code) + ")")
  
    if code < 4095:
