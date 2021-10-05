@@ -73,7 +73,7 @@ def wcag_guideline(p_obj, num, title, url, slug):
     print("    " +  title + " (found)")
     guideline.title = title
     guideline.url   = url
-    guideline.slug  = slug
+    guideline.slug  = 'p' + str(p_obj.num) + 'g' + str(num)
     print("    " + title + " (updated)")
 
   except:
@@ -93,7 +93,7 @@ def wcag_success_criterion(g_obj, num, title, level, url, url_meet, url_understa
     sc.url_meet = url_meet
     sc.url_understand = url_understand
     sc.level    = level
-    sc.slug     = slug
+    sc.slug     = g_obj.slug + 'sc' + str(num)
     print("    " + title + " (updated)")
   except:
     sc = SuccessCriterion(guideline=g_obj, num=num, title=title, url=url, url_meet=url_meet, url_understand=url_understand, level=level, slug=slug)
