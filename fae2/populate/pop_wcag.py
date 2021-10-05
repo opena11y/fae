@@ -122,6 +122,10 @@ def wcag():
       g_url   = g_data['url_spec'];
       g_slug  = g_url.split('#')[1];
 
+      # currently do not support rules for Guideline 2.5
+      if p_num == 2 and g_num >= 5:
+        continue
+
       g_obj = wcag_guideline(p_obj, g_num, g_title, g_url, g_slug);
 
       for sc in g_data['success_criteria']:
