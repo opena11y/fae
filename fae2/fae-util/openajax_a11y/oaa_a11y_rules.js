@@ -495,7 +495,7 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
                              },
                             { type:  OpenAjax.a11y.REFERENCES.WCAG_TECHNIQUE,
                               title: 'G14: Ensuring that information conveyed by color differences is also available in text',
-                              url:   'https://www.w3.org/WAI/WCAG21/Techniques/general/G14ß'
+                              url:   'https://www.w3.org/WAI/WCAG21/Techniques/general/G14'
                             }
                             ]
         }

@@ -459,7 +459,7 @@
             },
             { "type"  : 11,
               "title" : "G14: Ensuring that information conveyed by color differences is also available in text",
-              "url"   : "https://www.w3.org/WAI/WCAG21/Techniques/general/G14ß"
+              "url"   : "https://www.w3.org/WAI/WCAG21/Techniques/general/G14"
             }
           ],
           "rule_result_messages" : {
