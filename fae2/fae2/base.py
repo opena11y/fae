@@ -147,6 +147,11 @@ except:
     PAYMENT_RECEIVE_KEY = False
     PAYMENT_ACCOUNT = False
 
+try:
+    DEBUG_PAGE_DATA = get_secret('DEBUG_PAGE_DATA')
+except:
+    DEBUG_PAGE_DATA = True
+
 # Application definition
 
 PROCESSING_THREADS = get_secret('PROCESSING_THREADS')

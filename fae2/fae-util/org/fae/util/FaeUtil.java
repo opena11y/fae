@@ -9,7 +9,6 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -47,6 +46,7 @@ import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.DomNode;
 import com.gargoylesoftware.htmlunit.html.HtmlAnchor;
 import com.gargoylesoftware.htmlunit.html.HtmlElement;
+import com.gargoylesoftware.htmlunit.javascript.SilentJavaScriptErrorListener;
 
 /**
  * FaeUtil
@@ -71,7 +71,8 @@ class FaeUtil {
   public static void main(String args[]) {
     System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
     System.out.println(" ===== FaeUtil, Version:" + VERSION + " ===== ");
-
+    System.out.println(" ===== HtmlUnit, Version:" + com.gargoylesoftware.htmlunit.html.Html.class.getPackage().getImplementationVersion() + " ===== ");
+    
     String homeDir = System.getenv("FAE_HOME");
     System.out.println("FAE_HOME: " + homeDir);
     if (homeDir == null || homeDir.length() == 0) {
@@ -464,8 +465,14 @@ class FaeUtil {
     else if (m_ctrl.BROWSER_VERSION.equalsIgnoreCase("ie")) {
       BROWSER_VERSION = BrowserVersion.INTERNET_EXPLORER;
     }
+    else if (m_ctrl.BROWSER_VERSION.equalsIgnoreCase("firefox")) {
+    	BROWSER_VERSION = BrowserVersion.FIREFOX_78;
+    }
+    else if (m_ctrl.BROWSER_VERSION.equalsIgnoreCase("edge")) {
+    	BROWSER_VERSION = BrowserVersion.EDGE;
+    }
     else {
-      BROWSER_VERSION = BrowserVersion.FIREFOX_78;
+    	BROWSER_VERSION = BrowserVersion.BEST_SUPPORTED;
     }
     //System.out.println("browser version: " + BROWSER_VERSION.getNickname());
 
@@ -712,42 +719,51 @@ class FaeUtil {
   }
 
   // ==============================================================================================
-  public void initWebClient(WebClient webClient) {
-    // Suppress CSS, HTML Parser and Incorrectness warnings and errors
-    if (!VERBOSE) {
-      webClient.setCssErrorHandler(new SilentCssErrorHandler());
-      webClient.setHTMLParserListener(null);
-      webClient.setIncorrectnessListener(new NoOpIncListener());
-    }
+	public void initWebClient(WebClient webClient) {
+		// Suppress warnings and errors
+		if (!VERBOSE) {
+			webClient.setCssErrorHandler(new SilentCssErrorHandler());
+			webClient.setHTMLParserListener(null);
+			webClient.setIncorrectnessListener(new NoOpIncListener());
+			webClient.getOptions().setPrintContentOnFailingStatusCode(false);
+			webClient.getOptions().setThrowExceptionOnScriptError(false);
+			webClient.getOptions().setThrowExceptionOnFailingStatusCode(false);
+			// Silence default javascript errors
+			webClient.setJavaScriptErrorListener(new SilentJavaScriptErrorListener());
 
-    //PJ added - turn off htmlunit warnings
-    //Logger logger = Logger.getRootLogger();
-    Logger.getLogger("com.gargoylesoftware.htmlunit.javascript.host.css.CSSStyleSheet").setLevel(Level.OFF);
-    Logger.getLogger("com.gargoylesoftware.htmlunit.WebConsole").setLevel(Level.OFF);
-    Logger.getLogger("com.gargoylesoftware.htmlunit.javascript.JavaScriptEngine").setLevel(Level.OFF);
-    Logger.getLogger("com.gargoylesoftware.htmlunit.html.HtmlScript").setLevel(Level.OFF);
-    Logger.getLogger("com.gargoylesoftware.htmlunit.javascript.StrictErrorReporter").setLevel(Level.OFF);
-    Logger.getLogger("com.gargoylesoftware.htmlunit.javascript.background.JavaScriptJobManagerImpl").setLevel(Level.OFF);
-    
-    // Disallow exceptions of these types when getPage() is called
-    webClient.getOptions().setThrowExceptionOnFailingStatusCode(false);
-    webClient.setRefreshHandler(new RefreshHandler() {
-      public void handleRefresh(Page page, URL url, int arg)
-        throws IOException {
-      }
-    });
+			// PJ added - turn off htmlunit and apache warnings
+			Logger.getLogger("com.gargoylesoftware").setLevel(Level.OFF);
+			Logger.getLogger("org.apache").setLevel(Level.OFF);
+		}
 
-    // Add alert handler
-    webClient.setAlertHandler(new AlertHandler() {
-      public void handleAlert(Page page, String message) {
-        if (VERBOSE)
-          System.out.println("alert: " + message);
-      }
-    });
+		webClient.getOptions().setUseInsecureSSL(true);
+		webClient.getOptions().setCssEnabled(false);
+		webClient.getOptions().setPopupBlockerEnabled(true);
 
-    // Set a ScriptPreProcessor to not process problem JavaScript
-    webClient.setScriptPreProcessor(new org.fae.util.ScriptPreprocessor(this));
-  }
+		// Enable/disable javascript based on properties file args
+		if (m_ctrl.JAVA_SCRIPT.equals("false"))
+			webClient.getOptions().setJavaScriptEnabled(false);
+		else {
+			webClient.getOptions().setJavaScriptEnabled(true);
+			webClient.setJavaScriptTimeout(5000);
+		}
+
+		webClient.setRefreshHandler(new RefreshHandler() {
+			public void handleRefresh(Page page, URL url, int arg) throws IOException {
+			}
+		});
+
+		// Add alert handler
+		webClient.setAlertHandler(new AlertHandler() {
+			public void handleAlert(Page page, String message) {
+				if (VERBOSE)
+					System.out.println("alert: " + message);
+			}
+		});
+
+		// Set a ScriptPreProcessor to not process problem JavaScript
+		webClient.setScriptPreProcessor(new org.fae.util.ScriptPreprocessor(this));
+	}
 
   // ==============================================================================================
   public void dumpNode(Node node) {
@@ -941,9 +957,14 @@ class FaeUtil {
       if (m_props != null && m_props.getProperty("exportExtension") != null)
         suffix = "." + m_props.getProperty("exportExtension");
       String basename = filePrefix + num + suffix;
-      System.out.println("\t" + urlNum + ": Saving results file: " + basename + "(" + total + " msec)");
+      
       String filename = OUTPUT_DIRECTORY + FILESEP + basename;
-      FileUtil.writeStringToFile(result.getJavaScriptResult() == null ? "result.getJavaScriptResult() == null" : result.getJavaScriptResult().toString(), filename);
+      //FileUtil.writeStringToFile(result.getJavaScriptResult() == null ? "result.getJavaScriptResult() == null" : result.getJavaScriptResult().toString(), filename);
+      // Create and save output file only if there is no script error
+      if (result.getJavaScriptResult() != null) {
+    	  System.out.println("\t" + urlNum + ": Saving results file: " + basename + "(" + total + " msec)");
+    	  FileUtil.writeStringToFile(result.getJavaScriptResult().toString(), filename);
+      }
       if(result.getJavaScriptResult()==null)
     	  System.err.println("Script Error!");
     }
