@@ -439,6 +439,11 @@ class WebsiteReport(RuleGroupResult):
     self.save()
 
   def set_status_complete(self):
+    # If no pages set the report as an error
+    if self.page_count == 0:
+      self.set_status_error()
+      return
+
     self.delete_data_files()
     self.status = 'C'
     self.save()
