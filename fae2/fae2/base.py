@@ -150,7 +150,7 @@ except:
 try:
     DEBUG_PAGE_DATA = get_secret('DEBUG_PAGE_DATA')
 except:
-    DEBUG_PAGE_DATA = True
+    DEBUG_PAGE_DATA = False
 
 # Application definition
 
