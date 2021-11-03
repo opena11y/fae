@@ -82,7 +82,7 @@ Report Processing
  </p>
 
   <h3>Reports with Errors</h3>
-  <p> The most common reason for a report with an error is the use of problem javascripts on the initial page returned by the URL requested.
+  <p> The most common reason for a report with an error is the use of javascript with execution errors or are using web APIs that are not fully supported by the browser emulator.
     FAE uses <a href="https://htmlunit.sourceforge.io/">HTMLUnit</a> to emulate the capabilities of the Firefox browser to evalaute web pages for accessibility, but some scripts may cause too many exceptions or use web APIs that are not fully supported in HTMLunit and cause the evaluation to fail.
     The page may appear to be working fine in some desktop or mobile browsers, but is probably generating a lot of errors due to malformed script or the use of browser specific DOM extensions the engine is not able to ignore.
   </p>
