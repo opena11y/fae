@@ -44,6 +44,7 @@ from django.contrib.auth.models import User
 from rulesets.models            import Ruleset
 
 from fae2.settings import APP_DIR
+from fae2.settings import DEBUG_PAGE_DATA
 
 
 # Create your models here.
@@ -409,18 +410,18 @@ class WebsiteReport(RuleGroupResult):
 
 
   def delete_data_files(self):
-    path = self.data_directory + '/data'
-#    print('[delete_data_files]: ' + path)
-    try:
-      for file in os.listdir(path):
-#        print('[delete_data_files][file]: ' + file)
-
-        if fnmatch.fnmatch(file, '*.json'):
-#          print('[delete_data_files][match]')
-          os.remove(join(path,file))
-
-    except:
-      return False
+    print('[DEBUG_PAGE_DATA]: ' + str(DEBUG_PAGE_DATA))
+    if not DEBUG_PAGE_DATA:
+      path = self.data_directory + '/data'
+  #    print('[delete_data_files]: ' + path)
+      try:
+        for file in os.listdir(path):
+  #        print('[delete_data_files][file]: ' + file)
+          if fnmatch.fnmatch(file, '*.json'):
+  #          print('[delete_data_files][match]')
+            os.remove(join(path,file))
+      except:
+        return False
 
     return True
 
@@ -438,6 +439,11 @@ class WebsiteReport(RuleGroupResult):
     self.save()
 
   def set_status_complete(self):
+    # If no pages set the report as an error
+    if self.page_count == 0:
+      self.set_status_error()
+      return
+
     self.delete_data_files()
     self.status = 'C'
     self.save()

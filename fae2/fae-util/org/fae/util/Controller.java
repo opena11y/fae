@@ -190,7 +190,7 @@ public class Controller {
         error = true;
     }
 
-    if (!BROWSER_VERSION.equalsIgnoreCase("chrome") && !BROWSER_VERSION.equalsIgnoreCase("firefox") && !BROWSER_VERSION.equalsIgnoreCase("ie")) {
+    if (!BROWSER_VERSION.equalsIgnoreCase("chrome") && !BROWSER_VERSION.equalsIgnoreCase("firefox") && !BROWSER_VERSION.equalsIgnoreCase("ie") && !BROWSER_VERSION.equalsIgnoreCase("edge") && !BROWSER_VERSION.equalsIgnoreCase("best")) {
       System.err.println("Unknown " + browserVersion.getLongOpt() + ": " + BROWSER_VERSION);
       error = true;
     }

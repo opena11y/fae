@@ -113,6 +113,7 @@ def archive_reports():
       count += 1
       error("Error deleting (error): " + str(count) + " user: " + str(r.user))
 
+
   # Delete reports with marked for deletion
   reports_marked_for_deletion = WebsiteReport.objects.filter(status='D')
 
