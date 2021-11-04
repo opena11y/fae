@@ -167,14 +167,17 @@ def archive_fae2_logs():
 def update_user_activity():
 
   for u in User.objects.all():
-    stats = StatsUser.objects.get(user=u);
-    print('[stats]: ' + str(stats))
+    try:
+      stats = StatsUser.objects.get(user=u);
+      print('[stats]: ' + str(stats))
 
-    if stats:
-      try:
-        stats.update_activity()
-      except:
-        error("Error updating activity: No user stat object for user '" + str(u) + "'")
+      if stats:
+        try:
+          stats.update_activity()
+        except:
+          error("Error updating activity: No user stat object for user '" + str(u) + "'")
+    except:
+      error("Error updating activity: Bad user object'" + str(u) + "'")
 
 if __name__ == "__main__":
   archive_reports()
