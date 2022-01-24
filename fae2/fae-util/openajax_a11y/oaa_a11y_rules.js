@@ -8460,27 +8460,27 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         WIDGET_16: {
             ID:                    'Widget 16',
-            DEFINITION:            'Custom elements (HTML elements created using the Web Components APIs) %s be manually checked for accessibility requirements.',
-            SUMMARY:               'Custom element requires manual check.',
-            TARGET_RESOURCES_DESC: 'Custom elements created using web components API.',
+            DEFINITION:            'Custom elements (HTML elements created using the Web Components APIs) with closed Shadow DOMs %s be manually checked for accessibility requirements.',
+            SUMMARY:               'Closed shadow DOM requires manual check.',
+            TARGET_RESOURCES_DESC: 'Custom elements created using web components API with closed shadow DOM.',
             RULE_RESULT_MESSAGES: {
-              MANUAL_CHECK_S:  'Verify the custom element meets WCAG accessibility requirments.',
-              MANUAL_CHECK_P:  'Verify the %N_MC custom elements meet WCAG accessibility requirments.',
-              HIDDEN_S: 'A custom element is hidden and only needs to be checked if has features that become visible need to be checked for accessbility.',
-              HIDDEN_P: '%N_H custom elements are hidden and only the custom elements with features that may become visible need to be checked for accessibility.',
+              MANUAL_CHECK_S:  'Verify the custom element with a closed shadow DOM meets WCAG accessibility requirments.',
+              MANUAL_CHECK_P:  'Verify the %N_MC custom elements with a closed shadow DOM meet WCAG accessibility requirments.',
+              HIDDEN_S: 'A custom element with a closed shadow DOM is hidden and only needs to be checked if has features that become visible need to be checked for accessbility.',
+              HIDDEN_P: '%N_H custom elements with a closed shadow DOM are hidden and only the custom elements with features that may become visible need to be checked for accessibility.',
               NOT_APPLICABLE:  'No custom elements found on the page.'
             },
             NODE_RESULT_MESSAGES: {
-              ELEMENT_MC_1:       'Verify the accessibility of the features of the custom component with the tag name of @%1@ using manual checking techniques or automated tools that can anlyze the shadow DOM of custom elements.',
-              ELEMENT_HIDDEN_1:  'The @%1@ custom element is hidden from assistive technologies.',
+              ELEMENT_MC_1:       'Verify the accessibility of the "@%1@"" custom component with a closed shadow DOM using manual checking techniques or automated tools that can anlyze the shadow DOM of custom elements.',
+              ELEMENT_HIDDEN_1:  'The @%1@ custom element with a closed shadow DOM is hidden from assistive technologies.',
             },
             PURPOSE: [
               'Custom elements, defined using the Web Components APIs of HTML 5, are typically used for creating interactive widgets on a web page. A custom element effectively creates a self-scoped package of HTML, CSS and JavaScript that uses the Shadow DOM to insulate itself from other CSS and JavaScript defined by the parent document.',
-              'Because custom elements use the Shadow DOM and thus are not part of the legacy DOM, they cannot be accessed by the evaluation library for programmatic checking of accessibility features.',
-              'The evaluation library is able to report the presence of custom elements, but can only recommend that they be manually checked for accessibility, possibly by using other DOM inspection tools to identify accessibility issues and features.'
+              'Because custom elements use the Shadow DOM and thus are not part of the legacy DOM, they can only be accessed by the evaluation library for programmatic checking of accessibility features when the shadow DOM is "open".',
+              'The evaluation library is unable to analyze custom elements created with "closed" shadow DOMs. In the case of the "closed" shadow DOM all accessibility requirements require manual checks, possibly by using other DOM inspection tools to identify accessibility issues and features.'
             ],
             TECHNIQUES: [
-              'In evaluating custom elements that render as interactive widgets, the most important manual checks involve keyboard navigation and operability, and focus styling, which are related to the various ways a user may interact with the widget.',
+              'In evaluating custom elements with "closed" shadow DOMs that render as interactive widgets, the most important manual checks involve keyboard navigation and operability, and focus styling, which are related to the various ways a user may interact with the widget.',
               'Test with screen readers to verify functionality is operable by a screen reader user.',
               'Test the graphical rendering in operating system using high contrast settings to verify content is perceivable by people with visual impairments.',
               'Use accessibility tools in browser DOM inspectors to assist with manual inspection, since the DOM inspector of most  browsers allows access to the Shadow DOM of the custom element.',
@@ -11934,8 +11934,10 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
       if (isImplicitRole(d, e)) {
         if (d.computed_style.is_visible_to_at === VISIBILITY.VISIBLE ) {
           rule_result.addResult(TEST_RESULT.MANUAL_CHECK, d, 'ELEMENT_MC_1', [d.role, e.tagName]);
+          logProblemResult(d, e, 'MC', 'ELEMENT_MC_1A');
         } else {
           rule_result.addResult(TEST_RESULT.HIDDEN, d, 'ELEMENT_HIDDEN_1', [e.tagName, d.role]);
+          logProblemResult(d, e, 'HIDDEN', 'ELEMENT_HIDDEN_1A');
         }
       }
     }
@@ -11945,23 +11947,29 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
         if (isImplicitRole(d, e)) {
           rule_result.addResult(TEST_RESULT.MANUAL_CHECK, d, 'ELEMENT_MC_1', [d.role, e.tagName]);
+          logProblemResult(d, e, 'MC', 'ELEMENT_MC_1B');
         } else {
           if (e.attr2) {
             rule_result.addResult(TEST_RESULT.FAIL, d, 'ELEMENT_FAIL_1', [e.tagName, e.attr1, e.attr2, d.role]);
+            logProblemResult(d, e, 'FAIL', 'ELEMENT_FAIL_1');
           } else {
             if (e.attr1) {
               rule_result.addResult(TEST_RESULT.FAIL, d, 'ELEMENT_FAIL_2', [e.tagName, e.attr1, d.role]);
+              logProblemResult(d, e, 'FAIL', 'ELEMENT_FAIL_2');
             } else {
               if (e.hasAccname) {
                 rule_result.addResult(TEST_RESULT.FAIL, d, 'ELEMENT_FAIL_3', [e.tagName, d.role]);
+                logProblemResult(d, e, 'FAIL', 'ELEMENT_FAIL_3');
               } else {
                 rule_result.addResult(TEST_RESULT.FAIL, d, 'ELEMENT_FAIL_4', [e.tagName, d.role]);
+                logProblemResult(d, e, 'FAIL', 'ELEMENT_FAIL_4');
               }
             }
           }
         }
       } else {
         rule_result.addResult(TEST_RESULT.HIDDEN, d, 'ELEMENT_HIDDEN_1', [e.tagName, d.role]);
+        logProblemResult(d, e, 'HIDDEN', 'ELEMENT_HIDDEN_1B');
       }
     }
 
@@ -11972,25 +11980,44 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
           if (isImplicitRole(d, e)) {
             rule_result.addResult(TEST_RESULT.MANUAL_CHECK, d, 'ELEMENT_MC_1', [d.role, e.tagName]);
+            logProblemResult(d, e, 'MC', 'ELEMENT_MC_1C');
           } else {
             if (e.attr2) {
               rule_result.addResult(TEST_RESULT.FAIL, d, 'ELEMENT_FAIL_5', [e.tagName, e.attr1, e.attr2, strAllowedRoles]);
+              logProblemResult(d, e, 'FAIL', 'ELEMENT_FAIL_5');
             } else {
               if (e.attr1) {
                 rule_result.addResult(TEST_RESULT.FAIL, d, 'ELEMENT_FAIL_6', [e.tagName, e.attr1, d.role, strAllowedRoles]);
+                logProblemResult(d, e, 'FAIL', 'ELEMENT_FAIL_6');
               } else {
                 if (e.hasAccname) {
                   rule_result.addResult(TEST_RESULT.FAIL, d, 'ELEMENT_FAIL_7', [e.tagName, d.role, strAllowedRoles]);
+                  logProblemResult(d, e, 'FAIL', 'ELEMENT_FAIL_7');
               } else {
                   rule_result.addResult(TEST_RESULT.FAIL, d, 'ELEMENT_FAIL_8', [e.tagName, d.role, strAllowedRoles]);
+                  logProblemResult(d, e, 'FAIL', 'ELEMENT_FAIL_8');
                 }
               }
             }
           }
         } else {
           rule_result.addResult(TEST_RESULT.HIDDEN, d, 'ELEMENT_HIDDEN_2', [d.tag_name, d.role]);
+          logProblemResult(d, e, 'HIDDEN', 'ELEMENT_HIDDEN_2');
         }
       }
+    }
+
+    function logProblemResult(d, e, result, desc) {
+      var show = false;
+      if (show && d.node.className.indexOf(result) < 0) {
+        console.log('[HTML3]: ' + desc + ' in context of ' + d.node.parentNode.tagName + '[role="' + d.node.parentNode.getAttribute('role') + '"]');
+        console.log('[HTML3][' + d.tag_name + '][       role]: ' + d.role + ' [implicit]: ' + d.implicit_role);
+        console.log('[HTML3][' + d.tag_name + '][  className]: ' + d.node.className);
+        console.log('[HTML3][' + d.tag_name + '][    allowed]: ' + e.allowedRoles.join(', '));
+        console.log('[HTML3][' + d.tag_name + '][defaultRole]: ' + e.defaultRole);
+        console.log('[HTML3][' + d.tag_name + '][ isImplicit]: ' + isImplicitRole(d, e));
+      }
+
     }
 
     var TEST_RESULT    = OpenAjax.a11y.TEST_RESULT;
@@ -18215,14 +18242,19 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
 
         if (de.has_aria_label || de.has_aria_labelledby) {
 
-          if (de.role && OpenAjax.a11y.aria.designPatterns[de.role].nameProhibited) {
+          if (de.role &&
+              OpenAjax.a11y.aria.designPatterns[de.role] &&
+              OpenAjax.a11y.aria.designPatterns[de.role].nameProhibited) {
             if (style.is_visible_to_at == VISIBILITY.VISIBLE || style.is_visible_onscreen == VISIBILITY.VISIBLE ) {
               rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_1', [de.tag_name, de.role]);
             } else {
               rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.tag_name, de.role]);
             }
           } else {
-            if (!de.role && implicit_role && OpenAjax.a11y.aria.designPatterns[implicit_role].nameProhibited) {
+            if (!de.role &&
+                implicit_role &&
+                OpenAjax.a11y.aria.designPatterns[implicit_role] &&
+                OpenAjax.a11y.aria.designPatterns[implicit_role].nameProhibited) {
               if (style.is_visible_to_at == VISIBILITY.VISIBLE || style.is_visible_onscreen == VISIBILITY.VISIBLE ) {
                 if (de.tag_name === 'a') {
                   rule_result.addResult(TEST_RESULT.FAIL, de, 'ELEMENT_FAIL_3', []);
@@ -18548,10 +18580,12 @@ OpenAjax.a11y.RuleManager.addRulesFromJSON([
       var style = de.computed_style;
 
       if (de.tag_name.indexOf('-') >= 0) {
-        if (style.is_visible_to_at == VISIBILITY.VISIBLE || style.is_visible_onscreen == VISIBILITY.VISIBLE ) {
-          rule_result.addResult(TEST_RESULT.MANUAL_CHECK, de, 'ELEMENT_MC_1', [de.tag_name]);
-        } else {
-        rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.tag_name]);
+        if (!de.node.shadowRoot) {
+          if (style.is_visible_to_at == VISIBILITY.VISIBLE || style.is_visible_onscreen == VISIBILITY.VISIBLE ) {
+            rule_result.addResult(TEST_RESULT.MANUAL_CHECK, de, 'ELEMENT_MC_1', [de.tag_name]);
+          } else {
+          rule_result.addResult(TEST_RESULT.HIDDEN, de, 'ELEMENT_HIDDEN_1', [de.tag_name]);
+          }
         }
       }
     }
