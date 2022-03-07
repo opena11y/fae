@@ -5513,8 +5513,8 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
     rules: {
         ROLE_1: {
             ID:               'Role 1',
-            DEFINITION:       'Overriding a @main@ element\'s default @role@ of @main@ landmark %s only be done in special cases.',
-            SUMMARY:          '@main@ element @role@ semantics.',
+            DEFINITION:       'Overriding a @main@ element\'s default @role@ of @main@ landmark %s only be done in special cases. NOTE: Deprecated in favor of HTML 3 a more general rule on role restrictions based on ARIA in HTML specification.',
+            SUMMARY:          '@main@ element @role@ semantics. (Deprecated)',
             TARGET_RESOURCES_DESC: '@main@ elements',
             RULE_RESULT_MESSAGES: {
               FAIL_S:         'Remove the @role@ attribute from the @main@ element to support the default @main@ landmark semantics, if the content does not represent @main@ landmark semantics use @role="presentation"@ or change the element to one that does identify the semantics of the content.',
@@ -5563,8 +5563,8 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         ROLE_2: {
             ID:               'Role 2',
-            DEFINITION:       'The @body@ element %s only @document@ (default) or @application@ role semantics.',
-            SUMMARY:          '@body@ element role semantics.',
+            DEFINITION:       'The @body@ element %s only @document@ (default) or @application@ role semantics. NOTE: Deprecated in favor of HTML 3 a more general rule on role restrictions based on ARIA in HTML specification.',
+            SUMMARY:          '@body@ element role semantics. (Deprecated)',
             TARGET_RESOURCES_DESC: '@body@ element',
             RULE_RESULT_MESSAGES: {
               FAIL_S:         'Change the role attribute on the @body@ element to either @document@ or @application@, or remove the @role@ attribute all together.',
@@ -5605,8 +5605,8 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         ROLE_3: {
             ID:               'Role 3',
-            DEFINITION:       '@ol@ and @ul@ elements %s only have grouping role values of @directory, @group@, @listbox@, @menu@, @menubar@, @presentation@, @radiogroup@, @tablist@, @toolbar@ or @tree@.',
-            SUMMARY:          '@ol@ and @ul@ role grouping semantics',
+            DEFINITION:       '@ol@ and @ul@ elements %s only have grouping role values of @directory, @group@, @listbox@, @menu@, @menubar@, @presentation@, @radiogroup@, @tablist@, @toolbar@ or @tree@. NOTE: Deprecated in favor of HTML 3 a more general rule on role restrictions based on ARIA in HTML specification.',
+            SUMMARY:          '@ol@ and @ul@ role grouping semantics. (Deprecated)',
             TARGET_RESOURCES_DESC: '@ol@ and @ul@ elements',
             RULE_RESULT_MESSAGES: {
               FAIL_S:         'Remove the @role@ on the @ol@ and @ul@ element or change the @role@ semantics to an allowed grouping widget role.',
@@ -5648,8 +5648,8 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         ROLE_4: {
             ID:               'Role 4',
-            DEFINITION:       '@article@ element %s only have @role@ semantics of @region@, @article@ (default), @main@, @document@ or @application@.',
-            SUMMARY:          '@article@ element role semantics',
+            DEFINITION:       '@article@ element %s only have @role@ semantics of @region@, @article@ (default), @main@, @document@ or @application@. NOTE: Deprecated in favor of HTML 3 a more general rule on role restrictions based on ARIA in HTML specification.',
+            SUMMARY:          '@article@ element role semantics. (Deprecated)',
             TARGET_RESOURCES_DESC: '@article@ element',
             RULE_RESULT_MESSAGES: {
               FAIL_S:         'Remove the @role@ attribute or change the @role@ attribute on the @article@ element to an allowed @role@ value or remove the @role@ attribute all together.',
@@ -5704,8 +5704,8 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         ROLE_5: {
             ID:               'Role 5',
-            DEFINITION:       '@section@ element %s only have role semantics of @alert@, @alertdialog@, @application@, @contentinfo@, @dialog@, @document@, @log@, @main@, @marquee@, @presentation@, @region@, @search@ or @status@.',
-            SUMMARY:          '@section@ element role semantics',
+            DEFINITION:       '@section@ element %s only have role semantics of @alert@, @alertdialog@, @application@, @contentinfo@, @dialog@, @document@, @log@, @main@, @marquee@, @presentation@, @region@, @search@ or @status@. NOTE: Deprecated in favor of HTML 3 a more general rule on role restrictions based on ARIA in HTML specification.',
+            SUMMARY:          '@section@ element role semantics. (Deprecated)',
             TARGET_RESOURCES_DESC: '@section@ element',
             RULE_RESULT_MESSAGES: {
               FAIL_S:         'Remove the @role@ attribute on the @section@ element or change the role to an allowed role that semantically identifies the content:  @alert@, @alertdialog@, @application@, @contentinfo@, @dialog@, @document@, @log@, @main@, @marquee@, @presentation@, @region@, @search@ or @status@, or remove the @role@ attribute all together.',
@@ -5800,8 +5800,8 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         ROLE_6: {
             ID:               'Role 6',
-            DEFINITION:       'Overriding a @nav@ element\'s default @role@ of @navigation@ landmark %s only be done in special cases.',
-            SUMMARY:          'Do not override @nav@ element semantics.',
+            DEFINITION:       'Overriding a @nav@ element\'s default @role@ of @navigation@ landmark %s only be done in special cases. NOTE: Deprecated in favor of HTML 3 a more general rule on role restrictions based on ARIA in HTML specification.',
+            SUMMARY:          'Do not override @nav@ element semantics. (Deprecated)',
             TARGET_RESOURCES_DESC: '@nav@ element',
             RULE_RESULT_MESSAGES: {
               FAIL_S:         'Remove the @role@ attribute on the @nav@ element to support the default semantics of a @navigation@ landmark, change the @role@ attribute to @presentation@ if the content does not represent a @navigation@ landmark or change the element to an element that better represents the semantics of the content.',
@@ -5845,8 +5845,8 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         ROLE_7: {
             ID:               'Role 7',
-            DEFINITION:       '@aside@ element %s only have role semantics of @complementary@ (default do not set), @note@, @region@, @search@ or @presentation@.',
-            SUMMARY:          '@aside@ element role semantics',
+            DEFINITION:       '@aside@ element %s only have role semantics of @complementary@ (default do not set), @note@, @region@, @search@ or @presentation@. NOTE: Deprecated in favor of HTML 3 a more general rule on role restrictions based on ARIA in HTML specification.',
+            SUMMARY:          '@aside@ element role semantics. (Deprecated)',
             TARGET_RESOURCES_DESC: '@aside@ element',
             RULE_RESULT_MESSAGES: {
               FAIL_S:         'Remove the @role@ attribute on the @aside@ element, change the role to an allowed role that semantically identifies the content: @complementary@ (default do not set), @note@, @region@, @search@ or @presentation@ .',
@@ -5900,8 +5900,8 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         ROLE_8: {
             ID:               'Role 8',
-            DEFINITION:       'Overriding a @header@ element\'s default @role@ of @banner@ landmark %s only be done in special cases.',
-            SUMMARY:          'Do not override @header@ element @role@.',
+            DEFINITION:       'Overriding a @header@ element\'s default @role@ of @banner@ landmark %s only be done in special cases. NOTE: Deprecated in favor of HTML 3 a more general rule on role restrictions based on ARIA in HTML specification.',
+            SUMMARY:          'Do not override @header@ element @role@. (Deprecated)',
             TARGET_RESOURCES_DESC: '@header@ elements',
             RULE_RESULT_MESSAGES: {
               FAIL_S:         'Remove the @role@ attribute from the @header@ element to support the default @banner@ landmark semantics, if the content does not represent @banner@ landmark semantics use @role="presentation"@ or change the element to one that does identify the semantics of the content .',
@@ -5946,8 +5946,8 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         ROLE_9: {
             ID:               'Role 9',
-            DEFINITION:       'Overriding a @footer@ element\'s default @role@ of @contentinfo@ landmark %s only be done in special cases.',
-            SUMMARY:          'Do not override @footer@ element @role@.',
+            DEFINITION:       'Overriding a @footer@ element\'s default @role@ of @contentinfo@ landmark %s only be done in special cases. NOTE: Deprecated in favor of HTML 3 a more general rule on role restrictions based on ARIA in HTML specification.',
+            SUMMARY:          'Do not override @footer@ element @role@. (Deprecated)',
             TARGET_RESOURCES_DESC: '@footer@ elements',
             RULE_RESULT_MESSAGES: {
               FAIL_S:         'Remove the @role@ attribute from the @footer@ element to support the default @contentinfo@ landmark semantics, if the content does not represent @contentinfo@ landmark semantics use @role="presentation"@ or change the element to one that does identify the semantics of the content .',
@@ -5992,8 +5992,8 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         ROLE_10: {
             ID:               'Role 10',
-            DEFINITION:       'Overriding heading element\'s (@h1-h6@) default @role@ of @heading@  %s only be done in special cases.',
-            SUMMARY:          'Overriding @h1-h6@ role semantics',
+            DEFINITION:       'Overriding heading element\'s (@h1-h6@) default @role@ of @heading@  %s only be done in special cases.  NOTE: Deprecated in favor of HTML 3 a more general rule on role restrictions based on ARIA in HTML specification.',
+            SUMMARY:          'Overriding @h1-h6@ role semantics. (Deprecated)',
             TARGET_RESOURCES_DESC: '@h1@, @h2@, @h3@, @h4@, @h5@, @h6@ elements',
             RULE_RESULT_MESSAGES: {
               FAIL_S:         'Remove the @role@ attribute from the heading element to support the default @heading@ semantics, use @tab@ if the heading represents a @tab@ in a @tabpanel@, or use @role="presentation"@ if the content does not represent @heading@ or @tab@ semantics.',
@@ -6041,8 +6041,8 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         ROLE_11: {
             ID:               'Role 11',
-            DEFINITION:       '@li@ elements %s only have group item role values of @listitem@ (default - do not set), @menuitem@, @menuitemcheckbox@, @menuitemradio@, @option@, @tab@, @treeitem@ or @presentation@.',
-            SUMMARY:          '@li@ element group item semantics',
+            DEFINITION:       '@li@ elements %s only have group item role values of @listitem@ (default - do not set), @menuitem@, @menuitemcheckbox@, @menuitemradio@, @option@, @tab@, @treeitem@ or @presentation@.  NOTE: Deprecated in favor of HTML 3 a more general rule on role restrictions based on ARIA in HTML specification.',
+            SUMMARY:          '@li@ element group item semantics. (Deprecated)',
             TARGET_RESOURCES_DESC: '@li@ elements',
             RULE_RESULT_MESSAGES: {
               FAIL_S:         'Remove the @role@ on the @li@ element to support the default @listitem@ semantics or change the @role@ semantics to an allowed grouping widget role.',
@@ -6078,8 +6078,8 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         ROLE_12: {
             ID:               'Role 12',
-            DEFINITION:       '@a[href]@ elements %s only have role values of @link@ (default), @button@, @checkbox@, @menuitem@, @menuitemcheckbox@, @menuitemradio@, @tab@, @switch@ or @treeitem@.',
-            SUMMARY:          '@a[href]@ element role semantics',
+            DEFINITION:       '@a[href]@ elements %s only have role values of @link@ (default), @button@, @checkbox@, @menuitem@, @menuitemcheckbox@, @menuitemradio@, @tab@, @switch@ or @treeitem@.  NOTE: Deprecated in favor of HTML 3 a more general rule on role restrictions based on ARIA in HTML specification.',
+            SUMMARY:          '@a[href]@ element role semantics. (Deprecated)',
             TARGET_RESOURCES_DESC: '@a[href]@ elements',
             RULE_RESULT_MESSAGES: {
               FAIL_S:         'Remove the @role@ on the @a@ element to support the default @link@ semantics or change the @role@ semantics to an allowed grouping widget role.',
@@ -6111,8 +6111,8 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         ROLE_13: {
             ID:               'Role 13',
-            DEFINITION:       '@select@ elements %s only have role values of @listbox@ (default) or @menu@.',
-            SUMMARY:          '@select@ element role semantics',
+            DEFINITION:       '@select@ elements %s only have role values of @listbox@ (default) or @menu@.  NOTE: Deprecated in favor of HTML 3 a more general rule on role restrictions based on ARIA in HTML specification.',
+            SUMMARY:          '@select@ element role semantics. (Deprecated)',
             TARGET_RESOURCES_DESC: '@select]@ elements',
             RULE_RESULT_MESSAGES: {
               FAIL_S:         'Remove the @role@ on the @select@ element to support the default @listbox@ semantics or change the @role@ semantics to the @menu@ role.',
@@ -6144,8 +6144,8 @@ OpenAjax.a11y.RuleManager.addRulesNLSFromJSON('en-us', {
         },
         ROLE_14: {
             ID:               'Role 14',
-            DEFINITION:       '@textarea@ elements %s only have role values of @listbox@ (default) or @menu@.',
-            SUMMARY:          '@textarea@ element role semantics',
+            DEFINITION:       '@textarea@ elements %s only have role values of @listbox@ (default) or @menu@.  NOTE: Deprecated in favor of HTML 3 a more general rule on role restrictions based on ARIA in HTML specification.',
+            SUMMARY:          '@textarea@ element role semantics. (Deprecated)',
             TARGET_RESOURCES_DESC: '@textarea]@ elements',
             RULE_RESULT_MESSAGES: {
               FAIL_S:         'Remove the @role@ on the @textarea@ element to support the default @textbox@ semantics or use a different element to represent the semantics of the content.',

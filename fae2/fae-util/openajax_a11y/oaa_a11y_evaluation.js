@@ -16043,7 +16043,8 @@ OpenAjax.a11y.cache.DOMElement = function (node, parent_dom_element, doc) {
   attr = null;
   attributes = node.attributes;
 
-  this.attributes = attributes;
+  this.html_attrs = {};
+  this.aria_attrs = {};
 
   this.class_name = "";
 
@@ -16177,6 +16178,12 @@ OpenAjax.a11y.cache.DOMElement = function (node, parent_dom_element, doc) {
   for (i = 0; i < attributes.length; i++) {
 
     attr = attributes[i];
+
+    if (attr.name.toLowerCase().indexOf('aria-') === 0) {
+      this.aria_attrs[attr.name] = attr.value;
+    } else {
+      this.html_attrs[attr.name] = attr.value;
+    }
 
     var attr_value = OpenAjax.a11y.util.normalizeSpace(attr.value);
 
@@ -34447,19 +34454,6 @@ OpenAjax.a11y.ElementResult = function (rule_result, result_value, cache_item, m
     }
   }
   this.dom_node = cache_item.node;
-
-  if (this.dom_element && this.dom_element.attributes) {
-    for (var i = 0; i < this.dom_element.attributes.length; i += 1) {
-      var attr = this.dom_element.attributes[i];
-      var name = attr.name.trim();
-      var value = attr.value.trim();
-      if (name.indexOf('aria-') < 0) {
-        this.html_attrs[name] = value;
-      } else {
-        this.aria_attrs[name] = value;
-      }
-    }
-  }
 };
 
 
@@ -34564,7 +34558,10 @@ OpenAjax.a11y.ElementResult.prototype.checkForAttribute = function (attrs, attr,
  * @return {Object} see description
  */
 OpenAjax.a11y.ElementResult.prototype.getHTMLAttributes = function () {
-  return this.html_attrs;
+  if (this.dom_element.html_attrs) {
+    return this.dom_element.html_attrs;
+  }
+  return {};
 };
 
  /**
@@ -34578,7 +34575,10 @@ OpenAjax.a11y.ElementResult.prototype.getHTMLAttributes = function () {
  * @return {Object} see description
  */
 OpenAjax.a11y.ElementResult.prototype.getAriaAttributes = function () {
-  return this.aria_attrs;
+  if (this.dom_element.aria_attrs) {
+    return this.dom_element.aria_attrs;
+  }
+  return {};
 };
 
  /**
@@ -34591,8 +34591,25 @@ OpenAjax.a11y.ElementResult.prototype.getAriaAttributes = function () {
  * @return {Object}
  */
 OpenAjax.a11y.ElementResult.prototype.getAccessibleNameInfo = function () {
-  var info = {};
+  var info = {}, dp = false;
 
+  // If the results are dom_element object, they do not have names, like for CCR rule
+  info.name_possible = this.dom_element !== this.cache_item;
+
+  if (this.dom_element) {
+    if (this.dom_element.role) {
+      dp = OpenAjax.a11y.aria.designPatterns[this.dom_element.role];
+    } else {
+      if (this.dom_element.implicit_role) {
+        dp = OpenAjax.a11y.aria.designPatterns[this.dom_element.implicit_role];
+      }
+    }
+  }
+
+  if (dp) {
+    info.name_required   = dp.nameRequired;
+    info.name_prohibited = dp.nameProhibited;
+  }
 
   if (this.cache_item.accessible_name) {
     info.name = this.cache_item.accessible_name;
@@ -34607,7 +34624,18 @@ OpenAjax.a11y.ElementResult.prototype.getAccessibleNameInfo = function () {
     if (this.cache_item.computed_label) {
       info.name = this.cache_item.computed_label;
       info.name_source = this.nameSource[this.cache_item.computed_label_source];
+    } else {
+      // This option is for heading cache items
+      if (this.cache_item.name) {
+        info.name = this.cache_item.name;
+        info.name_source = this.nameSource[OpenAjax.a11y.SOURCE.TEXT_CONTENT];
+      }
     }
+  }
+
+  if (!info.name) {
+    info.name = '';
+    info.name_source = ''
   }
 
   if (this.cache_item.accessible_description) {
@@ -34642,7 +34670,10 @@ OpenAjax.a11y.ElementResult.prototype.getColorContrastInfo = function () {
       info.color_hex             = '#' + cs.color_hex;
       info.background_color      = cs.background_color;
       info.background_color_hex  = '#' + cs.background_color_hex;
-      info.large_font            = cs.is_large_font;
+      info.font_family           = cs.font_family;
+      info.font_size             = cs.font_size;
+      info.font_weight           = cs.font_weight;
+      info.large_font            = cs.is_large_font ? 'Yes' : 'no';
       info.background_image      = cs.background_image;
       info.background_repeat     = cs.background_repeat;
       info.background_position   = cs.background_position;
@@ -40949,7 +40980,7 @@ OpenAjax.a11y.nls.RuleCategories.addNLS('en-us', {
     },
     {
       id           : OpenAjax.a11y.RULE_CATEGORIES.STYLES_READABILITY,
-      title        : 'Styling/Content',
+      title        : 'Styles/Content',
       url          : '',
       description  : 'Use proper HTML markup to identify the semantics and language of text content. Ensure that text is readable by adhering to color contrast guidelines, and that information is not conveyed solely by the use of color, shape, location or sound.'
     },
@@ -40979,7 +41010,7 @@ OpenAjax.a11y.nls.RuleCategories.addNLS('en-us', {
     },
     {
       id           : OpenAjax.a11y.RULE_CATEGORIES.WIDGETS_SCRIPTS,
-      title        : 'Widgets/Scripting',
+      title        : 'Widgets/Scripts',
       url          : '',
       description  : 'Use appropriate event handlers on elements to support native interactivity using JavaScript. Ensure that custom widgets created using JavaScript support keyboard interaction and include ARIA markup to describe their roles, properties and states.'
     },
@@ -41010,7 +41041,7 @@ OpenAjax.a11y.nls.RuleCategories.addNLS('en-us', {
     // Composite rule categories
     {
       id           : OpenAjax.a11y.RULE_CATEGORIES.ALL,
-      title        : 'All Categories',
+      title        : 'All Rules',
       url          : '',
       description  : 'Includes all rules in the ruleset and provides a way to sort and compare the results of all the rules.'
     }
@@ -41049,7 +41080,7 @@ OpenAjax.a11y.nls.WCAG20.addNLS('en-us', {
   levels: [  'Undefined',  'AAA',  'AA',  '',  'A'  ],
   evaluation_levels: [  'Undefined',  'AAA',  'AA',  'AA and AAA',  'A',  'A and AAA',  'A nd AA',  'A, AA and AAA'  ],
   all_guidelines: {
-    title: 'All Guidelines',
+    title: 'All Rules',
     description: 'All the rules related to WCAG 2.1.',
     url_spec: 'https://www.w3.org/TR/WCAG21/'
   },

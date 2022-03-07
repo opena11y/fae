@@ -581,8 +581,8 @@
       "ruleset_tooltip"         : "WCAG 2.0 Level A and AA requirements primarily using HTML4 techniques, but allows HTML5 and ARIA accessibility techniques.",
       "ruleset_description"     : "Evaluation of W3C Web Content Accessibility Guidelines 2.0 Level A and AA conformance using HTML4 accessibility techniques, but allows for the use of HTML5 and ARIA techniques.  ARIA landmarks are NOT required, but if used must follow landmark and sectioning element requirements as outlined in HTML5 and ARIA.  The ruleset does NOT require the use of ARIA widget roles for identifying and describing interactive elements (e.g. popup menus, grids, trees, etc...) that cannot be not described by the native semantics of HTML4 and HTML5 form control and link elements.  This means the developer will need to do more manual checking and have a high level understanding of assistive technology to describe widgets typically using offscreen text and/or small images (e.g. with ALT text) to define and manage the roles, properties and states of interactive elements. ",
       "ruleset_description_url" : "",
-      "ruleset_required_rules"    : 83,
-      "ruleset_recommended_rules" : 43,
+      "ruleset_required_rules"    : 81,
+      "ruleset_recommended_rules" : 45,
     "wcag20_level"        : 6,
     "rec_rules_enabled"   : true,
     "rule_mappings" : {
@@ -891,60 +891,60 @@
         "required"   : true
     },
       "ROLE_1" : {
-        "enabled"    : true,
+        "enabled"    : false,
         "required"   : false
     },
       "ROLE_2" : {
-        "enabled"    : true,
+        "enabled"    : false,
         "required"   : false
     },
       "ROLE_3" : {
-        "enabled"    : true,
+        "enabled"    : false,
         "required"   : false
     },
       "ROLE_4" : {
-        "enabled"    : true,
+        "enabled"    : false,
         "required"   : false
     },
       "ROLE_5" : {
-        "enabled"    : true,
+        "enabled"    : false,
         "required"   : false
     },
       "ROLE_6" : {
-        "enabled"    : true,
+        "enabled"    : false,
         "required"   : false
     },
       "ROLE_7" : {
-        "enabled"    : true,
+        "enabled"    : false,
         "required"   : false
     },
       "ROLE_8" : {
-        "enabled"    : true,
+        "enabled"    : false,
         "required"   : false
     },
       "ROLE_9" : {
-        "enabled"    : true,
+        "enabled"    : false,
         "required"   : false
     },
       "ROLE_10" : {
-        "enabled"    : true,
+        "enabled"    : false,
         "required"   : false
     },
       "ROLE_11" : {
-        "enabled"    : true,
+        "enabled"    : false,
         "required"   : false
     },
       "ROLE_12" : {
-        "enabled"    : true,
+        "enabled"    : false,
         "required"   : false
     },
       "ROLE_13" : {
-        "enabled"    : true,
-        "required"   : true
+        "enabled"    : false,
+        "required"   : false
     },
       "ROLE_14" : {
-        "enabled"    : true,
-        "required"   : true
+        "enabled"    : false,
+        "required"   : false
     },
       "SENSORY_1" : {
         "enabled"    : true,
@@ -1104,8 +1104,8 @@
       "ruleset_tooltip"         : "WCAG 2.0 Level A and AA requirements using ARIA and HTML5 accessibility features.",
       "ruleset_description"     : "Evaluation of W3C Web Content Accessibility Guidelines 2.0 Level A and AA conformance using HTML5 and ARIA accessibility techniques.  ARIA Landmarks are required for the identification and labeling of the sections of content on a web page. The ruleset requires the use of ARIA widget roles for identifying and describing interactive elements (e.g. popup menus, grids, trees, etc...) that cannot be not described by the native semantics of HTML5 form control and links elements.",
       "ruleset_description_url" : "",
-      "ruleset_required_rules"    : 123,
-      "ruleset_recommended_rules" : 13,
+      "ruleset_required_rules"    : 109,
+      "ruleset_recommended_rules" : 27,
     "wcag20_level"        : 6,
     "rec_rules_enabled"   : true,
     "rule_mappings" : {
@@ -1446,60 +1446,60 @@
         "required"   : true
     },
       "ROLE_1" : {
-        "enabled"    : true,
-        "required"   : true
+        "enabled"    : false,
+        "required"   : false
     },
       "ROLE_2" : {
-        "enabled"    : true,
-        "required"   : true
+        "enabled"    : false,
+        "required"   : false
     },
       "ROLE_3" : {
-        "enabled"    : true,
-        "required"   : true
+        "enabled"    : false,
+        "required"   : false
     },
       "ROLE_4" : {
-        "enabled"    : true,
-        "required"   : true
+        "enabled"    : false,
+        "required"   : false
     },
       "ROLE_5" : {
-        "enabled"    : true,
-        "required"   : true
+        "enabled"    : false,
+        "required"   : false
     },
       "ROLE_6" : {
-        "enabled"    : true,
-        "required"   : true
+        "enabled"    : false,
+        "required"   : false
     },
       "ROLE_7" : {
-        "enabled"    : true,
-        "required"   : true
+        "enabled"    : false,
+        "required"   : false
     },
       "ROLE_8" : {
-        "enabled"    : true,
-        "required"   : true
+        "enabled"    : false,
+        "required"   : false
     },
       "ROLE_9" : {
-        "enabled"    : true,
-        "required"   : true
+        "enabled"    : false,
+        "required"   : false
     },
       "ROLE_10" : {
-        "enabled"    : true,
-        "required"   : true
+        "enabled"    : false,
+        "required"   : false
     },
       "ROLE_11" : {
-        "enabled"    : true,
-        "required"   : true
+        "enabled"    : false,
+        "required"   : false
     },
       "ROLE_12" : {
-        "enabled"    : true,
-        "required"   : true
+        "enabled"    : false,
+        "required"   : false
     },
       "ROLE_13" : {
-        "enabled"    : true,
-        "required"   : true
+        "enabled"    : false,
+        "required"   : false
     },
       "ROLE_14" : {
-        "enabled"    : true,
-        "required"   : true
+        "enabled"    : false,
+        "required"   : false
     },
       "SENSORY_1" : {
         "enabled"    : true,
