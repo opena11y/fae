@@ -16131,6 +16131,7 @@ OpenAjax.a11y.cache.DOMElement = function (node, parent_dom_element, doc) {
   this.role_info      = null;
   this.aria_invalid   = false;
   this.aria_required  = false;
+  this.title = '';
 
   this.src = "";
   if (node.src && (node.src.length > 0)) {
@@ -16146,12 +16147,6 @@ OpenAjax.a11y.cache.DOMElement = function (node, parent_dom_element, doc) {
     addOtherAttribute('href', node.href);
   }
 
-  this.title = "";
-  if (node.title && (node.title.length > 0)) {
-    this.has_title = true;
-    this.title = node.title;
-  }
-
   this.value = "";
   if (node.value && (node.value.length > 0)) {
     this.has_value = true;
@@ -16162,12 +16157,6 @@ OpenAjax.a11y.cache.DOMElement = function (node, parent_dom_element, doc) {
   if (this.aria_labelledby && this.aria_labelledby.length) {
     addAriaAttribute('aria-labelledby', this.aria_labelledby);
     this.has_aria_labelledby = true;
-  }
-
-  this.aria_label = node.getAttribute('aria-label');
-  if (this.aria_label && this.aria_label.length) {
-    addAriaAttribute('aria-label', this.aria_label);
-    this.has_aria_label = true;
   }
 
   this.ancestor_has_aria_activedescendant = false;
@@ -16239,6 +16228,9 @@ OpenAjax.a11y.cache.DOMElement = function (node, parent_dom_element, doc) {
       break;
 
     case 'aria-label':
+      this.aria_label = attr_value;;
+      addAriaAttribute('aria-label', attr_value);
+      this.has_aria_label = true;
       break;
 
     case 'aria-labelledby':
@@ -16375,6 +16367,11 @@ OpenAjax.a11y.cache.DOMElement = function (node, parent_dom_element, doc) {
         this.tabindex = attr.value;
         this.has_tabindex = true;
       }
+      break;
+
+    case 'title':
+      this.has_title = true;
+      this.title = attr.value;
       break;
 
     default:
@@ -16959,29 +16956,7 @@ OpenAjax.a11y.cache.DOMElement.prototype.hasEvents = function () {
 
 
 /**
- * @method   var SOURCE = OpenAjax.a11y.SOURCE;
-
-  var computed_label = "";
-  var computed_label_source = SOURCE.NONE;
-  var de = link.dom_element;
-
-  if (de.has_aria_labelledby) {
-    computed_label = this.element_with_id_cache.getTextFromIds(de.aria_labelledby);
-    computed_label_source = SOURCE.ARIA_LABELLEDBY;
-  }
-  else if (de.has_aria_label) {
-    computed_label = de.aria_label;
-    computed_label_source = SOURCE.ARIA_LABEL;
-  }
-  else if (de.has_title) {
-    computed_label = de.title;
-    computed_label_source = SOURCE.TITLE_ATTRIBUTE;
-  }
-  else {
-    computed_label = de.getText();
-    computed_label_source = SOURCE.TEXT_CONTENT;
-  }
-angeEvents
+ * @method   hasChangeEvents
  *
  * @memberOf OpenAjax.a11y.cache.DOMElement
  *
@@ -19176,7 +19151,6 @@ OpenAjax.a11y.cache.DOMCache.prototype.updateDOMElements = function (node, paren
           for (n = rn.firstElementChild; n !== null; n = n.nextElementSibling ) {
             ps = this.updateDOMElements(n, dom_element, ps);
           } // end loop
-
         }
       } else {
         switch (dom_element.tag_name) {
@@ -19192,6 +19166,8 @@ OpenAjax.a11y.cache.DOMCache.prototype.updateDOMElements = function (node, paren
 
           case 'slot':
             nodes = node.assignedNodes();
+            // if not slotted elements, check for default content
+            nodes = nodes.length ? nodes : node.assignedNodes({flatten: true});
             for (var i = 0; i < nodes.length; i += 1) {
               n = nodes[i];
               ps = this.updateDOMElements(n, dom_element, ps, showElements);

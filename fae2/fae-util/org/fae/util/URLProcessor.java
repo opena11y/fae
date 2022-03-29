@@ -461,7 +461,7 @@ public class URLProcessor {
 
 		if (!verification.isEmpty() && verification.equals("true")) {
 			if (!verificationText.isEmpty()
-					&& page2.asText().contains(verificationText)
+					&& page2.asNormalizedText().contains(verificationText)
 					&& !user.isEmpty() && !pass.isEmpty()) {
 				System.out.println(urlNum + ":" + cnt + ": LOGIN SUCCESSFUL");
 				m_loginSuccessURLs.add(url);
