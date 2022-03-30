@@ -40,14 +40,15 @@ FAE may be used and distributed based on the terms and conditions of the [Apache
 Here is the [requirements.txt] file to use with pip
 
 ```
+
 confusable-homoglyphs==3.2.0
-Django==2.2.24
+Django==2.2.27
 django-password-reset==2.0
 django-registration==3.1.2
 django-timezone-field==3.1
 future==0.15.2
 Markdown==2.6.5
-psycopg2-binary
+psycopg2-binary==2.8.6
 pytz==2019.3
 requests==2.20.0
 sqlparse==0.3.0
