@@ -964,59 +964,59 @@
      },
    ROLE_1 : {
        required : false,
-       enabled  : true
+       enabled  : false
      },
    ROLE_2 : {
        required : false,
-       enabled  : true
+       enabled  : false
      },
    ROLE_3 : {
        required : false,
-       enabled  : true
+       enabled  : false
      },
    ROLE_4 : {
        required : false,
-       enabled  : true
+       enabled  : false
      },
    ROLE_5 : {
        required : false,
-       enabled  : true
+       enabled  : false
      },
    ROLE_6 : {
        required : false,
-       enabled  : true
+       enabled  : false
      },
    ROLE_7 : {
        required : false,
-       enabled  : true
+       enabled  : false
      },
    ROLE_8 : {
        required : false,
-       enabled  : true
+       enabled  : false
      },
    ROLE_9 : {
        required : false,
-       enabled  : true
+       enabled  : false
      },
    ROLE_10 : {
        required : false,
-       enabled  : true
+       enabled  : false
      },
    ROLE_11 : {
        required : false,
-       enabled  : true
+       enabled  : false
      },
    ROLE_12 : {
        required : false,
-       enabled  : true
+       enabled  : false
     },
       ROLE_13 : {
-       required : true,
-       enabled  : true
+       required : false,
+       enabled  : false
       },
    ROLE_14: {
-       required : true,
-       enabled  : true
+       required : false,
+       enabled  : false
      },
    SENSORY_1 : {
        required : true,
@@ -1564,60 +1564,60 @@
         enabled  : true
       },
       ROLE_1 : {
-        required : true,
-        enabled  : true
+        required : false,
+        enabled  : false
       },
       ROLE_2 : {
-        required : true,
-        enabled  : true
+        required : false,
+        enabled  : false
       },
       ROLE_3 : {
-        required : true,
-        enabled  : true
+        required : false,
+        enabled  : false
       },
       ROLE_4 : {
-        required : true,
-        enabled  : true
+        required : false,
+        enabled  : false
       },
       ROLE_5 : {
-        required : true,
-        enabled  : true
+        required : false,
+        enabled  : false
       },
       ROLE_6 : {
-        required : true,
-        enabled  : true
+        required : false,
+        enabled  : false
       },
       ROLE_7 : {
-        required : true,
-        enabled  : true
+        required : false,
+        enabled  : false
       },
       ROLE_8 : {
-        required : true,
-        enabled  : true
+        required : false,
+        enabled  : false
       },
       ROLE_9 : {
-        required : true,
-        enabled  : true
+        required : false,
+        enabled  : false
       },
       ROLE_10 : {
-        required : true,
-        enabled  : true
+        required : false,
+        enabled  : false
       },
       ROLE_11 : {
-       required : true,
-       enabled  : true
+        required : false,
+        enabled  : false
       },
       ROLE_12 : {
-       required : true,
-       enabled  : true
+        required : false,
+        enabled  : false
       },
       ROLE_13 : {
-       required : true,
-       enabled  : true
+        required : false,
+        enabled  : false
       },
       ROLE_14 : {
-       required : true,
-       enabled  : true
+        required : false,
+        enabled  : false
      },
       SENSORY_1 : {
         required : true,

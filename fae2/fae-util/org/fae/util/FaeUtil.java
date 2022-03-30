@@ -466,7 +466,7 @@ class FaeUtil {
       BROWSER_VERSION = BrowserVersion.INTERNET_EXPLORER;
     }
     else if (m_ctrl.BROWSER_VERSION.equalsIgnoreCase("firefox")) {
-    	BROWSER_VERSION = BrowserVersion.FIREFOX_78;
+    	BROWSER_VERSION = BrowserVersion.FIREFOX;
     }
     else if (m_ctrl.BROWSER_VERSION.equalsIgnoreCase("edge")) {
     	BROWSER_VERSION = BrowserVersion.EDGE;
@@ -1218,7 +1218,7 @@ class FaeUtil {
   public Properties m_props = null;
   public static Controller m_ctrl = new Controller("java org.fae.util.FaeUtil <options>");
   
-  public static BrowserVersion BROWSER_VERSION = BrowserVersion.FIREFOX_78;
+  public static BrowserVersion BROWSER_VERSION = BrowserVersion.FIREFOX;
   public boolean DEBUG = false;
   public int DEPTH = 1;
   public String OUTPUT_DIRECTORY;
