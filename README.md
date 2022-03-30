@@ -1,4 +1,4 @@
-# Functional Accessibility Evaluator, version 2.2
+# Functional Accessibility Evaluator
 
 Development is primarily supported by the [University of Illinois at Urbana-Champaign](https://illinois.edu).  The development is lead by [DRES Accessible IT Group](https://accessibleit.disability.illinois.edu) which is a unit of [Disability Resources and Educational Servcies](https://www.disability.illinois.edu) which is part fo the [College of Applied Health Sciences](https://www.ahs.illinois.edu).  Additional contributions for the [HTMLUnit](http://htmlunit.sourceforge.net/) based web site analysis engine are provided by [Administrative Information Technology Services (ATIS)](https://www.aits.uillinois.edu/) of University Administration.
 
