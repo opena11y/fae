@@ -16133,31 +16133,6 @@ OpenAjax.a11y.cache.DOMElement = function (node, parent_dom_element, doc) {
   this.aria_required  = false;
   this.title = '';
 
-  this.src = "";
-  if (node.src && (node.src.length > 0)) {
-    this.has_src = true;
-    this.src = node.src;
-    addOtherAttribute('src', node.src);
-  }
-
-  this.href = "";
-  if (node.href && (node.href.length > 0)) {
-    this.has_href = true;
-    this.href = node.href;
-    addOtherAttribute('href', node.href);
-  }
-
-  this.value = "";
-  if (node.value && (node.value.length > 0)) {
-    this.has_value = true;
-    this.value = node.value;
-  }
-
-  this.aria_labelledby = node.getAttribute('aria-labelledby');
-  if (this.aria_labelledby && this.aria_labelledby.length) {
-    addAriaAttribute('aria-labelledby', this.aria_labelledby);
-    this.has_aria_labelledby = true;
-  }
 
   this.ancestor_has_aria_activedescendant = false;
   if (parent_dom_element) this.ancestor_has_aria_activedescendant = parent_dom_element.ancestor_has_aria_activedescendant;
@@ -16234,6 +16209,9 @@ OpenAjax.a11y.cache.DOMElement = function (node, parent_dom_element, doc) {
       break;
 
     case 'aria-labelledby':
+      this.has_aria_labelledby = true;
+      this.aria_labelledby = attr_value;;
+      addAriaAttribute('aria-labelledby', attr_value);
       break;
 
     case 'aria-live':
@@ -16273,6 +16251,12 @@ OpenAjax.a11y.cache.DOMElement = function (node, parent_dom_element, doc) {
 
     case 'headers':
       if (attr_value.length > 0) this.has_headers = true;
+      break;
+
+    case 'href':
+      this.has_href = true;
+      this.href = attr_value;
+      addOtherAttribute('href', attr_value);
       break;
 
     case 'lang':
@@ -16357,6 +16341,12 @@ OpenAjax.a11y.cache.DOMElement = function (node, parent_dom_element, doc) {
       if (attr_value.length > 0) this.has_scope = true;
       break;
 
+    case 'src':
+      this.has_src = true;
+      this.src = attr.value;
+      addOtherAttribute('src', attr.value);
+      break;
+
     case 'summary':
       this.summary = attr.value;
       if (attr_value.length > 0) this.has_summary = true;
@@ -16372,6 +16362,11 @@ OpenAjax.a11y.cache.DOMElement = function (node, parent_dom_element, doc) {
     case 'title':
       this.has_title = true;
       this.title = attr.value;
+      break;
+
+    case 'value':
+      this.has_value = true;
+      this.value = attr.value;
       break;
 
     default:
